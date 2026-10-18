@@ -99,15 +99,15 @@ export function withoutWindowsSigningEnvironment(environment: NodeJS.ProcessEnv)
  * @returns Packaging environment without certificate inputs for unsigned builds.
  */
 export function desktopElectronBuilderEnvironment(environment: NodeJS.ProcessEnv, unsigned: boolean): NodeJS.ProcessEnv {
-  const selected: NodeJS.ProcessEnv = { ...environment, DSH_DESKTOP_UNSIGNED: unsigned ? '1' : '0' }
+  const selected: NodeJS.ProcessEnv = { ...environment, SQODE_DESKTOP_UNSIGNED: unsigned ? '1' : '0' }
   // The bundled NSIS decoder cannot extract 7-Zip's automatic ARM64-filtered entries.
-  if (environment.DSH_DESKTOP_TARGET_PLATFORM === 'win32') selected.ELECTRON_BUILDER_7Z_FILTER = 'BCJ'
+  if (environment.SQODE_DESKTOP_TARGET_PLATFORM === 'win32') selected.ELECTRON_BUILDER_7Z_FILTER = 'BCJ'
   if (!unsigned) return selected
   return {
     ...Object.fromEntries(Object.entries(withoutWindowsSigningEnvironment(selected))
       .filter(([name]) => !/^(?:WIN_)?CSC_/iu.test(name))),
     CSC_IDENTITY_AUTO_DISCOVERY: 'false',
-    DSH_DESKTOP_UNSIGNED: '1',
+    SQODE_DESKTOP_UNSIGNED: '1',
   }
 }
 
@@ -355,8 +355,8 @@ async function main(): Promise<void> {
     dirty: packaged.dirty,
   }, { parallel: target.platform === 'darwin', secrets })
   console.log(`DESKTOP_PACKAGING_RECORD ${run.directory}`)
-  const previousDirectory = process.env.DSH_DESKTOP_PACKAGING_RUN_DIR
-  process.env.DSH_DESKTOP_PACKAGING_RUN_DIR = run.directory
+  const previousDirectory = process.env.SQODE_DESKTOP_PACKAGING_RUN_DIR
+  process.env.SQODE_DESKTOP_PACKAGING_RUN_DIR = run.directory
   let success = false
   try {
     await packagingStep(run.directory, 'configuration', async () => { validateDesktopPackageEnvironment(environment, target, invocation) }, secrets)
@@ -377,8 +377,8 @@ async function main(): Promise<void> {
     process.stderr.write(`desktop package: failed; see ${run.directory}/events.jsonl\n`)
     process.exitCode = 1
   } finally {
-    if (previousDirectory === undefined) delete process.env.DSH_DESKTOP_PACKAGING_RUN_DIR
-    else process.env.DSH_DESKTOP_PACKAGING_RUN_DIR = previousDirectory
+    if (previousDirectory === undefined) delete process.env.SQODE_DESKTOP_PACKAGING_RUN_DIR
+    else process.env.SQODE_DESKTOP_PACKAGING_RUN_DIR = previousDirectory
     run.finish(success)
   }
 }
@@ -397,7 +397,7 @@ export async function packageTarget(
 ): Promise<void> {
   const { target } = invocation
   const execute = (args: readonly string[], env: NodeJS.ProcessEnv, cwd: string = APP_ROOT) => runPnpm(args, env, cwd, run)
-  const journal = target.platform === 'darwin' ? process.env.DSH_DESKTOP_PACKAGING_RUN_DIR : undefined
+  const journal = target.platform === 'darwin' ? process.env.SQODE_DESKTOP_PACKAGING_RUN_DIR : undefined
   const proxyEvent = (status: string) => { if (journal) recordPackagingEvent(journal, { type: 'notarization-proxy', status }) }
   const mac = target.platform === 'darwin' ? resolveMacOSPackageSettings(environment) : undefined
   const packArguments = mac === undefined ? [] : ['--concurrency', String(mac.packConcurrency)]
@@ -410,8 +410,8 @@ export async function packageTarget(
   const buildEnv = withoutWindowsSigningEnvironment(withoutDesktopUploadCredentials(environment))
   const targetEnv: NodeJS.ProcessEnv = {
     ...buildEnv,
-    DSH_DESKTOP_TARGET_PLATFORM: target.platform,
-    DSH_DESKTOP_TARGET_ARCH: target.arch,
+    SQODE_DESKTOP_TARGET_PLATFORM: target.platform,
+    SQODE_DESKTOP_TARGET_ARCH: target.arch,
   }
   const downloadEnv = macOSDownloadEnvironment(targetEnv, mac?.downloadProxy)
   const electronBuilderEnv = desktopElectronBuilderEnvironment(downloadEnv, invocation.unsigned)

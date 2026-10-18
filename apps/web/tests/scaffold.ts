@@ -4,7 +4,7 @@
 // patches over the empty profile root through the vendored Loader (the same
 // layer stack the profile boot composes), patched the
 // snapshot way — so a real chromium exercises the real HTTP uplink/WebSocket
-// downlink, api-gateway, agent loop, tools, and persistence. Modes ride $DSH_SNAPSHOT:
+// downlink, api-gateway, agent loop, tools, and persistence. Modes ride $SQODE_SNAPSHOT:
 // replay (default, keyless: normally disables the direct DeepSeek rows and
 // inserts dsh-llm-replay in providers mode), record (real adapter + key,
 // harvests fixtures from live session memory), refresh (keyless replay that
@@ -31,7 +31,7 @@ import { pathToFileURL } from 'node:url'
 import type { Page } from 'playwright'
 import { expect } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import { DSH_LAUNCH_ENVIRONMENT_KEY, type LaunchEnvironmentSnapshot } from '@deepseek-ai/dsh-launch-environment'
+import { SQODE_LAUNCH_ENVIRONMENT_KEY, type LaunchEnvironmentSnapshot } from '@deepseek-ai/dsh-launch-environment'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
 import { entryListSchema, type PatchOptions } from '@deepseek-ai/cordis-plugin-include'
 import yaml from 'js-yaml'
@@ -122,7 +122,7 @@ export const WELCOME_NOTICE_COPY = {
   },
 } as const
 
-/** Snapshot mode for the lane, from $DSH_SNAPSHOT (same vocabulary as the other snapshot suites). */
+/** Snapshot mode for the lane, from $SQODE_SNAPSHOT (same vocabulary as the other snapshot suites). */
 export type WebSnapshotMode = 'replay' | 'record' | 'refresh'
 
 /**
@@ -130,10 +130,10 @@ export type WebSnapshotMode = 'replay' | 'record' | 'refresh'
  * @returns the active mode; unset/empty selects replay.
  */
 export function webSnapshotMode(): WebSnapshotMode {
-  const value = process.env.DSH_SNAPSHOT
+  const value = process.env.SQODE_SNAPSHOT
   if (value === undefined || value === '' || value === 'replay') return 'replay'
   if (value === 'record' || value === 'refresh') return value
-  throw new Error(`DSH_SNAPSHOT must be replay, record, or refresh; got ${JSON.stringify(value)}`)
+  throw new Error(`SQODE_SNAPSHOT must be replay, record, or refresh; got ${JSON.stringify(value)}`)
 }
 
 /**
@@ -288,7 +288,7 @@ export interface WebScaffold {
   workspaceCwd: string
   /** Temp persistence root (seeded sessions land here through the real API). */
   persistenceRoot: string
-  /** Isolated harness home the settings/credentials rows write ($DSH_HOME double). */
+  /** Isolated harness home the settings/credentials rows write ($SQODE_HOME double). */
   harnessHome: string
   /** Send a browser-equivalent Host request with this scaffold's authenticated cookie. */
   hostFetch(path: string, init?: RequestInit): Promise<Response>
@@ -503,24 +503,24 @@ export async function launchWebScaffold(options: LaunchOptions = {}): Promise<We
     }
   }
   const workspaceCwd = await realpath(await mkdtemp(join(tmpdir(), 'dsh-web-e2e-ws-')))
-  // Isolated harness home: the settings/credentials rows resolve $DSH_HOME
+  // Isolated harness home: the settings/credentials rows resolve $SQODE_HOME
   // paths at load, and an in-process boot must NEVER touch the developer's
-  // real ~/.dsh document or credential file.
+  // real ~/.sqode document or credential file.
   const harnessHome = options.harnessHome ?? join(workspaceCwd, '.dsh-home')
   // Skill discovery is model-visible input, and its roots now resolve inside a
   // PRESET — a subtree this lane's include patches cannot reach, because the
   // roster mounts it directly per session rather than as a row of the booted
   // tree. The row's documented fallback is the environment, so pin that: the
   // whole scaffold lifetime, not just the boot, since presets mount when a
-  // session is created. Without this a developer's real ~/.dsh/skills silently
-  // enters replay requests and goldens while CI sees none. `DSH_HOME` follows
+  // session is created. Without this a developer's real ~/.sqode/skills silently
+  // enters replay requests and goldens while CI sees none. `SQODE_HOME` follows
   // the resolved harness home so a scaffold sharing another's home — the
   // cross-port persistence scenario — pins the same roots the settings and
   // credentials rows were configured with.
   const skillRootEnvironment = {
-    DSH_HOME: harnessHome,
-    DSH_AGENTS_HOME: join(workspaceCwd, '.agents-home'),
-    DSH_BUNDLED_SKILL_DIR: join(workspaceCwd, '.bundled-skills'),
+    SQODE_HOME: harnessHome,
+    SQODE_AGENTS_HOME: join(workspaceCwd, '.agents-home'),
+    SQODE_BUNDLED_SKILL_DIR: join(workspaceCwd, '.bundled-skills'),
   }
   const originalSkillRootEnvironment = Object.fromEntries(
     Object.keys(skillRootEnvironment).map(key => [key, process.env[key]]),
@@ -579,14 +579,14 @@ export async function launchWebScaffold(options: LaunchOptions = {}): Promise<We
     // the seeded-session scenarios navigate by content search, and these e2e
     // runs are the assembled coverage for the opt-in search path.
     { id: 'session-query-sqlite', config: { path: ':memory:', openAt: 'first-search' } },
-    // storage-json's yml root is anchored to the real $DSH_HOME; pin the row
+    // storage-json's yml root is anchored to the real $SQODE_HOME; pin the row
     // to an absolute temp root (removed with the workspace at close) so tests
     // never write the user's harness home.
     { id: 'storage-json', config: { root: join(workspaceCwd, '.dsh-storages') } },
     // First-use initialization must create directories only inside this scaffold's temporary world.
     { id: 'workspace-controller', config: { documentsDirectory: join(workspaceCwd, 'Documents') } },
     // Skill discovery is model-visible input. Pin every host-level root inside
-    // the owned temp world so ~/.dsh, ~/.agents, and a bundled-root env setting
+    // the owned temp world so ~/.sqode, ~/.agents, and a bundled-root env setting
     // cannot change replay requests or conversation goldens. Project roots stay
     // enabled against the same empty temp workspace, preserving the real seam.
     {
@@ -604,7 +604,7 @@ export async function launchWebScaffold(options: LaunchOptions = {}): Promise<We
     { id: 'agent-instructions', disabled: true },
     { id: 'session-title-llm', disabled: true },
     // Fixture sessions must never leave the process: the shipped row defaults
-    // to the production OTLP endpoint (or whatever DSH_TELEMETRY_OTLP_URL
+    // to the production OTLP endpoint (or whatever SQODE_TELEMETRY_OTLP_URL
     // names in the ambient environment). A scenario with a local collector
     // preserves the shipped disabled setting instead of overriding it.
     options.telemetryUrl === undefined
@@ -697,7 +697,7 @@ export async function launchWebScaffold(options: LaunchOptions = {}): Promise<We
   // the temp workspace so tool cwd, session cwd, and fixtures agree.
   const originalCwd = process.cwd()
   const ctx = new Context()
-  if (options.openInAppEnvironment !== undefined) ctx.provide(DSH_LAUNCH_ENVIRONMENT_KEY, options.openInAppEnvironment)
+  if (options.openInAppEnvironment !== undefined) ctx.provide(SQODE_LAUNCH_ENVIRONMENT_KEY, options.openInAppEnvironment)
   const observedSessions = new Map<SessionId, Session>()
   const stopObservingSessions = ctx.on('session/created', (session) => {
     observedSessions.set(session.id, session)
@@ -1679,7 +1679,7 @@ export async function compareOrRefreshGolden(goldenPath: string, actual: string,
     return
   }
   if (!existsSync(goldenPath)) {
-    throw new Error(`missing golden ${goldenPath} — run DSH_SNAPSHOT=refresh pnpm run test:web to generate it`)
+    throw new Error(`missing golden ${goldenPath} — run SQODE_SNAPSHOT=refresh pnpm run test:web to generate it`)
   }
   expect(payload).toBe(await readFile(goldenPath, 'utf8'))
 }

@@ -288,7 +288,7 @@ describe('TerminalController', () => {
     await controller.create(agent, request, signal())
     expect(confine).not.toHaveBeenCalled()
     expect(sandboxPolicy.resolve).not.toHaveBeenCalled()
-    expect(subprocess.spawnTerminal).toHaveBeenCalledWith(expect.objectContaining({ argv: ['/bin/bash', '--noprofile', '--norc', '-i'], env: { DSH_SESSION_ID: agent.id }, graceMs: 100 }))
+    expect(subprocess.spawnTerminal).toHaveBeenCalledWith(expect.objectContaining({ argv: ['/bin/bash', '--noprofile', '--norc', '-i'], env: { SQODE_SESSION_ID: agent.id }, graceMs: 100 }))
   })
 
   it('uses the Session working directory without requiring a sandbox provider', async () => {

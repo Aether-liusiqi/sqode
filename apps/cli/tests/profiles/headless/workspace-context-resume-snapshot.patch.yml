@@ -11,7 +11,7 @@
 - id: agent-instructions
   config:
     maxBytes: 65536
-    dshHome: !!js process.cwd() + '/.dsh'
+    dshHome: !!js process.cwd() + '/.sqode'
 
 - id: session-persistence-jsonl
   config:
@@ -22,8 +22,8 @@
     - id: replay
       name: '@deepseek-ai/dsh-llm-replay'
       config:
-        file: !!js process.env.DSH_SNAPSHOT_FILE
-        overrideFile: !!js process.env.DSH_SNAPSHOT_OVERRIDE
+        file: !!js process.env.SQODE_SNAPSHOT_FILE
+        overrideFile: !!js process.env.SQODE_SNAPSHOT_OVERRIDE
 
     # Publish the persisted agent before the driver selects the single root.
     - id: resumed-agent

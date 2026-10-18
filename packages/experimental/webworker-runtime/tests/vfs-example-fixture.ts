@@ -37,7 +37,7 @@ export const VFS_EXAMPLE_OLDEST_MESSAGE = 'History checkpoint 01: verify determi
 /** Settled tail marker used by browser acceptance and the demonstration GIF. */
 export const VFS_EXAMPLE_TAIL_MESSAGE = 'Preview tour complete'
 
-/** Durable task ids for the Host Schedule rows seeded into the preview's `DSH_HOME`. */
+/** Durable task ids for the Host Schedule rows seeded into the preview's `SQODE_HOME`. */
 export const VFS_EXAMPLE_SCHEDULE_IDS = {
   daily: 'preview-daily-digest',
   once: 'preview-release-window',
@@ -444,7 +444,7 @@ function renderLog(
 }
 
 /**
- * Host Schedule task rows the preview's `DSH_HOME` carries, keyed by durable
+ * Host Schedule task rows the preview's `SQODE_HOME` carries, keyed by durable
  * task id.
  *
  * The schedule domain opens this whole-unit document at Host startup and

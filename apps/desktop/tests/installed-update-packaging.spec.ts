@@ -79,11 +79,11 @@ describe('operator-driven packaging entry', () => {
   })
 
   it('strips unrelated secrets and preload overrides while retaining signing inputs and the Windows archive filter', () => {
-    expect(installedUpdatePackagingEnvironment({ DSH_DESKTOP_TARGET_PLATFORM: 'win32', PATH: 'tool-path',
+    expect(installedUpdatePackagingEnvironment({ SQODE_DESKTOP_TARGET_PLATFORM: 'win32', PATH: 'tool-path',
       DSH_DESKTOP_WINDOWS_TOKEN_PIN: 'pin', DSH_DESKTOP_WINDOWS_KEY_CONTAINER: 'container',
       DEEPSEEK_API_KEY: 'llm', DOWNLOAD_TEST_COS_SECRET_KEY: 'cos', NODE_OPTIONS: 'preload', NODE_PATH: 'injected' }))
-      .toEqual({ DSH_DESKTOP_TARGET_PLATFORM: 'win32', PATH: 'tool-path', DSH_DESKTOP_WINDOWS_TOKEN_PIN: 'pin',
-        DSH_DESKTOP_WINDOWS_KEY_CONTAINER: 'container', DSH_DESKTOP_UNSIGNED: '0', ELECTRON_BUILDER_7Z_FILTER: 'BCJ' })
+      .toEqual({ SQODE_DESKTOP_TARGET_PLATFORM: 'win32', PATH: 'tool-path', DSH_DESKTOP_WINDOWS_TOKEN_PIN: 'pin',
+        DSH_DESKTOP_WINDOWS_KEY_CONTAINER: 'container', SQODE_DESKTOP_UNSIGNED: '0', ELECTRON_BUILDER_7Z_FILTER: 'BCJ' })
   })
 
   it('checks without confirmation or allocating a packaging directory', async () => {
@@ -99,7 +99,7 @@ describe('operator-driven packaging entry', () => {
   it.runIf(process.platform === 'win32' && process.arch === 'x64').each([true, false])(
     'supervises an inert child with failure=%s, retains redaction and refuses reuse', async (failure) => {
       await fixture(async (manifest) => {
-        state.settings.DSH_TEST_PACKAGING_FAIL = failure ? '1' : '0'
+        state.settings.SQODE_TEST_PACKAGING_FAIL = failure ? '1' : '0'
         const result = packageInstalledUpdate(manifest, versions[0], { execute: true, confirm: async () => true })
         if (failure) await expect(result).rejects.toThrow('signed-installer failed')
         else expect(await result).toMatchObject({ builderCompleted: true, packageVerification: 'pending', published: false })

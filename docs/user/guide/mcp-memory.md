@@ -30,7 +30,7 @@ dsh web --patch "$PWD/apps/cli/config/examples/mcp-memory/memorix.cordis.yml"
 
 Replace the filename with `mcp-reference-memory.cordis.yml` or `engram.cordis.yml`. The path may point to a copied file anywhere on disk. No memory server is present in the shipped composition, so omitting `--patch` keeps all three disabled.
 
-To keep the selection across runs, merge the chosen file's single `insert` patch into a user patch layer — `$DSH_HOME/profiles/<name>/cordis.patch.yml` for one profile, or `$DSH_HOME/cordis.patch.yml` for every profile on the machine. Do not copy over an existing file: it may already contain unrelated user patches.
+To keep the selection across runs, merge the chosen file's single `insert` patch into a user patch layer — `$SQODE_HOME/profiles/<name>/cordis.patch.yml` for one profile, or `$SQODE_HOME/cordis.patch.yml` for every profile on the machine. Do not copy over an existing file: it may already contain unrelated user patches.
 
 ## Provider setup
 
@@ -50,7 +50,7 @@ npm install --global @modelcontextprotocol/server-memory@2026.7.4
 dsh web --patch "$PWD/apps/cli/config/examples/mcp-memory/mcp-reference-memory.cordis.yml"
 ```
 
-This reference server stores a local knowledge graph and exposes entity, relation, observation, read, search, and open tools. It needs no model or embedding service. The example stores its JSONL at `$HOME/.dsh-mcp-reference-memory.jsonl` instead of the installed npm package directory. Set `MEMORY_FILE_PATH` before starting DSH to override it.
+This reference server stores a local knowledge graph and exposes entity, relation, observation, read, search, and open tools. It needs no model or embedding service. The example stores its JSONL at `$HOME/.sqode-mcp-reference-memory.jsonl` instead of the installed npm package directory. Set `MEMORY_FILE_PATH` before starting DSH to override it.
 
 Search is case-insensitive substring matching over entity names, types, and observations, not semantic retrieval. The server does not add embeddings, automatic summarization, conflict resolution, or a forgetting policy.
 

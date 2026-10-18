@@ -63,7 +63,7 @@ const output = handle.collected.stdout?.readFrom(0)
 <a id="using-a-control-pipe"></a>
 ### 使用控制管道
 
-设置 `stdio.control: 'pipe'` 后，`handle.control` 会返回独立的原始 `Duplex`。Node 子进程通过 `@deepseek-ai/dsh-subprocess/control` 的 `openInheritedControlChannel()` 打开 fd 7；该辅助函数会消费提供方拥有的 `DSH_SUBPROCESS_CONTROL=pipe` 标记。调用方不能通过 `env` 提供该标记。控制字节不会进入 stdout/stderr 收集器。消费方负责分帧、校验、背压和关闭自身端点；提供方销毁时会在进程拆卸后销毁仍存在的端点。省略请求则返回 `control: undefined`。该通道仅适用于普通进程，不授予绕过工具审批的权限。
+设置 `stdio.control: 'pipe'` 后，`handle.control` 会返回独立的原始 `Duplex`。Node 子进程通过 `@deepseek-ai/dsh-subprocess/control` 的 `openInheritedControlChannel()` 打开 fd 7；该辅助函数会消费提供方拥有的 `SQODE_SUBPROCESS_CONTROL=pipe` 标记。调用方不能通过 `env` 提供该标记。控制字节不会进入 stdout/stderr 收集器。消费方负责分帧、校验、背压和关闭自身端点；提供方销毁时会在进程拆卸后销毁仍存在的端点。省略请求则返回 `control: undefined`。该通道仅适用于普通进程，不授予绕过工具审批的权限。
 
 ### 管理进程生命周期
 

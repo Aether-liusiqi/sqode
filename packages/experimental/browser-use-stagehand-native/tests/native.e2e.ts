@@ -27,9 +27,9 @@ class ImageCapabilities extends LlmAdapter {
   async * stream(_options: GenerateOptions): AsyncIterable<StreamChunk> { throw new Error('Unexpected model call in browser smoke') }
 }
 
-it.skipIf(process.env.DSH_STAGEHAND_E2E !== '1')('launches and attaches to installed Chromium while preserving the external browser', { timeout: 120_000, retry: 0 }, async ({ signal }) => {
-  const executable = process.env.DSH_BROWSER_EXECUTABLE
-  if (executable === undefined) throw new Error('DSH_STAGEHAND_E2E requires DSH_BROWSER_EXECUTABLE')
+it.skipIf(process.env.SQODE_STAGEHAND_E2E !== '1')('launches and attaches to installed Chromium while preserving the external browser', { timeout: 120_000, retry: 0 }, async ({ signal }) => {
+  const executable = process.env.SQODE_BROWSER_EXECUTABLE
+  if (executable === undefined) throw new Error('SQODE_STAGEHAND_E2E requires SQODE_BROWSER_EXECUTABLE')
   const server = createServer((_request, response) => {
     response.setHeader('content-type', 'text/html')
     response.end('<!doctype html><title>Stagehand fixture</title><h1>Stagehand local smoke</h1><button onclick="this.textContent=\'Clicked\'">Click fixture</button>')
@@ -108,7 +108,7 @@ it.skipIf(process.env.DSH_STAGEHAND_E2E !== '1')('launches and attaches to insta
   }
 })
 
-it.skipIf(process.env.DSH_STAGEHAND_E2E !== '1' || !process.env.DSH_STAGEHAND_MODEL || !process.env.DSH_STAGEHAND_MODEL_API_KEY)('extracts a controlled heading using an independently configured native Stagehand model', { timeout: 120_000, retry: 0 }, async ({ signal }) => {
+it.skipIf(process.env.SQODE_STAGEHAND_E2E !== '1' || !process.env.SQODE_STAGEHAND_MODEL || !process.env.SQODE_STAGEHAND_MODEL_API_KEY)('extracts a controlled heading using an independently configured native Stagehand model', { timeout: 120_000, retry: 0 }, async ({ signal }) => {
   const server = createServer((_request, response) => {
     response.setHeader('content-type', 'text/html')
     response.end('<!doctype html><h1>Stagehand structured result</h1>')
@@ -120,7 +120,7 @@ it.skipIf(process.env.DSH_STAGEHAND_E2E !== '1' || !process.env.DSH_STAGEHAND_MO
     if (address === null || typeof address === 'string') throw new Error('Missing fixture address')
     await mountAgentLoopTestDependencies(ctx)
     await ctx.plugin(BrowserUseRegistry)
-    await ctx.plugin(Provider, { model: stagehandModelSchema.parse({ modelName: process.env.DSH_STAGEHAND_MODEL, apiKey: process.env.DSH_STAGEHAND_MODEL_API_KEY }), mode: 'launch', ...process.env.DSH_BROWSER_EXECUTABLE === undefined ? {} : { executablePath: process.env.DSH_BROWSER_EXECUTABLE } })
+    await ctx.plugin(Provider, { model: stagehandModelSchema.parse({ modelName: process.env.SQODE_STAGEHAND_MODEL, apiKey: process.env.SQODE_STAGEHAND_MODEL_API_KEY }), mode: 'launch', ...process.env.SQODE_BROWSER_EXECUTABLE === undefined ? {} : { executablePath: process.env.SQODE_BROWSER_EXECUTABLE } })
     const harness = await mountAgentLoopTestHarness(ctx)
     const agent = await harness.create(SessionId('stagehand-real-model'), {})
     const execute = (suffix: string, args: unknown) => ctx.tools.execute({ agent, name: `stagehand_${suffix}`, arguments: args, callId: ToolCallId(`api-${suffix}`), signal })
@@ -141,9 +141,9 @@ it.skipIf(process.env.DSH_STAGEHAND_E2E !== '1' || !process.env.DSH_STAGEHAND_MO
 
 
 // The executable wrapper uses a POSIX shebang; the ordinary browser smoke runs on every platform.
-it.skipIf(process.env.DSH_STAGEHAND_E2E !== '1' || process.platform === 'win32')('scrubs real Chromium environment and closes it during canceled Stagehand initialization', { timeout: 120_000, retry: 0 }, async () => {
-  const executable = process.env.DSH_BROWSER_EXECUTABLE
-  if (executable === undefined) throw new Error('DSH_STAGEHAND_E2E requires DSH_BROWSER_EXECUTABLE')
+it.skipIf(process.env.SQODE_STAGEHAND_E2E !== '1' || process.platform === 'win32')('scrubs real Chromium environment and closes it during canceled Stagehand initialization', { timeout: 120_000, retry: 0 }, async () => {
+  const executable = process.env.SQODE_BROWSER_EXECUTABLE
+  if (executable === undefined) throw new Error('SQODE_STAGEHAND_E2E requires SQODE_BROWSER_EXECUTABLE')
   const root = await mkdtemp(join(tmpdir(), 'dsh-stagehand-acquire-'))
   const marker = join(root, 'browser.json')
   const wrapper = join(root, 'chrome.mjs')
@@ -157,7 +157,7 @@ it.skipIf(process.env.DSH_STAGEHAND_E2E !== '1' || process.platform === 'win32')
   })
   const ctx = new Context()
   vi.stubEnv('BROWSER_FIXTURE_API_TOKEN', 'do-not-forward')
-  vi.stubEnv('DSH_BROWSER_FIXTURE_ID', 'do-not-forward')
+  vi.stubEnv('SQODE_BROWSER_FIXTURE_ID', 'do-not-forward')
   vi.stubEnv('BROWSER_FIXTURE_PUBLIC', 'visible')
   try {
     stalled.listen(0, '127.0.0.1')
@@ -170,7 +170,7 @@ it.skipIf(process.env.DSH_STAGEHAND_E2E !== '1' || process.platform === 'win32')
       'import { spawn } from \'node:child_process\'',
       'import { writeFileSync } from \'node:fs\'',
       `const child = spawn(${JSON.stringify(executable)}, process.argv.slice(2), { stdio: ['ignore', 'ignore', 'pipe'], env: process.env })`,
-      `writeFileSync(${JSON.stringify(marker)}, JSON.stringify({ pid: child.pid, token: process.env.BROWSER_FIXTURE_API_TOKEN ?? null, identity: process.env.DSH_BROWSER_FIXTURE_ID ?? null, publicValue: process.env.BROWSER_FIXTURE_PUBLIC, profile: process.argv.find(value => value.startsWith('--user-data-dir=')).slice('--user-data-dir='.length) }))`,
+      `writeFileSync(${JSON.stringify(marker)}, JSON.stringify({ pid: child.pid, token: process.env.BROWSER_FIXTURE_API_TOKEN ?? null, identity: process.env.SQODE_BROWSER_FIXTURE_ID ?? null, publicValue: process.env.BROWSER_FIXTURE_PUBLIC, profile: process.argv.find(value => value.startsWith('--user-data-dir=')).slice('--user-data-dir='.length) }))`,
       'let output = \'\'',
       `child.stderr.on('data', chunk => { output += chunk.toString(); if (output.includes('DevTools listening on ')) { process.stderr.write(${JSON.stringify(`DevTools listening on ${endpoint}\n`)}); output = '' } })`,
       'child.on(\'error\', error => { console.error(error); process.exit(1) })',
@@ -205,9 +205,9 @@ it.skipIf(process.env.DSH_STAGEHAND_E2E !== '1' || process.platform === 'win32')
   }
 })
 
-it.skipIf(process.env.DSH_STAGEHAND_E2E !== '1')('drains canceled navigation before reconnecting to the same Chromium tabs', { timeout: 120_000, retry: 0 }, async () => {
-  const executable = process.env.DSH_BROWSER_EXECUTABLE
-  if (executable === undefined) throw new Error('DSH_STAGEHAND_E2E requires DSH_BROWSER_EXECUTABLE')
+it.skipIf(process.env.SQODE_STAGEHAND_E2E !== '1')('drains canceled navigation before reconnecting to the same Chromium tabs', { timeout: 120_000, retry: 0 }, async () => {
+  const executable = process.env.SQODE_BROWSER_EXECUTABLE
+  if (executable === undefined) throw new Error('SQODE_STAGEHAND_E2E requires SQODE_BROWSER_EXECUTABLE')
   const entered: PromiseWithResolvers<void> = Promise.withResolvers()
   const release: PromiseWithResolvers<void> = Promise.withResolvers()
   const server = createServer((request, response) => {

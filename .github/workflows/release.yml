@@ -23,14 +23,14 @@ concurrency:
 
 env:
   PRIMARY_NODE_VERSION: '24'
-  DSH_TELEMETRY_DISABLED: '1'
+  SQODE_TELEMETRY_DISABLED: '1'
 
 jobs:
   dependencies:
     name: Dependency layout
     # Persistent runners accept only trusted, credential-free rehearsals.
     runs-on: >-
-      ${{ vars.DSH_CI_FAILOVER_LINUX == 'selfhosted'
+      ${{ vars.SQODE_CI_FAILOVER_LINUX == 'selfhosted'
         && github.repository == 'deepseek-harness/deepseek-harness'
         && github.actor != 'dependabot[bot]'
         && ((github.event_name == 'push' && github.ref == 'refs/heads/master')
@@ -90,7 +90,7 @@ jobs:
     name: Pack npm tarballs
     # Persistent runners accept only trusted, credential-free rehearsals.
     runs-on: >-
-      ${{ vars.DSH_CI_FAILOVER_LINUX == 'selfhosted'
+      ${{ vars.SQODE_CI_FAILOVER_LINUX == 'selfhosted'
         && github.repository == 'deepseek-harness/deepseek-harness'
         && github.actor != 'dependabot[bot]'
         && ((github.event_name == 'push' && github.ref == 'refs/heads/master')

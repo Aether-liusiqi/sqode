@@ -48,7 +48,7 @@ export async function signWindowsDesktopRuntime(root: string, version: string,
 async function main(): Promise<void> {
   if (process.platform !== 'win32' || resolveDesktopBuildTarget() !== 'win-x64') throw new Error('primary runtime signing requires Windows x64')
   const { signatureCacheConcurrency } = resolveWindowsPackageSettings(process.env)
-  const runDirectory = process.env.DSH_DESKTOP_PACKAGING_RUN_DIR
+  const runDirectory = process.env.SQODE_DESKTOP_PACKAGING_RUN_DIR
   if (!runDirectory) throw new Error('primary runtime signing requires a supervised packaging run')
   await readFile(join(runDirectory, 'run.json'))
   const certificateFile = process.env.DSH_DESKTOP_WINDOWS_CER_FILE

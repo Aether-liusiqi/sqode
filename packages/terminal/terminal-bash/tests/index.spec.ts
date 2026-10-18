@@ -281,7 +281,7 @@ describe('BashTerminalBackend startup rollback', () => {
       env: {
         TERM: 'dumb', PAGER: 'cat', GIT_PAGER: 'cat', PS1: 'dsh> ', BASH_SILENCE_DEPRECATION_WARNING: '1',
         PROMPT_COMMAND: 'printf "\\033]133;D;%s\\007" "$?"; PS1=\'dsh> \'',
-        DSH_SHELL: '1', DSH_SESSION_ID: 'agent', DSH_PTY_SESSION_ID: 'pty-1',
+        SQODE_SHELL: '1', SQODE_SESSION_ID: 'agent', SQODE_PTY_SESSION_ID: 'pty-1',
       },
     })
     expect(spawned?.env?.PTY_TEST_SECRET).toBeUndefined()
@@ -449,7 +449,7 @@ describe('BashTerminalBackend startup rollback', () => {
     expect(sent).toMatchObject({ text: ENCODING_PREAMBLE + PWSH_PROMPT_SETUP, submit: true })
     expect(session.motd).toBe('setup-echo dsh> ')
     expect(spawned?.env).toMatchObject({
-      TERM: 'dumb', NO_COLOR: '1', DSH_SHELL: '1', DSH_SESSION_ID: 'agent', DSH_PTY_SESSION_ID: 'pty-1',
+      TERM: 'dumb', NO_COLOR: '1', SQODE_SHELL: '1', SQODE_SESSION_ID: 'agent', SQODE_PTY_SESSION_ID: 'pty-1',
     })
     expect(spawned?.env?.PS1).toBeUndefined()
     expect(spawned?.env?.PROMPT_COMMAND).toBeUndefined()

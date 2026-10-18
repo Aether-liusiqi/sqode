@@ -57,7 +57,7 @@ function injectedOf(entry: { inject?: (() => object) | undefined }): object {
   const injected: object = entry.inject!()
   return injected
 }
-beforeEach(() => { vi.stubEnv('DSH_CLIENT_VERSION', '0.0.0-test') })
+beforeEach(() => { vi.stubEnv('SQODE_CLIENT_VERSION', '0.0.0-test') })
 afterEach(() => { vi.unstubAllGlobals(); vi.unstubAllEnvs(); vi.restoreAllMocks() })
 
 it('keeps account UI and account RPC inactive in a plain browser, including after reload', async ({ start, mock }) => {

@@ -15,7 +15,7 @@ import { verifyDesktopRuntime } from '../src/runtime-tree.ts'
 export async function createInstalledUpdateBuilderConfig(manifest: string, version: string, environment: NodeJS.ProcessEnv) {
   const run = await readInstalledUpdateRun(manifest)
   if (!run.versions.includes(version)) throw new Error('installed update: package version is outside the qualification run')
-  if (environment.DSH_DESKTOP_AUTO_UPDATE_ENV !== 'test' || environment.DSH_DESKTOP_UNSIGNED === '1'
+  if (environment.DSH_DESKTOP_AUTO_UPDATE_ENV !== 'test' || environment.SQODE_DESKTOP_UNSIGNED === '1'
     || environment.DOWNLOAD_TEST_ORIGIN !== run.origin || environment.DOWNLOAD_TEST_COS_BUCKET !== run.bucket) {
     throw new Error('installed update: signed ordinary-update qualification requires matching test deployment settings')
   }
@@ -23,7 +23,7 @@ export async function createInstalledUpdateBuilderConfig(manifest: string, versi
   const dsh = join(run.root, version, 'dsh')
   await verifyDesktopRuntime(dsh, version, { platform: 'win32', arch: 'x64' })
   const config = createElectronBuilderConfig({ ...environment, DSH_DESKTOP_APP_ID: run.appId,
-    DSH_DESKTOP_TARGET_PLATFORM: 'win32', DSH_DESKTOP_TARGET_ARCH: 'x64', DSH_DESKTOP_UNSIGNED: '0' }, 'win32', 'x64', dsh, version)
+    SQODE_DESKTOP_TARGET_PLATFORM: 'win32', SQODE_DESKTOP_TARGET_ARCH: 'x64', SQODE_DESKTOP_UNSIGNED: '0' }, 'win32', 'x64', dsh, version)
   return { ...config,
     productName: run.productName,
     directories: { ...config.directories, output: join(run.root, version, 'installer') },

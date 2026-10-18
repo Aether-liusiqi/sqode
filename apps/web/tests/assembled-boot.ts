@@ -326,7 +326,7 @@ export function hasClass(el: Element, name: string): boolean {
 
 /**
  * Whether this run rewrites its golden instead of comparing against it, set by
- * the snapshot gate's `DSH_SNAPSHOT` mode (`record` re-runs the scenarios from
+ * the snapshot gate's `SQODE_SNAPSHOT` mode (`record` re-runs the scenarios from
  * scratch, `refresh` re-derives the expected text from the existing ones).
  */
-export const REFRESHING_GOLDEN = process.env.DSH_SNAPSHOT === 'record' || process.env.DSH_SNAPSHOT === 'refresh'
+export const REFRESHING_GOLDEN = process.env.SQODE_SNAPSHOT === 'record' || process.env.SQODE_SNAPSHOT === 'refresh'

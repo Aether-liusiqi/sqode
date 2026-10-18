@@ -11,8 +11,8 @@ import { ToolCallId, LlmAdapter, ReasoningEffortId } from '@deepseek-ai/dsh-llm'
  */
 class MockDelegatingAdapter extends LlmAdapter {
   override resolveModel(provider: string, model: string): Promise<LlmResolvedModelInfo> {
-    if (process.env.DSH_TEST_PARENT_MODEL_RECORD !== undefined) {
-      appendFileSync(process.env.DSH_TEST_PARENT_MODEL_RECORD, `${provider}/${model}\n`)
+    if (process.env.SQODE_TEST_PARENT_MODEL_RECORD !== undefined) {
+      appendFileSync(process.env.SQODE_TEST_PARENT_MODEL_RECORD, `${provider}/${model}\n`)
     }
     return Promise.resolve({
       provider,
@@ -34,7 +34,7 @@ class MockDelegatingAdapter extends LlmAdapter {
       : ''
 
     if (toolResultText.length === 0) {
-      const selectedRoute = process.env.DSH_TEST_CHILD_DEFAULT_ROUTE === '1'
+      const selectedRoute = process.env.SQODE_TEST_CHILD_DEFAULT_ROUTE === '1'
         ? { reasoning_effort: 'max' }
         : { provider: 'mock', model: 'mock-routed', reasoning_effort: 'max' }
       const args = JSON.stringify({
@@ -67,7 +67,7 @@ export const inject = ['llm']
  * @param ctx - the plugin context supplying `ctx.llm`.
  */
 export function apply(ctx: Context): void {
-  const providers = process.env.DSH_TEST_PARENT_PROVIDER === 'deepseek-official'
+  const providers = process.env.SQODE_TEST_PARENT_PROVIDER === 'deepseek-official'
     ? ['deepseek-official', 'mock']
     : ['mock']
   ctx.llm.registerAdapter(providers, new MockDelegatingAdapter())

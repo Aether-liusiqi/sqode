@@ -112,8 +112,8 @@ it('pins Messages Files offload and inline fallback in assembled requests', asyn
       fixtureFile: join(SNAPSHOTS_DIR, 'image-offload-request', 'session.jsonl'),
       workspaceDir: READ_IMAGE_WORKSPACE,
       env: {
-        DSH_SNAPSHOT_API_KEY: 'snapshot-key',
-        DSH_SNAPSHOT_BASE_URL: `http://127.0.0.1:${address.port}`,
+        SQODE_SNAPSHOT_API_KEY: 'snapshot-key',
+        SQODE_SNAPSHOT_BASE_URL: `http://127.0.0.1:${address.port}`,
       },
     })
     expect(result.stderr).toBe('')
@@ -124,7 +124,7 @@ it('pins Messages Files offload and inline fallback in assembled requests', asyn
     const accessText = (cwd: string): string => {
       const attachmentPath = join(
         cwd,
-        '.dsh',
+        '.sqode',
         'attachments',
         'v1',
         'objects',
@@ -182,8 +182,8 @@ it('pins Messages Files offload and inline fallback in assembled requests', asyn
       fixtureFile: join(SNAPSHOTS_DIR, 'image-offload-request', 'session.jsonl'),
       workspaceDir: READ_IMAGE_WORKSPACE,
       env: {
-        DSH_SNAPSHOT_API_KEY: 'snapshot-fallback-key',
-        DSH_SNAPSHOT_BASE_URL: `http://127.0.0.1:${address.port}`,
+        SQODE_SNAPSHOT_API_KEY: 'snapshot-fallback-key',
+        SQODE_SNAPSHOT_BASE_URL: `http://127.0.0.1:${address.port}`,
       },
     })
     expect(fallback.stderr).toBe('')

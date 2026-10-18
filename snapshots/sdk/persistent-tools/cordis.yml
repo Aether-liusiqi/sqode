@@ -14,8 +14,8 @@
     apiKeyEnv: DEEPSEEK_API_KEY
     streamIdleTimeoutMs: 172800000
     models:
-      - id: !!js process.env.DSH_MODEL ?? 'deepseek-v4-flash'
-        contextWindow: !!js Number(process.env.DSH_CONTEXT_WINDOW ?? 1000000)
+      - id: !!js process.env.SQODE_MODEL ?? 'deepseek-v4-flash'
+        contextWindow: !!js Number(process.env.SQODE_CONTEXT_WINDOW ?? 1000000)
 
 - id: sandbox-policy
   name: '@deepseek-ai/dsh-sandbox-policy'
@@ -124,7 +124,7 @@
   name: '@deepseek-ai/dsh-system-prompt'
   config:
     includeHarnessIdentity: false
-    personaPrefix: !!js process.env.DSH_SYSTEM_PROMPT ?? 'You are a helpful software engineer assistant.'
+    personaPrefix: !!js process.env.SQODE_SYSTEM_PROMPT ?? 'You are a helpful software engineer assistant.'
 
 - id: session-persistence-jsonl
   name: '@deepseek-ai/dsh-session-persistence-jsonl'

@@ -24,9 +24,9 @@ it('warns when MCP discovery exceeds the SDK page limit and completes the headle
     ],
     tsconfigPath: fileURLToPath(new URL('../../../../../../tsconfig.json', import.meta.url)),
     env: {
-      DSH_MCP_PAGINATION_FIXTURE: fileURLToPath(new URL('pagination-limit-server.ts', fixtureRoot)),
-      DSH_PERMISSION_MODE: 'danger-full-access',
-      DSH_TELEMETRY_DISABLED: '1',
+      SQODE_MCP_PAGINATION_FIXTURE: fileURLToPath(new URL('pagination-limit-server.ts', fixtureRoot)),
+      SQODE_PERMISSION_MODE: 'danger-full-access',
+      SQODE_TELEMETRY_DISABLED: '1',
     },
   })
   expect(stdout).toBe('CLI tool round trip complete: CLI_TOOL_ROUND_TRIP\n')

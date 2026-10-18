@@ -29,11 +29,11 @@ The startup provider binds stdin EOF to the launcher's bounded successful shutdo
 |---|---|---|
 | `profile` | `sdk` | Profile name rendered in command help; a bundle mounting this provider sets its own shipped profile name. |
 
-`DSH_MAX_TOKENS_AS_SUCCESS` retains the SDK deployment mapping: unset or JSON `true` reports token-limited subagent completion as accepted, while JSON `false` reports it as an error. Provider/model and workspace cwd arrive through the SDK initialization request; the base profile owns adapters, tools, persistence, policy, settings, and credentials.
+`SQODE_MAX_TOKENS_AS_SUCCESS` retains the SDK deployment mapping: unset or JSON `true` reports token-limited subagent completion as accepted, while JSON `false` reports it as an error. Provider/model and workspace cwd arrive through the SDK initialization request; the base profile owns adapters, tools, persistence, policy, settings, and credentials.
 
 The SDK uses the base `read`, `write`, and `edit` defaults. To add `str_replace_editor`, use the explicit insertion patch in the [base configuration guide](../base/README.md#use-this-package). The standalone `sdk-minimal` profile owns its separate tool selection.
 
-The packaged Python runtime enables the [Office runtime query and skills](../../skill/tool-workspace-dependencies/README.md#use-this-package) by default. `DSH_PRIMARY_RUNTIME` overrides its bundled payload; an empty value disables both rows. Source launches without a carrier default remain opt-in. The tool reads the payload in place. Profile patches can disable `skill-office` or replace its `assetRoot` independently of `workspace-dependencies`; filesystem skills with the same name take precedence over bundled skills. See the [runtime package](../../../python/sdk-runtime/README.md) for packaging and configuration.
+The packaged Python runtime enables the [Office runtime query and skills](../../skill/tool-workspace-dependencies/README.md#use-this-package) by default. `SQODE_PRIMARY_RUNTIME` overrides its bundled payload; an empty value disables both rows. Source launches without a carrier default remain opt-in. The tool reads the payload in place. Profile patches can disable `skill-office` or replace its `assetRoot` independently of `workspace-dependencies`; filesystem skills with the same name take precedence over bundled skills. See the [runtime package](../../../python/sdk-runtime/README.md) for packaging and configuration.
 
 -----
 

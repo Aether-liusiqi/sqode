@@ -72,12 +72,12 @@ function snapshotMode(value: string | undefined): SnapshotMode {
     case 'replay': return 'replay'
     case 'record': return 'record'
     case 'refresh': return 'refresh'
-    default: throw new Error(`unknown DSH_SNAPSHOT mode: ${value}`)
+    default: throw new Error(`unknown SQODE_SNAPSHOT mode: ${value}`)
   }
 }
 
-const mode = snapshotMode(process.env.DSH_SNAPSHOT)
-const RUNTIME_WORKSPACE_ENTRIES = ['.agents', '.dsh', '.snapshot-patches'] as const
+const mode = snapshotMode(process.env.SQODE_SNAPSHOT)
+const RUNTIME_WORKSPACE_ENTRIES = ['.agents', '.sqode', '.snapshot-patches'] as const
 
 interface JsonObject {
   [key: string]: unknown
@@ -184,7 +184,7 @@ function contextOf(logs: readonly string[]): NormalizeContext {
 }
 
 async function persistedSessions(cwd: string): Promise<SessionLog[]> {
-  const root = join(cwd, '.dsh', 'sessions')
+  const root = join(cwd, '.sqode', 'sessions')
   const files = latestPersistedSessionPaths(await readdir(root, { recursive: true }))
   const logs = await Promise.all(files.map(async (file): Promise<SessionLog> => {
     const content = await readFile(join(root, file), 'utf8')
@@ -476,7 +476,7 @@ async function seedWorkspace(scenario: HeadlessScenario, cwd: string): Promise<v
 
 const workspaceSetups: Record<string, (cwd: string) => Promise<void>> = {
   async 'windows-acl-skill'(cwd) {
-    const target = join(cwd, '.dsh', 'skills', 'diagnose-windows-sandbox-acl', 'SKILL.md')
+    const target = join(cwd, '.sqode', 'skills', 'diagnose-windows-sandbox-acl', 'SKILL.md')
     await mkdir(dirname(target), { recursive: true })
     await copyFile(join(repoRoot, 'packages/sandbox/sandbox-windows-acl/assets/diagnose-windows-sandbox-acl/SKILL.md'), target)
   },
@@ -486,7 +486,7 @@ const workspaceSetups: Record<string, (cwd: string) => Promise<void>> = {
     await symlink(join(repoRoot, 'packages/skill/skill-office/node_modules/@deepseek-ai/libreoffice-kit/lib/cli.js'), join(cwd, 'office-cli.js'))
   },
   async 'editing-cordis-skill'(cwd) {
-    const target = join(cwd, '.dsh', 'skills', 'editing-cordis-compositions', 'SKILL.md')
+    const target = join(cwd, '.sqode', 'skills', 'editing-cordis-compositions', 'SKILL.md')
     await mkdir(dirname(target), { recursive: true })
     await copyFile(editingCordisSkill, target)
   },
@@ -699,20 +699,20 @@ async function verifyProviderCwdResume(
   fixture: string,
   task: string,
 ): Promise<void> {
-  const providerCwd = scenario.manifest.environment?.DSH_SNAPSHOT_PROVIDER_CWD
+  const providerCwd = scenario.manifest.environment?.SQODE_SNAPSHOT_PROVIDER_CWD
   const primary = initial[0]
   expect(providerCwd).toBeDefined()
   expect(primary?.header.cwd).toBe(providerCwd)
   expect(primary?.header.cwd).not.toBe(cwd)
   const otherHostCwd = await mkdtemp(join(tmpdir(), 'dsh-provider-resume-'))
   const env = {
-    DSH_HOME: join(cwd, '.dsh'),
-    DSH_SNAPSHOT: 'replay',
-    DSH_SNAPSHOT_FILE: fixture,
-    DSH_SNAPSHOT_PROVIDER: model.provider,
-    DSH_SNAPSHOT_MODEL: model.model,
-    DSH_PERMISSION_MODE: 'read-only',
-    DSH_TELEMETRY_DISABLED: '1',
+    SQODE_HOME: join(cwd, '.sqode'),
+    SQODE_SNAPSHOT: 'replay',
+    SQODE_SNAPSHOT_FILE: fixture,
+    SQODE_SNAPSHOT_PROVIDER: model.provider,
+    SQODE_SNAPSHOT_MODEL: model.model,
+    SQODE_PERMISSION_MODE: 'read-only',
+    SQODE_TELEMETRY_DISABLED: '1',
     NODE_OPTIONS: [process.env.NODE_OPTIONS, '--disable-warning=ExperimentalWarning'].filter(Boolean).join(' '),
   }
   const launch = {
@@ -729,7 +729,7 @@ async function verifyProviderCwdResume(
   try {
     const refused = await runLoaderSmoke({
       ...launch, label: 'provider-cwd mismatched resume', expectedExitCode: 1,
-      env: { ...env, DSH_SNAPSHOT_PROVIDER_CWD: `${providerCwd}/other` },
+      env: { ...env, SQODE_SNAPSHOT_PROVIDER_CWD: `${providerCwd}/other` },
     })
     expect(refused.stdout).toBe('')
     expect(refused.stderr).toContain(`was recorded in "${providerCwd}", not "${providerCwd}/other"`)
@@ -737,7 +737,7 @@ async function verifyProviderCwdResume(
     const resumed = await runLoaderSmoke({
       ...launch, label: 'provider-cwd matching resume',
       binArgs: [...launch.binArgs.slice(0, -1), '--json', task],
-      env: { ...env, DSH_SNAPSHOT_PROVIDER_CWD: providerCwd },
+      env: { ...env, SQODE_SNAPSHOT_PROVIDER_CWD: providerCwd },
     })
     const output = records(resumed.stdout)
     expect(output[0]).toEqual({ type: 'session', sessionId: primary?.header.id, cwd: providerCwd })
@@ -971,7 +971,7 @@ describe('headless recorded-session snapshots', () => {
         [{ type: 'session', version: SESSION_FORMAT_VERSION, id: 'child-a', createdAt: 10, parentSession: 'parent' }],
       ].map(rows => rows.map(row => JSON.stringify(row)).join('\n') + '\n')
       for (const content of logs) {
-        const directory = join(cwd, '.dsh', 'sessions', String(headerOf(content).id))
+        const directory = join(cwd, '.sqode', 'sessions', String(headerOf(content).id))
         await mkdir(directory, { recursive: true })
         await writeFile(join(directory, `session.v${SESSION_FORMAT_VERSION}.jsonl`), content)
       }
@@ -1139,28 +1139,28 @@ describe('headless recorded-session snapshots', () => {
             ? 0
             : 1,
           env: {
-            DSH_SNAPSHOT: replaying ? 'replay' : 'record',
-            DSH_SNAPSHOT_PROVIDER: model.provider,
-            DSH_SNAPSHOT_MODEL: model.model,
-            DSH_SNAPSHOT_SPILL_ROOT: spillRoot,
-            DSH_SNAPSHOT_SPILL_LOCATOR_ROOT: locatorRoot,
-            DSH_SNAPSHOT_FILE: join(scenario.dir, fixtureFiles[0] as string),
+            SQODE_SNAPSHOT: replaying ? 'replay' : 'record',
+            SQODE_SNAPSHOT_PROVIDER: model.provider,
+            SQODE_SNAPSHOT_MODEL: model.model,
+            SQODE_SNAPSHOT_SPILL_ROOT: spillRoot,
+            SQODE_SNAPSHOT_SPILL_LOCATOR_ROOT: locatorRoot,
+            SQODE_SNAPSHOT_FILE: join(scenario.dir, fixtureFiles[0] as string),
             ...(replaying && fixtureFiles.length > 1
-              ? { DSH_SNAPSHOT_CHILD_FILES: fixtureFiles.slice(1).map(file => join(scenario.dir, file)).join(delimiter) }
+              ? { SQODE_SNAPSHOT_CHILD_FILES: fixtureFiles.slice(1).map(file => join(scenario.dir, file)).join(delimiter) }
               : {}),
             ...(replaying && scenario.manifest.replay?.override === true
-              ? { DSH_SNAPSHOT_OVERRIDE: join(scenario.dir, 'replay.override.json') }
+              ? { SQODE_SNAPSHOT_OVERRIDE: join(scenario.dir, 'replay.override.json') }
               : {}),
             ...(scenario.manifest.permission === undefined
               ? {}
-              : { DSH_PERMISSION_MODE: scenario.manifest.permission }),
+              : { SQODE_PERMISSION_MODE: scenario.manifest.permission }),
             ...scenario.manifest.environment,
             ...(scenario.name === 'mcp-resources' || scenario.name === 'mcp-resources-ptc' ? {
-              DSH_MCP_RESOURCES_FIXTURE: join(repoRoot, 'packages/mcp/mcp-client/tests/fixtures/resources-server.ts'),
+              SQODE_MCP_RESOURCES_FIXTURE: join(repoRoot, 'packages/mcp/mcp-client/tests/fixtures/resources-server.ts'),
             } : {}),
             NODE_OPTIONS: [process.env.NODE_OPTIONS, '--disable-warning=ExperimentalWarning'].filter(Boolean).join(' '),
-            DSH_TELEMETRY_DISABLED: '1',
-            ...(mcpDemo === undefined ? {} : { DSH_MCP_DEMO_URL: mcpDemo.url }),
+            SQODE_TELEMETRY_DISABLED: '1',
+            ...(mcpDemo === undefined ? {} : { SQODE_MCP_DEMO_URL: mcpDemo.url }),
           },
           prepare: async (cwd) => {
             if (scenario.manifest.workspace?.parent === 'outside-temp') assertWorkspaceOutsideTemp(cwd)

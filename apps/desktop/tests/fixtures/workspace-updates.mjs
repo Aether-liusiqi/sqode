@@ -13,7 +13,7 @@ import { fixture } from './workspace-update-adapters.mjs'
 import { DesktopUpdateHttpExecutor } from '../../lib/types/update-http-executor.js'
 import { desktopUpdateReadyConfirmation, resolveDesktopLocale } from '../../lib/types/locale.js'
 
-const root = process.env.DSH_WORKSPACE_UPDATE_ROOT
+const root = process.env.SQODE_WORKSPACE_UPDATE_ROOT
 assert.ok(root)
 const interactive = process.argv.includes('--interactive')
 const application = join(root, 'app')
@@ -117,7 +117,7 @@ async function windowAt(url) {
 }
 async function control(action) {
   const { url } = JSON.parse(await readFile(join(root, 'host-control.json'), 'utf8'))
-  const response = await fetch(`${url}/${action}`, { method: 'POST', headers: { 'x-qualification-token': process.env.DSH_WORKSPACE_UPDATE_TOKEN } })
+  const response = await fetch(`${url}/${action}`, { method: 'POST', headers: { 'x-qualification-token': process.env.SQODE_WORKSPACE_UPDATE_TOKEN } })
   assert.equal(response.status, 200, response.status === 200 ? undefined : await response.text())
   return response.json()
 }

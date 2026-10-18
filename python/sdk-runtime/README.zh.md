@@ -6,7 +6,7 @@ DeepSeek Harness Python SDK 的平台运行时 wheel 包。它把普通 `dsh` CL
 
 ## 安装命令与产物
 
-wheel 包会安装 `dsh` 控制台命令和 `deepseek_harness_runtime` Python 模块。`dsh` 将参数转发给内置可执行程序，并要求非空 `DSH_HOME`；它不会回退到 `~/.dsh`。
+wheel 包会安装 `dsh` 控制台命令和 `deepseek_harness_runtime` Python 模块。`dsh` 将参数转发给内置可执行程序，并要求非空 `SQODE_HOME`；它不会回退到 `~/.sqode`。
 
 生产可执行程序位于模块的 `runtime/` 目录，命名为 `deepseek-harness-sdk-runtime-<platform>-<arch>`；Windows 使用 `.exe` 后缀。Linux 与 macOS wheel 包含目标平台原生的 `-rg` 伴随程序，Windows 包含 `-rg.exe`，macOS 还包含 `node-pty` 使用的 `-spawn-helper`。已发布目标是 Linux x64、Linux arm64、macOS arm64、macOS x64 与 Windows x64。wheel 包标签必须与载荷严格匹配；不发布 Windows arm64 wheel 包。
 
@@ -14,7 +14,7 @@ wheel 包会安装 `dsh` 控制台命令和 `deepseek_harness_runtime` Python �
 
 每个 wheel 还包含 `<platform>-<arch>/primary-runtime/`（CPython、锁定版本的 Office Python 库、独立 Node 和 pnpm）及同级 `office-skills/`（三个默认工作流与共用检查脚本）。它们是可重定位的普通文件，不嵌入可执行文件。共享构建器为全部五个 wheel 目标选择原生归档，并在对应构建主机上执行冒烟检查。打包与已安装运行时定位会拒绝缺失资源、平台不符的元数据及 Python 或 Node 执行权限丢失。 较短的平台目录避免在 Windows Python DLL 路径中重复可执行文件名称。
 
-打包启动器通过 `DSH_BUNDLED_PRIMARY_RUNTIME` 提供载体默认路径。`sdk` profile 在未设置 `DSH_PRIMARY_RUNTIME` 时使用该路径；显式路径覆盖它，空字符串禁用查询与 Office 提供方。外部 payload 保持 `primary-runtime/` 与同级 `office-skills/` 布局。加载后的技能给出内置 Node 与伴随 Office CLI 的绝对路径；自定义的纯 Python payload 必须配置 `skill-office.config.cli: false` 或提供 `skill-office.config.node`。SDK 原位读取 Python，不复制到 `DSH_HOME`。源码与仅供开发的 Node 载体没有随包默认路径，需显式设置 `DSH_PRIMARY_RUNTIME`。
+打包启动器通过 `SQODE_BUNDLED_PRIMARY_RUNTIME` 提供载体默认路径。`sdk` profile 在未设置 `SQODE_PRIMARY_RUNTIME` 时使用该路径；显式路径覆盖它，空字符串禁用查询与 Office 提供方。外部 payload 保持 `primary-runtime/` 与同级 `office-skills/` 布局。加载后的技能给出内置 Node 与伴随 Office CLI 的绝对路径；自定义的纯 Python payload 必须配置 `skill-office.config.cli: false` 或提供 `skill-office.config.node`。SDK 原位读取 Python，不复制到 `SQODE_HOME`。源码与仅供开发的 Node 载体没有随包默认路径，需显式设置 `SQODE_PRIMARY_RUNTIME`。
 
 选择 skills 与交付资源相互独立：项目、自定义目录和用户文件系统 skills 优先于同名随包 skills。SDK patch 可以仅禁用 Office 提供方，同时保留 Python 查询：
 
@@ -33,8 +33,8 @@ wheel 包会安装 `dsh` 控制台命令和 `deepseek_harness_runtime` Python �
 
 - `bundled_package_dir() -> Path` 返回已安装模块数据根目录，并校验发布元数据。
 - `bundled_runtime_path() -> Path` 返回当前平台可执行程序，并校验必需伴随文件。
-- `resolve_bundled_launch_args(mode=None) -> tuple[str, ...]` 默认返回可执行程序 argv。显式 `mode="node"` 或 `DSH_RUNTIME_MODE=node` 会选择仅限仓库使用的 Node 载体。
-- `main()` 实现已安装的 `dsh` 控制台命令，并拒绝缺失或空白的 `DSH_HOME`。在 Windows 上，它让打包进程继承标准流，等待其结束并转发退出状态；在 POSIX 上，它替换 Python 进程。
+- `resolve_bundled_launch_args(mode=None) -> tuple[str, ...]` 默认返回可执行程序 argv。显式 `mode="node"` 或 `SQODE_RUNTIME_MODE=node` 会选择仅限仓库使用的 Node 载体。
+- `main()` 实现已安装的 `dsh` 控制台命令，并拒绝缺失或空白的 `SQODE_HOME`。在 Windows 上，它让打包进程继承标准流，等待其结束并转发退出状态；在 POSIX 上，它替换 Python 进程。
 
 不支持的平台以及缺失的可执行程序或伴随文件会抛出 `FileNotFoundError`，并指出构建与安装路径。未知运行时模式会抛出 `ValueError`。
 

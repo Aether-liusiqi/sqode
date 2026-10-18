@@ -11,7 +11,7 @@ const POLICY = { DSH_DESKTOP_MANDATORY_UPDATE_TEST_ORIGIN: 'https://policy.examp
   DSH_DESKTOP_MANDATORY_UPDATE_CONFIG: JSON.stringify({ allowedAuthOrigins: ['https://login.example.com'] }) }
 const RELEASE = { ...POLICY, DSH_DESKTOP_APP_ID: 'com.example.desktop', DOWNLOAD_TEST_ORIGIN: 'https://updates.example.com',
   DOWNLOAD_TEST_RELEASE_ID: '0123456789abcdef0123456789abcdef' }
-const MAC_IDENTITY = { DSH_DESKTOP_MACOS_SIGNING_IDENTITY: 'Example Company (TEAMID1234)', DSH_DESKTOP_MACOS_TEAM_ID: 'TEAMID1234' }
+const MAC_IDENTITY = { SQODE_DESKTOP_MACOS_SIGNING_IDENTITY: 'Example Company (TEAMID1234)', SQODE_DESKTOP_MACOS_TEAM_ID: 'TEAMID1234' }
 
 async function withDirectory(action: (directory: string) => Promise<void>): Promise<void> {
   const directory = await mkdtemp(join(tmpdir(), 'desktop-env-'))
@@ -154,7 +154,7 @@ describe('Desktop local packaging configuration', () => {
   it('rejects incomplete macOS identity and credentials and checks referenced files without contacting Apple', async () => {
     expect(() => {
       validateDesktopPackageEnvironment(RELEASE, MACOS)
-    }).toThrow(/DSH_DESKTOP_MACOS_SIGNING_IDENTITY/u)
+    }).toThrow(/SQODE_DESKTOP_MACOS_SIGNING_IDENTITY/u)
     expect(() => {
       validateDesktopPackageEnvironment({ ...RELEASE, ...MAC_IDENTITY }, MACOS)
     }).toThrow(/macOS packaging requires/u)
@@ -194,11 +194,11 @@ describe('Desktop local packaging configuration', () => {
 
 it('owns macOS tuning in the local file and validates it before signing credentials', async () => {
   await withDirectory(async (directory) => {
-    await writeFile(join(directory, '.env.macos'), 'DSH_DESKTOP_MACOS_PACK_CONCURRENCY=2\nDSH_DESKTOP_MACOS_DOWNLOAD_PROXY=http://proxy.example:8080\nDSH_DESKTOP_MACOS_NOTARIZATION_PROXY=\n')
-    const env = loadDesktopPackageEnvironment('darwin', { DSH_DESKTOP_MACOS_PACK_CONCURRENCY: '99' }, directory)
-    expect(env.DSH_DESKTOP_MACOS_PACK_CONCURRENCY).toBe('2')
-    expect(env.DSH_DESKTOP_MACOS_NOTARIZATION_PROXY).toBe('')
-    expect(() =>{  validateDesktopPackageEnvironment({ ...RELEASE, DSH_DESKTOP_MACOS_PACK_CONCURRENCY: '' }, MACOS) }).toThrow('PACK_CONCURRENCY')
-    expect(() =>{  validateDesktopPackageEnvironment({ ...RELEASE, DSH_DESKTOP_MACOS_NOTARIZATION_PROXY: 'socks5://localhost:8080' }, MACOS) }).toThrow('NOTARIZATION_PROXY')
+    await writeFile(join(directory, '.env.macos'), 'SQODE_DESKTOP_MACOS_PACK_CONCURRENCY=2\nDSH_DESKTOP_MACOS_DOWNLOAD_PROXY=http://proxy.example:8080\nDSH_DESKTOP_MACOS_NOTARIZATION_PROXY=\n')
+    const env = loadDesktopPackageEnvironment('darwin', { SQODE_DESKTOP_MACOS_PACK_CONCURRENCY: '99' }, directory)
+    expect(env.SQODE_DESKTOP_MACOS_PACK_CONCURRENCY).toBe('2')
+    expect(env.SQODE_DESKTOP_MACOS_NOTARIZATION_PROXY).toBe('')
+    expect(() =>{  validateDesktopPackageEnvironment({ ...RELEASE, SQODE_DESKTOP_MACOS_PACK_CONCURRENCY: '' }, MACOS) }).toThrow('PACK_CONCURRENCY')
+    expect(() =>{  validateDesktopPackageEnvironment({ ...RELEASE, SQODE_DESKTOP_MACOS_NOTARIZATION_PROXY: 'socks5://localhost:8080' }, MACOS) }).toThrow('NOTARIZATION_PROXY')
   })
 })

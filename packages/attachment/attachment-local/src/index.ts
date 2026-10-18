@@ -1,4 +1,4 @@
-/** Local durable attachment backend rooted below `DSH_HOME`. @module @deepseek-ai/dsh-attachment-local */
+/** Local durable attachment backend rooted below `SQODE_HOME`. @module @deepseek-ai/dsh-attachment-local */
 
 import { join } from 'node:path'
 import { Context } from '@deepseek-ai/cordis'
@@ -59,7 +59,7 @@ export const MAX_IMAGE_COMPRESSION_CONCURRENCY = 8
 
 /** Local attachment backend configuration. */
 export interface Config {
-  /** Explicit harness home; omitted follows `DSH_HOME`, then `~/.dsh`. */
+  /** Explicit harness home; omitted follows `SQODE_HOME`, then `~/.sqode`. */
   dshHome?: string
   /** Maximum encoded bytes accepted for one submitted image. Default: 20 MiB. */
   maxImageBytes?: number

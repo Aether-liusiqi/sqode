@@ -52,7 +52,7 @@ Most users never set these; the command-line flags feed the four settings below 
 |---|---|---|
 | `openBrowser` | `true` | Open the default browser after startup; SSH launches suppress it |
 | `printUrl` | `true` | Print the `dsh web:` URL line at startup |
-| `surfaceContext` | `true` | Give the agent GUI-orientation context and expose `DSH_WEB_URL` to its shell commands |
+| `surfaceContext` | `true` | Give the agent GUI-orientation context and expose `SQODE_WEB_URL` to its shell commands |
 | `trustedHosts` | `[]` | Extra hosts allowed to reach the GUI from the network |
 
 The generated [configuration catalog](../../../docs/config-catalog.md#deepseek-aidsh-web-app) is the exhaustive source for every accepted field and its JSDoc. The shipped composition carries no `time-context`, `schedule`, or `ui-schedule` row; the optional experimental bundle `@deepseek-ai/dsh-experimental-schedule-bundle` inserts those three rows from the Plugins page.
@@ -67,7 +67,7 @@ When you launch `dsh --profile web` over SSH, the URL line still prints but the 
 
 ### Per-session agent setup
 
-Each browser session selects a shipped preset (`standard` by default). The Agent presets settings page changes the default and edits preset child plugins; saves persist in `$DSH_HOME/profiles/web/cordis.patch.yml`. Creator's plugin-management tool is enabled only when the Host provides an editable profile.
+Each browser session selects a shipped preset (`standard` by default). The Agent presets settings page changes the default and edits preset child plugins; saves persist in `$SQODE_HOME/profiles/web/cordis.patch.yml`. Creator's plugin-management tool is enabled only when the Host provides an editable profile.
 
 -----
 
@@ -81,7 +81,7 @@ The bundle is one patch layer of five files plus one runtime glue plugin: `cordi
 
 ### Patch semantics
 
-A patch replaces the targeted row's whole `config`, so each web row restates every key it owns: the persona prefix and suffix templates, the `DSH_TOOLS_MODE` PTC mode opt-in, and the `session-query-sqlite` values on the base rows, then `insert` adds the web host rows, transport, and browser roster. The per-agent tool rows the base mounts process-wide are disabled here and the preset roster takes over; the reasoning for each host-plane versus preset-plane decision is inline in the patch.
+A patch replaces the targeted row's whole `config`, so each web row restates every key it owns: the persona prefix and suffix templates, the `SQODE_TOOLS_MODE` PTC mode opt-in, and the `session-query-sqlite` values on the base rows, then `insert` adds the web host rows, transport, and browser roster. The per-agent tool rows the base mounts process-wide are disabled here and the preset roster takes over; the reasoning for each host-plane versus preset-plane decision is inline in the patch.
 
 ### Readiness
 
@@ -133,7 +133,7 @@ Read these pages when you want to go deeper into the shared core, the browser re
 
 #### What the model sees
 
-When `surfaceContext` is true, the `harness:source` section identifies the on-disk Harness implementation without claiming it is the working directory, and the `app:web-surface` global section (first-party order 10100, after reusable instructions) orients the model to the GUI: the canonical local URL, the "this page" referent, the update contract (the reload receiver is always on; no-refresh reloads additionally need the `pnpm run dev:web` watcher), and the instruction not to start replacement servers. `DSH_WEB_URL` additionally appears in the managed bash environment with its description, resolved per invocation from the live server. When it is false, neither section nor the variable is registered.
+When `surfaceContext` is true, the `harness:source` section identifies the on-disk Harness implementation without claiming it is the working directory, and the `app:web-surface` global section (first-party order 10100, after reusable instructions) orients the model to the GUI: the canonical local URL, the "this page" referent, the update contract (the reload receiver is always on; no-refresh reloads additionally need the `pnpm run dev:web` watcher), and the instruction not to start replacement servers. `SQODE_WEB_URL` additionally appears in the managed bash environment with its description, resolved per invocation from the live server. When it is false, neither section nor the variable is registered.
 
 #### Token effect
 

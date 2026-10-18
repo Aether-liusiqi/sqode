@@ -25,11 +25,11 @@ describe('installer preparation preserves application dependencies', () => {
       DSH_DESKTOP_APP_ID: 'com.example.installer',
       DSH_DESKTOP_MANDATORY_UPDATE_TEST_ORIGIN: 'https://policy.example.com',
       DSH_DESKTOP_MANDATORY_UPDATE_CONFIG: JSON.stringify({ allowedAuthOrigins: ['https://login.example.com'] }),
-      DSH_DESKTOP_TARGET_PLATFORM: platform,
-      DSH_DESKTOP_TARGET_ARCH: 'x64',
-      DSH_DESKTOP_UNSIGNED: platform === 'win32' ? '1' : '0',
-      DSH_DESKTOP_MACOS_SIGNING_IDENTITY: 'Example Company (TEAMID1234)',
-      DSH_DESKTOP_MACOS_TEAM_ID: 'TEAMID1234',
+      SQODE_DESKTOP_TARGET_PLATFORM: platform,
+      SQODE_DESKTOP_TARGET_ARCH: 'x64',
+      SQODE_DESKTOP_UNSIGNED: platform === 'win32' ? '1' : '0',
+      SQODE_DESKTOP_MACOS_SIGNING_IDENTITY: 'Example Company (TEAMID1234)',
+      SQODE_DESKTOP_MACOS_TEAM_ID: 'TEAMID1234',
       APPLE_KEYCHAIN_PROFILE: 'installer-test',
       DOWNLOAD_TEST_ORIGIN: 'https://desktop-updates.example.com', DOWNLOAD_TEST_RELEASE_ID: '0123456789abcdef0123456789abcdef',
     }
@@ -70,9 +70,9 @@ describe('installer preparation preserves application dependencies', () => {
       DSH_DESKTOP_APP_ID: 'com.example.installer',
       DSH_DESKTOP_MANDATORY_UPDATE_TEST_ORIGIN: 'https://policy.example.com',
       DSH_DESKTOP_MANDATORY_UPDATE_CONFIG: JSON.stringify({ allowedAuthOrigins: ['https://login.example.com'] }),
-      DSH_DESKTOP_TARGET_PLATFORM: 'win32',
-      DSH_DESKTOP_TARGET_ARCH: 'x64',
-      DSH_DESKTOP_UNSIGNED: '1',
+      SQODE_DESKTOP_TARGET_PLATFORM: 'win32',
+      SQODE_DESKTOP_TARGET_ARCH: 'x64',
+      SQODE_DESKTOP_UNSIGNED: '1',
     }, 'win32', 'x64')
     expect(config.artifactName).toBe('deepseek-harness-${version}-${os}-${arch}-unsigned.${ext}')
   })
@@ -92,8 +92,8 @@ describe('installer preparation preserves application dependencies', () => {
       DSH_DESKTOP_AUTO_UPDATE_ENV: 'production',
       DSH_DESKTOP_MANDATORY_UPDATE_TEST_ORIGIN: 'https://harness-test.deepseek.com',
       DSH_DESKTOP_MANDATORY_UPDATE_PROD_ORIGIN: 'https://policy.example.com',
-      DSH_DESKTOP_MACOS_SIGNING_IDENTITY: 'Example Company (TEAMID1234)',
-      DSH_DESKTOP_MACOS_TEAM_ID: 'TEAMID1234',
+      SQODE_DESKTOP_MACOS_SIGNING_IDENTITY: 'Example Company (TEAMID1234)',
+      SQODE_DESKTOP_MACOS_TEAM_ID: 'TEAMID1234',
       APPLE_KEYCHAIN_PROFILE: 'installer-test',
     }, 'darwin', 'arm64')
     const packaged = new Set(config.files.filter((entry): entry is string => typeof entry === 'string'))

@@ -85,7 +85,7 @@ export async function packageInstalledUpdate(
   const output = join(run.root, version, 'installer')
   if (!await absent(preparation) || !await absent(output)) throw new Error('installed update: existing packaging attempt or output requires a new run')
   const environment = installedUpdatePackagingEnvironment({ ...loadDesktopPackageEnvironment('win32'),
-    DSH_DESKTOP_TARGET_PLATFORM: 'win32', DSH_DESKTOP_TARGET_ARCH: 'x64' })
+    SQODE_DESKTOP_TARGET_PLATFORM: 'win32', SQODE_DESKTOP_TARGET_ARCH: 'x64' })
   await createInstalledUpdateBuilderConfig(manifest, version, environment)
   const before = await inputHashes(manifest, version, environment)
   if (!options.execute) return { mode: 'check', version, childLaunched: false, signed: false, publicationAuthorized: false }

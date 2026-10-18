@@ -61,10 +61,10 @@ export function prepareDevelopmentApp(options: DevelopmentAppOptions): string {
  */
 export function developmentLauncher(options: DevelopmentAppOptions, bundle: string): string {
   const environment = {
-    DSH_HOME: options.home,
-    DSH_DESKTOP_DEV_APP: '1',
-    DSH_DESKTOP_HOST_INSPECT_PORT: String(options.hostPort),
-    DSH_DESKTOP_OPEN_DEVTOOLS: options.openDevtools,
+    SQODE_HOME: options.home,
+    SQODE_DESKTOP_DEV_APP: '1',
+    SQODE_DESKTOP_HOST_INSPECT_PORT: String(options.hostPort),
+    SQODE_DESKTOP_OPEN_DEVTOOLS: options.openDevtools,
     ELECTRON_ENABLE_LOGGING: '1',
   }
   const args = [

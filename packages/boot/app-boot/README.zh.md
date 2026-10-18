@@ -37,7 +37,7 @@ kind: "package-library"
 
 ```text
 installFailLoud('dsh')
-const ctx = await boot('dsh', resolveConfigPath(argv[2], process.env.DSH_SNAPSHOT))
+const ctx = await boot('dsh', resolveConfigPath(argv[2], process.env.SQODE_SNAPSHOT))
 ```
 
 `installFailLoud` 会为未处理 rejection 或未捕获异常向 stderr 写一条带标签的 `util.inspect` 诊断，在固定超时内等待界面的 release 钩子，然后以 1 退出；控制流不会回到失败的操作，因为只有抛出点知道哪些状态仍然完整，事件循环只运行到 release 结束或超时。有了这个入口，启动会保留所有能够激活的插件。启用但失败的插件会产生带标签的警告。required entry 失败时，启动会拆卸整个应用并以非零码退出；profile 中不存在的 required id 和已禁用的 required entry 不影响启动。全局 required list 覆盖共享 Agent 执行、应用 endpoint，以及 Web 启动与传输：`agent-loop`、`webserver`、`modules`、`connection`、`headless-runner`、`acp` 和 `sdk-jsonrpc-server`。
@@ -47,7 +47,7 @@ const ctx = await boot('dsh', resolveConfigPath(argv[2], process.env.DSH_SNAPSHO
 
 Profile 与组合包的声明类型从 [`@deepseek-ai/dsh-package-manifest`](../../util/package-manifest/README.zh.md) 导入。App-boot 将 `DshPackageManifest` 适配为包身份可选的 `ProfileManifest`，因为本地 profile 无需发布版本。App-boot 负责 profile 加载、JSON 校验和解析后的运行时数据。
 
-profile 是同一套 dsh 安装提供不同应用界面的方式：`web`、`headless`、`acp`、`sdk` 与 `sdk-minimal` 从同一 launcher 启动不同组合。profile 位于 `$DSH_HOME/profiles/<name>`，由可安装组合包和自身 `cordis.patch.yml` 组成。组合包的 `dsh.bundle.patch` 指定一个 patch 文件或一个有序的文件列表；`bundlePatchFiles` 校验该声明，`bundlePatchPaths` 把它解析为绝对路径；该层按此顺序拼接各文件的 patch 列表。YAML 组合决定是否启用 HMR。随产品交付的 `web` 模板实时重载，其他随附模板只在启动时应用 patch。`sdk-minimal` 只列出自身的独立组合包，其他模板保留 base 加模式的组合包栈。`dsh --profile <name> --from-default-profile <template>` 从一个随附模板，在新的非内置名称处创建自定义 profile；`dsh plugin` 则初始化以 base 为基础的 profile，并管理其中安装的组合包。组合包解析、manifest 读取或 patch 加载失败时会跳过该组合包，不改变其选择状态；加载结果在 `skippedBundles` 中列出每个被跳过的组合包，启动器每次启动时通过 `reportSkippedBundles` 输出一次。其余组合包保持原顺序；profile 和用户 patch 错误仍会导致启动失败。跳过组合包不保证剩余组合能够提供所需服务。由应用持有的 npm 项目（例如 Electron 保留的 Desktop profile）通过 `loadProfileDirectory` 加载已经初始化的目录，而不会将它暴露给 CLI profile 查找。
+profile 是同一套 dsh 安装提供不同应用界面的方式：`web`、`headless`、`acp`、`sdk` 与 `sdk-minimal` 从同一 launcher 启动不同组合。profile 位于 `$SQODE_HOME/profiles/<name>`，由可安装组合包和自身 `cordis.patch.yml` 组成。组合包的 `dsh.bundle.patch` 指定一个 patch 文件或一个有序的文件列表；`bundlePatchFiles` 校验该声明，`bundlePatchPaths` 把它解析为绝对路径；该层按此顺序拼接各文件的 patch 列表。YAML 组合决定是否启用 HMR。随产品交付的 `web` 模板实时重载，其他随附模板只在启动时应用 patch。`sdk-minimal` 只列出自身的独立组合包，其他模板保留 base 加模式的组合包栈。`dsh --profile <name> --from-default-profile <template>` 从一个随附模板，在新的非内置名称处创建自定义 profile；`dsh plugin` 则初始化以 base 为基础的 profile，并管理其中安装的组合包。组合包解析、manifest 读取或 patch 加载失败时会跳过该组合包，不改变其选择状态；加载结果在 `skippedBundles` 中列出每个被跳过的组合包，启动器每次启动时通过 `reportSkippedBundles` 输出一次。其余组合包保持原顺序；profile 和用户 patch 错误仍会导致启动失败。跳过组合包不保证剩余组合能够提供所需服务。由应用持有的 npm 项目（例如 Electron 保留的 Desktop profile）通过 `loadProfileDirectory` 加载已经初始化的目录，而不会将它暴露给 CLI profile 查找。
 
 profile 导入插件前，DSH 会检查其 `peerDependencies` 中对 `@deepseek-ai/dsh` 和 `@deepseek-ai/dsh-*` 的依赖，与 `getDshRuntimeVersion()` 返回的唯一运行时版本比较。每个声明的版本范围都必须匹配；预发布版本参与范围匹配。源码工作区的 `workspace:^`、`workspace:~` 和 `workspace:*` 指向同一个运行时。未声明 DSH peer 时不施加版本约束；无效范围视为不兼容。这些检查使用 peer 声明，而不是 `engines.dsh`，也不是防范恶意包代码的沙箱。
 
@@ -135,7 +135,7 @@ Loader 结算后，app-boot 在仅 optional 条目未激活时输出警告。如
 - **包元数据。** `ctx.pluginPackages.packageOf` 定位所属包，不加载代码，也不要求导出 `package.json`；子路径选择其所属包，不校验该文件。安装 runtime resolution 后，即使查询未命中也以其选包规则为准。仅安装服务而不提供 runtime resolution 的底层嵌入方保留原生查询。展示元数据使用上文另述的入口感知读取器。
 - **两个 Loader builtin。** `mountRootInclude` 把 `cordis:include` 与 `cordis:group` 注册为 Loader builtin：group 行能把一个提供方与它的消费方放进同一个 `isolate` realm，而位于本工作区之外的 agent preset 无法按名称解析 `@deepseek-ai/cordis-plugin-group`。两者都通过宿主的模块管线加载，而非被包含树自身的说明符解析。
 - **由 consumer 持有严格语义。** 普通 Loader group 保留成功 sibling。App-boot 在首次结算后应用全局 required-entry policy；agent preset 与动态多 entry 组合在需要 all-or-nothing setup 时，持有并拆卸各自的独立 Loader 子树。App-boot 读取 failed fiber 来报告已记录的错误，并在一个进程检查点内合并 Loader 重复的 rejection 通知。
-- **唯一 runtime resolution。** 安装优先、有序 bundle 逐根 breadth-first 遍历生成运行时表。runtime 解析不创建链接；runtime resolution 条目占据 `$DSH_HOME/profiles/node_modules` 上各自的包名位置，其余包名把该目录当作普通祖先。profile 加载时删除 Link 后端发布版写进 profile 的 `.dsh-module-fallback` 投影；pnpm 安装的包保留。package `imports` 选中的外部 bare target 使用相同的选包顺序，映射、conditions 和精确 target 解析仍由 Node 负责。完整后继 runtime resolution 可以在既有包映射和本地包名约束内原子增加 package name、更新 linked root 集合。
+- **唯一 runtime resolution。** 安装优先、有序 bundle 逐根 breadth-first 遍历生成运行时表。runtime 解析不创建链接；runtime resolution 条目占据 `$SQODE_HOME/profiles/node_modules` 上各自的包名位置，其余包名把该目录当作普通祖先。profile 加载时删除 Link 后端发布版写进 profile 的 `.dsh-module-fallback` 投影；pnpm 安装的包保留。package `imports` 选中的外部 bare target 使用相同的选包顺序，映射、conditions 和精确 target 解析仍由 Node 负责。完整后继 runtime resolution 可以在既有包映射和本地包名约束内原子增加 package name、更新 linked root 集合。
 - **移除链接拦截。** 后继 generation 可以移除 linked root，无需重启。目录不再被任何剩余 root 覆盖时，后续请求使用原生查询，可能找到开发副本，也可能报告缺包。已有模块引用和 Node 缓存保持不变。同名、同目标可以重新加入；曾发布的名称改指向不同目标时，即使中间移除过也会被拒绝（[generation 规则](../../../.agents/notes/implemented/architecture/2026-09-09-profile-resolution-generations.zh.md#immutable-generations)）。
 - **应用自有 profile。** 应用自有 profile 使用相同的 runtime resolution。目标位于当前 profile 目录内的链接（包括 pnpm store 链接）不算外部 root，即使 profile 位于共享 profiles 树外。解析过程不修改其 `node_modules`；已安装包由 pnpm 管理。
 - **自有 Worker。** Worker 构建 banner 会在业务 bundle 前导入 `@deepseek-ai/dsh-app-boot/worker/profile-resolution-bootstrap`。每个 Worker 在自己的 isolate 中安装结构化克隆的 runtime resolution。bootstrap bundle 不静态导入任何包。源码 Worker 入口保留自包含依赖，第三方 Worker 不接受注入。

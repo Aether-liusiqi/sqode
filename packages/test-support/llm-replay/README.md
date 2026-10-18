@@ -48,16 +48,16 @@ With `providers` configured, the plugin registers a replay-only adapter whose ca
           - id: deepseek-v4-flash
             contextWindow: 128000
           - id: deepseek-v4-pro
-  # file/overrideFile/childFiles default to $DSH_SNAPSHOT_FILE /
-  # $DSH_SNAPSHOT_OVERRIDE / $DSH_SNAPSHOT_CHILD_FILES, set by the snapshot
+  # file/overrideFile/childFiles default to $SQODE_SNAPSHOT_FILE /
+  # $SQODE_SNAPSHOT_OVERRIDE / $SQODE_SNAPSHOT_CHILD_FILES, set by the snapshot
   # harness per scenario.
 ```
 
 | Field | Default | Meaning |
 |---|---|---|
-| `file` | `$DSH_SNAPSHOT_FILE` | Path to the selected primary fixture: `session.jsonl` for v0 or `session.vN.jsonl` for a positive generation; required (config or env) |
-| `overrideFile` | `$DSH_SNAPSHOT_OVERRIDE` | Optional `ReplayOverrideDoc` sidecar for the primary session |
-| `childFiles` | `$DSH_SNAPSHOT_CHILD_FILES` | Recorded subagent child-session logs for a nested scenario |
+| `file` | `$SQODE_SNAPSHOT_FILE` | Path to the selected primary fixture: `session.jsonl` for v0 or `session.vN.jsonl` for a positive generation; required (config or env) |
+| `overrideFile` | `$SQODE_SNAPSHOT_OVERRIDE` | Optional `ReplayOverrideDoc` sidecar for the primary session |
+| `childFiles` | `$SQODE_SNAPSHOT_CHILD_FILES` | Recorded subagent child-session logs for a nested scenario |
 | `providers` | — | Optional replay-only provider and model catalog; a model may declare `contextWindow`, text/image modalities, positive `imageRequestTokens` when image-capable, and `systemPromptUpdate: in-history` so a keyless scenario exercises in-history system prompt replacement; invalid values fail at load (`llm-replay: provider "…" model "…" systemPromptUpdate must be "in-history" when present`) and routes never perform provider I/O |
 | `paceMs` | — (burst) | Optional per-chunk delay in ms for genuinely incremental delivery |
 

@@ -10,10 +10,10 @@
 import type { Duplex, Readable, Writable } from 'node:stream'
 
 /** Namespace prefix reserved for DeepSeek Harness-managed child environment facts. */
-export const DSH_ENV_PREFIX = 'DSH_' as const
+export const SQODE_ENV_PREFIX = 'SQODE_' as const
 
-/** One environment key inside the managed {@link DSH_ENV_PREFIX} namespace. */
-export type DshEnvironmentKey = `${typeof DSH_ENV_PREFIX}${string}`
+/** One environment key inside the managed {@link SQODE_ENV_PREFIX} namespace. */
+export type DshEnvironmentKey = `${typeof SQODE_ENV_PREFIX}${string}`
 
 /** Trusted DeepSeek Harness variables for one child-process execution. */
 export type DshEnvironment = Readonly<Record<DshEnvironmentKey, string>>

@@ -46,7 +46,7 @@ export interface AcpRunSpec {
    * parent env. A value here is forwarded even if its name matches the
    * credential-scrub pattern (an explicit opt-in for the child's own creds).
    * Explicit `DSH_*` entries are deployment-owned facts for the child harness
-   * (e.g. `DSH_PERMISSION_MODE`); they simply merge after the scrub that
+   * (e.g. `SQODE_PERMISSION_MODE`); they simply merge after the scrub that
    * dropped their stale ambient namesakes.
    */
   env: Record<string, string>

@@ -54,11 +54,11 @@ describe.skipIf(!existsSync(join(repoRoot, 'apps/cli/lib/bin.js')))('dsh SOURCE 
         cwd: repoRoot,
         env: {
           ...clearedProxyEnv(),
-          DSH_HOME: join(root, 'home'),
-          DSH_AGENTS_HOME: join(root, 'agents'),
-          DSH_TELEMETRY_DISABLED: '1',
-          DSH_TOOLS_MODE: 'native',
-          DSH_CLI_MOCK_FAILURE: '0',
+          SQODE_HOME: join(root, 'home'),
+          SQODE_AGENTS_HOME: join(root, 'agents'),
+          SQODE_TELEMETRY_DISABLED: '1',
+          SQODE_TOOLS_MODE: 'native',
+          SQODE_CLI_MOCK_FAILURE: '0',
         },
         input: '',
         timeout: sourceToolTimeoutMs - 15_000,
@@ -69,9 +69,9 @@ describe.skipIf(!existsSync(join(repoRoot, 'apps/cli/lib/bin.js')))('dsh SOURCE 
       expect(result.timedOut, diagnostic).toBe(false)
       expect(result.signal, diagnostic).toBeUndefined()
       expect(result.exitCode, diagnostic).toBe(0)
-      const records = result.stdout.split('\n').filter(line => line.startsWith('DSH_SOURCE_TOOL_RESULT '))
+      const records = result.stdout.split('\n').filter(line => line.startsWith('SQODE_SOURCE_TOOL_RESULT '))
       expect(records, diagnostic).toHaveLength(1)
-      const evidence = JSON.parse(records[0]!.slice('DSH_SOURCE_TOOL_RESULT '.length)) as SourceToolEvidence
+      const evidence = JSON.parse(records[0]!.slice('SQODE_SOURCE_TOOL_RESULT '.length)) as SourceToolEvidence
       expect(evidence.execArgv).toEqual(['--import', 'tsx/esm'])
       expect(evidence.errors).toEqual([])
       for (const pkg of ['tools', 'agent-loop']) {

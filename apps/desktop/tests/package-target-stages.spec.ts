@@ -133,9 +133,9 @@ it('checks macOS directory packages without writing a release record', async () 
 it.each([undefined, '2'])('passes macOS pack concurrency %s only to workspace packing and download routing only to download stages', async (concurrency) => {
   const { run } = supervisor()
   await packageTarget(parseDesktopPackageInvocation(['mac-arm64', '--prepare-only'], 'darwin', 'arm64'), {
-    ...environment, DSH_DESKTOP_MACOS_PACK_CONCURRENCY: concurrency,
-    DSH_DESKTOP_MACOS_DOWNLOAD_PROXY: 'http://downloads.example:8080',
-    DSH_DESKTOP_MACOS_NOTARIZATION_PROXY: 'http://apple.example:8081',
+    ...environment, SQODE_DESKTOP_MACOS_PACK_CONCURRENCY: concurrency,
+    SQODE_DESKTOP_MACOS_DOWNLOAD_PROXY: 'http://downloads.example:8080',
+    SQODE_DESKTOP_MACOS_NOTARIZATION_PROXY: 'http://apple.example:8081',
   }, run)
   const calls = run.run.mock.calls
   const packs = calls.filter(call => call[0].startsWith('run release:pack'))
@@ -150,7 +150,7 @@ it.each([undefined, '2'])('passes macOS pack concurrency %s only to workspace pa
 it.each([false, true])('scopes the Apple proxy around notarization (directory=%s)', async (directory) => {
   const { run } = supervisor()
   await packageTarget(parseDesktopPackageInvocation(['mac-arm64', ...(directory ? ['--dir'] : [])], 'darwin', 'arm64'), {
-    ...environment, APPLE_KEYCHAIN_PROFILE: 'fixture', DSH_DESKTOP_MACOS_NOTARIZATION_PROXY: 'http://apple.example:8081',
+    ...environment, APPLE_KEYCHAIN_PROFILE: 'fixture', SQODE_DESKTOP_MACOS_NOTARIZATION_PROXY: 'http://apple.example:8081',
   }, run)
   expect(withMacOSNotarizationProxy).toHaveBeenCalledExactlyOnceWith('http://apple.example:8081', expect.any(Function), undefined, undefined, expect.any(Function))
   expect(packageMacOSArtifacts).toHaveBeenCalledTimes(directory ? 0 : 1)

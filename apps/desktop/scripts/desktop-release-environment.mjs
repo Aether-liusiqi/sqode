@@ -4,10 +4,10 @@
 export const DESKTOP_APP_ID_ENV = 'DSH_DESKTOP_APP_ID'
 
 /** Environment variable that supplies electron-builder's macOS certificate qualifier. */
-export const MACOS_SIGNING_IDENTITY_ENV = 'DSH_DESKTOP_MACOS_SIGNING_IDENTITY'
+export const MACOS_SIGNING_IDENTITY_ENV = 'SQODE_DESKTOP_MACOS_SIGNING_IDENTITY'
 
 /** Environment variable that supplies the expected Apple Developer Team ID. */
-export const MACOS_TEAM_ID_ENV = 'DSH_DESKTOP_MACOS_TEAM_ID'
+export const MACOS_TEAM_ID_ENV = 'SQODE_DESKTOP_MACOS_TEAM_ID'
 
 /** Environment variable that selects the npm registry used for the bundled runtime install. */
 export const NPM_REGISTRY_ENV = 'DSH_DESKTOP_NPM_REGISTRY'

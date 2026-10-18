@@ -17,7 +17,7 @@
   name: '@deepseek-ai/dsh-session-persistence-jsonl'
   config:
     root: !!js dshHomePath('sessions')
-    compression: !!js "process.env.DSH_SNAPSHOT === undefined ? 'zstd' : 'none'"
+    compression: !!js "process.env.SQODE_SNAPSHOT === undefined ? 'zstd' : 'none'"
 
 - id: tool-subagent
   name: '@deepseek-ai/dsh-tool-subagent'
@@ -31,9 +31,9 @@
 - insert:
     - id: snapshot-message-feedback
       name: '@deepseek-ai/dsh-message-feedback'
-      disabled: !!js "process.env.DSH_SNAPSHOT_FEEDBACK !== '1'"
+      disabled: !!js "process.env.SQODE_SNAPSHOT_FEEDBACK !== '1'"
       config:
         maxNoteBytes: 1024
     - id: snapshot-feedback-producer
       name: './feedback-producer.mjs'
-      disabled: !!js "process.env.DSH_SNAPSHOT_FEEDBACK !== '1'"
+      disabled: !!js "process.env.SQODE_SNAPSHOT_FEEDBACK !== '1'"

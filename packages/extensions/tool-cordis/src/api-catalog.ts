@@ -1781,7 +1781,7 @@ export const SERVICE_API: readonly ServiceApiEntry[] = [
       },
       {
         signature: 'readonly telemetryDisabledEnv: string | undefined',
-        description: 'Launch-time DSH_TELEMETRY_DISABLED value; any non-empty value opts out.',
+        description: 'Launch-time SQODE_TELEMETRY_DISABLED value; any non-empty value opts out.',
         parameters: [],
       },
     ],
@@ -5119,7 +5119,7 @@ export const TYPE_API: readonly TypeApiEntry[] = [
   },
   {
     name: 'DshEnvironmentKey',
-    declaration: 'export type DshEnvironmentKey = `${typeof DSH_ENV_PREFIX}${string}`;',
+    declaration: 'export type DshEnvironmentKey = `${typeof SQODE_ENV_PREFIX}${string}`;',
   },
   {
     name: 'DynamicCordisPackage',

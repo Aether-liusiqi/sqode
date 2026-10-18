@@ -6,8 +6,8 @@
 // record cannot hang on a live model answering differently); assertion steps
 // run in replay/refresh only. Streaming fidelity is asserted from the durable
 // embedded Assistant stream, not transient DOM.
-// Record: DSH_SNAPSHOT=record writes session.v3.jsonl, then a keyless
-// DSH_SNAPSHOT=refresh regenerates ui.expected.md.
+// Record: SQODE_SNAPSHOT=record writes session.v3.jsonl, then a keyless
+// SQODE_SNAPSHOT=refresh regenerates ui.expected.md.
 // Suite setup (beforeAll, not per step): one fixed page clock
 // (page.clock.setFixedTime) and one routed Remote mux socket
 // (page.routeWebSocket) serve every step below, so the reconnect checkpoints
@@ -240,7 +240,7 @@ describe('web e2e: fresh round trip through the real assembly', () => {
       callId: ToolCallId('web-url-probe'),
       name: 'bash',
       arguments: {
-        command: 'printf \'%s\\n\' "$DSH_WEB_URL"',
+        command: 'printf \'%s\\n\' "$SQODE_WEB_URL"',
         description: 'Print current Web runtime',
       },
       agent,

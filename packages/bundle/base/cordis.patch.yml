@@ -103,7 +103,7 @@
       disabled: !!js "!ctx.get('profileContext')"
 
     # Credential sources: inherited environment over the managed
-    # `$DSH_HOME/.credentials.yaml`, with project and user `.env` fallbacks.
+    # `$SQODE_HOME/.credentials.yaml`, with project and user `.env` fallbacks.
     # Adapters resolve references per request; the Models page writes only the
     # managed document, which is never materialized into the process environment.
     - id: authorization
@@ -190,10 +190,10 @@
 
     # OTel releases a Session-log prefix only after explicit user feedback,
     # regardless of model provider. Ordinary activity never triggers capture.
-    # DSH_TELEMETRY_OTLP_URL overrides the production endpoint. A non-empty
-    # DSH_TELEMETRY_DISABLED — any value, including '0'/'false' — opts the
+    # SQODE_TELEMETRY_OTLP_URL overrides the production endpoint. A non-empty
+    # SQODE_TELEMETRY_DISABLED — any value, including '0'/'false' — opts the
     # process out (the launchers patch the row disabled; config cannot disable
-    # a row). Exports carry the harness home's anonymous user id ($DSH_HOME/.anonymous-user-id,
+    # a row). Exports carry the harness home's anonymous user id ($SQODE_HOME/.anonymous-user-id,
     # random UUID; delete the file to reset the identity) as the Resource's
     # user.id. Byte-bounded batching may turn an authorized prefix into
     # several HTTP requests. Requests run serially; each has its own 1s
@@ -204,11 +204,11 @@
     - id: session-telemetry-otel
       name: '@deepseek-ai/dsh-session-telemetry-otel'
       config:
-        mode: !!js process.env.DSH_TELEMETRY_MODE || 'FEEDBACK_ONLY'
+        mode: !!js process.env.SQODE_TELEMETRY_MODE || 'FEEDBACK_ONLY'
         shutdownTimeoutMillis: 3000
         maxRequestBytes: 4000000
         exporter:
-          url: !!js process.env.DSH_TELEMETRY_OTLP_URL ?? 'https://dsh-otel-collector.deepseeksvc.com/v1/logs'
+          url: !!js process.env.SQODE_TELEMETRY_OTLP_URL ?? 'https://dsh-otel-collector.deepseeksvc.com/v1/logs'
           compression: gzip
           timeoutMillis: 1000
         processor:
@@ -229,7 +229,7 @@
     - id: sandbox-policy
       name: '@deepseek-ai/dsh-sandbox-policy'
       config:
-        mode: !!js process.env.DSH_PERMISSION_MODE ?? 'workspace-write'
+        mode: !!js process.env.SQODE_PERMISSION_MODE ?? 'workspace-write'
         workspaceRoot: !!js process.cwd()
 
     - id: bash-sandbox
@@ -245,7 +245,7 @@
     - id: approval
       name: '@deepseek-ai/dsh-user-approval'
       config:
-        policy: !!js "(process.env.DSH_PERMISSION_MODE ?? 'workspace-write') === 'danger-full-access' ? 'never' : 'ask'"
+        policy: !!js "(process.env.SQODE_PERMISSION_MODE ?? 'workspace-write') === 'danger-full-access' ? 'never' : 'ask'"
 
     - id: permission
       name: '@deepseek-ai/dsh-permission-presets'
@@ -441,7 +441,7 @@
     # default: the tool description restricts `ralph` to runs the human
     # explicitly asked for, and completion is a worker self-report, not an
     # independent evaluation. An overlay row restores it for a base-backed
-    # profile (`$DSH_HOME/cordis.patch.yml`, or a `--patch <file>`):
+    # profile (`$SQODE_HOME/cordis.patch.yml`, or a `--patch <file>`):
     #   - id: tool-ralph
     #     disabled: false
     - id: tool-ralph

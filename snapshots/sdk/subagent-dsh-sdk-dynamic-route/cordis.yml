@@ -22,18 +22,18 @@
 - insert:
     - id: mock-llm
       name: '../../../packages/subagent/subagent-dsh-sdk/tests/fixtures/loader/mock-delegating-llm.ts'
-      disabled: !!js process.env.DSH_SNAPSHOT !== 'record'
+      disabled: !!js process.env.SQODE_SNAPSHOT !== 'record'
 
     - id: subagent-dsh-sdk
       name: '@deepseek-ai/dsh-subagent-dsh-sdk'
       config:
         profile: sdk
-        patches: !!js JSON.parse(process.env.DSH_TEST_CHILD_PATCHES ?? '[]')
-        dshHome: !!js process.env.DSH_TEST_CHILD_HOME
+        patches: !!js JSON.parse(process.env.SQODE_TEST_CHILD_PATCHES ?? '[]')
+        dshHome: !!js process.env.SQODE_TEST_CHILD_HOME
         provider: mock
         model: mock-routed
         env:
-          DSH_TELEMETRY_DISABLED: '1'
+          SQODE_TELEMETRY_DISABLED: '1'
 
     - id: subagent-model-selection-settings
       name: '@deepseek-ai/dsh-tool-subagent/model-selection-settings'
@@ -56,7 +56,7 @@
     - id: sdk-jsonrpc-server-dynamic-live
       name: '@deepseek-ai/dsh-sdk-jsonrpc-server'
       inject: [sdkAppStartup, loader]
-      disabled: !!js process.env.DSH_SNAPSHOT !== 'record'
+      disabled: !!js process.env.SQODE_SNAPSHOT !== 'record'
       config:
         maxTokensAsSuccess: true
 

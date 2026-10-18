@@ -52,13 +52,13 @@ export function createElectronBuilderConfig(
 ) {
   const appId = resolveDesktopAppId(env)
   const policy = resolveDesktopPolicyEnvironment(env)
-  const targetPlatform = env.DSH_DESKTOP_TARGET_PLATFORM
+  const targetPlatform = env.SQODE_DESKTOP_TARGET_PLATFORM
   const resolvedPlatform = targetPlatform ?? hostPlatform
-  const resolvedArch = env.DSH_DESKTOP_TARGET_ARCH ?? hostArch
-  if (env.DSH_DESKTOP_UNSIGNED !== undefined && !['0', '1'].includes(env.DSH_DESKTOP_UNSIGNED)) {
-    throw new Error('desktop package: DSH_DESKTOP_UNSIGNED must be 0 or 1')
+  const resolvedArch = env.SQODE_DESKTOP_TARGET_ARCH ?? hostArch
+  if (env.SQODE_DESKTOP_UNSIGNED !== undefined && !['0', '1'].includes(env.SQODE_DESKTOP_UNSIGNED)) {
+    throw new Error('desktop package: SQODE_DESKTOP_UNSIGNED must be 0 or 1')
   }
-  const unsigned = env.DSH_DESKTOP_UNSIGNED === '1'
+  const unsigned = env.SQODE_DESKTOP_UNSIGNED === '1'
   if (unsigned && resolvedPlatform !== 'win32') throw new Error('desktop package: unsigned builds require Windows')
   const packagesMacOS = targetPlatform === 'darwin' || (targetPlatform === undefined && hostPlatform === 'darwin')
   const packagesWindows = resolvedPlatform === 'win32'
@@ -80,7 +80,7 @@ export function createElectronBuilderConfig(
         preserveSignature: async path => {
           for (const [sourceRoot, destinationRoot] of [[join(buildPaths.runtime, 'primary-runtime'), primaryRuntimeDestination], [buildPaths.dsh, dshDestination]]) {
             if (destinationRoot !== undefined && await preserveWindowsRuntimeSignature(path, {
-              sourceRoot, destinationRoot, runDirectory: env.DSH_DESKTOP_PACKAGING_RUN_DIR,
+              sourceRoot, destinationRoot, runDirectory: env.SQODE_DESKTOP_PACKAGING_RUN_DIR,
             })) return true
           }
           return false
@@ -200,7 +200,7 @@ export function createElectronBuilderConfig(
         await signWindowsCode(context.appOutDir, {
           thumbprint: new X509Certificate(await readFile(env.DSH_DESKTOP_WINDOWS_CER_FILE)).fingerprint.replaceAll(':', ''),
           sign: windowsSigner,
-          record: event => recordPackagingEvent(env.DSH_DESKTOP_PACKAGING_RUN_DIR, event),
+          record: event => recordPackagingEvent(env.SQODE_DESKTOP_PACKAGING_RUN_DIR, event),
         })
         await verifyWindowsAsarUnpack(buildPaths.dsh, context.packager.getResourcesDir(context.appOutDir), windowsCode)
       }

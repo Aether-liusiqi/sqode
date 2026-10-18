@@ -179,7 +179,7 @@ export function createWindowsTokenSigner(options) {
       if (configuration.isNest) throw new Error('Windows release signing does not support appended signatures')
       if (await options.preserveSignature?.(configuration.path)) return
       const secrets = [tokenPin]
-      const runDirectory = options.runDirectory ?? process.env.DSH_DESKTOP_PACKAGING_RUN_DIR
+      const runDirectory = options.runDirectory ?? process.env.SQODE_DESKTOP_PACKAGING_RUN_DIR
       if (!runDirectory) throw new Error('Windows hardware signing requires a supervised packaging run')
       const { inspectWindowsRuntimeSignature: inspect } = await import('./windows-runtime-signature.mjs')
       const thumbprint = certificate.fingerprint.replaceAll(':', '')

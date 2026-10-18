@@ -2,7 +2,7 @@
  * Profile discovery, initialization, and patch-layer composition for the
  * `dsh --profile` launcher family.
  *
- * A profile is a directory under `$DSH_HOME/profiles/<name>` holding a
+ * A profile is a directory under `$SQODE_HOME/profiles/<name>` holding a
  * `package.json` (out-of-tree plugin dependencies plus the profile manifest
  * `dsh.profile` with its ordered `bundles` list) and a `cordis.patch.yml`
  * (the user's own patch layer, applied after every bundle layer). Bundles are
@@ -268,7 +268,7 @@ const LINK_PROJECTION_DIR = '.dsh-module-fallback'
 /**
  * Remove the package projections a link-backend launch left in a profile.
  * Only symlinks under the profile's `node_modules` whose target lies inside
- * `<profile>/.dsh-module-fallback/node_modules` are unlinked, then that directory is removed;
+ * `<profile>/.sqode-module-fallback/node_modules` are unlinked, then that directory is removed;
  * pnpm-installed packages and every other symlink stay. A profile without the directory is untouched.
  * @param dir - the profile directory.
  */

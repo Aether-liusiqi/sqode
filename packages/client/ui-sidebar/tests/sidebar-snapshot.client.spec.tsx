@@ -22,9 +22,9 @@ import { apply, inject } from '@deepseek-ai/dsh-client-ui-sidebar/client'
 usePinnedBrowserLanguages('zh-CN')
 
 beforeEach(() => {
-  vi.stubEnv('DSH_CLIENT_COMMIT_HASH', 'abc1234')
-  vi.stubEnv('DSH_CLIENT_GIT_DIRTY', 'true')
-  vi.stubEnv('DSH_CLIENT_VERSION', '1.2.3-rc.4')
+  vi.stubEnv('SQODE_CLIENT_COMMIT_HASH', 'abc1234')
+  vi.stubEnv('SQODE_CLIENT_GIT_DIRTY', 'true')
+  vi.stubEnv('SQODE_CLIENT_VERSION', '1.2.3-rc.4')
 })
 
 afterEach(() => {

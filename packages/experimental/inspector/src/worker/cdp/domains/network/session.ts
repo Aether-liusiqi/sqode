@@ -214,7 +214,7 @@ export class NetworkDomain {
     session.sendEvent('Network.requestWillBeSent', {
       requestId: event.requestId,
       loaderId: 'dsh-inspector-loader',
-      documentURL: 'dsh://host',
+      documentURL: 'sqode://host',
       request: {
         url: event.url,
         method: event.method,

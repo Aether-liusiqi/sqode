@@ -135,9 +135,9 @@ describe('SidebarRoot shell', () => {
   })
 
   it('renders generic brand fallbacks when no package fills the slots', () => {
-    vi.stubEnv('DSH_CLIENT_COMMIT_HASH', '0123456')
-    vi.stubEnv('DSH_CLIENT_GIT_DIRTY', 'true')
-    vi.stubEnv('DSH_CLIENT_VERSION', '1.2.3-rc.4')
+    vi.stubEnv('SQODE_CLIENT_COMMIT_HASH', '0123456')
+    vi.stubEnv('SQODE_CLIENT_GIT_DIRTY', 'true')
+    vi.stubEnv('SQODE_CLIENT_VERSION', '1.2.3-rc.4')
     const { container } = render(<SidebarRoot
       collapsed={false} width={300}
       useSessions={neverHook} useSessionStatus={useSessionStatus} useSessionRetainInfo={neverHook}
@@ -154,8 +154,8 @@ describe('SidebarRoot shell', () => {
   })
 
   it.each([
-    [{ DSH_CLIENT_VERSION: '1.2.3' }, '1.2.3'],
-    [{ DSH_CLIENT_COMMIT_HASH: 'abcdef0', DSH_CLIENT_VERSION: '1.2.3' }, '1.2.3-abcdef0'],
+    [{ SQODE_CLIENT_VERSION: '1.2.3' }, '1.2.3'],
+    [{ SQODE_CLIENT_COMMIT_HASH: 'abcdef0', SQODE_CLIENT_VERSION: '1.2.3' }, '1.2.3-abcdef0'],
   ])('omits unavailable build-version suffixes from %j', (environment, expected) => {
     for (const [name, value] of Object.entries(environment)) vi.stubEnv(name, value)
     render(<SidebarRoot

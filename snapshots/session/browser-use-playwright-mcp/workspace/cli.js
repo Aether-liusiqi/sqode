@@ -1,7 +1,7 @@
 /** External browser fixture; screenshots contain no host or network content. */
 import { mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs'
 import { createInterface } from 'node:readline'
-mkdirSync('.dsh', { recursive: true })
+mkdirSync('.sqode', { recursive: true })
 const catalog = JSON.parse(readFileSync(new URL('./catalog.json', import.meta.url), 'utf8'))
 const png = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAADElEQVQImWNgZGIGAAAOAAeCcsnOAAAAAElFTkSuQmCC'
 const lines = createInterface({ input: process.stdin })

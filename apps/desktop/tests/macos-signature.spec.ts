@@ -16,10 +16,10 @@ const RELEASE_ENVIRONMENT = {
   DSH_DESKTOP_APP_ID: 'com.example.desktop',
   DSH_DESKTOP_MANDATORY_UPDATE_TEST_ORIGIN: 'https://policy.example.com',
   DSH_DESKTOP_MANDATORY_UPDATE_CONFIG: JSON.stringify({ allowedAuthOrigins: ['https://login.example.com'] }),
-  DSH_DESKTOP_TARGET_PLATFORM: 'darwin',
-  DSH_DESKTOP_TARGET_ARCH: 'arm64',
-  DSH_DESKTOP_MACOS_SIGNING_IDENTITY: 'Example Company (TEAMID1234)',
-  DSH_DESKTOP_MACOS_TEAM_ID: 'TEAMID1234',
+  SQODE_DESKTOP_TARGET_PLATFORM: 'darwin',
+  SQODE_DESKTOP_TARGET_ARCH: 'arm64',
+  SQODE_DESKTOP_MACOS_SIGNING_IDENTITY: 'Example Company (TEAMID1234)',
+  SQODE_DESKTOP_MACOS_TEAM_ID: 'TEAMID1234',
   APPLE_API_KEY: '/private/credentials/AuthKey_TEST123456.p8',
   APPLE_API_KEY_ID: 'TEST123456',
   APPLE_API_ISSUER: '11111111-2222-3333-4444-555555555555',
@@ -69,7 +69,7 @@ describe('desktop macOS release signature', () => {
     expect(config).toMatchObject({
       appId: RELEASE_ENVIRONMENT.DSH_DESKTOP_APP_ID,
       mac: {
-        identity: RELEASE_ENVIRONMENT.DSH_DESKTOP_MACOS_SIGNING_IDENTITY,
+        identity: RELEASE_ENVIRONMENT.SQODE_DESKTOP_MACOS_SIGNING_IDENTITY,
         forceCodeSigning: true,
         notarize: true,
         signIgnore: ['/Contents/Resources/app\\.asar\\.unpacked/dsh(?:/|$)', '/Contents/Resources/runtime/primary-runtime(?:/|$)', '\\.pak$'],
@@ -108,7 +108,7 @@ describe('desktop macOS release signature', () => {
       DSH_DESKTOP_APP_ID: RELEASE_ENVIRONMENT.DSH_DESKTOP_APP_ID,
       DSH_DESKTOP_MANDATORY_UPDATE_TEST_ORIGIN: 'https://policy.example.com',
       DSH_DESKTOP_MANDATORY_UPDATE_CONFIG: JSON.stringify({ allowedAuthOrigins: ['https://login.example.com'] }),
-      DSH_DESKTOP_TARGET_PLATFORM: 'win32',
+      SQODE_DESKTOP_TARGET_PLATFORM: 'win32',
     }, 'win32')).toThrow(/DSH_DESKTOP_WINDOWS_CER_FILE/u)
   })
 
@@ -118,8 +118,8 @@ describe('desktop macOS release signature', () => {
       DSH_DESKTOP_APP_ID: RELEASE_ENVIRONMENT.DSH_DESKTOP_APP_ID,
       DSH_DESKTOP_MANDATORY_UPDATE_TEST_ORIGIN: 'https://policy.example.com',
       DSH_DESKTOP_MANDATORY_UPDATE_CONFIG: JSON.stringify({ allowedAuthOrigins: ['https://login.example.com'] }),
-      DSH_DESKTOP_TARGET_PLATFORM: 'win32',
-      DSH_DESKTOP_UNSIGNED: '1',
+      SQODE_DESKTOP_TARGET_PLATFORM: 'win32',
+      SQODE_DESKTOP_UNSIGNED: '1',
     }, 'win32', 'x64')
     expect(portablePath(config.directories.output)).toContain('/targets/win-x64/unsigned-artifacts')
     expect(portablePath(config.nsis.include)).toMatch(/\/scripts\/installer\.nsh$/u)
@@ -131,9 +131,9 @@ describe('desktop macOS release signature', () => {
 
   it('rejects unsigned macOS builds and malformed signing modes', async () => {
     const { createElectronBuilderConfig } = await import('../electron-builder.config.mjs')
-    expect(() => createElectronBuilderConfig({ ...RELEASE_ENVIRONMENT, DSH_DESKTOP_UNSIGNED: '1' }))
+    expect(() => createElectronBuilderConfig({ ...RELEASE_ENVIRONMENT, SQODE_DESKTOP_UNSIGNED: '1' }))
       .toThrow(/unsigned builds require Windows/u)
-    expect(() => createElectronBuilderConfig({ ...RELEASE_ENVIRONMENT, DSH_DESKTOP_UNSIGNED: 'yes' }))
+    expect(() => createElectronBuilderConfig({ ...RELEASE_ENVIRONMENT, SQODE_DESKTOP_UNSIGNED: 'yes' }))
       .toThrow(/must be 0 or 1/u)
   })
 
@@ -187,14 +187,14 @@ describe('desktop macOS release signature', () => {
   it('rejects missing and malformed release identifiers', () => {
     expect(() => resolveDesktopAppId({})).toThrow(/DSH_DESKTOP_APP_ID/u)
     expect(() => resolveDesktopAppId({ DSH_DESKTOP_APP_ID: 'not-a-bundle-id' })).toThrow(/reverse-DNS/u)
-    expect(() => resolveMacOSSigningEnvironment({})).toThrow(/DSH_DESKTOP_MACOS_SIGNING_IDENTITY/u)
+    expect(() => resolveMacOSSigningEnvironment({})).toThrow(/SQODE_DESKTOP_MACOS_SIGNING_IDENTITY/u)
     expect(() => resolveMacOSSigningEnvironment({
-      DSH_DESKTOP_MACOS_SIGNING_IDENTITY: 'Developer ID Application: Example Company (TEAMID1234)',
-      DSH_DESKTOP_MACOS_TEAM_ID: 'TEAMID1234',
+      SQODE_DESKTOP_MACOS_SIGNING_IDENTITY: 'Developer ID Application: Example Company (TEAMID1234)',
+      SQODE_DESKTOP_MACOS_TEAM_ID: 'TEAMID1234',
     })).toThrow(/must omit/u)
     expect(() => resolveMacOSSigningEnvironment({
-      DSH_DESKTOP_MACOS_SIGNING_IDENTITY: 'Example Company (TEAMID1234)',
-      DSH_DESKTOP_MACOS_TEAM_ID: 'short',
+      SQODE_DESKTOP_MACOS_SIGNING_IDENTITY: 'Example Company (TEAMID1234)',
+      SQODE_DESKTOP_MACOS_TEAM_ID: 'short',
     })).toThrow(/10 uppercase/u)
   })
 

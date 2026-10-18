@@ -11,7 +11,7 @@ import { execFileSync } from 'node:child_process'
 import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join, relative } from 'node:path'
-import { DSH_HOME_ENV } from '@deepseek-ai/dsh-home-paths'
+import { SQODE_HOME_ENV } from '@deepseek-ai/dsh-home-paths'
 import type { ConfigTree, ImageTree, PackResult } from './pack.ts'
 
 export { packPreviewFixture } from './preview.ts'
@@ -88,7 +88,7 @@ export function indexWorkspacePackages(repoRoot: string): Map<string, string> {
  * Compose one profile through the real CLI dump path, leaving `!!js`
  * unevaluated. The dump runs against a throwaway Harness home, so the
  * profile's own layer is the freshly initialized empty patch file and the
- * machine's `$DSH_HOME` — its profile manifest with locally installed
+ * machine's `$SQODE_HOME` — its profile manifest with locally installed
  * bundles, and its patch files — would otherwise leak this machine's plugins
  * into the image and break the same-tree-same-bytes guarantee.
  * @param repoRoot - Absolute repository root.
@@ -108,7 +108,7 @@ export function composeProfile(repoRoot: string, profile: string): string {
         // shipped composition alone.
         '--dump-config',
       ],
-      { cwd: repoRoot, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024, env: { ...process.env, [DSH_HOME_ENV]: home } },
+      { cwd: repoRoot, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024, env: { ...process.env, [SQODE_HOME_ENV]: home } },
     )
   } finally {
     rmSync(home, { recursive: true, force: true })

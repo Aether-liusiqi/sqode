@@ -86,11 +86,11 @@ describe.skipIf(MODE === 'record')('web e2e: GitHub ready-for-review', () => {
   const adapter = new ReviewAdapter()
 
   beforeAll(async () => {
-    previousPort = process.env.DSH_GITHUB_WEBHOOK_PORT
-    previousSecret = process.env.DSH_GITHUB_WEBHOOK_SECRET
+    previousPort = process.env.SQODE_GITHUB_WEBHOOK_PORT
+    previousSecret = process.env.SQODE_GITHUB_WEBHOOK_SECRET
     const port = await freePort()
-    process.env.DSH_GITHUB_WEBHOOK_PORT = String(port)
-    process.env.DSH_GITHUB_WEBHOOK_SECRET = SECRET
+    process.env.SQODE_GITHUB_WEBHOOK_PORT = String(port)
+    process.env.SQODE_GITHUB_WEBHOOK_SECRET = SECRET
     webhookOrigin = `http://127.0.0.1:${String(port)}`
     scaffold = await launchWebScaffold({ extraOverlayPath: OVERLAY })
     scaffold.ctx.effect(
@@ -110,10 +110,10 @@ describe.skipIf(MODE === 'record')('web e2e: GitHub ready-for-review', () => {
   afterAll(async () => {
     await browser?.close()
     await scaffold?.close()
-    if (previousPort === undefined) Reflect.deleteProperty(process.env, 'DSH_GITHUB_WEBHOOK_PORT')
-    else process.env.DSH_GITHUB_WEBHOOK_PORT = previousPort
-    if (previousSecret === undefined) Reflect.deleteProperty(process.env, 'DSH_GITHUB_WEBHOOK_SECRET')
-    else process.env.DSH_GITHUB_WEBHOOK_SECRET = previousSecret
+    if (previousPort === undefined) Reflect.deleteProperty(process.env, 'SQODE_GITHUB_WEBHOOK_PORT')
+    else process.env.SQODE_GITHUB_WEBHOOK_PORT = previousPort
+    if (previousSecret === undefined) Reflect.deleteProperty(process.env, 'SQODE_GITHUB_WEBHOOK_SECRET')
+    else process.env.SQODE_GITHUB_WEBHOOK_SECRET = previousSecret
   })
 
   it('isolates ingress and creates a browsable Workspace Session', async () => {

@@ -54,7 +54,7 @@ describe('LspConnection', () => {
     // A configured DSH_* fact must reach the child: the seam scrubs only the
     // ambient namespace, and the explicit entry merges after that scrub. The
     // fixture echoes the named variable back as hover text.
-    const conn = connect({ LSP_FAKE_ECHO_ENV: 'DSH_LSP_TEST_FACT', DSH_LSP_TEST_FACT: 'managed' })
+    const conn = connect({ LSP_FAKE_ECHO_ENV: 'SQODE_LSP_TEST_FACT', SQODE_LSP_TEST_FACT: 'managed' })
     await conn.request('initialize', { capabilities: {} })
     expect(await conn.request('textDocument/hover', {})).toEqual({ contents: 'managed' })
   })

@@ -16,7 +16,7 @@ const EXEC_PATH = '/dsh/bin/node'
 export interface ProcessShimOptions {
   /** Virtual root reported by `cwd()`. */
   readonly cwd: string
-  /** Environment the tree reads; `DSH_HOME` belongs here. */
+  /** Environment the tree reads; `SQODE_HOME` belongs here. */
   readonly env: Readonly<Record<string, string>>
   /** Argument vector reported to the tree; defaults to the executable alone, since no entry script exists. */
   readonly argv?: readonly string[]

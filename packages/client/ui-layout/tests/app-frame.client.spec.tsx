@@ -149,7 +149,7 @@ beforeEach(() => {
   observers = []
   animationFrames = new Map()
   nextFrame = 1
-  vi.stubEnv('DSH_CLIENT_TITLE', undefined)
+  vi.stubEnv('SQODE_CLIENT_TITLE', undefined)
   vi.stubGlobal('ResizeObserver', ResizeObserverStub)
   vi.stubGlobal('requestAnimationFrame', (callback: FrameRequestCallback) => {
     const id = nextFrame++
@@ -189,7 +189,7 @@ describe('AppFrame', () => {
   })
 
   it('follows the selected durable Session title', () => {
-    vi.stubEnv('DSH_CLIENT_TITLE', 'Product')
+    vi.stubEnv('SQODE_CLIENT_TITLE', 'Product')
     selectedSessionTitle = 'First'
     const { rerenderFrame } = mountFrame()
     expect(document.title).toBe('First — Product')

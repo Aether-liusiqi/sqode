@@ -376,7 +376,7 @@ describe('workspace context instruction discovery', () => {
       const files = await discoverBaselineInstructionFiles({ cwd, dshHome: home })
 
       expect(files.map(file => file.displayPath)).toEqual([
-        '$DSH_HOME/AGENTS.md',
+        '$SQODE_HOME/AGENTS.md',
         'AGENTS.md',
         'CLAUDE.md',
         join('packages', 'CLAUDE.md'),
@@ -633,11 +633,11 @@ describe('workspace context instruction discovery', () => {
   it('defaults dshHome and uses cwd itself as root when no project marker exists', async () => {
     const root = await tempRepo()
     const emptyHome = await tempRepo()
-    // Isolate the default-home fallback: blank DSH_HOME is treated as unset, and
-    // the home dirs point at an empty dir so the default ~/.dsh holds no global
+    // Isolate the default-home fallback: blank SQODE_HOME is treated as unset, and
+    // the home dirs point at an empty dir so the default ~/.sqode holds no global
     // scope. Windows homedir() reads USERPROFILE (not HOME), so both must be
-    // stubbed or a real ~/.dsh/AGENTS.md would otherwise leak in.
-    vi.stubEnv('DSH_HOME', '')
+    // stubbed or a real ~/.sqode/AGENTS.md would otherwise leak in.
+    vi.stubEnv('SQODE_HOME', '')
     vi.stubEnv('HOME', emptyHome)
     if (process.platform === 'win32') vi.stubEnv('USERPROFILE', emptyHome)
     try {
@@ -657,16 +657,16 @@ describe('workspace context instruction discovery', () => {
     }
   })
 
-  it('honors DSH_HOME when dshHome is not configured explicitly', async () => {
+  it('honors SQODE_HOME when dshHome is not configured explicitly', async () => {
     const root = await tempRepo()
     const envHome = await tempRepo()
     try {
       await write(join(envHome, 'AGENTS.md'), 'env global rule')
-      vi.stubEnv('DSH_HOME', envHome)
+      vi.stubEnv('SQODE_HOME', envHome)
 
       const files = await discoverBaselineInstructionFiles({ cwd: root })
 
-      expect(files).toEqual([{ absolutePath: join(envHome, 'AGENTS.md'), displayPath: '$DSH_HOME/AGENTS.md' }])
+      expect(files).toEqual([{ absolutePath: join(envHome, 'AGENTS.md'), displayPath: '$SQODE_HOME/AGENTS.md' }])
     } finally {
       vi.unstubAllEnvs()
       await rm(root, { recursive: true, force: true })
@@ -674,20 +674,20 @@ describe('workspace context instruction discovery', () => {
     }
   })
 
-  it('labels the default DSH home as ~/.dsh when HOME points at the configured default', async () => {
+  it('labels the default DSH home as ~/.sqode when HOME points at the configured default', async () => {
     const root = await tempRepo()
     const home = await tempRepo()
     try {
       await write(join(home, '.dsh/AGENTS.md'), 'global default rule')
 
-      // A set DSH_HOME would override the homedir default and relabel the home.
-      vi.stubEnv('DSH_HOME', '')
+      // A set SQODE_HOME would override the homedir default and relabel the home.
+      vi.stubEnv('SQODE_HOME', '')
       vi.resetModules()
       vi.doMock('node:os', () => ({ homedir: () => home }))
       const isolated = await import('@deepseek-ai/dsh-agent-instructions')
       const files = await isolated.discoverBaselineInstructionFiles({ cwd: root })
 
-      expect(files.map(file => file.displayPath)).toEqual(['~/.dsh/AGENTS.md'])
+      expect(files.map(file => file.displayPath)).toEqual(['~/.sqode/AGENTS.md'])
     } finally {
       vi.unstubAllEnvs()
       vi.doUnmock('node:os')
@@ -697,7 +697,7 @@ describe('workspace context instruction discovery', () => {
     }
   })
 
-  it('expands a configured ~/.dsh home to the operating-system home directory', async () => {
+  it('expands a configured ~/.sqode home to the operating-system home directory', async () => {
     const root = await tempRepo()
     const home = await tempRepo()
     try {
@@ -706,9 +706,9 @@ describe('workspace context instruction discovery', () => {
       vi.resetModules()
       vi.doMock('node:os', () => ({ homedir: () => home }))
       const isolated = await import('@deepseek-ai/dsh-agent-instructions')
-      const files = await isolated.discoverBaselineInstructionFiles({ cwd: root, dshHome: '~/.dsh' })
+      const files = await isolated.discoverBaselineInstructionFiles({ cwd: root, dshHome: '~/.sqode' })
 
-      expect(files).toEqual([{ absolutePath: join(home, '.dsh/AGENTS.md'), displayPath: '~/.dsh/AGENTS.md' }])
+      expect(files).toEqual([{ absolutePath: join(home, '.dsh/AGENTS.md'), displayPath: '~/.sqode/AGENTS.md' }])
     } finally {
       vi.doUnmock('node:os')
       vi.resetModules()
@@ -725,7 +725,7 @@ describe('workspace context instruction discovery', () => {
 
       const files = await discoverBaselineInstructionFiles({ cwd: root, dshHome: root })
 
-      expect(files).toEqual([{ absolutePath: join(root, 'AGENTS.md'), displayPath: '$DSH_HOME/AGENTS.md' }])
+      expect(files).toEqual([{ absolutePath: join(root, 'AGENTS.md'), displayPath: '$SQODE_HOME/AGENTS.md' }])
     } finally {
       await rm(root, { recursive: true, force: true })
     }
@@ -2508,14 +2508,14 @@ describe('workspace context request injection', () => {
     }
   })
 
-  it('labels a custom dshHome as DSH_HOME instead of pretending it is ~/.dsh', async () => {
+  it('labels a custom dshHome as SQODE_HOME instead of pretending it is ~/.sqode', async () => {
     const root = await tempRepo()
     const home = await tempRepo()
     try {
       await write(join(home, 'AGENTS.md'), 'global custom rule')
       const files = await discoverBaselineInstructionFiles({ cwd: root, dshHome: home })
 
-      expect(files.map(file => file.displayPath)).toEqual(['$DSH_HOME/AGENTS.md'])
+      expect(files.map(file => file.displayPath)).toEqual(['$SQODE_HOME/AGENTS.md'])
     } finally {
       await rm(root, { recursive: true, force: true })
       await rm(home, { recursive: true, force: true })

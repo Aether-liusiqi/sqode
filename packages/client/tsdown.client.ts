@@ -114,7 +114,7 @@ export function clientBundle(
 ): BuildFaceConfig {
   const lib = clientLibraryConfig(id, libEntry, options.lib)
   return ({ env }) => {
-    const face = buildFace(env?.DSH_BUILD_FACE)
+    const face = buildFace(env?.SQODE_BUILD_FACE)
     const clientEntry = face === undefined ? 'src/client/index.ts' : 'lib/types/client/index.js'
     const client = clientConfig(id, clientEntry, options.clientBanner)
     const node = [lib, ...(options.companions ?? [])]
@@ -193,7 +193,7 @@ export function clientLibrary(id: string, libEntry: readonly string[]): BuildFac
  * @returns ENV-selected tsdown config for the Client build face.
  */
 export function clientOnly(configs: readonly UserConfig[]): BuildFaceConfig {
-  return ({ env }) => buildFace(env?.DSH_BUILD_FACE) === 'host'
+  return ({ env }) => buildFace(env?.SQODE_BUILD_FACE) === 'host'
     ? [SKIP_WORKSPACE_BUILD]
     : [...configs]
 }
@@ -215,7 +215,7 @@ type BuildFaceConfig = (inlineConfig: Pick<UserConfig, 'env'>) => UserConfig[]
 
 function buildFace(value: unknown): BuildFace {
   if (value === undefined || value === 'host' || value === 'client') return value
-  throw new Error(`tsdown: --env.DSH_BUILD_FACE must be host or client, received ${String(value)}`)
+  throw new Error(`tsdown: --env.SQODE_BUILD_FACE must be host or client, received ${String(value)}`)
 }
 
 function clientLibraryConfig(

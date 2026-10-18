@@ -24,9 +24,9 @@ export function handleScaffold(
   const frame = {
     id: 'dsh-inspector-host-frame',
     loaderId: 'dsh-inspector-loader',
-    url: 'dsh://host',
+    url: 'sqode://host',
     domainAndRegistry: '',
-    securityOrigin: 'dsh://host',
+    securityOrigin: 'sqode://host',
     mimeType: 'text/html',
     secureContextType: 'Secure',
     crossOriginIsolatedContextType: 'NotIsolated',

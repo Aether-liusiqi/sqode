@@ -93,22 +93,22 @@ describe('desktop package target', () => {
       CSC_KEY_PASSWORD: 'secret',
       WIN_CSC_LINK: 'windows.pfx',
       CSC_IDENTITY_AUTO_DISCOVERY: 'true',
-      DSH_DESKTOP_UNSIGNED: '1',
+      SQODE_DESKTOP_UNSIGNED: '1',
     }
     expect(desktopElectronBuilderEnvironment(environment, true)).toEqual({
       DSH_DESKTOP_APP_ID: 'com.example.desktop',
       CSC_IDENTITY_AUTO_DISCOVERY: 'false',
-      DSH_DESKTOP_UNSIGNED: '1',
+      SQODE_DESKTOP_UNSIGNED: '1',
     })
-    expect(desktopElectronBuilderEnvironment(environment, false)).toEqual({ ...environment, DSH_DESKTOP_UNSIGNED: '0' })
+    expect(desktopElectronBuilderEnvironment(environment, false)).toEqual({ ...environment, SQODE_DESKTOP_UNSIGNED: '0' })
   })
 
   it.each([false, true])('pins the Windows archive filter for the NSIS decoder (unsigned: %s)', (unsigned) => {
     expect(desktopElectronBuilderEnvironment({
-      DSH_DESKTOP_TARGET_PLATFORM: 'win32', ELECTRON_BUILDER_7Z_FILTER: 'ARM64',
+      SQODE_DESKTOP_TARGET_PLATFORM: 'win32', ELECTRON_BUILDER_7Z_FILTER: 'ARM64',
     }, unsigned).ELECTRON_BUILDER_7Z_FILTER).toBe('BCJ')
     expect(desktopElectronBuilderEnvironment({
-      DSH_DESKTOP_TARGET_PLATFORM: 'darwin', ELECTRON_BUILDER_7Z_FILTER: 'ARM',
+      SQODE_DESKTOP_TARGET_PLATFORM: 'darwin', ELECTRON_BUILDER_7Z_FILTER: 'ARM',
     }, unsigned).ELECTRON_BUILDER_7Z_FILTER).toBe('ARM')
   })
 

@@ -44,13 +44,13 @@ Var dshNewMoved
     SetErrorLevel 2
     Quit
   ${EndIf}
-  File /oname=$PLUGINSDIR\dsh-7za.exe "${DSH_SEVENZIP_PATH}"
+  File /oname=$PLUGINSDIR\dsh-7za.exe "${SQODE_SEVENZIP_PATH}"
   StrCpy $INSTDIR $dshNewDirectory
   SetOutPath $INSTDIR
   !insertmacro installApplicationFiles
-  !ifdef DSH_SEVENZIP_LICENSE_DIR
-    File /oname=7zip-installer-LICENSE.txt "${DSH_SEVENZIP_LICENSE_DIR}\LICENSE.txt"
-    File /oname=7zip-installer-COPYING.txt "${DSH_SEVENZIP_LICENSE_DIR}\COPYING"
+  !ifdef SQODE_SEVENZIP_LICENSE_DIR
+    File /oname=7zip-installer-LICENSE.txt "${SQODE_SEVENZIP_LICENSE_DIR}\LICENSE.txt"
+    File /oname=7zip-installer-COPYING.txt "${SQODE_SEVENZIP_LICENSE_DIR}\COPYING"
   !endif
   !ifdef UNINSTALLER_ICON
     File /oname=uninstallerIcon.ico "${UNINSTALLER_ICON}"

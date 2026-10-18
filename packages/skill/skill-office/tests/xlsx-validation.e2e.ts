@@ -10,12 +10,12 @@ import { parseSessionLog } from '@deepseek-ai/dsh-llm-replay'
 import type { SessionEvent } from '@deepseek-ai/dsh-session'
 
 const repo = fileURLToPath(new URL('../../../../', import.meta.url))
-// DSH_PRIMARY_RUNTIME names the same runtime.json + dependencies/ payload used by shipped deployments.
-const runtime = process.env.DSH_PRIMARY_RUNTIME
+// SQODE_PRIMARY_RUNTIME names the same runtime.json + dependencies/ payload used by shipped deployments.
+const runtime = process.env.SQODE_PRIMARY_RUNTIME
 const python = runtime && join(runtime, 'dependencies/python', process.platform === 'win32' ? 'python.exe' : 'bin/python3')
 const model = process.env.MODEL_NAME ?? 'deepseek-flash'
 // Development gateways can expose Chat Completions without the official Messages API.
-const completions = process.env.DSH_OFFICE_TEST_API === 'openai-completions'
+const completions = process.env.SQODE_OFFICE_TEST_API === 'openai-completions'
 
 const seed = `
 import sys
@@ -80,10 +80,10 @@ describe.skipIf(!process.env.DEEPSEEK_API_KEY || !runtime)('Excel validation sco
       ],
       processTimeoutMs: 110_000,
       env: {
-        DSH_PRIMARY_RUNTIME: runtime,
-        DSH_PERMISSION_MODE: 'danger-full-access',
-        DSH_TELEMETRY_DISABLED: '1',
-        DSH_TOOLS_MODE: 'native',
+        SQODE_PRIMARY_RUNTIME: runtime,
+        SQODE_PERMISSION_MODE: 'danger-full-access',
+        SQODE_TELEMETRY_DISABLED: '1',
+        SQODE_TOOLS_MODE: 'native',
       },
       async prepare(cwd) {
         await execa(python!, ['-c', seed, kind], { cwd })

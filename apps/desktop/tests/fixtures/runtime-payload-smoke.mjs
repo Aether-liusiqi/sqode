@@ -41,7 +41,7 @@ console.log('desktop-node-script-ok')
   const output = execFileSync(process.execPath, ['--expose-internals', pnpm, 'run', 'check'], {
     cwd: scratch, encoding: 'utf8', timeout: 45_000,
     env: { ...environment, pnpm_config_verify_deps_before_run: 'false',
-      ELECTRON_RUN_AS_NODE: '1', DSH_DESKTOP_NODE_EXECUTABLE: process.execPath,
+      ELECTRON_RUN_AS_NODE: '1', SQODE_DESKTOP_NODE_EXECUTABLE: process.execPath,
       PATH: `${bin}${delimiter}${systemBin}`, HOME: scratch, USERPROFILE: scratch, TMP: scratch, TEMP: scratch, TMPDIR: scratch },
   })
   assert.match(output, /desktop-node-script-ok/u)
@@ -56,7 +56,7 @@ async function checkPty() {
     /^(?:path|systemroot|windir|comspec|ELECTRON_RUN_AS_NODE)$/iu.test(name)
   )))
   Object.assign(env, { HOME: scratch, USERPROFILE: scratch, TMP: scratch, TEMP: scratch, TMPDIR: scratch })
-  env.DSH_DESKTOP_NODE_EXECUTABLE = process.execPath
+  env.SQODE_DESKTOP_NODE_EXECUTABLE = process.execPath
   env.PATH = `${join(resourcesRuntime, 'bin')}${delimiter}${env.PATH ?? env.Path ?? ''}`
   // A Windows GUI executable needs a console-owning shell when launched inside ConPTY.
   const executable = process.platform === 'win32' ? process.env.ComSpec : process.execPath

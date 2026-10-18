@@ -6,7 +6,7 @@ import { join } from 'node:path'
 const [manifest, version] = process.argv.slice(2)
 const run = JSON.parse(await readFile(manifest, 'utf8'))
 process.stdout.write(process.env.DSH_DESKTOP_WINDOWS_TOKEN_PIN)
-if (process.env.DSH_TEST_PACKAGING_FAIL === '1') process.exitCode = 2
+if (process.env.SQODE_TEST_PACKAGING_FAIL === '1') process.exitCode = 2
 else {
   const directory = join(run.root, version, 'installer')
   await mkdir(directory, { recursive: true })

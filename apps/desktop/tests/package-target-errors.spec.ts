@@ -35,7 +35,7 @@ it.each(['win32', 'darwin'] as const)('records and prints redacted parent failur
   const savedExit = process.exitCode
   const stderr = vi.spyOn(process.stderr, 'write').mockImplementation(() => true)
   const consoleLog = vi.spyOn(console, 'log').mockImplementation(() => {})
-  const savedDirectory = process.env.DSH_DESKTOP_PACKAGING_RUN_DIR
+  const savedDirectory = process.env.SQODE_DESKTOP_PACKAGING_RUN_DIR
   try {
     Object.defineProperty(process, 'platform', { ...savedPlatform, value: platform })
     Object.defineProperty(process, 'arch', { ...savedArch, value: 'x64' })
@@ -57,14 +57,14 @@ it.each(['win32', 'darwin'] as const)('records and prints redacted parent failur
         { stage: platform === 'win32' ? 'windows-package' : 'macos-package', success: false },
       ],
     })
-    expect(process.env.DSH_DESKTOP_PACKAGING_RUN_DIR).toBe(savedDirectory)
+    expect(process.env.SQODE_DESKTOP_PACKAGING_RUN_DIR).toBe(savedDirectory)
   } finally {
     Object.defineProperty(process, 'platform', savedPlatform)
     Object.defineProperty(process, 'arch', savedArch)
     process.argv = savedArgv
     process.exitCode = savedExit
-    if (savedDirectory === undefined) delete process.env.DSH_DESKTOP_PACKAGING_RUN_DIR
-    else process.env.DSH_DESKTOP_PACKAGING_RUN_DIR = savedDirectory
+    if (savedDirectory === undefined) delete process.env.SQODE_DESKTOP_PACKAGING_RUN_DIR
+    else process.env.SQODE_DESKTOP_PACKAGING_RUN_DIR = savedDirectory
     stderr.mockRestore()
     consoleLog.mockRestore()
     await rm(state.root, { recursive: true, force: true })

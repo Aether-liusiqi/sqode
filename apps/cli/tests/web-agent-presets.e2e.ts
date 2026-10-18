@@ -67,8 +67,8 @@ async function bootWeb(
 ): Promise<Context> {
   const storageRoot = join(profileHome, 'storages')
   const overrides: PatchOptions[] = [
-    // storage-json's root is anchored to the real $DSH_HOME. Unpinned, this
-    // file writes the developer's own `~/.dsh/storages/` — and then reads it
+    // storage-json's root is anchored to the real $SQODE_HOME. Unpinned, this
+    // file writes the developer's own `~/.sqode/storages/` — and then reads it
     // back on the next run, so a stored document from any other build decides
     // this test's boot.
     { id: 'storage-json', config: { root: storageRoot } },
@@ -455,8 +455,8 @@ describe('the shipped Web composition', () => {
 
   it('merges the global skill layer into a preset agent\'s catalog, keeping local discovery preset-side', async () => {
     const proj = await mkdtemp(join(tmpdir(), 'dsh-preset-skill-proj-'))
-    await mkdir(join(proj, '.dsh', 'skills', 'project-proof'), { recursive: true })
-    await writeFile(join(proj, '.dsh', 'skills', 'project-proof', 'SKILL.md'), [
+    await mkdir(join(proj, '.sqode', 'skills', 'project-proof'), { recursive: true })
+    await writeFile(join(proj, '.sqode', 'skills', 'project-proof', 'SKILL.md'), [
       '---',
       'name: project-proof',
       'description: Proves the preset layer discovers project skills beside global ones.',

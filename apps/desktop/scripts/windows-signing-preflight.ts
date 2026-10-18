@@ -86,7 +86,7 @@ export async function preflightWindowsSigning(options: SigningPreflightOptions):
 
 async function main(): Promise<void> {
   if (process.platform !== 'win32') throw new Error('Windows signing preflight requires Windows')
-  const runDirectory = process.env.DSH_DESKTOP_PACKAGING_RUN_DIR
+  const runDirectory = process.env.SQODE_DESKTOP_PACKAGING_RUN_DIR
   if (!runDirectory) throw new Error('Windows signing preflight requires a supervised packaging run')
   try { await preflightWindowsSigning({ runDirectory, environment: process.env }) }
   catch (error) {

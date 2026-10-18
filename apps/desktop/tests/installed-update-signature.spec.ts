@@ -72,7 +72,7 @@ describe('installed update read-only signature evidence', () => {
         expect(options).toMatchObject({ windowsHide: true, timeout: 60_000 })
         expect(options.shell).toBeUndefined()
       }
-      expect(calls.execute.mock.calls[1]![2].env.DSH_VERIFY_FILE).toBe(file)
+      expect(calls.execute.mock.calls[1]![2].env.SQODE_VERIFY_FILE).toBe(file)
       expect(await readFile(file, 'utf8')).toBe('inert bytes, never executed')
       await expect(verifyInstalledUpdateSignature(file, 'CN=Fixture', root)).rejects.toMatchObject({ code: 'EEXIST' })
       expect(calls.execute).toHaveBeenCalledTimes(2)
