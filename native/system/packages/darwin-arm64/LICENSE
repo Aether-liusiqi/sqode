@@ -2,6 +2,8 @@ BSD 3-Clause License
 
 Copyright (c) 2026, node-addon-landlock-run contributors
 
+Based on DeepSeek Harness, Copyright © 2026 DeepSeek Harness, MIT License. Modified by Liusiqi.
+
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
 

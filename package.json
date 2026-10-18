@@ -261,5 +261,6 @@
     "vitest": "^4.1.8",
     "@deepseek-ai/dsh-skill-office": "workspace:*",
     "@deepseek-ai/dsh-tool-workspace-dependencies": "workspace:*"
-  }
+  },
+  "author": "Liusiqi"
 }
