@@ -29,8 +29,28 @@ export interface CommandResult {
  * @param options - working directory and environment.
  * @returns The exit status and captured streams.
  */
+/**
+ * Resolve a command name for the host platform.
+ *
+ * Windows ships npm as `npm.cmd` (the bare `npm` there is a POSIX shell script),
+ * and Node's spawnSync does not walk PATHEXT, so spawning `npm` fails with
+ * ENOENT and spawning `npm.cmd` without a shell fails with EINVAL. Mapping the
+ * name here keeps every caller platform-agnostic without enabling a shell.
+ * @param command - Requested executable name.
+ * @returns The name to spawn on this platform.
+ */
+function hostCommand(command: string): string {
+  return process.platform === 'win32' && command === 'npm' ? 'npm.cmd' : command
+}
+
 export function attempt(command: string, args: readonly string[], options: RunOptions = {}): CommandResult {
-  const result = spawnSync(command, [...args], { cwd: options.cwd, env: options.env, encoding: 'utf8' })
+  const result = spawnSync(hostCommand(command), [...args], {
+    cwd: options.cwd,
+    env: options.env,
+    encoding: 'utf8',
+    // Windows npm is a .cmd, which Node refuses to spawn without a shell (EINVAL).
+    shell: process.platform === 'win32',
+  })
   if (result.error !== undefined) throw result.error
   return { status: result.status, stdout: result.stdout, stderr: result.stderr }
 }
@@ -44,11 +64,12 @@ export function attempt(command: string, args: readonly string[], options: RunOp
  * @returns The exit status and captured streams.
  */
 export function attemptEchoed(command: string, args: readonly string[], options: RunOptions = {}): CommandResult {
-  const result = spawnSync(command, [...args], {
+  const result = spawnSync(hostCommand(command), [...args], {
     cwd: options.cwd,
     env: options.env,
     encoding: 'utf8',
     stdio: ['inherit', 'pipe', 'pipe'],
+    shell: process.platform === 'win32',
   })
   if (result.error !== undefined) throw result.error
   if (result.stdout !== '') process.stdout.write(result.stdout)
