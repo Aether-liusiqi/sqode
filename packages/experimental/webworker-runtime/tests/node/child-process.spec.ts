@@ -13,21 +13,21 @@
  * liveness through it, and on a test host those pids belong to real processes.
  */
 import { afterEach, beforeEach, expect, it, vi } from 'vitest'
-import { MemoryVfs } from '@deepseek-ai/dsh-experimental-webworker-runtime/src/storage/memory.ts'
-import { setActiveVfs } from '@deepseek-ai/dsh-experimental-webworker-runtime/src/storage/active.ts'
-import { spawn, spawnSync } from '@deepseek-ai/dsh-experimental-webworker-runtime/src/node/builtin_modules/implemented/child_process.ts'
+import { MemoryVfs } from '@liusiqi-dev/dsh-experimental-webworker-runtime/src/storage/memory.ts'
+import { setActiveVfs } from '@liusiqi-dev/dsh-experimental-webworker-runtime/src/storage/active.ts'
+import { spawn, spawnSync } from '@liusiqi-dev/dsh-experimental-webworker-runtime/src/node/builtin_modules/implemented/child_process.ts'
 import {
   LAUNCHER_FAILURE_EXIT, grantArgs, launcherPath, probe,
-} from '@deepseek-ai/node-addon-system/landlock-run'
-import { processAlive, signalProcess } from '@deepseek-ai/dsh-experimental-webworker-runtime/src/node/process-table.ts'
-import { hostFileSystem } from '@deepseek-ai/dsh-experimental-webworker-runtime/src/shell/fs-access.ts'
+} from '@liusiqi-dev/node-addon-system/landlock-run'
+import { processAlive, signalProcess } from '@liusiqi-dev/dsh-experimental-webworker-runtime/src/node/process-table.ts'
+import { hostFileSystem } from '@liusiqi-dev/dsh-experimental-webworker-runtime/src/shell/fs-access.ts'
 import {
   LANDLOCK_EXECUTABLE, landlockFileSystem, parseLandlockArguments,
-} from '@deepseek-ai/dsh-experimental-webworker-runtime/src/shell/process/landlock.ts'
-import { spawnSubprocess } from '@deepseek-ai/dsh-subprocess-local/src/spawn.ts'
+} from '@liusiqi-dev/dsh-experimental-webworker-runtime/src/shell/process/landlock.ts'
+import { spawnSubprocess } from '@liusiqi-dev/dsh-subprocess-local/src/spawn.ts'
 
 vi.mock('node:child_process', async () =>
-  await import('@deepseek-ai/dsh-experimental-webworker-runtime/src/node/builtin_modules/implemented/child_process.ts'))
+  await import('@liusiqi-dev/dsh-experimental-webworker-runtime/src/node/builtin_modules/implemented/child_process.ts'))
 
 const WORKSPACE = '/dsh/workspace'
 const HOME = '/dsh/home'

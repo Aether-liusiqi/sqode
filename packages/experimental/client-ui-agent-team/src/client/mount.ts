@@ -1,16 +1,16 @@
 /** Source-safe Agent Teams browser registration. */
 
-import type { Context as ClientContext } from '@deepseek-ai/cordis'
-import type {} from '@deepseek-ai/dsh-api-session-controller/client'
-import type { SessionId } from '@deepseek-ai/dsh-session/types'
-import type {} from '@deepseek-ai/dsh-client-ui-conversation/client'
-import type {} from '@deepseek-ai/dsh-client-locale/client'
-import type {} from '@deepseek-ai/dsh-client-ui-renderer/client'
-import type {} from '@deepseek-ai/dsh-client-ui-workspace/client'
+import type { Context as ClientContext } from '@liusiqi-dev/cordis'
+import type {} from '@liusiqi-dev/dsh-api-session-controller/client'
+import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type {} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+import type {} from '@liusiqi-dev/dsh-client-locale/client'
+import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
+import type {} from '@liusiqi-dev/dsh-client-ui-workspace/client'
 import { TeamAction, type TeamActionInjected } from './TeamAction.tsx'
 import { en, NS, zh, type TeamKey } from './locales.ts'
 
-declare module '@deepseek-ai/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/dsh-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** Agent Teams roster and task-board copy. */
     'agent-team': TeamKey

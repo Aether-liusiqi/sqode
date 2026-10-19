@@ -2,7 +2,7 @@
 # selection in session JSONL instead of duplicating it across manifests.
 
 - id: agent-default-model
-  name: '@deepseek-ai/dsh-agent-default-model'
+  name: '@liusiqi-dev/dsh-agent-default-model'
   config:
     provider: !!js process.env.SQODE_SNAPSHOT_PROVIDER
     model: !!js process.env.SQODE_SNAPSHOT_MODEL

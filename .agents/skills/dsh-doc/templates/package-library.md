@@ -16,7 +16,7 @@ kind: "package-library"
 ## Skeleton
 
 ```markdown
-# @deepseek-ai/dsh-<name>
+# @liusiqi-dev/sqode-<name>
 
 English | [中文](README.zh.md)
 

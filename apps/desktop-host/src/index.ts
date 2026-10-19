@@ -2,12 +2,12 @@
 
 import { delimiter, join } from 'node:path'
 import { inspect } from 'node:util'
-import { loadLayeredEnv, loadProfileDirectory, reportSkippedBundles } from '@deepseek-ai/dsh-app-boot'
-import { runProfile } from '@deepseek-ai/dsh/profile-boot'
-import type {} from '@deepseek-ai/dsh-client-connection'
-import type {} from '@deepseek-ai/dsh-host-webserver'
-import type {} from '@deepseek-ai/dsh-deepseek-account'
-import { resolveDshHome } from '@deepseek-ai/dsh-home-paths'
+import { loadLayeredEnv, loadProfileDirectory, reportSkippedBundles } from '@liusiqi-dev/dsh-app-boot'
+import { runProfile } from '@liusiqi-dev/dsh/profile-boot'
+import type {} from '@liusiqi-dev/dsh-client-connection'
+import type {} from '@liusiqi-dev/dsh-host-webserver'
+import type {} from '@liusiqi-dev/dsh-deepseek-account'
+import { resolveDshHome } from '@liusiqi-dev/dsh-home-paths'
 import * as desktopOffice from './office.ts'
 
 import { installDesktopUpdateTaskControl } from './update-tasks.ts'

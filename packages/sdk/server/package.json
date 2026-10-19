@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-sdk-jsonrpc-server",
+  "name": "@liusiqi-dev/dsh-sdk-jsonrpc-server",
   "description": "Stdio JSON-RPC server plugin for out-of-process DeepSeek Harness SDK clients",
   "version": "1.0.0",
   "publishConfig": {
@@ -27,34 +27,34 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@deepseek-ai/dsh-brand": "workspace:*",
-    "@deepseek-ai/schemastery": "workspace:~"
+    "@liusiqi-dev/dsh-brand": "workspace:*",
+    "@liusiqi-dev/schemastery": "workspace:~"
   },
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-attachment": "workspace:*",
-    "@deepseek-ai/dsh-llm": "workspace:*",
-    "@deepseek-ai/dsh-llm-deepseek-api-key": "workspace:*",
-    "@deepseek-ai/dsh-scope": "workspace:*",
-    "@deepseek-ai/dsh-sdk-protocol": "workspace:*",
-    "@deepseek-ai/dsh-session": "workspace:*",
-    "@deepseek-ai/dsh-subagent": "workspace:*"
+    "@liusiqi-dev/cordis": "workspace:~",
+    "@liusiqi-dev/dsh-agent": "workspace:*",
+    "@liusiqi-dev/dsh-attachment": "workspace:*",
+    "@liusiqi-dev/dsh-llm": "workspace:*",
+    "@liusiqi-dev/dsh-llm-deepseek-api-key": "workspace:*",
+    "@liusiqi-dev/dsh-scope": "workspace:*",
+    "@liusiqi-dev/dsh-sdk-protocol": "workspace:*",
+    "@liusiqi-dev/dsh-session": "workspace:*",
+    "@liusiqi-dev/dsh-subagent": "workspace:*"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/cordis-plugin-loader": "workspace:~",
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-agent-loop": "workspace:*",
-    "@deepseek-ai/dsh-agent-loop-testkit": "workspace:*",
-    "@deepseek-ai/dsh-attachment": "workspace:*",
-    "@deepseek-ai/dsh-llm": "workspace:*",
-    "@deepseek-ai/dsh-llm-deepseek-api-key": "workspace:*",
-    "@deepseek-ai/dsh-scope": "workspace:*",
-    "@deepseek-ai/dsh-sdk-protocol": "workspace:*",
-    "@deepseek-ai/dsh-session": "workspace:*",
-    "@deepseek-ai/dsh-session-persistence-jsonl": "workspace:*",
-    "@deepseek-ai/dsh-session-projection": "workspace:*",
-    "@deepseek-ai/dsh-subagent": "workspace:*"
+    "@liusiqi-dev/cordis": "workspace:~",
+    "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
+    "@liusiqi-dev/dsh-agent": "workspace:*",
+    "@liusiqi-dev/dsh-agent-loop": "workspace:*",
+    "@liusiqi-dev/dsh-agent-loop-testkit": "workspace:*",
+    "@liusiqi-dev/dsh-attachment": "workspace:*",
+    "@liusiqi-dev/dsh-llm": "workspace:*",
+    "@liusiqi-dev/dsh-llm-deepseek-api-key": "workspace:*",
+    "@liusiqi-dev/dsh-scope": "workspace:*",
+    "@liusiqi-dev/dsh-sdk-protocol": "workspace:*",
+    "@liusiqi-dev/dsh-session": "workspace:*",
+    "@liusiqi-dev/dsh-session-persistence-jsonl": "workspace:*",
+    "@liusiqi-dev/dsh-session-projection": "workspace:*",
+    "@liusiqi-dev/dsh-subagent": "workspace:*"
   }
 }

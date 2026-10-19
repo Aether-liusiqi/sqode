@@ -35,11 +35,11 @@ describe('BootPage', () => {
 
   it('lists failed entries', () => {
     const { el, page } = mount()
-    page.setState('@deepseek-ai/dsh-client-ui-layout', 'failed')
+    page.setState('@liusiqi-dev/dsh-client-ui-layout', 'failed')
     page.setState('ok', 'active')
-    page.setState('@deepseek-ai/dsh-client-ui-tool', 'failed')
-    expect(el.textContent).toContain('@deepseek-ai/dsh-client-ui-layout')
-    expect(el.textContent).toContain('@deepseek-ai/dsh-client-ui-tool')
+    page.setState('@liusiqi-dev/dsh-client-ui-tool', 'failed')
+    expect(el.textContent).toContain('@liusiqi-dev/dsh-client-ui-layout')
+    expect(el.textContent).toContain('@liusiqi-dev/dsh-client-ui-tool')
     expect(el.textContent).not.toContain('ok')
     expect(el.textContent).not.toContain('Loading plugins…')
   })

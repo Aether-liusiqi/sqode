@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-client-ui-reference",
+  "name": "@liusiqi-dev/dsh-client-ui-reference",
   "description": "Unified Web @file and @session reference source",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,12 +28,12 @@
   "dsh": {
     "client": {
       "inject": [
-        "@deepseek-ai/dsh-api-remotes",
-        "@deepseek-ai/dsh-api-session-controller",
-        "@deepseek-ai/dsh-client-connection",
-        "@deepseek-ai/dsh-client-locale",
-        "@deepseek-ai/dsh-client-ui-input-trigger",
-        "@deepseek-ai/dsh-client-ui-sidebar-right"
+        "@liusiqi-dev/dsh-api-remotes",
+        "@liusiqi-dev/dsh-api-session-controller",
+        "@liusiqi-dev/dsh-client-connection",
+        "@liusiqi-dev/dsh-client-locale",
+        "@liusiqi-dev/dsh-client-ui-input-trigger",
+        "@liusiqi-dev/dsh-client-ui-sidebar-right"
       ],
       "platform": "web"
     }
@@ -44,23 +44,23 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~"
+    "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/dsh-api-remotes": "workspace:*",
-    "@deepseek-ai/dsh-api-session-controller": "workspace:*",
-    "@deepseek-ai/dsh-client-connection": "workspace:*",
-    "@deepseek-ai/dsh-client-locale": "workspace:*",
-    "@deepseek-ai/dsh-client-test-runtime": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-input-trigger": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-primitives": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-slots": "workspace:*",
-    "@deepseek-ai/dsh-file-reference": "workspace:*",
-    "@deepseek-ai/dsh-session-reference": "workspace:*",
-    "@deepseek-ai/dsh-typert-protocol": "workspace:*",
-    "@deepseek-ai/dsh-util-workspace-path": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-client-ui-sidebar-right": "workspace:*"
+    "@liusiqi-dev/dsh-api-remotes": "workspace:*",
+    "@liusiqi-dev/dsh-api-session-controller": "workspace:*",
+    "@liusiqi-dev/dsh-client-connection": "workspace:*",
+    "@liusiqi-dev/dsh-client-locale": "workspace:*",
+    "@liusiqi-dev/dsh-client-test-runtime": "workspace:*",
+    "@liusiqi-dev/dsh-client-ui-input-trigger": "workspace:*",
+    "@liusiqi-dev/dsh-client-ui-primitives": "workspace:*",
+    "@liusiqi-dev/dsh-client-ui-slots": "workspace:*",
+    "@liusiqi-dev/dsh-file-reference": "workspace:*",
+    "@liusiqi-dev/dsh-session-reference": "workspace:*",
+    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/dsh-util-workspace-path": "workspace:*",
+    "@liusiqi-dev/cordis": "workspace:~",
+    "@liusiqi-dev/dsh-client-ui-sidebar-right": "workspace:*"
   },
   "files": [
     "lib/index.js",

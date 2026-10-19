@@ -1,9 +1,9 @@
 /** Read-only Host and Client runtime API discovery for plugin development. */
-import type { Context } from '@deepseek-ai/cordis'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import type { JsonValue } from '@deepseek-ai/dsh-util-values'
-import { defineTool } from '@deepseek-ai/dsh-tools'
-import type { ToolExecution } from '@deepseek-ai/dsh-tools'
+import type { Context } from '@liusiqi-dev/cordis'
+import type { Agent } from '@liusiqi-dev/dsh-agent'
+import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
+import { defineTool } from '@liusiqi-dev/dsh-tools'
+import type { ToolExecution } from '@liusiqi-dev/dsh-tools'
 import { presentInspectListCall, presentInspectQueryCall } from './present.ts'
 
 export const name = 'tool-cordis'
@@ -15,7 +15,7 @@ function requireAgent(exec: ToolExecution): Agent {
 }
 
 /** Register read-only runtime inspection tools over the Host providers that
- * `@deepseek-ai/dsh-tool-cordis/host` registers once per process.
+ * `@liusiqi-dev/dsh-tool-cordis/host` registers once per process.
  * @param ctx Agent-scoped registration context.
  */
 export function apply(ctx: Context): void {

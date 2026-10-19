@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-client-file-upload",
+  "name": "@liusiqi-dev/dsh-client-file-upload",
   "description": "Agent-scoped browser file upload, streaming intake, and staged receipt service",
   "version": "1.0.0",
   "publishConfig": {
@@ -40,7 +40,7 @@
   "dsh": {
     "client": {
       "inject": [
-        "@deepseek-ai/dsh-api-remotes"
+        "@liusiqi-dev/dsh-api-remotes"
       ],
       "platform": "web",
       "immediately": true
@@ -63,22 +63,22 @@
   ],
   "dependencies": {
     "zod": "^4.4.3",
-    "@deepseek-ai/dsh-typert-protocol": "workspace:*",
-    "@deepseek-ai/dsh-brand": "workspace:*"
+    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/dsh-brand": "workspace:*"
   },
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-scope": "workspace:*"
+    "@liusiqi-dev/cordis": "workspace:~",
+    "@liusiqi-dev/dsh-scope": "workspace:*"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-client-connection": "workspace:*",
-    "@deepseek-ai/dsh-commands": "workspace:*",
-    "@deepseek-ai/dsh-scope": "workspace:*",
-    "@deepseek-ai/dsh-util-crypto": "workspace:*",
-    "@deepseek-ai/dsh-api-remotes": "workspace:*",
-    "@deepseek-ai/dsh-session": "workspace:*",
-    "@deepseek-ai/dsh-attachment": "workspace:*"
+    "@liusiqi-dev/cordis": "workspace:~",
+    "@liusiqi-dev/dsh-agent": "workspace:*",
+    "@liusiqi-dev/dsh-client-connection": "workspace:*",
+    "@liusiqi-dev/dsh-commands": "workspace:*",
+    "@liusiqi-dev/dsh-scope": "workspace:*",
+    "@liusiqi-dev/dsh-util-crypto": "workspace:*",
+    "@liusiqi-dev/dsh-api-remotes": "workspace:*",
+    "@liusiqi-dev/dsh-session": "workspace:*",
+    "@liusiqi-dev/dsh-attachment": "workspace:*"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-client-shortcuts",
+  "name": "@liusiqi-dev/dsh-client-shortcuts",
   "description": "Application keyboard command registry and physical-key routing",
   "version": "1.0.0",
   "publishConfig": {
@@ -32,7 +32,7 @@
   "dsh": {
     "client": {
       "inject": [
-        "@deepseek-ai/dsh-client-locale"
+        "@liusiqi-dev/dsh-client-locale"
       ],
       "platform": "web"
     }
@@ -43,16 +43,16 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~"
+    "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-client-locale": "workspace:*",
-    "@deepseek-ai/dsh-client-store": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-primitives": "workspace:*",
-    "@deepseek-ai/dsh-brand": "workspace:*",
-    "@deepseek-ai/dsh-client-test-runtime": "workspace:*",
-    "@deepseek-ai/dsh-host-webserver": "workspace:*"
+    "@liusiqi-dev/cordis": "workspace:~",
+    "@liusiqi-dev/dsh-client-locale": "workspace:*",
+    "@liusiqi-dev/dsh-client-store": "workspace:*",
+    "@liusiqi-dev/dsh-client-ui-primitives": "workspace:*",
+    "@liusiqi-dev/dsh-brand": "workspace:*",
+    "@liusiqi-dev/dsh-client-test-runtime": "workspace:*",
+    "@liusiqi-dev/dsh-host-webserver": "workspace:*"
   },
   "files": [
     "lib/index.js",
@@ -61,8 +61,8 @@
     "lib/types/**/*.d.ts"
   ],
   "dependencies": {
-    "@deepseek-ai/dsh-util-crypto": "workspace:*",
-    "@deepseek-ai/dsh-util-values": "workspace:*",
-    "@deepseek-ai/schemastery": "workspace:~"
+    "@liusiqi-dev/dsh-util-crypto": "workspace:*",
+    "@liusiqi-dev/dsh-util-values": "workspace:*",
+    "@liusiqi-dev/schemastery": "workspace:~"
   }
 }

@@ -5,19 +5,19 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { afterEach, expect, it, vi } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import Loader from '@deepseek-ai/cordis-plugin-loader'
-import Include from '@deepseek-ai/cordis-plugin-include'
-import AgentRegistry from '@deepseek-ai/dsh-agent'
-import AgentLoop from '@deepseek-ai/dsh-agent-loop'
-import BrowserUseRegistry from '@deepseek-ai/dsh-browser-use'
-import LocalAttachmentStore from '@deepseek-ai/dsh-attachment-local'
-import LlmRuntime, { LlmAdapter, ToolCallId, createUserMessage } from '@deepseek-ai/dsh-llm'
-import type { GenerateOptions, LlmResolvedModelInfo, StreamChunk } from '@deepseek-ai/dsh-llm'
-import SessionStore, { SessionId } from '@deepseek-ai/dsh-session'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
-import SystemPrompt from '@deepseek-ai/dsh-system-prompt'
-import ToolRuntime from '@deepseek-ai/dsh-tools'
+import { Context } from '@liusiqi-dev/cordis'
+import Loader from '@liusiqi-dev/cordis-plugin-loader'
+import Include from '@liusiqi-dev/cordis-plugin-include'
+import AgentRegistry from '@liusiqi-dev/dsh-agent'
+import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
+import BrowserUseRegistry from '@liusiqi-dev/dsh-browser-use'
+import LocalAttachmentStore from '@liusiqi-dev/dsh-attachment-local'
+import LlmRuntime, { LlmAdapter, ToolCallId, createUserMessage } from '@liusiqi-dev/dsh-llm'
+import type { GenerateOptions, LlmResolvedModelInfo, StreamChunk } from '@liusiqi-dev/dsh-llm'
+import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
+import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/dsh-tools'
 import * as Provider from '../src/index.ts'
 import { resetFixture, screenshotBase64 } from './fixtures/stagehand.ts'
 
@@ -75,22 +75,22 @@ it('loads browser tools from cordis.yml, logs browser results, and admits the sc
   resetFixture()
   root = await mkdtemp(join(tmpdir(), 'dsh-stagehand-composition-'))
   const modules = new Map<string, unknown>([
-    ['@deepseek-ai/dsh-llm', LlmRuntime],
-    ['@deepseek-ai/dsh-session', SessionStore],
-    ['@deepseek-ai/dsh-session-projection', SessionProjectionRegistry],
-    ['@deepseek-ai/dsh-system-prompt', SystemPrompt],
-    ['@deepseek-ai/dsh-tools', ToolRuntime],
-    ['@deepseek-ai/dsh-agent', AgentRegistry],
-    ['@deepseek-ai/dsh-agent-loop', AgentLoop],
-    ['@deepseek-ai/dsh-attachment-local', LocalAttachmentStore],
-    ['@deepseek-ai/dsh-browser-use', BrowserUseRegistry],
-    ['@deepseek-ai/dsh-experimental-browser-use-stagehand-native', Provider],
+    ['@liusiqi-dev/dsh-llm', LlmRuntime],
+    ['@liusiqi-dev/dsh-session', SessionStore],
+    ['@liusiqi-dev/dsh-session-projection', SessionProjectionRegistry],
+    ['@liusiqi-dev/dsh-system-prompt', SystemPrompt],
+    ['@liusiqi-dev/dsh-tools', ToolRuntime],
+    ['@liusiqi-dev/dsh-agent', AgentRegistry],
+    ['@liusiqi-dev/dsh-agent-loop', AgentLoop],
+    ['@liusiqi-dev/dsh-attachment-local', LocalAttachmentStore],
+    ['@liusiqi-dev/dsh-browser-use', BrowserUseRegistry],
+    ['@liusiqi-dev/dsh-experimental-browser-use-stagehand-native', Provider],
   ])
   const configPath = join(root, 'cordis.yml')
   await writeFile(configPath, [...modules.keys()].flatMap(name => [
     `- name: '${name}'`,
-    ...name === '@deepseek-ai/dsh-attachment-local' ? ['  config:', `    dshHome: ${JSON.stringify(root)}`] : [],
-    ...name === '@deepseek-ai/dsh-experimental-browser-use-stagehand-native' ? ['  config:', '    mode: launch', '    model:', '      modelName: openai/gpt-5.4-mini', '      apiKey: fixture-model-key'] : [],
+    ...name === '@liusiqi-dev/dsh-attachment-local' ? ['  config:', `    dshHome: ${JSON.stringify(root)}`] : [],
+    ...name === '@liusiqi-dev/dsh-experimental-browser-use-stagehand-native' ? ['  config:', '    mode: launch', '    model:', '      modelName: openai/gpt-5.4-mini', '      apiKey: fixture-model-key'] : [],
   ]).join('\n') + '\n')
   const context = ctx = new Context()
   context.baseUrl = pathToFileURL(root).href + '/'

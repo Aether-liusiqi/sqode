@@ -9,8 +9,8 @@ Each `cordis.yml` entry can carry a `config` block, and the plugin declares a sc
 Create `config-demo.ts` in `tmp/cordis-tutorial`:
 
 ```ts
-import type { Context } from '@deepseek-ai/cordis'
-import Schema from '@deepseek-ai/schemastery'
+import type { Context } from '@liusiqi-dev/cordis'
+import Schema from '@liusiqi-dev/schemastery'
 
 export const name = 'config-demo'
 
@@ -73,9 +73,9 @@ The plugin's fiber goes to FAILED, and this tutorial's launcher exits with statu
 Use `.volatile()` for a field that the plugin reads during each operation. A change to that field updates its stable reference without remounting the plugin. Read it with `.get()`:
 
 ```ts
-import type { Context } from '@deepseek-ai/cordis'
-import type {} from '@deepseek-ai/cordis-plugin-loader'
-import Schema from '@deepseek-ai/schemastery'
+import type { Context } from '@liusiqi-dev/cordis'
+import type {} from '@liusiqi-dev/cordis-plugin-loader'
+import Schema from '@liusiqi-dev/schemastery'
 
 export const Config = Schema.object({
   greeting: Schema.string().default('Hello').volatile(),

@@ -1,8 +1,8 @@
 /** Authenticated speech domain methods validate audio before selecting a recognizer. */
-import { Context } from '@deepseek-ai/cordis'
+import { Context } from '@liusiqi-dev/cordis'
 import { afterEach, expect, it, vi } from 'vitest'
-import SpeechToText from '@deepseek-ai/dsh-experimental-speech-to-text'
-import type { SpeechProviderId } from '@deepseek-ai/dsh-experimental-speech-to-text/types'
+import SpeechToText from '@liusiqi-dev/dsh-experimental-speech-to-text'
+import type { SpeechProviderId } from '@liusiqi-dev/dsh-experimental-speech-to-text/types'
 import SpeechController from '../src/index.ts'
 
 const roots: Context[] = []

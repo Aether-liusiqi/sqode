@@ -3,15 +3,15 @@ import { mkdtemp, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterEach, describe, expect, it, vi, type Mock } from 'vitest'
-import { Context, LoggerLevel } from '@deepseek-ai/cordis'
-import LlmRuntime from '@deepseek-ai/dsh-llm'
-import DeepSeekLlmApiExtensionRegistry from '@deepseek-ai/dsh-deepseek-llm-api-extensions'
-import type { DeepSeekLlmApiExtensionRequest } from '@deepseek-ai/dsh-deepseek-llm-api-extensions'
-import { SessionId } from '@deepseek-ai/dsh-session'
-import * as DeepSeek from '@deepseek-ai/dsh-llm-deepseek-api-key'
+import { Context, LoggerLevel } from '@liusiqi-dev/cordis'
+import LlmRuntime from '@liusiqi-dev/dsh-llm'
+import DeepSeekLlmApiExtensionRegistry from '@liusiqi-dev/dsh-deepseek-llm-api-extensions'
+import type { DeepSeekLlmApiExtensionRequest } from '@liusiqi-dev/dsh-deepseek-llm-api-extensions'
+import { SessionId } from '@liusiqi-dev/dsh-session'
+import * as DeepSeek from '@liusiqi-dev/dsh-llm-deepseek-api-key'
 import { adapter, assemble, options, sse, textEvents } from './helpers.ts'
 
-declare module '@deepseek-ai/dsh-deepseek-llm-api-extensions' {
+declare module '@liusiqi-dev/dsh-deepseek-llm-api-extensions' {
   interface DeepSeekLlmApiExtensionMap {
     dsh_messages_test: { value: string }
   }

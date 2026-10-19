@@ -1,4 +1,4 @@
-import { Context } from '@deepseek-ai/cordis'
+import { Context } from '@liusiqi-dev/cordis'
 import { describe, expect, it } from 'vitest'
 import ComputerUseRegistry from '../src/index.ts'
 import { ComputerUseProviderName } from '../src/brand.ts'

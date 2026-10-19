@@ -1,12 +1,12 @@
 // @vitest-environment jsdom
 import { act, cleanup, render, within } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { makeTranslate, RemoteError } from '@deepseek-ai/dsh-client-test-runtime'
-import type { RemoteResult } from '@deepseek-ai/dsh-api-remotes/client'
-import type { ScheduleCatalogEntry, ScheduleDeleteResult } from '@deepseek-ai/dsh-schedule/client'
-import { ScheduleId } from '@deepseek-ai/dsh-schedule'
-import type { SessionId } from '@deepseek-ai/dsh-session/types'
-import { bindSnapshotSelector } from '@deepseek-ai/dsh-client-ui-renderer/src/client/bind.ts'
+import { makeTranslate, RemoteError } from '@liusiqi-dev/dsh-client-test-runtime'
+import type { RemoteResult } from '@liusiqi-dev/dsh-api-remotes/client'
+import type { ScheduleCatalogEntry, ScheduleDeleteResult } from '@liusiqi-dev/dsh-schedule/client'
+import { ScheduleId } from '@liusiqi-dev/dsh-schedule'
+import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import { bindSnapshotSelector } from '@liusiqi-dev/dsh-client-ui-renderer/src/client/bind.ts'
 import { createCatalogSource, type CatalogInjected } from '../src/client/catalog-source.ts'
 import {
   formatScheduleAbsolute, formatScheduleFrequency, formatScheduleRelative,

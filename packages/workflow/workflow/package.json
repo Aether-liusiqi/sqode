@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-workflow",
+  "name": "@liusiqi-dev/dsh-workflow",
   "description": "Workflow capability seam: ctx.workflowEngine service, run vocabulary, and workflow/* events",
   "version": "1.0.0",
   "publishConfig": {
@@ -37,19 +37,19 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-brand": "workspace:*",
-    "@deepseek-ai/dsh-invariants": "workspace:*",
-    "@deepseek-ai/dsh-llm": "workspace:*",
-    "@deepseek-ai/dsh-session": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~"
+    "@liusiqi-dev/dsh-agent": "workspace:*",
+    "@liusiqi-dev/dsh-brand": "workspace:*",
+    "@liusiqi-dev/dsh-invariants": "workspace:*",
+    "@liusiqi-dev/dsh-llm": "workspace:*",
+    "@liusiqi-dev/dsh-session": "workspace:*",
+    "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-brand": "workspace:*",
-    "@deepseek-ai/dsh-invariants": "workspace:*",
-    "@deepseek-ai/dsh-llm": "workspace:*",
-    "@deepseek-ai/dsh-session": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~"
+    "@liusiqi-dev/dsh-agent": "workspace:*",
+    "@liusiqi-dev/dsh-brand": "workspace:*",
+    "@liusiqi-dev/dsh-invariants": "workspace:*",
+    "@liusiqi-dev/dsh-llm": "workspace:*",
+    "@liusiqi-dev/dsh-session": "workspace:*",
+    "@liusiqi-dev/cordis": "workspace:~"
   }
 }

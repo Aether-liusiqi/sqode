@@ -1,25 +1,25 @@
 /**
  * Service Definition for the user-questions capability seam (`ctx.userQuestions`): a UI-backed service for
  * pausing an agent tool call until the human answers a question. The model-
- * facing tool lives in `@deepseek-ai/dsh-tool-ask-user`; UI packages compose
+ * facing tool lives in `@liusiqi-dev/dsh-tool-ask-user`; UI packages compose
  * answerers on the Agent-scoped Cordis waterfall.
  *
- * @module @deepseek-ai/dsh-user-questions
+ * @module @liusiqi-dev/dsh-user-questions
  */
 
-import { Context } from '@deepseek-ai/cordis'
-import type {} from '@deepseek-ai/dsh-agent'
-import { createUserMessage, HarnessError, type MessageId, type ToolCallId, type UserMessage } from '@deepseek-ai/dsh-llm'
-import type { Session } from '@deepseek-ai/dsh-session'
-import { scopeTarget } from '@deepseek-ai/dsh-scope'
-import { Remote, TypertRemoteService } from '@deepseek-ai/dsh-typert-protocol'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import type {} from '@deepseek-ai/dsh-session-projection'
-import z from '@deepseek-ai/schemastery'
+import { Context } from '@liusiqi-dev/cordis'
+import type {} from '@liusiqi-dev/dsh-agent'
+import { createUserMessage, HarnessError, type MessageId, type ToolCallId, type UserMessage } from '@liusiqi-dev/dsh-llm'
+import type { Session } from '@liusiqi-dev/dsh-session'
+import { scopeTarget } from '@liusiqi-dev/dsh-scope'
+import { Remote, TypertRemoteService } from '@liusiqi-dev/dsh-typert-protocol'
+import type { Agent } from '@liusiqi-dev/dsh-agent'
+import type {} from '@liusiqi-dev/dsh-session-projection'
+import z from '@liusiqi-dev/schemastery'
 import { userQuestionProjectionDefinition } from './projection.ts'
 import { TimedQuestionWait } from './timed-wait.ts'
 
-declare module '@deepseek-ai/cordis' {
+declare module '@liusiqi-dev/cordis' {
   interface Context {
     userQuestions: UserQuestionService
   }

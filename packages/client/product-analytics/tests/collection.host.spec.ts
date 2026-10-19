@@ -1,11 +1,11 @@
-import OTel from '@deepseek-ai/dsh-otel'
-import { Context } from '@deepseek-ai/cordis'
+import OTel from '@liusiqi-dev/dsh-otel'
+import { Context } from '@liusiqi-dev/cordis'
 import { createServer } from 'node:http'
 import { once } from 'node:events'
 import { afterEach, expect, it, vi } from 'vitest'
-import ProductTelemetry, { Config as TelemetryConfig, type ProductTelemetryRecord } from '@deepseek-ai/dsh-host-product-telemetry-otel'
-import { Session, SessionId, SessionSeq } from '@deepseek-ai/dsh-session'
-import { CompactionId } from '@deepseek-ai/dsh-compaction'
+import ProductTelemetry, { Config as TelemetryConfig, type ProductTelemetryRecord } from '@liusiqi-dev/dsh-host-product-telemetry-otel'
+import { Session, SessionId, SessionSeq } from '@liusiqi-dev/dsh-session'
+import { CompactionId } from '@liusiqi-dev/dsh-compaction'
 import Analytics from '../src/index.ts'
 
 const cleanup: (() => Promise<void>)[] = []

@@ -1,17 +1,17 @@
 /**
  * Execution types for the bash executor seam. Background job semantics belong
- * to `@deepseek-ai/dsh-jobs`; this seam exposes only process handles. The
+ * to `@liusiqi-dev/dsh-jobs`; this seam exposes only process handles. The
  * managed-environment and captured-output vocabulary is owned by the
  * subprocess seam and re-exported here so bash consumers keep one import
  * root.
  * @module dsh-shell/types
  */
 
-import type { SandboxEnforcement, SandboxExecutionPolicy, SandboxMode } from '@deepseek-ai/dsh-sandbox'
-import type { CollectedOutput, DshEnvironment, SubprocessOutputReader } from '@deepseek-ai/dsh-subprocess'
+import type { SandboxEnforcement, SandboxExecutionPolicy, SandboxMode } from '@liusiqi-dev/dsh-sandbox'
+import type { CollectedOutput, DshEnvironment, SubprocessOutputReader } from '@liusiqi-dev/dsh-subprocess'
 
-export { SQODE_ENV_PREFIX } from '@deepseek-ai/dsh-subprocess'
-export type { CollectedOutput, DshEnvironment, DshEnvironmentKey, SubprocessOutputRead, SubprocessOutputReader } from '@deepseek-ai/dsh-subprocess'
+export { SQODE_ENV_PREFIX } from '@liusiqi-dev/dsh-subprocess'
+export type { CollectedOutput, DshEnvironment, DshEnvironmentKey, SubprocessOutputRead, SubprocessOutputReader } from '@liusiqi-dev/dsh-subprocess'
 
 /**
  * Non-consuming offset readers over a background process's captured streams,

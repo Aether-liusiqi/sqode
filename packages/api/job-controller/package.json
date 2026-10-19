@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-api-job-controller",
+  "name": "@liusiqi-dev/dsh-api-job-controller",
   "description": "Job Remote observation stream and the reference-counted client job-output service",
   "version": "1.0.0",
   "publishConfig": {
@@ -40,11 +40,11 @@
   "dsh": {
     "client": {
       "external": [
-        "@deepseek-ai/dsh-api-gateway/client"
+        "@liusiqi-dev/dsh-api-gateway/client"
       ],
       "inject": [
-        "@deepseek-ai/dsh-api-gateway",
-        "@deepseek-ai/dsh-client-connection"
+        "@liusiqi-dev/dsh-api-gateway",
+        "@liusiqi-dev/dsh-client-connection"
       ],
       "platform": "web"
     }
@@ -65,22 +65,22 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@deepseek-ai/dsh-typert-protocol": "workspace:*",
-    "@deepseek-ai/schemastery": "workspace:~",
+    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/schemastery": "workspace:~",
     "zod": "^4.4.3"
   },
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~"
+    "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-api-gateway": "workspace:*",
-    "@deepseek-ai/dsh-client-connection": "workspace:*",
-    "@deepseek-ai/dsh-client-store": "workspace:*",
-    "@deepseek-ai/dsh-jobs": "workspace:*",
-    "@deepseek-ai/dsh-jobs-local": "workspace:*",
-    "@deepseek-ai/dsh-session": "workspace:*",
-    "@deepseek-ai/dsh-typert-registry": "workspace:*"
+    "@liusiqi-dev/cordis": "workspace:~",
+    "@liusiqi-dev/dsh-agent": "workspace:*",
+    "@liusiqi-dev/dsh-api-gateway": "workspace:*",
+    "@liusiqi-dev/dsh-client-connection": "workspace:*",
+    "@liusiqi-dev/dsh-client-store": "workspace:*",
+    "@liusiqi-dev/dsh-jobs": "workspace:*",
+    "@liusiqi-dev/dsh-jobs-local": "workspace:*",
+    "@liusiqi-dev/dsh-session": "workspace:*",
+    "@liusiqi-dev/dsh-typert-registry": "workspace:*"
   }
 }

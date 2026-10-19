@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-experimental-tool-agent-team",
+  "name": "@liusiqi-dev/dsh-experimental-tool-agent-team",
   "description": "Scoped model-facing Agent Teams tools over ctx.agentTeams",
   "version": "1.0.0",
   "publishConfig": {
@@ -29,34 +29,34 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@deepseek-ai/schemastery": "workspace:~"
+    "@liusiqi-dev/schemastery": "workspace:~"
   },
   "peerDependencies": {
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-session": "workspace:*",
-    "@deepseek-ai/dsh-system-prompt": "workspace:*",
-    "@deepseek-ai/dsh-experimental-agent-team": "workspace:*",
-    "@deepseek-ai/dsh-tools": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~"
+    "@liusiqi-dev/dsh-agent": "workspace:*",
+    "@liusiqi-dev/dsh-session": "workspace:*",
+    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
+    "@liusiqi-dev/dsh-experimental-agent-team": "workspace:*",
+    "@liusiqi-dev/dsh-tools": "workspace:*",
+    "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-agent-loop": "workspace:*",
-    "@deepseek-ai/dsh-agent-loop-testkit": "workspace:*",
-    "@deepseek-ai/dsh-session": "workspace:*",
-    "@deepseek-ai/dsh-session-projection": "workspace:*",
-    "@deepseek-ai/dsh-session-persistence-jsonl": "workspace:*",
-    "@deepseek-ai/dsh-session-query": "workspace:*",
-    "@deepseek-ai/dsh-scope": "workspace:*",
-    "@deepseek-ai/dsh-subagent": "workspace:*",
-    "@deepseek-ai/dsh-subagent-fork-in-process": "workspace:*",
-    "@deepseek-ai/dsh-subagent-spawn-in-process": "workspace:*",
-    "@deepseek-ai/dsh-tool-subagent-control": "workspace:*",
-    "@deepseek-ai/dsh-system-prompt": "workspace:*",
-    "@deepseek-ai/dsh-experimental-agent-team": "workspace:*",
-    "@deepseek-ai/dsh-tools": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-llm": "workspace:*",
-    "@deepseek-ai/dsh-llm-deepseek": "workspace:*"
+    "@liusiqi-dev/dsh-agent": "workspace:*",
+    "@liusiqi-dev/dsh-agent-loop": "workspace:*",
+    "@liusiqi-dev/dsh-agent-loop-testkit": "workspace:*",
+    "@liusiqi-dev/dsh-session": "workspace:*",
+    "@liusiqi-dev/dsh-session-projection": "workspace:*",
+    "@liusiqi-dev/dsh-session-persistence-jsonl": "workspace:*",
+    "@liusiqi-dev/dsh-session-query": "workspace:*",
+    "@liusiqi-dev/dsh-scope": "workspace:*",
+    "@liusiqi-dev/dsh-subagent": "workspace:*",
+    "@liusiqi-dev/dsh-subagent-fork-in-process": "workspace:*",
+    "@liusiqi-dev/dsh-subagent-spawn-in-process": "workspace:*",
+    "@liusiqi-dev/dsh-tool-subagent-control": "workspace:*",
+    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
+    "@liusiqi-dev/dsh-experimental-agent-team": "workspace:*",
+    "@liusiqi-dev/dsh-tools": "workspace:*",
+    "@liusiqi-dev/cordis": "workspace:~",
+    "@liusiqi-dev/dsh-llm": "workspace:*",
+    "@liusiqi-dev/dsh-llm-deepseek": "workspace:*"
   }
 }

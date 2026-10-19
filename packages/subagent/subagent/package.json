@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-subagent",
+  "name": "@liusiqi-dev/dsh-subagent",
   "description": "Abstract subagent seam (ctx.subagents): named-provider registry for delegating to child agents",
   "version": "1.0.0",
   "publishConfig": {
@@ -53,95 +53,95 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@deepseek-ai/dsh-brand": "workspace:*",
-    "@deepseek-ai/dsh-chunked-list": "workspace:*",
-    "@deepseek-ai/dsh-util-values": "workspace:*",
-    "@deepseek-ai/schemastery": "workspace:~",
+    "@liusiqi-dev/dsh-brand": "workspace:*",
+    "@liusiqi-dev/dsh-chunked-list": "workspace:*",
+    "@liusiqi-dev/dsh-util-values": "workspace:*",
+    "@liusiqi-dev/schemastery": "workspace:~",
     "zod": "^4.4.3"
   },
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-agent-preset-registry": "workspace:*",
-    "@deepseek-ai/dsh-attachment": "workspace:*",
-    "@deepseek-ai/dsh-invariants": "workspace:*",
-    "@deepseek-ai/dsh-jobs": "workspace:*",
-    "@deepseek-ai/dsh-llm": "workspace:*",
-    "@deepseek-ai/dsh-sandbox": "workspace:*",
-    "@deepseek-ai/dsh-sandbox-policy": "workspace:*",
-    "@deepseek-ai/dsh-scope": "workspace:*",
-    "@deepseek-ai/dsh-session": "workspace:*",
-    "@deepseek-ai/dsh-session-persistence": "workspace:*",
-    "@deepseek-ai/dsh-session-projection": "workspace:*",
-    "@deepseek-ai/dsh-session-query": "workspace:*",
-    "@deepseek-ai/dsh-system-prompt": "workspace:*",
-    "@deepseek-ai/dsh-tools": "workspace:*",
-    "@deepseek-ai/dsh-typert-protocol": "workspace:*",
-    "@deepseek-ai/dsh-user-approval": "workspace:*",
-    "@deepseek-ai/dsh-util-time": "workspace:*",
-    "@deepseek-ai/dsh-permission-presets": "workspace:*",
-    "@deepseek-ai/dsh-workspace": "workspace:*"
+    "@liusiqi-dev/cordis": "workspace:~",
+    "@liusiqi-dev/dsh-agent": "workspace:*",
+    "@liusiqi-dev/dsh-agent-preset-registry": "workspace:*",
+    "@liusiqi-dev/dsh-attachment": "workspace:*",
+    "@liusiqi-dev/dsh-invariants": "workspace:*",
+    "@liusiqi-dev/dsh-jobs": "workspace:*",
+    "@liusiqi-dev/dsh-llm": "workspace:*",
+    "@liusiqi-dev/dsh-sandbox": "workspace:*",
+    "@liusiqi-dev/dsh-sandbox-policy": "workspace:*",
+    "@liusiqi-dev/dsh-scope": "workspace:*",
+    "@liusiqi-dev/dsh-session": "workspace:*",
+    "@liusiqi-dev/dsh-session-persistence": "workspace:*",
+    "@liusiqi-dev/dsh-session-projection": "workspace:*",
+    "@liusiqi-dev/dsh-session-query": "workspace:*",
+    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
+    "@liusiqi-dev/dsh-tools": "workspace:*",
+    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/dsh-user-approval": "workspace:*",
+    "@liusiqi-dev/dsh-util-time": "workspace:*",
+    "@liusiqi-dev/dsh-permission-presets": "workspace:*",
+    "@liusiqi-dev/dsh-workspace": "workspace:*"
   },
   "peerDependenciesMeta": {
-    "@deepseek-ai/dsh-agent-preset-registry": {
+    "@liusiqi-dev/dsh-agent-preset-registry": {
       "optional": true
     },
-    "@deepseek-ai/dsh-permission-presets": {
+    "@liusiqi-dev/dsh-permission-presets": {
       "optional": true
     },
-    "@deepseek-ai/dsh-sandbox": {
+    "@liusiqi-dev/dsh-sandbox": {
       "optional": true
     },
-    "@deepseek-ai/dsh-sandbox-policy": {
+    "@liusiqi-dev/dsh-sandbox-policy": {
       "optional": true
     },
-    "@deepseek-ai/dsh-session-persistence": {
+    "@liusiqi-dev/dsh-session-persistence": {
       "optional": true
     },
-    "@deepseek-ai/dsh-session-projection": {
+    "@liusiqi-dev/dsh-session-projection": {
       "optional": true
     },
-    "@deepseek-ai/dsh-session-query": {
+    "@liusiqi-dev/dsh-session-query": {
       "optional": true
     },
-    "@deepseek-ai/dsh-workspace": {
+    "@liusiqi-dev/dsh-workspace": {
       "optional": true
     },
-    "@deepseek-ai/dsh-jobs": {
+    "@liusiqi-dev/dsh-jobs": {
       "optional": true
     },
-    "@deepseek-ai/dsh-user-approval": {
+    "@liusiqi-dev/dsh-user-approval": {
       "optional": true
     },
-    "@deepseek-ai/dsh-settings": {
+    "@liusiqi-dev/dsh-settings": {
       "optional": true
     }
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-agent-preset-registry": "workspace:*",
-    "@deepseek-ai/dsh-attachment": "workspace:*",
-    "@deepseek-ai/dsh-invariants": "workspace:*",
-    "@deepseek-ai/dsh-jobs": "workspace:*",
-    "@deepseek-ai/dsh-llm": "workspace:*",
-    "@deepseek-ai/dsh-sandbox": "workspace:*",
-    "@deepseek-ai/dsh-sandbox-policy": "workspace:*",
-    "@deepseek-ai/dsh-schedule": "workspace:*",
-    "@deepseek-ai/dsh-scope": "workspace:*",
-    "@deepseek-ai/dsh-session": "workspace:*",
-    "@deepseek-ai/dsh-session-persistence": "workspace:*",
-    "@deepseek-ai/dsh-session-projection": "workspace:*",
-    "@deepseek-ai/dsh-session-query": "workspace:*",
-    "@deepseek-ai/dsh-storage": "workspace:*",
-    "@deepseek-ai/dsh-storage-domain": "workspace:*",
-    "@deepseek-ai/dsh-storage-json": "workspace:*",
-    "@deepseek-ai/dsh-system-prompt": "workspace:*",
-    "@deepseek-ai/dsh-tools": "workspace:*",
-    "@deepseek-ai/dsh-typert-protocol": "workspace:*",
-    "@deepseek-ai/dsh-user-approval": "workspace:*",
-    "@deepseek-ai/dsh-util-time": "workspace:*",
-    "@deepseek-ai/dsh-permission-presets": "workspace:*",
-    "@deepseek-ai/dsh-workspace": "workspace:*"
+    "@liusiqi-dev/cordis": "workspace:~",
+    "@liusiqi-dev/dsh-agent": "workspace:*",
+    "@liusiqi-dev/dsh-agent-preset-registry": "workspace:*",
+    "@liusiqi-dev/dsh-attachment": "workspace:*",
+    "@liusiqi-dev/dsh-invariants": "workspace:*",
+    "@liusiqi-dev/dsh-jobs": "workspace:*",
+    "@liusiqi-dev/dsh-llm": "workspace:*",
+    "@liusiqi-dev/dsh-sandbox": "workspace:*",
+    "@liusiqi-dev/dsh-sandbox-policy": "workspace:*",
+    "@liusiqi-dev/dsh-schedule": "workspace:*",
+    "@liusiqi-dev/dsh-scope": "workspace:*",
+    "@liusiqi-dev/dsh-session": "workspace:*",
+    "@liusiqi-dev/dsh-session-persistence": "workspace:*",
+    "@liusiqi-dev/dsh-session-projection": "workspace:*",
+    "@liusiqi-dev/dsh-session-query": "workspace:*",
+    "@liusiqi-dev/dsh-storage": "workspace:*",
+    "@liusiqi-dev/dsh-storage-domain": "workspace:*",
+    "@liusiqi-dev/dsh-storage-json": "workspace:*",
+    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
+    "@liusiqi-dev/dsh-tools": "workspace:*",
+    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/dsh-user-approval": "workspace:*",
+    "@liusiqi-dev/dsh-util-time": "workspace:*",
+    "@liusiqi-dev/dsh-permission-presets": "workspace:*",
+    "@liusiqi-dev/dsh-workspace": "workspace:*"
   }
 }

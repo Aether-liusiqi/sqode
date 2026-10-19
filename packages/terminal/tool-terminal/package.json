@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-tool-terminal",
+  "name": "@liusiqi-dev/dsh-tool-terminal",
   "description": "Six model-facing persistent PTY tools with owner isolation and generic background-job integration",
   "version": "1.0.0",
   "publishConfig": {
@@ -27,37 +27,37 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@deepseek-ai/schemastery": "workspace:~"
+    "@liusiqi-dev/schemastery": "workspace:~"
   },
   "peerDependencies": {
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-llm": "workspace:*",
-    "@deepseek-ai/dsh-terminal": "workspace:*",
-    "@deepseek-ai/dsh-output-retention": "workspace:*",
-    "@deepseek-ai/dsh-system-prompt": "workspace:*",
-    "@deepseek-ai/dsh-jobs": "workspace:*",
-    "@deepseek-ai/dsh-tools": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~"
+    "@liusiqi-dev/dsh-agent": "workspace:*",
+    "@liusiqi-dev/dsh-llm": "workspace:*",
+    "@liusiqi-dev/dsh-terminal": "workspace:*",
+    "@liusiqi-dev/dsh-output-retention": "workspace:*",
+    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
+    "@liusiqi-dev/dsh-jobs": "workspace:*",
+    "@liusiqi-dev/dsh-tools": "workspace:*",
+    "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis-plugin-include": "workspace:~",
-    "@deepseek-ai/cordis-plugin-loader": "workspace:~",
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-agent-loop-testkit": "workspace:*",
-    "@deepseek-ai/dsh-llm": "workspace:*",
-    "@deepseek-ai/dsh-terminal": "workspace:*",
-    "@deepseek-ai/dsh-terminal-bash": "workspace:*",
-    "@deepseek-ai/dsh-output-retention": "workspace:*",
-    "@deepseek-ai/dsh-sandbox": "workspace:*",
-    "@deepseek-ai/dsh-sandbox-policy": "workspace:*",
-    "@deepseek-ai/dsh-session": "workspace:*",
-    "@deepseek-ai/dsh-subprocess-local": "workspace:*",
-    "@deepseek-ai/dsh-system-prompt": "workspace:*",
-    "@deepseek-ai/dsh-jobs": "workspace:*",
-    "@deepseek-ai/dsh-jobs-local": "workspace:*",
-    "@deepseek-ai/dsh-tool-jobs": "workspace:*",
-    "@deepseek-ai/dsh-tools": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-session-projection": "workspace:*"
+    "@liusiqi-dev/cordis-plugin-include": "workspace:~",
+    "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
+    "@liusiqi-dev/dsh-agent": "workspace:*",
+    "@liusiqi-dev/dsh-agent-loop-testkit": "workspace:*",
+    "@liusiqi-dev/dsh-llm": "workspace:*",
+    "@liusiqi-dev/dsh-terminal": "workspace:*",
+    "@liusiqi-dev/dsh-terminal-bash": "workspace:*",
+    "@liusiqi-dev/dsh-output-retention": "workspace:*",
+    "@liusiqi-dev/dsh-sandbox": "workspace:*",
+    "@liusiqi-dev/dsh-sandbox-policy": "workspace:*",
+    "@liusiqi-dev/dsh-session": "workspace:*",
+    "@liusiqi-dev/dsh-subprocess-local": "workspace:*",
+    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
+    "@liusiqi-dev/dsh-jobs": "workspace:*",
+    "@liusiqi-dev/dsh-jobs-local": "workspace:*",
+    "@liusiqi-dev/dsh-tool-jobs": "workspace:*",
+    "@liusiqi-dev/dsh-tools": "workspace:*",
+    "@liusiqi-dev/cordis": "workspace:~",
+    "@liusiqi-dev/dsh-session-projection": "workspace:*"
   }
 }

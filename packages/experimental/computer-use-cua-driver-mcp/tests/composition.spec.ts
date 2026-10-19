@@ -4,20 +4,20 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { Context, FiberState } from '@deepseek-ai/cordis'
-import Loader from '@deepseek-ai/cordis-plugin-loader'
-import Include from '@deepseek-ai/cordis-plugin-include'
-import ComputerUse from '@deepseek-ai/dsh-computer-use'
-import { ComputerUseProviderName } from '@deepseek-ai/dsh-computer-use/brand'
-import SystemPrompt from '@deepseek-ai/dsh-system-prompt'
-import ToolRuntime from '@deepseek-ai/dsh-tools'
-import LlmRuntime, { LlmAdapter, ToolCallId, createUserMessage } from '@deepseek-ai/dsh-llm'
-import type { GenerateOptions, LlmResolvedModelInfo, StreamChunk } from '@deepseek-ai/dsh-llm'
-import SessionStore, { SessionId } from '@deepseek-ai/dsh-session'
-import AgentRegistry from '@deepseek-ai/dsh-agent'
-import AgentLoop from '@deepseek-ai/dsh-agent-loop'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
-import LocalAttachmentStore from '@deepseek-ai/dsh-attachment-local'
+import { Context, FiberState } from '@liusiqi-dev/cordis'
+import Loader from '@liusiqi-dev/cordis-plugin-loader'
+import Include from '@liusiqi-dev/cordis-plugin-include'
+import ComputerUse from '@liusiqi-dev/dsh-computer-use'
+import { ComputerUseProviderName } from '@liusiqi-dev/dsh-computer-use/brand'
+import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/dsh-tools'
+import LlmRuntime, { LlmAdapter, ToolCallId, createUserMessage } from '@liusiqi-dev/dsh-llm'
+import type { GenerateOptions, LlmResolvedModelInfo, StreamChunk } from '@liusiqi-dev/dsh-llm'
+import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
+import AgentRegistry from '@liusiqi-dev/dsh-agent'
+import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
+import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
+import LocalAttachmentStore from '@liusiqi-dev/dsh-attachment-local'
 import * as Provider from '../src/index.ts'
 
 const TOOL = 'mcp__cua-driver-mcp__screenshot'
@@ -60,31 +60,31 @@ async function load(mode?: string): Promise<{ ctx: Context; root: string; model:
   roots.push(root)
   const model = new ScreenshotModel()
   const modules = new Map<string, unknown>([
-    ['@deepseek-ai/dsh-computer-use', ComputerUse],
-    ['@deepseek-ai/dsh-system-prompt', SystemPrompt],
-    ['@deepseek-ai/dsh-tools', ToolRuntime],
-    ['@deepseek-ai/dsh-llm', LlmRuntime],
-    ['@deepseek-ai/dsh-session', SessionStore],
-    ['@deepseek-ai/dsh-agent', AgentRegistry],
-    ['@deepseek-ai/dsh-agent-loop', AgentLoop],
-    ['@deepseek-ai/dsh-session-projection', SessionProjectionRegistry],
-    ['@deepseek-ai/dsh-attachment-local', LocalAttachmentStore],
+    ['@liusiqi-dev/dsh-computer-use', ComputerUse],
+    ['@liusiqi-dev/dsh-system-prompt', SystemPrompt],
+    ['@liusiqi-dev/dsh-tools', ToolRuntime],
+    ['@liusiqi-dev/dsh-llm', LlmRuntime],
+    ['@liusiqi-dev/dsh-session', SessionStore],
+    ['@liusiqi-dev/dsh-agent', AgentRegistry],
+    ['@liusiqi-dev/dsh-agent-loop', AgentLoop],
+    ['@liusiqi-dev/dsh-session-projection', SessionProjectionRegistry],
+    ['@liusiqi-dev/dsh-attachment-local', LocalAttachmentStore],
     ['@fixture/model', { inject: ['llm'], apply(ctx: Context) { ctx.effect(() => ctx.llm.registerAdapter(['fixture'], model)) } }],
-    ['@deepseek-ai/dsh-experimental-computer-use-cua-driver-mcp', Provider],
+    ['@liusiqi-dev/dsh-experimental-computer-use-cua-driver-mcp', Provider],
   ])
   const configPath = join(root, 'cordis.yml')
   await writeFile(configPath, JSON.stringify([...modules.keys()].map(name => ({
-    id: name === '@deepseek-ai/dsh-experimental-computer-use-cua-driver-mcp' ? 'computer-use-driver' : undefined,
+    id: name === '@liusiqi-dev/dsh-experimental-computer-use-cua-driver-mcp' ? 'computer-use-driver' : undefined,
     name,
-    config: name === '@deepseek-ai/dsh-experimental-computer-use-cua-driver-mcp'
+    config: name === '@liusiqi-dev/dsh-experimental-computer-use-cua-driver-mcp'
       ? {
         command: process.execPath,
         args: [fixture, root, ...(mode === undefined ? [] : [mode])],
         reconnect: { initialDelayMs: 20, maxDelayMs: 40, maxAttempts: 2 },
       }
-      : name === '@deepseek-ai/dsh-attachment-local'
+      : name === '@liusiqi-dev/dsh-attachment-local'
         ? { dshHome: root }
-        : name === '@deepseek-ai/dsh-agent-loop' ? { agents: [] } : {},
+        : name === '@liusiqi-dev/dsh-agent-loop' ? { agents: [] } : {},
   }))))
   const ctx = new Context()
   contexts.push(ctx)

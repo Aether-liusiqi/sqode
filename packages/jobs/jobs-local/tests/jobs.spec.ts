@@ -1,18 +1,18 @@
 import { describe, expect, expectTypeOf, it, vi } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import { Session, SessionId } from '@deepseek-ai/dsh-session'
-import AgentRegistry from '@deepseek-ai/dsh-agent'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import { bindScopeParent, createScope, scopeOf } from '@deepseek-ai/dsh-scope'
-import type { ScopeKey } from '@deepseek-ai/dsh-scope'
-import { JobId } from '@deepseek-ai/dsh-jobs'
+import { Context } from '@liusiqi-dev/cordis'
+import { Session, SessionId } from '@liusiqi-dev/dsh-session'
+import AgentRegistry from '@liusiqi-dev/dsh-agent'
+import type { Agent } from '@liusiqi-dev/dsh-agent'
+import { bindScopeParent, createScope, scopeOf } from '@liusiqi-dev/dsh-scope'
+import type { ScopeKey } from '@liusiqi-dev/dsh-scope'
+import { JobId } from '@liusiqi-dev/dsh-jobs'
 import type {
   JobEvent, JobEventFilter, JobHandle, JobHooks, JobKind, JobOutcome, JobOutputSource, JobSpec, JobView,
-} from '@deepseek-ai/dsh-jobs'
-import LocalJobRegistry, { type Config as JobsConfig } from '@deepseek-ai/dsh-jobs-local'
-import { unsupportedInbox } from '@deepseek-ai/dsh-agent-loop-testkit'
+} from '@liusiqi-dev/dsh-jobs'
+import LocalJobRegistry, { type Config as JobsConfig } from '@liusiqi-dev/dsh-jobs-local'
+import { unsupportedInbox } from '@liusiqi-dev/dsh-agent-loop-testkit'
 
-declare module '@deepseek-ai/dsh-jobs' {
+declare module '@liusiqi-dev/dsh-jobs' {
   interface JobKindMap {
     workflow: 'workflow'
   }
@@ -167,7 +167,7 @@ describe('LocalJobRegistry.start', () => {
     const ctx = new Context()
     await ctx.plugin(LocalJobRegistry)
     expect(() => ctx.jobs.start(producer().spec))
-      .toThrow('background jobs unavailable: no job controller serves this agent (load @deepseek-ai/dsh-tool-jobs in its composition)')
+      .toThrow('background jobs unavailable: no job controller serves this agent (load @liusiqi-dev/dsh-tool-jobs in its composition)')
   })
 
   it('refuses an owner whose own composition attaches no controller', async () => {

@@ -8,21 +8,21 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { afterEach, expect, it } from 'vitest'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import { LlmAdapter, ToolCallId } from '@deepseek-ai/dsh-llm'
-import type { GenerateOptions, LlmResolvedModelInfo, StreamChunk } from '@deepseek-ai/dsh-llm'
-import { canonicalPath, writableRoots } from '@deepseek-ai/dsh-sandbox'
-import { SESSION_FORMAT_VERSION, SessionId, type SessionEvent } from '@deepseek-ai/dsh-session'
-import { auditStartupEntries, composeEntries, loadOverlayPatches } from '@deepseek-ai/dsh-app-boot'
+import type { Agent } from '@liusiqi-dev/dsh-agent'
+import { LlmAdapter, ToolCallId } from '@liusiqi-dev/dsh-llm'
+import type { GenerateOptions, LlmResolvedModelInfo, StreamChunk } from '@liusiqi-dev/dsh-llm'
+import { canonicalPath, writableRoots } from '@liusiqi-dev/dsh-sandbox'
+import { SESSION_FORMAT_VERSION, SessionId, type SessionEvent } from '@liusiqi-dev/dsh-session'
+import { auditStartupEntries, composeEntries, loadOverlayPatches } from '@liusiqi-dev/dsh-app-boot'
 // These imports carry the tools/sandboxPolicy/approval Context merges.
-import { RUN_CODE_NAME } from '@deepseek-ai/dsh-tools'
-import type {} from '@deepseek-ai/dsh-sandbox-policy'
-import type {} from '@deepseek-ai/dsh-user-approval'
-import type {} from '@deepseek-ai/dsh-permission-presets'
-import type {} from '@deepseek-ai/dsh-agent-preset-registry'
-import type {} from '@deepseek-ai/dsh-commands'
-import type {} from '@deepseek-ai/dsh-system-prompt'
-import type {} from '@deepseek-ai/dsh-terminal'
+import { RUN_CODE_NAME } from '@liusiqi-dev/dsh-tools'
+import type {} from '@liusiqi-dev/dsh-sandbox-policy'
+import type {} from '@liusiqi-dev/dsh-user-approval'
+import type {} from '@liusiqi-dev/dsh-permission-presets'
+import type {} from '@liusiqi-dev/dsh-agent-preset-registry'
+import type {} from '@liusiqi-dev/dsh-commands'
+import type {} from '@liusiqi-dev/dsh-system-prompt'
+import type {} from '@liusiqi-dev/dsh-terminal'
 import { launchWebScaffold, readPersistedEvents, type WebScaffold } from './scaffold.ts'
 import { AUTO_REVIEW_FIXTURE } from './auto-review-fixture.ts'
 import { REPO_ROOT } from './support.ts'
@@ -641,7 +641,7 @@ it('assembles the shipped Web transport, catalog, guidance, and defaults', async
   })
   try {
     expect(scaffold.ctx.commands.list(commandHandle.agent)).toContainEqual({
-      definitionId: '@deepseek-ai/dsh-command-feedback',
+      definitionId: '@liusiqi-dev/dsh-command-feedback',
       name: 'feedback',
       description: 'Record feedback about this session',
       input: { hint: '<text>' },

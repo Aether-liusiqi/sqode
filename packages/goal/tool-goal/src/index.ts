@@ -1,23 +1,23 @@
 /**
  * Model-facing `get_goal`, `create_goal`, and `update_goal` tools over the
  * persisted same-session goal domain.
- * @module @deepseek-ai/dsh-tool-goal
+ * @module @liusiqi-dev/dsh-tool-goal
  */
 
-import type { Context } from '@deepseek-ai/cordis'
-import z from '@deepseek-ai/schemastery'
-import { GoalId } from '@deepseek-ai/dsh-goal'
-import type { GoalRef, GoalView } from '@deepseek-ai/dsh-goal'
-import { boundContextSummary, createUserMessage, HarnessError } from '@deepseek-ai/dsh-llm'
-import type { ContextFormed } from '@deepseek-ai/dsh-llm'
-declare module '@deepseek-ai/dsh-llm' {
+import type { Context } from '@liusiqi-dev/cordis'
+import z from '@liusiqi-dev/schemastery'
+import { GoalId } from '@liusiqi-dev/dsh-goal'
+import type { GoalRef, GoalView } from '@liusiqi-dev/dsh-goal'
+import { boundContextSummary, createUserMessage, HarnessError } from '@liusiqi-dev/dsh-llm'
+import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
+declare module '@liusiqi-dev/dsh-llm' {
   interface MessageSourceMap {
     'tool-goal': { kind: 'tool-goal' } & ContextFormed
   }
 }
 
-import { defineTool } from '@deepseek-ai/dsh-tools'
-import type { GenericCallView } from '@deepseek-ai/dsh-tools'
+import { defineTool } from '@liusiqi-dev/dsh-tools'
+import type { GenericCallView } from '@liusiqi-dev/dsh-tools'
 import {
   completionAuthority,
   goalToolExecution,

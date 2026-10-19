@@ -5,38 +5,38 @@ const CLIENT_FACE_INCLUDE: readonly string[] = []
 
 /** Packages exempted from automatic Client/Host treatment despite declaring `dsh.client`. */
 const CLIENT_FACE_EXCLUDE: readonly string[] = [
-  '@deepseek-ai/dsh-api-session-controller',
-  '@deepseek-ai/dsh-api-workspace-controller',
+  '@liusiqi-dev/dsh-api-session-controller',
+  '@liusiqi-dev/dsh-api-workspace-controller',
 ]
 
 /** Host-only packages whose peer relays are deliberately flattened. */
 const HOST_DEPENDENCY_PACKAGES: readonly string[] = [
-  '@deepseek-ai/dsh-llm',
-  '@deepseek-ai/dsh-session',
+  '@liusiqi-dev/dsh-llm',
+  '@liusiqi-dev/dsh-session',
 ]
 
 /** Development-only package relationships not represented by source imports. */
 const CONFIGURATION_ONLY_DEV_DEPENDENCIES = {
-  '@deepseek-ai/dsh-client-locale': ['@deepseek-ai/dsh-api-remotes'],
-  '@deepseek-ai/dsh-client-ui-conversation': [
-    '@deepseek-ai/dsh-api-remotes',
-    '@deepseek-ai/dsh-client-ui-workspace',
+  '@liusiqi-dev/dsh-client-locale': ['@liusiqi-dev/dsh-api-remotes'],
+  '@liusiqi-dev/dsh-client-ui-conversation': [
+    '@liusiqi-dev/dsh-api-remotes',
+    '@liusiqi-dev/dsh-client-ui-workspace',
   ],
-  '@deepseek-ai/dsh-client-ui-model-selection': ['@deepseek-ai/dsh-client-ui-input-trigger'],
-  '@deepseek-ai/dsh-client-ui-sidebar': ['@deepseek-ai/dsh-client-ui-workspace'],
-  '@deepseek-ai/dsh-client-ui-subagent': ['@deepseek-ai/dsh-client-ui-input-trigger'],
-  '@deepseek-ai/dsh-client-ui-theme': ['@deepseek-ai/dsh-api-remotes'],
-  '@deepseek-ai/dsh-client-ui-tool': ['@deepseek-ai/dsh-api-remotes'],
+  '@liusiqi-dev/dsh-client-ui-model-selection': ['@liusiqi-dev/dsh-client-ui-input-trigger'],
+  '@liusiqi-dev/dsh-client-ui-sidebar': ['@liusiqi-dev/dsh-client-ui-workspace'],
+  '@liusiqi-dev/dsh-client-ui-subagent': ['@liusiqi-dev/dsh-client-ui-input-trigger'],
+  '@liusiqi-dev/dsh-client-ui-theme': ['@liusiqi-dev/dsh-api-remotes'],
+  '@liusiqi-dev/dsh-client-ui-tool': ['@liusiqi-dev/dsh-api-remotes'],
 } as const satisfies Readonly<Record<string, readonly string[]>>
 
 /** Workspace packages whose complete runtime surface is safe across duplicate installations. */
 const DUPLICATE_SAFE_PACKAGES: readonly string[] = [
-  '@deepseek-ai/dsh-brand',
-  '@deepseek-ai/dsh-lazy-require',
-  '@deepseek-ai/dsh-typert-protocol',
-  '@deepseek-ai/dsh-util-code-language',
-  '@deepseek-ai/dsh-util-crypto',
-  '@deepseek-ai/dsh-util-values',
+  '@liusiqi-dev/dsh-brand',
+  '@liusiqi-dev/dsh-lazy-require',
+  '@liusiqi-dev/dsh-typert-protocol',
+  '@liusiqi-dev/dsh-util-code-language',
+  '@liusiqi-dev/dsh-util-crypto',
+  '@liusiqi-dev/dsh-util-values',
 ]
 
 /**
@@ -46,21 +46,21 @@ const DUPLICATE_SAFE_PACKAGES: readonly string[] = [
  * prominent heading in the pull request description.
  */
 const SAFE_HOST_DEPENDENCY_EXPORTS = {
-  '@deepseek-ai/dsh-credentials': ['credentialKey'],
-  '@deepseek-ai/dsh-deque': ['Deque'],
-  '@deepseek-ai/dsh-llm': ['callConfigEquals'],
-  '@deepseek-ai/dsh-session-format': ['sessionFormatLogFilename'],
-  '@deepseek-ai/dsh-timeout': ['MAX_TIMER_DELAY_MS'],
-  '@deepseek-ai/schemastery': ['default'],
+  '@liusiqi-dev/dsh-credentials': ['credentialKey'],
+  '@liusiqi-dev/dsh-deque': ['Deque'],
+  '@liusiqi-dev/dsh-llm': ['callConfigEquals'],
+  '@liusiqi-dev/dsh-session-format': ['sessionFormatLogFilename'],
+  '@liusiqi-dev/dsh-timeout': ['MAX_TIMER_DELAY_MS'],
+  '@liusiqi-dev/schemastery': ['default'],
 } as const satisfies HostDependencyExports
 
 /** Runtime exports that require every consumer to resolve the provider's shared peer instance. */
 const PEER_REQUIRED_HOST_EXPORTS = {
-  '@deepseek-ai/dsh-client-connection': ['OperatorPeer'],
-  '@deepseek-ai/dsh-subprocess': ['SubprocessExecutableNotFoundError'],
-  '@deepseek-ai/dsh-scope': ['carrierKeyOf', 'createScope', 'scopeOf', 'scopeTarget'],
-  '@deepseek-ai/dsh-session': ['SESSION_FORMAT_VERSION'],
-  '@deepseek-ai/dsh-session-persistence': ['SessionPersistenceNotFoundError'],
+  '@liusiqi-dev/dsh-client-connection': ['OperatorPeer'],
+  '@liusiqi-dev/dsh-subprocess': ['SubprocessExecutableNotFoundError'],
+  '@liusiqi-dev/dsh-scope': ['carrierKeyOf', 'createScope', 'scopeOf', 'scopeTarget'],
+  '@liusiqi-dev/dsh-session': ['SESSION_FORMAT_VERSION'],
+  '@liusiqi-dev/dsh-session-persistence': ['SessionPersistenceNotFoundError'],
 } as const satisfies HostDependencyExports
 
 /** Exact import specifier to reviewed runtime exports. */

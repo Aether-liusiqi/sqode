@@ -3,7 +3,7 @@ description: "The managed DSH_* shell environment for users and maintainers choo
 kind: "package-reference"
 ---
 
-# @deepseek-ai/dsh-shell-env
+# @liusiqi-dev/dsh-shell-env
 
 English | [中文](README.zh.md)
 
@@ -36,8 +36,8 @@ Every call receives `SQODE_HOME` (the absolute Harness home), `SQODE_SHELL=1`, a
 Other plugins contribute facts by registering a contributor with a stable name, the complete set of `DSH_*` keys it may return, a description per key, and a resolver that computes values for one execution:
 
 ```ts
-import type { Context } from '@deepseek-ai/cordis'
-import type {} from '@deepseek-ai/dsh-shell-env'
+import type { Context } from '@liusiqi-dev/cordis'
+import type {} from '@liusiqi-dev/dsh-shell-env'
 
 export const inject = ['shellEnv']
 

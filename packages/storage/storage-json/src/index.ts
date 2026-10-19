@@ -3,14 +3,14 @@
  * configured root — a whole-unit file (`single` layout) or one document per
  * record (`per-record` layout), published by atomic rewrite. Registers as
  * backend `json` on the storage hub.
- * @module @deepseek-ai/dsh-storage-json
+ * @module @liusiqi-dev/dsh-storage-json
  */
 
 import { mkdir } from 'node:fs/promises'
-import type { Context } from '@deepseek-ai/cordis'
-import z from '@deepseek-ai/schemastery'
-import { StorageError, UNIT_NAME_RE, storageBackendServiceKey } from '@deepseek-ai/dsh-storage'
-import type { KvFacet, KvUnit, KvUnitDescriptor, StorageBackend } from '@deepseek-ai/dsh-storage'
+import type { Context } from '@liusiqi-dev/cordis'
+import z from '@liusiqi-dev/schemastery'
+import { StorageError, UNIT_NAME_RE, storageBackendServiceKey } from '@liusiqi-dev/dsh-storage'
+import type { KvFacet, KvUnit, KvUnitDescriptor, StorageBackend } from '@liusiqi-dev/dsh-storage'
 import { openSingleUnit } from './single-unit.ts'
 import { openPerRecordUnit } from './per-record-unit.ts'
 

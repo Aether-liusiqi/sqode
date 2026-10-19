@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-experimental-schedule-bundle",
+  "name": "@liusiqi-dev/dsh-experimental-schedule-bundle",
   "description": "Optional bundle that adds Schedule, its task page, and time context to the Web composition",
   "version": "1.0.0",
   "icon": "./icon.svg",
@@ -33,16 +33,16 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@deepseek-ai/dsh-client-ui-schedule": "workspace:*",
-    "@deepseek-ai/dsh-schedule": "workspace:*",
-    "@deepseek-ai/dsh-time-context": "workspace:*"
+    "@liusiqi-dev/dsh-client-ui-schedule": "workspace:*",
+    "@liusiqi-dev/dsh-schedule": "workspace:*",
+    "@liusiqi-dev/dsh-time-context": "workspace:*"
   },
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~"
+    "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/cordis-plugin-include": "workspace:~",
+    "@liusiqi-dev/cordis": "workspace:~",
+    "@liusiqi-dev/cordis-plugin-include": "workspace:~",
     "js-yaml": "^4.2.0"
   },
   "dsh": {

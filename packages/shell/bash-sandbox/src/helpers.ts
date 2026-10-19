@@ -1,7 +1,7 @@
 /** Shell-result projection over shared sandbox diagnostics. */
-import type { ShellRunResult } from '@deepseek-ai/dsh-shell'
-import { matchesSignature } from '@deepseek-ai/dsh-sandbox'
-export { isRunnerSpawnFailure, classifyRunnerFailure, matchesSignature } from '@deepseek-ai/dsh-sandbox'
+import type { ShellRunResult } from '@liusiqi-dev/dsh-shell'
+import { matchesSignature } from '@liusiqi-dev/dsh-sandbox'
+export { isRunnerSpawnFailure, classifyRunnerFailure, matchesSignature } from '@liusiqi-dev/dsh-sandbox'
 
 /**
  * Classify a failed run against the selected backend's denial dialect.

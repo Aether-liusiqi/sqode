@@ -27,7 +27,7 @@ import { capture } from '../../../scripts/release/process.ts'
 import { tarballFiles } from '../../../scripts/release/tarball.ts'
 import { resolveDesktopTargetBuildPaths } from './desktop-build-paths.mjs'
 
-const SQODE_PACKAGE = '@deepseek-ai/dsh'
+const SQODE_PACKAGE = '@liusiqi-dev/sqode'
 const ROOT_PACKAGES = [SQODE_PACKAGE, DESKTOP_HOST_PACKAGE] as const
 const APP_ROOT = resolve(import.meta.dirname, '..')
 const REPOSITORY_ROOT = resolve(APP_ROOT, '..', '..')

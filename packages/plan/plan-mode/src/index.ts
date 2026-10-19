@@ -19,31 +19,31 @@
  * Agent Note:
  * - .agents/notes/implemented/simplification/2026-07-22-plan-specific-collaboration-state.md
  *
- * @module @deepseek-ai/dsh-plan-mode
+ * @module @liusiqi-dev/dsh-plan-mode
  */
 
-import { Context, Service } from '@deepseek-ai/cordis'
-import { brandString } from '@deepseek-ai/dsh-brand'
+import { Context, Service } from '@liusiqi-dev/cordis'
+import { brandString } from '@liusiqi-dev/dsh-brand'
 import { z as zod } from 'zod'
 import type { ZodType } from 'zod'
-import type { Agent, PreStepDecision } from '@deepseek-ai/dsh-agent'
-import { createUserMessage } from '@deepseek-ai/dsh-llm'
-import type { ContextFormed } from '@deepseek-ai/dsh-llm'
-import type { Session, UserMessage } from '@deepseek-ai/dsh-session'
-import { defineTool } from '@deepseek-ai/dsh-tools'
-import { UserQuestionError } from '@deepseek-ai/dsh-user-questions'
-import type { CommandDefinitionId, CommandId } from '@deepseek-ai/dsh-commands'
-import type {} from '@deepseek-ai/dsh-session-projection'
-import type { ProjectionDefinition } from '@deepseek-ai/dsh-session-projection'
+import type { Agent, PreStepDecision } from '@liusiqi-dev/dsh-agent'
+import { createUserMessage } from '@liusiqi-dev/dsh-llm'
+import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
+import type { Session, UserMessage } from '@liusiqi-dev/dsh-session'
+import { defineTool } from '@liusiqi-dev/dsh-tools'
+import { UserQuestionError } from '@liusiqi-dev/dsh-user-questions'
+import type { CommandDefinitionId, CommandId } from '@liusiqi-dev/dsh-commands'
+import type {} from '@liusiqi-dev/dsh-session-projection'
+import type { ProjectionDefinition } from '@liusiqi-dev/dsh-session-projection'
 import type { PlanProjection, PlanUnitState } from './types.ts'
-declare module '@deepseek-ai/dsh-llm' {
+declare module '@liusiqi-dev/dsh-llm' {
   interface MessageSourceMap {
     'plan-mode': { kind: 'plan-mode' } & ContextFormed
   }
 }
 export type * from './types.ts'
 
-declare module '@deepseek-ai/dsh-session/types' {
+declare module '@liusiqi-dev/dsh-session/types' {
   interface SessionEventMap {
     /**
      * Whether plan mode is in force from this point on: log-only, non-surface,
@@ -54,7 +54,7 @@ declare module '@deepseek-ai/dsh-session/types' {
   }
 }
 
-declare module '@deepseek-ai/cordis' {
+declare module '@liusiqi-dev/cordis' {
   interface Context {
     planMode: PlanModeController
   }
@@ -229,7 +229,7 @@ export class PlanModeController extends Service {
     // The command child activates only when a command registry is composed.
     ctx.inject(['commands'], (commandCtx) => {
       commandCtx.commands.register({
-        definitionId: brandString<CommandDefinitionId>('@deepseek-ai/dsh-plan-mode'),
+        definitionId: brandString<CommandDefinitionId>('@liusiqi-dev/dsh-plan-mode'),
         name: 'plan',
         description: 'Enter or leave plan mode',
         input: { hint: '[off|message]', attachments: true },

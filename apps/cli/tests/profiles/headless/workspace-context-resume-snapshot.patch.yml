@@ -20,7 +20,7 @@
 
 - insert:
     - id: replay
-      name: '@deepseek-ai/dsh-llm-replay'
+      name: '@liusiqi-dev/dsh-llm-replay'
       config:
         file: !!js process.env.SQODE_SNAPSHOT_FILE
         overrideFile: !!js process.env.SQODE_SNAPSHOT_OVERRIDE

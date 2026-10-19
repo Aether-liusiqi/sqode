@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-llm",
+  "name": "@liusiqi-dev/dsh-llm",
   "description": "Provider-neutral LLM service interface for the DeepSeek Harness",
   "version": "1.0.0",
   "publishConfig": {
@@ -61,20 +61,20 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~"
+    "@liusiqi-dev/cordis": "workspace:~"
   },
   "dependencies": {
-    "@deepseek-ai/dsh-util-crypto": "workspace:*",
-    "@deepseek-ai/schemastery": "workspace:~",
+    "@liusiqi-dev/dsh-util-crypto": "workspace:*",
+    "@liusiqi-dev/schemastery": "workspace:~",
     "zod": "^4.4.3",
-    "@deepseek-ai/dsh-timeout": "workspace:*",
-    "@deepseek-ai/dsh-brand": "workspace:*",
-    "@deepseek-ai/dsh-util-values": "workspace:*",
-    "@deepseek-ai/dsh-typert-protocol": "workspace:*"
+    "@liusiqi-dev/dsh-timeout": "workspace:*",
+    "@liusiqi-dev/dsh-brand": "workspace:*",
+    "@liusiqi-dev/dsh-util-values": "workspace:*",
+    "@liusiqi-dev/dsh-typert-protocol": "workspace:*"
   },
   "devDependencies": {
-    "@deepseek-ai/dsh-attachment": "workspace:*",
-    "@deepseek-ai/dsh-invariants": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~"
+    "@liusiqi-dev/dsh-attachment": "workspace:*",
+    "@liusiqi-dev/dsh-invariants": "workspace:*",
+    "@liusiqi-dev/cordis": "workspace:~"
   }
 }

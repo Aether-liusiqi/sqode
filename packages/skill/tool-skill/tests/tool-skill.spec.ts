@@ -2,22 +2,22 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { mkdir, rm, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
-import { Context } from '@deepseek-ai/cordis'
-import { createUserMessage, ToolCallId, type Message } from '@deepseek-ai/dsh-llm'
-import type { ContextFormed, MessageSource } from '@deepseek-ai/dsh-llm'
-import { createScope, type Scope } from '@deepseek-ai/dsh-scope'
+import { Context } from '@liusiqi-dev/cordis'
+import { createUserMessage, ToolCallId, type Message } from '@liusiqi-dev/dsh-llm'
+import type { ContextFormed, MessageSource } from '@liusiqi-dev/dsh-llm'
+import { createScope, type Scope } from '@liusiqi-dev/dsh-scope'
 import {
   SESSION_FORMAT_VERSION, Session, SessionId, type SessionEvent, type UserMessage,
-} from '@deepseek-ai/dsh-session'
-import SystemPrompt, { renderPrompt } from '@deepseek-ai/dsh-system-prompt'
-import ToolRuntime, { defineContentToolFixture } from '@deepseek-ai/dsh-tools'
-import AgentRegistry, { agentEvents, type Agent, type PreStepDecision } from '@deepseek-ai/dsh-agent'
-import SkillRegistry from '@deepseek-ai/dsh-skill'
-import * as SkillFileSystem from '@deepseek-ai/dsh-skill-filesystem'
-import * as toolSkill from '@deepseek-ai/dsh-tool-skill'
-import { unsupportedInbox } from '@deepseek-ai/dsh-agent-loop-testkit'
+} from '@liusiqi-dev/dsh-session'
+import SystemPrompt, { renderPrompt } from '@liusiqi-dev/dsh-system-prompt'
+import ToolRuntime, { defineContentToolFixture } from '@liusiqi-dev/dsh-tools'
+import AgentRegistry, { agentEvents, type Agent, type PreStepDecision } from '@liusiqi-dev/dsh-agent'
+import SkillRegistry from '@liusiqi-dev/dsh-skill'
+import * as SkillFileSystem from '@liusiqi-dev/dsh-skill-filesystem'
+import * as toolSkill from '@liusiqi-dev/dsh-tool-skill'
+import { unsupportedInbox } from '@liusiqi-dev/dsh-agent-loop-testkit'
 
-declare module '@deepseek-ai/dsh-llm' {
+declare module '@liusiqi-dev/dsh-llm' {
   interface MessageSourceMap {
     'dsh-tool-skill': { kind: 'dsh-tool-skill' } & ContextFormed
     'later-contribution': { kind: 'later-contribution' } & ContextFormed

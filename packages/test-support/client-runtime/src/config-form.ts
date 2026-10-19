@@ -2,7 +2,7 @@
 import { vi } from 'vitest'
 import type {
   ConfigForm, ConfigFormSnapshot,
-} from '@deepseek-ai/dsh-client-ui-settings/client'
+} from '@liusiqi-dev/dsh-client-ui-settings/client'
 
 /** Handle over one stubbed scope: the scope, its write spy, and publication controls. */
 export interface StubConfigForm<T> {

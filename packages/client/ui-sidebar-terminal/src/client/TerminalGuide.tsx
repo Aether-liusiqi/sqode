@@ -1,11 +1,11 @@
 /** Shell launch menu owned by the terminal provider's guide entry. */
 import { useEffect, useState, type ReactNode } from 'react'
-import type { ShortcutCatalogEntry } from '@deepseek-ai/dsh-client-shortcuts/client'
-import type { HostObservable } from '@deepseek-ai/dsh-client-ui-slots'
-import { PluginArtworkTerminal, ShortcutKeys, Button, IconChevronDownOutlineRegular, Menu } from '@deepseek-ai/dsh-client-ui-primitives'
-import type { TerminalLaunchShells } from '@deepseek-ai/dsh-api-terminal-controller/client'
-import type { InjectFace, PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
-import type {} from '@deepseek-ai/dsh-client-ui-sidebar-right/client'
+import type { ShortcutCatalogEntry } from '@liusiqi-dev/dsh-client-shortcuts/client'
+import type { HostObservable } from '@liusiqi-dev/dsh-client-ui-slots'
+import { PluginArtworkTerminal, ShortcutKeys, Button, IconChevronDownOutlineRegular, Menu } from '@liusiqi-dev/dsh-client-ui-primitives'
+import type { TerminalLaunchShells } from '@liusiqi-dev/dsh-api-terminal-controller/client'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
+import type {} from '@liusiqi-dev/dsh-client-ui-sidebar-right/client'
 import type {} from './locales.ts'
 import css from './TerminalGuide.module.css'
 

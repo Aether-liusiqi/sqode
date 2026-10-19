@@ -1,33 +1,33 @@
 /**
  * Service Definition for the approval capability seam, covering requests, cancellation, audit, and per-session policy. Missing
  * answerers fail closed; grants apply only to the requested action.
- * @module @deepseek-ai/dsh-user-approval
+ * @module @liusiqi-dev/dsh-user-approval
  */
 
 import { randomUUID } from 'node:crypto'
-import { Context, Service } from '@deepseek-ai/cordis'
-import z from '@deepseek-ai/schemastery'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import { createUserMessage, type ToolCallId } from '@deepseek-ai/dsh-llm'
-import type { ContextFormed } from '@deepseek-ai/dsh-llm'
-declare module '@deepseek-ai/dsh-llm' {
+import { Context, Service } from '@liusiqi-dev/cordis'
+import z from '@liusiqi-dev/schemastery'
+import type { Agent } from '@liusiqi-dev/dsh-agent'
+import { createUserMessage, type ToolCallId } from '@liusiqi-dev/dsh-llm'
+import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
+declare module '@liusiqi-dev/dsh-llm' {
   interface MessageSourceMap {
     'user-approval': { kind: 'user-approval' } & ContextFormed
   }
 }
 
-import { scopeTarget } from '@deepseek-ai/dsh-scope'
-import type { Session } from '@deepseek-ai/dsh-session'
-import { SessionSeq } from '@deepseek-ai/dsh-session'
-import type {} from '@deepseek-ai/dsh-system-prompt'
+import { scopeTarget } from '@liusiqi-dev/dsh-scope'
+import type { Session } from '@liusiqi-dev/dsh-session'
+import { SessionSeq } from '@liusiqi-dev/dsh-session'
+import type {} from '@liusiqi-dev/dsh-system-prompt'
 
-declare module '@deepseek-ai/cordis' {
+declare module '@liusiqi-dev/cordis' {
   interface Context {
     approval: ApprovalService
   }
 }
 
-declare module '@deepseek-ai/dsh-session/types' {
+declare module '@liusiqi-dev/dsh-session/types' {
   interface SessionEventMap {
     /**
      * The session's approval policy was switched — log-only, durable,

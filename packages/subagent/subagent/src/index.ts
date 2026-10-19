@@ -8,8 +8,8 @@
  * select one by name.
  *
  * This package owns the Service Definition role of the capability seam. Service Providers
- * (`@deepseek-ai/dsh-subagent-spawn-in-process`, `-fork`, `-acp`) and the model-facing
- * consumer (`@deepseek-ai/dsh-tool-subagent`) are separate packages.
+ * (`@liusiqi-dev/dsh-subagent-spawn-in-process`, `-fork`, `-acp`) and the model-facing
+ * consumer (`@liusiqi-dev/dsh-tool-subagent`) are separate packages.
  *
  * Public operations express caller intent: `start` returns one published owned
  * one-shot run, `startContinuable` establishes a durable continuable child, and
@@ -26,21 +26,21 @@
  * serialization and hostile-input validation belong at real process, worker,
  * persistence, and model boundaries.
  *
- * @module @deepseek-ai/dsh-subagent
+ * @module @liusiqi-dev/dsh-subagent
  */
-import type { Volatile } from '@deepseek-ai/cordis'
+import type { Volatile } from '@liusiqi-dev/cordis'
 
-import { Context } from '@deepseek-ai/cordis'
-import z from '@deepseek-ai/schemastery'
-import type {} from '@deepseek-ai/dsh-attachment'
-import { scopeTarget } from '@deepseek-ai/dsh-scope'
-import type { Scoped } from '@deepseek-ai/dsh-scope'
-import { assertObjectJsonSchema } from '@deepseek-ai/dsh-tools'
-import type { ContentBlock, MessageId, MessageSource } from '@deepseek-ai/dsh-llm'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import type { SessionId } from '@deepseek-ai/dsh-session'
-import { canonicalClientTimeZone } from '@deepseek-ai/dsh-util-time'
-import { Remote, RemoteError, TypertRemoteService } from '@deepseek-ai/dsh-typert-protocol'
+import { Context } from '@liusiqi-dev/cordis'
+import z from '@liusiqi-dev/schemastery'
+import type {} from '@liusiqi-dev/dsh-attachment'
+import { scopeTarget } from '@liusiqi-dev/dsh-scope'
+import type { Scoped } from '@liusiqi-dev/dsh-scope'
+import { assertObjectJsonSchema } from '@liusiqi-dev/dsh-tools'
+import type { ContentBlock, MessageId, MessageSource } from '@liusiqi-dev/dsh-llm'
+import type { Agent } from '@liusiqi-dev/dsh-agent'
+import type { SessionId } from '@liusiqi-dev/dsh-session'
+import { canonicalClientTimeZone } from '@liusiqi-dev/dsh-util-time'
+import { Remote, RemoteError, TypertRemoteService } from '@liusiqi-dev/dsh-typert-protocol'
 import {
   rejectPrompt, validateControlRequest,
 } from './control.ts'
@@ -134,7 +134,7 @@ export type { SubagentDescendantListEntry } from './list-children.ts'
 export type { SubagentRunEndInfo, SubagentRunInfo } from './types.ts'
 export type { SubagentIdentityProjection, SubagentTimingProjection } from './projection-types.ts'
 
-declare module '@deepseek-ai/cordis' {
+declare module '@liusiqi-dev/cordis' {
   interface Context {
     subagents: SubagentRuntime
   }

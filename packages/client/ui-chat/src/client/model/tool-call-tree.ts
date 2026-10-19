@@ -1,8 +1,8 @@
-import type { SessionEvent } from '@deepseek-ai/dsh-session/types'
-import type {} from '@deepseek-ai/dsh-tools/types'
+import type { SessionEvent } from '@liusiqi-dev/dsh-session/types'
+import type {} from '@liusiqi-dev/dsh-tools/types'
 import type {
   ConversationNode, RunningToolCall, ToolCallBlock, ToolResultNode,
-} from '@deepseek-ai/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/dsh-client-ui-conversation/client'
 
 interface ProjectedBlock {
   source: ToolCallBlock

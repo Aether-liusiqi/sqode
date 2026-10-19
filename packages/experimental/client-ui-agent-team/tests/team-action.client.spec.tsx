@@ -3,15 +3,15 @@
 import { Profiler } from 'react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, render, screen } from '@testing-library/react'
-import type { SessionId } from '@deepseek-ai/dsh-session/types'
+import type { SessionId } from '@liusiqi-dev/dsh-session/types'
 import type {
   TeamMemberProjection, TeamProjection, TeamTaskId, TeamTaskView as TeamTask,
-} from '@deepseek-ai/dsh-experimental-agent-team/client'
-import type { SessionListState, SessionSnapshot, SessionSummary, UseProjection } from '@deepseek-ai/dsh-api-session-controller/client'
-import type { SessionStatusSnapshot } from '@deepseek-ai/dsh-client-ui-session/client'
-import { createSnapshotStore } from '@deepseek-ai/dsh-client-store'
-import { bindSnapshotSelector, makeTranslate } from '@deepseek-ai/dsh-client-test-runtime'
-import { zh as commonZh } from '@deepseek-ai/dsh-client-locale/src/locales/zh.ts'
+} from '@liusiqi-dev/dsh-experimental-agent-team/client'
+import type { SessionListState, SessionSnapshot, SessionSummary, UseProjection } from '@liusiqi-dev/dsh-api-session-controller/client'
+import type { SessionStatusSnapshot } from '@liusiqi-dev/dsh-client-ui-session/client'
+import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import { bindSnapshotSelector, makeTranslate } from '@liusiqi-dev/dsh-client-test-runtime'
+import { zh as commonZh } from '@liusiqi-dev/dsh-client-locale/src/locales/zh.ts'
 import { TeamAction, type TeamActionInjected, type TeamActionProps } from '../src/client/TeamAction.tsx'
 import { zh } from '../src/client/locales.ts'
 

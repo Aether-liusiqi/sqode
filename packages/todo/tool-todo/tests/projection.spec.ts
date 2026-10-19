@@ -8,18 +8,18 @@
  */
 
 import { describe, expect, it } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import AgentRegistry from '@deepseek-ai/dsh-agent'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import { createUserMessage } from '@deepseek-ai/dsh-llm'
-import SessionStore from '@deepseek-ai/dsh-session'
-import type { Session } from '@deepseek-ai/dsh-session'
-import type { TodoItem } from '@deepseek-ai/dsh-tool-todo'
-import SystemPrompt from '@deepseek-ai/dsh-system-prompt'
-import ToolRuntime from '@deepseek-ai/dsh-tools'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
-import UserQuestionService from '@deepseek-ai/dsh-user-questions'
-import * as ToolTodo from '@deepseek-ai/dsh-tool-todo'
+import { Context } from '@liusiqi-dev/cordis'
+import AgentRegistry from '@liusiqi-dev/dsh-agent'
+import type { Agent } from '@liusiqi-dev/dsh-agent'
+import { createUserMessage } from '@liusiqi-dev/dsh-llm'
+import SessionStore from '@liusiqi-dev/dsh-session'
+import type { Session } from '@liusiqi-dev/dsh-session'
+import type { TodoItem } from '@liusiqi-dev/dsh-tool-todo'
+import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/dsh-tools'
+import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
+import UserQuestionService from '@liusiqi-dev/dsh-user-questions'
+import * as ToolTodo from '@liusiqi-dev/dsh-tool-todo'
 
 interface Bench {
   ctx: Context

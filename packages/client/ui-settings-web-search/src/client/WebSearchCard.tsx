@@ -4,9 +4,9 @@
  * domain, never into the settings section, so the literal never rides a response.
  */
 
-import type {} from '@deepseek-ai/dsh-client-ui-plugin-manager/client'
-import { SettingsForm, SettingsSecretField, SettingsValueField } from '@deepseek-ai/dsh-client-ui-primitives'
-import type { InjectFace, PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
+import type {} from '@liusiqi-dev/dsh-client-ui-plugin-manager/client'
+import { SettingsForm, SettingsSecretField, SettingsValueField } from '@liusiqi-dev/dsh-client-ui-primitives'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
 import { formLabels } from './locales.ts'
 import type { WebSearchCardFace } from './web-search-card-controller.ts'
 

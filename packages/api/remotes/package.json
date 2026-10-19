@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-api-remotes",
+  "name": "@liusiqi-dev/dsh-api-remotes",
   "description": "Remote BFF assembly for application-selected Host capabilities",
   "version": "1.0.0",
   "publishConfig": {
@@ -32,7 +32,7 @@
   "dsh": {
     "client": {
       "inject": [
-        "@deepseek-ai/dsh-api-gateway"
+        "@liusiqi-dev/dsh-api-gateway"
       ],
       "platform": "web",
       "immediately": true
@@ -50,51 +50,51 @@
     "lib/types/**/*.d.ts"
   ],
   "dependencies": {
-    "@deepseek-ai/dsh-deque": "workspace:*",
-    "@deepseek-ai/dsh-session": "workspace:*",
-    "@deepseek-ai/dsh-util-values": "workspace:*"
+    "@liusiqi-dev/dsh-deque": "workspace:*",
+    "@liusiqi-dev/dsh-session": "workspace:*",
+    "@liusiqi-dev/dsh-util-values": "workspace:*"
   },
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-scope": "workspace:*"
+    "@liusiqi-dev/cordis": "workspace:~",
+    "@liusiqi-dev/dsh-scope": "workspace:*"
   },
   "devDependencies": {
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-agent-preset-registry": "workspace:*",
-    "@deepseek-ai/dsh-api-gateway": "workspace:*",
-    "@deepseek-ai/dsh-api-job-controller": "workspace:*",
-    "@deepseek-ai/dsh-api-session-controller": "workspace:*",
-    "@deepseek-ai/dsh-api-settings-controller": "workspace:*",
-    "@deepseek-ai/dsh-api-workspace-controller": "workspace:*",
-    "@deepseek-ai/dsh-api-workspace-files": "workspace:*",
-    "@deepseek-ai/dsh-client-connection": "workspace:*",
-    "@deepseek-ai/dsh-client-file-upload": "workspace:*",
-    "@deepseek-ai/dsh-commands": "workspace:*",
-    "@deepseek-ai/dsh-cordis-host-runner": "workspace:*",
-    "@deepseek-ai/dsh-credentials": "workspace:*",
-    "@deepseek-ai/dsh-file-reference": "workspace:*",
-    "@deepseek-ai/dsh-goal": "workspace:*",
-    "@deepseek-ai/dsh-host-plugin-inventory": "workspace:*",
-    "@deepseek-ai/dsh-llm": "workspace:*",
-    "@deepseek-ai/dsh-message-feedback": "workspace:*",
-    "@deepseek-ai/dsh-permission-presets": "workspace:*",
-    "@deepseek-ai/dsh-schedule": "workspace:*",
-    "@deepseek-ai/dsh-scope": "workspace:*",
-    "@deepseek-ai/dsh-session-reference": "workspace:*",
-    "@deepseek-ai/dsh-settings": "workspace:*",
-    "@deepseek-ai/dsh-subagent": "workspace:*",
-    "@deepseek-ai/dsh-typert-protocol": "workspace:*",
-    "@deepseek-ai/dsh-user-approval": "workspace:*",
-    "@deepseek-ai/dsh-user-questions": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~",
+    "@liusiqi-dev/dsh-agent": "workspace:*",
+    "@liusiqi-dev/dsh-agent-preset-registry": "workspace:*",
+    "@liusiqi-dev/dsh-api-gateway": "workspace:*",
+    "@liusiqi-dev/dsh-api-job-controller": "workspace:*",
+    "@liusiqi-dev/dsh-api-session-controller": "workspace:*",
+    "@liusiqi-dev/dsh-api-settings-controller": "workspace:*",
+    "@liusiqi-dev/dsh-api-workspace-controller": "workspace:*",
+    "@liusiqi-dev/dsh-api-workspace-files": "workspace:*",
+    "@liusiqi-dev/dsh-client-connection": "workspace:*",
+    "@liusiqi-dev/dsh-client-file-upload": "workspace:*",
+    "@liusiqi-dev/dsh-commands": "workspace:*",
+    "@liusiqi-dev/dsh-cordis-host-runner": "workspace:*",
+    "@liusiqi-dev/dsh-credentials": "workspace:*",
+    "@liusiqi-dev/dsh-file-reference": "workspace:*",
+    "@liusiqi-dev/dsh-goal": "workspace:*",
+    "@liusiqi-dev/dsh-host-plugin-inventory": "workspace:*",
+    "@liusiqi-dev/dsh-llm": "workspace:*",
+    "@liusiqi-dev/dsh-message-feedback": "workspace:*",
+    "@liusiqi-dev/dsh-permission-presets": "workspace:*",
+    "@liusiqi-dev/dsh-schedule": "workspace:*",
+    "@liusiqi-dev/dsh-scope": "workspace:*",
+    "@liusiqi-dev/dsh-session-reference": "workspace:*",
+    "@liusiqi-dev/dsh-settings": "workspace:*",
+    "@liusiqi-dev/dsh-subagent": "workspace:*",
+    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/dsh-user-approval": "workspace:*",
+    "@liusiqi-dev/dsh-user-questions": "workspace:*",
+    "@liusiqi-dev/cordis": "workspace:~",
     "zod": "^4.4.3",
-    "@deepseek-ai/dsh-command-feedback": "workspace:*",
-    "@deepseek-ai/dsh-api-terminal-controller": "workspace:*",
-    "@deepseek-ai/dsh-plugin-manager": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-plugin-manager": "workspace:*",
-    "@deepseek-ai/dsh-office-to-pdf": "workspace:*",
-    "@deepseek-ai/dsh-api-account-controller": "workspace:*",
-    "@deepseek-ai/dsh-deepseek-account": "workspace:*",
-    "@deepseek-ai/dsh-client-product-analytics": "workspace:*"
+    "@liusiqi-dev/dsh-command-feedback": "workspace:*",
+    "@liusiqi-dev/dsh-api-terminal-controller": "workspace:*",
+    "@liusiqi-dev/dsh-plugin-manager": "workspace:*",
+    "@liusiqi-dev/dsh-client-ui-plugin-manager": "workspace:*",
+    "@liusiqi-dev/dsh-office-to-pdf": "workspace:*",
+    "@liusiqi-dev/dsh-api-account-controller": "workspace:*",
+    "@liusiqi-dev/dsh-deepseek-account": "workspace:*",
+    "@liusiqi-dev/dsh-client-product-analytics": "workspace:*"
   }
 }

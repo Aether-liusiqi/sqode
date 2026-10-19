@@ -1,21 +1,21 @@
 /** Host file-upload service: streamed intake and Agent-scoped staged receipts. */
 
 import { randomUUID } from 'node:crypto'
-import type { Context } from '@deepseek-ai/cordis'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import type { FileAttachmentRef } from '@deepseek-ai/dsh-attachment'
-import type {} from '@deepseek-ai/dsh-client-connection'
-import type { CommandFileReceiptResolver } from '@deepseek-ai/dsh-commands'
-import { scopeOf } from '@deepseek-ai/dsh-scope'
-import type { Session, SessionEvent, SessionId } from '@deepseek-ai/dsh-session'
-import { Remote, RemoteError, TypertRemoteService } from '@deepseek-ai/dsh-typert-protocol'
+import type { Context } from '@liusiqi-dev/cordis'
+import type { Agent } from '@liusiqi-dev/dsh-agent'
+import type { FileAttachmentRef } from '@liusiqi-dev/dsh-attachment'
+import type {} from '@liusiqi-dev/dsh-client-connection'
+import type { CommandFileReceiptResolver } from '@liusiqi-dev/dsh-commands'
+import { scopeOf } from '@liusiqi-dev/dsh-scope'
+import type { Session, SessionEvent, SessionId } from '@liusiqi-dev/dsh-session'
+import { Remote, RemoteError, TypertRemoteService } from '@liusiqi-dev/dsh-typert-protocol'
 import { handleFileUploadHttp } from './http-route.ts'
 import { FILE_UPLOAD_PATH } from './protocol.ts'
 import type { EncodedFileUploadRequest, FileUploadReceiptId, FileUploadValue } from './types.ts'
 
 export type * from './types.ts'
 
-declare module '@deepseek-ai/cordis' {
+declare module '@liusiqi-dev/cordis' {
   interface Context {
     /** Host storage and staged-receipt service for browser file uploads. */
     fileUploads: FileUploads

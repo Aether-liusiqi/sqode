@@ -8,8 +8,8 @@
 import { readFileSync } from 'node:fs'
 import { randomUUID } from 'node:crypto'
 import { join } from 'node:path'
-import { ok, RemoteMock } from '@deepseek-ai/dsh-remote-mock'
-import { remoteDefaultResponses } from '@deepseek-ai/dsh-client-test-runtime/src/assembly/remote-default-responses.ts'
+import { ok, RemoteMock } from '@liusiqi-dev/dsh-remote-mock'
+import { remoteDefaultResponses } from '@liusiqi-dev/dsh-client-test-runtime/src/assembly/remote-default-responses.ts'
 
 interface SessionSummary {
   readonly sessionId: string

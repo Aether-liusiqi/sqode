@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import { createUserMessage } from '@deepseek-ai/dsh-llm'
-import { Session, SessionId, SessionSeq } from '@deepseek-ai/dsh-session'
-import { renderPrompt } from '@deepseek-ai/dsh-system-prompt'
+import { Context } from '@liusiqi-dev/cordis'
+import { createUserMessage } from '@liusiqi-dev/dsh-llm'
+import { Session, SessionId, SessionSeq } from '@liusiqi-dev/dsh-session'
+import { renderPrompt } from '@liusiqi-dev/dsh-system-prompt'
 import {
   createInboxStub,
   mountAgentLoopTestDependencies,

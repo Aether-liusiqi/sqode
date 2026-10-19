@@ -1,9 +1,9 @@
 /** Plain-Node smoke of the published provider and its independently configured attachment Worker. */
-import { Context } from '@deepseek-ai/cordis'
-import { mountAgentLoopTestDependencies, mountAgentLoopTestHarness } from '@deepseek-ai/dsh-agent-loop-testkit'
-import BrowserUseRegistry from '@deepseek-ai/dsh-browser-use'
-import { ToolCallId } from '@deepseek-ai/dsh-llm'
-import { SessionId } from '@deepseek-ai/dsh-session'
+import { Context } from '@liusiqi-dev/cordis'
+import { mountAgentLoopTestDependencies, mountAgentLoopTestHarness } from '@liusiqi-dev/dsh-agent-loop-testkit'
+import BrowserUseRegistry from '@liusiqi-dev/dsh-browser-use'
+import { ToolCallId } from '@liusiqi-dev/dsh-llm'
+import { SessionId } from '@liusiqi-dev/dsh-session'
 import * as Provider from '../../lib/index.js'
 
 const [endpoint, url] = process.argv.slice(2)

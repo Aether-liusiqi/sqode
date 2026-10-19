@@ -19,25 +19,25 @@ if (isSea()) {
 const selectorName = 'SQODE_SUBPROCESS_RUNNER'
 const selection = process.env[selectorName]
 const aclRunner = process.platform === 'win32'
-  ? fileURLToPath(import.meta.resolve('@deepseek-ai/dsh-sandbox-windows-acl/runner'))
+  ? fileURLToPath(import.meta.resolve('@liusiqi-dev/dsh-sandbox-windows-acl/runner'))
   : undefined
 
 if (aclRunner !== undefined && process.argv[2] === aclRunner) {
   process.argv.splice(1, 1)
-  await import('@deepseek-ai/dsh-sandbox-windows-acl/runner')
+  await import('@liusiqi-dev/dsh-sandbox-windows-acl/runner')
 } else if (process.env.SQODE_PTC_RUNTIME_NODE === '1') {
   Reflect.deleteProperty(process.env, 'SQODE_PTC_RUNTIME_NODE')
-  await import('@deepseek-ai/dsh-ptc-runtime-node/process')
+  await import('@liusiqi-dev/dsh-ptc-runtime-node/process')
 } else if (selection === undefined) {
   if (isSea()) {
     // Carrier default stays separate so process/home environment and profile patches can override it.
     const platform = process.platform === 'darwin' ? 'macos' : process.platform === 'win32' ? 'win' : process.platform
     process.env.SQODE_BUNDLED_PRIMARY_RUNTIME = join(dirname(process.execPath), `${platform}-${process.arch}`, 'primary-runtime')
   }
-  const { runCli } = await import('@deepseek-ai/dsh/lib/bin.js')
+  const { runCli } = await import('@liusiqi-dev/dsh/lib/bin.js')
   await runCli()
 } else {
   Reflect.deleteProperty(process.env, selectorName)
-  const { runSelectedSubprocessRunner } = await import('@deepseek-ai/dsh-subprocess-local/runner')
+  const { runSelectedSubprocessRunner } = await import('@liusiqi-dev/dsh-subprocess-local/runner')
   await runSelectedSubprocessRunner(selection)
 }

@@ -4,11 +4,11 @@
  */
 import assert from 'node:assert/strict'
 import { describe, expect, it, vi, beforeEach } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import SystemPrompt, { renderPrompt } from '@deepseek-ai/dsh-system-prompt'
-import ToolRuntime from '@deepseek-ai/dsh-tools'
-import { createScope } from '@deepseek-ai/dsh-scope'
-import type { Config } from '@deepseek-ai/dsh-mcp-client'
+import { Context } from '@liusiqi-dev/cordis'
+import SystemPrompt, { renderPrompt } from '@liusiqi-dev/dsh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/dsh-tools'
+import { createScope } from '@liusiqi-dev/dsh-scope'
+import type { Config } from '@liusiqi-dev/dsh-mcp-client'
 
 // ---- Mock MCP SDK ----
 
@@ -48,7 +48,7 @@ vi.mock('@modelcontextprotocol/client/stdio', () => ({
 
 // vi.mock is hoisted above static imports, so the module under test sees the
 // mocked SDK even through a static import.
-import { apply, name, inject, Config as ConfigSchema } from '@deepseek-ai/dsh-mcp-client/src/index.ts'
+import { apply, name, inject, Config as ConfigSchema } from '@liusiqi-dev/dsh-mcp-client/src/index.ts'
 
 // ---- Helpers ----
 

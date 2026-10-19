@@ -1,9 +1,9 @@
 /** Host registration for browser Chat preferences. */
-import type {} from '@deepseek-ai/dsh-settings'
+import type {} from '@liusiqi-dev/dsh-settings'
 
-import type { Volatile, Context } from '@deepseek-ai/cordis'
+import type { Volatile, Context } from '@liusiqi-dev/cordis'
 import type { ChatSettings, LinkOpening, PerformanceUsageMode } from './chat-settings.ts'
-import z from '@deepseek-ai/schemastery'
+import z from '@liusiqi-dev/schemastery'
 import { TRANSCRIPT_VIEW_FIELD } from './chat-settings.ts'
 
 import { ChatSettingsFields } from './chat-settings.ts'

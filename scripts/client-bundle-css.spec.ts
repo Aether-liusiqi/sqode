@@ -16,7 +16,7 @@ interface CssPlugin {
 
 function cssPlugin(name: 'dsh-css-modules-inline' | 'dsh-css-global-inline' | 'dsh-css-text-inline'): CssPlugin {
   const configs = clientBundle(
-    '@deepseek-ai/dsh-client-test',
+    '@liusiqi-dev/dsh-client-test',
     ['lib/types/index.js', 'lib/types/invariant.js'],
   )({ env: { SQODE_BUILD_FACE: 'client' } })
   const client = configs.find(config => config.platform === 'browser')

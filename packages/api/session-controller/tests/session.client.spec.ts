@@ -6,13 +6,13 @@
  */
 
 import { describe, expect, onTestFinished, vi } from 'vitest'
-import { SessionSeq, type SessionEvent } from '@deepseek-ai/dsh-session/types'
-import { AttachmentId } from '@deepseek-ai/dsh-attachment'
-import type { SessionId } from '@deepseek-ai/dsh-api-remotes/client'
-import { RemoteStreamCarrierError } from '@deepseek-ai/dsh-api-gateway/client'
-import { RemoteError, type RemoteResult } from '@deepseek-ai/dsh-typert-protocol'
-import { ok, type RemoteMock } from '@deepseek-ai/dsh-remote-mock'
-import { createClientTest, type TestClient, webApp } from '@deepseek-ai/dsh-client-test-runtime/src/assembly/index.ts'
+import { SessionSeq, type SessionEvent } from '@liusiqi-dev/dsh-session/types'
+import { AttachmentId } from '@liusiqi-dev/dsh-attachment'
+import type { SessionId } from '@liusiqi-dev/dsh-api-remotes/client'
+import { RemoteStreamCarrierError } from '@liusiqi-dev/dsh-api-gateway/client'
+import { RemoteError, type RemoteResult } from '@liusiqi-dev/dsh-typert-protocol'
+import { ok, type RemoteMock } from '@liusiqi-dev/dsh-remote-mock'
+import { createClientTest, type TestClient, webApp } from '@liusiqi-dev/dsh-client-test-runtime/src/assembly/index.ts'
 import { Session } from '../src/client/sessions/session.ts'
 import { SessionEventStream } from '../src/client/transport.ts'
 import type { SessionFollowRequest, SessionPage, SessionPageRequest } from '../src/types.ts'
@@ -23,7 +23,7 @@ import {
 } from './remote/session.client.ts'
 
 /** A Session talks through the Gateway client; its dependency cone is the Typert registry and the Connection. */
-const API_ROSTER = webApp.closure(['@deepseek-ai/dsh-api-gateway'])
+const API_ROSTER = webApp.closure(['@liusiqi-dev/dsh-api-gateway'])
 const it = createClientTest({ roster: API_ROSTER })
 const SID = 'fk-s1' as SessionId
 const PARENT = 'fk-parent' as SessionId

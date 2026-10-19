@@ -1,9 +1,9 @@
 /** Desktop installation admission and task inspection for the shared Web Host. */
 
-import type { Context } from '@deepseek-ai/cordis'
-import type {} from '@deepseek-ai/dsh-agent'
-import type {} from '@deepseek-ai/dsh-jobs'
-import type {} from '@deepseek-ai/dsh-client-connection'
+import type { Context } from '@liusiqi-dev/cordis'
+import type {} from '@liusiqi-dev/dsh-agent'
+import type {} from '@liusiqi-dev/dsh-jobs'
+import type {} from '@liusiqi-dev/dsh-client-connection'
 
 /**
  * Whether stopping the Host now would interrupt work: a generating or tool-running

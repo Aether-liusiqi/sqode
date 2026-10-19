@@ -3,16 +3,16 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import Loader from '@deepseek-ai/cordis-plugin-loader'
-import Include from '@deepseek-ai/cordis-plugin-include'
-import AgentRegistry from '@deepseek-ai/dsh-agent'
-import type { Agent, AgentStatus } from '@deepseek-ai/dsh-agent'
-import CommandRuntime from '@deepseek-ai/dsh-commands'
-import SessionStore, { SessionId } from '@deepseek-ai/dsh-session'
-import * as CommandFeedback from '@deepseek-ai/dsh-command-feedback'
-import { getOrCreateAnonymousUserId } from '@deepseek-ai/dsh-anonymous-user-id'
-import { unsupportedInbox } from '@deepseek-ai/dsh-agent-loop-testkit'
+import { Context } from '@liusiqi-dev/cordis'
+import Loader from '@liusiqi-dev/cordis-plugin-loader'
+import Include from '@liusiqi-dev/cordis-plugin-include'
+import AgentRegistry from '@liusiqi-dev/dsh-agent'
+import type { Agent, AgentStatus } from '@liusiqi-dev/dsh-agent'
+import CommandRuntime from '@liusiqi-dev/dsh-commands'
+import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
+import * as CommandFeedback from '@liusiqi-dev/dsh-command-feedback'
+import { getOrCreateAnonymousUserId } from '@liusiqi-dev/dsh-anonymous-user-id'
+import { unsupportedInbox } from '@liusiqi-dev/dsh-agent-loop-testkit'
 
 let root: string | undefined
 let context: Context | undefined
@@ -56,10 +56,10 @@ describe('/feedback real Loader composition through cordis.yml', () => {
     vi.stubEnv('SQODE_HOME', root)
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
-      "- name: '@deepseek-ai/dsh-agent'",
-      "- name: '@deepseek-ai/dsh-session'",
-      "- name: '@deepseek-ai/dsh-commands'",
-      "- name: '@deepseek-ai/dsh-command-feedback'",
+      "- name: '@liusiqi-dev/dsh-agent'",
+      "- name: '@liusiqi-dev/dsh-session'",
+      "- name: '@liusiqi-dev/dsh-commands'",
+      "- name: '@liusiqi-dev/dsh-command-feedback'",
       '',
     ].join('\n'))
 
@@ -68,10 +68,10 @@ describe('/feedback real Loader composition through cordis.yml', () => {
     await context.plugin(Loader)
     context.loader.builtins.include = Include
     const modules = new Map<string, unknown>([
-      ['@deepseek-ai/dsh-agent', AgentRegistry],
-      ['@deepseek-ai/dsh-session', SessionStore],
-      ['@deepseek-ai/dsh-commands', CommandRuntime],
-      ['@deepseek-ai/dsh-command-feedback', CommandFeedback],
+      ['@liusiqi-dev/dsh-agent', AgentRegistry],
+      ['@liusiqi-dev/dsh-session', SessionStore],
+      ['@liusiqi-dev/dsh-commands', CommandRuntime],
+      ['@liusiqi-dev/dsh-command-feedback', CommandFeedback],
     ])
     context.loader.internal = {
       version: 'v2',

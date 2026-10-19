@@ -1,19 +1,19 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import Loader from '@deepseek-ai/cordis-plugin-loader'
-import { createUserMessage, ToolCallId, LlmAdapter } from '@deepseek-ai/dsh-llm'
-import type { GenerateOptions, StreamChunk } from '@deepseek-ai/dsh-llm'
-import type { ContextFormed } from '@deepseek-ai/dsh-llm'
-import { Session, SessionId, type SessionEvent } from '@deepseek-ai/dsh-session'
-import AgentRegistry, { agentEvents, type Agent } from '@deepseek-ai/dsh-agent'
-import { defineContentToolFixture } from '@deepseek-ai/dsh-tools'
-import AgentLoop from '@deepseek-ai/dsh-agent-loop'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
-import { unsupportedInbox, mountAgentLoopTestDependencies } from '@deepseek-ai/dsh-agent-loop-testkit'
-import * as timeContext from '@deepseek-ai/dsh-time-context'
-import type { Config } from '@deepseek-ai/dsh-time-context'
+import { Context } from '@liusiqi-dev/cordis'
+import Loader from '@liusiqi-dev/cordis-plugin-loader'
+import { createUserMessage, ToolCallId, LlmAdapter } from '@liusiqi-dev/dsh-llm'
+import type { GenerateOptions, StreamChunk } from '@liusiqi-dev/dsh-llm'
+import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
+import { Session, SessionId, type SessionEvent } from '@liusiqi-dev/dsh-session'
+import AgentRegistry, { agentEvents, type Agent } from '@liusiqi-dev/dsh-agent'
+import { defineContentToolFixture } from '@liusiqi-dev/dsh-tools'
+import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
+import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
+import { unsupportedInbox, mountAgentLoopTestDependencies } from '@liusiqi-dev/dsh-agent-loop-testkit'
+import * as timeContext from '@liusiqi-dev/dsh-time-context'
+import type { Config } from '@liusiqi-dev/dsh-time-context'
 
-declare module '@deepseek-ai/dsh-llm' {
+declare module '@liusiqi-dev/dsh-llm' {
   interface MessageSourceMap {
     'compaction-basic': { kind: 'compaction-basic' } & ContextFormed
     'time-context-test': { kind: 'time-context-test' } & ContextFormed

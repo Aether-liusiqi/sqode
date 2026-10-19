@@ -1,19 +1,19 @@
 /**
  * Default model selection for an Agent without a session-specific selection.
  *
- * @module @deepseek-ai/dsh-agent-default-model
+ * @module @liusiqi-dev/dsh-agent-default-model
  */
-import type {} from '@deepseek-ai/dsh-settings'
+import type {} from '@liusiqi-dev/dsh-settings'
 
-import type { Volatile } from '@deepseek-ai/cordis'
+import type { Volatile } from '@liusiqi-dev/cordis'
 
-import { Context, Service } from '@deepseek-ai/cordis'
-import z from '@deepseek-ai/schemastery'
-import type { ModelSelection } from '@deepseek-ai/dsh-agent'
-import { ReasoningEffortId } from '@deepseek-ai/dsh-llm'
-import type {} from '@deepseek-ai/dsh-config-editor'
+import { Context, Service } from '@liusiqi-dev/cordis'
+import z from '@liusiqi-dev/schemastery'
+import type { ModelSelection } from '@liusiqi-dev/dsh-agent'
+import { ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
+import type {} from '@liusiqi-dev/dsh-config-editor'
 
-declare module '@deepseek-ai/cordis' {
+declare module '@liusiqi-dev/cordis' {
   interface Context {
     /** Default model selection for Agents created without an explicit model. */
     agentDefaultModel: AgentDefaultModelConfig

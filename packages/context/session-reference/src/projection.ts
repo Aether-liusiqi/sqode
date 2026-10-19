@@ -1,11 +1,11 @@
 /** Current-surface projection and byte-bounded rendering. */
 
-import { isCompactCheckpointSource } from '@deepseek-ai/dsh-compaction'
-import type { SessionSurfaceSnapshot } from '@deepseek-ai/dsh-session-query'
-import { TextRetainer } from '@deepseek-ai/dsh-output-retention'
-import { assertNever } from '@deepseek-ai/dsh-util-values'
-import { SessionSeq } from '@deepseek-ai/dsh-session'
-import type { OptionalSessionSeq, SessionId } from '@deepseek-ai/dsh-session'
+import { isCompactCheckpointSource } from '@liusiqi-dev/dsh-compaction'
+import type { SessionSurfaceSnapshot } from '@liusiqi-dev/dsh-session-query'
+import { TextRetainer } from '@liusiqi-dev/dsh-output-retention'
+import { assertNever } from '@liusiqi-dev/dsh-util-values'
+import { SessionSeq } from '@liusiqi-dev/dsh-session'
+import type { OptionalSessionSeq, SessionId } from '@liusiqi-dev/dsh-session'
 import { stringifyTagSafeJson } from './serialization.ts'
 import type { ReferencedConversationItem } from './types.ts'
 

@@ -6,12 +6,12 @@
  */
 
 import { describe, expect, it } from 'vitest'
-import type { Context as ClientContext } from '@deepseek-ai/cordis'
-import type { RemoteErrorCode } from '@deepseek-ai/dsh-api-remotes/client'
-import { RemoteError } from '@deepseek-ai/dsh-client-test-runtime'
-import type { SessionSummary } from '@deepseek-ai/dsh-api-session-controller/client'
-import type { SessionId } from '@deepseek-ai/dsh-session/types'
-import { createSnapshotStore, type ObservableSnapshot } from '@deepseek-ai/dsh-client-store'
+import type { Context as ClientContext } from '@liusiqi-dev/cordis'
+import type { RemoteErrorCode } from '@liusiqi-dev/dsh-api-remotes/client'
+import { RemoteError } from '@liusiqi-dev/dsh-client-test-runtime'
+import type { SessionSummary } from '@liusiqi-dev/dsh-api-session-controller/client'
+import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import { createSnapshotStore, type ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
 import {
   AGENT_PRESET_SETTINGS_NS, AgentPresetSettingsController,
   writeDefaultPreset,

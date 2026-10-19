@@ -5,11 +5,11 @@
  * never provider selection or network access.
  */
 
-import type { Context } from '@deepseek-ai/cordis'
-import { defineTool } from '@deepseek-ai/dsh-tools'
-import type { GenericCallView, ToolResult, WebSearchResultView, WebSource } from '@deepseek-ai/dsh-tools'
-import type { JsonValue } from '@deepseek-ai/dsh-util-values'
-import type { WebSearchResult, WebSearchSource } from '@deepseek-ai/dsh-web'
+import type { Context } from '@liusiqi-dev/cordis'
+import { defineTool } from '@liusiqi-dev/dsh-tools'
+import type { GenericCallView, ToolResult, WebSearchResultView, WebSource } from '@liusiqi-dev/dsh-tools'
+import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
+import type { WebSearchResult, WebSearchSource } from '@liusiqi-dev/dsh-web'
 import { EXTERNAL_WEB_CONTENT_NOTICE } from './trust.ts'
 
 /**
@@ -301,7 +301,7 @@ function mergeSearchResults(
  *   request's `maxResults`.
  * @param maxQueries - the deployment's query cap enforced before provider calls.
  * @param timeoutMs - the cooperative tool-call budget (ms) attached as the tool's
- *   `ToolDefinition.timeoutMs` for `@deepseek-ai/dsh-tool-call-timeout-policy` to enforce.
+ *   `ToolDefinition.timeoutMs` for `@liusiqi-dev/dsh-tool-call-timeout-policy` to enforce.
  * @param fetchEnabled - whether the same composition exposes `web_fetch`, which
  *   permits recommending that follow-up tool when it is also visible at assembly.
  */

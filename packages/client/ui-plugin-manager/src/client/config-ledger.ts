@@ -6,8 +6,8 @@
  * locale and keeps its snapshot until one of them moves.
  */
 
-import type { Context as ClientContext } from '@deepseek-ai/cordis'
-import { resolveSlotLabel, type HostObservable } from '@deepseek-ai/dsh-client-ui-slots'
+import type { Context as ClientContext } from '@liusiqi-dev/cordis'
+import { resolveSlotLabel, type HostObservable } from '@liusiqi-dev/dsh-client-ui-slots'
 import type {} from './slot-contract.ts'
 
 /** One official plugin as the page lists it: its registration id and its title in the active locale. */

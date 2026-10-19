@@ -3,24 +3,24 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { afterEach, describe, expect, it } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import Loader from '@deepseek-ai/cordis-plugin-loader'
-import Include from '@deepseek-ai/cordis-plugin-include'
-import { ToolCallId } from '@deepseek-ai/dsh-llm'
-import { SESSION_FORMAT_VERSION, Session, SessionId } from '@deepseek-ai/dsh-session'
-import AgentRegistry from '@deepseek-ai/dsh-agent'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import TerminalSessionService from '@deepseek-ai/dsh-terminal'
-import * as TerminalLocal from '@deepseek-ai/dsh-terminal-bash'
-import SandboxProvider from '@deepseek-ai/dsh-sandbox'
-import type { ConfinedArgv, SandboxPolicy } from '@deepseek-ai/dsh-sandbox'
-import SandboxPolicyService from '@deepseek-ai/dsh-sandbox-policy'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
-import LocalSubprocessRuntime from '@deepseek-ai/dsh-subprocess-local'
-import SystemPrompt from '@deepseek-ai/dsh-system-prompt'
-import ToolRuntime from '@deepseek-ai/dsh-tools'
-import * as ToolBashPersistent from '@deepseek-ai/dsh-tool-bash-persistent'
-import { unsupportedInbox } from '@deepseek-ai/dsh-agent-loop-testkit'
+import { Context } from '@liusiqi-dev/cordis'
+import Loader from '@liusiqi-dev/cordis-plugin-loader'
+import Include from '@liusiqi-dev/cordis-plugin-include'
+import { ToolCallId } from '@liusiqi-dev/dsh-llm'
+import { SESSION_FORMAT_VERSION, Session, SessionId } from '@liusiqi-dev/dsh-session'
+import AgentRegistry from '@liusiqi-dev/dsh-agent'
+import type { Agent } from '@liusiqi-dev/dsh-agent'
+import TerminalSessionService from '@liusiqi-dev/dsh-terminal'
+import * as TerminalLocal from '@liusiqi-dev/dsh-terminal-bash'
+import SandboxProvider from '@liusiqi-dev/dsh-sandbox'
+import type { ConfinedArgv, SandboxPolicy } from '@liusiqi-dev/dsh-sandbox'
+import SandboxPolicyService from '@liusiqi-dev/dsh-sandbox-policy'
+import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
+import LocalSubprocessRuntime from '@liusiqi-dev/dsh-subprocess-local'
+import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/dsh-tools'
+import * as ToolBashPersistent from '@liusiqi-dev/dsh-tool-bash-persistent'
+import { unsupportedInbox } from '@liusiqi-dev/dsh-agent-loop-testkit'
 
 let root: string | undefined
 let context: Context | undefined
@@ -74,18 +74,18 @@ suite('persistent Bash through a real cordis.yml Loader composition', () => {
     root = await mkdtemp(join(tmpdir(), 'dsh-persistent-bash-loader-'))
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
-      "- name: '@deepseek-ai/dsh-agent'",
-      "- name: '@deepseek-ai/dsh-system-prompt'",
-      "- name: '@deepseek-ai/dsh-tools'",
-      "- name: '@deepseek-ai/dsh-terminal'",
-      "- name: '@deepseek-ai/dsh-test-sandbox'",
-      "- name: '@deepseek-ai/dsh-session-projection'",
-      "- name: '@deepseek-ai/dsh-sandbox-policy'",
+      "- name: '@liusiqi-dev/dsh-agent'",
+      "- name: '@liusiqi-dev/dsh-system-prompt'",
+      "- name: '@liusiqi-dev/dsh-tools'",
+      "- name: '@liusiqi-dev/dsh-terminal'",
+      "- name: '@liusiqi-dev/dsh-test-sandbox'",
+      "- name: '@liusiqi-dev/dsh-session-projection'",
+      "- name: '@liusiqi-dev/dsh-sandbox-policy'",
       '  config:',
       '    mode: danger-full-access',
       `    workspaceRoot: ${JSON.stringify(root)}`,
-      "- name: '@deepseek-ai/dsh-subprocess-local'",
-      "- name: '@deepseek-ai/dsh-terminal-bash'",
+      "- name: '@liusiqi-dev/dsh-subprocess-local'",
+      "- name: '@liusiqi-dev/dsh-terminal-bash'",
       '  config:',
       '    pollIntervalMs: 10',
       '    exactProbeAfterMs: 20',
@@ -97,7 +97,7 @@ suite('persistent Bash through a real cordis.yml Loader composition', () => {
       '    scrollbackLines: 20000',
       '    timeoutMs: 2000',
       '    disposeGraceMs: 500',
-      "- name: '@deepseek-ai/dsh-tool-bash-persistent'",
+      "- name: '@liusiqi-dev/dsh-tool-bash-persistent'",
       '  config:',
       '    timeoutMs: 5000',
       '',
@@ -108,16 +108,16 @@ suite('persistent Bash through a real cordis.yml Loader composition', () => {
     await context.plugin(Loader)
     context.loader.builtins.include = Include
     const modules = new Map<string, unknown>([
-      ['@deepseek-ai/dsh-agent', AgentRegistry],
-      ['@deepseek-ai/dsh-system-prompt', SystemPrompt],
-      ['@deepseek-ai/dsh-tools', ToolRuntime],
-      ['@deepseek-ai/dsh-terminal', TerminalSessionService],
-      ['@deepseek-ai/dsh-test-sandbox', PassthroughSandbox],
-      ['@deepseek-ai/dsh-session-projection', SessionProjectionRegistry],
-      ['@deepseek-ai/dsh-sandbox-policy', SandboxPolicyService],
-      ['@deepseek-ai/dsh-subprocess-local', LocalSubprocessRuntime],
-      ['@deepseek-ai/dsh-terminal-bash', TerminalLocal],
-      ['@deepseek-ai/dsh-tool-bash-persistent', ToolBashPersistent],
+      ['@liusiqi-dev/dsh-agent', AgentRegistry],
+      ['@liusiqi-dev/dsh-system-prompt', SystemPrompt],
+      ['@liusiqi-dev/dsh-tools', ToolRuntime],
+      ['@liusiqi-dev/dsh-terminal', TerminalSessionService],
+      ['@liusiqi-dev/dsh-test-sandbox', PassthroughSandbox],
+      ['@liusiqi-dev/dsh-session-projection', SessionProjectionRegistry],
+      ['@liusiqi-dev/dsh-sandbox-policy', SandboxPolicyService],
+      ['@liusiqi-dev/dsh-subprocess-local', LocalSubprocessRuntime],
+      ['@liusiqi-dev/dsh-terminal-bash', TerminalLocal],
+      ['@liusiqi-dev/dsh-tool-bash-persistent', ToolBashPersistent],
     ])
     context.loader.internal = {
       version: 'v2',

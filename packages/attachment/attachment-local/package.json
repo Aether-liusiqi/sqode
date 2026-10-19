@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-attachment-local",
+  "name": "@liusiqi-dev/dsh-attachment-local",
   "description": "Private content-addressed SQODE_HOME attachment storage",
   "version": "1.0.0",
   "publishConfig": {
@@ -21,18 +21,18 @@
   "files": ["lib/index.js", "lib/types/**/*.d.ts"],
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/dsh-attachment": "workspace:*",
-    "@deepseek-ai/dsh-home-paths": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~"
+    "@liusiqi-dev/dsh-attachment": "workspace:*",
+    "@liusiqi-dev/dsh-home-paths": "workspace:*",
+    "@liusiqi-dev/cordis": "workspace:~"
   },
   "dependencies": {
-    "@deepseek-ai/dsh-lazy-require": "workspace:*",
-    "@deepseek-ai/schemastery": "workspace:~",
+    "@liusiqi-dev/dsh-lazy-require": "workspace:*",
+    "@liusiqi-dev/schemastery": "workspace:~",
     "sharp": "^0.35.3"
   },
   "devDependencies": {
-    "@deepseek-ai/dsh-attachment": "workspace:*",
-    "@deepseek-ai/dsh-home-paths": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~"
+    "@liusiqi-dev/dsh-attachment": "workspace:*",
+    "@liusiqi-dev/dsh-home-paths": "workspace:*",
+    "@liusiqi-dev/cordis": "workspace:~"
   }
 }

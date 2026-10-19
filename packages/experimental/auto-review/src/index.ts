@@ -5,12 +5,12 @@
  * Under the `ask` approval policy a reviewer denial asks the user; under
  * `never` it is final.
  *
- * @module @deepseek-ai/dsh-experimental-auto-review
+ * @module @liusiqi-dev/dsh-experimental-auto-review
  */
 
-import type { Context } from '@deepseek-ai/cordis'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import type {} from '@deepseek-ai/dsh-agent-instructions'
+import type { Context } from '@liusiqi-dev/cordis'
+import type { Agent } from '@liusiqi-dev/dsh-agent'
+import type {} from '@liusiqi-dev/dsh-agent-instructions'
 import {
   BlockAssembler,
   type ContentBlock,
@@ -19,17 +19,17 @@ import {
   type StreamChunk,
   type ToolCallId,
   type ToolSchema,
-} from '@deepseek-ai/dsh-llm'
-import { deepFreeze } from '@deepseek-ai/dsh-util-values'
-import { AUTO_PRESET } from '@deepseek-ai/dsh-permission-presets'
-import type { SessionEvent } from '@deepseek-ai/dsh-session'
-import type {} from '@deepseek-ai/dsh-subagent'
-import type {} from '@deepseek-ai/dsh-user-approval'
+} from '@liusiqi-dev/dsh-llm'
+import { deepFreeze } from '@liusiqi-dev/dsh-util-values'
+import { AUTO_PRESET } from '@liusiqi-dev/dsh-permission-presets'
+import type { SessionEvent } from '@liusiqi-dev/dsh-session'
+import type {} from '@liusiqi-dev/dsh-subagent'
+import type {} from '@liusiqi-dev/dsh-user-approval'
 import {
   RUN_CODE_NAME,
   type PreToolDecision,
   type ToolExecution,
-} from '@deepseek-ai/dsh-tools'
+} from '@liusiqi-dev/dsh-tools'
 
 /** Structured error name persisted for every final reviewer denial. */
 const AUTO_REVIEW_DENIED_ERROR_NAME = 'AutoReviewDeniedError'

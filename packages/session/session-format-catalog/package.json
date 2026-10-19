@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-session-format-catalog",
+  "name": "@liusiqi-dev/dsh-session-format-catalog",
   "description": "Build-static first-party Session format codec and migration catalog",
   "version": "1.0.0",
   "publishConfig": {
@@ -32,19 +32,19 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@deepseek-ai/dsh-session-format": "workspace:*",
-    "@deepseek-ai/dsh-session-format-v0-to-v1": "workspace:*",
-    "@deepseek-ai/dsh-session-format-v1-to-v2": "workspace:*",
-    "@deepseek-ai/dsh-session-format-v2-to-v3": "workspace:*",
-    "@deepseek-ai/dsh-session-format-v3-to-v4": "workspace:*",
-    "@deepseek-ai/dsh-compaction-image-offload": "workspace:*"
+    "@liusiqi-dev/dsh-session-format": "workspace:*",
+    "@liusiqi-dev/dsh-session-format-v0-to-v1": "workspace:*",
+    "@liusiqi-dev/dsh-session-format-v1-to-v2": "workspace:*",
+    "@liusiqi-dev/dsh-session-format-v2-to-v3": "workspace:*",
+    "@liusiqi-dev/dsh-session-format-v3-to-v4": "workspace:*",
+    "@liusiqi-dev/dsh-compaction-image-offload": "workspace:*"
   },
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-session": "workspace:*"
+    "@liusiqi-dev/cordis": "workspace:~",
+    "@liusiqi-dev/dsh-session": "workspace:*"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-session": "workspace:*"
+    "@liusiqi-dev/cordis": "workspace:~",
+    "@liusiqi-dev/dsh-session": "workspace:*"
   }
 }

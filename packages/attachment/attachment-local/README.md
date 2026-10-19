@@ -3,7 +3,7 @@ description: "Local storage for your attached images below SQODE_HOME, for users
 kind: "package-reference"
 ---
 
-# @deepseek-ai/dsh-attachment-local
+# @liusiqi-dev/dsh-attachment-local
 
 English | [中文](README.zh.md)
 
@@ -32,7 +32,7 @@ In the default composition, images and generic files attached to prompts or comm
 Mount the plugin with no required configuration. The defaults below define what you can attach; the generated configuration catalog is the exhaustive source for every field.
 
 ```yaml
-- name: '@deepseek-ai/dsh-attachment-local'
+- name: '@liusiqi-dev/dsh-attachment-local'
 ```
 
 | Field | Default | Meaning |

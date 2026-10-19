@@ -5,13 +5,13 @@
  * `./types` for host consumers and `./client/types` for client aggregates —
  * with zero content duplication.
  *
- * @module @deepseek-ai/dsh-session-title/types
+ * @module @liusiqi-dev/dsh-session-title/types
  */
 
 export {}
 
-import type { Branded } from '@deepseek-ai/dsh-brand'
-import type { OptionalSessionSeq, SessionSeq } from '@deepseek-ai/dsh-session/types'
+import type { Branded } from '@liusiqi-dev/dsh-brand'
+import type { OptionalSessionSeq, SessionSeq } from '@liusiqi-dev/dsh-session/types'
 
 /** Identifies one session-title provider registration. */
 export type SessionTitleProviderId = Branded<'SessionTitleProviderId'>
@@ -76,7 +76,7 @@ export interface TitleInputState {
   readonly lastSeq: OptionalSessionSeq
 }
 
-declare module '@deepseek-ai/dsh-session-projection/types' {
+declare module '@liusiqi-dev/dsh-session-projection/types' {
   interface SessionProjectionStateMap {
     /** Latest logged title text, or null. */
     title: string | null

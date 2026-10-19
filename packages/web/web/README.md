@@ -3,7 +3,7 @@ description: "The web access service (ctx.web): how deployments and plugin autho
 kind: "package-reference"
 ---
 
-# @deepseek-ai/dsh-web
+# @liusiqi-dev/dsh-web
 
 English | [中文](README.zh.md)
 
@@ -36,9 +36,9 @@ Choose the service when a plugin or tool must search or fetch without hard-codin
 Load the service and let a single mounted backend auto-select, or pin a provider id with `searchProvider`/`fetchProvider`. The environment variables `$SQODE_WEB_SEARCH_PROVIDER` and `$SQODE_WEB_FETCH_PROVIDER` feed the same fields and are not a separate priority chain.
 
 ```yaml
-- name: '@deepseek-ai/dsh-web'
-- name: '@deepseek-ai/dsh-web-search-exa'
-- name: '@deepseek-ai/dsh-web-fetch-http'
+- name: '@liusiqi-dev/dsh-web'
+- name: '@liusiqi-dev/dsh-web-search-exa'
+- name: '@liusiqi-dev/dsh-web-fetch-http'
 ```
 
 | Field | Default | Meaning |

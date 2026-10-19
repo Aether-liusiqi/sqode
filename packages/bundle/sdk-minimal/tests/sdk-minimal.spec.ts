@@ -5,7 +5,7 @@ import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import * as yaml from 'js-yaml'
 import { describe, expect, it } from 'vitest'
-import { entryListSchema } from '@deepseek-ai/cordis-plugin-include'
+import { entryListSchema } from '@liusiqi-dev/cordis-plugin-include'
 
 function packageName(specifier: string): string {
   return specifier.startsWith('@') ? specifier.split('/').slice(0, 2).join('/') : specifier.split('/')[0]!
@@ -26,38 +26,38 @@ describe('dsh-sdk-minimal bundle', () => {
     expect(patches).toHaveLength(1)
     const rows = patches[0]?.insert ?? []
     expect(rows.map(row => [row.id, row.name])).toEqual([
-      ['sdk-app-startup', '@deepseek-ai/dsh-sdk-app'],
-      ['sdk-jsonrpc-server', '@deepseek-ai/dsh-sdk-jsonrpc-server'],
-      ['deepseek-llm-api-extensions', '@deepseek-ai/dsh-deepseek-llm-api-extensions'],
-      ['session-log-deepseek', '@deepseek-ai/dsh-session-log-deepseek'],
-      ['plugin-package-inventory-deepseek', '@deepseek-ai/dsh-plugin-package-inventory-deepseek'],
-      ['llm-deepseek', '@deepseek-ai/dsh-llm-deepseek-api-key'],
-      ['sandbox', '@deepseek-ai/dsh-sandbox-local'],
-      ['session-projection', '@deepseek-ai/dsh-session-projection'],
-      ['sandbox-policy', '@deepseek-ai/dsh-sandbox-policy'],
-      ['subprocess', '@deepseek-ai/dsh-subprocess-local'],
-      ['pty', '@deepseek-ai/dsh-terminal'],
-      ['terminal-bash', '@deepseek-ai/dsh-terminal-bash'],
-      ['terminal-pwsh', '@deepseek-ai/dsh-terminal-bash'],
-      ['timer', '@deepseek-ai/cordis-plugin-timer'],
-      ['llm', '@deepseek-ai/dsh-llm'],
-      ['session', '@deepseek-ai/dsh-session'],
-      ['session-title', '@deepseek-ai/dsh-session-title'],
-      ['system-prompt', '@deepseek-ai/dsh-system-prompt'],
-      ['tools', '@deepseek-ai/dsh-tools'],
-      ['mcp-resources', '@deepseek-ai/dsh-mcp-resources'],
-      ['agent', '@deepseek-ai/dsh-agent'],
-      ['llm-retry', '@deepseek-ai/dsh-llm-retry'],
-      ['jobs', '@deepseek-ai/dsh-jobs-local'],
-      ['invariants', '@deepseek-ai/dsh-invariants'],
-      ['session-invariant', '@deepseek-ai/dsh-session/invariant'],
-      ['agent-invariant', '@deepseek-ai/dsh-agent/invariant'],
-      ['scope-invariant', '@deepseek-ai/dsh-scope/invariant'],
-      ['agent-loop-invariant', '@deepseek-ai/dsh-agent-loop/invariant'],
-      ['agent-loop', '@deepseek-ai/dsh-agent-loop'],
-      ['persistent-bash', '@deepseek-ai/dsh-tool-bash-persistent'],
-      ['persistent-pwsh', '@deepseek-ai/dsh-tool-pwsh-persistent'],
-      ['sessions', '@deepseek-ai/dsh-session-persistence-jsonl'],
+      ['sdk-app-startup', '@liusiqi-dev/dsh-sdk-app'],
+      ['sdk-jsonrpc-server', '@liusiqi-dev/dsh-sdk-jsonrpc-server'],
+      ['deepseek-llm-api-extensions', '@liusiqi-dev/dsh-deepseek-llm-api-extensions'],
+      ['session-log-deepseek', '@liusiqi-dev/dsh-session-log-deepseek'],
+      ['plugin-package-inventory-deepseek', '@liusiqi-dev/dsh-plugin-package-inventory-deepseek'],
+      ['llm-deepseek', '@liusiqi-dev/dsh-llm-deepseek-api-key'],
+      ['sandbox', '@liusiqi-dev/dsh-sandbox-local'],
+      ['session-projection', '@liusiqi-dev/dsh-session-projection'],
+      ['sandbox-policy', '@liusiqi-dev/dsh-sandbox-policy'],
+      ['subprocess', '@liusiqi-dev/dsh-subprocess-local'],
+      ['pty', '@liusiqi-dev/dsh-terminal'],
+      ['terminal-bash', '@liusiqi-dev/dsh-terminal-bash'],
+      ['terminal-pwsh', '@liusiqi-dev/dsh-terminal-bash'],
+      ['timer', '@liusiqi-dev/cordis-plugin-timer'],
+      ['llm', '@liusiqi-dev/dsh-llm'],
+      ['session', '@liusiqi-dev/dsh-session'],
+      ['session-title', '@liusiqi-dev/dsh-session-title'],
+      ['system-prompt', '@liusiqi-dev/dsh-system-prompt'],
+      ['tools', '@liusiqi-dev/dsh-tools'],
+      ['mcp-resources', '@liusiqi-dev/dsh-mcp-resources'],
+      ['agent', '@liusiqi-dev/dsh-agent'],
+      ['llm-retry', '@liusiqi-dev/dsh-llm-retry'],
+      ['jobs', '@liusiqi-dev/dsh-jobs-local'],
+      ['invariants', '@liusiqi-dev/dsh-invariants'],
+      ['session-invariant', '@liusiqi-dev/dsh-session/invariant'],
+      ['agent-invariant', '@liusiqi-dev/dsh-agent/invariant'],
+      ['scope-invariant', '@liusiqi-dev/dsh-scope/invariant'],
+      ['agent-loop-invariant', '@liusiqi-dev/dsh-agent-loop/invariant'],
+      ['agent-loop', '@liusiqi-dev/dsh-agent-loop'],
+      ['persistent-bash', '@liusiqi-dev/dsh-tool-bash-persistent'],
+      ['persistent-pwsh', '@liusiqi-dev/dsh-tool-pwsh-persistent'],
+      ['sessions', '@liusiqi-dev/dsh-session-persistence-jsonl'],
     ])
     expect(rows.find(row => row.id === 'sdk-app-startup')?.config).toEqual({ profile: 'sdk-minimal' })
     expect(rows.find(row => row.id === 'sdk-jsonrpc-server')).toMatchObject({

@@ -5,13 +5,13 @@
  * back into the mirror.
  */
 
-import type { Context as ClientContext } from '@deepseek-ai/cordis'
-import type { SettingsNamespaceView } from '@deepseek-ai/dsh-api-remotes/client'
+import type { Context as ClientContext } from '@liusiqi-dev/cordis'
+import type { SettingsNamespaceView } from '@liusiqi-dev/dsh-api-remotes/client'
 import {
   createSnapshotStore, type SnapshotStore,
-} from '@deepseek-ai/dsh-client-store'
-import type { SettingsDescribeFace } from '@deepseek-ai/dsh-client-ui-settings/client'
-import type { PermissionCatalog } from '@deepseek-ai/dsh-permission-presets/client'
+} from '@liusiqi-dev/dsh-client-store'
+import type { SettingsDescribeFace } from '@liusiqi-dev/dsh-client-ui-settings/client'
+import type { PermissionCatalog } from '@liusiqi-dev/dsh-permission-presets/client'
 import type { PermissionCatalogDirectory } from './catalog.ts'
 import { displayPermissionPreset } from './presentation.ts'
 

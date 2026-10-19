@@ -1,10 +1,10 @@
 /** Explicit opt-in compatibility check against an installed Cua Driver executable. */
 import { isAbsolute } from 'node:path'
-import { Context } from '@deepseek-ai/cordis'
-import ComputerUse from '@deepseek-ai/dsh-computer-use'
-import { ToolCallId } from '@deepseek-ai/dsh-llm'
-import SystemPrompt from '@deepseek-ai/dsh-system-prompt'
-import ToolRuntime from '@deepseek-ai/dsh-tools'
+import { Context } from '@liusiqi-dev/cordis'
+import ComputerUse from '@liusiqi-dev/dsh-computer-use'
+import { ToolCallId } from '@liusiqi-dev/dsh-llm'
+import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/dsh-tools'
 import { expect, it } from 'vitest'
 import * as Provider from '../src/index.ts'
 

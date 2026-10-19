@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-computer-use",
+  "name": "@liusiqi-dev/dsh-computer-use",
   "description": "Exclusive named computer-use provider registration",
   "version": "1.0.0",
   "publishConfig": {
@@ -32,11 +32,11 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-brand": "workspace:*"
+    "@liusiqi-dev/cordis": "workspace:~",
+    "@liusiqi-dev/dsh-brand": "workspace:*"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-brand": "workspace:*"
+    "@liusiqi-dev/cordis": "workspace:~",
+    "@liusiqi-dev/dsh-brand": "workspace:*"
   }
 }

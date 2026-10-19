@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
-import { Context } from '@deepseek-ai/cordis'
-import Loader from '@deepseek-ai/cordis-plugin-loader'
+import { Context } from '@liusiqi-dev/cordis'
+import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { apply as provideModules, createClientModuleSystem } from '../src/client/index.ts'
 import type { ClientBundleRegistration, ClientModuleLoaderTarget, WebBootEntry, WebBootGraph } from '../src/client/index.ts'

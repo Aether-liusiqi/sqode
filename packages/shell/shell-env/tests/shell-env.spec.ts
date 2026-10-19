@@ -1,5 +1,5 @@
 /**
- * Registry tests for `@deepseek-ai/dsh-shell-env`: built-in facts, contributor
+ * Registry tests for `@liusiqi-dev/dsh-shell-env`: built-in facts, contributor
  * ownership and validation, collection ordering, effect-scoped disposal, and
  * the explicit disposer contract.
  */
@@ -7,13 +7,13 @@
 import { homedir } from 'node:os'
 import { join, resolve } from 'node:path'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import { ToolCallId } from '@deepseek-ai/dsh-llm'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import { SESSION_FORMAT_VERSION } from '@deepseek-ai/dsh-session'
-import type { ToolExecution } from '@deepseek-ai/dsh-tools'
-import { ShellEnvRegistry } from '@deepseek-ai/dsh-shell-env'
-import * as BashEnvPlugin from '@deepseek-ai/dsh-shell-env'
+import { Context } from '@liusiqi-dev/cordis'
+import { ToolCallId } from '@liusiqi-dev/dsh-llm'
+import type { Agent } from '@liusiqi-dev/dsh-agent'
+import { SESSION_FORMAT_VERSION } from '@liusiqi-dev/dsh-session'
+import type { ToolExecution } from '@liusiqi-dev/dsh-tools'
+import { ShellEnvRegistry } from '@liusiqi-dev/dsh-shell-env'
+import * as BashEnvPlugin from '@liusiqi-dev/dsh-shell-env'
 
 const testToolSignal = new AbortController().signal
 

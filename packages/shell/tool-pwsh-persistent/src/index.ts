@@ -2,17 +2,17 @@
    the PowerShell counterpart shares the session registry, polling loop, and reset contract by design. */
 /**
  * Model-facing persistent `pwsh` tool over the owner-scoped PTY seam.
- * @module @deepseek-ai/dsh-tool-pwsh-persistent
+ * @module @liusiqi-dev/dsh-tool-pwsh-persistent
  */
 
 import { randomUUID } from 'node:crypto'
-import type { Context } from '@deepseek-ai/cordis'
-import z from '@deepseek-ai/schemastery'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import { truncateWithoutSplittingSurrogatePair } from '@deepseek-ai/dsh-output-retention'
-import type { TerminalReadResult, TerminalSessionId } from '@deepseek-ai/dsh-terminal'
-import { deadline, timeoutOf } from '@deepseek-ai/dsh-timeout'
-import { defineTool } from '@deepseek-ai/dsh-tools'
+import type { Context } from '@liusiqi-dev/cordis'
+import z from '@liusiqi-dev/schemastery'
+import type { Agent } from '@liusiqi-dev/dsh-agent'
+import { truncateWithoutSplittingSurrogatePair } from '@liusiqi-dev/dsh-output-retention'
+import type { TerminalReadResult, TerminalSessionId } from '@liusiqi-dev/dsh-terminal'
+import { deadline, timeoutOf } from '@liusiqi-dev/dsh-timeout'
+import { defineTool } from '@liusiqi-dev/dsh-tools'
 
 // TODO: Replace the file-search advice; arbitrary command output need not come from a searchable file.
 const TRUNCATED_MESSAGE = '<response clipped><NOTE>To save on context only part of this file has been shown to you. You should retry this tool after you have searched inside the file with Select-String in order to find the line numbers of what you are looking for.</NOTE>'
