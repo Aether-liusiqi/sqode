@@ -1225,7 +1225,7 @@ async function main(): Promise<void> {
     window.focus()
   }
 
-  if (app.isPackaged || process.env.SQODE_DESKTOP_DEV_APP === '1') app.setAsDefaultProtocolClient('dsh')
+  if (app.isPackaged || process.env.SQODE_DESKTOP_DEV_APP === '1') app.setAsDefaultProtocolClient('sqode')
   app.on('open-url', (event, url) => {
     event.preventDefault()
     if (url === 'sqode://open' || url === 'sqode://open/') focusPrimaryWindow()

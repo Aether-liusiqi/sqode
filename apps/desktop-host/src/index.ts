@@ -19,11 +19,11 @@ async function main(): Promise<void> {
   const runtimeDir = process.argv[2] as string
   const projectDir = process.argv[3] as string
   installOfficeEngineResolution(runtimeDir)
-  const installAnchor = join(runtimeDir, 'node_modules', '@liusiqi-dev', 'dsh', 'package.json')
-  const profile = loadProfileDirectory('dsh', projectDir, installAnchor)
-  reportSkippedBundles('dsh', profile)
+  const installAnchor = join(runtimeDir, 'node_modules', '@liusiqi-dev', 'sqode', 'package.json')
+  const profile = loadProfileDirectory('sqode', projectDir, installAnchor)
+  reportSkippedBundles('sqode', profile)
   const application = runProfile({
-    environment: loadLayeredEnv('dsh'),
+    environment: loadLayeredEnv('sqode'),
     profile: 'desktop',
     resolvedProfile: { profile, installAnchor },
     patchFiles: [],

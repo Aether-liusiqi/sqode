@@ -10,7 +10,7 @@ import { generateConfigSchema, type ConfigSchemaDump } from '@liusiqi-dev/dsh-ap
 import { collectConfigDumpLayers } from './dump-config.ts'
 import { INSTALL_ANCHOR, prepareProfile } from './profile-boot.ts'
 
-const NAME = 'dsh'
+const NAME = 'sqode'
 
 /**
  * Print one JSON Schema document; incomplete collection or projection sets exitCode to 1.

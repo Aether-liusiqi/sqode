@@ -18,7 +18,7 @@ const observed = []
 const { runProfile } = await import(pathToFileURL(require.resolve('@liusiqi-dev/sqode/profile-boot')).href)
 const { loadLayeredEnv, loadProfileDirectory } = await import(pathToFileURL(require.resolve('@liusiqi-dev/dsh-app-boot')).href)
 const installAnchor = require.resolve('@liusiqi-dev/sqode/package.json')
-const running = await runProfile({ environment: loadLayeredEnv('dsh'), profile: 'desktop',
+const running = await runProfile({ environment: loadLayeredEnv('sqode'), profile: 'desktop',
   resolvedProfile: { profile: loadProfileDirectory('dsh', project, installAnchor), installAnchor },
   patchFiles: [], args: ['--no-open', '--port', '0'] })
 const host = { updateTasks: installDesktopUpdateTaskControl(running.ctx), dispose: () => running.shutdown.shutdown(0) }

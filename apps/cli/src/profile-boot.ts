@@ -38,7 +38,7 @@ import { SQODE_LAUNCH_ENVIRONMENT_KEY, type LaunchEnvironmentSnapshot } from '@l
 import { provideCmdline, type AppReady } from '@liusiqi-dev/dsh-cmdline'
 import { createProcessShutdown, type ProcessShutdown } from './process-shutdown.ts'
 
-const NAME = 'dsh'
+const NAME = 'sqode'
 
 /** Launcher-owned readiness signal committed only after boot and host setup succeed. */
 function createAppReady(): { service: AppReady; commit(): void } {
