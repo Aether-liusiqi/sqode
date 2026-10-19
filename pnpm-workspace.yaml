@@ -15,9 +15,6 @@ packages:
   - python/sdk-runtime
 
 overrides:
-  micromark-util-types: '2.0.2'
-  electron: '44.0.0'
-  'vite>esbuild': '0.25.12'
   'extract-zip>yauzl': '3.4.0'
   '@liusiqi-dev/cosmokit': 'link:vendor/cosmokit'
   '@liusiqi-dev/schemastery': 'link:vendor/schemastery'

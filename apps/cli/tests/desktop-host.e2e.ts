@@ -10,7 +10,7 @@ import { expect, it, onTestFinished } from 'vitest'
 
 it.each([false, true])('settles startup after parent IPC disconnect (boot failure: %s)', async (fail) => {
   const root = mkdtempSync(join(tmpdir(), 'desktop-disconnect-'))
-  const modules = join(root, 'node_modules', '@deepseek-ai')
+  const modules = join(root, 'node_modules', '@liusiqi-dev')
   const hostDirectory = fileURLToPath(new URL('../../desktop-host/', import.meta.url))
   const manifest = JSON.parse(readFileSync(join(hostDirectory, 'package.json'), 'utf8')) as { dependencies: Record<string, string> }
   const stubbed = new Set(['@liusiqi-dev/dsh-app-boot', '@liusiqi-dev/sqode', '@liusiqi-dev/dsh-home-paths'])
