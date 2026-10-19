@@ -31,15 +31,31 @@ import { packedIdentity, readPublishOrder } from './tarball.ts'
 const TRANSIENT_PUBLISH_CODES = ['E409', 'E429', 'E500', 'E502', 'E503', 'E504', 'ETIMEDOUT', 'ECONNRESET', 'EAI_AGAIN'] as const
 
 /** How many times one tarball's publish is attempted before the run fails. */
-const PUBLISH_ATTEMPTS = 4
+const PUBLISH_ATTEMPTS = 6
 
 /**
- * Shortest gap between two publishes, and the first retry backoff.
+ * Shortest gap between two publishes, and the first retry backoff for a write
+ * that merely did not settle.
  *
  * The registry needs a moment to commit a packument before the next write; back
  * to back publishes are what produce `E409`.
  */
 const PUBLISH_SPACING_MS = 2_000
+
+/**
+ * First retry backoff for a rate-limited write, and the multiplier that follows.
+ *
+ * `E429` is not a write that failed to settle, it is the registry refusing more
+ * work for a window measured in minutes. Publishing a few hundred members in one
+ * run reaches that window quickly, and a settle-scale backoff (a few seconds)
+ * retries entirely inside it: every attempt fails and the run dies on a package
+ * that was never broken. Waiting on the order of a minute is what actually lets
+ * the window expire.
+ */
+const RATE_LIMIT_BACKOFF_MS = 30_000
+
+/** Registry codes that mean "too many requests", as opposed to "not settled". */
+const RATE_LIMIT_CODES = ['E429'] as const
 
 /** What the registry knows about one version. */
 type RegistryState =
@@ -53,6 +69,15 @@ type RegistryState =
  */
 function isTransientFailure(output: string): boolean {
   return TRANSIENT_PUBLISH_CODES.some(code => output.includes(`code ${code}`))
+}
+
+/**
+ * Whether a failed publish was refused for exceeding a rate limit.
+ * @param output - combined npm output.
+ * @returns True when the registry asked us to slow down.
+ */
+function isRateLimited(output: string): boolean {
+  return RATE_LIMIT_CODES.some(code => output.includes(`code ${code}`))
 }
 
 /**
@@ -118,9 +143,13 @@ async function publishTarball(
     if (tries === PUBLISH_ATTEMPTS || !isTransientFailure(output)) {
       throw new Error(`npm publish ${name}@${version} failed:\n${output}`)
     }
-    const backoff = PUBLISH_SPACING_MS * 2 ** (tries - 1)
+    // A rate limit is refused work for a window measured in minutes; a
+    // settle-scale gap retries entirely inside that window and cannot succeed.
+    const limited = isRateLimited(output)
+    const base = limited ? RATE_LIMIT_BACKOFF_MS : PUBLISH_SPACING_MS
+    const backoff = base * 2 ** (tries - 1)
     console.log(
-      `release publish: ${name}@${version} hit a transient registry failure`
+      `release publish: ${name}@${version} hit a ${limited ? 'rate limit' : 'transient registry failure'}`
       + ` (attempt ${String(tries)} of ${String(PUBLISH_ATTEMPTS)}), retrying in ${String(backoff)}ms`,
     )
     await sleep(backoff)
