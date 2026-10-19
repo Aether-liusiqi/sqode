@@ -184,14 +184,14 @@ describe('experimental workspace constraints', () => {
     const installation = { dir: 'apps/cli', manifest: { name: '@liusiqi-dev/sqode', dependencies: listed } } satisfies WorkspaceManifest
     expect(checkExperimentalDependencyIsolation([experimental, installation], ['@liusiqi-dev/dsh-experimental-prototype'])).toEqual([])
     expect(checkExperimentalDependencyIsolation([experimental, installation], [])).toEqual([
-      '@liusiqi-dev/dsh: dependencies.@liusiqi-dev/dsh-experimental-prototype must not reference an experimental package',
+      '@liusiqi-dev/sqode: dependencies.@liusiqi-dev/dsh-experimental-prototype must not reference an experimental package',
     ])
     // Only a plain dependency edge is offered; a peer would make the bundle a requirement of every consumer.
     expect(checkExperimentalDependencyIsolation([experimental, {
       dir: 'apps/cli',
       manifest: { name: '@liusiqi-dev/sqode', peerDependencies: listed },
     }], ['@liusiqi-dev/dsh-experimental-prototype'])).toEqual([
-      '@liusiqi-dev/dsh: peerDependencies.@liusiqi-dev/dsh-experimental-prototype must not reference an experimental package',
+      '@liusiqi-dev/sqode: peerDependencies.@liusiqi-dev/dsh-experimental-prototype must not reference an experimental package',
     ])
   })
 
@@ -234,7 +234,7 @@ describe('dsh family version coherence', () => {
     expect(checkDshFamilyVersion(
       { name: '@liusiqi-dev/sqode', version: '0.1.2-alpha.5' },
       '0.1.2-rc.1',
-    )).toBe('@liusiqi-dev/dsh: package.json version must match root version 0.1.2-rc.1')
+    )).toBe('@liusiqi-dev/sqode: package.json version must match root version 0.1.2-rc.1')
   })
 
   it('accepts a manifest carrying the shared version', () => {
@@ -347,7 +347,7 @@ it('publishes CLI runtime declarations and rejects a payload that omits them', (
   const manifest = JSON.parse(readFileSync(new URL('../apps/cli/package.json', import.meta.url), 'utf8')) as WorkspaceManifest['manifest']
   expect(checkWorkspaceManifest({ dir: 'apps/cli', manifest })).toEqual([])
   expect(checkWorkspaceManifest({ dir: 'apps/cli', manifest: { ...manifest, files: ['lib/*.js'] } }))
-    .toEqual([expect.stringContaining('@liusiqi-dev/dsh: package.json files must be ["lib/*.js","lib/types/*.d.ts"]')])
+    .toEqual([expect.stringContaining('@liusiqi-dev/sqode: package.json files must be ["lib/*.js","lib/types/*.d.ts"]')])
 })
 
 it('requires the shared Web injection entry in the published payload', () => {

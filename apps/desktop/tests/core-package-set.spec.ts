@@ -89,13 +89,13 @@ describe('desktop core package set', () => {
     const packageSet = parseDesktopCorePackageSet({ schemaVersion: 1, packages: [dsh, host] })
     expect(() => {
       verifyDesktopCoreLockfile(
-        "packages:\n  '@liusiqi-dev/dsh@file:desktop-packages/dsh.tgz':\n    resolution: {}\n",
+        "packages:\n  '@liusiqi-dev/sqode@file:desktop-packages/dsh.tgz':\n    resolution: {}\n",
         packageSet,
       )
     }).not.toThrow()
     expect(() => {
       verifyDesktopCoreLockfile(
-        "packages:\n  '@liusiqi-dev/dsh@1.2.3':\n    resolution: {integrity: sha512-registry}\n",
+        "packages:\n  '@liusiqi-dev/sqode@1.2.3':\n    resolution: {integrity: sha512-registry}\n",
         packageSet,
       )
     }).toThrow(/outside the local package set/u)

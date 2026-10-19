@@ -3,7 +3,7 @@
 import { delimiter, join } from 'node:path'
 import { inspect } from 'node:util'
 import { loadLayeredEnv, loadProfileDirectory, reportSkippedBundles } from '@liusiqi-dev/dsh-app-boot'
-import { runProfile } from '@liusiqi-dev/dsh/profile-boot'
+import { runProfile } from '@liusiqi-dev/sqode/profile-boot'
 import type {} from '@liusiqi-dev/dsh-client-connection'
 import type {} from '@liusiqi-dev/dsh-host-webserver'
 import type {} from '@liusiqi-dev/dsh-deepseek-account'

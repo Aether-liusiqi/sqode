@@ -449,7 +449,7 @@ class InstalledBundleSmoke {
         `--registry=${this.bundle.manifest.registry}`,
       ], consumerRoot, npmClientEnvironment())
 
-      const bin = resolve(consumerRoot, 'node_modules/@liusiqi-dev/dsh/lib/bin.js')
+      const bin = resolve(consumerRoot, 'node_modules/@liusiqi-dev/sqode/lib/bin.js')
       assertPathWithin(consumerRoot, bin, 'installed dsh bin')
       const environment = installedArtifactEnvironment(consumerRoot)
       const version = this.runner.capture(

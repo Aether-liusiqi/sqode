@@ -15,9 +15,9 @@ const project = join(root, 'project')
 const require = createRequire(join(project, 'package.json'))
 const { LlmAdapter, createUserMessage } = await import(pathToFileURL(require.resolve('@liusiqi-dev/dsh-llm')).href)
 const observed = []
-const { runProfile } = await import(pathToFileURL(require.resolve('@liusiqi-dev/dsh/profile-boot')).href)
+const { runProfile } = await import(pathToFileURL(require.resolve('@liusiqi-dev/sqode/profile-boot')).href)
 const { loadLayeredEnv, loadProfileDirectory } = await import(pathToFileURL(require.resolve('@liusiqi-dev/dsh-app-boot')).href)
-const installAnchor = require.resolve('@liusiqi-dev/dsh/package.json')
+const installAnchor = require.resolve('@liusiqi-dev/sqode/package.json')
 const running = await runProfile({ environment: loadLayeredEnv('dsh'), profile: 'desktop',
   resolvedProfile: { profile: loadProfileDirectory('dsh', project, installAnchor), installAnchor },
   patchFiles: [], args: ['--no-open', '--port', '0'] })

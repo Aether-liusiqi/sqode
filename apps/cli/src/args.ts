@@ -12,7 +12,7 @@
  *
  * `dsh <name>` abbreviates `dsh --profile <name>`; `plugin` manages a profile's
  * plugin dependencies by forwarding to pnpm.
- * @module @liusiqi-dev/dsh/args
+ * @module @liusiqi-dev/sqode/args
  */
 
 import { Command, CommanderError, InvalidArgumentError } from 'commander'

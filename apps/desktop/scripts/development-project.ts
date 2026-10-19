@@ -126,7 +126,7 @@ export function prepareDevelopmentProject(options: DevelopmentProjectOptions): s
   const cliManifest = readManifest(join(options.cliDir, 'package.json'))
   if (cliManifest.name !== '@liusiqi-dev/sqode' || cliManifest.version !== options.release.version) {
     throw new Error(
-      `desktop development: apps/cli must be @liusiqi-dev/dsh@${options.release.version}, found `
+      `desktop development: apps/cli must be @liusiqi-dev/sqode@${options.release.version}, found `
       + `${String(cliManifest.name)}@${String(cliManifest.version)}`,
     )
   }

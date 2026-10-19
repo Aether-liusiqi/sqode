@@ -11,7 +11,7 @@ function validLayout(): NpmPackageLock {
   return {
     lockfileVersion: 3,
     packages: {
-      '': { dependencies: { '@liusiqi-dev/sqode': '0.2.0', 'dsh-previous': 'npm:@liusiqi-dev/dsh@0.1.0' } },
+      '': { dependencies: { '@liusiqi-dev/sqode': '0.2.0', 'dsh-previous': 'npm:@liusiqi-dev/sqode@0.1.0' } },
       'node_modules/@liusiqi-dev/cordis': { version: '4.0.1' },
       'node_modules/@liusiqi-dev/sqode': {
         version: '0.2.0',

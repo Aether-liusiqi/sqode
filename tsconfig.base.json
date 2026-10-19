@@ -16,6 +16,11 @@
     "allowImportingTsExtensions": true,
     "rewriteRelativeImportExtensions": true,
     "verbatimModuleSyntax": false,
+    // Sqode P4: keep const enums as real runtime objects. Without this,
+    // `export const enum` members are erased at compile time and any consumer
+    // that value-imports them (e.g. FiberState from @liusiqi-dev/cordis)
+    // type-checks fine but throws at runtime.
+    "preserveConstEnums": true,
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
@@ -51,8 +56,8 @@
       "@liusiqi-dev/dsh-experimental-api-speech-to-text/types": ["./packages/experimental/api-speech-to-text/src/types.ts"],
       "@liusiqi-dev/dsh-experimental-client-ui-voice-input/client": ["./packages/experimental/client-ui-voice-input/src/client/index.ts"],
 
-      "@liusiqi-dev/dsh/profile-boot": ["./apps/cli/src/profile-boot.ts"],
-      "@liusiqi-dev/dsh/lib/bin.js": ["./apps/cli/src/bin.ts"],
+      "@liusiqi-dev/sqode/profile-boot": ["./apps/cli/src/profile-boot.ts"],
+      "@liusiqi-dev/sqode/lib/bin.js": ["./apps/cli/src/bin.ts"],
       "@liusiqi-dev/dsh-browser-use": ["./packages/browser-use/browser-use/src/index.ts"],
       "@liusiqi-dev/dsh-browser-use/brand": ["./packages/browser-use/browser-use/src/brand.ts"],
       "@liusiqi-dev/dsh-experimental-browser-use-runtime": ["./packages/experimental/browser-use-runtime/src/index.ts"],

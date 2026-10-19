@@ -43,7 +43,7 @@ describe('Python runtime executable builder CLI', () => {
     expect(cliManifest.dependencies).not.toHaveProperty('@liusiqi-dev/dsh-subprocess-local')
     expect(cliManifest.devDependencies).toHaveProperty('@liusiqi-dev/dsh-subprocess-local')
     expect(runtimeManifest.dependencies).toHaveProperty('@liusiqi-dev/dsh-subprocess-local')
-    expect(bootstrap).toContain("import('@liusiqi-dev/dsh/lib/bin.js')")
+    expect(bootstrap).toContain("import('@liusiqi-dev/sqode/lib/bin.js')")
     expect(bootstrap).toContain('await runCli()')
     expect(bootstrap).toContain("import('@liusiqi-dev/dsh-subprocess-local/runner')")
     expect(bootstrap).toContain('await runSelectedSubprocessRunner(selection)')

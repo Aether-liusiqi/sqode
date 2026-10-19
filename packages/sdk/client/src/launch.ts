@@ -71,7 +71,7 @@ export function resolveDshBinFromManifests(dshManifestUrl: string, clientManifes
  */
 export function installedDshBin(): string {
   return resolveDshBinFromManifests(
-    import.meta.resolve('@liusiqi-dev/dsh/package.json'),
+    import.meta.resolve('@liusiqi-dev/sqode/package.json'),
     new URL('../package.json', import.meta.url).href,
   )
 }
@@ -114,7 +114,7 @@ export function resolveDshNodeLaunchFromManifests(
  */
 function installedDshNodeLaunch(): DshNodeLaunch {
   return resolveDshNodeLaunchFromManifests(
-    import.meta.resolve('@liusiqi-dev/dsh/package.json'),
+    import.meta.resolve('@liusiqi-dev/sqode/package.json'),
     new URL('../package.json', import.meta.url).href,
   )
 }

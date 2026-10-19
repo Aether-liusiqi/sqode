@@ -34,7 +34,7 @@ if (aclRunner !== undefined && process.argv[2] === aclRunner) {
     const platform = process.platform === 'darwin' ? 'macos' : process.platform === 'win32' ? 'win' : process.platform
     process.env.SQODE_BUNDLED_PRIMARY_RUNTIME = join(dirname(process.execPath), `${platform}-${process.arch}`, 'primary-runtime')
   }
-  const { runCli } = await import('@liusiqi-dev/dsh/lib/bin.js')
+  const { runCli } = await import('@liusiqi-dev/sqode/lib/bin.js')
   await runCli()
 } else {
   Reflect.deleteProperty(process.env, selectorName)

@@ -113,7 +113,7 @@ describe('npm resolution benchmark', () => {
 
     const result = await resolveNpmPackageLock(index, {
       '@liusiqi-dev/sqode': '0.2.0',
-      'dsh-previous': 'npm:@liusiqi-dev/dsh@0.1.0',
+      'dsh-previous': 'npm:@liusiqi-dev/sqode@0.1.0',
     }, 10_000)
 
     expect(result.archiveRequests).toBe(0)

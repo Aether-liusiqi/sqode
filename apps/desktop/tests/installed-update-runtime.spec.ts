@@ -30,7 +30,7 @@ describe('installed-update runtime preparation', () => {
         const descriptor = await verifyDesktopRuntime(runtime, version)
         expect(descriptor.sharedPackages.find(entry => entry.name === '@liusiqi-dev/cordis')?.version).toBe(source.version)
         expect(descriptor.sharedPackages.find(entry => entry.name === '@liusiqi-dev/sqode')?.version).toBe(version)
-        const metadata = JSON.parse(await readFile(join(runtime, 'node_modules/@liusiqi-dev/dsh/package.json'), 'utf8')) as {
+        const metadata = JSON.parse(await readFile(join(runtime, 'node_modules/@liusiqi-dev/sqode/package.json'), 'utf8')) as {
           dependencies: Record<string, string>
         }
         expect(metadata.dependencies['@liusiqi-dev/dsh-desktop-host']).toBe(version)

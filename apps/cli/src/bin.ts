@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Command-line entry for dsh.
- * @module @liusiqi-dev/dsh/bin
+ * @module @liusiqi-dev/sqode/bin
  */
 
 /* v8 ignore file -- built-bin acceptance exercises this self-executing dispatch. */

@@ -25,7 +25,7 @@ function lockfile() {
         optionalDependencies: { unavailable: '1.0.0' },
       },
       'node_modules/library': { version: '1.0.0' },
-      'node_modules/@liusiqi-dev/dsh/node_modules/library': { version: '2.0.0', dependencies: { plugin: '*' } },
+      'node_modules/@liusiqi-dev/sqode/node_modules/library': { version: '2.0.0', dependencies: { plugin: '*' } },
       'node_modules/alias': { name: 'original', version: '1.0.0' },
       'node_modules/plugin': {
         version: '1.0.0', dependencies: { library: '^1.0.0' }, peerDependencies: { peer: '*' },
@@ -77,7 +77,7 @@ describe('published npm dependency catalog', () => {
     expect(() => collectDependencies({ lockfileVersion: 3, packages: {} })).toThrow('consumer must be an object')
     const input = lockfile()
     input.packages[''].dependencies['@liusiqi-dev/sqode'] = 'next'
-    expect(() => collectDependencies(input)).toThrow('must request only @liusiqi-dev/dsh@latest')
+    expect(() => collectDependencies(input)).toThrow('must request only @liusiqi-dev/sqode@latest')
     const missing = lockfile()
     Reflect.deleteProperty(missing.packages, 'node_modules/alias')
     expect(() => collectDependencies(missing)).toThrow('missing direct dependency alias')
