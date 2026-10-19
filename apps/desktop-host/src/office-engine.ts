@@ -29,7 +29,7 @@ export function installOfficeEngineResolution(runtimeDir: string): ModuleHooks |
   return registerHooks({
     resolve(specifier, context, nextResolve) {
       const resolved = nextResolve(specifier, context)
-      if (!/^@liusiqi-dev\/libreoffice-kit-(?:darwin|win32|linux)-/u.test(specifier)) return resolved
+      if (!/^@deepseek-ai\/libreoffice-kit-(?:darwin|win32|linux)-/u.test(specifier)) return resolved
       const canonical = pathToFileURL(realpathSync(fileURLToPath(resolved.url))).href
       if (!canonical.startsWith(source)) {
         if (canonical.startsWith(pathToFileURL(archive + '/').href)) {

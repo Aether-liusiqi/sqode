@@ -61,11 +61,11 @@ describe('desktop development project', () => {
     mkdirSync(join(cli, 'lib'), { recursive: true })
     mkdirSync(join(host, 'lib'), { recursive: true })
     mkdirSync(join(dependencies, '@scope'), { recursive: true })
-    mkdirSync(join(dependencies, '@liusiqi-dev', 'dsh'), { recursive: true })
+    mkdirSync(join(dependencies, '@liusiqi-dev', 'sqode'), { recursive: true })
     writeFileSync(join(cli, 'package.json'), '{"name":"@liusiqi-dev/sqode","version":"1.2.3"}\n')
     writeFileSync(join(host, 'package.json'), '{"name":"@liusiqi-dev/dsh-desktop-host","version":"1.2.3"}\n')
     writeFileSync(join(host, 'lib', 'index.js'), '')
-    writeFileSync(join(dependencies, '@liusiqi-dev', 'dsh', 'package.json'), '{}\n')
+    writeFileSync(join(dependencies, '@liusiqi-dev', 'sqode', 'package.json'), '{}\n')
     mkdirSync(join(dependencies, 'plain-dependency'))
     writeFileSync(join(dependencies, 'plain-dependency', 'package.json'), '{}\n')
     mkdirSync(join(dependencies, '@scope', 'dependency'))
@@ -79,7 +79,7 @@ describe('desktop development project', () => {
       release: release(),
       target: 'win-x64',
     })
-    expect(realpathSync(join(project, 'node_modules', '@liusiqi-dev', 'dsh'))).toBe(realpathSync(cli))
+    expect(realpathSync(join(project, 'node_modules', '@liusiqi-dev', 'sqode'))).toBe(realpathSync(cli))
     expect(realpathSync(join(project, 'node_modules', '@liusiqi-dev', 'dsh-desktop-host'))).toBe(realpathSync(host))
     expect(realpathSync(join(project, 'node_modules', 'plain-dependency')))
       .toBe(realpathSync(join(dependencies, 'plain-dependency')))

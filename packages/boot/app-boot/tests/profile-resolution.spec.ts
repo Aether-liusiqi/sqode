@@ -145,7 +145,7 @@ function fixture(name = '@liusiqi-dev/dsh-core'): {
   // and the long directory name for a Windows tmpdir spelled with an 8.3 short name.
   const root = realpathSync.native(mkdtempSync(join(tmpdir(), 'dsh-profile-resolution-')))
   roots.push(root)
-  const installDir = join(root, 'global', 'node_modules', '@liusiqi-dev', 'dsh')
+  const installDir = join(root, 'global', 'node_modules', '@liusiqi-dev', 'sqode')
   const installed = join(installDir, 'node_modules', name)
   const installAnchor = pkg(installDir, '@liusiqi-dev/sqode', 0, { [name]: '*' })
   pkg(installed, name, 1)
