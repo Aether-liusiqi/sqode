@@ -6,14 +6,14 @@ This opt-in overlay adds a signed GitHub endpoint to `dsh web`. When a pull requ
 
 ## Prerequisites
 
-- A local checkout that DSH may register as a Web Workspace.
+- A local checkout that Sqode may register as a Web Workspace.
 - A high-entropy GitHub webhook secret available through the `SQODE_GITHUB_WEBHOOK_SECRET` credential reference.
 - A TLS reverse proxy or tunnel that can forward one public URL to the loopback listener.
 - GitHub webhook subscription to the Pull requests event with content type `application/json`.
 
 The overlay defaults the Workspace to the launch directory and the listener to `127.0.0.1:3081`. Override them with `SQODE_GITHUB_REVIEW_WORKSPACE` and `SQODE_GITHUB_WEBHOOK_PORT`.
 
-## Start DSH
+## Start Sqode
 
 Generate a secret and retain the same value across restarts:
 
@@ -29,7 +29,7 @@ export SQODE_GITHUB_REVIEW_WORKSPACE=/path/to/deepseek-harness
 pnpm dsh web --patch apps/cli/config/examples/github-review/cordis.yml
 ```
 
-An installed DSH uses the same overlay through an absolute path:
+An installed Sqode uses the same overlay through an absolute path:
 
 ```sh
 dsh web --patch /absolute/path/to/github-review/cordis.yml

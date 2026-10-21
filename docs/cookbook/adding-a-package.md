@@ -69,7 +69,7 @@ Use a singular `ctx` key for one engine, runtime, policy, controller, resolver, 
 | `Config` | It owns one resolved configuration value or one tightly bounded record and its update contract. | It stores a general collection, executes work, or exposes unrelated settings. |
 | `Service` | It owns a cohesive domain service that no sharper role above states honestly. | The name exists only because the class extends Cordis `Service`. |
 
-Use `SDK` only for the JSON-RPC client/server protocol used by the supported Python and TypeScript SDKs. DeepSeek Harness itself is an agent harness, not an SDK project. Use the canonical product spelling `Typert`, never `TypeRT` or `typeRT`.
+Use `SDK` only for the JSON-RPC client/server protocol used by the supported Python and TypeScript SDKs. Sqode itself is an agent harness, not an SDK project. Use the canonical product spelling `Typert`, never `TypeRT` or `typeRT`.
 
 <a id="4-write-the-package-readme"></a>
 
@@ -149,7 +149,7 @@ For an image on bundle cards, details, and component rows, set top-level `"icon"
 
 Installed bundle cards and details, component lists and configuration details, and Settings' plugin inventory display this metadata, including disabled and preset plugins. Reads do not activate plugins.
 
-Only Settings shortens literal package-name and module-name fallbacks by removing npm scope and Cordis/DSH prefixes; Plugin Manager keeps complete names. Locale titles and descriptions remain unchanged. A row configuration page can use its registered summary when the plugin has no display description.
+Only Settings shortens literal package-name and module-name fallbacks by removing npm scope and Cordis/Sqode prefixes; Plugin Manager keeps complete names. Locale titles and descriptions remain unchanged. A row configuration page can use its registered summary when the plugin has no display description.
 
 The Install view still uses npm registry information from `pnpm view`, not locale metadata.
 

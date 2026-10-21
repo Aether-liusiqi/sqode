@@ -2131,7 +2131,7 @@ export interface Config {
   maxCachedBytes: number
   /** Maximum retained source-version aliases to cached content. */
   maxSourceEntries: number
-  /** Conversion deadline in milliseconds; excludes the DSH queue. */
+  /** Conversion deadline in milliseconds; excludes the Sqode queue. */
   timeoutMs: number
   /** Maximum authorized source bytes. */
   maxInputBytes: number
@@ -2828,7 +2828,7 @@ export type Config = SessionTitleLlmConfig
 ```ts config-catalog
 /** Plugin config (all optional — the built-in facts resolve without defaults). */
 export interface Config {
-  /** DeepSeek Harness home directory exposed as `SQODE_HOME`; defaults to `$SQODE_HOME` or `~/.sqode`. */
+  /** Sqode home directory exposed as `SQODE_HOME`; defaults to `$SQODE_HOME` or `~/.sqode`. */
   dshHome?: string
 }
 ```
@@ -2865,7 +2865,7 @@ export interface Config {
   providerName?: string
   /** Whether project and user roots are included around custom roots. */
   includeDefaultRoots?: boolean
-  /** DeepSeek Harness config root. Defaults to `$SQODE_HOME` or `~/.sqode`. */
+  /** Sqode config root. Defaults to `$SQODE_HOME` or `~/.sqode`. */
   dshHome?: string
   /** Shared agent config root. Defaults to `$SQODE_AGENTS_HOME` or `~/.agents`. */
   agentsHome?: string
@@ -3325,7 +3325,7 @@ export interface Config {
 ```ts config-catalog
 /** Plugin config: the deployment-authored fragment of the system prompt (see {@link Config.personaPrefix} for its contract). */
 export interface Config {
-  /** Include the fixed DeepSeek Harness identity before the deployment persona (default true). */
+  /** Include the fixed Sqode identity before the deployment persona (default true). */
   includeHarnessIdentity?: boolean
   /** Include dynamic runtime-context snapshots in model history (default true). */
   includeRuntimeContext?: boolean

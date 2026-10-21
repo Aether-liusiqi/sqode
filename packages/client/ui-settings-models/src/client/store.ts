@@ -37,7 +37,10 @@ export interface ProviderDirectoryEntry {
  * Join declared configurable providers with the currently registered routes.
  * @param registered - live provider routes in registration order.
  * @param directory - declared configurable providers in declaration order.
- * @returns account and official routes first, then other routes in their original order.
+ * @returns declared routes in declaration order, then undeclared live routes.
+ *
+ * No provider is pulled forward: the order the Host declares is the order the
+ * user sees, so the page cannot silently prefer one vendor over another.
  */
 export function joinProviderDirectory(
   registered: readonly LlmProviderInfo[],
@@ -64,9 +67,7 @@ export function joinProviderDirectory(
       active: true,
     })
   }
-  return rows.toSorted((left, right) =>
-    (left.provider === 'deepseek-account' ? 0 : left.provider === 'deepseek-official' ? 1 : 2)
-      - (right.provider === 'deepseek-account' ? 0 : right.provider === 'deepseek-official' ? 1 : 2))
+  return rows
 }
 
 /** One provider row the page renders. */
@@ -300,10 +301,11 @@ export type OnboardingReadiness =
 /**
  * Project first-run readiness from the provider/settings/credential join used
  * by the Models page. The step exists to leave the user with a model to talk
- * to, so ANY usable provider ends it; only when none exists does the official
- * DeepSeek route — the one route the prompt can offer a key field for — decide
- * whether prompting can help. A missing official configurable-provider
- * declaration means the adapter is not repairable by navigating to Models.
+ * to, so ANY usable provider ends it; only when none exists does the first
+ * active route that names a credential reference decide whether prompting can
+ * help. No provider is singled out here: the route that can accept a key is
+ * whichever the directory offers first, so a missing declaration means the
+ * adapter is not repairable by navigating to Models.
  * @param state - current shared Models join snapshot.
  * @returns the onboarding state without reading a parallel fact source.
  */
@@ -318,10 +320,9 @@ export function onboardingReadiness(state: ModelsSettingsState): OnboardingReadi
     }
   }
   if (state.rows.some(providerUsable)) return { kind: 'provider-ready' }
-  const row = state.rows.find(candidate =>
-    candidate.entry.provider === 'deepseek-official'
-    && candidate.entry.settingsNs === 'llm-deepseek'
-    && candidate.entry.settingsPath.length === 0)
+  // A dormant route that names a credential reference is the one a key can be
+  // written into; the directory order picks it, not a hardcoded provider.
+  const row = state.rows.find(candidate => candidate.entry.active && candidate.apiKeyEnv !== undefined)
   if (row === undefined) return { kind: 'adapter-absent' }
   if (!row.entry.active) {
     return {

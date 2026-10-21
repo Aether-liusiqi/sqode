@@ -69,7 +69,7 @@ package.json 不变式（由 `pnpm run constraints` / `scripts/check-workspace-c
 | `Config` | 拥有一个已解析配置值，或一项边界严格的配置记录及其更新约定。 | 存储通用集合、执行工作或暴露无关设置。 |
 | `Service` | 拥有一项无法用以上更精确角色诚实描述的内聚领域服务。 | 只因为类继承 Cordis `Service` 而使用该名称。 |
 
-只对受支持的 Python 与 TypeScript SDK 所使用的 JSON-RPC 客户端／服务器协议使用 `SDK`。DeepSeek Harness 本身是 agent harness，不是 SDK 项目。产品拼写统一使用 `Typert`，不得使用 `TypeRT` 或 `typeRT`。
+只对受支持的 Python 与 TypeScript SDK 所使用的 JSON-RPC 客户端／服务器协议使用 `SDK`。Sqode 本身是 agent harness，不是 SDK 项目。产品拼写统一使用 `Typert`，不得使用 `TypeRT` 或 `typeRT`。
 
 <a id="4-write-the-package-readme"></a>
 
@@ -149,7 +149,7 @@ Append-only, prefix-stable, replacing, or independent behavior, including the ex
 
 已安装 bundle 的卡片和详情、组件列表与配置详情、设置中的插件清单都展示这些元信息，包括禁用插件和预设内插件。读取时不激活插件。
 
-仅设置页会移除字面包名和模块名回退值的 npm scope 与 Cordis/DSH 前缀；插件管理页保留完整名称。locale 标题和描述保持原样。插件没有展示描述时，行配置页可以使用注册组件的摘要。
+仅设置页会移除字面包名和模块名回退值的 npm scope 与 Cordis/Sqode 前缀；插件管理页保留完整名称。locale 标题和描述保持原样。插件没有展示描述时，行配置页可以使用注册组件的摘要。
 
 Install 界面仍使用 `pnpm view` 返回的 npm registry 信息，不用 locale 元信息替换。
 
