@@ -37,7 +37,16 @@ const APP_ROOT = resolve(import.meta.dirname, '..')
 const BUILD_PATHS = resolveDesktopTargetBuildPaths()
 const SQODE_OUTPUT_ROOT = BUILD_PATHS.dsh
 const BUILD_ROOT = mkdtempSync(join(tmpdir(), 'dsh-desktop-runtime-'))
-const STORE_ROOT = join(BUILD_ROOT, 'store')
+/**
+ * Persistent pnpm store for this install step.
+ *
+ * It used to live inside the per-run temp directory, so every packaging run
+ * started from an empty store and re-downloaded every dependency, including the
+ * multi-hundred-megabyte LibreOffice engine packages. A fixed path keeps those
+ * tarballs content-addressed on disk between runs; `SQODE_DESKTOP_PNPM_STORE`
+ * lets a build point it at a faster disk.
+ */
+const STORE_ROOT = process.env.SQODE_DESKTOP_PNPM_STORE ?? join(tmpdir(), 'dsh-desktop-pnpm-store')
 const RUNTIME_ROOT = BUILD_PATHS.runtime
 const PNPM_BUILD_STATE = BUILD_PATHS.dshPnpm
 const PACKAGE_SET_ROOT = BUILD_PATHS.packageSet
@@ -127,7 +136,9 @@ async function main(): Promise<void> {
       readFileSync(join(BUILD_ROOT, 'pnpm-lock.yaml'), 'utf8'),
       readDesktopCorePackageSet(BUILD_ROOT, release.version),
     )
-    await packagingStep(process.env.SQODE_DESKTOP_PACKAGING_RUN_DIR, 'runtime:install', () => runPnpm(['install', '--prod', '--frozen-lockfile', '--trust-lockfile']))
+    // prefer-offline: the persistent store already holds these tarballs after the
+    // first run, so a rebuild links from disk instead of asking the registry again.
+    await packagingStep(process.env.SQODE_DESKTOP_PACKAGING_RUN_DIR, 'runtime:install', () => runPnpm(['install', '--prod', '--frozen-lockfile', '--trust-lockfile', '--prefer-offline']))
     const packageSet = readDesktopCorePackageSet(BUILD_ROOT, release.version)
     const targetName = resolveDesktopBuildTarget()
     const target = { platform: process.platform, arch: desktopTargetPlatform(targetName).arch }
