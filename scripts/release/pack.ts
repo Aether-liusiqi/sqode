@@ -7,7 +7,7 @@
  * ([rationale](../../.agents/notes/implemented/process/2026-08-10-npm-release-sequences.md)).
  */
 
-import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { parseArgs } from 'node:util'
 import { pnpmInvocation } from '../pnpm-invocation.ts'
@@ -64,6 +64,21 @@ async function main(): Promise<void> {
   const members = family.publishOrder(family.members(root)).order
   family.verifyBuildArtifacts(root)
   family.verifyVersions(members)
+
+  // Opt-in reuse for verification builds. Packing a family walks every member
+  // (hundreds of tarballs, minutes per run) even when the previous run's output
+  // is still valid for these sources. Packaging sets SQODE_PACK_REUSE=1 on the
+  // routine rebuild path so a run reuses that output instead of repacking.
+  // Default is off, so release runs always produce fresh tarballs from the
+  // sources they validated above.
+  if (process.env.SQODE_PACK_REUSE === '1' && existsSync(join(destination, 'publish-order.txt'))) {
+    const present = readdirSync(destination).filter(entry => entry.endsWith('.tgz')).length
+    if (present >= members.length) {
+      console.log(`release pack: reusing ${String(present)} tarball(s) in ${destination} (SQODE_PACK_REUSE=1)`)
+      return
+    }
+    console.log(`release pack: reuse skipped, ${String(present)} of ${String(members.length)} tarball(s) present`)
+  }
 
   rmSync(destination, { recursive: true, force: true })
   mkdirSync(destination, { recursive: true })
