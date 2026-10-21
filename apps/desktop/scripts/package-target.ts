@@ -400,7 +400,11 @@ export async function packageTarget(
   const journal = target.platform === 'darwin' ? process.env.SQODE_DESKTOP_PACKAGING_RUN_DIR : undefined
   const proxyEvent = (status: string) => { if (journal) recordPackagingEvent(journal, { type: 'notarization-proxy', status }) }
   const mac = target.platform === 'darwin' ? resolveMacOSPackageSettings(environment) : undefined
-  const packArguments = mac === undefined ? [] : ['--concurrency', String(mac.packConcurrency)]
+  // Packing is per-member work, so it parallelizes cleanly. macOS already passes its
+  // configured limit; every other platform fell through to no argument at all, which
+  // pack.ts reads as 1 and packs hundreds of members one at a time. Use the same
+  // default the macOS setting uses instead of leaving that path serial.
+  const packArguments = ['--concurrency', String(mac?.packConcurrency ?? 4)]
   const buildPaths = desktopTargetBuildPaths(target.name)
   const releaseRecordPath = join(buildPaths.artifacts, desktopBuildRecordFilename(target.name))
   if (!invocation.prepareOnly && !invocation.unsigned) {
