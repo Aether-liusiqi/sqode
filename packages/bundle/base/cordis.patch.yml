@@ -40,8 +40,15 @@
     - id: session
       name: '@liusiqi-dev/dsh-session'
 
+    # Off by design in this distribution. The upstream plugin contributes a
+    # serialized session-event prefix to the outgoing model request (a
+    # dsh_session_log field), so every conversation body would also carry the
+    # local session history to whichever endpoint serves the request. Disabled
+    # here so no provider ever receives that field; ordinary requests, tool
+    # calls and persistence are unaffected.
     - id: session-log-deepseek
       name: '@liusiqi-dev/dsh-session-log-deepseek'
+      disabled: true
 
     - id: typert
       name: '@liusiqi-dev/dsh-typert-registry'
@@ -267,14 +274,18 @@
     # active request slot. The outer 3s shutdown deadline stops queued sends;
     # large prefixes or an unsettled transport may leave records unsent.
     # Every CLI exit path drains by disposing the root on SIGINT/SIGTERM.
+    # Disabled in this distribution: the exporter points at the upstream
+    # vendor's OTel collector. Feedback and session records stay local, in the
+    # per-home session store, and can be exported with the /export command.
     - id: session-telemetry-otel
       name: '@liusiqi-dev/dsh-session-telemetry-otel'
+      disabled: true
       config:
         mode: !!js process.env.SQODE_TELEMETRY_MODE || 'FEEDBACK_ONLY'
         shutdownTimeoutMillis: 3000
         maxRequestBytes: 4000000
         exporter:
-          url: !!js process.env.SQODE_TELEMETRY_OTLP_URL ?? 'https://dsh-otel-collector.deepseeksvc.com/v1/logs'
+          url: !!js process.env.SQODE_TELEMETRY_OTLP_URL ?? ''
           compression: gzip
           timeoutMillis: 1000
         processor:

@@ -102,7 +102,7 @@
                   backgroundMode: continuable
               - id: tool-subagent-codex
                 name: '@liusiqi-dev/dsh-tool-subagent'
-                disabled: true
+                disabled: false
                 config:
                   provider: codex
                   toolName: subagent_codex
@@ -110,7 +110,7 @@
                   maxDepth: provider-managed
               - id: tool-subagent-claude-code
                 name: '@liusiqi-dev/dsh-tool-subagent'
-                disabled: true
+                disabled: false
                 config:
                   provider: claude-code
                   toolName: subagent_claude_code

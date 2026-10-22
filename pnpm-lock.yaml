@@ -591,6 +591,12 @@ importers:
         specifier: ^8.21.0
         version: 8.21.0
     devDependencies:
+      '@electron/get':
+        specifier: ^5.1.0
+        version: 5.1.0(supports-color@9.4.0)
+      '@electron/notarize':
+        specifier: 2.5.0
+        version: 2.5.0
       '@liusiqi-dev/dsh-app-boot':
         specifier: workspace:*
         version: link:../../packages/boot/app-boot
@@ -624,12 +630,6 @@ importers:
       '@liusiqi-dev/node-addon-system':
         specifier: workspace:~
         version: link:../../native/system/packages/entry
-      '@electron/get':
-        specifier: ^5.1.0
-        version: 5.1.0(supports-color@9.4.0)
-      '@electron/notarize':
-        specifier: 2.5.0
-        version: 2.5.0
       '@types/js-yaml':
         specifier: ^4.0.9
         version: 4.0.9
@@ -647,7 +647,7 @@ importers:
         version: 7.8.0
       '@types/ws':
         specifier: ^8.18.1
-        version: 8.18.1
+        version: 8.18.2
       app-builder-lib:
         specifier: 26.15.3
         version: 26.15.3(dmg-builder@26.15.3)(electron-builder-squirrel-windows@26.15.3)
@@ -690,12 +690,12 @@ importers:
 
   apps/desktop-host:
     dependencies:
+      '@deepseek-ai/libreoffice-kit':
+        specifier: ^0.1.1
+        version: 0.1.1
       '@liusiqi-dev/cordis':
         specifier: workspace:~
         version: link:../../vendor/cordis
-      '@liusiqi-dev/sqode':
-        specifier: workspace:*
-        version: link:../cli
       '@liusiqi-dev/dsh-agent':
         specifier: workspace:*
         version: link:../../packages/core/agent
@@ -729,9 +729,9 @@ importers:
       '@liusiqi-dev/dsh-workspace':
         specifier: workspace:*
         version: link:../../packages/workspace/workspace
-      '@deepseek-ai/libreoffice-kit':
-        specifier: ^0.1.1
-        version: 0.1.1
+      '@liusiqi-dev/sqode':
+        specifier: workspace:*
+        version: link:../cli
       koffi:
         specifier: ^3.1.0
         version: 3.1.1
@@ -1109,7 +1109,7 @@ importers:
         version: link:../../util/crypto
       '@types/ws':
         specifier: ^8.18.1
-        version: 8.18.1
+        version: 8.18.2
       zod:
         specifier: ^4.4.3
         version: 4.4.3
@@ -1652,15 +1652,15 @@ importers:
 
   packages/boot/app-boot:
     dependencies:
+      '@eslint-community/regexpp':
+        specifier: ^4.12.2
+        version: 4.12.2
       '@liusiqi-dev/dsh-atomic-write':
         specifier: workspace:*
         version: link:../../util/atomic-write
       '@liusiqi-dev/dsh-package-manifest':
         specifier: workspace:*
         version: link:../../util/package-manifest
-      '@eslint-community/regexpp':
-        specifier: ^4.12.2
-        version: 4.12.2
       ajv:
         specifier: ^8.20.0
         version: 8.20.0
@@ -1672,7 +1672,7 @@ importers:
         version: 0.1.6
       resolve.exports:
         specifier: ^2.0.3
-        version: 2.0.3
+        version: 2.0.4
       semver:
         specifier: ^7.8.5
         version: 7.8.5
@@ -2660,6 +2660,12 @@ importers:
       '@liusiqi-dev/dsh-skill-filesystem':
         specifier: workspace:*
         version: link:../../skill/skill-filesystem
+      '@liusiqi-dev/dsh-subagent-claude-code':
+        specifier: workspace:*
+        version: link:../../subagent/subagent-claude-code
+      '@liusiqi-dev/dsh-subagent-codex':
+        specifier: workspace:*
+        version: link:../../subagent/subagent-codex
       '@liusiqi-dev/dsh-subprocess':
         specifier: workspace:*
         version: link:../../subprocess/subprocess
@@ -2745,6 +2751,9 @@ importers:
         specifier: ^11.0.0
         version: 11.0.4
     devDependencies:
+      '@deepseek-ai/libreoffice-kit':
+        specifier: ^0.1.1
+        version: 0.1.1
       '@liusiqi-dev/cordis':
         specifier: workspace:~
         version: link:../../../vendor/cordis
@@ -2781,9 +2790,6 @@ importers:
       '@liusiqi-dev/dsh-typert-registry':
         specifier: workspace:*
         version: link:../../typert/registry
-      '@deepseek-ai/libreoffice-kit':
-        specifier: ^0.1.1
-        version: 0.1.1
 
   packages/client/connection:
     dependencies:
@@ -3443,6 +3449,21 @@ importers:
         specifier: link:../../../vendor/schemastery
         version: link:../../../vendor/schemastery
     devDependencies:
+      '@lexical/headless':
+        specifier: ^0.49.0
+        version: 0.49.0(typescript@6.0.3)
+      '@lexical/history':
+        specifier: ^0.49.0
+        version: 0.49.0(typescript@6.0.3)
+      '@lexical/plain-text':
+        specifier: ^0.49.0
+        version: 0.49.0(typescript@6.0.3)
+      '@lexical/text':
+        specifier: ^0.49.0
+        version: 0.49.0(typescript@6.0.3)
+      '@lexical/utils':
+        specifier: ^0.49.0
+        version: 0.49.0(typescript@6.0.3)
       '@liusiqi-dev/cordis':
         specifier: workspace:~
         version: link:../../../vendor/cordis
@@ -3545,21 +3566,6 @@ importers:
       '@liusiqi-dev/dsh-workspace':
         specifier: workspace:*
         version: link:../../workspace/workspace
-      '@lexical/headless':
-        specifier: ^0.49.0
-        version: 0.49.0(typescript@6.0.3)
-      '@lexical/history':
-        specifier: ^0.49.0
-        version: 0.49.0(typescript@6.0.3)
-      '@lexical/plain-text':
-        specifier: ^0.49.0
-        version: 0.49.0(typescript@6.0.3)
-      '@lexical/text':
-        specifier: ^0.49.0
-        version: 0.49.0(typescript@6.0.3)
-      '@lexical/utils':
-        specifier: ^0.49.0
-        version: 0.49.0(typescript@6.0.3)
       '@types/react':
         specifier: ~18.3.1
         version: 18.3.31
@@ -4440,7 +4446,7 @@ importers:
         version: 3.0.0
       micromark-core-commonmark:
         specifier: ^2.0.3
-        version: 2.0.3
+        version: 2.0.4
       micromark-extension-gfm:
         specifier: ^3.0.0
         version: 3.0.0
@@ -4449,7 +4455,7 @@ importers:
         version: 3.1.0
       micromark-factory-space:
         specifier: ^2.0.1
-        version: 2.0.1
+        version: 2.1.0
       micromark-util-character:
         specifier: ^2.1.1
         version: 2.1.1
@@ -4464,7 +4470,7 @@ importers:
         version: 2.0.1
       micromark-util-types:
         specifier: ^2.0.2
-        version: 2.0.2
+        version: 2.0.3
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -5349,6 +5355,12 @@ importers:
         specifier: link:../../../vendor/schemastery
         version: link:../../../vendor/schemastery
     devDependencies:
+      '@fortune-sheet/core':
+        specifier: 1.0.4
+        version: 1.0.4(patch_hash=8791a230763dbf853fd65d627c68c31de37209992851377855e16cf08ea70532)
+      '@fortune-sheet/react':
+        specifier: 1.0.4
+        version: 1.0.4(patch_hash=2932e52e79afcd4ced08cfa123b5eded786c85043da32f622f3e80af6fc96c37)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@liusiqi-dev/cordis':
         specifier: workspace:~
         version: link:../../../vendor/cordis
@@ -5409,12 +5421,6 @@ importers:
       '@liusiqi-dev/dsh-util-workspace-path':
         specifier: workspace:*
         version: link:../../util/workspace-path
-      '@fortune-sheet/core':
-        specifier: 1.0.4
-        version: 1.0.4(patch_hash=8791a230763dbf853fd65d627c68c31de37209992851377855e16cf08ea70532)
-      '@fortune-sheet/react':
-        specifier: 1.0.4
-        version: 1.0.4(patch_hash=2932e52e79afcd4ced08cfa123b5eded786c85043da32f622f3e80af6fc96c37)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@testing-library/react':
         specifier: ^16.1.0
         version: 16.3.2(@testing-library/dom@10.4.2)(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -7196,15 +7202,15 @@ importers:
 
   packages/document/office-to-pdf:
     dependencies:
+      '@deepseek-ai/libreoffice-kit':
+        specifier: ^0.1.1
+        version: 0.1.1
       '@liusiqi-dev/dsh-brand':
         specifier: workspace:*
         version: link:../../util/brand
       '@liusiqi-dev/dsh-typert-protocol':
         specifier: workspace:*
         version: link:../../typert/protocol
-      '@deepseek-ai/libreoffice-kit':
-        specifier: ^0.1.1
-        version: 0.1.1
       '@liusiqi-dev/schemastery':
         specifier: link:../../../vendor/schemastery
         version: link:../../../vendor/schemastery
@@ -7903,7 +7909,7 @@ importers:
         version: link:../../host/webserver
       '@types/ws':
         specifier: ^8.18.1
-        version: 8.18.1
+        version: 8.18.2
       playwright:
         specifier: ^1.49.0
         version: 1.61.1
@@ -8156,7 +8162,7 @@ importers:
         version: 4.0.4
       readable-stream:
         specifier: ^4.7.0
-        version: 4.7.0
+        version: 4.8.0
     devDependencies:
       '@liusiqi-dev/cordis':
         specifier: workspace:~
@@ -9682,6 +9688,9 @@ importers:
 
   packages/llm/llm-pi-ai:
     dependencies:
+      '@earendil-works/pi-ai':
+        specifier: ^0.87.1
+        version: 0.87.1(patch_hash=b9bcce474fb2ac44633dff0fa722816a5bff5451b4575d5874035ea14ba70a4f)(@modelcontextprotocol/sdk@1.29.0(zod@4.4.3))(supports-color@9.4.0)(ws@8.21.0)(zod@4.4.3)
       '@liusiqi-dev/dsh-brand':
         specifier: workspace:*
         version: link:../../util/brand
@@ -9691,9 +9700,6 @@ importers:
       '@liusiqi-dev/schemastery':
         specifier: link:../../../vendor/schemastery
         version: link:../../../vendor/schemastery
-      '@earendil-works/pi-ai':
-        specifier: ^0.87.1
-        version: 0.87.1(patch_hash=b9bcce474fb2ac44633dff0fa722816a5bff5451b4575d5874035ea14ba70a4f)(@modelcontextprotocol/sdk@1.29.0(zod@4.4.3))(ws@8.21.0)(zod@4.4.3)
     devDependencies:
       '@liusiqi-dev/cordis':
         specifier: workspace:~
@@ -10423,12 +10429,12 @@ importers:
 
   packages/schedule/schedule:
     dependencies:
-      '@liusiqi-dev/schemastery':
-        specifier: link:../../../vendor/schemastery
-        version: link:../../../vendor/schemastery
       '@js-temporal/polyfill':
         specifier: 0.5.1
         version: 0.5.1
+      '@liusiqi-dev/schemastery':
+        specifier: link:../../../vendor/schemastery
+        version: link:../../../vendor/schemastery
       zod:
         specifier: ^4.4.3
         version: 4.4.3
@@ -13581,15 +13587,15 @@ importers:
 
   packages/web/tool-web:
     dependencies:
+      '@joplin/turndown-plugin-gfm':
+        specifier: ^1.0.67
+        version: 1.0.67
       '@liusiqi-dev/dsh-util-values':
         specifier: workspace:*
         version: link:../../util/values
       '@liusiqi-dev/schemastery':
         specifier: link:../../../vendor/schemastery
         version: link:../../../vendor/schemastery
-      '@joplin/turndown-plugin-gfm':
-        specifier: ^1.0.67
-        version: 1.0.67
       turndown:
         specifier: ^7.2.4
         version: 7.2.4
@@ -14091,9 +14097,6 @@ importers:
       '@liusiqi-dev/cosmokit':
         specifier: link:../../vendor/cosmokit
         version: link:../../vendor/cosmokit
-      '@liusiqi-dev/sqode':
-        specifier: workspace:*
-        version: link:../../apps/cli
       '@liusiqi-dev/dsh-acp':
         specifier: workspace:*
         version: link:../../packages/acp/acp
@@ -14514,6 +14517,9 @@ importers:
       '@liusiqi-dev/schemastery':
         specifier: link:../../vendor/schemastery
         version: link:../../vendor/schemastery
+      '@liusiqi-dev/sqode':
+        specifier: workspace:*
+        version: link:../../apps/cli
 
   vendor/cordis:
     dependencies:
@@ -17571,6 +17577,9 @@ packages:
   '@types/ws@8.18.1':
     resolution: {integrity: sha512-ThVF6DCVhA8kUGy+aazFQ4kXQ7E1Ty7A3ypFOe0IcJV8O/M511G99AW24irKrW56Wt44yG9+ij8FaqoBGkuBXg==}
 
+  '@types/ws@8.18.2':
+    resolution: {integrity: sha512-67MQl+fpWKVTT1NYdnmo3U4sc/xPo/zQBncVnI74qmQa0z/b+1g6iYqNmGCPbxO+zz2aklb08a0oHfegiVd0/w==}
+
   '@types/yauzl@2.10.3':
     resolution: {integrity: sha512-oJoftv0LSuaDZE3Le4DbKX+KS9G36NzOeSap90UIK0yMA/NhKJhqlSGtNDORNRaIbQfzjXDrQa0ytJ6mNRGz/Q==}
 
@@ -19276,9 +19285,13 @@ packages:
     deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
     hasBin: true
 
+  glob@7.2.0:
+    resolution: {integrity: sha512-lmLf6gtyrPq8tTjSmrO94wBeQbFR3HbLHbuyD69wuyQkImp2hWqMGB47OX65FBkPffO641IP9jWa1z4ivqG26Q==}
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
-    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+    deprecated: Glob versions prior to v9 are no longer supported
 
   global-agent@3.0.0:
     resolution: {integrity: sha512-PT6XReJ+D07JvGoxQMkT6qji/jVNfX/h364XHZOWeRzy64sSFr+xJ5OX7LI3b4MPQzdL4H8Y8M0xzPpsVMwA8Q==}
@@ -20092,8 +20105,8 @@ packages:
   mermaid@11.16.0:
     resolution: {integrity: sha512-Zvm3kbstgdpvIJPPItlL7fppIZ3kibvc1oZIGxdvk9t6UFz6flv+Jw7FtRGKwfcI8OckmH04LqG6LlS6X4B1pA==}
 
-  micromark-core-commonmark@2.0.3:
-    resolution: {integrity: sha512-RDBrHEMSxVFLg6xvnXmb1Ayr2WzLAWjeSATAoxwKYJV94TeNavgoIdA0a9ytzDSVzBy2YKFK+emCPOEibLeCrg==}
+  micromark-core-commonmark@2.0.4:
+    resolution: {integrity: sha512-wxEeE8v8XVvOrxn1TZj74qYhAtTQsSqufHVS3uNVyT1MupXxhyaHk8/9xDNPh9BmL77QNDgWTkZ3RsYHB2ry7w==}
 
   micromark-extension-gfm-autolink-literal@2.1.0:
     resolution: {integrity: sha512-oOg7knzhicgQ3t4QCjCWgTmfNhvQbDDnJeVu9v81r7NltNCVmhPy1fJRX27pISafdjL+SVc4d3l48Gb6pbRypw==}
@@ -20125,8 +20138,8 @@ packages:
   micromark-factory-label@2.0.1:
     resolution: {integrity: sha512-VFMekyQExqIW7xIChcXn4ok29YE3rnuyveW3wZQWWqF4Nv9Wk5rgJ99KzPvHjkmPXF93FXIbBp6YdW3t71/7Vg==}
 
-  micromark-factory-space@2.0.1:
-    resolution: {integrity: sha512-zRkxjtBxxLd2Sc0d+fbnEunsTj46SWXgXciZmHq0kDYGnck/ZSGj9/wULTV95uoeYiK5hRXP2mJ98Uo4cq/LQg==}
+  micromark-factory-space@2.1.0:
+    resolution: {integrity: sha512-fS8hnLIjnjvdQIj39Geug8wWsR0HrYZ43KShKxNfwT7t2LOHo/LbWZEzEaSOjwtjdCsjoE6syHhonEzW0zv0+Q==}
 
   micromark-factory-title@2.0.1:
     resolution: {integrity: sha512-5bZ+3CjhAd9eChYTHsjy6TGxpOFSKgKKJPJxr293jTbfry2KDoWkhBb6TcPVB4NmzaPhMs1Frm9AZH7OD4Cjzw==}
@@ -20152,6 +20165,9 @@ packages:
   micromark-util-decode-string@2.0.1:
     resolution: {integrity: sha512-nDV/77Fj6eH1ynwscYTOsbK7rR//Uj0bZXBwJZRfaLEJ1iGBR6kIfNmlNqaqJf649EP0F3NWNdeJi03elllNUQ==}
 
+  micromark-util-edit-map@1.0.0:
+    resolution: {integrity: sha512-Pa2ljlsEL6sVwFaYeyrOLSYbQt73JvGbPOYFq+9AElXiSnfI5Q4465RRZ1sHv7lDjDOnGRDDaqPXqClqWK/q1Q==}
+
   micromark-util-encode@2.0.1:
     resolution: {integrity: sha512-c3cVx2y4KqUnwopcO9b/SCdo2O67LwJJ/UyqGfbigahfegL9myoEFoDYZgkT7f36T0bLrM9hZTAaAyH+PCAXjw==}
 
@@ -20175,6 +20191,9 @@ packages:
 
   micromark-util-types@2.0.2:
     resolution: {integrity: sha512-Yw0ECSpJoViF1qTU4DC6NwtC4aWGt1EkzaQB8KPPyCRR8z9TWeV0HbEFGTO+ZY1wB22zmxnJqhPyTpOVCpeHTA==}
+
+  micromark-util-types@2.0.3:
+    resolution: {integrity: sha512-oxB2Ik03hI0gv+VNn9tnh1t1YEe9MDPptViAEgfdf3YQHsn0pzGTgCdlSCJXcwhqm8phaEuM7zeEu3QQzVBrPg==}
 
   micromark@4.0.2:
     resolution: {integrity: sha512-zpe98Q6kvavpCr1NPVSCMebCKfD7CA2NqZ+rykeNhONIJBpc1tFKt9hucLGwha3jNTNI8lHpctWJWoimVF4PfA==}
@@ -20823,8 +20842,8 @@ packages:
     resolution: {integrity: sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==}
     engines: {node: '>= 6'}
 
-  readable-stream@4.7.0:
-    resolution: {integrity: sha512-oIGGmcpTLwPga8Bn6/Z75SVaH1z5dUut2ibSyAMVhmUggWpmDn2dapB0n7f8nwaSiRtepAsfJyfXIO5DCVAODg==}
+  readable-stream@4.8.0:
+    resolution: {integrity: sha512-2jhTTU3Eilp/2DMT71gbcoqC35eQHasMJH0RHkYxwlxIv3+FR6Y5xAFZIwEGLxKkjZYEFlsiMNIdwUqjK2lLHQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
   readdir-glob@1.1.3:
@@ -20881,6 +20900,10 @@ packages:
 
   resolve.exports@2.0.3:
     resolution: {integrity: sha512-OcXjMsGdhL4XnbShKpAcSqPMzQoYkYyhbEaeSko47MjRP9NfEQMhZkXL1DoFlt9LWQn4YttrdnV6X2OiyzBi+A==}
+    engines: {node: '>=10'}
+
+  resolve.exports@2.0.4:
+    resolution: {integrity: sha512-zepuGL0ulf+nt+XaFrlKeaiTJeyPFPLLY62+ncq1/VTHBdt3HsfXOH60priZ6tnXQozdGcDeIF5JVTanvIcYWQ==}
     engines: {node: '>=10'}
 
   resolve@1.22.12:
@@ -21157,6 +21180,10 @@ packages:
 
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
+    engines: {node: '>=0.10.0'}
+
+  source-map-js@1.2.2:
+    resolution: {integrity: sha512-KGj/8Y43x35aZVDtt+J4mK1hoLGHULMYfSkODJNQjNDC3oW1PqPoxMwo0pLUsWM/UEGzON/NxeHywEfNXNP3Vw==}
     engines: {node: '>=0.10.0'}
 
   source-map-support@0.5.21:
@@ -22668,15 +22695,15 @@ snapshots:
     transitivePeerDependencies:
       - '@algolia/client-search'
 
-  '@earendil-works/pi-ai@0.87.1(patch_hash=b9bcce474fb2ac44633dff0fa722816a5bff5451b4575d5874035ea14ba70a4f)(@modelcontextprotocol/sdk@1.29.0(zod@4.4.3))(ws@8.21.0)(zod@4.4.3)':
+  '@earendil-works/pi-ai@0.87.1(patch_hash=b9bcce474fb2ac44633dff0fa722816a5bff5451b4575d5874035ea14ba70a4f)(@modelcontextprotocol/sdk@1.29.0(zod@4.4.3))(supports-color@9.4.0)(ws@8.21.0)(zod@4.4.3)':
     dependencies:
       '@anthropic-ai/sdk': 0.124.0(zod@4.4.3)
       '@aws-sdk/client-bedrock-runtime': 3.1127.0
       '@earendil-works/pi-telemetry': 0.87.1
       '@google/genai': 2.21.0(@modelcontextprotocol/sdk@1.29.0(zod@4.4.3))
       '@smithy/node-http-handler': 4.12.1
-      http-proxy-agent: 9.1.0
-      https-proxy-agent: 9.1.0
+      http-proxy-agent: 9.1.0(supports-color@9.4.0)
+      https-proxy-agent: 9.1.0(supports-color@9.4.0)
       openai: 6.40.0(ws@8.21.0)(zod@4.4.3)
       partial-json: 0.1.7
       typebox: 1.3.27
@@ -24678,6 +24705,10 @@ snapshots:
   '@types/whatwg-mimetype@3.0.2': {}
 
   '@types/ws@8.18.1':
+    dependencies:
+      '@types/node': 22.20.0
+
+  '@types/ws@8.18.2':
     dependencies:
       '@types/node': 22.20.0
 
@@ -26691,6 +26722,15 @@ snapshots:
       package-json-from-dist: 1.0.1
       path-scurry: 1.11.1
 
+  glob@7.2.0:
+    dependencies:
+      fs.realpath: 1.0.0
+      inflight: 1.0.6
+      inherits: 2.0.4
+      minimatch: 3.1.5
+      once: 1.4.0
+      path-is-absolute: 1.0.1
+
   glob@7.2.3:
     dependencies:
       fs.realpath: 1.0.0
@@ -26772,7 +26812,7 @@ snapshots:
     dependencies:
       '@types/node': 22.20.0
       '@types/whatwg-mimetype': 3.0.2
-      '@types/ws': 8.18.1
+      '@types/ws': 8.18.2
       buffer-image-size: 0.6.4
       entities: 7.0.1
       whatwg-mimetype: 3.0.0
@@ -26859,7 +26899,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  http-proxy-agent@9.1.0:
+  http-proxy-agent@9.1.0(supports-color@9.4.0):
     dependencies:
       agent-base: 9.0.0
       debug: 4.4.3(supports-color@9.4.0)
@@ -26918,7 +26958,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  https-proxy-agent@9.1.0:
+  https-proxy-agent@9.1.0(supports-color@9.4.0):
     dependencies:
       agent-base: 9.0.0
       debug: 4.4.3(supports-color@9.4.0)
@@ -27592,42 +27632,43 @@ snapshots:
       ts-dedent: 2.3.0
       uuid: 14.0.1
 
-  micromark-core-commonmark@2.0.3:
+  micromark-core-commonmark@2.0.4:
     dependencies:
       decode-named-character-reference: 1.3.0
       devlop: 1.1.0
       micromark-factory-destination: 2.0.1
       micromark-factory-label: 2.0.1
-      micromark-factory-space: 2.0.1
+      micromark-factory-space: 2.1.0
       micromark-factory-title: 2.0.1
       micromark-factory-whitespace: 2.0.1
       micromark-util-character: 2.1.1
       micromark-util-chunked: 2.0.1
       micromark-util-classify-character: 2.0.1
+      micromark-util-edit-map: 1.0.0
       micromark-util-html-tag-name: 2.0.1
       micromark-util-normalize-identifier: 2.0.1
       micromark-util-resolve-all: 2.0.1
       micromark-util-subtokenize: 2.1.0
       micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
+      micromark-util-types: 2.0.3
 
   micromark-extension-gfm-autolink-literal@2.1.0:
     dependencies:
       micromark-util-character: 2.1.1
       micromark-util-sanitize-uri: 2.0.1
       micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
+      micromark-util-types: 2.0.3
 
   micromark-extension-gfm-footnote@2.1.0:
     dependencies:
       devlop: 1.1.0
-      micromark-core-commonmark: 2.0.3
-      micromark-factory-space: 2.0.1
+      micromark-core-commonmark: 2.0.4
+      micromark-factory-space: 2.1.0
       micromark-util-character: 2.1.1
       micromark-util-normalize-identifier: 2.0.1
       micromark-util-sanitize-uri: 2.0.1
       micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
+      micromark-util-types: 2.0.3
 
   micromark-extension-gfm-strikethrough@2.1.0:
     dependencies:
@@ -27636,27 +27677,27 @@ snapshots:
       micromark-util-classify-character: 2.0.1
       micromark-util-resolve-all: 2.0.1
       micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
+      micromark-util-types: 2.0.3
 
   micromark-extension-gfm-table@2.1.1:
     dependencies:
       devlop: 1.1.0
-      micromark-factory-space: 2.0.1
+      micromark-factory-space: 2.1.0
       micromark-util-character: 2.1.1
       micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
+      micromark-util-types: 2.0.3
 
   micromark-extension-gfm-tagfilter@2.0.0:
     dependencies:
-      micromark-util-types: 2.0.2
+      micromark-util-types: 2.0.3
 
   micromark-extension-gfm-task-list-item@2.1.0:
     dependencies:
       devlop: 1.1.0
-      micromark-factory-space: 2.0.1
+      micromark-factory-space: 2.1.0
       micromark-util-character: 2.1.1
       micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
+      micromark-util-types: 2.0.3
 
   micromark-extension-gfm@3.0.0:
     dependencies:
@@ -27674,47 +27715,47 @@ snapshots:
       '@types/katex': 0.16.8
       devlop: 1.1.0
       katex: 0.16.47
-      micromark-factory-space: 2.0.1
+      micromark-factory-space: 2.1.0
       micromark-util-character: 2.1.1
       micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
+      micromark-util-types: 2.0.3
 
   micromark-factory-destination@2.0.1:
     dependencies:
       micromark-util-character: 2.1.1
       micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
+      micromark-util-types: 2.0.3
 
   micromark-factory-label@2.0.1:
     dependencies:
       devlop: 1.1.0
       micromark-util-character: 2.1.1
       micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
+      micromark-util-types: 2.0.3
 
-  micromark-factory-space@2.0.1:
+  micromark-factory-space@2.1.0:
     dependencies:
       micromark-util-character: 2.1.1
-      micromark-util-types: 2.0.2
+      micromark-util-types: 2.0.3
 
   micromark-factory-title@2.0.1:
     dependencies:
-      micromark-factory-space: 2.0.1
+      micromark-factory-space: 2.1.0
       micromark-util-character: 2.1.1
       micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
+      micromark-util-types: 2.0.3
 
   micromark-factory-whitespace@2.0.1:
     dependencies:
-      micromark-factory-space: 2.0.1
+      micromark-factory-space: 2.1.0
       micromark-util-character: 2.1.1
       micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
+      micromark-util-types: 2.0.3
 
   micromark-util-character@2.1.1:
     dependencies:
       micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
+      micromark-util-types: 2.0.3
 
   micromark-util-chunked@2.0.1:
     dependencies:
@@ -27724,12 +27765,12 @@ snapshots:
     dependencies:
       micromark-util-character: 2.1.1
       micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
+      micromark-util-types: 2.0.3
 
   micromark-util-combine-extensions@2.0.1:
     dependencies:
       micromark-util-chunked: 2.0.1
-      micromark-util-types: 2.0.2
+      micromark-util-types: 2.0.3
 
   micromark-util-decode-numeric-character-reference@2.0.2:
     dependencies:
@@ -27742,6 +27783,10 @@ snapshots:
       micromark-util-decode-numeric-character-reference: 2.0.2
       micromark-util-symbol: 2.0.1
 
+  micromark-util-edit-map@1.0.0:
+    dependencies:
+      micromark-util-types: 2.0.3
+
   micromark-util-encode@2.0.1: {}
 
   micromark-util-html-tag-name@2.0.1: {}
@@ -27752,7 +27797,7 @@ snapshots:
 
   micromark-util-resolve-all@2.0.1:
     dependencies:
-      micromark-util-types: 2.0.2
+      micromark-util-types: 2.0.3
 
   micromark-util-sanitize-uri@2.0.1:
     dependencies:
@@ -27765,11 +27810,13 @@ snapshots:
       devlop: 1.1.0
       micromark-util-chunked: 2.0.1
       micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
+      micromark-util-types: 2.0.3
 
   micromark-util-symbol@2.0.1: {}
 
   micromark-util-types@2.0.2: {}
+
+  micromark-util-types@2.0.3: {}
 
   micromark@4.0.2(supports-color@9.4.0):
     dependencies:
@@ -27777,8 +27824,8 @@ snapshots:
       debug: 4.4.3(supports-color@9.4.0)
       decode-named-character-reference: 1.3.0
       devlop: 1.1.0
-      micromark-core-commonmark: 2.0.3
-      micromark-factory-space: 2.0.1
+      micromark-core-commonmark: 2.0.4
+      micromark-factory-space: 2.1.0
       micromark-util-character: 2.1.1
       micromark-util-chunked: 2.0.1
       micromark-util-combine-extensions: 2.0.1
@@ -27789,7 +27836,7 @@ snapshots:
       micromark-util-sanitize-uri: 2.0.1
       micromark-util-subtokenize: 2.1.0
       micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
+      micromark-util-types: 2.0.3
     transitivePeerDependencies:
       - supports-color
 
@@ -28234,7 +28281,7 @@ snapshots:
     dependencies:
       nanoid: 3.3.12
       picocolors: 1.1.1
-      source-map-js: 1.2.1
+      source-map-js: 1.2.2
 
   postject@1.0.0-alpha.6:
     dependencies:
@@ -28404,7 +28451,7 @@ snapshots:
       string_decoder: 1.3.0
       util-deprecate: 1.0.2
 
-  readable-stream@4.7.0:
+  readable-stream@4.8.0:
     dependencies:
       abort-controller: 3.0.0
       buffer: 6.0.3
@@ -28457,6 +28504,8 @@ snapshots:
 
   resolve.exports@2.0.3: {}
 
+  resolve.exports@2.0.4: {}
+
   resolve@1.22.12:
     dependencies:
       es-errors: 1.3.0
@@ -28482,7 +28531,7 @@ snapshots:
 
   rimraf@2.6.3:
     dependencies:
-      glob: 7.2.3
+      glob: 7.2.0
 
   roarr@2.15.4:
     dependencies:
@@ -28830,6 +28879,8 @@ snapshots:
   smol-toml@1.7.1: {}
 
   source-map-js@1.2.1: {}
+
+  source-map-js@1.2.2: {}
 
   source-map-support@0.5.21:
     dependencies:
