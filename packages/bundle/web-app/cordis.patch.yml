@@ -44,21 +44,21 @@
 - insert:
     - id: desktop-product-telemetry
       name: '@liusiqi-dev/dsh-host-product-telemetry-otel'
-      disabled: !!js "ctx.get('profileContext')?.name !== 'desktop'"
+      disabled: true
       config:
         scheduledDelayMillis: 30000
         timeoutMillis: 15000
         exportTimeoutMillis: 20000
         shutdownTimeoutMillis: 2000
-        serviceName: deepseek-harness-desktop
+        serviceName: sqode-desktop
         serviceVersion: !!js process.env.SQODE_CLIENT_VERSION
         endpoint: !!js process.env.SQODE_PRODUCT_ANALYTICS_OTLP_URL
 
     - id: product-analytics
       name: '@liusiqi-dev/dsh-client-product-analytics'
-      disabled: !!js "ctx.get('profileContext')?.name !== 'desktop'"
+      disabled: true
       config:
-        enabled: true
+        enabled: false
         appVersion: !!js process.env.SQODE_CLIENT_VERSION
 
     # Host-owned opt-in sampled when a new Web session receives its preset
