@@ -634,6 +634,17 @@ export class LocalCredentialProvider extends CredentialProvider {
     if (value.length === 0) {
       throw new Error(`credentials-local: an empty value cannot be stored for "${ref}"; use unset`)
     }
+    // Refuse to copy a secret that already belongs to another reference into this
+    // one. That is what a clipboard mix-up looks like, and it fails silently:
+    // the other provider keeps working while this one starts authenticating with
+    // a key that is not its own, which only surfaces as a bare 401 much later.
+    for (const [other, current] of this.values) {
+      if (other === ref || current !== value) continue
+      throw new Error(
+        `credentials-local: this value is already stored for "${other}"; refusing to store it for "${ref}" as well. `
+        + 'Check that the pasted key belongs to this provider.',
+      )
+    }
     await this.write(ref, value)
   }
 
