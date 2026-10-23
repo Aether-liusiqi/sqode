@@ -107,8 +107,33 @@ async function isLockContention(error: unknown, lockPath: string): Promise<boole
   }
 }
 
+/**
+ * Age past which a lock whose holder cannot be probed counts as abandoned.
+ *
+ * A write holds this lock for milliseconds, so this can only elapse for a lock
+ * left behind by a process that died in a way the probe cannot observe (Windows
+ * answers EPERM for a dead PID whose handle is gone). Without an age bound the
+ * surviving lock blocks every later write until someone deletes it by hand.
+ */
+const LOCK_STALE_MS = 5 * 60_000
+
+/**
+ * Whether a lock file is older than {@link LOCK_STALE_MS}.
+ * @param lockPath - the lock file to age.
+ * @returns true when the lock has outlived any plausible writer.
+ */
+async function isLockStale(lockPath: string): Promise<boolean> {
+  try {
+    const stats = await lstat(lockPath)
+    return Date.now() - stats.mtimeMs > LOCK_STALE_MS
+  } catch {
+    // A lock that vanished proves nothing about its holder.
+    return false
+  }
+}
+
 /** Whether the holder a `<pid>\n` record names is proven gone: a signal probe finds no such process. */
-function holderExited(record: string): boolean {
+function holderExited(record: string, stale: boolean): boolean {
   // Any other content is being written or was cut short, which proves nothing about its holder.
   if (!/^\d+\n$/.test(record)) return false
   const pid = Number(record.trim())
@@ -120,8 +145,14 @@ function holderExited(record: string): boolean {
     process.kill(pid, 0)
     return false
   } catch (error) {
-    // EPERM means the process exists under another user.
-    return (error as NodeJS.ErrnoException).code === 'ESRCH'
+    const code = (error as NodeJS.ErrnoException).code
+    if (code === 'ESRCH') return true
+    // Windows answers EPERM for a dead PID whose handle can no longer be opened,
+    // and EPERM otherwise means a live process under another user. Age breaks the
+    // tie: a write holds this lock for milliseconds, so a lock this old has no
+    // writer behind it. Waiting it out instead would block the application until
+    // an operator deletes the file by hand.
+    return code === 'EPERM' && stale
   }
 }
 
@@ -148,7 +179,8 @@ async function readLockRecord(lockPath: string): Promise<string | undefined> {
  */
 async function takeOverExitedLock(lockPath: string): Promise<boolean> {
   const record = await readLockRecord(lockPath)
-  if (record === undefined || !holderExited(record)) return false
+  const stale = await isLockStale(lockPath)
+  if (record === undefined || !holderExited(record, stale)) return false
   const claim = `${lockPath}.takeover-${createHash('sha256').update(record).digest('hex').slice(0, 16)}`
   try {
     await writeFile(claim, `${process.pid}\n`, { mode: 0o600, flag: 'wx' })
@@ -159,7 +191,7 @@ async function takeOverExitedLock(lockPath: string): Promise<boolean> {
     throw error
   }
   try {
-    if (await readLockRecord(lockPath) !== record || !holderExited(record)) return false
+    if (await readLockRecord(lockPath) !== record || !holderExited(record, stale)) return false
     try {
       await rm(lockPath, { force: true })
     } catch (error) {

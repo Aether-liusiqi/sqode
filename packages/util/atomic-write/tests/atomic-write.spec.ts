@@ -1,7 +1,7 @@
 import { spawn } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import { once } from 'node:events'
-import { lstat, mkdir, mkdtemp, readFile, readdir, rm, stat, symlink, writeFile } from 'node:fs/promises'
+import { lstat, mkdir, mkdtemp, readFile, readdir, rm, stat, symlink, utimes, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 import { afterEach, describe, expect, it, vi } from 'vitest'
@@ -338,6 +338,27 @@ describe('withFileLock', () => {
     })
 
     await expect(withFileLock(target, async () => {}, { waitMs: 50 })).rejects.toThrow(/timed out waiting for the writer lock/)
+  })
+
+  it('takes over an aged lock whose holder cannot be probed', async () => {
+    // Windows answers EPERM for a dead PID whose handle is gone. Without an age
+    // bound that lock would outlive its holder and block every later write.
+    const dir = await scratch()
+    const target = join(dir, 'document')
+    const lockPath = `${target}.lock`
+    await writeFile(lockPath, record(EXITED_PID))
+    const past = new Date(Date.now() - 6 * 60_000)
+    await utimes(lockPath, past, past)
+    const kill = process.kill.bind(process)
+    vi.spyOn(process, 'kill').mockImplementation((probe, signal) => {
+      if (probe === EXITED_PID) throw Object.assign(new Error('EPERM: injected'), { code: 'EPERM' })
+      return kill(probe, signal)
+    })
+    const operation = vi.fn(async () => {})
+
+    await withFileLock(target, operation, { waitMs: 200 })
+
+    expect(operation).toHaveBeenCalledTimes(1)
   })
 
   it('keeps its own lock when the runtime cannot probe itself', async () => {

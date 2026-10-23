@@ -334,7 +334,7 @@ describe('draft-provider model discovery', () => {
     for (const status of [401, 403]) {
       const refused = await listingServer({ status, body: '{"error":"nope"}' })
       await expect(ctx.llm.discoverModels('llm-pi-ai', { baseURL: refused.url, apiKey: 'wrong' }))
-        .rejects.toThrow(new RegExp(`answered ${status}; check the API key`))
+        .rejects.toThrow(new RegExp(`answered ${status}: authentication was refused`))
     }
 
     // A server fault is not a credential problem, so it must not send the user

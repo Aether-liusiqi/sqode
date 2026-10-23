@@ -266,6 +266,33 @@ export interface StoredModelDiscoveryProfile {
  * @throws LlmError when the protocol has no readable listing, the endpoint
  *   refuses or fails the request, or the reply is not a model listing.
  */
+/**
+ * Describe a refused model-list request in terms the operator can act on.
+ *
+ * The bare status is ambiguous in exactly the cases that matter: a 401 is as
+ * often a base URL that belongs to a different service as it is a wrong key,
+ * and a 404 usually means the service publishes no model list rather than that
+ * the route moved. Saying only "check the API key" sends the reader to rebuild
+ * a key that was never the problem.
+ * @param url - the discovery URL that was refused.
+ * @param status - the HTTP status the service answered with.
+ * @returns one sentence naming the likely cause and the next step.
+ */
+function describeDiscoveryRefusal(url: string, status: number): string {
+  if (status === 401 || status === 403) {
+    return `${url} answered ${String(status)}: authentication was refused.`
+      + ' Check that the key belongs to this service, and that the base URL is the one this service issues keys for.'
+  }
+  if (status === 404 || status === 405) {
+    return `${url} answered ${String(status)}: this service does not offer a model list.`
+      + ' Add the model IDs by hand instead of fetching them.'
+  }
+  if (status === 429) {
+    return `${url} answered ${String(status)}: model discovery is rate limited right now. Try again later.`
+  }
+  return `${url} answered ${String(status)}`
+}
+
 export async function discoverModels(
   request: LlmModelDiscoveryOperation,
   storedProfile?: () => StoredModelDiscoveryProfile | undefined,
@@ -336,10 +363,7 @@ export async function discoverModels(
     throw new LlmError(`could not reach ${url}`, 'DISCOVERY_FAILED', { cause: error })
   }
   if (!response.ok) {
-    throw new LlmError(
-      `${url} answered ${response.status}${response.status === 401 || response.status === 403 ? '; check the API key' : ''}`,
-      'DISCOVERY_FAILED',
-    )
+    throw new LlmError(describeDiscoveryRefusal(url, response.status), 'DISCOVERY_FAILED')
   }
   let text: string
   try {
