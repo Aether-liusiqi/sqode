@@ -357,10 +357,16 @@ export function ProviderEditor(props: ProviderEditorProps): ReactNode {
     const defaultContextWindow = schema.getPath(fallback, ['defaultContextWindow'])
     const defaultMaxTokens = schema.getPath(fallback, ['maxTokens'])
     const defaultInput = schema.getPath(fallback, ['defaultInput'])
+    // The placeholder is the only place this card states where the key comes
+    // from, so it names the layer that is actually supplying it. Without that,
+    // "configured" hides whether an environment variable is shadowing the value
+    // a user just stored, which is exactly the case that reads as a wrong key.
     const keyPlaceholder = keyLocked
       ? t('keyEnvLocked')
       : keyState?.configured === true && props.credentialRequired !== true
-        ? t('keyStored')
+        ? keyState.source === 'env'
+          ? t('keyStoredEnv')
+          : keyState.source === 'file' ? t('keyStoredFile') : t('keyStored')
         : family === 'pi-ai' ? t('keyPlaceholderNative') : t('keyPlaceholder')
     /** What both family editors take: the rows, whose layer owns them, and the two writes. */
     const catalogProps = {
