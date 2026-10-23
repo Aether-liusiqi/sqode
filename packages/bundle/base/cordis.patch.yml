@@ -216,10 +216,15 @@
             baseURL: https://www.codebuddy.cn
             apiKeyEnv: CODEBUDDY_API_KEY
             models:
-              # Only hy3 is served for this account shape. The client catalog
-              # also lists deepseek-v4-flash and hy4-preview, but both answer
-              # 500 internal_server_error through the API, and unknown ids
-              # answer 400 "model service info not found".
+              # deepseek-v4-flash is deliberately absent: CodeBuddy's own client
+              # catalog lists it, but this account gets 500 internal_server_error
+              # on every call, which reads as a server fault rather than as an
+              # entitlement gap. Presetting it would send people after a bug that
+              # is not there.
+              - id: hy4-preview
+                name: Hy4 preview
+                contextWindow: 1000000
+                maxTokens: 65536
               - id: hy3
                 name: Hy3
                 contextWindow: 262144
