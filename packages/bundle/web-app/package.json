@@ -149,8 +149,6 @@
     "@liusiqi-dev/dsh-session-stats": "workspace:*",
     "@liusiqi-dev/dsh-session-turn-outline": "workspace:*",
     "@liusiqi-dev/dsh-skill-filesystem": "workspace:*",
-    "@liusiqi-dev/dsh-subagent-claude-code": "workspace:*",
-    "@liusiqi-dev/dsh-subagent-codex": "workspace:*",
     "@liusiqi-dev/dsh-subprocess": "workspace:*",
     "@liusiqi-dev/dsh-terminal": "workspace:*",
     "@liusiqi-dev/dsh-terminal-bash": "workspace:*",

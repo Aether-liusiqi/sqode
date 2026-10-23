@@ -2660,12 +2660,6 @@ importers:
       '@liusiqi-dev/dsh-skill-filesystem':
         specifier: workspace:*
         version: link:../../skill/skill-filesystem
-      '@liusiqi-dev/dsh-subagent-claude-code':
-        specifier: workspace:*
-        version: link:../../subagent/subagent-claude-code
-      '@liusiqi-dev/dsh-subagent-codex':
-        specifier: workspace:*
-        version: link:../../subagent/subagent-codex
       '@liusiqi-dev/dsh-subprocess':
         specifier: workspace:*
         version: link:../../subprocess/subprocess
