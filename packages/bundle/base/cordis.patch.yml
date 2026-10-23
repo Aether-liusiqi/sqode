@@ -143,10 +143,15 @@
         providers:
           tencent-tokenhub:
             displayName: 腾讯混元（TokenHub）
+            # base URL is tokenhub.tencentmaas.com. The similar looking
+            # tokenhub.tencentcloudmaas.com host answers 401 "The API Key does
+            # not exist" for a valid key, so the shorter spelling is the one.
             api: openai-completions
-            baseURL: https://tokenhub.tencentcloudmaas.com/v1
+            baseURL: https://tokenhub.tencentmaas.com/v1
             apiKeyEnv: TOKENHUB_API_KEY
             models:
+              # A short preset; GET /v1/models returns the full catalog (119
+              # entries for a trial account) and the Models page can fetch it.
               - id: hy4-preview
                 name: Hy4 preview
                 contextWindow: 1000000
@@ -154,6 +159,30 @@
               - id: hy3
                 name: Hy3
                 contextWindow: 262144
+                maxTokens: 32768
+              - id: deepseek-v4-pro
+                name: DeepSeek-V4-Pro
+                contextWindow: 262144
+                maxTokens: 65536
+              - id: deepseek/deepseek-flash
+                name: DeepSeek-V4.1-Flash
+                contextWindow: 262144
+                maxTokens: 65536
+              - id: glm-5.3
+                name: GLM-5.3
+                contextWindow: 200000
+                maxTokens: 128000
+              - id: glm-5.3-flash
+                name: GLM-5.3-Flash
+                contextWindow: 200000
+                maxTokens: 128000
+              - id: kimi-k3
+                name: Kimi K3
+                contextWindow: 262144
+                maxTokens: 32768
+              - id: minimax-m3
+                name: MiniMax-M3
+                contextWindow: 200000
                 maxTokens: 32768
           zhipu:
             displayName: 智谱 GLM
@@ -177,6 +206,24 @@
                 name: GLM-4.7
                 contextWindow: 200000
                 maxTokens: 128000
+          codebuddy:
+            displayName: CodeBuddy
+            # CodeBuddy exposes the Anthropic Messages protocol, not an
+            # OpenAI-compatible one: /v1/messages answers while /v1/chat and
+            # /v1/models are unmatched routes. Auth is the same x-api-key header
+            # the Anthropic SDK sends, so no adapter is needed.
+            api: anthropic-messages
+            baseURL: https://www.codebuddy.cn
+            apiKeyEnv: CODEBUDDY_API_KEY
+            models:
+              # Only hy3 is served for this account shape. The client catalog
+              # also lists deepseek-v4-flash and hy4-preview, but both answer
+              # 500 internal_server_error through the API, and unknown ids
+              # answer 400 "model service info not found".
+              - id: hy3
+                name: Hy3
+                contextWindow: 262144
+                maxTokens: 32768
           volcengine-ark:
             displayName: 火山方舟
             api: openai-completions
