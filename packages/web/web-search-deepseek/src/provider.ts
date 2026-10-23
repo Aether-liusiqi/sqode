@@ -31,7 +31,18 @@ export const DEEPSEEK_PROVIDER_ID = 'deepseek-official'
  * `$DEEPSEEK_SEARCH_BASE_URL` overrides it independently of the conversation
  * adapter's endpoint. Both providers share the API key.
  */
-export const DEEPSEEK_DEFAULT_BASE_URL = 'https://api.deepseek.com/anthropic/v1'
+/**
+ * Endpoint the search route falls back to when neither the settings section nor
+ * `DEEPSEEK_SEARCH_BASE_URL` names one.
+ *
+ * It is deliberately empty. A shipped vendor endpoint makes every unconfigured
+ * install send the user's queries to a service it holds no credentials for: the
+ * provider's own availability check then reports itself ready, and the failure
+ * arrives later as a billing or authentication error that reads like an outage
+ * of something the user never chose. Empty keeps the route dormant until an
+ * endpoint is chosen, and search names that as the missing piece.
+ */
+export const DEEPSEEK_DEFAULT_BASE_URL = ''
 
 /** Default Anthropic-format model name (aligned with the repo's DeepSeek model vocabulary). */
 export const DEEPSEEK_DEFAULT_MODEL = 'deepseek-v4-flash'
