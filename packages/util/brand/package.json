@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/dsh-brand",
-  "description": "Stateless branded primitive types for the DeepSeek Harness",
+  "description": "Stateless branded primitive types for the Siqi Harness",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

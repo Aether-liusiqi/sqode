@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/dsh-jobs",
-  "description": "Background job registry (ctx.jobs) for the DeepSeek Harness — shared ids, owner isolation, polling, cancellation, and completion listeners for long-running tool work",
+  "description": "Background job registry (ctx.jobs) for the Siqi Harness — shared ids, owner isolation, polling, cancellation, and completion listeners for long-running tool work",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

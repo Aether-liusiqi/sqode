@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/dsh-client-ui-brand-official",
-  "description": "Official DeepSeek Harness brand occupants for the Web client's sidebar slots",
+  "description": "Official Siqi Harness brand occupants for the Web client's sidebar slots",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

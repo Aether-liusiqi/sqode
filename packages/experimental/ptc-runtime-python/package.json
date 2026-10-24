@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/dsh-experimental-ptc-runtime-python",
-  "description": "CPython subprocess implementation of the DeepSeek Harness PTC execution seam",
+  "description": "CPython subprocess implementation of the Siqi Harness PTC execution seam",
   "version": "1.0.0",
   "repository": {
     "type": "git",

@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/dsh-session-title-all-prompts-llm",
-  "description": "All-user-messages LLM provider plugin for DeepSeek Harness session titles",
+  "description": "All-user-messages LLM provider plugin for Siqi Harness session titles",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

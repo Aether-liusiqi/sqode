@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/dsh-spill",
-  "description": "Abstract spill storage seam (ctx.spillStore) for the DeepSeek Harness — save oversized tool text and return a retrieval locator",
+  "description": "Abstract spill storage seam (ctx.spillStore) for the Siqi Harness — save oversized tool text and return a retrieval locator",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

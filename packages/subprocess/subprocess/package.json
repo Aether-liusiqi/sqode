@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/dsh-subprocess",
-  "description": "Subprocess seam (ctx.subprocess) for the DeepSeek Harness \u2014 managed process groups, bounded spill-backed output, and escalated kills behind one abstract service",
+  "description": "Subprocess seam (ctx.subprocess) for the Siqi Harness — managed process groups, bounded spill-backed output, and escalated kills behind one abstract service",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/dsh-user-approval",
-  "description": "User-approval seam (ctx.approval) for the DeepSeek Harness: one-shot permission decisions dispatched to composed answerers over the approval/request waterfall, fail-closed by default",
+  "description": "User-approval seam (ctx.approval) for the Siqi Harness: one-shot permission decisions dispatched to composed answerers over the approval/request waterfall, fail-closed by default",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

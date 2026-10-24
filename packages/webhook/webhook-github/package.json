@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/dsh-webhook-github",
-  "description": "Signed GitHub HTTP webhook adapter for the DeepSeek Harness webhook runtime",
+  "description": "Signed GitHub HTTP webhook adapter for the Siqi Harness webhook runtime",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

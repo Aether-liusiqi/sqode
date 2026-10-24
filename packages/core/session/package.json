@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/dsh-session",
-  "description": "Event-sourced session store for the DeepSeek Harness",
+  "description": "Event-sourced session store for the Siqi Harness",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

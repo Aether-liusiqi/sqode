@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/dsh-storage",
-  "description": "Storage hub (ctx.storage): named backend registry plus mounted data-form facilities for the DeepSeek Harness",
+  "description": "Storage hub (ctx.storage): named backend registry plus mounted data-form facilities for the Siqi Harness",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

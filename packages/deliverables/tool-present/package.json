@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/dsh-tool-present",
-  "description": "Explicit workspace file delivery declarations for the DeepSeek Harness",
+  "description": "Explicit workspace file delivery declarations for the Siqi Harness",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

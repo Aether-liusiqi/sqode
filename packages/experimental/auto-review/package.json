@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/dsh-experimental-auto-review",
-  "description": "Per-tool LLM authorization review for the DeepSeek Harness Auto permission preset",
+  "description": "Per-tool LLM authorization review for the Siqi Harness Auto permission preset",
   "version": "1.0.0",
   "icon": "./icon.svg",
   "repository": {

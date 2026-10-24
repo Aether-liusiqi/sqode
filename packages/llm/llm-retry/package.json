@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/dsh-llm-retry",
-  "description": "Provider-routed LLM request retry policy for the DeepSeek Harness",
+  "description": "Provider-routed LLM request retry policy for the Siqi Harness",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/dsh-fs-local",
-  "description": "Local-filesystem implementation of the DeepSeek Harness filesystem seam (ctx.fs)",
+  "description": "Local-filesystem implementation of the Siqi Harness filesystem seam (ctx.fs)",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"
