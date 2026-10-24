@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/dsh-client-ui-settings-web-search",
-  "description": "Settings page of the DeepSeek web-search provider on the dsh web client's Plugins page: its API key, endpoint, and per-request search budget",
+  "description": "Settings page of the built-in web-search provider on the web client's Plugins page: its endpoint, pacing, and per-request result budget",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"
