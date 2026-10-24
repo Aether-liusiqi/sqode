@@ -17,6 +17,10 @@ export function contactUrl(config: ContactConfig, context: {
   height: number
   pixelRatio: number
 }): string {
+  // A mailbox destination is not a questionnaire: `mailto:` carries no fields to
+  // prefill or hide, and appending questionnaire parameters would arrive as
+  // meaningless text in the mail client. Send it as configured.
+  if (!/^https?:/iu.test(config.contactFormUrl)) return config.contactFormUrl
   const url = new URL(config.contactFormUrl)
   const ratio = Number.isFinite(context.pixelRatio) ? context.pixelRatio : 1
   const width = Math.round(context.width * ratio)

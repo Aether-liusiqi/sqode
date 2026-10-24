@@ -14,7 +14,12 @@ export interface ContactConfig {
 }
 /** Validate public questionnaire options. */
 export const ContactConfigFields = {
-  contactFormUrl: z.string().pattern(/^https:\/\/[^/\s]+\//).default('https://sqode.app/feedback'),
+  // A support destination may be a questionnaire page or a mailbox. A `mailto:`
+  // address has no fields to prefill, so `contactUrl` passes it through; anything
+  // else still has to be an absolute https URL.
+  contactFormUrl: z.string()
+    .pattern(/^(?:https:\/\/[^/\s]+\/|mailto:[^\s@]+@[^\s@]+\.[^\s@]+$)/u)
+    .default('mailto:uleeatlas@163.com'),
   contactSource: z.string().default(''),
   bonusAckRetryDelayMs: z.number().min(1).default(1_000),
   bonusAckRetryMaxDelayMs: z.number().min(1).default(60_000),
