@@ -601,8 +601,15 @@
     - id: web
       name: '@liusiqi-dev/dsh-web'
       config:
-        searchProvider: http-engines
+        searchProvider: serp-bing
         fetchProvider: http
+
+    # Keyless search: one GET against a public result page, no credential and no
+    # browser. Requests are spaced per instance and capped per host, and a
+    # challenge page is reported as such. Keys are not required; an API-backed
+    # route (web-search-http) can be selected instead for higher rate limits.
+    - id: web-search-serp
+      name: '@liusiqi-dev/dsh-web-search-serp'
 
     # Plain keyword search: Google Custom Search first, Bing Web Search when the
     # primary answer is too thin to cite. Both are index queries, so a search

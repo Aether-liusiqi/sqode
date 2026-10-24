@@ -119,6 +119,7 @@
     "@liusiqi-dev/dsh-web-fetch-http": "workspace:*",
     "@liusiqi-dev/dsh-web-search-deepseek": "workspace:*",
     "@liusiqi-dev/dsh-web-search-http": "workspace:*",
+    "@liusiqi-dev/dsh-web-search-serp": "workspace:*",
     "@liusiqi-dev/dsh-workflow-ptc": "workspace:*",
     "@liusiqi-dev/dsh-agent-instructions": "workspace:*",
     "@liusiqi-dev/dsh-ptc-runtime-node": "workspace:*",
