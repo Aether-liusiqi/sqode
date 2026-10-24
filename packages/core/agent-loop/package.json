@@ -46,7 +46,7 @@
     "@liusiqi-dev/dsh-brand": "workspace:*",
     "@liusiqi-dev/dsh-util-values": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
-    "zod": "^4.4.3"
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@liusiqi-dev/dsh-llm-deepseek-api-key": "workspace:*",

@@ -39,6 +39,6 @@
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
     "@liusiqi-dev/dsh-typert-registry": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~",
-    "zod": "^4.4.3"
+    "zod": "^4.6.5"
   }
 }

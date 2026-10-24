@@ -73,7 +73,7 @@
     "@liusiqi-dev/dsh-deque": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
     "mime-types": "^3.0.2",
-    "zod": "^4.4.3"
+    "zod": "^4.6.5"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",

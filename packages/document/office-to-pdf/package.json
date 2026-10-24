@@ -59,6 +59,6 @@
     "@liusiqi-dev/schemastery": "workspace:~",
     "@liusiqi-dev/dsh-brand": "workspace:*",
     "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
-    "zod": "^4.4.3"
+    "zod": "^4.6.5"
   }
 }
