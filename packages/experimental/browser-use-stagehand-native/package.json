@@ -44,7 +44,7 @@
     "@liusiqi-dev/dsh-mcp-client": "workspace:*",
     "@liusiqi-dev/dsh-util-values": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
-    "zod": "^4.4.3",
+    "zod": "^4.6.5",
     "@liusiqi-dev/dsh-subprocess": "workspace:*",
     "@puppeteer/browsers": "3.2.2"
   },

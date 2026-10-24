@@ -77,6 +77,6 @@
   "dependencies": {
     "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
-    "zod": "^4.4.3"
+    "zod": "^4.6.5"
   }
 }
