@@ -57,6 +57,17 @@ export function runtimePath(root: string, path: string): string {
   return join(root, ...path.split('/'))
 }
 
+/**
+ * Version-control placeholders to leave out of the inventory.
+ *
+ * The packer drops `.gitkeep` while it ships every other zero-byte file, so an
+ * inventory that counts it can never match the archive it is compared against.
+ * Verified against a tree holding one `.gitkeep` and eight other empty files:
+ * the eight arrived, the placeholder did not. It carries no runtime meaning, so
+ * the inventory follows the packer instead of asking the packer to change.
+ */
+const PACKER_DROPPED_PLACEHOLDERS: ReadonlySet<string> = new Set(['.gitkeep'])
+
 function runtimeFiles(root: string): { path: string; name: string }[] {
   const files: { path: string; name: string }[] = []
   const visit = (directory: string): void => {
@@ -65,8 +76,10 @@ function runtimeFiles(root: string): { path: string; name: string }[] {
       const name = relative(root, path).split(sep).join('/')
       if (name === DESKTOP_RUNTIME_FILE) continue
       if (entry.isDirectory()) visit(path)
-      else if (entry.isFile()) files.push({ path, name })
-      else throw new Error(`desktop runtime: unsupported filesystem entry ${name}`)
+      else if (entry.isFile()) {
+        if (PACKER_DROPPED_PLACEHOLDERS.has(entry.name)) continue
+        files.push({ path, name })
+      } else throw new Error(`desktop runtime: unsupported filesystem entry ${name}`)
     }
   }
   visit(root)
