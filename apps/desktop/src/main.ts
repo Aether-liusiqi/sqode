@@ -237,7 +237,10 @@ function createWindow(preload: string, show = false, primary = false): BrowserWi
     },
   })
   window.webContents.setWindowOpenHandler(({ url }) => {
-    if (['http:', 'https:'].includes(new URL(url).protocol)) void shell.openExternal(url)
+    // `mailto:` is a handoff to the user's mail client rather than navigation, and
+    // the feedback action is exactly that. Without it here the request was dropped
+    // silently, so the button appeared to do nothing at all.
+    if (['http:', 'https:', 'mailto:'].includes(new URL(url).protocol)) void shell.openExternal(url)
     return { action: 'deny' }
   })
   if (process.platform === 'darwin' || process.platform === 'win32') {

@@ -171,7 +171,16 @@ export function apply(ctx: Context): void {
         width: window.screen.width, height: window.screen.height, pixelRatio: window.devicePixelRatio,
       }
       const openForm = (deviceInfo: string): void => {
-        window.open(contactUrl(config, { ...context, deviceInfo }), '_blank', 'noopener,noreferrer')
+        const target = contactUrl(config, { ...context, deviceInfo })
+        if (!/^https?:/iu.test(target)) {
+          // A mailbox is not a page: when no mail client is registered the click
+          // would otherwise do nothing visible. Copying the address first means the
+          // action always hands the user something they can use.
+          const address = target.replace(/^mailto:/u, '')
+          const clipboard = (navigator as Navigator & { clipboard?: Clipboard }).clipboard
+          if (clipboard !== undefined) void clipboard.writeText(address).catch(() => undefined)
+        }
+        window.open(target, '_blank', 'noopener,noreferrer')
       }
       const readDeviceInfo = (globalThis as typeof globalThis & {
         dshDesktop?: { deviceInfo?: () => Promise<string> }
