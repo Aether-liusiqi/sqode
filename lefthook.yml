@@ -49,7 +49,8 @@ pre-merge-commit:
       glob: '.agents/notes/archived/**'
       run: node_modules/.bin/tsx scripts/verify-archived-agent-notes.ts
 
-pre-push:
-  jobs:
-    - name: typecheck
-      run: pnpm run typecheck
+# No pre-push job on purpose. A repository-wide typecheck takes about eight
+# minutes, and Git sends nothing to the remote while it runs, so the connection
+# is dropped as idle before the push starts: every attempt ends in
+# "unable to write flush packet: Broken pipe" after paying the full wait. CI owns
+# this gate; keeping it here made pushing unusable rather than safer.
