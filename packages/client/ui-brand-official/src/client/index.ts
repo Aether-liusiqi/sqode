@@ -1,4 +1,4 @@
-/** Official DeepSeek Harness occupants for the generic browser-brand slots. */
+/** Official Siqi Harness occupants for the generic browser-brand slots. */
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
 import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
 import type {} from '@liusiqi-dev/dsh-client-ui-sidebar/client'
