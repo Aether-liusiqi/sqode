@@ -601,8 +601,17 @@
     - id: web
       name: '@liusiqi-dev/dsh-web'
       config:
-        searchProvider: deepseek-official
+        searchProvider: http-engines
         fetchProvider: http
+
+    # Plain keyword search: Google Custom Search first, Bing Web Search when the
+    # primary answer is too thin to cite. Both are index queries, so a search
+    # costs one round trip instead of a model turn, and each source carries the
+    # page's own snippet rather than a model's paraphrase. Keys come from
+    # GOOGLE_SEARCH_API_KEY + GOOGLE_SEARCH_CX and BING_SEARCH_API_KEY, or from
+    # the Web search settings section.
+    - id: web-search-http
+      name: '@liusiqi-dev/dsh-web-search-http'
 
     - id: web-search-deepseek
       name: '@liusiqi-dev/dsh-web-search-deepseek'
