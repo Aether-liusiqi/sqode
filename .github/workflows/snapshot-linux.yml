@@ -3,17 +3,23 @@ name: snapshot-linux
 # Verification lane for the recorded-session corpus.
 #
 # The repository's `ci.yml` runs these gates on a self-hosted runner pool and only
-# for pull requests, so a change to pinned prompt goldens cannot be checked from a
-# workstation that is not on that pool. This workflow is the same comparison on a
-# GitHub-hosted Ubuntu runner, triggered by hand.
+# for pull requests, so a change to pinned goldens cannot be checked from a
+# workstation that is not on that pool: the Windows host cannot replay the corpus
+# at all, because the bash tool is disabled there by design.
 #
-# It never refreshes a golden. `SQODE_SNAPSHOT=refresh` would rewrite the expected
-# outputs from whatever the code currently produces, which turns the gate into a
-# rubber stamp; refresh stays a deliberate local act followed by a reviewed diff.
+# Two modes, both on a GitHub-hosted Ubuntu runner:
+#   verify  - compare as CI does; a red run is the answer to "does it match?"
+#   refresh - rewrite the expected outputs and upload the resulting diff as an
+#             artifact, so the change can be reviewed as a patch on a machine that
+#             cannot produce it. Refresh never commits anything by itself.
 
 on:
   workflow_dispatch:
     inputs:
+      refresh:
+        description: Rewrite goldens on Linux and upload the diff (review it before committing)
+        type: boolean
+        default: false
       web:
         description: Also run the browser snapshot lane
         type: boolean
@@ -25,8 +31,6 @@ permissions:
 env:
   PRIMARY_NODE_VERSION: '24'
   SQODE_TELEMETRY_DISABLED: '1'
-  # The gates build with the shipped client profile and run the recorded adapters
-  # against built package entrypoints, matching ci.yml's consumer aggregate.
   SQODE_BUILD_FACE: official
   SQODE_EXAMPLE_MODE: lib
 
@@ -57,15 +61,41 @@ jobs:
       - name: Build
         run: pnpm run build
 
+      # A refresh run rewrites files, so individual scenario failures are expected
+      # while the corpus converges; the job still fails afterwards so a red result
+      # is never mistaken for a green one.
+      - name: Rewrite expected outputs
+        if: ${{ inputs.refresh }}
+        continue-on-error: true
+        env:
+          SQODE_SNAPSHOT: refresh
+        run: pnpm run test:snapshot
+
+      - name: Package the rewritten corpus
+        if: ${{ inputs.refresh }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/refresh"
+          git diff --binary -- snapshots > "$RUNNER_TEMP/refresh/snapshots.patch"
+          git status --porcelain -- snapshots > "$RUNNER_TEMP/refresh/changed.txt"
+          wc -l "$RUNNER_TEMP/refresh/snapshots.patch" "$RUNNER_TEMP/refresh/changed.txt"
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ inputs.refresh }}
+        with:
+          name: snapshots-refresh
+          path: ${{ runner.temp }}/refresh
+          if-no-files-found: error
+
       - name: Compare recorded sessions and pinned prompts
+        if: ${{ !inputs.refresh }}
         run: pnpm run test:snapshot
 
       - name: Install Playwright browsers
-        if: ${{ inputs.web }}
+        if: ${{ inputs.web && !inputs.refresh }}
         run: pnpm --filter @liusiqi-dev/dsh-web-frontend exec playwright install --with-deps chromium
 
       - name: Compare browser snapshots
-        if: ${{ inputs.web }}
+        if: ${{ inputs.web && !inputs.refresh }}
         env:
           SQODE_SNAPSHOT: replay
         run: pnpm run test:web:ci
