@@ -18,6 +18,11 @@ overrides:
   'extract-zip>yauzl': '3.4.0'
   '@liusiqi-dev/cosmokit': 'link:vendor/cosmokit'
   '@liusiqi-dev/schemastery': 'link:vendor/schemastery'
+  # Two copies of this type package arrive through different markdown
+  # dependencies. Their Extension types are structurally incompatible, so
+  # ui-primitives fails to compile with "No overload matches this call" while
+  # each package is valid on its own. Pin one copy until the graph converges.
+  micromark-util-types: '2.0.2'
 
 peerDependencyRules:
   allowedVersions:
