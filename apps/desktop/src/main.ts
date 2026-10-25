@@ -2,7 +2,7 @@ import type { ProductEventMap, ProductEvent } from '@liusiqi-dev/dsh-client-prod
 import { WINDOWS_TITLEBAR_HEIGHT } from './windows-layout.ts'
 /** Electron shell: desktop project ownership, custom protocol, windows, and lifecycle. */
 
-import { readFile, writeFile } from 'node:fs/promises'
+import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
@@ -22,6 +22,8 @@ import {
   type IpcMainInvokeEvent,
   type MenuItemConstructorOptions,
 } from 'electron'
+import { resolveDshHome } from '@liusiqi-dev/dsh-home-paths'
+
 import { resolveDesktopPaths } from './paths.ts'
 import { DesktopProjectManager } from './project-manager.ts'
 import { DesktopHostFatalError, DesktopHostProcess, DesktopHostUncleanExitError } from './host-process.ts'
@@ -29,7 +31,38 @@ import { DesktopPlatformView, PLATFORM_IPC, platformBounds } from './platform-vi
 import { installDesktopDirectoryPicker } from './directory-picker.ts'
 import { installMicrophonePermissions } from './microphone-permissions.ts'
 import { DesktopBackendController } from './backend-controller.ts'
-import { DESKTOP_IPC, SCHEME, assertDesktopSender, type DesktopUpdateState } from './ipc.ts'
+import {
+  DESKTOP_IPC, SCHEME, assertDesktopSender, type DesktopFeedbackReport, type DesktopUpdateState,
+} from './ipc.ts'
+
+/**
+ * Validate one feedback report arriving from the product document.
+ *
+ * That document is a renderer, so its payload is untrusted. The shape is fixed
+ * so a saved report stays readable, and the free text is capped so one submission
+ * cannot fill the disk.
+ * @param value - payload as received over IPC.
+ * @returns the report to persist.
+ * @throws Error when the payload carries neither a topic nor a description.
+ */
+function parseFeedbackReport(value: unknown): DesktopFeedbackReport {
+  if (typeof value !== 'object' || value === null) throw new Error('desktop feedback: invalid report')
+  const record = value as Record<string, unknown>
+  const topics = Array.isArray(record['topics'])
+    ? record['topics'].filter((topic): topic is string => typeof topic === 'string' && topic.length <= 64).slice(0, 16)
+    : []
+  const raw = record['details']
+  const details = typeof raw === 'string' ? raw.slice(0, 20_000) : ''
+  if (topics.length === 0 && details.trim().length === 0) {
+    throw new Error('desktop feedback: a report needs a topic or a description')
+  }
+  return {
+    topics,
+    details,
+    ...typeof record['version'] === 'string' ? { version: record['version'].slice(0, 64) } : {},
+    ...typeof record['locale'] === 'string' ? { locale: record['locale'].slice(0, 32) } : {},
+  }
+}
 import { readDeviceInfo } from './device-info.ts'
 import { desktopUpdateReadyConfirmation, formatDesktopMessage, resolveDesktopLocale, resolveDesktopStartupLocale } from './locale.ts'
 import { claimDesktopSingleInstance } from './single-instance.ts'
@@ -774,6 +807,17 @@ async function main(): Promise<void> {
   ipcMain.handle(DESKTOP_IPC.deviceInfo, (event) => {
     assertProductSender(event)
     return readDeviceInfo()
+  })
+  ipcMain.handle(DESKTOP_IPC.feedbackSave, async (event, report: unknown) => {
+    assertProductSender(event)
+    const record = parseFeedbackReport(report)
+    const directory = join(resolveDshHome(), 'feedback')
+    await mkdir(directory, { recursive: true })
+    const stamp = new Date().toISOString().replace(/[:.]/gu, '-')
+    const file = join(directory, `${stamp}.json`)
+    // Owner-only: a report holds whatever the user chose to describe.
+    await writeFile(file, `${JSON.stringify(record, undefined, 2)}\n`, { mode: 0o600 })
+    return { path: file }
   })
   ipcMain.handle(DESKTOP_IPC.onboardingApiKey, async (event) => {
     assertProductSender(event)

@@ -6,6 +6,7 @@ import {
 import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
 import type { AccountSectionInjected } from './AccountSection.tsx'
 import { SignOutDialog } from './SignOutDialog.tsx'
+import { FeedbackDialog, feedbackBridge } from './FeedbackDialog.tsx'
 import { SignInDialog } from './SignInDialog.tsx'
 import { LogoutIcon } from './LogoutIcon.tsx'
 import { AccountAvatar } from './AccountAvatar.tsx'
@@ -46,6 +47,7 @@ export function AccountMenu({
   const trigger = useRef<HTMLButtonElement>(null)
   const [busy, setBusy] = useState(false)
   const [signOutImpact, setSignOutImpact] = useState<boolean | 'unknown'>()
+  const [feedbackOpen, setFeedbackOpen] = useState(false)
   const requestSignOut = async () => {
     setBusy(true)
     try { setSignOutImpact(await hasRunningAccountTasks()); setOpen(false) }
@@ -78,7 +80,14 @@ export function AccountMenu({
       onClose={() => { setOpen(false) }}
       onSelect={(id) => {
         if (id === 'settings') { setOpen(false); trigger.current?.focus(); openSettings() }
-        else if (id === 'contact') { setOpen(false); contactUs() }
+        else if (id === 'contact') {
+          setOpen(false)
+          // The desktop shell can store a report locally, which is what the form
+          // is for; a browser-only deployment has no such place, so it keeps the
+          // configured destination instead.
+          if (feedbackBridge() === undefined) contactUs()
+          else setFeedbackOpen(true)
+        }
         else if (id === 'signin') beginSignIn()
         else void requestSignOut()
       }} />
@@ -87,5 +96,6 @@ export function AccountMenu({
       close={() => { showLogin(false) }} useApiKey={() => { showLogin(false); openOnboarding('deepseek-official') }} />}
     {signedIn && signOutImpact !== undefined && <SignOutDialog running={signOutImpact} signOut={signOut}
       close={() => { setSignOutImpact(undefined) }} t={t} />}
+    {feedbackOpen && <FeedbackDialog close={() => { setFeedbackOpen(false) }} t={t} />}
   </div>
 }

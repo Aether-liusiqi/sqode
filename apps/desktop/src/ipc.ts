@@ -22,6 +22,7 @@ export const DESKTOP_IPC = {
   browserOpenRequested: 'dsh-desktop:browser-open-requested',
   directoryPick: 'dsh-desktop:directory-pick',
   deviceInfo: 'dsh-desktop:device-info',
+  feedbackSave: 'dsh-desktop:feedback-save',
   localeBootstrap: 'dsh-desktop:locale-bootstrap',
   localeChanged: 'dsh-desktop:locale-changed',
   updatesStatus: 'dsh-desktop:updates-status',
@@ -68,6 +69,23 @@ export interface DesktopUpdatePresentation {
   readonly failure?: DesktopUpdateFailureKind
 }
 
+/** What the interface sends when the user submits the feedback form. */
+export interface DesktopFeedbackReport {
+  /** Chosen quick topics; identifiers, not translated labels. */
+  readonly topics: readonly string[]
+  /** The user's own words, may be empty when only topics were ticked. */
+  readonly details: string
+  /** Application version at submission, when the document knows it. */
+  readonly version?: string
+  /** Interface language at submission. */
+  readonly locale?: string
+}
+
+/** Where a saved report landed, so the interface can say so. */
+export interface DesktopFeedbackSaved {
+  readonly path: string
+}
+
 /** Product documents cannot supply update versions, package URLs, or installation authorization. */
 export interface DshDesktopProductApi {
   readonly protocolVersion: 1
@@ -79,6 +97,15 @@ export interface DshDesktopProductApi {
    * @returns `name=value` fields separated by `; `, with no hostname, user name, or serial number.
    */
   deviceInfo(): Promise<string>
+  /**
+   * Persist one feedback report under the local data directory.
+   *
+   * The report never leaves the machine: the desktop shell writes it to disk and
+   * returns the path so the interface can tell the user where it went.
+   */
+  readonly feedback: {
+    save(report: DesktopFeedbackReport): Promise<DesktopFeedbackSaved>
+  }
   readonly updates: {
     status(): Promise<DesktopUpdatePresentation>
     open(): Promise<void>
