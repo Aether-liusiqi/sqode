@@ -79,10 +79,21 @@ jobs:
       # step warns "failed to create bin ... ENOENT ... apps/cli/lib/bin.js" and never
       # links `sqode` into node_modules/.bin. Every SDK replay spawns that command, so
       # all of them fail to start. Relinking after the build creates the link.
-      - name: Relink workspace commands
-        # --force is what makes this work: a plain install answers "already up to
-        # date", skips link creation, and leaves the missing bins missing.
-        run: pnpm install --frozen-lockfile --force
+      # The CLI entry point does not exist until the build writes it, so the install
+      # step warns "failed to create bin ... ENOENT ... apps/cli/lib/bin.js" and never
+      # links the command. Re-installing does not repair that (it reports the tree as
+      # up to date, and --force did not help either), so the link is created directly
+      # and then proven by invoking it: an SDK replay that cannot spawn this command
+      # fails in milliseconds with ENOENT, which reads like a test failure.
+      - name: Ensure the CLI command is linked
+        run: |
+          chmod +x apps/cli/lib/bin.js
+          mkdir -p node_modules/.bin
+          for name in sqode dsh; do
+            ln -sf ../../apps/cli/lib/bin.js "node_modules/.bin/$name"
+          done
+          ls -l node_modules/.bin/sqode node_modules/.bin/dsh
+          node_modules/.bin/sqode --version
 
       # A refresh run rewrites files, so individual scenario failures are expected
       # while the corpus converges; the job still fails afterwards so a red result
