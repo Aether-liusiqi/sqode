@@ -40,12 +40,12 @@
     "@liusiqi-dev/dsh-session-format-catalog": "workspace:*",
     "@liusiqi-dev/dsh-session-format-v3-to-v4": "workspace:*",
     "js-yaml": "^4.2.0",
-    "picomatch": "^4.0.4"
+    "picomatch": "^4.0.7"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
     "@types/js-yaml": "^4.0.9",
-    "@types/picomatch": "^3.0.2"
+    "@types/picomatch": "^4.0.3"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~"
