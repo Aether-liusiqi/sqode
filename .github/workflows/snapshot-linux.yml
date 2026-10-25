@@ -80,7 +80,9 @@ jobs:
       # links `sqode` into node_modules/.bin. Every SDK replay spawns that command, so
       # all of them fail to start. Relinking after the build creates the link.
       - name: Relink workspace commands
-        run: pnpm install --frozen-lockfile
+        # --force is what makes this work: a plain install answers "already up to
+        # date", skips link creation, and leaves the missing bins missing.
+        run: pnpm install --frozen-lockfile --force
 
       # A refresh run rewrites files, so individual scenario failures are expected
       # while the corpus converges; the job still fails afterwards so a red result
