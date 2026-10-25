@@ -45,7 +45,11 @@ export interface GeneratedRegion {
  *   marker line, or a closing slug that does not match its opener.
  */
 export function generatedRegions(content: string): GeneratedRegion[] {
-  const lines = content.split('\n')
+  // A document checked out or generated with CRLF ends every line with `\r`, which
+  // would make an otherwise complete marker fail the anchored pattern and be
+  // reported as malformed. Line endings carry no meaning for a Markdown region, so
+  // they are normalised here rather than being a property every caller must know.
+  const lines = content.split('\n').map(line => line.endsWith('\r') ? line.slice(0, -1) : line)
   const regions: GeneratedRegion[] = []
   let open: { slug: string; begin: number } | null = null
   for (const [index, line] of lines.entries()) {

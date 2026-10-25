@@ -2,24 +2,24 @@
 # section, a hash of its English and Chinese blocks outside code blocks and generated regions.
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/user/guide/network-proxy.md
-/run-dsh-behind-a-network-proxy:
-  en: 7659888fbb3e2e0d
-  zh: 96c019583f5bf7ab
-/run-dsh-behind-a-network-proxy/export-the-variables:
-  en: 6c92d33cc57ced2a
-  zh: 653b6ffeb4d102b0
-/run-dsh-behind-a-network-proxy/why-your-browser-is-proxied-but-your-terminal-is-not:
-  en: d565b202923482a1
-  zh: 7eb5a36a3d7504d7
-/run-dsh-behind-a-network-proxy/choose-what-stays-direct:
-  en: 307f5b01e6e09661
-  zh: 39eccb0287afc128
-/run-dsh-behind-a-network-proxy/limits-worth-knowing:
-  en: d0defd7e52100d1f
-  zh: 50f38176e16f55e4
-/run-dsh-behind-a-network-proxy/what-stays-direct:
-  en: 34b04f98af3e09ae
-  zh: 4c530b755b552942
-/run-dsh-behind-a-network-proxy/check-that-it-worked:
-  en: d7455972489f79a8
-  zh: 1e7295e10a211769
+/run-sqode-behind-a-network-proxy:
+  en: 842b5811f4671934
+  zh: a75ce801ad021b00
+/run-sqode-behind-a-network-proxy/export-the-variables:
+  en: 8a7f86d071a9dccc
+  zh: 6e335ba0004f9fd7
+/run-sqode-behind-a-network-proxy/why-your-browser-is-proxied-but-your-terminal-is-not:
+  en: 2cd3a80848b81bfd
+  zh: 5a6ce98d821747b4
+/run-sqode-behind-a-network-proxy/choose-what-stays-direct:
+  en: ab44f34e7526e712
+  zh: 77dd819091f961c5
+/run-sqode-behind-a-network-proxy/limits-worth-knowing:
+  en: 37faec4ea496b1a6
+  zh: d0b7e8906569314c
+/run-sqode-behind-a-network-proxy/what-stays-direct:
+  en: 72d0ce8ac1cbd97c
+  zh: 0a1d02a8cbc4aef9
+/run-sqode-behind-a-network-proxy/check-that-it-worked:
+  en: a6fbd1058d017594
+  zh: 9bda6576da33f8ed

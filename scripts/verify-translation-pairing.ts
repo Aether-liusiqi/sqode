@@ -55,14 +55,29 @@ const indexFiles = indexMode ? gitIndexPaths(root) : undefined
 
 const contentCache = new Map<string, Buffer | undefined>()
 
+/**
+ * Normalise line endings to LF.
+ *
+ * The gate reads either the worktree or the index, and a CRLF checkout makes the
+ * same paragraph differ byte for byte from the LF blob Git stores. Section hashes
+ * and link offsets must not depend on which plane was read, so the conversion
+ * happens once here, before any consumer sees the text.
+ * @param content - raw file bytes from either plane.
+ * @returns the same content with LF endings.
+ */
+function normalizeEndings(content: Buffer): Buffer {
+  return content.includes(13) ? Buffer.from(content.toString('utf8').replace(/\r\n/g, '\n'), 'utf8') : content
+}
+
 /** Read one repository path from the selected worktree or index plane. */
 function readRepositoryFile(file: string): Buffer | undefined {
   if (contentCache.has(file)) return contentCache.get(file)
-  const content = indexMode
+  const raw = indexMode
     ? indexFiles?.has(file) ? readGitIndexBlob(root, file) : undefined
     : existsSync(join(root, file)) && statSync(join(root, file)).isFile()
       ? readFileSync(join(root, file))
       : undefined
+  const content = raw === undefined ? undefined : normalizeEndings(raw)
   contentCache.set(file, content)
   return content
 }

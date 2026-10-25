@@ -49,8 +49,17 @@ pre-merge-commit:
       glob: '.agents/notes/archived/**'
       run: node_modules/.bin/tsx scripts/verify-archived-agent-notes.ts
 
-# No pre-push job on purpose. A repository-wide typecheck takes about eight
-# minutes, and Git sends nothing to the remote while it runs, so the connection
-# is dropped as idle before the push starts: every attempt ends in
-# "unable to write flush packet: Broken pipe" after paying the full wait. CI owns
-# this gate; keeping it here made pushing unusable rather than safer.
+# Pre-push runs only checks that finish in seconds. A repository-wide typecheck
+# used to live here and took about eight minutes; Git sends nothing to the remote
+# while a hook runs, so the connection was dropped as idle and every push failed
+# with "unable to write flush packet: Broken pipe" after paying the full wait.
+#
+# The pairing check belongs here because pre-commit can only see the files it is
+# given: it runs on staged `*.i18n.yaml`, so a change that edits a README without
+# re-recording its sidecar passes the commit and the drift is only discovered much
+# later, for the whole corpus at once. This gate reads every pair, so a rename that
+# leaves stale keys behind cannot reach the remote.
+pre-push:
+  jobs:
+    - name: translation pairing
+      run: pnpm run verify-translation-pairing

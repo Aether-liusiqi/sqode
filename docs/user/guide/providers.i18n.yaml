@@ -6,8 +6,8 @@
   en: b1631dcf25e805a1
   zh: 8ded02e2ae87f00b
 /configure-models/configure-deepseek:
-  en: 2c6b665adc256b4e
-  zh: 2240e4c1573ebe9c
+  en: 147ff9d0839fd3fb
+  zh: 01c6ab3d599a230d
 /configure-models/add-a-third-party-provider:
   en: 0fe5f88e692f618c
   zh: 4f2e493818d8934f
@@ -21,17 +21,17 @@
   en: 6a94264c99535caf
   zh: f97bb0dc6a40c0d3
 /configure-models/advanced-configuration:
-  en: aaefe21c2fb77396
-  zh: c02d1e2a6b2a1290
+  en: 7387a6405a11009e
+  zh: 0e06fddaa04c8708
 /configure-models/advanced-configuration/image-input:
-  en: 75350cb615da03a4
-  zh: 6f8b3510085e4ac4
+  en: fd3915d7fb5a589a
+  zh: 437f3347314df540
 /configure-models/advanced-configuration/reasoning-effort:
-  en: f7581a0760fdfd2c
-  zh: dc6eaa16f74a0e9f
+  en: b65812dfde8fd01e
+  zh: 6ea8150c92cd35cf
 /configure-models/advanced-configuration/request-compatibility:
-  en: 6f52195d1502783e
-  zh: 34dbbeacb541afd4
+  en: 317d496cc84122cf
+  zh: 3bb550ac47bcf594
 /configure-models/troubleshooting:
   en: 0477cd6fa2772d6b
   zh: 780619fe998bdef7
