@@ -55,10 +55,40 @@ const RELEASED_SAME_NAME_PRODUCERS: ReadonlySet<string> = new Set([
   'dsh-session-title-llm',
 ])
 
+/**
+ * Package name of the producer that owns the system prompt.
+ *
+ * Compared without its scope: a released V3 file may name the producer under the
+ * scope it shipped with, and the file is still a valid session either way. Keying
+ * on the scoped string made every pre-rename session fail migration with
+ * "message must have system-prompt source", which is what an unmigratable session
+ * looks like rather than what a renamed package should cause.
+ */
+const SYSTEM_PROMPT_PRODUCER = 'dsh-system-prompt'
+
+/** Scopes this repository has shipped under; a released file may name either. */
+const LEGACY_SCOPES: readonly string[] = ['@deepseek-ai/', '@liusiqi-dev/']
+
+/**
+ * Rewrite a released package id to the scope this build publishes under.
+ * @param plugin - plugin id as recorded in the file.
+ * @returns the id under the current scope, or the input when it carries none.
+ */
+function canonicalPlugin(plugin: string): string {
+  for (const scope of LEGACY_SCOPES) {
+    if (plugin.startsWith(scope)) return '@liusiqi-dev/' + plugin.slice(scope.length)
+  }
+  return plugin
+}
+
 /** Resolve the current producer kind for one released V3 plugin string. */
 function producerKind(plugin: string, role: SessionFormatJsonValue | undefined): string {
-  if (plugin === '@liusiqi-dev/dsh-system-prompt' && role === 'system') return 'system-prompt'
-  const renamed = Object.hasOwn(RENAMED_PRODUCERS, plugin) ? RENAMED_PRODUCERS[plugin] : undefined
+  const bare = plugin.slice(plugin.lastIndexOf('/') + 1)
+  if (bare === SYSTEM_PROMPT_PRODUCER && role === 'system') return 'system-prompt'
+  const canonical = canonicalPlugin(plugin)
+  const renamed = Object.hasOwn(RENAMED_PRODUCERS, canonical)
+    ? RENAMED_PRODUCERS[canonical]
+    : Object.hasOwn(RENAMED_PRODUCERS, plugin) ? RENAMED_PRODUCERS[plugin] : undefined
   if (renamed !== undefined) return renamed
   if (RELEASED_SAME_NAME_PRODUCERS.has(plugin)) return plugin
   return `plugin:${plugin}`
