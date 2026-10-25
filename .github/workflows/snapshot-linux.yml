@@ -75,6 +75,13 @@ jobs:
       - name: Build
         run: pnpm run build
 
+      # The CLI entry point does not exist until the build writes it, so the install
+      # step warns "failed to create bin ... ENOENT ... apps/cli/lib/bin.js" and never
+      # links `sqode` into node_modules/.bin. Every SDK replay spawns that command, so
+      # all of them fail to start. Relinking after the build creates the link.
+      - name: Relink workspace commands
+        run: pnpm install --frozen-lockfile
+
       # A refresh run rewrites files, so individual scenario failures are expected
       # while the corpus converges; the job still fails afterwards so a red result
       # is never mistaken for a green one.
