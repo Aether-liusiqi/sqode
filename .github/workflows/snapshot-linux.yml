@@ -1,0 +1,71 @@
+name: snapshot-linux
+
+# Verification lane for the recorded-session corpus.
+#
+# The repository's `ci.yml` runs these gates on a self-hosted runner pool and only
+# for pull requests, so a change to pinned prompt goldens cannot be checked from a
+# workstation that is not on that pool. This workflow is the same comparison on a
+# GitHub-hosted Ubuntu runner, triggered by hand.
+#
+# It never refreshes a golden. `SQODE_SNAPSHOT=refresh` would rewrite the expected
+# outputs from whatever the code currently produces, which turns the gate into a
+# rubber stamp; refresh stays a deliberate local act followed by a reviewed diff.
+
+on:
+  workflow_dispatch:
+    inputs:
+      web:
+        description: Also run the browser snapshot lane
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+env:
+  PRIMARY_NODE_VERSION: '24'
+  SQODE_TELEMETRY_DISABLED: '1'
+  # The gates build with the shipped client profile and run the recorded adapters
+  # against built package entrypoints, matching ci.yml's consumer aggregate.
+  SQODE_BUILD_FACE: official
+  SQODE_EXAMPLE_MODE: lib
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  snapshot:
+    name: recorded corpus / linux
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.PRIMARY_NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Compare recorded sessions and pinned prompts
+        run: pnpm run test:snapshot
+
+      - name: Install Playwright browsers
+        if: ${{ inputs.web }}
+        run: pnpm --filter @liusiqi-dev/dsh-web-frontend exec playwright install --with-deps chromium
+
+      - name: Compare browser snapshots
+        if: ${{ inputs.web }}
+        env:
+          SQODE_SNAPSHOT: replay
+        run: pnpm run test:web:ci
