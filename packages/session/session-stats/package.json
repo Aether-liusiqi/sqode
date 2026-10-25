@@ -42,7 +42,7 @@
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "dependencies": {
-    "zod": "^4.4.3"
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis-plugin-include": "workspace:~",

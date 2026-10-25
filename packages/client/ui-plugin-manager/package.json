@@ -87,7 +87,7 @@
   "dependencies": {
     "@liusiqi-dev/dsh-timeout": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
-    "zod": "^4.4.3",
+    "zod": "^4.6.5",
     "@liusiqi-dev/dsh-typert-protocol": "workspace:*"
   }
 }

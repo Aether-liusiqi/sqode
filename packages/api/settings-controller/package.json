@@ -45,7 +45,7 @@
   "license": "MIT",
   "dependencies": {
     "@liusiqi-dev/schemastery": "workspace:~",
-    "zod": "^4.4.3"
+    "zod": "^4.6.5"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",

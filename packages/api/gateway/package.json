@@ -75,6 +75,6 @@
     "@liusiqi-dev/dsh-util-crypto": "workspace:*",
     "@types/ws": "^8.18.1",
     "@liusiqi-dev/cordis": "workspace:~",
-    "zod": "^4.4.3"
+    "zod": "^4.6.5"
   }
 }
