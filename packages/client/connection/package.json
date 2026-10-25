@@ -36,7 +36,7 @@
   "dependencies": {
     "@liusiqi-dev/dsh-credentials": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
-    "zod": "^4.4.3"
+    "zod": "^4.6.5"
   },
   "files": [
     "lib/index.js",
