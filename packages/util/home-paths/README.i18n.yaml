@@ -4,13 +4,13 @@
 #   pnpm run verify-translation-pairing --write packages/util/home-paths/README.md
 /:
   en: 049f902daeb4f8fd
-  zh: c0688e7cb5d9c5a9
+  zh: 14839f7da6282d69
 /liusiqi-dev-dsh-home-paths:
   en: a22445a6c20b0647
   zh: 390ef0af745bb531
 /liusiqi-dev-dsh-home-paths/summary:
   en: d63f4727f86d5d66
-  zh: ffdea9973076b490
+  zh: 1bd94b25e723b202
 /liusiqi-dev-dsh-home-paths/table-of-contents:
   en: 80b31a934611cb4a
   zh: 05f3f7f9cb2fd881

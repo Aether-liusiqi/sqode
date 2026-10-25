@@ -4,7 +4,7 @@
 #   pnpm run verify-translation-pairing --write python/README.md
 /deepseek-harness-python-sdk:
   en: aa08432a8887185d
-  zh: 85b40b48790c04db
+  zh: c77b6313039b1e30
 /deepseek-harness-python-sdk/packages:
   en: 485e9978ed4f6dee
   zh: fccda14b1b84cecf

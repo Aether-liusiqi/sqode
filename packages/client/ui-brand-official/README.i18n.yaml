@@ -4,13 +4,13 @@
 #   pnpm run verify-translation-pairing --write packages/client/ui-brand-official/README.md
 /:
   en: a031cd88e552dc89
-  zh: 76c1af2393cb6983
+  zh: 88fbc86f7f8dddde
 /liusiqi-dev-dsh-client-ui-brand-official:
   en: 174082b57541612c
   zh: ed2b68f15cd17b67
 /liusiqi-dev-dsh-client-ui-brand-official/summary:
   en: cb6bf0a4eabd271b
-  zh: 181cf091ff44c194
+  zh: 8de7f58e3ff86725
 /liusiqi-dev-dsh-client-ui-brand-official/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb

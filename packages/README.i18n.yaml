@@ -4,7 +4,7 @@
 #   pnpm run verify-translation-pairing --write packages/README.md
 /:
   en: b2be0c61aa2780eb
-  zh: c308e935e481f211
+  zh: 91b6daff6975dd38
 /packages:
   en: 9f8cdc7bf95bed2b
   zh: 9e25684a309f580a

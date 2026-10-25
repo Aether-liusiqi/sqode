@@ -4,13 +4,13 @@
 #   pnpm run verify-translation-pairing --write packages/acp/acp/README.md
 /:
   en: c2dc875f178f219b
-  zh: e1ebac19bf1c696d
+  zh: 054a6b8c0c21b5e1
 /liusiqi-dev-dsh-acp:
   en: 81c1cb0bb5f82ca2
   zh: 39a1be6813d3bf73
 /liusiqi-dev-dsh-acp/summary:
   en: 59aff9dea7a075b1
-  zh: c0f5734c5fd09126
+  zh: bd35697740418a6b
 /liusiqi-dev-dsh-acp/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb

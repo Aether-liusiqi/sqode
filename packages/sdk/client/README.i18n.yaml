@@ -4,13 +4,13 @@
 #   pnpm run verify-translation-pairing --write packages/sdk/client/README.md
 /:
   en: 09cb25e4bcf56851
-  zh: a0a5913941d23eff
+  zh: 0060cb7a8dcccc1d
 /liusiqi-dev-dsh-sdk-client:
   en: d8ec2d9119da98ef
   zh: f4452efc333d5ed2
 /liusiqi-dev-dsh-sdk-client/summary:
   en: c65b299266544d74
-  zh: 302d426e2f1fd4df
+  zh: 01600b445d1028cb
 /liusiqi-dev-dsh-sdk-client/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb

@@ -4,7 +4,7 @@
 #   pnpm run verify-translation-pairing --write packages/sdk/server/README.md
 /:
   en: 9fd8e0cf5872dc5b
-  zh: c5209369edd2e941
+  zh: 3c5f57c72c75d1ce
 /liusiqi-dev-dsh-sdk-jsonrpc-server:
   en: 0f2e7d1ed3808fce
   zh: f647c469dc911bdb

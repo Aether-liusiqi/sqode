@@ -4,7 +4,7 @@
 #   pnpm run verify-translation-pairing --write packages/todo/tool-todo/README.md
 /:
   en: 94e53ef3423c197f
-  zh: ad579992506261fa
+  zh: 967fe136a7fefaf4
 /liusiqi-dev-dsh-tool-todo:
   en: 28e497e77aa23f1c
   zh: 2835ab07369d7915
