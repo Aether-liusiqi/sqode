@@ -24,6 +24,10 @@ on:
         description: Also run the browser snapshot lane
         type: boolean
         default: false
+      record:
+        description: Re-record web fixtures against a live model (needs DEEPSEEK_API_KEY) and upload the diff
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -33,6 +37,9 @@ env:
   SQODE_TELEMETRY_DISABLED: '1'
   SQODE_BUILD_FACE: official
   SQODE_EXAMPLE_MODE: lib
+  # The web lane refuses to start without a worker count, and this workflow does not
+  # go through run-gates, which normally derives it from the host.
+  SQODE_WEB_SNAPSHOT_WORKERS: '4'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -128,8 +135,22 @@ jobs:
           SQODE_SNAPSHOT: refresh
         run: pnpm run test:snapshot
 
+      # Replay compares against a recorded script, so a scenario whose model-call count
+      # drifted cannot be repaired by refresh: only a new recording replaces the script.
+      # The harness self-skips real-model cases when the key is absent, which would look
+      # like a quiet success, so a record run without the key fails here instead.
+      - name: Record web fixtures against a live model
+        if: ${{ inputs.record }}
+        continue-on-error: true
+        env:
+          SQODE_SNAPSHOT: record
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          test -n "$DEEPSEEK_API_KEY" || { echo 'record needs DEEPSEEK_API_KEY in repository secrets' >&2; exit 1; }
+          pnpm run test:web:ci
+
       - name: Package the rewritten corpus
-        if: ${{ inputs.refresh }}
+        if: ${{ inputs.refresh || inputs.record }}
         run: |
           mkdir -p "$RUNNER_TEMP/refresh"
           # A refresh also creates files: the v4 session logs are new paths, not edits.
@@ -144,18 +165,18 @@ jobs:
           grep -c '^A' "$RUNNER_TEMP/refresh/changed.txt" || true
 
       - uses: actions/upload-artifact@v4
-        if: ${{ inputs.refresh }}
+        if: ${{ inputs.refresh || inputs.record }}
         with:
           name: snapshots-refresh
           path: ${{ runner.temp }}/refresh
           if-no-files-found: error
 
       - name: Compare recorded sessions and pinned prompts
-        if: ${{ !inputs.refresh }}
+        if: ${{ !inputs.refresh && !inputs.record }}
         run: pnpm run test:snapshot
 
       - name: Compare browser snapshots
-        if: ${{ inputs.web && !inputs.refresh }}
+        if: ${{ inputs.web && !inputs.refresh && !inputs.record }}
         env:
           SQODE_SNAPSHOT: replay
         run: pnpm run test:web:ci
