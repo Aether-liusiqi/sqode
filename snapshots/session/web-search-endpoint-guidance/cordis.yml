@@ -9,3 +9,10 @@
     apiKey: snapshot-key
     # The fixture maps this recorded authority to its OS-assigned listener.
     baseURL: http://127.0.0.1:43118/anthropic/v1
+
+# Record against the fixture-backed route so the captured failure does not depend on
+# the live search engine the shipped default would reach.
+- id: web
+  config:
+    searchProvider: deepseek-official
+    fetchProvider: http

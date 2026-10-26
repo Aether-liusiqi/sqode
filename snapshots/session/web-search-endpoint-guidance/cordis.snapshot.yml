@@ -31,3 +31,12 @@
     apiKey: snapshot-key
     # The fixture maps this recorded authority to its OS-assigned listener.
     baseURL: http://127.0.0.1:43118/anthropic/v1
+
+# This scenario exists to show the guidance for a search route that cannot reach
+# its endpoint, so it has to use the fixture-backed route. The shipped default is a
+# keyless engine route, which would answer from the live network and make the
+# recorded exchange depend on what a search engine returns during that minute.
+- id: web
+  config:
+    searchProvider: deepseek-official
+    fetchProvider: http
