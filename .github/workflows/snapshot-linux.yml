@@ -92,11 +92,18 @@ jobs:
       - name: Ensure the CLI command is linked
         run: |
           chmod +x apps/cli/lib/bin.js
-          mkdir -p node_modules/.bin
-          for name in sqode dsh; do
-            ln -sf ../../apps/cli/lib/bin.js "node_modules/.bin/$name"
+          # The install step tried to link this command in each dependent package
+          # and could not, because the entry point only exists once the build has
+          # written it. A replay resolves the command from its own package first,
+          # so linking only the repository root is not enough: the three packages
+          # that declare the bin get a link too.
+          for dir in . apps/desktop-host apps/cli packages/sdk/client python/sdk-runtime; do
+            mkdir -p "$dir/node_modules/.bin"
+            for name in sqode dsh; do
+              ln -sf "$PWD/apps/cli/lib/bin.js" "$dir/node_modules/.bin/$name"
+            done
           done
-          ls -l node_modules/.bin/sqode node_modules/.bin/dsh
+          ls -l packages/sdk/client/node_modules/.bin/sqode
           node_modules/.bin/sqode --version
 
       # A refresh run rewrites files, so individual scenario failures are expected
