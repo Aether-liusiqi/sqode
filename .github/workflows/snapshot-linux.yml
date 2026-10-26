@@ -106,6 +106,14 @@ jobs:
           ls -l packages/sdk/client/node_modules/.bin/sqode
           node_modules/.bin/sqode --version
 
+      # The snapshot suite includes the browser scenarios, so the browser has to be
+      # present before the suite runs, not before the web-only step: a refresh was
+      # failing there with "Executable doesn't exist" for the shell it had not
+      # installed yet.
+      - name: Install Playwright browsers
+        if: ${{ inputs.web || inputs.refresh }}
+        run: pnpm --filter @liusiqi-dev/dsh-web-frontend exec playwright install --with-deps chromium
+
       # A refresh run rewrites files, so individual scenario failures are expected
       # while the corpus converges; the job still fails afterwards so a red result
       # is never mistaken for a green one.
@@ -120,9 +128,16 @@ jobs:
         if: ${{ inputs.refresh }}
         run: |
           mkdir -p "$RUNNER_TEMP/refresh"
-          git diff --binary -- snapshots > "$RUNNER_TEMP/refresh/snapshots.patch"
+          # A refresh also creates files: the v4 session logs are new paths, not edits.
+          # Plain `git diff` omits untracked content, so the artifact carried the edited
+          # expectations and silently left every new session log behind, which made the
+          # patch unusable on the machine that received it. Staging first makes the new
+          # files part of the diff.
+          git add -A snapshots
+          git diff --cached --binary -- snapshots > "$RUNNER_TEMP/refresh/snapshots.patch"
           git status --porcelain -- snapshots > "$RUNNER_TEMP/refresh/changed.txt"
           wc -l "$RUNNER_TEMP/refresh/snapshots.patch" "$RUNNER_TEMP/refresh/changed.txt"
+          grep -c '^A' "$RUNNER_TEMP/refresh/changed.txt" || true
 
       - uses: actions/upload-artifact@v4
         if: ${{ inputs.refresh }}
@@ -135,12 +150,8 @@ jobs:
         if: ${{ !inputs.refresh }}
         run: pnpm run test:snapshot
 
-      - name: Install Playwright browsers
-        if: ${{ inputs.web || inputs.refresh }}
-        run: pnpm --filter @liusiqi-dev/dsh-web-frontend exec playwright install --with-deps chromium
-
       - name: Compare browser snapshots
-        if: ${{ inputs.web || inputs.refresh }}
+        if: ${{ inputs.web && !inputs.refresh }}
         env:
           SQODE_SNAPSHOT: replay
         run: pnpm run test:web:ci
