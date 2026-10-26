@@ -136,11 +136,11 @@ jobs:
         run: pnpm run test:snapshot
 
       - name: Install Playwright browsers
-        if: ${{ inputs.web && !inputs.refresh }}
+        if: ${{ inputs.web || inputs.refresh }}
         run: pnpm --filter @liusiqi-dev/dsh-web-frontend exec playwright install --with-deps chromium
 
       - name: Compare browser snapshots
-        if: ${{ inputs.web && !inputs.refresh }}
+        if: ${{ inputs.web || inputs.refresh }}
         env:
           SQODE_SNAPSHOT: replay
         run: pnpm run test:web:ci

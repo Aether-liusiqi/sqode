@@ -1171,7 +1171,7 @@ describe('headless recorded-session snapshots', () => {
               }
             })
             if (mcpDemo !== undefined) {
-              const profileDir = join(cwd, '.dsh/profiles/headless')
+              const profileDir = join(cwd, '.sqode/profiles/headless')
               await mkdir(profileDir, { recursive: true })
               await copyFile(join(scenario.dir, 'profile.patch.yml'), join(profileDir, 'cordis.patch.yml'))
             }
@@ -1190,7 +1190,7 @@ describe('headless recorded-session snapshots', () => {
               expect(log).toContain('mcp__demo__ping')
               expect(log).toContain('pong')
               expect(mcpDemo.calls).toEqual(['ping'])
-              const saved = await readFile(join(cwd, '.dsh/profiles/headless/cordis.patch.yml'), 'utf8')
+              const saved = await readFile(join(cwd, '.sqode/profiles/headless/cordis.patch.yml'), 'utf8')
               expect(saved).toContain('id: demo')
               expect(saved).toContain('disabled: false')
             }

@@ -15,8 +15,8 @@ lines.on('line', line => {
       process.stdout.write(JSON.stringify({ jsonrpc: '2.0', id: request.id, error: { code: -32601, message: 'Legacy browser fixture' } }) + '\n')
       return
     case 'initialize':
-      writeFileSync('.dsh/browser-fixture.started', 'chrome-devtools-mcp\n', { flag: 'wx' })
-      process.once('exit', () => unlinkSync('.dsh/browser-fixture.started'))
+      writeFileSync('.sqode/browser-fixture.started', 'chrome-devtools-mcp\n', { flag: 'wx' })
+      process.once('exit', () => unlinkSync('.sqode/browser-fixture.started'))
       result = { protocolVersion: request.params.protocolVersion, capabilities: { tools: {} }, serverInfo: { name: 'browser-fixture', version: '1' } }
       break
     case 'tools/list':

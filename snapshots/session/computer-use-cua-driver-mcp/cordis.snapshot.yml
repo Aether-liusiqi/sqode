@@ -52,6 +52,6 @@
       name: '@liusiqi-dev/dsh-experimental-computer-use-cua-driver-mcp'
       config:
         command: !!js process.execPath
-        args: [driver.mjs, .dsh/computer-use-fixture]
+        args: [driver.mjs, .sqode/computer-use-fixture]
         reconnect:
           enabled: false

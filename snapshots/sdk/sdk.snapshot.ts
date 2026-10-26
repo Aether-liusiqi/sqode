@@ -777,6 +777,27 @@ async function verifyHeaders(
   for (const [logIndex, log] of ordered.entries()) {
     const headers = normalizedHeaders(log.content, ctx)
     const prompts = normalizedSystemPrompts(log.content, ctx)
+    // A scenario may borrow its prompt and tool-schema expectations from another
+    // scenario, and this comparison is the only place that resolves where those
+    // files live. Refreshing them here is what lets a refresh run update shared
+    // expectations: the write is the refresh, and the next verify run is the check
+    // that it landed.
+    const ownsSidecars = childPrompts.get(logIndex) === undefined && childSchemas.get(logIndex) === undefined
+    if (refreshing && ownsSidecars) {
+      if (prompts.length > 0) {
+        await writeFile(
+          join(promptOwner.dir, 'system-prompt.expected.md'),
+          formatSystemPromptSnapshot(prompts[0] as string, prompts.slice(1)),
+        )
+      }
+      const actualSchemas = normalizedToolSchemas(log.content, ctx)
+      if (actualSchemas.length > 0) {
+        await writeFile(
+          join(schemaOwner.dir, 'tool-schemas.expected.json'),
+          formatToolSchemasSnapshot(actualSchemas[0] as unknown[], actualSchemas.slice(1)),
+        )
+      }
+    }
     if (headers.length > 0) {
       expect(systemPromptPrecedesRequests(log.content), `${scenario.name}: session ${logIndex} has a system/message before its first request/header`).toBe(true)
       expect(prompts.length, `${scenario.name}: session ${logIndex} system/message count`)
@@ -791,9 +812,12 @@ async function verifyHeaders(
       const expected = selectedSchemas === undefined
         ? configured
         : { ...configured as JsonObject, tools: selectedSchemas }
+      // The expected side was read before the refresh above rewrote it, so comparing
+      // now would fail on the change just made.
+      if (refreshing && ownsSidecars) continue
       expect(header, `${scenario.name}: session ${logIndex} header ${index + 1}`).toEqual(expected)
     }
-    if (prompts.length > 0) {
+    if (prompts.length > 0 && !(refreshing && ownsSidecars)) {
       expect(formatSystemPromptSnapshot(prompts[0] as string, prompts.slice(1)), `${scenario.name}: session ${logIndex} system prompts`)
         .toBe(childPrompts.get(logIndex) ?? prompt)
     }

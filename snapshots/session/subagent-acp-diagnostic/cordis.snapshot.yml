@@ -27,7 +27,7 @@
         env:
           MOCK_PERMISSION: '1'
           MOCK_TOOL_KIND: execute
-          MOCK_PROMPT_HOLD: .dsh/acp-diagnostic-prompt-hold
+          MOCK_PROMPT_HOLD: .sqode/acp-diagnostic-prompt-hold
     - id: tool-subagent-acp-diagnostic
       name: '@liusiqi-dev/dsh-tool-subagent'
       config:
