@@ -58,8 +58,14 @@ export function resolveDshBinFromManifests(dshManifestUrl: string, clientManifes
   if (typeof dshManifest.version !== 'string' || dshManifest.version !== clientManifest.version) {
     throw new Error(`dsh SDK client ${String(clientManifest.version)} requires the same dsh version, got ${String(dshManifest.version)}`)
   }
+  // The package's command was renamed from dsh to sqode, and an object bin now
+  // carries the new key only. Reading the old key alone threw "declares no dsh
+  // executable" for every SDK replay, which read like a packaging fault rather
+  // than a rename that this resolver had not followed.
   const bin = typeof dshManifest.bin === 'object' && dshManifest.bin !== null
-    ? (dshManifest.bin as Record<string, unknown>).dsh
+    ? (dshManifest.bin as Record<string, unknown>).sqode
+      ?? (dshManifest.bin as Record<string, unknown>).dsh
+      ?? Object.values(dshManifest.bin as Record<string, unknown>).find((value): value is string => typeof value === 'string')
     : dshManifest.bin
   if (typeof bin !== 'string' || bin === '') throw new Error('@liusiqi-dev/sqode declares no dsh executable')
   return resolve(dirname(fileURLToPath(dshManifestUrl)), bin)

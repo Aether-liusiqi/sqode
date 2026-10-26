@@ -153,6 +153,19 @@ describe('SDK dsh launch resolution', () => {
     },
   )
 
+  it('resolves an object bin keyed by the renamed command (sqode)', () => {
+    const pair = manifestPair({ version: '1.0.0', bin: { sqode: 'lib/bin.js' } }, { version: '1.0.0' })
+    expect(resolveDshBinFromManifests(pair.dshUrl, pair.clientUrl)).toBe(join(pair.root, 'lib/bin.js'))
+  })
+
+  it('prefers the sqode key over a legacy dsh key', () => {
+    const pair = manifestPair(
+      { version: '1.0.0', bin: { dsh: 'lib/dsh.js', sqode: 'lib/bin.js' } },
+      { version: '1.0.0' },
+    )
+    expect(resolveDshBinFromManifests(pair.dshUrl, pair.clientUrl)).toBe(join(pair.root, 'lib/bin.js'))
+  })
+
   it('accepts the string npm bin form', () => {
     const pair = manifestPair({ version: '1.0.0', bin: './bin.js' }, { version: '1.0.0' })
     expect(resolveDshBinFromManifests(pair.dshUrl, pair.clientUrl)).toBe(join(pair.root, 'bin.js'))
