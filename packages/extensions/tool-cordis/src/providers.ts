@@ -27,7 +27,7 @@ const CONFIG_INPUT: JsonValue = {
   additionalProperties: false,
 }
 const CONFIG_OUTPUT = {
-  description: 'One directory page of live entries with patch ids, Config status, total, and nextOffset, or one entry\'s projected JSON Schema with shared definitions, omission acceptance, and projection limitations.',
+  description: 'One directory page of live entries with patch ids, Config status, entry state (active, disabled, not-loaded, disposed, tree), total, and nextOffset, or one entry\'s projected JSON Schema with shared definitions, omission acceptance, and projection limitations.',
 } as const
 const HOST_EVENTS = EVENT_API.filter(event => !event.name.startsWith('cordis/'))
 

@@ -268,14 +268,45 @@ function findMethod(manifest: CordisInspectProviderManifest, name: string): Cord
   return method
 }
 
+/**
+ * Recover a query sent as a JSON string when the method wants an object.
+ *
+ * The tool declares `input` as free-form JSON, so a string is accepted there and only
+ * fails against the method schema, where it reads as "the provider rejected my query"
+ * rather than "the value was serialized twice". Parsing only applies when the schema
+ * asks for an object, so methods that genuinely take a string are unaffected.
+ * @param input - value supplied by the model.
+ * @param schema - the method's input schema.
+ * @returns the parsed object when that is what was meant, otherwise the input.
+ */
+function normalizeInput(input: JsonValue | undefined, schema: JsonSchemaNode): JsonValue | undefined {
+  if (typeof input !== 'string') return input
+  if ((schema as { type?: unknown }).type !== 'object') return input
+  try {
+    const parsed: unknown = JSON.parse(input)
+    if (typeof parsed === 'object' && parsed !== null && !Array.isArray(parsed)) return parsed as JsonValue
+  } catch {
+    // Not serialized JSON: leave it for the validator to report against the schema.
+  }
+  return input
+}
+
 function validateInput(
   platform: 'Host' | 'Client',
   provider: string,
   method: CordisInspectMethodManifest,
   input: JsonValue | undefined,
 ): void {
-  const violations = validateJsonSchemaValue(method.inputSchema as JsonSchemaNode, input ?? {}, 'input')
-  if (violations.length > 0) throw new Error(`${platform} Cordis inspect ${provider}.${method.name} rejected input: ${violations.join('; ')}`)
+  const schema = method.inputSchema as JsonSchemaNode
+  const candidate = normalizeInput(input, schema)
+  const violations = validateJsonSchemaValue(schema, candidate ?? {}, 'input')
+  if (violations.length > 0) {
+    const received = candidate === null ? 'null' : Array.isArray(candidate) ? 'array' : typeof candidate
+    throw new Error(
+      `${platform} Cordis inspect ${provider}.${method.name} rejected input: ${violations.join('; ')}`
+      + ` (received ${received})`,
+    )
+  }
 }
 
 function validateOutput(

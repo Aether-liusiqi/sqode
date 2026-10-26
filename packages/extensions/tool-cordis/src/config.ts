@@ -15,6 +15,19 @@ import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
  */
 type ConfigStatus = 'schema' | 'absent' | 'unsupported' | 'tree' | 'inactive'
 
+/**
+ * Whether the entry is running, and if not, why.
+ *
+ * `status` answers what kind of Config an entry has and folds every non-running
+ * entry into `inactive`. That single word cannot distinguish "turned off in the
+ * configuration" from "never loaded" or "already disposed", so a reader asking
+ * "is this plugin enabled" had no answer here and went looking in the config
+ * files instead, where a line-based reading of YAML attributes a neighbouring
+ * entry's `disabled: true` to the wrong plugin. The reason is now reported
+ * directly, from the running Loader.
+ */
+type EntryState = 'active' | 'disabled' | 'not-loaded' | 'disposed' | 'tree'
+
 interface LiveConfig {
   /** Loader entry id, unique across nested include trees (`parent:child`). */
   id: string
@@ -22,23 +35,29 @@ interface LiveConfig {
   patchId: string
   name: string
   status: ConfigStatus
+  /** Whether the entry runs, and why not when it does not. */
+  state: EntryState
   native?: NativeConfigSchema
 }
 
 function liveConfig(entry: Entry): LiveConfig {
   const { id, name } = entry.options
   const listed = { id: entry.id, patchId: id, name }
-  if (entry.subgroup !== undefined || entry.subtree !== undefined) return { ...listed, status: 'tree' }
+  if (entry.subgroup !== undefined || entry.subtree !== undefined) {
+    return { ...listed, status: 'tree', state: 'tree' }
+  }
+  if (entry.disabled) return { ...listed, status: 'inactive', state: 'disabled' }
   const fiber = entry.fiber
-  if (fiber === undefined || fiber.uid === null || entry.disabled) return { ...listed, status: 'inactive' }
+  if (fiber === undefined) return { ...listed, status: 'inactive', state: 'not-loaded' }
+  if (fiber.uid === null) return { ...listed, status: 'inactive', state: 'disposed' }
   const config: unknown = fiber.runtime?.Config
-  if (config === undefined || config === null) return { ...listed, status: 'absent' }
-  if (!isNativeConfigSchema(config)) return { ...listed, status: 'unsupported' }
-  return { ...listed, status: 'schema', native: config }
+  if (config === undefined || config === null) return { ...listed, status: 'absent', state: 'active' }
+  if (!isNativeConfigSchema(config)) return { ...listed, status: 'unsupported', state: 'active' }
+  return { ...listed, status: 'schema', state: 'active', native: config }
 }
 
-function listing({ id, patchId, name, status }: LiveConfig): { [key: string]: JsonValue } {
-  return { id, patchId, name, status }
+function listing({ id, patchId, name, status, state }: LiveConfig): { [key: string]: JsonValue } {
+  return { id, patchId, name, status, state }
 }
 
 /** Model-supplied query fields, validated at the tool JSON boundary. */
