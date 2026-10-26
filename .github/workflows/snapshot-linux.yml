@@ -106,13 +106,17 @@ jobs:
           ls -l packages/sdk/client/node_modules/.bin/sqode
           node_modules/.bin/sqode --version
 
-      # The snapshot suite includes the browser scenarios, so the browser has to be
-      # present before the suite runs, not before the web-only step: a refresh was
-      # failing there with "Executable doesn't exist" for the shell it had not
-      # installed yet.
+      # The snapshot suite always includes the browser scenarios, in a refresh and in a
+      # verify alike, so the browsers are not conditional: a run without them fails in
+      # the suite with "Executable doesn't exist". WebKit is required too, because the
+      # web cases declare it, and the install finishes well before the suite only if it
+      # starts this early. The existence check makes a partial install a named failure
+      # rather than a scenario error 27 seconds later.
       - name: Install Playwright browsers
-        if: ${{ inputs.web || inputs.refresh }}
-        run: pnpm --filter @liusiqi-dev/dsh-web-frontend exec playwright install --with-deps chromium
+        run: |
+          pnpm --filter @liusiqi-dev/dsh-web-frontend exec playwright install --with-deps chromium webkit
+          test -d "$HOME/.cache/ms-playwright" || { echo 'playwright browsers are missing' >&2; exit 1; }
+          ls -1 "$HOME/.cache/ms-playwright"
 
       # A refresh run rewrites files, so individual scenario failures are expected
       # while the corpus converges; the job still fails afterwards so a red result
