@@ -12,9 +12,11 @@
 - insert:
     - id: acp-app-startup
       name: '@liusiqi-dev/dsh-acp-app'
+      disabled: false
 
     - id: acp
       name: '@liusiqi-dev/dsh-acp'
+      disabled: false
       inject: [acpAppStartup]
       config:
         provider: deepseek-official

@@ -5,26 +5,32 @@
 - insert:
     - id: sdk-app-startup
       name: '@liusiqi-dev/dsh-sdk-app'
+      disabled: false
       config:
         profile: sdk-minimal
 
     - id: sdk-jsonrpc-server
       name: '@liusiqi-dev/dsh-sdk-jsonrpc-server'
+      disabled: false
       inject: [sdkAppStartup, loader]
       config:
         maxTokensAsSuccess: false
 
     - id: deepseek-llm-api-extensions
       name: '@liusiqi-dev/dsh-deepseek-llm-api-extensions'
+      disabled: false
 
     - id: session-log-deepseek
       name: '@liusiqi-dev/dsh-session-log-deepseek'
+      disabled: false
 
     - id: plugin-package-inventory-deepseek
       name: '@liusiqi-dev/dsh-plugin-package-inventory-deepseek'
+      disabled: false
 
     - id: llm-deepseek
       name: '@liusiqi-dev/dsh-llm-deepseek-api-key'
+      disabled: false
       config:
         apiKeyEnv: DEEPSEEK_API_KEY
         defaultContextWindow: !!js Number(process.env.SQODE_CONTEXT_WINDOW ?? 1000000)
@@ -32,23 +38,28 @@
 
     - id: sandbox
       name: '@liusiqi-dev/dsh-sandbox-local'
+      disabled: false
 
     # Shared projection registry: sandbox-policy and terminal-bash fold
     # sandbox-mode state through its units and require it as a hard injection.
     - id: session-projection
       name: '@liusiqi-dev/dsh-session-projection'
+      disabled: false
 
     - id: sandbox-policy
       name: '@liusiqi-dev/dsh-sandbox-policy'
+      disabled: false
       config:
         mode: danger-full-access
         workspaceRoot: !!js process.cwd()
 
     - id: subprocess
       name: '@liusiqi-dev/dsh-subprocess-local'
+      disabled: false
 
     - id: pty
       name: '@liusiqi-dev/dsh-terminal'
+      disabled: false
 
     - id: terminal-bash
       name: '@liusiqi-dev/dsh-terminal-bash'
@@ -67,15 +78,19 @@
     # owns each service row and omits every optional producer it does not use.
     - id: timer
       name: '@liusiqi-dev/cordis-plugin-timer'
+      disabled: false
 
     - id: llm
       name: '@liusiqi-dev/dsh-llm'
+      disabled: false
 
     - id: session
       name: '@liusiqi-dev/dsh-session'
+      disabled: false
 
     - id: session-title
       name: '@liusiqi-dev/dsh-session-title'
+      disabled: false
       config:
         fallbackMaxWords: 5
         fallbackMaxBytes: 40
@@ -83,6 +98,7 @@
 
     - id: system-prompt
       name: '@liusiqi-dev/dsh-system-prompt'
+      disabled: false
       config:
         includeHarnessIdentity: false
         includeRuntimeContext: false
@@ -90,36 +106,47 @@
 
     - id: tools
       name: '@liusiqi-dev/dsh-tools'
+      disabled: false
 
     - id: mcp-resources
       name: '@liusiqi-dev/dsh-mcp-resources'
+      disabled: false
 
     - id: agent
       name: '@liusiqi-dev/dsh-agent'
+      disabled: false
 
     - id: llm-retry
       name: '@liusiqi-dev/dsh-llm-retry'
+      disabled: false
 
     - id: jobs
       name: '@liusiqi-dev/dsh-jobs-local'
+      disabled: false
 
     - id: invariants
       name: '@liusiqi-dev/dsh-invariants'
+      disabled: false
 
     - id: session-invariant
       name: '@liusiqi-dev/dsh-session/invariant'
+      disabled: false
 
     - id: agent-invariant
       name: '@liusiqi-dev/dsh-agent/invariant'
+      disabled: false
 
     - id: scope-invariant
       name: '@liusiqi-dev/dsh-scope/invariant'
+      disabled: false
 
     - id: agent-loop-invariant
       name: '@liusiqi-dev/dsh-agent-loop/invariant'
+      disabled: false
 
     - id: agent-loop
       name: '@liusiqi-dev/dsh-agent-loop'
+      disabled: false
       config:
         agents: []
 
@@ -153,6 +180,7 @@
 
     - id: sessions
       name: '@liusiqi-dev/dsh-session-persistence-jsonl'
+      disabled: false
       config:
         root: !!js dshHomePath('sessions')
         compression: none

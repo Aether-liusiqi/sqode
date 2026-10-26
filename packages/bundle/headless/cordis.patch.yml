@@ -20,10 +20,12 @@
 - insert:
     - id: headless-startup
       name: '@liusiqi-dev/dsh-headless/startup'
+      disabled: false
 
     # Reads its task and run options from the ordinary headlessStartup provider.
     - id: headless-runner
       name: '@liusiqi-dev/dsh-headless'
+      disabled: false
       inject: [headlessStartup]
       config:
         task: !!js ctx.headlessStartup.task

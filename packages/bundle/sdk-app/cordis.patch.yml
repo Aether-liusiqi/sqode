@@ -12,11 +12,13 @@
 - insert:
     - id: sdk-app-startup
       name: '@liusiqi-dev/dsh-sdk-app'
+      disabled: false
       config:
         profile: sdk
 
     - id: sdk-jsonrpc-server
       name: '@liusiqi-dev/dsh-sdk-jsonrpc-server'
+      disabled: false
       inject: [sdkAppStartup, loader]
       config:
         maxTokensAsSuccess: !!js "process.env.SQODE_MAX_TOKENS_AS_SUCCESS === undefined ? true : JSON.parse(process.env.SQODE_MAX_TOKENS_AS_SUCCESS)"
