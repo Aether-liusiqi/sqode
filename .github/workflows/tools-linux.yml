@@ -1,0 +1,77 @@
+# Linux-only tool suite: the shell tools are excluded from the local project on
+# Windows, so their deterministic checks can only run here. This is deliberately a
+# separate workflow from snapshot-linux, which owns the recorded corpus; keeping them
+# apart means a tool regression and a golden regression never share a red run.
+name: tools-linux
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch:
+        description: Which suites to run
+        type: choice
+        options:
+          - shell
+          - all
+        default: shell
+
+permissions:
+  contents: read
+
+env:
+  PRIMARY_NODE_VERSION: '24'
+  SQODE_TELEMETRY_DISABLED: '1'
+  SQODE_BUILD_FACE: official
+  SQODE_EXAMPLE_MODE: lib
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tools:
+    name: tool suites / linux
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.PRIMARY_NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies and prepare bubblewrap
+        run: |
+          bash scripts/prepare-ci-bubblewrap.sh &
+          pnpm install --frozen-lockfile
+          wait
+
+      - name: Build
+        timeout-minutes: 25
+        run: pnpm run build
+
+      - name: Shell tool suites
+        run: |
+          pnpm exec vitest run \
+            packages/shell/tool-bash/tests \
+            packages/shell/tool-pwsh/tests \
+            packages/shell/bash-local/tests \
+            packages/shell/bash-sandbox/tests \
+            packages/shell/shell-env/tests
+
+      - name: Remaining tool suites
+        if: ${{ inputs.batch == 'all' }}
+        run: |
+          pnpm exec vitest run \
+            packages/fs \
+            packages/todo \
+            packages/jobs \
+            packages/goal \
+            packages/web \
+            packages/skill \
+            packages/interaction
