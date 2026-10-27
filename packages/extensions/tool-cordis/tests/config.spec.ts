@@ -50,4 +50,11 @@ describe('Config.listConfigs', () => {
 
     expect(result).toMatchObject({ entries: [{ id: 'a', state: 'disabled' }], total: 1 })
   })
+
+  it('refuses a serialized query instead of quietly returning the default page', async () => {
+    // Reading a non-object as "no query" is what made dropped filters look like a
+    // provider that ignores its parameters.
+    await expect(queryLiveConfig(context([entry('a', '@scope/a')]), '{"name":"@scope/a"}'))
+      .rejects.toThrow(/Config query input must be an object, received string/)
+  })
 })

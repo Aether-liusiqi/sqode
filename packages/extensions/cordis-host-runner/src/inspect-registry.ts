@@ -128,9 +128,12 @@ export class CordisInspectRegistryService extends Service {
       const registration = this.providers.get(providerId)
       if (registration === undefined) throw new Error(`Host Cordis inspect provider "${providerId}" is not registered`)
       const method = findMethod(registration.manifest, methodName)
-      validateInput('Host', providerId, method, input)
+      // The validated value is the one the provider must see: a query that arrived
+      // serialized is repaired here, and passing the original instead would let the
+      // provider treat it as empty while the caller believes its filters applied.
+      const accepted = validateInput('Host', providerId, method, input)
       signal.throwIfAborted()
-      const data = await registration.query(methodName, input, { agent, signal })
+      const data = await registration.query(methodName, accepted, { agent, signal })
       signal.throwIfAborted()
       return validateOutput('Host', providerId, method, data)
     }
@@ -179,7 +182,7 @@ export class CordisInspectRegistryService extends Service {
     const provider = this.clientManifest?.find(candidate => candidate.id === providerId)
     if (provider === undefined) throw new Error(`Client Cordis inspect provider "${providerId}" is not registered`)
     const method = findMethod(provider, methodName)
-    validateInput('Client', providerId, method, input)
+    const accepted = validateInput('Client', providerId, method, input)
     signal.throwIfAborted()
     const gateway = this.ctx.get('typertGateway')
     if (gateway !== undefined && !gateway.hasLiveClient()) {
@@ -191,7 +194,7 @@ export class CordisInspectRegistryService extends Service {
       agentId: agent.id,
       provider: providerId,
       method: methodName,
-      ...input === undefined ? {} : { input },
+      ...accepted === undefined ? {} : { input: accepted },
     }
     const result = new Promise<CordisInspectQueryResolution>((resolve) => {
       this.pending.set(requestId, {
@@ -291,12 +294,21 @@ function normalizeInput(input: JsonValue | undefined, schema: JsonSchemaNode): J
   return input
 }
 
+/**
+ * Validate one method's input and return the value the provider should receive.
+ * @param platform - owner of the provider, for diagnostics.
+ * @param provider - provider id, for diagnostics.
+ * @param method - the method whose schema governs this input.
+ * @param input - value supplied by the model.
+ * @returns the accepted input, repaired from a serialized form when that is what arrived.
+ * @throws when the value does not satisfy the method schema.
+ */
 function validateInput(
   platform: 'Host' | 'Client',
   provider: string,
   method: CordisInspectMethodManifest,
   input: JsonValue | undefined,
-): void {
+): JsonValue | undefined {
   const schema = method.inputSchema as JsonSchemaNode
   const candidate = normalizeInput(input, schema)
   const violations = validateJsonSchemaValue(schema, candidate ?? {}, 'input')
@@ -307,6 +319,7 @@ function validateInput(
       + ` (received ${received})`,
     )
   }
+  return candidate
 }
 
 function validateOutput(

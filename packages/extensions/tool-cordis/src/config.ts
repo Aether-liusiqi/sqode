@@ -72,7 +72,13 @@ const DEFAULT_LIMIT = 25
 const MAX_LIMIT = 100
 
 function parseQuery(input: JsonValue | undefined): ConfigQuery {
-  const fields = input !== undefined && input !== null && typeof input === 'object' && !Array.isArray(input) ? input : {}
+  // A non-object query used to be read as "no query", so a caller whose filters were
+  // silently dropped received the default page and concluded the provider ignores its
+  // parameters. Refusing it names the real problem instead.
+  if (input !== undefined && input !== null && (typeof input !== 'object' || Array.isArray(input))) {
+    throw new Error(`Config query input must be an object, received ${Array.isArray(input) ? 'array' : typeof input}`)
+  }
+  const fields = input !== undefined && input !== null ? input : {}
   const text = (key: string): string | undefined => {
     const value = fields[key]
     if (value === undefined) return undefined
