@@ -180,17 +180,22 @@ export class FileSystemSkillProvider implements SkillProvider {
   /**
    * Discover local skill summaries for a cwd-sensitive workspace.
    * @param options - lookup options; `cwd` selects the project roots to scan.
-   * @returns local provider candidates with stable root ranks; watcher startup
-   *   failure returns readable candidates as an incomplete observation.
+   * @returns local provider candidates with stable root ranks. A root whose
+   *   live-update watcher cannot start (for example a read-only bundled or asar
+   *   root) is logged and does not suppress the discovered catalog: watching is
+   *   best-effort and retries in the background, while discovery completeness
+   *   alone drives caching (see `SkillProviderObservation.complete`).
    */
   async list(options: SkillLookupOptions): Promise<SkillCandidate[] | SkillProviderObservation> {
     const roots = await this.roots(options.cwd)
-    let complete = true
     try {
       await this.watchManager.observeRoots(roots)
     } catch (error) {
       if (this.disposal !== undefined) throw error
-      complete = false
+      // Watch startup is best-effort: a single unwatchable root (a read-only
+      // bundled/asar path, a path without native watch support) must not blank
+      // the catalog that discovery already produced for every readable root.
+      this.ctx.logger.warn(`skill-filesystem: live-update watch unavailable; catalog still served: ${errorMessage(error)}`)
     }
     const candidates: SkillCandidate[] = []
     for (const root of roots) {
@@ -198,7 +203,7 @@ export class FileSystemSkillProvider implements SkillProvider {
         candidates.push(skill)
       }
     }
-    return complete ? candidates : { candidates, complete }
+    return candidates
   }
 
   /**
