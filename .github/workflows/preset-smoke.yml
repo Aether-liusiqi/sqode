@@ -1,0 +1,70 @@
+# Build-and-boot smoke for preset changes. The packaged runtime smoke boots the Host
+# with the composed profile, so a preset expression that fails to evaluate surfaces
+# here instead of only on the packaging machine. Kept separate from the corpus and
+# tool workflows: a preset regression is neither a golden failure nor a tool failure.
+name: preset-smoke
+
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: What this run is checking
+        type: string
+        required: false
+
+permissions:
+  contents: read
+
+env:
+  PRIMARY_NODE_VERSION: '24'
+  SQODE_TELEMETRY_DISABLED: '1'
+  SQODE_BUILD_FACE: official
+  SQODE_EXAMPLE_MODE: lib
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: build and boot / linux
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.PRIMARY_NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # The build itself runs the desktop packaging smoke, which starts the Host with
+      # the composed profile. That is the step under test, so its log is captured.
+      - name: Build and boot smoke
+        run: |
+          set -o pipefail
+          pnpm run build 2>&1 | tee "$RUNNER_TEMP/build.log"
+
+      - name: Report preset files
+        if: always()
+        run: |
+          echo '--- preset inventory ---'
+          find packages/bundle -name '*.patch.yml' -path '*presets*' -print || true
+          echo '--- preset-skills staged? ---'
+          find . -type d -name 'preset-skills' -not -path '*/node_modules/*' 2>/dev/null | head -5 || true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: preset-smoke-logs
+          path: |
+            ${{ runner.temp }}/build.log
+            apps/desktop/.desktop-build/packaging-runs/**/events.jsonl
+          if-no-files-found: warn
