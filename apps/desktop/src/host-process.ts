@@ -186,17 +186,24 @@ export class DesktopHostProcess {
   async start(): Promise<DesktopHostReady> {
     if (this.child !== undefined) return this.readyPromise
     const entry = join(this.runtimeDir, 'node_modules', '@liusiqi-dev', 'dsh-desktop-host', 'lib', 'index.js')
+    const primaryRuntime = this.primaryRuntime ?? join(this.runtimeDir, '..', 'runtime', 'primary-runtime')
     const child = spawn(this.node, [
       '--expose-internals',
       ...(this.inspectPort === undefined ? [] : [`--inspect=127.0.0.1:${String(this.inspectPort)}`]),
       entry,
       this.runtimeDir,
       this.projectDir,
-      this.primaryRuntime ?? join(this.runtimeDir, '..', 'runtime', 'primary-runtime'),
+      primaryRuntime,
       ...this.packageManager === undefined ? [] : [this.packageManager.pnpm, this.packageManager.nodeBin],
     ], {
       cwd: this.projectDir,
-      env: desktopNodeEnvironment(this.node, undefined, this.environment),
+      // A preset cannot derive this path: the Host receives its payload directory as an
+      // argument, not as an environment variable, so an expression there had nothing to
+      // read and quietly contributed no skill root.
+      env: {
+        ...desktopNodeEnvironment(this.node, undefined, this.environment),
+        SQODE_PRESET_SKILLS: join(primaryRuntime, '..', 'preset-skills'),
+      },
       stdio: ['ignore', 'pipe', 'pipe', 'ipc'],
     })
     this.child = child
