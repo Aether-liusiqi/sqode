@@ -660,8 +660,11 @@ describe('dsh-tool-skill', () => {
     const root = join(home, '.dsh/skills')
     await writeSkill(root, 'body-skill', 'Stable description', 'First body.')
     const ctx = await setup(home)
-    const session = Session.create(SessionId('body-refresh'))
-    const agent = sessionAgent(session)
+    // The skill is written under the project-level root, which is only scanned when the
+    // session carries a cwd. Creating the session without one left that root out of the
+    // scan, so the catalog was empty and this assertion could never hold.
+    const agent = agentForCwd(home)
+    const session = agent.session
     openMessageTurn(session)
 
     expect(JSON.stringify(await composePrefixForAgent(ctx, agent))).toContain('Stable description')
