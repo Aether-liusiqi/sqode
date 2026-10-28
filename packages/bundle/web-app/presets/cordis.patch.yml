@@ -147,7 +147,7 @@
               # watches every root it discovers, and a directory inside app.asar cannot
               # be watched. An unavailable runtime contributes no root at all, so the
               # catalog is never put in a state the watcher cannot reach.
-              customSkillDirs: !!js (() => { const root = process.env.SQODE_PRIMARY_RUNTIME ?? process.env.SQODE_BUNDLED_PRIMARY_RUNTIME; return root ? [process.getBuiltinModule('node:path').resolve(root, '..', 'preset-skills')] : [] })()
+              customSkillDirs: !!js "process.env.SQODE_PRIMARY_RUNTIME || process.env.SQODE_BUNDLED_PRIMARY_RUNTIME ? [process.getBuiltinModule('node:path').resolve(process.env.SQODE_PRIMARY_RUNTIME ?? process.env.SQODE_BUNDLED_PRIMARY_RUNTIME ?? '', '..', 'preset-skills')] : []"
           - id: tool-skill
             name: '@liusiqi-dev/dsh-tool-skill'
           - id: present
