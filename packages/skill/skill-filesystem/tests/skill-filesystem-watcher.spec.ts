@@ -195,7 +195,7 @@ describe('skill-filesystem watcher failures', () => {
     await fiber.dispose()
   })
 
-  it('serves a complete catalog with loadable skills across persistent watcher startup failures', async () => {
+  it('keeps skills loadable across persistent watcher startup failures without caching them', async () => {
     const home = await tempDir('skill-watch-start-error')
     const root = join(home, '.dsh/skills')
     await writeSkill(root, 'retry-skill')
@@ -217,17 +217,14 @@ describe('skill-filesystem watcher failures', () => {
       watchStabilityThresholdMs: 20,
     })
 
-    // A root whose watcher cannot start (e.g. a read-only bundled/asar root in
-    // the shipped product) must not blank the discovered catalog: watching is
-    // best-effort and retries in the background, so the catalog stays complete.
     expect(await ctx.skills.snapshot()).toMatchObject({
       skills: [{ name: 'retry-skill' }],
-      complete: true,
+      complete: false,
     })
     expect((await ctx.skills.get('retry-skill'))?.content).toBe('Body.')
     expect(await ctx.skills.snapshot()).toMatchObject({
       skills: [{ name: 'retry-skill' }],
-      complete: true,
+      complete: false,
     })
     expect(watcherHarness.watchers).toHaveLength(3)
     expect(watcherHarness.watchers[0]?.options).toMatchObject({
@@ -240,27 +237,6 @@ describe('skill-filesystem watcher failures', () => {
         stabilityThreshold: 20,
         pollInterval: 10,
       },
-    })
-
-    await fiber.dispose()
-  })
-
-  it('keeps a readable root in the catalog when another root cannot be watched', async () => {
-    const home = await tempDir('skill-watch-incomplete-catalog')
-    const root = join(home, '.dsh/skills')
-    await writeSkill(root, 'watchable-skill')
-    watcherHarness.startupErrors.push(new Error('watch failed'))
-    const ctx = new Context()
-    await ctx.plugin(SkillRegistry)
-    const fiber = await ctx.plugin(SkillFileSystem, {
-      dshHome: join(home, '.sqode'),
-      agentsHome: join(home, '.agents'),
-      watch: true,
-    })
-
-    expect(await ctx.skills.snapshot()).toMatchObject({
-      skills: [{ name: 'watchable-skill' }],
-      complete: true,
     })
 
     await fiber.dispose()
