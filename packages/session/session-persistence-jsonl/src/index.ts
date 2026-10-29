@@ -467,6 +467,27 @@ class JsonlSessionPersistence extends SessionPersistence {
   }
 
   /**
+   * Permanently remove one stored session's directory.
+   *
+   * The directory is removed as a unit, with no staging name and no backup: the
+   * startup scan treats every entry under the root as a session, so a leftover
+   * would break it. A removal that fails leaves the session as it was.
+   * @param id - the stored session to remove.
+   * @param options - optional cancellation before the removal starts.
+   * @returns whether a session existed and was removed.
+   */
+  override async destroy(id: SessionId, options?: { readonly signal?: AbortSignal }): Promise<boolean> {
+    options?.signal?.throwIfAborted()
+    await this.ensureRootEncoding()
+    options?.signal?.throwIfAborted()
+    const snapshot = await this.stat(id, options)
+    if (snapshot === undefined) return false
+    options?.signal?.throwIfAborted()
+    await rm(sessionDir(this.root, snapshot.header.cwd, id), { recursive: true, force: true })
+    return true
+  }
+
+  /**
    * List every stored session visible to this process: materialized artifacts
    * plus this process's created-but-unmaterialized sessions.
    * @param options - optional cancellation.

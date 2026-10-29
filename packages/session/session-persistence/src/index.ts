@@ -106,6 +106,12 @@ export interface SessionPersistenceListOptions {
   readonly signal?: AbortSignal
 }
 
+/** Options for {@link SessionPersistence.destroy}. */
+export interface SessionPersistenceDestroyOptions {
+  /** Cancels before the removal starts; a started removal is not interrupted. */
+  readonly signal?: AbortSignal
+}
+
 declare module '@liusiqi-dev/cordis' {
   interface Context {
     sessionPersistence: SessionPersistence
@@ -199,6 +205,25 @@ export abstract class SessionPersistence extends Service {
    * @returns one snapshot per stored session.
    */
   abstract list(options?: SessionPersistenceListOptions): Promise<readonly SessionPersistenceSnapshot[]>
+
+  /**
+   * Permanently remove one stored session and every artifact it owns.
+   *
+   * Removal is all-or-nothing at the directory level: a backend must not stage,
+   * rename, or keep a backup, because a startup scan treats every entry under the
+   * storage root as a session and a leftover would fail the scan. A removal that
+   * does not complete leaves the session exactly as it was. Nothing outside that
+   * session's own directory is touched.
+   * @param id - the stored session to remove.
+   * @param options - optional cancellation.
+   * @returns `true` when a session existed and was removed, `false` when none existed.
+   */
+  async destroy(id: SessionId, options?: SessionPersistenceDestroyOptions): Promise<boolean> {
+    options?.signal?.throwIfAborted()
+    // A backend opts in: read-only, remote, and test backends have no directory
+    // to remove, and silently reporting success would hide that from the caller.
+    throw new Error(`removal is not supported by this session persistence backend (${String(id)})`)
+  }
 }
 
 export default SessionPersistence
