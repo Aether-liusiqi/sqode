@@ -427,7 +427,19 @@ export class PluginManager extends TypertRemoteService {
       const row = (await this.listPlugins()).find(item => item.entryId === id)
       if (row === undefined) throw new ManagementFailure('unknown-plugin')
       if (row.readOnlyReason !== undefined) throw new ManagementFailure(row.readOnlyReason)
-      await writePluginEnabled(this.profile.patchPath, row.patchId, row.moduleName, enabled)
+      // Carry the entry's current config into the row this write creates. Expressions
+      // and non-plain values are left alone: they must keep evaluating in their layer
+      // rather than being frozen into the user's patch as literal data.
+      const loader = this.ownerContext.get('loader')
+      const entry = loader === undefined
+        ? undefined
+        : [...loader.entries()].find(item => item.options.id === row.patchId)
+      const config = entry?.options.config
+      const carried = config !== undefined && config !== null && typeof config === 'object'
+        && !Array.isArray(config) && !('__jsExpr' in (config as Record<string, unknown>))
+        ? config
+        : undefined
+      await writePluginEnabled(this.profile.patchPath, row.patchId, row.moduleName, enabled, carried)
       result.warnings = await this.reload(enabled ? [row.patchId] : [])
       const current = (await this.listPlugins()).find(item => item.entryId === id)
       return current?.enabled !== enabled && this.ownerContext.get('hmr') !== undefined ? 'overridden' : undefined

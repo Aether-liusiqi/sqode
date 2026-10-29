@@ -11,7 +11,9 @@ import { writeFileAtomic } from '@liusiqi-dev/dsh-atomic-write'
  * @param enabled Desired entry enablement.
  * @returns Whether the file changed.
  */
-export async function writePluginEnabled(filename: string, id: string, name: string, enabled: boolean): Promise<boolean> {
+export async function writePluginEnabled(
+  filename: string, id: string, name: string, enabled: boolean, config?: unknown,
+): Promise<boolean> {
   let text: string
   try {
     text = await readFile(filename, 'utf8')
@@ -36,7 +38,10 @@ export async function writePluginEnabled(filename: string, id: string, name: str
     if (document.getIn([items.indexOf(target), 'disabled']) === !enabled) return false
     document.setIn([items.indexOf(target), 'disabled'], !enabled)
   } else {
-    document.add({ id, disabled: !enabled })
+    // A new row replaces the targeted entry's whole config, so writing only `disabled`
+    // dropped whatever the layer below had configured. Carry that config over; without
+    // it, toggling a plugin once erased e.g. the skill loader's custom directories.
+    document.add(config === undefined ? { id, disabled: !enabled } : { id, disabled: !enabled, config })
   }
   await writeFileAtomic(filename, String(document), { mode: 0o600 })
   return true
