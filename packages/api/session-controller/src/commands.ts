@@ -23,7 +23,7 @@ import { SessionTitleInvalidError } from '@liusiqi-dev/dsh-session-title'
 import { canonicalClientTimeZone } from '@liusiqi-dev/dsh-util-time'
 import { assertNever } from '@liusiqi-dev/dsh-util-values'
 import { RemoteError, remoteErrorOf } from '@liusiqi-dev/dsh-typert-protocol'
-import type { Workspace } from '@liusiqi-dev/dsh-workspace'
+import type { SessionActivity, Workspace } from '@liusiqi-dev/dsh-workspace'
 import {
   ApiSessionAgentController,
   ApiSessionCwdConflict,
@@ -38,6 +38,8 @@ import type {
   SessionAttachmentRequest,
   SessionAttachmentValue,
   SessionCancelRequest,
+  SessionDeleteRequest,
+  SessionDeleteValue,
   SessionCancelValue,
   SessionCreateRequest,
   SessionCreateValue,
@@ -209,6 +211,41 @@ export class SessionCommandController {
         {},
       )
     }
+  }
+
+  /**
+   * Permanently delete one Session: release its runtime, remove its stored log, and
+   * drop it from the pinned and archived sets.
+   *
+   * A Session with running work is refused rather than stopped, so a deletion never
+   * interrupts an answer the user is still reading. The runtime is released before the
+   * directory is removed because Windows will not delete a log that is still open, and
+   * releasing first also means a failed removal has not left a half-live Session.
+   * @param request - the Session to delete.
+   * @returns the deleted Session identity.
+   * @throws {RemoteError} `session/agent-busy` while it has work, `session/not-found` when absent.
+   */
+  async delete(request: SessionDeleteRequest): Promise<SessionDeleteValue> {
+    const { sessionId } = request
+    const activity = await this.ctx.waterfall(
+      'workspace/session-activity', { sessionId }, () => Promise.resolve([] as readonly SessionActivity[]),
+    )
+    if (activity.length > 0) {
+      throw new RemoteError(
+        'session/agent-busy',
+        `cannot delete session "${sessionId}": the session is active`,
+        { reason: activity.map(entry => entry.kind).join(', ') },
+      )
+    }
+    await this.agents.release(sessionId)
+    if (!(await this.ctx.sessionPersistence.destroy(sessionId))) {
+      throw new RemoteError('session/not-found', `session "${sessionId}" not found`, { sessionId })
+    }
+    // Both calls filter an id that is not present, so a Session that was neither pinned
+    // nor archived cleans up as a no-op instead of failing the deletion.
+    await this.ctx.workspaceRegistry.unarchiveSession(sessionId)
+    await this.ctx.workspaceRegistry.unpinSession(sessionId)
+    return { sessionId }
   }
 
   /**

@@ -317,6 +317,21 @@ export interface SessionRenameValue {
   readonly seq: number
 }
 
+/**
+ * Session deletion request.
+ *
+ * Deletion is permanent: the stored log is removed from disk rather than moved
+ * aside, so there is no recycle bin and no undo.
+ */
+export interface SessionDeleteRequest {
+  readonly sessionId: SessionId
+}
+
+/** Confirmation that one session's stored log no longer exists. */
+export interface SessionDeleteValue {
+  readonly sessionId: SessionId
+}
+
 /** Session fork request. */
 export interface SessionForkRequest {
   readonly sessionId: SessionId
