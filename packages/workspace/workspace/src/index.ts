@@ -145,6 +145,15 @@ declare module '@liusiqi-dev/cordis' {
      * @mode parallel
      */
     'workspace/session-stop'(request: SessionActivityRequest): Promise<void> | void
+    /**
+     * Release a session's live runtime because the caller is about to delete it. The
+     * provider that owns the runtime stops it here, so the stored log is no longer open
+     * when the deletion removes the directory. A session that is not loaded answers
+     * without doing anything: having nothing to release is the normal case.
+     * @param request - the session about to be deleted.
+     * @mode serial
+     */
+    'workspace/session-release'(request: SessionActivityRequest): Promise<void> | void
   }
 }
 

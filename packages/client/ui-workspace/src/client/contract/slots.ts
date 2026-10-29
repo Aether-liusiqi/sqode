@@ -347,6 +347,38 @@ export interface ArchiveSessionInjected {
 }
 
 /**
+ * A delete confirmation the delete action asked for. Deletion is permanent: the
+ * stored log is removed rather than moved aside, so the dialog says so instead of
+ * offering an undo it cannot honor.
+ */
+export interface SessionDeleteConfirmRequest {
+  /** Session to delete. */
+  sessionId: SessionId
+}
+
+/**
+ * Delete action share (menu row and confirmation dialog). The callbacks carry the
+ * whole behavior: asking for confirmation, settling it, the Host deletion, and the
+ * diagnostics the Host rejection raises — a session with running work is refused by
+ * the Host, never stopped here.
+ */
+export interface DeleteSessionInjected {
+  hooks: {
+    /** The confirmation asked for, until the dialog consumes or cancels it. */
+    deleteRequest: HostObservable<SessionDeleteConfirmRequest | null>
+  }
+  /**
+   * Ask for confirmation before deleting a Session. Deleting the current session
+   * clears the selection into the New Session view state.
+   */
+  requestDeleteSession: (sessionId: SessionId) => void
+  /** Consume or cancel the pending confirmation. */
+  settleSessionDelete: () => void
+  /** Delete the Session; resolves once its stored log is gone. */
+  deleteSession: (sessionId: SessionId) => Promise<void>
+}
+
+/**
  * A stop-and-archive confirmation the archive action asked for: the Host
  * refused the plain archive because this work still runs.
  */
@@ -437,6 +469,13 @@ export type SessionArchiveConfirmProps =
   & PropsLocale<'workspace'>
   & Omit<SessionArchiveConfirmInjected, 'hooks'>
   & PropsHooks<SessionArchiveConfirmInjected['hooks']>
+
+/** Props of the delete-confirmation dialog entry in `shell.overlay`. */
+export type SessionDeleteConfirmProps =
+  PropsRuntime<'shell.overlay'>
+  & PropsLocale<'workspace'>
+  & Omit<DeleteSessionInjected, 'hooks'>
+  & PropsHooks<DeleteSessionInjected['hooks']>
 
 /**
  * Props of the row toast entry in `shell.overlay`. The declared viewing store

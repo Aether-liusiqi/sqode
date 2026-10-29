@@ -6,6 +6,8 @@ import { isRemoteFailure } from '@liusiqi-dev/dsh-api-gateway/client'
 import type { RemoteFailure, RemoteResult, TypertClientRemote } from '@liusiqi-dev/dsh-typert-protocol'
 import type {
   WorkspaceArchiveSessionRequest,
+  WorkspaceDeleteSessionRequest,
+  WorkspaceDeleteSessionValue,
   WorkspaceArchiveValue,
   WorkspaceBaseline,
   WorkspaceCreateRequest,
@@ -201,6 +203,26 @@ export class ClientWorkspaceModel implements WorkspaceFollowSink {
       this.installArchived(result.value.archivedSessionIds)
       // The Host drops an archived session's pin in the same durable write;
       // mirror that locally so no frame shows the row both archived and pinned.
+      this.installPinned(this.pinnedSessionIds.filter(id => id !== sessionId))
+    }
+    return result
+  }
+
+  /**
+   * Delete one Session permanently and drop it from the local pin and archive sets.
+   *
+   * The Host removes the stored log, so nothing can restore the row; the sets are
+   * filtered locally because the deletion leaves no session to report. A failure
+   * leaves every set untouched, so the row stays exactly as the Host still has it.
+   * @param sessionId - Session to delete.
+   * @returns generated Remote result.
+   */
+  async deleteSession(
+    sessionId: WorkspaceDeleteSessionRequest['sessionId'],
+  ): Promise<RemoteResult<WorkspaceDeleteSessionValue>> {
+    const result = await this.remote.deleteSession({ sessionId })
+    if (result.ok) {
+      this.installArchived(this.archivedSessionIds.filter(id => id !== sessionId))
       this.installPinned(this.pinnedSessionIds.filter(id => id !== sessionId))
     }
     return result

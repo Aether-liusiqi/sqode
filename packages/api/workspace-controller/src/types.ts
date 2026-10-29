@@ -111,6 +111,22 @@ export interface WorkspaceInsertSessionBeforeRequest {
   readonly beforeSessionId?: SessionId
 }
 
+/**
+ * Session requested for permanent deletion from Workspace grouping surfaces.
+ *
+ * Deletion removes the stored log instead of moving it aside: nothing enters a
+ * recycle bin and no undo is offered. A Session with running work is refused, so a
+ * deletion never interrupts an answer the user is still reading.
+ */
+export interface WorkspaceDeleteSessionRequest {
+  readonly sessionId: SessionId
+}
+
+/** Confirmation that one Session's stored log no longer exists. */
+export interface WorkspaceDeleteSessionValue {
+  readonly sessionId: SessionId
+}
+
 /** Session requested for archival from Workspace grouping surfaces. */
 export interface WorkspaceArchiveSessionRequest {
   readonly sessionId: SessionId

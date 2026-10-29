@@ -175,6 +175,7 @@ class FakeWorkspaces implements IWorkspaces {
   readonly list: MutableSource<WorkspaceSnapshot>
   readonly archiveCalls: SessionId[] = []
   readonly unarchiveCalls: SessionId[] = []
+  readonly deleteCalls: SessionId[] = []
   onArchive: IWorkspaces['archiveSession'] = async (sessionId) => {
     this.list.update(state => ({
       ...state,
@@ -205,6 +206,11 @@ class FakeWorkspaces implements IWorkspaces {
 
   constructor(initial: WorkspaceSnapshot) {
     this.list = new MutableSource(initial)
+  }
+
+  deleteSession(sessionId: SessionId): Promise<void> {
+    this.deleteCalls.push(sessionId)
+    return Promise.resolve()
   }
 
   archiveSession(sessionId: SessionId): Promise<void> {

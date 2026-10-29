@@ -4,6 +4,8 @@ import {
 } from '../src/client/index.ts'
 import type {
   WorkspaceArchiveSessionRequest,
+  WorkspaceDeleteSessionRequest,
+  WorkspaceDeleteSessionValue,
   WorkspaceArchiveValue,
   WorkspaceCreateRequest,
   WorkspaceCreateValue,
@@ -90,6 +92,12 @@ class FakeWorkspaceRemote implements WorkspaceRemote {
     request: WorkspaceArchiveSessionRequest,
   ) => Promise<RemoteResult<WorkspaceArchiveValue>> = request =>
     Promise.resolve(remoteOk({ archivedSessionIds: [request.sessionId] }))
+  onDeleteSession: (
+    request: WorkspaceDeleteSessionRequest,
+  ) => Promise<RemoteResult<WorkspaceDeleteSessionValue>> = request =>
+    Promise.resolve(remoteOk({ sessionId: request.sessionId }))
+  readonly deleteSession = vi.fn<WorkspaceRemote['deleteSession']>(async request =>
+    remoteOk({ sessionId: request.sessionId }))
   onUnarchiveSession: (
     request: WorkspaceUnarchiveSessionRequest,
   ) => Promise<RemoteResult<WorkspaceArchiveValue>> = request =>

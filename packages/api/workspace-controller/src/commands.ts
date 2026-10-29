@@ -1,7 +1,7 @@
 /** Workspace command implementation and stable Remote failure mapping. */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Workspace } from '@liusiqi-dev/dsh-workspace'
+import type { SessionActivity, Workspace } from '@liusiqi-dev/dsh-workspace'
 import {
   WorkspaceActiveSessionError,
   WorkspaceArchivedSessionPinError,
@@ -10,6 +10,7 @@ import {
   WorkspaceOrderInvalidError,
   WorkspaceUnknownSessionError,
 } from '@liusiqi-dev/dsh-workspace'
+import type {} from '@liusiqi-dev/dsh-session-persistence'
 import { RemoteError, remoteErrorOf } from '@liusiqi-dev/dsh-typert-protocol'
 import { workspaceView } from './feed.ts'
 import type {
@@ -18,6 +19,8 @@ import type {
   WorkspaceCreateRequest,
   WorkspaceCreateValue,
   WorkspaceDeleteRequest,
+  WorkspaceDeleteSessionRequest,
+  WorkspaceDeleteSessionValue,
   WorkspaceDeleteValue,
   WorkspaceInsertBeforeRequest,
   WorkspaceInsertSessionBeforeRequest,
@@ -180,6 +183,39 @@ export class WorkspaceCommands {
       throw error
     }
     return { archivedSessionIds: [...this.ctx.workspaceRegistry.archivedSessionIds] }
+  }
+
+  /**
+   * Permanently delete one Session: refuse while it has running work, release its
+   * runtime, remove the stored log, then drop the id from the pin and archive sets.
+   *
+   * The release happens before the directory is touched because an open log cannot be
+   * removed on Windows, and a Session that is not loaded has nothing to release. Both
+   * set operations filter an absent id, so a Session that was neither pinned nor
+   * archived cleans up as a no-op instead of failing the deletion.
+   * @param request - the Session to delete.
+   * @returns the deleted Session identity.
+   * @throws {WorkspaceActiveSessionError} mapped as `workspace/session-active` while it runs.
+   */
+  async deleteSession(request: WorkspaceDeleteSessionRequest): Promise<WorkspaceDeleteSessionValue> {
+    const { sessionId } = request
+    const activity = await this.ctx.waterfall(
+      'workspace/session-activity', { sessionId }, () => Promise.resolve([] as readonly SessionActivity[]),
+    )
+    if (activity.length > 0) {
+      throw new RemoteError(
+        'workspace/session-active',
+        `cannot delete session "${sessionId}": the session is active`,
+        { sessionId, activity },
+      )
+    }
+    await this.ctx.serial('workspace/session-release', { sessionId })
+    if (!(await this.ctx.sessionPersistence.destroy(sessionId))) {
+      throw new RemoteError('session/not-found', `session "${sessionId}" not found`, { sessionId })
+    }
+    await this.ctx.workspaceRegistry.unarchiveSession(sessionId)
+    await this.ctx.workspaceRegistry.unpinSession(sessionId)
+    return { sessionId }
   }
 
   /**

@@ -214,6 +214,19 @@ export class SessionCommandController {
   }
 
   /**
+   * Release one Session's live runtime on behalf of a deletion owned elsewhere.
+   *
+   * The Workspace surface removes stored sessions, but only this controller holds the
+   * agent handle whose disposal stops the loop and releases the log. A Session that is
+   * not loaded has nothing to release, which is the expected state for a deletion.
+   * @param sessionId - the Session whose runtime should be released.
+   * @returns whether a live handle was found and disposed.
+   */
+  async releaseRuntime(sessionId: SessionId): Promise<boolean> {
+    return await this.agents.release(sessionId)
+  }
+
+  /**
    * Permanently delete one Session: release its runtime, remove its stored log, and
    * drop it from the pinned and archived sets.
    *

@@ -13,6 +13,8 @@ import type {
   WorkspaceCreateRequest,
   WorkspaceCreateValue,
   WorkspaceDeleteRequest,
+  WorkspaceDeleteSessionRequest,
+  WorkspaceDeleteSessionValue,
   WorkspaceDeleteValue,
   WorkspaceFollowFrame,
   WorkspaceInsertBeforeRequest,
@@ -49,7 +51,7 @@ declare module '@liusiqi-dev/cordis' {
 
 /** Host service backing the generated `ctx.remote.workspace` namespace. */
 export class WorkspaceController extends TypertRemoteService {
-  static inject = ['typert', 'workspaceRegistry']
+  static inject = ['typert', 'workspaceRegistry', 'sessionPersistence']
 
   static Config: z<Config, ResolvedConfig> = z.object({
     documentsDirectory: z.string(),
@@ -151,6 +153,16 @@ export class WorkspaceController extends TypertRemoteService {
    * @param request - Session identity to archive.
    * @returns the complete resulting archive set.
    */
+  /**
+   * Permanently delete one Session and everything stored for it.
+   * @param request - the Session to delete.
+   * @returns the deleted Session identity.
+   */
+  @Remote('deleteSession')
+  deleteSession(request: WorkspaceDeleteSessionRequest): Promise<WorkspaceDeleteSessionValue> {
+    return this.commands.deleteSession(request)
+  }
+
   @Remote('archiveSession')
   archiveSession(request: WorkspaceArchiveSessionRequest): Promise<WorkspaceArchiveValue> {
     return this.commands.archiveSession(request)

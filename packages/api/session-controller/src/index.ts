@@ -166,6 +166,12 @@ export class SessionController extends TypertRemoteService {
     // answer the Workspace registry's archive-admission events.
     ctx.plugin(ArchivedSessionGate)
 
+    // A Workspace deletion removes the stored log, but only this controller can stop
+    // the Session's runtime; an open log cannot be removed on Windows. Serial delivery
+    // lets the deletion wait for the release before it touches the directory.
+    ctx.on('workspace/session-release', async ({ sessionId }: { sessionId: SessionId }) => {
+      await this.commands.releaseRuntime(sessionId)
+    })
     ctx.on('session/created', (session) => {
       ctx.emit('api-session/added', this.listState.summaryFor(session))
     })
