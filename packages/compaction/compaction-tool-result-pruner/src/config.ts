@@ -25,6 +25,30 @@ const CONFIG_KEYS: ReadonlySet<string> = new Set([
   'tailChars',
 ])
 
+/** Environment overrides, clamped like every other deployment knob. */
+const THRESHOLD_ENV = 'DSH_TOOL_PRUNE_THRESHOLD_CHARS'
+const HEAD_ENV = 'DSH_TOOL_PRUNE_HEAD_CHARS'
+const TAIL_ENV = 'DSH_TOOL_PRUNE_TAIL_CHARS'
+const THRESHOLD_MIN = 4_000
+const THRESHOLD_MAX = 128_000
+
+/**
+ * Read one integer setting, clamped into range.
+ * @param name - environment variable name.
+ * @param fallback - value used when absent or unparsable.
+ * @param min - inclusive lower bound.
+ * @param max - inclusive upper bound.
+ * @returns the clamped integer.
+ */
+function readIntSetting(name: string, fallback: number, min: number, max: number): number {
+  const raw = process.env[name]?.trim()
+  const parsed = raw === undefined || raw === '' ? Number.NaN : Number(raw)
+  // The fallback is clamped too: a small threshold must shrink the shipped 20k/6k
+  // split, not collide with it.
+  const value = Number.isFinite(parsed) ? Math.trunc(parsed) : fallback
+  return Math.min(max, Math.max(min, value))
+}
+
 /**
  * Count Unicode code points without splitting surrogate pairs.
  * @param text - text to measure.
@@ -49,11 +73,16 @@ export function resolveConfig(config: ToolResultPruneConfig = {}): ResolvedConfi
     }
   }
 
-  const resolved: ResolvedConfig = {
-    thresholdChars: config.thresholdChars ?? DEFAULTS.thresholdChars,
-    headChars: config.headChars ?? DEFAULTS.headChars,
-    tailChars: config.tailChars ?? DEFAULTS.tailChars,
-  }
+  // Precedence: explicit plugin config, then environment, then the shipped default.
+  const thresholdChars = config.thresholdChars
+    ?? readIntSetting(THRESHOLD_ENV, DEFAULTS.thresholdChars, THRESHOLD_MIN, THRESHOLD_MAX)
+  const markerChars = codePointLength(PRUNE_MARKER)
+  const headChars = config.headChars
+    ?? readIntSetting(HEAD_ENV, DEFAULTS.headChars, 0, Math.max(0, thresholdChars - markerChars))
+  const tailChars = config.tailChars
+    ?? readIntSetting(TAIL_ENV, DEFAULTS.tailChars, 0, Math.max(0, thresholdChars - markerChars - headChars))
+
+  const resolved: ResolvedConfig = { thresholdChars, headChars, tailChars }
   assertPositiveInteger('thresholdChars', resolved.thresholdChars)
   assertNonNegativeInteger('headChars', resolved.headChars)
   assertNonNegativeInteger('tailChars', resolved.tailChars)

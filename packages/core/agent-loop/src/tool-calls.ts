@@ -267,12 +267,55 @@ function appendToolCall(session: Session, turn: number, step: number, block: Too
   return event.seq
 }
 
-/** Characters of tool output the model reads directly; ~7.5k tokens at 4 chars/token. */
-const TOOL_RESULT_CHAR_LIMIT = 30_000
-/** Head kept verbatim: the part that usually carries the command or the first errors. */
-const TOOL_RESULT_HEAD_CHARS = 20_000
+/**
+ * Characters of tool output the model reads inline, matching the ceiling Claude Code
+ * ships for the same purpose (default 30k, clamped 4k-128k). A deployment raises or
+ * lowers it per environment instead of editing and rebuilding this file.
+ */
+const TOOL_RESULT_CHAR_LIMIT_ENV = 'DSH_TOOL_RESULT_CHAR_LIMIT'
+const TOOL_RESULT_CHAR_LIMIT_DEFAULT = 30_000
+const TOOL_RESULT_CHAR_LIMIT_MIN = 4_000
+const TOOL_RESULT_CHAR_LIMIT_MAX = 128_000
+
+/** Head kept verbatim: the command or the first errors usually sit here. */
+const TOOL_RESULT_HEAD_CHARS_ENV = 'DSH_TOOL_RESULT_HEAD_CHARS'
+const TOOL_RESULT_HEAD_CHARS_DEFAULT = 20_000
+
 /** Tail kept verbatim: failures and summaries typically land at the end. */
-const TOOL_RESULT_TAIL_CHARS = 8_000
+const TOOL_RESULT_TAIL_CHARS_ENV = 'DSH_TOOL_RESULT_TAIL_CHARS'
+const TOOL_RESULT_TAIL_CHARS_DEFAULT = 8_000
+
+/**
+ * Read one integer setting, clamped into range.
+ * @param name - environment variable name.
+ * @param fallback - value used when the variable is absent or not a number.
+ * @param min - inclusive lower bound.
+ * @param max - inclusive upper bound.
+ * @returns the clamped integer.
+ */
+function readIntSetting(name: string, fallback: number, min: number, max: number): number {
+  const raw = process.env[name]?.trim()
+  const parsed = raw === undefined || raw === '' ? Number.NaN : Number(raw)
+  // The fallback is clamped too: a deployment that lowers the limit must shrink the
+  // shipped 20k/8k split rather than exceed the cap it just set.
+  const value = Number.isFinite(parsed) ? Math.trunc(parsed) : fallback
+  return Math.min(max, Math.max(min, value))
+}
+
+/**
+ * Resolve the cap and how much of it each end keeps.
+ *
+ * Head and tail are clamped to the limit and to each other so the emitted text can
+ * never exceed the cap, whatever a deployment sets.
+ * @returns the effective budgets.
+ */
+export function toolResultBudgets(): { limit: number; head: number; tail: number } {
+  const limit = readIntSetting(TOOL_RESULT_CHAR_LIMIT_ENV, TOOL_RESULT_CHAR_LIMIT_DEFAULT,
+    TOOL_RESULT_CHAR_LIMIT_MIN, TOOL_RESULT_CHAR_LIMIT_MAX)
+  const head = readIntSetting(TOOL_RESULT_HEAD_CHARS_ENV, TOOL_RESULT_HEAD_CHARS_DEFAULT, 0, limit)
+  const tail = readIntSetting(TOOL_RESULT_TAIL_CHARS_ENV, TOOL_RESULT_TAIL_CHARS_DEFAULT, 0, Math.max(0, limit - head))
+  return { limit, head, tail }
+}
 
 /**
  * Cap one tool result before it enters the session log.
@@ -297,13 +340,17 @@ export function capToolResultContent(
   block: ToolCallBlock,
   content: ToolExecutionResult['content'],
 ): ToolExecutionResult['content'] {
+  const { limit, head: headChars, tail: tailChars } = toolResultBudgets()
   const textParts = content.filter(part => part.type === 'text')
-  const total = textParts.reduce((sum, part) => sum + (part.type === 'text' ? part.text.length : 0), 0)
-  if (total <= TOOL_RESULT_CHAR_LIMIT) return content
+  const total = textParts.reduce((sum, part) => sum + part.text.length, 0)
+  if (total <= limit) return content
 
-  const whole = textParts.map(part => (part.type === 'text' ? part.text : '')).join('\n')
-  const head = whole.slice(0, TOOL_RESULT_HEAD_CHARS)
-  const tail = whole.slice(-TOOL_RESULT_TAIL_CHARS)
+  const whole = textParts.map(part => part.text).join('\n')
+  // Reserve the notice and the ellipsis out of the head budget so the emitted text
+  // never exceeds the configured limit, whatever head/tail a deployment picks.
+  const reserved = 320
+  const head = whole.slice(0, Math.max(0, Math.min(headChars, limit - reserved - tailChars)))
+  const tail = tailChars === 0 ? '' : whole.slice(-tailChars)
   const omitted = whole.length - head.length - tail.length
   const spillPath = writeToolResultSpill(session, turn, step, block, whole)
   const notice = spillPath === undefined

@@ -221,7 +221,10 @@ export function createElectronBuilderConfig(
       )
     },
     win: {
-      icon: fileURLToPath(new URL('../resources/icon-windows.png', import.meta.url)),
+      // A prebuilt multi-size .ico: handing electron-builder a PNG makes it run its
+    // WebAssembly icon converter, which needs a large contiguous allocation and failed
+    // on this host under memory pressure. An .ico is copied, never converted.
+    icon: fileURLToPath(new URL('../resources/icon-windows.ico', import.meta.url)),
       forceCodeSigning: !unsigned,
       signtoolOptions: {
         sign: windowsSigner,
