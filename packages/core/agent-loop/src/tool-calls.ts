@@ -267,12 +267,12 @@ function appendToolCall(session: Session, turn: number, step: number, block: Too
   return event.seq
 }
 
-/** Characters of tool output the model reads directly; ~2k tokens at 4 chars/token. */
-const TOOL_RESULT_CHAR_LIMIT = 8_000
+/** Characters of tool output the model reads directly; ~7.5k tokens at 4 chars/token. */
+const TOOL_RESULT_CHAR_LIMIT = 30_000
 /** Head kept verbatim: the part that usually carries the command or the first errors. */
-const TOOL_RESULT_HEAD_CHARS = 5_000
+const TOOL_RESULT_HEAD_CHARS = 20_000
 /** Tail kept verbatim: failures and summaries typically land at the end. */
-const TOOL_RESULT_TAIL_CHARS = 1_800
+const TOOL_RESULT_TAIL_CHARS = 8_000
 
 /**
  * Cap one tool result before it enters the session log.

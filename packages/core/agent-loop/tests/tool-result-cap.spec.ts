@@ -33,10 +33,15 @@ describe('capToolResultContent', () => {
     expect(capToolResultContent(sessionAt(), 1, 1, block, content)).toBe(content)
   })
 
+  it('leaves a result under the 30k limit alone', () => {
+    const content = [{ type: 'text' as const, text: 'y'.repeat(29_000) }]
+    expect(capToolResultContent(sessionAt(), 1, 1, block, content)).toBe(content)
+  })
+
   it('caps a large result and spills the whole text beside the workspace', () => {
     const root = mkdtempSync(join(tmpdir(), 'dsh-tool-cap-'))
     roots.push(root)
-    const whole = 'A'.repeat(6_000) + 'B'.repeat(6_000)
+    const whole = 'A'.repeat(20_000) + 'B'.repeat(20_000)
 
     const capped = capToolResultContent(sessionAt(root), 2, 3, block, [{ type: 'text', text: whole }])
     const shown = text(capped)
@@ -44,7 +49,7 @@ describe('capToolResultContent', () => {
     expect(shown.length).toBeLessThan(whole.length)
     expect(shown.startsWith('A'.repeat(100))).toBe(true)
     expect(shown.endsWith('B'.repeat(100))).toBe(true)
-    expect(shown).toContain('[output truncated: 12000 characters total')
+    expect(shown).toContain('[output truncated: 40000 characters total')
 
     const spill = /Full text saved to (.+?); read that file/.exec(shown)?.[1]
     expect(spill).toBeDefined()
@@ -52,7 +57,7 @@ describe('capToolResultContent', () => {
   })
 
   it('still caps when the session has no workspace directory to spill into', () => {
-    const whole = 'X'.repeat(20_000)
+    const whole = 'X'.repeat(40_000)
     const shown = text(capToolResultContent(sessionAt(), 1, 1, block, [{ type: 'text', text: whole }]))
 
     expect(shown).toContain('The full text was not saved')

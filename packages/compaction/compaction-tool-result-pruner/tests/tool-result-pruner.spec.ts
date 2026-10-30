@@ -104,7 +104,9 @@ describe('tool-result pruning configuration', () => {
     raw.headChars = 1
     expect(resolved).toEqual({ thresholdChars: 100, headChars: 20, tailChars: 10 })
     expect(Object.isFrozen(resolved)).toBe(true)
-    expect(DEFAULTS).toEqual({ thresholdChars: 8192, headChars: 4096, tailChars: 1024 })
+    // The threshold stays above the agent loop's 30k write-time cap so a result the
+    // loop already trimmed is never rewritten here (a rewrite costs a full re-prefill).
+    expect(DEFAULTS).toEqual({ thresholdChars: 32768, headChars: 20480, tailChars: 6144 })
     expect(Object.isFrozen(DEFAULTS)).toBe(true)
   })
 

@@ -6,11 +6,17 @@ import type { ResolvedConfig, ToolResultPruneConfig } from './types.ts'
 /** Fixed marker substituted for every removed middle span. */
 export const PRUNE_MARKER = '\n\n[... tool result middle pruned ...]\n\n'
 
-/** Low-friction defaults for coding-agent tool output. */
+/**
+ * Defaults for coding-agent tool output.
+ *
+ * The threshold sits above the agent loop's write-time cap (30k characters) on purpose:
+ * a result the loop already trimmed must never be trimmed again, because every rewrite
+ * of an earlier node changes the request prefix and costs a full re-prefill.
+ */
 export const DEFAULTS: ResolvedConfig = deepFreeze({
-  thresholdChars: 8192,
-  headChars: 4096,
-  tailChars: 1024,
+  thresholdChars: 32768,
+  headChars: 20480,
+  tailChars: 6144,
 })
 
 const CONFIG_KEYS: ReadonlySet<string> = new Set([
