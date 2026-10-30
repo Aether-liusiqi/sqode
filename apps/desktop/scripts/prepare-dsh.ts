@@ -131,7 +131,11 @@ async function main(): Promise<void> {
       cpSync(join(PACKAGE_SET_ROOT, DESKTOP_PACKAGES_DIR), join(BUILD_ROOT, DESKTOP_PACKAGES_DIR), { recursive: true })
       createRuntimeProjectMetadata(BUILD_ROOT, release)
     })
-    await packagingStep(process.env.SQODE_DESKTOP_PACKAGING_RUN_DIR, 'runtime:lockfile', () => runPnpm(['install', '--lockfile-only']))
+    // prefer-offline: the persistent store already knows every package this graph can
+    // reach, so resolving the lockfile reads metadata from disk instead of re-fetching
+    // it from the registry — the same reason the install below carries the flag.
+    await packagingStep(process.env.SQODE_DESKTOP_PACKAGING_RUN_DIR, 'runtime:lockfile',
+      () => runPnpm(['install', '--lockfile-only', '--prefer-offline']))
     verifyDesktopCoreLockfile(
       readFileSync(join(BUILD_ROOT, 'pnpm-lock.yaml'), 'utf8'),
       readDesktopCorePackageSet(BUILD_ROOT, release.version),

@@ -1,7 +1,8 @@
 /** Build one release target with matching Electron and dsh architecture. */
 
 import { spawn } from 'node:child_process'
-import { mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs'
+import { createHash } from 'node:crypto'
+import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs'
 import { parseArgs } from 'node:util'
 import { join, resolve } from 'node:path'
 import {
@@ -197,6 +198,10 @@ interface DesktopPackageInvocation {
   readonly prepareOnly: boolean
   readonly unsigned: boolean
   readonly check: boolean
+  /** Skip the packaged-runtime smoke pass; a release build never passes this. */
+  readonly skipSmoke: boolean
+  /** Reuse the prepared runtime and dsh trees when their inputs are unchanged. */
+  readonly reusePrepared: boolean
   /** Build identifier to publish under, when this build does not publish the product version. */
   readonly requestedBuildVersion: string | undefined
 }
@@ -229,6 +234,8 @@ export function parseDesktopPackageInvocation(
       'prepare-only': { type: 'boolean', default: false },
       unsigned: { type: 'boolean', default: false },
       check: { type: 'boolean', default: false },
+      'skip-smoke': { type: 'boolean', default: false },
+      'reuse-prepared': { type: 'boolean', default: false },
       'build-version': { type: 'string' },
     },
   })
@@ -236,6 +243,11 @@ export function parseDesktopPackageInvocation(
   const name = positionals[0] ?? hostTargetName(hostPlatform, hostArch)
   if (values.unsigned && name !== 'win-x64') throw new Error('desktop package: --unsigned requires win-x64')
   if (values.unsigned && values['prepare-only']) throw new Error('desktop package: --unsigned cannot use --prepare-only')
+  // A release artifact must always boot before it is published; only the local test
+  // targets may skip that pass.
+  if (values['skip-smoke'] && !values.unsigned && !values.dir) {
+    throw new Error('desktop package: --skip-smoke requires --unsigned or --dir')
+  }
   const requestedBuildVersion = values['build-version']?.trim()
   if (values['build-version'] !== undefined && (requestedBuildVersion === undefined || requestedBuildVersion === '')) {
     throw new Error('desktop package: --build-version requires a value')
@@ -246,8 +258,78 @@ export function parseDesktopPackageInvocation(
     prepareOnly: values['prepare-only'],
     unsigned: values.unsigned,
     check: values.check,
+    skipSmoke: values['skip-smoke'],
+    reusePrepared: values['reuse-prepared'],
     requestedBuildVersion,
   }
+}
+
+/** Name of the completeness stamp that marks a prepared tree as reusable. */
+const PREPARED_STAMP = 'prepared.json'
+
+/**
+ * Digest of everything that decides the prepared runtime and dsh trees: the commit
+ * being built plus the lockfile that fixes their dependency graph. Any source change
+ * moves the commit, so the trees are rebuilt rather than reused.
+ * @returns lowercase hex digest.
+ */
+export function preparedInputsDigest(): string {
+  const hash = createHash('sha256')
+  // Only the commit, never the `dirty` flag: a build run creates and removes untracked
+  // files, so `dirty` flips between runs and would make every rebuild look different.
+  // Uncommitted changes to the prepare scripts are covered by hashing them below.
+  hash.update(readDesktopBuildCommit(REPOSITORY_ROOT)?.commit ?? 'no-commit')
+  // The scripts that build the trees count as inputs too: an uncommitted change to them
+  // must invalidate the stamp, otherwise a rebuild would keep trees they no longer make.
+  for (const file of [
+    'pnpm-lock.yaml',
+    'apps/desktop/package.json',
+    'apps/desktop/scripts/prepare-dsh.ts',
+    'scripts/primary-runtime/prepare.ts',
+    'packages/bundle/web-app/package.json',
+  ]) {
+    try {
+      hash.update(readFileSync(join(REPOSITORY_ROOT, file)))
+    } catch {
+      hash.update('missing:' + file)
+    }
+  }
+  return hash.digest('hex')
+}
+
+/**
+ * Decide whether the prepared trees may be reused.
+ *
+ * Reuse needs all three: the stamp exists, its digest matches the current inputs, and
+ * the trees still look complete. A tree left by an interrupted run therefore never
+ * qualifies — the stamp is written only after both preparations succeed.
+ * @param root - build target directory holding the stamp.
+ * @param runtime - prepared runtime directory.
+ * @param dsh - prepared dsh directory.
+ * @param digest - digest of the current inputs.
+ * @returns whether both trees can be kept as they are.
+ */
+export function preparedTreesReusable(root: string, runtime: string, dsh: string, digest: string): boolean {
+  const stampPath = join(root, PREPARED_STAMP)
+  if (!existsSync(stampPath)) return false
+  try {
+    const stamp = JSON.parse(readFileSync(stampPath, 'utf8')) as { digest?: string }
+    if (stamp.digest !== digest) return false
+  } catch {
+    return false
+  }
+  return existsSync(join(runtime, 'versions.json'))
+    && existsSync(join(runtime, 'preset-skills'))
+    && existsSync(join(dsh, 'node_modules'))
+}
+
+/**
+ * Record that both prepared trees finished for the current inputs.
+ * @param root - build target directory holding the stamp.
+ * @param digest - digest of the inputs the trees were built from.
+ */
+export function writePreparedStamp(root: string, digest: string): void {
+  writeFileSync(join(root, PREPARED_STAMP), JSON.stringify({ digest, completedAt: new Date().toISOString() }, null, 2))
 }
 
 /**
@@ -471,18 +553,29 @@ export async function packageTarget(
     '--pack-destination',
     buildPaths.packedLandlock,
   ], buildEnv, REPOSITORY_ROOT)
-  await execute(['run', 'prepare:runtime', ...(signPrimaryRuntime ? ['--defer-primary-runtime-smoke'] : [])], downloadEnv)
-  if (signPrimaryRuntime) await execute(['run', 'sign:primary-runtime'], electronBuilderEnv)
-  await execute(['run', 'prepare:packages'], targetEnv)
-  await execute(['run', 'prepare:dsh', ...(signPrimaryRuntime ? ['--defer-runtime-smoke'] : [])], downloadEnv)
-  if (signPrimaryRuntime) await execute(['run', 'sign:primary-runtime', '--dsh'], electronBuilderEnv)
+  const preparedDigest = preparedInputsDigest()
+  // Signed builds re-sign the prepared trees, so they always rebuild them. An unsigned
+  // local build may keep the trees only when the stamp says the very same inputs
+  // finished; a crashed run leaves no stamp, so it can never be reused by accident.
+  const reusePrepared = invocation.reusePrepared && !signPrimaryRuntime
+    && preparedTreesReusable(buildPaths.root, buildPaths.runtime, buildPaths.dsh, preparedDigest)
+  if (reusePrepared) {
+    console.log('desktop package: reusing prepared runtime and dsh (inputs unchanged)')
+  } else {
+    await execute(['run', 'prepare:runtime', ...(signPrimaryRuntime ? ['--defer-primary-runtime-smoke'] : [])], downloadEnv)
+    if (signPrimaryRuntime) await execute(['run', 'sign:primary-runtime'], electronBuilderEnv)
+    await execute(['run', 'prepare:packages'], targetEnv)
+    await execute(['run', 'prepare:dsh', ...(signPrimaryRuntime ? ['--defer-runtime-smoke'] : [])], downloadEnv)
+    if (signPrimaryRuntime) await execute(['run', 'sign:primary-runtime', '--dsh'], electronBuilderEnv)
+    writePreparedStamp(buildPaths.root, preparedDigest)
+  }
   if (invocation.prepareOnly) return
   if (target.platform === 'darwin' && !invocation.directory) {
     await execute([
       ...desktopElectronBuilderArguments(target, true),
       '--config.mac.notarize=false',
     ], electronBuilderEnv)
-    await execute(['exec', 'tsx', 'scripts/smoke-packaged-runtime.ts'], targetEnv)
+    if (!invocation.skipSmoke) await execute(['exec', 'tsx', 'scripts/smoke-packaged-runtime.ts'], targetEnv)
     await withMacOSNotarizationProxy(mac?.notarizationProxy, () => packageMacOSArtifacts({
       arch: target.arch,
       // electron-builder named these artifacts after the published version, so locating them uses the same identifier.
@@ -492,13 +585,13 @@ export async function packageTarget(
     }, artifact => execute(desktopElectronBuilderArguments(target, false, artifact), electronBuilderEnv)), undefined, undefined, proxyEvent)
   } else if (target.platform === 'darwin') {
     await execute([...desktopElectronBuilderArguments(target, true), '--config.mac.notarize=false'], electronBuilderEnv)
-    await execute(['exec', 'tsx', 'scripts/smoke-packaged-runtime.ts'], targetEnv)
+    if (!invocation.skipSmoke) await execute(['exec', 'tsx', 'scripts/smoke-packaged-runtime.ts'], targetEnv)
     const appPath = join(buildPaths.artifacts, target.arch === 'arm64' ? 'mac-arm64' : 'mac', 'DeepSeek Harness.app')
     await withMacOSNotarizationProxy(mac?.notarizationProxy,
       () => notarizeMacOS({ appPath, ...resolveMacOSNotarizationEnvironment(environment) }), undefined, undefined, proxyEvent)
   } else {
     await signedStage('artifacts', () => execute(desktopElectronBuilderArguments(target, invocation.directory), electronBuilderEnv))
-    await execute(['exec', 'tsx', 'scripts/smoke-packaged-runtime.ts', ...(invocation.unsigned ? ['--unsigned'] : [])], targetEnv)
+    if (!invocation.skipSmoke) await execute(['exec', 'tsx', 'scripts/smoke-packaged-runtime.ts', ...(invocation.unsigned ? ['--unsigned'] : [])], targetEnv)
   }
   if (!invocation.directory && !invocation.unsigned) writeReleaseRecord(target, electronBuilderEnv, buildPaths.artifacts)
   if (journal) recordPackagingEvent(journal, { type: 'artifacts', directory: buildPaths.artifacts })
