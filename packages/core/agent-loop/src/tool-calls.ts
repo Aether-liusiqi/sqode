@@ -11,6 +11,8 @@
  * @module dsh-agent-loop/tool-calls
  */
 
+import { mkdirSync, writeFileSync } from 'node:fs'
+import { join } from 'node:path'
 import type { Context } from '@liusiqi-dev/cordis'
 import { createToolResultMessage, type ToolCallBlock } from '@liusiqi-dev/dsh-llm'
 import type { Session, SessionSeq, UserMessage } from '@liusiqi-dev/dsh-session'
@@ -265,6 +267,78 @@ function appendToolCall(session: Session, turn: number, step: number, block: Too
   return event.seq
 }
 
+/** Characters of tool output the model reads directly; ~2k tokens at 4 chars/token. */
+const TOOL_RESULT_CHAR_LIMIT = 8_000
+/** Head kept verbatim: the part that usually carries the command or the first errors. */
+const TOOL_RESULT_HEAD_CHARS = 5_000
+/** Tail kept verbatim: failures and summaries typically land at the end. */
+const TOOL_RESULT_TAIL_CHARS = 1_800
+
+/**
+ * Cap one tool result before it enters the session log.
+ *
+ * A result larger than the limit is replaced by its head and tail plus a notice that
+ * names a file holding the whole text, so the model knows it was cut and can read the
+ * rest on demand instead of guessing. The file lives under the workspace's ignored
+ * `.dsh/tool-results` directory, which the sandbox already grants; when the session has
+ * no directory (unit tests, in-memory sessions) the cap still applies and the notice
+ * says so without a path.
+ * @param session - owning session, used to locate the workspace directory.
+ * @param turn - turn number of the call, part of the spill filename.
+ * @param step - step number of the call, part of the spill filename.
+ * @param block - the call whose result is being capped.
+ * @param content - result content as the tool produced it.
+ * @returns the content the model should see.
+ */
+export function capToolResultContent(
+  session: Session,
+  turn: number,
+  step: number,
+  block: ToolCallBlock,
+  content: ToolExecutionResult['content'],
+): ToolExecutionResult['content'] {
+  const textParts = content.filter(part => part.type === 'text')
+  const total = textParts.reduce((sum, part) => sum + (part.type === 'text' ? part.text.length : 0), 0)
+  if (total <= TOOL_RESULT_CHAR_LIMIT) return content
+
+  const whole = textParts.map(part => (part.type === 'text' ? part.text : '')).join('\n')
+  const head = whole.slice(0, TOOL_RESULT_HEAD_CHARS)
+  const tail = whole.slice(-TOOL_RESULT_TAIL_CHARS)
+  const omitted = whole.length - head.length - tail.length
+  const spillPath = writeToolResultSpill(session, turn, step, block, whole)
+  const notice = spillPath === undefined
+    ? `\n\n[output truncated: ${whole.length} characters total, ${omitted} omitted. The full text was not saved; rerun the call with a narrower scope for detail.]`
+    : `\n\n[output truncated: ${whole.length} characters total, ${omitted} omitted. Full text saved to ${spillPath}; read that file for the omitted part.]`
+
+  // Non-text parts (images, references) are untouched: the cap only governs prose.
+  const kept = content.filter(part => part.type !== 'text')
+  return [{ type: 'text', text: head + notice + '\n\n…\n\n' + tail }, ...kept]
+}
+
+/**
+ * Persist the uncut result next to the workspace so the model can read it back.
+ * @returns the path for the notice, or undefined when it cannot be written.
+ */
+function writeToolResultSpill(
+  session: Session,
+  turn: number,
+  step: number,
+  block: ToolCallBlock,
+  text: string,
+): string | undefined {
+  const cwd = (session as unknown as { header?: { cwd?: string } }).header?.cwd
+  if (cwd === undefined) return undefined
+  try {
+    const directory = join(cwd, '.dsh', 'tool-results')
+    mkdirSync(directory, { recursive: true })
+    const path = join(directory, `${turn}-${step}-${block.id.replace(/[^\w.-]/gu, '_')}.txt`)
+    writeFileSync(path, text)
+    return path
+  } catch {
+    return undefined
+  }
+}
+
 /** Append a model-ordered result linked to its call event. */
 function appendToolResult(
   session: Session,
@@ -276,7 +350,7 @@ function appendToolResult(
 ): void {
   const message = createToolResultMessage({
     callId: block.id,
-    content: result.content,
+    content: capToolResultContent(session, turn, step, block, result.content),
     isError: result.isError,
   })
   session.append('tool/result', {
