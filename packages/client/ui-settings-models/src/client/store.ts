@@ -320,10 +320,16 @@ export function onboardingReadiness(state: ModelsSettingsState): OnboardingReadi
     }
   }
   if (state.rows.some(providerUsable)) return { kind: 'provider-ready' }
-  // A dormant route that names a credential reference is the one a key can be
-  // written into; the directory order picks it, not a hardcoded provider.
-  const row = state.rows.find(candidate => candidate.entry.active && candidate.apiKeyEnv !== undefined)
+  // A route that names a credential reference is the one a key can be written
+  // into; the directory order picks it, not a hardcoded provider. Active is
+  // deliberately not filtered here: an inactive route still answers whether the
+  // user can be helped, and it must report that instead of vanishing into
+  // "adapter absent".
+  const row = state.rows.find(candidate => candidate.apiKeyEnv !== undefined)
   if (row === undefined) return { kind: 'adapter-absent' }
+  // No settings namespace means no adapter directory entry behind the row, so
+  // the Models page has nothing to write a route into.
+  if (row.entry.settingsNs === '') return { kind: 'adapter-absent' }
   if (!row.entry.active) {
     return {
       kind: 'unavailable',

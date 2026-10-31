@@ -1156,9 +1156,11 @@ describe('ModelsSection', () => {
   it('edits a pi-ai profile with the curated fields only', async () => {
     const { mutate } = await mountSection()
     fireEvent.click(screen.getByRole('button', { name: openaiCopy(en.editProvider) }))
-    // The configured credential shows as the stored placeholder.
+    // The configured credential shows as the stored placeholder; this fixture
+    // keeps it in the profile file, which the editor names separately from a
+    // credential discovered in the environment.
     const editorKey = await screen.findByLabelText<HTMLInputElement>(en.keyInput)
-    await waitFor(() => { expect(editorKey.placeholder).toBe(en.keyStored) })
+    await waitFor(() => { expect(editorKey.placeholder).toBe(en.keyStoredFile) })
     // pi-ai carries Base URL too: the stored override shows as the value and
     // the effective profile endpoint as its placeholder source.
     fireEvent.click(screen.getByText(en.customized))
@@ -1172,6 +1174,52 @@ describe('ModelsSection', () => {
     expect(mutate.mock.calls[0]).toEqual([
       'llm-pi-ai',
       [{ op: 'set', path: ['providers', 'openai', 'baseURL'], value: 'https://proxy/v2' }],
+      0,
+    ])
+  })
+
+  it('writes a context-window preset and a reasoning level on one pi-ai model row', async () => {
+    const { mutate } = await mountSection()
+    fireEvent.click(screen.getByRole('button', { name: openaiCopy(en.editProvider) }))
+    fireEvent.click(screen.getByText(en.customized))
+    fireEvent.click(screen.getByText(en.addModel))
+    expandRow(1)
+    fireEvent.change(screen.getByLabelText(`${en.modelId} 1`), { target: { value: 'hy3' } })
+    // The preset writes the count this page's K = 1000 spelling implies.
+    fireEvent.change(screen.getByLabelText(`${en.capacityPreset} 1`), { target: { value: '1000000' } })
+    // A single level declares exactly that level, which is how this adapter
+    // expresses a model's default: the picker has nothing else to offer.
+    fireEvent.change(screen.getByLabelText(`${en.reasoningLevel} 1`), { target: { value: 'high' } })
+    fireEvent.click(screen.getByText(en.apply))
+
+    await waitFor(() => { expect(mutate).toHaveBeenCalledTimes(1) })
+    expect(mutate.mock.calls[0]).toEqual([
+      'llm-pi-ai',
+      [{
+        op: 'set',
+        path: ['providers', 'openai', 'models'],
+        value: [{ id: 'hy3', contextWindow: 1_000_000, reasoningEfforts: { off: null, high: 'high' } }],
+      }],
+      0,
+    ])
+  })
+
+  it('hands reasoning back to the installed catalog when the row follows it again', async () => {
+    const { mutate } = await mountSection()
+    fireEvent.click(screen.getByRole('button', { name: openaiCopy(en.editProvider) }))
+    fireEvent.click(screen.getByText(en.customized))
+    fireEvent.click(screen.getByText(en.addModel))
+    expandRow(1)
+    fireEvent.change(screen.getByLabelText(`${en.modelId} 1`), { target: { value: 'hy3' } })
+    fireEvent.change(screen.getByLabelText(`${en.reasoningLevel} 1`), { target: { value: 'all' } })
+    // Back to the inherited capability: the field leaves the profile entirely.
+    fireEvent.change(screen.getByLabelText(`${en.reasoningLevel} 1`), { target: { value: 'inherit' } })
+    fireEvent.click(screen.getByText(en.apply))
+
+    await waitFor(() => { expect(mutate).toHaveBeenCalledTimes(1) })
+    expect(mutate.mock.calls[0]).toEqual([
+      'llm-pi-ai',
+      [{ op: 'set', path: ['providers', 'openai', 'models'], value: [{ id: 'hy3' }] }],
       0,
     ])
   })

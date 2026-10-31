@@ -16,13 +16,14 @@ it.each([false, true])('retains configuration diagnostics when the route is acti
   }])
 })
 
-it('places account and official before third-party providers', () => {
+it('keeps the declared provider order instead of preferring a vendor', () => {
   const providers = ['custom', 'deepseek-official', 'deepseek-account', 'openai']
   const directory = providers.map(provider => ({
     provider, displayName: provider, settingsNs: 'fixture', settingsPath: [],
   }))
-  expect(joinProviderDirectory([], directory).map(row => row.provider))
-    .toEqual(['deepseek-account', 'deepseek-official', 'custom', 'openai'])
+  // The join is documented as order-preserving: the Host's declaration order is
+  // what the user sees, so no page can quietly pull one vendor forward.
+  expect(joinProviderDirectory([], directory).map(row => row.provider)).toEqual(providers)
   expect(directory.map(row => row.provider)).toEqual(providers)
 })
 
