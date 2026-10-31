@@ -210,9 +210,18 @@ export class WorkspaceCommands {
       )
     }
     await this.ctx.serial('workspace/session-release', { sessionId })
-    if (!(await this.ctx.sessionPersistence.destroy(sessionId))) {
+    // The stored log may already be gone — a Session created but never
+    // materialized leaves nothing to destroy, while its id still sits in a
+    // workspace account. Ask the account before removing the log, and detach
+    // either way: refusing on "no log" is what left such an entry undeletable,
+    // because this call was the only thing that could still drop it.
+    const owners = this.ctx.workspaceRegistry.list()
+      .filter(workspace => workspace.accountsSession(sessionId))
+    const removed = await this.ctx.sessionPersistence.destroy(sessionId)
+    if (!removed && owners.length === 0) {
       throw new RemoteError('session/not-found', `session "${sessionId}" not found`, { sessionId })
     }
+    for (const workspace of owners) await workspace.detachSession(sessionId)
     await this.ctx.workspaceRegistry.unarchiveSession(sessionId)
     await this.ctx.workspaceRegistry.unpinSession(sessionId)
     return { sessionId }

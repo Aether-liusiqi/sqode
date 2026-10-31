@@ -4,6 +4,11 @@
  * the stored log instead of moving it aside — so the dialog says so and offers no
  * undo. There is no hover button on purpose: a destructive action belongs behind the
  * row menu, where a stray click cannot reach it.
+ *
+ * A Session with running work cannot be deleted at all (the Host refuses it), so the
+ * row is disabled up front instead of letting the operator open the dialog and read
+ * the refusal there: the disabled row keeps the rule visible before the click, and a
+ * cursor tooltip says why.
  */
 import { useState } from 'react'
 import { Button, IconTrashOutlineRegular, MenuItemButton, Modal } from '@liusiqi-dev/dsh-client-ui-primitives'
@@ -13,25 +18,58 @@ import type {
 } from '../contract/slots.ts'
 import browserCss from '../rows/WorkspaceBrowser.module.css'
 
+/** Offset that clears the pointer glyph so the bubble never sits under the cursor. */
+const TOOLTIP_OFFSET_X = 16
+const TOOLTIP_OFFSET_Y = 20
+
 /**
  * Menu row (order 450): delete, after archive at 400.
+ *
+ * With running work the row renders disabled: a disabled `<button>` receives no
+ * pointer events, so the wrapper owns both the `not-allowed` cursor and the bubble
+ * that follows the pointer.
  * @param props - owner share, the delete share, and the menu open state.
  * @returns the row.
  */
 export function DeleteSessionMenuItem({
-  sessionId, useMenuOpenState, requestDeleteSession, t,
+  sessionId, running, useMenuOpenState, requestDeleteSession, t,
 }: SessionMenuItemProps<DeleteSessionInjected>) {
   const [, setMenuOpen] = useMenuOpenState()
+  const [pointer, setPointer] = useState<{ x: number; y: number } | null>(null)
+
+  if (!running) {
+    return (
+      <MenuItemButton
+        icon={<IconTrashOutlineRegular size={14} />}
+        onSelect={() => {
+          setMenuOpen(false)
+          requestDeleteSession(sessionId)
+        }}
+      >
+        {t('menu.deleteSession')}
+      </MenuItemButton>
+    )
+  }
+
   return (
-    <MenuItemButton
-      icon={<IconTrashOutlineRegular size={14} />}
-      onSelect={() => {
-        setMenuOpen(false)
-        requestDeleteSession(sessionId)
-      }}
+    <span
+      className={browserCss.deleteBlocked}
+      onPointerMove={(event) => { setPointer({ x: event.clientX, y: event.clientY }) }}
+      onPointerLeave={() => { setPointer(null) }}
     >
-      {t('menu.deleteSession')}
-    </MenuItemButton>
+      <MenuItemButton icon={<IconTrashOutlineRegular size={14} />} disabled onSelect={() => {}}>
+        {t('menu.deleteSession')}
+      </MenuItemButton>
+      {pointer !== null && (
+        <span
+          role="tooltip"
+          className={browserCss.deleteBlockedTip}
+          style={{ left: pointer.x + TOOLTIP_OFFSET_X, top: pointer.y + TOOLTIP_OFFSET_Y }}
+        >
+          {t('menu.deleteSessionRunning')}
+        </span>
+      )}
+    </span>
   )
 }
 

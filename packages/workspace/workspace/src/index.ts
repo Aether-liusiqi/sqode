@@ -291,6 +291,21 @@ export class WorkspaceRegistry extends Service {
   }
 
   /**
+   * The canonical cwd the membership index holds for a session, or `undefined`
+   * when the id has no live or stored header whose cwd resolves.
+   *
+   * A workspace mutation event carries the raw record, whose candidate account
+   * may still name sessions this index cannot resolve. Broadcasting that
+   * unfiltered re-introduces them into every surface, so a consumer applies the
+   * same predicate `Workspace.sessionIds` does.
+   * @param id - the session asked about.
+   * @returns the canonical cwd, when the id has a usable header.
+   */
+  sessionPath(id: SessionId): string | undefined {
+    return this.sessionPaths.get(id)
+  }
+
+  /**
    * Synchronous workspace projection in durable registry order. Every
    * entity's `sessionIds` getter is already filtered by the startup/live
    * canonical-cwd header index; this method performs no persistence reads.

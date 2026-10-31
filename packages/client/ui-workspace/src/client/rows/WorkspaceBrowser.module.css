@@ -588,6 +588,37 @@
   color: var(--dsw-alias-label-secondary);
 }
 
+/*
+ * The delete row while its Session has running work. A disabled <button> takes no
+ * pointer events, so the wrapper owns the cursor and the bubble; the button only
+ * keeps its own disabled styling.
+ */
+.deleteBlocked {
+  display: block;
+  cursor: not-allowed;
+}
+
+.deleteBlocked button {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Fixed so the bubble escapes the menu's clipping and follows the pointer. */
+.deleteBlockedTip {
+  position: fixed;
+  z-index: 1200;
+  width: max-content;
+  max-width: 50vw;
+  padding: 3px 7px;
+  border-radius: var(--dsw-radius-sm);
+  background: var(--dsw-alias-tooltip-bg);
+  color: var(--dsw-static-neutral-bluish-00);
+  font-size: 13px;
+  line-height: 20px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
 /* The stop-and-archive dialog's list of work that will be stopped. */
 .archiveActivity {
   margin: 0 0 8px;

@@ -684,10 +684,10 @@ describe('workspace browser rows', () => {
 
     // Both lists receive the row identity; only the menu list carries the open state.
     expect(rendered).toHaveBeenCalledWith(
-      'sidebar.workspaces.session.menu.item', { sessionId: node.id, displayTitle: 'One' }, [false, expect.any(Function)],
+      'sidebar.workspaces.session.menu.item', { sessionId: node.id, displayTitle: 'One', running: false }, [false, expect.any(Function)],
     )
     expect(rendered).toHaveBeenCalledWith(
-      'sidebar.workspaces.session.row.action', { sessionId: node.id, displayTitle: 'One' }, undefined,
+      'sidebar.workspaces.session.row.action', { sessionId: node.id, displayTitle: 'One', running: false }, undefined,
     )
     expect(screen.queryByRole('menuitem')).toBeNull()
     const trigger = screen.getByRole('button', { name: '会话“One”的操作' })
@@ -695,7 +695,7 @@ describe('workspace browser rows', () => {
     fireEvent.click(trigger)
     expect(screen.getAllByRole('menuitem').map(item => item.textContent)).toEqual(['Export'])
     expect(rendered).toHaveBeenCalledWith(
-      'sidebar.workspaces.session.menu.item', { sessionId: node.id, displayTitle: 'One' }, [true, expect.any(Function)],
+      'sidebar.workspaces.session.menu.item', { sessionId: node.id, displayTitle: 'One', running: false }, [true, expect.any(Function)],
     )
     fireEvent.click(screen.getByRole('menuitem', { name: 'Export' }))
     expect(onEntry).toHaveBeenCalledWith(node.id, 'One', true)

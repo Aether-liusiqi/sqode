@@ -752,11 +752,28 @@ describe('WorkspaceBrowser', () => {
     })
     expect(rendered).not.toHaveBeenCalledWith('sidebar.workspaces.session.menu.item', expect.anything())
     fireEvent.click(screen.getByText('alpha'))
-    const owner = { sessionId: sid('alpha-s'), displayTitle: 'alpha-s' }
+    const owner = { sessionId: sid('alpha-s'), displayTitle: 'alpha-s', running: false }
     expect(rendered).toHaveBeenCalledWith('sidebar.workspaces.session.menu.item', owner)
     expect(rendered).toHaveBeenCalledWith('sidebar.workspaces.session.row.action', owner)
     rendered.mockClear()
     act(() => { b.store.actions.setGroupBy('flat') })
+    expect(rendered).toHaveBeenCalledWith('sidebar.workspaces.session.menu.item', owner)
+    expect(rendered).toHaveBeenCalledWith('sidebar.workspaces.session.row.action', owner)
+  })
+
+  it('hands the row running state to both Session action lists', () => {
+    const rendered = vi.fn()
+    const renderSlot: WorkspaceBrowserProps['renderSlot'] = (name: string, owner: object) => {
+      rendered(name, owner)
+      return null
+    }
+    mount({
+      useSessions: hook(sessionState([summary('busy-s', 1, { running: true })])),
+      useWorkspaces: hook(workspaceState([workspace('alpha', ['busy-s'])])),
+      renderSlot,
+    })
+    fireEvent.click(screen.getByText('alpha'))
+    const owner = { sessionId: sid('busy-s'), displayTitle: 'busy-s', running: true }
     expect(rendered).toHaveBeenCalledWith('sidebar.workspaces.session.menu.item', owner)
     expect(rendered).toHaveBeenCalledWith('sidebar.workspaces.session.row.action', owner)
   })

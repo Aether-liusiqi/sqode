@@ -78,6 +78,12 @@ export interface SessionRowOwnerProps {
   sessionId: SessionId
   /** Row display title: persisted title, or empty when the Session has none. */
   displayTitle: string
+  /**
+   * True while the Session has running work. An action the Host refuses in that
+   * state (delete) disables itself from this fact instead of letting the operator
+   * open its dialog and read the refusal there.
+   */
+  running: boolean
 }
 
 /** The row menu's open state as its owner holds it: the `useState` pair. */

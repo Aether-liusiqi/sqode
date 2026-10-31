@@ -251,9 +251,16 @@ export class SessionCommandController {
       )
     }
     await this.agents.release(sessionId)
-    if (!(await this.ctx.sessionPersistence.destroy(sessionId))) {
+    // Same idempotence as the Workspace controller: a Session whose log never
+    // materialized still has to leave the workspace account, or its row becomes
+    // a phantom whose own delete always answers `session/not-found`.
+    const owners = this.ctx.workspaceRegistry.list()
+      .filter(workspace => workspace.accountsSession(sessionId))
+    const removed = await this.ctx.sessionPersistence.destroy(sessionId)
+    if (!removed && owners.length === 0) {
       throw new RemoteError('session/not-found', `session "${sessionId}" not found`, { sessionId })
     }
+    for (const workspace of owners) await workspace.detachSession(sessionId)
     // Both calls filter an id that is not present, so a Session that was neither pinned
     // nor archived cleans up as a no-op instead of failing the deletion.
     await this.ctx.workspaceRegistry.unarchiveSession(sessionId)

@@ -31,13 +31,17 @@ export function workspaceView(workspace: Workspace): WorkspaceView {
   }
 }
 
-function changedWorkspaceView(workspaceId: string, value: unknown): WorkspaceView {
+function changedWorkspaceView(registry: Context['workspaceRegistry'], workspaceId: string, value: unknown): WorkspaceView {
   const record: WorkspaceRecord = workspaceRecord.parse(value)
   return {
     workspaceId: WorkspaceId(workspaceId),
     path: record.path,
     title: record.title,
-    sessionIds: [...record.sessionIds],
+    // The mutation event carries the raw candidate account, which can name a
+    // session whose header is gone. Broadcasting it unfiltered is what made a
+    // deleted Session reappear in the sidebar; apply the same predicate
+    // `Workspace.sessionIds` applies so a broadcast cannot outrun the read path.
+    sessionIds: record.sessionIds.filter(id => registry.sessionPath(id) === record.path),
     createdAt: record.createdAt,
     updatedAt: record.updatedAt,
   }
@@ -134,7 +138,7 @@ export class WorkspaceFeed {
     if (!this.knownIds.has(change.key)) return
     this.publish({
       type: 'upsert',
-      workspace: changedWorkspaceView(change.key, change.value),
+      workspace: changedWorkspaceView(this.ctx.workspaceRegistry, change.key, change.value),
     })
   }
 

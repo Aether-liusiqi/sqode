@@ -50,7 +50,7 @@ function deferred<T>(): Deferred<T> {
   return { promise, resolve }
 }
 
-async function harness(options: { systemDocuments?: boolean } = {}) {
+async function harness(options: { systemDocuments?: boolean; persistence?: object } = {}) {
   const root = realpathSync.native(mkdtempSync(join(tmpdir(), 'dsh-workspace-controller-')))
   tempDirs.push(root)
   const ctx = new Context()
@@ -61,7 +61,7 @@ async function harness(options: { systemDocuments?: boolean } = {}) {
   const storageDomain = new DomainFacility(ctx, { backend: 'memory', routes: {} })
   ctx.storage.mount('domain', storageDomain)
   ctx.provide('storageDomain', storageDomain)
-  ctx.provide('sessionPersistence', { list: () => Promise.resolve([]) } as never)
+  ctx.provide('sessionPersistence', (options.persistence ?? { list: () => Promise.resolve([]) }) as never)
   await ctx.plugin(WorkspaceRegistry)
   const dispose = (): void => {}
   ctx.provide('typert', {
@@ -272,6 +272,29 @@ describe('WorkspaceController commands', () => {
     // Unarchive is idempotent: an id that is not archived is not an error.
     await expect(controller.unarchiveSession({ sessionId: session.id }))
       .resolves.toEqual({ archivedSessionIds: [] })
+  })
+
+  it('drops an accounted Session whose stored log is already gone instead of refusing the delete', async () => {
+    // The log is absent, which is what a Session created but never materialized
+    // leaves behind: persistence has nothing to remove while the workspace
+    // account still names the id. Refusing there made that id undeletable.
+    const { controller, ctx, root } = await harness({
+      persistence: { list: () => Promise.resolve([]), destroy: () => Promise.resolve(false) },
+    })
+    const created = await controller.create({ path: stageDir(root, 'orphans') })
+    const workspace = ctx.workspaceRegistry.get(created.workspace.workspaceId)
+    if (workspace === undefined) throw new Error('workspace was not created')
+    const session = ctx.sessions.create(SessionId('ghost'), { meta: { cwd: created.workspace.path } })
+    await workspace.attachSession(session.id)
+    expect(workspace.accountsSession(session.id)).toBe(true)
+
+    await expect(controller.deleteSession({ sessionId: session.id }))
+      .resolves.toEqual({ sessionId: session.id })
+    expect(workspace.accountsSession(session.id)).toBe(false)
+
+    // With neither a log nor an account entry left, the id is genuinely unknown.
+    await expect(controller.deleteSession({ sessionId: session.id }))
+      .rejects.toMatchObject({ code: 'session/not-found' })
   })
 
   it('pins only known unarchived Sessions and unpins idempotently', async () => {

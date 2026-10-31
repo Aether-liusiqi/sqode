@@ -91,6 +91,16 @@ export interface Workspace {
   readonly sessionIds: readonly SessionId[]
 
   /**
+   * Whether the durable candidate account names this session, including a
+   * candidate {@link sessionIds} filters out because its header is missing or
+   * its cwd no longer matches. Deletion reads this raw answer so an id whose
+   * log is already gone can still leave the account.
+   * @param sessionId - the session to check.
+   * @returns true while the stored account holds the id.
+   */
+  accountsSession(sessionId: SessionId): boolean
+
+  /**
    * Replace the display title durably.
    * @param title - New title; any string, duplicates across workspaces allowed.
    * @returns resolution after durability.

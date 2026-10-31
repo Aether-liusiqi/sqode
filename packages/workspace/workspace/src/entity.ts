@@ -102,6 +102,20 @@ export class WorkspaceEntity implements Workspace {
     return this.record.sessionIds.filter(id => this.host.sessionPath(id) === this.record.path)
   }
 
+  /**
+   * Whether the durable candidate account names this session, including a
+   * candidate the header-validated {@link sessionIds} projection hides.
+   *
+   * Deleting a Session whose stored log is already gone needs this raw answer:
+   * the projection cannot see the id, yet the record is the only thing that
+   * still holds it, so a delete refused on "no log" would never drop it.
+   * @param sessionId - the session to check.
+   * @returns true while the stored account holds the id.
+   */
+  accountsSession(sessionId: SessionId): boolean {
+    return this.record.sessionIds.includes(sessionId)
+  }
+
   async setTitle(title: string): Promise<void> {
     await this.mutate(record => ({ ...record, title }))
   }

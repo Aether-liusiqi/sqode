@@ -21,11 +21,12 @@ import { en as commonEn } from '@liusiqi-dev/dsh-client-locale/src/locales/en.ts
 import { zh as commonZh } from '@liusiqi-dev/dsh-client-locale/src/locales/zh.ts'
 import type {
   MenuOpenState, RowToast, RowToastState, SessionArchiveConfirmInjected, SessionArchiveConfirmRequest,
-  SessionRenameDialogInjected, SessionRenameTarget,
+  SessionDeleteConfirmRequest, SessionRenameDialogInjected, SessionRenameTarget,
 } from '../src/client/contract/slots.ts'
 import {
   ArchiveSessionMenuItem, ArchiveSessionRowButton, SessionArchiveConfirmDialog,
 } from '../src/client/session-actions/ArchiveSession.tsx'
+import { DeleteSessionMenuItem } from '../src/client/session-actions/DeleteSession.tsx'
 import { ForkSessionMenuItem } from '../src/client/session-actions/ForkSession.tsx'
 import { PinSessionMenuItem, PinSessionRowButton } from '../src/client/session-actions/PinSession.tsx'
 import { RenameSessionMenuItem, SessionRenameDialog } from '../src/client/session-actions/RenameSession.tsx'
@@ -51,7 +52,7 @@ function hook<T>(snapshot: T) {
 const idSet = (...ids: string[]): ReadonlySet<SessionId> => new Set(ids.map(sid))
 
 /** The row every action is rendered for: its owner share as the browser passes it. */
-const ROW = { sessionId: sid('one'), displayTitle: 'Session title' }
+const ROW = { sessionId: sid('one'), displayTitle: 'Session title', running: false }
 const one: SessionSummary = {
   id: ROW.sessionId, displayTitle: ROW.displayTitle, running: false, blank: false, updatedAt: 1, retainedBy: {},
 }
@@ -654,4 +655,34 @@ it('shows effective Session shortcuts while menu clicks keep the row target', ()
   expect(requestSessionRename).toHaveBeenCalledWith(ROW.sessionId, ROW.displayTitle)
   expect(forkSession).toHaveBeenCalledWith(ROW.sessionId)
   expect(archiveSession).toHaveBeenCalledWith(ROW.sessionId)
+})
+
+it('deletes an idle Session from the menu row, and refuses one that is running without opening its dialog', () => {
+  const requestDeleteSession = vi.fn()
+  const { setMenuOpen } = openMenu()
+  // The menu row only asks for the confirmation; the dialog owns the delete hop.
+  const injected = {
+    useDeleteRequest: hook<SessionDeleteConfirmRequest | null>(null),
+    requestDeleteSession,
+    settleSessionDelete: vi.fn(),
+    deleteSession: vi.fn(async () => {}),
+  }
+  const idle = { ...menuRow([true, setMenuOpen]), ...injected }
+  const first = render(<DeleteSessionMenuItem {...idle} />)
+  fireEvent.click(screen.getByRole('menuitem', { name: '删除会话' }))
+  expect(setMenuOpen).toHaveBeenCalledWith(false)
+  expect(requestDeleteSession).toHaveBeenCalledWith(ROW.sessionId)
+  first.unmount()
+
+  const refused = vi.fn()
+  render(<DeleteSessionMenuItem {...menuRow([true, vi.fn()])} {...injected} requestDeleteSession={refused} running />)
+  const row = screen.getByRole('menuitem', { name: '删除会话' })
+  expect(row).toHaveProperty('disabled', true)
+  expect(screen.queryByRole('tooltip')).toBeNull()
+  // A disabled button takes no pointer events, so the wrapper is what carries the
+  // bubble; a MouseEvent named pointermove keeps client coordinates available.
+  fireEvent(row.parentElement as HTMLElement, new MouseEvent('pointermove', { bubbles: true, clientX: 40, clientY: 60 }))
+  expect(screen.getByRole('tooltip').textContent).toBe('任务运行中，无法删除')
+  fireEvent.click(row)
+  expect(refused).not.toHaveBeenCalled()
 })
