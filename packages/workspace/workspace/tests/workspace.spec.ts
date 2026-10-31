@@ -24,6 +24,18 @@ import { defaultWorkspaceTitle, fullyQualifiedWorkspacePath } from '../src/paths
 
 const DOMAIN_VERSION = 2
 
+/**
+ * Link a directory alias.
+ *
+ * Windows refuses a directory symlink unless the account holds
+ * SeCreateSymbolicLinkPrivilege (elevated, or Developer Mode on); a junction
+ * resolves through `realpath` exactly like a symlink and needs no privilege, so
+ * the same expectations run on a plain Windows account instead of being skipped.
+ */
+function linkDirectory(target: string, linkPath: string): Promise<void> {
+  return symlink(target, linkPath, process.platform === 'win32' ? 'junction' : 'dir')
+}
+
 const header = (id: string, cwd?: string, createdAt = 0): SessionHeader => ({
   version: SESSION_FORMAT_VERSION,
   id: SessionId(id),
@@ -211,7 +223,7 @@ describe('WorkspaceRegistry lifecycle and bootstrap', () => {
     const newer = await makeDir('newer')
     const alias = join(base, 'older-link')
     const plain = join(base, 'plain.txt')
-    await symlink(older, alias)
+    await linkDirectory(older, alias)
     await writeFile(plain, 'not a directory')
     const missing = join(base, 'missing')
     const result = await harness({
@@ -382,7 +394,7 @@ describe('WorkspaceRegistry create and lookup', () => {
     const firstDir = await makeDir('first')
     const secondDir = await makeDir('second')
     const alias = join(base, 'first-link')
-    await symlink(firstDir, alias)
+    await linkDirectory(firstDir, alias)
     const { registry, pool } = await harness()
     const first = await registry.create(firstDir, 'Original')
     const second = await registry.create(secondDir)
@@ -1349,7 +1361,7 @@ describe('first-use Workspace preparation', () => {
     const target = join(h.directoryRoot, 'elsewhere')
     await mkdir(target)
     await mkdir(join(h.directoryRoot, 'nested'))
-    await symlink(target, join(h.directoryRoot, 'nested', 'Workspace'))
+    await linkDirectory(target, join(h.directoryRoot, 'nested', 'Workspace'))
     const workspace = await h.registry.initializeDefault(h.resolveDirectory)
     expect(workspace?.path).toBe(await realpath(target))
     // Not 'elsewhere': the title names the directory the caller asked for, so

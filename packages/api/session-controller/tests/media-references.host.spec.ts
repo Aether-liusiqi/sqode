@@ -1,3 +1,4 @@
+import { mkdtempSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'
 import { appendFile, mkdir, mkdtemp, open, realpath, rm, symlink, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -13,6 +14,28 @@ const DEFAULT_LIMIT = 20 * 1024 * 1024
 async function responseBytes(response: Response): Promise<Uint8Array> {
   return new Uint8Array(await response.arrayBuffer())
 }
+
+/**
+ * A file symlink needs SeCreateSymbolicLinkPrivilege on Windows (elevated, or
+ * Developer Mode on), and a junction cannot stand in for a file the way it can
+ * for a directory. Probe once at load so the case skips, rather than fails, on
+ * an account that cannot create one.
+ * @returns whether this host can create a file symlink.
+ */
+function canSymlinkFiles(): boolean {
+  const base = mkdtempSync(join(tmpdir(), 'dsh-symlink-probe-'))
+  try {
+    writeFileSync(join(base, 'target'), '')
+    symlinkSync(join(base, 'target'), join(base, 'link'))
+    return true
+  } catch {
+    return false
+  } finally {
+    rmSync(base, { recursive: true, force: true })
+  }
+}
+
+const fileSymlinks = canSymlinkFiles()
 
 describe('SessionMediaReferences /api/file', () => {
   let root: string
@@ -164,7 +187,7 @@ describe('SessionMediaReferences /api/file', () => {
     expect((await route.call(join(root, 'frames.png'))).status).toBe(403)
   })
 
-  it('reads files and symlink targets outside the default cwd without a workspace registry', async () => {
+  it.skipIf(!fileSymlinks)('reads files and symlink targets outside the default cwd without a workspace registry', async () => {
     const route = await mount()
     const outside = await mkdtemp(join(tmpdir(), 'dsh-media-outside-'))
     try {
