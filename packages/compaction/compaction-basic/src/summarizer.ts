@@ -76,13 +76,15 @@ const COMPACTION_INSTRUCTION = [
  */
 const MAX_SUMMARY_SHRINK_ATTEMPTS = 6
 
-/** Floor for a shrunk completion cap: below this a checkpoint cannot be written. */
-const MIN_SUMMARY_MAX_TOKENS = 1_024
-
 /**
- * Fraction of the replayed turns dropped per shrink attempt once the completion
- * cap alone cannot make the request fit.
+ * Floor for a shrunk completion cap. The structured checkpoint runs a few
+ * thousand tokens, and a model cut off at the cap produces no usable summary at
+ * all — compaction reads that truncation as a failed attempt — so output budget
+ * is the last thing this gives back, never the first.
  */
+const MIN_SUMMARY_MAX_TOKENS = 4_096
+
+/** Fraction of the replayed turns dropped per shrink attempt. */
 const SUMMARY_TRIM_FRACTION = 4
 
 /** Framing that makes the replacement user message established context. */
@@ -233,8 +235,7 @@ function isPromptTooLong(error: unknown): boolean {
 }
 
 /**
- * Shrink one refused replay so the next attempt can fit the same window: first
- * give back completion budget, then drop the oldest replayed turns.
+ * Shrink one refused replay so the next attempt fits the same window.
  *
  * The replay mirrors the conversation, so the window that just refused it is the
  * one the conversation has to fit afterwards. A summarization request that can
@@ -242,6 +243,11 @@ function isPromptTooLong(error: unknown): boolean {
  * failure compaction exists to repair. Dropping the oldest turns keeps the
  * checkpoint centered on what is still active; the shadowed range is unchanged,
  * so the caller's shrink accounting stays exact.
+ *
+ * The prompt is what the target rejected, so the prompt is what shrinks first.
+ * Output budget is only given back once nothing is left to drop, and never below
+ * a usable checkpoint: a summary cut off at the cap is a failed compaction, not
+ * a smaller one.
  *
  * A leading system message is never dropped: it carries the conversation's own
  * instructions, and every later turn reads against it.
@@ -253,14 +259,16 @@ function shrinkReplay(
   messages: readonly Message[],
   maxTokens: number,
 ): { messages: readonly Message[]; maxTokens: number } | null {
-  if (maxTokens > MIN_SUMMARY_MAX_TOKENS) {
-    return { messages, maxTokens: Math.max(MIN_SUMMARY_MAX_TOKENS, Math.floor(maxTokens / 4)) }
-  }
   const head = messages[0]?.role === 'system' ? messages.slice(0, 1) : []
   const rest = messages.slice(head.length)
-  if (rest.length <= 1) return null
-  const drop = Math.max(1, Math.ceil(rest.length / SUMMARY_TRIM_FRACTION))
-  return { messages: [...head, ...rest.slice(drop)], maxTokens }
+  if (rest.length > 1) {
+    const drop = Math.max(1, Math.ceil(rest.length / SUMMARY_TRIM_FRACTION))
+    return { messages: [...head, ...rest.slice(drop)], maxTokens }
+  }
+  if (maxTokens > MIN_SUMMARY_MAX_TOKENS) {
+    return { messages, maxTokens: Math.max(MIN_SUMMARY_MAX_TOKENS, Math.floor(maxTokens / 2)) }
+  }
+  return null
 }
 
 /**

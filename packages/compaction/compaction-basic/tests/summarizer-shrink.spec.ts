@@ -58,7 +58,7 @@ function rejected(): LlmError {
 }
 
 describe('summarizeWithLlm context-window recovery', () => {
-  it('gives back completion budget and retries when the target refuses the prompt length', async () => {
+  it('drops the oldest replay when the target refuses the prompt length', async () => {
     const calls: GenerateOptions[] = []
     const result = await summarizeWithLlm(
       host(attempt => attempt === 1 ? (async function* () { throw rejected() })() : reply('## Current Work\n- continuing'), calls),
@@ -68,12 +68,12 @@ describe('summarizeWithLlm context-window recovery', () => {
     )
 
     expect(calls).toHaveLength(2)
-    // 4096 / 4 lands on the floor: the cheapest retry that still writes a checkpoint.
-    expect(calls[1]?.maxTokens).toBe(1_024)
-    expect(result.maxTokens).toBe(1_024)
+    // The prompt is what the target rejected, so the prompt shrinks: the replay
+    // loses a turn while the completion cap that lets a checkpoint finish stays.
+    expect(calls[1]?.messages.length).toBeLessThan(calls[0]!.messages.length)
+    expect(calls[1]?.maxTokens).toBe(CONFIG.maxTokens)
+    expect(result.maxTokens).toBe(CONFIG.maxTokens)
     expect(JSON.stringify(result.summary)).toContain('continuing')
-    // The replay itself is untouched while output budget alone can buy the room.
-    expect(calls[1]?.messages.length).toBe(calls[0]?.messages.length)
   })
 
   it('drops the oldest turns once the completion floor is reached, keeping the system head', async () => {
