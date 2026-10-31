@@ -74,7 +74,7 @@ const COMPACTION_INSTRUCTION = [
  * target rejects immediately, so this only bounds a recovery path that otherwise
  * fails the compaction outright.
  */
-const MAX_SUMMARY_SHRINK_ATTEMPTS = 6
+const MAX_SUMMARY_SHRINK_ATTEMPTS = 10
 
 /**
  * Floor for a shrunk completion cap. The structured checkpoint runs a few
