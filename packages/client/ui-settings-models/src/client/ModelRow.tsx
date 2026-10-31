@@ -17,6 +17,30 @@ interface CapacityInput {
   onBlur?: () => void
 }
 
+/**
+ * Quick-pick context sizes, spelled the way this page counts them: `K` is 1000,
+ * so `1M` stores 1,000,000. The numeric field below still accepts any count, so a
+ * route whose real ceiling is 262,144 or 1,048,576 is not forced onto a preset.
+ */
+const CAPACITY_PRESETS = [
+  { tokens: 300_000, label: 'capacityPreset300k' },
+  { tokens: 600_000, label: 'capacityPreset600k' },
+  { tokens: 1_000_000, label: 'capacityPreset1m' },
+] as const satisfies readonly { tokens: number; label: ModelsKey }[]
+
+/**
+ * Drop one field so an emptied control travels as an unset instead of an
+ * `undefined` that would overwrite the inherited value with nothing.
+ * @param model - the drafted row.
+ * @param key - the field the control cleared.
+ * @returns a copy without that field.
+ */
+function withoutCapacity(model: DeepSeekModelDraft, key: 'contextWindow'): DeepSeekModelDraft {
+  const next = { ...model }
+  Reflect.deleteProperty(next, key)
+  return next
+}
+
 /** Adapter-owned data and actions for one model row. */
 interface ModelRowProps {
   model: DeepSeekModelDraft
@@ -86,6 +110,30 @@ export function ModelRow(props: ModelRowProps): ReactNode {
       {props.expanded
         ? (
           <div className={styles['modelAdvanced']}>
+            {/* Presets first: the ceiling a route really enforces is often the
+                one number nobody knows, and picking it here beats typing it. */}
+            <label className={styles['modelField']}>
+              <span className={styles['modelFieldLabel']}>{t('capacityPreset')}</span>
+              <select
+                className={`${styles['input']} ${styles['selectInput']}`}
+                value={CAPACITY_PRESETS.some(preset => preset.tokens === model.contextWindow)
+                  ? String(model.contextWindow)
+                  : ''}
+                aria-label={`${t('capacityPreset')} ${String(position)}`}
+                disabled={disabled}
+                onChange={(event) => {
+                  const tokens = event.target.value === '' ? undefined : Number(event.target.value)
+                  props.onChange(tokens === undefined
+                    ? withoutCapacity(model, 'contextWindow')
+                    : { ...model, contextWindow: tokens })
+                }}
+              >
+                <option value="">{t('capacityPresetCustom')}</option>
+                {CAPACITY_PRESETS.map(preset => (
+                  <option key={preset.tokens} value={String(preset.tokens)}>{t(preset.label)}</option>
+                ))}
+              </select>
+            </label>
             {(['contextWindow', 'maxTokens'] as const).map(field => (
               <label className={styles['modelField']} key={field}>
                 <span className={styles['modelFieldLabel']}>{t(field)}</span>
