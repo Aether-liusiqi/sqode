@@ -41,6 +41,16 @@ function withoutCapacity(model: DeepSeekModelDraft, key: 'contextWindow'): DeepS
   return next
 }
 
+/**
+ * The thinking levels one model offers, as the settings row expresses them.
+ *
+ * pi-ai stores this as `reasoningEfforts`: which levels the picker may offer and
+ * the wire spelling each one sends. A profile carries no per-model default, so a
+ * single-level choice here is also that model's default in practice — the picker
+ * then has nothing else to select.
+ */
+export type ReasoningPreset = 'inherit' | 'unsupported' | 'low' | 'high' | 'max' | 'all' | 'custom'
+
 /** Adapter-owned data and actions for one model row. */
 interface ModelRowProps {
   model: DeepSeekModelDraft
@@ -53,6 +63,8 @@ interface ModelRowProps {
   t: (key: ModelsKey) => string
   contextWindow: CapacityInput
   maxTokens: CapacityInput
+  /** Present only for adapters that store a per-model reasoning capability. */
+  reasoning?: { value: ReasoningPreset; onChange: (preset: ReasoningPreset) => void }
   onFieldChange: (field: 'id' | 'name', value: string | undefined) => void
   onIdBlur?: (value: string) => void
   onChange: (model: DeepSeekModelDraft) => void
@@ -150,6 +162,30 @@ export function ModelRow(props: ModelRowProps): ReactNode {
                 />
               </label>
             ))}
+            {props.reasoning === undefined
+              ? null
+              : (
+                <label className={styles['modelField']}>
+                  <span className={styles['modelFieldLabel']}>{t('reasoningLevel')}</span>
+                  <select
+                    className={`${styles['input']} ${styles['selectInput']}`}
+                    value={props.reasoning.value}
+                    aria-label={`${t('reasoningLevel')} ${String(position)}`}
+                    disabled={disabled}
+                    onChange={(event) => { props.reasoning?.onChange(event.target.value as ReasoningPreset) }}
+                  >
+                    <option value="inherit">{t('reasoningInherit')}</option>
+                    <option value="unsupported">{t('reasoningUnsupported')}</option>
+                    <option value="low">{t('reasoningLow')}</option>
+                    <option value="high">{t('reasoningHigh')}</option>
+                    <option value="max">{t('reasoningMax')}</option>
+                    <option value="all">{t('reasoningAll')}</option>
+                    {props.reasoning.value === 'custom'
+                      ? <option value="custom">{t('reasoningCustom')}</option>
+                      : null}
+                  </select>
+                </label>
+              )}
             <ModelInputTypes
               model={model} field={props.inputField} position={position}
               fallback={props.inputFallback} disabled={disabled || props.inputLoading === true} t={t} onChange={props.onChange}

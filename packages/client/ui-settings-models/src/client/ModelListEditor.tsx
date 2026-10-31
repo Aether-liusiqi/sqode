@@ -23,13 +23,69 @@ import type { ModelsOperations } from './operations.ts'
 import type { DeepSeekModelDraft } from './DeepSeekModelsEditor.tsx'
 import type { en } from './locales.ts'
 import { ModelRow } from './ModelRow.tsx'
+import type { ReasoningPreset } from './ModelRow.tsx'
 import styles from './ModelsSection.module.css'
 
 /**
  * One configured model row. Fields this card does not edit must survive an
  * edit rather than being dropped by a rebuild.
  */
-export type ModelDraft = DeepSeekModelDraft
+export type ModelDraft = DeepSeekModelDraft & {
+  /**
+   * pi-ai only: the thinking levels this model offers, keyed by level, valued by
+   * the spelling dispatch sends. `false` declares a non-reasoning model; absent
+   * inherits the installed catalog's capability.
+   */
+  reasoningEfforts?: false | Readonly<Record<string, string | null>> | null
+}
+
+/** Wire spelling for each named level; a gateway with its own vocabulary edits this per model. */
+const REASONING_WIRE: Readonly<Record<'low' | 'high' | 'max', string>> = {
+  low: 'low',
+  high: 'high',
+  max: 'max',
+}
+
+/**
+ * Which preset a stored `reasoningEfforts` value corresponds to.
+ * @param model - the drafted row.
+ * @returns the preset the row's dropdown shows.
+ */
+function reasoningPresetOf(model: ModelDraft): ReasoningPreset {
+  const efforts = model.reasoningEfforts
+  if (efforts === false) return 'unsupported'
+  if (efforts === undefined || efforts === null) return 'inherit'
+  const levels = Object.keys(efforts).filter(level => level !== 'off')
+  if (levels.length === 1 && (levels[0] === 'low' || levels[0] === 'high' || levels[0] === 'max')) {
+    return levels[0]
+  }
+  if (levels.length === 3 && ['low', 'high', 'max'].every(level => levels.includes(level))) return 'all'
+  return levels.length === 0 ? 'unsupported' : 'custom'
+}
+
+/**
+ * Apply one preset to a drafted row.
+ *
+ * A single level declares only that level, which is how this adapter expresses
+ * "this model runs at High": the picker then offers nothing else to choose. All
+ * three levels declare the capability and leave the choice to the picker.
+ * @param model - the drafted row.
+ * @param preset - the chosen preset.
+ * @returns the row with `reasoningEfforts` rewritten, or dropped when inheriting.
+ */
+function withReasoning(model: ModelDraft, preset: ReasoningPreset): ModelDraft {
+  const next = { ...model }
+  if (preset === 'inherit') {
+    Reflect.deleteProperty(next, 'reasoningEfforts')
+    return next
+  }
+  if (preset === 'unsupported') return { ...next, reasoningEfforts: false }
+  if (preset === 'all') {
+    return { ...next, reasoningEfforts: { off: null, low: 'low', high: 'high', max: 'max' } }
+  }
+  if (preset === 'custom') return next
+  return { ...next, reasoningEfforts: { off: null, [preset]: REASONING_WIRE[preset] } }
+}
 
 /** A row's text field, or the empty string when unset or not a string. */
 function textOf(model: ModelDraft, key: string): string {
@@ -374,6 +430,12 @@ export function ModelListEditor(props: ModelListEditorProps): ReactNode {
               value: capacityText(model, index, 'maxTokens'),
               placeholder: CAPACITY_HINT.maxTokens,
               onChange: (text) => { editCapacity(index, 'maxTokens', text) },
+            }}
+            reasoning={{
+              value: reasoningPresetOf(model),
+              onChange: (preset) => {
+                onChange(models.map((row, at) => at === index ? withReasoning(row, preset) : row))
+              },
             }}
             onFieldChange={(field, value) => { patch(index, { [field]: value }) }}
             onChange={(next) => { onChange(models.map((row, at) => at === index ? next : row)) }}
