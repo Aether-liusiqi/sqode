@@ -5,7 +5,9 @@
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { contentHasImage, BlockAssembler, LlmError } from '@liusiqi-dev/dsh-llm'
+import {
+  CONTEXT_WINDOW_EXCEEDED_CODE, BlockAssembler, LlmError, contentHasImage, isContextWindowExceededError,
+} from '@liusiqi-dev/dsh-llm'
 import { deepFreeze } from '@liusiqi-dev/dsh-util-values'
 import type {
   ContentBlock, FinishReason, GenerateOptions, Message, RequestMessage, TokenUsage, ToolSchema,
@@ -66,6 +68,23 @@ const COMPACTION_INSTRUCTION = [
   `- If the conversation already contains a ${SUMMARY_OPEN_TAG} block, it is a PRIOR checkpoint. Do not copy it forward verbatim: preserve still-true facts, drop stale ones, and merge newer information into a single consolidated summary under the same structure.`,
 ].join('\n')
 
+/**
+ * Attempts one summarization spends shrinking its own replay after the target
+ * refuses the prompt as too long. Each attempt is a provider round-trip that the
+ * target rejects immediately, so this only bounds a recovery path that otherwise
+ * fails the compaction outright.
+ */
+const MAX_SUMMARY_SHRINK_ATTEMPTS = 6
+
+/** Floor for a shrunk completion cap: below this a checkpoint cannot be written. */
+const MIN_SUMMARY_MAX_TOKENS = 1_024
+
+/**
+ * Fraction of the replayed turns dropped per shrink attempt once the completion
+ * cap alone cannot make the request fit.
+ */
+const SUMMARY_TRIM_FRACTION = 4
+
 /** Framing that makes the replacement user message established context. */
 const CHECKPOINT_PREAMBLE =
   'This is an automatically generated checkpoint condensing an earlier span of the conversation to free up context. Treat the captured context as established background and build on it without restating it. Continue the task directly from the messages that follow, without acknowledging this checkpoint.'
@@ -110,6 +129,12 @@ export type SummaryResult = {
  * Run the default cache-reusing `ctx.llm.stream()` summarization call: replay
  * the conversation prefix, then append the compaction instruction as the final
  * user message so the provider's warm prefix cache is reused.
+ *
+ * A target that refuses the replay as longer than its own window is answered by
+ * shrinking the replay and trying again, because that refusal is precisely what
+ * the caller asked compaction to repair: replaying a near-window context to the
+ * window that rejected it fails identically, and the Session would then have no
+ * way back under the limit.
  * @param ctx - context providing the LLM service.
  * @param config - resolved backend configuration.
  * @param input - replayed conversation prefix (system, tools, and leading messages) to condense.
@@ -141,43 +166,101 @@ export async function summarizeWithLlm(
     )
   }
 
-  const assembler = new BlockAssembler()
-  const messages: RequestMessage[] = [
-    ...input.messages,
-    deepFreeze({
-      role: 'user',
-      content: [{ type: 'text', text: COMPACTION_INSTRUCTION }],
-    }),
-  ]
-  const options: GenerateOptions = {
-    provider: target.provider,
-    model: target.model,
-    messages,
-    toolHistory: agent.session.toolHistory(),
-    ...input.tools === undefined ? {} : { tools: [...input.tools] },
-    maxTokens: config.maxTokens,
-    sessionId: agent.session.id,
-    purpose: 'compaction',
-    ...signal === undefined ? {} : { signal },
-  }
-  for await (const chunk of ctx.llm.stream(options)) assembler.push(chunk)
-  const error = finishError(assembler.finish)
-  if (error !== undefined) throw error
+  const instruction: RequestMessage = deepFreeze({
+    role: 'user',
+    content: [{ type: 'text', text: COMPACTION_INSTRUCTION }],
+  })
+  let replay: readonly Message[] = input.messages
+  let maxTokens = config.maxTokens
+  let refused: unknown
+  for (let attempt = 0; attempt <= MAX_SUMMARY_SHRINK_ATTEMPTS; attempt += 1) {
+    const options: GenerateOptions = {
+      provider: target.provider,
+      model: target.model,
+      messages: [...replay, instruction],
+      toolHistory: agent.session.toolHistory(),
+      ...input.tools === undefined ? {} : { tools: [...input.tools] },
+      maxTokens,
+      sessionId: agent.session.id,
+      purpose: 'compaction',
+      ...signal === undefined ? {} : { signal },
+    }
+    const assembler = new BlockAssembler()
+    try {
+      for await (const chunk of ctx.llm.stream(options)) assembler.push(chunk)
+      const failure = finishError(assembler.finish)
+      if (failure !== undefined) throw failure
 
-  const rawOutput = assembler.blocks()
-  const summary = summaryText(rawOutput)
-  if (!summary.some(block => block.text.trim().length > 0)) {
-    throw new Error('summarization produced no text summary content')
+      const rawOutput = assembler.blocks()
+      const summary = summaryText(rawOutput)
+      if (!summary.some(block => block.text.trim().length > 0)) {
+        throw new Error('summarization produced no text summary content')
+      }
+      return {
+        summary,
+        rawOutput,
+        llmStreamCall: true,
+        provider: options.provider,
+        model: options.model,
+        maxTokens,
+        ...(assembler.usage === undefined ? {} : { usage: assembler.usage }),
+      }
+    } catch (error: unknown) {
+      // Only the target refusing this prompt's length is worth shrinking for.
+      // Every other failure is the caller's to see unchanged.
+      if (!isPromptTooLong(error)) throw error
+      const shrink = shrinkReplay(replay, maxTokens)
+      if (shrink === null) throw error
+      refused = error
+      replay = shrink.messages
+      maxTokens = shrink.maxTokens
+    }
   }
-  return {
-    summary,
-    rawOutput,
-    llmStreamCall: true,
-    provider: options.provider,
-    model: options.model,
-    maxTokens: config.maxTokens,
-    ...(assembler.usage === undefined ? {} : { usage: assembler.usage }),
+  /* v8 ignore next -- the final attempt shrinks or rethrows, so this only satisfies the compiler. */
+  throw refused
+}
+
+/**
+ * Whether one summarization attempt was refused because the prompt itself was
+ * longer than the target's window. Adapters report the canonical code, and an
+ * in-band finish carries the provider's own wording, so both are recognized.
+ * @param error - the failure a summarization attempt raised.
+ * @returns true when the target rejected the prompt length.
+ */
+function isPromptTooLong(error: unknown): boolean {
+  if (error instanceof LlmError && error.code === CONTEXT_WINDOW_EXCEEDED_CODE) return true
+  return isContextWindowExceededError(error instanceof Error ? error.message : String(error))
+}
+
+/**
+ * Shrink one refused replay so the next attempt can fit the same window: first
+ * give back completion budget, then drop the oldest replayed turns.
+ *
+ * The replay mirrors the conversation, so the window that just refused it is the
+ * one the conversation has to fit afterwards. A summarization request that can
+ * never fit would make the Session uncompactable at that window, which is the
+ * failure compaction exists to repair. Dropping the oldest turns keeps the
+ * checkpoint centered on what is still active; the shadowed range is unchanged,
+ * so the caller's shrink accounting stays exact.
+ *
+ * A leading system message is never dropped: it carries the conversation's own
+ * instructions, and every later turn reads against it.
+ * @param messages - the replay the refused attempt sent.
+ * @param maxTokens - the completion cap that attempt reserved.
+ * @returns a smaller replay, or `null` when nothing more can be given back.
+ */
+function shrinkReplay(
+  messages: readonly Message[],
+  maxTokens: number,
+): { messages: readonly Message[]; maxTokens: number } | null {
+  if (maxTokens > MIN_SUMMARY_MAX_TOKENS) {
+    return { messages, maxTokens: Math.max(MIN_SUMMARY_MAX_TOKENS, Math.floor(maxTokens / 4)) }
   }
+  const head = messages[0]?.role === 'system' ? messages.slice(0, 1) : []
+  const rest = messages.slice(head.length)
+  if (rest.length <= 1) return null
+  const drop = Math.max(1, Math.ceil(rest.length / SUMMARY_TRIM_FRACTION))
+  return { messages: [...head, ...rest.slice(drop)], maxTokens }
 }
 
 /**
