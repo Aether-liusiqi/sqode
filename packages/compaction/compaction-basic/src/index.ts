@@ -386,13 +386,19 @@ export class BasicCompactionEngine extends CompactionEngine {
     // The configured cap is tuned for large windows; asking a 100k route for
     // 65k of output leaves the prompt almost nothing, so the cap follows the
     // window it is being spent on.
-    const outputTokens = target === undefined
-      ? config.maxTokens
-      : summaryOutputTokens(
-        await this.windowFor(target, signal).catch(() => undefined),
-        config.maxTokens,
-      )
-    return summarizeWithLlm(this.ctx, { ...config, maxTokens: outputTokens }, input, agent, signal)
+    const window = target === undefined
+      ? undefined
+      : await this.windowFor(target, signal).catch(() => undefined)
+    const outputTokens = summaryOutputTokens(window, config.maxTokens)
+    // The same window also decides how much conversation one call may replay:
+    // with a budget the summarizer splits an oversized span into ordered portions
+    // instead of dropping its beginning.
+    const promptBudget = summaryInputBudget(window, config.maxTokens)
+    return summarizeWithLlm(this.ctx, {
+      ...config,
+      maxTokens: outputTokens,
+      ...promptBudget === undefined ? {} : { promptBudget },
+    }, input, agent, signal)
   }
 
   /**

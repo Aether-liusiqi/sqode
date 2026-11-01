@@ -18,6 +18,11 @@ interface SummaryConfig {
   readonly summarizationProvider: string
   readonly summarizationModel: string
   readonly maxTokens: number
+  /**
+   * How many prompt tokens one summarization call may replay. Absent means the
+   * caller did not resolve a window, and the replay is sent whole.
+   */
+  readonly promptBudget?: number
 }
 
 /** Tags wrapping the structured summary inside the landed checkpoint node. */
@@ -87,6 +92,20 @@ const MIN_SUMMARY_MAX_TOKENS = 4_096
 
 /** Fraction of the replayed turns dropped per shrink attempt. */
 const SUMMARY_TRIM_FRACTION = 4
+
+/**
+ * Characters one token is assumed to carry when a replay is divided into
+ * portions. Deliberately low: undercounting tokens would put a portion back over
+ * the window it was split to fit.
+ */
+const SUMMARY_CHARS_PER_TOKEN = 3
+
+/**
+ * Ceiling on portions one summarization may make. A conversation needing more
+ * than this is beyond what ordered re-summarization can preserve, and trimming
+ * (which says so in the checkpoint) is the honest answer.
+ */
+const MAX_SUMMARY_PORTIONS = 12
 
 /**
  * Added to the directive once a turn has been dropped from the replay. Without
@@ -179,24 +198,80 @@ export async function summarizeWithLlm(
     )
   }
 
-  let replay: readonly Message[] = input.messages
+  const head = input.messages[0]?.role === 'system' ? input.messages.slice(0, 1) : []
+  const body = input.messages.slice(head.length)
+  const portions = summaryPortionCount(body, config.promptBudget)
+  if (portions === 1) {
+    return runSummaryAttempt(ctx, config, input, agent, target, input.messages, undefined, signal)
+  }
+
+  // Ordered portioning is what a conversation several times the window needs:
+  // each call sees one slice plus the checkpoint the previous call produced, so
+  // nothing is dropped and every slice is condensed at full fidelity. It is the
+  // same shape as summarizing a summary, extended to N steps.
+  const groups = splitReplay(body, portions)
+  let carried: string | undefined
+  let last: SummaryResult | undefined
+  for (const [index, group] of groups.entries()) {
+    last = await runSummaryAttempt(
+      ctx,
+      config,
+      input,
+      agent,
+      target,
+      [
+        ...head,
+        ...carried === undefined ? [] : [carryOverMessage(carried)],
+        ...group,
+      ],
+      { index, total: groups.length },
+      signal,
+    )
+    carried = last.summary
+      .map(block => block.type === 'text' ? block.text : '')
+      .join('\n')
+      .trim()
+  }
+  /* v8 ignore next -- portioning always yields at least one group. */
+  if (last === undefined) throw new Error('summarization produced no portions')
+  return last
+}
+
+/**
+ * Run one summarization request, shrinking its own replay while the target keeps
+ * refusing the prompt length.
+ * @param ctx - context providing the LLM service.
+ * @param config - resolved backend configuration.
+ * @param input - replayed prefix, whose tool schemas the call reuses.
+ * @param agent - supplies tool history and the session id.
+ * @param target - provider and model to summarize with.
+ * @param replay - messages this attempt sends.
+ * @param portion - position of this attempt when the replay was divided.
+ * @param signal - optional cancellation forwarded to the adapter.
+ * @returns the checkpoint this attempt produced.
+ */
+async function runSummaryAttempt(
+  ctx: Context,
+  config: SummaryConfig,
+  input: SummarizationInput,
+  agent: Agent,
+  target: { provider: string; model: string },
+  replay: readonly Message[],
+  portion: { index: number; total: number } | undefined,
+  signal: AbortSignal | undefined,
+): Promise<SummaryResult> {
+  let messages: readonly Message[] = replay
   let maxTokens = config.maxTokens
   let refused: unknown
   for (let attempt = 0; attempt <= MAX_SUMMARY_SHRINK_ATTEMPTS; attempt += 1) {
-    // A replay that already gave turns back must say so: the checkpoint is then
-    // the only record of what the next reader knows, and a summary that silently
-    // starts mid-conversation reads as a complete one.
     const instruction: RequestMessage = deepFreeze({
       role: 'user',
-      content: [{
-        type: 'text',
-        text: attempt === 0 ? COMPACTION_INSTRUCTION : COMPACTION_INSTRUCTION + TRIMMED_REPLAY_NOTICE,
-      }],
+      content: [{ type: 'text', text: instructionText(portion, attempt > 0) }],
     })
     const options: GenerateOptions = {
       provider: target.provider,
       model: target.model,
-      messages: [...replay, instruction],
+      messages: [...messages, instruction],
       toolHistory: agent.session.toolHistory(),
       ...input.tools === undefined ? {} : { tools: [...input.tools] },
       maxTokens,
@@ -228,15 +303,108 @@ export async function summarizeWithLlm(
       // Only the target refusing this prompt's length is worth shrinking for.
       // Every other failure is the caller's to see unchanged.
       if (!isPromptTooLong(error)) throw error
-      const shrink = shrinkReplay(replay, maxTokens)
+      const shrink = shrinkReplay(messages, maxTokens)
       if (shrink === null) throw error
       refused = error
-      replay = shrink.messages
+      messages = shrink.messages
       maxTokens = shrink.maxTokens
     }
   }
   /* v8 ignore next -- the final attempt shrinks or rethrows, so this only satisfies the compiler. */
   throw refused
+}
+
+/**
+ * The directive for one attempt: the structured template, framed as one part of
+ * an ordered run when the replay was divided, and told to record a gap when this
+ * attempt already dropped turns.
+ * @param portion - position among portions, absent for a whole-replay call.
+ * @param trimmed - whether this attempt dropped turns from the replay.
+ * @returns the directive text.
+ */
+function instructionText(portion: { index: number; total: number } | undefined, trimmed: boolean): string {
+  const notice = trimmed ? TRIMMED_REPLAY_NOTICE : ''
+  if (portion === undefined || portion.total <= 1) return COMPACTION_INSTRUCTION + notice
+  const header = portion.index === 0
+    ? `This replay is part 1 of ${portion.total} of ONE conversation, checkpointed in order. Summarize this part on its own; the next call merges your checkpoint into the following part.`
+    : `This replay is part ${portion.index + 1} of ${portion.total} of ONE conversation, checkpointed in order. The carry-over checkpoint above condenses everything before it: keep its "Primary Request and Intent" and "Pending Jobs" entries unchanged, and add what this part contributes.`
+  return `${header}\n\n${COMPACTION_INSTRUCTION}${notice}`
+}
+
+/**
+ * Approximate the token count of a replay from its characters.
+ * @param messages - messages to measure.
+ * @returns the estimated character total.
+ */
+function estimateCharacters(messages: readonly Message[]): number {
+  let total = 0
+  for (const message of messages) {
+    const content: unknown = message.content
+    if (typeof content === 'string') {
+      total += content.length
+      continue
+    }
+    if (!Array.isArray(content)) continue
+    for (const block of content as readonly ContentBlock[]) {
+      if (block.type === 'text') total += block.text.length
+      else total += JSON.stringify(block).length
+    }
+  }
+  return total
+}
+
+/**
+ * How many ordered portions this replay needs to fit one prompt budget.
+ * @param messages - the replayed conversation after its system head.
+ * @param budget - prompt tokens one call may replay, when a window is known.
+ * @returns 1 when it fits whole, otherwise the portion count.
+ */
+function summaryPortionCount(messages: readonly Message[], budget: number | undefined): number {
+  if (budget === undefined || budget <= 0) return 1
+  const estimated = Math.ceil(estimateCharacters(messages) / SUMMARY_CHARS_PER_TOKEN)
+  if (estimated <= budget) return 1
+  return Math.min(MAX_SUMMARY_PORTIONS, Math.ceil(estimated / budget))
+}
+
+/**
+ * Divide a replay into contiguous, roughly equal portions in conversation order.
+ * @param messages - the replayed conversation after its system head.
+ * @param portions - how many groups to make.
+ * @returns the groups, each non-empty, in order.
+ */
+function splitReplay(messages: readonly Message[], portions: number): Message[][] {
+  const perGroup = Math.ceil(estimateCharacters(messages) / Math.max(1, portions))
+  const groups: Message[][] = []
+  let current: Message[] = []
+  let size = 0
+  for (const message of messages) {
+    const cost = estimateCharacters([message])
+    if (current.length > 0 && groups.length < portions - 1 && size + cost > perGroup) {
+      groups.push(current)
+      current = []
+      size = 0
+    }
+    current.push(message)
+    size += cost
+  }
+  if (current.length > 0) groups.push(current)
+  return groups
+}
+
+/**
+ * A message that carries the previous portion's checkpoint into the next one.
+ * @param checkpoint - the summary produced by the previous portion.
+ * @returns the carry-over message.
+ */
+function carryOverMessage(checkpoint: string): Message {
+  return deepFreeze({
+    role: 'user',
+    content: [{
+      type: 'text',
+      text: '## Carry-over checkpoint\n\nEverything before this point in the conversation is condensed into the checkpoint below. '
+        + `The messages that follow are the next part of the same conversation.\n\n${checkpoint}`,
+    }],
+  }) as unknown as Message
 }
 
 /**

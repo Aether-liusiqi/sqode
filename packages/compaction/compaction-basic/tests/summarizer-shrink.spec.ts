@@ -102,6 +102,33 @@ describe('summarizeWithLlm context-window recovery', () => {
     expect(JSON.stringify(last!.messages.at(-1))).toContain('compaction engine')
   })
 
+  it('condenses a replay larger than its prompt budget in ordered portions', async () => {
+    const calls: GenerateOptions[] = []
+    const messages = [
+      turn('system', 'be brief'),
+      ...Array.from({ length: 6 }, (_unused, index) => turn('user', `marker ${index} ${'x'.repeat(900)}`)),
+    ]
+    const result = await summarizeWithLlm(
+      host(attempt => reply(`## Primary Request and Intent\n- portion ${attempt}`), calls),
+      { ...CONFIG, promptBudget: 400 },
+      { messages },
+      agent(),
+    )
+
+    // ~1,800 estimated tokens against a 400-token budget.
+    expect(calls.length).toBeGreaterThan(1)
+    // Every portion keeps the conversation's own system head.
+    expect(JSON.stringify(calls[0]?.messages)).toContain('be brief')
+    // The second portion receives the first checkpoint as carry-over, which is
+    // what makes ordered portions one summary instead of five.
+    expect(JSON.stringify(calls[1]?.messages)).toContain('portion 1')
+    expect(JSON.stringify(calls[1]?.messages)).toContain('Carry-over checkpoint')
+    // The result the caller records is the final portion's, covering everything.
+    expect(JSON.stringify(result.summary)).toContain(`portion ${String(calls.length)}`)
+    // No single call replays the whole conversation.
+    expect(calls[0]!.messages.length).toBeLessThan(messages.length + 1)
+  })
+
   it('surfaces any other failure on the first attempt', async () => {
     const calls: GenerateOptions[] = []
     await expect(summarizeWithLlm(
