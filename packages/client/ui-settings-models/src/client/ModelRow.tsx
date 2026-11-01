@@ -23,6 +23,8 @@ interface CapacityInput {
  * route whose real ceiling is 262,144 or 1,048,576 is not forced onto a preset.
  */
 const CAPACITY_PRESETS = [
+  { tokens: 100_000, label: 'capacityPreset100k' },
+  { tokens: 200_000, label: 'capacityPreset200k' },
   { tokens: 300_000, label: 'capacityPreset300k' },
   { tokens: 600_000, label: 'capacityPreset600k' },
   { tokens: 1_000_000, label: 'capacityPreset1m' },

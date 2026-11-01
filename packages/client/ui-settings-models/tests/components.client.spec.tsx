@@ -1204,6 +1204,28 @@ describe('ModelsSection', () => {
     ])
   })
 
+  it('offers a 100K preset for routes whose real ceiling is the smallest common window', async () => {
+    const { mutate } = await mountSection()
+    fireEvent.click(screen.getByRole('button', { name: openaiCopy(en.editProvider) }))
+    fireEvent.click(screen.getByText(en.customized))
+    fireEvent.click(screen.getByText(en.addModel))
+    expandRow(1)
+    fireEvent.change(screen.getByLabelText(`${en.modelId} 1`), { target: { value: 'hy3' } })
+    fireEvent.change(screen.getByLabelText(`${en.capacityPreset} 1`), { target: { value: '100000' } })
+    fireEvent.click(screen.getByText(en.apply))
+
+    await waitFor(() => { expect(mutate).toHaveBeenCalledTimes(1) })
+    expect(mutate.mock.calls[0]).toEqual([
+      'llm-pi-ai',
+      [{
+        op: 'set',
+        path: ['providers', 'openai', 'models'],
+        value: [{ id: 'hy3', contextWindow: 100_000 }],
+      }],
+      0,
+    ])
+  })
+
   it('hands reasoning back to the installed catalog when the row follows it again', async () => {
     const { mutate } = await mountSection()
     fireEvent.click(screen.getByRole('button', { name: openaiCopy(en.editProvider) }))
