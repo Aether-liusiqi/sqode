@@ -523,6 +523,13 @@ export class BasicCompactionEngine extends CompactionEngine {
       reservedCompletionTokens(agent, info.defaultMaxTokens),
     )
     if (measurement.totalTokens < spec.thresholdTokens) return null
+    // Every compaction rewrites the surface, so a trigger that fires often costs
+    // far more than the tokens it saves. Log the numbers behind the decision: the
+    // estimate, the threshold it crossed, and the budgets they came from.
+    this.ctx.logger.info(
+      `compaction pressure: ${measurement.totalTokens} estimated tokens >= threshold ${spec.thresholdTokens} `
+      + `(window ${info.context.contextWindow}, retain ${spec.retainTokens})`,
+    )
 
     // Once pressure qualifies, land the model-free pass before choosing a
     // summary range, then remeasure through the singleton replay fold.

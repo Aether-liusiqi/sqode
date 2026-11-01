@@ -446,14 +446,16 @@ describe('compact configuration and defaults', () => {
     })
   })
 
-  it.each([500, 501])('caps headroom %i that would starve the pressure budget', (headroomTokens) => {
+  it.each([500, 501])('drops headroom %i that would starve the pressure budget', (headroomTokens) => {
     const policy = resolveTargetPolicy(resolveConfig({ headroomTokens }), { provider: MODEL, model: MODEL })
     // Refusing to resolve left the route with no pressure compaction at all,
-    // which is what a 100k model inherited from the shipped 64K headroom.
-    // Capping it at a fifth of the window keeps the route compactable.
+    // which is what a 100k model inherited from the shipped 64K headroom. The
+    // message budget already reserves the completion, so on a window this small a
+    // second reserve is dropped rather than halved: halving it still compacted
+    // close to every turn, and each compaction discards the prefix cache.
     expect(resolveCompactSpec(policy, 1_000, 500)).toMatchObject({
       contextWindow: 1_000,
-      thresholdTokens: 300,
+      thresholdTokens: 500,
     })
   })
 

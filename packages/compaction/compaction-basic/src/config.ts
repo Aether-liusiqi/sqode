@@ -23,16 +23,10 @@ const DEFAULT_THRESHOLD_RATIO = 0.8
 const DEFAULT_RETAIN_RATIO = 0.16
 
 /**
- * Largest share of a window the configured headroom may claim. The shipped
- * 65,536 is a fifth of a 320k window; capping by ratio keeps a 100k route
- * compactable instead of pushing its pressure budget below zero.
- */
-const MAX_HEADROOM_RATIO = 0.2
-
-/**
- * Smallest share of a window a pressure budget may keep before the headroom is
- * capped. Below this the route compacts almost immediately, which is no more
- * useful than never compacting.
+ * Smallest share of a window the pressure budget must keep for the configured
+ * headroom to be worth its cost. Below this the headroom is dropped: it would
+ * leave the route compacting nearly every turn, and each of those rewrites the
+ * surface and discards the provider's prefix cache.
  */
 const MIN_PRESSURE_RATIO = 0.05
 
@@ -195,16 +189,15 @@ export function resolveCompactSpec(
       + "the adapter model's contextWindow above the effective request maxTokens",
     )
   }
-  // A configured headroom that leaves almost no pressure budget used to be a hard
-  // configuration error, which left that route with no pressure compaction at
-  // all — exactly the route that needs it most after switching to a smaller
-  // window. Keep a sane pressure budget instead, and only when the configured
-  // headroom would starve it.
+  // The message budget already excludes the completion reserve, so a headroom on
+  // top of it is a second reserve for the same purpose. It is worth keeping on a
+  // wide window — it is the margin that absorbs one oversized tool result — but
+  // on a small window it takes most of the usable budget and compacts the Session
+  // almost every turn, and every one of those rewrites the surface and discards
+  // the provider's prefix cache. Drop it when it would cost more than it buys.
   const healthy = messageBudgetTokens - policy.headroomTokens
     >= Math.floor(contextWindow * MIN_PRESSURE_RATIO)
-  const headroomTokens = healthy
-    ? policy.headroomTokens
-    : Math.min(policy.headroomTokens, Math.floor(contextWindow * MAX_HEADROOM_RATIO))
+  const headroomTokens = healthy ? policy.headroomTokens : 0
   const pressureBudgetTokens = messageBudgetTokens - headroomTokens
   if (pressureBudgetTokens <= 0) {
     throw new TargetPressureConfigError(
