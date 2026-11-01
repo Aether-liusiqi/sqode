@@ -105,6 +105,97 @@ function summaryInputBudget(contextWindow: number | undefined, configured: numbe
   return Math.max(0, contextWindow - summaryOutputTokens(contextWindow, configured) - SUMMARY_PROMPT_MARGIN)
 }
 
+/**
+ * The ceiling a provider states in its own overflow wording. Providers spell the
+ * bound differently, so the most explicit arrangement — the number next to the
+ * word itself — is tried before the number after a comparison.
+ */
+const REPORTED_WINDOW_PATTERNS = [
+  /(\d{4,})\s*(?:tokens?\s*)?max(?:imum)?\b/i,
+  /\bmax(?:imum)?\b[^0-9\n]{0,24}(\d{4,})/i,
+  />\s*(\d{4,})/,
+] as const
+
+/** Nothing below this is a usable window; it is a prompt fragment or an index. */
+const MIN_REPORTED_WINDOW = 4_096
+
+/**
+ * Read the context window a provider reported in an overflow failure.
+ * @param message - the provider's own failure text.
+ * @returns the stated ceiling, or `undefined` when the text states none.
+ */
+export function reportedContextWindow(message: string): number | undefined {
+  for (const pattern of REPORTED_WINDOW_PATTERNS) {
+    const match = pattern.exec(message)
+    if (match === null) continue
+    const value = Number(match[1])
+    if (Number.isSafeInteger(value) && value >= MIN_REPORTED_WINDOW) return value
+  }
+  return undefined
+}
+
+/**
+ * Record one reported ceiling on the model entry that overflowed.
+ *
+ * Only a model the profile already lists is rewritten: a catalog-inherited model
+ * has no row to correct, and inventing one would pin the whole route to the
+ * installed catalog it was inheriting from.
+ * @param raw - the entry's stored configuration.
+ * @param entryId - configuration entry id, which names the adapter family.
+ * @param target - routed provider and model that overflowed.
+ * @param window - the ceiling the provider stated.
+ * @returns the configuration to store, or `raw` when nothing applies.
+ */
+function withReportedWindow(
+  raw: unknown,
+  entryId: string,
+  target: Pick<LlmCallConfig, 'provider' | 'model'>,
+  window: number,
+): unknown {
+  if (raw === null || typeof raw !== 'object') return raw
+  const stored = raw as Record<string, unknown>
+  const rewrite = (models: readonly unknown[]): unknown[] => models.map((model) => {
+    if (model === null || typeof model !== 'object') return model
+    const row = model as Record<string, unknown>
+    return row['id'] === target.model && row['contextWindow'] !== window
+      ? { ...row, contextWindow: window }
+      : model
+  })
+
+  if (entryId !== 'llm-pi-ai') {
+    const models = stored['models']
+    return Array.isArray(models) ? { ...stored, models: rewrite(models) } : raw
+  }
+  const providers = stored['providers']
+  if (providers === null || typeof providers !== 'object') return raw
+  const route = (providers as Record<string, unknown>)[target.provider]
+  if (route === null || typeof route !== 'object') return raw
+  const models = (route as Record<string, unknown>)['models']
+  if (!Array.isArray(models)) return raw
+  return {
+    ...stored,
+    providers: {
+      ...(providers as Record<string, unknown>),
+      [target.provider]: { ...(route as Record<string, unknown>), models: rewrite(models) },
+    },
+  }
+}
+
+/**
+ * The slice of the configuration editor this plugin uses. Declared locally so a
+ * deployment without the editor compiles and behaves the same: the service is
+ * optional, and only the two members reachable here are named.
+ */
+interface WindowEditor {
+  entries(): readonly WindowEditorEntry[]
+  edit(entry: WindowEditorEntry, apply: (raw: unknown) => unknown): Promise<void>
+}
+
+/** One configuration entry, as far as window adoption needs it. */
+interface WindowEditorEntry {
+  readonly options: { readonly id: string }
+}
+
 /** Resolve the conversation target used to select an optional policy override. */
 function conversationTarget(
   agent: Agent,
@@ -233,6 +324,7 @@ export class BasicCompactionEngine extends CompactionEngine {
       this.overflowAgents.set(agent.session, agent)
       const target = routedTarget(agent.session)
       if (target === undefined) return next()
+      await this.adoptReportedWindow(target, failure.message)
       const policy = resolveTargetPolicy(this.config, target)
       const retries = this.overflowRetries.get(agent) ?? 0
       if (retries >= policy.maxOverflowRetries) return next()
@@ -301,6 +393,40 @@ export class BasicCompactionEngine extends CompactionEngine {
         config.maxTokens,
       )
     return summarizeWithLlm(this.ctx, { ...config, maxTokens: outputTokens }, input, agent, signal)
+  }
+
+  /**
+   * Take the ceiling the provider just stated as this model's window.
+   *
+   * An adapter falls back to a shared constant when the route declares no
+   * window, and that guess is what let a 100k route compute a 262k budget. The
+   * overflow it caused names the real ceiling in the provider's own words, so
+   * the next turn compacts at the right point instead of rediscovering the wall.
+   * @param target - routed provider and model that overflowed.
+   * @param message - the provider's failure text.
+   */
+  private async adoptReportedWindow(
+    target: Pick<LlmCallConfig, 'provider' | 'model'>,
+    message: string,
+  ): Promise<void> {
+    const window = reportedContextWindow(message)
+    if (window === undefined) return
+    const editor = this.ctx.get('configEditor') as WindowEditor | undefined
+    if (editor === undefined) return
+    // The entry id names the adapter family; the pi-ai route is looked up first
+    // because that is the family whose models live under `providers.<name>`.
+    const entries = editor.entries()
+    const entry = entries.find(row => row.options.id === 'llm-pi-ai')
+      ?? entries.find(row => row.options.id.startsWith('llm-deepseek'))
+    if (entry === undefined) return
+    try {
+      await editor.edit(entry, raw => withReportedWindow(raw, entry.options.id, target, window))
+    } catch (error: unknown) {
+      const detail = error instanceof Error ? error.message : String(error)
+      this.ctx.logger.warn(
+        `could not record the ${window}-token window ${target.provider}/${target.model} reported: ${detail}`,
+      )
+    }
   }
 
   /**

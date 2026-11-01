@@ -88,6 +88,16 @@ const MIN_SUMMARY_MAX_TOKENS = 4_096
 /** Fraction of the replayed turns dropped per shrink attempt. */
 const SUMMARY_TRIM_FRACTION = 4
 
+/**
+ * Added to the directive once a turn has been dropped from the replay. Without
+ * it the checkpoint reads as a full record of a conversation whose beginning the
+ * summarizer never saw.
+ */
+const TRIMMED_REPLAY_NOTICE = '\n\n'
+  + '- The transcript above begins partway through the conversation: its earliest span was omitted to fit'
+  + ' this request. Say so under "## Critical Context" — for example that the record starts after the'
+  + ' beginning — so the next reader knows what cannot be recovered from this checkpoint.'
+
 /** Framing that makes the replacement user message established context. */
 const CHECKPOINT_PREAMBLE =
   'This is an automatically generated checkpoint condensing an earlier span of the conversation to free up context. Treat the captured context as established background and build on it without restating it. Continue the task directly from the messages that follow, without acknowledging this checkpoint.'
@@ -169,14 +179,20 @@ export async function summarizeWithLlm(
     )
   }
 
-  const instruction: RequestMessage = deepFreeze({
-    role: 'user',
-    content: [{ type: 'text', text: COMPACTION_INSTRUCTION }],
-  })
   let replay: readonly Message[] = input.messages
   let maxTokens = config.maxTokens
   let refused: unknown
   for (let attempt = 0; attempt <= MAX_SUMMARY_SHRINK_ATTEMPTS; attempt += 1) {
+    // A replay that already gave turns back must say so: the checkpoint is then
+    // the only record of what the next reader knows, and a summary that silently
+    // starts mid-conversation reads as a complete one.
+    const instruction: RequestMessage = deepFreeze({
+      role: 'user',
+      content: [{
+        type: 'text',
+        text: attempt === 0 ? COMPACTION_INSTRUCTION : COMPACTION_INSTRUCTION + TRIMMED_REPLAY_NOTICE,
+      }],
+    })
     const options: GenerateOptions = {
       provider: target.provider,
       model: target.model,

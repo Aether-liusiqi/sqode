@@ -3,6 +3,7 @@ import { Context } from '@liusiqi-dev/cordis'
 import { AttachmentId } from '@liusiqi-dev/dsh-attachment'
 import BasicCompactionEngine from '@liusiqi-dev/dsh-compaction-basic'
 import type { BasicCompactionConfig } from '@liusiqi-dev/dsh-compaction-basic'
+import { reportedContextWindow } from '@liusiqi-dev/dsh-compaction-basic'
 import { selectCompactableRange } from '@liusiqi-dev/dsh-compaction-basic/src/region.ts'
 import { frameSummary } from '@liusiqi-dev/dsh-compaction-basic/src/summarizer.ts'
 import type { SummarizationInput, SummaryResult } from '@liusiqi-dev/dsh-compaction-basic/src/summarizer.ts'
@@ -1872,6 +1873,40 @@ describe('automatic listener and loader composition', () => {
     expect(session.surface.replaceGeneration).toBe(1)
     expect(session.snapshotEvents().some(event => event.type === 'compaction/summary')).toBe(false)
     expect(compact.calls).toHaveLength(0)
+  })
+
+  it('reads the ceiling a provider states in its overflow wording', () => {
+    expect(reportedContextWindow('prompt is too long: 100001 tokens > 100000 maximum')).toBe(100_000)
+    expect(reportedContextWindow('maximum context length is 131072 tokens')).toBe(131_072)
+    expect(reportedContextWindow('That model\'s max is 200000 tokens.')).toBe(200_000)
+    expect(reportedContextWindow('rate limited, retry later')).toBeUndefined()
+    expect(reportedContextWindow('code 4001 exhausted')).toBeUndefined()
+  })
+
+  it('records the reported window on the routed model so the next turn compacts at the right point', async () => {
+    const ctx = createContext()
+    const written: unknown[] = []
+    const edit = vi.fn((_entry: unknown, apply: (raw: unknown) => unknown) => {
+      written.push(apply({
+        providers: { [MODEL]: { displayName: MODEL, models: [{ id: MODEL, name: MODEL }] } },
+      }))
+      return Promise.resolve()
+    })
+    ctx.provide('configEditor', {
+      entries: () => [{ options: { id: 'llm-pi-ai' } }],
+      edit,
+    } as never)
+    void new TestCompactionEngine(ctx, { headroomTokens: 0, maxTokens: 8192 })
+
+    await recover(ctx, agent(conversation(4), MODEL), Object.assign(
+      new Error('400 {"error":{"code":"context_length_exceeded","message":"prompt is too long: 100001 tokens > 100000 maximum"}}'),
+      { code: CONTEXT_WINDOW_EXCEEDED_CODE },
+    ))
+
+    expect(edit).toHaveBeenCalledTimes(1)
+    expect(written[0]).toMatchObject({
+      providers: { [MODEL]: { models: [{ id: MODEL, contextWindow: 100_000 }] } },
+    })
   })
 
   it('continues overflow recovery with summarization on the pruned surface', async () => {

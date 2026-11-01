@@ -74,6 +74,10 @@ describe('summarizeWithLlm context-window recovery', () => {
     expect(calls[1]?.maxTokens).toBe(CONFIG.maxTokens)
     expect(result.maxTokens).toBe(CONFIG.maxTokens)
     expect(JSON.stringify(result.summary)).toContain('continuing')
+    // The checkpoint must not read as a complete record of a conversation whose
+    // beginning this attempt never saw.
+    expect(JSON.stringify(calls[1]?.messages.at(-1))).toContain('partway through')
+    expect(JSON.stringify(calls[0]?.messages.at(-1))).not.toContain('partway through')
   })
 
   it('drops the oldest turns once the completion floor is reached, keeping the system head', async () => {
