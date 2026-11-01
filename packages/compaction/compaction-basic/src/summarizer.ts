@@ -65,7 +65,8 @@ const COMPACTION_INSTRUCTION = [
   '- Capture user feedback and explicit instructions faithfully, especially corrections.',
   '- Do NOT mention this summarization request or that the context was compacted.',
   '- Output only the checkpoint text: do not call any tool or take any other action.',
-  `- If the conversation already contains a ${SUMMARY_OPEN_TAG} block, it is a PRIOR checkpoint. Do not copy it forward verbatim: preserve still-true facts, drop stale ones, and merge newer information into a single consolidated summary under the same structure.`,
+  '- Keep the whole checkpoint under 1200 words. A checkpoint that grows without bound defeats the compaction that produced it.',
+  `- If the conversation already contains a ${SUMMARY_OPEN_TAG} block, it is a PRIOR checkpoint, and this is a second compaction of an already compacted conversation. Carry its "Primary Request and Intent" and "Pending Jobs" entries forward UNCHANGED — they record what the user actually asked for, which no later turn can reconstruct — and rewrite only the account of the work: keep still-true facts, drop stale ones, merge newer information under the same structure.`,
 ].join('\n')
 
 /**

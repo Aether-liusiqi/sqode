@@ -318,7 +318,9 @@ describe('compact configuration and defaults', () => {
       summarizationModel: '',
       maxTokens: 65_536,
       compactionRetries: 1,
-      maxOverflowRetries: 1,
+      // A conversation several times the window needs more than one pass to get
+      // back under it; each pass removes roughly one summarization budget.
+      maxOverflowRetries: 4,
       modelPolicies: [],
       auto: true,
     })
@@ -443,10 +445,15 @@ describe('compact configuration and defaults', () => {
     })
   })
 
-  it.each([500, 501])('rejects headroom %i that exhausts the remaining capacity', (headroomTokens) => {
+  it.each([500, 501])('caps headroom %i that would starve the pressure budget', (headroomTokens) => {
     const policy = resolveTargetPolicy(resolveConfig({ headroomTokens }), { provider: MODEL, model: MODEL })
-    expect(() => resolveCompactSpec(policy, 1_000, 500))
-      .toThrow(/headroom tokens.*leaving no pressure budget/)
+    // Refusing to resolve left the route with no pressure compaction at all,
+    // which is what a 100k model inherited from the shipped 64K headroom.
+    // Capping it at a fifth of the window keeps the route compactable.
+    expect(resolveCompactSpec(policy, 1_000, 500)).toMatchObject({
+      contextWindow: 1_000,
+      thresholdTokens: 300,
+    })
   })
 
   it('rejects ratio retention that reaches the headroom-limited threshold', () => {

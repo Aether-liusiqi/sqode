@@ -22,6 +22,20 @@ const DEFAULT_THRESHOLD_RATIO = 0.8
 /** Default verbatim-tail fraction for every routed model. */
 const DEFAULT_RETAIN_RATIO = 0.16
 
+/**
+ * Largest share of a window the configured headroom may claim. The shipped
+ * 65,536 is a fifth of a 320k window; capping by ratio keeps a 100k route
+ * compactable instead of pushing its pressure budget below zero.
+ */
+const MAX_HEADROOM_RATIO = 0.2
+
+/**
+ * Smallest share of a window a pressure budget may keep before the headroom is
+ * capped. Below this the route compacts almost immediately, which is no more
+ * useful than never compacting.
+ */
+const MIN_PRESSURE_RATIO = 0.05
+
 /** Fields shared by top-level defaults and exact-target overrides. */
 const POLICY_CONFIG_KEYS = [
   'thresholdRatio',
@@ -103,7 +117,10 @@ export function resolveConfig(config: BasicCompactionConfig = {}): ResolvedConfi
     summarizationModel: config.summarizationModel ?? '',
     maxTokens,
     compactionRetries: config.compactionRetries ?? 1,
-    maxOverflowRetries: config.maxOverflowRetries ?? 1,
+    // One retry cannot carry a conversation several times the window back under
+    // it: each pass removes roughly one summarization budget, so a 2.3x overflow
+    // needs a second and usually a third pass.
+    maxOverflowRetries: config.maxOverflowRetries ?? 4,
     modelPolicies,
     auto: config.auto ?? true,
   })
@@ -178,12 +195,22 @@ export function resolveCompactSpec(
       + "the adapter model's contextWindow above the effective request maxTokens",
     )
   }
-  const pressureBudgetTokens = messageBudgetTokens - policy.headroomTokens
+  // A configured headroom that leaves almost no pressure budget used to be a hard
+  // configuration error, which left that route with no pressure compaction at
+  // all — exactly the route that needs it most after switching to a smaller
+  // window. Keep a sane pressure budget instead, and only when the configured
+  // headroom would starve it.
+  const healthy = messageBudgetTokens - policy.headroomTokens
+    >= Math.floor(contextWindow * MIN_PRESSURE_RATIO)
+  const headroomTokens = healthy
+    ? policy.headroomTokens
+    : Math.min(policy.headroomTokens, Math.floor(contextWindow * MAX_HEADROOM_RATIO))
+  const pressureBudgetTokens = messageBudgetTokens - headroomTokens
   if (pressureBudgetTokens <= 0) {
     throw new TargetPressureConfigError(
       targetKey,
       `compaction-basic: ${targetKey} reserves ${reservedCompletionTokens} completion tokens `
-      + `and ${policy.headroomTokens} headroom tokens of its ${contextWindow}-token context `
+      + `and ${headroomTokens} headroom tokens of its ${contextWindow}-token context `
       + 'window, leaving no pressure budget; reduce the effective request maxTokens or '
       + 'compaction headroomTokens, or configure a larger adapter model contextWindow',
     )

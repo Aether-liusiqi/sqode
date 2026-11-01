@@ -67,6 +67,44 @@ function reservedCompletionTokens(agent: Agent, defaultMaxTokens: number | undef
   return configured ?? defaultMaxTokens ?? 0
 }
 
+/**
+ * Share of a window a summarization's own output may claim. The prompt is
+ * trimmed against the remainder, so the checkpoint always has room to finish.
+ */
+const SUMMARY_OUTPUT_RATIO = 0.15
+
+/** Smallest completion cap worth one summarization attempt. */
+const SUMMARY_OUTPUT_FLOOR = 1_024
+
+/** Room the system head, the tool schemas, and the instruction need beyond the replay. */
+const SUMMARY_PROMPT_MARGIN = 2_048
+
+/**
+ * Completion cap one summarization may reserve on a window.
+ * @param contextWindow - routed model's window, when the adapter declares one.
+ * @param configured - cap the configuration asks for.
+ * @returns the cap to send with this request.
+ */
+function summaryOutputTokens(contextWindow: number | undefined, configured: number): number {
+  if (contextWindow === undefined) return configured
+  return Math.max(
+    SUMMARY_OUTPUT_FLOOR,
+    Math.min(configured, Math.floor(contextWindow * SUMMARY_OUTPUT_RATIO)),
+  )
+}
+
+/**
+ * How much conversation one summarization request may replay and still leave
+ * its own output room inside the same window.
+ * @param contextWindow - routed model's window, when the adapter declares one.
+ * @param configured - cap the configuration asks for.
+ * @returns the replay budget, or `undefined` when no window is declared.
+ */
+function summaryInputBudget(contextWindow: number | undefined, configured: number): number | undefined {
+  if (contextWindow === undefined) return undefined
+  return Math.max(0, contextWindow - summaryOutputTokens(contextWindow, configured) - SUMMARY_PROMPT_MARGIN)
+}
+
 /** Resolve the conversation target used to select an optional policy override. */
 function conversationTarget(
   agent: Agent,
@@ -253,7 +291,30 @@ export class BasicCompactionEngine extends CompactionEngine {
     const config = target === undefined
       ? this.config
       : resolveTargetPolicy(this.config, target)
-    return summarizeWithLlm(this.ctx, config, input, agent, signal)
+    // The configured cap is tuned for large windows; asking a 100k route for
+    // 65k of output leaves the prompt almost nothing, so the cap follows the
+    // window it is being spent on.
+    const outputTokens = target === undefined
+      ? config.maxTokens
+      : summaryOutputTokens(
+        await this.windowFor(target, signal).catch(() => undefined),
+        config.maxTokens,
+      )
+    return summarizeWithLlm(this.ctx, { ...config, maxTokens: outputTokens }, input, agent, signal)
+  }
+
+  /**
+   * Routed model's context window, when the adapter reports one.
+   * @param target - provider/model whose capacity is asked.
+   * @param signal - optional cancellation forwarded to resolution.
+   * @returns the window in tokens, or `undefined` when the adapter declares none.
+   */
+  private async windowFor(
+    target: Pick<LlmCallConfig, 'provider' | 'model'>,
+    signal?: AbortSignal,
+  ): Promise<number | undefined> {
+    const info = await this.ctx.llm.resolveModelInfo(target.provider, target.model, signal)
+    return info.context?.contextWindow
   }
 
   /**
@@ -296,7 +357,20 @@ export class BasicCompactionEngine extends CompactionEngine {
         prune.pruneSession(agent.session)
         measurement = meter.measure(agent.session)
       }
-      const range = selectCompactableRange(agent.session, measurement, 0)
+      // The summary is a request too. Replaying a span larger than the window it
+      // is meant to fit fails with the very overflow it repairs, and a replay
+      // that fills the window leaves the checkpoint no room to finish — so the
+      // span is sized to leave the output its share. Whatever stays verbatim is
+      // compressed by the next overflow pass, which is why the retry budget
+      // allows several.
+      const window = await this.windowFor(target, signal).catch(() => undefined)
+      const budget = summaryInputBudget(window, policy.maxTokens)
+      const retain = budget === undefined ? 0 : Math.max(0, measurement.totalTokens - budget)
+      // Sizing is a preference, not a requirement: when the window leaves no
+      // verbatim tail worth keeping (a small route, or a budget below one turn),
+      // fall back to compacting the whole span rather than declining to compact.
+      const range = (retain > 0 ? selectCompactableRange(agent.session, measurement, retain) : null)
+        ?? selectCompactableRange(agent.session, measurement, 0)
       if (range === null) return null
       return this.compactRegion(range.start, range.end, agent, signal)
     }
