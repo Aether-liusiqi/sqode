@@ -448,19 +448,25 @@ describe('compact configuration and defaults', () => {
     })
   })
 
-  it.each([500, 501])('rejects headroom %i that leaves no pressure budget', (headroomTokens) => {
+  it.each([500, 501])('caps headroom %i at a fifth of the window', (headroomTokens) => {
     const policy = resolveTargetPolicy(resolveConfig({ headroomTokens }), { provider: MODEL, model: MODEL })
-    // Half of a 1,000-token window is the output floor, so this headroom leaves
-    // nothing to measure against and the route is reported rather than silently
-    // compacting on every turn.
-    expect(() => resolveCompactSpec(policy, 1_000, 500))
-      .toThrow(/leaving no pressure budget/)
+    // A margin sized for a wide window must not consume a narrow one: the request
+    // holds 200 of the 1,000 tokens, the output floor holds 500, and the rest is
+    // the threshold. Refusing the route instead is what left a 100k model with no
+    // pressure compaction at all.
+    expect(resolveCompactSpec(policy, 1_000, 500)).toMatchObject({
+      contextWindow: 1_000,
+      thresholdTokens: 300,
+    })
   })
 
-  it('rejects ratio retention that reaches the headroom-limited threshold', () => {
-    const policy = resolveTargetPolicy(resolveConfig({ headroomTokens: 420 }), { provider: MODEL, model: MODEL })
+  it('rejects retention that reaches the capped threshold', () => {
+    const policy = resolveTargetPolicy(resolveConfig({
+      headroomTokens: 420,
+      retainTokens: 400,
+    }), { provider: MODEL, model: MODEL })
     expect(() => resolveCompactSpec(policy, 1_000, 500))
-      .toThrow(/retainTokens \(120\) must be less than threshold tokens 80/)
+      .toThrow(/retainTokens \(400\) must be less than threshold tokens 300/)
   })
 
   it('rejects a reserve that leaves no message budget or is not a count', () => {

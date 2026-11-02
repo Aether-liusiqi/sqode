@@ -31,6 +31,9 @@ const DEFAULT_RETAIN_RATIO = 0.16
 /** Output room the threshold always leaves, so a trigger never lands on the wall. */
 const MIN_OUTPUT_TOKENS = 16_000
 
+/** Largest share of a window the configured headroom may claim. */
+const MAX_HEADROOM_SHARE = 0.2
+
 /** Largest share of a window the retention sizing may treat as reserved for output. */
 const MAX_OUTPUT_RESERVE_RATIO = 0.25
 
@@ -201,15 +204,22 @@ export function resolveCompactSpec(
   // The floor protects a route that reserves output; a route that reserves none
   // is not spending that room and keeps the full window-relative threshold.
   const outputFloorTokens = Math.min(MIN_OUTPUT_TOKENS, reservedCompletionTokens)
+  // A headroom sized for a wide window crushes a narrow one: 65,536 of a 100k
+  // window leaves 18,464, so every turn tripped the threshold. It is a margin,
+  // not a second budget, so it never claims more than a fifth of the window.
+  const headroomTokens = Math.min(
+    policy.headroomTokens,
+    Math.floor(contextWindow * MAX_HEADROOM_SHARE),
+  )
   const thresholdTokens = Math.floor(Math.min(
     contextWindow * policy.thresholdRatio,
-    contextWindow - outputFloorTokens - policy.headroomTokens,
+    contextWindow - outputFloorTokens - headroomTokens,
   ))
   if (thresholdTokens < 1) {
     throw new TargetPressureConfigError(
       targetKey,
       `compaction-basic: ${targetKey} reserves ${outputFloorTokens} output tokens `
-      + `and ${policy.headroomTokens} headroom tokens of its ${contextWindow}-token context `
+      + `and ${headroomTokens} headroom tokens of its ${contextWindow}-token context `
       + 'window, leaving no pressure budget; reduce the effective request maxTokens or '
       + 'compaction headroomTokens, or configure a larger adapter model contextWindow',
     )
