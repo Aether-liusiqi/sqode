@@ -1133,6 +1133,23 @@ export class LlmRuntime extends TypertRemoteService {
    * @returns the chunk stream, possibly wrapped by `llm/stream` listeners.
    */
   stream(options: GenerateOptions): AsyncIterable<StreamChunk> {
+    // Token accounting reconciliation: adapters report a prompt size that has not
+    // matched the conversation surface, and this line separates the two possible
+    // explanations — a provider billing cached tokens twice, or a request payload
+    // the session does not model. Temporary; remove once the numbers agree.
+    try {
+      const messages = options.messages
+      let chars = 0
+      for (const message of messages) chars += JSON.stringify(message).length
+      this.ctx.logger.info(
+        `llm request: ${options.provider}/${options.model} messages=${messages.length} chars=${chars} `
+        + `tools=${options.tools?.length ?? 0} `
+        + `toolsChars=${options.tools === undefined ? 0 : JSON.stringify(options.tools).length} `
+        + `toolHistoryChars=${options.toolHistory === undefined ? 0 : JSON.stringify(options.toolHistory).length}`,
+      )
+    } catch {
+      // A diagnostic must never fail a request.
+    }
     return this.streamWithRegistration(options)
   }
 
