@@ -65,6 +65,49 @@ describe('request trace', () => {
     expect(text.endsWith('\n')).toBe(true)
   })
 
+  it('traces the prepared-call path the agent loop actually uses', async () => {
+    const { home, marker, log } = fakeHome()
+    writeFileSync(marker, '')
+    vi.doMock('node:os', async () => {
+      const actual = await vi.importActual<typeof import('node:os')>('node:os')
+      return { ...actual, homedir: () => home }
+    })
+    const { LlmAdapter, LlmRuntime } = await import('../src/index.ts')
+    class Adapter extends LlmAdapter {
+      override resolveModel(provider: string, model: string): Promise<never> {
+        return Promise.resolve({
+          provider,
+          id: model,
+          name: model,
+          context: { contextWindow: 100_000 },
+        } as never)
+      }
+
+      override async * stream(): AsyncIterable<never> {
+        yield { type: 'finish', reason: { kind: 'stop' } } as never
+      }
+    }
+    const ctx = new Context()
+    const llm = new LlmRuntime(ctx)
+    llm.registerAdapter(['trace-provider'], new Adapter())
+
+    const prepared = await llm.prepareCall({
+      provider: 'trace-provider',
+      model: 'trace-model',
+      messages: [{ role: 'user', content: [{ type: 'text', text: 'hello' }] }],
+    } as unknown as GenerateOptions, new AbortController().signal)
+    const preparedCall = prepared as unknown as {
+      dispatch?: (options: GenerateOptions) => AsyncIterable<unknown>
+      stream: (options: GenerateOptions) => AsyncIterable<unknown>
+    }
+    const entry = preparedCall.dispatch ?? preparedCall.stream
+    for await (const chunk of entry.call(preparedCall, REQUEST)) void chunk
+
+    const text = readFileSync(log, 'utf8')
+    expect(text).toContain('trace-provider/trace-model')
+    expect(text).toContain('messages=1')
+  })
+
   it('writes nothing when the marker is absent', async () => {
     const { home, log } = fakeHome()
     const llm = await runtimeUnder(home)
