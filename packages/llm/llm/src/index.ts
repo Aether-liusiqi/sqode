@@ -1154,10 +1154,11 @@ export class LlmRuntime extends TypertRemoteService {
 }
 
 /**
- * Append one line per request to the path in `DSH_LLM_TRACE`, when that variable
- * is set. Request sizes decide both the compaction threshold and the cache
- * picture, and neither could be read from anything the app already persists: the
- * logger is not captured and the session log records usage only.
+ * Append one line per request to `~/.sqode/llm-trace.log` while
+ * `~/.sqode/llm-trace.enabled` exists. Request sizes decide both the compaction
+ * threshold and the cache picture, and neither can be read from anything the app
+ * already persists: the logger is not captured, and the session log records
+ * provider usage only.
  *
  * A diagnostic that cannot be read costs a build, so this writes straight to a
  * file and swallows every failure — a trace must never fail a request.
