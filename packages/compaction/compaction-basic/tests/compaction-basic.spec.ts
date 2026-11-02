@@ -312,7 +312,7 @@ describe('compact configuration and defaults', () => {
     const resolved = resolveConfig({})
 
     expect(resolved).toEqual({
-      thresholdRatio: 0.9,
+      thresholdRatio: 0.75,
       // A margin, not a budget: the output floor already reserves room to answer.
       headroomTokens: 4_000,
       retainRatio: 0.16,
@@ -365,7 +365,7 @@ describe('compact configuration and defaults', () => {
       retainTokens: 70,
     })
     expect(retentionOnly).toMatchObject({
-      thresholdRatio: 0.9,
+      thresholdRatio: 0.75,
       retainTokens: 70,
     })
     expect(retentionOnly).not.toHaveProperty('retainRatio')
@@ -433,11 +433,11 @@ describe('compact configuration and defaults', () => {
   })
 
   it.each([
-    [1_048_576, 256_000, 943_718, 126_812],
-    [1_000_000, 0, 900_000, 160_000],
-    [1_000_000, 100_000, 900_000, 144_000],
-    [1_000_000, 134_464, 900_000, 138_485],
-    [1_000_000, 256_000, 900_000, 120_000],
+    [1_048_576, 256_000, 786_432, 126_812],
+    [1_000_000, 0, 750_000, 160_000],
+    [1_000_000, 100_000, 750_000, 144_000],
+    [1_000_000, 134_464, 750_000, 138_485],
+    [1_000_000, 256_000, 750_000, 120_000],
   ])('holds the window-relative threshold in window %i with output cap %i', (window, output, threshold, retained) => {
     const policy = resolveTargetPolicy(resolveConfig({}), { provider: MODEL, model: MODEL })
 
@@ -535,7 +535,7 @@ describe('compact configuration and defaults', () => {
       [{ summarizationModel: '' }, /must be set together/],
       [{ thresholdRatio: 0 }, /number in \(0, 1\]/],
       [{ thresholdRatio: 1.1 }, /number in \(0, 1\]/],
-      [{ retainRatio: 0.9 }, /retainRatio \(0.9\) must be less than the resolved thresholdRatio \(0.9\)/],
+      [{ retainRatio: 0.9 }, /retainRatio \(0.9\) must be less than the resolved thresholdRatio \(0.75\)/],
       [{ thresholdRatio: 0.1 }, /retainRatio \(0.16\) must be less than the resolved thresholdRatio \(0.1\)/],
       [{ retainTokens: -1 }, /non-negative integer/],
       [{ retainRatio: 0.2, retainTokens: 100 }, /mutually exclusive/],
@@ -565,7 +565,7 @@ describe('compact configuration and defaults', () => {
       ],
       [
         { modelPolicies: [{ provider: MODEL, model: MODEL, retainRatio: 0.9 }] },
-        /modelPolicies\[0\]: retainRatio \(0.9\).*thresholdRatio \(0.9\)/,
+        /modelPolicies\[0\]: retainRatio \(0.9\).*thresholdRatio \(0.75\)/,
       ],
       [{ modelPolicies: [{ provider: MODEL, model: MODEL }, { provider: MODEL, model: MODEL }] }, /duplicate model policy/],
       [{ models: { [MODEL]: { retainTokens: 10 } } }, /BasicCompactionConfig: unknown key "models"/],
@@ -807,6 +807,8 @@ describe('pressure measurement and retention', () => {
   it('counts the durable routed request envelope without putting it on the surface', async () => {
     const compact = service({
       auto: false,
+      // This fixture stays above the service default so the envelope is counted
+      // without the session crossing the threshold it is measuring against.
       thresholdRatio: 0.9,
       retainTokens: 50,
     })

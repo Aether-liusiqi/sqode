@@ -17,7 +17,7 @@ import type {
 } from './types.ts'
 
 /** Default request-pressure fraction for every routed model. */
-const DEFAULT_THRESHOLD_RATIO = 0.9
+const DEFAULT_THRESHOLD_RATIO = 0.75
 
 /**
  * Default margin below the threshold. It is a margin, not a second budget: the
