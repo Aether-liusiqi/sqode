@@ -339,22 +339,40 @@ function instructionText(portion: { index: number; total: number } | undefined, 
 }
 
 /**
- * Approximate the token count of a replay from its characters.
- * @param messages - messages to measure.
- * @returns the estimated character total.
+ * Characters that occupy roughly one token each. Latin text averages several
+ * characters per token, so a flat divisor prices a Chinese conversation at a
+ * third of its real size — which is why an oversized replay was sent whole and
+ * then trimmed instead of portioned.
  */
-function estimateCharacters(messages: readonly Message[]): number {
+const WIDE_CHAR = /[\u2e80-\u9fff\uf900-\ufaff\uff00-\uff60]/g
+
+/**
+ * Price one string in tokens.
+ * @param text - the text to measure.
+ * @returns the estimate for that string.
+ */
+function estimateTextTokens(text: string): number {
+  const wide = text.match(WIDE_CHAR)?.length ?? 0
+  return wide + Math.ceil((text.length - wide) / SUMMARY_CHARS_PER_TOKEN)
+}
+
+/**
+ * Approximate the token count of a replay.
+ * @param messages - messages to measure.
+ * @returns the estimated token total.
+ */
+function estimateReplayTokens(messages: readonly Message[]): number {
   let total = 0
   for (const message of messages) {
     const content: unknown = message.content
     if (typeof content === 'string') {
-      total += content.length
+      total += estimateTextTokens(content)
       continue
     }
     if (!Array.isArray(content)) continue
     for (const block of content as readonly ContentBlock[]) {
-      if (block.type === 'text') total += block.text.length
-      else total += JSON.stringify(block).length
+      if (block.type === 'text' || block.type === 'reasoning') total += estimateTextTokens(block.text)
+      else total += Math.ceil(JSON.stringify(block).length / SUMMARY_CHARS_PER_TOKEN)
     }
   }
   return total
@@ -368,7 +386,7 @@ function estimateCharacters(messages: readonly Message[]): number {
  */
 function summaryPortionCount(messages: readonly Message[], budget: number | undefined): number {
   if (budget === undefined || budget <= 0) return 1
-  const estimated = Math.ceil(estimateCharacters(messages) / SUMMARY_CHARS_PER_TOKEN)
+  const estimated = Math.ceil(estimateReplayTokens(messages) / SUMMARY_CHARS_PER_TOKEN)
   if (estimated <= budget) return 1
   return Math.min(MAX_SUMMARY_PORTIONS, Math.ceil(estimated / budget))
 }
@@ -380,12 +398,12 @@ function summaryPortionCount(messages: readonly Message[], budget: number | unde
  * @returns the groups, each non-empty, in order.
  */
 function splitReplay(messages: readonly Message[], portions: number): Message[][] {
-  const perGroup = Math.ceil(estimateCharacters(messages) / Math.max(1, portions))
+  const perGroup = Math.ceil(estimateReplayTokens(messages) / Math.max(1, portions))
   const groups: Message[][] = []
   let current: Message[] = []
   let size = 0
   for (const message of messages) {
-    const cost = estimateCharacters([message])
+    const cost = estimateReplayTokens([message])
     if (current.length > 0 && groups.length < portions - 1 && size + cost > perGroup) {
       groups.push(current)
       current = []
