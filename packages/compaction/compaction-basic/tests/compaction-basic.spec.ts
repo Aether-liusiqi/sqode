@@ -313,7 +313,8 @@ describe('compact configuration and defaults', () => {
 
     expect(resolved).toEqual({
       thresholdRatio: 0.9,
-      headroomTokens: 65_536,
+      // A margin, not a budget: the output floor already reserves room to answer.
+      headroomTokens: 4_000,
       retainRatio: 0.16,
       summarizationProvider: '',
       summarizationModel: '',
@@ -328,27 +329,26 @@ describe('compact configuration and defaults', () => {
     expect(Object.isFrozen(resolved)).toBe(true)
   })
 
-  it('defaults summary generation to headroom and preserves explicit caps', () => {
+  it('keeps the summary cap independent of the margin', () => {
     const target = { provider: MODEL, model: MODEL }
-    expect(resolveConfig({ headroomTokens: 16_384 }).maxTokens).toBe(16_384)
-    expect(resolveConfig({ headroomTokens: 0, maxTokens: 32 }).maxTokens).toBe(32)
+    // The margin says how close to the wall a turn may run; the cap says how long
+    // a checkpoint may be. A narrow margin must not shorten the checkpoint.
+    expect(resolveConfig({ headroomTokens: 0 }).maxTokens).toBe(65_536)
+    expect(resolveConfig({ headroomTokens: 16_384 }).maxTokens).toBe(65_536)
+    expect(resolveConfig({ maxTokens: 32 }).maxTokens).toBe(32)
     expect(resolveTargetPolicy(resolveConfig({
-      modelPolicies: [{ ...target, headroomTokens: 16_384 }],
-    }), target).maxTokens).toBe(16_384)
-    expect(resolveTargetPolicy(resolveConfig({
-      maxTokens: 512,
       modelPolicies: [{ ...target, headroomTokens: 0 }],
-    }), target).maxTokens).toBe(512)
+    }), target).maxTokens).toBe(65_536)
     expect(resolveTargetPolicy(resolveConfig({
       maxTokens: 512,
       modelPolicies: [{ ...target, headroomTokens: 0, maxTokens: 32 }],
     }), target).maxTokens).toBe(32)
   })
 
-  it('rejects a zero summary cap inherited from headroom', () => {
-    expect(() => resolveConfig({ headroomTokens: 0 })).toThrow(/maxTokens.*positive integer/)
+  it('rejects a zero summary cap', () => {
+    expect(() => resolveConfig({ maxTokens: 0 })).toThrow(/maxTokens.*positive integer/)
     expect(() => resolveConfig({
-      modelPolicies: [{ provider: MODEL, model: MODEL, headroomTokens: 0 }],
+      modelPolicies: [{ provider: MODEL, model: MODEL, maxTokens: 0 }],
     })).toThrow(/modelPolicies\[0\].maxTokens.*positive integer/)
   })
 

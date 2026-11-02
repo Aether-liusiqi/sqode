@@ -19,6 +19,17 @@ import type {
 /** Default request-pressure fraction for every routed model. */
 const DEFAULT_THRESHOLD_RATIO = 0.9
 
+/**
+ * Default margin below the threshold. It is a margin, not a second budget: the
+ * output floor already reserves room to answer, so this only absorbs one
+ * oversized tool result. A wider value is what made a 100k route compact on
+ * every turn.
+ */
+const DEFAULT_HEADROOM_TOKENS = 4_000
+
+/** Default completion cap for one checkpoint, independent of that margin. */
+const DEFAULT_SUMMARY_MAX_TOKENS = 65_536
+
 /** Default verbatim-tail fraction for every routed model. */
 const DEFAULT_RETAIN_RATIO = 0.16
 
@@ -87,20 +98,20 @@ export function resolveConfig(config: BasicCompactionConfig = {}): ResolvedConfi
     throw new Error('BasicCompactionConfig: auto must be a boolean')
   }
 
-  const headroomTokens = config.headroomTokens ?? 65_536
-  const maxTokens = config.maxTokens ?? headroomTokens
-  assertPositiveInteger('BasicCompactionConfig.maxTokens (explicit or from headroomTokens)', maxTokens)
+  // The margin and the completion cap answer different questions: the margin is
+  // how close to the wall a turn may run, the cap is how long a checkpoint may be.
+  // They shared one default, which tied a four-thousand-token margin to a
+  // four-thousand-token summary the model cannot finish.
+  const headroomTokens = config.headroomTokens ?? DEFAULT_HEADROOM_TOKENS
+  const maxTokens = config.maxTokens ?? DEFAULT_SUMMARY_MAX_TOKENS
+  assertPositiveInteger('BasicCompactionConfig.maxTokens', maxTokens)
   const thresholdRatio = config.thresholdRatio ?? DEFAULT_THRESHOLD_RATIO
   const retention = resolveRetention(config, { retainRatio: DEFAULT_RETAIN_RATIO })
   validateRatioRetention(thresholdRatio, retention, 'BasicCompactionConfig')
   const modelPolicies = resolveModelPolicies(config.modelPolicies)
   for (const [index, policy] of modelPolicies.entries()) {
-    if (policy.maxTokens === undefined && config.maxTokens === undefined
-      && policy.headroomTokens !== undefined) {
-      policy.maxTokens = policy.headroomTokens
-    }
     assertPositiveInteger(
-      `BasicCompactionConfig: modelPolicies[${index}].maxTokens (explicit or from headroomTokens)`,
+      `BasicCompactionConfig: modelPolicies[${index}].maxTokens`,
       policy.maxTokens ?? maxTokens,
     )
     validateRatioRetention(
