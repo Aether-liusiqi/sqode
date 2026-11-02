@@ -6,6 +6,9 @@
  * @module @liusiqi-dev/dsh-llm
  */
 
+import { appendFileSync, existsSync } from 'node:fs'
+import { homedir } from 'node:os'
+import { join } from 'node:path'
 import { Context } from '@liusiqi-dev/cordis'
 import { Remote, RemoteError, TypertRemoteService } from '@liusiqi-dev/dsh-typert-protocol'
 import { deepFreeze } from '@liusiqi-dev/dsh-util-values'
@@ -1133,23 +1136,7 @@ export class LlmRuntime extends TypertRemoteService {
    * @returns the chunk stream, possibly wrapped by `llm/stream` listeners.
    */
   stream(options: GenerateOptions): AsyncIterable<StreamChunk> {
-    // Token accounting reconciliation: adapters report a prompt size that has not
-    // matched the conversation surface, and this line separates the two possible
-    // explanations — a provider billing cached tokens twice, or a request payload
-    // the session does not model. Temporary; remove once the numbers agree.
-    try {
-      const messages = options.messages
-      let chars = 0
-      for (const message of messages) chars += JSON.stringify(message).length
-      this.ctx.logger.info(
-        `llm request: ${options.provider}/${options.model} messages=${messages.length} chars=${chars} `
-        + `tools=${options.tools?.length ?? 0} `
-        + `toolsChars=${options.tools === undefined ? 0 : JSON.stringify(options.tools).length} `
-        + `toolHistoryChars=${options.toolHistory === undefined ? 0 : JSON.stringify(options.toolHistory).length}`,
-      )
-    } catch {
-      // A diagnostic must never fail a request.
-    }
+    traceRequest(options)
     return this.streamWithRegistration(options)
   }
 
@@ -1163,6 +1150,42 @@ export class LlmRuntime extends TypertRemoteService {
       options,
       () => this.adapterStream(options, prepared),
     )
+  }
+}
+
+/**
+ * Append one line per request to the path in `DSH_LLM_TRACE`, when that variable
+ * is set. Request sizes decide both the compaction threshold and the cache
+ * picture, and neither could be read from anything the app already persists: the
+ * logger is not captured and the session log records usage only.
+ *
+ * A diagnostic that cannot be read costs a build, so this writes straight to a
+ * file and swallows every failure — a trace must never fail a request.
+ * @param options - the request about to be dispatched.
+ */
+const TRACE_MARKER = join(homedir(), '.sqode', 'llm-trace.enabled')
+const TRACE_FILE = join(homedir(), '.sqode', 'llm-trace.log')
+
+function traceRequest(options: GenerateOptions): void {
+  // Gated by a marker file, not an environment variable: the desktop Host is
+  // spawned with an explicit environment object, so a variable set in the
+  // launching shell need not reach the process that makes the request. A file is
+  // visible to any process regardless of how it was started.
+  if (!existsSync(TRACE_MARKER)) return
+  const path = TRACE_FILE
+  try {
+    const messages = options.messages
+    let chars = 0
+    for (const message of messages) chars += JSON.stringify(message).length
+    appendFileSync(
+      path,
+      `${options.provider}/${options.model} messages=${messages.length} chars=${chars} `
+      + `tools=${options.tools?.length ?? 0} `
+      + `toolsChars=${options.tools === undefined ? 0 : JSON.stringify(options.tools).length} `
+      + `toolHistoryChars=${options.toolHistory === undefined ? 0 : JSON.stringify(options.toolHistory).length}\n`,
+    )
+  } catch {
+    // Never let a trace change the outcome of a request.
   }
 }
 
