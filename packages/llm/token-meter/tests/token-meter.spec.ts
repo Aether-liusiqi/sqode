@@ -284,7 +284,7 @@ describe('TokenMeter pricing', () => {
 
 describe('replay anchors and surface folds', () => {
   const USAGE: TokenUsage = {
-    inputTokens: 20,
+    inputTokens: 500,
     cacheReadTokens: 3,
     cacheWriteTokens: 4,
     outputTokens: 7,
@@ -304,9 +304,9 @@ describe('replay anchors and surface folds', () => {
       usage: USAGE,
     })
     const result = service.measure(session)
-    expect(result.baseline).toMatchObject({ kind: 'usage', tokens: 34, usage: USAGE })
+    expect(result.baseline).toMatchObject({ kind: 'usage', tokens: 507, usage: USAGE })
     expect(result.surfaceDeltaTokens).toBeGreaterThan(0)
-    expect(result.totalTokens).toBe(34 + result.surfaceDeltaTokens)
+    expect(result.totalTokens).toBe(507 + result.surfaceDeltaTokens)
     expect(() => {
       ;((result.baseline as { usage: { inputTokens: number } }).usage.inputTokens) = 1
     }).toThrow(TypeError)
@@ -364,15 +364,15 @@ describe('replay anchors and surface folds', () => {
     const session = Session.create(SessionId('switch'))
     const alphaHeader = header('alpha', { tools: [READ_TOOL] })
     appendSuccessfulCall(session, alphaHeader, { usage: USAGE, providerText: 'alpha' })
-    expect(service.measure(session).baseline).toMatchObject({ kind: 'usage', tokens: 34 })
+    expect(service.measure(session).baseline).toMatchObject({ kind: 'usage', tokens: 507 })
 
     appendSuccessfulCall(session, header('beta'), {
       turn: 1,
       step: 2,
-      usage: { inputTokens: 100, outputTokens: 50 },
+      usage: { inputTokens: 500, outputTokens: 50 },
       providerText: 'beta response',
     })
-    expect(service.measure(session).baseline).toMatchObject({ kind: 'usage', tokens: 150 })
+    expect(service.measure(session).baseline).toMatchObject({ kind: 'usage', tokens: 500 })
 
     appendHeader(session, alphaHeader)
     const switchedBack = service.measure(session)

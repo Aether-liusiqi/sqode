@@ -158,14 +158,14 @@ describe('request projection pricing', () => {
     const usage: TokenUsage = { inputTokens: 5000, outputTokens: 50 }
     appendSuccessfulCall(session, header('vision'), usage)
     const before = meter.measure(session)
-    expect(before.baseline).toMatchObject({ kind: 'usage', tokens: 5050 })
+    expect(before.baseline).toMatchObject({ kind: 'usage', tokens: 5000 })
 
     const message = imageMessage('fresh')
     session.append('user/message', message, { surfaceOp: 'append' })
     const after = meter.measure(session)
-    expect(after.baseline).toMatchObject({ kind: 'usage', tokens: 5050 })
+    expect(after.baseline).toMatchObject({ kind: 'usage', tokens: 5000 })
     expect(after.surfaceDeltaTokens - before.surfaceDeltaTokens).toBe(routedMessageTokens(message))
-    expect(after.totalTokens).toBe(5050 + after.surfaceDeltaTokens)
+    expect(after.totalTokens).toBe(5000 + after.surfaceDeltaTokens)
   })
 
   it('reprices the surface under the substitution pricing of a text-only route', async () => {

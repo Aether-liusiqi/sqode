@@ -352,12 +352,12 @@ describe('token pressure after loop-admitted system prompts', () => {
           type: 'turn/end', data: { reason: { kind: 'completed' } },
         })
         const measured = ctx.tokenMeter.measure(agent.session)
-        expect(measured.baseline).toEqual({ kind: 'usage', tokens: 1110, usage })
+        expect(measured.baseline).toEqual({ kind: 'usage', tokens: 1100, usage })
         expect(measured.surfaceDeltaTokens).toBe(0)
-        expect(measured.totalTokens).toBe(1110)
+        expect(measured.totalTokens).toBe(1100)
         const replay = Session.create(SessionId('prompt-pressure-replay'), agent.session.snapshotEvents())
         expect(ctx.tokenMeter.measure(replay)).toMatchObject({
-          baseline: measured.baseline, surfaceDeltaTokens: 0, totalTokens: 1110, nodes: measured.nodes,
+          baseline: measured.baseline, surfaceDeltaTokens: 0, totalTokens: 1100, nodes: measured.nodes,
         })
       }
       const events = agent.session.snapshotEvents()

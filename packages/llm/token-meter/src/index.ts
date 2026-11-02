@@ -69,10 +69,14 @@ interface ReplayState {
 
 /** Sum disjoint provider usage buckets without double-counting reasoning output. */
 function usageTokens(usage: TokenUsage): number {
+  // Prompt only: this value becomes `measurement.totalTokens`, which every
+  // threshold is compared against. Counting the reply made compaction fire while
+  // the prompt was still far below its window — 82% of one Session's 197
+  // compactions began under 80,000 billed tokens against an 80,000 threshold —
+  // and each of those rewrites discarded the provider's prefix cache.
   return usage.inputTokens
     + (usage.cacheReadTokens ?? 0)
     + (usage.cacheWriteTokens ?? 0)
-    + usage.outputTokens
 }
 
 /** Compare optional envelopes so a headerless estimate can track later surface deltas. */
