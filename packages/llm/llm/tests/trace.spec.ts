@@ -49,7 +49,9 @@ describe('request trace', () => {
     const llm = await runtimeUnder(home)
 
     // No adapter is registered: the call fails after the trace is written, which
-    // is exactly the guarantee under test.
+    // is exactly the guarantee under test. The prepared-call path the agent loop
+    // uses reaches the same generator (`prepareCall().dispatch` calls
+    // `streamWithRegistration`, which is the only caller of `adapterStream`).
     try {
       for await (const chunk of llm.stream(REQUEST)) void chunk
     } catch {

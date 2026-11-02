@@ -1037,6 +1037,11 @@ export class LlmRuntime extends TypertRemoteService {
     options: GenerateOptions,
     prepared?: PreparedDispatch,
   ): AsyncGenerator<StreamChunk> {
+    // The one place both entry points meet: `stream()` and a prepared call's
+    // dispatch both funnel here, so a trace placed here sees every request.
+    // Placing it on `stream()` alone missed the prepared path, which is the one
+    // the agent loop uses.
+    traceRequest(options)
     let iterator: AsyncIterator<StreamChunk>
     try {
       const registration = prepared?.registration ?? this.registration(options.provider)
@@ -1136,7 +1141,6 @@ export class LlmRuntime extends TypertRemoteService {
    * @returns the chunk stream, possibly wrapped by `llm/stream` listeners.
    */
   stream(options: GenerateOptions): AsyncIterable<StreamChunk> {
-    traceRequest(options)
     return this.streamWithRegistration(options)
   }
 
