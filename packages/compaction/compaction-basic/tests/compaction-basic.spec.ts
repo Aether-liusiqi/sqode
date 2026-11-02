@@ -312,7 +312,7 @@ describe('compact configuration and defaults', () => {
     const resolved = resolveConfig({})
 
     expect(resolved).toEqual({
-      thresholdRatio: 0.8,
+      thresholdRatio: 0.9,
       headroomTokens: 65_536,
       retainRatio: 0.16,
       summarizationProvider: '',
@@ -365,7 +365,7 @@ describe('compact configuration and defaults', () => {
       retainTokens: 70,
     })
     expect(retentionOnly).toMatchObject({
-      thresholdRatio: 0.8,
+      thresholdRatio: 0.9,
       retainTokens: 70,
     })
     expect(retentionOnly).not.toHaveProperty('retainRatio')
@@ -381,7 +381,7 @@ describe('compact configuration and defaults', () => {
         provider: 'small-provider',
         model: 'shared-id',
         thresholdRatio: 0.5,
-        headroomTokens: 600,
+        headroomTokens: 200,
         retainTokens: 120,
       }],
     })
@@ -394,8 +394,10 @@ describe('compact configuration and defaults', () => {
       model: 'shared-id',
     })
 
+    // 1,000-token window: half is the output floor, so the ratio and headroom
+    // decide the rest; 2,000 tokens leaves 1,000 for messages.
     expect(resolveCompactSpec(small, 1_000, 0)).toMatchObject({
-      thresholdTokens: 400,
+      thresholdTokens: 500,
       retainTokens: 120,
     })
     expect(resolveCompactSpec(otherProvider, 2_000, 0)).toMatchObject({
@@ -431,12 +433,12 @@ describe('compact configuration and defaults', () => {
   })
 
   it.each([
-    [1_048_576, 256_000, 727_040, 126_812],
-    [1_000_000, 0, 800_000, 160_000],
-    [1_000_000, 100_000, 800_000, 144_000],
-    [1_000_000, 134_464, 800_000, 138_485],
-    [1_000_000, 256_000, 678_464, 119_040],
-  ])('reserves 64K headroom in window %i with output cap %i', (window, output, threshold, retained) => {
+    [1_048_576, 256_000, 943_718, 126_812],
+    [1_000_000, 0, 900_000, 160_000],
+    [1_000_000, 100_000, 900_000, 144_000],
+    [1_000_000, 134_464, 900_000, 138_485],
+    [1_000_000, 256_000, 900_000, 120_000],
+  ])('holds the window-relative threshold in window %i with output cap %i', (window, output, threshold, retained) => {
     const policy = resolveTargetPolicy(resolveConfig({}), { provider: MODEL, model: MODEL })
 
     expect(resolveCompactSpec(policy, window, output)).toMatchObject({
@@ -446,23 +448,19 @@ describe('compact configuration and defaults', () => {
     })
   })
 
-  it.each([500, 501])('drops headroom %i that would starve the pressure budget', (headroomTokens) => {
+  it.each([500, 501])('rejects headroom %i that leaves no pressure budget', (headroomTokens) => {
     const policy = resolveTargetPolicy(resolveConfig({ headroomTokens }), { provider: MODEL, model: MODEL })
-    // Refusing to resolve left the route with no pressure compaction at all,
-    // which is what a 100k model inherited from the shipped 64K headroom. The
-    // message budget already reserves the completion, so on a window this small a
-    // second reserve is dropped rather than halved: halving it still compacted
-    // close to every turn, and each compaction discards the prefix cache.
-    expect(resolveCompactSpec(policy, 1_000, 500)).toMatchObject({
-      contextWindow: 1_000,
-      thresholdTokens: 500,
-    })
+    // Half of a 1,000-token window is the output floor, so this headroom leaves
+    // nothing to measure against and the route is reported rather than silently
+    // compacting on every turn.
+    expect(() => resolveCompactSpec(policy, 1_000, 500))
+      .toThrow(/leaving no pressure budget/)
   })
 
   it('rejects ratio retention that reaches the headroom-limited threshold', () => {
     const policy = resolveTargetPolicy(resolveConfig({ headroomTokens: 420 }), { provider: MODEL, model: MODEL })
     expect(() => resolveCompactSpec(policy, 1_000, 500))
-      .toThrow(/retainTokens \(80\) must be less than threshold tokens 80/)
+      .toThrow(/retainTokens \(120\) must be less than threshold tokens 80/)
   })
 
   it('rejects a reserve that leaves no message budget or is not a count', () => {
@@ -531,7 +529,7 @@ describe('compact configuration and defaults', () => {
       [{ summarizationModel: '' }, /must be set together/],
       [{ thresholdRatio: 0 }, /number in \(0, 1\]/],
       [{ thresholdRatio: 1.1 }, /number in \(0, 1\]/],
-      [{ retainRatio: 0.9 }, /retainRatio \(0.9\) must be less than the resolved thresholdRatio \(0.8\)/],
+      [{ retainRatio: 0.9 }, /retainRatio \(0.9\) must be less than the resolved thresholdRatio \(0.9\)/],
       [{ thresholdRatio: 0.1 }, /retainRatio \(0.16\) must be less than the resolved thresholdRatio \(0.1\)/],
       [{ retainTokens: -1 }, /non-negative integer/],
       [{ retainRatio: 0.2, retainTokens: 100 }, /mutually exclusive/],
@@ -561,7 +559,7 @@ describe('compact configuration and defaults', () => {
       ],
       [
         { modelPolicies: [{ provider: MODEL, model: MODEL, retainRatio: 0.9 }] },
-        /modelPolicies\[0\]: retainRatio \(0.9\).*thresholdRatio \(0.8\)/,
+        /modelPolicies\[0\]: retainRatio \(0.9\).*thresholdRatio \(0.9\)/,
       ],
       [{ modelPolicies: [{ provider: MODEL, model: MODEL }, { provider: MODEL, model: MODEL }] }, /duplicate model policy/],
       [{ models: { [MODEL]: { retainTokens: 10 } } }, /BasicCompactionConfig: unknown key "models"/],

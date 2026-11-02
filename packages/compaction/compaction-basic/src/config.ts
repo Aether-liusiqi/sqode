@@ -17,7 +17,7 @@ import type {
 } from './types.ts'
 
 /** Default request-pressure fraction for every routed model. */
-const DEFAULT_THRESHOLD_RATIO = 0.8
+const DEFAULT_THRESHOLD_RATIO = 0.9
 
 /** Default verbatim-tail fraction for every routed model. */
 const DEFAULT_RETAIN_RATIO = 0.16
@@ -28,7 +28,11 @@ const DEFAULT_RETAIN_RATIO = 0.16
  * leave the route compacting nearly every turn, and each of those rewrites the
  * surface and discards the provider's prefix cache.
  */
-const MIN_PRESSURE_RATIO = 0.05
+/** Output room the threshold always leaves, so a trigger never lands on the wall. */
+const MIN_OUTPUT_TOKENS = 16_000
+
+/** Largest share of a window the retention sizing may treat as reserved for output. */
+const MAX_OUTPUT_RESERVE_RATIO = 0.25
 
 /** Fields shared by top-level defaults and exact-target overrides. */
 const POLICY_CONFIG_KEYS = [
@@ -180,8 +184,7 @@ export function resolveCompactSpec(
       + 'must be a non-negative integer',
     )
   }
-  const messageBudgetTokens = contextWindow - reservedCompletionTokens
-  if (messageBudgetTokens <= 0) {
+  if (reservedCompletionTokens >= contextWindow) {
     throw new TargetPressureConfigError(
       targetKey,
       `compaction-basic: ${targetKey} reserves ${reservedCompletionTokens} completion tokens `
@@ -189,29 +192,35 @@ export function resolveCompactSpec(
       + "the adapter model's contextWindow above the effective request maxTokens",
     )
   }
-  // The message budget already excludes the completion reserve, so a headroom on
-  // top of it is a second reserve for the same purpose. It is worth keeping on a
-  // wide window — it is the margin that absorbs one oversized tool result — but
-  // on a small window it takes most of the usable budget and compacts the Session
-  // almost every turn, and every one of those rewrites the surface and discards
-  // the provider's prefix cache. Drop it when it would cost more than it buys.
-  const healthy = messageBudgetTokens - policy.headroomTokens
-    >= Math.floor(contextWindow * MIN_PRESSURE_RATIO)
-  const headroomTokens = healthy ? policy.headroomTokens : 0
-  const pressureBudgetTokens = messageBudgetTokens - headroomTokens
-  if (pressureBudgetTokens <= 0) {
+  // The threshold follows the window, not the configured output cap: a reserve
+  // tuned for a 1M route used to starve a 100k one to a third of its window, so
+  // compaction fired within one turn of finishing and every firing rewrote the
+  // surface, dropping the provider's prefix cache with it. What the threshold
+  // must still leave is room to answer at all, so the output floor is a share of
+  // the window rather than whatever the adapter happens to request.
+  // The floor protects a route that reserves output; a route that reserves none
+  // is not spending that room and keeps the full window-relative threshold.
+  const outputFloorTokens = Math.min(MIN_OUTPUT_TOKENS, reservedCompletionTokens)
+  const thresholdTokens = Math.floor(Math.min(
+    contextWindow * policy.thresholdRatio,
+    contextWindow - outputFloorTokens - policy.headroomTokens,
+  ))
+  if (thresholdTokens < 1) {
     throw new TargetPressureConfigError(
       targetKey,
-      `compaction-basic: ${targetKey} reserves ${reservedCompletionTokens} completion tokens `
-      + `and ${headroomTokens} headroom tokens of its ${contextWindow}-token context `
+      `compaction-basic: ${targetKey} reserves ${outputFloorTokens} output tokens `
+      + `and ${policy.headroomTokens} headroom tokens of its ${contextWindow}-token context `
       + 'window, leaving no pressure budget; reduce the effective request maxTokens or '
       + 'compaction headroomTokens, or configure a larger adapter model contextWindow',
     )
   }
-  const thresholdTokens = Math.floor(Math.min(
-    contextWindow * policy.thresholdRatio,
-    pressureBudgetTokens,
-  ))
+  // Retention still pays for the configured output: a tail the route cannot
+  // answer alongside would spend the same window twice.
+  const effectiveReserve = Math.min(
+    reservedCompletionTokens,
+    Math.floor(contextWindow * MAX_OUTPUT_RESERVE_RATIO),
+  )
+  const messageBudgetTokens = contextWindow - effectiveReserve
   const retainTokens = policy.retainTokens === undefined
     ? Math.floor(messageBudgetTokens * policy.retainRatio)
     : policy.retainTokens
