@@ -56,6 +56,12 @@ const COMPACTION_INSTRUCTION = [
   '## Pending Jobs',
   '- [explicitly requested work not yet completed]',
   '',
+  '## All User Messages',
+  '- [every message the user sent, in order, quoted verbatim and kept short: these record how the request evolved, and no later turn can reconstruct them]',
+  '',
+  '## Problem Solving',
+  '- [what was tried and ruled out, and why: conclusions that must not be re-litigated]',
+  '',
   '## Current Work',
   '- [precisely what was in progress at this checkpoint]',
   '',
@@ -70,7 +76,8 @@ const COMPACTION_INSTRUCTION = [
   '- Capture user feedback and explicit instructions faithfully, especially corrections.',
   '- Do NOT mention this summarization request or that the context was compacted.',
   '- Output only the checkpoint text: do not call any tool or take any other action.',
-  '- Keep the whole checkpoint under 1200 words. A checkpoint that grows without bound defeats the compaction that produced it.',
+  '- Keep the whole checkpoint under 1600 words. A checkpoint that grows without bound defeats the compaction that produced it.',
+  '- The full transcript stays on disk after this checkpoint, so exact wording, code, and command output remain recoverable: summarize what a reader must know, not what they could re-read.',
   `- If the conversation already contains a ${SUMMARY_OPEN_TAG} block, it is a PRIOR checkpoint, and this is a second compaction of an already compacted conversation. Carry its "Primary Request and Intent" and "Pending Jobs" entries forward UNCHANGED — they record what the user actually asked for, which no later turn can reconstruct — and rewrite only the account of the work: keep still-true facts, drop stale ones, merge newer information under the same structure.`,
 ].join('\n')
 
