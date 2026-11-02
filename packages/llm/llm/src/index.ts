@@ -1182,9 +1182,13 @@ function traceRequest(options: GenerateOptions): void {
     const messages = options.messages
     let chars = 0
     for (const message of messages) chars += JSON.stringify(message).length
+    // The timestamp and session id are what let a traced request be paired with
+    // the usage the provider billed for it; without them the line only says how
+    // big a request was, never which one it became.
     appendFileSync(
       path,
-      `${options.provider}/${options.model} messages=${messages.length} chars=${chars} `
+      `${new Date().toISOString()} session=${String(options.sessionId ?? '-')} `
+      + `${options.provider}/${options.model} messages=${messages.length} chars=${chars} `
       + `tools=${options.tools?.length ?? 0} `
       + `toolsChars=${options.tools === undefined ? 0 : JSON.stringify(options.tools).length} `
       + `toolHistoryChars=${options.toolHistory === undefined ? 0 : JSON.stringify(options.toolHistory).length}\n`,
