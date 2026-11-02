@@ -466,3 +466,21 @@ describe('StatsPills', () => {
     expect(renders).toBe(before)
   })
 })
+
+
+describe('per-turn cache hit share', () => {
+  it('reads one Turn instead of the whole durable log', async () => {
+    const { turnCacheHitPercent, cacheHitPercent } = await import('../src/client/chat/StatsPills.tsx')
+    const first = { uncachedInputTokens: 100, cacheReadTokens: 900, cacheWriteTokens: 0 }
+    const second = { uncachedInputTokens: 900, cacheReadTokens: 100, cacheWriteTokens: 0 }
+    expect(turnCacheHitPercent(first)).toBe('90')
+    expect(turnCacheHitPercent(second)).toBe('10')
+    // The session fold would average the two rounds; the pill must not.
+    expect(cacheHitPercent({ ...first, outputTokens: 0 } as never)).toBe('90')
+  })
+
+  it('reports nothing when the Turn billed no prompt', async () => {
+    const { turnCacheHitPercent } = await import('../src/client/chat/StatsPills.tsx')
+    expect(turnCacheHitPercent({ uncachedInputTokens: 0, cacheReadTokens: 0, cacheWriteTokens: 0 })).toBeNull()
+  })
+})

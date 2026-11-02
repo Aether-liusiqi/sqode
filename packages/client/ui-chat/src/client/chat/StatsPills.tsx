@@ -110,6 +110,27 @@ export function cacheHitPercent(usage: TokenUsageProjection): string | null {
   return formatCacheHitPercent(usage.cacheReadTokens, denominator)
 }
 
+/** The billing buckets a cache-hit share needs, shared by session and Turn usage. */
+export interface CacheHitUsage {
+  readonly uncachedInputTokens: number
+  readonly cacheReadTokens: number
+  readonly cacheWriteTokens: number
+}
+
+/**
+ * Cache-hit share of one Turn's prompt, or `null` when it billed no input.
+ *
+ * The bottom pill answers "how well did this round reuse the cache", not "how
+ * well has this session ever done", so it reads the newest Turn instead of the
+ * durable session fold.
+ * @param usage - the newest Turn's provider-reported accounting.
+ * @returns the display text, or `null` when nothing billable was spent.
+ */
+export function turnCacheHitPercent(usage: CacheHitUsage): string | null {
+  const denominator = usage.uncachedInputTokens + usage.cacheReadTokens + usage.cacheWriteTokens
+  return formatCacheHitPercent(usage.cacheReadTokens, denominator)
+}
+
 /**
  * Sum the three disjoint prompt-side billing buckets.
  * @param usage - the session's token-usage projection value.
@@ -232,8 +253,10 @@ function TimePill({ stats, t, dialog }: {
   )
 }
 
-function UsagePill({ usage, t, dialog }: {
+function UsagePill({ usage, turnUsage, t, dialog }: {
   usage: TokenUsageProjection
+  /** Newest settled Turn's accounting; the hit share describes that round. */
+  turnUsage?: CacheHitUsage
   t: ChatViewSlotProps['t']
   dialog: PillDialog
 }) {
@@ -241,7 +264,7 @@ function UsagePill({ usage, t, dialog }: {
   // Same aggregate as the Turn pill's totalTokens: every prompt-side billing bucket plus output.
   const total = billedInputTokens(usage) + usage.outputTokens
   const totalText = t('message.turnUsage.count', { count: formatTokens(total, t) })
-  const cacheHit = cacheHitPercent(usage)
+  const cacheHit = turnUsage !== undefined ? turnCacheHitPercent(turnUsage) : cacheHitPercent(usage)
   const cacheHitText = cacheHit !== null ? t('stats.cacheHit', { percent: cacheHit }) : null
   return (
     <span ref={rootRef} className={css.anchor}>
@@ -317,6 +340,16 @@ export const StatsPills = memo(function StatsPills({ useChat, useProjection, use
   const mode = usePerformanceUsage(value => value)
   const settledNodes = useChat(s => s.legacy.nodes)
   const usage = useProjection('tokenUsage')
+  // The newest Turn that reported accounting: the pill describes this round, and
+  // only falls back to the session fold before any Turn has settled.
+  const turnUsage = useMemo<CacheHitUsage | undefined>(() => {
+    for (let index = settledNodes.length - 1; index >= 0; index -= 1) {
+      const node = settledNodes[index] as { data?: { tokenUsage?: CacheHitUsage } } | undefined
+      const candidate = node?.data?.tokenUsage
+      if (candidate !== undefined) return candidate
+    }
+    return undefined
+  }, [settledNodes])
   // One exclusive slot for both dialogs: opening either pill closes the other.
   const [openPill, setOpenPill] = useState<'time' | 'usage' | null>(null)
   // Every figure rides the durable sessionStats projection, so paging and
@@ -333,7 +366,9 @@ export const StatsPills = memo(function StatsPills({ useChat, useProjection, use
     const speed = stats.decodeMs > 0
       ? t('message.tokensPerSecond', { tps: formatTokensPerSecond(stats.decodeTokens / (stats.decodeMs / 1_000)) })
       : null
-    const cacheHit = hasTokens ? cacheHitPercent(usage) : null
+    const cacheHit = turnUsage !== undefined
+      ? turnCacheHitPercent(turnUsage)
+      : hasTokens ? cacheHitPercent(usage) : null
     if (speed === null && cacheHit === null) return null
     return (
       <div className={css.root} data-composer-stats>
@@ -360,6 +395,7 @@ export const StatsPills = memo(function StatsPills({ useChat, useProjection, use
       {hasTokens && (
         <UsagePill
           usage={usage}
+          turnUsage={turnUsage}
           t={t}
           dialog={{
             open: openPill === 'usage',
