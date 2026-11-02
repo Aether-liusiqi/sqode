@@ -123,6 +123,10 @@ export interface CacheHitUsage {
  * The bottom pill answers "how well did this round reuse the cache", not "how
  * well has this session ever done", so it reads the newest Turn instead of the
  * durable session fold.
+ *
+ * A sub-agent keeps its own Session, so the work it bills is not part of this
+ * Turn's attempts and not part of this share. Counting it would mean following
+ * every dispatched Session, which the Turn fold deliberately does not do.
  * @param usage - the newest Turn's provider-reported accounting.
  * @returns the display text, or `null` when nothing billable was spent.
  */
