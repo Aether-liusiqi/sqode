@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { composeNotice, fallbackNotice, noticeDirective, remainingRunway } from '../src/notice.ts'
+import { composeNotice, dueForNotice, fallbackNotice, noticeDirective, remainingRunway } from '../src/notice.ts'
 import type { NoticeFacts } from '../src/notice.ts'
 
 const FACTS: NoticeFacts = {
@@ -59,5 +59,19 @@ describe('wrap-up notice', () => {
   it('falls back when generation returns nothing usable', async () => {
     const notice = await composeNotice(FACTS, () => Promise.resolve('   '))
     expect(notice).toContain('67%')
+  })
+
+  it('shows the notice only in the window between the warning point and compaction', () => {
+    const gate = { thresholdTokens: 75_000, alreadyNoticed: false, compacting: false }
+    // Below 67,000 there is still runway; at 75,000 compaction takes over.
+    expect(dueForNotice({ ...gate, usedTokens: 60_000 })).toBe(false)
+    expect(dueForNotice({ ...gate, usedTokens: 67_000 })).toBe(true)
+    expect(dueForNotice({ ...gate, usedTokens: 74_000 })).toBe(true)
+  })
+
+  it('never repeats within a turn or during a compaction', () => {
+    const gate = { usedTokens: 74_000, thresholdTokens: 75_000 }
+    expect(dueForNotice({ ...gate, alreadyNoticed: true, compacting: false })).toBe(false)
+    expect(dueForNotice({ ...gate, alreadyNoticed: false, compacting: true })).toBe(false)
   })
 })

@@ -10,6 +10,8 @@
  * @module @liusiqi-dev/dsh-compaction-basic/notice
  */
 
+import { noticeThresholdTokens } from './config.ts'
+
 /** What the engine knows when the warning point is crossed. */
 export interface NoticeFacts {
   /** Estimated prompt tokens now. */
@@ -26,6 +28,32 @@ export interface NoticeFacts {
   readonly lastRequest: string
   /** Work declared but not finished, newest last. */
   readonly pendingWork: readonly string[]
+}
+
+/** State the engine checks before it shows a notice. */
+export interface NoticeGate {
+  /** Estimated prompt tokens now. */
+  readonly usedTokens: number
+  /** The threshold pressure compaction fires at. */
+  readonly thresholdTokens: number
+  /** Whether this Turn already carried a notice. */
+  readonly alreadyNoticed: boolean
+  /** Whether a compaction is running or about to run right now. */
+  readonly compacting: boolean
+}
+
+/**
+ * Whether this step should show the wrap-up notice.
+ *
+ * Three rules, each learned from a way this can go wrong: never twice in one
+ * Turn, never while a compaction is already handling the same pressure, and
+ * never before the runway is short enough to act on.
+ * @param gate - the state the decision depends on.
+ * @returns true when the notice belongs in this step.
+ */
+export function dueForNotice(gate: NoticeGate): boolean {
+  if (gate.alreadyNoticed || gate.compacting) return false
+  return gate.usedTokens >= noticeThresholdTokens(gate.thresholdTokens)
 }
 
 /** How much runway is left before compaction, in tokens. */
