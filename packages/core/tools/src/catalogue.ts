@@ -41,3 +41,37 @@ export interface ToolCatalogue {
    */
   resolve(name: string): ToolSchema | undefined
 }
+
+/** Longest purpose a catalogue row carries. */
+export const CATALOGUE_PURPOSE_LIMIT = 100
+
+/**
+ * Cut a description down to one line of catalogue text.
+ *
+ * Local rather than imported from the llm package: this module must not gain a
+ * runtime dependency on the layer it merely describes, and the rule is three
+ * characters of work.
+ * @param description - the tool's own description.
+ * @returns the purpose a listing shows.
+ */
+function shortPurpose(description: string): string {
+  const text = description.trim()
+  return text.length <= CATALOGUE_PURPOSE_LIMIT ? text : `${text.slice(0, CATALOGUE_PURPOSE_LIMIT - 1)}…`
+}
+
+/**
+ * Build a catalogue over whatever the registry currently holds.
+ *
+ * The registry is the source of truth, so the catalogue reads it on every call
+ * rather than snapshotting: tools are registered and withdrawn while a session
+ * runs, and a stale listing would offer the model names it cannot use.
+ * @param listSchemas - reads the registry's current schemas.
+ * @returns a read-only catalogue.
+ */
+export function createCatalogue(listSchemas: () => readonly ToolSchema[]): ToolCatalogue {
+  return {
+    list: () => listSchemas(),
+    describe: () => listSchemas().map(tool => ({ name: tool.name, purpose: shortPurpose(tool.description) })),
+    resolve: name => listSchemas().find(tool => tool.name === name),
+  }
+}
