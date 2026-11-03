@@ -3,7 +3,7 @@ import { Context } from '@liusiqi-dev/cordis'
 import { AttachmentId } from '@liusiqi-dev/dsh-attachment'
 import BasicCompactionEngine from '@liusiqi-dev/dsh-compaction-basic'
 import type { BasicCompactionConfig } from '@liusiqi-dev/dsh-compaction-basic'
-import { reportedContextWindow } from '@liusiqi-dev/dsh-compaction-basic'
+import { noticeThresholdTokens, reportedContextWindow } from '@liusiqi-dev/dsh-compaction-basic'
 import { selectCompactableRange } from '@liusiqi-dev/dsh-compaction-basic/src/region.ts'
 import { frameSummary } from '@liusiqi-dev/dsh-compaction-basic/src/summarizer.ts'
 import type { SummarizationInput, SummaryResult } from '@liusiqi-dev/dsh-compaction-basic/src/summarizer.ts'
@@ -308,6 +308,15 @@ async function compactIfNeeded(
 }
 
 describe('compact configuration and defaults', () => {
+  it('warns a proportional gap before compaction, floored on small windows', () => {
+    // 8% of a wide threshold is a real runway; on a narrow one the floor keeps
+    // the warning far enough ahead to finish a step.
+    expect(noticeThresholdTokens(750_000)).toBe(690_000)
+    expect(noticeThresholdTokens(196_608)).toBe(180_880)
+    expect(noticeThresholdTokens(75_000)).toBe(67_000)
+    expect(noticeThresholdTokens(9_000)).toBe(1_000)
+  })
+
   it('uses low-friction service-wide defaults', () => {
     const resolved = resolveConfig({})
 

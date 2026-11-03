@@ -42,6 +42,27 @@ const DEFAULT_RETAIN_RATIO = 0.16
 /** Output room the threshold always leaves, so a trigger never lands on the wall. */
 const MIN_OUTPUT_TOKENS = 16_000
 
+/**
+ * Where to warn that compaction is coming, given the threshold it will fire at.
+ *
+ * The gap is proportional on a wide window and floored on a narrow one: 8% of a
+ * 1M threshold is a generous 60k, while 8% of a 100k threshold would be a single
+ * step. A fixed floor keeps the small route usable without over-warning the large
+ * one.
+ * @param thresholdTokens - the threshold pressure compaction fires at.
+ * @returns the pressure at which the operator should be told to wrap up.
+ */
+export function noticeThresholdTokens(thresholdTokens: number): number {
+  const gap = Math.max(MIN_NOTICE_GAP_TOKENS, Math.floor(thresholdTokens * NOTICE_GAP_RATIO))
+  return Math.max(0, thresholdTokens - gap)
+}
+
+/** Smallest gap between the warning and the compaction it warns about. */
+const MIN_NOTICE_GAP_TOKENS = 8_000
+
+/** Share of the threshold used as the gap on windows wide enough to afford it. */
+const NOTICE_GAP_RATIO = 0.08
+
 /** Largest share of a window the configured headroom may claim. */
 const MAX_HEADROOM_SHARE = 0.2
 

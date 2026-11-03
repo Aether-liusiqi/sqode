@@ -124,6 +124,8 @@ const MIN_REPORTED_WINDOW = 4_096
  * @param message - the provider's own failure text.
  * @returns the stated ceiling, or `undefined` when the text states none.
  */
+export { noticeThresholdTokens } from './config.ts'
+
 export function reportedContextWindow(message: string): number | undefined {
   for (const pattern of REPORTED_WINDOW_PATTERNS) {
     const match = pattern.exec(message)
