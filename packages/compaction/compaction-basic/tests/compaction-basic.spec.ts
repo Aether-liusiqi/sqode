@@ -813,6 +813,32 @@ describe('pressure measurement and retention', () => {
     expect(selectCompactableRange(session, priced, user!.tokens + assistant!.tokens)).toBeNull()
   })
 
+  it('injects one wrap-up notice when pressure crosses the warning point', async () => {
+    const ctx = createContext(100_000)
+    const compact = service({ auto: false, headroomTokens: 0 })
+    const session = conversation(2)
+    const injected: { source?: { kind?: string } }[] = []
+    const subject = agent(session, MODEL) as Agent & { inject?: (message: unknown) => void }
+    subject.inject = (message) => { injected.push(message as never) }
+    // Threshold is 84,000 for this window; the notice point is 8,000 below it.
+    vi.spyOn(ctx.tokenMeter, 'measure').mockReturnValue({
+      totalTokens: 80_000,
+      surfaceTokens: 0,
+      nodes: [],
+      baseline: { kind: 'none', tokens: 0 },
+      surfaceDeltaTokens: 0,
+    } as never)
+
+    // The helper builds its own agent, so drive the engine with this one.
+    expect(await compact.compactIfNeeded(subject, 'pressure', SIGNAL)).toBeNull()
+    expect(injected).toHaveLength(1)
+    expect(injected[0]?.source?.kind).toBe('compaction-notice')
+
+    // A second step in the same Turn must not repeat the warning.
+    expect(await compact.compactIfNeeded(subject, 'pressure', SIGNAL)).toBeNull()
+    expect(injected).toHaveLength(1)
+  })
+
   it('counts the durable routed request envelope without putting it on the surface', async () => {
     const compact = service({
       auto: false,
