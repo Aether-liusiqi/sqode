@@ -12,6 +12,14 @@
 
 import { noticeThresholdTokens } from './config.ts'
 
+declare module '@liusiqi-dev/dsh-llm' {
+  // Registered here because this module owns the kind, the same way the base
+  // compaction package registers its checkpoint source.
+  interface MessageSourceMap {
+    'compaction-notice': { readonly kind: 'compaction-notice' }
+  }
+}
+
 /** What the engine knows when the warning point is crossed. */
 export interface NoticeFacts {
   /** Estimated prompt tokens now. */
