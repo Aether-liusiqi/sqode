@@ -78,6 +78,7 @@ const COMPACTION_INSTRUCTION = [
   '- Output only the checkpoint text: do not call any tool or take any other action.',
   '- Keep the whole checkpoint under 1600 words. A checkpoint that grows without bound defeats the compaction that produced it.',
   '- The full transcript stays on disk after this checkpoint, so exact wording, code, and command output remain recoverable: summarize what a reader must know, not what they could re-read.',
+  '- Spend detail by relevance, not evenly: the newest work gets names, paths, numbers, and quoted instructions; work from earlier in the same task keeps its conclusions and the files it touched; work that ended, was abandoned, or belongs to an unrelated request gets one line at most, and may be dropped when the current task does not depend on it. A checkpoint that carries every past thread equally spends the next window on work nobody is doing.',
   `- If the conversation already contains a ${SUMMARY_OPEN_TAG} block, it is a PRIOR checkpoint, and this is a second compaction of an already compacted conversation. Carry its "Primary Request and Intent" and "Pending Jobs" entries forward UNCHANGED — they record what the user actually asked for, which no later turn can reconstruct — and rewrite only the account of the work: keep still-true facts, drop stale ones, merge newer information under the same structure.`,
 ].join('\n')
 

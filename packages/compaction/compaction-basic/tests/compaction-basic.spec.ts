@@ -321,10 +321,10 @@ describe('compact configuration and defaults', () => {
     const resolved = resolveConfig({})
 
     expect(resolved).toEqual({
-      thresholdRatio: 0.75,
+      thresholdRatio: 0.85,
       // A margin, not a budget: the output floor already reserves room to answer.
       headroomTokens: 4_000,
-      retainRatio: 0.16,
+      retainRatio: 0.06,
       summarizationProvider: '',
       summarizationModel: '',
       maxTokens: 65_536,
@@ -367,14 +367,14 @@ describe('compact configuration and defaults', () => {
     })
     expect(thresholdOnly).toMatchObject({
       thresholdRatio: 0.5,
-      retainRatio: 0.16,
+      retainRatio: 0.06,
     })
 
     const retentionOnly = resolveConfig({
       retainTokens: 70,
     })
     expect(retentionOnly).toMatchObject({
-      thresholdRatio: 0.75,
+      thresholdRatio: 0.85,
       retainTokens: 70,
     })
     expect(retentionOnly).not.toHaveProperty('retainRatio')
@@ -442,11 +442,11 @@ describe('compact configuration and defaults', () => {
   })
 
   it.each([
-    [1_048_576, 256_000, 786_432, 126_812],
-    [1_000_000, 0, 750_000, 160_000],
-    [1_000_000, 100_000, 750_000, 144_000],
-    [1_000_000, 134_464, 750_000, 138_485],
-    [1_000_000, 256_000, 750_000, 120_000],
+    [1_048_576, 256_000, 891_289, 62_914],
+    [1_000_000, 0, 850_000, 60_000],
+    [1_000_000, 100_000, 850_000, 60_000],
+    [1_000_000, 134_464, 850_000, 60_000],
+    [1_000_000, 256_000, 850_000, 60_000],
   ])('holds the window-relative threshold in window %i with output cap %i', (window, output, threshold, retained) => {
     const policy = resolveTargetPolicy(resolveConfig({}), { provider: MODEL, model: MODEL })
 
@@ -544,8 +544,8 @@ describe('compact configuration and defaults', () => {
       [{ summarizationModel: '' }, /must be set together/],
       [{ thresholdRatio: 0 }, /number in \(0, 1\]/],
       [{ thresholdRatio: 1.1 }, /number in \(0, 1\]/],
-      [{ retainRatio: 0.9 }, /retainRatio \(0.9\) must be less than the resolved thresholdRatio \(0.75\)/],
-      [{ thresholdRatio: 0.1 }, /retainRatio \(0.16\) must be less than the resolved thresholdRatio \(0.1\)/],
+      [{ retainRatio: 0.9 }, /retainRatio \(0.9\) must be less than the resolved thresholdRatio \(0.85\)/],
+      [{ retainRatio: 0.9, thresholdRatio: 0.5 }, /retainRatio \(0.9\) must be less than the resolved thresholdRatio \(0.5\)/],
       [{ retainTokens: -1 }, /non-negative integer/],
       [{ retainRatio: 0.2, retainTokens: 100 }, /mutually exclusive/],
       [{ modelPolicies: {} }, /modelPolicies must be an array/],
@@ -569,20 +569,20 @@ describe('compact configuration and defaults', () => {
       }, /modelPolicies\[0\].*must be set together/],
       [{ modelPolicies: [{ provider: MODEL, model: MODEL, retainRatio: 0.2, retainTokens: 100 }] }, /mutually exclusive/],
       [
-        { modelPolicies: [{ provider: MODEL, model: MODEL, thresholdRatio: 0.1 }] },
-        /modelPolicies\[0\]: retainRatio \(0.16\).*thresholdRatio \(0.1\)/,
+        { modelPolicies: [{ provider: MODEL, model: MODEL, thresholdRatio: 0.05 }] },
+        /modelPolicies\[0\]: retainRatio \(0.06\).*thresholdRatio \(0.05\)/,
       ],
       [
         { modelPolicies: [{ provider: MODEL, model: MODEL, retainRatio: 0.9 }] },
-        /modelPolicies\[0\]: retainRatio \(0.9\).*thresholdRatio \(0.75\)/,
+        /modelPolicies\[0\]: retainRatio \(0.9\).*thresholdRatio \(0.85\)/,
       ],
       [{ modelPolicies: [{ provider: MODEL, model: MODEL }, { provider: MODEL, model: MODEL }] }, /duplicate model policy/],
       [{ models: { [MODEL]: { retainTokens: 10 } } }, /BasicCompactionConfig: unknown key "models"/],
       [{ thresholdRato: 0.5 }, /BasicCompactionConfig: unknown key "thresholdRato"/],
     ] as Array<[unknown, RegExp]>
 
-    for (const [config, pattern] of bad) {
-      expect(() => resolveConfig(config as BasicCompactionConfig)).toThrow(pattern)
+    for (const [index, [config, pattern]] of bad.entries()) {
+      expect(() => resolveConfig(config as BasicCompactionConfig), `case ${String(index)}`).toThrow(pattern)
     }
 
     const invalidPressure = resolveTargetPolicy(resolveConfig({

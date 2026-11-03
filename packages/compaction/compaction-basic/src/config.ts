@@ -17,7 +17,7 @@ import type {
 } from './types.ts'
 
 /** Default request-pressure fraction for every routed model. */
-const DEFAULT_THRESHOLD_RATIO = 0.75
+const DEFAULT_THRESHOLD_RATIO = 0.85
 
 /**
  * Default margin below the threshold. It is a margin, not a second budget: the
@@ -31,7 +31,7 @@ const DEFAULT_HEADROOM_TOKENS = 4_000
 const DEFAULT_SUMMARY_MAX_TOKENS = 65_536
 
 /** Default verbatim-tail fraction for every routed model. */
-const DEFAULT_RETAIN_RATIO = 0.16
+const DEFAULT_RETAIN_RATIO = 0.06
 
 /**
  * Smallest share of a window the pressure budget must keep for the configured
@@ -65,9 +65,6 @@ const NOTICE_GAP_RATIO = 0.08
 
 /** Largest share of a window the configured headroom may claim. */
 const MAX_HEADROOM_SHARE = 0.2
-
-/** Largest share of a window the retention sizing may treat as reserved for output. */
-const MAX_OUTPUT_RESERVE_RATIO = 0.25
 
 /** Fields shared by top-level defaults and exact-target overrides. */
 const POLICY_CONFIG_KEYS = [
@@ -256,15 +253,12 @@ export function resolveCompactSpec(
       + 'compaction headroomTokens, or configure a larger adapter model contextWindow',
     )
   }
-  // Retention still pays for the configured output: a tail the route cannot
-  // answer alongside would spend the same window twice.
-  const effectiveReserve = Math.min(
-    reservedCompletionTokens,
-    Math.floor(contextWindow * MAX_OUTPUT_RESERVE_RATIO),
-  )
-  const messageBudgetTokens = contextWindow - effectiveReserve
+  // Retention is a share of the window, so one compaction always frees the same
+  // share of the context: sizing it against the message budget let a route with a
+  // large output reservation keep far more than its ratio implied, so every
+  // compaction left the Session close to the wall again.
   const retainTokens = policy.retainTokens === undefined
-    ? Math.floor(messageBudgetTokens * policy.retainRatio)
+    ? Math.floor(contextWindow * policy.retainRatio)
     : policy.retainTokens
   if (retainTokens >= thresholdTokens) {
     throw new TargetPressureConfigError(
