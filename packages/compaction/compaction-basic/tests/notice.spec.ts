@@ -1,3 +1,4 @@
+import { createUserMessage } from '@liusiqi-dev/dsh-llm'
 import { describe, expect, it } from 'vitest'
 
 import {
@@ -96,5 +97,17 @@ describe('wrap-up notice', () => {
     expect(message.role).toBe('user')
     expect(message.source.kind).toBe('compaction-notice')
     expect(JSON.stringify(message.content)).toContain('67%')
+  })
+
+  it('builds the message agent.inject accepts: id present, kind registered', () => {
+    // The two things that made injection fail: a UserMessage needs an id, and the
+    // source kind must be registered on MessageSourceMap. Both are checked here on
+    // the exact object the engine hands over.
+    const built = noticeUserMessage('上下文已用 67%')
+    const message = createUserMessage({ content: built.content, source: built.source })
+    expect(message.id).toBeTruthy()
+    expect(message.role).toBe('user')
+    expect(message.source.kind).toBe('compaction-notice')
+    expect(Object.isFrozen(message)).toBe(true)
   })
 })
