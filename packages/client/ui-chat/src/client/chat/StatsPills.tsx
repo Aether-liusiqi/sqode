@@ -347,17 +347,27 @@ function UsagePill({ usage, turnUsage, t, dialog }: {
 export const StatsPills = memo(function StatsPills({ useChat, useProjection, usePerformanceUsage, t }: StatsPillsProps) {
   const mode = usePerformanceUsage(value => value)
   const settledNodes = useChat(s => s.legacy.nodes)
+  const timeline = useChat(s => s.timeline)
   const usage = useProjection('tokenUsage')
   // The newest Turn that reported accounting: the pill describes this round, and
   // only falls back to the session fold before any Turn has settled.
   const turnUsage = useMemo<CacheHitUsage | undefined>(() => {
-    for (let index = settledNodes.length - 1; index >= 0; index -= 1) {
-      const node = settledNodes[index] as { data?: { tokenUsage?: CacheHitUsage } } | undefined
-      const candidate = node?.data?.tokenUsage
-      if (candidate !== undefined) return candidate
+    // The timeline is organized by Turn, so the newest one is an entry lookup
+    // instead of a scan through the flat node list — which may not even carry the
+    // Turn-tail node the usage hangs on.
+    const order = timeline?.turnOrder
+    if (order === undefined) return undefined
+    for (let index = order.length - 1; index >= 0; index -= 1) {
+      const turn = order[index]
+      if (turn === undefined) continue
+      const location = timeline.turns.get(turn)
+      const tail = location?.data.get('turn-tail') as
+        | { tokenUsage?: CacheHitUsage }
+        | undefined
+      if (tail?.tokenUsage !== undefined) return tail.tokenUsage
     }
     return undefined
-  }, [settledNodes])
+  }, [timeline])
   // One exclusive slot for both dialogs: opening either pill closes the other.
   const [openPill, setOpenPill] = useState<'time' | 'usage' | null>(null)
   // Every figure rides the durable sessionStats projection, so paging and
