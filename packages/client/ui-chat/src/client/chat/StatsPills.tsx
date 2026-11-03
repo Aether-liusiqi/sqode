@@ -259,8 +259,12 @@ function TimePill({ stats, t, dialog }: {
 
 function UsagePill({ usage, turnUsage, t, dialog }: {
   usage: TokenUsageProjection
-  /** Newest settled Turn's accounting; the hit share describes that round. */
-  turnUsage?: CacheHitUsage
+  /**
+   * Newest settled Turn's accounting; the hit share describes that round. The
+   * explicit `undefined` is required under `exactOptionalPropertyTypes`, because
+   * the caller forwards a value that may legitimately be absent.
+   */
+  turnUsage?: CacheHitUsage | undefined
   t: ChatViewSlotProps['t']
   dialog: PillDialog
 }) {
