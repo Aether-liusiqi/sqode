@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { fallbackNotice, noticeDirective, remainingRunway } from '../src/notice.ts'
+import { composeNotice, fallbackNotice, noticeDirective, remainingRunway } from '../src/notice.ts'
 import type { NoticeFacts } from '../src/notice.ts'
 
 const FACTS: NoticeFacts = {
@@ -40,5 +40,24 @@ describe('wrap-up notice', () => {
     expect(notice).toContain('67%')
     expect(notice).toContain('2 步')
     expect(notice).toContain('补完第三章推导')
+  })
+
+  it('uses the generated notice when the model answers', async () => {
+    const notice = await composeNotice(FACTS, async (directive) => {
+      expect(directive).toContain('补完第三章推导')
+      return '还剩约两步；建议先把这一章收尾，导出 PDF 留到下一轮。'
+    })
+    expect(notice).toContain('导出 PDF')
+  })
+
+  it('falls back when generation throws', async () => {
+    const notice = await composeNotice(FACTS, () => Promise.reject(new Error('provider down')))
+    expect(notice).toContain('67%')
+    expect(notice).toContain('补完第三章推导')
+  })
+
+  it('falls back when generation returns nothing usable', async () => {
+    const notice = await composeNotice(FACTS, () => Promise.resolve('   '))
+    expect(notice).toContain('67%')
   })
 })

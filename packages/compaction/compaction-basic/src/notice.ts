@@ -67,6 +67,29 @@ export function noticeDirective(facts: NoticeFacts): string {
 }
 
 /**
+ * Ask the generator for a notice, falling back when it cannot deliver one.
+ *
+ * The generation is injected rather than performed here: it is one model call
+ * made at the moment the context is fullest, and keeping it outside this module
+ * is what lets the failure path be tested without a provider.
+ * @param facts - the state the notice must describe.
+ * @param generate - runs the directive and returns the notice text, if it produced one.
+ * @returns the generated notice, or the plain fallback that carries the same facts.
+ */
+export async function composeNotice(
+  facts: NoticeFacts,
+  generate: (directive: string) => Promise<string | undefined>,
+): Promise<string> {
+  try {
+    const generated = (await generate(noticeDirective(facts)))?.trim()
+    if (generated !== undefined && generated.length > 0) return generated
+  } catch {
+    // A notice that cannot be generated must still be a notice.
+  }
+  return fallbackNotice(facts)
+}
+
+/**
  * The notice used when generation fails or is unavailable.
  *
  * It carries the same facts in plainer words, so a failed generation never turns
