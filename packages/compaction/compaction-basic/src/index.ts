@@ -78,7 +78,12 @@ const SUMMARY_OUTPUT_RATIO = 0.15
 const SUMMARY_OUTPUT_FLOOR = 1_024
 
 /** Room the system head, the tool schemas, and the instruction need beyond the replay. */
-const SUMMARY_PROMPT_MARGIN = 2_048
+// The replay is not the whole request: the tool schemas (about 26,600 characters
+// on a real route) and the rendered system prompt travel with it. A margin below
+// that overhead made a "fitting" replay overflow the very window it was sized
+// for, which is why a Session compacted on a wide route still met a 400 after
+// being switched to a narrow one.
+const SUMMARY_PROMPT_MARGIN = 20_000
 
 /**
  * Completion cap one summarization may reserve on a window.
