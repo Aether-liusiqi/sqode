@@ -1,6 +1,9 @@
 import { describe, expect, it } from 'vitest'
 
-import { composeNotice, dueForNotice, fallbackNotice, noticeDirective, remainingRunway } from '../src/notice.ts'
+import {
+  composeNotice, dueForNotice, fallbackNotice, latestUserRequest, noticeDirective, noticeUserMessage,
+  remainingRunway,
+} from '../src/notice.ts'
 import type { NoticeFacts } from '../src/notice.ts'
 
 const FACTS: NoticeFacts = {
@@ -73,5 +76,25 @@ describe('wrap-up notice', () => {
     const gate = { usedTokens: 74_000, thresholdTokens: 75_000 }
     expect(dueForNotice({ ...gate, alreadyNoticed: true, compacting: false })).toBe(false)
     expect(dueForNotice({ ...gate, alreadyNoticed: false, compacting: true })).toBe(false)
+  })
+
+  it('quotes the latest thing the operator typed, not synthetic context', () => {
+    const messages = [
+      { role: 'user', content: [{ type: 'text', text: '先做第三章' }] },
+      { role: 'assistant', content: [{ type: 'text', text: '好' }] },
+      { role: 'user', content: [{ type: 'text', text: '再看第四章' }] },
+    ]
+    expect(latestUserRequest(messages)).toBe('再看第四章')
+  })
+
+  it('reports no request rather than inventing one', () => {
+    expect(latestUserRequest([{ role: 'assistant', content: [{ type: 'text', text: 'hi' }] }])).toBe('')
+  })
+
+  it('marks the notice so the transcript can tell it apart', () => {
+    const message = noticeUserMessage('上下文已用 67%')
+    expect(message.role).toBe('user')
+    expect(message.source.kind).toBe('compaction-notice')
+    expect(JSON.stringify(message.content)).toContain('67%')
   })
 })

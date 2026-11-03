@@ -118,6 +118,55 @@ export async function composeNotice(
 }
 
 /**
+ * The most recent thing the operator typed, for the notice to quote.
+ *
+ * Only a user-role message counts: synthetic context and tool results also reach
+ * the surface, and quoting one of those back would read as if the operator had
+ * said it.
+ * @param messages - the session's derived model-visible history.
+ * @returns the latest user text, or an empty string when none was found.
+ */
+export function latestUserRequest(messages: readonly { role: string; content: unknown }[]): string {
+  for (let index = messages.length - 1; index >= 0; index -= 1) {
+    const message = messages[index]
+    if (message === undefined || message.role !== 'user') continue
+    const content = message.content
+    if (!Array.isArray(content)) continue
+    const text = content
+      .filter((block): block is { type: string; text: string } => {
+        const candidate = block as { type?: unknown; text?: unknown }
+        return candidate.type === 'text' && typeof candidate.text === 'string'
+      })
+      .map(block => block.text)
+      .join(' ')
+      .trim()
+    if (text.length > 0) return text
+  }
+  return ''
+}
+
+/**
+ * The synthetic user-role message that carries a notice.
+ *
+ * `source.kind` is what lets the transcript tell this apart from something the
+ * operator typed; the channel itself is the one this build already uses for
+ * model-visible context nobody typed.
+ * @param text - the notice to deliver.
+ * @returns a user-role message ready for injection.
+ */
+export function noticeUserMessage(text: string): {
+  role: 'user'
+  content: { type: 'text'; text: string }[]
+  source: { kind: 'compaction-notice' }
+} {
+  return {
+    role: 'user',
+    content: [{ type: 'text', text }],
+    source: { kind: 'compaction-notice' },
+  }
+}
+
+/**
  * The notice used when generation fails or is unavailable.
  *
  * It carries the same facts in plainer words, so a failed generation never turns
