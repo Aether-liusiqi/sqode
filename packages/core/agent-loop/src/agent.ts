@@ -605,11 +605,17 @@ export class ReactLoopAgent implements Agent {
     signal: AbortSignal,
   ): GenerateOptions {
     const { session } = this
+    // The catalog is trimmed before the header is built, not after the adapter
+    // sees it: a route without tool-update support strips `deferLoading` and sends
+    // everything verbatim, so the only place a cut survives every route is here.
+    // Today this keeps the core set; keyword selection and `load_tool` land next.
+    const contextWindow = preparedCall?.context?.contextWindow
+    const declared = declareWithin(contextWindow, tools)
     const surfaceGeneration = session.surface.contentGeneration
     const header = canonicalHeader({
       config,
       ...preparedCall === undefined ? {} : { adapterDefaults: preparedCall.adapterDefaults },
-      ...tools.length > 0 ? { tools } : {},
+      ...declared.length > 0 ? { tools: declared } : {},
     })
     const baseline = this.session.requestHeader()
     const startsSeries = startsRequestSeries
@@ -634,8 +640,8 @@ export class ReactLoopAgent implements Agent {
     }
     if (baseline !== undefined && headerSeq !== undefined) {
       const previousNames = new Set(baseline.tools?.map(tool => tool.name))
-      const currentNames = new Set(tools.map(tool => tool.name))
-      const additions = tools.filter(tool => !previousNames.has(tool.name))
+      const currentNames = new Set(declared.map(tool => tool.name))
+      const additions = declared.filter(tool => !previousNames.has(tool.name))
         .map(tool => ({ type: 'tool-addition' as const, toolName: tool.name }))
       const removals = (baseline.tools ?? []).filter(tool => !currentNames.has(tool.name))
         .map(tool => ({ type: 'tool-removal' as const, toolName: tool.name }))
@@ -649,7 +655,6 @@ export class ReactLoopAgent implements Agent {
     }
     this.requestSurfaceGeneration = surfaceGeneration
 
-    const contextWindow = preparedCall?.context?.contextWindow
     const systemPromptUpdate = preparedCall?.systemPromptUpdate
     const requestContext: RequestContext = {
       provider: config.provider,
@@ -685,4 +690,57 @@ export class ReactLoopAgent implements Agent {
     }))
     return request
   }
+}
+
+/**
+ * Tools a request declares while the catalog is being brought under budget.
+ *
+ * A real catalog measured 240 tools and 821,567 characters — 205K tokens sent with
+ * every request, which alone exceeds a 100K window. These nine cost about 9,235
+ * characters, so a request fits again immediately. Keyword selection, the catalogue
+ * and `load_tool` replace this list; until then it is deliberately the small,
+ * always-plausible set.
+ */
+/**
+ * Windows below this cannot carry a full tool catalog alongside a conversation.
+ *
+ * 200,000 sits between the two routes in use: a 100K model cannot hold the measured
+ * catalog at all, while a 1M model carries it comfortably. The number exists only
+ * while this stopgap does.
+ */
+const NARROW_WINDOW_TOKENS = 200_000
+
+const DECLARED_CORE: ReadonlySet<string> = new Set([
+  'read',
+  'write',
+  'edit',
+  'glob',
+  'grep',
+  'pwsh',
+  'ask_user_question',
+  'job_list',
+  'job_output',
+])
+
+/**
+ * Keep only the tools this route can afford to declare.
+ *
+ * A route that reports no window gets the catalog untouched: without a budget there
+ * is nothing to measure against, and trimming blind would remove tools a large
+ * window could carry.
+ * @param contextWindow - the route's window, when the adapter reports one.
+ * @param tools - the assembled catalog for this step.
+ * @returns the declarations that fit.
+ */
+function declareWithin<T extends { readonly name: string }>(
+  contextWindow: number | undefined,
+  tools: T[],
+): T[] {
+  // Same array, not a copy: a no-op must stay a no-op for identity checks.
+  if (contextWindow === undefined) return tools
+  // Only a narrow route runs out of room. A wide one carries the catalog as it is,
+  // so this stopgap cannot take tools away from a model that could hold them; the
+  // budget-based selector replaces the threshold with a measured share.
+  if (contextWindow >= NARROW_WINDOW_TOKENS) return tools
+  return tools.filter(tool => DECLARED_CORE.has(tool.name))
 }
