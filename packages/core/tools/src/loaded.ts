@@ -10,7 +10,12 @@
  * @module @liusiqi-dev/dsh-tools/loaded
  */
 
-declare module '@liusiqi-dev/dsh-session' {
+// The specifier must be the `/types` subpath: that is the module the vocabulary
+// interface is declared in, and the persistence catalog scanner only collects
+// merges that name it. Augmenting the package root compiles, but the event never
+// reaches `KNOWN_SESSION_EVENT_TYPES`, and a log containing it would then be
+// refused by its own reader.
+declare module '@liusiqi-dev/dsh-session/types' {
   interface SessionEventMap {
     /** One tool the model asked to load, recorded so the next request declares it. */
     'tools/loaded': { readonly toolName: string }
