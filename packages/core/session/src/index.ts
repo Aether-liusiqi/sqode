@@ -443,6 +443,18 @@ const attachments = new WeakMap<Session, SessionEntry>()
  * Seeding with an existing event log replays/forks a session.
  * @typert object
  */
+/** Envelope flags any append may carry, independent of the event's payload. */
+export interface SessionAppendFlags {
+  /**
+   * Mark the event as skippable for readers that do not know its type.
+   *
+   * The persistence read path refuses a log containing an unknown event unless it
+   * carries this marker, so a vocabulary that grows past an older build would
+   * otherwise make that build unable to open the log at all.
+   */
+  readonly ignorable?: true
+}
+
 export class Session {
   private log: SessionEvent[] = []
   /** Single incremental owner of surface acceptance and projection state. */
@@ -722,9 +734,15 @@ export class Session {
   append<T extends SessionEventType>(
     type: T,
     data: SessionEventMap[T],
-    ...opts: T extends SurfaceEventType ? [opts: SurfaceIntent<T>] : []
+    ...opts: T extends SurfaceEventType
+      ? [opts: SurfaceIntent<T> & SessionAppendFlags]
+      : [opts?: SessionAppendFlags]
   ): SessionEvent<T> {
-    const surfaceOpts: SurfaceIntent | undefined = opts[0]
+    // One optional argument carries both intents: surface placement for surface
+    // events, and envelope flags for any event.
+    const options = opts[0] as (SurfaceIntent & SessionAppendFlags) | undefined
+    const flags: SessionAppendFlags | undefined = options
+    const surfaceOpts: SurfaceIntent | undefined = options
     const surfaceMetadata = {
       ...surfaceOpts?.sourceEventSeqs === undefined ? {} : { sourceEventSeqs: surfaceOpts.sourceEventSeqs },
       ...surfaceOpts?.surfaceOp === undefined ? {} : { surfaceOp: surfaceOpts.surfaceOp },
@@ -747,6 +765,10 @@ export class Session {
       time: Date.now(),
       data: dataSnapshot,
       ...(surfaceMetadataSnapshot as { surfaceOp?: unknown; sourceEventSeqs?: unknown }),
+      // A marker an older reader can honour: it skips this event instead of
+      // refusing the whole log when it does not know the type. `tools/loaded` is
+      // monotonic, so skipping it degrades rather than reconstructs wrongly.
+      ...flags?.ignorable === true ? { ignorable: true as const } : {},
     } as unknown as SessionEvent<T>)
     validateSessionEventData(event, `session event "${type}" at seq ${event.seq}`)
     this.surfaceManager.validateNext(event as SessionEvent)
