@@ -966,6 +966,28 @@ describe('request/context capacity records', () => {
       .not.toContain('mcp__rea__compare_web_captures')
   })
 
+  it('declares a tool the session loaded, even on a narrow route', async () => {
+    const { defineTool } = await import('@liusiqi-dev/dsh-tools')
+    const adapter = capacityAdapter({ narrow: 64_000 }, [textResponse('a')])
+    const ctx = await harness(adapter)
+    ctx.tools.register(defineTool({
+      name: 'mcp__rea__loaded_one',
+      description: 'a tool the model pulled by name',
+      parameters: {},
+      output: { schema: { type: 'string' }, render: (_args, value) => [{ type: 'text', text: value }] },
+      async execute() {
+        return 'ok'
+      },
+    }))
+    const agent = await ctx.agentLoop.create(SessionId('loaded-narrow'), { provider: 'mock', model: 'narrow' })
+    // What `tool_search` records: a session event, so it outlives compaction.
+    agent.session.append('tools/loaded', { toolName: 'mcp__rea__loaded_one' }, { ignorable: true })
+    send(agent, 'go')
+    await waitForIdle(ctx, agent)
+    expect((agent.session.requestHeader()?.tools ?? []).map(tool => tool.name))
+      .toContain('mcp__rea__loaded_one')
+  })
+
   it('records a second capacity when the route changes mid-session', async () => {
     const adapter = capacityAdapter(
       { small: 64_000, large: 256_000 },

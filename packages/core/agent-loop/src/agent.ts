@@ -16,6 +16,7 @@ import type {
   RequestErrorAction,
 } from '@liusiqi-dev/dsh-agent'
 import { agentEvents, assembleContextFor } from '@liusiqi-dev/dsh-agent'
+import { loadedTools } from '@liusiqi-dev/dsh-tools'
 import type { GenerateOptions, LlmCallConfig, Message, PreparedLlmCall } from '@liusiqi-dev/dsh-llm'
 import {
   LlmError,
@@ -610,7 +611,7 @@ export class ReactLoopAgent implements Agent {
     // everything verbatim, so the only place a cut survives every route is here.
     // Today this keeps the core set; keyword selection and `load_tool` land next.
     const contextWindow = preparedCall?.context?.contextWindow
-    const declared = declareWithin(contextWindow, tools)
+    const declared = declareWithin(session, contextWindow, tools)
     const surfaceGeneration = session.surface.contentGeneration
     const header = canonicalHeader({
       config,
@@ -733,6 +734,7 @@ const DECLARED_CORE: ReadonlySet<string> = new Set([
  * @returns the declarations that fit.
  */
 function declareWithin<T extends { readonly name: string }>(
+  session: { snapshotEvents(): readonly { type: string; data?: unknown }[] },
   contextWindow: number | undefined,
   tools: T[],
 ): T[] {
@@ -742,5 +744,8 @@ function declareWithin<T extends { readonly name: string }>(
   // so this stopgap cannot take tools away from a model that could hold them; the
   // budget-based selector replaces the threshold with a measured share.
   if (contextWindow >= NARROW_WINDOW_TOKENS) return tools
-  return tools.filter(tool => DECLARED_CORE.has(tool.name))
+  // A tool the model pulled with `tool_search` is declared from the next request
+  // on: the loaded set is a session event, so this survives compaction and resume.
+  const loaded = loadedTools(session.snapshotEvents())
+  return tools.filter(tool => DECLARED_CORE.has(tool.name) || loaded.has(tool.name))
 }
