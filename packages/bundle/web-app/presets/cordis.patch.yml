@@ -150,6 +150,12 @@
               customSkillDirs: !!js "process.env.SQODE_PRESET_SKILLS ? [process.env.SQODE_PRESET_SKILLS] : []"
           - id: tool-skill
             name: '@liusiqi-dev/dsh-tool-skill'
+          # Catalogue meta-tools (`list_tools`, `tool_search`) live in this package.
+          # Without mounting it, a narrow route declares their names in the core set
+          # but the registry never registers them, so the model cannot reach any
+          # tool that was trimmed out of the request.
+          - id: tool-session-query
+            name: '@liusiqi-dev/dsh-tool-session-query'
           - id: present
             name: '@liusiqi-dev/dsh-tool-present'
           - id: tool-plugin-manager

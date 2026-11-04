@@ -164,6 +164,7 @@
     "@liusiqi-dev/dsh-tool-pwsh": "workspace:*",
     "@liusiqi-dev/dsh-tool-pwsh-persistent": "workspace:*",
     "@liusiqi-dev/dsh-tool-ralph": "workspace:*",
+    "@liusiqi-dev/dsh-tool-session-query": "workspace:*",
     "@liusiqi-dev/dsh-tool-skill": "workspace:*",
     "@liusiqi-dev/dsh-tool-subagent": "workspace:*",
     "@liusiqi-dev/dsh-tool-subagent-control": "workspace:*",
