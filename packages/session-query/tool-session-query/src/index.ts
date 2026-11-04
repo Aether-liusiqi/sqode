@@ -7,7 +7,7 @@
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
 import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
+import { defineTool, loadedTools } from '@liusiqi-dev/dsh-tools'
 import { toolInput } from './input.ts'
 import { operations } from './operations.ts'
 import { presentation } from './presentation.ts'
@@ -41,6 +41,72 @@ export const Config: z<Config> = z.object({
 interface ResolvedConfig {
   readonly maxSearchResults: number
   readonly searchTimeoutMs: number
+}
+
+/** Tools one search returns; a model that needs more asks again. */
+const SEARCH_RESULT_LIMIT = 8
+
+/** Tool names a `select:` query asks for. */
+function selectedNames(query: string): string[] | undefined {
+  if (!query.toLowerCase().startsWith('select:')) return undefined
+  return query.slice('select:'.length).split(',').map(name => name.trim()).filter(name => name.length > 0)
+}
+
+/**
+ * Whether a tool's own wording answers the query.
+ * @param tool - the candidate tool.
+ * @param query - the lowercased query.
+ * @returns true when the name or the description contains a query word.
+ */
+function answers(tool: { name: string; description: string }, query: string): boolean {
+  const haystack = `${tool.name} ${tool.description}`.toLowerCase()
+  return query.split(/\s+/).filter(word => word.length >= 2).some(word => haystack.includes(word))
+}
+
+/**
+ * Find tools and record the matches as loaded.
+ *
+ * One call loads as many tools as it matches: each separate search costs a round
+ * trip, so the tool is built to be asked once with everything the model expects to
+ * need.
+ * @param ctx - the plugin context, for the tool registry.
+ * @param query - a purpose, or `select:name,name` for exact names.
+ * @param exec - the execution context carrying the calling agent.
+ * @returns the message the model reads.
+ */
+function searchTools(
+  ctx: Context,
+  query: string,
+  exec: { readonly agent?: { readonly session: {
+    snapshotEvents(): readonly { type: string; data?: unknown }[]
+    append(type: 'tools/loaded', data: { toolName: string }, opts: { ignorable: true }): unknown
+  } } },
+): string {
+  const agent = exec.agent
+  if (agent === undefined) throw new Error('tool_search needs an Agent-backed session')
+  const session = agent.session
+  const catalog = ctx.tools.schemas()
+  const names = selectedNames(query)
+  const matched = names === undefined
+    ? catalog.filter(tool => answers(tool, query.trim().toLowerCase())).slice(0, SEARCH_RESULT_LIMIT)
+    : names.map(name => catalog.find(tool => tool.name === name)).filter((tool): tool is NonNullable<typeof tool> => tool !== undefined)
+  if (matched.length === 0) {
+    return `No tool matched "${query}". Call list_tools to browse the catalog.`
+  }
+  const already = loadedTools(session.snapshotEvents())
+  const added: string[] = []
+  for (const tool of matched) {
+    if (already.has(tool.name)) continue
+    // Ignorable: an older reader skips this event rather than refusing the log, and
+    // worst case it declares the tool twice in a later request.
+    session.append('tools/loaded', { toolName: tool.name }, { ignorable: true })
+    added.push(tool.name)
+  }
+  const lines = matched.map(tool => `- ${tool.name}: ${tool.description.trim().slice(0, 120)}`)
+  const status = added.length === 0
+    ? 'All of these were already loaded.'
+    : `Loaded ${String(added.length)}: ${added.join(', ')}. They are declared from the next request on.`
+  return `${status}\n${lines.join('\n')}`
 }
 
 /** Longest purpose one catalogue line carries. */
@@ -88,6 +154,16 @@ export function apply(ctx: Context, config: Config): void {
     // Deliberately unbudgeted: a narrow window declares a small set, and a listing
     // that hid the rest would tell the model those tools do not exist.
     execute: () => Promise.resolve(describeTools(ctx.tools.schemas())),
+  }))
+
+  ctx.tools.register(defineTool({
+    name: 'tool_search',
+    description: 'Find tools by name or purpose and load them for the next request. Use "select:name,name" for exact names; one call can load several.',
+    parameters: {
+      query: { type: 'string', required: true, description: 'A purpose in words, or select:name,name for exact tools.' },
+    },
+    output: TEXT_OUTPUT,
+    execute: (args, exec) => Promise.resolve(searchTools(ctx, args.query, exec)),
   }))
 
   ctx.tools.register(defineTool({

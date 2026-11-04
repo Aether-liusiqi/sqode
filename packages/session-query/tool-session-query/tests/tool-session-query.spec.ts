@@ -252,11 +252,12 @@ function errorCode(result: ToolExecutionResult): string | undefined {
 }
 
 describe('registration and schemas', () => {
-  it('registers the six cursor-free tools, prompt, timeouts, and pure generic presenters, then disposes them', async () => {
+  it('registers the seven cursor-free tools, prompt, timeouts, and pure generic presenters, then disposes them', async () => {
     const mounted = await mount({ maxSearchResults: 7, searchTimeoutMs: 1234 })
     const names = mounted.ctx.tools.schemas().map(schema => schema.name)
     expect(names).toEqual([
       'list_tools',
+      'tool_search',
       'session_search',
       'session_event_search',
       'session_trace',
