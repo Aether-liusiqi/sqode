@@ -712,17 +712,29 @@ const NARROW_WINDOW_TOKENS = 200_000
  * declare anything beyond this list.
  */
 const DECLARED_CORE: ReadonlySet<string> = new Set([
+  // Reading and acting on the workspace.
   'read',
   'write',
   'edit',
   'glob',
   'grep',
   'pwsh',
-  'ask_user_question',
+  // Background work: listing and reading jobs without a way to stop one is a
+  // capability that cannot be finished, so `job_kill` belongs beside them.
   'job_list',
   'job_output',
+  'job_kill',
+  // The escape hatches. `list_tools` and `tool_search` are how everything outside
+  // this set is reached; `skill` is how a skill's instructions are loaded. Omitting
+  // any of them makes the trimming irreversible.
   'list_tools',
   'tool_search',
+  'skill',
+  // Research: the two tools a sourcing task cannot start without, and the cheapest
+  // in the catalog (565 characters together).
+  'web_search',
+  'web_fetch',
+  'ask_user_question',
 ])
 
 /**
