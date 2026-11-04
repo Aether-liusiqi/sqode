@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context, type Fiber } from '@liusiqi-dev/cordis'
+import { createScope } from '@liusiqi-dev/dsh-scope'
 import type { Agent } from '@liusiqi-dev/dsh-agent'
 import { createUserMessage, ToolCallId, HarnessError , createMessage } from '@liusiqi-dev/dsh-llm'
 import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
@@ -30,7 +31,7 @@ import SessionQueryEngine, {
   type SessionTitleObservationResult,
 } from '@liusiqi-dev/dsh-session-query'
 import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime, { type ToolExecutionResult } from '@liusiqi-dev/dsh-tools'
+import ToolRuntime, { defineTool, type ToolExecutionResult } from '@liusiqi-dev/dsh-tools'
 import * as ToolSessionQuery from '@liusiqi-dev/dsh-tool-session-query'
 
 declare module '@liusiqi-dev/dsh-llm' {
@@ -2107,5 +2108,52 @@ describe('trace and exact read rendering', () => {
   ])('rejects invalid exact-read integers for %s', async (name, args, expected = 'SESSION_QUERY_INVALID_FILTER') => {
     const mounted = await mount()
     expect(errorCode(await mounted.call(name, args))).toBe(expected)
+  })
+})
+
+describe('catalogue listing', () => {
+  it('lists every name visible in the caller scope, including scope-local tools', async () => {
+    const mounted = await mount()
+    const agent = fakeAgent(mounted.caller)
+    let scoped!: ReturnType<typeof createScope>
+    // Mirror the production mint: the agent object is the scope key, and tools
+    // registered in that scope are invisible to the global `schemas()` view.
+    await mounted.ctx.plugin(Object.assign((inner: Context) => {
+      scoped = createScope(inner, agent)
+    }, { inject: ['tools', 'systemPrompt'] }))
+    scoped.ctx.tools.register(defineTool({
+      name: 'scoped_only_probe',
+      description: 'registered only inside the agent scope',
+      parameters: {},
+      output: { schema: { type: 'string' }, render: (_args, value) => [{ type: 'text', text: value }] },
+      execute: () => Promise.resolve('ok'),
+    }))
+
+    const result = await mounted.call('list_tools', {}, { agent })
+    const output = text(result)
+    expect(output).toContain('scoped_only_probe')
+    expect(output).toContain('list_tools')
+    expect(output).toContain('tool_search')
+    // The unfiltered answer is names only: 240 names fit, 240 descriptions do not.
+    expect(output).not.toContain(' — ')
+    expect(output).toContain('names only')
+  })
+
+  it('shows one-line purposes for a filter, and caps a wide match', async () => {
+    const mounted = await mount()
+    const exact = text(await mounted.call('list_tools', { filter: 'session_event_read' }))
+    expect(exact).toContain('session_event_read — ')
+    expect(exact).toContain('tools matching')
+    expect(exact).not.toContain('names only')
+
+    const wide = text(await mounted.call('list_tools', { filter: 'tool' }))
+    const rows = wide.split('\n').filter(line => line.includes(' — '))
+    expect(rows.length).toBeLessThanOrEqual(20)
+  })
+
+  it('says so when nothing matches a filter', async () => {
+    const mounted = await mount()
+    expect(text(await mounted.call('list_tools', { filter: 'zzz_no_such_tool' })))
+      .toContain('No tool matched')
   })
 })

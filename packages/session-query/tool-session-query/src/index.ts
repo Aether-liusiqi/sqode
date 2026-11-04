@@ -85,7 +85,9 @@ function searchTools(
   const agent = exec.agent
   if (agent === undefined) throw new Error('tool_search needs an Agent-backed session')
   const session = agent.session
-  const catalog = ctx.tools.schemas()
+  // Same scope view as the request header; the global view alone omits
+  // scope-local tools that a model may legitimately ask for by name.
+  const catalog = ctx.tools.schemas(agent)
   const names = selectedNames(query)
   const matched = names === undefined
     ? catalog.filter(tool => answers(tool, query.trim().toLowerCase())).slice(0, SEARCH_RESULT_LIMIT)
@@ -112,18 +114,37 @@ function searchTools(
 /** Longest purpose one catalogue line carries. */
 const LISTING_PURPOSE_LIMIT = 100
 
+/** Matches a filtered listing shows before asking the model to narrow it. */
+const LISTING_FILTER_LIMIT = 20
+
 /**
- * Render the catalog as one line per tool.
+ * Render every tool name, or one filtered page with purposes.
+ *
+ * The unfiltered answer is deliberately names only: 240 names cost roughly 8K
+ * characters, while a description for each costs 28K. Truncating names would be
+ * worse than either — a partial inventory once made the model report that
+ * `tool_search` did not exist, when it was declared in the very same request.
  * @param tools - the schemas this session can reach.
+ * @param filter - optional substring over name and description.
  * @returns the listing the model reads.
  */
-function describeTools(tools: readonly { name: string; description: string }[]): string {
-  const lines = tools.map((tool) => {
+function describeTools(tools: readonly { name: string; description: string }[], filter?: string): string {
+  if (filter === undefined || filter.trim().length === 0) {
+    const names = tools.map(tool => tool.name)
+    return `${String(names.length)} tools (names only; pass a filter to see purposes)\n\n${names.join('\n')}`
+  }
+  const needle = filter.trim().toLowerCase()
+  const matched = tools.filter(tool => `${tool.name} ${tool.description}`.toLowerCase().includes(needle))
+  if (matched.length === 0) return `No tool matched "${filter}".`
+  const shown = matched.slice(0, LISTING_FILTER_LIMIT).map((tool) => {
     const text = tool.description.trim()
     const purpose = text.length <= LISTING_PURPOSE_LIMIT ? text : `${text.slice(0, LISTING_PURPOSE_LIMIT - 1)}…`
     return `${tool.name} — ${purpose}`
   })
-  return `${String(tools.length)} tools\n\n${lines.join('\n')}`
+  const extra = matched.length > shown.length
+    ? `\n\n… ${String(matched.length - shown.length)} more; narrow the filter to see them.`
+    : ''
+  return `${String(matched.length)} tools matching "${filter}"\n\n${shown.join('\n')}${extra}`
 }
 
 const TEXT_OUTPUT = {
@@ -147,13 +168,16 @@ export function apply(ctx: Context, config: Config): void {
 
   ctx.tools.register(defineTool({
     name: 'list_tools',
-    description: 'List every tool this session can use, one line each, including tools the current request did not declare.',
-    parameters: {},
+    description: 'List every tool this session can use, including tools the current request did not declare. Pass a filter to see one-line purposes for the matching tools.',
+    parameters: {
+      filter: { type: 'string', description: 'Optional substring over tool name and description. Omit for the full name list.' },
+    },
     output: TEXT_OUTPUT,
     isConcurrencySafe: () => true,
-    // Deliberately unbudgeted: a narrow window declares a small set, and a listing
-    // that hid the rest would tell the model those tools do not exist.
-    execute: () => Promise.resolve(describeTools(ctx.tools.schemas())),
+    // `scope: agent` is the same view the request header is built from. Passing no
+    // scope here reads only the global layer, which omits the scope-local tools —
+    // including this tool and `tool_search` themselves.
+    execute: (args, exec) => Promise.resolve(describeTools(ctx.tools.schemas(exec.agent), args.filter)),
   }))
 
   ctx.tools.register(defineTool({
