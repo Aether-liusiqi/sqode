@@ -43,6 +43,23 @@ interface ResolvedConfig {
   readonly searchTimeoutMs: number
 }
 
+/** Longest purpose one catalogue line carries. */
+const LISTING_PURPOSE_LIMIT = 100
+
+/**
+ * Render the catalog as one line per tool.
+ * @param tools - the schemas this session can reach.
+ * @returns the listing the model reads.
+ */
+function describeTools(tools: readonly { name: string; description: string }[]): string {
+  const lines = tools.map((tool) => {
+    const text = tool.description.trim()
+    const purpose = text.length <= LISTING_PURPOSE_LIMIT ? text : `${text.slice(0, LISTING_PURPOSE_LIMIT - 1)}…`
+    return `${tool.name} — ${purpose}`
+  })
+  return `${String(tools.length)} tools\n\n${lines.join('\n')}`
+}
+
 const TEXT_OUTPUT = {
   schema: { type: 'string' as const },
   render: (_args: unknown, value: string) => [{ type: 'text' as const, text: value }],
@@ -61,6 +78,17 @@ export function apply(ctx: Context, config: Config): void {
     order: ctx.systemPrompt.getSectionOrder('TOOL_SESSION_QUERY'),
     text: PROMPT_TEXT,
   })
+
+  ctx.tools.register(defineTool({
+    name: 'list_tools',
+    description: 'List every tool this session can use, one line each, including tools the current request did not declare.',
+    parameters: {},
+    output: TEXT_OUTPUT,
+    isConcurrencySafe: () => true,
+    // Deliberately unbudgeted: a narrow window declares a small set, and a listing
+    // that hid the rest would tell the model those tools do not exist.
+    execute: () => Promise.resolve(describeTools(ctx.tools.schemas())),
+  }))
 
   ctx.tools.register(defineTool({
     name: 'session_search',
