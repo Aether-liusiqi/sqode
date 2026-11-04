@@ -300,6 +300,17 @@ export interface SessionEventMap {
   /** Closes step `step` of turn `turn`. */
   'step/end': { turn: number; step: number }
   /**
+   * One SERP search request, recorded for audit.
+   *
+   * Written by the search provider, never projected into messages. It is declared
+   * here because the read path refuses a log containing a type this vocabulary
+   * cannot name — the provider writing an undeclared event made its own log
+   * unreadable.
+   */
+  'web/serp-search-request': Readonly<Record<string, unknown>>
+  /** One HTTP search request, recorded for audit; same contract as the SERP record. */
+  'web/http-search-request': Readonly<Record<string, unknown>>
+  /**
    * A user-role message on the model-visible surface: a direct human prompt
    * (the queued message claimed for this turn), a synthetic `agent.inject()`
    * context (file-change notices, subdir AGENTS.md, skill content, cron

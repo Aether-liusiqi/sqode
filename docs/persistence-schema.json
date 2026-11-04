@@ -21861,6 +21861,152 @@
       }
     },
     {
+      "key": "event:web/http-search-request",
+      "kind": "event",
+      "event": "web/http-search-request",
+      "surface": false,
+      "digest": "1dfad184c500aefc43381a1b2bef43abebff4dac6e04b0e457cee49d044b75ec",
+      "schema": {
+        "root": 0,
+        "nodes": [
+          {
+            "kind": "object",
+            "properties": [
+              {
+                "name": "data",
+                "type": 1,
+                "optional": false
+              },
+              {
+                "name": "ignorable",
+                "type": 4,
+                "optional": true
+              },
+              {
+                "name": "seq",
+                "type": 5,
+                "optional": false
+              },
+              {
+                "name": "time",
+                "type": 5,
+                "optional": false
+              },
+              {
+                "name": "type",
+                "type": 6,
+                "optional": false
+              }
+            ],
+            "indices": []
+          },
+          {
+            "kind": "object",
+            "properties": [],
+            "indices": [
+              {
+                "key": 2,
+                "value": 3
+              }
+            ]
+          },
+          {
+            "kind": "primitive",
+            "type": "string"
+          },
+          {
+            "kind": "opaque",
+            "reason": "unknown"
+          },
+          {
+            "kind": "literal",
+            "value": true
+          },
+          {
+            "kind": "primitive",
+            "type": "number"
+          },
+          {
+            "kind": "literal",
+            "value": "web/http-search-request"
+          }
+        ]
+      }
+    },
+    {
+      "key": "event:web/serp-search-request",
+      "kind": "event",
+      "event": "web/serp-search-request",
+      "surface": false,
+      "digest": "c4ebfdff98bfd2880dcad88f7d6f1603949a22841f39d10ff366fe03320753c1",
+      "schema": {
+        "root": 0,
+        "nodes": [
+          {
+            "kind": "object",
+            "properties": [
+              {
+                "name": "data",
+                "type": 1,
+                "optional": false
+              },
+              {
+                "name": "ignorable",
+                "type": 4,
+                "optional": true
+              },
+              {
+                "name": "seq",
+                "type": 5,
+                "optional": false
+              },
+              {
+                "name": "time",
+                "type": 5,
+                "optional": false
+              },
+              {
+                "name": "type",
+                "type": 6,
+                "optional": false
+              }
+            ],
+            "indices": []
+          },
+          {
+            "kind": "object",
+            "properties": [],
+            "indices": [
+              {
+                "key": 2,
+                "value": 3
+              }
+            ]
+          },
+          {
+            "kind": "primitive",
+            "type": "string"
+          },
+          {
+            "kind": "opaque",
+            "reason": "unknown"
+          },
+          {
+            "kind": "literal",
+            "value": true
+          },
+          {
+            "kind": "primitive",
+            "type": "number"
+          },
+          {
+            "kind": "literal",
+            "value": "web/serp-search-request"
+          }
+        ]
+      }
+    },
+    {
       "key": "event:workspace/changes",
       "kind": "event",
       "event": "workspace/changes",
@@ -22260,7 +22406,7 @@
       "digest": "17d1afb770d9941936130996da00dc86782cfef731d8d6526162c301256a4ac3",
       "names": [],
       "sources": [
-        "packages/core/session/src/types.ts:427"
+        "packages/core/session/src/types.ts:438"
       ]
     },
     {
@@ -22356,7 +22502,7 @@
       "digest": "1ccb56061942f5ccb0d30c9e4f2883b9d115ff906560029de637b61d3cde896d",
       "names": [],
       "sources": [
-        "packages/core/session/src/types.ts:341"
+        "packages/core/session/src/types.ts:352"
       ]
     },
     {
@@ -22407,6 +22553,11 @@
       "sources": [
         "packages/goal/goal/src/domain.ts:24"
       ]
+    },
+    {
+      "digest": "1dfad184c500aefc43381a1b2bef43abebff4dac6e04b0e457cee49d044b75ec",
+      "names": [],
+      "sources": []
     },
     {
       "digest": "1e0b0b66b6f0c53fc72e52289d06b4708d776f1ca9df4c86a22bff621d403cf0",
@@ -22718,7 +22869,7 @@
         "packages/core/session/src/types.ts#SurfaceOp"
       ],
       "sources": [
-        "packages/core/session/src/types.ts:462"
+        "packages/core/session/src/types.ts:473"
       ]
     },
     {
@@ -23211,7 +23362,7 @@
       "digest": "5302e763151277614b97e77f00e3b326694c6c1247b916a20503c344dc970777",
       "names": [],
       "sources": [
-        "packages/core/session/src/types.ts:375"
+        "packages/core/session/src/types.ts:386"
       ]
     },
     {
@@ -23232,7 +23383,7 @@
       "digest": "54f9276a1617d7c12594722c89cfe864bcbe4517e9a6f9c98bab14f199a135e0",
       "names": [],
       "sources": [
-        "packages/core/session/src/types.ts:355"
+        "packages/core/session/src/types.ts:366"
       ]
     },
     {
@@ -23567,7 +23718,7 @@
       "digest": "6bc8e51124d0874bc89e1d0ceff381a9c3cd0fc240667d69f841ce4f60f65fe5",
       "names": [],
       "sources": [
-        "packages/core/session/src/types.ts:330"
+        "packages/core/session/src/types.ts:341"
       ]
     },
     {
@@ -24142,6 +24293,11 @@
       "sources": []
     },
     {
+      "digest": "93e95877c1ce8bf22a127bc6bf35f74afef4015559f5286d16169079a2df6247",
+      "names": [],
+      "sources": []
+    },
+    {
       "digest": "94c56aeb1564ad735eb773d88636b40761d063efa1610f1308004d32923f5378",
       "names": [],
       "sources": []
@@ -24410,7 +24566,7 @@
       "digest": "a81059ca06999da1e712414520c2c65e491d052fcf9640fae20aa38f0a5dc735",
       "names": [],
       "sources": [
-        "packages/core/session/src/types.ts:383",
+        "packages/core/session/src/types.ts:394",
         "packages/core/tools/src/types.ts:24"
       ]
     },
@@ -24505,7 +24661,7 @@
       "digest": "ad0c38a0adb82a94c925456df41586d9b5f9202fca18593eae2213d4445b4585",
       "names": [],
       "sources": [
-        "packages/core/session/src/types.ts:390"
+        "packages/core/session/src/types.ts:401"
       ]
     },
     {
@@ -24728,7 +24884,7 @@
       "digest": "b724dcfd6e13f79b63f30103771c7d9b281f6d3d1a16d615450e3d4c8ae2b886",
       "names": [],
       "sources": [
-        "packages/core/session/src/types.ts:311"
+        "packages/core/session/src/types.ts:322"
       ]
     },
     {
@@ -24830,7 +24986,7 @@
       "digest": "bcf0caf62d964b2fcf5404bd5c909cfa9a21c3f3c96e6b7e36d9e33565223825",
       "names": [],
       "sources": [
-        "packages/core/session/src/types.ts:464"
+        "packages/core/session/src/types.ts:475"
       ]
     },
     {
@@ -24891,6 +25047,11 @@
     },
     {
       "digest": "c43b119ce579b3e9983a0d3adc4ba402ebb9ba773d89738a2dab01ecf5813943",
+      "names": [],
+      "sources": []
+    },
+    {
+      "digest": "c4ebfdff98bfd2880dcad88f7d6f1603949a22841f39d10ff366fe03320753c1",
       "names": [],
       "sources": []
     },
@@ -25201,7 +25362,7 @@
       "digest": "e4c18e294232c3ba6c9f1999f168263cc55956147cfe4121720899be8e52edd1",
       "names": [],
       "sources": [
-        "packages/core/session/src/types.ts:361"
+        "packages/core/session/src/types.ts:372"
       ]
     },
     {
@@ -25441,6 +25602,11 @@
     },
     {
       "digest": "f6605d6c57933aeaaf10911b5fbd6c61e655baa181af7192d3240f49d255b90d",
+      "names": [],
+      "sources": []
+    },
+    {
+      "digest": "f6701f3b0fc46b06e36f7c81de14ed362e8a89c5512a5dbf0fe3be62f337c07e",
       "names": [],
       "sources": []
     },
