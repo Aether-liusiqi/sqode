@@ -694,23 +694,23 @@ export class ReactLoopAgent implements Agent {
 }
 
 /**
- * Tools a request declares while the catalog is being brought under budget.
- *
- * A real catalog measured 240 tools and 821,567 characters — 205K tokens sent with
- * every request, which alone exceeds a 100K window. These nine cost about 9,235
- * characters, so a request fits again immediately. Keyword selection, the catalogue
- * and `load_tool` replace this list; until then it is deliberately the small,
- * always-plausible set.
- */
-/**
  * Windows below this cannot carry a full tool catalog alongside a conversation.
  *
  * 200,000 sits between the two routes in use: a 100K model cannot hold the measured
- * catalog at all, while a 1M model carries it comfortably. The number exists only
- * while this stopgap does.
+ * catalog at all, while a 1M model carries it comfortably.
  */
 const NARROW_WINDOW_TOKENS = 200_000
 
+/**
+ * Tools every request declares, whatever else it leaves out.
+ *
+ * A catalog measured 240 tools and 821,567 characters — 205K tokens with every
+ * request, which alone exceeds a 100K window. These cost about 9,235 characters.
+ *
+ * `list_tools` and `tool_search` belong here or the trimming has no way out: if the
+ * only means of finding a tool were itself omitted, a narrow route could never
+ * declare anything beyond this list.
+ */
 const DECLARED_CORE: ReadonlySet<string> = new Set([
   'read',
   'write',
@@ -721,6 +721,8 @@ const DECLARED_CORE: ReadonlySet<string> = new Set([
   'ask_user_question',
   'job_list',
   'job_output',
+  'list_tools',
+  'tool_search',
 ])
 
 /**
