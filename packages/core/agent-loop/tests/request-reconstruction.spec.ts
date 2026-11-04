@@ -938,6 +938,34 @@ describe('request/context capacity records', () => {
     expect(agent.session.surface.nodes).not.toContain(records[0]?.seq)
   })
 
+  it('declares only what a narrow window can carry, and everything a wide one can', async () => {
+    const { defineTool } = await import('@liusiqi-dev/dsh-tools')
+    const adapter = capacityAdapter({ narrow: 64_000, wide: 256_000 }, [textResponse('a'), textResponse('b')])
+    const ctx = await harness(adapter)
+    // Presence, not size, is what this case measures.
+    ctx.tools.register(defineTool({
+      name: 'mcp__rea__compare_web_captures',
+      description: 'compare two captures',
+      parameters: {},
+      output: { schema: { type: 'string' }, render: (_args, value) => [{ type: 'text', text: value }] },
+      async execute() {
+        return 'ok'
+      },
+    }))
+
+    const wide = await ctx.agentLoop.create(SessionId('trim-wide'), { provider: 'mock', model: 'wide' })
+    send(wide, 'go')
+    await waitForIdle(ctx, wide)
+    expect((wide.session.requestHeader()?.tools ?? []).map(tool => tool.name))
+      .toContain('mcp__rea__compare_web_captures')
+
+    const narrow = await ctx.agentLoop.create(SessionId('trim-narrow'), { provider: 'mock', model: 'narrow' })
+    send(narrow, 'go')
+    await waitForIdle(ctx, narrow)
+    expect((narrow.session.requestHeader()?.tools ?? []).map(tool => tool.name))
+      .not.toContain('mcp__rea__compare_web_captures')
+  })
+
   it('records a second capacity when the route changes mid-session', async () => {
     const adapter = capacityAdapter(
       { small: 64_000, large: 256_000 },
