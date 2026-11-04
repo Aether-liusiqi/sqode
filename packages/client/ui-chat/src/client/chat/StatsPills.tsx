@@ -347,27 +347,26 @@ function UsagePill({ usage, turnUsage, t, dialog }: {
 export const StatsPills = memo(function StatsPills({ useChat, useProjection, usePerformanceUsage, t }: StatsPillsProps) {
   const mode = usePerformanceUsage(value => value)
   const settledNodes = useChat(s => s.legacy.nodes)
-  const timeline = useChat(s => s.timeline)
   const usage = useProjection('tokenUsage')
   // The newest Turn that reported accounting: the pill describes this round, and
   // only falls back to the session fold before any Turn has settled.
-  const turnUsage = useMemo<CacheHitUsage | undefined>(() => {
-    // The timeline is organized by Turn, so the newest one is an entry lookup
-    // instead of a scan through the flat node list — which may not even carry the
-    // Turn-tail node the usage hangs on.
-    const order = timeline?.turnOrder
-    if (order === undefined) return undefined
-    for (let index = order.length - 1; index >= 0; index -= 1) {
-      const turn = order[index]
-      if (turn === undefined) continue
-      const location = timeline.turns.get(turn)
-      const tail = location?.data.get('turn-tail') as
-        | { tokenUsage?: CacheHitUsage }
-        | undefined
-      if (tail?.tokenUsage !== undefined) return tail.tokenUsage
-    }
-    return undefined
-  }, [timeline])
+  // Derived inside the selector, not memoized over a sliced object: `useChat`
+  // compares the value it returns, so returning `timeline` itself kept a stable
+  // reference while the Turn data behind it changed, and the pill never updated.
+  const turnUsage = useChat((snapshot) => {
+    const turn = snapshot.timeline.turnOrder.at(-1)
+    const usage = turn === undefined
+      ? undefined
+      : snapshot.timeline.turns.get(turn)?.data.get('turn-tail')?.tokenUsage
+    if (usage === undefined) return undefined
+    // A Turn that reported no cache bucket spent no cache; treating the absence as
+    // zero keeps the share honest instead of inflating it.
+    return {
+      uncachedInputTokens: usage.uncachedInputTokens,
+      cacheReadTokens: usage.cacheReadTokens ?? 0,
+      cacheWriteTokens: usage.cacheWriteTokens ?? 0,
+    } satisfies CacheHitUsage
+  })
   // One exclusive slot for both dialogs: opening either pill closes the other.
   const [openPill, setOpenPill] = useState<'time' | 'usage' | null>(null)
   // Every figure rides the durable sessionStats projection, so paging and
