@@ -2157,3 +2157,77 @@ describe('catalogue listing', () => {
       .toContain('No tool matched')
   })
 })
+
+
+describe('tool_search', () => {
+  /** Load events this session recorded, in order; `ignorable` sits on the envelope. */
+  function loaded(mounted: Mounted): { toolName?: unknown; ignorable?: unknown }[] {
+    return mounted.caller.snapshotEvents()
+      .filter(event => event.type === 'tools/loaded')
+      .map(event => ({
+        toolName: (event.data as { toolName?: unknown }).toolName,
+        ignorable: (event as unknown as { ignorable?: unknown }).ignorable,
+      }))
+  }
+
+  it('loads several exact names in one select: call and records ignorable events', async () => {
+    const mounted = await mount()
+    const output = text(await mounted.call('tool_search', {
+      query: 'select:session_search,session_trace',
+    }))
+    expect(output).toContain('Loaded 2: session_search, session_trace')
+    expect(output).toContain('next request on')
+    expect(output).toContain('- session_search:')
+    expect(output).toContain('- session_trace:')
+
+    const events = loaded(mounted)
+    expect(events).toHaveLength(2)
+    expect(events.map(event => event.toolName)).toEqual(['session_search', 'session_trace'])
+    // A reader built before this event skips it instead of refusing the whole log.
+    expect(events.every(event => event.ignorable === true)).toBe(true)
+  })
+
+  it('finds tools by a word in their name or description', async () => {
+    const mounted = await mount()
+    const output = text(await mounted.call('tool_search', { query: 'session_event_read' }))
+    expect(output).toContain('Loaded ')
+    expect(output).toContain('- session_event_read:')
+    expect(loaded(mounted).some(event => event.toolName === 'session_event_read')).toBe(true)
+  })
+
+  it('does not append a second event for an already loaded tool', async () => {
+    const mounted = await mount()
+    const query = 'select:session_search'
+    expect(text(await mounted.call('tool_search', { query }))).toContain('Loaded 1')
+    const again = text(await mounted.call('tool_search', { query }))
+    expect(again).toContain('All of these were already loaded.')
+    expect(loaded(mounted)).toHaveLength(1)
+  })
+
+  it('reports a query that matches nothing', async () => {
+    const mounted = await mount()
+    const output = text(await mounted.call('tool_search', { query: 'select:zzz_no_such_tool' }))
+    expect(output).toContain('No tool matched')
+    expect(output).toContain('list_tools')
+    expect(loaded(mounted)).toHaveLength(0)
+  })
+
+  it('caps a broad keyword search so one call cannot flood the declarations', async () => {
+    const mounted = await mount()
+    const output = text(await mounted.call('tool_search', { query: 'session' }))
+    const rows = output.split('\n').filter(line => line.startsWith('- '))
+    expect(rows.length).toBeGreaterThan(0)
+    expect(rows.length).toBeLessThanOrEqual(8)
+    expect(loaded(mounted).length).toBe(rows.length)
+  })
+
+  it('ignores names in select: that are not in the catalog', async () => {
+    const mounted = await mount()
+    const output = text(await mounted.call('tool_search', {
+      query: 'select:session_trace,zzz_absent',
+    }))
+    expect(output).toContain('Loaded 1: session_trace')
+    expect(output).not.toContain('zzz_absent')
+    expect(loaded(mounted)).toHaveLength(1)
+  })
+})
