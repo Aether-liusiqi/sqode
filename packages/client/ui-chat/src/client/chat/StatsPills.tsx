@@ -273,7 +273,11 @@ function UsagePill({ usage, turnUsage, t, dialog }: {
   const total = billedInputTokens(usage) + usage.outputTokens
   const totalText = t('message.turnUsage.count', { count: formatTokens(total, t) })
   const cacheHit = turnUsage !== undefined ? turnCacheHitPercent(turnUsage) : cacheHitPercent(usage)
-  const cacheHitText = cacheHit !== null ? t('stats.cacheHit', { percent: cacheHit }) : null
+  // The pill answers one question at a time: while a Turn reports its own
+  // accounting the share is that Turn's; otherwise it is the session fold, and the
+  // label has to say which, or two different quantities share one word.
+  const cacheHitKey = turnUsage === undefined ? 'stats.cacheHitTotal' : 'stats.cacheHitTurn'
+  const cacheHitText = cacheHit !== null ? t(cacheHitKey, { percent: cacheHit }) : null
   return (
     <span ref={rootRef} className={css.anchor}>
       <button
@@ -391,7 +395,7 @@ export const StatsPills = memo(function StatsPills({ useChat, useProjection, use
       <div className={css.root} data-composer-stats>
         {speed !== null && <span className={css.pill}><IconGaugeOutlineRegular />{speed}</span>}
         {cacheHit !== null && (
-          <span className={css.pill}><IconDatabaseOutlineRegular />{t('stats.cacheHit', { percent: cacheHit })}</span>
+          <span className={css.pill}><IconDatabaseOutlineRegular />{t(turnUsage === undefined ? 'stats.cacheHitTotal' : 'stats.cacheHitTurn', { percent: cacheHit })}</span>
         )}
       </div>
     )

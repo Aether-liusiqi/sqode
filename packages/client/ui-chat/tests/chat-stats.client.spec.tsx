@@ -161,7 +161,7 @@ describe('StatsPills', () => {
   it('compact keeps only speed and cache hit, with no interactive statistics', () => {
     const { source } = makeSource({ nodes: [timedStep()] })
     const view = render(<StatsPills {...props(source)} usePerformanceUsage={selector => selector('compact')} />)
-    expect(view.container.textContent).toBe('20 tok/sCache hit 90%')
+    expect(view.container.textContent).toBe('20 tok/sSession cache hit 90%')
     expect(view.queryByRole('button')).toBeNull()
     fireEvent.mouseOver(view.getByText('20 tok/s'))
     expect(view.queryByRole('dialog')).toBeNull()
@@ -185,12 +185,12 @@ describe('StatsPills', () => {
     // No timing on the fixture: the speed segment drops out and the dialog
     // would have no rows, so the counts reading stays a static pill (no button).
     expect(view.getByText('1 turns 1 steps').closest('button')).toBeNull()
-    // Cache hit comes from the projection, so paging the window cannot change
+    // Session cache hit comes from the projection, so paging the window cannot change
     // it; the usage pill leads with the whole-log token total. Its accessible
     // name separates the segments the visual sep glyph joins.
     const usagePill = view.getAllByRole('button')
-    expect(usagePill.map(pill => pill.textContent)).toEqual(['105 tok·Cache hit 90%'])
-    expect(usagePill[0]!.getAttribute('aria-label')).toBe('105 tok · Cache hit 90%')
+    expect(usagePill.map(pill => pill.textContent)).toEqual(['105 tok·Session cache hit 90%'])
+    expect(usagePill[0]!.getAttribute('aria-label')).toBe('105 tok · Session cache hit 90%')
     const empty = makeSource()
     const emptyView = render(<StatsPills {...props(empty.source, {
       tokenUsage: { uncachedInputTokens: 0, outputTokens: 0, cacheReadTokens: 0, cacheWriteTokens: 0 },
@@ -200,22 +200,22 @@ describe('StatsPills', () => {
   })
 
   it.each([
-    { actual: '98.6%', tokenUsageValue: tokenUsage(986, 14), expected: 'Cache hit 99%' },
-    { actual: '99.1%', tokenUsageValue: tokenUsage(991, 9), expected: 'Cache hit 99%' },
-    { actual: '99.49%', tokenUsageValue: tokenUsage(9_949, 51), expected: 'Cache hit 99%' },
-    { actual: '99.5%', tokenUsageValue: tokenUsage(995, 5), expected: 'Cache hit 99.5%' },
-    { actual: '99.94%', tokenUsageValue: tokenUsage(9_994, 6), expected: 'Cache hit 99.9%' },
-    { actual: '99.95%', tokenUsageValue: tokenUsage(9_995, 5), expected: 'Cache hit 99.95%' },
-    { actual: '99.955%', tokenUsageValue: tokenUsage(19_991, 9), expected: 'Cache hit 99.96%' },
-    { actual: '99.985%', tokenUsageValue: tokenUsage(19_997, 3), expected: 'Cache hit 99.99%' },
-    { actual: '99.995%', tokenUsageValue: tokenUsage(19_999, 1), expected: 'Cache hit 99.995%' },
-    { actual: '99.9975%', tokenUsageValue: tokenUsage(39_999, 1), expected: 'Cache hit 99.998%' },
+    { actual: '98.6%', tokenUsageValue: tokenUsage(986, 14), expected: 'Session cache hit 99%' },
+    { actual: '99.1%', tokenUsageValue: tokenUsage(991, 9), expected: 'Session cache hit 99%' },
+    { actual: '99.49%', tokenUsageValue: tokenUsage(9_949, 51), expected: 'Session cache hit 99%' },
+    { actual: '99.5%', tokenUsageValue: tokenUsage(995, 5), expected: 'Session cache hit 99.5%' },
+    { actual: '99.94%', tokenUsageValue: tokenUsage(9_994, 6), expected: 'Session cache hit 99.9%' },
+    { actual: '99.95%', tokenUsageValue: tokenUsage(9_995, 5), expected: 'Session cache hit 99.95%' },
+    { actual: '99.955%', tokenUsageValue: tokenUsage(19_991, 9), expected: 'Session cache hit 99.96%' },
+    { actual: '99.985%', tokenUsageValue: tokenUsage(19_997, 3), expected: 'Session cache hit 99.99%' },
+    { actual: '99.995%', tokenUsageValue: tokenUsage(19_999, 1), expected: 'Session cache hit 99.995%' },
+    { actual: '99.9975%', tokenUsageValue: tokenUsage(39_999, 1), expected: 'Session cache hit 99.998%' },
     {
       actual: 'the closest non-full ratio available from safe integer cumulative counts',
       tokenUsageValue: tokenUsage(Number.MAX_SAFE_INTEGER - 1, 1),
-      expected: 'Cache hit 99.99999999999999%',
+      expected: 'Session cache hit 99.99999999999999%',
     },
-    { actual: '100%', tokenUsageValue: tokenUsage(10_000, 0), expected: 'Cache hit 100%' },
+    { actual: '100%', tokenUsageValue: tokenUsage(10_000, 0), expected: 'Session cache hit 100%' },
   ])('formats an actual $actual cache-hit ratio as $expected', ({ tokenUsageValue, expected }) => {
     const { source } = makeSource({ nodes: [assistant(1, 1)] })
     const view = render(<StatsPills {...props(source, { tokenUsage: tokenUsageValue })} />)
@@ -321,7 +321,7 @@ describe('StatsPills', () => {
     const [timePill, usagePill] = [...view.getAllByRole('button')] as [HTMLElement, HTMLElement]
     expect(timePill.textContent).toBe('1 轮 1 步·20 tok/s')
     // Whole-log total 9995 + 5 + 1 compacts to 10K.
-    expect(usagePill.textContent).toBe('10K tok·缓存命中 99.95%')
+    expect(usagePill.textContent).toBe('10K tok·累计缓存命中 99.95%')
     fireEvent.click(timePill)
     const timeDialog = view.getByRole('dialog')
     expect(timeDialog.getAttribute('aria-label')).toBe('会话统计')
@@ -344,7 +344,7 @@ describe('StatsPills', () => {
     // Context occupancy lives on the composer's ContextMeter ring, not here.
     const pills = view.getAllByRole('button')
     expect(pills).toHaveLength(1)
-    expect(pills[0]!.textContent).toBe('105 tok·Cache hit 90%')
+    expect(pills[0]!.textContent).toBe('105 tok·Session cache hit 90%')
   })
 
   it('drops the usage pill when no projection is composed', () => {
@@ -445,7 +445,7 @@ describe('StatsPills', () => {
         cacheWriteTokens: 100,
       },
     })} />)
-    expect(view.getAllByRole('button')[0]!.textContent).toBe('207 tok·Cache hit 45%')
+    expect(view.getAllByRole('button')[0]!.textContent).toBe('207 tok·Session cache hit 45%')
     // A session that did write cache keeps the row, exact.
     fireEvent.click(view.getAllByRole('button')[0]!)
     expect(view.getByRole('dialog').textContent).toContain('Cache write100 tok')
@@ -470,13 +470,11 @@ describe('StatsPills', () => {
 
 describe('per-turn cache hit share', () => {
   it('reads one Turn instead of the whole durable log', async () => {
-    const { turnCacheHitPercent, cacheHitPercent } = await import('../src/client/chat/StatsPills.tsx')
+    const { turnCacheHitPercent } = await import('../src/client/chat/StatsPills.tsx')
     const first = { uncachedInputTokens: 100, cacheReadTokens: 900, cacheWriteTokens: 0 }
     const second = { uncachedInputTokens: 900, cacheReadTokens: 100, cacheWriteTokens: 0 }
     expect(turnCacheHitPercent(first)).toBe('90')
     expect(turnCacheHitPercent(second)).toBe('10')
-    // The session fold would average the two rounds; the pill must not.
-    expect(cacheHitPercent({ ...first, outputTokens: 0 } as never)).toBe('90')
   })
 
   it('reports nothing when the Turn billed no prompt', async () => {

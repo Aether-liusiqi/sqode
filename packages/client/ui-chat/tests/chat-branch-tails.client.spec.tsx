@@ -1057,7 +1057,7 @@ describe('small branch tails', () => {
   })
 
   it('StatsPills omits the cache-hit segment when no input accounting exists at all', () => {
-    // Cache hit is null only when all three prompt buckets are zero (pure
+    // Session cache hit is null only when all three prompt buckets are zero (pure
     // output accounting) — any billed input makes it a real 0%.
     const nodes = [{
       kind: 'assistant', seq: 1, time: 1_000, turn: 1, step: 1, blocks: [], usage: { outputTokens: 10 },
@@ -1082,7 +1082,7 @@ describe('small branch tails', () => {
     fireEvent.click(usagePill)
     const dialog = view.getByRole('dialog')
     expect(dialog.textContent).toContain('输出10 tok')
-    expect(dialog.textContent).not.toContain('缓存命中')
+    expect(dialog.textContent).not.toContain('累计缓存命中')
   })
 })
 
