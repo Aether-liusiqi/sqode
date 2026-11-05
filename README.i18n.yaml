@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write README.md
 /sqode:
-  en: 0628f883dc83c642
-  zh: 47456c2f30b721ea
+  en: 08acaf5156a23edd
+  zh: eb322bdb9c1a9144
 /sqode/developer-preview:
   en: fe4d18635dbd7d6c
   zh: 7f53c6c767ff7b9d

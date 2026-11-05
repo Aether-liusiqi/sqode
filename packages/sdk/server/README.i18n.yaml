@@ -3,7 +3,7 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write packages/sdk/server/README.md
 /:
-  en: 9fd8e0cf5872dc5b
+  en: aac73459b47283f8
   zh: 3c5f57c72c75d1ce
 /liusiqi-dev-dsh-sdk-jsonrpc-server:
   en: 0f2e7d1ed3808fce
@@ -27,8 +27,8 @@
   en: 784b68b5a498f2d5
   zh: 2c3c5a1490845179
 /liusiqi-dev-dsh-sdk-jsonrpc-server/use-this-package/what-sdk-clients-can-do:
-  en: 2b1b52a7467c557e
-  zh: 31f58d32469f9d50
+  en: 76ed60d39982ad54
+  zh: 889485fa21a39521
 /liusiqi-dev-dsh-sdk-jsonrpc-server/use-this-package/shutdown-and-exit:
   en: 08c3858f53090f39
   zh: dfae960e11515b06

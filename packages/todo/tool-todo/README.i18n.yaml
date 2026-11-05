@@ -3,7 +3,7 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write packages/todo/tool-todo/README.md
 /:
-  en: 94e53ef3423c197f
+  en: 80eda776da54e90d
   zh: 967fe136a7fefaf4
 /liusiqi-dev-dsh-tool-todo:
   en: 28e497e77aa23f1c
