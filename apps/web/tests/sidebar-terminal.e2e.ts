@@ -113,7 +113,7 @@ describe.skipIf(process.platform === 'win32')('Web sidebar terminal', () => {
     }
   })
 
-  it('preserves program palettes and keeps ANSI text and cursors readable across DSH themes', async () => {
+  it('preserves program palettes and keeps ANSI text and cursors readable across SQH themes', async () => {
     onTestFailed(() => saveFailureShot(page, 'terminal-colors'))
     await page.emulateMedia({ colorScheme: 'light' })
     await openTerminal(page)

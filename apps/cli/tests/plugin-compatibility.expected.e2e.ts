@@ -44,7 +44,7 @@ it('refuses incompatible installation and startup until an exact risk exemption 
   expect(refused.stderr).toContain('nothing was installed')
   expect(existsSync(join(profile, 'node_modules', 'compatibility-fixture'))).toBe(false)
 
-  // A package installed outside DSH still goes through the independent startup check.
+  // A package installed outside SQH still goes through the independent startup check.
   cpSync(source, join(profile, 'node_modules', 'compatibility-fixture'), { recursive: true })
   writeFileSync(profileFile, JSON.stringify({ ...initial,
     dependencies: { 'compatibility-fixture': `file:${source}` }, dsh: { profile: { bundles: ['compatibility-fixture'] } },

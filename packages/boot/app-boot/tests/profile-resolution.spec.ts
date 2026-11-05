@@ -1075,7 +1075,7 @@ describe('runtime resolution', { concurrent: false }, () => {
     expect(await importFrom('left-pad', parent)).toMatchObject({ marker: 9 })
   })
 
-  it.each(['profile', 'plugin'] as const)('uses the installation DSH package from a %s while a stale shared link remains', async (importer) => {
+  it.each(['profile', 'plugin'] as const)('uses the installation SQH package from a %s while a stale shared link remains', async (importer) => {
     const name = '@liusiqi-dev/dsh-core'
     const f = fixture(name)
     file(join(f.profile.dir, 'package.json'), JSON.stringify({

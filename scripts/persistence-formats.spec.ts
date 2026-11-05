@@ -273,7 +273,7 @@ describe('complete persistence format references', () => {
     expect(() => loadPersistenceFormats(root)).toThrow(error)
   })
 
-  it('rejects a source tag outside the DSH release namespace', () => {
+  it('rejects a source tag outside the SQH release namespace', () => {
     const root = fixture()
     editPair(root, 0, 'tag: dsh-v0.1.0-rc.5', 'tag: latest')
     expect(() => loadPersistenceFormats(root)).toThrow('invalid source tag')

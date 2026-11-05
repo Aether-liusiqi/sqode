@@ -576,7 +576,7 @@ export function checkExperimentalDependencyIsolation(
 }
 
 /**
- * Require exact DSH ranges, tilde vendor/native ranges, and the workspace protocol elsewhere.
+ * Require exact SQH ranges, tilde vendor/native ranges, and the workspace protocol elsewhere.
  *
  * A hand-written range says nothing about the version the workspace actually
  * carries, and `pnpm pack` leaves it alone: `^0.0.1` published from version

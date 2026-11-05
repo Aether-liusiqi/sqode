@@ -102,7 +102,7 @@ export interface Profile {
   skippedBundles: SkippedBundle[]
 }
 
-/** A selected bundle the profile could not load, or whose own DSH peers the profile does not exempt. */
+/** A selected bundle the profile could not load, or whose own SQH peers the profile does not exempt. */
 export interface SkippedBundle {
   /** The bundle's package name from `dsh.profile.bundles`. */
   packageName: string

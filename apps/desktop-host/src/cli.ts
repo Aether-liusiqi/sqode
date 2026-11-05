@@ -6,7 +6,7 @@ import { installOfficeEngineResolution, runtimeArchivePath } from './office-engi
 
 /**
  * Run the ordinary CLI with Desktop's bundled package manager and reserved-profile plugin access.
- * @param runtimeDir - Prepared or ASAR-contained production DSH package tree.
+ * @param runtimeDir - Prepared or ASAR-contained production SQH package tree.
  * @param supportDir - Physical Desktop runtime directory containing pnpm.
  * @returns Completion of the selected CLI command; profile plugins own their process lifetime.
  */

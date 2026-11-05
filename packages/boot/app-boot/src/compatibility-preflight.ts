@@ -1,4 +1,4 @@
-/** Compatibility checks at the composition entry points DSH owns; no Loader instrumentation. */
+/** Compatibility checks at the composition entry points SQH owns; no Loader instrumentation. */
 import { existsSync, readFileSync, realpathSync } from 'node:fs'
 import { createRequire } from 'node:module'
 import { dirname, extname, isAbsolute, join } from 'node:path'
@@ -60,7 +60,7 @@ function manifestOf(ctx: Context, name: string, parentURL: string): object | und
   }
 }
 
-/** Prepare profile or preset rows before the owning DSH caller passes them to Loader.
+/** Prepare profile or preset rows before the owning SQH caller passes them to Loader.
  * Only a compatibility conflict denies a row: an entry whose manifest cannot be resolved keeps
  * the Loader's own import failure. A denied ordinary row gains `disabled`; a native Include that
  * reaches a denied plugin is denied as a whole, because its file is never rewritten.

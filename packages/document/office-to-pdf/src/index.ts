@@ -45,7 +45,7 @@ export interface Config {
   maxCachedBytes: number
   /** Maximum retained source-version aliases to cached content. */
   maxSourceEntries: number
-  /** Conversion deadline in milliseconds; excludes the DSH queue. */
+  /** Conversion deadline in milliseconds; excludes the SQH queue. */
   timeoutMs: number
   /** Maximum authorized source bytes. */
   maxInputBytes: number

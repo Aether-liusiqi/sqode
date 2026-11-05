@@ -20,9 +20,9 @@ export interface SqhPackageManifest {
   dependencies?: Record<string, string>
   /** Compatible versions of packages supplied by the consuming project. */
   peerDependencies?: Record<string, string>
-  /** Runtime requirements; DSH compatibility is declarative until a reader enforces it. */
+  /** Runtime requirements; SQH compatibility is declarative until a reader enforces it. */
   engines?: SqhEnginesManifest
-  /** DSH-specific author declarations. */
+  /** SQH-specific author declarations. */
   dsh?: SqhManifest
 }
 
@@ -55,7 +55,7 @@ export interface PluginLocalizedMeta {
 
 /** Runtime version requirements under `package.json.engines`. */
 export interface SqhEnginesManifest {
-  /** Compatible DSH versions as a SemVer range, including an exact version. */
+  /** Compatible SQH versions as a SemVer range, including an exact version. */
   dsh?: string
   /** Compatible Node.js versions. */
   node?: string

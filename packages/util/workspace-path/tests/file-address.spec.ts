@@ -98,7 +98,7 @@ describe('file addresses', () => {
   it.each([
     ['another resource type', 'dsh-resource://terminal/session/s/1'],
     ['a type spelled with another case', 'dsh-resource://File/session/s/w/x.ts'],
-    ['a scheme spelled with another case', 'DSH-RESOURCE://file/session/s/w/x.ts'],
+    ['a scheme spelled with another case', 'SQH-RESOURCE://file/session/s/w/x.ts'],
     ['an unknown scope', 'dsh-resource://file/shared/s/w/x'],
     ['the retired file:// grammar', 'file://sessions/s/w/x.ts'],
     ['a host-less file URL', 'file:///w/x.ts'],

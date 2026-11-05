@@ -1,4 +1,4 @@
-# TypeScript SDK snapshot patch for foreground and background DSH SDK failures.
+# TypeScript SDK snapshot patch for foreground and background SQH SDK failures.
 
 - id: skill-filesystem
   name: '@liusiqi-dev/dsh-skill-filesystem'

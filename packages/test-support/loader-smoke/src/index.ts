@@ -148,7 +148,7 @@ interface LoaderSmokeBaseOptions {
   readonly mode?: ExampleMode
   /** Source hook selection; see {@link ExampleLaunchOptions.sourceImport}. */
   readonly sourceImport?: 'tsx/esm'
-  /** Environment overrides layered over the parent and isolated DSH homes. */
+  /** Environment overrides layered over the parent and isolated SQH homes. */
   readonly env?: Readonly<NodeJS.ProcessEnv>
   /** Process deadline override for harness tests. */
   readonly processTimeoutMs?: number

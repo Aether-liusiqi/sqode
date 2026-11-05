@@ -1,6 +1,6 @@
 /**
  * Shipped creator skills: every rendered skill stays below the pruner threshold, referenced
- * files exist, templates parse, and no skill bans reading DSH sources.
+ * files exist, templates parse, and no skill bans reading SQH sources.
  */
 import { execFileSync } from 'node:child_process'
 import { lstatSync, readdirSync, readFileSync, readlinkSync, realpathSync, statSync } from 'node:fs'
@@ -102,11 +102,11 @@ describe('the shipped creator skills', () => {
     }
   })
 
-  it('never forbid reading DSH package sources and never route skill files through the shell', () => {
+  it('never forbid reading SQH package sources and never route skill files through the shell', () => {
     for (const name of names) {
       for (const file of markdownFiles(join(skills, name))) {
         const text = readFileSync(file, 'utf8')
-        expect(text, file).not.toMatch(/do not read (DSH |package |DSH package )?sources/i)
+        expect(text, file).not.toMatch(/do not read (SQH |package |SQH package )?sources/i)
         // Desktop ships the skill directory inside app.asar, which only the Host process can open.
         expect(text, file).not.toMatch(/`(cat|cp|ls) /)
       }

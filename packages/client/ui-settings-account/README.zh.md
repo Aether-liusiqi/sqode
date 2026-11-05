@@ -95,7 +95,7 @@ Desktop preload 标记在账号凭证已存储后启用引导。进度属于本�
 
 <a id="known-limitations-and-deferred-work"></a>
 
-- 资料和充值钱包余额通过 Host getProfile / getBalance 复用已有 Platform Web 接口。页面在打开、登录及重连后刷新，原样显示服务端脱敏后的联系方式，并分别处理查询失败，不将失败显示为零余额。用量和充值使用 Host 按 platformOrigin 派生的链接，并沿用浏览器自身登录态，不携带 DSH token。
+- 资料和充值钱包余额通过 Host getProfile / getBalance 复用已有 Platform Web 接口。页面在打开、登录及重连后刷新，原样显示服务端脱敏后的联系方式，并分别处理查询失败，不将失败显示为零余额。用量和充值使用 Host 按 platformOrigin 派生的链接，并沿用浏览器自身登录态，不携带 SQH token。
 - 已完成引导的安装不会重新应用默认值或覆盖用户后续调整的偏好。完成状态不跨设备同步，也不创建逐账号历史。
 - 引导跟随界面语言和主题，使用中文、英文分别搭配浅色、深色外观的四套 Figma PNG 插图。导出画布包含完整插图范围，Finder 插图在两种主题下使用一致的纵向渐变。
 

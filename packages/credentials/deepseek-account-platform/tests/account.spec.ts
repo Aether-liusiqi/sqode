@@ -342,11 +342,11 @@ it.each([
 
 it('preserves Platform business client_type in the completion URL', async () => {
   const f = await fixture()
-  f.exchangeResponse({ authorized_url: `${f.origin}/dsh/authorized?client_type=DSH` })
+  f.exchangeResponse({ authorized_url: `${f.origin}/dsh/authorized?client_type=SQH` })
   await f.account.startSignIn(clientMetadata(), f.callbackOrigin, 'web')
   await f.wait('waiting-browser')
   const response = await fetch(f.callback(), { redirect: 'manual' })
-  expect(response.headers.get('location')).toBe(`${f.origin}/dsh/authorized?client_type=DSH&login_source=web`)
+  expect(response.headers.get('location')).toBe(`${f.origin}/dsh/authorized?client_type=SQH&login_source=web`)
 })
 
 it.each([undefined, 'https://other.example/dsh/authorized', '/dsh/authorized'])('rejects an invalid exchange completion URL %s before storing a token', async (authorizedUrl) => {
@@ -576,7 +576,7 @@ it('adds private deployment cookies to every Platform request without exposing t
 
 it('rejects reserved, duplicate and malformed deployment headers without disclosing values', () => {
   for (const headers of [
-    { Authorization: 'secret-value' }, { 'X-DSH-Auth-Token': 'secret-value' }, { HOST: 'secret-value' }, { 'Content-Length': '5' },
+    { Authorization: 'secret-value' }, { 'X-SQH-Auth-Token': 'secret-value' }, { HOST: 'secret-value' }, { 'Content-Length': '5' },
     { Cookie: 'secret-value', cookie: 'other' }, { 'bad name': 'secret-value' },
     { Cookie: 'secret-value\r\ninjected: x' },
   ]) {

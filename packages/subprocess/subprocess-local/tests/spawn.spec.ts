@@ -1458,7 +1458,7 @@ describe('abort edge cases', () => {
 })
 
 describe('environment and spill-file hardening', () => {
-  it('scrubs credential-shaped and ambient DSH env vars from child processes', async () => {
+  it('scrubs credential-shaped and ambient SQH env vars from child processes', async () => {
     process.env.SQODE_TEST_API_KEY = 'super-secret'
     process.env.SQODE_TEST_TOKEN = 'also-secret'
     process.env.SUBPROCESS_TEST_PASSWORD = 'password-secret'

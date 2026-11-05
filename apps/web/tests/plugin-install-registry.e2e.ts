@@ -109,7 +109,7 @@ it.each(['https://registry.npmjs.org/', MIRROR])('selects the fastest responding
       const lookups = (await readFile(join(profile, '.registry-lookups'), 'utf8')).trim().split('\n')
         .map(line => JSON.parse(line) as string[])
       // The inspection asked the mirror first, and each install attempt checked the named package's
-      // DSH peers at the registry that attempt would use: the mirror, then pnpm's own.
+      // SQH peers at the registry that attempt would use: the mirror, then pnpm's own.
       expect(lookups.map(call => call.filter(argument => argument.startsWith('--registry=')))).toEqual([
         ['--registry=' + MIRROR], ['--registry=' + MIRROR], [],
       ])

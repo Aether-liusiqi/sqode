@@ -4,7 +4,7 @@ import type { WorkspaceSource } from '@liusiqi-dev/dsh-api-workspace-controller/
 /**
  * Use the Workspace's canonical CWD, not its record id; ungrouped Sessions remain isolated.
  * @param source - authoritative Workspace membership.
- * @param sessionId - owning DSH Session.
+ * @param sessionId - owning SQH Session.
  * @param signal - guest initialization lifetime.
  * @returns the storage account for this occurrence.
  */

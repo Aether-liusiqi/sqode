@@ -11,7 +11,7 @@
 - id: system-prompt
   name: '@liusiqi-dev/dsh-system-prompt'
   config:
-    personaPrefix: 'Return the scripted DSH SDK failure.'
+    personaPrefix: 'Return the scripted SQH SDK failure.'
 
 - insert:
     - id: child-mock-llm

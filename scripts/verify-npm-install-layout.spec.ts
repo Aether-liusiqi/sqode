@@ -39,7 +39,7 @@ function validLayout(): NpmPackageLock {
 }
 
 describe('npm install layout verifier', () => {
-  it('creates two incompatible versions of every DSH package', () => {
+  it('creates two incompatible versions of every SQH package', () => {
     const index: RegistryIndex = new Map([
       ['@liusiqi-dev/sqode', new Map([['0.1.1-rc.2', {
         name: '@liusiqi-dev/sqode',
@@ -72,7 +72,7 @@ describe('npm install layout verifier', () => {
     expect(dual.get('@liusiqi-dev/cordis')).toBe(index.get('@liusiqi-dev/cordis'))
   })
 
-  it('accepts isolated DSH releases with one shared Cordis installation', () => {
+  it('accepts isolated SQH releases with one shared Cordis installation', () => {
     expect(assertDualDshInstallLayout(validLayout())).toEqual({
       dshPackagesPerVersion: 3,
       checkedDshEdges: 4,
@@ -84,7 +84,7 @@ describe('npm install layout verifier', () => {
     ['react-dom', 'node_modules/react-dom'],
     ['react', 'node_modules/dsh-previous/node_modules/react'],
     ['react-dom', 'node_modules/dsh-previous/node_modules/react-dom'],
-  ])('rejects browser runtime %s installed at %s in the DSH-only consumer', (name, path) => {
+  ])('rejects browser runtime %s installed at %s in the SQH-only consumer', (name, path) => {
     const layout = validLayout()
     const packages = { ...layout.packages, [path]: { version: '18.3.1' } }
     expect(() => assertDualDshInstallLayout({ ...layout, packages })).toThrow(

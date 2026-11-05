@@ -1,4 +1,4 @@
-# Keyless replay layer for the DSH SDK dynamic-route snapshot.
+# Keyless replay layer for the SQH SDK dynamic-route snapshot.
 
 - insert:
     - id: llm-replay

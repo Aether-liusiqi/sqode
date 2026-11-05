@@ -530,7 +530,7 @@ describe.skipIf(!isWin32 || !pwshAvailable())('windows-acl runner', () => {
   it('a FullControl open inside a granted root still works for files (the deny inherits to containers only)', () => {
     // The ambient-delete deny is 0x40, a member of FILE_ALL_ACCESS: inheriting
     // it onto files would deny every GENERIC_ALL/FullControl open by the user,
-    // Administrators, SYSTEM, or the DSH host. Directories inside a granted
+    // Administrators, SYSTEM, or the SQH host. Directories inside a granted
     // root keep the deny (that is where FILE_DELETE_CHILD is evaluated), so a
     // FullControl open of a DIRECTORY is the documented cost of the deny.
     const granted = join(scratchRoot, 'fullcontrol-root')

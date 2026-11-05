@@ -10,7 +10,7 @@ export class ManagementFailure extends Error {
   readonly incompatible: IncompatiblePlugin[] | undefined
   /**
    * @param code Localizable management rejection.
-   * @param incompatible Packages the running DSH version rejects, for `incompatible-version`.
+   * @param incompatible Packages the running SQH version rejects, for `incompatible-version`.
    */
   constructor(code: ManagementError['code'], incompatible?: IncompatiblePlugin[]) {
     super(code)

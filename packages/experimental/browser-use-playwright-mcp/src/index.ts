@@ -19,7 +19,7 @@ export const Config: typeof BrowserMcpConfig = BrowserMcpConfig
 
 /**
  * Expose Playwright's upstream tools in each live Session's scope.
- * The pinned npm server runs under the current Node executable; browser state is not persisted by DSH.
+ * The pinned npm server runs under the current Node executable; browser state is not persisted by SQH.
  * @param ctx - provider context supplying browser use, Agents, and tools.
  * @param config - validated browser choice and optional tool timeout.
  */

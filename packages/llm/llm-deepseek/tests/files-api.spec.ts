@@ -385,7 +385,7 @@ describe('DeepSeekFilesClient', () => {
   })
 })
 
-it('authenticates Files with the raw DSH token', async () => {
+it('authenticates Files with the raw SQH token', async () => {
   const client = new DeepSeekFilesClient({
     baseURL: 'https://api.deepseek.com', headers: { 'x-dsh-auth-token': 'account-token' },
     fetch: (_url, init) => {

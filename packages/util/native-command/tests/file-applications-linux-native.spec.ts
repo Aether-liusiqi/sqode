@@ -37,7 +37,7 @@ it.skipIf(!gioAvailable)('queries and launches an installed Linux desktop entry 
   await writeFile(path, 'plain text')
   await writeFile(script, `require('node:fs').writeFileSync(${JSON.stringify(marker)}, JSON.stringify({ path: process.argv[2], pid: process.pid }));\n`)
   const desktop = join(data, 'applications', 'dsh-test.desktop')
-  await writeFile(desktop, `[Desktop Entry]\nType=Application\nName=DSH Test Handler\nExec=${quoted(process.execPath)} ${quoted(script)} %f\nMimeType=text/plain;\n`)
+  await writeFile(desktop, `[Desktop Entry]\nType=Application\nName=SQH Test Handler\nExec=${quoted(process.execPath)} ${quoted(script)} %f\nMimeType=text/plain;\n`)
   await writeFile(join(data, 'applications', 'mimeinfo.cache'), '[MIME Cache]\ntext/plain=dsh-test.desktop;\n')
   await writeFile(join(config, 'mimeapps.list'), '[Default Applications]\ntext/plain=dsh-test.desktop;\n')
   const env = { ...process.env, XDG_DATA_HOME: data, XDG_DATA_DIRS: empty, XDG_CONFIG_HOME: config, XDG_CONFIG_DIRS: empty, LC_ALL: 'C' }
@@ -48,7 +48,7 @@ it.skipIf(!gioAvailable)('queries and launches an installed Linux desktop entry 
     return task
   }
   const apps = await nativeFileApplications(path, lifetime.signal, { run, env })
-  expect(apps).toContainEqual({ id: desktop, name: 'DSH Test Handler', default: true, icon: null })
+  expect(apps).toContainEqual({ id: desktop, name: 'SQH Test Handler', default: true, icon: null })
   await openNativeFileApplication(path, desktop, lifetime.signal, { run, env })
   let opened: { path: string; pid: number } | undefined
   await vi.waitFor(async () => {

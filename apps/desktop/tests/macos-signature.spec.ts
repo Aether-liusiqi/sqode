@@ -56,7 +56,7 @@ describe('desktop macOS release signature', () => {
     expect(portablePath(config.extraResources[0]?.from ?? '')).toContain('/.desktop-build/targets/mac-arm64/runtime')
     const [dshFiles, dshNodeModules] = config.files.slice(-2)
     if (!dshFiles || !dshNodeModules || typeof dshFiles === 'string' || typeof dshNodeModules === 'string') {
-      throw new Error('desktop DSH resources must use electron-builder file mappings')
+      throw new Error('desktop SQH resources must use electron-builder file mappings')
     }
     expect(portablePath(dshFiles.from)).toContain('/.desktop-build/targets/mac-arm64/dsh')
     expect(dshFiles.to).toBe('dsh')

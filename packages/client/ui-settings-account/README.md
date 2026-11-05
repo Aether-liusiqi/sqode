@@ -95,7 +95,7 @@ No model request prefix changes.
 
 <a id="known-limitations-and-deferred-work"></a>
 
-- Profile and recharge-wallet balances use the existing Platform Web endpoints through Host getProfile / getBalance. The page refreshes when opened and after login or reconnect, preserves server-masked contact data, and shows query failures independently without manufacturing a zero balance. Usage and top-up use Host-provided links derived from platformOrigin and the browser’s own login; the links never carry a DSH token.
+- Profile and recharge-wallet balances use the existing Platform Web endpoints through Host getProfile / getBalance. The page refreshes when opened and after login or reconnect, preserves server-masked contact data, and shows query failures independently without manufacturing a zero balance. Usage and top-up use Host-provided links derived from platformOrigin and the browser’s own login; the links never carry a SQH token.
 - Completed installations do not reapply defaults or overwrite later user preferences. Completion does not synchronize across devices or create a per-account history.
 - Onboarding follows the interface locale and theme, with four Figma PNG illustration sets covering Chinese and English in light and dark appearance. Export canvases include the full illustration geometry; Finder artwork uses the same vertical fade in both themes.
 

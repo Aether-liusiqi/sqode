@@ -19,7 +19,7 @@ afterEach(() => {
 })
 
 describe('dsh path helpers', () => {
-  it('owns the shared default DSH home directory name', () => {
+  it('owns the shared default SQH home directory name', () => {
     expect(SQODE_HOME_DIR_NAME).toBe('.sqode')
     expect(DEFAULT_DSH_HOME_DISPLAY).toBe('~/.sqode')
     expect(defaultDshHome()).toBe(join(homedir(), '.sqode'))

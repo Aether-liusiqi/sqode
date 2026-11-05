@@ -100,7 +100,7 @@ interface SdkFailureFacts {
 /** Fixed safe failure text derived only from provider-owned structured facts. */
 function failureDiagnostic(facts: SdkFailureFacts): string {
   const fields = [
-    'provider: DSH SDK',
+    'provider: SQH SDK',
     `stage: ${facts.stage}`,
     `category: ${facts.category}`,
   ]
@@ -122,7 +122,7 @@ export const internals: { createHarness(options: DeepSeekHarnessOptions): DeepSe
 /**
  * Hide a pre-spawn workspace/configuration failure behind fixed safe facts.
  * @param cause - original Host failure retained on the Error cause chain.
- * @returns an Error whose message contains only the fixed DSH SDK failure line.
+ * @returns an Error whose message contains only the fixed SQH SDK failure line.
  */
 export function sdkConfigurationFailure(cause: unknown): Error {
   return new SdkRunFailure({ stage: 'initialize', category: 'configuration' }, cause)

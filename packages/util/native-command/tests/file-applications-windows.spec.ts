@@ -16,7 +16,7 @@ it.skipIf(process.platform !== 'win32')('queries and invokes a registered Window
   const root = await mkdtemp(join(tmpdir(), 'dsh-windows-association-'))
   const suffix = randomUUID().replaceAll('-', '')
   const extension = `.dsh${suffix}`
-  const progId = `DSH.Test.${suffix}`
+  const progId = `SQH.Test.${suffix}`
   const appName = `dsh-handler-${suffix}.exe`
   const executable = join(root, appName)
   const path = join(root, `${String.fromCharCode(0x6d4b, 0x8bd5)} ' audio${extension}`)

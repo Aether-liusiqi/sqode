@@ -95,7 +95,7 @@ function bench() {
 describe('protocolOf', () => {
   it('reads the dsh-resource host, lower-cased, and reports none for any other address', () => {
     expect(protocolOf('dsh-resource://file/session/s1/home/ys/b.txt')).toBe('file')
-    expect(protocolOf('DSH-RESOURCE://File/session/s1/a')).toBe('file')
+    expect(protocolOf('SQH-RESOURCE://File/session/s1/a')).toBe('file')
     expect(protocolOf('dsh-resource://chat/node/1')).toBe('chat')
     // A navigation address is not a resource.
     expect(protocolOf('sidebar://guide')).toBeUndefined()

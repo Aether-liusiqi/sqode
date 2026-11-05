@@ -239,7 +239,7 @@ export interface DelegatedPolicyOverrides {
  * Capture the permission state to seed into one delegation. Call synchronously before
  * the child start's first await: a later parent switch belongs to the
  * parent's future, not to this child. Auto and Full access identities are
- * inherited only through the in-process DSH path so either can replace a stale
+ * inherited only through the in-process SQH path so either can replace a stale
  * same-bundle fork value. Only the parent session's explicit sandbox override
  * is captured — never deployment defaults or one-shot grants — and the approval
  * policy is pinned to `'never'` regardless of the parent's own policy.

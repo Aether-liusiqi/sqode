@@ -75,7 +75,7 @@ jobs:
 
       - name: Build the preview page and pack the VFS image
         env:
-          SQODE_CLIENT_TITLE: DSH preview pr-${{ github.event.pull_request.number }}
+          SQODE_CLIENT_TITLE: SQH preview pr-${{ github.event.pull_request.number }}
         run: pnpm --filter @liusiqi-dev/dsh-web-frontend run build:preview
 
       # Sourcemaps carry complete sources and stay off the deployment platform.

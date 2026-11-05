@@ -16,7 +16,7 @@ const CLIENT_BUILD_ENV_PREFIX = 'SQODE_CLIENT_'
 /** Non-public selector used by build orchestration to request a named client profile. */
 export const CLIENT_BUILD_PROFILE_SELECTOR = 'SQODE_BUILD_CLIENT_PROFILE'
 
-/** Public client environment required by official DSH artifacts. */
+/** Public client environment required by official SQH artifacts. */
 const OFFICIAL_CLIENT_BUILD_ENVIRONMENT = {
   SQODE_CLIENT_BUILD_PROFILE: 'official',
   SQODE_CLIENT_TITLE: 'Siqi Harness',
