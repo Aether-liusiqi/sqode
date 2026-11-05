@@ -77,13 +77,35 @@ const SUMMARY_OUTPUT_RATIO = 0.15
 /** Smallest completion cap worth one summarization attempt. */
 const SUMMARY_OUTPUT_FLOOR = 1_024
 
-/** Room the system head, the tool schemas, and the instruction need beyond the replay. */
-// The replay is not the whole request: the tool schemas (about 26,600 characters
-// on a real route) and the rendered system prompt travel with it. A margin below
-// that overhead made a "fitting" replay overflow the very window it was sized
-// for, which is why a Session compacted on a wide route still met a 400 after
-// being switched to a narrow one.
+/**
+ * Floor for the room the system head, tool schemas, and instruction need beyond
+ * the replay.
+ *
+ * The replay is not the whole request: the tool schemas and the rendered system
+ * prompt travel with it. A margin below that overhead made a "fitting" replay
+ * overflow the very window it was sized for. The floor is a starting point, not
+ * the answer: a session that loaded tools with `tool_search` carried 287,132
+ * characters of schemas — about 71.8K tokens — and a fixed margin let the
+ * summarization truncate against its own cap.
+ */
 const SUMMARY_PROMPT_MARGIN = 20_000
+
+/** Characters one token carries when pricing tool schemas. */
+const SCHEMA_CHARS_PER_TOKEN = 4
+
+/**
+ * Tokens the declared tool schemas occupy in this session's requests.
+ *
+ * Read from the logged header rather than from the live registry: the header is
+ * what the provider actually receives, and it already reflects any trimming.
+ * @param session - the session whose last request header is consulted.
+ * @returns the schema tokens, or 0 when no header was logged yet.
+ */
+function declaredToolTokens(session: Session): number {
+  const tools = session.requestHeader()?.tools
+  if (tools === undefined) return 0
+  return Math.ceil(JSON.stringify(tools).length / SCHEMA_CHARS_PER_TOKEN)
+}
 
 /**
  * Completion cap one summarization may reserve on a window.
@@ -104,11 +126,18 @@ function summaryOutputTokens(contextWindow: number | undefined, configured: numb
  * its own output room inside the same window.
  * @param contextWindow - routed model's window, when the adapter declares one.
  * @param configured - cap the configuration asks for.
+ * @param toolTokens - schema tokens the request also carries.
  * @returns the replay budget, or `undefined` when no window is declared.
  */
-function summaryInputBudget(contextWindow: number | undefined, configured: number): number | undefined {
+function summaryInputBudget(
+  contextWindow: number | undefined,
+  configured: number,
+  toolTokens = 0,
+): number | undefined {
   if (contextWindow === undefined) return undefined
-  return Math.max(0, contextWindow - summaryOutputTokens(contextWindow, configured) - SUMMARY_PROMPT_MARGIN)
+  // The price of the tools is charged before the replay is sized: a summarization
+  // that ignores it sizes itself against a window it cannot actually use.
+  return Math.max(0, contextWindow - summaryOutputTokens(contextWindow, configured) - SUMMARY_PROMPT_MARGIN - toolTokens)
 }
 
 /**
@@ -403,7 +432,7 @@ export class BasicCompactionEngine extends CompactionEngine {
     // The same window also decides how much conversation one call may replay:
     // with a budget the summarizer splits an oversized span into ordered portions
     // instead of dropping its beginning.
-    const promptBudget = summaryInputBudget(window, config.maxTokens)
+    const promptBudget = summaryInputBudget(window, config.maxTokens, declaredToolTokens(agent.session))
     return summarizeWithLlm(this.ctx, {
       ...config,
       maxTokens: outputTokens,
@@ -594,7 +623,7 @@ export class BasicCompactionEngine extends CompactionEngine {
       // compressed by the next overflow pass, which is why the retry budget
       // allows several.
       const window = await this.windowFor(target, signal).catch(() => undefined)
-      const budget = summaryInputBudget(window, policy.maxTokens)
+      const budget = summaryInputBudget(window, policy.maxTokens, declaredToolTokens(agent.session))
       const retain = budget === undefined ? 0 : Math.max(0, measurement.totalTokens - budget)
       // Sizing is a preference, not a requirement: when the window leaves no
       // verbatim tail worth keeping (a small route, or a budget below one turn),

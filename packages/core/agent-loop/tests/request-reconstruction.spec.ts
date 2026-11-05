@@ -988,6 +988,38 @@ describe('request/context capacity records', () => {
       .toContain('mcp__rea__loaded_one')
   })
 
+  it('bounds the declared catalog by schema size on a narrow route', async () => {
+    const { defineTool } = await import('@liusiqi-dev/dsh-tools')
+    // 64,000 tokens at a 5% share and 4 characters per token leaves 12,800
+    // characters for declarations. Two 8,000-character schemas cannot both fit,
+    // and this fixture registers no core tools, so the whole budget is spendable.
+    const adapter = capacityAdapter({ narrow: 64_000 }, [textResponse('a')])
+    const ctx = await harness(adapter)
+    const heavy = (name: string) => defineTool({
+      name,
+      description: 'x'.repeat(8_000),
+      parameters: {},
+      output: { schema: { type: 'string' }, render: (_args, value) => [{ type: 'text', text: value }] },
+      async execute() {
+        return 'ok'
+      },
+    })
+    ctx.tools.register(heavy('mcp__rea__older_load'))
+    ctx.tools.register(heavy('mcp__rea__newer_load'))
+
+    const agent = await ctx.agentLoop.create(SessionId('declaration-budget'), { provider: 'mock', model: 'narrow' })
+    agent.session.append('tools/loaded', { toolName: 'mcp__rea__older_load' }, { ignorable: true })
+    agent.session.append('tools/loaded', { toolName: 'mcp__rea__newer_load' }, { ignorable: true })
+    send(agent, 'go')
+    await waitForIdle(ctx, agent)
+
+    const declared = (agent.session.requestHeader()?.tools ?? []).map(tool => tool.name)
+    // The most recent load is kept, the older one is priced out rather than
+    // pushing the request past the window it is sent to.
+    expect(declared).toContain('mcp__rea__newer_load')
+    expect(declared).not.toContain('mcp__rea__older_load')
+  })
+
   it('records a second capacity when the route changes mid-session', async () => {
     const adapter = capacityAdapter(
       { small: 64_000, large: 256_000 },

@@ -738,11 +738,35 @@ const DECLARED_CORE: ReadonlySet<string> = new Set([
 ])
 
 /**
+ * Share of a window the declared tool catalog may claim.
+ *
+ * Everything else is loaded on demand and costs nothing until it is: a model that
+ * keeps loading tools with `tool_search` grows this catalog without bound, and one
+ * live session reached 116 declarations and 287,132 characters — about 71.8K of a
+ * 100K window, leaving too little for the conversation and no room for a
+ * summarization to finish.
+ *
+ * Five percent is the product rule, and on a 100K route it is 5,000 tokens: the
+ * 13 core tools already spend about 3,025, leaving roughly 7,900 characters —
+ * about two medium schemas. The largest tool in the catalog (155,695 characters)
+ * can never be declared on such a route, which is a physical boundary rather than
+ * a defect.
+ */
+const DECLARATION_BUDGET_RATIO = 0.05
+
+/** Approximate characters one token carries when pricing a schema. */
+const SCHEMA_CHARS_PER_TOKEN = 4
+
+/**
  * Keep only the tools this route can afford to declare.
  *
  * A route that reports no window gets the catalog untouched: without a budget there
  * is nothing to measure against, and trimming blind would remove tools a large
  * window could carry.
+ *
+ * Within the budget, the most recently loaded tools win: a model loads what its
+ * current task needs, and an older load is the likelier one to be idle.
+ * @param session - the session whose load events record what the model pulled.
  * @param contextWindow - the route's window, when the adapter reports one.
  * @param tools - the assembled catalog for this step.
  * @returns the declarations that fit.
@@ -755,11 +779,29 @@ function declareWithin<T extends { readonly name: string }>(
   // Same array, not a copy: a no-op must stay a no-op for identity checks.
   if (contextWindow === undefined) return tools
   // Only a narrow route runs out of room. A wide one carries the catalog as it is,
-  // so this stopgap cannot take tools away from a model that could hold them; the
-  // budget-based selector replaces the threshold with a measured share.
+  // so this stopgap cannot take tools away from a model that could hold them.
   if (contextWindow >= NARROW_WINDOW_TOKENS) return tools
+
+  const core = tools.filter(tool => DECLARED_CORE.has(tool.name))
+  const budgetChars = contextWindow * DECLARATION_BUDGET_RATIO * SCHEMA_CHARS_PER_TOKEN
+  let spent = core.reduce((total, tool) => total + JSON.stringify(tool).length, 0)
+
   // A tool the model pulled with `tool_search` is declared from the next request
   // on: the loaded set is a session event, so this survives compaction and resume.
-  const loaded = loadedTools(session.snapshotEvents())
-  return tools.filter(tool => DECLARED_CORE.has(tool.name) || loaded.has(tool.name))
+  const loadedOrder = new Map([...loadedTools(session.snapshotEvents())]
+    .map((name, index) => [name, index]))
+  const pulled = tools
+    .filter(tool => !DECLARED_CORE.has(tool.name) && loadedOrder.has(tool.name))
+    // Most recently loaded first; a stable name tiebreak keeps headers canonical.
+    .sort((left, right) => (loadedOrder.get(right.name) ?? 0) - (loadedOrder.get(left.name) ?? 0)
+      || left.name.localeCompare(right.name))
+
+  const kept = new Set(core.map(tool => tool.name))
+  for (const tool of pulled) {
+    const size = JSON.stringify(tool).length
+    if (spent + size > budgetChars) continue
+    spent += size
+    kept.add(tool.name)
+  }
+  return tools.filter(tool => kept.has(tool.name))
 }
