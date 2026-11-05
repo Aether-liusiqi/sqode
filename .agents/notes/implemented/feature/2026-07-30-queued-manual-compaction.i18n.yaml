@@ -21,8 +21,8 @@
   en: 7b75672fafc370c9
   zh: 4fb473856c9c7265
 /agent-note-queued-manual-compaction-with-one-durable-lock/decision/bracket-first-deliberately-differs-from-the-surveyed-implementations:
-  en: 309671a79b437033
-  zh: 86e0f366aed73c35
+  en: a06f85d03c04e3f1
+  zh: 01ee0a19731a765e
 /agent-note-queued-manual-compaction-with-one-durable-lock/decision/markers-are-time-points-not-an-event-container:
   en: e9d8043178dc946f
   zh: 56808150ba2ab275
