@@ -6,7 +6,7 @@ Status: implemented
 
 ## Problem
 
-`Dependency layout` lane 把两个互不兼容的合成 DSH 发布打进临时消费者目录，对它们跑一次真实 npm 解析，并断言 npm 选定的物理摆放。它用 npm 子进程上的 `TIMEOUT_MS = 300_000` 判定通过或失败。这个期限度量的是 runner，而不是图：同一张图在空闲开发机上用 137–205 秒解析完成，在 CI runner 上用 288.59 秒，比期限低 4%，而摆放断言没有报告任何错误。诊断信息只给出耗时，因此 runner 慢和依赖图变大无法区分。
+`Dependency layout` lane 把两个互不兼容的合成 SQH 发布打进临时消费者目录，对它们跑一次真实 npm 解析，并断言 npm 选定的物理摆放。它用 npm 子进程上的 `TIMEOUT_MS = 300_000` 判定通过或失败。这个期限度量的是 runner，而不是图：同一张图在空闲开发机上用 137–205 秒解析完成，在 CI runner 上用 288.59 秒，比期限低 4%，而摆放断言没有报告任何错误。诊断信息只给出耗时，因此 runner 慢和依赖图变大无法区分。
 
 ## Decision
 
@@ -18,11 +18,11 @@ npm 子进程仍保留墙钟上限 `NPM_HANG_GUARD_MS`，由 `4 * MAX_RESOLUTION
 
 ## What the resolution costs
 
-2026-09-28 在空闲的 M 系列主机上，针对 `origin/master`（每个发布 277 个 DSH 包、2524 条内部边），用 `--timing` 和 `--cpu-prof` 运行 lane 自身的 npm 调用测得：
+2026-09-28 在空闲的 M 系列主机上，针对 `origin/master`（每个发布 277 个 SQH 包、2524 条内部边），用 `--timing` 和 `--cpu-prof` 运行 lane 自身的 npm 调用测得：
 
 | 阶段 | 开销 |
 |---|---|
-| Registry 合成（`buildRegistryIndex`，3952 个已安装 manifest 加 319 个 DSH workspace manifest，合成 1544 个包名） | 1.67 s |
+| Registry 合成（`buildRegistryIndex`，3952 个已安装 manifest 加 319 个 SQH workspace manifest，合成 1544 个包名） | 1.67 s |
 | npm 子进程 | 端到端 185.07 s 中的 180.66 s |
 | 该子进程内的 `idealTree:buildDeps` | 153.30 s，且几乎全部落在 877 个按节点计时器中的 14 个上 |
 | `checkCanPlace` / `canPlacePeers` peer 冲突分析 | 117.3 s，其中 `new URL()` 65.9 s、`SemVer` 27.9 s |
@@ -47,4 +47,4 @@ npm 子进程仍保留墙钟上限 `NPM_HANG_GUARD_MS`，由 `4 * MAX_RESOLUTION
 
 ## Consequences
 
-lane 的失败判定如今取决于依赖图，因此新增少量 DSH 包的 pull request 在任何 runner 上都能通过，而「包数乘边数」增长超过约四分之一的图——即包数与内部边数同步增长约 12%——会带着实测计数确定性地失败。预算是棘轮：调高它是一次刻意修改，必须附带新的解析实测，该常量注释里记录了推导所用的计数。预算内的图仍会花掉完整的解析时间，因为这次改动移动的是判定位置而不是工作本身；这里没有任何东西能减少 npm 摆放双发布所需的 153 s。真正挂起的 npm 现在会消耗该 lane 最多 910 秒才失败，而旧期限把它限制在 300 秒。若图的增长改变了形状却没有改变「包数乘边数」，它仍留在预算内，只有在挂起保护到期时才被发现。
+lane 的失败判定如今取决于依赖图，因此新增少量 SQH 包的 pull request 在任何 runner 上都能通过，而「包数乘边数」增长超过约四分之一的图——即包数与内部边数同步增长约 12%——会带着实测计数确定性地失败。预算是棘轮：调高它是一次刻意修改，必须附带新的解析实测，该常量注释里记录了推导所用的计数。预算内的图仍会花掉完整的解析时间，因为这次改动移动的是判定位置而不是工作本身；这里没有任何东西能减少 npm 摆放双发布所需的 153 s。真正挂起的 npm 现在会消耗该 lane 最多 910 秒才失败，而旧期限把它限制在 300 秒。若图的增长改变了形状却没有改变「包数乘边数」，它仍留在预算内，只有在挂起保护到期时才被发现。

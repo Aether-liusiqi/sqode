@@ -24,7 +24,7 @@ Status: implemented
 
 委派定义不会随 adapter 注册和目录变化而改变，因此实时拓扑既不会扩大每个父级请求，也不会使缓存前缀失效。只有调用发现工具时，目录结果才进入 transcript。自定义的上下文继承实例如果启用选择，其描述会警告，更改提供方或模型可能阻止提供方复用继承的对话前缀。
 
-`SubagentCapabilities.agentOptions` 仍是传输事实。如果请求携带这些选项，而提供方声明为 `false`，服务会在调用提供方前拒绝。两个进程内提供方与 DSH SDK 传输声明为 `true`；DSH SDK 会把 provider／model 默认值作为分离且不可变的数据公开给 Consumer 预检，而 `start()` 会为直接调用方与子运行时初始化独立应用同一份 Config 默认值及 maxTokens。ACP、Codex 与 Claude Code 声明为 `false`。工具配置提供 `agentOptions`、静态启用模型选择或让它受 settings 控制时，如果绑定的提供方缺少该能力，也会失败。
+`SubagentCapabilities.agentOptions` 仍是传输事实。如果请求携带这些选项，而提供方声明为 `false`，服务会在调用提供方前拒绝。两个进程内提供方与 SQH SDK 传输声明为 `true`；SQH SDK 会把 provider／model 默认值作为分离且不可变的数据公开给 Consumer 预检，而 `start()` 会为直接调用方与子运行时初始化独立应用同一份 Config 默认值及 maxTokens。ACP、Codex 与 Claude Code 声明为 `false`。工具配置提供 `agentOptions`、静态启用模型选择或让它受 settings 控制时，如果绑定的提供方缺少该能力，也会失败。
 
 ## 考虑过的替代方案
 
@@ -53,7 +53,7 @@ Status: implemented
 - 随附 fork 工具会继承父级的提供方与模型，并省略面向模型的路由字段，使继承的对话前缀仍可供 KV Cache 复用。
 - 省略选择时保留配置默认值，并使用静态提供方路由默认值或来自父级最新记录请求的兼容继承；改变路由但不显式指定强度时，使用所选模型的默认值。
 - adapter 目录和拓扑变化不会改变委派定义及其 prompt 缓存前缀。
-- DSH SDK 子级接受配置和模型选择的 Agent 路由；ACP、Codex 与 Claude Code 在实现并声明该能力前仍会拒绝。
+- SQH SDK 子级接受配置和模型选择的 Agent 路由；ACP、Codex 与 Claude Code 在实现并声明该能力前仍会拒绝。
 - 单元测试覆盖默认关闭的 Host 偏好、新 Session 读取、子级继承、恢复决定、选择启用时的 schema 与执行强制、合并优先级、路由相关强度继承、预检取消、实时发现、诊断、定义稳定性、能力拒绝与可选服务行为。随附的 headless 快照固定从父级已记录选择继承的行为；随附示例覆盖组装后无密钥、模型可见的 schema，SDK Loader 与快照证据固定完整路由经过独立子运行时的链路。
 
 ## 相关决策

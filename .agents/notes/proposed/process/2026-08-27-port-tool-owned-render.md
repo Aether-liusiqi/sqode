@@ -1,4 +1,4 @@
-# Agent Note: Port tool-owned render into current DSH APIs
+# Agent Note: Port tool-owned render into current SQH APIs
 
 Status: proposed
 

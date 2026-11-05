@@ -28,7 +28,7 @@ A workspace package reached by a runtime value import from the Host entry closur
 
 An export whose constructor identity or module state must be shared appears in `peerRequiredHostExports`; importing one such export keeps the whole package edge in matching `peerDependencies` and `devDependencies`. Each export-table key is an exact module specifier and each value is a reviewed export set. The verifier follows runtime local imports from the Host entry, records named and default imports and re-exports, and rejects exports covered by neither the package list nor an export table; namespace, dynamic, and side-effect imports remain unbounded unless the complete exact entry is package-classified.
 
-Workspace imports used by the Client bundle, type-only imports, module augmentations, `dsh.client.inject`, and existing metadata-only peers belong only in `devDependencies`. Host runtime imports, including additional Node entries, follow the Host classification. [Browser third-party build inputs](2026-09-08-browser-third-party-build-inputs.md) governs ordinary third-party declarations; it partially supersedes their preservation in this decision. [Release ranges](2026-09-22-workspace-release-ranges.md) require `workspace:*` for DSH and `workspace:~` for vendor/native references.
+Workspace imports used by the Client bundle, type-only imports, module augmentations, `dsh.client.inject`, and existing metadata-only peers belong only in `devDependencies`. Host runtime imports, including additional Node entries, follow the Host classification. [Browser third-party build inputs](2026-09-08-browser-third-party-build-inputs.md) governs ordinary third-party declarations; it partially supersedes their preservation in this decision. [Release ranges](2026-09-22-workspace-release-ranges.md) require `workspace:*` for SQH and `workspace:~` for vendor/native references.
 
 Some development relationships exist only in `dsh.client.inject` or TypeScript project references. The policy's `configurationOnlyDevDependencies` table names only those reviewed edges and keeps them in `devDependencies`.
 
@@ -58,7 +58,7 @@ pnpm run benchmark:npm-resolution -- --runs=5 --timeout-ms=300000
 pnpm run benchmark:npm-resolution -- --ref=origin/master --runs=5 --timeout-ms=300000
 ```
 
-Verify package placement through two incompatible synthetic DSH releases. The verifier copies every current DSH manifest into `0.1.0` and `0.2.0`, asks npm for a package lock only, and rejects cross-release DSH resolution, unexpected DSH locations, unequal release inventories, multiple Cordis installations, and package archive requests. The local index contains only installed current-platform metadata, so npm-accepted probes for unavailable optional packages are reported without failing the check.
+Verify package placement through two incompatible synthetic SQH releases. The verifier copies every current SQH manifest into `0.1.0` and `0.2.0`, asks npm for a package lock only, and rejects cross-release SQH resolution, unexpected SQH locations, unequal release inventories, multiple Cordis installations, and package archive requests. The local index contains only installed current-platform metadata, so npm-accepted probes for unavailable optional packages are reported without failing the check.
 
 ```sh
 pnpm run verify-npm-install-layout

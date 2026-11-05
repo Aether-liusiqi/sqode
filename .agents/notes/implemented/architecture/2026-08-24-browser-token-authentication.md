@@ -34,7 +34,7 @@ Unit coverage pins process-token retention across Connection reloads, one secret
 
 **Persist or accept the launch token as an API bearer.** A durable launch token would become a second long-lived credential, while Authorization-header support would add a non-browser client contract with no current consumer. The process token performs one browser-cookie exchange only.
 
-**Rotate the signing secret on every restart.** This prevents an existing browser from reconnecting after an ordinary DSH restart. Persisting only the signing secret keeps that workflow while process-token rotation limits the startup URL to one process lifetime.
+**Rotate the signing secret on every restart.** This prevents an existing browser from reconnecting after an ordinary SQH restart. Persisting only the signing secret keeps that workflow while process-token rotation limits the startup URL to one process lifetime.
 
 **Add logout, TLS-proxy, and forwarding-header configuration.** None is required by the loopback Web application or the reported authentication gap. Adding them would define deployment contracts without current consumers. Browser site-data controls revoke one browser session; deleting the credential record and restarting the process revokes all sessions.
 

@@ -10,7 +10,7 @@ Best-effort Loader reconciliation preserves usable plugins, but applications sti
 
 ## Decision
 
-DSH owns startup strictness outside vendored Cordis. App-boot audits the settled initial tree against one global list of stable entry ids. A listed entry that is present, enabled, and not active rejects startup and disposes the application. A listed id that is absent or disabled has no effect. The bootstrap Include is required by entry identity because a missing or invalid root configuration prevents application assembly. Other inactive entries produce one warning and leave successful siblings running.
+SQH owns startup strictness outside vendored Cordis. App-boot audits the settled initial tree against one global list of stable entry ids. A listed entry that is present, enabled, and not active rejects startup and disposes the application. A listed id that is absent or disabled has no effect. The bootstrap Include is required by entry identity because a missing or invalid root configuration prevents application assembly. Other inactive entries produce one warning and leave successful siblings running.
 
 The required ids are `agent-loop`, `webserver`, `modules`, `connection`, `headless-runner`, `acp`, and `sdk-jsonrpc-server`. They represent shared Agent execution, application endpoints, and Web bootstrap/transport. Web needs its client module registry and authenticated connection even when the HTTP server can listen without them. Providers already required through injection need no separate entry: their absence leaves a listed consumer pending or failed.
 

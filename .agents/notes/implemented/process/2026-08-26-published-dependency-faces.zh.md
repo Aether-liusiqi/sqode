@@ -28,7 +28,7 @@ Host 入口闭包中的运行期 value import 所到达的 workspace 包，只�
 
 constructor 身份或模块状态必须共享的导出列入 `peerRequiredHostExports`；一旦使用这类导出，整条包依赖边就保留在范围一致的 `peerDependencies` 与 `devDependencies` 中。每个导出表的 key 都是精确 module specifier，每个 value 都是经审查的导出集合。验证器从 Host 入口沿运行期本地 import 扫描，记录具名与默认 import 和 re-export，并拒绝既没有包级分类、也没有导出级分类的导出；除非完整的精确入口已按包分类，否则 namespace、dynamic 和 side-effect import 仍无法限定范围。
 
-Client bundle 使用的 workspace import、纯类型 import、模块扩充、`dsh.client.inject` 和仅有元数据的现存 peer 只属于 `devDependencies`。Host 运行时 import（包括额外 Node 入口）遵循 Host 分类。[浏览器第三方构建输入](2026-09-08-browser-third-party-build-inputs.zh.md)规定普通第三方声明，部分取代本决策对它们原区段的保留。[发布范围](2026-09-22-workspace-release-ranges.zh.md)要求 DSH 引用使用 `workspace:*`，vendor/native 引用使用 `workspace:~`。
+Client bundle 使用的 workspace import、纯类型 import、模块扩充、`dsh.client.inject` 和仅有元数据的现存 peer 只属于 `devDependencies`。Host 运行时 import（包括额外 Node 入口）遵循 Host 分类。[浏览器第三方构建输入](2026-09-08-browser-third-party-build-inputs.zh.md)规定普通第三方声明，部分取代本决策对它们原区段的保留。[发布范围](2026-09-22-workspace-release-ranges.zh.md)要求 SQH 引用使用 `workspace:*`，vendor/native 引用使用 `workspace:~`。
 
 部分开发期关系只存在于 `dsh.client.inject` 或 TypeScript project reference 中。策略的 `configurationOnlyDevDependencies` 表只列出这些已评审的依赖边，并将它们保留在 `devDependencies` 中。
 
@@ -58,7 +58,7 @@ pnpm run benchmark:npm-resolution -- --runs=5 --timeout-ms=300000
 pnpm run benchmark:npm-resolution -- --ref=origin/master --runs=5 --timeout-ms=300000
 ```
 
-通过两个互不兼容的 DSH 合成版本验证包落位。验证器把每份当前 DSH manifest 分别复制为 `0.1.0` 和 `0.2.0`，只要求 npm 生成 package lock，并拒绝跨版本 DSH 解析、非预期 DSH 路径、两套版本清单不一致、多个 Cordis 实例以及包归档请求。本地索引只包含当前平台已安装的 metadata，因此只报告而不拒绝 npm 已接受的不可用可选包探测。
+通过两个互不兼容的 SQH 合成版本验证包落位。验证器把每份当前 SQH manifest 分别复制为 `0.1.0` 和 `0.2.0`，只要求 npm 生成 package lock，并拒绝跨版本 SQH 解析、非预期 SQH 路径、两套版本清单不一致、多个 Cordis 实例以及包归档请求。本地索引只包含当前平台已安装的 metadata，因此只报告而不拒绝 npm 已接受的不可用可选包探测。
 
 ```sh
 pnpm run verify-npm-install-layout

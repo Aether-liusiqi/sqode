@@ -3,7 +3,7 @@ name: dsh-create-upgrade-guide
 description: Use when a deepseek-harness change breaks an externally perceptible surface (CLI, profiles, cordis.yml or settings keys, persisted user data, SDK or wire APIs, published package entry points), or when changing a surface that an unreleased upgrade guide already covers, to write or update docs/upgrade-guide/v<version>/<item>/guide.md.
 ---
 
-# DSH Create Upgrade Guide
+# SQH Create Upgrade Guide
 
 An upgrade guide tells a reader who runs release vT what to change to run the next release. Write it in the change that introduces the break, as soon as the break is recognized; do not defer it to release preparation.
 

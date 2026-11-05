@@ -6,7 +6,7 @@ Status: implemented
 
 ## 问题
 
-社区插件 `@dsh-plugins/open-anywhere`（gitlab.deepseek.com/Ciyou/dsh-open-anywhere）在会话头部增加一个 "Open In..." 分体按钮，可在 Finder、Cursor、VS Code、Xcode、Git GUI 或终端中打开会话的 workspace 目录。它以手写 `lib/` JavaScript 形式经 `dsh plugin add` 安装：无类型、无测试、直接调用 `node:child_process`、手搓下拉菜单和 style 标签、自带针对 rc6–rc8 的浏览器端 DSH 版本门禁，并靠探测 `process.argv` 猜测运行中的 dsh 版本。用户希望该功能成为 Web profile 的内置部分，而 bundle 安装路径给不了这一点——且外部形态几乎违反了仓库的所有约定（locale 拥有文案、逐文件覆盖率、wire 边界校验、主机命令的能力接缝）。
+社区插件 `@dsh-plugins/open-anywhere`（gitlab.deepseek.com/Ciyou/dsh-open-anywhere）在会话头部增加一个 "Open In..." 分体按钮，可在 Finder、Cursor、VS Code、Xcode、Git GUI 或终端中打开会话的 workspace 目录。它以手写 `lib/` JavaScript 形式经 `dsh plugin add` 安装：无类型、无测试、直接调用 `node:child_process`、手搓下拉菜单和 style 标签、自带针对 rc6–rc8 的浏览器端 SQH 版本门禁，并靠探测 `process.argv` 猜测运行中的 dsh 版本。用户希望该功能成为 Web profile 的内置部分，而 bundle 安装路径给不了这一点——且外部形态几乎违反了仓库的所有约定（locale 拥有文案、逐文件覆盖率、wire 边界校验、主机命令的能力接缝）。
 
 ## 决定
 
@@ -23,7 +23,7 @@ Status: implemented
 - **有主机来源的平台都提取图标。** macOS 把解析出的 bundle 的 `.icns` 转 128px PNG（`plutil` + `sips`）；Windows 用生成的 PowerShell 脚本以位置式 `-File` 参数（路径不经命令行解析）提取解析出的可执行文件的关联图标为 32px PNG；Linux 沿 spec 的 desktop 条目 `Icon=` 查 hicolor 主题与 pixmaps 目录（PNG 或 SVG，纯文件系统）。任何失败应答 404，浏览器保持通用占位图形。
 - **启动目录是按平台声明条目的数据表**（`OPEN_IN_APP_CATALOG`）：每个应用 id 按平台（`darwin`/`win32`/`linux`）声明一条按序尝试的启动器来源链——`fixed`（随系统内置）、`app`（已知目录的 bundle 拼写）、`xcode`（`xcode-select -p`）、`cli`（进程内 PATH 解析）、`file`（`${VAR}`/`~/` 展开后第一个存在的候选文件）、`scan`（带版本号安装目录取最新）、`app-paths` 与 `install-record`（Windows 注册表两层）、`github-desktop`（版本化可执行文件与随包 CLI）、`desktop`（Linux XDG desktop 条目）——加启动器 argv 模板（`{path}` token 原位携带目录，否则目录追加在末尾）、可选环境与 Windows 可见性策略，以及可选回退启动器（`xed` 之后的 `open -a <bundle>`）。白名单对齐 Codex 的 "Open In" 目标列表：编辑器与 IDE（VS Code、VS Code Insiders、Cursor、Windsurf、Zed、Sublime Text、Xcode、Android Studio、七个 JetBrains IDE）、转正插件原有的 Git GUI、终端（Terminal、iTerm2、Ghostty、Warp、kitty、Windows Terminal、Git Bash、GNOME Terminal、Konsole）与各平台文件管理器。文件管理器与平台终端使用独立 id（`finder`/`explorer`/`filemanager`），而非一个 id 配平台标签，因为标签是静态浏览器词典条目，且每台主机只会探测到其中一个。文件管理器条目直接经 `dsh-native-command` 的路径打开器启动（`shell-open`，把目录交给 OS shell 并携带完整父环境，而非 detached 的清理环境 spawn），因为 detached 且经过凭据清洗的 `explorer.exe <dir>` 派生进程不能可靠地弹出窗口；打开器自身的 `explorer.exe` 交接可以（[Windows 打开解析](../bug-fix/2026-09-22-windows-open-through-shell-resolution.zh.md)）。封闭 union 以 `assertNever` 收尾。
 - **所有路由都运行在组合 connection 服务的信任栅栏之后**（`requestRejection`：挫败 DNS rebinding 与跨站调用的 Host/Origin 栅栏，加上浏览器认证），与 API gateway 施加在其 WebSocket upgrade 上的守卫相同；机制的唯一出处是 `src/index.ts` 的模块注释。在该栅栏之上，open 路由在 wire 边界校验请求体：`application/json` 媒体类型（精确 essence，而非子串匹配）、以排空后 413 的方式把 body 限制在 64 KiB、校验字段类型、只接受探测为可用的目录 id，并要求指向现存目录的绝对路径。
-- **删除了 DSH 版本门禁。** 它存在是因为插件逐版本骑乘一个它不拥有的接口；第一方包与仓库同版本发布，门禁、它的 `sessionStorage`/`localStorage` 信任台账和 argv 遍历版本探测都失去了所指。
+- **删除了 SQH 版本门禁。** 它存在是因为插件逐版本骑乘一个它不拥有的接口；第一方包与仓库同版本发布，门禁、它的 `sessionStorage`/`localStorage` 信任台账和 argv 遍历版本探测都失去了所指。
 - **上次选择经 `createSnapshotStore(..., { persist })` 持久化**（`dsh.open-in-app.choice`），替代手写 `localStorage` 访问。新存储没有平台特定的初始选择；用户首次选择前，组件使用主机提供的第一个可用条目。
 
 这对包放在 `packages/host/` 与 `packages/client/`，因为两个半边本来就是这两种东西：探测/启动侧是主机基础设施，与它消费的 webserver 同组；按钮是客户端表面，与其他 `ui-*` 包同组。评审把它从 `packages/workspace/` 的单个双半边包迁到这里（见替代方案）。

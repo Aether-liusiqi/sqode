@@ -1,4 +1,4 @@
-# Agent Note: 把 tool-owned render 移植到当前 DSH API
+# Agent Note: 把 tool-owned render 移植到当前 SQH API
 
 Status: proposed
 

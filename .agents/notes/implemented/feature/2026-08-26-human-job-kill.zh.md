@@ -23,7 +23,7 @@ Update：本文引入的 `reported` 选项已随 [jobs seam 收敛](../architect
 
 - **`notify: boolean` 选项**——否决：注册表承诺不了通知（quiet 投递、无主任务、owner 拆除都会正当地丢弃一条）；台账的认领命名的是工具真正控制的事实：它自己的某个 tool result 是否已经送达了终态。
 - **独立的 `interrupt()`/`stopByUser()` 方法**——一条取消路径带显式认领胜过两个只差一个布尔的方法；Kimi 的拆分（`stop` 与 `stopByUser`）上线时 TUI 就调错了那个。
-- **对模型保持沉默（Claude Code 的形状）**——否决；他们自己的源码注释都在质疑它，而 DSH 的阻塞 Note 正是把过期认知失败记为该控件此前不能上线的原因。
+- **对模型保持沉默（Claude Code 的形状）**——否决；他们自己的源码注释都在质疑它，而 SQH 的阻塞 Note 正是把过期认知失败记为该控件此前不能上线的原因。
 
 ## 测试
 

@@ -6,11 +6,11 @@ Status: implemented
 
 ## Problem
 
-桌面提供方暴露不同的操作、观测格式和平台设施。DSH 需要防止在一个组合中意外启用两个提供方，同时让各提供方的集成正常工作，而不承诺通用操作 API。
+桌面提供方暴露不同的操作、观测格式和平台设施。SQH 需要防止在一个组合中意外启用两个提供方，同时让各提供方的集成正常工作，而不承诺通用操作 API。
 
 ## Decision
 
-DSH 能力称为 **computer use（计算机操作）**。[`dsh-computer-use`](../../../../packages/computer-use/computer-use/README.zh.md) 拥有 `ctx.computerUse`，注册一个提供方自定的名称并返回其 effect 清理函数。第二次注册无论名称为何都会失败。服务不包含提供方对象、共享操作类型、分派方法、Session 锁或运行时选择器。
+SQH 能力称为 **computer use（计算机操作）**。[`dsh-computer-use`](../../../../packages/computer-use/computer-use/README.zh.md) 拥有 `ctx.computerUse`，注册一个提供方自定的名称并返回其 effect 清理函数。第二次注册无论名称为何都会失败。服务不包含提供方对象、共享操作类型、分派方法、Session 锁或运行时选择器。
 
 **Cua Driver** 是上游实现的名称。[MCP 提供方](../../../../packages/experimental/computer-use-cua-driver-mcp/README.zh.md)连接已安装的可执行文件。[原生提供方](../../../../packages/experimental/computer-use-cua-driver-native/README.zh.md)安装上游原生 npm 依赖。两者均保持实验性并加入显式公开发布允许列表；均不默认启用。
 
@@ -24,7 +24,7 @@ DSH 能力称为 **computer use（计算机操作）**。[`dsh-computer-use`](..
 
 **仅外部 MCP。** 此方案复用已安装的驱动及其进程身份，但保留独立安装的前提。原生提供方提供单包运行时安装。
 
-**仅嵌入原生运行时。** 原生集成让 DSH 拥有运行时生命周期，并与后端进程共享原生故障。MCP 提供方保留独立安装驱动的选项。
+**仅嵌入原生运行时。** 原生集成让 SQH 拥有运行时生命周期，并与后端进程共享原生故障。MCP 提供方保留独立安装驱动的选项。
 
 **Session 所有权代理。** 在完整流程期间预留桌面需要显式获取和释放策略。当前服务仅约束提供方注册，将流程协调留给调用方。
 

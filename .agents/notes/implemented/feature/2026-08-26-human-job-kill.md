@@ -23,7 +23,7 @@ A delivery claim means "the terminal state has a committed delivery path to the 
 
 - **A `notify: boolean` option** — rejected because the registry cannot promise a notice (quiet delivery, unowned jobs, owner teardown all legitimately drop one); the ledger's claim names the fact the tool actually controls: whether one of its own tool results already delivered the terminal state.
 - **A separate `interrupt()`/`stopByUser()` method** — one cancellation path with an explicit claim beats two methods whose only difference is a boolean, and Kimi's split (`stop` vs `stopByUser`) shipped with its TUI calling the wrong one.
-- **Saying nothing to the model (Claude Code's shape)** — rejected; their own source comments question it, and the DSH blocker note recorded the stale-belief failure as the reason the control did not ship earlier.
+- **Saying nothing to the model (Claude Code's shape)** — rejected; their own source comments question it, and the SQH blocker note recorded the stale-belief failure as the reason the control did not ship earlier.
 
 ## Testing
 

@@ -6,7 +6,7 @@ English | [中文](2026-09-28-dual-release-install-layout-work-budget.zh.md)
 
 ## Problem
 
-The `Dependency layout` lane packs two incompatible synthetic DSH releases into a temporary consumer, runs one real npm resolution over them, and asserts the physical placement npm chose. It decided pass or fail with `TIMEOUT_MS = 300_000` on the npm child process. That deadline measures the runner, not the graph: the same graph resolves in 137-205 s on an idle developer host and in 288.59 s on the CI runner, 4% below the deadline, while the placement assertion reported no error. The diagnostic named only elapsed time, so a slow runner and a graph that had grown were indistinguishable.
+The `Dependency layout` lane packs two incompatible synthetic SQH releases into a temporary consumer, runs one real npm resolution over them, and asserts the physical placement npm chose. It decided pass or fail with `TIMEOUT_MS = 300_000` on the npm child process. That deadline measures the runner, not the graph: the same graph resolves in 137-205 s on an idle developer host and in 288.59 s on the CI runner, 4% below the deadline, while the placement assertion reported no error. The diagnostic named only elapsed time, so a slow runner and a graph that had grown were indistinguishable.
 
 ## Decision
 
@@ -18,11 +18,11 @@ This restores the [published dependency faces](2026-08-26-published-dependency-f
 
 ## What the resolution costs
 
-Measured 2026-09-28 on an idle M-series host, against `origin/master` (277 DSH packages per release, 2524 internal edges), by running the lane's own npm invocation with `--timing` and `--cpu-prof`:
+Measured 2026-09-28 on an idle M-series host, against `origin/master` (277 SQH packages per release, 2524 internal edges), by running the lane's own npm invocation with `--timing` and `--cpu-prof`:
 
 | Phase | Cost |
 |---|---|
-| Registry synthesis (`buildRegistryIndex`, 3952 installed manifests plus 319 DSH workspace manifests into 1544 names) | 1.67 s |
+| Registry synthesis (`buildRegistryIndex`, 3952 installed manifests plus 319 SQH workspace manifests into 1544 names) | 1.67 s |
 | npm child process | 180.66 s of 185.07 s end to end |
 | `idealTree:buildDeps` inside that child | 153.30 s, and nearly all of it lands in 14 of 877 per-node timers |
 | `checkCanPlace` / `canPlacePeers` peer-conflict analysis | 117.3 s, of which `new URL()` 65.9 s and `SemVer` 27.9 s |
@@ -47,4 +47,4 @@ Repeated runs of the same graph on one host span 137.8 s to 204.8 s of npm time,
 
 ## Consequences
 
-The lane's failure now depends on the graph, so a pull request that adds a few DSH packages passes on any runner, and a graph that grows the packages-times-edges product by more than about a quarter — about 12% in packages and internal edges together — fails deterministically with its measured counts. The budget is a ratchet: raising it is a deliberate edit that must come with a new resolution measurement, and the constant's comment records the counts it was derived from. A graph inside the budget still spends its full resolution time, because the change moves the decision and not the work; nothing here reduces the 153 s npm needs to place the dual release. A genuine npm hang now consumes up to 910 s of the lane before failing, where the old deadline capped it at 300 s. Growth that changes the shape of the graph without changing packages times edges stays inside the budget and is caught only if the hang guard expires.
+The lane's failure now depends on the graph, so a pull request that adds a few SQH packages passes on any runner, and a graph that grows the packages-times-edges product by more than about a quarter — about 12% in packages and internal edges together — fails deterministically with its measured counts. The budget is a ratchet: raising it is a deliberate edit that must come with a new resolution measurement, and the constant's comment records the counts it was derived from. A graph inside the budget still spends its full resolution time, because the change moves the decision and not the work; nothing here reduces the 153 s npm needs to place the dual release. A genuine npm hang now consumes up to 910 s of the lane before failing, where the old deadline capped it at 300 s. Growth that changes the shape of the graph without changing packages times edges stays inside the budget and is caught only if the hang guard expires.

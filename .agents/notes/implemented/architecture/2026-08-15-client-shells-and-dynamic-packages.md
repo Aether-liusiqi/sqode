@@ -81,7 +81,7 @@ Ordinary installed libraries remain `dependencies`: a dynamic build may bundle a
 
 ## Consequences
 
-Bundle contents stay stable when an internal DSH relationship is development-only, because each build face declares externality directly. Static libraries remain host-assembled, while dynamic packages retain uniform artifacts and lifecycle governance. The shipped profile owns the complete Client package roster, so individual Client packages do not ask npm to solve the same graph again through peer placement.
+Bundle contents stay stable when an internal SQH relationship is development-only, because each build face declares externality directly. Static libraries remain host-assembled, while dynamic packages retain uniform artifacts and lifecycle governance. The shipped profile owns the complete Client package roster, so individual Client packages do not ask npm to solve the same graph again through peer placement.
 
 The startup protocol depends on the modules package id, and modules must remain self-contained at runtime. Combo generation preserves its ordinary package artifact and gives every other row one shared initial transport; HMR uses the same route with that row as its sole resource. Deferring response bodies moves concatenation to first access, while separately deferring maps keeps debugger-only work off script delivery. A missing bootstrap registration fails before Cordis starts; later plugin import, apply, and service-wait failures remain visible through the boot page's ACTIVE scan.
 
