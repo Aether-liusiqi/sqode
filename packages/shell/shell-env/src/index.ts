@@ -28,7 +28,7 @@ export const inject: string[] = []
 
 /** Plugin config (all optional — the built-in facts resolve without defaults). */
 export interface Config {
-  /** DeepSeek Harness home directory exposed as `SQODE_HOME`; defaults to `$SQODE_HOME` or `~/.sqode`. */
+  /** Siqi Harness home directory exposed as `SQODE_HOME`; defaults to `$SQODE_HOME` or `~/.sqode`. */
   dshHome?: string
 }
 

@@ -52,7 +52,7 @@ def _host_platform_tag() -> str:
     try:
         return _PLATFORMS[key][0]
     except KeyError as exc:
-        raise RuntimeError(f"unsupported deepseek-harness-runtime-bin build platform: {key}") from exc
+        raise RuntimeError(f"unsupported siqi-harness-runtime-bin build platform: {key}") from exc
 
 
 class RuntimeBuildHook(BuildHookInterface):
@@ -63,7 +63,7 @@ class RuntimeBuildHook(BuildHookInterface):
             return
         if self.target_name == "sdist":
             raise RuntimeError(
-                "deepseek-harness-runtime-bin is wheel-only; build and publish platform wheels only."
+                "siqi-harness-runtime-bin is wheel-only; build and publish platform wheels only."
             )
 
         platform_tag = os.environ.get("DSH_RUNTIME_PLATFORM_TAG") or _host_platform_tag()

@@ -18,8 +18,8 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SDK_DISTRIBUTION = "deepseek-harness-sdk"
-RUNTIME_DISTRIBUTION = "deepseek-harness-runtime-bin"
+SDK_DISTRIBUTION = "siqi-harness-sdk"
+RUNTIME_DISTRIBUTION = "siqi-harness-runtime-bin"
 PLATFORM_MANIFEST = ROOT / "python" / "sdk-runtime" / "platforms.json"
 
 
@@ -206,8 +206,8 @@ def stage_sdk(destination: Path, version: str) -> None:
     pyproject = destination / "pyproject.toml"
     rewrite_version(pyproject, version)
     text, count = re.subn(
-        r'"deepseek-harness-runtime-bin==[^"]+"',
-        f'"deepseek-harness-runtime-bin=={version}"',
+        r'"siqi-harness-runtime-bin==[^"]+"',
+        f'"siqi-harness-runtime-bin=={version}"',
         pyproject.read_text(),
         count=1,
     )
@@ -231,7 +231,7 @@ def stage_runtime(destination: Path, version: str, executable: Path, executable_
         shutil.copy2(source_directory / filename, runtime_dir / filename)
     office = office_sidecar_name(executable_name)
     shutil.copytree(source_directory / office, runtime_dir / office)
-    resources = executable_name.removeprefix("deepseek-harness-sdk-runtime-").removesuffix(".exe")
+    resources = executable_name.removeprefix("siqi-harness-sdk-runtime-").removesuffix(".exe")
     shutil.copytree(source_directory / resources, runtime_dir / resources)
 
 
@@ -309,7 +309,7 @@ def verify_wheel(
         if package == "runtime":
             assert platform is not None
             office = office_sidecar_name(platform[1])
-            resources = platform[1].removeprefix("deepseek-harness-sdk-runtime-").removesuffix(".exe")
+            resources = platform[1].removeprefix("siqi-harness-sdk-runtime-").removesuffix(".exe")
             expected_files = sorted((*runtime_filenames(platform[1]), office, resources))
             found_files = sorted({name.split("/runtime/", 1)[1].split("/", 1)[0] for name in runtime_payload})
             if found_files != expected_files:

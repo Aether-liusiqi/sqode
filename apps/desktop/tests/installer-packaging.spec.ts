@@ -74,7 +74,7 @@ describe('installer preparation preserves application dependencies', () => {
       SQODE_DESKTOP_TARGET_ARCH: 'x64',
       SQODE_DESKTOP_UNSIGNED: '1',
     }, 'win32', 'x64')
-    expect(config.artifactName).toBe('deepseek-harness-${version}-${os}-${arch}-unsigned.${ext}')
+    expect(config.artifactName).toBe('siqi-harness-${version}-${os}-${arch}-unsigned.${ext}')
   })
 
   it('packages every preload entry point the shell loads', async () => {

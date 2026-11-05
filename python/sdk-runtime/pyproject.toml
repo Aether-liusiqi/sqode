@@ -3,9 +3,9 @@ requires = ["hatchling==1.30.1"]
 build-backend = "hatchling.build"
 
 [project]
-name = "deepseek-harness-runtime-bin"
+name = "siqi-harness-runtime-bin"
 version = "0.0.0.dev0"
-description = "Bundled dsh CLI runtime for the DeepSeek Harness Python SDK"
+description = "Bundled dsh CLI runtime for the Siqi Harness Python SDK"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
@@ -23,8 +23,8 @@ dsh = "deepseek_harness_runtime:main"
 # Include the injected dsh executable and sidecars; exclude the dev-only node closure.
 [tool.hatch.build]
 artifacts = [
-  "src/deepseek_harness_runtime/runtime/deepseek-harness-sdk-runtime-*",
-  "src/deepseek_harness_runtime/runtime/deepseek-harness-sdk-runtime-*/**",
+  "src/deepseek_harness_runtime/runtime/siqi-harness-sdk-runtime-*",
+  "src/deepseek_harness_runtime/runtime/siqi-harness-sdk-runtime-*/**",
   "src/deepseek_harness_runtime/runtime/linux-*/**",
   "src/deepseek_harness_runtime/runtime/macos-*/**",
   "src/deepseek_harness_runtime/runtime/win-*/**",

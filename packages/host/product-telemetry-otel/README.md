@@ -32,7 +32,7 @@ Mount the plugin in a Cordis composition with the application identity; override
 - name: '@liusiqi-dev/dsh-host-product-telemetry-otel'
   config:
     endpoint: https://dsh-otel-collector.deepseeksvc.com/v1/logs
-    serviceName: deepseek-harness
+    serviceName: siqi-harness
     serviceVersion: !!js process.env.SQODE_APP_VERSION
     compression: gzip
     scheduledDelayMillis: 30000

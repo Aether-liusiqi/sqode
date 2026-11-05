@@ -125,9 +125,9 @@ export class DeepSeekAdapter<C extends Connection = Connection> extends LlmAdapt
             ...auth.headers,
             'anthropic-version': '2023-06-01',
             ...betas.length === 0 ? {} : { 'anthropic-beta': betas.join(',') },
-            'x-deepseek-harness-user-id': this.dependencies.resolveUserId(),
-            ...options.sessionId === undefined ? {} : { 'x-deepseek-harness-session-id': String(options.sessionId) },
-            ...options.purpose === 'compaction' ? { 'x-deepseek-harness-compact': '1' } : {},
+            'x-siqi-harness-user-id': this.dependencies.resolveUserId(),
+            ...options.sessionId === undefined ? {} : { 'x-siqi-harness-session-id': String(options.sessionId) },
+            ...options.purpose === 'compaction' ? { 'x-siqi-harness-compact': '1' } : {},
           },
         })
         if (!response.ok) {

@@ -6,7 +6,7 @@ Sqode (`dsh`) is an open-source agent harness developed by [DeepSeek AI](https:/
 
 It is built on an **everything-is-a-plugin** architecture and powered by [Cordis](https://github.com/cordiverse/cordis), whose design is described in [_A Programming Paradigm for Spatiotemporal Composability_](https://arxiv.org/abs/2608.25512).
 
-Documentation: [https://deepseek-harness.github.io/deepseek-harness/](https://deepseek-harness.github.io/deepseek-harness/)
+Documentation: [https://siqi-harness.github.io/siqi-harness/](https://siqi-harness.github.io/siqi-harness/)
 
 ## Developer preview
 
@@ -32,7 +32,7 @@ To run from a repository checkout:
 
 ```sh
 git clone https://github.com/deepseek-ai/deepseek-harness.git
-cd deepseek-harness
+cd siqi-harness
 pnpm install
 pnpm run build
 pnpm dsh web
@@ -61,7 +61,7 @@ For agents, follow [AGENTS.md](AGENTS.md).
 ## Citation
 
 ```bibtex
-@misc{deepseek-harness2026,
+@misc{siqi-harness2026,
   title={Sqode: Everything is a Plugin},
   author={DeepSeek-AI},
   year={2026},

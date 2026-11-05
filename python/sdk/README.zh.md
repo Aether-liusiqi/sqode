@@ -2,10 +2,10 @@
 
 [English](README.md) | 中文
 
-用于通过 stdio 上按行分隔的 JSON-RPC 驱动 Siqi Harness 的 Python 子进程 SDK。安装 `deepseek-harness-sdk` 时，会同时安装当前平台上版本完全相同的 `deepseek-harness-runtime-bin` wheel 包。
+用于通过 stdio 上按行分隔的 JSON-RPC 驱动 Siqi Harness 的 Python 子进程 SDK。安装 `siqi-harness-sdk` 时，会同时安装当前平台上版本完全相同的 `siqi-harness-runtime-bin` wheel 包。
 
 ```sh
-python -m pip install deepseek-harness-sdk
+python -m pip install siqi-harness-sdk
 ```
 
 ## 启动运行时

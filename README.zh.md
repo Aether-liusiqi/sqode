@@ -6,7 +6,7 @@ Sqode（`dsh`）是由 [DeepSeek AI](https://deepseek.com) 开发的开源 agent
 
 它构建于**一切皆插件**的架构之上，由 [Cordis](https://github.com/cordiverse/cordis) 驱动，其设计参见论文 [_A Programming Paradigm for Spatiotemporal Composability_](https://arxiv.org/abs/2608.25512)。
 
-文档：[https://deepseek-harness.github.io/deepseek-harness/](https://deepseek-harness.github.io/deepseek-harness/)
+文档：[https://siqi-harness.github.io/siqi-harness/](https://siqi-harness.github.io/siqi-harness/)
 
 ## 开发者预览
 
@@ -36,7 +36,7 @@ npx @liusiqi-dev/sqode web
 
 ```sh
 git clone https://github.com/deepseek-ai/deepseek-harness.git
-cd deepseek-harness
+cd siqi-harness
 pnpm install
 pnpm run build
 pnpm dsh web
@@ -80,7 +80,7 @@ pnpm dsh web
 ## 引用
 
 ```bibtex
-@misc{deepseek-harness2026,
+@misc{siqi-harness2026,
   title={Sqode: Everything is a Plugin},
   author={DeepSeek-AI},
   year={2026},

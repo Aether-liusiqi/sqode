@@ -127,7 +127,7 @@ describe('full-color code-file artwork', () => {
     }
     // The artwork manifest records who produced the design, and that is the
     // upstream project. Renaming it here would claim ownership of their work.
-    expect(manifest.owner).toBe('DeepSeek Harness product design')
+    expect(manifest.owner).toBe('Siqi Harness product design')
     expect(manifest.sources.every(source => source.kind === 'internal-design-export')).toBe(true)
     expect(manifest.sources.every(source => /^[0-9a-f]{64}$/u.test(source.sha256))).toBe(true)
     expect(manifest.sources.flatMap(source => source.icons).sort()).toEqual([...CODE_FILE_TYPES].sort())

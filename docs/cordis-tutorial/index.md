@@ -16,7 +16,7 @@ You need a clone of this repository with dependencies installed; the [developmen
 
 ```sh
 git clone https://github.com/deepseek-ai/deepseek-harness.git
-cd deepseek-harness
+cd siqi-harness
 pnpm install
 ```
 

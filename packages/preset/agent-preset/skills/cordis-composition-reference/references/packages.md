@@ -8,7 +8,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-acp` | yes | Automation-only Agent Client Protocol server for driving DeepSeek Harness agents over JSON-RPC stdio |
+| `@liusiqi-dev/dsh-acp` | yes | Automation-only Agent Client Protocol server for driving Siqi Harness agents over JSON-RPC stdio |
 
 ## api
 
@@ -68,7 +68,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 | `@liusiqi-dev/dsh-client-ui-agent-preset` | no | Agent-preset surfaces: the default for later sessions, this session's seat, and the composition editor |
 | `@liusiqi-dev/dsh-client-ui-approval` | no | Approval composer takeover over the scoped Remote Event waterfall |
 | `@liusiqi-dev/dsh-client-ui-attachment` | no | Dynamic attachment presentation plugin for conversation input, message-image, and trajectory image slots |
-| `@liusiqi-dev/dsh-client-ui-brand-official` | no | Official DeepSeek Harness brand occupants for the Web client's sidebar slots |
+| `@liusiqi-dev/dsh-client-ui-brand-official` | no | Official Siqi Harness brand occupants for the Web client's sidebar slots |
 | `@liusiqi-dev/dsh-client-ui-chat` | no | Chat Conversation target, node definitions, renderers, and details surface |
 | `@liusiqi-dev/dsh-client-ui-commands` | no | Client command surface: global directory cache, '/' source, three command UI kinds, popupSelect registry |
 | `@liusiqi-dev/dsh-client-ui-conversation` | no | Target-neutral Conversation assembly, shell, composer, queue, and view navigation |
@@ -121,7 +121,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 | Package | Config | Description |
 |---|---|---|
 | `@liusiqi-dev/dsh-command-compact` | no | Human-facing slash command for explicit session compaction |
-| `@liusiqi-dev/dsh-compaction-basic` | yes | Token-meter-driven compaction policy and LLM summarization backend for the DeepSeek Harness |
+| `@liusiqi-dev/dsh-compaction-basic` | yes | Token-meter-driven compaction policy and LLM summarization backend for the Siqi Harness |
 | `@liusiqi-dev/dsh-compaction-image-offload` | no | Durable image offload for image-capable routes: replace over-budget request images with placeholders and retry |
 | `@liusiqi-dev/dsh-compaction-tool-result-pruner` | yes | Replay-safe model-free head/middle/tail pruning for tool-result surface nodes |
 
@@ -145,28 +145,28 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-agent` | no | Agent interface, registry, initiator scope, and event vocabulary for the DeepSeek Harness |
+| `@liusiqi-dev/dsh-agent` | no | Agent interface, registry, initiator scope, and event vocabulary for the Siqi Harness |
 | `@liusiqi-dev/dsh-agent-default-model` | yes | Default model selection shared by Agent entry points |
-| `@liusiqi-dev/dsh-agent-loop` | yes | The concrete agent loop plugin for the DeepSeek Harness |
+| `@liusiqi-dev/dsh-agent-loop` | yes | The concrete agent loop plugin for the Siqi Harness |
 | `@liusiqi-dev/dsh-agent-tool-presentation` | yes | Agent-plane presentation selector: composes one agent's tools as PTC mode, native, or both |
-| `@liusiqi-dev/dsh-session` | no | Event-sourced session store for the DeepSeek Harness |
-| `@liusiqi-dev/dsh-system-prompt` | yes | System prompt assembly registry for the DeepSeek Harness |
-| `@liusiqi-dev/dsh-tools` | yes | Tool registry and execution pipeline for the DeepSeek Harness |
+| `@liusiqi-dev/dsh-session` | no | Event-sourced session store for the Siqi Harness |
+| `@liusiqi-dev/dsh-system-prompt` | yes | System prompt assembly registry for the Siqi Harness |
+| `@liusiqi-dev/dsh-tools` | yes | Tool registry and execution pipeline for the Siqi Harness |
 
 ## credentials
 
 | Package | Config | Description |
 |---|---|---|
 | `@liusiqi-dev/dsh-authorization` | no | Authorization seam (ctx.authorization): plugin-owned flows that obtain a credential through a conversation with the human |
-| `@liusiqi-dev/dsh-credentials-local` | yes | File-backed credentials provider ($SQODE_HOME/.env under the live process environment) for the DeepSeek Harness |
+| `@liusiqi-dev/dsh-credentials-local` | yes | File-backed credentials provider ($SQODE_HOME/.env under the live process environment) for the Siqi Harness |
 | `@liusiqi-dev/dsh-deepseek-account-platform` | yes | Authorize DeepSeek accounts through browser PKCE |
 
 ## deliverables
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-tool-present` | yes | Explicit workspace file delivery declarations for the DeepSeek Harness |
-| `@liusiqi-dev/dsh-workspace-changes` | yes | Per-turn workspace file changes recorded from git working-tree snapshots and whole-file captures, with per-file comparisons, for the DeepSeek Harness |
+| `@liusiqi-dev/dsh-tool-present` | yes | Explicit workspace file delivery declarations for the Siqi Harness |
+| `@liusiqi-dev/dsh-workspace-changes` | yes | Per-turn workspace file changes recorded from git working-tree snapshots and whole-file captures, with per-file comparisons, for the Siqi Harness |
 
 ## document
 
@@ -180,7 +180,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 |---|---|---|
 | `@liusiqi-dev/dsh-experimental-agent-team` | yes | Implicit-root Agent Teams roster, durable peer mailbox, and shared task DAG |
 | `@liusiqi-dev/dsh-experimental-api-speech-to-text` | yes | Authenticated experimental speech transcription for browser clients |
-| `@liusiqi-dev/dsh-experimental-auto-review` | no | Per-tool LLM authorization review for the DeepSeek Harness Auto permission preset |
+| `@liusiqi-dev/dsh-experimental-auto-review` | no | Per-tool LLM authorization review for the Siqi Harness Auto permission preset |
 | `@liusiqi-dev/dsh-experimental-browser-use-chrome-devtools-mcp` | yes | Experimental per-Session Chromium browser tools through chrome-devtools-mcp |
 | `@liusiqi-dev/dsh-experimental-browser-use-playwright-mcp` | yes | Experimental per-Session Chromium browser tools through @playwright/mcp |
 | `@liusiqi-dev/dsh-experimental-browser-use-stagehand-native` | yes | Experimental Stagehand browser tools with separately configured native models |
@@ -189,7 +189,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 | `@liusiqi-dev/dsh-experimental-computer-use-cua-driver-mcp` | yes | Experimental computer use through an installed Cua Driver MCP executable |
 | `@liusiqi-dev/dsh-experimental-computer-use-cua-driver-native` | no | Experimental computer-use provider embedding the Cua Driver native npm SDK |
 | `@liusiqi-dev/dsh-experimental-inspector` | yes | Experimental cross-realm CDP hub for Host debugging and Client Runtime inspection |
-| `@liusiqi-dev/dsh-experimental-ptc-runtime-python` | yes | CPython subprocess implementation of the DeepSeek Harness PTC execution seam |
+| `@liusiqi-dev/dsh-experimental-ptc-runtime-python` | yes | CPython subprocess implementation of the Siqi Harness PTC execution seam |
 | `@liusiqi-dev/dsh-experimental-speech-to-text` | yes | Experimental speech recognition with independently selectable providers |
 | `@liusiqi-dev/dsh-experimental-speech-to-text-sensevoice` | yes | Local SenseVoice ONNX transcription with a managed sherpa-onnx process |
 | `@liusiqi-dev/dsh-experimental-tool-agent-team` | yes | Scoped model-facing Agent Teams tools over ctx.agentTeams |
@@ -214,10 +214,10 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-fs-local` | yes | Local-filesystem implementation of the DeepSeek Harness filesystem seam (ctx.fs) |
-| `@liusiqi-dev/dsh-fs-observation-policy` | no | File-context policy plugin for the DeepSeek Harness — observed-state, read-before-edit, and version-guarded write/edit added over the ctx.fs provider seam through the fs/* event gate (no service API) |
-| `@liusiqi-dev/dsh-fs-sandbox` | yes | Sandbox-enforcing implementation of the DeepSeek Harness filesystem seam: fences write/edit by the per-call sandbox mode (read-only denies mutation, workspace-write contains it to the workspace + temp roots) while reads pass through |
-| `@liusiqi-dev/dsh-tool-fs` | yes | Model-facing filesystem tools (read, write, edit) over the DeepSeek Harness filesystem seam (ctx.fs) |
+| `@liusiqi-dev/dsh-fs-local` | yes | Local-filesystem implementation of the Siqi Harness filesystem seam (ctx.fs) |
+| `@liusiqi-dev/dsh-fs-observation-policy` | no | File-context policy plugin for the Siqi Harness — observed-state, read-before-edit, and version-guarded write/edit added over the ctx.fs provider seam through the fs/* event gate (no service API) |
+| `@liusiqi-dev/dsh-fs-sandbox` | yes | Sandbox-enforcing implementation of the Siqi Harness filesystem seam: fences write/edit by the per-call sandbox mode (read-only denies mutation, workspace-write contains it to the workspace + temp roots) while reads pass through |
+| `@liusiqi-dev/dsh-tool-fs` | yes | Model-facing filesystem tools (read, write, edit) over the Siqi Harness filesystem seam (ctx.fs) |
 | `@liusiqi-dev/dsh-tool-fs-search` | yes | Model-facing filesystem discovery tools (glob, grep) backed by the packaged ripgrep binary (@vscode/ripgrep) |
 | `@liusiqi-dev/dsh-tool-str-replace-editor` | yes | Model-facing view, create, literal replace, and line insert tool over the Harness filesystem service |
 
@@ -226,7 +226,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 | Package | Config | Description |
 |---|---|---|
 | `@liusiqi-dev/dsh-command-goal` | no | Human-facing slash command for persisted same-session goals |
-| `@liusiqi-dev/dsh-goal` | yes | Event-sourced same-session goal state and lifecycle service for the DeepSeek Harness |
+| `@liusiqi-dev/dsh-goal` | yes | Event-sourced same-session goal state and lifecycle service for the Siqi Harness |
 | `@liusiqi-dev/dsh-goal-round-driver` | no | Race-fenced same-session goal-round driver |
 | `@liusiqi-dev/dsh-tool-goal` | yes | Model-facing same-session goal tools with execution-time authority checks |
 
@@ -241,16 +241,16 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-hooks-claude-code` | yes | Bridge plugin: run a Claude Code hooks.json / settings hook config on the DeepSeek Harness interception seams |
-| `@liusiqi-dev/dsh-hooks-codex` | yes | Bridge plugin: run a Codex hooks.json hook config on the DeepSeek Harness interception seams |
+| `@liusiqi-dev/dsh-hooks-claude-code` | yes | Bridge plugin: run a Claude Code hooks.json / settings hook config on the Siqi Harness interception seams |
+| `@liusiqi-dev/dsh-hooks-codex` | yes | Bridge plugin: run a Codex hooks.json hook config on the Siqi Harness interception seams |
 
 ## host
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-host-directory-picker-auto` | no | Adaptive chooser of the directory-picker seam: resolves the host situation at boot and mounts the native or browse backend for the DeepSeek Harness web GUI host |
+| `@liusiqi-dev/dsh-host-directory-picker-auto` | no | Adaptive chooser of the directory-picker seam: resolves the host situation at boot and mounts the native or browse backend for the Siqi Harness web GUI host |
 | `@liusiqi-dev/dsh-host-directory-picker-browse` | yes | In-app browsing backend of the directory-picker seam (listing/creation primitives over the host filesystem) |
-| `@liusiqi-dev/dsh-host-directory-picker-native` | no | Native-OS-chooser backend of the directory-picker seam for the DeepSeek Harness web GUI host |
+| `@liusiqi-dev/dsh-host-directory-picker-native` | no | Native-OS-chooser backend of the directory-picker seam for the Siqi Harness web GUI host |
 | `@liusiqi-dev/dsh-host-frontend-static` | yes | SPA dist server for the Web shell: owns the webserver fallback seat, serving explicit index entries and static assets with traversal rejection and 404 misses |
 | `@liusiqi-dev/dsh-host-open-in-app` | yes | Host half of open-in-app: resolved application catalog, icons, and the launch endpoint as three webServer routes |
 | `@liusiqi-dev/dsh-host-plugin-inventory` | no | Read-only Remote projection of current Cordis Loader plugin state |
@@ -261,17 +261,17 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-commands` | no | Plugin-owned human command registry for DeepSeek Harness UIs |
-| `@liusiqi-dev/dsh-permission-presets` | yes | User-facing permission presets (ctx.permissionPresets) for the DeepSeek Harness: one product-level Permissions select bundling the sandbox-mode and approval-policy knobs, written through to their own session events |
+| `@liusiqi-dev/dsh-commands` | no | Plugin-owned human command registry for Siqi Harness UIs |
+| `@liusiqi-dev/dsh-permission-presets` | yes | User-facing permission presets (ctx.permissionPresets) for the Siqi Harness: one product-level Permissions select bundling the sandbox-mode and approval-policy knobs, written through to their own session events |
 | `@liusiqi-dev/dsh-tool-ask-user` | yes | Model-facing ask_user_question tool over the ctx.userQuestions seam |
-| `@liusiqi-dev/dsh-user-approval` | yes | User-approval seam (ctx.approval) for the DeepSeek Harness: one-shot permission decisions dispatched to composed answerers over the approval/request waterfall, fail-closed by default |
+| `@liusiqi-dev/dsh-user-approval` | yes | User-approval seam (ctx.approval) for the Siqi Harness: one-shot permission decisions dispatched to composed answerers over the approval/request waterfall, fail-closed by default |
 | `@liusiqi-dev/dsh-user-questions` | no | Abstract user-questions seam (ctx.userQuestions) for asking the human during agent runs |
 
 ## jobs
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-jobs-local` | yes | Process-local implementation of the DeepSeek Harness background job registry seam |
+| `@liusiqi-dev/dsh-jobs-local` | yes | Process-local implementation of the Siqi Harness background job registry seam |
 | `@liusiqi-dev/dsh-tool-jobs` | yes | Model-facing background job control tools (job_output, job_list, job_kill) over the ctx.jobs registry |
 
 ## llm
@@ -279,21 +279,21 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 | Package | Config | Description |
 |---|---|---|
 | `@liusiqi-dev/dsh-deepseek-llm-api-extensions` | no | Additive request-field registry for the official DeepSeek LLM API adapter |
-| `@liusiqi-dev/dsh-llm` | no | Provider-neutral LLM service interface for the DeepSeek Harness |
+| `@liusiqi-dev/dsh-llm` | no | Provider-neutral LLM service interface for the Siqi Harness |
 | `@liusiqi-dev/dsh-llm-deepseek-account` | yes | DeepSeek account provider authentication and discovery |
 | `@liusiqi-dev/dsh-llm-deepseek-api-key` | yes | DeepSeek api-key provider authentication and discovery |
-| `@liusiqi-dev/dsh-llm-pi-ai` | yes | pi-ai-backed DeepSeek adapter for the DeepSeek Harness LLM seam (design-verification twin of dsh-llm-deepseek) |
-| `@liusiqi-dev/dsh-llm-retry` | yes | Provider-routed LLM request retry policy for the DeepSeek Harness |
+| `@liusiqi-dev/dsh-llm-pi-ai` | yes | pi-ai-backed DeepSeek adapter for the Siqi Harness LLM seam (design-verification twin of dsh-llm-deepseek) |
+| `@liusiqi-dev/dsh-llm-retry` | yes | Provider-routed LLM request retry policy for the Siqi Harness |
 | `@liusiqi-dev/dsh-plugin-package-inventory-deepseek` | yes | Active Loader-backed plugin package inventory for official DeepSeek LLM API requests |
-| `@liusiqi-dev/dsh-token-meter` | yes | Replay-aware token measurement service (ctx.tokenMeter) for the DeepSeek Harness |
+| `@liusiqi-dev/dsh-token-meter` | yes | Replay-aware token measurement service (ctx.tokenMeter) for the Siqi Harness |
 
 ## lsp
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-lsp` | no | Abstract LSP capability seam (ctx.lsp) for the DeepSeek Harness — language-server provider registry keyed by branded id and extension mapping, order-independent per-query selection, normalized definition/references/implementation/hover requests and results, and the LspError taxonomy |
-| `@liusiqi-dev/dsh-lsp-stdio` | yes | Generic stdio language-server provider for the DeepSeek Harness LSP capability seam (ctx.lsp) — spawns configured servers, translates JSON-RPC, and serves transient-open goToDefinition/findReferences/goToImplementation/hover queries in the host filesystem namespace |
-| `@liusiqi-dev/dsh-tool-lsp` | yes | Model-facing lsp tool over the DeepSeek Harness LSP capability seam (ctx.lsp) — one read-only tool with goToDefinition/findReferences/goToImplementation/hover operations, one-based UTF-16 cursor coordinates, bounded location rendering, and hover normalization |
+| `@liusiqi-dev/dsh-lsp` | no | Abstract LSP capability seam (ctx.lsp) for the Siqi Harness — language-server provider registry keyed by branded id and extension mapping, order-independent per-query selection, normalized definition/references/implementation/hover requests and results, and the LspError taxonomy |
+| `@liusiqi-dev/dsh-lsp-stdio` | yes | Generic stdio language-server provider for the Siqi Harness LSP capability seam (ctx.lsp) — spawns configured servers, translates JSON-RPC, and serves transient-open goToDefinition/findReferences/goToImplementation/hover queries in the host filesystem namespace |
+| `@liusiqi-dev/dsh-tool-lsp` | yes | Model-facing lsp tool over the Siqi Harness LSP capability seam (ctx.lsp) — one read-only tool with goToDefinition/findReferences/goToImplementation/hover operations, one-based UTF-16 cursor coordinates, bounded location rendering, and hover normalization |
 
 ## mcp
 
@@ -314,25 +314,25 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 |---|---|---|
 | `@liusiqi-dev/dsh-agent-preset` | yes | Declare an Agent capability composition in Cordis YAML |
 | `@liusiqi-dev/dsh-agent-preset-registry` | yes | Declarative Agent preset registry and profile-backed editing |
-| `@liusiqi-dev/dsh-persona` | yes | Composition-authored deployment persona section for the DeepSeek Harness |
+| `@liusiqi-dev/dsh-persona` | yes | Composition-authored deployment persona section for the Siqi Harness |
 
 ## ptc-runtime
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-ptc-runtime-node` | yes | Sandboxed Node process implementation of the DeepSeek Harness PTC execution capability |
+| `@liusiqi-dev/dsh-ptc-runtime-node` | yes | Sandboxed Node process implementation of the Siqi Harness PTC execution capability |
 
 ## runtime-diagnostics
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-invariants` | yes | Registry service for package-owned DeepSeek Harness runtime invariants |
+| `@liusiqi-dev/dsh-invariants` | yes | Registry service for package-owned Siqi Harness runtime invariants |
 
 ## sandbox
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-sandbox-local` | yes | Local process-sandbox backends for the DeepSeek Harness sandbox seam: bwrap, the npm-distributed landlock-run launcher, macOS Seatbelt, or the Windows ACL restricted-token runner — functionally probed, fail-closed |
+| `@liusiqi-dev/dsh-sandbox-local` | yes | Local process-sandbox backends for the Siqi Harness sandbox seam: bwrap, the npm-distributed landlock-run launcher, macOS Seatbelt, or the Windows ACL restricted-token runner — functionally probed, fail-closed |
 | `@liusiqi-dev/dsh-sandbox-policy` | yes | Per-call sandbox policy resolver and current model context: deployment fallbacks plus each session's mode and workspace root, shared by every enforcing capability family |
 
 ## schedule
@@ -345,7 +345,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-sdk-jsonrpc-server` | yes | Stdio JSON-RPC server plugin for out-of-process DeepSeek Harness SDK clients |
+| `@liusiqi-dev/dsh-sdk-jsonrpc-server` | yes | Stdio JSON-RPC server plugin for out-of-process Siqi Harness SDK clients |
 
 ## session
 
@@ -353,15 +353,15 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 |---|---|---|
 | `@liusiqi-dev/dsh-session-checkpoint-policy` | no | Semantic session durability checkpoints before model requests and tool side effects |
 | `@liusiqi-dev/dsh-session-log-deepseek` | yes | Incremental lossless session-log request extension for the official DeepSeek LLM API |
-| `@liusiqi-dev/dsh-session-persistence-jsonl` | yes | JSONL durable session persistence backend for the DeepSeek Harness |
+| `@liusiqi-dev/dsh-session-persistence-jsonl` | yes | JSONL durable session persistence backend for the Siqi Harness |
 | `@liusiqi-dev/dsh-session-projection` | no | Session-projection seam: the merge-extensible projection type table, the provider contract, and the ctx.sessionProjections registry serving whole current values of log-derived per-session state |
 | `@liusiqi-dev/dsh-session-projection-cache` | yes | Persisted projection cache (ctx.sessionProjectionCache): durable per-session checkpoint records on the session_projcache storage domain (per-record layout), throttled write-behind, and the cached listing read |
-| `@liusiqi-dev/dsh-session-stats` | no | Whole-log conversation counts and wall times projection (sessionStats) for the DeepSeek Harness |
+| `@liusiqi-dev/dsh-session-stats` | no | Whole-log conversation counts and wall times projection (sessionStats) for the Siqi Harness |
 | `@liusiqi-dev/dsh-session-telemetry-otel` | yes | Feedback-authorized Session logs over byte-bounded OpenTelemetry HTTP requests |
-| `@liusiqi-dev/dsh-session-title` | yes | Log-backed session title service and provider registry for the DeepSeek Harness |
-| `@liusiqi-dev/dsh-session-title-all-prompts-llm` | yes | All-user-messages LLM provider plugin for DeepSeek Harness session titles |
-| `@liusiqi-dev/dsh-session-title-first-prompt-llm` | yes | First-message LLM provider plugin for DeepSeek Harness session titles |
-| `@liusiqi-dev/dsh-session-turn-outline` | no | Whole-log turn outline projection (turnOutline) for the DeepSeek Harness |
+| `@liusiqi-dev/dsh-session-title` | yes | Log-backed session title service and provider registry for the Siqi Harness |
+| `@liusiqi-dev/dsh-session-title-all-prompts-llm` | yes | All-user-messages LLM provider plugin for Siqi Harness session titles |
+| `@liusiqi-dev/dsh-session-title-first-prompt-llm` | yes | First-message LLM provider plugin for Siqi Harness session titles |
+| `@liusiqi-dev/dsh-session-turn-outline` | no | Whole-log turn outline projection (turnOutline) for the Siqi Harness |
 
 ## session-query
 
@@ -375,16 +375,16 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-settings` | no | Abstract user-settings seam (ctx.settings) for the DeepSeek Harness |
+| `@liusiqi-dev/dsh-settings` | no | Abstract user-settings seam (ctx.settings) for the Siqi Harness |
 
 ## shell
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-bash-local` | yes | Local-subprocess implementation of the DeepSeek Harness bash executor seam |
-| `@liusiqi-dev/dsh-bash-sandbox` | yes | Sandbox-consuming implementation of the DeepSeek Harness bash executor seam (confines every command via ctx.sandbox, reports denial/enforcement result facts) |
-| `@liusiqi-dev/dsh-pwsh-local` | yes | Local PowerShell implementation of the DeepSeek Harness bash executor seam |
-| `@liusiqi-dev/dsh-pwsh-sandbox` | yes | Sandbox-consuming implementation of the DeepSeek Harness PowerShell executor seam (confines every command via ctx.sandbox, reports denial/enforcement result facts) |
+| `@liusiqi-dev/dsh-bash-local` | yes | Local-subprocess implementation of the Siqi Harness bash executor seam |
+| `@liusiqi-dev/dsh-bash-sandbox` | yes | Sandbox-consuming implementation of the Siqi Harness bash executor seam (confines every command via ctx.sandbox, reports denial/enforcement result facts) |
+| `@liusiqi-dev/dsh-pwsh-local` | yes | Local PowerShell implementation of the Siqi Harness bash executor seam |
+| `@liusiqi-dev/dsh-pwsh-sandbox` | yes | Sandbox-consuming implementation of the Siqi Harness PowerShell executor seam (confines every command via ctx.sandbox, reports denial/enforcement result facts) |
 | `@liusiqi-dev/dsh-shell-env` | yes | Tool-independent managed DSH_* shell environment registry |
 | `@liusiqi-dev/dsh-tool-bash` | yes | Model-facing bash tool with optional generic background-job and sandbox-escalation support |
 | `@liusiqi-dev/dsh-tool-bash-persistent` | yes | Model-facing owner-scoped persistent Bash tool backed by the Harness PTY service |
@@ -395,18 +395,18 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-skill` | yes | Agent skill provider registry for the DeepSeek Harness |
-| `@liusiqi-dev/dsh-skill-badge` | no | Bundled dsh badge skill provider for DeepSeek Harness |
-| `@liusiqi-dev/dsh-skill-filesystem` | yes | Local filesystem skill provider for the DeepSeek Harness |
+| `@liusiqi-dev/dsh-skill` | yes | Agent skill provider registry for the Siqi Harness |
+| `@liusiqi-dev/dsh-skill-badge` | no | Bundled dsh badge skill provider for Siqi Harness |
+| `@liusiqi-dev/dsh-skill-filesystem` | yes | Local filesystem skill provider for the Siqi Harness |
 | `@liusiqi-dev/dsh-skill-office` | yes | Bundled Word, PowerPoint, and Excel workflows and structural checks |
-| `@liusiqi-dev/dsh-tool-skill` | yes | Model-facing skill loading tool for the DeepSeek Harness |
+| `@liusiqi-dev/dsh-tool-skill` | yes | Model-facing skill loading tool for the Siqi Harness |
 | `@liusiqi-dev/dsh-tool-workspace-dependencies` | yes | The load_workspace_dependencies tool: absolute paths into a bundled Python, Node.js, and pnpm payload |
 
 ## spill
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-spill-local` | yes | Local-filesystem implementation of the DeepSeek Harness spill storage seam (private session-scoped files) |
+| `@liusiqi-dev/dsh-spill-local` | yes | Local-filesystem implementation of the Siqi Harness spill storage seam (private session-scoped files) |
 | `@liusiqi-dev/dsh-spill-policy` | yes | Token-budgeted tool-result retention with recoverable text and image paths |
 
 ## ssh
@@ -422,10 +422,10 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-storage` | no | Storage hub (ctx.storage): named backend registry plus mounted data-form facilities for the DeepSeek Harness |
-| `@liusiqi-dev/dsh-storage-domain` | yes | Domain data form (ctx.storage.domain): schema-validated, event-emitting KV domains over storage backends for the DeepSeek Harness |
-| `@liusiqi-dev/dsh-storage-json` | yes | JSON file KV storage backend for the DeepSeek Harness storage hub |
-| `@liusiqi-dev/dsh-storage-sqlite` | yes | SQLite storage backend (kv facet) for the DeepSeek Harness storage hub |
+| `@liusiqi-dev/dsh-storage` | no | Storage hub (ctx.storage): named backend registry plus mounted data-form facilities for the Siqi Harness |
+| `@liusiqi-dev/dsh-storage-domain` | yes | Domain data form (ctx.storage.domain): schema-validated, event-emitting KV domains over storage backends for the Siqi Harness |
+| `@liusiqi-dev/dsh-storage-json` | yes | JSON file KV storage backend for the Siqi Harness storage hub |
+| `@liusiqi-dev/dsh-storage-sqlite` | yes | SQLite storage backend (kv facet) for the Siqi Harness storage hub |
 
 ## subagent
 
@@ -435,7 +435,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 | `@liusiqi-dev/dsh-subagent-acp` | yes | Out-of-process ACP subagent backend: drives a child agent in a spawned subprocess over the Agent Client Protocol |
 | `@liusiqi-dev/dsh-subagent-claude-code` | yes | One-shot Claude Code subagent provider over the official Agent SDK |
 | `@liusiqi-dev/dsh-subagent-codex` | yes | One-shot Codex subagent provider over the official app-server protocol |
-| `@liusiqi-dev/dsh-subagent-dsh-sdk` | yes | Out-of-process SDK subagent backend: drives a child DeepSeek Harness runtime subprocess over stdio JSON-RPC through the TypeScript SDK client |
+| `@liusiqi-dev/dsh-subagent-dsh-sdk` | yes | Out-of-process SDK subagent backend: drives a child Siqi Harness runtime subprocess over stdio JSON-RPC through the TypeScript SDK client |
 | `@liusiqi-dev/dsh-subagent-fork-in-process` | yes | In-process fork subagent backend: runs a child agent seeded with a prefix of the parent's log |
 | `@liusiqi-dev/dsh-subagent-spawn-in-process` | yes | In-process spawn subagent backend: runs a fresh child agent on ctx.agents |
 | `@liusiqi-dev/dsh-tool-subagent` | yes | Model-facing subagent delegation tool over the ctx.subagents seam |
@@ -445,7 +445,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-subprocess-local` | no | Local-subprocess implementation of the DeepSeek Harness subprocess seam |
+| `@liusiqi-dev/dsh-subprocess-local` | no | Local-subprocess implementation of the Siqi Harness subprocess seam |
 
 ## telemetry
 
@@ -457,8 +457,8 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-terminal` | no | Persistent PTY session seam for the DeepSeek Harness — owner-scoped ids, backend registry, interactive sends, reads, signals, and awaited cleanup |
-| `@liusiqi-dev/dsh-terminal-bash` | yes | Persistent shell PTY backend over the DeepSeek Harness subprocess terminal primitive |
+| `@liusiqi-dev/dsh-terminal` | no | Persistent PTY session seam for the Siqi Harness — owner-scoped ids, backend registry, interactive sends, reads, signals, and awaited cleanup |
+| `@liusiqi-dev/dsh-terminal-bash` | yes | Persistent shell PTY backend over the Siqi Harness subprocess terminal primitive |
 | `@liusiqi-dev/dsh-tool-terminal` | yes | Six model-facing persistent PTY tools with owner isolation and generic background-job integration |
 
 ## test-support
@@ -471,7 +471,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-tool-todo` | yes | Model-facing todo_write tool over the DeepSeek Harness event-sourced session log |
+| `@liusiqi-dev/dsh-tool-todo` | yes | Model-facing todo_write tool over the Siqi Harness event-sourced session log |
 
 ## typert
 
@@ -483,19 +483,19 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-tool-web` | yes | Model-facing web tools (web_search, web_fetch) over the DeepSeek Harness web capability seam (ctx.web) |
-| `@liusiqi-dev/dsh-web` | yes | Abstract web access capability seam (ctx.web) for the DeepSeek Harness — search/fetch provider registry, registration-order-independent selection, request/result vocabulary, and the WebError taxonomy |
-| `@liusiqi-dev/dsh-web-fetch-http` | yes | Anonymous public HTTP(S) fetch provider for the DeepSeek Harness web capability seam (ctx.web) |
-| `@liusiqi-dev/dsh-web-search-deepseek` | yes | DeepSeek-backed search provider (native web_search via the Anthropic-compatible API) for the DeepSeek Harness web capability seam (ctx.web) |
-| `@liusiqi-dev/dsh-web-search-exa` | yes | Exa-backed search provider for the DeepSeek Harness web capability seam (ctx.web) |
-| `@liusiqi-dev/dsh-web-search-perplexity` | yes | Perplexity-backed search provider for the DeepSeek Harness web capability seam (ctx.web) |
+| `@liusiqi-dev/dsh-tool-web` | yes | Model-facing web tools (web_search, web_fetch) over the Siqi Harness web capability seam (ctx.web) |
+| `@liusiqi-dev/dsh-web` | yes | Abstract web access capability seam (ctx.web) for the Siqi Harness — search/fetch provider registry, registration-order-independent selection, request/result vocabulary, and the WebError taxonomy |
+| `@liusiqi-dev/dsh-web-fetch-http` | yes | Anonymous public HTTP(S) fetch provider for the Siqi Harness web capability seam (ctx.web) |
+| `@liusiqi-dev/dsh-web-search-deepseek` | yes | DeepSeek-backed search provider (native web_search via the Anthropic-compatible API) for the Siqi Harness web capability seam (ctx.web) |
+| `@liusiqi-dev/dsh-web-search-exa` | yes | Exa-backed search provider for the Siqi Harness web capability seam (ctx.web) |
+| `@liusiqi-dev/dsh-web-search-perplexity` | yes | Perplexity-backed search provider for the Siqi Harness web capability seam (ctx.web) |
 
 ## webhook
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-webhook` | no | Fire-and-forget webhook rule runtime that creates Workspace-backed DeepSeek Harness Sessions |
-| `@liusiqi-dev/dsh-webhook-github` | yes | Signed GitHub HTTP webhook adapter for the DeepSeek Harness webhook runtime |
+| `@liusiqi-dev/dsh-webhook` | no | Fire-and-forget webhook rule runtime that creates Workspace-backed Siqi Harness Sessions |
+| `@liusiqi-dev/dsh-webhook-github` | yes | Signed GitHub HTTP webhook adapter for the Siqi Harness webhook runtime |
 
 ## workflow
 
@@ -509,4 +509,4 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/dsh-workspace` | no | Workspace entity registry (ctx.workspaceRegistry): durable workspace records with validated session attachment over the domain data form for the DeepSeek Harness |
+| `@liusiqi-dev/dsh-workspace` | no | Workspace entity registry (ctx.workspaceRegistry): durable workspace records with validated session attachment over the domain data form for the Siqi Harness |

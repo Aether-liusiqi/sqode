@@ -2,78 +2,78 @@
 # section, a hash of its English and Chinese blocks outside code blocks and generated regions.
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write apps/desktop/README.md
-/deepseek-harness-desktop:
-  en: eccac345d51428fa
+/siqi-harness-desktop:
+  en: 9df7a14d8052eabe
   zh: e2efdbe2837b628c
-/deepseek-harness-desktop/terminal-command:
+/siqi-harness-desktop/terminal-command:
   en: bef92953c237363f
   zh: d21d6effd21b8c00
-/deepseek-harness-desktop/closing-the-window-and-quitting:
-  en: 080bc88de9a1c0b5
+/siqi-harness-desktop/closing-the-window-and-quitting:
+  en: c22774b06a025b82
   zh: 6a8ce117b63270d0
-/deepseek-harness-desktop/key-technical-decisions:
+/siqi-harness-desktop/key-technical-decisions:
   en: 375805f68da4da3f
   zh: 2209688676af80d7
-/deepseek-harness-desktop/key-technical-decisions/bundled-workspace-dependencies:
+/siqi-harness-desktop/key-technical-decisions/bundled-workspace-dependencies:
   en: 35c1a9e2df2ac0bd
   zh: 49d907d180441957
-/deepseek-harness-desktop/bundled-command-runtime:
+/siqi-harness-desktop/bundled-command-runtime:
   en: beecf076aa2f0796
   zh: c9001ce0f22d2379
-/deepseek-harness-desktop/installation-ownership:
+/siqi-harness-desktop/installation-ownership:
   en: 66795e67b87a8408
   zh: 95cd243216e42a7d
-/deepseek-harness-desktop/installation-ownership/runtime-and-plugin-activation:
-  en: 0d11af8639977a6d
+/siqi-harness-desktop/installation-ownership/runtime-and-plugin-activation:
+  en: 5fb5e1c8ee0626e8
   zh: a7de12533ecb7b71
-/deepseek-harness-desktop/installation-ownership/host-environment:
+/siqi-harness-desktop/installation-ownership/host-environment:
   en: fabe464a4545676d
   zh: 5fba7e8e37fd14fc
-/deepseek-harness-desktop/develop:
+/siqi-harness-desktop/develop:
   en: aea6d2e2dea7bec7
   zh: f8bf72dfa324f0e1
-/deepseek-harness-desktop/develop/startup-onboarding:
+/siqi-harness-desktop/develop/startup-onboarding:
   en: b2e10e99b97aca0f
   zh: 4b43ee2e6e76e3c5
-/deepseek-harness-desktop/develop/welcome-window-appearance:
+/siqi-harness-desktop/develop/welcome-window-appearance:
   en: ae319a496639b38d
   zh: ef044103240ac9da
-/deepseek-harness-desktop/package:
+/siqi-harness-desktop/package:
   en: 4cd8a8da6977928d
   zh: 9f624855a2edac37
-/deepseek-harness-desktop/package/release-versions:
+/siqi-harness-desktop/package/release-versions:
   en: f461b255133384cc
   zh: 2b9db718f22fdd04
-/deepseek-harness-desktop/package/runtime-file-selection:
-  en: b303c1918a068631
-  zh: 13855615e51d2e7f
-/deepseek-harness-desktop/package/upload-updates:
+/siqi-harness-desktop/package/runtime-file-selection:
+  en: 9fdf0aa806fa0343
+  zh: 73f4ac6c0853d036
+/siqi-harness-desktop/package/upload-updates:
   en: 5ad6f97c2630694f
   zh: 66b17d89ba33610a
-/deepseek-harness-desktop/package/unsigned-windows-test-installer:
+/siqi-harness-desktop/package/unsigned-windows-test-installer:
   en: cfd5780dd26a8e46
   zh: f7a16b1ede793b7b
-/deepseek-harness-desktop/package/windows-installer-interface:
+/siqi-harness-desktop/package/windows-installer-interface:
   en: bb81f84e8b847908
   zh: 72851ba434550512
-/deepseek-harness-desktop/package/windows-ev-signing:
+/siqi-harness-desktop/package/windows-ev-signing:
   en: c6e78a43715dd7b0
   zh: 176d5f5cebd64452
-/deepseek-harness-desktop/updates:
+/siqi-harness-desktop/updates:
   en: e41cc7e13f09a7f1
   zh: 4f4e7a06fcdc8eaa
-/deepseek-harness-desktop/updates/mandatory-update-policy:
+/siqi-harness-desktop/updates/mandatory-update-policy:
   en: 64047de5538c32a6
   zh: 1207cd41b1a9d4bf
-/deepseek-harness-desktop/updates/local-updater-qualification:
+/siqi-harness-desktop/updates/local-updater-qualification:
   en: af2a8e649faeb9c5
   zh: 1b28c6d11fdef152
-/deepseek-harness-desktop/low-level-development-overrides:
+/siqi-harness-desktop/low-level-development-overrides:
   en: 710bbb88d5a80623
   zh: 3e8bc6a9506e68b5
-/deepseek-harness-desktop/known-limitations:
+/siqi-harness-desktop/known-limitations:
   en: 16a87657d929af8f
   zh: deb5657fe72d3fdb
-/deepseek-harness-desktop/dev-note:
+/siqi-harness-desktop/dev-note:
   en: 8e26b460ba31f21b
   zh: fbcd0307b3867125

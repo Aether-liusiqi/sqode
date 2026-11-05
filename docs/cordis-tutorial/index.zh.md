@@ -18,7 +18,7 @@ Cordis 是 Sqode 底层的插件框架：它是一个小型运行时，其中的
 
 ```sh
 git clone https://github.com/deepseek-ai/deepseek-harness.git
-cd deepseek-harness
+cd siqi-harness
 pnpm install
 ```
 

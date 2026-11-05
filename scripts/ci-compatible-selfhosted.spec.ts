@@ -42,11 +42,11 @@ function route(options: { mode?: string; author?: string; repository?: string; f
   return evaluate(job['runs-on'], {
     vars: { SQODE_CI_FAILOVER_LINUX: options.mode ?? 'selfhosted' },
     github: {
-      repository: 'deepseek-harness/deepseek-harness',
+      repository: 'siqi-harness/siqi-harness',
       actor: options.actor ?? 'maintainer',
       event: { pull_request: {
         user: { login: options.author ?? 'maintainer' },
-        head: { repo: { full_name: options.repository ?? 'deepseek-harness/deepseek-harness', fork: options.fork ?? false } },
+        head: { repo: { full_name: options.repository ?? 'siqi-harness/siqi-harness', fork: options.fork ?? false } },
       } },
     },
     matrix: { runner: 'ubuntu-latest' },

@@ -19,7 +19,7 @@ describe('APP_IDENTITY', () => {
 
   it('carries only static public product facts', () => {
     expect(APP_IDENTITY).toEqual({
-      product: 'deepseek-harness',
+      product: 'siqi-harness',
       version: manifest.version,
       url: 'https://github.com/deepseek-ai/deepseek-harness',
     })

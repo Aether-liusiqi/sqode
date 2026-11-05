@@ -1,11 +1,11 @@
-# DeepSeek Harness Python SDK
+# Siqi Harness Python SDK
 
 English | [中文](README.zh.md)
 
-Python subprocess SDK for driving DeepSeek Harness over newline-delimited JSON-RPC on stdio. Install `deepseek-harness-sdk`; it installs the exact same-version `deepseek-harness-runtime-bin` wheel for the current platform.
+Python subprocess SDK for driving Siqi Harness over newline-delimited JSON-RPC on stdio. Install `siqi-harness-sdk`; it installs the exact same-version `siqi-harness-runtime-bin` wheel for the current platform.
 
 ```sh
-python -m pip install deepseek-harness-sdk
+python -m pip install siqi-harness-sdk
 ```
 
 ## Start a runtime

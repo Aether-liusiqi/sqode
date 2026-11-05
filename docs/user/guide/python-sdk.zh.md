@@ -23,18 +23,18 @@
 
 ```sh [Linux/macOS]
 git clone https://github.com/deepseek-ai/deepseek-harness.git
-cd deepseek-harness
+cd siqi-harness
 python -m venv .venv
 . .venv/bin/activate
-python -m pip install deepseek-harness-sdk
+python -m pip install siqi-harness-sdk
 ```
 
 ```powershell [Windows PowerShell]
 git clone https://github.com/deepseek-ai/deepseek-harness.git
-Set-Location deepseek-harness
+Set-Location siqi-harness
 py -3.10 -m venv .venv
 .venv\Scripts\Activate.ps1
-python -m pip install deepseek-harness-sdk
+python -m pip install siqi-harness-sdk
 ```
 
 :::

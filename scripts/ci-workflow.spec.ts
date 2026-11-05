@@ -1116,8 +1116,8 @@ describe('Issue lifecycle workflow', () => {
       with: {
         'client-id': '${{ vars.SQODE_ISSUE_APP_CLIENT_ID }}',
         'private-key': '${{ secrets.SQODE_ISSUE_APP_PRIVATE_KEY }}',
-        owner: 'deepseek-harness',
-        repositories: 'deepseek-harness',
+        owner: 'siqi-harness',
+        repositories: 'siqi-harness',
         'permission-issues': 'read',
         'permission-organization-projects': 'read',
       },
