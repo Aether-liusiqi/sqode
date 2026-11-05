@@ -6,8 +6,8 @@
     python sqode_audit_all.py --strict        # 有非豁免命中则退出码 1
 
 形态清单（B33/B34/B37 的教训）：
-  F1 完整包名（引号内）        '@deepseek-ai/dsh-session'
-  F2 YAML/JSON 键              "@deepseek-ai/cosmokit": ...
+  F1 完整包名（引号内）        '@siqi-ai/dsh-session'
+  F2 YAML/JSON 键              "@siqi-ai/cosmokit": ...
   F3 正则字面量（转义斜杠）    /^@deepseek-ai\\/dsh-/
   F4 独立作用域串（路径分段）  join(dir,'node_modules','@deepseek-ai','pkg')
   F5 独立包名段（路径分段）    join(dir,'@liusiqi-dev','dsh','package.json')
