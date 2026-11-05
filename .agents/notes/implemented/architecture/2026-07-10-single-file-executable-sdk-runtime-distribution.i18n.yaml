@@ -15,17 +15,17 @@
   en: f1c2b60e9474111d
   zh: 5de398b5e8554429
 /agent-note-single-file-executable-sdk-runtime-distribution-single-exe/decision/the-serving-interface-is-a-plugin-inside-the-dsh-application:
-  en: 5fdde26e9e8c6108
-  zh: 629559d733c1f0c5
+  en: 10ae761d57b7f49c
+  zh: cafec23694f3371e
 /agent-note-single-file-executable-sdk-runtime-distribution-single-exe/decision/plugin-resolution-the-vfs-holds-a-real-package-tree-the-closure-manifest-is-the-deploy-root:
-  en: c35ea4b858448b49
-  zh: 1f8ff0a9f82ca881
+  en: 41a58b07e533df1e
+  zh: f6164782a6647b79
 /agent-note-single-file-executable-sdk-runtime-distribution-single-exe/decision/build-pipeline-and-artifacts:
-  en: 53ba44431d2ce411
-  zh: 4159475549273422
+  en: d0bb177b5ae6e6be
+  zh: 0830bcb4a69b5c74
 /agent-note-single-file-executable-sdk-runtime-distribution-single-exe/decision/python-sdk-distribution-two-carriers-exe-for-production-node-for-development:
-  en: 9bd60549d4a52ec0
-  zh: e2343b7210212ee0
+  en: 1aa403b19350d897
+  zh: 00c94a949e0defa5
 /agent-note-single-file-executable-sdk-runtime-distribution-single-exe/decision/naming-lineage:
   en: 31a5aecb8bf828bb
   zh: 2dffb6fd2e0f8194

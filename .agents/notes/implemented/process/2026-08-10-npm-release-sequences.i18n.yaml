@@ -6,8 +6,8 @@
   en: 176f873a6b094838
   zh: 9baeba69cbaea9cf
 /agent-note-private-npm-publication-as-three-independent-sequences/problem:
-  en: b94462e04e350571
-  zh: 07cef78e4cf7a9ac
+  en: 46d62d04531d76f5
+  zh: 62cd7cbe0211a2dd
 /agent-note-private-npm-publication-as-three-independent-sequences/decision:
   en: a15c7c13f167e5ac
   zh: 63bcc2ef60c2f344
@@ -18,14 +18,14 @@
   en: 71d4cda384013bfb
   zh: 909d853c18496925
 /agent-note-private-npm-publication-as-three-independent-sequences/decision/vendor-publish-what-changed-and-let-tags-be-the-ledger:
-  en: 7f578bb18f7f8693
-  zh: 49f25210f7c1a61f
+  en: 6eccf089f5acdbeb
+  zh: 1df2ac75843e76fe
 /agent-note-private-npm-publication-as-three-independent-sequences/decision/publication-runs-only-on-github-and-the-registry-decides-what-goes-out:
   en: 4f399390f58d7a34
   zh: 9df67248acfc61c8
 /agent-note-private-npm-publication-as-three-independent-sequences/decision/workspace-internal-references-use-the-workspace-protocol:
-  en: 261aa2339f9cce51
-  zh: 6629989171b26817
+  en: 1f0684e32b5fa2e1
+  zh: 733e7b657fe9a6fa
 /agent-note-private-npm-publication-as-three-independent-sequences/decision/published-dependency-faces-use-an-explicit-policy:
   en: 30a64e0e919a27c0
   zh: 19729d7ebee35439
@@ -45,8 +45,8 @@
   en: 298382a27013dcfb
   zh: ab89cf392232f9bb
 /agent-note-private-npm-publication-as-three-independent-sequences/alternatives-considered:
-  en: 11877d09e5a84f6e
-  zh: ea372c779254be93
+  en: de7b2f348b31c7e3
+  zh: aaf7173b11b6d116
 /agent-note-private-npm-publication-as-three-independent-sequences/consequences:
   en: f961ebb927e30b5c
   zh: 019f1628fb1f2c56
