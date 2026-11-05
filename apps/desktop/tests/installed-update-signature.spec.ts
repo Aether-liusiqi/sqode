@@ -51,7 +51,7 @@ describe('installed update read-only signature evidence', () => {
 
   it.runIf(process.platform === 'win32')('isolates verification processes and records only public attributes for unchanged bytes', async () => {
     await fixture(async (file, root) => {
-      vi.stubEnv('DSH_DESKTOP_WINDOWS_TOKEN_PIN', 'fixture-pin')
+      vi.stubEnv('SQODE_DESKTOP_WINDOWS_TOKEN_PIN', 'fixture-pin')
       vi.stubEnv('DOWNLOAD_TEST_COS_SECRET_KEY', 'fixture-key')
       vi.stubEnv('PSModulePath', 'incompatible-powershell-modules')
       vi.stubEnv('NODE_OPTIONS', '--require unused')

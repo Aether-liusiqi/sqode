@@ -139,8 +139,8 @@ export function testProfileResolution(mode: ExampleMode): void {
       const staleTools = join(root, 'stale-tools')
       const staleToolsLink = join(sharedModules, '@liusiqi-dev', 'dsh-tools')
       await writePackage(staleTools, { name: '@liusiqi-dev/dsh-tools', version: '0.0.0', exports }, {
-        'index.mjs': "export default class Tools {}\nexport const TOOL_RUNTIME_SCHEDULER = Symbol()\nthrow new Error('STALE_DSH_TOOLS')",
-        'index.cjs': "throw new Error('STALE_DSH_TOOLS')",
+        'index.mjs': "export default class Tools {}\nexport const TOOL_RUNTIME_SCHEDULER = Symbol()\nthrow new Error('STALE_SQH_TOOLS')",
+        'index.cjs': "throw new Error('STALE_SQH_TOOLS')",
       })
       const sourceDir = join(sourcePackageDir, 'src')
       const toolsCjsExpression = mode === 'lib' ? "require.resolve('@liusiqi-dev/dsh-tools')" : 'null'

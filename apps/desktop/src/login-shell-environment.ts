@@ -5,7 +5,7 @@ import { homedir, userInfo } from 'node:os'
 import type { Readable } from 'node:stream'
 import { resolveDurationMs } from './duration-env.ts'
 
-const DELIMITER = '_DSH_SHELL_ENV_DELIMITER_'
+const DELIMITER = '_SQH_SHELL_ENV_DELIMITER_'
 const MARKER = Buffer.from(`\0${DELIMITER}\0`)
 const DUMP = `printf '\\0%s\\0' '${DELIMITER}'; command env -0 || exit; printf '\\0%s\\0' '${DELIMITER}'; exit`
 const FALLBACK_SHELLS = ['/bin/zsh', '/bin/bash', '/bin/sh'] as const
@@ -88,7 +88,7 @@ export function parseLoginShellOutput(stdout: string): Record<string, string> | 
 
 /**
  * Overlay login-shell variables on the inherited environment; shell values win except for
- * probe-session variables and launcher-owned `DSH_*` / `ELECTRON_*` names.
+ * probe-session variables and launcher-owned `SQH_*` / `ELECTRON_*` names.
  * @param base - Environment Desktop inherited.
  * @param shell - Variables printed by the login shell.
  * @returns A new environment; neither argument is modified.

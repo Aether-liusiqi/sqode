@@ -21,14 +21,14 @@
   en: beecf076aa2f0796
   zh: c9001ce0f22d2379
 /siqi-harness-desktop/installation-ownership:
-  en: 66795e67b87a8408
-  zh: 95cd243216e42a7d
+  en: 9774f01598ed5d07
+  zh: f3630c96194b2e4a
 /siqi-harness-desktop/installation-ownership/runtime-and-plugin-activation:
   en: 89e4c7e39e4a940a
   zh: e2464027fb617d54
 /siqi-harness-desktop/installation-ownership/host-environment:
-  en: fabe464a4545676d
-  zh: 5fba7e8e37fd14fc
+  en: d92300c317e70827
+  zh: 9c83bfabfee99180
 /siqi-harness-desktop/develop:
   en: aea6d2e2dea7bec7
   zh: f8bf72dfa324f0e1
@@ -48,29 +48,29 @@
   en: 9fdf0aa806fa0343
   zh: 73f4ac6c0853d036
 /siqi-harness-desktop/package/upload-updates:
-  en: 5ad6f97c2630694f
-  zh: 66b17d89ba33610a
+  en: 73f903a95e8438c6
+  zh: 26384d5a5bcba67b
 /siqi-harness-desktop/package/unsigned-windows-test-installer:
-  en: cfd5780dd26a8e46
-  zh: f7a16b1ede793b7b
+  en: d685a2a05f1ef26c
+  zh: b1cd599dc59508d2
 /siqi-harness-desktop/package/windows-installer-interface:
   en: bb81f84e8b847908
   zh: 72851ba434550512
 /siqi-harness-desktop/package/windows-ev-signing:
-  en: c6e78a43715dd7b0
-  zh: 176d5f5cebd64452
+  en: 1c9cf3cb41bf348e
+  zh: 608a2a4f03cd18eb
 /siqi-harness-desktop/updates:
   en: e41cc7e13f09a7f1
   zh: 4f4e7a06fcdc8eaa
 /siqi-harness-desktop/updates/mandatory-update-policy:
-  en: 64047de5538c32a6
-  zh: 1207cd41b1a9d4bf
+  en: eeb06c657f5ec8f4
+  zh: 28a2777f4f6ae246
 /siqi-harness-desktop/updates/local-updater-qualification:
   en: af2a8e649faeb9c5
   zh: 1b28c6d11fdef152
 /siqi-harness-desktop/low-level-development-overrides:
-  en: 710bbb88d5a80623
-  zh: 3e8bc6a9506e68b5
+  en: 7624b07f3f0b6146
+  zh: d424bd81ef98d8ab
 /siqi-harness-desktop/known-limitations:
   en: 16a87657d929af8f
   zh: deb5657fe72d3fdb

@@ -4,7 +4,7 @@
  * registry. The fake executor makes every seam outcome scriptable — output
  * text, truncation, timeout, abort, nonzero exits, background handles — so
  * these tests verify the schema, argument validation, workdir derivation,
- * managed `DSH_*` collection, abort translation, canonical result projection,
+ * managed `SQH_*` collection, abort translation, canonical result projection,
  * sandbox denial rendering with the escalation surface, rendering,
  * background job wiring, and the UI presenters. Real-pwsh behavior
  * is pinned separately in integration.spec.ts.
@@ -402,7 +402,7 @@ describe('argument validation', () => {
 })
 
 describe('execution through the bash seam', () => {
-  it('forwards command, session cwd, timeout, and managed DSH_* environment', async () => {
+  it('forwards command, session cwd, timeout, and managed SQH_* environment', async () => {
     const dshHome = mkdtempSync(join(tmpdir(), 'dsh-tool-pwsh-home-'))
     tempDirs.push(dshHome)
     const { ctx, bash } = await setup({}, dshHome)

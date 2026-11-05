@@ -8,7 +8,7 @@ import { clientBuildEnvironmentDefines } from '../../scripts/client-build-enviro
 import { productWebBundleIsolation } from './product-isolation.ts'
 
 const src = (rel: string): string => fileURLToPath(new URL(rel, import.meta.url))
-const STANDALONE_ERROR = 'apps/web is not a standalone application: bare Vite cannot inject window.__DSH_BOOT__. '
+const STANDALONE_ERROR = 'apps/web is not a standalone application: bare Vite cannot inject window.__SQH_BOOT__. '
   + 'From a repository checkout, run `pnpm dsh web`; an installed package uses `dsh web`. '
   + 'For client-plugin HMR, run `pnpm run dev:web`, which starts `dsh web` and the rebuild watchers together.'
 const DEFAULT_CLIENT_TITLE = 'SQH Local Build'

@@ -17,7 +17,7 @@ The profile package lock (`<profile>/package.json.lock`) made the cost visible. 
 - Contenders that read the same record serialize on a claim file, `<file>.lock.takeover-<first 16 hex digits of the record's SHA-256>`, created with `wx`. The claimant re-reads the lock and probes its PID again, removes it only if it still holds that record and the PID is still absent, removes the claim, and retries acquisition at once. The record's holder cannot release it once its PID is absent, another takeover needs the same claim, and a new holder that reused the PID fails the second probe, so a claimant never removes a lock that another contender acquired after the exited holder's.
 - A record that is empty, incomplete, not a decimal PID, or names PID 0 or a PID beyond the int32 range the probe accepts is waited for. None of these proves that the holder stopped.
 - Takeover proves only that the recorded process exited, not that the processes it started stopped writing. The [Plugin Manager](../../../../packages/boot/plugin-manager/README.md) records each pnpm run in `.plugin-manager/run.json` while the run lasts; an operation that finds that record waits up to five seconds for the recorded run to stop and otherwise refuses to run, naming the process and the record.
-- The probe runs on the contender's host. Writers on several hosts sharing one `DSH_HOME` over a network filesystem are unsupported; the `flock` that guards Session files does not reliably exclude them either.
+- The probe runs on the contender's host. Writers on several hosts sharing one `SQH_HOME` over a network filesystem are unsupported; the `flock` that guards Session files does not reliably exclude them either.
 
 ## Alternatives considered
 

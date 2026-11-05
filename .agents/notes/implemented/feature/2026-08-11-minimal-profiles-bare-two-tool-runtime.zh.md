@@ -14,9 +14,9 @@ Web `minimal` preset 与独立 JSON-RPC minimal 组合对外提供持久 `bash` 
 
 随附 Web minimal preset 对外提供持久 `bash`；独立 profile 在 Linux／macOS 上提供持久 `bash`，在 Windows 上提供 `pwsh`。两者都不挂载上下文压缩或文件系统提供方，并为新建会话抑制每个 `dsh-system-prompt` runtime-context 贡献。[仅持久 shell 决策](../simplification/2026-09-03-minimal-profiles-persistent-shell-only.zh.md)从两份组合中移除了编辑器及其原本除此之外无人使用的 `fs-local` 提供方。Web preset 的 persona 继续采用较早的 [minimal preset 组合决策](../../archived/bug-fix/2026-08-10-minimal-preset-owns-rl-composition.md)所拥有的固定 complete 提示词，并仅为该 agent 作用域实施 runtime-context 抑制。独立 spine 将同一设置转发给其进程拥有的 system-prompt 服务。Web 宿主保留沙箱与批准服务；独立 profile 挂载 danger-full-access 沙箱策略，不挂载批准服务。两者都不贡献面向模型的策略上下文。
 
-独立的 [`@siqi-ai/dsh-sdk-minimal` 组合包](../../../../packages/bundle/sdk-minimal/README.zh.md)仍是 `dsh --profile sdk-minimal` 后面的完整 JSON-RPC 进程组合。它挂载 SDK 启动与 JSON-RPC 服务、按平台选择的持久 shell 所需的本地 PTY 和子进程服务、该 shell 的工具消费方，以及位于 `$DSH_HOME/sessions` 的未压缩 JSONL 持久化。它不挂载 `token-meter`、`compaction-basic`、`fs-local`、`fs-sandbox`、`fs-observation-policy` 或文件系统工具。持久 shell 消费该 profile 的 danger-full-access 沙箱策略。[docs/architecture.md](../../../../docs/architecture.zh.md) 负责该组合包的位置及其与 `dsh-base` 的分离。
+独立的 [`@siqi-ai/dsh-sdk-minimal` 组合包](../../../../packages/bundle/sdk-minimal/README.zh.md)仍是 `dsh --profile sdk-minimal` 后面的完整 JSON-RPC 进程组合。它挂载 SDK 启动与 JSON-RPC 服务、按平台选择的持久 shell 所需的本地 PTY 和子进程服务、该 shell 的工具消费方，以及位于 `$SQH_HOME/sessions` 的未压缩 JSONL 持久化。它不挂载 `token-meter`、`compaction-basic`、`fs-local`、`fs-sandbox`、`fs-observation-policy` 或文件系统工具。持久 shell 消费该 profile 的 danger-full-access 沙箱策略。[docs/architecture.md](../../../../docs/architecture.zh.md) 负责该组合包的位置及其与 `dsh-base` 的分离。
 
-`DSH_SYSTEM_PROMPT` 选择独立组合的 persona，`DSH_CONTEXT_WINDOW` 为没有确切目录元数据的模型提供后备容量。SDK 客户端的 JSON-RPC `initialize` 请求是唯一运行时模型选择。[`minimal.py`](../../../../python/sdk/examples/minimal.py)可以只把 `DSH_MODEL` 读作命令的默认 `model` 参数；显式 `--model` 不需要匹配的子进程环境值。端点与凭据变量继续由 DeepSeek 适配器现有的环境解析路径持有。
+`SQH_SYSTEM_PROMPT` 选择独立组合的 persona，`SQH_CONTEXT_WINDOW` 为没有确切目录元数据的模型提供后备容量。SDK 客户端的 JSON-RPC `initialize` 请求是唯一运行时模型选择。[`minimal.py`](../../../../python/sdk/examples/minimal.py)可以只把 `SQH_MODEL` 读作命令的默认 `model` 参数；显式 `--model` 不需要匹配的子进程环境值。端点与凭据变量继续由 DeepSeek 适配器现有的环境解析路径持有。
 
 ## 验证
 
@@ -32,7 +32,7 @@ SDK keyless 源码测试启动真实 `dsh --profile sdk-minimal`，使用环境�
 
 **为 Web 与 Python SDK 启动使用同一个 Cordis leaf。** 不予采用，因为 Web preset 向现有多会话宿主贡献 agent 作用域服务，而 Python SDK 必须启动包含 JSON-RPC 服务器及其进程级依赖的完整进程。
 
-**把请求模型镜像到 `DSH_MODEL`。** 不予采用，因为直接适配器接受不在建议目录中的模型 id，并为它们解析后备上下文元数据。镜像会为同一项选择制造两个输入；SDK 初始化请求具有权威，`DSH_MODEL` 只保留为 `minimal.py` 的便捷默认值。
+**把请求模型镜像到 `SQH_MODEL`。** 不予采用，因为直接适配器接受不在建议目录中的模型 id，并为它们解析后备上下文元数据。镜像会为同一项选择制造两个输入；SDK 初始化请求具有权威，`SQH_MODEL` 只保留为 `minimal.py` 的便捷默认值。
 
 ## 后果
 

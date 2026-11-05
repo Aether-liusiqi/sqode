@@ -272,17 +272,17 @@ function appendToolCall(session: Session, turn: number, step: number, block: Too
  * ships for the same purpose (default 30k, clamped 4k-128k). A deployment raises or
  * lowers it per environment instead of editing and rebuilding this file.
  */
-const TOOL_RESULT_CHAR_LIMIT_ENV = 'DSH_TOOL_RESULT_CHAR_LIMIT'
+const TOOL_RESULT_CHAR_LIMIT_ENV = 'SQH_TOOL_RESULT_CHAR_LIMIT'
 const TOOL_RESULT_CHAR_LIMIT_DEFAULT = 30_000
 const TOOL_RESULT_CHAR_LIMIT_MIN = 4_000
 const TOOL_RESULT_CHAR_LIMIT_MAX = 128_000
 
 /** Head kept verbatim: the command or the first errors usually sit here. */
-const TOOL_RESULT_HEAD_CHARS_ENV = 'DSH_TOOL_RESULT_HEAD_CHARS'
+const TOOL_RESULT_HEAD_CHARS_ENV = 'SQH_TOOL_RESULT_HEAD_CHARS'
 const TOOL_RESULT_HEAD_CHARS_DEFAULT = 20_000
 
 /** Tail kept verbatim: failures and summaries typically land at the end. */
-const TOOL_RESULT_TAIL_CHARS_ENV = 'DSH_TOOL_RESULT_TAIL_CHARS'
+const TOOL_RESULT_TAIL_CHARS_ENV = 'SQH_TOOL_RESULT_TAIL_CHARS'
 const TOOL_RESULT_TAIL_CHARS_DEFAULT = 8_000
 
 /**

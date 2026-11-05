@@ -26,9 +26,9 @@ const CONFIG_KEYS: ReadonlySet<string> = new Set([
 ])
 
 /** Environment overrides, clamped like every other deployment knob. */
-const THRESHOLD_ENV = 'DSH_TOOL_PRUNE_THRESHOLD_CHARS'
-const HEAD_ENV = 'DSH_TOOL_PRUNE_HEAD_CHARS'
-const TAIL_ENV = 'DSH_TOOL_PRUNE_TAIL_CHARS'
+const THRESHOLD_ENV = 'SQH_TOOL_PRUNE_THRESHOLD_CHARS'
+const HEAD_ENV = 'SQH_TOOL_PRUNE_HEAD_CHARS'
+const TAIL_ENV = 'SQH_TOOL_PRUNE_TAIL_CHARS'
 const THRESHOLD_MIN = 4_000
 const THRESHOLD_MAX = 128_000
 

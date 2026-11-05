@@ -30,7 +30,7 @@ modules 插件激活时从自己的 `ctx.loader.internal` 读取模块系统。�
 
 **`remoteDefaultResponses` 是启动期 Remote 端点的默认响应。** 这张表恰好列出 `web` roster 在没有 session、没有 workspace、默认设置下启动并渲染时会打的端点，每行注明调用方。spec 在其上叠加自己的 `RemoteTable`；新的启动期调用会在 `dispose()` 时让 spec 失败。
 
-归应用所有的 built-bundle 测试会在 `AppWebEntry` 启动前通过 `__DSH_TRANSPORT__` 安装一份新的 `RemoteMock`。场景数据留在 `apps/web/tests` 下；生产 Connection 包不包含场景数据集或由 query 选择的测试 transport。需要 Host 行为的浏览器用例使用 `launchWebScaffold()` 和真实 HTTP/WebSocket 路径。
+归应用所有的 built-bundle 测试会在 `AppWebEntry` 启动前通过 `__SQH_TRANSPORT__` 安装一份新的 `RemoteMock`。场景数据留在 `apps/web/tests` 下；生产 Connection 包不包含场景数据集或由 query 选择的测试 transport。需要 Host 行为的浏览器用例使用 `launchWebScaffold()` 和真实 HTTP/WebSocket 路径。
 
 `mock.remote` 使用直接调用方与 Connection 分发共用的原生 `@vitest/spy.fn` 函数。`MockedRemote` 对完整生成的命名空间映射应用 Vitest 深层 mock 类型转换；映射为空时仅这个 Proxy 弱化为 `any`。生产 `Context` 与 Remote 声明保持严格，不需要命名空间专属类型副本或编译器 Flag。[Proxy 类型指引](../../../../packages/test-support/remote-mock/README.zh.md#remote-proxy)要求即使无构建测试通过，本地也必须执行构建后的类型检查。
 

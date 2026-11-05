@@ -1182,8 +1182,8 @@ describe('boot', () => {
     let disposed = false
     writeFileSync(join(dir, 'good.mjs'), [
       'export function apply(ctx) {',
-      '  globalThis.__DSH_REQUIRED_TEST_DISPOSED__ = false',
-      '  ctx.effect(() => () => { globalThis.__DSH_REQUIRED_TEST_DISPOSED__ = true })',
+      '  globalThis.__SQH_REQUIRED_TEST_DISPOSED__ = false',
+      '  ctx.effect(() => () => { globalThis.__SQH_REQUIRED_TEST_DISPOSED__ = true })',
       '}',
       '',
     ].join('\n'))
@@ -1201,8 +1201,8 @@ describe('boot', () => {
       String.raw`webserver \(required\)`,
       'required apply failure',
     ].join(String.raw`[\s\S]*`)))
-    disposed = (globalThis as { __DSH_REQUIRED_TEST_DISPOSED__?: boolean }).__DSH_REQUIRED_TEST_DISPOSED__ ?? false
-    delete (globalThis as { __DSH_REQUIRED_TEST_DISPOSED__?: boolean }).__DSH_REQUIRED_TEST_DISPOSED__
+    disposed = (globalThis as { __SQH_REQUIRED_TEST_DISPOSED__?: boolean }).__SQH_REQUIRED_TEST_DISPOSED__ ?? false
+    delete (globalThis as { __SQH_REQUIRED_TEST_DISPOSED__?: boolean }).__SQH_REQUIRED_TEST_DISPOSED__
     expect(disposed).toBe(true)
   })
 

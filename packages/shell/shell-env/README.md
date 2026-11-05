@@ -1,5 +1,5 @@
 ---
-description: "The managed DSH_* shell environment for users and maintainers choosing, configuring, or extending the environment every model shell call runs with."
+description: "The managed SQH_* shell environment for users and maintainers choosing, configuring, or extending the environment every model shell call runs with."
 kind: "package-reference"
 ---
 
@@ -9,7 +9,7 @@ English | [中文](README.zh.md)
 
 ## Summary
 
-`dsh-shell-env` provides the trusted `DSH_*` environment that every model shell call — bash or pwsh — runs with: built-in facts such as `SQODE_HOME`, `SQODE_SHELL=1`, the agent's `SQODE_SESSION_ID`, and the launched profile's `SQODE_PROFILE` and `SQODE_PROFILE_DIR`. Plugin authors can register their own facts with declared keys, collected per execution and disposed with their plugin; duplicate ownership or undeclared runtime keys fail loudly instead of silently overwriting. The registry changes nothing else the model sees — the shell tools own their own schemas and prompts. Choose it in any composition that mounts a model shell tool; configuration only picks the Harness home directory.
+`dsh-shell-env` provides the trusted `SQH_*` environment that every model shell call — bash or pwsh — runs with: built-in facts such as `SQODE_HOME`, `SQODE_SHELL=1`, the agent's `SQODE_SESSION_ID`, and the launched profile's `SQODE_PROFILE` and `SQODE_PROFILE_DIR`. Plugin authors can register their own facts with declared keys, collected per execution and disposed with their plugin; duplicate ownership or undeclared runtime keys fail loudly instead of silently overwriting. The registry changes nothing else the model sees — the shell tools own their own schemas and prompts. Choose it in any composition that mounts a model shell tool; configuration only picks the Harness home directory.
 
 ## Table of Contents
 
@@ -25,7 +25,7 @@ English | [中文](README.zh.md)
 <a id="use-this-package"></a>
 ## Use this package
 
-Load this plugin in any composition that mounts a model shell tool (`dsh-tool-bash` or `dsh-tool-pwsh`): each foreground or background shell call then runs with a freshly collected managed environment instead of whatever `DSH_*` values the process inherited.
+Load this plugin in any composition that mounts a model shell tool (`dsh-tool-bash` or `dsh-tool-pwsh`): each foreground or background shell call then runs with a freshly collected managed environment instead of whatever `SQH_*` values the process inherited.
 
 ### What every shell call receives
 
@@ -33,7 +33,7 @@ Every call receives `SQODE_HOME` (the absolute Harness home), `SQODE_SHELL=1`, a
 
 ### Adding your own environment facts
 
-Other plugins contribute facts by registering a contributor with a stable name, the complete set of `DSH_*` keys it may return, a description per key, and a resolver that computes values for one execution:
+Other plugins contribute facts by registering a contributor with a stable name, the complete set of `SQH_*` keys it may return, a description per key, and a resolver that computes values for one execution:
 
 ```ts
 import type { Context } from '@liusiqi-dev/cordis'
@@ -64,7 +64,7 @@ The generated [configuration catalog](../../../docs/config-catalog.md#deepseek-a
 
 ### What can go wrong
 
-Two contributors declaring the same key, or a contributor claiming a reserved built-in (`SQODE_HOME`, `SQODE_SHELL`, `SQODE_SESSION_ID`, `SQODE_PROFILE`, `SQODE_PROFILE_DIR`), fails plugin load loudly. A `DSH_*` key must be all-caps with underscores (for example `SQODE_REGION`), and a missing description fails registration.
+Two contributors declaring the same key, or a contributor claiming a reserved built-in (`SQODE_HOME`, `SQODE_SHELL`, `SQODE_SESSION_ID`, `SQODE_PROFILE`, `SQODE_PROFILE_DIR`), fails plugin load loudly. A `SQH_*` key must be all-caps with underscores (for example `SQODE_REGION`), and a missing description fails registration.
 
 -----
 
@@ -78,7 +78,7 @@ This section explains the design decisions behind the registry and points at the
 
 ### Design philosophy
 
-- **Trusted namespace, rebuilt per call.** The environment is a Harness-owned `DSH_*` namespace: the shell executor discards inherited `DSH_*` values and merges the registry's current snapshot for each execution, so nested harnesses and concurrent parent/child agents cannot leak stale identities, and `process.env` is never modified.
+- **Trusted namespace, rebuilt per call.** The environment is a Harness-owned `SQH_*` namespace: the shell executor discards inherited `SQH_*` values and merges the registry's current snapshot for each execution, so nested harnesses and concurrent parent/child agents cannot leak stale identities, and `process.env` is never modified.
 - **Declared ownership, loud conflicts.** Contributors declare their keys up front so duplicate ownership is detected before the first command; resolvers may only return declared keys.
 - **Built-ins stay here.** `SQODE_HOME`, `SQODE_SHELL`, `SQODE_SESSION_ID`, `SQODE_PROFILE`, and `SQODE_PROFILE_DIR` are reserved for the registry; contributors cannot claim them.
 
@@ -114,7 +114,7 @@ Read these pages when the package-level contract is not enough. They move from t
 <a id="model-experience"></a>
 ## Model Experience
 
-Indirectly, through the shell tools (`dsh-tool-bash`, `dsh-tool-pwsh`), which expose this registry's managed `DSH_*` facts in every shell-tool call.
+Indirectly, through the shell tools (`dsh-tool-bash`, `dsh-tool-pwsh`), which expose this registry's managed `SQH_*` facts in every shell-tool call.
 
 #### KV Cache effect
 

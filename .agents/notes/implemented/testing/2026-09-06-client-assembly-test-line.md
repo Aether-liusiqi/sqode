@@ -30,7 +30,7 @@ The modules plugin reads the module system from its own `ctx.loader.internal` wh
 
 **`remoteDefaultResponses` holds default responses for the boot-time Remote endpoints.** The table lists exactly the endpoints the `web` roster calls while booting and rendering with no sessions, no workspaces, and default settings, each row commented with its caller. A spec layers its own `RemoteTable` on top; a new boot-time call fails the spec at `dispose()`.
 
-App-owned built-bundle tests install a fresh `RemoteMock` through `__DSH_TRANSPORT__` before `AppWebEntry` starts. Their scenario data stays under `apps/web/tests`; the production Connection package contains no scenario dataset or query-selected test transport. Browser cases that need Host behavior use `launchWebScaffold()` and the real HTTP/WebSocket path.
+App-owned built-bundle tests install a fresh `RemoteMock` through `__SQH_TRANSPORT__` before `AppWebEntry` starts. Their scenario data stays under `apps/web/tests`; the production Connection package contains no scenario dataset or query-selected test transport. Browser cases that need Host behavior use `launchWebScaffold()` and the real HTTP/WebSocket path.
 
 `mock.remote` uses native `@vitest/spy.fn` functions shared by direct callers and Connection dispatch. `MockedRemote` applies Vitest's deep mock type transformation to the entire generated namespace map; an empty map weakens only this proxy to `any`. Production `Context` and Remote declarations remain strict, with no namespace-specific type copies or compiler flags. The [proxy typing guidance](../../../../packages/test-support/remote-mock/README.md#remote-proxy) requires build-backed local type checking even when unbuilt tests pass.
 

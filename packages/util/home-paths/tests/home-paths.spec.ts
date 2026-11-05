@@ -3,7 +3,7 @@ import { homedir, tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import {
-  DEFAULT_DSH_HOME_DISPLAY,
+  DEFAULT_SQH_HOME_DISPLAY,
   SQODE_HOME_DIR_NAME,
   canonicalizeWatchPath,
   defaultDshHome,
@@ -21,7 +21,7 @@ afterEach(() => {
 describe('dsh path helpers', () => {
   it('owns the shared default SQH home directory name', () => {
     expect(SQODE_HOME_DIR_NAME).toBe('.sqode')
-    expect(DEFAULT_DSH_HOME_DISPLAY).toBe('~/.sqode')
+    expect(DEFAULT_SQH_HOME_DISPLAY).toBe('~/.sqode')
     expect(defaultDshHome()).toBe(join(homedir(), '.sqode'))
   })
 

@@ -327,7 +327,7 @@ async function bootPreview(origin: string, browser: Browser): Promise<void> {
       interface PreviewTransport {
         fetch(input: string, init: RequestInit): Promise<Response>
       }
-      const transport = (globalThis as typeof globalThis & { __DSH_TRANSPORT__?: PreviewTransport }).__DSH_TRANSPORT__
+      const transport = (globalThis as typeof globalThis & { __SQH_TRANSPORT__?: PreviewTransport }).__SQH_TRANSPORT__
       if (transport === undefined) throw new Error('preview transport is absent after boot')
       const response = await transport.fetch('/api/session/list', {
         method: 'POST',
@@ -504,8 +504,8 @@ async function bootEmptyPreview(origin: string, browser: Browser): Promise<void>
     await page.getByRole('textbox', { name: 'Choose workspace' }).waitFor({ timeout: HERO_TIMEOUT_MS })
     const sessionCount = await page.evaluate(async () => {
       const transport = (globalThis as typeof globalThis & {
-        __DSH_TRANSPORT__?: { fetch(input: string, init: RequestInit): Promise<Response> }
-      }).__DSH_TRANSPORT__
+        __SQH_TRANSPORT__?: { fetch(input: string, init: RequestInit): Promise<Response> }
+      }).__SQH_TRANSPORT__
       if (transport === undefined) throw new Error('empty preview transport is absent after boot')
       const response = await transport.fetch('/api/session/list', {
         method: 'POST',

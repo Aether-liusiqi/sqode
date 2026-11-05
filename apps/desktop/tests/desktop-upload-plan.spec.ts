@@ -93,13 +93,13 @@ async function fixture(
     artifactsRoot,
     environment: environment === 'test'
       ? {
-        DSH_DESKTOP_AUTO_UPDATE_ENV: 'test',
+        SQODE_DESKTOP_AUTO_UPDATE_ENV: 'test',
         DOWNLOAD_TEST_ORIGIN: TEST_ORIGIN,
         DOWNLOAD_TEST_RELEASE_ID: RELEASE_ID,
         DOWNLOAD_TEST_COS_BUCKET: TEST_BUCKET,
       }
       : {
-        DSH_DESKTOP_AUTO_UPDATE_ENV: 'production',
+        SQODE_DESKTOP_AUTO_UPDATE_ENV: 'production',
         DOWNLOAD_PROD_COS_BUCKET: PRODUCTION_BUCKET,
       },
   }
@@ -160,7 +160,7 @@ describe('desktop upload plan', () => {
     const paths = await fixture('win-x64', '1.2.3', 'production')
     if (failure === 'completion') await rm(join(paths.artifactsRoot, 'win-x64-release.json'))
     if (failure === 'deployment') Object.assign(paths.environment, {
-      DSH_DESKTOP_AUTO_UPDATE_ENV: 'test', DOWNLOAD_TEST_ORIGIN: TEST_ORIGIN,
+      SQODE_DESKTOP_AUTO_UPDATE_ENV: 'test', DOWNLOAD_TEST_ORIGIN: TEST_ORIGIN,
       DOWNLOAD_TEST_RELEASE_ID: RELEASE_ID, DOWNLOAD_TEST_COS_BUCKET: TEST_BUCKET,
     })
     if (failure === 'checksum') {
@@ -284,7 +284,7 @@ describe('desktop upload plan', () => {
     await expect(createDesktopUploadPlan('mac-x64', {
       ...productionPaths,
       environment: {
-        DSH_DESKTOP_AUTO_UPDATE_ENV: 'test',
+        SQODE_DESKTOP_AUTO_UPDATE_ENV: 'test',
         DOWNLOAD_TEST_ORIGIN: TEST_ORIGIN,
         DOWNLOAD_TEST_RELEASE_ID: RELEASE_ID,
         DOWNLOAD_TEST_COS_BUCKET: TEST_BUCKET,

@@ -410,12 +410,12 @@ beforeEach(() => {
   vi.spyOn(console, 'info').mockImplementation(() => {})
   vi.spyOn(console, 'warn').mockImplementation(() => {})
   vi.stubEnv('SQODE_DESKTOP_PNPM_ENTRY', 'test-pnpm')
-  vi.stubEnv('SQODE_DESKTOP_DSH_DIR', 'test-runtime')
+  vi.stubEnv('SQODE_DESKTOP_SQH_DIR', 'test-runtime')
   vi.stubEnv('SQODE_DESKTOP_PRIMARY_RUNTIME_DIR', 'test-primary-runtime')
   vi.stubGlobal('process', { ...process, platform: 'win32', arch: 'x64', resourcesPath: 'desktop-test-resources' })
   vi.stubEnv('SQODE_DESKTOP_HOST_INSPECT_PORT', undefined)
   vi.stubEnv('SQODE_DESKTOP_DEV_PROJECT_DIR', undefined)
-  vi.stubEnv('DSH_DESKTOP_MANDATORY_UPDATE_CONFIG', undefined)
+  vi.stubEnv('SQODE_DESKTOP_MANDATORY_UPDATE_CONFIG', undefined)
   vi.stubEnv('SQODE_DESKTOP_UPDATE_JOURNAL_DIR', undefined)
   vi.stubEnv('SQODE_CLIENT_VERSION', '1.2.3')
   harness.analyticsEnabled = true
@@ -1391,7 +1391,7 @@ describe('desktop main startup', () => {
   it('blocks subsequent product operations without stopping the Host and clears only on a fresh no-force policy', async () => {
     harness.embeddedPolicy = { origin: 'https://policy.example.com',
       allowedPageOrigins: ['https://downloads.example.com'], intervalMs: 10_000, jitter: 0 }
-    vi.stubEnv('DSH_DESKTOP_MANDATORY_UPDATE_CONFIG', '{invalid environment override}')
+    vi.stubEnv('SQODE_DESKTOP_MANDATORY_UPDATE_CONFIG', '{invalid environment override}')
     const request = vi.fn<typeof fetch>().mockImplementation(async () => Response.json({ code: 40005,
       data: { show_content: { title: 'Update required', detail: 'Please update' }, desktop_app_link: 'https://downloads.example.com/' } }))
     vi.stubGlobal('fetch', request)
@@ -2111,7 +2111,7 @@ describe('desktop main startup', () => {
 
   it('prepares an independent plugin profile for the unpackaged Host', async () => {
     harness.app.isPackaged = false
-    vi.stubEnv('SQODE_DESKTOP_DSH_DIR', undefined)
+    vi.stubEnv('SQODE_DESKTOP_SQH_DIR', undefined)
     await import('../src/main.ts')
     await harness.preparing.promise
     harness.prepared.resolve()

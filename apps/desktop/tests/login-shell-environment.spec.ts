@@ -10,7 +10,7 @@ import {
 const account = vi.hoisted(() => ({ userInfo: vi.fn() }))
 vi.mock('node:os', async importOriginal => ({ ...await importOriginal<typeof import('node:os')>(), userInfo: account.userInfo }))
 
-const DELIMITER = '_DSH_SHELL_ENV_DELIMITER_'
+const DELIMITER = '_SQH_SHELL_ENV_DELIMITER_'
 const config = { timeoutMs: 5_000 }
 let directory: string
 
@@ -80,13 +80,13 @@ describe('parseLoginShellOutput', () => {
 
 describe('mergeLoginShellEnvironment', () => {
   it('lets shell values win except probe-session and launcher-owned names', () => {
-    const base = { PATH: '/usr/bin', HOME: '/home/user', SQODE_DESKTOP_DSH_DIR: '/launcher', PWD: '/' }
+    const base = { PATH: '/usr/bin', HOME: '/home/user', SQODE_DESKTOP_SQH_DIR: '/launcher', PWD: '/' }
     const merged = mergeLoginShellEnvironment(base, {
       PATH: '/login/bin:/usr/bin', XDG_CACHE_HOME: '/cache', PWD: '/home/user', OLDPWD: '/', SHLVL: '2', _: '/usr/bin/env',
       DISABLE_AUTO_UPDATE: 'true', ZSH_TMUX_AUTOSTARTED: 'true', ZSH_TMUX_AUTOSTART: 'false',
-      SQODE_DESKTOP_DSH_DIR: '/rc', SQODE_HOME: '/rc-home', ELECTRON_RUN_AS_NODE: '1',
+      SQODE_DESKTOP_SQH_DIR: '/rc', SQODE_HOME: '/rc-home', ELECTRON_RUN_AS_NODE: '1',
     })
-    expect(merged).toEqual({ PATH: '/login/bin:/usr/bin', HOME: '/home/user', SQODE_DESKTOP_DSH_DIR: '/launcher', PWD: '/', XDG_CACHE_HOME: '/cache' })
+    expect(merged).toEqual({ PATH: '/login/bin:/usr/bin', HOME: '/home/user', SQODE_DESKTOP_SQH_DIR: '/launcher', PWD: '/', XDG_CACHE_HOME: '/cache' })
     expect(base.PATH).toBe('/usr/bin')
   })
 })

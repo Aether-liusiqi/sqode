@@ -87,8 +87,8 @@ describe('desktop package target', () => {
 
   it('removes ambient certificate inputs for unsigned builds and overrides an inherited signing mode', () => {
     const environment = {
-      DSH_DESKTOP_APP_ID: 'com.example.desktop',
-      DSH_DESKTOP_WINDOWS_TOKEN_PIN: 'token-secret',
+      SQODE_DESKTOP_APP_ID: 'com.example.desktop',
+      SQODE_DESKTOP_WINDOWS_TOKEN_PIN: 'token-secret',
       CSC_LINK: 'private.pfx',
       CSC_KEY_PASSWORD: 'secret',
       WIN_CSC_LINK: 'windows.pfx',
@@ -96,7 +96,7 @@ describe('desktop package target', () => {
       SQODE_DESKTOP_UNSIGNED: '1',
     }
     expect(desktopElectronBuilderEnvironment(environment, true)).toEqual({
-      DSH_DESKTOP_APP_ID: 'com.example.desktop',
+      SQODE_DESKTOP_APP_ID: 'com.example.desktop',
       CSC_IDENTITY_AUTO_DISCOVERY: 'false',
       SQODE_DESKTOP_UNSIGNED: '1',
     })
@@ -114,12 +114,12 @@ describe('desktop package target', () => {
 
   it('keeps Windows signing fields out of build and runtime preparation subprocesses', () => {
     expect(withoutWindowsSigningEnvironment({
-      DSH_DESKTOP_WINDOWS_CER_FILE: 'C:\\release\\server.cer',
-      DSH_DESKTOP_WINDOWS_TOKEN_PIN: 'token-secret',
-      DSH_DESKTOP_WINDOWS_KEY_CONTAINER: 'container',
-      DSH_DESKTOP_WINDOWS_SIGNTOOL: 'C:\\tools\\signtool.exe',
-      DSH_DESKTOP_AUTO_UPDATE_ENV: 'production',
-    })).toEqual({ DSH_DESKTOP_AUTO_UPDATE_ENV: 'production' })
+      SQODE_DESKTOP_WINDOWS_CER_FILE: 'C:\\release\\server.cer',
+      SQODE_DESKTOP_WINDOWS_TOKEN_PIN: 'token-secret',
+      SQODE_DESKTOP_WINDOWS_KEY_CONTAINER: 'container',
+      SQODE_DESKTOP_WINDOWS_SIGNTOOL: 'C:\\tools\\signtool.exe',
+      SQODE_DESKTOP_AUTO_UPDATE_ENV: 'production',
+    })).toEqual({ SQODE_DESKTOP_AUTO_UPDATE_ENV: 'production' })
   })
 
   it('keeps COS credentials out of every packaging subprocess', () => {
@@ -131,12 +131,12 @@ describe('desktop package target', () => {
       DOWNLOAD_PROD_COS_BUCKET: 'production-download-bucket',
       DOWNLOAD_PROD_COS_SECRET_ID: 'production-id',
       DOWNLOAD_PROD_COS_SECRET_KEY: 'production-key',
-      DSH_DESKTOP_AUTO_UPDATE_ENV: 'production',
+      SQODE_DESKTOP_AUTO_UPDATE_ENV: 'production',
     })).toEqual({
       DOWNLOAD_TEST_ORIGIN: 'https://desktop-updates.example.com',
       DOWNLOAD_TEST_COS_BUCKET: 'test-download-bucket',
       DOWNLOAD_PROD_COS_BUCKET: 'production-download-bucket',
-      DSH_DESKTOP_AUTO_UPDATE_ENV: 'production',
+      SQODE_DESKTOP_AUTO_UPDATE_ENV: 'production',
     })
   })
 })

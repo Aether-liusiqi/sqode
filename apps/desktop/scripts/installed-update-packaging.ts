@@ -13,8 +13,8 @@ import { planInstalledUpdateDistribution } from './installed-update-distribution
 
 const APP_ROOT = resolve(import.meta.dirname, '..')
 const REPOSITORY = resolve(APP_ROOT, '../..')
-const SIGNING_FIELDS = new Set(['DSH_DESKTOP_WINDOWS_CER_FILE', 'DSH_DESKTOP_WINDOWS_SIGNTOOL',
-  'DSH_DESKTOP_WINDOWS_KEY_CONTAINER', 'DSH_DESKTOP_WINDOWS_TOKEN_PIN'])
+const SIGNING_FIELDS = new Set(['SQODE_DESKTOP_WINDOWS_CER_FILE', 'SQODE_DESKTOP_WINDOWS_SIGNTOOL',
+  'SQODE_DESKTOP_WINDOWS_KEY_CONTAINER', 'SQODE_DESKTOP_WINDOWS_TOKEN_PIN'])
 
 /** Public refusal without credential values or contents of the incident record. */
 export class InstalledUpdateSigningHoldError extends Error {
@@ -57,7 +57,7 @@ async function inputHashes(manifest: string, version: string, environment: NodeJ
     ...['electron-builder-config.mjs', 'installed-update-builder.ts', 'build-installed-update-worker.mjs',
       'windows-sign.mjs', 'windows-sign.cmd', 'windows-signing-state.mjs', 'windows-timestamp.mjs', 'windows-directory-installer.mjs',
       'installer.nsh', 'prepare-windows-installer.ps1'].map(path => join(import.meta.dirname, path)),
-    environment.DSH_DESKTOP_WINDOWS_CER_FILE!, environment.DSH_DESKTOP_WINDOWS_SIGNTOOL!]
+    environment.SQODE_DESKTOP_WINDOWS_CER_FILE!, environment.SQODE_DESKTOP_WINDOWS_SIGNTOOL!]
   const files = []
   for (const path of paths) {
     files.push({ path, sha256: createHash('sha256').update(await readFile(path)).digest('hex') })

@@ -176,9 +176,9 @@ function bundleTable(graph: WebBootGraph, plugins: readonly AssembledPlugin[]): 
 }
 
 interface FixtureWindow extends Window {
-  __DSH_BOOT__?: WebBootGraph
+  __SQH_BOOT__?: WebBootGraph
   __ModuleLoader__?: ClientModuleLoaderTarget
-  __DSH_TRANSPORT__?: { readonly rpc: RemoteMock['rpc'] }
+  __SQH_TRANSPORT__?: { readonly rpc: RemoteMock['rpc'] }
 }
 
 class ResizeObserverStub {
@@ -250,9 +250,9 @@ export function installAssembledBootEnv(): void {
     unmount = undefined
     mountedRemote = undefined
     cleanup()
-    delete win.__DSH_BOOT__
+    delete win.__SQH_BOOT__
     delete win.__ModuleLoader__
-    delete win.__DSH_TRANSPORT__
+    delete win.__SQH_TRANSPORT__
     document.body.innerHTML = ''
     document.head.querySelectorAll('style[data-plugin]').forEach((style) => { style.remove() })
     document.title = ''
@@ -280,15 +280,15 @@ export function mountAssembledApp(options: AssembledBootOptions = {}): Assembled
   const plugins = PLUGINS.filter(plugin => !excluded.has(plugin.id))
   const remote = createAssembledRemote(options.remote)
   mountedRemote = remote.mock
-  win.__DSH_TRANSPORT__ = { rpc: remote.mock.rpc }
+  win.__SQH_TRANSPORT__ = { rpc: remote.mock.rpc }
   history.replaceState(null, '', '/')
   const root = document.createElement('div')
   root.id = 'root'
   document.body.appendChild(root)
   const graph = bootGraph(plugins)
   const bundles = bundleTable(graph, plugins)
-  win.__DSH_BOOT__ = graph
-  const [facadeRow] = bootInjections(win.__DSH_BOOT__)
+  win.__SQH_BOOT__ = graph
+  const [facadeRow] = bootInjections(win.__SQH_BOOT__)
   if (facadeRow?.kind !== 'script') throw new Error('missing injected ModuleLoader facade row')
   ;(0, eval)(facadeRow.text)
   // Mirror the blocking Host-injected bootstrap batch before the Vite entry calls create().

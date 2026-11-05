@@ -1,7 +1,7 @@
 /** Resolve public release identifiers supplied by the packaging environment. */
 
 /** Environment variable that supplies the Electron application identifier. */
-export const DESKTOP_APP_ID_ENV = 'DSH_DESKTOP_APP_ID'
+export const DESKTOP_APP_ID_ENV = 'SQODE_DESKTOP_APP_ID'
 
 /** Environment variable that supplies electron-builder's macOS certificate qualifier. */
 export const MACOS_SIGNING_IDENTITY_ENV = 'SQODE_DESKTOP_MACOS_SIGNING_IDENTITY'
@@ -10,7 +10,7 @@ export const MACOS_SIGNING_IDENTITY_ENV = 'SQODE_DESKTOP_MACOS_SIGNING_IDENTITY'
 export const MACOS_TEAM_ID_ENV = 'SQODE_DESKTOP_MACOS_TEAM_ID'
 
 /** Environment variable that selects the npm registry used for the bundled runtime install. */
-export const NPM_REGISTRY_ENV = 'DSH_DESKTOP_NPM_REGISTRY'
+export const NPM_REGISTRY_ENV = 'SQODE_DESKTOP_NPM_REGISTRY'
 
 const DEFAULT_NPM_REGISTRY = 'https://registry.npmjs.org/'
 

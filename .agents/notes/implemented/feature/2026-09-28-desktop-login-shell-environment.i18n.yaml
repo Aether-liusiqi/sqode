@@ -9,11 +9,11 @@
   en: 3a4b92c977e42f45
   zh: 575d92a41e29ae7a
 /agent-note-desktop-reads-the-login-shell-environment-once/decision:
-  en: d2af1761d96c498a
-  zh: 8419dea042446494
+  en: 73576e486c9e9543
+  zh: de67aef6f0cc44d7
 /agent-note-desktop-reads-the-login-shell-environment-once/alternatives-considered:
-  en: ed9ed8bb06a19d7f
-  zh: 52ceb0d70f0d05a7
+  en: bf3613fb04ccab66
+  zh: 2c4af366f3f22555
 /agent-note-desktop-reads-the-login-shell-environment-once/consequences:
-  en: f3cd204ab6691f1d
-  zh: 00c9ae619065b4c3
+  en: 70b5d78c9d280515
+  zh: 0955dc6416102827

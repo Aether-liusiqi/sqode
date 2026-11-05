@@ -176,7 +176,7 @@ it('boots without ui-chat and does not select another conversation view implicit
   mountAssembledApp({ exclude: ['@liusiqi-dev/dsh-client-ui-chat'] })
 
   const tree = await screen.findByRole('tree', { name: 'Sessions' }, { timeout: 10_000 })
-  const boot = Reflect.get(window, '__DSH_BOOT__') as { entries: Array<{ id: string }> } | undefined
+  const boot = Reflect.get(window, '__SQH_BOOT__') as { entries: Array<{ id: string }> } | undefined
   expect(boot?.entries.some(entry => entry.id === '@liusiqi-dev/dsh-client-ui-chat')).toBe(false)
   const sessionTitle = await within(tree).findByText('Fixture 历史会话')
   fireEvent.click(sessionTitle)

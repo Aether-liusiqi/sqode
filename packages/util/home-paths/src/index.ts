@@ -12,7 +12,7 @@ import { basename, dirname, join, resolve } from 'node:path'
 export const SQODE_HOME_DIR_NAME = '.sqode'
 
 /** Stable user-facing display form for the default Siqi Harness home. */
-export const DEFAULT_DSH_HOME_DISPLAY = `~/${SQODE_HOME_DIR_NAME}`
+export const DEFAULT_SQH_HOME_DISPLAY = `~/${SQODE_HOME_DIR_NAME}`
 
 /** Environment variable that overrides the default Siqi Harness home. */
 export const SQODE_HOME_ENV = 'SQODE_HOME'
@@ -119,5 +119,5 @@ export function dshCachePath(optionsOrSegment: { dshHome?: string } | string = {
  * @returns `~/.sqode` for the default home, otherwise `$SQODE_HOME`.
  */
 export function dshHomeDisplay(resolvedHome: string): string {
-  return resolvedHome === resolve(defaultDshHome()) ? DEFAULT_DSH_HOME_DISPLAY : `$${SQODE_HOME_ENV}`
+  return resolvedHome === resolve(defaultDshHome()) ? DEFAULT_SQH_HOME_DISPLAY : `$${SQODE_HOME_ENV}`
 }

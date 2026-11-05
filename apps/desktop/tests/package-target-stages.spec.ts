@@ -28,9 +28,9 @@ vi.mock('node:fs', async importOriginal => ({
 
 afterEach(() => { vi.unstubAllEnvs(); vi.clearAllMocks() })
 
-const environment = { DSH_DESKTOP_APP_ID: 'com.example.test', DSH_DESKTOP_AUTO_UPDATE_ENV: 'test',
+const environment = { SQODE_DESKTOP_APP_ID: 'com.example.test', SQODE_DESKTOP_AUTO_UPDATE_ENV: 'test',
   DOWNLOAD_TEST_ORIGIN: 'https://updates.example.com', DOWNLOAD_TEST_RELEASE_ID: '0123456789abcdef0123456789abcdef',
-  DSH_DESKTOP_WINDOWS_TOKEN_PIN: 'fixture-pin', DSH_DESKTOP_WINDOWS_SIGNATURE_CACHE_CONCURRENCY: '2' }
+  SQODE_DESKTOP_WINDOWS_TOKEN_PIN: 'fixture-pin', SQODE_DESKTOP_WINDOWS_SIGNATURE_CACHE_CONCURRENCY: '2' }
 
 function supervisor(failure?: string) {
   vi.stubEnv('npm_execpath', 'fixture-pnpm.cjs')
@@ -50,17 +50,17 @@ it('requires one signing preflight before building, then records only the comple
   expect(stages.filter(stage => stage === 'preflight:windows-signing')).toHaveLength(1)
   expect(vi.mocked(withWindowsSigningStage).mock.calls.map(([options]) => options.stage))
     .toEqual(['preflight', 'artifacts'])
-  expect(run.run.mock.calls[0]![3]).toMatchObject({ env: { DSH_DESKTOP_WINDOWS_TOKEN_PIN: 'fixture-pin' }, timeoutMs: 60_000 })
-  expect(run.run.mock.calls[1]![3].env).not.toHaveProperty('DSH_DESKTOP_WINDOWS_TOKEN_PIN')
+  expect(run.run.mock.calls[0]![3]).toMatchObject({ env: { SQODE_DESKTOP_WINDOWS_TOKEN_PIN: 'fixture-pin' }, timeoutMs: 60_000 })
+  expect(run.run.mock.calls[1]![3].env).not.toHaveProperty('SQODE_DESKTOP_WINDOWS_TOKEN_PIN')
   expect(stages.indexOf('run sign:primary-runtime --dsh')).toBeGreaterThan(stages.indexOf('run prepare:dsh --defer-runtime-smoke'))
   expect(stages.at(-1)).toBe('exec tsx scripts/smoke-packaged-runtime.ts')
   for (const call of run.run.mock.calls) {
     if (call[0].startsWith('run prepare:') || call[0].includes('smoke-packaged-runtime')) {
-      expect(call[3].env).not.toHaveProperty('DSH_DESKTOP_WINDOWS_TOKEN_PIN')
-      expect(call[3].env).not.toHaveProperty('DSH_DESKTOP_WINDOWS_SIGNATURE_CACHE_CONCURRENCY')
+      expect(call[3].env).not.toHaveProperty('SQODE_DESKTOP_WINDOWS_TOKEN_PIN')
+      expect(call[3].env).not.toHaveProperty('SQODE_DESKTOP_WINDOWS_SIGNATURE_CACHE_CONCURRENCY')
     }
     if (call[0].startsWith('run sign:primary-runtime')) {
-      expect(call[3].env).toHaveProperty('DSH_DESKTOP_WINDOWS_SIGNATURE_CACHE_CONCURRENCY', '2')
+      expect(call[3].env).toHaveProperty('SQODE_DESKTOP_WINDOWS_SIGNATURE_CACHE_CONCURRENCY', '2')
     }
   }
   expect(writeFileSync).toHaveBeenCalledOnce()
@@ -97,7 +97,7 @@ it.each(['--unsigned', '--prepare-only'])('keeps %s hardware-free and creates no
   expect(stages).not.toContain('run sign:primary-runtime')
   expect(stages).not.toContain('run sign:primary-runtime --dsh')
   expect(withWindowsSigningStage).not.toHaveBeenCalled()
-  for (const call of run.run.mock.calls) expect(call[3].env).not.toHaveProperty('DSH_DESKTOP_WINDOWS_TOKEN_PIN')
+  for (const call of run.run.mock.calls) expect(call[3].env).not.toHaveProperty('SQODE_DESKTOP_WINDOWS_TOKEN_PIN')
   expect(writeFileSync).not.toHaveBeenCalled()
   expect(stages.includes('exec tsx scripts/smoke-packaged-runtime.ts --unsigned')).toBe(mode === '--unsigned')
 })

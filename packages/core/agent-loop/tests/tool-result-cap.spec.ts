@@ -16,7 +16,7 @@ const savedEnv = { ...process.env }
 
 afterEach(() => {
   for (const root of roots.splice(0)) rmSync(root, { recursive: true, force: true })
-  for (const name of ['DSH_TOOL_RESULT_CHAR_LIMIT', 'DSH_TOOL_RESULT_HEAD_CHARS', 'DSH_TOOL_RESULT_TAIL_CHARS']) {
+  for (const name of ['SQH_TOOL_RESULT_CHAR_LIMIT', 'SQH_TOOL_RESULT_HEAD_CHARS', 'SQH_TOOL_RESULT_TAIL_CHARS']) {
     if (savedEnv[name] === undefined) Reflect.deleteProperty(process.env, name)
     else process.env[name] = savedEnv[name]
   }
@@ -72,16 +72,16 @@ describe('capToolResultContent', () => {
 
 describe('toolResultBudgets', () => {
   it('defaults to the shipped 30k/20k/8k split', () => {
-    delete process.env.DSH_TOOL_RESULT_CHAR_LIMIT
-    delete process.env.DSH_TOOL_RESULT_HEAD_CHARS
-    delete process.env.DSH_TOOL_RESULT_TAIL_CHARS
+    delete process.env.SQH_TOOL_RESULT_CHAR_LIMIT
+    delete process.env.SQH_TOOL_RESULT_HEAD_CHARS
+    delete process.env.SQH_TOOL_RESULT_TAIL_CHARS
     expect(toolResultBudgets()).toEqual({ limit: 30_000, head: 20_000, tail: 8_000 })
   })
 
   it('clamps a deployment override so head and tail always fit the limit', () => {
-    process.env.DSH_TOOL_RESULT_CHAR_LIMIT = '5000'
-    process.env.DSH_TOOL_RESULT_HEAD_CHARS = '999999'
-    process.env.DSH_TOOL_RESULT_TAIL_CHARS = '999999'
+    process.env.SQH_TOOL_RESULT_CHAR_LIMIT = '5000'
+    process.env.SQH_TOOL_RESULT_HEAD_CHARS = '999999'
+    process.env.SQH_TOOL_RESULT_TAIL_CHARS = '999999'
 
     expect(toolResultBudgets()).toEqual({ limit: 5_000, head: 5_000, tail: 0 })
 

@@ -29,8 +29,8 @@ const hooks = registerHooks({ resolve(specifier, context, next) {
 } })
 const server = await createUpdateServer()
 server.select('healthy', '0.1.6-nightly.1')
-process.env.DSH_DESKTOP_APP_ID = 'com.deepseek.qualification'
-process.env.DSH_DESKTOP_MANDATORY_UPDATE_CONFIG = JSON.stringify({ origin: new URL(server.url).origin,
+process.env.SQODE_DESKTOP_APP_ID = 'com.deepseek.qualification'
+process.env.SQODE_DESKTOP_MANDATORY_UPDATE_CONFIG = JSON.stringify({ origin: new URL(server.url).origin,
   allowedPageOrigins: ['https://downloads.example.com'], intervalMs: 600_000, timeoutMs: 5000, maxBackoffMs: 600_000, jitter: 0 })
 const config = join(root, 'app-update.yml')
 await writeFile(config, 'updaterCacheDirName: private-workspace-cache\n')

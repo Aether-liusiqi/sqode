@@ -61,7 +61,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 | `@liusiqi-dev/dsh-client-file-upload` | no | Agent-scoped browser file upload, streaming intake, and staged receipt service |
 | `@liusiqi-dev/dsh-client-hmr` | yes | Web client graph synchronization and rebuilt-bundle reload transport |
 | `@liusiqi-dev/dsh-client-locale` | no | Locale plugin: Host-backed preference, extensible language catalog, browser fallback, and typed built-in dictionaries |
-| `@liusiqi-dev/dsh-client-modules` | no | Client module system, dual-face: node half composes the __DSH_BOOT__ entry graph (incremental dsh.client scan, bundle route, index tap, webPlugins service); browser half is the lazy-CJS module table the vendored cordis Loader consumes as its internal seam |
+| `@liusiqi-dev/dsh-client-modules` | no | Client module system, dual-face: node half composes the __SQH_BOOT__ entry graph (incremental dsh.client scan, bundle route, index tap, webPlugins service); browser half is the lazy-CJS module table the vendored cordis Loader consumes as its internal seam |
 | `@liusiqi-dev/dsh-client-product-analytics` | yes | Desktop product event collection and authenticated Host reporting |
 | `@liusiqi-dev/dsh-client-resources` | no | Unified client resource model: protocol-registered providers turn URL addresses into live values, consumed through the useResource global standard hook |
 | `@liusiqi-dev/dsh-client-shortcuts` | yes | Application keyboard command registry and physical-key routing |
@@ -385,7 +385,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 | `@liusiqi-dev/dsh-bash-sandbox` | yes | Sandbox-consuming implementation of the Siqi Harness bash executor seam (confines every command via ctx.sandbox, reports denial/enforcement result facts) |
 | `@liusiqi-dev/dsh-pwsh-local` | yes | Local PowerShell implementation of the Siqi Harness bash executor seam |
 | `@liusiqi-dev/dsh-pwsh-sandbox` | yes | Sandbox-consuming implementation of the Siqi Harness PowerShell executor seam (confines every command via ctx.sandbox, reports denial/enforcement result facts) |
-| `@liusiqi-dev/dsh-shell-env` | yes | Tool-independent managed DSH_* shell environment registry |
+| `@liusiqi-dev/dsh-shell-env` | yes | Tool-independent managed SQH_* shell environment registry |
 | `@liusiqi-dev/dsh-tool-bash` | yes | Model-facing bash tool with optional generic background-job and sandbox-escalation support |
 | `@liusiqi-dev/dsh-tool-bash-persistent` | yes | Model-facing owner-scoped persistent Bash tool backed by the Harness PTY service |
 | `@liusiqi-dev/dsh-tool-pwsh` | yes | Model-facing pwsh tool over the bash executor seam |

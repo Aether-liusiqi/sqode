@@ -34,21 +34,21 @@ const signingEnvironment = process.argv.includes('--signed') ? loadDesktopPackag
 const signingRun = process.argv.includes('--signed')
   ? createPackagingRun(join(output, 'packaging-runs'), { target: 'installer-test' }) : undefined
 const sign = process.argv.includes('--signed') ? createWindowsTokenSigner({
-  certificateFile: signingEnvironment.DSH_DESKTOP_WINDOWS_CER_FILE,
-  signTool: signingEnvironment.DSH_DESKTOP_WINDOWS_SIGNTOOL,
-  tokenPin: signingEnvironment.DSH_DESKTOP_WINDOWS_TOKEN_PIN,
-  keyContainer: signingEnvironment.DSH_DESKTOP_WINDOWS_KEY_CONTAINER,
+  certificateFile: signingEnvironment.SQODE_DESKTOP_WINDOWS_CER_FILE,
+  signTool: signingEnvironment.SQODE_DESKTOP_WINDOWS_SIGNTOOL,
+  tokenPin: signingEnvironment.SQODE_DESKTOP_WINDOWS_TOKEN_PIN,
+  keyContainer: signingEnvironment.SQODE_DESKTOP_WINDOWS_KEY_CONTAINER,
   runDirectory: signingRun.directory,
 }) : undefined
 let succeeded = false
 try {
   Object.assign(process.env, {
-    DSH_DESKTOP_APP_ID: `com.deepseek.harness.installertest.n${id}`,
+    SQODE_DESKTOP_APP_ID: `com.deepseek.harness.installertest.n${id}`,
     SQODE_DESKTOP_TARGET_PLATFORM: 'win32', SQODE_DESKTOP_TARGET_ARCH: 'x64',
     SQODE_DESKTOP_UNSIGNED: '1', CSC_IDENTITY_AUTO_DISCOVERY: 'false', ELECTRON_BUILDER_7Z_FILTER: 'BCJ',
-    DSH_DESKTOP_MANDATORY_UPDATE_TEST_ORIGIN: signingEnvironment.DSH_DESKTOP_MANDATORY_UPDATE_TEST_ORIGIN
+    SQODE_DESKTOP_MANDATORY_UPDATE_TEST_ORIGIN: signingEnvironment.SQODE_DESKTOP_MANDATORY_UPDATE_TEST_ORIGIN
       ?? 'https://test.example.com',
-    DSH_DESKTOP_MANDATORY_UPDATE_CONFIG: signingEnvironment.DSH_DESKTOP_MANDATORY_UPDATE_CONFIG
+    SQODE_DESKTOP_MANDATORY_UPDATE_CONFIG: signingEnvironment.SQODE_DESKTOP_MANDATORY_UPDATE_CONFIG
       ?? JSON.stringify({ allowedAuthOrigins: ['https://login.example.com'] }),
     ...signingRun ? { SQODE_DESKTOP_PACKAGING_RUN_DIR: signingRun.directory } : {},
   })

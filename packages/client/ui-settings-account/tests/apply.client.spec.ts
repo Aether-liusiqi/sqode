@@ -262,7 +262,7 @@ it('uses the Desktop login carrier and exposes operation errors', async ({ start
 it('uses the Desktop stream origin and exposes the native platform bridge', async ({ start, mock }) => {
   vi.stubGlobal('dshDesktop', {})
   const c = await start()
-  vi.stubGlobal('__DSH_TRANSPORT__', { streamBaseUrl: 'http://localhost:9876/stream' })
+  vi.stubGlobal('__SQH_TRANSPORT__', { streamBaseUrl: 'http://localhost:9876/stream' })
   const platform = { open: vi.fn(), setBounds: vi.fn(), close: vi.fn() }
   vi.stubGlobal('dshPlatform', platform)
   await c.reload(SELF)

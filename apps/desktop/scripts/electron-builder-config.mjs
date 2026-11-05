@@ -73,10 +73,10 @@ export function createElectronBuilderConfig(
     `**/node_modules/@deepseek-ai/libreoffice-kit-${resolvedPlatform}-${resolvedArch}/**/*`]
   const windowsSigner = packagesWindows && !unsigned
     ? createWindowsTokenSigner({
-        certificateFile: env.DSH_DESKTOP_WINDOWS_CER_FILE,
-        signTool: env.DSH_DESKTOP_WINDOWS_SIGNTOOL,
-        tokenPin: env.DSH_DESKTOP_WINDOWS_TOKEN_PIN,
-        keyContainer: env.DSH_DESKTOP_WINDOWS_KEY_CONTAINER,
+        certificateFile: env.SQODE_DESKTOP_WINDOWS_CER_FILE,
+        signTool: env.SQODE_DESKTOP_WINDOWS_SIGNTOOL,
+        tokenPin: env.SQODE_DESKTOP_WINDOWS_TOKEN_PIN,
+        keyContainer: env.SQODE_DESKTOP_WINDOWS_KEY_CONTAINER,
         preserveSignature: async path => {
           for (const [sourceRoot, destinationRoot] of [[join(buildPaths.runtime, 'primary-runtime'), primaryRuntimeDestination], [buildPaths.dsh, dshDestination]]) {
             if (destinationRoot !== undefined && await preserveWindowsRuntimeSignature(path, {
@@ -198,7 +198,7 @@ export function createElectronBuilderConfig(
     afterSign: async context => {
       if (windowsSigner !== undefined) {
         await signWindowsCode(context.appOutDir, {
-          thumbprint: new X509Certificate(await readFile(env.DSH_DESKTOP_WINDOWS_CER_FILE)).fingerprint.replaceAll(':', ''),
+          thumbprint: new X509Certificate(await readFile(env.SQODE_DESKTOP_WINDOWS_CER_FILE)).fingerprint.replaceAll(':', ''),
           sign: windowsSigner,
           record: event => recordPackagingEvent(env.SQODE_DESKTOP_PACKAGING_RUN_DIR, event),
         })
@@ -228,7 +228,7 @@ export function createElectronBuilderConfig(
       forceCodeSigning: !unsigned,
       signtoolOptions: {
         sign: windowsSigner,
-        publisherName: windowsSigner === undefined ? undefined : resolveWindowsUpdatePublisher(env.DSH_DESKTOP_WINDOWS_CER_FILE),
+        publisherName: windowsSigner === undefined ? undefined : resolveWindowsUpdatePublisher(env.SQODE_DESKTOP_WINDOWS_CER_FILE),
         signingHashAlgorithms: ['sha256'],
       },
       target: ['nsis'],

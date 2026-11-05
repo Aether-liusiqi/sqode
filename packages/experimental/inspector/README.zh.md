@@ -30,7 +30,7 @@ Inspector 不在默认插件列表中显示。使用 `dsh plugin --profile web a
 <a id="runtime-layout"></a>
 ## 运行时布局
 
-Host 插件启动 Worker 并连接专用 `MessagePort`。Client 插件读取注入的 `globalThis.__DSH_INSPECTOR__` bootstrap，直接向 Worker 打开一条独立、带鉴权的 WebSocket；在 Host 行启用前打开的页面没有 bootstrap，其 Client 插件会以刷新提示失败，刷新后才能被检查。Chrome DevTools 连接 Worker 的 CDP WebSocket。每条 DevTools 连接在 Worker 中独占一个连接 Host 主线程的 `node:inspector.Session`，因此 Host JavaScript 暂停时，Host Console 求值、Sources、断点和 resume 仍然可用。
+Host 插件启动 Worker 并连接专用 `MessagePort`。Client 插件读取注入的 `globalThis.__SQH_INSPECTOR__` bootstrap，直接向 Worker 打开一条独立、带鉴权的 WebSocket；在 Host 行启用前打开的页面没有 bootstrap，其 Client 插件会以刷新提示失败，刷新后才能被检查。Chrome DevTools 连接 Worker 的 CDP WebSocket。每条 DevTools 连接在 Worker 中独占一个连接 Host 主线程的 `node:inspector.Session`，因此 Host JavaScript 暂停时，Host Console 求值、Sources、断点和 resume 仍然可用。
 
 源码树遵循这些执行环境：`client/` 与 `host/` 提供镜像的适配器 entry path，`worker/` 只包含 Worker thread orchestration 与 Chrome protocol 状态，`shared/` 包含与环境无关的 Cordis 和 network model、规范化 realm 后端接口及内部 bridge protocol。Worker 侧 Client 与 Host 适配器镜像放在 `worker/realms/` 下；其中的 Client 适配器仍然在 Worker 中执行。
 

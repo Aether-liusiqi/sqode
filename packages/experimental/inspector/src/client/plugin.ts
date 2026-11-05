@@ -22,7 +22,7 @@ export interface InspectorService extends SharedInspectorService {}
 
 declare global {
   /** Host-injected Inspector Client connection parameters. */
-  var __DSH_INSPECTOR__: unknown
+  var __SQH_INSPECTOR__: unknown
 }
 
 declare module '@liusiqi-dev/cordis' {
@@ -43,7 +43,7 @@ export const inject: string[] = []
  * @param ctx - Client Cordis context whose page identity and lifecycle own the source.
  */
 export async function apply(ctx: Context): Promise<void> {
-  const injected = globalThis.__DSH_INSPECTOR__
+  const injected = globalThis.__SQH_INSPECTOR__
   if (injected === undefined) {
     throw new Error('experimental inspector: Host bootstrap is missing; reload the page after enabling the Inspector')
   }

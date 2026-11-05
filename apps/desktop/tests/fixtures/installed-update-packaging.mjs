@@ -5,7 +5,7 @@ import { join } from 'node:path'
 
 const [manifest, version] = process.argv.slice(2)
 const run = JSON.parse(await readFile(manifest, 'utf8'))
-process.stdout.write(process.env.DSH_DESKTOP_WINDOWS_TOKEN_PIN)
+process.stdout.write(process.env.SQODE_DESKTOP_WINDOWS_TOKEN_PIN)
 if (process.env.SQODE_TEST_PACKAGING_FAIL === '1') process.exitCode = 2
 else {
   const directory = join(run.root, version, 'installer')
