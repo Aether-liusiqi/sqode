@@ -7,7 +7,12 @@
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
 import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
-import { defineTool, loadedTools } from '@liusiqi-dev/dsh-tools'
+import {
+  SCHEMA_CHARS_PER_TOKEN,
+  declarationBudgetChars,
+  defineTool,
+  type ToolRunContext,
+} from '@liusiqi-dev/dsh-tools'
 import { toolInput } from './input.ts'
 import { operations } from './operations.ts'
 import { presentation } from './presentation.ts'
@@ -68,20 +73,14 @@ function answers(tool: { name: string; description: string }, query: string): bo
  *
  * One call loads as many tools as it matches: each separate search costs a round
  * trip, so the tool is built to be asked once with everything the model expects to
- * need.
+ * need. The reply states the size it just added, because loading is not free — a
+ * later request carries these schemas, and only the most recent ones fit.
  * @param ctx - the plugin context, for the tool registry.
  * @param query - a purpose, or `select:name,name` for exact names.
- * @param exec - the execution context carrying the calling agent.
+ * @param exec - the execution context, whose agent is also the catalog's scope.
  * @returns the message the model reads.
  */
-function searchTools(
-  ctx: Context,
-  query: string,
-  exec: { readonly agent?: { readonly session: {
-    snapshotEvents(): readonly { type: string; data?: unknown }[]
-    append(type: 'tools/loaded', data: { toolName: string }, opts: { ignorable: true }): unknown
-  } } },
-): string {
+function searchTools(ctx: Context, query: string, exec: ToolRunContext): string {
   const agent = exec.agent
   if (agent === undefined) throw new Error('tool_search needs an Agent-backed session')
   const session = agent.session
@@ -89,26 +88,53 @@ function searchTools(
   // scope-local tools that a model may legitimately ask for by name.
   const catalog = ctx.tools.schemas(agent)
   const names = selectedNames(query)
-  const matched = names === undefined
-    ? catalog.filter(tool => answers(tool, query.trim().toLowerCase())).slice(0, SEARCH_RESULT_LIMIT)
+  const candidates = names === undefined
+    ? catalog.filter(tool => answers(tool, query.trim().toLowerCase()))
     : names.map(name => catalog.find(tool => tool.name === name)).filter((tool): tool is NonNullable<typeof tool> => tool !== undefined)
-  if (matched.length === 0) {
+  if (candidates.length === 0) {
     return `No tool matched "${query}". Call list_tools to browse the catalog.`
   }
-  const already = loadedTools(session.snapshotEvents())
+  const matched = candidates.slice(0, SEARCH_RESULT_LIMIT)
+
+  // The projection is the sanctioned read: production code may not read session
+  // history synchronously, and this state is what resume rebuilds.
+  const order = ctx.sessionProjections.stateOf(session, 'toolsLoaded') ?? []
+  const already = new Set(order)
   const added: string[] = []
+  const promoted: string[] = []
   for (const tool of matched) {
-    if (already.has(tool.name)) continue
-    // Ignorable: an older reader skips this event rather than refusing the log, and
-    // worst case it declares the tool twice in a later request.
+    // Always recorded, including a repeat: a second mention promotes the name to
+    // the end of the load order, which is how a tool squeezed out of the budget by
+    // later loads regains its place. Ignorable, so an older reader skips the event
+    // instead of refusing the log.
     session.append('tools/loaded', { toolName: tool.name }, { ignorable: true })
-    added.push(tool.name)
+    if (already.has(tool.name)) promoted.push(tool.name)
+    else added.push(tool.name)
   }
+
+  // Replay the same promotion locally rather than re-reading: the projection may
+  // not have folded the events this call just appended.
+  const touched = new Set(matched.map(tool => tool.name))
+  const orderAfter = [...order.filter(name => !touched.has(name)), ...touched]
+  const loadedChars = catalog
+    .filter(tool => orderAfter.includes(tool.name))
+    .reduce((total, tool) => total + JSON.stringify(tool).length, 0)
+  const contextWindow = session.requestContext()?.contextWindow
+  const budgetChars = contextWindow === undefined ? undefined : declarationBudgetChars(contextWindow)
+
+  const head = `Loaded ${String(added.length)} new`
+    + (promoted.length === 0 ? '' : `, promoted ${String(promoted.length)}`)
+    + `. Showing ${String(matched.length)} of ${String(candidates.length)} matches.`
+  const inventory = `Catalog ${String(catalog.length)} tools; ${String(orderAfter.length)} loaded, about `
+    + `${String(Math.ceil(loadedChars / SCHEMA_CHARS_PER_TOKEN))} tokens of schema`
+    + (budgetChars === undefined
+      ? '; only the most recent loads travel with a request.'
+      : ` against ${String(Math.floor(budgetChars / SCHEMA_CHARS_PER_TOKEN))} tokens this route can declare, so only the most recent loads travel with it.`)
+  const caution = candidates.length > matched.length
+    ? 'Asking again loads more; the declaration budget keeps only the most recent, so earlier loads are squeezed out of the next request.'
+    : 'These schemas travel with the next request; the declaration budget keeps only the most recent loads.'
   const lines = matched.map(tool => `- ${tool.name}: ${tool.description.trim().slice(0, 120)}`)
-  const status = added.length === 0
-    ? 'All of these were already loaded.'
-    : `Loaded ${String(added.length)}: ${added.join(', ')}. They are declared from the next request on.`
-  return `${status}\n${lines.join('\n')}`
+  return `${head}\n${inventory}\n${caution}\n\n${lines.join('\n')}`
 }
 
 /**

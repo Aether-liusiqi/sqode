@@ -1020,6 +1020,51 @@ describe('request/context capacity records', () => {
     expect(declared).not.toContain('mcp__rea__older_load')
   })
 
+  it('squeezes the oldest load out of the budget, and a repeat mention brings it back', async () => {
+    const { defineTool } = await import('@liusiqi-dev/dsh-tools')
+    // 64,000 tokens at a 5% share and 4 characters per token is 12,800 characters.
+    // Three 5,000-character schemas fit two at a time, so the newest load pushes the
+    // oldest one out — silently, because the declaration is a request detail.
+    const adapter = capacityAdapter({ narrow: 64_000 }, [
+      textResponse('a'), textResponse('b'), textResponse('c'),
+    ])
+    const ctx = await harness(adapter)
+    const tool = (name: string) => defineTool({
+      name,
+      description: 'x'.repeat(5_000),
+      parameters: {},
+      output: { schema: { type: 'string' }, render: (_args, value) => [{ type: 'text', text: value }] },
+      async execute() {
+        return 'ok'
+      },
+    })
+    for (const name of ['tool_alpha', 'tool_beta', 'tool_gamma']) ctx.tools.register(tool(name))
+
+    const agent = await ctx.agentLoop.create(SessionId('declaration-order'), { provider: 'mock', model: 'narrow' })
+    const load = (name: string) => agent.session.append('tools/loaded', { toolName: name }, { ignorable: true })
+    const declared = () => (agent.session.requestHeader()?.tools ?? []).map(entry => entry.name)
+
+    load('tool_alpha')
+    load('tool_beta')
+    send(agent, 'one')
+    await waitForIdle(ctx, agent)
+    expect(declared()).toEqual(expect.arrayContaining(['tool_alpha', 'tool_beta']))
+
+    load('tool_gamma')
+    send(agent, 'two')
+    await waitForIdle(ctx, agent)
+    expect(declared()).toContain('tool_gamma')
+    expect(declared()).toContain('tool_beta')
+    expect(declared()).not.toContain('tool_alpha')
+
+    // Asking for the squeezed-out tool again promotes it to the most recent load.
+    load('tool_alpha')
+    send(agent, 'three')
+    await waitForIdle(ctx, agent)
+    expect(declared()).toContain('tool_alpha')
+    expect(declared()).not.toContain('tool_beta')
+  })
+
   it('records a second capacity when the route changes mid-session', async () => {
     const adapter = capacityAdapter(
       { small: 64_000, large: 256_000 },

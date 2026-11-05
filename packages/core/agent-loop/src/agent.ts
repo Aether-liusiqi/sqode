@@ -16,7 +16,7 @@ import type {
   RequestErrorAction,
 } from '@liusiqi-dev/dsh-agent'
 import { agentEvents, assembleContextFor } from '@liusiqi-dev/dsh-agent'
-import { loadedTools } from '@liusiqi-dev/dsh-tools'
+import { declarationBudgetChars } from '@liusiqi-dev/dsh-tools'
 import type { GenerateOptions, LlmCallConfig, Message, PreparedLlmCall } from '@liusiqi-dev/dsh-llm'
 import {
   LlmError,
@@ -609,9 +609,11 @@ export class ReactLoopAgent implements Agent {
     // The catalog is trimmed before the header is built, not after the adapter
     // sees it: a route without tool-update support strips `deferLoading` and sends
     // everything verbatim, so the only place a cut survives every route is here.
-    // Today this keeps the core set; keyword selection and `load_tool` land next.
     const contextWindow = preparedCall?.context?.contextWindow
-    const declared = declareWithin(session, contextWindow, tools)
+    // Undefined for a session folded before this projection existed; an empty list
+    // then declares the core set alone, which is the safe direction.
+    const loaded = this.ctx.sessionProjections.stateOf(session, 'toolsLoaded') ?? []
+    const declared = declareWithin(loaded, contextWindow, tools)
     const surfaceGeneration = session.surface.contentGeneration
     const header = canonicalHeader({
       config,
@@ -738,41 +740,23 @@ const DECLARED_CORE: ReadonlySet<string> = new Set([
 ])
 
 /**
- * Share of a window the declared tool catalog may claim.
- *
- * Everything else is loaded on demand and costs nothing until it is: a model that
- * keeps loading tools with `tool_search` grows this catalog without bound, and one
- * live session reached 116 declarations and 287,132 characters — about 71.8K of a
- * 100K window, leaving too little for the conversation and no room for a
- * summarization to finish.
- *
- * Five percent is the product rule, and on a 100K route it is 5,000 tokens: the
- * 13 core tools already spend about 3,025, leaving roughly 7,900 characters —
- * about two medium schemas. The largest tool in the catalog (155,695 characters)
- * can never be declared on such a route, which is a physical boundary rather than
- * a defect.
- */
-const DECLARATION_BUDGET_RATIO = 0.05
-
-/** Approximate characters one token carries when pricing a schema. */
-const SCHEMA_CHARS_PER_TOKEN = 4
-
-/**
  * Keep only the tools this route can afford to declare.
  *
  * A route that reports no window gets the catalog untouched: without a budget there
  * is nothing to measure against, and trimming blind would remove tools a large
  * window could carry.
  *
- * Within the budget, the most recently loaded tools win: a model loads what its
- * current task needs, and an older load is the likelier one to be idle.
+ * Within the budget the most recent loads win — a load order that a repeat mention
+ * refreshes — so a tool squeezed out by later loads comes back when it is asked for
+ * again. Everything past the budget is dropped silently: the declaration is a
+ * request detail, not a promise the model has to reason about.
  * @param session - the session whose load events record what the model pulled.
  * @param contextWindow - the route's window, when the adapter reports one.
  * @param tools - the assembled catalog for this step.
  * @returns the declarations that fit.
  */
 function declareWithin<T extends { readonly name: string }>(
-  session: { snapshotEvents(): readonly { type: string; data?: unknown }[] },
+  loaded: readonly string[],
   contextWindow: number | undefined,
   tools: T[],
 ): T[] {
@@ -783,17 +767,17 @@ function declareWithin<T extends { readonly name: string }>(
   if (contextWindow >= NARROW_WINDOW_TOKENS) return tools
 
   const core = tools.filter(tool => DECLARED_CORE.has(tool.name))
-  const budgetChars = contextWindow * DECLARATION_BUDGET_RATIO * SCHEMA_CHARS_PER_TOKEN
+  const budgetChars = declarationBudgetChars(contextWindow)
   let spent = core.reduce((total, tool) => total + JSON.stringify(tool).length, 0)
 
   // A tool the model pulled with `tool_search` is declared from the next request
-  // on: the loaded set is a session event, so this survives compaction and resume.
-  const loadedOrder = new Map([...loadedTools(session.snapshotEvents())]
-    .map((name, index) => [name, index]))
+  // on: the loaded set is a session projection, so this survives compaction and
+  // resume. The rank is the *last* load of each name, so asking again promotes it.
+  const rank = new Map(loaded.map((name, index) => [name, index]))
   const pulled = tools
-    .filter(tool => !DECLARED_CORE.has(tool.name) && loadedOrder.has(tool.name))
+    .filter(tool => !DECLARED_CORE.has(tool.name) && rank.has(tool.name))
     // Most recently loaded first; a stable name tiebreak keeps headers canonical.
-    .sort((left, right) => (loadedOrder.get(right.name) ?? 0) - (loadedOrder.get(left.name) ?? 0)
+    .sort((left, right) => (rank.get(right.name) ?? 0) - (rank.get(left.name) ?? 0)
       || left.name.localeCompare(right.name))
 
   const kept = new Set(core.map(tool => tool.name))

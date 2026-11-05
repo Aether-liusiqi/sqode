@@ -63,7 +63,12 @@ const SDK_RENDERERS: Record<string, (schemas: ToolSdkSchema[]) => string> = {
   python: renderToolsSdkPy,
 } satisfies Record<PtcSdkLanguage, (schemas: ToolSdkSchema[]) => string>
 
-export { loadedTools } from './loaded.ts'
+export {
+  DECLARATION_BUDGET_SHARE,
+  SCHEMA_CHARS_PER_TOKEN,
+  declarationBudgetChars,
+} from './declaration.ts'
+export { loadedToolOrder, loadedTools, promoteLoadedTool } from './loaded.ts'
 
 export {
   defineTool,

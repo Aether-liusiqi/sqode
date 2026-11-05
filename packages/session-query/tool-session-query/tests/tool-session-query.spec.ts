@@ -16,7 +16,10 @@ import SessionStore, {
   type SessionId as SessionIdValue,
 } from '@liusiqi-dev/dsh-session'
 import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import { turnBoundaryProjectionDefinition } from '@liusiqi-dev/dsh-agent-loop'
+import {
+  toolsLoadedProjectionDefinition,
+  turnBoundaryProjectionDefinition,
+} from '@liusiqi-dev/dsh-agent-loop'
 import SessionQueryEngine, {
   SessionQueryError,
   SessionSearchCursor,
@@ -210,6 +213,9 @@ interface Mounted {
 
 function registerTurnBoundary(ctx: Context): void {
   ctx.sessionProjections.register(turnBoundaryProjectionDefinition)
+  // `tool_search` reads the load order through the projection, so the
+  // fixture has to register it the way the agent loop does in production.
+  ctx.sessionProjections.register(toolsLoadedProjectionDefinition)
 }
 
 async function mount(
@@ -2217,8 +2223,10 @@ describe('tool_search', () => {
     const output = text(await mounted.call('tool_search', {
       query: 'select:session_search,session_trace',
     }))
-    expect(output).toContain('Loaded 2: session_search, session_trace')
-    expect(output).toContain('next request on')
+    expect(output).toContain('Loaded 2 new')
+    expect(output).toContain('Showing 2 of 2 matches')
+    // The reply states the size it just added: loading is not free.
+    expect(output).toMatch(/Catalog \d+ tools; 2 loaded, about \d+ tokens of schema/)
     expect(output).toContain('- session_search:')
     expect(output).toContain('- session_trace:')
 
@@ -2237,13 +2245,24 @@ describe('tool_search', () => {
     expect(loaded(mounted).some(event => event.toolName === 'session_event_read')).toBe(true)
   })
 
-  it('does not append a second event for an already loaded tool', async () => {
+  it('promotes a tool it already loaded so it can regain a squeezed-out place', async () => {
     const mounted = await mount()
     const query = 'select:session_search'
-    expect(text(await mounted.call('tool_search', { query }))).toContain('Loaded 1')
+    expect(text(await mounted.call('tool_search', { query }))).toContain('Loaded 1 new')
+    // A second mention appends another event: order is what the declaration budget
+    // reads, so the repeat has to move the name to the end of it.
     const again = text(await mounted.call('tool_search', { query }))
-    expect(again).toContain('All of these were already loaded.')
-    expect(loaded(mounted)).toHaveLength(1)
+    expect(again).toContain('Loaded 0 new, promoted 1')
+    expect(loaded(mounted)).toHaveLength(2)
+    expect(loaded(mounted).map(event => event.toolName)).toEqual(['session_search', 'session_search'])
+  })
+
+  it('reports how much of the catalog is loaded', async () => {
+    const mounted = await mount()
+    const output = text(await mounted.call('tool_search', { query: 'session' }))
+    expect(output).toMatch(/Catalog \d+ tools; \d+ loaded/)
+    // Loading is not free, and the reply says so before the model loads more.
+    expect(output).toContain('declaration budget keeps only the most recent')
   })
 
   it('reports a query that matches nothing', async () => {
@@ -2268,7 +2287,7 @@ describe('tool_search', () => {
     const output = text(await mounted.call('tool_search', {
       query: 'select:session_trace,zzz_absent',
     }))
-    expect(output).toContain('Loaded 1: session_trace')
+    expect(output).toContain('Loaded 1 new')
     expect(output).not.toContain('zzz_absent')
     expect(loaded(mounted)).toHaveLength(1)
   })

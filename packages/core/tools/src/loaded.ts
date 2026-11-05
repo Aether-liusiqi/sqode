@@ -1,5 +1,5 @@
 /**
- * The tools a session has explicitly loaded, folded from its event log.
+ * The tools a session has explicitly loaded, as a fold over its event log.
  *
  * A request declares only what its window can carry, so a tool the model asked for
  * by name has to be remembered somewhere that survives: compaction resets the
@@ -29,22 +29,48 @@ interface LoadedEvent {
 }
 
 /**
- * Names of every tool the session has loaded so far.
+ * Move one name to the end of the load order.
+ *
+ * A repeat load has to change the order, not just the membership: the declaration
+ * budget keeps the most recent names, so this is how a tool that later loads
+ * squeezed out regains a place.
+ * @param state - the current order.
+ * @param name - the tool just loaded.
+ * @returns the next order.
+ */
+export function promoteLoadedTool(state: readonly string[], name: string): string[] {
+  return [...state.filter(existing => existing !== name), name]
+}
+
+/**
+ * Fold `tools/loaded` events into the load order.
+ *
+ * The projection owns this in production; the fold is kept pure so the projection's
+ * `apply` and the unit tests share one implementation.
+ * @param events - the session's events, in order.
+ * @returns the loaded tool names, oldest load first.
+ */
+export function loadedToolOrder(events: readonly LoadedEvent[]): string[] {
+  return events.reduce<string[]>((state, event) => {
+    if (event.type !== 'tools/loaded') return state
+    const data = event.data
+    if (data === null || typeof data !== 'object') return state
+    const name = (data as { toolName?: unknown }).toolName
+    if (typeof name !== 'string' || name.length === 0) return state
+    return promoteLoadedTool(state, name)
+  }, [])
+}
+
+/**
+ * Names of every tool the session has loaded so far, without their order.
  *
  * Monotonic by design: a loaded tool is never dropped because a later message did
  * not mention it again, which would make the declared set flap and restart the
- * provider's request series.
+ * provider's request series. Being squeezed out of one request's budget does not
+ * remove it here — a later mention brings it back.
  * @param events - the session's events, in order.
  * @returns the loaded tool names.
  */
 export function loadedTools(events: readonly LoadedEvent[]): ReadonlySet<string> {
-  const loaded = new Set<string>()
-  for (const event of events) {
-    if (event.type !== 'tools/loaded') continue
-    const data = event.data
-    if (data === null || typeof data !== 'object') continue
-    const name = (data as { toolName?: unknown }).toolName
-    if (typeof name === 'string' && name.length > 0) loaded.add(name)
-  }
-  return loaded
+  return new Set(loadedToolOrder(events))
 }

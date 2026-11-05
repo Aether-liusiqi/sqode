@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { loadedTools } from '../src/loaded.ts'
+import { loadedToolOrder, loadedTools } from '../src/loaded.ts'
 
 describe('loaded tools', () => {
   it('collects every tool the session loaded', () => {
@@ -30,5 +30,30 @@ describe('loaded tools', () => {
       { type: 'turn/start', data: {} },
     ])
     expect(loaded.has('read')).toBe(true)
+  })
+
+  it('keeps the load order, oldest first', () => {
+    const order = loadedToolOrder([
+      { type: 'tools/loaded', data: { toolName: 'alpha' } },
+      { type: 'tools/loaded', data: { toolName: 'beta' } },
+    ])
+    expect(order).toEqual(['alpha', 'beta'])
+  })
+
+  it('promotes a name that is loaded again, so a squeezed-out tool can return', () => {
+    const order = loadedToolOrder([
+      { type: 'tools/loaded', data: { toolName: 'alpha' } },
+      { type: 'tools/loaded', data: { toolName: 'beta' } },
+      // The model asks for `alpha` again: it must move to the end, because the
+      // declaration budget keeps the most recent loads.
+      { type: 'tools/loaded', data: { toolName: 'alpha' } },
+    ])
+    expect(order).toEqual(['beta', 'alpha'])
+    // Membership is unchanged; only the order moved.
+    expect(loadedTools([
+      { type: 'tools/loaded', data: { toolName: 'alpha' } },
+      { type: 'tools/loaded', data: { toolName: 'beta' } },
+      { type: 'tools/loaded', data: { toolName: 'alpha' } },
+    ]).size).toBe(2)
   })
 })

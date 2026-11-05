@@ -24,9 +24,9 @@ import type {
 } from '@liusiqi-dev/dsh-agent'
 import { errorChain, ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
 import { interruptedTurnClosers, SessionLogOffset, SessionPreparation, SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { Session, SessionHeader, SessionId } from '@liusiqi-dev/dsh-session'
+import type { Session, SessionEvent, SessionHeader, SessionId } from '@liusiqi-dev/dsh-session'
 import type {} from '@liusiqi-dev/dsh-system-prompt'
-import type {} from '@liusiqi-dev/dsh-tools'
+import { promoteLoadedTool } from '@liusiqi-dev/dsh-tools'
 import type {} from '@liusiqi-dev/dsh-session-projection'
 import type { ProjectionDefinition } from '@liusiqi-dev/dsh-session-projection'
 import { SessionPersistenceNotFoundError } from '@liusiqi-dev/dsh-session-persistence'
@@ -93,6 +93,26 @@ export const turnBoundaryProjectionDefinition = {
     }
   },
 } satisfies ProjectionDefinition<'turnBoundary', TurnBoundaryProjection>
+
+const toolsLoadedProjectionSchema: zod.ZodType<string[]> = zod.array(zod.string())
+
+/**
+ * Host projection of the tools a session loaded, oldest load first.
+ *
+ * A projection rather than a read of the event log: production code may not read
+ * arbitrary session history synchronously, and this state is what resume rebuilds
+ * and later events update incrementally.
+ */
+export const toolsLoadedProjectionDefinition = {
+  key: 'toolsLoaded',
+  stateVersion: 1,
+  stateSchema: toolsLoadedProjectionSchema,
+  init: (): string[] => [],
+  // A repeat load moves the name to the end; that order is what the declaration
+  // budget reads when it decides which tools still fit.
+  apply: (state: string[], event: SessionEvent): string[] =>
+    event.type === 'tools/loaded' ? promoteLoadedTool(state, event.data.toolName) : state,
+} satisfies ProjectionDefinition<'toolsLoaded', string[]>
 
 /** Factory-level ownership: live agent teardowns plus config startup work. */
 class FactoryOwnership {
@@ -363,6 +383,7 @@ export class AgentLoop extends Service implements AgentFactory {
     // rejected constructor leaves no projection unit behind.
     ctx.sessionProjections.register(turnBoundaryProjectionDefinition)
     ctx.sessionProjections.register(inboxProjectionDefinition)
+    ctx.sessionProjections.register(toolsLoadedProjectionDefinition)
     this.ownership = new FactoryOwnership(ctx.fiber)
     this.runtime = { ctx }
     ctx.effect(() => () => this.ownership.dispose(), 'agentLoop.transactions()')
