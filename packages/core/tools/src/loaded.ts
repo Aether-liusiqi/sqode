@@ -1,11 +1,11 @@
 /**
- * The tools a session has explicitly loaded, as a fold over its event log.
+ * The load order of tools a session asked for, as one pure step.
  *
  * A request declares only what its window can carry, so a tool the model asked for
  * by name has to be remembered somewhere that survives: compaction resets the
- * declaration series, and resume rebuilds state by replaying events. Keeping this
- * in memory alone was the one way the loaded set could vanish exactly when it
- * mattered.
+ * declaration series, and resume rebuilds state by replaying events. The session
+ * projection `toolsLoaded` holds that order; this module owns the single step it
+ * folds with, so the projection's `apply` and the tests share one implementation.
  *
  * @module @liusiqi-dev/dsh-tools/loaded
  */
@@ -22,8 +22,8 @@ declare module '@liusiqi-dev/dsh-session/types' {
   }
 }
 
-/** The event shape this fold reads, kept structural so no session type is required. */
-interface LoadedEvent {
+/** The event shape this step reads, kept structural so no session type is required. */
+export interface LoadedEvent {
   readonly type: string
   readonly data?: unknown
 }
@@ -43,34 +43,17 @@ export function promoteLoadedTool(state: readonly string[], name: string): strin
 }
 
 /**
- * Fold `tools/loaded` events into the load order.
+ * The name one `tools/loaded` event contributes, if any.
  *
- * The projection owns this in production; the fold is kept pure so the projection's
- * `apply` and the unit tests share one implementation.
- * @param events - the session's events, in order.
- * @returns the loaded tool names, oldest load first.
+ * Malformed payloads are skipped rather than thrown: a log written by another build
+ * may carry fields this one does not expect.
+ * @param event - one committed session event.
+ * @returns the tool name, or `undefined` when the event is not a load.
  */
-export function loadedToolOrder(events: readonly LoadedEvent[]): string[] {
-  return events.reduce<string[]>((state, event) => {
-    if (event.type !== 'tools/loaded') return state
-    const data = event.data
-    if (data === null || typeof data !== 'object') return state
-    const name = (data as { toolName?: unknown }).toolName
-    if (typeof name !== 'string' || name.length === 0) return state
-    return promoteLoadedTool(state, name)
-  }, [])
-}
-
-/**
- * Names of every tool the session has loaded so far, without their order.
- *
- * Monotonic by design: a loaded tool is never dropped because a later message did
- * not mention it again, which would make the declared set flap and restart the
- * provider's request series. Being squeezed out of one request's budget does not
- * remove it here — a later mention brings it back.
- * @param events - the session's events, in order.
- * @returns the loaded tool names.
- */
-export function loadedTools(events: readonly LoadedEvent[]): ReadonlySet<string> {
-  return new Set(loadedToolOrder(events))
+export function loadedToolName(event: LoadedEvent): string | undefined {
+  if (event.type !== 'tools/loaded') return undefined
+  const data = event.data
+  if (data === null || typeof data !== 'object') return undefined
+  const name = (data as { toolName?: unknown }).toolName
+  return typeof name === 'string' && name.length > 0 ? name : undefined
 }

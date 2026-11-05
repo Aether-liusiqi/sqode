@@ -26,7 +26,7 @@ import { errorChain, ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
 import { interruptedTurnClosers, SessionLogOffset, SessionPreparation, SessionSeq } from '@liusiqi-dev/dsh-session'
 import type { Session, SessionEvent, SessionHeader, SessionId } from '@liusiqi-dev/dsh-session'
 import type {} from '@liusiqi-dev/dsh-system-prompt'
-import { promoteLoadedTool } from '@liusiqi-dev/dsh-tools'
+import { loadedToolName, promoteLoadedTool } from '@liusiqi-dev/dsh-tools'
 import type {} from '@liusiqi-dev/dsh-session-projection'
 import type { ProjectionDefinition } from '@liusiqi-dev/dsh-session-projection'
 import { SessionPersistenceNotFoundError } from '@liusiqi-dev/dsh-session-persistence'
@@ -110,8 +110,10 @@ export const toolsLoadedProjectionDefinition = {
   init: (): string[] => [],
   // A repeat load moves the name to the end; that order is what the declaration
   // budget reads when it decides which tools still fit.
-  apply: (state: string[], event: SessionEvent): string[] =>
-    event.type === 'tools/loaded' ? promoteLoadedTool(state, event.data.toolName) : state,
+  apply: (state: string[], event: SessionEvent): string[] => {
+    const name = loadedToolName(event)
+    return name === undefined ? state : promoteLoadedTool(state, name)
+  },
 } satisfies ProjectionDefinition<'toolsLoaded', string[]>
 
 /** Factory-level ownership: live agent teardowns plus config startup work. */

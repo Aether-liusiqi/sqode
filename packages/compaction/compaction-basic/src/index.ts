@@ -90,7 +90,14 @@ const SUMMARY_OUTPUT_FLOOR = 1_024
  */
 const SUMMARY_PROMPT_MARGIN = 20_000
 
-/** Characters one token carries when pricing tool schemas. */
+/**
+ * Characters one token carries when pricing tool schemas.
+ *
+ * Same value as `@liusiqi-dev/dsh-tools` exports, repeated because this package does
+ * not depend on it: importing across that boundary would need a package dependency
+ * and a built reference, which is how TS6305 appeared last time. If one moves, both
+ * move — the two numbers price the same window.
+ */
 const SCHEMA_CHARS_PER_TOKEN = 4
 
 /**
