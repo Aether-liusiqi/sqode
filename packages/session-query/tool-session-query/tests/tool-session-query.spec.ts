@@ -2112,43 +2112,86 @@ describe('trace and exact read rendering', () => {
 })
 
 describe('catalogue listing', () => {
-  it('lists every name visible in the caller scope, including scope-local tools', async () => {
-    const mounted = await mount()
-    const agent = fakeAgent(mounted.caller)
-    let scoped!: ReturnType<typeof createScope>
-    // Mirror the production mint: the agent object is the scope key, and tools
-    // registered in that scope are invisible to the global `schemas()` view.
-    await mounted.ctx.plugin(Object.assign((inner: Context) => {
-      scoped = createScope(inner, agent)
-    }, { inject: ['tools', 'systemPrompt'] }))
-    scoped.ctx.tools.register(defineTool({
-      name: 'scoped_only_probe',
-      description: 'registered only inside the agent scope',
+  /**
+   * The 36 names a global-only `schemas()` view omits in production. They are
+   * registered in the agent's own scope, not in the global layer.
+   */
+  const SCOPE_LOCAL = [
+    'ask_user_question', 'cordis_inspect_list', 'cordis_inspect_query',
+    'create_goal', 'edit', 'exit_plan_mode', 'get_goal', 'glob', 'grep',
+    'interrupt_agent', 'job_kill', 'job_list', 'job_output', 'list_agents',
+    'list_tools', 'plugin_manager', 'present', 'pwsh', 'read', 'read_image',
+    'send_message', 'session_event_read', 'session_event_search',
+    'session_event_trace', 'session_search', 'session_trace', 'skill',
+    'subagent', 'subagent_fork', 'todo_write', 'tool_search', 'update_goal',
+    'web_fetch', 'web_search', 'workflow', 'write',
+  ]
+
+  /** Register a minimal tool under the given registry. */
+  function register(target: Context, name: string): void {
+    target.tools.register(defineTool({
+      name,
+      description: `purpose of ${name}`,
       parameters: {},
       output: { schema: { type: 'string' }, render: (_args, value) => [{ type: 'text', text: value }] },
       execute: () => Promise.resolve('ok'),
     }))
+  }
+
+  it('lists every name from both the global layer and the agent scope, and nothing else', async () => {
+    const mounted = await mount()
+    const agent = fakeAgent(mounted.caller)
+
+    // Global-only tools, standing in for the 211 MCP/REA entries.
+    const globals = ['mcp__rea__read_bytes', 'mcp__rea__xrefs', 'list_mcp_resources']
+    for (const name of globals) register(mounted.ctx, name)
+
+    let scoped!: ReturnType<typeof createScope>
+    await mounted.ctx.plugin(Object.assign((inner: Context) => {
+      scoped = createScope(inner, agent)
+    }, { inject: ['tools', 'systemPrompt'] }))
+    for (const name of SCOPE_LOCAL) {
+      if (name === 'list_tools' || name === 'tool_search') continue
+      register(scoped.ctx, name)
+    }
 
     const result = await mounted.call('list_tools', {}, { agent })
     const output = text(result)
-    expect(output).toContain('scoped_only_probe')
-    expect(output).toContain('list_tools')
-    expect(output).toContain('tool_search')
-    // The unfiltered answer is names only: 240 names fit, 240 descriptions do not.
+    const lines = output.split('\n')
+    const names = lines.slice(2).filter(line => line.length > 0)
+
+    expect(lines[0]).toMatch(/^\d+ tools$/)
+    expect(lines[1]).toBe('')
+    // Names only: no purpose separator, no whitespace-padded rows.
     expect(output).not.toContain(' — ')
-    expect(output).toContain('names only')
+    expect(names.every(name => name === name.trim() && !name.includes(' '))).toBe(true)
+    // Every scope-local name is present, including the two meta-tools themselves.
+    for (const name of SCOPE_LOCAL) expect(names).toContain(name)
+    for (const name of globals) expect(names).toContain(name)
+    // The count on the first line is the whole inventory, not a truncated page.
+    expect(names.length).toBe(Number((lines[0] ?? '').split(' ')[0]))
+    expect(names.length).toBe(new Set(names).size)
   })
 
-  it('shows one-line purposes for a filter, and caps a wide match', async () => {
+  it('does not silently return a partial inventory when there is no agent', async () => {
+    const mounted = await mount()
+    const result = await mounted.ctx.tools.execute({
+      name: 'list_tools',
+      arguments: {},
+      callId: ToolCallId('call-no-agent'),
+      signal: new AbortController().signal,
+    })
+    expect(result.isError).toBe(true)
+    expect(text(result)).toContain('needs an Agent-backed session')
+  })
+
+  it('narrows the name list with a filter, without adding descriptions', async () => {
     const mounted = await mount()
     const exact = text(await mounted.call('list_tools', { filter: 'session_event_read' }))
-    expect(exact).toContain('session_event_read — ')
-    expect(exact).toContain('tools matching')
-    expect(exact).not.toContain('names only')
-
-    const wide = text(await mounted.call('list_tools', { filter: 'tool' }))
-    const rows = wide.split('\n').filter(line => line.includes(' — '))
-    expect(rows.length).toBeLessThanOrEqual(20)
+    expect(exact).toContain('session_event_read')
+    expect(exact).toContain('matching')
+    expect(exact).not.toContain(' — ')
+    expect(exact.split('\n').slice(2).filter(Boolean)).toEqual(['session_event_read'])
   })
 
   it('says so when nothing matches a filter', async () => {
@@ -2157,7 +2200,6 @@ describe('catalogue listing', () => {
       .toContain('No tool matched')
   })
 })
-
 
 describe('tool_search', () => {
   /** Load events this session recorded, in order; `ignorable` sits on the envelope. */
