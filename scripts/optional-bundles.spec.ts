@@ -7,13 +7,13 @@ import { describe, expect, it } from 'vitest'
 import { loadOverlayPatches } from '../packages/boot/app-boot/src/index.ts'
 import { readPluginMeta } from '../packages/boot/app-boot/src/package-meta.ts'
 import { OPTIONAL_BUNDLES, bundlePatchPaths, composeEntries } from '../packages/boot/app-boot/src/profile.ts'
-import type { DshBundleManifest } from '../packages/util/package-manifest/src/types.ts'
+import type { SqhBundleManifest } from '../packages/util/package-manifest/src/types.ts'
 
 const root = resolve(import.meta.dirname, '..')
 
 interface Manifest {
   name: string
-  dsh?: { bundle?: DshBundleManifest }
+  dsh?: { bundle?: SqhBundleManifest }
 }
 
 const bundles = new Map(globSync('packages/*/*/package.json', { cwd: root }).map((path) => {

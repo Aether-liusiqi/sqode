@@ -13,7 +13,7 @@ import { applyEntryPatches, type PatchOptions } from '@liusiqi-dev/cordis-plugin
 import type { EntryOptions } from '@liusiqi-dev/cordis-plugin-loader'
 import { loadOverlayPatches } from '../packages/boot/app-boot/src/index.ts'
 import { bundlePatchPaths, composeEntries } from '../packages/boot/app-boot/src/profile.ts'
-import type { DshBundleManifest } from '../packages/util/package-manifest/src/types.ts'
+import type { SqhBundleManifest } from '../packages/util/package-manifest/src/types.ts'
 import { isAgentPresetEntry, isCordisGroupEntry, loadCordisYaml } from './cordis-yaml.ts'
 import {
   collectRuntimeLocalSourceSpecifiers,
@@ -35,7 +35,7 @@ interface Manifest {
   optionalDependencies?: Record<string, string>
   peerDependencies?: Record<string, string>
   devDependencies?: Record<string, string>
-  dsh?: { bundle?: DshBundleManifest; configTrees?: Array<{ path: string }> }
+  dsh?: { bundle?: SqhBundleManifest; configTrees?: Array<{ path: string }> }
 }
 
 interface Package {

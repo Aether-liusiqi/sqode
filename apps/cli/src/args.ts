@@ -58,7 +58,7 @@ interface PluginInvocation {
 }
 
 /** The resolved `dsh` invocation. Help, version, and errors exit inside {@link parseDshArgs}. */
-export type DshInvocation = ProfileInvocation | DumpConfigInvocation | DumpConfigSchemaInvocation | PluginInvocation
+export type SqhInvocation = ProfileInvocation | DumpConfigInvocation | DumpConfigSchemaInvocation | PluginInvocation
 
 /** Launcher flags for profile boot and configuration dumps. */
 interface BootOptions {
@@ -108,7 +108,7 @@ Examples:
  * @param args - the leftover arguments, in argv order.
  * @returns the resolved invocation.
  */
-function resolveBoot(program: Command, profile: string, options: BootOptions, args: string[]): DshInvocation {
+function resolveBoot(program: Command, profile: string, options: BootOptions, args: string[]): SqhInvocation {
   const patches = options.patch ?? []
   if (patches.includes('')) program.error('error: --patch needs a path')
   if (options.fromDefaultProfile === '') program.error('error: --from-default-profile needs a name')
@@ -143,9 +143,9 @@ function resolveBoot(program: Command, profile: string, options: BootOptions, ar
  * @param manageDesktopProfile - permit Desktop's installed carrier to manage its reserved profile's plugins.
  * @returns the resolved invocation.
  */
-export function parseDshArgs(argv: readonly string[], version: string, manageDesktopProfile = false): DshInvocation {
+export function parseDshArgs(argv: readonly string[], version: string, manageDesktopProfile = false): SqhInvocation {
   const first = argv[0]
-  let resolved: DshInvocation | undefined
+  let resolved: SqhInvocation | undefined
   // Annotated, not inferred: the actions below call back into `program`, and an
   // inferred type would be circular through its own chain.
   const program: Command = new Command()

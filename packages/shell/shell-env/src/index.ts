@@ -11,7 +11,7 @@
 import { Service, type Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
 import { SQODE_ENV_PREFIX } from '@liusiqi-dev/dsh-shell'
-import type { DshEnvironment, DshEnvironmentKey } from '@liusiqi-dev/dsh-shell'
+import type { SqhEnvironment, SqhEnvironmentKey } from '@liusiqi-dev/dsh-shell'
 import { SQODE_HOME_ENV, resolveDshHome } from '@liusiqi-dev/dsh-home-paths'
 import type { ToolExecution } from '@liusiqi-dev/dsh-tools'
 // Declares `Context.profileContext`, the launcher-provided profile the built-ins read.
@@ -52,13 +52,13 @@ export interface BashEnvContributor {
   /** Stable contributor name used in diagnostics and duplicate detection. */
   name: string
   /** Complete set of `DSH_*` keys this contributor may return. */
-  variables: Readonly<Record<DshEnvironmentKey, BashEnvVariable>>
+  variables: Readonly<Record<SqhEnvironmentKey, BashEnvVariable>>
   /**
    * Resolve this contributor's available values for one tool execution.
    * @param execution - the shell tool execution and its optional calling agent.
    * @returns a partial map containing only keys declared in {@link variables}.
    */
-  resolve(execution: ToolExecution): Readonly<Partial<Record<DshEnvironmentKey, string>>>
+  resolve(execution: ToolExecution): Readonly<Partial<Record<SqhEnvironmentKey, string>>>
 }
 
 /** An enumerable declaration returned by {@link ShellEnvRegistry.list}. */
@@ -66,14 +66,14 @@ export interface BashEnvVariableInfo extends BashEnvVariable {
   /** Contributor that owns the variable. */
   contributor: string
   /** Declared `DSH_*` environment variable name. */
-  key: DshEnvironmentKey
+  key: SqhEnvironmentKey
 }
 
 const SQODE_SHELL_KEY = `${SQODE_ENV_PREFIX}SHELL` as const
 const SQODE_SESSION_ID_KEY = `${SQODE_ENV_PREFIX}SESSION_ID` as const
 const SQODE_PROFILE_KEY = `${SQODE_ENV_PREFIX}PROFILE` as const
 const SQODE_PROFILE_DIR_KEY = `${SQODE_ENV_PREFIX}PROFILE_DIR` as const
-const RESERVED_BASH_ENV_KEYS = new Set<DshEnvironmentKey>([
+const RESERVED_BASH_ENV_KEYS = new Set<SqhEnvironmentKey>([
   SQODE_HOME_ENV,
   SQODE_SHELL_KEY,
   SQODE_SESSION_ID_KEY,
@@ -92,7 +92,7 @@ const BASH_ENV_KEY_SUFFIX = /^[A-Z][A-Z0-9_]*$/
  */
 export class ShellEnvRegistry extends Service {
   private readonly contributors = new Map<string, BashEnvContributor>()
-  private readonly keyOwners = new Map<DshEnvironmentKey, string>()
+  private readonly keyOwners = new Map<SqhEnvironmentKey, string>()
   private readonly dshHome: string
 
   /**
@@ -120,7 +120,7 @@ export class ShellEnvRegistry extends Service {
         throw new Error(`bash env contributor "${contributor.name}" is already registered`)
       }
 
-      const variables = Object.entries(contributor.variables) as [DshEnvironmentKey, BashEnvVariable][]
+      const variables = Object.entries(contributor.variables) as [SqhEnvironmentKey, BashEnvVariable][]
       for (const [key, variable] of variables) {
         if (!key.startsWith(SQODE_ENV_PREFIX)
           || !BASH_ENV_KEY_SUFFIX.test(key.slice(SQODE_ENV_PREFIX.length))) {
@@ -153,8 +153,8 @@ export class ShellEnvRegistry extends Service {
    * @param execution - the current tool execution.
    * @returns an immutable environment overlay containing built-ins and current contributions.
    */
-  collect(execution: ToolExecution): DshEnvironment {
-    const values: Record<DshEnvironmentKey, string> = {
+  collect(execution: ToolExecution): SqhEnvironment {
+    const values: Record<SqhEnvironmentKey, string> = {
       [SQODE_HOME_ENV]: this.dshHome,
       [SQODE_SHELL_KEY]: '1',
     }
@@ -170,7 +170,7 @@ export class ShellEnvRegistry extends Service {
     for (const contributor of [...this.contributors.values()].sort((left, right) => left.name.localeCompare(right.name))) {
       const resolved = contributor.resolve(execution)
       for (const [rawKey, value] of Object.entries(resolved)) {
-        const key = rawKey as DshEnvironmentKey
+        const key = rawKey as SqhEnvironmentKey
         if (!Object.hasOwn(contributor.variables, key)) {
           throw new Error(`bash env contributor "${contributor.name}" returned undeclared key "${key}"`)
         }
@@ -195,7 +195,7 @@ export class ShellEnvRegistry extends Service {
       .flatMap(contributor => Object.entries(contributor.variables).map(([key, variable]) => ({
         contributor: contributor.name,
         description: variable.description,
-        key: key as DshEnvironmentKey,
+        key: key as SqhEnvironmentKey,
       })))
       .sort((left, right) => left.key.localeCompare(right.key))
   }

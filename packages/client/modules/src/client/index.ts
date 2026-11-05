@@ -25,7 +25,7 @@ export { exactPackageSpecifier, parseBootManifest, parseDshClient, stripClientSu
 export type {
   BootManifest, BootModuleRow, BootPluginRow, ClientBootstrapModule, ClientBundleRegistration,
   ClientModuleCreateOptions, ClientModuleLoader, ClientModuleLoaderTarget, ClientModuleRecord,
-  ClientModuleSystemOptions, DshWindow,
+  ClientModuleSystemOptions, SqhWindow,
   WebBootEntry, WebBootGraph,
 } from './manifest.ts'
 

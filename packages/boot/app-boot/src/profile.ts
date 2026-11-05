@@ -27,7 +27,7 @@ import { basename, dirname, join, relative, resolve, sep } from 'node:path'
 import type { EntryOptions } from '@liusiqi-dev/cordis-plugin-loader'
 import { applyEntryPatches, type PatchOptions } from '@liusiqi-dev/cordis-plugin-include'
 import { resolveDshHome } from '@liusiqi-dev/dsh-home-paths'
-import type { DshBundleManifest, DshPackageManifest } from '@liusiqi-dev/dsh-package-manifest'
+import type { SqhBundleManifest, SqhPackageManifest } from '@liusiqi-dev/dsh-package-manifest'
 import { evaluatePluginCompatibility, pluginCompatibilityWarning } from './plugin-compatibility.ts'
 import { readProfileVersionExemptions } from './profile-compatibility.ts'
 import { loadOverlayPatches } from './index.ts'
@@ -46,7 +46,7 @@ export interface ProfileTemplate {
 }
 
 /** Package metadata accepted by the profile reader; local profiles need no published identity. */
-export type ProfileManifest = Partial<DshPackageManifest>
+export type ProfileManifest = Partial<SqhPackageManifest>
 
 /**
  * The patch files a bundle declares, as written: one file for a string
@@ -55,7 +55,7 @@ export type ProfileManifest = Partial<DshPackageManifest>
  * @returns the package-relative patch file paths in application order.
  * @throws {Error} when `patch` is neither a string nor a list of strings.
  */
-export function bundlePatchFiles(bundle: DshBundleManifest): string[] {
+export function bundlePatchFiles(bundle: SqhBundleManifest): string[] {
   const declared = typeof bundle.patch === 'string' ? [bundle.patch] : bundle.patch
   if (!Array.isArray(declared) || !declared.every(file => typeof file === 'string')) {
     throw new Error('dsh.bundle.patch must be a file path or a list of file paths')
@@ -70,7 +70,7 @@ export function bundlePatchFiles(bundle: DshBundleManifest): string[] {
  * @returns the absolute patch file paths in application order.
  * @throws {Error} when `patch` is neither a string nor a list of strings.
  */
-export function bundlePatchPaths(packageDir: string, bundle: DshBundleManifest): string[] {
+export function bundlePatchPaths(packageDir: string, bundle: SqhBundleManifest): string[] {
   return bundlePatchFiles(bundle).map(file => join(packageDir, file))
 }
 

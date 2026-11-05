@@ -14,7 +14,7 @@ import { globSync, readFileSync } from 'node:fs'
 import { dirname, relative, resolve } from 'node:path'
 import { Script } from 'node:vm'
 import ts from 'typescript'
-import type { DshBundleManifest } from '../packages/util/package-manifest/src/types.ts'
+import type { SqhBundleManifest } from '../packages/util/package-manifest/src/types.ts'
 import { bundlePatchFiles, bundlePatchPaths } from '../packages/boot/app-boot/src/profile.ts'
 import { cordisConfigFiles } from './cordis-config-files.ts'
 import { isAgentPresetEntry, presetDefinitions, isCordisGroupEntry, isJsExpr, loadCordisYaml } from './cordis-yaml.ts'
@@ -24,7 +24,7 @@ export interface PackageManifest {
   dependencies?: Record<string, string>
   devDependencies?: Record<string, string>
   optionalDependencies?: Record<string, string>
-  dsh?: { bundle?: DshBundleManifest }
+  dsh?: { bundle?: SqhBundleManifest }
 }
 
 export interface PluginReference {
@@ -142,7 +142,7 @@ function validatePresetPlaneSeparation(): string[] {
   // layer is its host patch followed by one patch file per shipped preset.
   const hostFile = 'packages/bundle/base/cordis.patch.yml'
   const overlayDir = 'packages/bundle/web-app'
-  const overlayManifest = JSON.parse(readFileSync(resolve(root, overlayDir, 'package.json'), 'utf8')) as { dsh: { bundle: DshBundleManifest } }
+  const overlayManifest = JSON.parse(readFileSync(resolve(root, overlayDir, 'package.json'), 'utf8')) as { dsh: { bundle: SqhBundleManifest } }
   const overlayFiles = bundlePatchFiles(overlayManifest.dsh.bundle).map(file => `${overlayDir}/${file.replace(/^\.\//, '')}`)
   const disabled = new Set<string>()
   const overlayRows = new Set<string>()

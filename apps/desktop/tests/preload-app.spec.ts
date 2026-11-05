@@ -3,7 +3,7 @@ import { JSDOM } from 'jsdom'
 import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 import { installMandatoryUpdateOverlay } from '../src/preload-mandatory-overlay.ts'
 import { syncWindowsAppearance } from '../src/preload-windows.ts'
-import { DESKTOP_IPC, type DshDesktopProductApi } from '../src/ipc.ts'
+import { DESKTOP_IPC, type SqhDesktopProductApi } from '../src/ipc.ts'
 
 const electron = vi.hoisted(() => ({
   contextBridge: { exposeInMainWorld: vi.fn() },
@@ -40,7 +40,7 @@ it('exposes onboarding size activation to the application document', async () =>
 it('limits product documents to update status and a native confirmation action', async () => {
   vi.stubGlobal('location', new URL('dsh-app://app/index.html'))
   await import('../src/preload-app.ts')
-  const api = electron.contextBridge.exposeInMainWorld.mock.calls.find(([name]) => name === 'dshDesktop')?.[1] as DshDesktopProductApi
+  const api = electron.contextBridge.exposeInMainWorld.mock.calls.find(([name]) => name === 'dshDesktop')?.[1] as SqhDesktopProductApi
   await api.updates.status()
   await api.updates.open()
   expect(electron.ipcRenderer.invoke.mock.calls).toEqual([[DESKTOP_IPC.updatesStatus], [DESKTOP_IPC.updatesOpen]])
@@ -69,7 +69,7 @@ it('reads the local machine description only from the application main frame', a
   vi.stubGlobal('location', new URL('dsh-app://app/index.html'))
   electron.ipcRenderer.invoke.mockResolvedValue(description)
   await import('../src/preload-app.ts')
-  const api = electron.contextBridge.exposeInMainWorld.mock.calls.find(([name]) => name === 'dshDesktop')?.[1] as DshDesktopProductApi
+  const api = electron.contextBridge.exposeInMainWorld.mock.calls.find(([name]) => name === 'dshDesktop')?.[1] as SqhDesktopProductApi
   await expect(api.deviceInfo()).resolves.toBe(description)
   expect(electron.ipcRenderer.invoke).toHaveBeenCalledExactlyOnceWith(DESKTOP_IPC.deviceInfo)
   vi.resetModules()
@@ -169,7 +169,7 @@ it.each(['win32', 'darwin'] as const)('installs the embedded mandatory UI only i
 it('exposes constrained shortcut operations and releases configuration subscriptions', async () => {
   vi.stubGlobal('location', new URL('dsh-app://app/'))
   await import('../src/preload-app.ts')
-  const api = electron.contextBridge.exposeInMainWorld.mock.calls.find(([name]) => name === 'dshDesktop')?.[1] as DshDesktopProductApi
+  const api = electron.contextBridge.exposeInMainWorld.mock.calls.find(([name]) => name === 'dshDesktop')?.[1] as SqhDesktopProductApi
   await api.shortcuts.get([])
   expect(api.shortcuts).not.toHaveProperty('reload')
   await api.shortcuts.recording(true)
@@ -194,7 +194,7 @@ it('withholds the product API from same-origin child frames', async () => {
 it('forwards only the focused product iframe and releases native input subscriptions', async () => {
   vi.stubGlobal('location', new URL('dsh-app://app/'))
   await import('../src/preload-app.ts')
-  const api = electron.contextBridge.exposeInMainWorld.mock.calls.find(([name]) => name === 'dshDesktop')?.[1] as DshDesktopProductApi
+  const api = electron.contextBridge.exposeInMainWorld.mock.calls.find(([name]) => name === 'dshDesktop')?.[1] as SqhDesktopProductApi
   const listener = vi.fn()
   const off = api.keyboard.subscribe(listener)
   const handler = electron.ipcRenderer.on.mock.calls.find(([name]) => name === DESKTOP_IPC.shortcutsInput)![1] as
@@ -226,7 +226,7 @@ it('forwards only the focused product iframe and releases native input subscript
 it('forwards browser guest input only for the focused live webview lease', async () => {
   vi.stubGlobal('location', new URL('dsh-app://app/'))
   await import('../src/preload-app.ts')
-  const api = electron.contextBridge.exposeInMainWorld.mock.calls.find(([name]) => name === 'dshDesktop')?.[1] as DshDesktopProductApi
+  const api = electron.contextBridge.exposeInMainWorld.mock.calls.find(([name]) => name === 'dshDesktop')?.[1] as SqhDesktopProductApi
   const listener = vi.fn()
   const off = api.keyboard.subscribe(listener)
   const handler = electron.ipcRenderer.on.mock.calls.find(([name]) => name === DESKTOP_IPC.shortcutsInput)![1] as

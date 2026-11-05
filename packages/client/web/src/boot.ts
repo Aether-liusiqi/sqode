@@ -7,7 +7,7 @@
  */
 import { Context } from '@liusiqi-dev/cordis'
 import type {
-  BootManifest, ClientModuleCreateOptions, ClientModuleSystem, DshWindow,
+  BootManifest, ClientModuleCreateOptions, ClientModuleSystem, SqhWindow,
 } from '@liusiqi-dev/dsh-client-modules/client'
 import { bootClient } from './boot-client.ts'
 import { BootPage } from './boot-page.ts'
@@ -55,7 +55,7 @@ export class AppWebEntry {
       // row, or rejects it into the failure rendering below. An absent global
       // means no bootstrap owns the document and there is nothing to wait for.
       await (globalThis as { __DSH_BOOT_READY__?: { promise: Promise<void> } }).__DSH_BOOT_READY__?.promise
-      const win = globalThis as DshWindow
+      const win = globalThis as SqhWindow
       const moduleLoader = win.__ModuleLoader__
       if (moduleLoader === undefined) {
         throw new Error('web boot: window.__ModuleLoader__ bootstrap facade is missing')

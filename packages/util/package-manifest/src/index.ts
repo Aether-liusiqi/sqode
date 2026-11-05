@@ -4,12 +4,12 @@
  */
 
 export type {
-  DshBundleManifest,
-  DshClientManifest,
-  DshEnginesManifest,
-  DshManifest,
-  DshPackageManifest,
-  DshProfileManifest,
+  SqhBundleManifest,
+  SqhClientManifest,
+  SqhEnginesManifest,
+  SqhManifest,
+  SqhPackageManifest,
+  SqhProfileManifest,
   LocalizedText,
   PluginLocalizedMeta,
 } from './types.ts'

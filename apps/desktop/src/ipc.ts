@@ -87,7 +87,7 @@ export interface DesktopFeedbackSaved {
 }
 
 /** Product documents cannot supply update versions, package URLs, or installation authorization. */
-export interface DshDesktopProductApi {
+export interface SqhDesktopProductApi {
   readonly protocolVersion: 1
   readonly browser: DesktopBrowserBridge
   readonly keyboard: DesktopKeyboardApi

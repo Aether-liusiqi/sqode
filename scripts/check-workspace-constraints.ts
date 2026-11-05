@@ -14,7 +14,7 @@ import {
   PRIVATE_EXPERIMENTAL_PACKAGE_DIRECTORIES,
 } from './experimental-package-policy.ts'
 import { hasTypertRemoteNavigation, isForbiddenPublicationFile } from './publication-payload.ts'
-import type { DshBundleManifest } from '../packages/util/package-manifest/src/types.ts'
+import type { SqhBundleManifest } from '../packages/util/package-manifest/src/types.ts'
 import { OPTIONAL_BUNDLES, bundlePatchFiles } from '../packages/boot/app-boot/src/profile.ts'
 import { collectProjectReferenceFaceViolations } from './project-reference-faces.ts'
 
@@ -99,7 +99,7 @@ export interface PackageManifest {
   dependencies?: Record<string, string>
   optionalDependencies?: Record<string, string>
   dsh?: {
-    bundle?: DshBundleManifest
+    bundle?: SqhBundleManifest
   }
 }
 

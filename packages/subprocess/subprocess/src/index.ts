@@ -17,8 +17,8 @@ import type { SubprocessTerminalEnvironment, SubprocessTerminalHandle, Subproces
 export { SQODE_ENV_PREFIX } from './types.ts'
 export type {
   CollectedOutput,
-  DshEnvironment,
-  DshEnvironmentKey,
+  SqhEnvironment,
+  SqhEnvironmentKey,
   SubprocessCollect,
   SubprocessCollectedOutputs,
   SubprocessHandle,

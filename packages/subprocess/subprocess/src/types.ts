@@ -13,10 +13,10 @@ import type { Duplex, Readable, Writable } from 'node:stream'
 export const SQODE_ENV_PREFIX = 'SQODE_' as const
 
 /** One environment key inside the managed {@link SQODE_ENV_PREFIX} namespace. */
-export type DshEnvironmentKey = `${typeof SQODE_ENV_PREFIX}${string}`
+export type SqhEnvironmentKey = `${typeof SQODE_ENV_PREFIX}${string}`
 
 /** Trusted Siqi Harness variables for one child-process execution. */
-export type DshEnvironment = Readonly<Record<DshEnvironmentKey, string>>
+export type SqhEnvironment = Readonly<Record<SqhEnvironmentKey, string>>
 
 /** One captured stream: the (possibly truncated) text plus recovery info. */
 export interface CollectedOutput {

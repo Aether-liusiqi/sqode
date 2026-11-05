@@ -62,7 +62,7 @@ interface MutableRegistryManifest {
 }
 
 /** Summary of a verified two-release npm layout. */
-export interface DshInstallLayoutSummary {
+export interface SqhInstallLayoutSummary {
   readonly dshPackagesPerVersion: number
   readonly checkedDshEdges: number
 }
@@ -146,7 +146,7 @@ function setDifference(left: ReadonlySet<string>, right: ReadonlySet<string>): s
  * @param packageLock - Metadata-only package lock produced by npm.
  * @returns Counts for the verified DSH packages and dependency edges.
  */
-export function assertDualDshInstallLayout(packageLock: NpmPackageLock): DshInstallLayoutSummary {
+export function assertDualDshInstallLayout(packageLock: NpmPackageLock): SqhInstallLayoutSummary {
   const [nestedVersion, rootVersion] = SYNTHETIC_DSH_VERSIONS
   const errors: string[] = []
   const namesByVersion = new Map<string, Set<string>>([
@@ -223,7 +223,7 @@ export function assertDualDshInstallLayout(packageLock: NpmPackageLock): DshInst
  * @param summary - Counts returned by {@link assertDualDshInstallLayout}.
  * @returns The verified resolution work units.
  */
-export function assertResolutionWorkBudget(summary: DshInstallLayoutSummary): number {
+export function assertResolutionWorkBudget(summary: SqhInstallLayoutSummary): number {
   const units = summary.dshPackagesPerVersion * summary.checkedDshEdges
   if (units > MAX_RESOLUTION_WORK_UNITS) {
     throw new Error(

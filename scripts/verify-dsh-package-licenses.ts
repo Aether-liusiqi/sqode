@@ -10,7 +10,7 @@ const ROOT = resolve(import.meta.dirname, '..')
 const SQODE_PACKAGE_NAME = /^@liusiqi-dev\/dsh(?:-|$)/
 
 /** Result of checking every DSH package reachable through the root workspace list. */
-export interface DshPackageLicenseReport {
+export interface SqhPackageLicenseReport {
   /** Number of DSH package manifests checked. */
   packageCount: number
   /** Repository-relative diagnostics for non-MIT declarations. */
@@ -54,7 +54,7 @@ function printable(value: unknown): string {
  * @param root - absolute repository root containing the workspace package.json.
  * @returns the checked package count and every non-MIT declaration.
  */
-export function inspectDshPackageLicenses(root: string): DshPackageLicenseReport {
+export function inspectDshPackageLicenses(root: string): SqhPackageLicenseReport {
   let packageCount = 0
   const failures: string[] = []
 

@@ -5,7 +5,7 @@
  */
 
 /** Package identity and metadata; local profile readers may accept a partial declaration. */
-export interface DshPackageManifest {
+export interface SqhPackageManifest {
   /** Published npm package name. */
   name: string
   /** Published npm package version. */
@@ -21,21 +21,21 @@ export interface DshPackageManifest {
   /** Compatible versions of packages supplied by the consuming project. */
   peerDependencies?: Record<string, string>
   /** Runtime requirements; DSH compatibility is declarative until a reader enforces it. */
-  engines?: DshEnginesManifest
+  engines?: SqhEnginesManifest
   /** DSH-specific author declarations. */
-  dsh?: DshManifest
+  dsh?: SqhManifest
 }
 
 /** Public author fields under `package.json.dsh`; a package may declare several roles. */
-export interface DshManifest {
+export interface SqhManifest {
   /** Manifest format version, independent of the npm package and Session format versions. */
   manifestVersion?: 1
   /** Bundle metadata consumed by the profile launcher. */
-  bundle?: DshBundleManifest
+  bundle?: SqhBundleManifest
   /** Profile metadata consumed by the profile launcher. */
-  profile?: DshProfileManifest
+  profile?: SqhProfileManifest
   /** Client module loading and build metadata. */
-  client?: DshClientManifest
+  client?: SqhClientManifest
 }
 
 /** Literal text or translations indexed by lowercase language id, with a required English fallback. */
@@ -54,7 +54,7 @@ export interface PluginLocalizedMeta {
 }
 
 /** Runtime version requirements under `package.json.engines`. */
-export interface DshEnginesManifest {
+export interface SqhEnginesManifest {
   /** Compatible DSH versions as a SemVer range, including an exact version. */
   dsh?: string
   /** Compatible Node.js versions. */
@@ -66,19 +66,19 @@ export interface DshEnginesManifest {
 }
 
 /** The configuration layer exported by a bundle package. */
-export interface DshBundleManifest {
+export interface SqhBundleManifest {
   /** One patch file path, or an ordered list applied in sequence, each relative to the declaring package root. */
   patch: string | string[]
 }
 
 /** The bundle composition declared by a profile directory. */
-export interface DshProfileManifest {
+export interface SqhProfileManifest {
   /** Ordered bundle layer list, using installed package names. */
   bundles?: string[]
 }
 
 /** Client module declaration read by client-modules and the client build. */
-export interface DshClientManifest {
+export interface SqhClientManifest {
   /** Client platform identifier; the Web consumer selects `web`. */
   platform: string
   /** Informational package-name dependencies, not Cordis service injection. */

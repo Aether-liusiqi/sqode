@@ -8,10 +8,10 @@
  */
 
 import type { SandboxEnforcement, SandboxExecutionPolicy, SandboxMode } from '@liusiqi-dev/dsh-sandbox'
-import type { CollectedOutput, DshEnvironment, SubprocessOutputReader } from '@liusiqi-dev/dsh-subprocess'
+import type { CollectedOutput, SqhEnvironment, SubprocessOutputReader } from '@liusiqi-dev/dsh-subprocess'
 
 export { SQODE_ENV_PREFIX } from '@liusiqi-dev/dsh-subprocess'
-export type { CollectedOutput, DshEnvironment, DshEnvironmentKey, SubprocessOutputRead, SubprocessOutputReader } from '@liusiqi-dev/dsh-subprocess'
+export type { CollectedOutput, SqhEnvironment, SqhEnvironmentKey, SubprocessOutputRead, SubprocessOutputReader } from '@liusiqi-dev/dsh-subprocess'
 
 /**
  * Non-consuming offset readers over a background process's captured streams,
@@ -98,7 +98,7 @@ export interface ShellExecRequest {
    * value from the harness process and a caller {@link env} entry cannot
    * displace a managed one.
    */
-  dshEnv?: DshEnvironment | undefined
+  dshEnv?: SqhEnvironment | undefined
   /** Fully resolved per-call sandbox policy; sandboxing executors default it. */
   sandboxPolicy?: SandboxExecutionPolicy | undefined
 }
@@ -131,7 +131,7 @@ export interface ShellExecSpec {
    */
   env?: Record<string, string> | undefined
   /** Managed `DSH_*` snapshot (typed to managed keys); merges after {@link env}. */
-  dshEnv?: DshEnvironment | undefined
+  dshEnv?: SqhEnvironment | undefined
   /** Resolved sandbox policy; ignored by executors that do not confine. */
   sandboxPolicy: SandboxExecutionPolicy | undefined
 }

@@ -27,7 +27,7 @@ export interface RuntimeProcessOptions {
 }
 
 /** Node argv plus internal profile patches required by one resolved dsh entry. */
-export interface DshNodeLaunch {
+export interface SqhNodeLaunch {
   /** Arguments before the profile selector. */
   nodeArgs: string[]
   /** Internal patches applied below caller-supplied patches. */
@@ -93,7 +93,7 @@ export function resolveDshNodeLaunchFromManifests(
   dshManifestUrl: string,
   clientManifestUrl: string,
   sourceLoaderUrl?: string,
-): DshNodeLaunch {
+): SqhNodeLaunch {
   const bin = resolveDshBinFromManifests(dshManifestUrl, clientManifestUrl)
   if (existsSync(bin)) return { nodeArgs: [bin], patches: [], environment: {} }
 
@@ -118,7 +118,7 @@ export function resolveDshNodeLaunchFromManifests(
  * Resolve the installed dsh package to a built or source Node launch.
  * @returns the launch descriptor for the current checkout or installed package.
  */
-function installedDshNodeLaunch(): DshNodeLaunch {
+function installedDshNodeLaunch(): SqhNodeLaunch {
   return resolveDshNodeLaunchFromManifests(
     import.meta.resolve('@liusiqi-dev/sqode/package.json'),
     new URL('../package.json', import.meta.url).href,

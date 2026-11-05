@@ -2,7 +2,7 @@
 import type { Context } from '@liusiqi-dev/cordis'
 import * as modulesClient from '@liusiqi-dev/dsh-client-modules/client'
 import type {
-  ClientBundleRegistration, ClientModuleCreateOptions, ClientModuleLoaderTarget, DshWindow,
+  ClientBundleRegistration, ClientModuleCreateOptions, ClientModuleLoaderTarget, SqhWindow,
   WebBootEntry,
 } from '@liusiqi-dev/dsh-client-modules/client'
 import { afterEach, describe, expect, it, vi } from 'vitest'
@@ -11,7 +11,7 @@ import { AppWebEntry } from '../src/boot.ts'
 const MODULES_ID = '@liusiqi-dev/dsh-client-modules'
 const PROVIDER_CLIENT_ID = 'provider/client'
 const RUNTIME_CLIENT_ID = 'runtime/client'
-const win = globalThis as DshWindow
+const win = globalThis as SqhWindow
 const transportGlobal = globalThis as {
   __DSH_TRANSPORT__?: { loadBundle(url: string): Promise<void> }
 }

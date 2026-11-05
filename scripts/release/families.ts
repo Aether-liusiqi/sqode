@@ -319,7 +319,7 @@ export abstract class ReleaseFamily {
 }
 
 /** Release packages and apps: one shared version across the whole family. */
-class DshFamily extends ReleaseFamily {
+class SqhFamily extends ReleaseFamily {
   readonly id = 'dsh'
   readonly patterns = [
     'packages/*/*/package.json',
@@ -421,7 +421,7 @@ class VendorFamily extends ReleaseFamily {
 
 /** Every release family this module owns, in workflow order. */
 function releaseFamilies(): readonly ReleaseFamily[] {
-  return [new DshFamily(), new VendorFamily()]
+  return [new SqhFamily(), new VendorFamily()]
 }
 
 /**

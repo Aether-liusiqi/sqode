@@ -1,11 +1,11 @@
 import { expect, it } from 'vitest'
 import { desktopUpdateErrorSummary, presentDesktopUpdate } from '../src/update-presentation.ts'
 import { en, zh } from '../src/locale.ts'
-import type { DesktopUpdateState, DshDesktopProductApi } from '../src/ipc.ts'
+import type { DesktopUpdateState, SqhDesktopProductApi } from '../src/ipc.ts'
 import type { DesktopUpdateBridge } from '@liusiqi-dev/dsh-client-ui-settings-general/types'
 
 it('keeps the Electron preload assignable to the product consumer', () => {
-  const assign = (bridge: DshDesktopProductApi['updates']): DesktopUpdateBridge => bridge
+  const assign = (bridge: SqhDesktopProductApi['updates']): DesktopUpdateBridge => bridge
   expect(assign).toBeTypeOf('function')
 })
 

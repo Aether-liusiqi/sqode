@@ -30,7 +30,7 @@
  */
 
 import type {} from '@liusiqi-dev/cordis'
-import type { DshClientManifest } from '@liusiqi-dev/dsh-package-manifest'
+import type { SqhClientManifest } from '@liusiqi-dev/dsh-package-manifest'
 import type { ClientEntries } from './entries.ts'
 import type { ClientModuleSystem } from './system.ts'
 
@@ -158,7 +158,7 @@ export function optionalStringArray(subject: string, field: string, value: unkno
  * @returns the validated declaration, or undefined when the field is absent.
  * @throws {Error} when the field is present but any member is malformed.
  */
-export function parseDshClient(pkgName: string, value: unknown): DshClientManifest | undefined {
+export function parseDshClient(pkgName: string, value: unknown): SqhClientManifest | undefined {
   if (value === undefined) return undefined
   if (typeof value !== 'object' || value === null) {
     throw new Error(`client-modules: ${pkgName} has a non-object dsh.client declaration`)
@@ -358,7 +358,7 @@ export interface ClientModuleLoaderTarget {
 }
 
 /** Window API of the web boot protocol: the host-injected graph and registration facade. */
-export interface DshWindow {
+export interface SqhWindow {
   /** Host-composed entry graph, injected before the shell bundle runs; wire-boundary raw until {@link parseBootManifest}. */
   __DSH_BOOT__?: unknown
   /** HTML-installed facade: a pending registration queue, then the live module-system target. */

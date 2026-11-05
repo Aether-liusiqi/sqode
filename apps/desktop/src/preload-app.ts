@@ -3,7 +3,7 @@
 import type { DesktopShortcutInput, ShortcutConfigSnapshot, ShortcutSaveResult } from '@liusiqi-dev/dsh-client-shortcuts/protocol'
 import { contextBridge, ipcRenderer, webUtils } from 'electron'
 import {
-  DESKTOP_IPC, SCHEME, type DesktopFeedbackSaved, type DshDesktopProductApi, type DesktopUpdatePresentation,
+  DESKTOP_IPC, SCHEME, type DesktopFeedbackSaved, type SqhDesktopProductApi, type DesktopUpdatePresentation,
 } from './ipc.ts'
 import { PLATFORM_IPC } from './platform-ipc.ts'
 import { markDocumentPlatform, syncWindowFullscreen } from './preload-platform.ts'
@@ -12,7 +12,7 @@ import { syncWindowsAppearance } from './preload-windows.ts'
 import { installMandatoryUpdateOverlay } from './preload-mandatory-overlay.ts'
 import { createDesktopBrowserBridge } from './preload-browser.ts'
 
-function createProductApi(): DshDesktopProductApi {
+function createProductApi(): SqhDesktopProductApi {
   return {
     protocolVersion: 1,
     browser: createDesktopBrowserBridge(),
