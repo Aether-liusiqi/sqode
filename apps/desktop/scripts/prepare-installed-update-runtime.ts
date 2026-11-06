@@ -45,7 +45,7 @@ export async function prepareInstalledUpdateRuntime(manifest: string, sourceRoot
     for (const version of run.versions) {
       const directory = join(run.root, version)
       await mkdir(directory)
-      const runtime = join(directory, 'dsh')
+      const runtime = join(directory, 'sqh')
       await cp(sourceRoot, runtime, { recursive: true, force: false, errorOnExist: true })
       const paths = [join(runtime, 'package.json'), ...source.sharedPackages.filter(entry => releaseNames.has(entry.name))
         .map(entry => join(runtimePath(runtime, entry.path), 'package.json'))]

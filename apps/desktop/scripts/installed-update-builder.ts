@@ -20,7 +20,7 @@ export async function createInstalledUpdateBuilderConfig(manifest: string, versi
     throw new Error('installed update: signed ordinary-update qualification requires matching test deployment settings')
   }
   const application = await verifyInstalledUpdateApplication(run.root)
-  const dsh = join(run.root, version, 'dsh')
+  const dsh = join(run.root, version, 'sqh')
   await verifyDesktopRuntime(dsh, version, { platform: 'win32', arch: 'x64' })
   const config = createElectronBuilderConfig({ ...environment, SQODE_DESKTOP_APP_ID: run.appId,
     SQODE_DESKTOP_TARGET_PLATFORM: 'win32', SQODE_DESKTOP_TARGET_ARCH: 'x64', SQODE_DESKTOP_UNSIGNED: '0' }, 'win32', 'x64', dsh, version)
@@ -31,7 +31,7 @@ export async function createInstalledUpdateBuilderConfig(manifest: string, versi
     files: [
       { from: application, to: '.', filter: ['lib/*.js', 'lib/*.cjs', 'renderer/**/*', 'qualification-bootstrap.mjs', 'installed-update-identity.mjs'] },
       'package.json',
-      { from: dsh, to: 'dsh', filter: ['**/*'] },
+      { from: dsh, to: 'sqh', filter: ['**/*'] },
       { from: join(dsh, 'node_modules'), to: 'dsh/node_modules', filter: ['**/*'] },
     ],
     publish: [{ provider: 'generic' as const, url: `${run.origin}/${run.feedKey.slice(0, -'nightly.yml'.length)}`, channel: 'nightly' }],

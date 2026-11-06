@@ -13,7 +13,7 @@ import type { DesktopRuntimeDescriptor, DesktopRuntimeFile } from '../src/runtim
  */
 export async function verifyRuntimeArchive(archivePath: string, expected: DesktopRuntimeDescriptor): Promise<void> {
   const archive = await readAsar(archivePath)
-  const descriptor = await archive.readFile(join('dsh', 'desktop-runtime.json'))
+  const descriptor = await archive.readFile(join('sqh', 'desktop-runtime.json'))
   if (!descriptor.equals(Buffer.from(`${JSON.stringify(expected, undefined, 2)}\n`))) {
     throw new Error('desktop runtime: archived descriptor differs from preparation')
   }
@@ -25,7 +25,7 @@ export async function verifyRuntimeArchive(archivePath: string, expected: Deskto
       for (const [name, child] of Object.entries(node.files)) await visit(child, path === '' ? name : `${path}/${name}`)
       return
     }
-    const name = join('dsh', ...path.split('/'))
+    const name = join('sqh', ...path.split('/'))
     const physical = node.unpacked === true ? await lstat(join(`${archivePath}.unpacked`, name)) : undefined
     if (physical !== undefined && !physical.isFile()) throw new Error(`desktop runtime: unexpected unpacked entry ${path}`)
     if (node.unpacked === true) unpacked.add(join(`${archivePath}.unpacked`, name))
@@ -37,8 +37,8 @@ export async function verifyRuntimeArchive(archivePath: string, expected: Deskto
       : node.executable === true)
     files.push({ path, bytes: body.byteLength, sha256: createHash('sha256').update(body).digest('hex'), executable })
   }
-  await visit(archive.getFile('dsh', false), '')
-  const entries = await readdir(join(`${archivePath}.unpacked`, 'dsh'), { recursive: true, withFileTypes: true })
+  await visit(archive.getFile('sqh', false), '')
+  const entries = await readdir(join(`${archivePath}.unpacked`, 'sqh'), { recursive: true, withFileTypes: true })
     .catch((error: NodeJS.ErrnoException) => {
       if (error.code === 'ENOENT' && unpacked.size === 0) return []
       throw error

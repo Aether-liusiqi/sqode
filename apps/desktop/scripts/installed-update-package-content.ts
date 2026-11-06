@@ -89,14 +89,14 @@ export async function verifyInstalledUpdatePackageContent(manifest: string, vers
   }
   const extracted = await mkdtemp(join(dirname(payload), 'asar-'))
   extractAll(join(payload, 'resources/app.asar'), extracted)
-  const prepared = await verifyDesktopRuntime(join(run.root, version, 'dsh'), version, { platform: 'win32', arch: 'x64' })
-  const runtime = readDesktopRuntime(join(extracted, 'dsh'))
+  const prepared = await verifyDesktopRuntime(join(run.root, version, 'sqh'), version, { platform: 'win32', arch: 'x64' })
+  const runtime = readDesktopRuntime(join(extracted, 'sqh'))
   if (JSON.stringify(runtime.release) !== JSON.stringify(prepared.release)
     || JSON.stringify(runtime.sharedPackages) !== JSON.stringify(prepared.sharedPackages)
     || JSON.stringify(runtime.files.map(file => file.path)) !== JSON.stringify(prepared.files.map(file => file.path))) {
     throw new Error('installed update: packaged runtime does not describe the prepared release')
   }
-  const actualFiles = inventoryDesktopRuntime(join(extracted, 'dsh'))
+  const actualFiles = inventoryDesktopRuntime(join(extracted, 'sqh'))
   if (JSON.stringify(actualFiles.map(file => file.path)) !== JSON.stringify(prepared.files.map(file => file.path))) {
     throw new Error('installed update: packaged runtime file list differs from prepared inputs')
   }
@@ -107,7 +107,7 @@ export async function verifyInstalledUpdatePackageContent(manifest: string, vers
       throw new Error('installed update: non-executable runtime descriptor differs from prepared inputs')
     }
     const transformed = file.path.startsWith('node_modules/') && file.path.endsWith('/package.json')
-      ? await transform(runtimePath(join(run.root, version, 'dsh'), file.path)) : null
+      ? await transform(runtimePath(join(run.root, version, 'sqh'), file.path)) : null
     const bytes = transformed === null ? file.bytes : Buffer.byteLength(transformed)
     const hash = transformed === null ? file.sha256 : createHash('sha256').update(transformed).digest('hex')
     if (actualFiles[index]!.sha256 !== hash || actualFiles[index]!.bytes !== bytes) {
@@ -117,7 +117,7 @@ export async function verifyInstalledUpdatePackageContent(manifest: string, vers
   return { version, appId: run.appId, applicationFiles: inventory.files.length, dependencies, dependenciesFrozen: false,
     runtimeFiles: runtime.files.length, feedUrl: `${run.origin}/${run.feedKey}`, installed: false,
     resignedExecutables: runtime.files.filter(file => file.path.endsWith('.exe')).map((file) => {
-      if (archive.getFile(join('dsh', file.path), false).unpacked !== true) {
+      if (archive.getFile(join('sqh', file.path), false).unpacked !== true) {
         throw new Error('installed update: executable runtime file must be outside ASAR')
       }
       return join(payload, 'resources/app.asar.unpacked/dsh', file.path)

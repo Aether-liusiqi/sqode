@@ -32,7 +32,7 @@ export async function prepareWindowsAsarUnpack(context, sourceRoot) {
     const parent = join(appDir, '.desktop-build')
     await mkdir(parent, { recursive: true })
     const stage = await mkdtemp(join(parent, 'asar-source-'))
-    copyRoot = join(stage, 'dsh')
+    copyRoot = join(stage, 'sqh')
     info.disposeOnBuildFinish(() => rm(stage, { recursive: true, force: true }))
     await cp(sourceRoot, copyRoot, { recursive: true, force: false, errorOnExist: true })
     config.files = config.files.map(file => {
@@ -57,11 +57,11 @@ export async function prepareWindowsAsarUnpack(context, sourceRoot) {
 export async function verifyWindowsAsarUnpack(sourceRoot, resourcesDir, files) {
   const archive = await readAsar(join(resourcesDir, 'app.asar'))
   for (const file of files) {
-    const entry = archive.getFile(join('dsh', file), false)
+    const entry = archive.getFile(join('sqh', file), false)
     if (entry.unpacked !== true || entry.link !== undefined) {
       throw new Error(`Windows ASAR: PE must be unpacked: ${file}`)
     }
-    const copied = join(resourcesDir, 'app.asar.unpacked', 'dsh', file)
+    const copied = join(resourcesDir, 'app.asar.unpacked', 'sqh', file)
     const stat = await lstat(copied)
     if (!stat.isFile() || stat.isSymbolicLink()) throw new Error(`Windows ASAR: expected a real PE file: ${file}`)
     const [prepared, packaged] = await Promise.all([readFile(join(sourceRoot, file)), readFile(copied)])
