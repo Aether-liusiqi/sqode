@@ -13,11 +13,12 @@ import { resolveWindowsSignatureCacheDirectory } from './windows-signature-cache
 import { resolveWindowsPackageSettings } from './windows-package-settings.mjs'
 
 const APP_ROOT = fileURLToPath(new URL('..', import.meta.url))
-// Three prefixes are accepted: the product-name one this repository already used
-// for some settings, the new codename, and the old codename that installed
-// environments still export. Dropping any of them makes an existing machine report
-// "unsupported setting" or silently keep a stale value.
-const ENV_PREFIX = '(?:DSH|SQODE|SQH)'
+// Two prefixes are accepted: the product name this repository already used for some
+// settings, and the new codename. The old codename is deliberately absent — the
+// rename is meant to leave no trace of it in the source, including a compatibility
+// branch. An installed machine that still exports the old name is told its setting
+// is unsupported, which is the prompt to migrate.
+const ENV_PREFIX = '(?:SQODE|SQH)'
 const SHARED_SETTING = new RegExp(`^(?:${ENV_PREFIX}_DESKTOP_(?:APP_ID|AUTO_UPDATE_ENV|NPM_REGISTRY|MANDATORY_UPDATE_(?:CONFIG|(?:TEST|PROD)_ORIGIN))|DOWNLOAD_TEST_RELEASE_ID|DOWNLOAD_(?:TEST|PROD)_(?:ORIGIN|COS_BUCKET|COS_SECRET_ID|COS_SECRET_KEY))$`, 'u')
 const WINDOWS_SETTING = new RegExp(`^${ENV_PREFIX}_DESKTOP_WINDOWS_(?:CER_FILE|SIGNTOOL|KEY_CONTAINER|TOKEN_PIN|SIGNATURE_CACHE_DIR|SIGNATURE_CACHE_CONCURRENCY)$`, 'u')
 const MACOS_SETTING = new RegExp(`^(?:${ENV_PREFIX}_DESKTOP_MACOS_(?:SIGNING_IDENTITY|TEAM_ID|PACK_CONCURRENCY|DOWNLOAD_PROXY|NOTARIZATION_PROXY)|APPLE_(?:API_KEY|API_KEY_ID|API_ISSUER|ID|APP_SPECIFIC_PASSWORD|TEAM_ID|KEYCHAIN|KEYCHAIN_PROFILE)|CSC_(?:LINK|KEY_PASSWORD))$`, 'u')
