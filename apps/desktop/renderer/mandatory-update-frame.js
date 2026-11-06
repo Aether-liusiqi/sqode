@@ -22,7 +22,7 @@ if (window.parent !== window && window.sqhMandatoryUpdate === undefined) {
     }
   }
   window.addEventListener('message', event => {
-    if (!event.isTrusted || event.source !== window.parent || event.origin !== 'dsh-app://app'
+    if (!event.isTrusted || event.source !== window.parent || event.origin !== 'sqh-app://app'
       || event.data?.type !== 'dsh-mandatory-connect' || event.ports.length !== 1 || port) return
     port = event.ports[0]
     port.onmessage = receive

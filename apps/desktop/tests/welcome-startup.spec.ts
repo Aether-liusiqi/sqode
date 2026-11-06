@@ -69,7 +69,7 @@ vi.mock('electron', () => ({
   BrowserWindow: class {
     constructor(options: BrowserWindowConstructorOptions) { state.windowOptions = options }
     private ready: (() => void) | undefined
-    webContents = { mainFrame: { url: 'dsh-app://app/' }, setWindowOpenHandler: vi.fn(),
+    webContents = { mainFrame: { url: 'sqh-app://app/' }, setWindowOpenHandler: vi.fn(),
       on: vi.fn(), once: vi.fn(), send: vi.fn(), openDevTools: state.openDevTools }
     static getAllWindows() { return [] }
     once(name: string, callback: () => void) { if (name === 'ready-to-show') this.ready = callback; return this }
@@ -213,7 +213,7 @@ it.each([false, true])('starts welcome onboarding without carrying update focus 
   }
   await vi.waitFor(() => { expect(state.operations).toBeDefined() })
   expect(state.startHost).toHaveBeenCalledOnce()
-  expect(state.loadWorkspace).toHaveBeenCalledExactlyOnceWith('dsh-app://app/')
+  expect(state.loadWorkspace).toHaveBeenCalledExactlyOnceWith('sqh-app://app/')
   expect(state.showWorkspace).not.toHaveBeenCalled()
   state.loadWorkspace.mockClear()
   expect(state.welcomeLocale).toMatchObject({ id: 'zh-CN' })

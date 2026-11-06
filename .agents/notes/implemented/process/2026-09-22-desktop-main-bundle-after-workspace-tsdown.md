@@ -6,7 +6,7 @@ English | [中文](2026-09-22-desktop-main-bundle-after-workspace-tsdown.zh.md)
 
 ## Problem
 
-A macOS Desktop package built from a fresh worktree crashed at launch with `ERR_MODULE_NOT_FOUND: Cannot find package '@siqi-ai/dsh-home-paths' imported from app.asar/lib/main.js`. The packaging log showed why: rolldown had reported `[UNRESOLVED_IMPORT] Could not resolve '@siqi-ai/dsh-home-paths' … treating it as an external dependency`, and the same for `@siqi-ai/dsh-app-boot` and `@siqi-ai/dsh-deepseek-account`. The three packages are workspace devDependencies of `apps/desktop` that the main-process bundle must inline, because electron-builder copies only the manifest's `dependencies` into `app.asar/node_modules`.
+A macOS Desktop package built from a fresh worktree crashed at launch with `ERR_MODULE_NOT_FOUND: Cannot find package '@siqi-ai/dsh-home-paths' imported from app.asar/lib/main.js`. The packaging log showed why: rolldown had reported `[UNRESOLVED_IMPORT] Could not resolve '@siqi-ai/dsh-home-paths' … treating it as an external dependency`, and the same for `@siqi-ai/sqh-app-boot` and `@siqi-ai/dsh-deepseek-account`. The three packages are workspace devDependencies of `apps/desktop` that the main-process bundle must inline, because electron-builder copies only the manifest's `dependencies` into `app.asar/node_modules`.
 
 The root tsdown config builds every matched workspace member concurrently (`Promise.all` over the resolved configs in tsdown 0.22, with no dependency ordering), and `apps/desktop` was one of those members. Its bundle resolved the three packages through their `exports` to `lib/index.js` files that other concurrent builds had not written yet. On a checkout that had been built before, the stale `lib/` outputs existed and the bundle inlined them, which is why the defect surfaced only on a clean tree; `clean: false` in both configs kept it hidden. The broken bundle was also smaller (189 KB instead of 315 KB) and the packaging run passed every existing check, because the runtime payload smoke exercises the dsh runtime, not the Electron main process.
 
@@ -18,7 +18,7 @@ The Desktop config also asserts the invariant the crash violated. [`desktop-bund
 
 ## Alternatives considered
 
-**Declare the three packages as runtime `dependencies` so electron-builder ships them in the asar.** This is how `@siqi-ai/cordis` and `@siqi-ai/dsh-api-gateway` reach the asar today, and it removes the ordering problem. `dsh-app-boot` would bring a large dependency tree into `app.asar/node_modules`, duplicating the copy already inside the packed dsh runtime and enlarging the payload the runtime file policy must screen.
+**Declare the three packages as runtime `dependencies` so electron-builder ships them in the asar.** This is how `@siqi-ai/cordis` and `@siqi-ai/dsh-api-gateway` reach the asar today, and it removes the ordering problem. `sqh-app-boot` would bring a large dependency tree into `app.asar/node_modules`, duplicating the copy already inside the packed dsh runtime and enlarging the payload the runtime file policy must screen.
 
 **Fail on rolldown's `UNRESOLVED_IMPORT` warning** through `inputOptions.onLog` or `failOnWarn`. It catches only the unresolved case and would not have covered a dependency misdeclared as a devDependency, which produces a resolved, inlined bundle when the output exists and an external import when it does not. The packaged-imports check covers both with one rule.
 

@@ -13,7 +13,7 @@ afterEach(() => {
 })
 
 function fixture(): string {
-  const root = mkdtempSync(join(tmpdir(), 'dsh-application-entrypoints-'))
+  const root = mkdtempSync(join(tmpdir(), 'sqh-application-entrypoints-'))
   cleanups.push(root)
   return root
 }

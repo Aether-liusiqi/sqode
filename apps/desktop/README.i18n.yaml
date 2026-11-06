@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write apps/desktop/README.md
 /siqi-harness-desktop:
-  en: 9df7a14d8052eabe
-  zh: e2efdbe2837b628c
+  en: 518155ab89122b4a
+  zh: 732eba4bc70df64c
 /siqi-harness-desktop/terminal-command:
   en: bef92953c237363f
   zh: d21d6effd21b8c00
@@ -21,8 +21,8 @@
   en: 32e0039a190b5bdd
   zh: a373c7aa18ba6b17
 /siqi-harness-desktop/installation-ownership:
-  en: 32aedb9ffea52992
-  zh: 0f48b881e2026ec1
+  en: 19f535dc40329c2e
+  zh: 3e23afb899d29b5a
 /siqi-harness-desktop/installation-ownership/runtime-and-plugin-activation:
   en: 049d22a0f54c4642
   zh: 8ae31c6230e0ec93
@@ -48,8 +48,8 @@
   en: 9fdf0aa806fa0343
   zh: 73f4ac6c0853d036
 /siqi-harness-desktop/package/upload-updates:
-  en: 73f903a95e8438c6
-  zh: 26384d5a5bcba67b
+  en: eac11a130f5e1d1d
+  zh: 01e34aaf103b43ce
 /siqi-harness-desktop/package/unsigned-windows-test-installer:
   en: d685a2a05f1ef26c
   zh: b1cd599dc59508d2
@@ -57,8 +57,8 @@
   en: bb81f84e8b847908
   zh: 72851ba434550512
 /siqi-harness-desktop/package/windows-ev-signing:
-  en: 1c9cf3cb41bf348e
-  zh: 608a2a4f03cd18eb
+  en: c3f8bb93df949e10
+  zh: a4939741790af9c0
 /siqi-harness-desktop/updates:
   en: e41cc7e13f09a7f1
   zh: 4f4e7a06fcdc8eaa

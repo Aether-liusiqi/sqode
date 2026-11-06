@@ -60,7 +60,7 @@ console.log(JSON.stringify({ paths: app.paths, home: process.env.SQODE_HOME, jou
       const env = { SQODE_HOME: 'existing' }
       const app = { getPath: () => directory, setPath: (): never => { throw new Error('unexpected path change') } }
       expect(() => configureInstalledUpdateIdentity(app, { id: 'a'.repeat(24), versions },
-        { version: versions[0], dshDesktopAppId: 'com.deepseek.dsh' }, env)).toThrow('identity')
+        { version: versions[0], dshDesktopAppId: 'com.siqi.sqh' }, env)).toThrow('identity')
       expect(await readdir(directory)).toEqual([])
       expect(env).toEqual({ SQODE_HOME: 'existing' })
     })

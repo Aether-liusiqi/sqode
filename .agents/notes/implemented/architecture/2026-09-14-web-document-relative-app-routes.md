@@ -22,7 +22,7 @@ The launch entry follows the same rule. `authenticatedUrl` adds the process toke
 
 Consumers that need an absolute URL resolve against `document.baseURI`: the Gateway when it constructs its WebSocket URL and selects `ws:` or `wss:`, and the Inspector when it locates its own bundle from the boot graph.
 
-Desktop is the other document owner. Its window loads `dsh-app://app/`, an origin that serves the same dist at that root and forwards every app-owned path to the shell-owned Host, so its document directory already is the root and no base row is injected for it; it names that Host origin for the Gateway through the transport's `streamBaseUrl` instead. Its resources live at that root, which is also why the served HTTP shell's `./` does not apply to it.
+Desktop is the other document owner. Its window loads `sqh-app://app/`, an origin that serves the same dist at that root and forwards every app-owned path to the shell-owned Host, so its document directory already is the root and no base row is injected for it; it names that Host origin for the Gateway through the transport's `streamBaseUrl` instead. Its resources live at that root, which is also why the served HTTP shell's `./` does not apply to it.
 
 ## Alternatives considered
 

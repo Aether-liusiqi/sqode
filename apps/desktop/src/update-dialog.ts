@@ -34,7 +34,7 @@ export interface UpdateDialogApi {
 }
 
 // main.ts's protocol.handle shell route serves this document and its renderer assets; the modal requires that route.
-const page = 'dsh-app://shell/update-dialog.html'
+const page = 'sqh-app://shell/update-dialog.html'
 
 /** One fading backdrop with replaceable confirmation content; aborted checks and mandatory policy cancel ordinary prompts. */
 export class DesktopUpdateDialog {

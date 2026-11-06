@@ -22,7 +22,7 @@ Status: implemented
 
 需要绝对 URL 的消费方相对 `document.baseURI` 解析：Gateway 构造 WebSocket URL 并选择 `ws:` 或 `wss:` 时，以及 Inspector 从启动图定位自身 bundle 时。
 
-Desktop 是另一个文档所有者。它的窗口加载 `dsh-app://app/`：该来源在根目录提供同一份 dist，并把其他所有应用路径转发给它拥有的 Host，因此它的文档目录本就是根目录，无需为它注入 base 行；它改为通过传输层的 `streamBaseUrl` 为 Gateway 指定该 Host origin。它的资源就位于该根目录，这也是所服务 HTTP 外壳的 `./` 不适用于它的原因。
+Desktop 是另一个文档所有者。它的窗口加载 `sqh-app://app/`：该来源在根目录提供同一份 dist，并把其他所有应用路径转发给它拥有的 Host，因此它的文档目录本就是根目录，无需为它注入 base 行；它改为通过传输层的 `streamBaseUrl` 为 Gateway 指定该 Host origin。它的资源就位于该根目录，这也是所服务 HTTP 外壳的 `./` 不适用于它的原因。
 
 ## 曾考虑的替代方案
 

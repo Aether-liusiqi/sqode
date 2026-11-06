@@ -31,7 +31,7 @@ export function installMandatoryUpdateOverlay(): void {
       frame = document.createElement('iframe')
       frame.title = state.locale.messages.mandatoryTitle
       frame.style.cssText = 'display:block;width:100%;height:100%;border:0;background:transparent'
-      frame.src = 'dsh-app://shell/mandatory-update.html'
+      frame.src = 'sqh-app://shell/mandatory-update.html'
       shadow.append(frame)
       document.documentElement.append(host)
       frame.addEventListener('load', () => {
@@ -39,7 +39,7 @@ export function installMandatoryUpdateOverlay(): void {
         const channel = new MessageChannel()
         port = channel.port1
         port.onmessage = message
-        frame?.contentWindow?.postMessage({ type: 'dsh-mandatory-connect' }, 'dsh-app://shell', [channel.port2])
+        frame?.contentWindow?.postMessage({ type: 'dsh-mandatory-connect' }, 'sqh-app://shell', [channel.port2])
         publish()
         frame?.focus()
       })

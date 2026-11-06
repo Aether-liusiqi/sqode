@@ -20,7 +20,7 @@ afterAll(() => {
 })
 
 const tmp = (): string => {
-  const dir = mkdtempSync(join(tmpdir(), 'dsh-app-boot-'))
+  const dir = mkdtempSync(join(tmpdir(), 'sqh-app-boot-'))
   tempRoots.push(dir)
   return dir
 }

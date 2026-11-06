@@ -6,32 +6,32 @@ import type { DesktopBrowserBridge } from '@liusiqi-dev/sqh-client-ui-sidebar-br
 
 /** IPC channel names kept private to the desktop application bundle. */
 export const DESKTOP_IPC = {
-  shortcutsInput: 'dsh-desktop:shortcuts-input',
-  shortcutsCloseWindow: 'dsh-desktop:shortcuts-close-window',
-  shortcutsGet: 'dsh-desktop:shortcuts-get',
-  shortcutsEdit: 'dsh-desktop:shortcuts-edit',
-  shortcutsChanged: 'dsh-desktop:shortcuts-changed',
-  shortcutsRecording: 'dsh-desktop:shortcuts-recording',
-  boot: 'dsh-desktop:boot',
-  enterWorkspace: 'dsh-desktop:enter-workspace',
-  onboardingActive: 'dsh-desktop:onboarding-active',
-  onboardingApiKey: 'dsh-desktop:onboarding-api-key',
-  bootFailed: 'dsh-desktop:boot-failed',
-  browserAcquire: 'dsh-desktop:browser-acquire',
-  browserRelease: 'dsh-desktop:browser-release',
-  browserOpenRequested: 'dsh-desktop:browser-open-requested',
-  directoryPick: 'dsh-desktop:directory-pick',
-  deviceInfo: 'dsh-desktop:device-info',
-  feedbackSave: 'dsh-desktop:feedback-save',
-  localeBootstrap: 'dsh-desktop:locale-bootstrap',
-  localeChanged: 'dsh-desktop:locale-changed',
-  updatesStatus: 'dsh-desktop:updates-status',
-  updatesOpen: 'dsh-desktop:updates-open',
-  updatesPresentation: 'dsh-desktop:updates-presentation',
-  nativeThemeSet: 'dsh-desktop:native-theme-set',
-  windowFullscreen: 'dsh-desktop:window-fullscreen',
-  windowsAppearance: 'dsh-desktop:windows-appearance',
-  windowsMenu: 'dsh-desktop:windows-menu',
+  shortcutsInput: 'sqh-desktop:shortcuts-input',
+  shortcutsCloseWindow: 'sqh-desktop:shortcuts-close-window',
+  shortcutsGet: 'sqh-desktop:shortcuts-get',
+  shortcutsEdit: 'sqh-desktop:shortcuts-edit',
+  shortcutsChanged: 'sqh-desktop:shortcuts-changed',
+  shortcutsRecording: 'sqh-desktop:shortcuts-recording',
+  boot: 'sqh-desktop:boot',
+  enterWorkspace: 'sqh-desktop:enter-workspace',
+  onboardingActive: 'sqh-desktop:onboarding-active',
+  onboardingApiKey: 'sqh-desktop:onboarding-api-key',
+  bootFailed: 'sqh-desktop:boot-failed',
+  browserAcquire: 'sqh-desktop:browser-acquire',
+  browserRelease: 'sqh-desktop:browser-release',
+  browserOpenRequested: 'sqh-desktop:browser-open-requested',
+  directoryPick: 'sqh-desktop:directory-pick',
+  deviceInfo: 'sqh-desktop:device-info',
+  feedbackSave: 'sqh-desktop:feedback-save',
+  localeBootstrap: 'sqh-desktop:locale-bootstrap',
+  localeChanged: 'sqh-desktop:locale-changed',
+  updatesStatus: 'sqh-desktop:updates-status',
+  updatesOpen: 'sqh-desktop:updates-open',
+  updatesPresentation: 'sqh-desktop:updates-presentation',
+  nativeThemeSet: 'sqh-desktop:native-theme-set',
+  windowFullscreen: 'sqh-desktop:window-fullscreen',
+  windowsAppearance: 'sqh-desktop:windows-appearance',
+  windowsMenu: 'sqh-desktop:windows-menu',
 } as const
 
 /** Desktop release update state rendered by desktop-owned UI. */
@@ -114,7 +114,7 @@ export interface SqhDesktopProductApi {
 }
 
 /** Scheme of Desktop-owned application documents. */
-export const SCHEME = 'dsh-app'
+export const SCHEME = 'sqh-app'
 
 /**
  * Reject IPC outside the allowed Desktop document origins.

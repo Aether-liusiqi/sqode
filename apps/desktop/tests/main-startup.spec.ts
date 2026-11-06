@@ -84,7 +84,7 @@ const harness = await vi.hoisted(async () => {
       focus: vi.fn(),
       sendInputEvent: vi.fn(),
       send: vi.fn((channel: string, state: { policy?: { blocking: boolean } }) => {
-        if (channel === 'dsh-desktop:mandatory-state' && state.policy?.blocking) policyBlocked.resolve()
+        if (channel === 'sqh-desktop:mandatory-state' && state.policy?.blocking) policyBlocked.resolve()
       }),
     })
     readonly shown = deferred()
@@ -115,7 +115,7 @@ const harness = await vi.hoisted(async () => {
     async loadURL(url: string) {
       this.urls.push(url)
       this.webContents.mainFrame.url = url
-      if (url === 'dsh-app://app/') navigated.resolve()
+      if (url === 'sqh-app://app/') navigated.resolve()
     }
     static getAllWindows() { return windows.filter(window => !window.destroyed) }
     setMenu() {}
@@ -307,7 +307,7 @@ vi.mock('node:fs/promises', async (importOriginal) => {
   const original = await importOriginal<typeof import('node:fs/promises')>()
   return { ...original, readFile: vi.fn((path: Parameters<typeof original.readFile>[0], encoding?: 'utf8') => {
     if (path === join('desktop-test-app', 'package.json')) {
-      return Promise.resolve(JSON.stringify({ dshDesktopAppId: 'com.deepseek.dsh', dshMandatoryUpdatePolicy: harness.embeddedPolicy }))
+      return Promise.resolve(JSON.stringify({ dshDesktopAppId: 'com.siqi.sqh', dshMandatoryUpdatePolicy: harness.embeddedPolicy }))
     }
     return encoding === undefined ? original.readFile(path) : original.readFile(path, encoding)
   }) }
@@ -378,7 +378,7 @@ function invoke(channel: string, origin = channel === DESKTOP_IPC.boot ? 'app' :
     const sender = harness.windows[0]!.webContents
     return handler({ sender, senderFrame: sender.mainFrame }, ...args)
   }
-  return handler({ senderFrame: { url: `dsh-app://${origin}/index.html` } }, ...args)
+  return handler({ senderFrame: { url: `sqh-app://${origin}/index.html` } }, ...args)
 }
 
 function applicationMenuItems(): MenuItemConstructorOptions[] {
@@ -453,19 +453,19 @@ describe('desktop main startup', () => {
         ['mandatory-update.html', 'text/html'], ['mandatory-update.css', 'text/css'], ['mandatory-update.js', 'text/javascript'],
         ['update-close.svg', 'image/svg+xml'],
       ] as const) {
-        const response = await handler(new Request(`dsh-app://shell/${name}`))
+        const response = await handler(new Request(`sqh-app://shell/${name}`))
         expect(response.status).toBe(200)
         expect(response.headers.get('content-type')).toContain(mime)
         expect(await response.text()).toBe(readFileSync(join(root, 'renderer', name), 'utf8'))
       }
-      const head = await handler(new Request('dsh-app://shell/update-dialog.html', { method: 'HEAD' }))
+      const head = await handler(new Request('sqh-app://shell/update-dialog.html', { method: 'HEAD' }))
       expect(head.status).toBe(200)
       expect(await head.text()).toBe('')
-      expect((await handler(new Request('dsh-app://shell/update-dialog.html', { method: 'POST' }))).status).toBe(405)
-      expect((await handler(new Request('dsh-app://shell/%'))).status).toBe(400)
-      expect((await handler(new Request('dsh-app://shell/%2e%2e%2fpackage.json'))).status).toBe(403)
-      expect((await handler(new Request('dsh-app://shell/missing.html'))).status).toBe(404)
-      expect((await handler(new Request('dsh-app://other/update-dialog.html'))).status).toBe(404)
+      expect((await handler(new Request('sqh-app://shell/update-dialog.html', { method: 'POST' }))).status).toBe(405)
+      expect((await handler(new Request('sqh-app://shell/%'))).status).toBe(400)
+      expect((await handler(new Request('sqh-app://shell/%2e%2e%2fpackage.json'))).status).toBe(403)
+      expect((await handler(new Request('sqh-app://shell/missing.html'))).status).toBe(404)
+      expect((await handler(new Request('sqh-app://other/update-dialog.html'))).status).toBe(404)
     } finally {
       vi.mocked(web.serveWebDocument).mockReset()
     }
@@ -476,12 +476,12 @@ describe('desktop main startup', () => {
     const { serveWebDocument, forwardWebRequest } = await import('../src/web-document.ts')
     const handler = harness.protocolHandle.mock.calls[0]![1]
     for (const file of ['update-dialog.html', 'update-dialog.js', 'update-dialog.css', 'update-close.svg', 'mandatory-update.html']) {
-      const request = new Request(`dsh-app://shell/${file}`)
+      const request = new Request(`sqh-app://shell/${file}`)
       await handler(request)
       expect(serveWebDocument).toHaveBeenLastCalledWith(request, join('desktop-test-app', 'renderer'))
     }
     expect(forwardWebRequest).not.toHaveBeenCalled()
-    expect((await handler(new Request('dsh-app://unknown/update-dialog.html'))).status).toBe(404)
+    expect((await handler(new Request('sqh-app://unknown/update-dialog.html'))).status).toBe(404)
   })
 
   it('installs hidden native DevTools shortcuts in the macOS application menu', async () => {
@@ -698,7 +698,7 @@ describe('desktop main startup', () => {
     await import('../src/main.ts')
     await harness.preparing.promise
     const window = harness.windows[0]!
-    expect(window.urls).toEqual(['dsh-app://app/'])
+    expect(window.urls).toEqual(['sqh-app://app/'])
     if (platform === 'darwin') {
       expect(window.options).toMatchObject({ titleBarStyle: 'hiddenInset', vibrancy: 'sidebar', backgroundColor: '#00000000' })
     } else if (platform === 'win32') {
@@ -721,10 +721,10 @@ describe('desktop main startup', () => {
     await import('../src/main.ts')
     await harness.preparing.promise
     const handler = harness.protocolHandle.mock.calls[0]![1]
-    const request = new Request('dsh-app://shell/update-dialog.html')
+    const request = new Request('sqh-app://shell/update-dialog.html')
     expect(await (await handler(request)).text()).toBe('shell document')
     expect(serveWebDocument).toHaveBeenCalledWith(request, join('desktop-test-app', 'renderer'))
-    expect((await handler(new Request('dsh-app://foreign/index.html'))).status).toBe(404)
+    expect((await handler(new Request('sqh-app://foreign/index.html'))).status).toBe(404)
   })
 
   it.each(['darwin', 'win32'] as const)('relays the %s fullscreen state on transitions and after each load', async (platform) => {
@@ -809,7 +809,7 @@ describe('desktop main startup', () => {
     const window = harness.windows[0]!
     const listener = harness.ipcOn.mock.calls.find(([channel]) => channel === DESKTOP_IPC.windowsAppearance)![1]
     const event = { sender: window.webContents, senderFrame: window.webContents.mainFrame }
-    listener({ ...event, senderFrame: { url: 'dsh-app://app/' } }, 'zh-CN', '#ffffff', '#000000')
+    listener({ ...event, senderFrame: { url: 'sqh-app://app/' } }, 'zh-CN', '#ffffff', '#000000')
     expect(window.setTitleBarOverlay).not.toHaveBeenCalled()
     listener(event, 'zh-CN', 'rgb(249, 250, 251)', '#0f1115')
     expect(window.setTitleBarOverlay).toHaveBeenCalledWith({ color: 'rgb(249, 250, 251)', symbolColor: '#0f1115' })
@@ -824,7 +824,7 @@ describe('desktop main startup', () => {
     listener(event, {}, '#fff', '#000')
     expect(window.setTitleBarOverlay).toHaveBeenLastCalledWith({ color: '#fff', symbolColor: '#000' })
     window.setTitleBarOverlay.mockClear()
-    window.webContents.mainFrame.url = 'dsh-app://unowned/index.html'
+    window.webContents.mainFrame.url = 'sqh-app://unowned/index.html'
     listener(event, 'zh-CN', '#fff', '#000')
     expect(window.setTitleBarOverlay).not.toHaveBeenCalled()
     expect(harness.menu.setApplicationMenu).toHaveBeenCalledOnce()
@@ -918,7 +918,7 @@ describe('desktop main startup', () => {
       callback: (result: unknown) => void,
     ) => void
     const callback = vi.fn()
-    const details = { url: 'ws://127.0.0.1:3080/api/remote.mux', webContentsId: 42, requestHeaders: { Origin: 'dsh-app://app' } }
+    const details = { url: 'ws://127.0.0.1:3080/api/remote.mux', webContentsId: 42, requestHeaders: { Origin: 'sqh-app://app' } }
     handler(details, callback)
     expect(callback).toHaveBeenLastCalledWith({ requestHeaders: {
       origin: 'http://127.0.0.1:3080', cookie: 'test-cookie', 'sec-fetch-site': 'same-origin',
@@ -984,16 +984,16 @@ describe('desktop main startup', () => {
     const handler = harness.handlers.get(DESKTOP_IPC.boot)!
     await expect(handler({ senderFrame: { url: 'https://other.example/' } })).rejects.toThrow('unowned renderer')
     let settled = false
-    const boot = Promise.resolve(handler({ senderFrame: { url: 'dsh-app://app/' } })).then((value) => { settled = true; return value })
+    const boot = Promise.resolve(handler({ senderFrame: { url: 'sqh-app://app/' } })).then((value) => { settled = true; return value })
     await Promise.resolve()
     expect(settled).toBe(false)
-    expect(harness.windows[0]!.urls).toEqual(['dsh-app://app/'])
+    expect(harness.windows[0]!.urls).toEqual(['sqh-app://app/'])
     harness.prepared.resolve()
     await harness.hostStarted.promise
     expect(settled).toBe(false)
     harness.hosts[0]!.ready.resolve()
     await expect(boot).resolves.toEqual({ injections: [], streamBaseUrl: 'http://127.0.0.1:3080' })
-    expect(harness.windows[0]!.urls).toEqual(['dsh-app://app/'])
+    expect(harness.windows[0]!.urls).toEqual(['sqh-app://app/'])
   })
 
   it('retains macOS native editing actions on right-click and only copy for selected read-only text', async () => {
@@ -1037,7 +1037,7 @@ describe('desktop main startup', () => {
     expect(harness.openExternal).toHaveBeenCalledWith('https://example.com/document')
     harness.openExternal.mockClear()
     const internal = { preventDefault: vi.fn() }
-    window.webContents.emit('will-navigate', internal, 'dsh-app://app/session/task-1')
+    window.webContents.emit('will-navigate', internal, 'sqh-app://app/session/task-1')
     expect(internal.preventDefault).not.toHaveBeenCalled()
     expect(harness.openExternal).not.toHaveBeenCalled()
   })
@@ -1406,7 +1406,7 @@ describe('desktop main startup', () => {
     expect(status(owned)).toMatchObject({ policy: { blocking: true } })
     const unowned = [
       { ...owned, sender: {} },
-      { ...owned, senderFrame: { url: 'dsh-app://app/index.html' } },
+      { ...owned, senderFrame: { url: 'sqh-app://app/index.html' } },
       { ...owned, senderFrame: { url: 'https://untrusted.example.com/' } },
     ]
     for (const event of unowned) {
@@ -1771,7 +1771,7 @@ describe('desktop main startup', () => {
     const retry = harness.prepareUpdate()
     expect(replacement.updateTasks).not.toHaveBeenCalled()
     replacement.ready.resolve()
-    await vi.waitFor(() => { expect(harness.windows[0]!.urls).toEqual(['dsh-app://app/', 'dsh-app://app/']) })
+    await vi.waitFor(() => { expect(harness.windows[0]!.urls).toEqual(['sqh-app://app/', 'sqh-app://app/']) })
     await expect(Promise.resolve(invoke(DESKTOP_IPC.boot))).resolves.toEqual({ injections: [], streamBaseUrl: 'http://127.0.0.1:3099' })
     if (mandatory) await answerMandatory('later')
     await expect(retry).resolves.toBe(false)
@@ -1809,7 +1809,7 @@ describe('desktop main startup', () => {
     const retry = harness.prepareUpdate()
     expect(replacement.updateTasks).not.toHaveBeenCalled()
     replacement.ready.resolve()
-    await vi.waitFor(() => { expect(harness.windows[0]!.urls).toEqual(['dsh-app://app/', 'dsh-app://app/']) })
+    await vi.waitFor(() => { expect(harness.windows[0]!.urls).toEqual(['sqh-app://app/', 'sqh-app://app/']) })
     if (mandatory) await answerMandatory('later')
     await expect(retry).resolves.toBe(false)
     expect(replacement.updateTasks.mock.calls).toEqual([['inspect']])
@@ -1897,7 +1897,7 @@ describe('desktop main startup', () => {
     await import('../src/main.ts')
     await harness.preparing.promise
     const window = harness.windows[0]!
-    const frame = { url: 'dsh-app://app/' }
+    const frame = { url: 'sqh-app://app/' }
     Object.assign(window.webContents, { mainFrame: frame })
     const handler = harness.handlers.get(DESKTOP_IPC.bootFailed)! as (event: unknown, message: unknown) => void
     const event = { sender: window.webContents, senderFrame: frame }
@@ -1910,17 +1910,17 @@ describe('desktop main startup', () => {
     expect((harness.dialog.showMessageBox.mock.calls[0]![0] as MessageBoxOptions).detail).toContain('client mount failed')
     expect((harness.dialog.showMessageBox.mock.calls[0]![0] as MessageBoxOptions).detail).toContain('desktop-test-logs/crash-test.log')
     expect(writeCrashReport).toHaveBeenCalledWith('desktop-test-logs', expect.objectContaining({ source: 'web-boot', phase: 'startup' }))
-    expect(window.urls).toEqual(['dsh-app://app/'])
+    expect(window.urls).toEqual(['sqh-app://app/'])
   })
 
   it('ignores subresource failures and navigation cancellation but reports a failed main document', async () => {
     await import('../src/main.ts')
     await harness.preparing.promise
     const window = harness.windows[0]!
-    window.webContents.emit('did-fail-load', {}, -2, 'failed', 'dsh-app://app/image.png', false)
-    window.webContents.emit('did-fail-load', {}, -3, 'aborted', 'dsh-app://app/', true)
+    window.webContents.emit('did-fail-load', {}, -2, 'failed', 'sqh-app://app/image.png', false)
+    window.webContents.emit('did-fail-load', {}, -3, 'aborted', 'sqh-app://app/', true)
     expect(harness.dialog.showMessageBox).not.toHaveBeenCalled()
-    window.webContents.emit('did-fail-load', {}, -2, 'failed', 'dsh-app://app/', true)
+    window.webContents.emit('did-fail-load', {}, -2, 'failed', 'sqh-app://app/', true)
     await harness.dialogShown.promise
     expect((harness.dialog.showMessageBox.mock.calls[0]![0] as MessageBoxOptions).detail).toContain('Desktop page failed to load')
     expect(writeCrashReport).toHaveBeenCalledWith('desktop-test-logs', expect.objectContaining({ source: 'renderer' }))
@@ -1933,7 +1933,7 @@ describe('desktop main startup', () => {
     await harness.dialogShown.promise
     expect((harness.dialog.showMessageBox.mock.calls[0]![0] as MessageBoxOptions).detail).toContain('runtime resources missing')
     expect((harness.dialog.showMessageBox.mock.calls[0]![0] as MessageBoxOptions).buttons).toEqual(['Exit', 'Restart', 'Disable third-party plugins, back up profile patch, and restart'])
-    expect(harness.windows[0]!.urls).toEqual(['dsh-app://app/'])
+    expect(harness.windows[0]!.urls).toEqual(['sqh-app://app/'])
   })
 
   it.each(['preload', 'renderer'])('retains the document after a fatal %s failure and reports only the first error', async (kind) => {
@@ -1947,7 +1947,7 @@ describe('desktop main startup', () => {
     await harness.dialogShown.promise
     expect(harness.dialog.showMessageBox).toHaveBeenCalledOnce()
     expect((harness.dialog.showMessageBox.mock.calls[0]![0] as MessageBoxOptions).detail).not.toContain('secondary failure')
-    expect(window.urls).toEqual(['dsh-app://app/'])
+    expect(window.urls).toEqual(['sqh-app://app/'])
   })
 
   it('ignores clean renderer exits and exits of a destroyed window', async () => {
@@ -2005,10 +2005,10 @@ describe('desktop main startup', () => {
     host.ready.resolve()
     await Promise.resolve(invoke(DESKTOP_IPC.boot))
     const window = harness.windows[0]!
-    window.webContents.emit('console-message', { level: 'info', message: 'boot ok', sourceId: 'dsh-app://app/assets/entry.js', lineNumber: 1 })
+    window.webContents.emit('console-message', { level: 'info', message: 'boot ok', sourceId: 'sqh-app://app/assets/entry.js', lineNumber: 1 })
     window.webContents.emit('console-message', {
       level: 'error', message: 'client-modules: bundle script plugins/??a/client.js&rev=1 failed to load',
-      sourceId: 'dsh-app://app/assets/entry.js', lineNumber: 12,
+      sourceId: 'sqh-app://app/assets/entry.js', lineNumber: 12,
     })
     host.onFailure!(new Error('dsh desktop host exited with 1: fatal uncaught exception: ENOENT'))
     await host.stopping.promise
@@ -2019,7 +2019,7 @@ describe('desktop main startup', () => {
     expect(report.phase).toBe('running')
     expect(report.error).toBeInstanceOf(Error)
     expect((report.error as Error).message).toContain('fatal uncaught exception: ENOENT')
-    expect(report.rendererConsole).toEqual(['dsh-app://app/assets/entry.js:12 client-modules: bundle script plugins/??a/client.js&rev=1 failed to load'])
+    expect(report.rendererConsole).toEqual(['sqh-app://app/assets/entry.js:12 client-modules: bundle script plugins/??a/client.js&rev=1 failed to load'])
     expect(report.app).toMatchObject({ name: 'Desktop test', version: '1.0.0', platform: process.platform, locale: 'en' })
     expect(report.time).toBeInstanceOf(Date)
     host.exited.resolve()
@@ -2051,7 +2051,7 @@ describe('desktop main startup', () => {
       expect(console.info).not.toHaveBeenCalled()
     }
     expect(harness.dialog.showMessageBox).toHaveBeenCalledOnce()
-    expect(harness.windows[0]!.urls).toEqual(['dsh-app://app/'])
+    expect(harness.windows[0]!.urls).toEqual(['sqh-app://app/'])
   })
 
   it('creates the Host only after the login-shell read and ends the read on quit', async () => {
@@ -2082,14 +2082,14 @@ describe('desktop main startup', () => {
     const window = harness.windows[0]!
     expect(window.options.show).toBe(false)
     expect(window.show).not.toHaveBeenCalled()
-    expect(window.urls).toEqual(['dsh-app://app/'])
+    expect(window.urls).toEqual(['sqh-app://app/'])
     expect(harness.hosts).toHaveLength(0)
     const retry = invoke(DESKTOP_IPC.boot)
     const secondRetry = invoke(DESKTOP_IPC.boot)
     harness.prepared.resolve()
     await harness.hostStarted.promise
     expect(harness.hosts).toHaveLength(1)
-    expect(window.urls).toEqual(['dsh-app://app/'])
+    expect(window.urls).toEqual(['sqh-app://app/'])
     harness.hosts[0]!.ready.resolve()
     await Promise.all([retry, secondRetry, harness.navigated.promise])
     expect(harness.applyRelease).toHaveBeenCalledTimes(1)
@@ -2106,7 +2106,7 @@ describe('desktop main startup', () => {
     expect(harness.analytics).toHaveBeenCalledExactlyOnceWith({ eventName: 'desktop_app_launch', timestamp: Date.now(), attributes: {} })
     expect(harness.hosts[0]!.start).toHaveBeenCalledTimes(1)
     expect(harness.windows).toHaveLength(1)
-    expect(window.urls).toEqual(['dsh-app://app/'])
+    expect(window.urls).toEqual(['sqh-app://app/'])
   })
 
   it('prepares an independent plugin profile for the unpackaged Host', async () => {
@@ -2144,9 +2144,9 @@ describe('desktop main startup', () => {
     first.exited.resolve()
     first.ready.reject(new Error('plugin composition failed'))
     await harness.dialogShown.promise
-    expect(harness.windows[0]!.urls).toEqual(['dsh-app://app/'])
+    expect(harness.windows[0]!.urls).toEqual(['sqh-app://app/'])
     expect(harness.dialog.showMessageBox).toHaveBeenCalledOnce()
-    expect(harness.handlers.has('dsh-desktop:backend-retry')).toBe(false)
+    expect(harness.handlers.has('sqh-desktop:backend-retry')).toBe(false)
     expect(harness.hosts).toHaveLength(1)
   })
 
@@ -2188,7 +2188,7 @@ describe('desktop main startup', () => {
     host.exited.resolve()
     await harness.quitCompleted.promise
     expect(host.stop).toHaveBeenCalledTimes(1)
-    expect(window.urls).toEqual(['dsh-app://app/'])
+    expect(window.urls).toEqual(['sqh-app://app/'])
     expect(harness.windows).toHaveLength(1)
   })
 })

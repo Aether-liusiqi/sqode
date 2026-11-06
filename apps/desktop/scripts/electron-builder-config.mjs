@@ -99,7 +99,7 @@ export function createElectronBuilderConfig(
   const packaged = resolveDesktopBuildCommit(env)
   return {
     appId,
-    protocols: [{ name: 'Sqode', schemes: ['sqode'] }],
+    protocols: [{ name: 'Sqode', schemes: ['sqh-app'] }],
     extraMetadata: {
       dshDesktopAppId: appId,
       dshMandatoryUpdatePolicy: policy,

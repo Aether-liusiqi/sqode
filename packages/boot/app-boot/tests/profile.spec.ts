@@ -1,5 +1,5 @@
 /**
- * Profile machinery of `dsh-app-boot`: directory resolution and init,
+ * Profile machinery of `sqh-app-boot`: directory resolution and init,
  * manifest round-trips, two-anchor bundle resolution, patch-layer loading,
  * empty-root composition, and runtime package resolution.
  */
@@ -48,7 +48,7 @@ const tmp = (): string => {
 /** Stage a fake installed app: package.json with deps and a node_modules holding bundles. */
 function stageInstallation(
   bundles: Record<string, { patch?: string; deps?: Record<string, string> }>,
-  appName = 'dsh-app',
+  appName = 'sqh-app',
 ): string {
   const root = tmp()
   const appDir = join(root, 'app')
@@ -422,7 +422,7 @@ describe('loadProfile', () => {
       const resolution = await createRuntimeResolution({ installAnchor: anchor, profile, home })
       const unavailable = failure === 'missing package' || failure === 'invalid manifest'
       expect(resolution.entries.map(entry => entry.name))
-        .toEqual(['dsh-app', 'before', ...unavailable ? [] : ['broken'], 'after'])
+        .toEqual(['sqh-app', 'before', ...unavailable ? [] : ['broken'], 'after'])
       mkdirSync(bundleDir, { recursive: true })
       writeFileSync(manifestPath, original)
       writeFileSync(patchPath, '[]\n')
@@ -493,7 +493,7 @@ describe('createRuntimeResolution', () => {
     writeFileSync(join(modules, 'dep-of-a', 'package.json'), JSON.stringify({ name: 'dep-of-a', version: '0.0.0' }))
     const home = tmp()
     const resolution = await createRuntimeResolution({ installAnchor: anchor, home })
-    expect(resolution.entries.map(entry => entry.name)).toEqual(['dsh-app', 'bundle-a', 'plain-lib', 'dep-of-a'])
+    expect(resolution.entries.map(entry => entry.name)).toEqual(['sqh-app', 'bundle-a', 'plain-lib', 'dep-of-a'])
     expect(resolution.entries.find(entry => entry.name === 'dep-of-a')?.packageDir).toBe(join(modules, 'dep-of-a'))
     expect(existsSync(join(home, 'profiles', 'node_modules'))).toBe(false)
     await expect(createRuntimeResolution({ installAnchor: anchor, home })).resolves.toEqual(resolution)

@@ -65,23 +65,23 @@ describe.skipIf(!existsSync(preload('preload-app')))('built sandboxed Desktop pr
         return electron
       },
       process: { argv: ['electron', '--dsh-welcome-locale=en'], isMainFrame: true },
-      location: new URL('dsh-app://app/'),
+      location: new URL('sqh-app://app/'),
       exports: {},
     })
     if (name === 'preload-app') {
       const product = exposed.get('sqhDesktop') as { deviceInfo(): Promise<string> }
       invoke.mockResolvedValueOnce('platform=darwin; memory_gib=32.0')
       await expect(product.deviceInfo()).resolves.toBe('platform=darwin; memory_gib=32.0')
-      expect(invoke).toHaveBeenCalledWith('dsh-desktop:device-info')
+      expect(invoke).toHaveBeenCalledWith('sqh-desktop:device-info')
       browser.loadTheme('dark')
-      expect(send).toHaveBeenCalledWith('dsh-desktop:native-theme-set', 'dark')
+      expect(send).toHaveBeenCalledWith('sqh-desktop:native-theme-set', 'dark')
       browser.changeTheme('light')
-      expect(send).toHaveBeenCalledWith('dsh-desktop:native-theme-set', 'light')
+      expect(send).toHaveBeenCalledWith('sqh-desktop:native-theme-set', 'light')
       const bridge = exposed.get('__SQH_LOCALE__') as { read(): unknown; onChange(locale: string): void }
       bridge.read()
-      expect(invoke).toHaveBeenCalledWith('dsh-desktop:locale-bootstrap')
+      expect(invoke).toHaveBeenCalledWith('sqh-desktop:locale-bootstrap')
       bridge.onChange('zh')
-      expect(send).toHaveBeenCalledWith('dsh-desktop:locale-changed', 'zh')
+      expect(send).toHaveBeenCalledWith('sqh-desktop:locale-changed', 'zh')
     } else {
       expect(exposed.has('sqhWelcome')).toBe(true)
       const bridge = exposed.get('sqhWelcome') as { takeNotice(): Promise<unknown> }

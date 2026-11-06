@@ -362,7 +362,7 @@ describe.skipIf(!existsSync(dshBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
   }, SPAWN_TIMEOUT_MS * 3 + 30_000)
 
   it('routes help and usage errors without activating startup-dependent rows', async () => {
-    const home = mkdtempSync(join(tmpdir(), 'dsh-app-help-'))
+    const home = mkdtempSync(join(tmpdir(), 'sqh-app-help-'))
     try {
       const web = await runBuiltBin(['--profile', 'web', '--help'], {
         SQODE_HOME: home,

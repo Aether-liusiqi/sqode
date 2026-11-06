@@ -76,7 +76,7 @@ modules 插件激活时从自己的 `ctx.loader.internal` 读取模块系统。�
 
 spec 起的是真插件：整个 `web` roster 冷启动约五秒、热启动远低于一秒，三行的锥每例约二十毫秒。断言读的是产品事实——真实的 section 清单、真实的声明者、一次 Loader 重建、重连时的第二代 `$events`——并随产品变化而变化。
 
-代理跳过了生成客户端的 zod 校验、wire 字段名映射与 scoped 身份注入；mock 规则读位置 `args`，生成客户端仍由构建产物 e2e 车道覆盖。插件新增启动期调用时 `remoteDefaultResponses` 必须加一行，加之前会响亮失败。`web` profile 的两个 bundle 名在 `WEB_PROFILE_BUNDLES` 里重复了一次，对应启动器的 `PROFILE_TEMPLATES.web`，且两者之间没有机检联系：客户端测试程序不能 import `@siqi-ai/dsh-app-boot`（其 Host `Context` 合并与 Client 的冲突），而测试运行时连测试也不引入 Host 依赖。模板变更因此要靠人工带到这个常量。
+代理跳过了生成客户端的 zod 校验、wire 字段名映射与 scoped 身份注入；mock 规则读位置 `args`，生成客户端仍由构建产物 e2e 车道覆盖。插件新增启动期调用时 `remoteDefaultResponses` 必须加一行，加之前会响亮失败。`web` profile 的两个 bundle 名在 `WEB_PROFILE_BUNDLES` 里重复了一次，对应启动器的 `PROFILE_TEMPLATES.web`，且两者之间没有机检联系：客户端测试程序不能 import `@siqi-ai/sqh-app-boot`（其 Host `Context` 合并与 Client 的冲突），而测试运行时连测试也不引入 Host 依赖。模板变更因此要靠人工带到这个常量。
 
 共享函数让生产和测试调用方使用同一份实现。`AppWebEntry.run()` 在立即层预取落定后挂载 Loader；应用 entry 仍在预取之后创建，因此让 Loader 安装与预取串行不会提前应用激活。
 

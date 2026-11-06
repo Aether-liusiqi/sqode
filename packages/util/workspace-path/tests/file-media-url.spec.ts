@@ -14,17 +14,17 @@ describe('fileMediaUrl', () => {
       expect(fileMediaUrl('https://host/', path)).toBeUndefined()
     },
   )
-  it.each(['dsh-app://app/', 'dsh-app://app/index.html'])(
+  it.each(['sqh-app://app/', 'sqh-app://app/index.html'])(
     'serves decoded native paths through the Desktop application %s', (base) => {
       for (const path of ['/work/测试 文件#100%.png', 'C:\\work\\测试 文件.png']) {
         const url = new URL(fileMediaUrl(base, path)!)
-        expect(url.href.split('?')[0]).toBe('dsh-app://app/api/file')
+        expect(url.href.split('?')[0]).toBe('sqh-app://app/api/file')
         expect(url.searchParams.get('path')).toBe(path)
       }
     },
   )
-  it.each(['file:///app/', 'dsh-app://shell/', 'dsh-app://app.example/', 'dsh-app://app:80/',
-    'dsh-app://user@app/', 'dsh-app://app@other/', 'about:blank'])(
+  it.each(['file:///app/', 'sqh-app://shell/', 'sqh-app://app.example/', 'sqh-app://app:80/',
+    'sqh-app://user@app/', 'sqh-app://app@other/', 'about:blank'])(
     'rejects an unsupported application base %s', (base) => {
       expect(fileMediaUrl(base, '/work/image.png')).toBeUndefined()
     },

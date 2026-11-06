@@ -97,8 +97,8 @@ async function documentReady(window, expression) {
   })`))
 }
 async function windowAt(url) {
-  if (process.platform === 'win32' && url === 'dsh-app://shell/mandatory-update.html') {
-    return mandatoryFrameDriver(await windowAt('dsh-app://app/'))
+  if (process.platform === 'win32' && url === 'sqh-app://shell/mandatory-update.html') {
+    return mandatoryFrameDriver(await windowAt('sqh-app://app/'))
   }
   const existing = BrowserWindow.getAllWindows().find(window => window.webContents.getURL() === url)
   if (existing) return existing
@@ -165,7 +165,7 @@ async function dialogWith(message) {
   let found
   await waitFor(async () => {
     for (const window of BrowserWindow.getAllWindows()) {
-      if (window.webContents.getURL() !== 'dsh-app://shell/update-dialog.html') continue
+      if (window.webContents.getURL() !== 'sqh-app://shell/update-dialog.html') continue
       try {
         const ready = await window.webContents.executeJavaScript(`document.getElementById('title')?.textContent === ${JSON.stringify(message)} && !!document.querySelector('#actions button')`)
         if (ready) { found = window; return true }
@@ -182,7 +182,7 @@ async function qualify() {
     console.log('workspace qualification: compiled main module loaded')
     await fixture.ready.promise
     console.log('workspace qualification: Host process ready')
-    mainWindow = await windowAt('dsh-app://app/')
+    mainWindow = await windowAt('sqh-app://app/')
     await documentReady(mainWindow, `document.querySelector('[class*="frame"]') && window.sqhDesktop?.updates`)
     assert.equal(mainWindow.isVisible(), true, 'Workspace qualification requires a visible application window')
     console.log('workspace qualification: workspace document ready')
@@ -249,7 +249,7 @@ async function qualify() {
     await press(mainWindow, `document.querySelector('button[data-error="true"]')`)
     await server.arrived()
     await documentReady(mainWindow, `document.querySelector('button[aria-disabled="true"]')`)
-    assert.equal(BrowserWindow.getAllWindows().some(window => window.webContents.getURL() === 'dsh-app://shell/update-dialog.html'), false)
+    assert.equal(BrowserWindow.getAllWindows().some(window => window.webContents.getURL() === 'sqh-app://shell/update-dialog.html'), false)
     await screenshot(mainWindow, 'downloading.png')
     server.release()
     const confirmation = desktopUpdateReadyConfirmation(messages, '0.1.6-nightly.1', process.platform)
@@ -282,7 +282,7 @@ async function qualify() {
     server.policy('force')
     checkMenu.click()
     console.log('workspace qualification: mandatory check dispatched')
-    const mandatory = await windowAt('dsh-app://shell/mandatory-update.html')
+    const mandatory = await windowAt('sqh-app://shell/mandatory-update.html')
     console.log('workspace qualification: mandatory window loaded')
     await documentReady(mandatory, `document.getElementById('title')?.textContent === '需要更新'`)
     console.log('workspace qualification: mandatory title rendered')
@@ -349,11 +349,11 @@ async function qualify() {
 
     server.policy('force')
     checkMenu.click()
-    let forcedRecovery = await windowAt('dsh-app://shell/mandatory-update.html')
+    let forcedRecovery = await windowAt('sqh-app://shell/mandatory-update.html')
     await waitFor(() => mainWindow.isEnabled(), 'ordinary modal releases the main window for recovery')
     await press(forcedRecovery, `document.getElementById('update')`)
     await documentReady(forcedRecovery, `document.getElementById('update')?.textContent === ${JSON.stringify(messages.installAndRestart)}`)
-    assert.equal(BrowserWindow.getAllWindows().some(window => window.webContents.getURL() === 'dsh-app://shell/update-dialog.html'), false)
+    assert.equal(BrowserWindow.getAllWindows().some(window => window.webContents.getURL() === 'sqh-app://shell/update-dialog.html'), false)
     const forcedHost = fixture.host
     await control('hold-shutdown')
     await press(forcedRecovery, `document.getElementById('update')`)

@@ -264,7 +264,7 @@ it('removes the native view when its application document reloads, without rende
   const { manager, owner, removeChildView } = setup()
   await manager.open(owner, 'usage', bounds)
   const child = view()
-  owner.webContents.emit('did-start-navigation', {}, 'dsh-app://app/', false, true)
+  owner.webContents.emit('did-start-navigation', {}, 'sqh-app://app/', false, true)
   expect(removeChildView).toHaveBeenCalledWith(child)
   expect(child.webContents.close).toHaveBeenCalledOnce()
   expect(owner.webContents.listenerCount('did-start-navigation')).toBe(0)
@@ -274,7 +274,7 @@ it('removes the native view when its application document reloads, without rende
 it('retains the view on same-document and subframe navigation', async () => {
   const { manager, owner } = setup()
   await manager.open(owner, 'usage', bounds)
-  owner.webContents.emit('did-start-navigation', {}, 'dsh-app://app/#account', true, true)
+  owner.webContents.emit('did-start-navigation', {}, 'sqh-app://app/#account', true, true)
   owner.webContents.emit('did-start-navigation', {}, 'about:blank', false, false)
   expect(view().webContents.close).not.toHaveBeenCalled()
   manager.close()
@@ -297,7 +297,7 @@ it('does not reveal a pending view after the owner reloads or remove a replaceme
   const loading = manager.open(owner, 'usage', bounds)
   await vi.waitFor(() => { expect(state.views).toHaveLength(1) })
   const previous = view()
-  owner.webContents.emit('did-start-navigation', {}, 'dsh-app://app/', false, true)
+  owner.webContents.emit('did-start-navigation', {}, 'sqh-app://app/', false, true)
   state.loadBarrier = undefined
   await manager.open(owner, 'top-up', bounds)
   const current = view()
@@ -446,7 +446,7 @@ it.each(['did-start-navigation', 'closed', 'destroyed'])('cancels allocation whe
   browserSession().clearStorageData.mockReturnValueOnce(cleared.promise)
   const opening = manager.open(owner, 'usage', bounds)
   if (event === 'closed') owner.emit(event)
-  else owner.webContents.emit(event, {}, 'dsh-app://app/', false, true)
+  else owner.webContents.emit(event, {}, 'sqh-app://app/', false, true)
   cleared.resolve(undefined)
   await opening
   expect(state.views).toHaveLength(1)
