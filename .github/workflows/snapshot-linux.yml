@@ -172,7 +172,7 @@ jobs:
           wc -l "$RUNNER_TEMP/refresh/snapshots.patch" "$RUNNER_TEMP/refresh/changed.txt"
           grep -c '^A' "$RUNNER_TEMP/refresh/changed.txt" || true
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         if: ${{ inputs.refresh || inputs.record }}
         with:
           name: snapshots-refresh
