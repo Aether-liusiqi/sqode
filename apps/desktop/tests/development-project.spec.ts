@@ -11,7 +11,7 @@ import type { DesktopRelease } from '../src/release.ts'
 const roots: string[] = []
 
 function temporaryRoot(): string {
-  const root = mkdtempSync(join(tmpdir(), 'dsh-desktop-development-test-'))
+  const root = mkdtempSync(join(tmpdir(), 'sqh-desktop-development-test-'))
   roots.push(root)
   return root
 }
@@ -93,7 +93,7 @@ describe('desktop development project', () => {
     const descriptor = JSON.parse(readFileSync(join(project, 'desktop-runtime.json'), 'utf8')) as { platform: string; arch: string }
     expect(descriptor).toMatchObject({ platform: 'win32', arch: 'x64' })
     const manager = new DesktopProjectManager(resolveDesktopPaths(join(root, 'home')), {
-      dsh: project,
+      sqh: project,
     })
     await manager.applyRelease()
     await manager.disableAllPlugins()
@@ -120,6 +120,6 @@ describe('desktop development project', () => {
       dependencyDir: dependencies,
       release: release(),
       target: 'mac-x64',
-    })).toThrow(/must be @liusiqi-dev\/dsh@1\.2\.3/u)
+    })).toThrow(/must be @liusiqi-dev\/sqh@1\.2\.3/u)
   })
 })

@@ -35,7 +35,7 @@ import { selectOfficeEngine } from '../../../scripts/libreoffice-packages.mjs'
 
 const APP_ROOT = resolve(import.meta.dirname, '..')
 const BUILD_PATHS = resolveDesktopTargetBuildPaths()
-const SQODE_OUTPUT_ROOT = BUILD_PATHS.dsh
+const SQODE_OUTPUT_ROOT = BUILD_PATHS.sqh
 const BUILD_ROOT = mkdtempSync(join(tmpdir(), 'dsh-desktop-runtime-'))
 /**
  * Persistent pnpm store for this install step.
@@ -48,7 +48,7 @@ const BUILD_ROOT = mkdtempSync(join(tmpdir(), 'dsh-desktop-runtime-'))
  */
 const STORE_ROOT = process.env.SQODE_DESKTOP_PNPM_STORE ?? join(tmpdir(), 'dsh-desktop-pnpm-store')
 const RUNTIME_ROOT = BUILD_PATHS.runtime
-const PNPM_BUILD_STATE = BUILD_PATHS.dshPnpm
+const PNPM_BUILD_STATE = BUILD_PATHS.sqhPnpm
 const PACKAGE_SET_ROOT = BUILD_PATHS.packageSet
 const NODE = join(BUILD_PATHS.electron, process.platform === 'win32' ? 'electron.exe' : 'Electron.app/Contents/MacOS/Electron')
 const PNPM = join(RUNTIME_ROOT, 'pnpm', 'bin', 'pnpm.mjs')

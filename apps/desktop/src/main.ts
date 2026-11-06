@@ -178,7 +178,7 @@ interface RuntimeResources {
   readonly nodeBin: string
   readonly node: string
   readonly pnpm: string
-  readonly dsh: string
+  readonly sqh: string
 }
 
 function runtimeResources(): RuntimeResources {
@@ -188,9 +188,9 @@ function runtimeResources(): RuntimeResources {
   const pnpm = (development ? process.env.SQODE_DESKTOP_PNPM_ENTRY : undefined)
     ?? (development ? join(app.getAppPath(), 'node_modules', 'pnpm', 'bin', 'pnpm.mjs')
       : join(process.resourcesPath, 'runtime', 'pnpm', 'bin', 'pnpm.mjs'))
-  const dsh = (development ? process.env.SQODE_DESKTOP_SQH_DIR : undefined)
-    ?? (development ? join(app.getAppPath(), '.desktop-build', 'development', 'project') : join(app.getAppPath(), 'dsh'))
-  return { node, nodeBin, pnpm, dsh }
+  const sqh = (development ? process.env.SQODE_DESKTOP_SQH_DIR : undefined)
+    ?? (development ? join(app.getAppPath(), '.desktop-build', 'development', 'project') : join(app.getAppPath(), 'sqh'))
+  return { node, nodeBin, pnpm, sqh }
 }
 
 function developmentPrimaryRuntime(): string {
@@ -477,7 +477,7 @@ async function main(): Promise<void> {
     () => locale.id === 'zh-CN' ? 'zh_CN' : 'en_US', process.platform === 'win32' ? 'win32' : 'darwin')
   const backend = new DesktopBackendController((onFailure) => {
     const hostInspectPort = developmentHostInspectPort(development)
-    const host = new DesktopHostProcess(resources.node, resources.dsh, activeProject,
+    const host = new DesktopHostProcess(resources.node, resources.sqh, activeProject,
       hostInspectPort, { ...hostEnvironment, SQODE_CLIENT_VERSION: desktopClientVersion() }, onFailure,
       primaryRuntime,
       resources, (next) => { platformView.setSession(next) })
@@ -702,7 +702,7 @@ async function main(): Promise<void> {
     if (url.hostname === 'app') {
       if (url.pathname === '/' || url.pathname === '/index.html' || url.pathname.startsWith('/assets/')
         || ['/favicon.svg', '/manifest.webmanifest'].includes(url.pathname)) {
-        return serveWebDocument(request, join(resources.dsh, 'node_modules', '@liusiqi-dev', 'sqh-web-frontend', 'dist'))
+        return serveWebDocument(request, join(resources.sqh, 'node_modules', '@liusiqi-dev', 'sqh-web-frontend', 'dist'))
       }
       if (backend.host === undefined || hostUrl === undefined || hostCookie === undefined) {
         return Promise.resolve(new Response(null, { status: 503 }))
@@ -1345,7 +1345,7 @@ async function main(): Promise<void> {
     let wasBlocking = false
     mandatoryPolicy = new DesktopMandatoryUpdatePolicy(policyConfig, {
       platform: process.platform as 'win32' | 'darwin', arch: process.arch as 'x64' | 'arm64',
-      bundledDshVersion: app.isPackaged ? readDesktopRuntime(resources.dsh).release.version : app.getVersion(),
+      bundledDshVersion: app.isPackaged ? readDesktopRuntime(resources.sqh).release.version : app.getVersion(),
     }, (state) => {
       if (state.error !== 'authentication-required') policyAuthenticationQueued = false
       if (state.blocking) {

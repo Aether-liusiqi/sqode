@@ -534,13 +534,13 @@ export async function packageTarget(
     })
   }
   await execute(['run', 'build:official'], buildEnv, REPOSITORY_ROOT)
-  await execute(['run', 'release:pack', '--family', 'dsh', '--out', buildPaths.packedDsh, ...packArguments], buildEnv, REPOSITORY_ROOT)
+  await execute(['run', 'release:pack', '--family', 'dsh', '--out', buildPaths.packedSqh, ...packArguments], buildEnv, REPOSITORY_ROOT)
   await execute([
     '--dir',
     'apps/desktop-host',
     'pack',
     '--pack-destination',
-    buildPaths.packedDsh,
+    buildPaths.packedSqh,
   ], buildEnv, REPOSITORY_ROOT)
   await execute(['run', 'release:pack', '--family', 'vendor', '--out', buildPaths.packedVendor, ...packArguments], buildEnv, REPOSITORY_ROOT)
   rmSync(buildPaths.packedLandlock, { recursive: true, force: true })
@@ -558,7 +558,7 @@ export async function packageTarget(
   // local build may keep the trees only when the stamp says the very same inputs
   // finished; a crashed run leaves no stamp, so it can never be reused by accident.
   const reusePrepared = invocation.reusePrepared && !signPrimaryRuntime
-    && preparedTreesReusable(buildPaths.root, buildPaths.runtime, buildPaths.dsh, preparedDigest)
+    && preparedTreesReusable(buildPaths.root, buildPaths.runtime, buildPaths.sqh, preparedDigest)
   if (reusePrepared) {
     console.log('desktop package: reusing prepared runtime and dsh (inputs unchanged)')
   } else {

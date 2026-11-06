@@ -67,7 +67,7 @@ export function createElectronBuilderConfig(
   if (packagesMacOS) resolveMacOSNotarizationEnvironment(env)
   const buildPaths = desktopTargetBuildPaths(resolveDesktopBuildTarget(env, hostPlatform, hostArch))
   let primaryRuntimeDestination
-  let dshDestination
+  let sqhDestination
   let windowsCode = []
   const unpack = ['**/*.{node,dylib,dll,so,exe}', '**/*.so.*', '**/spawn-helper', '**/@vscode/ripgrep-*/bin/rg',
     `**/node_modules/@deepseek-ai/libreoffice-kit-${resolvedPlatform}-${resolvedArch}/**/*`]
@@ -78,7 +78,7 @@ export function createElectronBuilderConfig(
         tokenPin: env.SQODE_DESKTOP_WINDOWS_TOKEN_PIN,
         keyContainer: env.SQODE_DESKTOP_WINDOWS_KEY_CONTAINER,
         preserveSignature: async path => {
-          for (const [sourceRoot, destinationRoot] of [[join(buildPaths.runtime, 'primary-runtime'), primaryRuntimeDestination], [buildPaths.dsh, dshDestination]]) {
+          for (const [sourceRoot, destinationRoot] of [[join(buildPaths.runtime, 'primary-runtime'), primaryRuntimeDestination], [buildPaths.sqh, sqhDestination]]) {
             if (destinationRoot !== undefined && await preserveWindowsRuntimeSignature(path, {
               sourceRoot, destinationRoot, runDirectory: env.SQODE_DESKTOP_PACKAGING_RUN_DIR,
             })) return true
@@ -91,7 +91,7 @@ export function createElectronBuilderConfig(
     installWindowsNsisBootstrapSigner({ sign: windowsSigner })
   }
   const update = unsigned ? undefined : resolveDesktopAutoUpdateConfig(env, resolvedPlatform, resolvedArch)
-  if (preparedRuntime !== undefined) buildPaths.dsh = preparedRuntime
+  if (preparedRuntime !== undefined) buildPaths.sqh = preparedRuntime
   // electron-builder merges extraMetadata into the packaged manifest, so a build version here reaches
   // the artifact names, the update feed, and the installed app.getVersion() the updater compares against.
   const productVersion = JSON.parse(readFileSync(fileURLToPath(new URL('../package.json', import.meta.url)), 'utf8')).version
@@ -136,9 +136,9 @@ export function createElectronBuilderConfig(
       'lib/preload-welcome.cjs',
       'renderer/**/*',
       'package.json',
-      { from: buildPaths.dsh, to: 'dsh', filter: ['**/*'] },
+      { from: buildPaths.sqh, to: 'sqh', filter: ['**/*'] },
       // electron-builder excludes a source directory's root node_modules.
-      { from: join(buildPaths.dsh, 'node_modules'), to: 'dsh/node_modules', filter: ['**/*'] },
+      { from: join(buildPaths.sqh, 'node_modules'), to: 'sqh/node_modules', filter: ['**/*'] },
     ],
     asarUnpack: unpack,
     extraResources: [
@@ -168,14 +168,14 @@ export function createElectronBuilderConfig(
       writeUpdateInfo: false,
     },
     beforePack: async context => {
-      const office = await officePackageDirectories(buildPaths.dsh, { platform: resolvedPlatform, arch: resolvedArch })
-      const patterns = office.map(directory => `**/${relative(buildPaths.dsh, directory).split(sep).join('/')}/**/*`)
+      const office = await officePackageDirectories(buildPaths.sqh, { platform: resolvedPlatform, arch: resolvedArch })
+      const patterns = office.map(directory => `**/${relative(buildPaths.sqh, directory).split(sep).join('/')}/**/*`)
       const existing = context.packager.config.asarUnpack ?? []
       context.packager.config.asarUnpack = [...(typeof existing === 'string' ? [existing] : existing), ...patterns]
-      if (packagesWindows) windowsCode = await prepareWindowsAsarUnpack(context, buildPaths.dsh)
+      if (packagesWindows) windowsCode = await prepareWindowsAsarUnpack(context, buildPaths.sqh)
       if (windowsSigner !== undefined) {
         primaryRuntimeDestination = join(context.appOutDir, 'resources', 'runtime', 'primary-runtime')
-        dshDestination = join(context.appOutDir, 'resources', 'app.asar.unpacked', 'dsh')
+        sqhDestination = join(context.appOutDir, 'resources', 'app.asar.unpacked', 'sqh')
       }
       if (policy === undefined) return
       const { resolveDesktopPolicyConfig } = await import('../lib/types/mandatory-update-policy.js')
@@ -190,10 +190,10 @@ export function createElectronBuilderConfig(
       }
       // The bundled runtime declares whichever version prepared it: the product version for an ordinary
       // release, and a rewritten one for installed-update qualification.
-      await verifyDesktopRuntime(buildPaths.dsh,
+      await verifyDesktopRuntime(buildPaths.sqh,
         preparedRuntimeVersion ?? productVersion, { platform: resolvedPlatform, arch: resolvedArch })
       // Unsigned Windows builds skip electron-builder's afterSign hook.
-      if (packagesWindows && unsigned) await verifyWindowsAsarUnpack(buildPaths.dsh, resourcesDir, windowsCode)
+      if (packagesWindows && unsigned) await verifyWindowsAsarUnpack(buildPaths.sqh, resourcesDir, windowsCode)
     },
     afterSign: async context => {
       if (windowsSigner !== undefined) {
@@ -202,7 +202,7 @@ export function createElectronBuilderConfig(
           sign: windowsSigner,
           record: event => recordPackagingEvent(env.SQODE_DESKTOP_PACKAGING_RUN_DIR, event),
         })
-        await verifyWindowsAsarUnpack(buildPaths.dsh, context.packager.getResourcesDir(context.appOutDir), windowsCode)
+        await verifyWindowsAsarUnpack(buildPaths.sqh, context.packager.getResourcesDir(context.appOutDir), windowsCode)
       }
       if (context.electronPlatformName !== 'darwin') return
       const appPath = join(context.appOutDir, `${context.packager.appInfo.productFilename}.app`)

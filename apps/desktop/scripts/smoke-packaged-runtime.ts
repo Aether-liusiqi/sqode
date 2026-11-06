@@ -17,7 +17,7 @@ const application = windows ? join(artifacts, 'win-unpacked')
   : join(artifacts, target === 'mac-arm64' ? 'mac-arm64' : 'mac', 'Sqode.app', 'Contents')
 const resources = join(application, windows ? 'resources' : 'Resources')
 const executable = windows ? join(application, 'Sqode.exe') : join(application, 'MacOS', 'Sqode')
-const descriptor = await verifyDesktopRuntime(paths.dsh, readDesktopRuntime(paths.dsh).release.version,
+const descriptor = await verifyDesktopRuntime(paths.sqh, readDesktopRuntime(paths.sqh).release.version,
   resolveDesktopPackageTarget(target))
 if (windows && !values.unsigned) await verifyWindowsCode(application)
 await smokePreparedRuntime(join(resources, 'app.asar', 'dsh'), executable, join(resources, 'runtime'), descriptor)

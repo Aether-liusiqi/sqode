@@ -65,7 +65,7 @@ export class DesktopProjectManager {
    */
   constructor(
     readonly paths: DesktopPaths,
-    readonly runtime: { readonly dsh: string },
+    readonly runtime: { readonly sqh: string },
   ) {}
 
   /**
@@ -83,7 +83,7 @@ export class DesktopProjectManager {
   async applyRelease(): Promise<void> {
     await this.withLock(() => {
       // Validation only: an unreadable or mismatched runtime descriptor stops preparation before the Host starts.
-      readDesktopRuntime(this.runtime.dsh)
+      readDesktopRuntime(this.runtime.sqh)
       migrateProfileSettings(this.paths.profile)
       createPluginProfile(this.paths.profile)
       removeLinkProjections(this.paths.profile)

@@ -7,10 +7,10 @@ export interface DesktopTargetBuildPaths {
   readonly unsignedArtifacts: string
   readonly runtime: string
   readonly packageSet: string
-  readonly dsh: string
-  readonly dshPnpm: string
+  readonly sqh: string
+  readonly sqhPnpm: string
   readonly electron: string
-  readonly packedDsh: string
+  readonly packedSqh: string
   readonly packedVendor: string
   readonly packedLandlock: string
   readonly downloads: string
