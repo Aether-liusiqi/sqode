@@ -80,7 +80,7 @@ describe('desktop development project', () => {
       target: 'win-x64',
     })
     expect(realpathSync(join(project, 'node_modules', '@liusiqi-dev', 'sqode'))).toBe(realpathSync(cli))
-    expect(realpathSync(join(project, 'node_modules', '@liusiqi-dev', 'dsh-desktop-host'))).toBe(realpathSync(host))
+    expect(realpathSync(join(project, 'node_modules', '@liusiqi-dev', 'sqh-desktop-host'))).toBe(realpathSync(host))
     expect(realpathSync(join(project, 'node_modules', 'plain-dependency')))
       .toBe(realpathSync(join(dependencies, 'plain-dependency')))
     expect(realpathSync(join(project, 'node_modules', '@scope', 'dependency')))

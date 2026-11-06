@@ -155,7 +155,7 @@ export function prepareDevelopmentProject(options: DevelopmentProjectOptions): s
   const dshLink = join(destinationModules, '@liusiqi-dev', 'sqode')
   removeOwnedPath(dshLink)
   linkDirectory(options.cliDir, dshLink)
-  const hostLink = join(destinationModules, '@liusiqi-dev', 'dsh-desktop-host')
+  const hostLink = join(destinationModules, '@liusiqi-dev', 'sqh-desktop-host')
   removeOwnedPath(hostLink)
   linkDirectory(options.hostDir, hostLink)
   const sharedPackages = [...new Set([...names, '@liusiqi-dev/sqode', '@liusiqi-dev/sqh-desktop-host'])].flatMap((name) => {

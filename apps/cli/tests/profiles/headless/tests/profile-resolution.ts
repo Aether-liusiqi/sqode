@@ -137,7 +137,7 @@ export function testProfileResolution(mode: ExampleMode): void {
         })
       }
       const staleTools = join(root, 'stale-tools')
-      const staleToolsLink = join(sharedModules, '@liusiqi-dev', 'dsh-tools')
+      const staleToolsLink = join(sharedModules, '@liusiqi-dev', 'sqh-tools')
       await writePackage(staleTools, { name: '@liusiqi-dev/sqh-tools', version: '0.0.0', exports }, {
         'index.mjs': "export default class Tools {}\nexport const TOOL_RUNTIME_SCHEDULER = Symbol()\nthrow new Error('STALE_SQH_TOOLS')",
         'index.cjs': "throw new Error('STALE_SQH_TOOLS')",
@@ -162,11 +162,11 @@ export function testProfileResolution(mode: ExampleMode): void {
       for (const [target, link] of [
         [staleTools, staleToolsLink],
         [sourceDir, join(profileDir, 'node_modules', sourceProbeName)],
-        [staleTools, join(sourcePackageDir, 'node_modules', '@liusiqi-dev', 'dsh-tools')],
+        [staleTools, join(sourcePackageDir, 'node_modules', '@liusiqi-dev', 'sqh-tools')],
         ...layout === 'npm-link' ? [
           [externalDir, sharedExternal],
           [pluginDir, installedPlugin],
-          [staleTools, join(pluginDir, 'node_modules', '@liusiqi-dev', 'dsh-tools')],
+          [staleTools, join(pluginDir, 'node_modules', '@liusiqi-dev', 'sqh-tools')],
           [externalDir, join(pluginDir, 'node_modules', externalName)],
         ] as const : [],
       ] as const) {

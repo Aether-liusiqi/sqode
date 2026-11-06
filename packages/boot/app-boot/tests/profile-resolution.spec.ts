@@ -1116,7 +1116,7 @@ describe('runtime resolution', { concurrent: false }, () => {
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
       name: 'dsh-profile-web', private: true, dependencies: { '@liusiqi-dev/sqh-core': '*' },
     }))
-    const target = join(f.root, 'old-dsh', 'node_modules', '@liusiqi-dev', 'dsh-core')
+    const target = join(f.root, 'old-dsh', 'node_modules', '@liusiqi-dev', 'sqh-core')
     pkg(target, '@liusiqi-dev/sqh-core', 9)
     const owned = join(f.profile.dir, '.dsh-module-fallback', 'node_modules', '@liusiqi-dev/sqh-core')
     const projected = join(f.profile.dir, 'node_modules', '@liusiqi-dev/sqh-core')
@@ -1862,7 +1862,7 @@ describe('runtime resolution', { concurrent: false }, () => {
     const f = fixture()
     const installDir = dirname(f.installAnchor)
     pkg(installDir, '@liusiqi-dev/sqode', 0, { '@liusiqi-dev/sqh-core': '*', '@liusiqi-dev/sqh-util': '*' })
-    pkg(join(installDir, 'node_modules', '@liusiqi-dev', 'dsh-util'), '@liusiqi-dev/sqh-util', 2)
+    pkg(join(installDir, 'node_modules', '@liusiqi-dev', 'sqh-util'), '@liusiqi-dev/sqh-util', 2)
     const linkedRoot = join(f.root, 'work', 'my-plugin')
     const writeManifest = (peers: Record<string, string> | undefined): void => {
       file(join(linkedRoot, 'package.json'), JSON.stringify({
@@ -1881,9 +1881,9 @@ describe('runtime resolution', { concurrent: false }, () => {
     file(join(linkedRoot, 'index.cjs'), 'module.exports = { marker: 30 }\n')
     // The devDependency copy a type checker needs, the plugin's own third-party version, and a dsh package
     // declared as a plain dependency.
-    pkg(join(linkedRoot, 'node_modules', '@liusiqi-dev', 'dsh-core'), '@liusiqi-dev/sqh-core', 21)
+    pkg(join(linkedRoot, 'node_modules', '@liusiqi-dev', 'sqh-core'), '@liusiqi-dev/sqh-core', 21)
     pkg(join(linkedRoot, 'node_modules', 'zod'), 'zod', 22)
-    pkg(join(linkedRoot, 'node_modules', '@liusiqi-dev', 'dsh-util'), '@liusiqi-dev/sqh-util', 23)
+    pkg(join(linkedRoot, 'node_modules', '@liusiqi-dev', 'sqh-util'), '@liusiqi-dev/sqh-util', 23)
     pkg(join(f.root, 'work', 'node_modules', 'left-pad'), 'left-pad', 24)
     // A transitive dependency in pnpm's isolated layout, with a sibling of its own.
     const helper = join(linkedRoot, 'node_modules', '.pnpm', 'helper@1.0.0', 'node_modules', 'helper')
@@ -2402,7 +2402,7 @@ describe('runtime resolution', { concurrent: false }, () => {
     expect(resolveFrom('zod', `${parent}?t=1`)).toBe(pathToFileURL(join(linkedRoot, 'node_modules', 'zod', 'index.js')).href)
     // Plain dependencies keep the plugin's own copies, including a dsh package declared as one.
     await expectResolution('zod', join(linkedRoot, 'node_modules', 'zod'), 22)
-    await expectResolution('@liusiqi-dev/sqh-util', join(linkedRoot, 'node_modules', '@liusiqi-dev', 'dsh-util'), 23)
+    await expectResolution('@liusiqi-dev/sqh-util', join(linkedRoot, 'node_modules', '@liusiqi-dev', 'sqh-util'), 23)
     // An undeclared name without an entry follows the real ancestor chain.
     await expectResolution('left-pad', join(f.root, 'work', 'node_modules', 'left-pad'), 24)
     // Package imports and self-references keep their Node semantics inside the linked package.
@@ -2424,10 +2424,10 @@ describe('runtime resolution', { concurrent: false }, () => {
   it('continues above a linked plugin after a CommonJS subpath miss in an occupied peer', async () => {
     const { f, linkedRoot } = linkedPluginFixture()
     file(join(f.installed, 'package.json'), JSON.stringify({ name: '@liusiqi-dev/sqh-core', version: '1.0.0', main: './index.cjs' }))
-    const above = join(f.root, 'work', 'node_modules', '@liusiqi-dev', 'dsh-core')
+    const above = join(f.root, 'work', 'node_modules', '@liusiqi-dev', 'sqh-core')
     file(join(above, 'package.json'), JSON.stringify({ name: '@liusiqi-dev/sqh-core', version: '3.0.0' }))
     file(join(above, 'sub.cjs'), 'module.exports = { marker: 3 }\n')
-    file(join(linkedRoot, 'node_modules', '@liusiqi-dev', 'dsh-core', 'sub.cjs'), 'module.exports = { marker: 21 }\n')
+    file(join(linkedRoot, 'node_modules', '@liusiqi-dev', 'sqh-core', 'sub.cjs'), 'module.exports = { marker: 21 }\n')
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
     const require = createRequire(join(linkedRoot, 'entry.cjs'))
@@ -2468,7 +2468,7 @@ describe('runtime resolution', { concurrent: false }, () => {
     const { f, linkedRoot, writeManifest } = linkedPluginFixture({})
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
-    const devCopy = join(linkedRoot, 'node_modules', '@liusiqi-dev', 'dsh-core')
+    const devCopy = join(linkedRoot, 'node_modules', '@liusiqi-dev', 'sqh-core')
     const require = createRequire(join(linkedRoot, 'entry.cjs'))
     const parent = pathToFileURL(join(linkedRoot, 'entry.mjs')).href
     expect(require.resolve('@liusiqi-dev/sqh-core')).toBe(join(devCopy, 'index.cjs'))

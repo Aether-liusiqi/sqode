@@ -933,8 +933,8 @@ describe('boot', () => {
     const dir = tmp()
     const harness = tmp()
     const absolutePlugin = join(dir, 'absolute.mjs')
-    const shadow = join(dir, 'node_modules', '@liusiqi-dev', 'dsh-system-prompt')
-    const harnessPlugin = join(harness, 'node_modules', '@liusiqi-dev', 'dsh-system-prompt')
+    const shadow = join(dir, 'node_modules', '@liusiqi-dev', 'sqh-system-prompt')
+    const harnessPlugin = join(harness, 'node_modules', '@liusiqi-dev', 'sqh-system-prompt')
     mkdirSync(shadow, { recursive: true })
     mkdirSync(harnessPlugin, { recursive: true })
     writeFileSync(join(shadow, 'package.json'), JSON.stringify({

@@ -185,7 +185,7 @@ export class DesktopHostProcess {
    */
   async start(): Promise<DesktopHostReady> {
     if (this.child !== undefined) return this.readyPromise
-    const entry = join(this.runtimeDir, 'node_modules', '@liusiqi-dev', 'dsh-desktop-host', 'lib', 'index.js')
+    const entry = join(this.runtimeDir, 'node_modules', '@liusiqi-dev', 'sqh-desktop-host', 'lib', 'index.js')
     const primaryRuntime = this.primaryRuntime ?? join(this.runtimeDir, '..', 'runtime', 'primary-runtime')
     const child = spawn(this.node, [
       '--expose-internals',
