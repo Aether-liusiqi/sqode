@@ -4,6 +4,14 @@ import fs from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import semver from 'semver'
 
+/**
+ * npm sub-prefixes that identify this repository's own libraries.
+ *
+ * Two are listed while the packages are being renamed; the bare scope is too wide
+ * because vendored libraries share it. Drop the old entry once the rename lands.
+ */
+const FIRST_PARTY_PREFIXES = ['@liusiqi-dev/sqh-', '@liusiqi-dev/dsh-'] as const
+
 /** Incompatible dsh peers and the exact plugin/runtime exemption decision. */
 export interface PluginCompatibility {
   name: string
@@ -72,7 +80,10 @@ export function evaluatePluginCompatibility(
     if (typeof range !== 'string') {
       throw new Error(`Plugin manifest peerDependencies[${JSON.stringify(name)}] must be a string`)
     }
-    if (name !== '@liusiqi-dev/sqode' && !name.startsWith('@liusiqi-dev/dsh-')) continue
+    // Both sub-prefixes are accepted while the packages are being renamed. The bare
+    // scope is not enough: vendored libraries share it and must stay out of the
+    // runtime-version check. Drop the old entry in the commit that renames packages.
+    if (name !== '@liusiqi-dev/sqode' && !FIRST_PARTY_PREFIXES.some(prefix => name.startsWith(prefix))) continue
     const requirement = ['workspace:^', 'workspace:~', 'workspace:*'].includes(range) ? runtimeVersion : range
     if (requirement.trim() === '' || !semver.satisfies(runtimeVersion, requirement, { includePrerelease: true })) {
       peers[name] = range

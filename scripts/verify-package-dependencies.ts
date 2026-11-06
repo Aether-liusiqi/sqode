@@ -21,7 +21,12 @@ import {
 const GATE = 'verify-package-dependencies'
 const CORDIS = '@liusiqi-dev/cordis'
 function workspaceRange(name: string): 'workspace:*' | 'workspace:~' {
-  return name === '@liusiqi-dev/sqode' || name.startsWith('@liusiqi-dev/dsh-') ? 'workspace:*' : 'workspace:~'
+  // Two sub-prefixes while the packages are being renamed. The bare scope is too
+  // wide: vendored libraries share it and take the other protocol. Drop the old
+  // entry once the rename lands.
+  return name === '@liusiqi-dev/sqode' || name.startsWith('@liusiqi-dev/sqh-') || name.startsWith('@liusiqi-dev/dsh-')
+    ? 'workspace:*'
+    : 'workspace:~'
 }
 const RELEASE_MANIFEST_GLOB = 'packages/!(experimental)/*/package.json'
 const WORKSPACE_MANIFEST_GLOBS = [

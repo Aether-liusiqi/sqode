@@ -631,7 +631,9 @@ function clientInputIsolation(id: string): {
   plugin: TsdownPlugin
   sourcePath: (source: string, mapPath: string) => string
 } {
-  const experimental = id.startsWith('@liusiqi-dev/dsh-experimental-')
+  // Two prefixes while the packages are renamed; drop the old one with that commit.
+  const experimental = ['@liusiqi-dev/sqh-experimental-', '@liusiqi-dev/dsh-experimental-']
+    .some(prefix => id.startsWith(prefix))
   const inputs = new BundleInputIsolation(REPOSITORY_ROOT, `client bundle isolation (${id})`)
   return {
     plugin: {

@@ -119,7 +119,9 @@ export function packageText(
   return {
     title: pkg.meta?.title === undefined ? pkg.name : resolveText(pkg.meta.title),
     description: pkg.meta?.description === undefined ? undefined : resolveText(pkg.meta.description) || undefined,
-    beta: pkg.name.startsWith('@liusiqi-dev/dsh-experimental-'),
+    // Two prefixes while the packages are renamed; drop the old one with that commit.
+    beta: ['@liusiqi-dev/sqh-experimental-', '@liusiqi-dev/dsh-experimental-']
+      .some(prefix => pkg.name.startsWith(prefix)),
   }
 }
 

@@ -53,8 +53,15 @@ const publicationSourceAllowlist: Readonly<Record<string, readonly string[]>> = 
 const publishedRepositoryUrl = 'git+https://github.com/deepseek-ai/deepseek-harness.git'
 /** Packages that participate in the experimental policy. */
 const experimentalPackageDirectory = /^packages\/experimental\/[^/]+$/
-/** npm namespace reserved for experimental packages. */
-const experimentalPackageNamePrefix = '@liusiqi-dev/dsh-experimental-'
+/**
+ * npm namespaces reserved for experimental packages.
+ *
+ * Both prefixes are listed while the packages are being renamed: the check has to
+ * accept what the tree currently contains and what it is about to contain, or every
+ * experimental package fails between the two commits. Drop the old entry in the
+ * commit that renames the packages.
+ */
+const experimentalPackageNamePrefixes = ['@liusiqi-dev/sqh-experimental-', '@liusiqi-dev/dsh-experimental-'] as const
 /** Ordinary directories whose packages this repository publishes: one release member each. */
 const standardReleaseMemberDirectory = /^(?:packages\/(?!experimental\/)[^/]+\/[^/]+|apps\/(?!desktop(?:-host)?$)[^/]+|vendor\/[^/]+)$/
 /** Installable application assembled by electron-builder rather than published to npm. */
@@ -336,8 +343,8 @@ export function checkExperimentalManifest(
   if (!experimentalPackageDirectory.test(dir)) return []
   const label = manifest.name ?? dir
   const errors: string[] = []
-  if (manifest.name?.startsWith(experimentalPackageNamePrefix) !== true) {
-    errors.push(`${label}: experimental package name must start with ${JSON.stringify(experimentalPackageNamePrefix)}`)
+  if (experimentalPackageNamePrefixes.some(prefix => manifest.name?.startsWith(prefix) === true) !== true) {
+    errors.push(`${label}: experimental package name must start with one of ${JSON.stringify(experimentalPackageNamePrefixes)}`)
   }
   if (isPublicExperimentalPackageDirectory(dir, privateDirectories)) {
     if (manifest.private === true) errors.push(`${label}: public experimental package must not set "private": true`)
