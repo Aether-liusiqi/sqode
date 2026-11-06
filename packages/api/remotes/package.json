@@ -87,7 +87,7 @@
     "@liusiqi-dev/sqh-user-approval": "workspace:*",
     "@liusiqi-dev/sqh-user-questions": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~",
-    "zod": "^4.4.3",
+    "zod": "^4.6.5",
     "@liusiqi-dev/sqh-command-feedback": "workspace:*",
     "@liusiqi-dev/sqh-api-terminal-controller": "workspace:*",
     "@liusiqi-dev/sqh-plugin-manager": "workspace:*",
