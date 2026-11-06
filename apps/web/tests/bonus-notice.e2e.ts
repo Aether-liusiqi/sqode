@@ -226,13 +226,13 @@ describe.skipIf(MODE === 'record')('web e2e: bonus notice', () => {
     const opened = await context.newPage()
     tripwires.push(watchConsole(opened))
     await opened.addInitScript(() => {
-      Object.defineProperty(globalThis, 'dshDesktop', { value: { protocolVersion: 1 } })
+      Object.defineProperty(globalThis, 'sqhDesktop', { value: { protocolVersion: 1 } })
       // The embedded Platform view is a native child window owned by the Desktop shell.
       // The double answers immediately and records the calls, so the scenario observes
       // which page was opened and that returning destroyed the view.
       const calls: string[] = []
       Object.defineProperty(globalThis, '__bonusPlatformCalls', { value: calls })
-      Object.defineProperty(globalThis, 'dshPlatform', {
+      Object.defineProperty(globalThis, 'sqhPlatform', {
         value: {
           open: (page: string) => { calls.push(`open:${page}`); return Promise.resolve() },
           setBounds: () => Promise.resolve(),

@@ -280,7 +280,7 @@ async function main() {
             function check() { if (${expression}) { observer.disconnect(); clearTimeout(deadline); resolve(true); } }
             observer.observe(document, { subtree: true, childList: true, attributes: true, characterData: true }); check();
           })`) } catch (error) {
-            console.error('Modal condition:', expression, await contents.executeJavaScript('({ url: location.href, text: document.body?.innerText, bridge: typeof window.dshMandatoryUpdate })'))
+            console.error('Modal condition:', expression, await contents.executeJavaScript('({ url: location.href, text: document.body?.innerText, bridge: typeof window.sqhMandatoryUpdate })'))
             throw error
           }
         }

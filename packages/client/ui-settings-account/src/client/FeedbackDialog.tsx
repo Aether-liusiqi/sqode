@@ -35,7 +35,7 @@ interface FeedbackBridge {
  * @returns the bridge, or undefined in a browser-only deployment.
  */
 export function feedbackBridge(): FeedbackBridge | undefined {
-  return (globalThis as typeof globalThis & { dshDesktop?: { feedback?: FeedbackBridge } }).dshDesktop?.feedback
+  return (globalThis as typeof globalThis & { sqhDesktop?: { feedback?: FeedbackBridge } }).sqhDesktop?.feedback
 }
 
 /** @param props - localized copy and close action. @returns the feedback dialog. */

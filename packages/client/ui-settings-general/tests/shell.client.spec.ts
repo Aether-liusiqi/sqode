@@ -55,7 +55,7 @@ describe('ui-settings-general shell', () => {
     const off = vi.fn()
     const subscribe = vi.fn((listener: typeof publish) => { publish = listener; return off })
     const open = vi.fn(async () => {})
-    vi.stubGlobal('dshDesktop', { protocolVersion: 1, updates: { status: () => initial.promise, subscribe, open } })
+    vi.stubGlobal('sqhDesktop', { protocolVersion: 1, updates: { status: () => initial.promise, subscribe, open } })
     onTestFinished(() => { vi.unstubAllGlobals(); initial.resolve({ phase: 'idle' }) })
     const c = await start()
     const row = injectedOf(c)
@@ -110,7 +110,7 @@ describe('ui-settings-general shell', () => {
   })
 
   it('shows Account first in Desktop while signed in and removes it on sign-out', async ({ start }) => {
-    vi.stubGlobal('dshDesktop', {})
+    vi.stubGlobal('sqhDesktop', {})
     onTestFinished(() => { vi.unstubAllGlobals() })
     const c = await start()
     const { sections } = injectedOf(c).hooks

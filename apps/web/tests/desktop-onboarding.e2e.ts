@@ -86,12 +86,12 @@ describe.skipIf(MODE === 'record')('web e2e: App-only desktop onboarding', () =>
     const welcome = await connectDesktopWelcome(scaffold.authenticatedUrl, (input, init) => scaffold.hostFetch(input, init))
     await opened.exposeFunction('__onboardingHasApiKey', async () => (await welcome.read()).hasApiKey)
     await opened.addInitScript(() => {
-      Object.defineProperty(globalThis, 'dshOnboarding', { value: {
+      Object.defineProperty(globalThis, 'sqhOnboarding', { value: {
         hasApiKey: () => (globalThis as typeof globalThis & { __onboardingHasApiKey(): Promise<boolean> }).__onboardingHasApiKey(),
         setActive: () => {},
       } })
-      Object.defineProperty(globalThis, 'dshDesktop', { value: { protocolVersion: 1 } })
-      Object.defineProperty(globalThis, 'dshPlatform', { value: {
+      Object.defineProperty(globalThis, 'sqhDesktop', { value: { protocolVersion: 1 } })
+      Object.defineProperty(globalThis, 'sqhPlatform', { value: {
         open: async () => {}, setBounds: async () => {}, close: async () => {},
       } })
     })

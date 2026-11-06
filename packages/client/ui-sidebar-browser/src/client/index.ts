@@ -67,8 +67,8 @@ export function apply(ctx: Context): void {
   const store = createBrowserStore()
   const openTabs = ctx.sidebarRight.openTabs
   const carrier = (globalThis as typeof globalThis & {
-    dshDesktop?: { readonly protocolVersion: number; readonly browser?: DesktopBrowserBridge }
-  }).dshDesktop
+    sqhDesktop?: { readonly protocolVersion: number; readonly browser?: DesktopBrowserBridge }
+  }).sqhDesktop
   const desktop = carrier?.protocolVersion === 1 ? carrier.browser : undefined
   ctx.effect(() => ctx.locale.register(namespace, { zh, en }), 'ui-sidebar-browser.copy')
   ctx.effect(() => ctx.sidebarRightTabs.register({ ...browserDefinition(t), keepMounted: desktop !== undefined }), 'ui-sidebar-browser.type')

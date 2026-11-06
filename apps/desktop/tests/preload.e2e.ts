@@ -69,7 +69,7 @@ describe.skipIf(!existsSync(preload('preload-app')))('built sandboxed Desktop pr
       exports: {},
     })
     if (name === 'preload-app') {
-      const product = exposed.get('dshDesktop') as { deviceInfo(): Promise<string> }
+      const product = exposed.get('sqhDesktop') as { deviceInfo(): Promise<string> }
       invoke.mockResolvedValueOnce('platform=darwin; memory_gib=32.0')
       await expect(product.deviceInfo()).resolves.toBe('platform=darwin; memory_gib=32.0')
       expect(invoke).toHaveBeenCalledWith('dsh-desktop:device-info')
@@ -83,8 +83,8 @@ describe.skipIf(!existsSync(preload('preload-app')))('built sandboxed Desktop pr
       bridge.onChange('zh')
       expect(send).toHaveBeenCalledWith('dsh-desktop:locale-changed', 'zh')
     } else {
-      expect(exposed.has('dshWelcome')).toBe(true)
-      const bridge = exposed.get('dshWelcome') as { takeNotice(): Promise<unknown> }
+      expect(exposed.has('sqhWelcome')).toBe(true)
+      const bridge = exposed.get('sqhWelcome') as { takeNotice(): Promise<unknown> }
       void bridge.takeNotice()
       expect(invoke).toHaveBeenCalledWith('dsh-welcome:take-notice')
     }

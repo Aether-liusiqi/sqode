@@ -324,7 +324,7 @@ export function conversationContextKey(kind: string, id: string): string {
  */
 export async function openSettings(page: Page, locale: 'en' | 'zh'): Promise<void> {
   const label = locale === 'zh' ? '设置' : 'Settings'
-  if (await page.evaluate(() => 'dshDesktop' in globalThis)) {
+  if (await page.evaluate(() => 'sqhDesktop' in globalThis)) {
     await page.getByRole('button', { name: locale === 'zh' ? '账号菜单' : 'Account menu', exact: true }).click()
     await page.getByRole('menuitem', { name: label, exact: true }).click()
   } else {

@@ -138,7 +138,7 @@ describe('Chat apply wiring', () => {
     { desktop: true, initial: 'standard', choice: 'detailed' },
   ] as const)('mirrors the Host transcript preference into its Settings row (desktop: $desktop)', async ({ desktop, initial, choice }) => {
     if (desktop) {
-      vi.stubGlobal('dshDesktop', {})
+      vi.stubGlobal('sqhDesktop', {})
       onTestFinished(() => { vi.unstubAllGlobals() })
     }
     const b = await bench()

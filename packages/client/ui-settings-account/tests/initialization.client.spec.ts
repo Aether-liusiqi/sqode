@@ -7,7 +7,7 @@ import { apply, type AccountSectionInjected } from '../src/client/index.ts'
 afterEach(() => vi.unstubAllGlobals())
 
 it.each(['accepted', 'refused', 'disconnected', 'pending'] as const)('initializes account models and keeps reading account state: %s', async (outcome) => {
-  vi.stubGlobal('dshDesktop', {})
+  vi.stubGlobal('sqhDesktop', {})
   const log = vi.spyOn(console, 'info').mockImplementation(() => {})
   const observed: { status: string | undefined; failed: boolean | undefined }[] = []
   const abort = new AbortController()

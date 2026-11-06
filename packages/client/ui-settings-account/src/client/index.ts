@@ -41,7 +41,7 @@ declare module '@liusiqi-dev/sqh-client-ui-slots' {
 export const inject = ['slots', 'locale', 'remote', 'remote.account', 'remote.session', 'theme', 'configForms']
 /** Register account UI only in the Desktop renderer. @param ctx - client plugin context. */
 export function apply(ctx: Context): void {
-  if (!('dshDesktop' in globalThis)) return
+  if (!('sqhDesktop' in globalThis)) return
   ctx.effect(() => ctx.locale.register('settings.account', { en, zh }), 'account: dictionaries')
   const t = ctx.locale.bind('settings.account')
   const page = globalThis as Partial<Record<typeof CONTACT_CONFIG_GLOBAL, unknown>>
@@ -133,7 +133,7 @@ export function apply(ctx: Context): void {
       void refresh()
     }
   })().catch(() => { if (!disposed) publish({ ...snapshot, failed: true }) })
-  const nativePlatform = (globalThis as typeof globalThis & { dshPlatform?: PlatformBridge }).dshPlatform
+  const nativePlatform = (globalThis as typeof globalThis & { sqhPlatform?: PlatformBridge }).sqhPlatform
   // One request channel for the single native Platform view. It always exists
   // so every entry can observe whether a page is showing; only a native bridge
   // lets an entry request one.
@@ -183,8 +183,8 @@ export function apply(ctx: Context): void {
         window.open(target, '_blank', 'noopener,noreferrer')
       }
       const readDeviceInfo = (globalThis as typeof globalThis & {
-        dshDesktop?: { deviceInfo?: () => Promise<string> }
-      }).dshDesktop?.deviceInfo
+        sqhDesktop?: { deviceInfo?: () => Promise<string> }
+      }).sqhDesktop?.deviceInfo
       if (readDeviceInfo === undefined) {
         // A Desktop bridge without the optional reader reports the renderer user agent.
         openForm(navigator.userAgent)
@@ -240,7 +240,7 @@ export function apply(ctx: Context): void {
       throw result.error
     },
   }
-  if ('dshDesktop' in globalThis) {
+  if ('sqhDesktop' in globalThis) {
     const controller = new DesktopOnboardingController(
       ctx.configForms.get<OnboardingSettings>(DESKTOP_ONBOARDING_NAMESPACE),
       ctx.configForms.get<{ transcriptView?: TranscriptViewMode | null; performanceUsage: 'compact' | 'detailed' }>('ui-chat'),
