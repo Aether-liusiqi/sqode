@@ -3,11 +3,11 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { act, cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { makeTranslate } from '@liusiqi-dev/dsh-client-test-runtime'
-import type { SessionSnapshot } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { ScheduleRecord } from '@liusiqi-dev/dsh-schedule/client'
-import { ScheduleId } from '@liusiqi-dev/dsh-schedule'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import { makeTranslate } from '@liusiqi-dev/sqh-client-test-runtime'
+import type { SessionSnapshot } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { ScheduleRecord } from '@liusiqi-dev/sqh-schedule/client'
+import { ScheduleId } from '@liusiqi-dev/sqh-schedule'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import {
   formatScheduleAbsolute,
   formatScheduleFrequency,

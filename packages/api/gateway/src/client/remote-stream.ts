@@ -1,7 +1,7 @@
 /** Reconnecting lifecycle for one single-consumer Remote stream. */
 
-import { RemoteError, remoteErrorOf } from '@liusiqi-dev/dsh-typert-protocol'
-import type { ConnectionHandle } from '@liusiqi-dev/dsh-client-connection/client'
+import { RemoteError, remoteErrorOf } from '@liusiqi-dev/sqh-typert-protocol'
+import type { ConnectionHandle } from '@liusiqi-dev/sqh-client-connection/client'
 import { RemoteStreamCarrierError } from './stream-client.ts'
 
 /** One item annotated with the physical Remote-stream generation that delivered it. */

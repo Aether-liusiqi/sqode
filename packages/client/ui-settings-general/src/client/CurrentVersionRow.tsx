@@ -1,5 +1,5 @@
 /** Installed release version in General Settings for Web and Desktop. */
-import type { PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { PropsLocale, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
 import css from './CurrentVersionRow.module.css'
 
 /**

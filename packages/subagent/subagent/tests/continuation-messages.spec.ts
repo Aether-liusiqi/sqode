@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { ToolCallId, type ContentBlock } from '@liusiqi-dev/dsh-llm'
-import { SessionId } from '@liusiqi-dev/dsh-session'
+import { ToolCallId, type ContentBlock } from '@liusiqi-dev/sqh-llm'
+import { SessionId } from '@liusiqi-dev/sqh-session'
 import { createSettlementMessage } from '../src/continuation-messages.ts'
 
 const childId = SessionId('settled-child')

@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-llm-pi-ai",
+  "name": "@liusiqi-dev/sqh-llm-pi-ai",
   "description": "pi-ai-backed DeepSeek adapter for the Siqi Harness LLM seam (design-verification twin of dsh-llm-deepseek)",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,35 +28,35 @@
   "license": "MIT",
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-attachment": "workspace:*",
-    "@liusiqi-dev/dsh-authorization": "workspace:*",
-    "@liusiqi-dev/dsh-credentials": "workspace:*",
-    "@liusiqi-dev/dsh-fs": "workspace:*",
-    "@liusiqi-dev/dsh-launch-environment": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-timeout": "workspace:*",
+    "@liusiqi-dev/sqh-attachment": "workspace:*",
+    "@liusiqi-dev/sqh-authorization": "workspace:*",
+    "@liusiqi-dev/sqh-credentials": "workspace:*",
+    "@liusiqi-dev/sqh-fs": "workspace:*",
+    "@liusiqi-dev/sqh-launch-environment": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-timeout": "workspace:*",
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~"
   },
   "dependencies": {
-    "@liusiqi-dev/dsh-brand": "workspace:*",
-    "@liusiqi-dev/dsh-util-values": "workspace:*",
+    "@liusiqi-dev/sqh-brand": "workspace:*",
+    "@liusiqi-dev/sqh-util-values": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
     "@earendil-works/pi-ai": "^0.87.1"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-attachment": "workspace:*",
-    "@liusiqi-dev/dsh-authorization": "workspace:*",
-    "@liusiqi-dev/dsh-credentials": "workspace:*",
-    "@liusiqi-dev/dsh-fs": "workspace:*",
-    "@liusiqi-dev/dsh-launch-environment": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-llm-deepseek": "workspace:*",
-    "@liusiqi-dev/dsh-llm-deepseek-api-key": "workspace:*",
-    "@liusiqi-dev/dsh-timeout": "workspace:*",
-    "@liusiqi-dev/dsh-http-proxy": "workspace:*",
+    "@liusiqi-dev/sqh-attachment": "workspace:*",
+    "@liusiqi-dev/sqh-authorization": "workspace:*",
+    "@liusiqi-dev/sqh-credentials": "workspace:*",
+    "@liusiqi-dev/sqh-fs": "workspace:*",
+    "@liusiqi-dev/sqh-launch-environment": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-llm-deepseek": "workspace:*",
+    "@liusiqi-dev/sqh-llm-deepseek-api-key": "workspace:*",
+    "@liusiqi-dev/sqh-timeout": "workspace:*",
+    "@liusiqi-dev/sqh-http-proxy": "workspace:*",
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
-    "@liusiqi-dev/dsh-settings": "workspace:*"
+    "@liusiqi-dev/sqh-settings": "workspace:*"
   },
   "peerDependenciesMeta": {
     "@liusiqi-dev/cordis-plugin-loader": {

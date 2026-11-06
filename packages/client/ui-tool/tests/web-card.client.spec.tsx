@@ -1,17 +1,17 @@
 // @vitest-environment jsdom
 
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { useDisclosure } from '@liusiqi-dev/dsh-client-ui-chat/src/client/chat/use-disclosure.ts'
+import { useDisclosure } from '@liusiqi-dev/sqh-client-ui-chat/src/client/chat/use-disclosure.ts'
 import { cleanup, fireEvent, render } from '@testing-library/react'
-import type { StartedToolCall, ToolResultNode } from '@liusiqi-dev/dsh-client-ui-chat/client'
-import type { ToolCallOwnerProps } from '@liusiqi-dev/dsh-client-ui-tool/client'
-import { IconGlobeOutlineRegular } from '@liusiqi-dev/dsh-client-ui-primitives'
+import type { StartedToolCall, ToolResultNode } from '@liusiqi-dev/sqh-client-ui-chat/client'
+import type { ToolCallOwnerProps } from '@liusiqi-dev/sqh-client-ui-tool/client'
+import { IconGlobeOutlineRegular } from '@liusiqi-dev/sqh-client-ui-primitives'
 import { webCardModel, webFetchHref } from '../src/client/tool/models/web-card-model.ts'
 import { GenericToolCard } from '../src/client/tool/toolviews/GenericToolCard.tsx'
 import { WebRow, webToolview } from '../src/client/tool/toolviews/web-row.tsx'
-import { makeTranslate } from '@liusiqi-dev/dsh-client-test-runtime'
-import { zh as commonZh } from '@liusiqi-dev/dsh-client-locale/src/locales/zh.ts'
-import { zh } from '@liusiqi-dev/dsh-client-ui-conversation/src/client/locales.ts'
+import { makeTranslate } from '@liusiqi-dev/sqh-client-test-runtime'
+import { zh as commonZh } from '@liusiqi-dev/sqh-client-locale/src/locales/zh.ts'
+import { zh } from '@liusiqi-dev/sqh-client-ui-conversation/src/client/locales.ts'
 
 afterEach(cleanup)
 

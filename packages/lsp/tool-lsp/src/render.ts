@@ -3,11 +3,11 @@
  * conversion, workspace-grouped location rendering with `file:`-URI resolution, complete-result
  * capping, and UI presentation. No I/O — a UI may call the presenter on live streaming and on
  * replay, so it depends only on the tool arguments.
- * @module @liusiqi-dev/dsh-tool-lsp/render
+ * @module @liusiqi-dev/sqh-tool-lsp/render
  */
 
-import type { GenericCallView } from '@liusiqi-dev/dsh-tools'
-import type { LspHover, LspLocation, LspOperation, LspPosition } from '@liusiqi-dev/dsh-lsp'
+import type { GenericCallView } from '@liusiqi-dev/sqh-tools'
+import type { LspHover, LspLocation, LspOperation, LspPosition } from '@liusiqi-dev/sqh-lsp'
 import { posix, win32 } from 'node:path'
 import { fileURLToPath } from 'node:url'
 

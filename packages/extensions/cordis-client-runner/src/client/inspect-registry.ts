@@ -4,8 +4,8 @@ import type { Context } from '@liusiqi-dev/cordis'
 import type {
   CordisInspectProviderManifest, CordisInspectQueryRequest, CordisInspectQueryResolution,
   CordisInspectRequestId, SessionId,
-} from '@liusiqi-dev/dsh-api-remotes/client'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
+} from '@liusiqi-dev/sqh-api-remotes/client'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
 
 /** Context supplied to a Client inspect provider query. */
 export interface ClientCordisInspectQueryContext {

@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-plugin-manager",
+  "name": "@liusiqi-dev/sqh-plugin-manager",
   "description": "Current-profile plugin and bundle management shared by dsh CLI, Web and agent tools",
   "version": "1.0.0",
   "publishConfig": {
@@ -56,52 +56,52 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@liusiqi-dev/dsh-app-boot": "workspace:*",
-    "@liusiqi-dev/dsh-atomic-write": "workspace:*",
+    "@liusiqi-dev/sqh-app-boot": "workspace:*",
+    "@liusiqi-dev/sqh-atomic-write": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
     "execa": "^10.0.0",
     "yaml": "^2.9.0",
     "zod": "^4.4.3",
-    "@liusiqi-dev/dsh-util-values": "workspace:*"
+    "@liusiqi-dev/sqh-util-values": "workspace:*"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
-    "@liusiqi-dev/dsh-host-plugin-inventory": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*",
-    "@liusiqi-dev/dsh-hmr": "workspace:*",
-    "@liusiqi-dev/dsh-brand": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox-policy": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox": "workspace:*",
-    "@liusiqi-dev/dsh-user-approval": "workspace:*"
+    "@liusiqi-dev/sqh-host-plugin-inventory": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*",
+    "@liusiqi-dev/sqh-hmr": "workspace:*",
+    "@liusiqi-dev/sqh-brand": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox-policy": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox": "workspace:*",
+    "@liusiqi-dev/sqh-user-approval": "workspace:*"
   },
   "peerDependenciesMeta": {
-    "@liusiqi-dev/dsh-hmr": {
+    "@liusiqi-dev/sqh-hmr": {
       "optional": true
     },
-    "@liusiqi-dev/dsh-user-approval": {
+    "@liusiqi-dev/sqh-user-approval": {
       "optional": true
     }
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-package-manifest": "workspace:*",
+    "@liusiqi-dev/sqh-package-manifest": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~",
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
-    "@liusiqi-dev/dsh-host-plugin-inventory": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
-    "@liusiqi-dev/dsh-hmr": "workspace:*",
+    "@liusiqi-dev/sqh-host-plugin-inventory": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*",
+    "@liusiqi-dev/sqh-hmr": "workspace:*",
     "@liusiqi-dev/cordis-plugin-timer": "workspace:~",
-    "@liusiqi-dev/dsh-brand": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox-policy": "workspace:*",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox": "workspace:*",
-    "@liusiqi-dev/dsh-user-approval": "workspace:*"
+    "@liusiqi-dev/sqh-brand": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox-policy": "workspace:*",
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox": "workspace:*",
+    "@liusiqi-dev/sqh-user-approval": "workspace:*"
   }
 }

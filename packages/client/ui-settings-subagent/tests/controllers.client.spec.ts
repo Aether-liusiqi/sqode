@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
-import type { SettingsPathOpView } from '@liusiqi-dev/dsh-api-remotes/client'
-import { RemoteError, stubConfigForm, type StubConfigForm } from '@liusiqi-dev/dsh-client-test-runtime'
+import type { SettingsPathOpView } from '@liusiqi-dev/sqh-api-remotes/client'
+import { RemoteError, stubConfigForm, type StubConfigForm } from '@liusiqi-dev/sqh-client-test-runtime'
 import { SubagentLimitsCardController, type SubagentLimitsSettings } from '../src/client/subagent-limits-card-controller.ts'
 import { subagentCardFace, subagentCardShell } from '../src/client/subagent-card-controller.ts'
 import {

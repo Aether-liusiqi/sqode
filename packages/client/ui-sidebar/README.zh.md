@@ -3,7 +3,7 @@ description: "dsh Web 客户端的侧边栏外壳插件：品牌行、New Sessio
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-ui-sidebar
+# @liusiqi-dev/sqh-client-ui-sidebar
 
 [English](README.md) | 中文
 

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import SystemPrompt, { PromptAssembly, TOOL_ORDER_REST } from '@liusiqi-dev/dsh-system-prompt'
-import type { ToolSchema } from '@liusiqi-dev/dsh-llm'
+import SystemPrompt, { PromptAssembly, TOOL_ORDER_REST } from '@liusiqi-dev/sqh-system-prompt'
+import type { ToolSchema } from '@liusiqi-dev/sqh-llm'
 
 function tool(name: string, description = name): ToolSchema {
   return { name, description, parameters: { type: 'object', properties: {} } }

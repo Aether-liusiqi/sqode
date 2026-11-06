@@ -13,16 +13,16 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { RefObject } from 'react'
 import clsx from 'clsx'
-import type { PropsRenderSlots } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { PropsRenderSlots } from '@liusiqi-dev/sqh-client-ui-slots'
 import {
   HoverCard, IconArchiveOutlineRegular, IconEditOutlineRegular,
   IconEllipsisOutlineRegular, IconFolderCloseRegular, IconFolderOpenRegular,
   IconNewChatOutlineRegular, IconPinFillRegular, IconTrashOutlineRegular,
   IconTriangleRightFillRegular, IconUnarchiveOutlineRegular, Menu, relativeTime, StateDot, Tooltip,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { ShortcutCatalogEntry } from '@liusiqi-dev/dsh-client-shortcuts/client'
-import type { StateDotState } from '@liusiqi-dev/dsh-client-ui-primitives'
-import { abbreviateHomePath } from '@liusiqi-dev/dsh-util-workspace-path'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { ShortcutCatalogEntry } from '@liusiqi-dev/sqh-client-shortcuts/client'
+import type { StateDotState } from '@liusiqi-dev/sqh-client-ui-primitives'
+import { abbreviateHomePath } from '@liusiqi-dev/sqh-util-workspace-path'
 import type { MenuOpenState, WorkspaceBrowserProps } from '../contract/slots.ts'
 import type { GroupNode, SearchResultNode, SessionNode } from '../tree.ts'
 import css from './Rows.module.css'

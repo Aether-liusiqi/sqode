@@ -188,7 +188,7 @@ describe('profile package metadata service', () => {
     }
     const removed: RuntimeResolution = { ...initial, linkedRoots: [] }
     const relinked: RuntimeResolution = { ...initial, linkedRoots: [{ ...linked, realPath: linkedB }] }
-    const key = '@liusiqi-dev/dsh-app-boot/profile-resolution'
+    const key = '@liusiqi-dev/sqh-app-boot/profile-resolution'
     const previous = getEnvironmentData(key)
     const ctx = new Context()
     contexts.push(ctx)
@@ -234,7 +234,7 @@ describe('profile package metadata service', () => {
     const first = join(root, 'first')
     const firstAnchor = pkg(first, '1.0.0')
     const initial = resolution(profilesDir, profileDir, first, firstAnchor, '1.0.0')
-    const key = '@liusiqi-dev/dsh-app-boot/profile-resolution'
+    const key = '@liusiqi-dev/sqh-app-boot/profile-resolution'
     const previous = getEnvironmentData(key)
     const ctx = new Context()
     contexts.push(ctx)

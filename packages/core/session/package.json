@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-session",
+  "name": "@liusiqi-dev/sqh-session",
   "description": "Event-sourced session store for the Siqi Harness",
   "version": "1.0.0",
   "publishConfig": {
@@ -45,19 +45,19 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@liusiqi-dev/dsh-scope": "workspace:*",
+    "@liusiqi-dev/sqh-scope": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-invariants": "workspace:*",
-    "@liusiqi-dev/dsh-scope": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
-    "@liusiqi-dev/dsh-typert-registry": "workspace:*",
+    "@liusiqi-dev/sqh-invariants": "workspace:*",
+    "@liusiqi-dev/sqh-scope": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/sqh-typert-registry": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "dependencies": {
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-brand": "workspace:*",
-    "@liusiqi-dev/dsh-util-values": "workspace:*"
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-brand": "workspace:*",
+    "@liusiqi-dev/sqh-util-values": "workspace:*"
   }
 }

@@ -7,13 +7,13 @@
  * `sidebar.settings` registrant's (ui-settings), followed by optional footer
  * actions in `sidebar.footer.action`.
  */
-import type { InjectFace, PropsLocale, PropsRenderSlots, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
-import type { ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
-import type { WorkspaceId } from '@liusiqi-dev/dsh-api-workspace-controller/client'
-import type { ShortcutCatalogEntry } from '@liusiqi-dev/dsh-client-shortcuts/client'
-import type { MainPanelId } from '@liusiqi-dev/dsh-client-ui-layout/client'
+import type { InjectFace, PropsLocale, PropsRenderSlots, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
+import type { ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
+import type { WorkspaceId } from '@liusiqi-dev/sqh-api-workspace-controller/client'
+import type { ShortcutCatalogEntry } from '@liusiqi-dev/sqh-client-shortcuts/client'
+import type { MainPanelId } from '@liusiqi-dev/sqh-client-ui-layout/client'
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface SlotMap {
     /** Non-interactive notification inside the collapsed sidebar expand button. */
     'sidebar.toggle.badge': { kind: 'single'; scope: 'root'; owner: Record<never, never> }

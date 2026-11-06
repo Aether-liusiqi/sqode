@@ -2,17 +2,17 @@
 
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import { Session, SESSION_FORMAT_VERSION, SessionId } from '@liusiqi-dev/dsh-session'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
-import { bindScopeParent, createScope, scopeOf, scopeTarget } from '@liusiqi-dev/dsh-scope'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import { Session, SESSION_FORMAT_VERSION, SessionId } from '@liusiqi-dev/sqh-session'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
+import { bindScopeParent, createScope, scopeOf, scopeTarget } from '@liusiqi-dev/sqh-scope'
 import { liveConfig } from '../../../settings/settings/tests/live-config.ts'
-import InvariantRegistry from '@liusiqi-dev/dsh-invariants'
-import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
-import { mountAgentLoopTestDependencies } from '@liusiqi-dev/dsh-agent-loop-testkit'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import SubagentRuntime from '@liusiqi-dev/dsh-subagent'
-import * as SubagentSpawn from '@liusiqi-dev/dsh-subagent-spawn-in-process'
+import InvariantRegistry from '@liusiqi-dev/sqh-invariants'
+import AgentLoop from '@liusiqi-dev/sqh-agent-loop'
+import { mountAgentLoopTestDependencies } from '@liusiqi-dev/sqh-agent-loop-testkit'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import SubagentRuntime from '@liusiqi-dev/sqh-subagent'
+import * as SubagentSpawn from '@liusiqi-dev/sqh-subagent-spawn-in-process'
 import * as tool from '../src/index.ts'
 import * as ToolInvariant from '../src/invariant.ts'
 import SubagentModelSelectionConfig from '../src/model-selection-settings.ts'
@@ -379,7 +379,7 @@ describe('SubagentModelSelectionConfig', () => {
         modelSelectionSettings: true,
         maxDepth: 'provider-managed',
       })
-    }).toThrow('requires @liusiqi-dev/dsh-tool-subagent/model-selection-settings')
+    }).toThrow('requires @liusiqi-dev/sqh-tool-subagent/model-selection-settings')
     await withoutSettings.fiber.dispose()
 
     const withoutAgent = await boot(false)

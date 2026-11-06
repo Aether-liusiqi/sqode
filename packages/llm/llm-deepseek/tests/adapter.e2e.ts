@@ -1,4 +1,4 @@
-import * as Protocol from '@liusiqi-dev/dsh-llm-deepseek'
+import * as Protocol from '@liusiqi-dev/sqh-llm-deepseek'
 /**
  * Real Messages round trips use the official root and require credentials.
  * System-update checks additionally require DEEPSEEK_IN_HISTORY_MODEL.
@@ -11,15 +11,15 @@ import { createRequire } from 'node:module'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context, LoggerLevel } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import LocalAttachments from '@liusiqi-dev/dsh-attachment-local'
-import DeepSeekLlmApiExtensionRegistry from '@liusiqi-dev/dsh-deepseek-llm-api-extensions'
-import LlmRuntime, { BlockAssembler, createAssistantMessage, createSystemMessage, createToolResultMessage, ReasoningEffortId, ToolCallId } from '@liusiqi-dev/dsh-llm'
-import type { Message } from '@liusiqi-dev/dsh-llm'
-import * as PluginPackageInventoryDeepSeek from '@liusiqi-dev/dsh-plugin-package-inventory-deepseek'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import * as SessionLogDeepSeek from '@liusiqi-dev/dsh-session-log-deepseek'
-import * as Messages from '@liusiqi-dev/dsh-llm-deepseek-api-key'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import LocalAttachments from '@liusiqi-dev/sqh-attachment-local'
+import DeepSeekLlmApiExtensionRegistry from '@liusiqi-dev/sqh-deepseek-llm-api-extensions'
+import LlmRuntime, { BlockAssembler, createAssistantMessage, createSystemMessage, createToolResultMessage, ReasoningEffortId, ToolCallId } from '@liusiqi-dev/sqh-llm'
+import type { Message } from '@liusiqi-dev/sqh-llm'
+import * as PluginPackageInventoryDeepSeek from '@liusiqi-dev/sqh-plugin-package-inventory-deepseek'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import * as SessionLogDeepSeek from '@liusiqi-dev/sqh-session-log-deepseek'
+import * as Messages from '@liusiqi-dev/sqh-llm-deepseek-api-key'
 import { DeepSeekFilesClient } from '../src/files-api.ts'
 import { MESSAGES_FILES_BETA } from '../src/messages-api.ts'
 import { assemble, options, user, sourceModuleLoader } from './helpers.ts'
@@ -148,12 +148,12 @@ describe.skipIf(!process.env.DEEPSEEK_API_KEY)('DeepSeek Messages real API', () 
     ctx.baseUrl = import.meta.url
     // Select the source module while Loader owns its active package entry.
     ctx.loader.internal = sourceModuleLoader(async (specifier) => {
-      if (specifier !== '@liusiqi-dev/dsh-plugin-package-inventory-deepseek') throw new Error(`unexpected Loader import: ${specifier}`)
+      if (specifier !== '@liusiqi-dev/sqh-plugin-package-inventory-deepseek') throw new Error(`unexpected Loader import: ${specifier}`)
       return PluginPackageInventoryDeepSeek
     })
-    await ctx.loader.create({ name: '@liusiqi-dev/dsh-plugin-package-inventory-deepseek' })
+    await ctx.loader.create({ name: '@liusiqi-dev/sqh-plugin-package-inventory-deepseek' })
     await ctx.loader.await()
-    const packagePath = createRequire(import.meta.url).resolve('@liusiqi-dev/dsh-plugin-package-inventory-deepseek/package.json')
+    const packagePath = createRequire(import.meta.url).resolve('@liusiqi-dev/sqh-plugin-package-inventory-deepseek/package.json')
     const packageIdentity = JSON.parse(await readFile(packagePath, 'utf8')) as { name: string; version: string }
     const session = ctx.sessions.create(SessionId(`real-messages-extensions-${randomUUID()}`))
     session.append('turn/start', { turn: 1 })

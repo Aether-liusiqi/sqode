@@ -1,12 +1,12 @@
 import type {
   ConversationLocation, ConversationNodeContext, ConversationNodeDefinition,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type { ChatConversationViewNode } from '@liusiqi-dev/dsh-client-ui-chat/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type { ChatConversationViewNode } from '@liusiqi-dev/sqh-client-ui-chat/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import type {
   ToolWorkflowAgentEndData, ToolWorkflowAgentStartData,
-} from '@liusiqi-dev/dsh-tool-workflow/types'
-import type { WorkflowAgentOutcome, WorkflowStopReason } from '@liusiqi-dev/dsh-workflow/types'
+} from '@liusiqi-dev/sqh-tool-workflow/types'
+import type { WorkflowAgentOutcome, WorkflowStopReason } from '@liusiqi-dev/sqh-workflow/types'
 
 /** Status shown for a workflow, phase, or member. */
 export type WorkflowRunStatus = 'running' | 'completed' | 'failed' | 'cancelled' | 'interrupted'
@@ -34,7 +34,7 @@ export interface WorkflowRunChatData {
   readonly phases: readonly WorkflowRunPhaseData[]
 }
 
-declare module '@liusiqi-dev/dsh-client-ui-chat/client' {
+declare module '@liusiqi-dev/sqh-client-ui-chat/client' {
   interface ChatNodeDataMap {
     /** Durable top-level workflow run and all members that actually started. */
     'workflow-run': WorkflowRunChatData

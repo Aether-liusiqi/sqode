@@ -3,7 +3,7 @@ description: "SQLite storage backend for hosts and maintainers choosing, configu
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-storage-sqlite
+# @liusiqi-dev/sqh-storage-sqlite
 
 English | [中文](README.zh.md)
 
@@ -36,11 +36,11 @@ Choose it when writes are frequent and point-sized — each key maps to exactly 
 Two fields: the database path and the journal mode. `:memory:` opens an in-process database whose contents disappear with the process.
 
 ```yaml
-- name: '@liusiqi-dev/dsh-storage'
-- name: '@liusiqi-dev/dsh-storage-sqlite'
+- name: '@liusiqi-dev/sqh-storage'
+- name: '@liusiqi-dev/sqh-storage-sqlite'
   config:
     path: /var/lib/dsh/data.db
-- name: '@liusiqi-dev/dsh-storage-domain'
+- name: '@liusiqi-dev/sqh-storage-domain'
   config:
     backend: sqlite
 ```

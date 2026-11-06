@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-webhook-github",
+  "name": "@liusiqi-dev/sqh-webhook-github",
   "description": "Signed GitHub HTTP webhook adapter for the Siqi Harness webhook runtime",
   "version": "1.0.0",
   "publishConfig": {
@@ -33,13 +33,13 @@
   "license": "MIT",
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-credentials": "workspace:*",
-    "@liusiqi-dev/dsh-host-webserver": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-webhook": "workspace:*"
+    "@liusiqi-dev/sqh-credentials": "workspace:*",
+    "@liusiqi-dev/sqh-host-webserver": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-webhook": "workspace:*"
   },
   "dependencies": {
-    "@liusiqi-dev/dsh-util-values": "workspace:*",
+    "@liusiqi-dev/sqh-util-values": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
     "@octokit/webhooks": "^14.2.0"
   },
@@ -47,9 +47,9 @@
     "@liusiqi-dev/cordis": "workspace:~",
     "@liusiqi-dev/cordis-plugin-include": "workspace:~",
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
-    "@liusiqi-dev/dsh-credentials": "workspace:*",
-    "@liusiqi-dev/dsh-host-webserver": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-webhook": "workspace:*"
+    "@liusiqi-dev/sqh-credentials": "workspace:*",
+    "@liusiqi-dev/sqh-host-webserver": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-webhook": "workspace:*"
   }
 }

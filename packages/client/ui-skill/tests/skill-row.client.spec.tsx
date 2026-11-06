@@ -2,10 +2,10 @@
 
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import type { StartedToolCall, ToolResultNode } from '@liusiqi-dev/dsh-client-ui-chat/client'
-import type { ToolCallOwnerProps } from '@liusiqi-dev/dsh-client-ui-tool/client'
-import { makeTranslate } from '@liusiqi-dev/dsh-client-test-runtime'
-import { zh as commonZh } from '@liusiqi-dev/dsh-client-locale/src/locales/zh.ts'
+import type { StartedToolCall, ToolResultNode } from '@liusiqi-dev/sqh-client-ui-chat/client'
+import type { ToolCallOwnerProps } from '@liusiqi-dev/sqh-client-ui-tool/client'
+import { makeTranslate } from '@liusiqi-dev/sqh-client-test-runtime'
+import { zh as commonZh } from '@liusiqi-dev/sqh-client-locale/src/locales/zh.ts'
 import { SkillRow } from '../src/client/SkillRow.tsx'
 import { zh } from '../src/client/locales.ts'
 

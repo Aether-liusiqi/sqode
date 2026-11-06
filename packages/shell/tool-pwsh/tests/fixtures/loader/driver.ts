@@ -7,8 +7,8 @@
  */
 
 import { writeFile } from 'node:fs/promises'
-import { boot, resolveConfigPath } from '@liusiqi-dev/dsh-app-boot'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
+import { boot, resolveConfigPath } from '@liusiqi-dev/sqh-app-boot'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
 
 const configPath = process.argv[2]
 if (configPath === undefined) throw new Error('tool-pwsh driver requires a config path')

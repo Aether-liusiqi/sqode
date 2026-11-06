@@ -2,7 +2,7 @@
  * Scoped-context primitive: mint a Cordis context that tags registrations with
  * an opaque identity and build routing-only event carriers for that identity.
  *
- * @module @liusiqi-dev/dsh-scope
+ * @module @liusiqi-dev/sqh-scope
  */
 
 import type { Context, Fiber } from '@liusiqi-dev/cordis'

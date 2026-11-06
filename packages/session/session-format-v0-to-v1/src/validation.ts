@@ -4,14 +4,14 @@ import {
   SessionFormatUnsupportedMigrationError,
   sessionFormatCount,
   sessionFormatSafeInteger,
-} from '@liusiqi-dev/dsh-session-format'
-import { isJsonValue } from '@liusiqi-dev/dsh-util-values'
+} from '@liusiqi-dev/sqh-session-format'
+import { isJsonValue } from '@liusiqi-dev/sqh-util-values'
 import type {
   SessionFormatArtifact,
   SessionFormatEvent,
   SessionFormatHeader,
   SessionFormatJsonValue,
-} from '@liusiqi-dev/dsh-session-format'
+} from '@liusiqi-dev/sqh-session-format'
 import { RELEASED_V0_EVENT_DISPOSITIONS } from './dispositions.ts'
 import { assertReleasedPayloadSemantics } from './payload-validation.ts'
 import { assertReleasedV0Keys, releasedV0Record } from './validation-helpers.ts'

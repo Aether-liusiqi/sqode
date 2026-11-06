@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-client-file-upload",
+  "name": "@liusiqi-dev/sqh-client-file-upload",
   "description": "Agent-scoped browser file upload, streaming intake, and staged receipt service",
   "version": "1.0.0",
   "publishConfig": {
@@ -40,7 +40,7 @@
   "dsh": {
     "client": {
       "inject": [
-        "@liusiqi-dev/dsh-api-remotes"
+        "@liusiqi-dev/sqh-api-remotes"
       ],
       "platform": "web",
       "immediately": true
@@ -63,22 +63,22 @@
   ],
   "dependencies": {
     "zod": "^4.4.3",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
-    "@liusiqi-dev/dsh-brand": "workspace:*"
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/sqh-brand": "workspace:*"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-scope": "workspace:*"
+    "@liusiqi-dev/sqh-scope": "workspace:*"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-client-connection": "workspace:*",
-    "@liusiqi-dev/dsh-commands": "workspace:*",
-    "@liusiqi-dev/dsh-scope": "workspace:*",
-    "@liusiqi-dev/dsh-util-crypto": "workspace:*",
-    "@liusiqi-dev/dsh-api-remotes": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-attachment": "workspace:*"
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-client-connection": "workspace:*",
+    "@liusiqi-dev/sqh-commands": "workspace:*",
+    "@liusiqi-dev/sqh-scope": "workspace:*",
+    "@liusiqi-dev/sqh-util-crypto": "workspace:*",
+    "@liusiqi-dev/sqh-api-remotes": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-attachment": "workspace:*"
   }
 }

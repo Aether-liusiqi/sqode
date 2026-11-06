@@ -1,8 +1,8 @@
 import { describe, expect, it, onTestFinished, vi } from 'vitest'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import { RemoteError } from '@liusiqi-dev/dsh-client-test-runtime'
-import type { Resources, ResourceSnapshot } from '@liusiqi-dev/dsh-client-resources/client'
-import type { WorkspaceFileStat } from '@liusiqi-dev/dsh-api-workspace-files/types'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import { RemoteError } from '@liusiqi-dev/sqh-client-test-runtime'
+import type { Resources, ResourceSnapshot } from '@liusiqi-dev/sqh-client-resources/client'
+import type { WorkspaceFileStat } from '@liusiqi-dev/sqh-api-workspace-files/types'
 import { ResourceGroup } from '../src/client/document/resource-group.ts'
 
 function harness() {

@@ -18,13 +18,13 @@
  * record goes away the bucket and the tab's listing bookkeeping are forgotten,
  * so no later settlement writes to it.
  */
-import type { ClientRemote, RemoteResult } from '@liusiqi-dev/dsh-api-remotes/client'
-import type { BoundActions } from '@liusiqi-dev/dsh-client-store'
-import type { TabId } from '@liusiqi-dev/dsh-client-ui-dockkit'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { ClientRemote, RemoteResult } from '@liusiqi-dev/sqh-api-remotes/client'
+import type { BoundActions } from '@liusiqi-dev/sqh-client-store'
+import type { TabId } from '@liusiqi-dev/sqh-client-ui-dockkit'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import type { DirLevel, createFilesStore } from './store.ts'
-import type { WorkspaceFileWatchFrame } from '@liusiqi-dev/dsh-api-workspace-files/types'
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
+import type { WorkspaceFileWatchFrame } from '@liusiqi-dev/sqh-api-workspace-files/types'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
 import { DirectoryNode } from './directory-node.ts'
 
 /**

@@ -3,7 +3,7 @@ description: "Build-static first-party Session format codec and adjacent migrati
 kind: "package-library"
 ---
 
-# @liusiqi-dev/dsh-session-format-catalog
+# @liusiqi-dev/sqh-session-format-catalog
 
 English | [中文](README.zh.md)
 

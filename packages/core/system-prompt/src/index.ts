@@ -1,14 +1,14 @@
 /**
  * Registry for ordered system sections, dynamic context, tool schemas, and prompt variables.
  *
- * @module @liusiqi-dev/dsh-system-prompt
+ * @module @liusiqi-dev/sqh-system-prompt
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { AnonymousEntries, NamedEntries, ScopedLayers, scopeTarget } from '@liusiqi-dev/dsh-scope'
-import type { ScopeKey, ScopeLayer, Scoped } from '@liusiqi-dev/dsh-scope'
-import type { ContextSnapshotSection, ToolSchema } from '@liusiqi-dev/dsh-llm'
+import { AnonymousEntries, NamedEntries, ScopedLayers, scopeTarget } from '@liusiqi-dev/sqh-scope'
+import type { ScopeKey, ScopeLayer, Scoped } from '@liusiqi-dev/sqh-scope'
+import type { ContextSnapshotSection, ToolSchema } from '@liusiqi-dev/sqh-llm'
 
 declare module '@liusiqi-dev/cordis' {
   interface Context {
@@ -18,7 +18,7 @@ declare module '@liusiqi-dev/cordis' {
   interface Events {
     /**
      * Expert waterfall over the assembled sections, contexts, tools, and variables.
-     * Scope-filtered dispatch (`@liusiqi-dev/dsh-scope`): scoped listeners
+     * Scope-filtered dispatch (`@liusiqi-dev/sqh-scope`): scoped listeners
      * receive only that scope's assemblies. The returned value is authoritative.
      * A supplied signal controls only this explicit assembly request and must not
      * be retained to control later turns. A registered complete section is

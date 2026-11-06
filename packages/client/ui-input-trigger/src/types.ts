@@ -10,15 +10,15 @@
 import type { ComponentType } from 'react'
 import type {
   PickOutcome, ReferenceInsert, TokenSpan,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type { IconProps } from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type { IconProps } from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 
 export type {
   ArbitrateKey, ArbitrateOutcome, BeginCommandRequest, CommandClaim, ConsumeTokenRequest,
   InsertReferenceRequest, InsertTextRequest, PickOutcome, ReferenceInsert, SubmitAttachment,
   SubmitOutcome, TokenSpan,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 
 /**
  * The provider-facing projection of one client session. It carries stable

@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-plugin-package-inventory-deepseek",
+  "name": "@liusiqi-dev/sqh-plugin-package-inventory-deepseek",
   "description": "Active Loader-backed plugin package inventory for official DeepSeek LLM API requests",
   "version": "1.0.0",
   "publishConfig": {
@@ -32,32 +32,32 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@liusiqi-dev/dsh-brand": "workspace:*",
+    "@liusiqi-dev/sqh-brand": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-agent-preset-registry": "workspace:*",
-    "@liusiqi-dev/dsh-deepseek-llm-api-extensions": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*"
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-agent-preset-registry": "workspace:*",
+    "@liusiqi-dev/sqh-deepseek-llm-api-extensions": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*"
   },
   "peerDependenciesMeta": {
-    "@liusiqi-dev/dsh-agent-preset-registry": {
+    "@liusiqi-dev/sqh-agent-preset-registry": {
       "optional": true
     }
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-app-boot": "workspace:*",
+    "@liusiqi-dev/sqh-app-boot": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~",
     "@liusiqi-dev/cordis-plugin-include": "workspace:~",
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-agent-preset-registry": "workspace:*",
-    "@liusiqi-dev/dsh-deepseek-llm-api-extensions": "workspace:*",
-    "@liusiqi-dev/dsh-scope": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*"
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-agent-preset-registry": "workspace:*",
+    "@liusiqi-dev/sqh-deepseek-llm-api-extensions": "workspace:*",
+    "@liusiqi-dev/sqh-scope": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection": "workspace:*"
   }
 }

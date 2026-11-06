@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-client-ui-brand-official",
+  "name": "@liusiqi-dev/sqh-client-ui-brand-official",
   "description": "Official Siqi Harness brand occupants for the Web client's sidebar slots",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,8 +28,8 @@
   "dsh": {
     "client": {
       "inject": [
-        "@liusiqi-dev/dsh-client-ui-renderer",
-        "@liusiqi-dev/dsh-client-ui-sidebar"
+        "@liusiqi-dev/sqh-client-ui-renderer",
+        "@liusiqi-dev/sqh-client-ui-sidebar"
       ],
       "platform": "web"
     }
@@ -43,9 +43,9 @@
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-client-ui-primitives": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-renderer": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-sidebar": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-primitives": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-renderer": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-sidebar": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~",
     "@testing-library/react": "^16.1.0",
     "@types/react": "~18.3.1",

@@ -1,11 +1,11 @@
 /**
  * Compiler-independent Typert protocol shared by business packages, generated
  * Remote artifacts, the Host Gateway, and Client API implementations.
- * @module @liusiqi-dev/dsh-typert-protocol/types
+ * @module @liusiqi-dev/sqh-typert-protocol/types
  */
 
 import type { Context, Events } from '@liusiqi-dev/cordis'
-import type { Branded } from '@liusiqi-dev/dsh-brand'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
 import type { TypertOwnedValue } from './owned-value.ts'
 
 declare const LOOKUP_HOST: unique symbol

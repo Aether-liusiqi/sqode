@@ -1,4 +1,4 @@
-import SessionQueryEngine from '@liusiqi-dev/dsh-session-query'
+import SessionQueryEngine from '@liusiqi-dev/sqh-session-query'
 import type {
   SessionEventSearchPage,
   SessionEventSearchRequest,
@@ -6,7 +6,7 @@ import type {
   SessionSearchHit,
   SessionSearchPage,
   SessionSearchRequest,
-} from '@liusiqi-dev/dsh-session-query'
+} from '@liusiqi-dev/sqh-session-query'
 
 /** Test-only concrete query service for backend-independent behavior. */
 export class TestSessionQueryEngine extends SessionQueryEngine {

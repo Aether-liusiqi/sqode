@@ -1,12 +1,12 @@
 /**
  * Test-only direct-agent turn driver shared by assembled Loader fixtures.
- * @module @liusiqi-dev/dsh-loader-smoke/agent-turn
+ * @module @liusiqi-dev/sqh-loader-smoke/agent-turn
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { createUserMessage, expandAssistantStream, type TokenUsage } from '@liusiqi-dev/dsh-llm'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { createUserMessage, expandAssistantStream, type TokenUsage } from '@liusiqi-dev/sqh-llm'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
 
 /** Result envelope consumed only by snapshot and composition tests. */
 export interface FixtureTurnResult {

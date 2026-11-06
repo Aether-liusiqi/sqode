@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-terminal-bash",
+  "name": "@liusiqi-dev/sqh-terminal-bash",
   "description": "Persistent shell PTY backend over the Siqi Harness subprocess terminal primitive",
   "version": "1.0.0",
   "publishConfig": {
@@ -27,30 +27,30 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-terminal": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox-policy": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess": "workspace:*",
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-terminal": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox-policy": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*"
+    "@liusiqi-dev/sqh-session-projection": "workspace:*"
   },
   "dependencies": {
-    "@liusiqi-dev/dsh-lazy-require": "workspace:*",
-    "@liusiqi-dev/dsh-pwsh-local": "workspace:*",
+    "@liusiqi-dev/sqh-lazy-require": "workspace:*",
+    "@liusiqi-dev/sqh-pwsh-local": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
     "@xterm/headless": "^6.0.0"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-agent-loop-testkit": "workspace:*",
-    "@liusiqi-dev/dsh-terminal": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox-policy": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess-local": "workspace:*",
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-agent-loop-testkit": "workspace:*",
+    "@liusiqi-dev/sqh-terminal": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox-policy": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess-local": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   }
 }

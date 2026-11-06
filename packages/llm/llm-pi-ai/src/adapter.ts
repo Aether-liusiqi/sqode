@@ -43,7 +43,7 @@ import {
   LlmAdapter,
   LlmError,
   ReasoningEffortId,
-} from '@liusiqi-dev/dsh-llm'
+} from '@liusiqi-dev/sqh-llm'
 import type {
   GenerateOptions,
   ImageAttachmentAccess,
@@ -54,9 +54,9 @@ import type {
   ReasoningEffortId as ReasoningEffortIdType,
   ResolvedRetryPolicy,
   StreamChunk,
-} from '@liusiqi-dev/dsh-llm'
-import type { AttachmentStore, ImageAttachmentRef } from '@liusiqi-dev/dsh-attachment'
-import { idleWatchdog, timeoutOf } from '@liusiqi-dev/dsh-timeout'
+} from '@liusiqi-dev/sqh-llm'
+import type { AttachmentStore, ImageAttachmentRef } from '@liusiqi-dev/sqh-attachment'
+import { idleWatchdog, timeoutOf } from '@liusiqi-dev/sqh-timeout'
 import type { ResolvedPiAiProviderProfile } from './config.ts'
 import { toPiContext } from './context.ts'
 import { createModels, getSupportedThinkingLevels } from './models.ts'

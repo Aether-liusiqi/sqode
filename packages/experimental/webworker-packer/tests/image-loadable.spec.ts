@@ -22,13 +22,13 @@ import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
 import picomatch from 'picomatch'
 import { FiberState } from '@liusiqi-dev/cordis'
-import { createNodeBuiltins, REPLACED_PREFIXES } from '@liusiqi-dev/dsh-experimental-webworker-runtime/src/node/builtins.ts'
+import { createNodeBuiltins, REPLACED_PREFIXES } from '@liusiqi-dev/sqh-experimental-webworker-runtime/src/node/builtins.ts'
 import {
   setActiveModuleLoader, WorkerModuleLoader,
-} from '@liusiqi-dev/dsh-experimental-webworker-runtime/src/module-system/module-loader.ts'
-import { inflateImage } from '@liusiqi-dev/dsh-experimental-webworker-runtime/src/storage/image-gzip.ts'
-import { loadVfsImage } from '@liusiqi-dev/dsh-experimental-webworker-runtime/src/storage/memory.ts'
-import { setActiveVfs } from '@liusiqi-dev/dsh-experimental-webworker-runtime/src/storage/active.ts'
+} from '@liusiqi-dev/sqh-experimental-webworker-runtime/src/module-system/module-loader.ts'
+import { inflateImage } from '@liusiqi-dev/sqh-experimental-webworker-runtime/src/storage/image-gzip.ts'
+import { loadVfsImage } from '@liusiqi-dev/sqh-experimental-webworker-runtime/src/storage/memory.ts'
+import { setActiveVfs } from '@liusiqi-dev/sqh-experimental-webworker-runtime/src/storage/active.ts'
 import { indexWorkspacePackages, previewFixtures } from '../src/repository.ts'
 import { DEFAULT_ROOT, MANIFEST_PATH, packVfsImage, packVfsOverlay } from '../src/pack.ts'
 import { PAGE_ASSETS } from '../src/rules.ts'
@@ -36,11 +36,11 @@ import { PAGE_ASSETS } from '../src/rules.ts'
 const repoRoot = fileURLToPath(new URL('../../../../', import.meta.url))
 
 /** A leaf workspace package: real build output, no dependencies to drag in. */
-const SUBJECT = '@liusiqi-dev/dsh-timeout'
+const SUBJECT = '@liusiqi-dev/sqh-timeout'
 const LANDLOCK = '@liusiqi-dev/node-addon-system'
 const LANDLOCK_ENTRY = `${LANDLOCK}/landlock-run`
-const PLUGIN_INVENTORY = '@liusiqi-dev/dsh-plugin-package-inventory-deepseek'
-const WEB_SERVER = '@liusiqi-dev/dsh-host-webserver'
+const PLUGIN_INVENTORY = '@liusiqi-dev/sqh-plugin-package-inventory-deepseek'
+const WEB_SERVER = '@liusiqi-dev/sqh-host-webserver'
 
 const workspaces = indexWorkspacePackages(repoRoot)
 

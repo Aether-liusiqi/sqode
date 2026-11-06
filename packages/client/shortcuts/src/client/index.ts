@@ -1,7 +1,7 @@
 /** Browser command service, with one keyboard adapter per plugin lifetime. */
 import { Service } from '@liusiqi-dev/cordis'
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-client-locale/client'
+import type {} from '@liusiqi-dev/sqh-client-locale/client'
 import { ShortcutRegistry } from './registry.ts'
 import { detectEnvironment, installKeyboard } from './dom.ts'
 import { bindingIssue, initialShortcutConfig, normalizeBinding, overlappingBindings, presentBinding } from '../protocol.ts'

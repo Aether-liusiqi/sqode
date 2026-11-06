@@ -4,23 +4,23 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { credentialRef } from '@liusiqi-dev/dsh-credentials'
-import LocalCredentialProvider from '@liusiqi-dev/dsh-credentials-local'
-import type { DeepSeekAccount } from '@liusiqi-dev/dsh-deepseek-account'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import WebRuntime, { WebError } from '@liusiqi-dev/dsh-web'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { credentialRef } from '@liusiqi-dev/sqh-credentials'
+import LocalCredentialProvider from '@liusiqi-dev/sqh-credentials-local'
+import type { DeepSeekAccount } from '@liusiqi-dev/sqh-deepseek-account'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import WebRuntime, { WebError } from '@liusiqi-dev/sqh-web'
 import {
   DeepSeekSearchProvider,
   DEEPSEEK_PROVIDER_ID,
-} from '@liusiqi-dev/dsh-web-search-deepseek'
-import * as deepseekPlugin from '@liusiqi-dev/dsh-web-search-deepseek'
+} from '@liusiqi-dev/sqh-web-search-deepseek'
+import * as deepseekPlugin from '@liusiqi-dev/sqh-web-search-deepseek'
 import { citationSnippets, mapAnthropicResponse } from '../src/provider.ts'
-import type { AnthropicResponse } from '@liusiqi-dev/dsh-web-search-deepseek/src/types.ts'
+import type { AnthropicResponse } from '@liusiqi-dev/sqh-web-search-deepseek/src/types.ts'
 
 /** Construct the provider over a fixed options value; production passes a live thunk. */
-import type { DeepSeekSearchProviderOptions } from '@liusiqi-dev/dsh-web-search-deepseek'
+import type { DeepSeekSearchProviderOptions } from '@liusiqi-dev/sqh-web-search-deepseek'
 
 const searchProvider = (options: DeepSeekSearchProviderOptions): DeepSeekSearchProvider =>
   new DeepSeekSearchProvider(() => options)

@@ -2,7 +2,7 @@
 # the pinned executable first; SQH starts it but does not run a package manager.
 - insert:
     - id: memory-mcp-reference
-      name: '@liusiqi-dev/dsh-mcp-client'
+      name: '@liusiqi-dev/sqh-mcp-client'
       config:
         serverName: reference_memory
         transport: stdio

@@ -2,8 +2,8 @@
 import { Context, Service } from '@liusiqi-dev/cordis'
 import { EntryGroup } from '@liusiqi-dev/cordis-plugin-loader'
 import z from '@liusiqi-dev/schemastery'
-import type { PresetDefinition } from '@liusiqi-dev/dsh-agent-preset-registry'
-import type {} from '@liusiqi-dev/dsh-agent-preset-registry'
+import type { PresetDefinition } from '@liusiqi-dev/sqh-agent-preset-registry'
+import type {} from '@liusiqi-dev/sqh-agent-preset-registry'
 
 /** Definition submitted to the preset registry. */
 export type Config = PresetDefinition

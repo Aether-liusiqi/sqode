@@ -3,17 +3,17 @@
  * slot without defining a service.
  */
 import type { Context } from '@liusiqi-dev/cordis'
-import type { ImageAttachmentRef } from '@liusiqi-dev/dsh-attachment'
-import type { SessionBinding } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { ImageAttachmentRef } from '@liusiqi-dev/sqh-attachment'
+import type { SessionBinding } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 // Type-only: pulls the locale plugin's Context merge (ctx.locale).
-import type {} from '@liusiqi-dev/dsh-client-locale/client'
+import type {} from '@liusiqi-dev/sqh-client-locale/client'
 // Type-only: the 'conversation.view' SlotMap row (declared by the slot's
 // owning package) must be in the program for the register calls to type.
-import type {} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-session/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-session/client'
 import { createTrajectoryDurationStore } from './duration-store.ts'
 import { createTrajectoryStringWrappingStore } from './string-wrapping-store.ts'
 import { en, NS, zh } from './locales.ts'

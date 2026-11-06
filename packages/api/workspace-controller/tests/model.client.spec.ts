@@ -24,9 +24,9 @@ import type {
   WorkspaceId,
   WorkspaceView,
 } from '../src/types.ts'
-import { RemoteError, type RemoteFailure, type RemoteResult, type RemoteStreamHandle } from '@liusiqi-dev/dsh-typert-protocol'
-import { streamHandle } from '@liusiqi-dev/dsh-remote-mock'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import { RemoteError, type RemoteFailure, type RemoteResult, type RemoteStreamHandle } from '@liusiqi-dev/sqh-typert-protocol'
+import { streamHandle } from '@liusiqi-dev/sqh-remote-mock'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 
 const sid = (id: string): SessionId => id as SessionId
 const wid = (id: string): WorkspaceId => id as WorkspaceId

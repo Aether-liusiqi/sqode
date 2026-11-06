@@ -16,12 +16,12 @@ import type { Volatile } from '@liusiqi-dev/cordis'
 
 import type { CacheRetention, ChatTemplateKwargValue, ModelThinkingLevel, Provider, ThinkingBudgets, Transport } from '@earendil-works/pi-ai'
 import z from '@liusiqi-dev/schemastery'
-import { credentialRef } from '@liusiqi-dev/dsh-credentials'
-import type { CredentialRef } from '@liusiqi-dev/dsh-credentials'
-import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
-import { resolveRetryPolicy, RetryPolicySchema } from '@liusiqi-dev/dsh-llm'
-import type { ResolvedRetryPolicy, RetryPolicyConfig } from '@liusiqi-dev/dsh-llm'
-import { deepEqualJson } from '@liusiqi-dev/dsh-util-values'
+import { credentialRef } from '@liusiqi-dev/sqh-credentials'
+import type { CredentialRef } from '@liusiqi-dev/sqh-credentials'
+import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/sqh-timeout'
+import { resolveRetryPolicy, RetryPolicySchema } from '@liusiqi-dev/sqh-llm'
+import type { ResolvedRetryPolicy, RetryPolicyConfig } from '@liusiqi-dev/sqh-llm'
+import { deepEqualJson } from '@liusiqi-dev/sqh-util-values'
 import {
   CACHE_CONTROL_FORMATS,
   CHAT_TEMPLATE_VARS,

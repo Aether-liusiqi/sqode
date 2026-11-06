@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-fs-local",
+  "name": "@liusiqi-dev/sqh-fs-local",
   "description": "Local-filesystem implementation of the Siqi Harness filesystem seam (ctx.fs)",
   "version": "1.0.0",
   "publishConfig": {
@@ -27,7 +27,7 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@liusiqi-dev/dsh-fs": "workspace:*",
+    "@liusiqi-dev/sqh-fs": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "dependencies": {
@@ -36,8 +36,8 @@
     "@liusiqi-dev/schemastery": "workspace:~"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-fs": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-fs": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   }
 }

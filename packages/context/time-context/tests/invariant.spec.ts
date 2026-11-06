@@ -1,10 +1,10 @@
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { Session, SessionId, SessionSeq, type SessionEvent } from '@liusiqi-dev/dsh-session'
-import * as TimeInvariant from '@liusiqi-dev/dsh-time-context/invariant'
-import InvariantRegistry from '@liusiqi-dev/dsh-invariants'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { Session, SessionId, SessionSeq, type SessionEvent } from '@liusiqi-dev/sqh-session'
+import * as TimeInvariant from '@liusiqi-dev/sqh-time-context/invariant'
+import InvariantRegistry from '@liusiqi-dev/sqh-invariants'
 
 const SECOND = Date.parse('2026-07-14T00:00:00Z')
 

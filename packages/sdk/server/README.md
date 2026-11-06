@@ -3,7 +3,7 @@ description: "The stdio JSON-RPC serving plugin for deployments that let out-of-
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-sdk-jsonrpc-server
+# @liusiqi-dev/sqh-sdk-jsonrpc-server
 
 English | [中文](README.zh.md)
 

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { SESSION_FORMAT_VERSION } from '@liusiqi-dev/dsh-session'
-import type { SessionFormatArtifact, SessionFormatHeader } from '@liusiqi-dev/dsh-session-format'
+import { SESSION_FORMAT_VERSION } from '@liusiqi-dev/sqh-session'
+import type { SessionFormatArtifact, SessionFormatHeader } from '@liusiqi-dev/sqh-session-format'
 import {
   validateInstalledCurrentSessionArtifact,
   validateInstalledCurrentSessionHeader,

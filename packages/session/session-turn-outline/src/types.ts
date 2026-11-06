@@ -4,10 +4,10 @@
  * (zod, the projection definition). Host consumers import `./types`; client
  * aggregates import `./client`, which re-exports this module.
  *
- * @module @liusiqi-dev/dsh-session-turn-outline/types
+ * @module @liusiqi-dev/sqh-session-turn-outline/types
  */
 
-import type { SessionSeq } from '@liusiqi-dev/dsh-session/types'
+import type { SessionSeq } from '@liusiqi-dev/sqh-session/types'
 
 export {}
 
@@ -37,7 +37,7 @@ export interface TurnOutlineState {
   readonly draft: string
 }
 
-declare module '@liusiqi-dev/dsh-session-projection/types' {
+declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionStateMap {
     /** Whole-log turn outline fold state (entries plus the open turn's response draft). */
     turnOutline: TurnOutlineState

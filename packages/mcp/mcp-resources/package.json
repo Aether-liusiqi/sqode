@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-mcp-resources",
+  "name": "@liusiqi-dev/sqh-mcp-resources",
   "description": "Scoped MCP resource discovery and reading through shared model tools",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,25 +28,25 @@
   "license": "MIT",
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-scope": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*"
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-scope": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-ptc-runtime": "workspace:*",
-    "@liusiqi-dev/dsh-scope": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
-    "@liusiqi-dev/dsh-agent": "workspace:*"
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-ptc-runtime": "workspace:*",
+    "@liusiqi-dev/sqh-scope": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*",
+    "@liusiqi-dev/sqh-agent": "workspace:*"
   },
   "dependencies": {
-    "@liusiqi-dev/dsh-util-values": "workspace:*"
+    "@liusiqi-dev/sqh-util-values": "workspace:*"
   },
   "peerDependenciesMeta": {
-    "@liusiqi-dev/dsh-system-prompt": {
+    "@liusiqi-dev/sqh-system-prompt": {
       "optional": true
     }
   }

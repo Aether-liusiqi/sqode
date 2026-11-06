@@ -3,7 +3,7 @@ description: "Adaptive chooser of the directory-picker seam: resolves the web GU
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-host-directory-picker-auto
+# @liusiqi-dev/sqh-host-directory-picker-auto
 
 English | [中文](README.zh.md)
 

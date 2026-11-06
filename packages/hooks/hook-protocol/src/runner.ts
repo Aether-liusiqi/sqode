@@ -3,10 +3,10 @@
  * process-group cancellation, and timeout machinery. The bridge supplies the
  * trusted stdin payload and dialect environment, then this module decodes the
  * captured outcome.
- * @module @liusiqi-dev/dsh-hook-protocol/runner
+ * @module @liusiqi-dev/sqh-hook-protocol/runner
  */
 
-import type { ShellExecutor } from '@liusiqi-dev/dsh-shell'
+import type { ShellExecutor } from '@liusiqi-dev/sqh-shell'
 import { parseHookOutput } from './codec.ts'
 import type { CommandHook, HookOutput } from './types.ts'
 

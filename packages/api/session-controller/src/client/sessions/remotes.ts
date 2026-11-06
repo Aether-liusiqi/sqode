@@ -2,16 +2,16 @@
  * Remote namespaces the Session cluster calls. One parameter for one concept:
  * the generated surface a Session and its manager reach the Host through.
  *
- * @module @liusiqi-dev/dsh-api-session-controller/client/sessions/remotes
+ * @module @liusiqi-dev/sqh-api-session-controller/client/sessions/remotes
  */
 
-import type { ClientRemote } from '@liusiqi-dev/dsh-api-gateway/client'
-import type { CommandSubmitAttachment } from '@liusiqi-dev/dsh-commands/types'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { ClientRemote } from '@liusiqi-dev/sqh-api-gateway/client'
+import type { CommandSubmitAttachment } from '@liusiqi-dev/sqh-commands/types'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import type {
   SubagentInterruptReceipt, SubagentPromptReceipt, SubagentPromptRequest,
-} from '@liusiqi-dev/dsh-subagent/client'
-import type { RemoteResult } from '@liusiqi-dev/dsh-typert-protocol'
+} from '@liusiqi-dev/sqh-subagent/client'
+import type { RemoteResult } from '@liusiqi-dev/sqh-typert-protocol'
 import type { SessionRemote } from '../transport.ts'
 
 /** Narrow Commands namespace consumed by a Client Session. */

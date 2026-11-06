@@ -3,23 +3,23 @@
  * with logged model context without vetoing or rewriting calls. Configuration
  * and chain semantics live in the package README; rationale lives in the
  * repeat-tool-reminder Agent Note.
- * @module @liusiqi-dev/dsh-repeat-tool-reminder
+ * @module @liusiqi-dev/sqh-repeat-tool-reminder
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import type { Agent, PreStepDecision } from '@liusiqi-dev/dsh-agent'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-declare module '@liusiqi-dev/dsh-llm' {
+import type { Agent, PreStepDecision } from '@liusiqi-dev/sqh-agent'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'repeat-tool-reminder': { kind: 'repeat-tool-reminder' } & ContextFormed
   }
 }
 
-import type { MessageSource } from '@liusiqi-dev/dsh-llm'
-import type { UserMessage } from '@liusiqi-dev/dsh-session'
-import type { PostToolDecision, ToolExecution } from '@liusiqi-dev/dsh-tools'
+import type { MessageSource } from '@liusiqi-dev/sqh-llm'
+import type { UserMessage } from '@liusiqi-dev/sqh-session'
+import type { PostToolDecision, ToolExecution } from '@liusiqi-dev/sqh-tools'
 
 export const name = 'repeat-tool-reminder'
 

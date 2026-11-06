@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { canonicalClientTimeZone } from '@liusiqi-dev/dsh-util-time'
+import { canonicalClientTimeZone } from '@liusiqi-dev/sqh-util-time'
 
 describe('canonicalClientTimeZone', () => {
   it('accepts UTC and Area/Location names unchanged', () => {

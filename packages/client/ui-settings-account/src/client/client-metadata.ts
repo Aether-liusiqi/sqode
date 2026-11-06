@@ -2,9 +2,9 @@
  * Platform client identity for one account call. The Host turns these fields
  * into the Platform request headers, so the browser sends the UI language and
  * the local UTC offset rather than any credential.
- * @module @liusiqi-dev/dsh-client-ui-settings-account/src/client/client-metadata
+ * @module @liusiqi-dev/sqh-client-ui-settings-account/src/client/client-metadata
  */
-import type { AccountClientMetadata } from '@liusiqi-dev/dsh-deepseek-account/types'
+import type { AccountClientMetadata } from '@liusiqi-dev/sqh-deepseek-account/types'
 
 /**
  * Build the request identity for one account call.

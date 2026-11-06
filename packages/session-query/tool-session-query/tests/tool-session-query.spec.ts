@@ -1,11 +1,11 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context, type Fiber } from '@liusiqi-dev/cordis'
-import { createScope } from '@liusiqi-dev/dsh-scope'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { createUserMessage, ToolCallId, HarnessError , createMessage } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-import { MAX_TIMER_DELAY_MS, TimeoutReason } from '@liusiqi-dev/dsh-timeout'
-import * as TimeoutPolicy from '@liusiqi-dev/dsh-tool-call-timeout-policy'
+import { createScope } from '@liusiqi-dev/sqh-scope'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { createUserMessage, ToolCallId, HarnessError , createMessage } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+import { MAX_TIMER_DELAY_MS, TimeoutReason } from '@liusiqi-dev/sqh-timeout'
+import * as TimeoutPolicy from '@liusiqi-dev/sqh-tool-call-timeout-policy'
 import SessionStore, {
   SESSION_FORMAT_VERSION,
   SessionId,
@@ -14,12 +14,12 @@ import SessionStore, {
   type SessionEvent,
   type SessionHeader,
   type SessionId as SessionIdValue,
-} from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
+} from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
 import {
   toolsLoadedProjectionDefinition,
   turnBoundaryProjectionDefinition,
-} from '@liusiqi-dev/dsh-agent-loop'
+} from '@liusiqi-dev/sqh-agent-loop'
 import SessionQueryEngine, {
   SessionQueryError,
   SessionSearchCursor,
@@ -32,12 +32,12 @@ import SessionQueryEngine, {
   type SessionSearchPage,
   type SessionSearchRequest,
   type SessionTitleObservationResult,
-} from '@liusiqi-dev/dsh-session-query'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime, { defineTool, type ToolExecutionResult } from '@liusiqi-dev/dsh-tools'
-import * as ToolSessionQuery from '@liusiqi-dev/dsh-tool-session-query'
+} from '@liusiqi-dev/sqh-session-query'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime, { defineTool, type ToolExecutionResult } from '@liusiqi-dev/sqh-tools'
+import * as ToolSessionQuery from '@liusiqi-dev/sqh-tool-session-query'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }

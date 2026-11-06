@@ -1,8 +1,8 @@
 /** The Session projection that records which preset a Session runs. */
 
 import { describe, expect, it } from 'vitest'
-import { SESSION_FORMAT_VERSION, SessionId, SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { SessionEvent, SessionHeader } from '@liusiqi-dev/dsh-session'
+import { SESSION_FORMAT_VERSION, SessionId, SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { SessionEvent, SessionHeader } from '@liusiqi-dev/sqh-session'
 import { agentPresetProjectionDefinition } from '../src/session.ts'
 
 /** A header carrying the creation-time preset, if any. */

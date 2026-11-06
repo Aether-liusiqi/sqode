@@ -5,57 +5,57 @@
 /:
   en: 21c1b63e74134d34
   zh: 78c69828d5930a86
-/liusiqi-dev-dsh-base:
-  en: 0ab486e3a47ede61
-  zh: b701b6a16da0ceaf
-/liusiqi-dev-dsh-base/summary:
+/liusiqi-dev-sqh-base:
+  en: 52d4a85ef2c70326
+  zh: 7bcf3e1827e044ae
+/liusiqi-dev-sqh-base/summary:
   en: 5c15f68a65aadc7d
   zh: 7ac9ace622e161ae
-/liusiqi-dev-dsh-base/table-of-contents:
+/liusiqi-dev-sqh-base/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
-/liusiqi-dev-dsh-base/use-this-package:
+/liusiqi-dev-sqh-base/use-this-package:
   en: 4c0d7045f95ff79c
   zh: 456bb24bd1d35db1
-/liusiqi-dev-dsh-base/use-this-package/a-minimal-custom-profile:
-  en: 04305ad82c57b0c9
-  zh: 65f432cf668f9837
-/liusiqi-dev-dsh-base/use-this-package/what-you-get:
+/liusiqi-dev-sqh-base/use-this-package/a-minimal-custom-profile:
+  en: 86367782539372a1
+  zh: 6ce9ac07dce76a19
+/liusiqi-dev-sqh-base/use-this-package/what-you-get:
   en: 7ee3a3def76e0ce6
   zh: b53b1fdc78cf0339
-/liusiqi-dev-dsh-base/use-this-package/shell-tools-per-platform:
+/liusiqi-dev-sqh-base/use-this-package/shell-tools-per-platform:
   en: 2dce12f82d6ee955
   zh: d4599eb899a3cd88
-/liusiqi-dev-dsh-base/use-this-package/changing-the-defaults:
+/liusiqi-dev-sqh-base/use-this-package/changing-the-defaults:
   en: 96a55abd5f7007dd
   zh: d94f020708c38a17
-/liusiqi-dev-dsh-base/understand-the-implementation:
+/liusiqi-dev-sqh-base/understand-the-implementation:
   en: 094cfca8e26a0042
   zh: de435e3e38420c01
-/liusiqi-dev-dsh-base/understand-the-implementation/composition-mechanics:
+/liusiqi-dev-sqh-base/understand-the-implementation/composition-mechanics:
   en: fd37bc66e39ac5e7
   zh: 1a039afb8bf2d517
-/liusiqi-dev-dsh-base/understand-the-implementation/platform-gating:
-  en: 2a8a9462773460c8
-  zh: 19237a81b5759ecf
-/liusiqi-dev-dsh-base/understand-the-implementation/source-map:
+/liusiqi-dev-sqh-base/understand-the-implementation/platform-gating:
+  en: 836b7078008943c2
+  zh: 617f2cd712726b97
+/liusiqi-dev-sqh-base/understand-the-implementation/source-map:
   en: 3aaf655b9c93534b
   zh: 5a1b627cc6385a17
-/liusiqi-dev-dsh-base/understand-the-implementation/invariant-ownership:
+/liusiqi-dev-sqh-base/understand-the-implementation/invariant-ownership:
   en: 533299d7bd555e61
   zh: 0aed404f790ea447
-/liusiqi-dev-dsh-base/further-exploration:
+/liusiqi-dev-sqh-base/further-exploration:
   en: 39701b25b209fb67
   zh: 2b7ce98365f1ecfc
-/liusiqi-dev-dsh-base/model-experience:
+/liusiqi-dev-sqh-base/model-experience:
   en: f6c4d2609b5f4bb6
   zh: 869a9565a133fb01
-/liusiqi-dev-dsh-base/model-experience/kv-cache-effect:
+/liusiqi-dev-sqh-base/model-experience/kv-cache-effect:
   en: e6e907c99df7cd0a
   zh: f19f2f84a5f95177
-/liusiqi-dev-dsh-base/known-limitations-and-deferred-work:
-  en: a932c88d88da585a
-  zh: 205fcc52d2efe25c
-/liusiqi-dev-dsh-base/known-limitations-and-deferred-work/dev-note:
+/liusiqi-dev-sqh-base/known-limitations-and-deferred-work:
+  en: 1ac6ef8b8c5af44e
+  zh: dfb5aa59f09a4520
+/liusiqi-dev-sqh-base/known-limitations-and-deferred-work/dev-note:
   en: ca037cb236aa841a
   zh: e06f3899be43b572

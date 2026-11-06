@@ -10,8 +10,8 @@ import {
   parseLspArgs,
   presentLspCall,
   renderUri,
-} from '@liusiqi-dev/dsh-tool-lsp'
-import type { LspLocation } from '@liusiqi-dev/dsh-lsp'
+} from '@liusiqi-dev/sqh-tool-lsp'
+import type { LspLocation } from '@liusiqi-dev/sqh-lsp'
 
 const WS = resolve('/home/u/proj')
 const WS_URI = pathToFileURL(WS).href

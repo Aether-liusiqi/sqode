@@ -5,12 +5,12 @@
  */
 
 import { afterEach, describe, expect, vi } from 'vitest'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { FileAttachmentRef, ImageAttachmentRef } from '@liusiqi-dev/dsh-attachment'
-import { SessionSeq, type SessionEvent } from '@liusiqi-dev/dsh-session/types'
-import type { SessionId } from '@liusiqi-dev/dsh-api-remotes/client'
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
-import { createClientTest, webApp } from '@liusiqi-dev/dsh-client-test-runtime/src/assembly/index.ts'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { FileAttachmentRef, ImageAttachmentRef } from '@liusiqi-dev/sqh-attachment'
+import { SessionSeq, type SessionEvent } from '@liusiqi-dev/sqh-session/types'
+import type { SessionId } from '@liusiqi-dev/sqh-api-remotes/client'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
+import { createClientTest, webApp } from '@liusiqi-dev/sqh-client-test-runtime/src/assembly/index.ts'
 import type { PendingSubmissionRetirement } from '../src/client/contract/session.ts'
 import type { SessionRequestId } from '../src/types.ts'
 import { ev, historyValue } from './event-script.client.ts'
@@ -20,7 +20,7 @@ import {
 } from './remote/session.client.ts'
 
 /** A Session talks through the Gateway client; its dependency cone is the Typert registry and the Connection. */
-const API_ROSTER = webApp.closure(['@liusiqi-dev/dsh-api-gateway'])
+const API_ROSTER = webApp.closure(['@liusiqi-dev/sqh-api-gateway'])
 const it = createClientTest({ roster: API_ROSTER })
 const SID = 'fk-s1' as SessionId
 /** The first client boot pays the cold module transform of the api cone. */

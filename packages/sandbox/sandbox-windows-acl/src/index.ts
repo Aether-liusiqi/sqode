@@ -40,12 +40,12 @@
  *    the CALLER owns the DACLs (the sandbox seam's grant reuse):
  *    init()/dispose() skip grant/revoke entirely and the caller must not
  *    revoke under live children.
- * @module @liusiqi-dev/dsh-sandbox-windows-acl
+ * @module @liusiqi-dev/sqh-sandbox-windows-acl
  */
 
 import { existsSync, statSync } from 'node:fs'
 import { resolve } from 'node:path'
-import { Win32Error } from '@liusiqi-dev/dsh-win32-process'
+import { Win32Error } from '@liusiqi-dev/sqh-win32-process'
 
 import { grantWrite, revokeWrite } from './acl.ts'
 import { allocPtrSlot, decodePtr, isNullPtr, throwLastError, win32 } from './ffi.ts'

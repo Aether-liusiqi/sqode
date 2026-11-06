@@ -2,13 +2,13 @@
 
 import { describe, expect, it, onTestFinished, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import AgentRegistry, { type Agent, type AssistantStreamFrame } from '@liusiqi-dev/dsh-agent'
-import SessionStore from '@liusiqi-dev/dsh-session'
-import { LlmAttemptId, ToolCallId, createMessage, createToolResultMessage, createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { MessageSource } from '@liusiqi-dev/dsh-llm'
-import type { Session, SessionEvent, SessionId } from '@liusiqi-dev/dsh-session'
-import { SessionHistoryController } from '@liusiqi-dev/dsh-api-session-controller/src/history.ts'
-import type { SessionFollowFrame, SessionPage, SessionWireEvent } from '@liusiqi-dev/dsh-api-session-controller/types'
+import AgentRegistry, { type Agent, type AssistantStreamFrame } from '@liusiqi-dev/sqh-agent'
+import SessionStore from '@liusiqi-dev/sqh-session'
+import { LlmAttemptId, ToolCallId, createMessage, createToolResultMessage, createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { MessageSource } from '@liusiqi-dev/sqh-llm'
+import type { Session, SessionEvent, SessionId } from '@liusiqi-dev/sqh-session'
+import { SessionHistoryController } from '@liusiqi-dev/sqh-api-session-controller/src/history.ts'
+import type { SessionFollowFrame, SessionPage, SessionWireEvent } from '@liusiqi-dev/sqh-api-session-controller/types'
 import { createSessionTestRemote, installSessionReadTestServices } from './test-remote.ts'
 
 type CheckpointSource = Extract<MessageSource, { readonly kind: 'compact-checkpoint' }>

@@ -1,4 +1,4 @@
-/** Durable attachment storage seam (`ctx.attachments`). @module @liusiqi-dev/dsh-attachment */
+/** Durable attachment storage seam (`ctx.attachments`). @module @liusiqi-dev/sqh-attachment */
 
 import { Context, Service } from '@liusiqi-dev/cordis'
 import { admitEncodedFile as admitFileInput, admitEncodedImages } from './admission.ts'

@@ -5,9 +5,9 @@ import {
   Session,
   SessionId,
   SessionLogOffset,
-} from '@liusiqi-dev/dsh-session'
-import type { SessionEvent, SessionHeader } from '@liusiqi-dev/dsh-session'
-import type { SessionFormatArtifact, SessionFormatHeader } from '@liusiqi-dev/dsh-session-format'
+} from '@liusiqi-dev/sqh-session'
+import type { SessionEvent, SessionHeader } from '@liusiqi-dev/sqh-session'
+import type { SessionFormatArtifact, SessionFormatHeader } from '@liusiqi-dev/sqh-session-format'
 import { currentSessionMessageProjections } from './message-projections.ts'
 
 /**

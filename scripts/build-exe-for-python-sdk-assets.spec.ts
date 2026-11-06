@@ -21,9 +21,9 @@ describe('Python runtime executable assets', () => {
     })
 
     expect(result.status).toBe(0)
-    expect(result.stdout).toContain('node_modules/@liusiqi-dev/dsh-web-frontend/dist/**/*')
-    expect(result.stdout).toContain('node_modules/@liusiqi-dev/dsh-skill-badge/assets/**/*')
-    expect(result.stdout).toContain('node_modules/@liusiqi-dev/dsh-sandbox-windows-acl/assets/**/*')
+    expect(result.stdout).toContain('node_modules/@liusiqi-dev/sqh-web-frontend/dist/**/*')
+    expect(result.stdout).toContain('node_modules/@liusiqi-dev/sqh-skill-badge/assets/**/*')
+    expect(result.stdout).toContain('node_modules/@liusiqi-dev/sqh-sandbox-windows-acl/assets/**/*')
     expect(result.stdout).not.toContain('node_modules/**/*.py')
   })
 })

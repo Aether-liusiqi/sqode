@@ -25,8 +25,8 @@ import { useEffect, useMemo, useState } from 'react'
 import type { ReactNode } from 'react'
 import type {
   CredentialInfo, SettingsNamespaceView, SettingsPathOpView,
-} from '@liusiqi-dev/dsh-api-remotes/client'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
+} from '@liusiqi-dev/sqh-api-remotes/client'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
 import {
   DeepSeekModelsEditor, modelDrafts, validateDeepSeekModels,
 } from './DeepSeekModelsEditor.tsx'

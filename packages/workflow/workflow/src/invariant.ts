@@ -1,7 +1,7 @@
-/** Package-owned workflow lifecycle invariants. @module @liusiqi-dev/dsh-workflow/invariant */
+/** Package-owned workflow lifecycle invariants. @module @liusiqi-dev/sqh-workflow/invariant */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
+import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
 import type {
   WorkflowAgentEndInfo,
   WorkflowAgentInfo,
@@ -9,7 +9,7 @@ import type {
   WorkflowRunInfo,
 } from './types.ts'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-workflow'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-workflow'
 
 /** Cordis companion plugin name. */
 export const name = 'workflow-invariant'

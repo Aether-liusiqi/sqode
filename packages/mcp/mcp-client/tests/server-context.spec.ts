@@ -1,10 +1,10 @@
 import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import SystemPrompt, { renderPrompt } from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import McpResources from '@liusiqi-dev/dsh-mcp-resources'
-import { createScope } from '@liusiqi-dev/dsh-scope'
+import SystemPrompt, { renderPrompt } from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import McpResources from '@liusiqi-dev/sqh-mcp-resources'
+import { createScope } from '@liusiqi-dev/sqh-scope'
 import { registerServerContext } from '../src/server-context.ts'
 
 const roots: Context[] = []

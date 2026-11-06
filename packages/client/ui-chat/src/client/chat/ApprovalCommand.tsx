@@ -1,6 +1,6 @@
 /** Chat-owned approval detail resolving a correlated Tool call's command. */
-import type { PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
-import type {} from '@liusiqi-dev/dsh-client-ui-approval/client'
+import type { PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
+import type {} from '@liusiqi-dev/sqh-client-ui-approval/client'
 import type { ChatNode } from '../contract/chat-nodes.ts'
 
 interface ApprovalToolCall {

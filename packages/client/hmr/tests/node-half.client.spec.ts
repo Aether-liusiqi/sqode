@@ -10,8 +10,8 @@ import { join } from 'node:path'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import { Context } from '@liusiqi-dev/cordis'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import type { ClientArtifactBaseline, ClientModuleRegistry, WebBootGraph } from '@liusiqi-dev/dsh-client-modules'
-import type { WebRoute, WebServer } from '@liusiqi-dev/dsh-host-webserver'
+import type { ClientArtifactBaseline, ClientModuleRegistry, WebBootGraph } from '@liusiqi-dev/sqh-client-modules'
+import type { WebRoute, WebServer } from '@liusiqi-dev/sqh-host-webserver'
 import { apply, Config, EVENTS_ENDPOINT, inject } from '../src/index.ts'
 
 const POLL_MS = 20

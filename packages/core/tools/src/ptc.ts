@@ -3,24 +3,24 @@
  * tools through nested executions scheduled under the native concurrency
  * contract; each sub-dispatch is logged for reconstruction, while only the
  * outer curated result enters model history.
- * @module @liusiqi-dev/dsh-tools/src/ptc
+ * @module @liusiqi-dev/sqh-tools/src/ptc
  */
 
-import { brandString } from '@liusiqi-dev/dsh-brand'
-import { createUserMessage, HarnessError } from '@liusiqi-dev/dsh-llm'
-declare module '@liusiqi-dev/dsh-llm' {
+import { brandString } from '@liusiqi-dev/sqh-brand'
+import { createUserMessage, HarnessError } from '@liusiqi-dev/sqh-llm'
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     /** Images deferred from a successful PTC subcall's final result. */
     'ptc-mode': { kind: 'ptc-mode' }
   }
 }
 
-import type { ContentBlock, ToolCallId, ToolSchema } from '@liusiqi-dev/dsh-llm'
-import type { PtcBindingFunction, PtcRunResult, PtcRunSandbox, PtcRuntime } from '@liusiqi-dev/dsh-ptc-runtime'
-import { approveEscalation, ESCALATION_TARGETS, validateEscalationArgs } from '@liusiqi-dev/dsh-sandbox'
-import type { SandboxExecutionPolicy } from '@liusiqi-dev/dsh-sandbox'
-import type { ApprovalService } from '@liusiqi-dev/dsh-user-approval'
-import { deepFreeze, snapshotJsonValue, type JsonValue } from '@liusiqi-dev/dsh-util-values'
+import type { ContentBlock, ToolCallId, ToolSchema } from '@liusiqi-dev/sqh-llm'
+import type { PtcBindingFunction, PtcRunResult, PtcRunSandbox, PtcRuntime } from '@liusiqi-dev/sqh-ptc-runtime'
+import { approveEscalation, ESCALATION_TARGETS, validateEscalationArgs } from '@liusiqi-dev/sqh-sandbox'
+import type { SandboxExecutionPolicy } from '@liusiqi-dev/sqh-sandbox'
+import type { ApprovalService } from '@liusiqi-dev/sqh-user-approval'
+import { deepFreeze, snapshotJsonValue, type JsonValue } from '@liusiqi-dev/sqh-util-values'
 import { defineTool, parameterSchemaSpecToJsonSchema } from './schema.ts'
 import { TOOL_RUNTIME_SCHEDULER } from './index.ts'
 import type { PtcDispatchLog, ToolDefinition, ToolExecutionResult, ToolRuntime, ToolRunContext } from './index.ts'

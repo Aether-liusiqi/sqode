@@ -1,12 +1,12 @@
-/** Verbatim content-addressed local file storage. @module @liusiqi-dev/dsh-attachment-local/file-store */
+/** Verbatim content-addressed local file storage. @module @liusiqi-dev/sqh-attachment-local/file-store */
 
 import { createHash } from 'node:crypto'
 import { createReadStream } from 'node:fs'
 import { join } from 'node:path'
-import { AttachmentError, AttachmentId } from '@liusiqi-dev/dsh-attachment'
+import { AttachmentError, AttachmentId } from '@liusiqi-dev/sqh-attachment'
 import type {
   FileAttachmentRef, SaveFileAttachment, SaveFileStreamAttachment,
-} from '@liusiqi-dev/dsh-attachment'
+} from '@liusiqi-dev/sqh-attachment'
 import {
   publishImmutableAlias, publishImmutableObject, publishImmutableObjectStream,
 } from './store.ts'

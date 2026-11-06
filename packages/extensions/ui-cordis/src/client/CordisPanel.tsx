@@ -6,11 +6,11 @@ import {
   IconCheckOutlineRegular, IconCloseOutlineRegular, IconCordisPluginOutlineRegular, IconPlayOutlineRegular,
   IconStopFillRegular, IconTrashOutlineRegular, StateDot, Tooltip, useDismissOnOutsidePointer,
   type StateDotState,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
-import type {} from '@liusiqi-dev/dsh-client-ui-sidebar/client'
-import type { CordisRunActivity } from '@liusiqi-dev/dsh-cordis-client-runner/client'
-import type { SessionId } from '@liusiqi-dev/dsh-api-remotes/client'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
+import type {} from '@liusiqi-dev/sqh-client-ui-sidebar/client'
+import type { CordisRunActivity } from '@liusiqi-dev/sqh-cordis-client-runner/client'
+import type { SessionId } from '@liusiqi-dev/sqh-api-remotes/client'
 import type { CordisInventoryRow } from './dynamic-port.ts'
 import type { CordisPanelFace } from './slots.ts'
 import type { CordisKey } from './locales.ts'

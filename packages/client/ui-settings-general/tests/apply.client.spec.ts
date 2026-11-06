@@ -6,12 +6,12 @@
  * across Loader rebuilds of the declaring chain.
  */
 import { describe, expect, onTestFinished, vi } from 'vitest'
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import { ok, type RemoteMock } from '@liusiqi-dev/dsh-remote-mock'
-import type { SettingsNamespaceView } from '@liusiqi-dev/dsh-settings/types'
-import { createClientTest, type TestClient, webApp } from '@liusiqi-dev/dsh-client-test-runtime/src/assembly/index.ts'
-import { resolveSlotLabel } from '@liusiqi-dev/dsh-client-ui-slots'
-import { LOCALE_SETTINGS_NAMESPACE, LocaleSettingsSchema } from '@liusiqi-dev/dsh-client-locale/src/locale-settings.ts'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import { ok, type RemoteMock } from '@liusiqi-dev/sqh-remote-mock'
+import type { SettingsNamespaceView } from '@liusiqi-dev/sqh-settings/types'
+import { createClientTest, type TestClient, webApp } from '@liusiqi-dev/sqh-client-test-runtime/src/assembly/index.ts'
+import { resolveSlotLabel } from '@liusiqi-dev/sqh-client-ui-slots'
+import { LOCALE_SETTINGS_NAMESPACE, LocaleSettingsSchema } from '@liusiqi-dev/sqh-client-locale/src/locale-settings.ts'
 import { inject } from '../src/client/index.ts'
 import type { DeveloperToolsRowInjected } from '../src/client/DeveloperToolsRow.tsx'
 import { CloseLabel, HeaderContent, TriggerContent } from '../src/client/chrome.tsx'
@@ -19,8 +19,8 @@ import { GeneralSection } from '../src/client/GeneralSection.tsx'
 import { SettingsDocumentAction } from '../src/client/SettingsDocumentAction.tsx'
 import type { SettingsDocumentActionInjected } from '../src/client/SettingsDocumentAction.tsx'
 
-const SELF = '@liusiqi-dev/dsh-client-ui-settings-general'
-const SIDEBAR = '@liusiqi-dev/dsh-client-ui-sidebar'
+const SELF = '@liusiqi-dev/sqh-client-ui-settings-general'
+const SIDEBAR = '@liusiqi-dev/sqh-client-ui-sidebar'
 const it = createClientTest({ roster: webApp })
 /** The whole roster's first boot pays the cold module transform of every plugin package. */
 const COLD_BOOT_TIMEOUT_MS = 60_000

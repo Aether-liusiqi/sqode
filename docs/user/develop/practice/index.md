@@ -34,7 +34,7 @@ One Service Definition can have multiple providers selected through `cordis.yml`
 
 ```yaml
 # Local execution
-- name: '@liusiqi-dev/dsh-bash-local'
+- name: '@liusiqi-dev/sqh-bash-local'
 
 # Replace this row with another package that provides the same service.
 ```
@@ -92,7 +92,7 @@ export interface MyCapResult {
 ```ts ignore-check
 // packages/my-cap/my-cap-local/src/index.ts
 import type { Context } from '@liusiqi-dev/cordis'
-import { MyCapService, type MyCapRequest, type MyCapResult } from '@liusiqi-dev/dsh-my-cap'
+import { MyCapService, type MyCapRequest, type MyCapResult } from '@liusiqi-dev/sqh-my-cap'
 
 class MyCapLocal extends MyCapService {
   async execute(request: MyCapRequest): Promise<MyCapResult> {
@@ -113,7 +113,7 @@ export function apply(ctx: Context) {
 ```ts ignore-check
 // packages/my-cap/tool-my-cap/src/index.ts
 import type { Context } from '@liusiqi-dev/cordis'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
 
 export const name = 'tool-my-cap'
 export const inject = ['tools', 'myCap']
@@ -140,8 +140,8 @@ export function apply(ctx: Context) {
 ### Compose them in cordis.yml
 
 ```yaml
-- name: '@liusiqi-dev/dsh-my-cap-local'
-- name: '@liusiqi-dev/dsh-tool-my-cap'
+- name: '@liusiqi-dev/sqh-my-cap-local'
+- name: '@liusiqi-dev/sqh-tool-my-cap'
 ```
 
 ## Design points

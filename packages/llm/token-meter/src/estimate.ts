@@ -3,11 +3,11 @@
  * pure context-breakdown projection, so both surfaces price identical content
  * to identical numbers.
  *
- * @module @liusiqi-dev/dsh-token-meter/estimate
+ * @module @liusiqi-dev/sqh-token-meter/estimate
  */
 
-import type { ContentBlock, Message } from '@liusiqi-dev/dsh-llm'
-import type { EpochHeader } from '@liusiqi-dev/dsh-session'
+import type { ContentBlock, Message } from '@liusiqi-dev/sqh-llm'
+import type { EpochHeader } from '@liusiqi-dev/sqh-session'
 
 /** Fixed text-density estimate used until exact tokenization is needed. */
 const CHARS_PER_TOKEN = 4

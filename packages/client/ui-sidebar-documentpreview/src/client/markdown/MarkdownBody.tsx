@@ -1,8 +1,8 @@
 /** One retained Markdown renderer over the document owner's accumulated text. */
 import { useMemo } from 'react'
 import type { ReactNode } from 'react'
-import { MarkdownText, type MarkdownLabels, type MarkdownPathImages } from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { PropsLocale } from '@liusiqi-dev/dsh-client-ui-slots'
+import { MarkdownText, type MarkdownLabels, type MarkdownPathImages } from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { PropsLocale } from '@liusiqi-dev/sqh-client-ui-slots'
 import type { DocumentPreviewProps } from '../document/contract.ts'
 import { markdownImageUrl } from './path-images.ts'
 import type {} from './locales.ts'

@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { Session, SessionId } from '@liusiqi-dev/dsh-session'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import type { Agent, AgentCancelCause, AgentStatus, CancelOptions } from '@liusiqi-dev/dsh-agent'
-import type { SessionActivity } from '@liusiqi-dev/dsh-workspace'
+import { Session, SessionId } from '@liusiqi-dev/sqh-session'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import type { Agent, AgentCancelCause, AgentStatus, CancelOptions } from '@liusiqi-dev/sqh-agent'
+import type { SessionActivity } from '@liusiqi-dev/sqh-workspace'
 
 type CancelCall = [AgentCancelCause, CancelOptions | undefined]
 
@@ -85,7 +85,7 @@ describe('Turn archive admission', () => {
 })
 
 // The registry knows only its own family; this suite merges a second one to observe ordering.
-declare module '@liusiqi-dev/dsh-workspace/types' {
+declare module '@liusiqi-dev/sqh-workspace/types' {
   interface SessionActivityKindMap {
     probe: true
   }

@@ -1,7 +1,7 @@
 /** Package-private continuation owners used to place deterministic lifecycle races. */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
 import type { Activation, ContinuableActivationRegistry } from '../src/continuation-activation.ts'
 import type SubagentContinuationManager from '../src/continuation.ts'
 

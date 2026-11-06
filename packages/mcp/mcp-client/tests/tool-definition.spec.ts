@@ -1,8 +1,8 @@
 import { Context } from '@liusiqi-dev/cordis'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
-import type { ToolExecution } from '@liusiqi-dev/dsh-tools'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
+import type { ToolExecution } from '@liusiqi-dev/sqh-tools'
 import { describe, expect, it, vi } from 'vitest'
 import { createMcpToolDefinition } from '../src/index.ts'
 

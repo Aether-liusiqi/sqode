@@ -8,9 +8,9 @@
 
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
 // Type-only: pulls the ctx.remote merge into this program.
-import type {} from '@liusiqi-dev/dsh-api-remotes/client'
-import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { AgentPresetRoster } from '@liusiqi-dev/dsh-agent-preset-registry/types'
+import type {} from '@liusiqi-dev/sqh-api-remotes/client'
+import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { AgentPresetRoster } from '@liusiqi-dev/sqh-agent-preset-registry/types'
 
 /** The agent-preset settings namespace on the host wire. */
 export const AGENT_PRESET_SETTINGS_NS = 'agent-preset-registry'

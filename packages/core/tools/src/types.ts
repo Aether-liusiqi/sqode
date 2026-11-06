@@ -1,11 +1,11 @@
 /**
  * Durable Tool event vocabulary shared with type-only consumers.
  *
- * @module @liusiqi-dev/dsh-tools/types
+ * @module @liusiqi-dev/sqh-tools/types
  */
 
-import type { ToolCallId } from '@liusiqi-dev/dsh-llm/brand'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm/types'
+import type { ToolCallId } from '@liusiqi-dev/sqh-llm/brand'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm/types'
 
 /** Payload recorded when one nested PTC mode Tool dispatch starts. */
 export interface PtcDispatchStartEventData {
@@ -24,7 +24,7 @@ export interface PtcDispatchEventData extends PtcDispatchStartEventData {
   error?: { name: string; code: string; reason?: string }
 }
 
-declare module '@liusiqi-dev/dsh-session/types' {
+declare module '@liusiqi-dev/sqh-session/types' {
   interface SessionEventMap {
     /**
      * One sub-dispatch STARTING inside a `run_code` program: the parent

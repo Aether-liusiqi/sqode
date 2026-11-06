@@ -15,26 +15,26 @@
  * its relative time and its trailing status line. Export discipline:
  * packages/client/AGENTS.md.
  */
-import type {} from '@liusiqi-dev/dsh-client-product-analytics/client'
+import type {} from '@liusiqi-dev/sqh-client-product-analytics/client'
 import type { Context } from '@liusiqi-dev/cordis'
-import type { RemoteHostFacts } from '@liusiqi-dev/dsh-api-remotes/client'
-import type { ISessions } from '@liusiqi-dev/dsh-api-session-controller/client'
+import type { RemoteHostFacts } from '@liusiqi-dev/sqh-api-remotes/client'
+import type { ISessions } from '@liusiqi-dev/sqh-api-session-controller/client'
 import type {
   IWorkspaces, SessionActivity, WorkspaceArchiveError, WorkspaceSnapshot,
-} from '@liusiqi-dev/dsh-api-workspace-controller/client'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { HostObservable, SnapshotSelectorHook } from '@liusiqi-dev/dsh-client-ui-slots'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+} from '@liusiqi-dev/sqh-api-workspace-controller/client'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { HostObservable, SnapshotSelectorHook } from '@liusiqi-dev/sqh-client-ui-slots'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 // Type-only: pulls the Controller service merges.
-import type {} from '@liusiqi-dev/dsh-api-session-controller/client'
-import type {} from '@liusiqi-dev/dsh-api-workspace-controller/client'
+import type {} from '@liusiqi-dev/sqh-api-session-controller/client'
+import type {} from '@liusiqi-dev/sqh-api-workspace-controller/client'
 // Type-only: pulls the locale plugin's Context merge (ctx.locale).
-import type {} from '@liusiqi-dev/dsh-client-locale/client'
+import type {} from '@liusiqi-dev/sqh-client-locale/client'
 // Type-only: pulls the SlotRegistry service merge (ctx.slots).
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-layout/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-layout/client'
 // Type-only: pulls the Session root standard-hook merge.
-import type {} from '@liusiqi-dev/dsh-client-ui-session/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-session/client'
 import {
   type ArchiveSessionInjected, type DeleteSessionInjected, type ForkSessionInjected, menuOpenStateFactory,
   type PinSessionInjected,
@@ -66,7 +66,7 @@ export type {
 } from './contract/slots.ts'
 export type { WorkspaceKey } from './locales.ts'
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface GlobalStandardProps {
     /** Selector hook over the pure Workspace Controller snapshot. */
     useWorkspaces: SnapshotSelectorHook<WorkspaceSnapshot>
@@ -78,7 +78,7 @@ declare module '@liusiqi-dev/dsh-client-ui-slots' {
   }
 }
 
-declare module '@liusiqi-dev/dsh-api-session-controller/client' {
+declare module '@liusiqi-dev/sqh-api-session-controller/client' {
   interface SessionReferenceSourceMap {
     workspaceOperation: unknown
   }

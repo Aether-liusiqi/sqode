@@ -1,14 +1,14 @@
 /**
  * Package-owned strict Schedule stream invariant.
- * @module @liusiqi-dev/dsh-schedule/invariant
+ * @module @liusiqi-dev/sqh-schedule/invariant
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Session, SessionEvent } from '@liusiqi-dev/dsh-session'
-import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
+import type { Session, SessionEvent } from '@liusiqi-dev/sqh-session'
+import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
 import { foldScheduleEvents, ScheduleLogError } from './domain.ts'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-schedule'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-schedule'
 
 /** Cordis invariant-companion plugin name. */
 export const name = 'schedule-invariant'

@@ -1,22 +1,22 @@
 /** Web subagent catalog, navigation, and addressed-session composer owner. */
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import type { SubagentAddress } from '@liusiqi-dev/dsh-subagent/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { ComposerChainProps } from '@liusiqi-dev/dsh-client-ui-conversation/client'
+import type { SubagentAddress } from '@liusiqi-dev/sqh-subagent/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { ComposerChainProps } from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import { SubagentCatalogAction, SubagentHeaderLineage, type SubagentCatalogInjected } from './SubagentHeaderLineage.tsx'
 import {
   SubagentReadOnlyComposer, type SubagentReadOnlyMatch,
 } from './SubagentReadOnlyComposer.tsx'
 import { registerSidebarChat, subagentChatAddress } from './sidebar-chat/index.tsx'
-import type {} from '@liusiqi-dev/dsh-client-locale/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-chat/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-session/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-sidebar-right/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-workspace/client'
+import type {} from '@liusiqi-dev/sqh-client-locale/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-chat/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-session/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-sidebar-right/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-workspace/client'
 import { en, NS, zh, type SubagentKey } from './locales.ts'
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** Subagent catalog and read-only composer copy. */
     'subagent': SubagentKey

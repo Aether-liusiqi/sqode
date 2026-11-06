@@ -2,9 +2,9 @@
 
 import { useCallback, useEffect, useRef } from 'react'
 import type { ReactNode } from 'react'
-import type { SnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { InjectFace, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
-import { Button } from '@liusiqi-dev/dsh-client-ui-primitives'
+import type { SnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { InjectFace, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
+import { Button } from '@liusiqi-dev/sqh-client-ui-primitives'
 import type { WelcomeNoticeState, WelcomeNoticeStore } from './welcome-store.ts'
 import type { en } from './locales.ts'
 import { OnboardingModal } from './OnboardingModal.tsx'

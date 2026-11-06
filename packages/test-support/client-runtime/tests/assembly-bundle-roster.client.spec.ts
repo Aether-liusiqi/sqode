@@ -2,7 +2,7 @@
 import { mkdirSync, mkdtempSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { getStaticModules } from '@liusiqi-dev/dsh-client-web/src/seed.ts'
+import { getStaticModules } from '@liusiqi-dev/sqh-client-web/src/seed.ts'
 import { afterAll, describe, expect, it, onTestFinished } from 'vitest'
 import { MODULES_PACKAGE } from '../src/assembly/modules.ts'
 import { WEB_PROFILE_BUNDLES, bundleRoster, webApp } from '../src/assembly/bundle-roster.ts'
@@ -14,29 +14,29 @@ function profileScope(name: string) {
 
 describe('webApp (the real web profile)', () => {
   it('composes dsh-base then dsh-web-app: unique names, inject edges on roster rows or platform seed words', () => {
-    expect(WEB_PROFILE_BUNDLES).toEqual(['@liusiqi-dev/dsh-base', '@liusiqi-dev/dsh-web-app'])
+    expect(WEB_PROFILE_BUNDLES).toEqual(['@liusiqi-dev/sqh-base', '@liusiqi-dev/sqh-web-app'])
     const names = webApp.rows.map(row => row.name)
     expect(new Set(names).size).toBe(names.length)
     const known = new Set([...names, ...Object.keys(getStaticModules())])
     const dangling = webApp.rows.flatMap(row => row.inject.filter(target => !known.has(target)).map(target => `${row.name} -> ${target}`))
     expect(dangling).toEqual([])
     expect(bundleRoster(WEB_PROFILE_BUNDLES, undefined, profileScope('web')).rows).toEqual(webApp.rows)
-    expect(names).not.toContain('@liusiqi-dev/dsh-client-ui-sidebar-browser')
+    expect(names).not.toContain('@liusiqi-dev/sqh-client-ui-sidebar-browser')
     expect(bundleRoster(WEB_PROFILE_BUNDLES, undefined, profileScope('desktop')).rows.map(row => row.name))
-      .toContain('@liusiqi-dev/dsh-client-ui-sidebar-browser')
+      .toContain('@liusiqi-dev/sqh-client-ui-sidebar-browser')
   })
 
   it('keeps browser rows with their declarations and drops Host-only, disabled, and subpath rows', () => {
     const immediate = new Set(webApp.rows.filter(row => row.immediately).map(row => row.name))
     expect(immediate.has(MODULES_PACKAGE)).toBe(true)
-    expect(immediate.has('@liusiqi-dev/dsh-client-connection')).toBe(true)
-    expect(webApp.rows.find(row => row.name === '@liusiqi-dev/dsh-api-gateway')?.inject)
-      .toEqual(['@liusiqi-dev/dsh-typert-registry', '@liusiqi-dev/dsh-client-connection'])
+    expect(immediate.has('@liusiqi-dev/sqh-client-connection')).toBe(true)
+    expect(webApp.rows.find(row => row.name === '@liusiqi-dev/sqh-api-gateway')?.inject)
+      .toEqual(['@liusiqi-dev/sqh-typert-registry', '@liusiqi-dev/sqh-client-connection'])
     const names = webApp.rows.map(row => row.name)
-    expect(names).toContain('@liusiqi-dev/dsh-client-ui-settings-general')
-    expect(names).not.toContain('@liusiqi-dev/dsh-llm') // Host only
-    expect(names).not.toContain('@liusiqi-dev/dsh-client-ui-schedule')
-    expect(names).not.toContain('@liusiqi-dev/dsh-web-app') // Host runtime glue, its `/startup` row is a subpath
+    expect(names).toContain('@liusiqi-dev/sqh-client-ui-settings-general')
+    expect(names).not.toContain('@liusiqi-dev/sqh-llm') // Host only
+    expect(names).not.toContain('@liusiqi-dev/sqh-client-ui-schedule')
+    expect(names).not.toContain('@liusiqi-dev/sqh-web-app') // Host runtime glue, its `/startup` row is a subpath
   })
 })
 

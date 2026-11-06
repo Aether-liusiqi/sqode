@@ -3,7 +3,7 @@ description: "Web 反馈界面：已定稿助手消息动作行中的 Like/Disli
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-ui-message-feedback
+# @liusiqi-dev/sqh-client-ui-message-feedback
 
 [English](README.md) | 中文
 

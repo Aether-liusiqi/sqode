@@ -3,7 +3,7 @@ description: "JSON storage backend for hosts and maintainers choosing, configuri
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-storage-json
+# @liusiqi-dev/sqh-storage-json
 
 English | [中文](README.zh.md)
 
@@ -36,11 +36,11 @@ Choose the default `single` layout for small units that benefit from one complet
 The only plugin field is `root`, which holds the unit files and directories. It is required because the backend does not fall back to `process.cwd()`. The backend creates the root with mode `0o700` on demand. A domain specification selects its layout; this plugin has no layout override.
 
 ```yaml
-- name: '@liusiqi-dev/dsh-storage'
-- name: '@liusiqi-dev/dsh-storage-json'
+- name: '@liusiqi-dev/sqh-storage'
+- name: '@liusiqi-dev/sqh-storage-json'
   config:
     root: /var/lib/dsh/data
-- name: '@liusiqi-dev/dsh-storage-domain'
+- name: '@liusiqi-dev/sqh-storage-domain'
   config:
     backend: json
 ```

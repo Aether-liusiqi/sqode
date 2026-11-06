@@ -11,18 +11,18 @@
  * history outside the direct-parent continuation path.
  */
 // Type-only: the carrier types, the forwarded Host-event face and the ctx.remote merge.
-import type { ModelSelection } from '@liusiqi-dev/dsh-api-session-controller/types'
-import type {} from '@liusiqi-dev/dsh-api-session-controller/client'
+import type { ModelSelection } from '@liusiqi-dev/sqh-api-session-controller/types'
+import type {} from '@liusiqi-dev/sqh-api-session-controller/client'
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import type { CommandUiContract, SelectOption } from '@liusiqi-dev/dsh-client-ui-commands/client'
+import type { CommandUiContract, SelectOption } from '@liusiqi-dev/sqh-client-ui-commands/client'
 // Type-only: pulls the ui-conversation SlotMap merge (the input.model seat).
-import type {} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 // Type-only: pulls the locale plugin's Context merge (ctx.locale).
-import type {} from '@liusiqi-dev/dsh-client-locale/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-session/client'
-import type { TranslateNS } from '@liusiqi-dev/dsh-client-ui-slots'
-import { IconDataOutlineRegular } from '@liusiqi-dev/dsh-client-ui-primitives'
+import type {} from '@liusiqi-dev/sqh-client-locale/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-session/client'
+import type { TranslateNS } from '@liusiqi-dev/sqh-client-ui-slots'
+import { IconDataOutlineRegular } from '@liusiqi-dev/sqh-client-ui-primitives'
 import type { ModelDirectoryState } from './directory.ts'
 import { ModelDirectoryResolver } from './service.ts'
 import type { ModelSelectInjected } from './slots.ts'
@@ -36,7 +36,7 @@ export { ModelDirectoryResolver } from './service.ts'
 export type { ModelSelectInjected } from './slots.ts'
 export type { ModelKey } from './locales.ts'
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** The model selection surfaces' copy (/model popup + composer seat). */
     model: ModelKey

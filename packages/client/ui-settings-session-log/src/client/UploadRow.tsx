@@ -1,8 +1,8 @@
 /** General settings row and persistent shell notice for API log uploads. */
-import { Switch, Toast } from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
-import type { ConfigFormSnapshot } from '@liusiqi-dev/dsh-client-ui-settings/client'
-import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
+import { Switch, Toast } from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
+import type { ConfigFormSnapshot } from '@liusiqi-dev/sqh-client-ui-settings/client'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
 import type { UploadMutation, UploadSettings } from './upload-preference.ts'
 import css from './UploadRow.module.css'
 

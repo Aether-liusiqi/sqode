@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-client-ui-theme",
+  "name": "@liusiqi-dev/sqh-client-ui-theme",
   "description": "Theme plugin: Host bootstrap for the pre-plugin palette; DOM-free ThemeRuntime for light/dark/system state; --dsw-* token styles and Appearance settings row",
   "version": "1.0.0",
   "publishConfig": {
@@ -29,11 +29,11 @@
   "dsh": {
     "client": {
       "inject": [
-        "@liusiqi-dev/dsh-client-connection",
-        "@liusiqi-dev/dsh-client-locale",
-        "@liusiqi-dev/dsh-client-ui-renderer",
-        "@liusiqi-dev/dsh-client-ui-settings",
-        "@liusiqi-dev/dsh-api-remotes"
+        "@liusiqi-dev/sqh-client-connection",
+        "@liusiqi-dev/sqh-client-locale",
+        "@liusiqi-dev/sqh-client-ui-renderer",
+        "@liusiqi-dev/sqh-client-ui-settings",
+        "@liusiqi-dev/sqh-api-remotes"
       ],
       "platform": "web",
       "immediately": true
@@ -45,20 +45,20 @@
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-api-remotes": "workspace:*",
-    "@liusiqi-dev/dsh-client-connection": "workspace:*",
-    "@liusiqi-dev/dsh-client-locale": "workspace:*",
-    "@liusiqi-dev/dsh-client-store": "workspace:*",
-    "@liusiqi-dev/dsh-client-test-runtime": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-primitives": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-renderer": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-settings": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-slots": "workspace:*",
-    "@liusiqi-dev/dsh-host-webserver": "workspace:*",
+    "@liusiqi-dev/sqh-api-remotes": "workspace:*",
+    "@liusiqi-dev/sqh-client-connection": "workspace:*",
+    "@liusiqi-dev/sqh-client-locale": "workspace:*",
+    "@liusiqi-dev/sqh-client-store": "workspace:*",
+    "@liusiqi-dev/sqh-client-test-runtime": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-primitives": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-renderer": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-settings": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-slots": "workspace:*",
+    "@liusiqi-dev/sqh-host-webserver": "workspace:*",
     "@types/react": "~18.3.1",
     "react": "^18.2.0",
     "clsx": "^2.0.0",
-    "@liusiqi-dev/dsh-settings": "workspace:*"
+    "@liusiqi-dev/sqh-settings": "workspace:*"
   },
   "files": [
     "lib/index.js",

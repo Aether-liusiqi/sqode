@@ -3,7 +3,7 @@ import { createServer, request as httpRequest, type IncomingMessage, type Server
 import type { AddressInfo } from 'node:net'
 import type { Context } from '@liusiqi-dev/cordis'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { credentialRef } from '@liusiqi-dev/dsh-credentials'
+import { credentialRef } from '@liusiqi-dev/sqh-credentials'
 import { createGitHubWebhookHandler } from '../src/handler.ts'
 
 const servers: Server[] = []

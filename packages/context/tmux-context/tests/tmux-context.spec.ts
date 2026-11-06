@@ -1,14 +1,14 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { Session, SessionId } from '@liusiqi-dev/dsh-session'
-import AgentRegistry, { agentEvents, type Agent } from '@liusiqi-dev/dsh-agent'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import { ShellExecutor } from '@liusiqi-dev/dsh-shell'
-import type { ShellExecRequest, ShellExecSpec, ShellExecution, ShellRunResult } from '@liusiqi-dev/dsh-shell'
-import * as tmuxContext from '@liusiqi-dev/dsh-tmux-context'
-import type { Config } from '@liusiqi-dev/dsh-tmux-context'
-import { unsupportedInbox } from '@liusiqi-dev/dsh-agent-loop-testkit'
+import { Session, SessionId } from '@liusiqi-dev/sqh-session'
+import AgentRegistry, { agentEvents, type Agent } from '@liusiqi-dev/sqh-agent'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import { ShellExecutor } from '@liusiqi-dev/sqh-shell'
+import type { ShellExecRequest, ShellExecSpec, ShellExecution, ShellRunResult } from '@liusiqi-dev/sqh-shell'
+import * as tmuxContext from '@liusiqi-dev/sqh-tmux-context'
+import type { Config } from '@liusiqi-dev/sqh-tmux-context'
+import { unsupportedInbox } from '@liusiqi-dev/sqh-agent-loop-testkit'
 
 /** Empty offset readers for fakes that never produce output. */
 const silentReader = { readFrom: (fromByte: number) => ({ text: '', nextOffset: fromByte, lossy: false }) }

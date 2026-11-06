@@ -13,8 +13,8 @@ import type { Browser, Page, Response } from 'playwright'
 import { chromium } from 'playwright'
 import { strFromU8, unzipSync } from 'fflate'
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, onTestFailed } from 'vitest'
-import { parseSessionLog } from '@liusiqi-dev/dsh-llm-replay'
-import { SESSION_FORMAT_VERSION, type SessionEvent } from '@liusiqi-dev/dsh-session'
+import { parseSessionLog } from '@liusiqi-dev/sqh-llm-replay'
+import { SESSION_FORMAT_VERSION, type SessionEvent } from '@liusiqi-dev/sqh-session'
 import {
   assertFixtureInventory, captureStableAria, compareOrRefreshGolden, fixtureUserPrompts,
   launchWebScaffold, recordFixture, seedSession, watchConsole, webSnapshotMode, type WebScaffold,

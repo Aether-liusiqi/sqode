@@ -1,20 +1,20 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { createUserMessage, ToolCallId, type ContentBlock, type GenerateOptions } from '@liusiqi-dev/dsh-llm'
-import { SessionId } from '@liusiqi-dev/dsh-session'
-import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
-import { mountAgentLoopTestDependencies } from '@liusiqi-dev/dsh-agent-loop-testkit'
-import InvariantRegistry from '@liusiqi-dev/dsh-invariants'
-import type {} from '@liusiqi-dev/dsh-system-prompt'
-import * as SessionInvariant from '@liusiqi-dev/dsh-session/invariant'
-import * as AgentInvariant from '@liusiqi-dev/dsh-agent/invariant'
-import * as AgentLoopInvariant from '@liusiqi-dev/dsh-agent-loop/invariant'
+import { createUserMessage, ToolCallId, type ContentBlock, type GenerateOptions } from '@liusiqi-dev/sqh-llm'
+import { SessionId } from '@liusiqi-dev/sqh-session'
+import AgentLoop from '@liusiqi-dev/sqh-agent-loop'
+import { mountAgentLoopTestDependencies } from '@liusiqi-dev/sqh-agent-loop-testkit'
+import InvariantRegistry from '@liusiqi-dev/sqh-invariants'
+import type {} from '@liusiqi-dev/sqh-system-prompt'
+import * as SessionInvariant from '@liusiqi-dev/sqh-session/invariant'
+import * as AgentInvariant from '@liusiqi-dev/sqh-agent/invariant'
+import * as AgentLoopInvariant from '@liusiqi-dev/sqh-agent-loop/invariant'
 import SubagentRuntime, {
   type ResolvedSubagentStartRequest,
   type SubagentStartRequest,
-} from '@liusiqi-dev/dsh-subagent'
-import type { Config as ToolConfig, ObjectJsonSchema } from '@liusiqi-dev/dsh-tools'
-import { defineContentToolFixture, RUN_CODE_NAME } from '@liusiqi-dev/dsh-tools'
+} from '@liusiqi-dev/sqh-subagent'
+import type { Config as ToolConfig, ObjectJsonSchema } from '@liusiqi-dev/sqh-tools'
+import { defineContentToolFixture, RUN_CODE_NAME } from '@liusiqi-dev/sqh-tools'
 import { MockAdapter, textResponse, toolCallResponse } from '../../../core/agent-loop/tests/mock-adapter.ts'
 import { startInProcessRun } from '../src/index.ts'
 import {
@@ -63,7 +63,7 @@ async function setup(script: Script, options: SetupOptions = {}) {
     ctx.provide('ptcRuntime', {
       language: 'typescript',
       isolation: 'test',
-      resolve: (request: import('@liusiqi-dev/dsh-ptc-runtime').PtcRunRequest) => ({ ...request, cwd: request.cwd ?? process.cwd(), timeoutMs: 120_000 }),
+      resolve: (request: import('@liusiqi-dev/sqh-ptc-runtime').PtcRunRequest) => ({ ...request, cwd: request.cwd ?? process.cwd(), timeoutMs: 120_000 }),
       run: options.codeRun ?? (() => Promise.resolve({ logs: [] })),
     } as never)
   }

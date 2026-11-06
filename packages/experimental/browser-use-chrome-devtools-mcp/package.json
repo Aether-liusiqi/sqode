@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-experimental-browser-use-chrome-devtools-mcp",
+  "name": "@liusiqi-dev/sqh-experimental-browser-use-chrome-devtools-mcp",
   "description": "Experimental per-Session Chromium browser tools through chrome-devtools-mcp",
   "version": "1.0.0",
   "publishConfig": {
@@ -29,27 +29,27 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@liusiqi-dev/dsh-experimental-browser-use-runtime": "workspace:*",
+    "@liusiqi-dev/sqh-experimental-browser-use-runtime": "workspace:*",
     "chrome-devtools-mcp": "1.9.0"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-browser-use": "workspace:*",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*"
+    "@liusiqi-dev/sqh-browser-use": "workspace:*",
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
     "@liusiqi-dev/cordis-plugin-include": "workspace:~",
-    "@liusiqi-dev/dsh-browser-use": "workspace:*",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-agent-loop": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*"
+    "@liusiqi-dev/sqh-browser-use": "workspace:*",
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-agent-loop": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection": "workspace:*"
   }
 }

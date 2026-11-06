@@ -3,4 +3,4 @@
 
 - insert:
     - id: experimental-inspector
-      name: '@liusiqi-dev/dsh-experimental-inspector'
+      name: '@liusiqi-dev/sqh-experimental-inspector'

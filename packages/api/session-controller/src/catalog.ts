@@ -1,9 +1,9 @@
 /** Shared projection of the live LLM registry into the browser model catalog. */
 
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
-import { credentialRef } from '@liusiqi-dev/dsh-credentials'
-import type {} from '@liusiqi-dev/dsh-settings'
-import type { LlmModelInfo } from '@liusiqi-dev/dsh-llm'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
+import { credentialRef } from '@liusiqi-dev/sqh-credentials'
+import type {} from '@liusiqi-dev/sqh-settings'
+import type { LlmModelInfo } from '@liusiqi-dev/sqh-llm'
 import type { Context } from '@liusiqi-dev/cordis'
 import type {
   ModelCatalog,

@@ -1,8 +1,8 @@
 /** Compiled production Client fold for a reconnect during a long Assistant attempt. */
 import { performance } from 'node:perf_hooks'
-import { AssistantStreamAccumulator } from '@liusiqi-dev/dsh-llm/assistant-stream'
-import { LlmAttemptId } from '@liusiqi-dev/dsh-llm/brand'
-import type { SessionAssistantStreamBaseline } from '@liusiqi-dev/dsh-api-session-controller/types'
+import { AssistantStreamAccumulator } from '@liusiqi-dev/sqh-llm/assistant-stream'
+import { LlmAttemptId } from '@liusiqi-dev/sqh-llm/brand'
+import type { SessionAssistantStreamBaseline } from '@liusiqi-dev/sqh-api-session-controller/types'
 // The Client implementation has no plain-Node export; only this adapter is bundled.
 import { ClientAssistantStream } from '../../packages/api/session-controller/src/client/sessions/assistant-stream.ts'
 import { assertBuiltBenchmarkRuntime } from '../support/built-worker.ts'
@@ -18,7 +18,7 @@ export interface ReconnectReport {
 }
 
 assertBuiltBenchmarkRuntime(import.meta.url, {
-  '@liusiqi-dev/dsh-llm/assistant-stream': import.meta.resolve('@liusiqi-dev/dsh-llm/assistant-stream'),
+  '@liusiqi-dev/sqh-llm/assistant-stream': import.meta.resolve('@liusiqi-dev/sqh-llm/assistant-stream'),
 })
 const deltas = 100000
 const accumulator = new AssistantStreamAccumulator()

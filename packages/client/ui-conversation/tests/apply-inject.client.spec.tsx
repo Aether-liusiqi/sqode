@@ -1,26 +1,26 @@
 // @vitest-environment jsdom
 import { render, cleanup } from '@testing-library/react'
 import { $getRoot, $isTextNode, PASTE_COMMAND } from 'lexical'
-import { projectUserText } from '@liusiqi-dev/dsh-client-ui-primitives'
+import { projectUserText } from '@liusiqi-dev/sqh-client-ui-primitives'
 import { registerComposerKeymap } from '../src/client/input/editor/keymap.ts'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import { describe, expect, it, onTestFinished, vi } from 'vitest'
-import type { CommandContribution, CommandUiContract } from '@liusiqi-dev/dsh-client-ui-commands/client'
-import type { ISession, SessionReference } from '@liusiqi-dev/dsh-api-session-controller/client'
-import { LocaleRuntime } from '@liusiqi-dev/dsh-client-locale/client'
-import type { ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
+import type { CommandContribution, CommandUiContract } from '@liusiqi-dev/sqh-client-ui-commands/client'
+import type { ISession, SessionReference } from '@liusiqi-dev/sqh-api-session-controller/client'
+import { LocaleRuntime } from '@liusiqi-dev/sqh-client-locale/client'
+import type { ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
 import {
   SlotTestRuntime, stubConfigForm, usePinnedBrowserLanguages,
-} from '@liusiqi-dev/dsh-client-test-runtime'
-import type { SessionBehaviorOverrides } from '@liusiqi-dev/dsh-client-test-runtime'
+} from '@liusiqi-dev/sqh-client-test-runtime'
+import type { SessionBehaviorOverrides } from '@liusiqi-dev/sqh-client-test-runtime'
 import {
   apply, inject, type ComposerBarInjected, type ConversationInjected,
   type ConversationSessionHeaderInjected, type ConversationSessionInjected, type ViewTab,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { WorkspaceId } from '@liusiqi-dev/dsh-workspace/types'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { WorkspaceId } from '@liusiqi-dev/sqh-workspace/types'
 import { createConversationStore } from '../src/client/stores.ts'
-import { RemoteError } from '@liusiqi-dev/dsh-client-test-runtime'
+import { RemoteError } from '@liusiqi-dev/sqh-client-test-runtime'
 
 usePinnedBrowserLanguages('zh-CN')
 

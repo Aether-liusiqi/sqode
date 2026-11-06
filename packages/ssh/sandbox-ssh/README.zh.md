@@ -3,7 +3,7 @@ description: "面向使用 SSH 文件系统和子进程提供方的组合，说�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-sandbox-ssh
+# @liusiqi-dev/sqh-sandbox-ssh
 
 [English](README.md) | 中文
 

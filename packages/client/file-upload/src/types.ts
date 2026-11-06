@@ -1,7 +1,7 @@
 /** Browser-safe request and receipt types for staged file uploads. */
 
-import type { FileAttachmentRef } from '@liusiqi-dev/dsh-attachment/types'
-import type { Branded } from '@liusiqi-dev/dsh-brand'
+import type { FileAttachmentRef } from '@liusiqi-dev/sqh-attachment/types'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
 
 /** Canonical encoded upload accepted by the Remote fallback. */
 export interface EncodedFileUploadRequest {

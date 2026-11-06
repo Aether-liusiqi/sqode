@@ -1,21 +1,21 @@
 import { describe, expect, expectTypeOf, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { AttachmentId } from '@liusiqi-dev/dsh-attachment'
-import BasicCompactionEngine from '@liusiqi-dev/dsh-compaction-basic'
-import type { BasicCompactionConfig } from '@liusiqi-dev/dsh-compaction-basic'
-import { noticeThresholdTokens, reportedContextWindow } from '@liusiqi-dev/dsh-compaction-basic'
-import { selectCompactableRange } from '@liusiqi-dev/dsh-compaction-basic/src/region.ts'
-import { frameSummary } from '@liusiqi-dev/dsh-compaction-basic/src/summarizer.ts'
-import type { SummarizationInput, SummaryResult } from '@liusiqi-dev/dsh-compaction-basic/src/summarizer.ts'
-import { CompactionId, toolPairingBalancedAfter, toolPairingBalancedBefore } from '@liusiqi-dev/dsh-compaction'
+import { AttachmentId } from '@liusiqi-dev/sqh-attachment'
+import BasicCompactionEngine from '@liusiqi-dev/sqh-compaction-basic'
+import type { BasicCompactionConfig } from '@liusiqi-dev/sqh-compaction-basic'
+import { noticeThresholdTokens, reportedContextWindow } from '@liusiqi-dev/sqh-compaction-basic'
+import { selectCompactableRange } from '@liusiqi-dev/sqh-compaction-basic/src/region.ts'
+import { frameSummary } from '@liusiqi-dev/sqh-compaction-basic/src/summarizer.ts'
+import type { SummarizationInput, SummaryResult } from '@liusiqi-dev/sqh-compaction-basic/src/summarizer.ts'
+import { CompactionId, toolPairingBalancedAfter, toolPairingBalancedBefore } from '@liusiqi-dev/sqh-compaction'
 import {
   resolveCompactSpec,
   resolveConfig,
   resolveTargetPolicy,
-} from '@liusiqi-dev/dsh-compaction-basic/src/config.ts'
-import type { CompactionResult } from '@liusiqi-dev/dsh-compaction'
-import LlmRuntime, { createUserMessage, ToolCallId, CONTEXT_WINDOW_EXCEEDED_CODE, createSystemMessage, createToolResultMessage, LlmAdapter , createMessage } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
+} from '@liusiqi-dev/sqh-compaction-basic/src/config.ts'
+import type { CompactionResult } from '@liusiqi-dev/sqh-compaction'
+import LlmRuntime, { createUserMessage, ToolCallId, CONTEXT_WINDOW_EXCEEDED_CODE, createSystemMessage, createToolResultMessage, LlmAdapter , createMessage } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
 import type {
   ContentBlock,
   GenerateOptions,
@@ -24,14 +24,14 @@ import type {
   Message,
   StreamChunk,
   TokenUsage,
-} from '@liusiqi-dev/dsh-llm'
-import SessionStore, { Session, SessionId, SessionSeq } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import TokenMeter from '@liusiqi-dev/dsh-token-meter'
-import { agentEvents, type Agent, type RequestErrorAction } from '@liusiqi-dev/dsh-agent'
-import ToolResultPruner from '@liusiqi-dev/dsh-compaction-tool-result-pruner'
+} from '@liusiqi-dev/sqh-llm'
+import SessionStore, { Session, SessionId, SessionSeq } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import TokenMeter from '@liusiqi-dev/sqh-token-meter'
+import { agentEvents, type Agent, type RequestErrorAction } from '@liusiqi-dev/sqh-agent'
+import ToolResultPruner from '@liusiqi-dev/sqh-compaction-tool-result-pruner'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }

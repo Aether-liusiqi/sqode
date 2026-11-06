@@ -3,7 +3,7 @@ description: "Enable experimental speech input from the plugin manager."
 kind: "package-bundle"
 ---
 
-# @liusiqi-dev/dsh-experimental-voice-input-bundle
+# @liusiqi-dev/sqh-experimental-voice-input-bundle
 
 English | [中文](README.zh.md)
 

@@ -12,12 +12,12 @@
  * strings, and it models global+shadow named registries — this is a
  * per-session singleton with no global layer to merge.
  */
-import type {} from '@liusiqi-dev/dsh-client-product-analytics/client'
+import type {} from '@liusiqi-dev/sqh-client-product-analytics/client'
 import { Service } from '@liusiqi-dev/cordis'
 import type { Context } from '@liusiqi-dev/cordis'
-import type { SessionBinding } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import { WeakMapWithValues } from '@liusiqi-dev/dsh-util-values'
+import type { SessionBinding } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import { WeakMapWithValues } from '@liusiqi-dev/sqh-util-values'
 import { ModelCatalogDirectory } from './catalog.ts'
 import { ModelDirectory } from './directory.ts'
 

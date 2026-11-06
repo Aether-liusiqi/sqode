@@ -10,18 +10,18 @@
 
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import AgentRegistry, { agentEvents } from '@liusiqi-dev/dsh-agent'
-import type { Agent, AgentStatus } from '@liusiqi-dev/dsh-agent'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-import SessionStore from '@liusiqi-dev/dsh-session'
-import type { Session } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import GoalService, { GoalId, applyGoalProjection, foldGoal, goalProjectionDefinition } from '@liusiqi-dev/dsh-goal'
-import type { GoalProjection, GoalProjectionState, GoalRef } from '@liusiqi-dev/dsh-goal'
-import { unsupportedInbox } from '@liusiqi-dev/dsh-agent-loop-testkit'
+import AgentRegistry, { agentEvents } from '@liusiqi-dev/sqh-agent'
+import type { Agent, AgentStatus } from '@liusiqi-dev/sqh-agent'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+import SessionStore from '@liusiqi-dev/sqh-session'
+import type { Session } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import GoalService, { GoalId, applyGoalProjection, foldGoal, goalProjectionDefinition } from '@liusiqi-dev/sqh-goal'
+import type { GoalProjection, GoalProjectionState, GoalRef } from '@liusiqi-dev/sqh-goal'
+import { unsupportedInbox } from '@liusiqi-dev/sqh-agent-loop-testkit'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }

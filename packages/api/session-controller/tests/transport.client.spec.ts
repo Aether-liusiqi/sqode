@@ -3,12 +3,12 @@ import {
   RemoteStream,
   RemoteStreamCarrierError,
   type RemoteStreamOptions,
-} from '@liusiqi-dev/dsh-api-gateway/client'
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
-import { streamHandle } from '@liusiqi-dev/dsh-remote-mock'
-import { LlmAttemptId } from '@liusiqi-dev/dsh-llm'
-import { SESSION_FORMAT_VERSION } from '@liusiqi-dev/dsh-session/types'
-import type { RemoteResult, RemoteStreamHandle } from '@liusiqi-dev/dsh-typert-protocol'
+} from '@liusiqi-dev/sqh-api-gateway/client'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
+import { streamHandle } from '@liusiqi-dev/sqh-remote-mock'
+import { LlmAttemptId } from '@liusiqi-dev/sqh-llm'
+import { SESSION_FORMAT_VERSION } from '@liusiqi-dev/sqh-session/types'
+import type { RemoteResult, RemoteStreamHandle } from '@liusiqi-dev/sqh-typert-protocol'
 import {
   createSessionControlStream,
   SessionEventStream,

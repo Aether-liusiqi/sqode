@@ -3,7 +3,7 @@ description: "面向客户端与维护者的全日志会话计数与墙钟时间
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-session-stats
+# @liusiqi-dev/sqh-session-stats
 
 [English](README.md) | 中文
 
@@ -30,9 +30,9 @@ kind: "package-reference"
 ### 组合
 
 ```yaml
-- name: '@liusiqi-dev/dsh-session'
-- name: '@liusiqi-dev/dsh-session-projection'
-- name: '@liusiqi-dev/dsh-session-stats'
+- name: '@liusiqi-dev/sqh-session'
+- name: '@liusiqi-dev/sqh-session-projection'
+- name: '@liusiqi-dev/sqh-session-stats'
 ```
 
 ### 各字段含义

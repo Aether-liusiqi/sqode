@@ -1,6 +1,6 @@
 /**
  * Fork seed construction over an exact source-event prefix.
- * @module @liusiqi-dev/dsh-session/fork
+ * @module @liusiqi-dev/sqh-session/fork
  */
 
 import { openTurnClosers } from './repair.ts'

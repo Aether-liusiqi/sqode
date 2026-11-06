@@ -5,9 +5,9 @@
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { Deque } from '@liusiqi-dev/dsh-deque'
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
-import type { FsObservation, FsTarget } from '@liusiqi-dev/dsh-fs'
+import { Deque } from '@liusiqi-dev/sqh-deque'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
+import type { FsObservation, FsTarget } from '@liusiqi-dev/sqh-fs'
 import type { WorkspaceFileWatchFrame } from './types.ts'
 
 /** One target invalidation, optionally carrying its instrumented observation. */

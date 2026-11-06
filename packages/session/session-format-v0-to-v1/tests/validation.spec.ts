@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import type { SessionFormatEvent, SessionFormatJsonValue } from '@liusiqi-dev/dsh-session-format'
-import { KNOWN_SESSION_EVENT_TYPES } from '@liusiqi-dev/dsh-session'
+import type { SessionFormatEvent, SessionFormatJsonValue } from '@liusiqi-dev/sqh-session-format'
+import { KNOWN_SESSION_EVENT_TYPES } from '@liusiqi-dev/sqh-session'
 import {
   RELEASED_V0_EVENT_TYPES,
   RELEASED_V0_EVENT_DISPOSITIONS,

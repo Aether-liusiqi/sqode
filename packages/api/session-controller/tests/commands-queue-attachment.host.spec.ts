@@ -1,24 +1,24 @@
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
 import { Context } from '@liusiqi-dev/cordis'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import type { Agent, Inbox, ModelSelectionRef } from '@liusiqi-dev/dsh-agent'
-import { AttachmentError, AttachmentId } from '@liusiqi-dev/dsh-attachment'
-import type { ImageAttachmentRef } from '@liusiqi-dev/dsh-attachment'
-import { createAssistantMessage, createUserMessage, MessageId } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import type { Agent, Inbox, ModelSelectionRef } from '@liusiqi-dev/sqh-agent'
+import { AttachmentError, AttachmentId } from '@liusiqi-dev/sqh-attachment'
+import type { ImageAttachmentRef } from '@liusiqi-dev/sqh-attachment'
+import { createAssistantMessage, createUserMessage, MessageId } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
 import SessionStore, {
   SESSION_FORMAT_VERSION, Session, SessionId, SessionLogOffset, SessionSeq,
-} from '@liusiqi-dev/dsh-session'
-import type { SessionEvent, SessionHeader, UserMessage } from '@liusiqi-dev/dsh-session'
-import { snapshotSubagentDescriptor, SUBAGENT_DESCRIPTOR_VERSION } from '@liusiqi-dev/dsh-subagent'
-import { subagentIdentityProjectionDefinition } from '@liusiqi-dev/dsh-subagent/src/projection.ts'
+} from '@liusiqi-dev/sqh-session'
+import type { SessionEvent, SessionHeader, UserMessage } from '@liusiqi-dev/sqh-session'
+import { snapshotSubagentDescriptor, SUBAGENT_DESCRIPTOR_VERSION } from '@liusiqi-dev/sqh-subagent'
+import { subagentIdentityProjectionDefinition } from '@liusiqi-dev/sqh-subagent/src/projection.ts'
 import { describe, expect, it, vi } from 'vitest'
 import { ApiSessionAgentController } from '../src/agent.ts'
 import { SessionCommandController } from '../src/commands.ts'
-import { createInboxStub } from '@liusiqi-dev/dsh-agent-loop-testkit'
+import { createInboxStub } from '@liusiqi-dev/sqh-agent-loop-testkit'
 import { installSessionReadTestServices, testSessionPersistence } from './test-remote.ts'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }

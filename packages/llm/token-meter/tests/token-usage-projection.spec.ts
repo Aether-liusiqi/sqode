@@ -1,17 +1,17 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { createMessage, createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { TokenUsage } from '@liusiqi-dev/dsh-llm'
-import SessionStore from '@liusiqi-dev/dsh-session'
-import type { Session, SessionSeq } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import TokenMeter from '@liusiqi-dev/dsh-token-meter'
-import type { ContextPressureProjection, TokenUsageProjection } from '@liusiqi-dev/dsh-token-meter/client'
-import { RetryId } from '@liusiqi-dev/dsh-llm-retry'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-import { CompactionId } from '@liusiqi-dev/dsh-compaction'
+import { createMessage, createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { TokenUsage } from '@liusiqi-dev/sqh-llm'
+import SessionStore from '@liusiqi-dev/sqh-session'
+import type { Session, SessionSeq } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import TokenMeter from '@liusiqi-dev/sqh-token-meter'
+import type { ContextPressureProjection, TokenUsageProjection } from '@liusiqi-dev/sqh-token-meter/client'
+import { RetryId } from '@liusiqi-dev/sqh-llm-retry'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+import { CompactionId } from '@liusiqi-dev/sqh-compaction'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }

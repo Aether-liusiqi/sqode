@@ -258,7 +258,7 @@ class WorkspacePackageSet {
       if (!name.startsWith('@liusiqi-dev/')) {
         throw new Error(`${manifestPath} must name an @deepseek-ai package`)
       }
-      if (name === '@liusiqi-dev/dsh-root') {
+      if (name === '@liusiqi-dev/sqh-root') {
         throw new Error(`${manifestPath} unexpectedly selected the workspace root`)
       }
       if (names.has(name)) throw new Error(`duplicate package name: ${name}`)
@@ -800,7 +800,7 @@ function parsePackedPackage(value: unknown, index: number): PackedPackage {
   if (origin !== 'harness' && origin !== 'vendor') {
     throw new Error(`invalid package origin in release manifest: ${JSON.stringify(origin)}`)
   }
-  if (origin === 'harness' && (!name.startsWith('@liusiqi-dev/') || name === '@liusiqi-dev/dsh-root')) {
+  if (origin === 'harness' && (!name.startsWith('@liusiqi-dev/') || name === '@liusiqi-dev/sqh-root')) {
     throw new Error(`invalid package name in release manifest: ${name}`)
   }
   return {

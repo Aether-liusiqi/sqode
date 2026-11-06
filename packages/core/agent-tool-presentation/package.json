@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-agent-tool-presentation",
+  "name": "@liusiqi-dev/sqh-agent-tool-presentation",
   "description": "Agent-plane presentation selector: composes one agent's tools as PTC mode, native, or both",
   "version": "1.0.0",
   "publishConfig": {
@@ -30,16 +30,16 @@
     "@liusiqi-dev/schemastery": "workspace:~"
   },
   "peerDependencies": {
-    "@liusiqi-dev/dsh-tools": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-ptc-runtime": "workspace:*",
-    "@liusiqi-dev/dsh-scope": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*",
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-ptc-runtime": "workspace:*",
+    "@liusiqi-dev/sqh-scope": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   }
 }

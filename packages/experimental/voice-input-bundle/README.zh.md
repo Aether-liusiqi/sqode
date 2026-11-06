@@ -3,7 +3,7 @@ description: "从插件管理页启用实验性语音输入。"
 kind: "package-bundle"
 ---
 
-# @liusiqi-dev/dsh-experimental-voice-input-bundle
+# @liusiqi-dev/sqh-experimental-voice-input-bundle
 
 [English](README.md) | 中文
 

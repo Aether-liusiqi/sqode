@@ -5,7 +5,7 @@
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-agent-loop'
+import type {} from '@liusiqi-dev/sqh-agent-loop'
 
 /** Fixture plugin name. */
 export const name = 'subagent-send-message-fence'

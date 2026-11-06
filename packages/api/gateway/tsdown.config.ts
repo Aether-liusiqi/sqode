@@ -1,3 +1,3 @@
 import { clientBundle } from '../../client/tsdown.client.ts'
 
-export default clientBundle('@liusiqi-dev/dsh-api-gateway', ['lib/types/index.js'])
+export default clientBundle('@liusiqi-dev/sqh-api-gateway', ['lib/types/index.js'])

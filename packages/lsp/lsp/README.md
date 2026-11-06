@@ -3,7 +3,7 @@ description: "The LSP capability seam (ctx.lsp): provider selection by file exte
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-lsp
+# @liusiqi-dev/sqh-lsp
 
 English | [中文](README.zh.md)
 
@@ -36,11 +36,11 @@ Choose this service when a deployment wants model-visible code navigation backed
 The seam needs a provider and a consumer to do anything. A minimal composition mounts the service, a stdio provider, and the tool:
 
 ```yaml
-- name: '@liusiqi-dev/dsh-fs-local'
-- name: '@liusiqi-dev/dsh-subprocess-local'
-- name: '@liusiqi-dev/dsh-lsp'
-- name: '@liusiqi-dev/dsh-lsp-stdio'
-- name: '@liusiqi-dev/dsh-tool-lsp'
+- name: '@liusiqi-dev/sqh-fs-local'
+- name: '@liusiqi-dev/sqh-subprocess-local'
+- name: '@liusiqi-dev/sqh-lsp'
+- name: '@liusiqi-dev/sqh-lsp-stdio'
+- name: '@liusiqi-dev/sqh-tool-lsp'
 ```
 
 Server commands, extension mappings, and the filesystem/subprocess pairing are configured in the provider and tool packages; see [dsh-lsp-stdio](../lsp-stdio/README.md) and [dsh-tool-lsp](../tool-lsp/README.md).

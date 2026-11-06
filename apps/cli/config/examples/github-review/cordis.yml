@@ -3,7 +3,7 @@
 
 - insert:
     - id: webhook-runtime
-      name: '@liusiqi-dev/dsh-webhook'
+      name: '@liusiqi-dev/sqh-webhook'
 
     - id: github-ready-review-rule
       name: './github-ready-review-rule.mjs'
@@ -21,13 +21,13 @@
         webServer: true
       config:
         - id: github-webhook-server
-          name: '@liusiqi-dev/dsh-host-webserver'
+          name: '@liusiqi-dev/sqh-host-webserver'
           config:
             host: '127.0.0.1'
             port: !!js Number(process.env.SQODE_GITHUB_WEBHOOK_PORT ?? 3081)
 
         - id: github-webhook-adapter
-          name: '@liusiqi-dev/dsh-webhook-github'
+          name: '@liusiqi-dev/sqh-webhook-github'
           config:
             source: primary-github
             path: /github

@@ -1,11 +1,11 @@
 /**
  * dsh-lsp's owned branded id: {@link LspProviderId}, the opaque identity a provider reserves on
- * `ctx.lsp`. The `Branded<B>` primitive lives in `@liusiqi-dev/dsh-brand`; keeping the type and its
+ * `ctx.lsp`. The `Branded<B>` primitive lives in `@liusiqi-dev/sqh-brand`; keeping the type and its
  * factory together here lets `index.ts` re-export both under one name.
- * @module @liusiqi-dev/dsh-lsp/brand
+ * @module @liusiqi-dev/sqh-lsp/brand
  */
 
-import type { Branded } from '@liusiqi-dev/dsh-brand'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
 
 /** Opaque provider identity, reserved atomically with its extension mappings at registration. */
 export type LspProviderId = Branded<'LspProviderId'>

@@ -1,20 +1,20 @@
 /**
  * Concrete session-query service with SQLite FTS5 over the live-preferred corpus.
  *
- * @module @liusiqi-dev/dsh-session-query-sqlite
+ * @module @liusiqi-dev/sqh-session-query-sqlite
  */
 
 import { createHash, randomUUID } from 'node:crypto'
-import { SESSION_FORMAT_VERSION, SessionSeq } from '@liusiqi-dev/dsh-session'
+import { SESSION_FORMAT_VERSION, SessionSeq } from '@liusiqi-dev/sqh-session'
 import type { DatabaseSync } from 'node:sqlite'
 import { Context, Service, type Fiber } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import type { Session, SessionEvent, SessionHeader, SessionId, SessionLogOffset } from '@liusiqi-dev/dsh-session'
-import type SessionPersistence from '@liusiqi-dev/dsh-session-persistence'
+import type { Session, SessionEvent, SessionHeader, SessionId, SessionLogOffset } from '@liusiqi-dev/sqh-session'
+import type SessionPersistence from '@liusiqi-dev/sqh-session-persistence'
 import type {
   SessionPersistenceRevision,
   SessionPersistenceSnapshot,
-} from '@liusiqi-dev/dsh-session-persistence'
+} from '@liusiqi-dev/sqh-session-persistence'
 import SessionQueryEngine, {
   SESSION_QUERY_DEFAULT_PERSISTED_INSPECT_CONCURRENCY,
   SESSION_QUERY_DEFAULT_PREPARED_SESSION_CACHE_SIZE,
@@ -24,7 +24,7 @@ import SessionQueryEngine, {
   assertSessionHeadersCompatible,
   buildSessionEventSearchDocuments,
   readColdSessionLog,
-} from '@liusiqi-dev/dsh-session-query'
+} from '@liusiqi-dev/sqh-session-query'
 import type {
   Config as SessionQueryConfig,
   SessionEventSearchDocument,
@@ -36,7 +36,7 @@ import type {
   SessionSearchCursor as SessionSearchCursorValue,
   SessionSearchPage,
   SessionSearchRequest,
-} from '@liusiqi-dev/dsh-session-query'
+} from '@liusiqi-dev/sqh-session-query'
 import {
   type JournalMode,
   openSearchDatabase,

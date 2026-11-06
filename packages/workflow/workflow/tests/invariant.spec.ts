@@ -1,15 +1,15 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { SessionId } from '@liusiqi-dev/dsh-session'
-import { WorkflowRunId } from '@liusiqi-dev/dsh-workflow'
+import { SessionId } from '@liusiqi-dev/sqh-session'
+import { WorkflowRunId } from '@liusiqi-dev/sqh-workflow'
 import type {
   WorkflowAgentEndInfo,
   WorkflowAgentInfo,
   WorkflowResultInfo,
   WorkflowRunInfo,
-} from '@liusiqi-dev/dsh-workflow'
-import * as WorkflowInvariant from '@liusiqi-dev/dsh-workflow/invariant'
-import InvariantRegistry from '@liusiqi-dev/dsh-invariants'
+} from '@liusiqi-dev/sqh-workflow'
+import * as WorkflowInvariant from '@liusiqi-dev/sqh-workflow/invariant'
+import InvariantRegistry from '@liusiqi-dev/sqh-invariants'
 
 async function setup(): Promise<Context> {
   const ctx = new Context()

@@ -1,6 +1,6 @@
 /** Host configuration supplies bounded Office reuse settings to browser pages. */
 import { Context } from '@liusiqi-dev/cordis'
-import type { IndexInjection } from '@liusiqi-dev/dsh-host-webserver'
+import type { IndexInjection } from '@liusiqi-dev/sqh-host-webserver'
 import { expect, it, onTestFinished } from 'vitest'
 import { Config } from '../src/config.ts'
 import * as host from '../src/index.ts'

@@ -1,7 +1,7 @@
 import type { Context } from '@liusiqi-dev/cordis'
 import type {
   ConversationNodeDefinition, ConversationPreviousContext,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 
 interface InboxIdentity {
   readonly id: string

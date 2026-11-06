@@ -1,9 +1,9 @@
 /** Host catalog, durable projection caches, and explicitly retained Client instances. */
 
-import type { SubagentAddress } from '@liusiqi-dev/dsh-subagent/client'
-import { SessionSeq, type SessionId, type SessionSeqCursor } from '@liusiqi-dev/dsh-session/types'
-import type { SessionProjectionMap } from '@liusiqi-dev/dsh-session-projection/types'
-import type { WorkspaceId } from '@liusiqi-dev/dsh-workspace/types'
+import type { SubagentAddress } from '@liusiqi-dev/sqh-subagent/client'
+import { SessionSeq, type SessionId, type SessionSeqCursor } from '@liusiqi-dev/sqh-session/types'
+import type { SessionProjectionMap } from '@liusiqi-dev/sqh-session-projection/types'
+import type { WorkspaceId } from '@liusiqi-dev/sqh-workspace/types'
 import type {
   SessionControlBaseline,
   SessionControlFrame,
@@ -12,15 +12,15 @@ import type {
   SessionSummary,
 } from '../../types.ts'
 import { mergeOrderedBaseline } from '../ordered-baseline.ts'
-import { isRemoteFailure } from '@liusiqi-dev/dsh-api-gateway/client'
-import { assertNever } from '@liusiqi-dev/dsh-util-values'
-import type { RemoteFailure, RemoteResult } from '@liusiqi-dev/dsh-typert-protocol'
+import { isRemoteFailure } from '@liusiqi-dev/sqh-api-gateway/client'
+import { assertNever } from '@liusiqi-dev/sqh-util-values'
+import type { RemoteFailure, RemoteResult } from '@liusiqi-dev/sqh-typert-protocol'
 import type { SessionListEntry, TitledSessionSummary } from './lineage.ts'
 import { flattenLineage } from './lineage.ts'
 // Type-only merge edge: the title domain's client-namespace outlet declares
 // the 'title' projection key this manager projects into list rows (and any
 // useProjection('title') consumer reads). Zero value imports by construction.
-import type {} from '@liusiqi-dev/dsh-session-title/client'
+import type {} from '@liusiqi-dev/sqh-session-title/client'
 import { Notifier } from './notifier.ts'
 import { ProjectionValueStore } from './projection-store.ts'
 import { Session } from './session.ts'

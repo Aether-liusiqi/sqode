@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-experimental-browser-use-stagehand-native",
+  "name": "@liusiqi-dev/sqh-experimental-browser-use-stagehand-native",
   "description": "Experimental Stagehand browser tools with separately configured native models",
   "version": "1.0.0",
   "publishConfig": {
@@ -33,36 +33,36 @@
   "license": "MIT",
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-browser-use": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*"
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-browser-use": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*"
   },
   "dependencies": {
     "@browserbasehq/stagehand": "4.1.0",
-    "@liusiqi-dev/dsh-experimental-browser-use-runtime": "workspace:*",
-    "@liusiqi-dev/dsh-mcp-client": "workspace:*",
-    "@liusiqi-dev/dsh-util-values": "workspace:*",
+    "@liusiqi-dev/sqh-experimental-browser-use-runtime": "workspace:*",
+    "@liusiqi-dev/sqh-mcp-client": "workspace:*",
+    "@liusiqi-dev/sqh-util-values": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
     "zod": "^4.4.3",
-    "@liusiqi-dev/dsh-subprocess": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess": "workspace:*",
     "@puppeteer/browsers": "3.2.2"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
     "@liusiqi-dev/cordis-plugin-include": "workspace:~",
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-agent-loop": "workspace:*",
-    "@liusiqi-dev/dsh-agent-loop-testkit": "workspace:*",
-    "@liusiqi-dev/dsh-attachment": "workspace:*",
-    "@liusiqi-dev/dsh-attachment-local": "workspace:*",
-    "@liusiqi-dev/dsh-browser-use": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*",
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-agent-loop": "workspace:*",
+    "@liusiqi-dev/sqh-agent-loop-testkit": "workspace:*",
+    "@liusiqi-dev/sqh-attachment": "workspace:*",
+    "@liusiqi-dev/sqh-attachment-local": "workspace:*",
+    "@liusiqi-dev/sqh-browser-use": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*",
     "tsx": "^4.19.2"
   }
 }

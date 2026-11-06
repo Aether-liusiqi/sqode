@@ -3,7 +3,7 @@ description: "The workflow orchestration capability: run a model-written script 
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-workflow
+# @liusiqi-dev/sqh-workflow
 
 English | [中文](README.zh.md)
 

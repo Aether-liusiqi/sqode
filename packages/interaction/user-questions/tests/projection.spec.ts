@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { SessionLogOffset, SessionSeq, TOOL_OUTCOME_UNKNOWN, type SessionEvent } from '@liusiqi-dev/dsh-session'
-import { createToolResultMessage, createUserMessage, ToolCallId, type ToolSchema } from '@liusiqi-dev/dsh-llm'
-import type {} from '@liusiqi-dev/dsh-tools/types'
+import { SessionLogOffset, SessionSeq, TOOL_OUTCOME_UNKNOWN, type SessionEvent } from '@liusiqi-dev/sqh-session'
+import { createToolResultMessage, createUserMessage, ToolCallId, type ToolSchema } from '@liusiqi-dev/sqh-llm'
+import type {} from '@liusiqi-dev/sqh-tools/types'
 import {
   applyUserQuestionEvent, foldUserQuestions, isTimedAskUserQuestionSchema, questionsOf, TIMED_WAIT_PARAMETER,
   userQuestionProjectionDefinition,

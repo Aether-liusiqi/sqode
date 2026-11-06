@@ -1,6 +1,6 @@
 /**
  * Persistent append-only lists with bounded copying and JSON checkpoint validation.
- * @module @liusiqi-dev/dsh-chunked-list
+ * @module @liusiqi-dev/sqh-chunked-list
  */
 
 import { z } from 'zod'

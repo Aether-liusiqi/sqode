@@ -1,5 +1,5 @@
-import type { ModelCatalog } from '@liusiqi-dev/dsh-api-remotes/client'
-import { RemoteError } from '@liusiqi-dev/dsh-client-test-runtime'
+import type { ModelCatalog } from '@liusiqi-dev/sqh-api-remotes/client'
+import { RemoteError } from '@liusiqi-dev/sqh-client-test-runtime'
 import { describe, expect, it, vi } from 'vitest'
 import { ModelCatalogDirectory } from '../src/client/catalog.ts'
 

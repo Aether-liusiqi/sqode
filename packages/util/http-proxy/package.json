@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-http-proxy",
+  "name": "@liusiqi-dev/sqh-http-proxy",
   "description": "Process-wide outbound HTTP proxy policy for Siqi Harness: resolve it from the launch environment and install it as undici's global dispatcher",
   "version": "1.0.0",
   "publishConfig": {
@@ -34,6 +34,6 @@
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-invariants": "workspace:*"
+    "@liusiqi-dev/sqh-invariants": "workspace:*"
   }
 }

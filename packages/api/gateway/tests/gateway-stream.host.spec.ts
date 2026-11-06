@@ -4,10 +4,10 @@ import { queryObjects } from 'node:v8'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import WebSocket, { type RawData } from 'ws'
 import { Context, symbols } from '@liusiqi-dev/cordis'
-import { apply as applyConnection, inject as connectionInject } from '@liusiqi-dev/dsh-client-connection'
-import WebServer from '@liusiqi-dev/dsh-host-webserver'
-import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
-import type { AppReady } from '@liusiqi-dev/dsh-cmdline'
+import { apply as applyConnection, inject as connectionInject } from '@liusiqi-dev/sqh-client-connection'
+import WebServer from '@liusiqi-dev/sqh-host-webserver'
+import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/sqh-timeout'
+import type { AppReady } from '@liusiqi-dev/sqh-cmdline'
 import {
   Remote,
   remoteErrorOf,
@@ -19,10 +19,10 @@ import {
   type TypertContextMap,
   type TypertContextWire,
   RemoteError,
-} from '@liusiqi-dev/dsh-typert-protocol'
-import TypertRegistry from '@liusiqi-dev/dsh-typert-registry'
+} from '@liusiqi-dev/sqh-typert-protocol'
+import TypertRegistry from '@liusiqi-dev/sqh-typert-registry'
 
-declare module '@liusiqi-dev/dsh-typert-protocol' {
+declare module '@liusiqi-dev/sqh-typert-protocol' {
   interface RemoteErrorDetailsMap {
     'fixture/rejected': { readonly retryable: boolean }
     'fixture/broken': { readonly count: bigint }
@@ -35,7 +35,7 @@ import TypertGatewayService, {
   type TypertRemoteEventDispatch,
   type TypertRemoteEventInvocation,
   type TypertRemoteEventOutcome,
-} from '@liusiqi-dev/dsh-api-gateway'
+} from '@liusiqi-dev/sqh-api-gateway'
 import { z } from 'zod'
 import type {
   RemoteEventClientId,

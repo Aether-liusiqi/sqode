@@ -3,7 +3,7 @@ description: "The on-demand /compact command for interactive compositions: what 
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-command-compact
+# @liusiqi-dev/sqh-command-compact
 
 English | [中文](README.zh.md)
 
@@ -55,11 +55,11 @@ Mount the command registry, one condensation backend, and this plugin:
 
 ```yaml
 - id: commands
-  name: '@liusiqi-dev/dsh-commands'
+  name: '@liusiqi-dev/sqh-commands'
 - id: compaction-basic
-  name: '@liusiqi-dev/dsh-compaction-basic'
+  name: '@liusiqi-dev/sqh-compaction-basic'
 - id: command-compact
-  name: '@liusiqi-dev/dsh-command-compact'
+  name: '@liusiqi-dev/sqh-command-compact'
 ```
 
 The shipped `dsh` base mounts it beside the default backend, and the Web client provides the command adapter. Automation surfaces that compose no command adapter keep automatic condensation only.

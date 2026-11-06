@@ -1,11 +1,11 @@
 /** Account-token authentication and discovery for the DeepSeek account route. */
 import type {} from '@liusiqi-dev/cordis-plugin-loader'
 import type { Context } from '@liusiqi-dev/cordis'
-import { ACCOUNT_QUOTA_EXCEEDED_CODE, LlmError, QUOTA_EXCEEDED_CODE } from '@liusiqi-dev/dsh-llm'
-import type {} from '@liusiqi-dev/dsh-deepseek-account'
-import { launchEnvironmentOf } from '@liusiqi-dev/dsh-launch-environment'
-import { plainOptions, resolveAdapterOptions, registerDeepSeekProvider, catalogModelInfo } from '@liusiqi-dev/dsh-llm-deepseek'
-import type { DeepSeekRequestAuth, ResolvedDeepSeekOptions } from '@liusiqi-dev/dsh-llm-deepseek'
+import { ACCOUNT_QUOTA_EXCEEDED_CODE, LlmError, QUOTA_EXCEEDED_CODE } from '@liusiqi-dev/sqh-llm'
+import type {} from '@liusiqi-dev/sqh-deepseek-account'
+import { launchEnvironmentOf } from '@liusiqi-dev/sqh-launch-environment'
+import { plainOptions, resolveAdapterOptions, registerDeepSeekProvider, catalogModelInfo } from '@liusiqi-dev/sqh-llm-deepseek'
+import type { DeepSeekRequestAuth, ResolvedDeepSeekOptions } from '@liusiqi-dev/sqh-llm-deepseek'
 
 import { Config } from './config.ts'
 export { Config } from './config.ts'

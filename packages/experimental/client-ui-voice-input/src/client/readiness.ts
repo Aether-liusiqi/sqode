@@ -1,9 +1,9 @@
 /** One reconnecting Host readiness mirror shared by every voice UI occurrence. */
 import type { Context } from '@liusiqi-dev/cordis'
-import { RemoteStreamCarrierError } from '@liusiqi-dev/dsh-api-gateway/client'
-import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { SpeechCatalog } from '@liusiqi-dev/dsh-experimental-api-speech-to-text/types'
-import type {} from '@liusiqi-dev/dsh-experimental-api-speech-to-text/remote'
+import { RemoteStreamCarrierError } from '@liusiqi-dev/sqh-api-gateway/client'
+import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { SpeechCatalog } from '@liusiqi-dev/sqh-experimental-api-speech-to-text/types'
+import type {} from '@liusiqi-dev/sqh-experimental-api-speech-to-text/remote'
 
 /** Complete provider state, with a separate transport failure that never rewrites Host readiness. */
 export interface SpeechReadiness {

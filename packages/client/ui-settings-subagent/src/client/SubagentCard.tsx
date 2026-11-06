@@ -1,9 +1,9 @@
 /** One settings card for Subagent delegation limits and model authorization. */
 
 import { useId } from 'react'
-import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
-import type {} from '@liusiqi-dev/dsh-client-ui-plugin-manager/client'
-import { SettingsForm } from '@liusiqi-dev/dsh-client-ui-primitives'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
+import type {} from '@liusiqi-dev/sqh-client-ui-plugin-manager/client'
+import { SettingsForm } from '@liusiqi-dev/sqh-client-ui-primitives'
 import { formLabels } from './locales.ts'
 import { SubagentLimitsFields } from './SubagentLimitsFields.tsx'
 import { SubagentModelSelectionFields } from './SubagentModelSelectionFields.tsx'

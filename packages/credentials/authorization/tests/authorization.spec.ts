@@ -1,12 +1,12 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { credentialKey } from '@liusiqi-dev/dsh-credentials'
+import { credentialKey } from '@liusiqi-dev/sqh-credentials'
 import AuthorizationService, {
   AuthorizationDeclinedError,
   type AuthorizationFlow,
   type AuthorizationInteraction,
   type AuthorizationSession,
-} from '@liusiqi-dev/dsh-authorization'
+} from '@liusiqi-dev/sqh-authorization'
 import { MemoryCredentials } from './memory.ts'
 
 const KEY = credentialKey('llm-pi-ai', 'openai-codex')

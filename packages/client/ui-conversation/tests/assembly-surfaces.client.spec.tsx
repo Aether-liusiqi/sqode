@@ -1,20 +1,20 @@
 // @vitest-environment jsdom
 /** Conversation assembly acceptance independent of Tool presentation. */
 import './control-row-dom.ts'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, waitFor, within } from '@testing-library/react'
 import { useState } from 'react'
-import { LocaleRuntime } from '@liusiqi-dev/dsh-client-locale/client'
-import type { ISession } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { PropsRenderSlots } from '@liusiqi-dev/dsh-client-ui-slots'
+import { LocaleRuntime } from '@liusiqi-dev/sqh-client-locale/client'
+import type { ISession } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { PropsRenderSlots } from '@liusiqi-dev/sqh-client-ui-slots'
 import {
   RemoteError, SlotTestRuntime, usePinnedBrowserLanguages, stubConfigForm,
-} from '@liusiqi-dev/dsh-client-test-runtime'
+} from '@liusiqi-dev/sqh-client-test-runtime'
 import { InputHub } from '../src/client/input/hub.ts'
-import { apply, inject, type EmptyWorkspaceOwnerProps } from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { WorkspaceId } from '@liusiqi-dev/dsh-workspace/types'
+import { apply, inject, type EmptyWorkspaceOwnerProps } from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { WorkspaceId } from '@liusiqi-dev/sqh-workspace/types'
 
 // jsdom implements no Range geometry (Lexical's scroll-into-view measures the
 // caret with one once the surface is genuinely contenteditable).

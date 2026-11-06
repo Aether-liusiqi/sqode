@@ -1,6 +1,6 @@
 import { Context } from '@liusiqi-dev/cordis'
 import { describe, expect, it } from 'vitest'
-import { SlotRegistry } from '@liusiqi-dev/dsh-client-ui-renderer/client'
+import { SlotRegistry } from '@liusiqi-dev/sqh-client-ui-renderer/client'
 import { apply as applyHost } from '../src/index.ts'
 import { apply, inject } from '../src/client/index.ts'
 import { ComposerAttachments } from '../src/client/ComposerAttachments.tsx'

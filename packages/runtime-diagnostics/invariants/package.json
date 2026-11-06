@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-invariants",
+  "name": "@liusiqi-dev/sqh-invariants",
   "description": "Registry service for package-owned Siqi Harness runtime invariants",
   "version": "1.0.0",
   "publishConfig": {

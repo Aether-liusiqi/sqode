@@ -3,7 +3,7 @@ description: "在普通 Cordis YAML 中定义 Agent 的子插件列表。可同�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-agent-preset
+# @liusiqi-dev/sqh-agent-preset
 
 [English](README.md) | 中文
 
@@ -27,11 +27,11 @@ kind: "package-reference"
 
 ```yaml
 - id: agent-preset-registry
-  name: '@liusiqi-dev/dsh-agent-preset-registry'
+  name: '@liusiqi-dev/sqh-agent-preset-registry'
   config:
     default: standard
 - id: preset-standard
-  name: '@liusiqi-dev/dsh-agent-preset'
+  name: '@liusiqi-dev/sqh-agent-preset'
   config:
     id: standard
     plugins: []

@@ -6,10 +6,10 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import Include from '@liusiqi-dev/cordis-plugin-include'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import CommandRuntime from '@liusiqi-dev/dsh-commands'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import * as SessionLogDownload from '@liusiqi-dev/dsh-session-log-export'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import CommandRuntime from '@liusiqi-dev/sqh-commands'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import * as SessionLogDownload from '@liusiqi-dev/sqh-session-log-export'
 
 let root: string | undefined
 let context: Context | undefined
@@ -26,9 +26,9 @@ describe('session-log-download real Loader composition', () => {
     root = await mkdtemp(join(tmpdir(), 'dsh-session-export-loader-'))
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
-      "- name: '@liusiqi-dev/dsh-session'",
-      "- name: '@liusiqi-dev/dsh-commands'",
-      "- name: '@liusiqi-dev/dsh-session-log-export'",
+      "- name: '@liusiqi-dev/sqh-session'",
+      "- name: '@liusiqi-dev/sqh-commands'",
+      "- name: '@liusiqi-dev/sqh-session-log-export'",
       '',
     ].join('\n'))
 
@@ -40,9 +40,9 @@ describe('session-log-download real Loader composition', () => {
     await context.plugin(Loader)
     context.loader.builtins.include = Include
     const modules = new Map<string, unknown>([
-      ['@liusiqi-dev/dsh-session', SessionStore],
-      ['@liusiqi-dev/dsh-commands', CommandRuntime],
-      ['@liusiqi-dev/dsh-session-log-export', SessionLogDownload],
+      ['@liusiqi-dev/sqh-session', SessionStore],
+      ['@liusiqi-dev/sqh-commands', CommandRuntime],
+      ['@liusiqi-dev/sqh-session-log-export', SessionLogDownload],
     ])
     context.loader.internal = {
       version: 'v2',
@@ -61,7 +61,7 @@ describe('session-log-download real Loader composition', () => {
       .create(SessionId('loader-session-export'), { meta: { createdAt: 1 } })
     const agent = { session, status: 'idle', options: {} } as unknown as Agent
     expect(context.commands.list(agent)).toContainEqual({
-      definitionId: '@liusiqi-dev/dsh-session-log-export',
+      definitionId: '@liusiqi-dev/sqh-session-log-export',
       name: 'export', description: 'Download this Session log as a ZIP archive',
     })
     const execution = await context.commands.execute(agent, '/export', [], new AbortController().signal)

@@ -3,7 +3,7 @@
  * Every workspace package registers checks from a `./invariant` companion;
  * ordinary package entrypoints stay independent of diagnostics.
  *
- * @module @liusiqi-dev/dsh-invariants
+ * @module @liusiqi-dev/sqh-invariants
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'

@@ -3,7 +3,7 @@ description: "Define an Agent’s child plugins in ordinary Cordis YAML. Declare
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-agent-preset
+# @liusiqi-dev/sqh-agent-preset
 
 English | [中文](README.zh.md)
 
@@ -27,11 +27,11 @@ Define an Agent’s child plugins in ordinary Cordis YAML. Declare several prese
 
 ```yaml
 - id: agent-preset-registry
-  name: '@liusiqi-dev/dsh-agent-preset-registry'
+  name: '@liusiqi-dev/sqh-agent-preset-registry'
   config:
     default: standard
 - id: preset-standard
-  name: '@liusiqi-dev/dsh-agent-preset'
+  name: '@liusiqi-dev/sqh-agent-preset'
   config:
     id: standard
     plugins: []

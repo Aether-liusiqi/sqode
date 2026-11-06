@@ -3,7 +3,7 @@ import {
   sessionFormatCount,
   sessionFormatSafeInteger,
   snapshotSessionFormatJson,
-} from '@liusiqi-dev/dsh-session-format'
+} from '@liusiqi-dev/sqh-session-format'
 import type {
   SessionFormatArtifactDecoder,
   SessionFormatCodec,
@@ -13,7 +13,7 @@ import type {
   SessionFormatJsonObject,
   SessionFormatJsonValue,
   SessionFormatRecovery,
-} from '@liusiqi-dev/dsh-session-format'
+} from '@liusiqi-dev/sqh-session-format'
 import { assertReleasedV2Header } from './validation.ts'
 
 const HEADER_REQUIRED = ['type', 'version', 'id', 'createdAt', 'isSeeded', 'delegationDepth'] as const

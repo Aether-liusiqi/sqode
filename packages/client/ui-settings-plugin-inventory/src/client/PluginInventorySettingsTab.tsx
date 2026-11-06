@@ -1,17 +1,17 @@
 import { useEffect, useId, useMemo, useState, type ReactNode } from 'react'
-import type { ClientEntryState } from '@liusiqi-dev/dsh-client-modules/client'
-import type { ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
-import type { PluginInventorySnapshot } from '@liusiqi-dev/dsh-api-remotes/client'
-import type { LocalizedText } from '@liusiqi-dev/dsh-package-manifest'
+import type { ClientEntryState } from '@liusiqi-dev/sqh-client-modules/client'
+import type { ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
+import type { PluginInventorySnapshot } from '@liusiqi-dev/sqh-api-remotes/client'
+import type { LocalizedText } from '@liusiqi-dev/sqh-package-manifest'
 import {
   IconChevronDownOutlineRegular,
   IconSearchOutlineRegular,
   Menu,
   StateDot,
   Tag,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { StateDotState, TagTone } from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { StateDotState, TagTone } from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
 import type { PluginInventoryLocaleKey } from './locales.ts'
 import css from './PluginInventorySettingsTab.module.css'
 

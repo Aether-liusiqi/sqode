@@ -71,11 +71,11 @@ describe('npm resolution benchmark', () => {
     writeJson(root, 'apps/cli/package.json', {
       name: '@liusiqi-dev/sqode',
       version: '0.1.0',
-      dependencies: { '@liusiqi-dev/dsh-child': 'workspace:^', external: '^2.0.0' },
+      dependencies: { '@liusiqi-dev/sqh-child': 'workspace:^', external: '^2.0.0' },
       devDependencies: { ignored: 'workspace:^' },
     })
     writeJson(root, 'packages/core/child/package.json', {
-      name: '@liusiqi-dev/dsh-child',
+      name: '@liusiqi-dev/sqh-child',
       version: '0.1.0',
     })
 
@@ -85,7 +85,7 @@ describe('npm resolution benchmark', () => {
     expect(index.get('@liusiqi-dev/sqode')?.get('0.1.0')).toEqual({
       name: '@liusiqi-dev/sqode',
       version: '0.1.0',
-      dependencies: { '@liusiqi-dev/dsh-child': '^0.1.0', external: '^2.0.0' },
+      dependencies: { '@liusiqi-dev/sqh-child': '^0.1.0', external: '^2.0.0' },
     })
   })
 
@@ -142,10 +142,10 @@ describe('npm resolution benchmark', () => {
         ['@liusiqi-dev/sqode', new Map([['0.1.0', {
           name: '@liusiqi-dev/sqode',
           version: '0.1.0',
-          peerDependencies: { '@liusiqi-dev/dsh-peer': '1.0.0' },
+          peerDependencies: { '@liusiqi-dev/sqh-peer': '1.0.0' },
         }]])],
-        ['@liusiqi-dev/dsh-peer', new Map([['1.0.0', {
-          name: '@liusiqi-dev/dsh-peer',
+        ['@liusiqi-dev/sqh-peer', new Map([['1.0.0', {
+          name: '@liusiqi-dev/sqh-peer',
           version: '1.0.0',
         }]])],
       ])
@@ -153,7 +153,7 @@ describe('npm resolution benchmark', () => {
       const result = await resolveNpmPackageLock(index, { '@liusiqi-dev/sqode': '0.1.0' }, 10_000)
 
       expect(result.archiveRequests).toBe(0)
-      expect(result.packageLock.packages['node_modules/@liusiqi-dev/dsh-peer']?.version).toBe('1.0.0')
+      expect(result.packageLock.packages['node_modules/@liusiqi-dev/sqh-peer']?.version).toBe('1.0.0')
     } finally {
       if (previous.userConfig === undefined) delete process.env.npm_config_userconfig
       else process.env.npm_config_userconfig = previous.userConfig

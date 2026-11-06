@@ -22,17 +22,17 @@ import {
   type Mock,
   vi,
 } from 'vitest'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import SubagentRuntime from '@liusiqi-dev/dsh-subagent'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import SubagentRuntime from '@liusiqi-dev/sqh-subagent'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
 import type {
   SubprocessHandle,
   SubprocessOutcome,
   SubprocessSpawnSpec,
-} from '@liusiqi-dev/dsh-subprocess'
-import LocalSubprocessRuntime from '@liusiqi-dev/dsh-subprocess-local'
-import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
+} from '@liusiqi-dev/sqh-subprocess'
+import LocalSubprocessRuntime from '@liusiqi-dev/sqh-subprocess-local'
+import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/sqh-timeout'
 import * as claudeCode from '../src/index.ts'
 import {
   claudeSpawnSpec,
@@ -358,7 +358,7 @@ describe('task admission and package contracts', () => {
       '^1.29.0',
     )
     expect(manifest.dependencies).toHaveProperty('zod', '^4.4.3')
-    expect(manifest.dependencies).not.toHaveProperty('@liusiqi-dev/dsh-subagent-codex')
+    expect(manifest.dependencies).not.toHaveProperty('@liusiqi-dev/sqh-subagent-codex')
 
     const sdkRoot = dirname(fileURLToPath(
       import.meta.resolve('@anthropic-ai/claude-agent-sdk'),
@@ -395,7 +395,7 @@ describe('task admission and package contracts', () => {
       : []
     expect(rows).toEqual([{
       id: 'subagent-claude-code',
-      name: '@liusiqi-dev/dsh-subagent-claude-code',
+      name: '@liusiqi-dev/sqh-subagent-claude-code',
     }])
     expect(JSON.stringify(rows)).not.toContain('tool-subagent')
   })

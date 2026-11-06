@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-experimental-schedule-bundle",
+  "name": "@liusiqi-dev/sqh-experimental-schedule-bundle",
   "description": "Optional bundle that adds Schedule, its task page, and time context to the Web composition",
   "version": "1.0.0",
   "icon": "./icon.svg",
@@ -33,9 +33,9 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@liusiqi-dev/dsh-client-ui-schedule": "workspace:*",
-    "@liusiqi-dev/dsh-schedule": "workspace:*",
-    "@liusiqi-dev/dsh-time-context": "workspace:*"
+    "@liusiqi-dev/sqh-client-ui-schedule": "workspace:*",
+    "@liusiqi-dev/sqh-schedule": "workspace:*",
+    "@liusiqi-dev/sqh-time-context": "workspace:*"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~"

@@ -1,6 +1,6 @@
 /** Exact-read Session query used by the descriptor-less child snapshot. */
 
-import SessionQueryEngine from '@liusiqi-dev/dsh-session-query'
+import SessionQueryEngine from '@liusiqi-dev/sqh-session-query'
 
 /** Search is outside this fixture; inherited corpus and observation reads stay real. */
 export default class SubagentDiagnosticQuery extends SessionQueryEngine {

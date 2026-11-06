@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-bash-sandbox",
+  "name": "@liusiqi-dev/sqh-bash-sandbox",
   "description": "Sandbox-consuming implementation of the Siqi Harness bash executor seam (confines every command via ctx.sandbox, reports denial/enforcement result facts)",
   "version": "1.0.0",
   "publishConfig": {
@@ -27,21 +27,21 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@liusiqi-dev/dsh-shell": "workspace:*",
-    "@liusiqi-dev/dsh-bash-local": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox-policy": "workspace:*",
+    "@liusiqi-dev/sqh-shell": "workspace:*",
+    "@liusiqi-dev/sqh-bash-local": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox-policy": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-shell": "workspace:*",
-    "@liusiqi-dev/dsh-bash-local": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess-local": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox-local": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox-policy": "workspace:*",
+    "@liusiqi-dev/sqh-shell": "workspace:*",
+    "@liusiqi-dev/sqh-bash-local": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess-local": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox-local": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox-policy": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~",
     "@liusiqi-dev/node-addon-system": "workspace:~",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*"
+    "@liusiqi-dev/sqh-session-projection": "workspace:*"
   }
 }

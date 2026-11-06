@@ -1,10 +1,10 @@
 /**
  * Configuration vocabulary for the replay-aware basic compaction backend.
  *
- * @module @liusiqi-dev/dsh-compaction-basic/types
+ * @module @liusiqi-dev/sqh-compaction-basic/types
  */
 
-import type { LlmCallConfig } from '@liusiqi-dev/dsh-llm'
+import type { LlmCallConfig } from '@liusiqi-dev/sqh-llm'
 
 /** Policy fields shared by the default policy and exact model overrides. */
 export interface CompactionPolicyConfig {

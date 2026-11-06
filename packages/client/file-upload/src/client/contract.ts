@@ -1,5 +1,5 @@
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { RemoteResult } from '@liusiqi-dev/dsh-typert-protocol'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { RemoteResult } from '@liusiqi-dev/sqh-typert-protocol'
 import type { FileUploadValue } from '../types.ts'
 
 /** Browser request body accepted by the background file-upload service. */

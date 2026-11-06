@@ -12,13 +12,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import clsx from 'clsx'
-import type { ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
-import type { InjectFace, PropsLocale, PropsRenderSlots, PropsRuntime, PropsStore } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
+import type { InjectFace, PropsLocale, PropsRenderSlots, PropsRuntime, PropsStore } from '@liusiqi-dev/sqh-client-ui-slots'
 import {
   FileTypeIcon, IconNowrapFillRegular, IconPauseOutlineRegular, IconPlayOutlineRegular,
   IconRefreshOutlineRegular, IconWrapFillRegular, Menu, PathLabel, Tooltip, classifyFileType,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import { pathPartsOf } from '@liusiqi-dev/dsh-util-workspace-path'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import { pathPartsOf } from '@liusiqi-dev/sqh-util-workspace-path'
 import type { TextInjected } from './face.ts'
 import { emptyFailureRecourse, failureLine } from './failure-line.ts'
 import { LoadingIndicator } from './LoadingIndicator.tsx'

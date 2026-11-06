@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-subagent-in-process-driver",
+  "name": "@liusiqi-dev/sqh-subagent-in-process-driver",
   "description": "Shared in-process subagent run driver: drives a child agent on ctx.agents (used by the spawn and fork backends)",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,34 +28,34 @@
   "license": "MIT",
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-subagent": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*"
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-subagent": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
     "@liusiqi-dev/cordis-plugin-include": "workspace:~",
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-agent-loop": "workspace:*",
-    "@liusiqi-dev/dsh-agent-loop-testkit": "workspace:*",
-    "@liusiqi-dev/dsh-agent-preset-registry": "workspace:*",
-    "@liusiqi-dev/dsh-fs-sandbox": "workspace:*",
-    "@liusiqi-dev/dsh-invariants": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox-policy": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*",
-    "@liusiqi-dev/dsh-subagent": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
-    "@liusiqi-dev/dsh-tool-fs": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*",
-    "@liusiqi-dev/dsh-user-approval": "workspace:*"
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-agent-loop": "workspace:*",
+    "@liusiqi-dev/sqh-agent-loop-testkit": "workspace:*",
+    "@liusiqi-dev/sqh-agent-preset-registry": "workspace:*",
+    "@liusiqi-dev/sqh-fs-sandbox": "workspace:*",
+    "@liusiqi-dev/sqh-invariants": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox-policy": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection": "workspace:*",
+    "@liusiqi-dev/sqh-subagent": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*",
+    "@liusiqi-dev/sqh-tool-fs": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*",
+    "@liusiqi-dev/sqh-user-approval": "workspace:*"
   },
   "dependencies": {
-    "@liusiqi-dev/dsh-brand": "workspace:*"
+    "@liusiqi-dev/sqh-brand": "workspace:*"
   }
 }

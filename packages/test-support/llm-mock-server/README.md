@@ -3,7 +3,7 @@ description: "Scriptable Messages-compatible fault server for testing LLM adapte
 kind: "package-library"
 ---
 
-# @liusiqi-dev/dsh-llm-mock-server
+# @liusiqi-dev/sqh-llm-mock-server
 
 English | [中文](README.zh.md)
 

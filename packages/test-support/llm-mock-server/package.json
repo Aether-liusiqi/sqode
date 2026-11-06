@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-llm-mock-server",
+  "name": "@liusiqi-dev/sqh-llm-mock-server",
   "description": "Scriptable Messages HTTP/SSE fault server for LLM recovery tests",
   "version": "1.0.0",
   "publishConfig": {

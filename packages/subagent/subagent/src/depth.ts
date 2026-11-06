@@ -3,12 +3,12 @@
  * children. Kept apart from the service so composition helpers can read it
  * without importing the registry.
  *
- * @module @liusiqi-dev/dsh-subagent/depth
+ * @module @liusiqi-dev/sqh-subagent/depth
  */
 
-import type { Agent } from '@liusiqi-dev/dsh-agent'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
 
-declare module '@liusiqi-dev/dsh-agent' {
+declare module '@liusiqi-dev/sqh-agent' {
   interface AgentOptions {
     /** Delegation depth: zero for a top-level agent and parent depth + 1 for a child. */
     subagentDepth?: number

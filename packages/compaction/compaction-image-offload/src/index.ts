@@ -5,13 +5,13 @@
  * and retries through the agent or compaction summary error waterfall. Every route
  * sends placeholder text for those occurrences in subsequent requests.
  *
- * @module @liusiqi-dev/dsh-compaction-image-offload
+ * @module @liusiqi-dev/sqh-compaction-image-offload
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-compaction'
-import type { RequestErrorAction } from '@liusiqi-dev/dsh-agent'
-import { IMAGE_OFFLOAD_REQUIRED_CODE, LlmError } from '@liusiqi-dev/dsh-llm'
+import type {} from '@liusiqi-dev/sqh-compaction'
+import type { RequestErrorAction } from '@liusiqi-dev/sqh-agent'
+import { IMAGE_OFFLOAD_REQUIRED_CODE, LlmError } from '@liusiqi-dev/sqh-llm'
 import { offloadOldestImages } from './image-offload.ts'
 import { imageOffloadProjection } from './projection.ts'
 

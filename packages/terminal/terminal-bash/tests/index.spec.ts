@@ -3,27 +3,27 @@ import { PassThrough } from 'node:stream'
 import { resolve } from 'node:path'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
-import SessionStore, { SESSION_FORMAT_VERSION, Session, SessionId } from '@liusiqi-dev/dsh-session'
-import AgentRegistry, { type Agent } from '@liusiqi-dev/dsh-agent'
-import SandboxProvider from '@liusiqi-dev/dsh-sandbox'
-import type { ConfinedArgv, SandboxPolicy } from '@liusiqi-dev/dsh-sandbox'
-import SandboxPolicyService, { setSandboxMode } from '@liusiqi-dev/dsh-sandbox-policy'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import TerminalSessionService, { TerminalBackendCleanupError, TerminalSessionId } from '@liusiqi-dev/dsh-terminal'
-import type { TerminalSendRequest, TerminalWaitReason } from '@liusiqi-dev/dsh-terminal'
-import { BashTerminalBackend, PWSH_PROMPT_SETUP } from '@liusiqi-dev/dsh-terminal-bash'
-import { ENCODING_PREAMBLE } from '@liusiqi-dev/dsh-pwsh-local'
-import * as ptyLocal from '@liusiqi-dev/dsh-terminal-bash'
-import type { ResolvedConfig } from '@liusiqi-dev/dsh-terminal-bash/src/config.ts'
-import type { LocalPtySession } from '@liusiqi-dev/dsh-terminal-bash/src/session.ts'
-import { SubprocessRuntime } from '@liusiqi-dev/dsh-subprocess'
+import SessionStore, { SESSION_FORMAT_VERSION, Session, SessionId } from '@liusiqi-dev/sqh-session'
+import AgentRegistry, { type Agent } from '@liusiqi-dev/sqh-agent'
+import SandboxProvider from '@liusiqi-dev/sqh-sandbox'
+import type { ConfinedArgv, SandboxPolicy } from '@liusiqi-dev/sqh-sandbox'
+import SandboxPolicyService, { setSandboxMode } from '@liusiqi-dev/sqh-sandbox-policy'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import TerminalSessionService, { TerminalBackendCleanupError, TerminalSessionId } from '@liusiqi-dev/sqh-terminal'
+import type { TerminalSendRequest, TerminalWaitReason } from '@liusiqi-dev/sqh-terminal'
+import { BashTerminalBackend, PWSH_PROMPT_SETUP } from '@liusiqi-dev/sqh-terminal-bash'
+import { ENCODING_PREAMBLE } from '@liusiqi-dev/sqh-pwsh-local'
+import * as ptyLocal from '@liusiqi-dev/sqh-terminal-bash'
+import type { ResolvedConfig } from '@liusiqi-dev/sqh-terminal-bash/src/config.ts'
+import type { LocalPtySession } from '@liusiqi-dev/sqh-terminal-bash/src/session.ts'
+import { SubprocessRuntime } from '@liusiqi-dev/sqh-subprocess'
 import type {
   SubprocessHandle,
   SubprocessSpawnSpec,
   SubprocessTerminalHandle,
   SubprocessTerminalSpawnSpec,
-} from '@liusiqi-dev/dsh-subprocess'
-import { unsupportedInbox } from '@liusiqi-dev/dsh-agent-loop-testkit'
+} from '@liusiqi-dev/sqh-subprocess'
+import { unsupportedInbox } from '@liusiqi-dev/sqh-agent-loop-testkit'
 
 class EmptySandbox extends SandboxProvider {
   async confine(_argv: readonly string[], _policy: SandboxPolicy): Promise<ConfinedArgv> {

@@ -6,9 +6,9 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Include from '@liusiqi-dev/cordis-plugin-include'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import JsonlSessionPersistence from '@liusiqi-dev/dsh-session-persistence-jsonl'
-import { remoteMethods } from '@liusiqi-dev/dsh-typert-protocol'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import JsonlSessionPersistence from '@liusiqi-dev/sqh-session-persistence-jsonl'
+import { remoteMethods } from '@liusiqi-dev/sqh-typert-protocol'
 import MessageFeedbackService from '../src/index.ts'
 import { appendMessageFixture } from './helpers.ts'
 
@@ -27,9 +27,9 @@ async function loadComposition(configPath: string): Promise<Context> {
   await ctx.plugin(Loader)
   ctx.loader.builtins.include = Include
   const modules = new Map<string, unknown>([
-    ['@liusiqi-dev/dsh-session', SessionStore],
-    ['@liusiqi-dev/dsh-session-persistence-jsonl', JsonlSessionPersistence],
-    ['@liusiqi-dev/dsh-message-feedback', MessageFeedbackService],
+    ['@liusiqi-dev/sqh-session', SessionStore],
+    ['@liusiqi-dev/sqh-session-persistence-jsonl', JsonlSessionPersistence],
+    ['@liusiqi-dev/sqh-message-feedback', MessageFeedbackService],
   ])
   ctx.loader.internal = {
     version: 'v2',
@@ -55,12 +55,12 @@ describe('message feedback through a real Loader composition', () => {
     root = await mkdtemp(join(tmpdir(), 'dsh-message-feedback-loader-'))
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
-      "- name: '@liusiqi-dev/dsh-session'",
-      "- name: '@liusiqi-dev/dsh-session-persistence-jsonl'",
+      "- name: '@liusiqi-dev/sqh-session'",
+      "- name: '@liusiqi-dev/sqh-session-persistence-jsonl'",
       '  config:',
       `    root: ${JSON.stringify(join(root, 'sessions'))}`,
       '    compression: none',
-      "- name: '@liusiqi-dev/dsh-message-feedback'",
+      "- name: '@liusiqi-dev/sqh-message-feedback'",
       '  config:',
       '    maxNoteBytes: 32',
       '',

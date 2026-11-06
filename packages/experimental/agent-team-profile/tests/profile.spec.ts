@@ -20,9 +20,9 @@ describe('Agent Teams profile bundle', () => {
     expect(manifest.publishConfig?.access).toBe('public')
     expect(manifest.dsh?.bundle?.patch).toBe('./cordis.patch.yml')
     expect(manifest.dependencies).toMatchObject({
-      '@liusiqi-dev/dsh-experimental-agent-team': 'workspace:*',
-      '@liusiqi-dev/dsh-experimental-client-ui-agent-team': 'workspace:*',
-      '@liusiqi-dev/dsh-experimental-tool-agent-team': 'workspace:*',
+      '@liusiqi-dev/sqh-experimental-agent-team': 'workspace:*',
+      '@liusiqi-dev/sqh-experimental-client-ui-agent-team': 'workspace:*',
+      '@liusiqi-dev/sqh-experimental-tool-agent-team': 'workspace:*',
     })
 
     const parsed = yaml.load(
@@ -42,15 +42,15 @@ describe('Agent Teams profile bundle', () => {
     expect(patches.find(patch => patch.id === 'tool-subagent-fork')).toMatchObject({ disabled: true })
     const inserted = patches.flatMap(patch => patch.insert ?? [])
     expect(inserted.find(entry => entry.id === 'agent-team')).toMatchObject({
-      name: '@liusiqi-dev/dsh-experimental-agent-team',
+      name: '@liusiqi-dev/sqh-experimental-agent-team',
       config: { maxMembers: 8 },
     })
     expect(inserted.find(entry => entry.id === 'tool-agent-team')).toMatchObject({
-      name: '@liusiqi-dev/dsh-experimental-tool-agent-team',
+      name: '@liusiqi-dev/sqh-experimental-tool-agent-team',
       config: { freshProvider: 'spawn', forkProvider: 'fork' },
     })
     expect(inserted.find(entry => entry.id === 'ui-agent-team')).toMatchObject({
-      name: '@liusiqi-dev/dsh-experimental-client-ui-agent-team',
+      name: '@liusiqi-dev/sqh-experimental-client-ui-agent-team',
     })
   })
 })

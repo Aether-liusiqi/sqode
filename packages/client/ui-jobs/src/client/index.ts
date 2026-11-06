@@ -5,16 +5,16 @@
  * holds no transport state of its own.
  */
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import type { JobId } from '@liusiqi-dev/dsh-jobs/brand'
+import type { JobId } from '@liusiqi-dev/sqh-jobs/brand'
 import { JobListAction } from './JobListAction.tsx'
 import type { JobListInjected } from './JobListAction.tsx'
-import type {} from '@liusiqi-dev/dsh-api-job-controller/client'
-import type {} from '@liusiqi-dev/dsh-client-locale/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-session/client'
+import type {} from '@liusiqi-dev/sqh-api-job-controller/client'
+import type {} from '@liusiqi-dev/sqh-client-locale/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-session/client'
 import { en, NS, zh, type JobKey } from './locales.ts'
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** Background-job list copy. */
     'job': JobKey

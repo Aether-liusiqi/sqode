@@ -1,12 +1,12 @@
 // @vitest-environment jsdom
 import { act, cleanup, renderHook } from '@testing-library/react'
-import type { SessionLiveEventEntry } from '@liusiqi-dev/dsh-api-session-controller/client'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import { EMPTY_CHAT_SNAPSHOT } from '@liusiqi-dev/dsh-client-ui-chat/client'
-import { EMPTY_CONVERSATION_SNAPSHOT } from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { MainPanelId, PanelInfo } from '@liusiqi-dev/dsh-client-ui-layout/client'
-import type { PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { SessionLiveEventEntry } from '@liusiqi-dev/sqh-api-session-controller/client'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import { EMPTY_CHAT_SNAPSHOT } from '@liusiqi-dev/sqh-client-ui-chat/client'
+import { EMPTY_CONVERSATION_SNAPSHOT } from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { MainPanelId, PanelInfo } from '@liusiqi-dev/sqh-client-ui-layout/client'
+import type { PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
 import { afterAll, afterEach, describe, expect, it, vi } from 'vitest'
 import {
   bindSnapshotSelector,
@@ -19,7 +19,7 @@ import {
 const originalLanguages = [...navigator.languages]
 const originalLanguage = navigator.language
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface SlotMap {
     'trt.panel-info': { kind: 'keyed'; scope: 'root'; owner: { label: string } }
   }

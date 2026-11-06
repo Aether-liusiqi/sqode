@@ -3,7 +3,7 @@
  * fetch. Duplicate ids are rejected. At execution time, a configured provider must exist and
  * be usable; without one, exactly one usable provider is required, so selection never depends
  * on registration order.
- * @module @liusiqi-dev/dsh-web
+ * @module @liusiqi-dev/sqh-web
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'

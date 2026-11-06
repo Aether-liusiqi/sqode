@@ -1,7 +1,7 @@
 /** Model-visible continuation prompt for one same-session goal round. */
 
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import type { GoalView } from '@liusiqi-dev/dsh-goal'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import type { GoalView } from '@liusiqi-dev/sqh-goal'
 
 /**
  * Render the complete goal-round instruction retained in session history.

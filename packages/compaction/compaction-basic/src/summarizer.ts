@@ -1,18 +1,18 @@
 /**
  * Default one-shot summarization and durable checkpoint framing.
  *
- * @module @liusiqi-dev/dsh-compaction-basic/summarizer
+ * @module @liusiqi-dev/sqh-compaction-basic/summarizer
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
 import {
   CONTEXT_WINDOW_EXCEEDED_CODE, BlockAssembler, LlmError, contentHasImage, isContextWindowExceededError,
-} from '@liusiqi-dev/dsh-llm'
-import { deepFreeze } from '@liusiqi-dev/dsh-util-values'
+} from '@liusiqi-dev/sqh-llm'
+import { deepFreeze } from '@liusiqi-dev/sqh-util-values'
 import type {
   ContentBlock, FinishReason, GenerateOptions, Message, RequestMessage, TokenUsage, ToolSchema,
-} from '@liusiqi-dev/dsh-llm'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
+} from '@liusiqi-dev/sqh-llm'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
 
 interface SummaryConfig {
   readonly summarizationProvider: string

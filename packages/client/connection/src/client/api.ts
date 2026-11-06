@@ -9,9 +9,9 @@ export type {
   ServerResponse,
 } from '../rpc.ts'
 export { RpcId, transportError } from '../rpc.ts'
-export type { SessionId, SessionEvent } from '@liusiqi-dev/dsh-session/types'
-export type { MessageId } from '@liusiqi-dev/dsh-llm/brand'
-export type { ContentBlock, StreamChunk } from '@liusiqi-dev/dsh-llm/types'
+export type { SessionId, SessionEvent } from '@liusiqi-dev/sqh-session/types'
+export type { MessageId } from '@liusiqi-dev/sqh-llm/brand'
+export type { ContentBlock, StreamChunk } from '@liusiqi-dev/sqh-llm/types'
 
 import type { RpcResponse, RpcResult } from '../rpc.ts'
 

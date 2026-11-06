@@ -9,9 +9,9 @@ import { fileURLToPath } from 'node:url'
 import type { Browser, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
-import { credentialRef } from '@liusiqi-dev/dsh-credentials'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
-import { WEB_SEARCH_MAX_RESULTS } from '@liusiqi-dev/dsh-tool-web'
+import { credentialRef } from '@liusiqi-dev/sqh-credentials'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
+import { WEB_SEARCH_MAX_RESULTS } from '@liusiqi-dev/sqh-tool-web'
 import {
   assertFixtureInventory, captureStableAria, compareOrRefreshGolden, fixtureUserPrompts,
   launchWebScaffold, recordFixture, watchConsole, webSnapshotMode, type WebScaffold,

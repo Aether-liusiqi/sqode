@@ -9,7 +9,7 @@
  * the same AST walk as docs/cordis-catalog, so this data and the rendered
  * docs cannot diverge.
  *
- * @module @liusiqi-dev/dsh-cordis-client-runner/client/api-catalog
+ * @module @liusiqi-dev/sqh-cordis-client-runner/client/api-catalog
  */
 
 /* jscpd:ignore-start */
@@ -418,9 +418,8 @@ export const SERVICE_API: readonly ServiceApiEntry[] = [
       },
       {
         signature: 'archiveSession(sessionId: SessionId, options?: { readonly stopActivity?: boolean }): Promise<void>',
-        description: 'Archive a Session from Workspace grouping surfaces.',
+        description: 'Archive a Session and clear it when it is the current selection.',
         parameters: [{ name: 'sessionId', description: 'Session to archive.' }, { name: 'options', description: '`stopActivity` asks the Host to stop the Session\'s running work instead of refusing.' }],
-        throws: ['{WorkspaceArchiveError} when the Host refuses; without `stopActivity` a Session with running work fails as `workspace/session-active`, its details naming what runs.'],
       },
       {
         signature: 'unarchiveSession(sessionId: SessionId): Promise<void>',

@@ -1,20 +1,20 @@
 /**
  * Parent-owned durable subagent catalog events and their chunked projection.
  *
- * @module @liusiqi-dev/dsh-subagent/catalog
+ * @module @liusiqi-dev/sqh-subagent/catalog
  */
 
 import { z } from 'zod'
-import { appendChunkedList, chunkedListSchema, iterateChunkedList } from '@liusiqi-dev/dsh-chunked-list'
-import type { ChunkedList } from '@liusiqi-dev/dsh-chunked-list'
+import { appendChunkedList, chunkedListSchema, iterateChunkedList } from '@liusiqi-dev/sqh-chunked-list'
+import type { ChunkedList } from '@liusiqi-dev/sqh-chunked-list'
 import type {
   Session,
   SessionEvent,
   SessionHeader,
   SessionId,
   SessionLogOffset,
-} from '@liusiqi-dev/dsh-session'
-import type { ProjectionDefinition } from '@liusiqi-dev/dsh-session-projection'
+} from '@liusiqi-dev/sqh-session'
+import type { ProjectionDefinition } from '@liusiqi-dev/sqh-session-projection'
 import type { SubagentCatalogEntry } from './projection-types.ts'
 
 /** Catalog payload version emitted by live child creation. */
@@ -34,7 +34,7 @@ export type SubagentCatalogEvent =
     | ({ readonly version: 1 } & (KnownCatalogMode | { readonly mode: 'unknown'; readonly label?: string }))
   )
 
-declare module '@liusiqi-dev/dsh-session/types' {
+declare module '@liusiqi-dev/sqh-session/types' {
   interface SessionEventMap {
     /**
      * A direct child's identity and available discovery fields.
@@ -90,7 +90,7 @@ const stateSchema: z.ZodType<SubagentCatalogState> = z.object({
   head: chunkedListSchema(eventDataSchema).optional(),
 }).strict()
 
-declare module '@liusiqi-dev/dsh-session-projection/types' {
+declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionStateMap {
     subagentCatalog: SubagentCatalogState
   }

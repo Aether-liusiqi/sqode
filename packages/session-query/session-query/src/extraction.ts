@@ -1,8 +1,8 @@
 /** First-party semantic text extraction for session-query consumers. */
 
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
 // Type-only: includes the first-party todo event consumed below.
-import type {} from '@liusiqi-dev/dsh-tool-todo'
+import type {} from '@liusiqi-dev/sqh-tool-todo'
 
 /**
  * Extract searchable semantic text from one first-party session event.

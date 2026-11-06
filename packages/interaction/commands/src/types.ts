@@ -4,12 +4,12 @@
  * reaches a Host-only symbol, so a Client compilation face reads the same
  * `commands/change` signature the Host emits.
  *
- * @module @liusiqi-dev/dsh-commands/types
+ * @module @liusiqi-dev/sqh-commands/types
  */
 
-import type { SessionSeq } from '@liusiqi-dev/dsh-session/types'
+import type { SessionSeq } from '@liusiqi-dev/sqh-session/types'
 import type { CommandDefinitionId, CommandId } from './brand.ts'
-import type { EncodedImageAttachment } from '@liusiqi-dev/dsh-attachment/types'
+import type { EncodedImageAttachment } from '@liusiqi-dev/sqh-attachment/types'
 
 /** One browser-submitted command attachment: encoded image input or a staged file receipt. */
 export type CommandSubmitAttachment =
@@ -90,7 +90,7 @@ declare module '@liusiqi-dev/cordis' {
   }
 }
 
-declare module '@liusiqi-dev/dsh-session/types' {
+declare module '@liusiqi-dev/sqh-session/types' {
   interface SessionEventMap {
     /**
      * A resolved slash command entered its handler. Log-only (never model
@@ -113,7 +113,7 @@ declare module '@liusiqi-dev/dsh-session/types' {
       commandId: CommandId
       kind: 'success' | 'error'
       text?: string
-      sourceEventSeq?: import('@liusiqi-dev/dsh-session/types').SessionSeq
+      sourceEventSeq?: import('@liusiqi-dev/sqh-session/types').SessionSeq
     }
   }
 }

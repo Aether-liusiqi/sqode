@@ -8,14 +8,14 @@ import {
   createSystemMessage,
   createToolResultMessage,
   createUserMessage,
-} from '@liusiqi-dev/dsh-llm'
+} from '@liusiqi-dev/sqh-llm'
 import {
   SESSION_FORMAT_VERSION,
   Session,
   SessionId,
-} from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-session'
 // Carries the session/title event declaration into this fixture builder.
-import type {} from '@liusiqi-dev/dsh-session-title'
+import type {} from '@liusiqi-dev/sqh-session-title'
 
 /** Options for one deterministic long-chat fixture. */
 export interface ChatScrollFixtureOptions {

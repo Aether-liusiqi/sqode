@@ -1,6 +1,6 @@
 /**
  * Build-time packer for the browser runtime's VFS image.
- * @module @liusiqi-dev/dsh-experimental-webworker-packer
+ * @module @liusiqi-dev/sqh-experimental-webworker-packer
  */
 export {
   WRAPPER_CONTRACT,

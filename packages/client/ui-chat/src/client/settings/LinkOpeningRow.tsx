@@ -1,6 +1,6 @@
 /** General Settings row for Chat HTTP(S) link destinations. */
-import type { ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
-import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
 import type { LinkOpening } from '../../chat-settings.ts'
 import { PreferenceRow } from './PreferenceRow.tsx'
 

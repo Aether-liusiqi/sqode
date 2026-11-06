@@ -1,4 +1,4 @@
-import type { ProductEventMap, ProductEvent } from '@liusiqi-dev/dsh-client-product-analytics/types'
+import type { ProductEventMap, ProductEvent } from '@liusiqi-dev/sqh-client-product-analytics/types'
 import { WINDOWS_TITLEBAR_HEIGHT } from './windows-layout.ts'
 /** Electron shell: desktop project ownership, custom protocol, windows, and lifecycle. */
 
@@ -22,7 +22,7 @@ import {
   type IpcMainInvokeEvent,
   type MenuItemConstructorOptions,
 } from 'electron'
-import { resolveDshHome } from '@liusiqi-dev/dsh-home-paths'
+import { resolveDshHome } from '@liusiqi-dev/sqh-home-paths'
 
 import { resolveDesktopPaths } from './paths.ts'
 import { DesktopProjectManager } from './project-manager.ts'

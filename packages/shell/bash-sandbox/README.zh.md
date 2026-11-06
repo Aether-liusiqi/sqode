@@ -3,7 +3,7 @@ description: "面向部署方与维护者的沙箱 Bash 执行器说明，用于
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-bash-sandbox
+# @liusiqi-dev/sqh-bash-sandbox
 
 [English](README.md) | 中文
 
@@ -45,14 +45,14 @@ kind: "package-reference"
 
 ```yaml
 - id: sandbox
-  name: '@liusiqi-dev/dsh-sandbox-local'
+  name: '@liusiqi-dev/sqh-sandbox-local'
 - id: sandbox-policy
-  name: '@liusiqi-dev/dsh-sandbox-policy'
+  name: '@liusiqi-dev/sqh-sandbox-policy'
   config:
     mode: read-only
     workspaceRoot: !!js process.cwd() # fallback for calls without a session cwd
 - id: bash
-  name: '@liusiqi-dev/dsh-bash-sandbox'
+  name: '@liusiqi-dev/sqh-bash-sandbox'
 ```
 
 ### 拒绝是结果事实

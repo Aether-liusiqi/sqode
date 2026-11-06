@@ -5,33 +5,33 @@
 /:
   en: 42fafb59cee5b35c
   zh: 0ceae9dba88732fc
-/liusiqi-dev-dsh-client-ui-settings-web-search:
-  en: 67e8a9ecd7e0a070
-  zh: aeaadc572cc9b1f6
-/liusiqi-dev-dsh-client-ui-settings-web-search/summary:
+/liusiqi-dev-sqh-client-ui-settings-web-search:
+  en: 5c5b55ccb3f2dff0
+  zh: 5f734874d409fc58
+/liusiqi-dev-sqh-client-ui-settings-web-search/summary:
   en: 448d5627bb209dc2
   zh: 22b61b6a479df4d8
-/liusiqi-dev-dsh-client-ui-settings-web-search/table-of-contents:
+/liusiqi-dev-sqh-client-ui-settings-web-search/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
-/liusiqi-dev-dsh-client-ui-settings-web-search/use-this-package:
+/liusiqi-dev-sqh-client-ui-settings-web-search/use-this-package:
   en: db3886ef2515569d
   zh: 29b86963e237fab4
-/liusiqi-dev-dsh-client-ui-settings-web-search/understand-the-implementation:
+/liusiqi-dev-sqh-client-ui-settings-web-search/understand-the-implementation:
   en: 90a3d55da6722763
   zh: 8fc0463c6543f100
-/liusiqi-dev-dsh-client-ui-settings-web-search/further-exploration:
+/liusiqi-dev-sqh-client-ui-settings-web-search/further-exploration:
   en: 0514f11276497599
   zh: 044c633542332cd4
-/liusiqi-dev-dsh-client-ui-settings-web-search/model-experience:
+/liusiqi-dev-sqh-client-ui-settings-web-search/model-experience:
   en: 6b7c6f82ab6c8435
   zh: 4517689c899abcbe
-/liusiqi-dev-dsh-client-ui-settings-web-search/model-experience/kv-cache-effect:
+/liusiqi-dev-sqh-client-ui-settings-web-search/model-experience/kv-cache-effect:
   en: ca75c51c89c2c9b0
   zh: 6e1c9a8fdde89577
-/liusiqi-dev-dsh-client-ui-settings-web-search/known-limitations-and-deferred-work:
+/liusiqi-dev-sqh-client-ui-settings-web-search/known-limitations-and-deferred-work:
   en: 3fb1d37ebc9bf37a
   zh: d6ac7929cb19ff55
-/liusiqi-dev-dsh-client-ui-settings-web-search/known-limitations-and-deferred-work/dev-note:
+/liusiqi-dev-sqh-client-ui-settings-web-search/known-limitations-and-deferred-work/dev-note:
   en: e67f633dc6fe7773
   zh: e88aeb617ffb74ea

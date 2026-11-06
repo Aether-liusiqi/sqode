@@ -1,7 +1,7 @@
 /** Official Siqi Harness occupants for the generic browser-brand slots. */
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-sidebar/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-sidebar/client'
 import { OfficialBrandMark, OfficialBrandName } from './Brand.tsx'
 
 /** Required service: the UI slot registry. */

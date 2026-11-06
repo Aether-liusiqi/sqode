@@ -3,10 +3,10 @@
  * opened `changes` generation, and a supervisor that runs one generation and
  * classifies its end the way the real one does.
  */
-import type { RemoteResult, RemoteStreamHandle } from '@liusiqi-dev/dsh-typert-protocol'
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
-import { streamHandle } from '@liusiqi-dev/dsh-remote-mock'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { RemoteResult, RemoteStreamHandle } from '@liusiqi-dev/sqh-typert-protocol'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
+import { streamHandle } from '@liusiqi-dev/sqh-remote-mock'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import type { WorkspaceFileWatchFrame, WorkspaceFileStat } from '../src/types.ts'
 import type { SupervisedStream, SupervisedStreamOptions, WorkspaceFilesRemote } from '../src/client/remote.ts'
 

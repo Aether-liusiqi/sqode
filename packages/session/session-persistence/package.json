@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-session-persistence",
+  "name": "@liusiqi-dev/sqh-session-persistence",
   "description": "Abstract durable session persistence seam (ctx.sessionPersistence) for the Siqi Harness",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,18 +28,18 @@
   "license": "MIT",
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-brand": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-timeout": "workspace:*"
+    "@liusiqi-dev/sqh-brand": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-timeout": "workspace:*"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-brand": "workspace:*",
-    "@liusiqi-dev/dsh-scope": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-timeout": "workspace:*"
+    "@liusiqi-dev/sqh-brand": "workspace:*",
+    "@liusiqi-dev/sqh-scope": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-timeout": "workspace:*"
   },
   "dependencies": {
-    "@liusiqi-dev/dsh-util-values": "workspace:*"
+    "@liusiqi-dev/sqh-util-values": "workspace:*"
   }
 }

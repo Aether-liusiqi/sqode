@@ -1,9 +1,9 @@
 /** Fixed Escape routing into the current Conversation turn's scoped cancellation. */
-import type { ISessions, SessionBinding } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { Shortcuts } from '@liusiqi-dev/dsh-client-shortcuts/client'
-import type { UiSession } from '@liusiqi-dev/dsh-client-ui-session/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
+import type { ISessions, SessionBinding } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { Shortcuts } from '@liusiqi-dev/sqh-client-shortcuts/client'
+import type { UiSession } from '@liusiqi-dev/sqh-client-ui-session/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
 import { StopSequence } from './stop-sequence.ts'
 
 /**

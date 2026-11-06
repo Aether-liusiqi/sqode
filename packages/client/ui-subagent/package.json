@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-client-ui-subagent",
+  "name": "@liusiqi-dev/sqh-client-ui-subagent",
   "description": "Subagent conversation catalog, continuation routing UI, and '@' reference source",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,15 +28,15 @@
   "dsh": {
     "client": {
       "inject": [
-        "@liusiqi-dev/dsh-api-session-controller",
-        "@liusiqi-dev/dsh-client-locale",
-        "@liusiqi-dev/dsh-client-resources",
-        "@liusiqi-dev/dsh-client-ui-chat",
-        "@liusiqi-dev/dsh-client-ui-conversation",
-        "@liusiqi-dev/dsh-client-ui-primitives",
-        "@liusiqi-dev/dsh-client-ui-sidebar-right",
-        "@liusiqi-dev/dsh-client-ui-input-trigger",
-        "@liusiqi-dev/dsh-client-ui-workspace"
+        "@liusiqi-dev/sqh-api-session-controller",
+        "@liusiqi-dev/sqh-client-locale",
+        "@liusiqi-dev/sqh-client-resources",
+        "@liusiqi-dev/sqh-client-ui-chat",
+        "@liusiqi-dev/sqh-client-ui-conversation",
+        "@liusiqi-dev/sqh-client-ui-primitives",
+        "@liusiqi-dev/sqh-client-ui-sidebar-right",
+        "@liusiqi-dev/sqh-client-ui-input-trigger",
+        "@liusiqi-dev/sqh-client-ui-workspace"
       ],
       "platform": "web"
     }
@@ -50,28 +50,28 @@
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-client-locale": "workspace:*",
-    "@liusiqi-dev/dsh-client-resources": "workspace:*",
-    "@liusiqi-dev/dsh-client-test-runtime": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-chat": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-conversation": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-input-trigger": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-primitives": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-slots": "workspace:*",
-    "@liusiqi-dev/dsh-subagent": "workspace:*",
-    "@liusiqi-dev/dsh-token-meter": "workspace:*",
+    "@liusiqi-dev/sqh-client-locale": "workspace:*",
+    "@liusiqi-dev/sqh-client-resources": "workspace:*",
+    "@liusiqi-dev/sqh-client-test-runtime": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-chat": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-conversation": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-input-trigger": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-primitives": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-slots": "workspace:*",
+    "@liusiqi-dev/sqh-subagent": "workspace:*",
+    "@liusiqi-dev/sqh-token-meter": "workspace:*",
     "@types/react": "~18.3.1",
     "@types/react-dom": "~18.3.0",
     "@liusiqi-dev/cordis": "workspace:~",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@liusiqi-dev/dsh-api-session-controller": "workspace:*",
-    "@liusiqi-dev/dsh-client-connection": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-renderer": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-sidebar-right": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-session": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-workspace": "workspace:*"
+    "@liusiqi-dev/sqh-api-session-controller": "workspace:*",
+    "@liusiqi-dev/sqh-client-connection": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-renderer": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-sidebar-right": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-session": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-workspace": "workspace:*"
   },
   "files": [
     "lib/index.js",

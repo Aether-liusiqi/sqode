@@ -3,8 +3,8 @@ import { fileURLToPath } from 'node:url'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import { applyEntryPatches } from '@liusiqi-dev/cordis-plugin-include'
-import { loadOverlayPatches } from '@liusiqi-dev/dsh-app-boot'
-import * as Browser from '@liusiqi-dev/dsh-client-ui-sidebar-browser'
+import { loadOverlayPatches } from '@liusiqi-dev/sqh-app-boot'
+import * as Browser from '@liusiqi-dev/sqh-client-ui-sidebar-browser'
 import { expect, it, onTestFinished } from 'vitest'
 
 it.each([
@@ -18,7 +18,7 @@ it.each([
   const rows = loadOverlayPatches('browser-defaults', fileURLToPath(new URL('../cordis.patch.yml', import.meta.url)))
     .flatMap(patch => patch.insert ?? []).filter(row => row.id === 'ui-sidebar-browser')
   expect(rows).toHaveLength(1)
-  expect(rows[0]!.name).toBe('@liusiqi-dev/dsh-client-ui-sidebar-browser')
+  expect(rows[0]!.name).toBe('@liusiqi-dev/sqh-client-ui-sidebar-browser')
   const configured = applyEntryPatches(rows, override === undefined ? [] : [{ id: 'ui-sidebar-browser', disabled: override }],
     (message) => { throw new Error(message) })
   const ctx = new Context()

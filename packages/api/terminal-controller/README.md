@@ -3,7 +3,7 @@ description: "Interactive user terminals with execution-environment shell defaul
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-api-terminal-controller
+# @liusiqi-dev/sqh-api-terminal-controller
 
 English | [中文](README.zh.md)
 

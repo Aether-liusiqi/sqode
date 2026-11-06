@@ -27,7 +27,7 @@
       name: './mock-delegating-llm.ts'
 
     - id: subagent-model-selection-settings
-      name: '@liusiqi-dev/dsh-tool-subagent/model-selection-settings'
+      name: '@liusiqi-dev/sqh-tool-subagent/model-selection-settings'
       config:
         enabled: true
         allowedModels:
@@ -44,8 +44,8 @@
         maxDepth: 'provider-managed'
 
     # providerName is omitted to exercise the shipped `dsh-sdk` default.
-    - id: subagent-dsh-sdk
-      name: '@liusiqi-dev/dsh-subagent-dsh-sdk'
+    - id: subagent-sdk
+      name: '@liusiqi-dev/sqh-subagent-sdk'
       config:
         profile: sdk
         patches: !!js JSON.parse(process.env.SQODE_TEST_CHILD_PATCHES ?? '[]')

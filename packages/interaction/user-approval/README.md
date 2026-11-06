@@ -3,7 +3,7 @@ description: "Channel-neutral one-shot approval seam for users and maintainers c
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-user-approval
+# @liusiqi-dev/sqh-user-approval
 
 English | [中文](README.zh.md)
 
@@ -36,7 +36,7 @@ Answerers are `approval/request` waterfall listeners: return an outcome to answe
 The effective policy is the one set for the session, falling back to the configured default. `ask` (the default) delegates to the composed answerers; `never` rejects every request deterministically before interactive dispatch — the strict headless stance for CI and unattended runs.
 
 ```yaml
-- name: '@liusiqi-dev/dsh-user-approval'
+- name: '@liusiqi-dev/sqh-user-approval'
   config:
     policy: ask
 ```

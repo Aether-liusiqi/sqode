@@ -25,15 +25,15 @@
  * lockers verify against. The browser worker stubs the native flock entry to
  * immediate success: it is single-process, so the in-process write claim
  * already excludes every writer.
- * @module @liusiqi-dev/dsh-session-persistence-jsonl/lease
+ * @module @liusiqi-dev/sqh-session-persistence-jsonl/lease
  */
 
 import { mkdir, open, stat } from 'node:fs/promises'
 import type { FileHandle } from 'node:fs/promises'
 import { join } from 'node:path'
 import { tryLockExclusive } from '@liusiqi-dev/node-addon-system/flock'
-import { SessionAlreadyOwnedError } from '@liusiqi-dev/dsh-session-persistence'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
+import { SessionAlreadyOwnedError } from '@liusiqi-dev/sqh-session-persistence'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
 import { acquireLockHandleWin32, releaseLockHandleWin32 } from './win32.ts'
 
 /** Base name of the kernel lock file inside a session's directory. */

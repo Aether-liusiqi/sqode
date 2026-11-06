@@ -1,9 +1,9 @@
 import { describe, expect, expectTypeOf, it, onTestFinished, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { type Agent } from '@liusiqi-dev/dsh-agent'
+import { type Agent } from '@liusiqi-dev/sqh-agent'
 
-import { HarnessError, ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
-import { carrierKeyOf } from '@liusiqi-dev/dsh-scope'
+import { HarnessError, ReasoningEffortId } from '@liusiqi-dev/sqh-llm'
+import { carrierKeyOf } from '@liusiqi-dev/sqh-scope'
 import SubagentRuntime, {
   foldSubagentDescriptor,
   snapshotSubagentDescriptor,
@@ -17,9 +17,9 @@ import SubagentRuntime, {
   type SubagentRun,
   type SubagentRunEndInfo,
   type SubagentStartRequest,
-} from '@liusiqi-dev/dsh-subagent'
-import { Session, SessionId, type SessionEvent } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
+} from '@liusiqi-dev/sqh-subagent'
+import { Session, SessionId, type SessionEvent } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
 
 function fakeParent(id = 'parent-1'): Agent {
   return { id: SessionId(id) } as unknown as Agent

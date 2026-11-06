@@ -1,9 +1,9 @@
 /** Client-side Workspace state model shared by Remote transport and UI projection. */
 
-import { notifySubscribers } from '@liusiqi-dev/dsh-client-store'
-import type {} from '@liusiqi-dev/dsh-api-workspace-controller/remote'
-import { isRemoteFailure } from '@liusiqi-dev/dsh-api-gateway/client'
-import type { RemoteFailure, RemoteResult, TypertClientRemote } from '@liusiqi-dev/dsh-typert-protocol'
+import { notifySubscribers } from '@liusiqi-dev/sqh-client-store'
+import type {} from '@liusiqi-dev/sqh-api-workspace-controller/remote'
+import { isRemoteFailure } from '@liusiqi-dev/sqh-api-gateway/client'
+import type { RemoteFailure, RemoteResult, TypertClientRemote } from '@liusiqi-dev/sqh-typert-protocol'
 import type {
   WorkspaceArchiveSessionRequest,
   WorkspaceDeleteSessionRequest,

@@ -1,7 +1,7 @@
 /** Empty POSIX filesystem fixture whose execution coordinates differ from the Harness host. */
 import { posix } from 'node:path'
 import { Context } from '@liusiqi-dev/cordis'
-import { FileSystem, FsError, FsTargetKey, FsVersion, type FsTarget, type FsInfo } from '@liusiqi-dev/dsh-fs'
+import { FileSystem, FsError, FsTargetKey, FsVersion, type FsTarget, type FsInfo } from '@liusiqi-dev/sqh-fs'
 import schema from '@liusiqi-dev/schemastery'
 
 /** Deployment coordinates for the deterministic provider. */

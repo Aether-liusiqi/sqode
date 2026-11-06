@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-lazy-require",
+  "name": "@liusiqi-dev/sqh-lazy-require",
   "description": "Caller-relative, success-cached lazy loading for CommonJS-compatible Host dependencies",
   "version": "1.0.0",
   "publishConfig": {

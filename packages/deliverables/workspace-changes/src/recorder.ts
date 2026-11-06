@@ -2,7 +2,7 @@
 import { mkdtemp, readFile, realpath, rm } from 'node:fs/promises'
 import { homedir } from 'node:os'
 import { join, relative, resolve } from 'node:path'
-import type { Session, SessionEvent } from '@liusiqi-dev/dsh-session'
+import type { Session, SessionEvent } from '@liusiqi-dev/sqh-session'
 import { captureFile, mutationPath, sameCapture, type Capture } from './capture.ts'
 import { compareText } from './compare.ts'
 import {

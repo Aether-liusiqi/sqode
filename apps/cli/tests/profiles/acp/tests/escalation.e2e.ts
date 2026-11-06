@@ -12,8 +12,8 @@ import {
   launchAcpTestAgent,
   type AgentUnderTest,
   type LaunchedAcpTestAgent,
-} from '@liusiqi-dev/dsh-session-snapshot'
-import { bwrapProfileArgs } from '@liusiqi-dev/dsh-sandbox-local/src/profiles.ts'
+} from '@liusiqi-dev/sqh-session-snapshot'
+import { bwrapProfileArgs } from '@liusiqi-dev/sqh-sandbox-local/src/profiles.ts'
 import { cleanupAcpExampleTest } from './cleanup.ts'
 
 /**

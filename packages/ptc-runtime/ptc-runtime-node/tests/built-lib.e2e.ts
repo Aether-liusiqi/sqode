@@ -19,13 +19,13 @@ describe.skipIf(!built)('built lib real load path (plain node)', () => {
   it('runs a TypeScript program with a binding through lib/index.js and its lib/process.js entry', async () => {
     const script = `
       const { Context } = await import('@liusiqi-dev/cordis')
-      const { NodePtcRuntime } = await import('@liusiqi-dev/dsh-ptc-runtime-node')
+      const { NodePtcRuntime } = await import('@liusiqi-dev/sqh-ptc-runtime-node')
       const ctx = new Context()
       for (const name of ['session-projection', 'fs-local', 'subprocess-local', 'sandbox-local']) {
-        const plugin = await import('@liusiqi-dev/dsh-' + name)
+        const plugin = await import('@liusiqi-dev/sqh-' + name)
         await ctx.plugin(plugin.default, {})
       }
-      const { default: SandboxPolicy } = await import('@liusiqi-dev/dsh-sandbox-policy')
+      const { default: SandboxPolicy } = await import('@liusiqi-dev/sqh-sandbox-policy')
       await ctx.plugin(SandboxPolicy, { mode: 'read-only' })
       await ctx.plugin(NodePtcRuntime, {})
       const result = await ctx.ptcRuntime.run(ctx.ptcRuntime.resolve({

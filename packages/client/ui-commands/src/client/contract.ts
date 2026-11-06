@@ -5,8 +5,8 @@
  */
 import type { ComponentType } from 'react'
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import type { ClientSessionContext } from '@liusiqi-dev/dsh-client-ui-input-trigger/client'
-import type { IconProps } from '@liusiqi-dev/dsh-client-ui-primitives'
+import type { ClientSessionContext } from '@liusiqi-dev/sqh-client-ui-input-trigger/client'
+import type { IconProps } from '@liusiqi-dev/sqh-client-ui-primitives'
 
 /** Copy for an option that must be acknowledged before onSelect can run. */
 export interface SelectConfirmation {

@@ -11,7 +11,7 @@
  *
  * ```yaml
  * - id: llm
- *   name: '@liusiqi-dev/dsh-llm-pi-ai'
+ *   name: '@liusiqi-dev/sqh-llm-pi-ai'
  *   config:
  *     providers:
  *       # Catalog route: everything but the credential comes from pi-ai.
@@ -52,18 +52,18 @@
  *               max: ultra
  * ```
  *
- * @module @liusiqi-dev/dsh-llm-pi-ai
+ * @module @liusiqi-dev/sqh-llm-pi-ai
  */
-import type {} from '@liusiqi-dev/dsh-settings'
+import type {} from '@liusiqi-dev/sqh-settings'
 
 import type {} from '@liusiqi-dev/cordis-plugin-loader'
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { launchEnvironmentOf } from '@liusiqi-dev/dsh-launch-environment'
-import { assertUsableApiKey, LlmError, resolveImageAttachmentAccess } from '@liusiqi-dev/dsh-llm'
-import type { AdapterRegistrationHandle, DirectoryRegistrationHandle, LlmConfigurableProvider } from '@liusiqi-dev/dsh-llm'
-import type {} from '@liusiqi-dev/dsh-fs'
-import { deepEqualJson } from '@liusiqi-dev/dsh-util-values'
+import { launchEnvironmentOf } from '@liusiqi-dev/sqh-launch-environment'
+import { assertUsableApiKey, LlmError, resolveImageAttachmentAccess } from '@liusiqi-dev/sqh-llm'
+import type { AdapterRegistrationHandle, DirectoryRegistrationHandle, LlmConfigurableProvider } from '@liusiqi-dev/sqh-llm'
+import type {} from '@liusiqi-dev/sqh-fs'
+import { deepEqualJson } from '@liusiqi-dev/sqh-util-values'
 import { PiAiAdapter } from './adapter.ts'
 import { authContextFrom, credentialStoreFrom } from './auth.ts'
 import { catalogProviderIds } from './catalog.ts'

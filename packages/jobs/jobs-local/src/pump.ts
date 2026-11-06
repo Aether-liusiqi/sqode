@@ -6,10 +6,10 @@
  * keeps is reported to the sink on every read, because that reference
  * outlives any chunk. Pure utility — no cordis, no timers retained past
  * settlement.
- * @module @liusiqi-dev/dsh-jobs-local/pump
+ * @module @liusiqi-dev/sqh-jobs-local/pump
  */
 
-import type { JobAppendOptions, JobOutputSource } from '@liusiqi-dev/dsh-jobs'
+import type { JobAppendOptions, JobOutputSource } from '@liusiqi-dev/sqh-jobs'
 
 /** One pump run; `done` resolves after the final post-settlement drain. */
 export interface PumpHandle {

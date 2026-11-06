@@ -2,9 +2,9 @@
 # deployment already owns the shared sandbox provider and policy.
 - insert:
     - id: pty
-      name: '@liusiqi-dev/dsh-terminal'
+      name: '@liusiqi-dev/sqh-terminal'
     - id: terminal-bash
-      name: '@liusiqi-dev/dsh-terminal-bash'
+      name: '@liusiqi-dev/sqh-terminal-bash'
       config:
         pollIntervalMs: 10
         exactProbeAfterMs: 20
@@ -13,4 +13,4 @@
         timeoutMs: 2000
         disposeGraceMs: 500
     - id: tool-terminal
-      name: '@liusiqi-dev/dsh-tool-terminal'
+      name: '@liusiqi-dev/sqh-tool-terminal'

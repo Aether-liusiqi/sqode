@@ -1,5 +1,5 @@
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import {
@@ -7,14 +7,14 @@ import {
   CompactionEngine,
   compactCheckpointSource,
   isCompactCheckpointSource,
-} from '@liusiqi-dev/dsh-compaction'
-import type { CompactionResult, CompactionTrigger } from '@liusiqi-dev/dsh-compaction'
-import { Session, SessionId } from '@liusiqi-dev/dsh-session'
-import type { SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { CompactionAgentContext } from '@liusiqi-dev/dsh-compaction'
-import type { ManualCompactAgentContext } from '@liusiqi-dev/dsh-compaction'
+} from '@liusiqi-dev/sqh-compaction'
+import type { CompactionResult, CompactionTrigger } from '@liusiqi-dev/sqh-compaction'
+import { Session, SessionId } from '@liusiqi-dev/sqh-session'
+import type { SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { CompactionAgentContext } from '@liusiqi-dev/sqh-compaction'
+import type { ManualCompactAgentContext } from '@liusiqi-dev/sqh-compaction'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'other': { kind: 'other' } & ContextFormed
   }

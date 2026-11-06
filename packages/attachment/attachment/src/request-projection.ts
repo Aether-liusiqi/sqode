@@ -1,6 +1,6 @@
 /**
  * Pure request-projection geometry shared by model routes and provider-side
- * request pricing. @module @liusiqi-dev/dsh-attachment/request-projection
+ * request pricing. @module @liusiqi-dev/sqh-attachment/request-projection
  */
 
 /** Integer width and height of one projected image. */

@@ -3,12 +3,12 @@ import { tmpdir } from 'node:os'
 import { basename, join } from 'node:path'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import Storage from '@liusiqi-dev/dsh-storage'
-import { DomainFacility } from '@liusiqi-dev/dsh-storage-domain'
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
-import WorkspaceRegistry from '@liusiqi-dev/dsh-workspace'
-import type { WorkspaceId } from '@liusiqi-dev/dsh-workspace/types'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import Storage from '@liusiqi-dev/sqh-storage'
+import { DomainFacility } from '@liusiqi-dev/sqh-storage-domain'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
+import WorkspaceRegistry from '@liusiqi-dev/sqh-workspace'
+import type { WorkspaceId } from '@liusiqi-dev/sqh-workspace/types'
 import WorkspaceController from '../src/index.ts'
 import { DEFAULT_WORKSPACE_DIRECTORY } from '../src/default-workspace.ts'
 import { WorkspaceFeed } from '../src/feed.ts'
@@ -16,14 +16,14 @@ import type { WorkspaceFollowFrame } from '../src/types.ts'
 import { MemoryStorageBackend } from '../../../storage/storage-domain/tests/helpers/memory-backend.ts'
 
 // The controller relays whatever families the providers report; this suite merges its own.
-declare module '@liusiqi-dev/dsh-workspace/types' {
+declare module '@liusiqi-dev/sqh-workspace/types' {
   interface SessionActivityKindMap {
     probe: true
     'probe-items': true
   }
 }
 
-declare module '@liusiqi-dev/dsh-typert-protocol' {
+declare module '@liusiqi-dev/sqh-typert-protocol' {
   interface RemoteErrorDetailsMap {
     'fixture/failure': {}
   }

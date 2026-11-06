@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-sandbox-windows-acl",
+  "name": "@liusiqi-dev/sqh-sandbox-windows-acl",
   "description": "Windows ACL write-restriction sandbox backend (restricted-token spawn with capability-SID write allowlist) for the Siqi Harness sandbox seam",
   "version": "1.0.0",
   "publishConfig": {
@@ -35,23 +35,23 @@
   "license": "MIT",
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-skill": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess": "workspace:*"
+    "@liusiqi-dev/sqh-skill": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess": "workspace:*"
   },
   "dependencies": {
-    "@liusiqi-dev/dsh-lazy-require": "workspace:*",
-    "@liusiqi-dev/dsh-win32-process": "workspace:*",
+    "@liusiqi-dev/sqh-lazy-require": "workspace:*",
+    "@liusiqi-dev/sqh-win32-process": "workspace:*",
     "koffi": "3.1.1",
     "yaml": "^2.4.2"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
     "@liusiqi-dev/cordis-plugin-include": "workspace:~",
-    "@liusiqi-dev/dsh-pwsh-local": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox-local": "workspace:*",
+    "@liusiqi-dev/sqh-pwsh-local": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox-local": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-skill": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess-local": "workspace:*"
+    "@liusiqi-dev/sqh-skill": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess-local": "workspace:*"
   }
 }

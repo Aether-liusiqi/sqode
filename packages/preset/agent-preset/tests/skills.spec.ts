@@ -9,9 +9,9 @@ import { Context } from '@liusiqi-dev/cordis'
 import { fileURLToPath } from 'node:url'
 import * as yaml from 'js-yaml'
 import { entryListSchema } from '@liusiqi-dev/cordis-plugin-include'
-import { codePointLength } from '@liusiqi-dev/dsh-compaction-tool-result-pruner'
-import SkillRegistry, { renderSkillContent } from '@liusiqi-dev/dsh-skill'
-import * as SkillFileSystem from '@liusiqi-dev/dsh-skill-filesystem'
+import { codePointLength } from '@liusiqi-dev/sqh-compaction-tool-result-pruner'
+import SkillRegistry, { renderSkillContent } from '@liusiqi-dev/sqh-skill'
+import * as SkillFileSystem from '@liusiqi-dev/sqh-skill-filesystem'
 import { describe, expect, it } from 'vitest'
 
 const skills = fileURLToPath(new URL('../skills/', import.meta.url))

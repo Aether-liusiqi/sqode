@@ -11,12 +11,12 @@
 
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
 // Type-only: pulls the ctx.remote merge into this program.
-import type {} from '@liusiqi-dev/dsh-api-remotes/client'
-import type { SnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import type {} from '@liusiqi-dev/sqh-api-remotes/client'
+import type { SnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import {
   SettingsFormModel, settingsNumberField, settingsTextField,
   type SettingsFieldState, type SettingsFormActions, type SettingsFormShell, type SettingsFormScope, type SettingsFormScopeSnapshot,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
 
 /**
  * Namespace of the DeepSeek search provider. Spelled here rather than

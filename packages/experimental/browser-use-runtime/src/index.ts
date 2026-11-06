@@ -5,7 +5,7 @@
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
 
 /** One provider-owned browser or connection and its quiescent cleanup. */
 export interface OwnedSessionResource<T> {

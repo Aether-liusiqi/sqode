@@ -31,11 +31,11 @@ import {
   type ProfileContext,
   type Profile,
   type RuntimeResolution,
-} from '@liusiqi-dev/dsh-app-boot'
-import { resolveDshHome } from '@liusiqi-dev/dsh-home-paths'
-import { installProxyFromEnvironment } from '@liusiqi-dev/dsh-http-proxy'
-import { SQODE_LAUNCH_ENVIRONMENT_KEY, type LaunchEnvironmentSnapshot } from '@liusiqi-dev/dsh-launch-environment'
-import { provideCmdline, type AppReady } from '@liusiqi-dev/dsh-cmdline'
+} from '@liusiqi-dev/sqh-app-boot'
+import { resolveDshHome } from '@liusiqi-dev/sqh-home-paths'
+import { installProxyFromEnvironment } from '@liusiqi-dev/sqh-http-proxy'
+import { SQODE_LAUNCH_ENVIRONMENT_KEY, type LaunchEnvironmentSnapshot } from '@liusiqi-dev/sqh-launch-environment'
+import { provideCmdline, type AppReady } from '@liusiqi-dev/sqh-cmdline'
 import { createProcessShutdown, type ProcessShutdown } from './process-shutdown.ts'
 
 const NAME = 'sqode'

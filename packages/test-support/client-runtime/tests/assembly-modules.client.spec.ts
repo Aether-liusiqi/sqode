@@ -6,19 +6,19 @@
  */
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
-import * as modulesClient from '@liusiqi-dev/dsh-client-modules/client'
-import { parseBootManifest } from '@liusiqi-dev/dsh-client-modules/client'
-import type { WebBootGraph } from '@liusiqi-dev/dsh-client-modules/client'
-import * as uiRenderer from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import * as typertRegistry from '@liusiqi-dev/dsh-typert-registry/client'
+import * as modulesClient from '@liusiqi-dev/sqh-client-modules/client'
+import { parseBootManifest } from '@liusiqi-dev/sqh-client-modules/client'
+import type { WebBootGraph } from '@liusiqi-dev/sqh-client-modules/client'
+import * as uiRenderer from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import * as typertRegistry from '@liusiqi-dev/sqh-typert-registry/client'
 import { describe, expect, it, onTestFinished } from 'vitest'
 import { ClientRoster } from '../src/assembly/index.ts'
 import { MODULES_PACKAGE, createInProcessModules, loadPluginModules } from '../src/assembly/modules.ts'
 
-const RENDERER = '@liusiqi-dev/dsh-client-ui-renderer'
-const TYPERT = '@liusiqi-dev/dsh-typert-registry'
-const BRAND = '@liusiqi-dev/dsh-client-ui-brand-official'
-const MISSING = '@liusiqi-dev/dsh-client-does-not-exist'
+const RENDERER = '@liusiqi-dev/sqh-client-ui-renderer'
+const TYPERT = '@liusiqi-dev/sqh-typert-registry'
+const BRAND = '@liusiqi-dev/sqh-client-ui-brand-official'
+const MISSING = '@liusiqi-dev/sqh-client-does-not-exist'
 
 const row = (name: string, immediately = false) => ({ name, inject: [], immediately })
 
@@ -72,7 +72,7 @@ describe('createInProcessModules', () => {
     await expect(system.import(MODULES_PACKAGE, '', {})).resolves.toBe(modulesClient)
     expect(system.loadCache.get(TYPERT)?.exports).toBe(typertRegistry)
     expect(system.loadCache.get(RENDERER)?.exports).toBe(uiRenderer)
-    await expect(system.import('@liusiqi-dev/dsh-client-unknown', '', {})).rejects.toThrow('cannot resolve')
+    await expect(system.import('@liusiqi-dev/sqh-client-unknown', '', {})).rejects.toThrow('cannot resolve')
   })
 
   it('rejects loudly instead of fetching when a graph row has no loaded module', async () => {

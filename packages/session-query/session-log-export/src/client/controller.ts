@@ -1,7 +1,7 @@
 /** Browser download state shared by the Session Header button and `/export`. */
 
-import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import { SESSION_LOG_EXPORT_ROUTE } from '../routes.ts'
 
 /** Download phases presented by the shared modal. */

@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-spill-local",
+  "name": "@liusiqi-dev/sqh-spill-local",
   "description": "Local-filesystem implementation of the Siqi Harness spill storage seam (private session-scoped files)",
   "version": "1.0.0",
   "publishConfig": {
@@ -27,7 +27,7 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@liusiqi-dev/dsh-spill": "workspace:*",
+    "@liusiqi-dev/sqh-spill": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "dependencies": {
@@ -36,10 +36,10 @@
   "devDependencies": {
     "@liusiqi-dev/cordis-plugin-include": "workspace:~",
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
-    "@liusiqi-dev/dsh-brand": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-spill": "workspace:*",
+    "@liusiqi-dev/sqh-brand": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-spill": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   }
 }

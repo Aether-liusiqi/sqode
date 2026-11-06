@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-client-ui-settings-session-log",
+  "name": "@liusiqi-dev/sqh-client-ui-settings-session-log",
   "description": "General settings control for Session-log upload with DeepSeek API requests",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,9 +28,9 @@
   "dsh": {
     "client": {
       "inject": [
-        "@liusiqi-dev/dsh-client-locale",
-        "@liusiqi-dev/dsh-client-ui-settings",
-        "@liusiqi-dev/dsh-client-ui-layout"
+        "@liusiqi-dev/sqh-client-locale",
+        "@liusiqi-dev/sqh-client-ui-settings",
+        "@liusiqi-dev/sqh-client-ui-layout"
       ],
       "platform": "web"
     }
@@ -45,17 +45,17 @@
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-api-remotes": "workspace:*",
-    "@liusiqi-dev/dsh-client-locale": "workspace:*",
-    "@liusiqi-dev/dsh-client-store": "workspace:*",
-    "@liusiqi-dev/dsh-client-test-runtime": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-primitives": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-renderer": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-settings": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-slots": "workspace:*",
+    "@liusiqi-dev/sqh-api-remotes": "workspace:*",
+    "@liusiqi-dev/sqh-client-locale": "workspace:*",
+    "@liusiqi-dev/sqh-client-store": "workspace:*",
+    "@liusiqi-dev/sqh-client-test-runtime": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-primitives": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-renderer": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-settings": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-slots": "workspace:*",
     "@types/react": "~18.3.1",
     "react": "^18.2.0",
-    "@liusiqi-dev/dsh-client-ui-layout": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-layout": "workspace:*",
     "react-dom": "^18.2.0",
     "@types/react-dom": "~18.3.0"
   },

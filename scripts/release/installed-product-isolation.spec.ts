@@ -7,7 +7,7 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { verifyInstalledProductIsolation } from './installed-product-isolation.ts'
 
 const roots: string[] = []
-const experimental = '@liusiqi-dev/dsh-experimental-example'
+const experimental = '@liusiqi-dev/sqh-experimental-example'
 
 function fixture(): string {
   const root = mkdtempSync(join(tmpdir(), 'dsh-installed-isolation-'))
@@ -56,14 +56,14 @@ describe('installed default-product isolation', () => {
     const root = fixture()
     const entry = writePackage(root, '@liusiqi-dev/sqode', { dependencies: { core: '1.0.0', [experimental]: '1.0.0' } })
     writePackage(root, 'core', {})
-    writePackage(root, experimental, { dependencies: { '@liusiqi-dev/dsh-experimental-inner': '1.0.0' } })
+    writePackage(root, experimental, { dependencies: { '@liusiqi-dev/sqh-experimental-inner': '1.0.0' } })
     expect(verifyInstalledProductIsolation(entry, [experimental])).toBe(2)
 
     writePackage(root, 'core', { dependencies: { [experimental]: '1.0.0' } })
     expect(() => verifyInstalledProductIsolation(entry, [experimental])).toThrow(`core -> ${experimental}`)
 
-    const missing = writePackage(root, '@liusiqi-dev/dsh-missing', { dependencies: { absent: '1.0.0' } })
-    expect(() => verifyInstalledProductIsolation(missing, ['absent'])).toThrow('optional bundle is missing: @liusiqi-dev/dsh-missing -> absent')
+    const missing = writePackage(root, '@liusiqi-dev/sqh-missing', { dependencies: { absent: '1.0.0' } })
+    expect(() => verifyInstalledProductIsolation(missing, ['absent'])).toThrow('optional bundle is missing: @liusiqi-dev/sqh-missing -> absent')
   })
 
   it('rejects experimental identities hidden behind an installed alias', () => {

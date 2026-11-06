@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import { ComposerBlockRegistry } from '../src/client/input/blocks.ts'
 
 const SESSION = 'blocked-session' as SessionId

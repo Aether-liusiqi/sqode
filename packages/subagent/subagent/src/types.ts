@@ -6,14 +6,14 @@
  * continuation host in `./continuation.ts` — so this module stays the published
  * surface rather than a bag of everything type-shaped.
  *
- * @module @liusiqi-dev/dsh-subagent/types
+ * @module @liusiqi-dev/sqh-subagent/types
  */
 
-import type { Agent, AgentOptions } from '@liusiqi-dev/dsh-agent'
-import type { Branded } from '@liusiqi-dev/dsh-brand'
-import type { ContentBlock, MessageId } from '@liusiqi-dev/dsh-llm'
-import type { SessionEvent, SessionId } from '@liusiqi-dev/dsh-session'
-import type { ObjectJsonSchema, ToolRestriction } from '@liusiqi-dev/dsh-tools'
+import type { Agent, AgentOptions } from '@liusiqi-dev/sqh-agent'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
+import type { ContentBlock, MessageId } from '@liusiqi-dev/sqh-llm'
+import type { SessionEvent, SessionId } from '@liusiqi-dev/sqh-session'
+import type { ObjectJsonSchema, ToolRestriction } from '@liusiqi-dev/sqh-tools'
 import type { SubagentDescriptorData } from './descriptor.ts'
 
 /** Identifies one accepted subagent run across its lifecycle event pair. */

@@ -9,10 +9,10 @@
  * with `removedCount` and marks a cancellation `outcome: 'canceled'`, which
  * separates a turn claiming its input from work being dropped unrun.
  *
- * @module @liusiqi-dev/dsh-agent/consumed-work
+ * @module @liusiqi-dev/sqh-agent/consumed-work
  */
 
-import type { SessionEvent, TurnEndReason } from '@liusiqi-dev/dsh-session'
+import type { SessionEvent, TurnEndReason } from '@liusiqi-dev/sqh-session'
 
 /** How one agent log accounts for the work it consumed. */
 export interface ConsumedWork {

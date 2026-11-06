@@ -1,13 +1,13 @@
 import { describe, expectTypeOf, it } from 'vitest'
 import type { Context } from '@liusiqi-dev/cordis'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
 import type {
   ToolDispatchExecution,
   ToolExecution,
   ToolExecutionInput,
   ToolRunContext,
-} from '@liusiqi-dev/dsh-tools'
+} from '@liusiqi-dev/sqh-tools'
 
 function inputAndExecutionContracts(
   input: ToolExecutionInput,

@@ -3,7 +3,7 @@ description: "面向用户与维护者的文件型凭据提供方：选择、配
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-credentials-local
+# @liusiqi-dev/sqh-credentials-local
 
 [English](README.md) | 中文
 
@@ -34,7 +34,7 @@ kind: "package-reference"
 ### 设置
 
 ```yaml
-- name: '@liusiqi-dev/dsh-credentials-local'
+- name: '@liusiqi-dev/sqh-credentials-local'
   config:
     path: /absolute/path/to/.credentials.yaml
 ```
@@ -54,7 +54,7 @@ kind: "package-reference"
 
 ```ts
 import type { Context } from '@liusiqi-dev/cordis'
-import { credentialRef } from '@liusiqi-dev/dsh-credentials'
+import { credentialRef } from '@liusiqi-dev/sqh-credentials'
 
 declare const ctx: Context
 

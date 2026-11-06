@@ -1,9 +1,9 @@
 /** Runtime plugin trees shared by Agents selecting one preset revision. */
 import { Context, type Fiber } from '@liusiqi-dev/cordis'
 import { EntryTree, type EntryOptions } from '@liusiqi-dev/cordis-plugin-loader'
-import { prepareProfileEntries } from '@liusiqi-dev/dsh-app-boot'
+import { prepareProfileEntries } from '@liusiqi-dev/sqh-app-boot'
 import type { PresetDefinition } from './definition.ts'
-import { scopeOf, scopeParentOf, type ScopeKey } from '@liusiqi-dev/dsh-scope'
+import { scopeOf, scopeParentOf, type ScopeKey } from '@liusiqi-dev/sqh-scope'
 
 /** In-memory Loader tree; only the profile configuration editor persists definitions. */
 class PresetTree extends EntryTree {

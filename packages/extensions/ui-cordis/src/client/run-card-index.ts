@@ -1,7 +1,7 @@
 /** Session-local ownership index for Package business views on `cordis_run` cards. */
 
-import type { SessionId } from '@liusiqi-dev/dsh-api-remotes/client'
-import type { HostObservable } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { SessionId } from '@liusiqi-dev/sqh-api-remotes/client'
+import type { HostObservable } from '@liusiqi-dev/sqh-client-ui-slots'
 import type {
   CordisDynamicPackageId, CordisDynamicPluginId, CordisDynamicPluginRunId,
 } from './events.ts'

@@ -48,55 +48,55 @@ describe('release families', () => {
     expect(members
       .filter(member => member.directory.startsWith('packages/experimental/'))
       .map(member => member.name)).toEqual([
-      '@liusiqi-dev/dsh-experimental-agent-team-profile',
-      '@liusiqi-dev/dsh-experimental-agent-team',
-      '@liusiqi-dev/dsh-experimental-api-speech-to-text',
-      '@liusiqi-dev/dsh-experimental-auto-review',
-      '@liusiqi-dev/dsh-experimental-browser-use-chrome-devtools-mcp',
-      '@liusiqi-dev/dsh-experimental-browser-use-playwright-mcp',
-      '@liusiqi-dev/dsh-experimental-browser-use-runtime',
-      '@liusiqi-dev/dsh-experimental-browser-use-stagehand-native',
-      '@liusiqi-dev/dsh-experimental-client-ui-agent-team',
-      '@liusiqi-dev/dsh-experimental-client-ui-voice-input',
-      '@liusiqi-dev/dsh-experimental-computer-use-cua-driver-mcp',
-      '@liusiqi-dev/dsh-experimental-computer-use-cua-driver-native',
-      '@liusiqi-dev/dsh-experimental-inspector',
-      '@liusiqi-dev/dsh-experimental-ptc-runtime-python',
-      '@liusiqi-dev/dsh-experimental-schedule-bundle',
-      '@liusiqi-dev/dsh-experimental-speech-to-text-sensevoice',
-      '@liusiqi-dev/dsh-experimental-speech-to-text',
-      '@liusiqi-dev/dsh-experimental-tool-agent-team',
-      '@liusiqi-dev/dsh-experimental-voice-input-bundle',
-      '@liusiqi-dev/dsh-experimental-webworker-packer',
-      '@liusiqi-dev/dsh-experimental-webworker-runtime',
+      '@liusiqi-dev/sqh-experimental-agent-team-profile',
+      '@liusiqi-dev/sqh-experimental-agent-team',
+      '@liusiqi-dev/sqh-experimental-api-speech-to-text',
+      '@liusiqi-dev/sqh-experimental-auto-review',
+      '@liusiqi-dev/sqh-experimental-browser-use-chrome-devtools-mcp',
+      '@liusiqi-dev/sqh-experimental-browser-use-playwright-mcp',
+      '@liusiqi-dev/sqh-experimental-browser-use-runtime',
+      '@liusiqi-dev/sqh-experimental-browser-use-stagehand-native',
+      '@liusiqi-dev/sqh-experimental-client-ui-agent-team',
+      '@liusiqi-dev/sqh-experimental-client-ui-voice-input',
+      '@liusiqi-dev/sqh-experimental-computer-use-cua-driver-mcp',
+      '@liusiqi-dev/sqh-experimental-computer-use-cua-driver-native',
+      '@liusiqi-dev/sqh-experimental-inspector',
+      '@liusiqi-dev/sqh-experimental-ptc-runtime-python',
+      '@liusiqi-dev/sqh-experimental-schedule-bundle',
+      '@liusiqi-dev/sqh-experimental-speech-to-text-sensevoice',
+      '@liusiqi-dev/sqh-experimental-speech-to-text',
+      '@liusiqi-dev/sqh-experimental-tool-agent-team',
+      '@liusiqi-dev/sqh-experimental-voice-input-bundle',
+      '@liusiqi-dev/sqh-experimental-webworker-packer',
+      '@liusiqi-dev/sqh-experimental-webworker-runtime',
     ])
   })
 
   it('excludes private applications from the publish set', () => {
     const root = mkdtempSync(join(tmpdir(), 'dsh-release-private-'))
     roots.push(root)
-    write(join(root, 'apps/public/package.json'), '{"name":"@liusiqi-dev/dsh-public","version":"0.0.1"}\n')
-    write(join(root, 'apps/private/package.json'), '{"name":"@liusiqi-dev/dsh-private","version":"0.0.1","private":true}\n')
+    write(join(root, 'apps/public/package.json'), '{"name":"@liusiqi-dev/sqh-public","version":"0.0.1"}\n')
+    write(join(root, 'apps/private/package.json'), '{"name":"@liusiqi-dev/sqh-private","version":"0.0.1","private":true}\n')
 
-    expect(releaseFamily('dsh').members(root).map(entry => entry.name)).toEqual(['@liusiqi-dev/dsh-public'])
+    expect(releaseFamily('dsh').members(root).map(entry => entry.name)).toEqual(['@liusiqi-dev/sqh-public'])
   })
 
   it('publishes unlisted experimental packages while retaining private exclusions', () => {
     const root = mkdtempSync(join(tmpdir(), 'dsh-release-experimental-'))
     roots.push(root)
     write(join(root, 'packages/experimental/prototype/package.json'), JSON.stringify({
-      name: '@liusiqi-dev/dsh-experimental-prototype',
+      name: '@liusiqi-dev/sqh-experimental-prototype',
       version: '0.0.1',
       publishConfig: { access: 'public' },
     }))
     write(join(root, 'packages/experimental/inspector/package.json'), JSON.stringify({
-      name: '@liusiqi-dev/dsh-experimental-inspector',
+      name: '@liusiqi-dev/sqh-experimental-inspector',
       version: '0.0.1',
       private: true,
     }))
 
     expect(releaseFamily('dsh').members(root).map(entry => entry.name)).toEqual([
-      '@liusiqi-dev/dsh-experimental-prototype',
+      '@liusiqi-dev/sqh-experimental-prototype',
     ])
   })
 
@@ -109,7 +109,7 @@ describe('release families', () => {
     write(join(root, 'packages/core/unselected/package.json'), '{"version":"0.0.1"}\n')
 
     const dsh = releaseFamily('dsh')
-    const published = member('packages/core/published', '@liusiqi-dev/dsh-published')
+    const published = member('packages/core/published', '@liusiqi-dev/sqh-published')
     const { planned } = planShared(dsh, root, [published], '0.0.2')
 
     expect(planned.map(entry => ({ path: entry.manifestPath, tag: entry.tag }))).toEqual([
@@ -128,7 +128,7 @@ describe('release families', () => {
       write(join(root, 'package.json'), '{"version":"0.0.1"}\n')
 
       const dsh = releaseFamily('dsh')
-      const published = member('packages/core/published', '@liusiqi-dev/dsh-published')
+      const published = member('packages/core/published', '@liusiqi-dev/sqh-published')
       const plan = planShared(dsh, root, [published], version)
 
       expect(plan.version).toBe(version)
@@ -164,7 +164,7 @@ describe('release families', () => {
 
   it('rejects a family whose members disagree on the shared version', () => {
     const dsh = releaseFamily('dsh')
-    const members = [member('apps/cli', '@liusiqi-dev/sqode'), { ...member('apps/web', '@liusiqi-dev/dsh-web-frontend'), version: '0.0.2' }]
+    const members = [member('apps/cli', '@liusiqi-dev/sqode'), { ...member('apps/web', '@liusiqi-dev/sqh-web-frontend'), version: '0.0.2' }]
 
     expect(() => { dsh.verifyVersions(members) }).toThrow(/must share one version/)
     expect(() => { dsh.verifyVersions([members[0]!]) }).not.toThrow()
@@ -203,23 +203,23 @@ describe('release families', () => {
   it('publishes a dependency before its consumer, and orders ties by name', () => {
     const dsh = releaseFamily('dsh')
     const members = [
-      member('packages/a/consumer', '@liusiqi-dev/dsh-consumer', { dependencies: { '@liusiqi-dev/dsh-library': 'workspace:^' } }),
-      member('packages/a/library', '@liusiqi-dev/dsh-library'),
-      member('packages/a/zebra', '@liusiqi-dev/dsh-zebra'),
+      member('packages/a/consumer', '@liusiqi-dev/sqh-consumer', { dependencies: { '@liusiqi-dev/sqh-library': 'workspace:^' } }),
+      member('packages/a/library', '@liusiqi-dev/sqh-library'),
+      member('packages/a/zebra', '@liusiqi-dev/sqh-zebra'),
     ]
 
     expect(dsh.publishOrder(members).order.map(entry => entry.name)).toEqual([
-      '@liusiqi-dev/dsh-library',
-      '@liusiqi-dev/dsh-consumer',
-      '@liusiqi-dev/dsh-zebra',
+      '@liusiqi-dev/sqh-library',
+      '@liusiqi-dev/sqh-consumer',
+      '@liusiqi-dev/sqh-zebra',
     ])
   })
 
   it('reports a runtime dependency cycle instead of emitting an arbitrary order', () => {
     const dsh = releaseFamily('dsh')
     const members = [
-      member('packages/a/left', '@liusiqi-dev/dsh-left', { dependencies: { '@liusiqi-dev/dsh-right': 'workspace:^' } }),
-      member('packages/a/right', '@liusiqi-dev/dsh-right', { dependencies: { '@liusiqi-dev/dsh-left': 'workspace:^' } }),
+      member('packages/a/left', '@liusiqi-dev/sqh-left', { dependencies: { '@liusiqi-dev/sqh-right': 'workspace:^' } }),
+      member('packages/a/right', '@liusiqi-dev/sqh-right', { dependencies: { '@liusiqi-dev/sqh-left': 'workspace:^' } }),
     ]
 
     expect(() => { dsh.publishOrder(members) }).toThrow(/dependency cycle/)
@@ -228,44 +228,44 @@ describe('release families', () => {
   it('publishes a peer before its consumer', () => {
     const dsh = releaseFamily('dsh')
     const members = [
-      member('packages/a/consumer', '@liusiqi-dev/dsh-consumer', { peerDependencies: { '@liusiqi-dev/dsh-zebra': 'workspace:^' } }),
-      member('packages/a/zebra', '@liusiqi-dev/dsh-zebra'),
+      member('packages/a/consumer', '@liusiqi-dev/sqh-consumer', { peerDependencies: { '@liusiqi-dev/sqh-zebra': 'workspace:^' } }),
+      member('packages/a/zebra', '@liusiqi-dev/sqh-zebra'),
     ]
 
     // Name order alone would place the consumer first; the peer edge moves it.
     expect(dsh.publishOrder(members).order.map(entry => entry.name)).toEqual([
-      '@liusiqi-dev/dsh-zebra',
-      '@liusiqi-dev/dsh-consumer',
+      '@liusiqi-dev/sqh-zebra',
+      '@liusiqi-dev/sqh-consumer',
     ])
   })
 
   it('orders around a peer cycle rather than refusing to publish, and reports the edge it dropped', () => {
     const dsh = releaseFamily('dsh')
     const members = [
-      member('packages/a/left', '@liusiqi-dev/dsh-left', { peerDependencies: { '@liusiqi-dev/dsh-right': 'workspace:^' } }),
-      member('packages/a/right', '@liusiqi-dev/dsh-right', { peerDependencies: { '@liusiqi-dev/dsh-left': 'workspace:^' } }),
+      member('packages/a/left', '@liusiqi-dev/sqh-left', { peerDependencies: { '@liusiqi-dev/sqh-right': 'workspace:^' } }),
+      member('packages/a/right', '@liusiqi-dev/sqh-right', { peerDependencies: { '@liusiqi-dev/sqh-left': 'workspace:^' } }),
     ]
 
     // Sibling packages declare each other as peers, and npm treats an unmet peer
     // as a warning, so this pair has to publish rather than fail the release.
     const plan = dsh.publishOrder(members)
     expect(plan.order.map(entry => entry.name)).toEqual([
-      '@liusiqi-dev/dsh-right',
-      '@liusiqi-dev/dsh-left',
+      '@liusiqi-dev/sqh-right',
+      '@liusiqi-dev/sqh-left',
     ])
     // One of the two edges has to give, and which one it is belongs in the log.
     expect(plan.droppedPeerEdges).toEqual([
-      { consumer: '@liusiqi-dev/dsh-right', peer: '@liusiqi-dev/dsh-left' },
+      { consumer: '@liusiqi-dev/sqh-right', peer: '@liusiqi-dev/sqh-left' },
     ])
   })
 
   it('honours an install edge even when a peer cycle surrounds it', () => {
     const dsh = releaseFamily('dsh')
     const members = [
-      member('packages/a/base', '@liusiqi-dev/dsh-base', { peerDependencies: { '@liusiqi-dev/dsh-consumer': 'workspace:^' } }),
-      member('packages/a/consumer', '@liusiqi-dev/dsh-consumer', {
-        dependencies: { '@liusiqi-dev/dsh-base': 'workspace:^' },
-        peerDependencies: { '@liusiqi-dev/dsh-base': 'workspace:^' },
+      member('packages/a/base', '@liusiqi-dev/sqh-base', { peerDependencies: { '@liusiqi-dev/sqh-consumer': 'workspace:^' } }),
+      member('packages/a/consumer', '@liusiqi-dev/sqh-consumer', {
+        dependencies: { '@liusiqi-dev/sqh-base': 'workspace:^' },
+        peerDependencies: { '@liusiqi-dev/sqh-base': 'workspace:^' },
       }),
     ]
 
@@ -273,48 +273,48 @@ describe('release families', () => {
     // would reverse it is the one dropped.
     const plan = dsh.publishOrder(members)
     expect(plan.order.map(entry => entry.name)).toEqual([
-      '@liusiqi-dev/dsh-base',
-      '@liusiqi-dev/dsh-consumer',
+      '@liusiqi-dev/sqh-base',
+      '@liusiqi-dev/sqh-consumer',
     ])
     expect(plan.droppedPeerEdges).toEqual([
-      { consumer: '@liusiqi-dev/dsh-base', peer: '@liusiqi-dev/dsh-consumer' },
+      { consumer: '@liusiqi-dev/sqh-base', peer: '@liusiqi-dev/sqh-consumer' },
     ])
   })
 
   it('refuses an order that would publish a consumer before a dependency it installs', () => {
     const dsh = releaseFamily('dsh')
     const members = [
-      member('packages/a/alpha', '@liusiqi-dev/dsh-alpha', { peerDependencies: { '@liusiqi-dev/dsh-bravo': 'workspace:^' } }),
-      member('packages/a/bravo', '@liusiqi-dev/dsh-bravo', { peerDependencies: { '@liusiqi-dev/dsh-charlie': 'workspace:^' } }),
-      member('packages/a/charlie', '@liusiqi-dev/dsh-charlie', { dependencies: { '@liusiqi-dev/dsh-alpha': 'workspace:^' } }),
+      member('packages/a/alpha', '@liusiqi-dev/sqh-alpha', { peerDependencies: { '@liusiqi-dev/sqh-bravo': 'workspace:^' } }),
+      member('packages/a/bravo', '@liusiqi-dev/sqh-bravo', { peerDependencies: { '@liusiqi-dev/sqh-charlie': 'workspace:^' } }),
+      member('packages/a/charlie', '@liusiqi-dev/sqh-charlie', { dependencies: { '@liusiqi-dev/sqh-alpha': 'workspace:^' } }),
     ]
 
     // A cycle of two peer edges closed by one install edge: dropping a peer edge
     // would order this, and the traversal drops the install edge instead. That
     // order would publish charlie before the alpha it installs, so it is refused
     // here rather than published.
-    expect(() => { dsh.publishOrder(members) }).toThrow(/no publish order honours @liusiqi-dev\/dsh-charlie -> @liusiqi-dev\/dsh-alpha/)
+    expect(() => { dsh.publishOrder(members) }).toThrow(/no publish order honours @liusiqi-dev\/sqh-charlie -> @liusiqi-dev\/sqh-alpha/)
   })
 
   it('ignores devDependencies when ordering', () => {
     const dsh = releaseFamily('dsh')
     const members = [
-      member('packages/a/alpha', '@liusiqi-dev/dsh-alpha', { devDependencies: { '@liusiqi-dev/dsh-zebra': 'workspace:^' } }),
-      member('packages/a/zebra', '@liusiqi-dev/dsh-zebra'),
+      member('packages/a/alpha', '@liusiqi-dev/sqh-alpha', { devDependencies: { '@liusiqi-dev/sqh-zebra': 'workspace:^' } }),
+      member('packages/a/zebra', '@liusiqi-dev/sqh-zebra'),
     ]
 
     // A dev dependency is absent from the published package, so it must not move
     // the consumer behind it.
     expect(dsh.publishOrder(members).order.map(entry => entry.name)).toEqual([
-      '@liusiqi-dev/dsh-alpha',
-      '@liusiqi-dev/dsh-zebra',
+      '@liusiqi-dev/sqh-alpha',
+      '@liusiqi-dev/sqh-zebra',
     ])
   })
 
   it('applies the harness payload policy to dsh and keeps upstream payloads for vendored packages', () => {
     const dsh = releaseFamily('dsh')
     const vendor = releaseFamily('vendor')
-    const harness = member('packages/a/library', '@liusiqi-dev/dsh-library')
+    const harness = member('packages/a/library', '@liusiqi-dev/sqh-library')
     const vendored = member('vendor/cordis', '@liusiqi-dev/cordis')
 
     expect(() => { dsh.validatePayload(harness, ['package/lib/index.js', 'package/src/index.ts']) })
@@ -413,7 +413,7 @@ describe('payload change judgement', () => {
     // unnecessary patch bump, while under-reporting fails the next publish on a
     // version whose bytes moved.
     expect(reachesPayload(sourceShipping, 'vendor/cosmokit/README.i18n.yaml')).toBe(true)
-    expect(reachesPayload(member('packages/a/library', '@liusiqi-dev/dsh-library', { files: ['lib/index.js'] }),
+    expect(reachesPayload(member('packages/a/library', '@liusiqi-dev/sqh-library', { files: ['lib/index.js'] }),
       'packages/a/library/tests/library.spec.ts')).toBe(false)
   })
 })

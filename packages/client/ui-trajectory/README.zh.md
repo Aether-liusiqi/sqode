@@ -3,7 +3,7 @@ description: "dsh Web 客户端的 Trajectory 视图：按轮次组织的事件�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-ui-trajectory
+# @liusiqi-dev/sqh-client-ui-trajectory
 
 [English](README.md) | 中文
 

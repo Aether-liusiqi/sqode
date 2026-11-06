@@ -7,7 +7,7 @@ import WebRuntime, {
   type WebSearchProvider,
   type WebSearchRequest,
   type WebSearchResult,
-} from '@liusiqi-dev/dsh-web'
+} from '@liusiqi-dev/sqh-web'
 
 /** A scripted search provider for contract tests. */
 function makeSearchProvider(

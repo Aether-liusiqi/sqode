@@ -5,17 +5,17 @@
  * the registry itself while plugins can register additional, enumerable facts
  * with effect-scoped disposal.
  *
- * @module @liusiqi-dev/dsh-shell-env
+ * @module @liusiqi-dev/sqh-shell-env
  */
 
 import { Service, type Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { SQODE_ENV_PREFIX } from '@liusiqi-dev/dsh-shell'
-import type { SqhEnvironment, SqhEnvironmentKey } from '@liusiqi-dev/dsh-shell'
-import { SQODE_HOME_ENV, resolveDshHome } from '@liusiqi-dev/dsh-home-paths'
-import type { ToolExecution } from '@liusiqi-dev/dsh-tools'
+import { SQODE_ENV_PREFIX } from '@liusiqi-dev/sqh-shell'
+import type { SqhEnvironment, SqhEnvironmentKey } from '@liusiqi-dev/sqh-shell'
+import { SQODE_HOME_ENV, resolveDshHome } from '@liusiqi-dev/sqh-home-paths'
+import type { ToolExecution } from '@liusiqi-dev/sqh-tools'
 // Declares `Context.profileContext`, the launcher-provided profile the built-ins read.
-import type {} from '@liusiqi-dev/dsh-app-boot'
+import type {} from '@liusiqi-dev/sqh-app-boot'
 
 declare module '@liusiqi-dev/cordis' {
   interface Context {

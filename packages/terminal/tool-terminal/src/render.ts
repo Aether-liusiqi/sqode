@@ -1,6 +1,6 @@
 /** Model and UI rendering for persistent terminal tool results. */
 
-import { TextRetainer } from '@liusiqi-dev/dsh-output-retention'
+import { TextRetainer } from '@liusiqi-dev/sqh-output-retention'
 
 interface RenderedSessionStatusRunning {
   kind: 'running'

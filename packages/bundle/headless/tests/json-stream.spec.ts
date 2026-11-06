@@ -2,8 +2,8 @@
 
 import { describe, expect, it } from 'vitest'
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type { Session, SessionEvent } from '@liusiqi-dev/dsh-session'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type { Session, SessionEvent } from '@liusiqi-dev/sqh-session'
 import { boundJsonLine, MAX_STRING_BYTES, projectJsonRun, type JsonProjectionOptions } from '../src/json-stream.ts'
 
 interface ProjectionHarness {

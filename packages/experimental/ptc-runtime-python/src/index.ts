@@ -7,7 +7,7 @@
  *
  * The package also owns the versionless fd-3 wire protocol itself; its host-side codec and
  * hostile-frame validators are re-exported so every consumer of the wire shares one vocabulary.
- * @module @liusiqi-dev/dsh-experimental-ptc-runtime-python
+ * @module @liusiqi-dev/sqh-experimental-ptc-runtime-python
  */
 
 import { execFileSync, spawn, type ChildProcessWithoutNullStreams } from 'node:child_process'
@@ -19,10 +19,10 @@ import { getHeapStatistics } from 'node:v8'
 import type { Duplex } from 'node:stream'
 import { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { PtcRuntime, DUNDER_MEMBER, PORTABLE_RESERVED_WORDS, RESERVED_BINDING_GLOBALS, RESERVED_ERROR_MEMBERS } from '@liusiqi-dev/dsh-ptc-runtime'
-import type { PtcBindingErrorClass, PtcBindingFunction, PtcJsonValue, PtcRunFailure, PtcRunRequest, PtcRunResult, PtcRunSpec } from '@liusiqi-dev/dsh-ptc-runtime'
-import { snapshotJsonValue } from '@liusiqi-dev/dsh-util-values'
-import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
+import { PtcRuntime, DUNDER_MEMBER, PORTABLE_RESERVED_WORDS, RESERVED_BINDING_GLOBALS, RESERVED_ERROR_MEMBERS } from '@liusiqi-dev/sqh-ptc-runtime'
+import type { PtcBindingErrorClass, PtcBindingFunction, PtcJsonValue, PtcRunFailure, PtcRunRequest, PtcRunResult, PtcRunSpec } from '@liusiqi-dev/sqh-ptc-runtime'
+import { snapshotJsonValue } from '@liusiqi-dev/sqh-util-values'
+import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/sqh-timeout'
 import type { BootMessage, ChildToHost, ReplyMessage } from './protocol.ts'
 import { checkDoneValue, encodeJsonPlain, hasUnsafeIntegerToken, logTruncationMarker, validateChildFrame } from './protocol.ts'
 

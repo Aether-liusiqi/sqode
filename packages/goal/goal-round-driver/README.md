@@ -3,7 +3,7 @@ description: "The same-session continuation driver for users and maintainers cho
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-goal-round-driver
+# @liusiqi-dev/sqh-goal-round-driver
 
 English | [中文](README.zh.md)
 
@@ -33,13 +33,13 @@ Mount the driver beside the goal service and the goal tools; the driver itself t
 
 ```yaml
 - id: goal
-  name: '@liusiqi-dev/dsh-goal'
+  name: '@liusiqi-dev/sqh-goal'
 
 - id: tool-goal
-  name: '@liusiqi-dev/dsh-tool-goal'
+  name: '@liusiqi-dev/sqh-tool-goal'
 
 - id: goal-round-driver
-  name: '@liusiqi-dev/dsh-goal-round-driver'
+  name: '@liusiqi-dev/sqh-goal-round-driver'
 ```
 
 `maxGoalRounds` belongs to the goal definition, while the model-facing blocked threshold belongs to `dsh-tool-goal`; duplicating either value in the driver could produce divergent policy.

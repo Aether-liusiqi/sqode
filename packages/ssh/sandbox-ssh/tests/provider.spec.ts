@@ -1,6 +1,6 @@
 /** Each confinement request resolves remotely before any subprocess receives its argv. */
 import { Context, Service } from '@liusiqi-dev/cordis'
-import { SandboxUnavailableError, type SandboxPolicy } from '@liusiqi-dev/dsh-sandbox'
+import { SandboxUnavailableError, type SandboxPolicy } from '@liusiqi-dev/sqh-sandbox'
 import { describe, expect, it, onTestFinished, vi } from 'vitest'
 import { z } from 'zod'
 import { SshSandboxProvider } from '../src/index.ts'

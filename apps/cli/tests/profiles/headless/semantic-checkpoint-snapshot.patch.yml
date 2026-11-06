@@ -15,7 +15,7 @@
 
 - insert:
     - id: replay
-      name: '@liusiqi-dev/dsh-llm-replay'
+      name: '@liusiqi-dev/sqh-llm-replay'
       config:
         file: !!js process.env.SQODE_SNAPSHOT_FILE
         overrideFile: !!js process.env.SQODE_SNAPSHOT_OVERRIDE

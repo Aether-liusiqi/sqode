@@ -7,15 +7,15 @@
  * backend stores the domain `per-record`: one document per session under
  * `<root>/session_projcache/sessions/`, so a checkpoint write rewrites one
  * session's document instead of the whole unit).
- * @module @liusiqi-dev/dsh-session-projection-cache/src/spec
+ * @module @liusiqi-dev/sqh-session-projection-cache/src/spec
  */
 
 import { z } from 'zod'
-import { isJsonValue } from '@liusiqi-dev/dsh-util-values'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
-import { SessionLogOffset, SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { SessionId, SessionSeqCursor } from '@liusiqi-dev/dsh-session'
-import { defineDomain, domainTable } from '@liusiqi-dev/dsh-storage-domain'
+import { isJsonValue } from '@liusiqi-dev/sqh-util-values'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
+import { SessionLogOffset, SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { SessionId, SessionSeqCursor } from '@liusiqi-dev/sqh-session'
+import { defineDomain, domainTable } from '@liusiqi-dev/sqh-storage-domain'
 
 /**
  * One persisted checkpoint row (the RFC's `(sessionId, key, ver, seq, val)`

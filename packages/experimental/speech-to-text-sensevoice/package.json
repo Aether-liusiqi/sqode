@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-experimental-speech-to-text-sensevoice",
+  "name": "@liusiqi-dev/sqh-experimental-speech-to-text-sensevoice",
   "description": "Local SenseVoice ONNX transcription with a managed sherpa-onnx process",
   "version": "1.0.0",
   "publishConfig": {
@@ -34,20 +34,20 @@
   "license": "MIT",
   "dependencies": {
     "@liusiqi-dev/schemastery": "workspace:~",
-    "@liusiqi-dev/dsh-timeout": "workspace:*",
+    "@liusiqi-dev/sqh-timeout": "workspace:*",
     "zod": "^4.4.3",
     "sherpa-onnx-node": "1.13.8"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-experimental-speech-to-text": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess": "workspace:*"
+    "@liusiqi-dev/sqh-experimental-speech-to-text": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess": "workspace:*"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-experimental-speech-to-text": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess-local": "workspace:*",
+    "@liusiqi-dev/sqh-experimental-speech-to-text": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess-local": "workspace:*",
     "tsx": "^4.22.4"
   }
 }

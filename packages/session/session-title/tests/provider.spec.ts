@@ -1,16 +1,16 @@
 import { Context } from '@liusiqi-dev/cordis'
 import { describe, expect, it, vi } from 'vitest'
-import LlmRuntime, { createUserMessage, markAgentLoopRequest } from '@liusiqi-dev/dsh-llm'
-import { deepFreeze } from '@liusiqi-dev/dsh-util-values'
-import SessionStore, { SessionId, SessionSeq } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import { turnBoundaryProjectionDefinition } from '@liusiqi-dev/dsh-agent-loop'
+import LlmRuntime, { createUserMessage, markAgentLoopRequest } from '@liusiqi-dev/sqh-llm'
+import { deepFreeze } from '@liusiqi-dev/sqh-util-values'
+import SessionStore, { SessionId, SessionSeq } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import { turnBoundaryProjectionDefinition } from '@liusiqi-dev/sqh-agent-loop'
 import SessionTitleService, {
   SessionTitleProviderId,
   type SessionTitleProvider,
   type SessionTitleProviderRequest,
   type SessionTitleProviderResult,
-} from '@liusiqi-dev/dsh-session-title'
+} from '@liusiqi-dev/sqh-session-title'
 
 const CONFIG = {
   fallbackMaxWords: 5,

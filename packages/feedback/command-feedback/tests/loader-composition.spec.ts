@@ -6,13 +6,13 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import Include from '@liusiqi-dev/cordis-plugin-include'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import type { Agent, AgentStatus } from '@liusiqi-dev/dsh-agent'
-import CommandRuntime from '@liusiqi-dev/dsh-commands'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import * as CommandFeedback from '@liusiqi-dev/dsh-command-feedback'
-import { getOrCreateAnonymousUserId } from '@liusiqi-dev/dsh-anonymous-user-id'
-import { unsupportedInbox } from '@liusiqi-dev/dsh-agent-loop-testkit'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import type { Agent, AgentStatus } from '@liusiqi-dev/sqh-agent'
+import CommandRuntime from '@liusiqi-dev/sqh-commands'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import * as CommandFeedback from '@liusiqi-dev/sqh-command-feedback'
+import { getOrCreateAnonymousUserId } from '@liusiqi-dev/sqh-anonymous-user-id'
+import { unsupportedInbox } from '@liusiqi-dev/sqh-agent-loop-testkit'
 
 let root: string | undefined
 let context: Context | undefined
@@ -56,10 +56,10 @@ describe('/feedback real Loader composition through cordis.yml', () => {
     vi.stubEnv('SQODE_HOME', root)
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
-      "- name: '@liusiqi-dev/dsh-agent'",
-      "- name: '@liusiqi-dev/dsh-session'",
-      "- name: '@liusiqi-dev/dsh-commands'",
-      "- name: '@liusiqi-dev/dsh-command-feedback'",
+      "- name: '@liusiqi-dev/sqh-agent'",
+      "- name: '@liusiqi-dev/sqh-session'",
+      "- name: '@liusiqi-dev/sqh-commands'",
+      "- name: '@liusiqi-dev/sqh-command-feedback'",
       '',
     ].join('\n'))
 
@@ -68,10 +68,10 @@ describe('/feedback real Loader composition through cordis.yml', () => {
     await context.plugin(Loader)
     context.loader.builtins.include = Include
     const modules = new Map<string, unknown>([
-      ['@liusiqi-dev/dsh-agent', AgentRegistry],
-      ['@liusiqi-dev/dsh-session', SessionStore],
-      ['@liusiqi-dev/dsh-commands', CommandRuntime],
-      ['@liusiqi-dev/dsh-command-feedback', CommandFeedback],
+      ['@liusiqi-dev/sqh-agent', AgentRegistry],
+      ['@liusiqi-dev/sqh-session', SessionStore],
+      ['@liusiqi-dev/sqh-commands', CommandRuntime],
+      ['@liusiqi-dev/sqh-command-feedback', CommandFeedback],
     ])
     context.loader.internal = {
       version: 'v2',

@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-tool-ralph",
+  "name": "@liusiqi-dev/sqh-tool-ralph",
   "description": "Model-facing fresh-agent Ralph loop over the workflow and subagent seams",
   "version": "1.0.0",
   "publishConfig": {
@@ -27,12 +27,12 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-subagent": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*",
-    "@liusiqi-dev/dsh-workflow": "workspace:*",
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-subagent": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*",
+    "@liusiqi-dev/sqh-workflow": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "dependencies": {
@@ -40,19 +40,19 @@
   },
   "devDependencies": {
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-agent-loop": "workspace:*",
-    "@liusiqi-dev/dsh-agent-loop-testkit": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-subagent": "workspace:*",
-    "@liusiqi-dev/dsh-subagent-in-process-driver": "workspace:*",
-    "@liusiqi-dev/dsh-subagent-spawn-in-process": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*",
-    "@liusiqi-dev/dsh-workflow": "workspace:*",
-    "@liusiqi-dev/dsh-workflow-ptc": "workspace:*",
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-agent-loop": "workspace:*",
+    "@liusiqi-dev/sqh-agent-loop-testkit": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-subagent": "workspace:*",
+    "@liusiqi-dev/sqh-subagent-in-process-driver": "workspace:*",
+    "@liusiqi-dev/sqh-subagent-spawn-in-process": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*",
+    "@liusiqi-dev/sqh-workflow": "workspace:*",
+    "@liusiqi-dev/sqh-workflow-ptc": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*"
+    "@liusiqi-dev/sqh-session-projection": "workspace:*"
   }
 }

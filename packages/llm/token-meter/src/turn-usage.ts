@@ -1,7 +1,7 @@
-import { lastAssistantStreamChunk } from '@liusiqi-dev/dsh-llm/assistant-stream'
-import type { AssistantMessage, TokenUsage } from '@liusiqi-dev/dsh-llm/types'
-import type {} from '@liusiqi-dev/dsh-llm-retry/types'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session/types'
+import { lastAssistantStreamChunk } from '@liusiqi-dev/sqh-llm/assistant-stream'
+import type { AssistantMessage, TokenUsage } from '@liusiqi-dev/sqh-llm/types'
+import type {} from '@liusiqi-dev/sqh-llm-retry/types'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session/types'
 
 /** One provider/model route that contributed a billed request attempt. */
 export interface TurnTokenUsageRoute {

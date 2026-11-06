@@ -1,33 +1,33 @@
 // @vitest-environment jsdom
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import { describe, expect, it, onTestFinished, vi } from 'vitest'
 import { act, fireEvent, render } from '@testing-library/react'
 import {
   SlotTestRuntime, stubConfigForm, usePinnedBrowserLanguages,
-} from '@liusiqi-dev/dsh-client-test-runtime'
-import { LocaleRuntime } from '@liusiqi-dev/dsh-client-locale/client'
-import { resolveSlotLabel } from '@liusiqi-dev/dsh-client-ui-slots'
-import type { ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
-import type { SessionBinding } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { WorkspaceId } from '@liusiqi-dev/dsh-workspace/types'
+} from '@liusiqi-dev/sqh-client-test-runtime'
+import { LocaleRuntime } from '@liusiqi-dev/sqh-client-locale/client'
+import { resolveSlotLabel } from '@liusiqi-dev/sqh-client-ui-slots'
+import type { ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
+import type { SessionBinding } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { WorkspaceId } from '@liusiqi-dev/sqh-workspace/types'
 import {
   apply as applyConversation, inject as injectConversation,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import type {
   ConversationLocationDataSource, ConversationLocationDataStore, ConversationTurnDataMap,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import {
   apply as applyChat, EMPTY_CHAT_SNAPSHOT, inject as injectChat,
-} from '@liusiqi-dev/dsh-client-ui-chat/client'
+} from '@liusiqi-dev/sqh-client-ui-chat/client'
 import type {
   ChatNodeInjected, ChatSnapshot, TranscriptViewRowInjected, UseChatNodeTurnData, UseDisclosure,
-} from '@liusiqi-dev/dsh-client-ui-chat/client'
-import type { QuotaNoticeInjected } from '@liusiqi-dev/dsh-client-ui-chat/client'
+} from '@liusiqi-dev/sqh-client-ui-chat/client'
+import type { QuotaNoticeInjected } from '@liusiqi-dev/sqh-client-ui-chat/client'
 import type { PerformanceUsageRowInjected } from '../src/client/settings/PerformanceUsageRow.tsx'
 import { CHAT_SETTINGS_NAMESPACE, type ChatSettings } from '../src/chat-settings.ts'
 
-declare module '@liusiqi-dev/dsh-client-ui-conversation/client' {
+declare module '@liusiqi-dev/sqh-client-ui-conversation/client' {
   interface ConversationTurnDataMap {
     metric: number
   }

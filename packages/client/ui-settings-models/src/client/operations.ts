@@ -9,7 +9,7 @@ import type { Context as ClientContext } from '@liusiqi-dev/cordis'
 import type {
   CredentialInfo, LlmDiscoveredModel, LlmModelDiscoveryRequest,
   SettingsNamespaceView, SettingsPathOpView,
-} from '@liusiqi-dev/dsh-api-remotes/client'
+} from '@liusiqi-dev/sqh-api-remotes/client'
 
 /** What one namespace write answered. */
 export type SettingsWriteOutcome =

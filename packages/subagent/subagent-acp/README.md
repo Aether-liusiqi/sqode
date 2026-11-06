@@ -3,7 +3,7 @@ description: "The out-of-process ACP subagent backend for users and maintainers 
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-subagent-acp
+# @liusiqi-dev/sqh-subagent-acp
 
 English | [中文](README.zh.md)
 
@@ -50,7 +50,7 @@ A Siqi Harness child uses the product launcher and an explicit absolute `SQODE_H
 
 ```yaml
 - id: subagent-acp
-  name: '@liusiqi-dev/dsh-subagent-acp'
+  name: '@liusiqi-dev/sqh-subagent-acp'
   config:
     providerName: acp
     command: dsh

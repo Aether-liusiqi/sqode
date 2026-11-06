@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-session-checkpoint-policy",
+  "name": "@liusiqi-dev/sqh-session-checkpoint-policy",
   "description": "Semantic session durability checkpoints before model requests and tool side effects",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,24 +28,24 @@
   "license": "MIT",
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-persistence": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*"
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-persistence": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-agent-loop": "workspace:*",
-    "@liusiqi-dev/dsh-agent-loop-testkit": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-persistence": "workspace:*",
-    "@liusiqi-dev/dsh-session-persistence-jsonl": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*"
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-agent-loop": "workspace:*",
+    "@liusiqi-dev/sqh-agent-loop-testkit": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-persistence": "workspace:*",
+    "@liusiqi-dev/sqh-session-persistence-jsonl": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*"
   }
 }

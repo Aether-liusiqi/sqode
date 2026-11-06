@@ -1,16 +1,16 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { scopeTarget } from '@liusiqi-dev/dsh-scope'
-import { SessionId } from '@liusiqi-dev/dsh-session'
-import SubagentRuntime, { SubagentRunId } from '@liusiqi-dev/dsh-subagent'
+import { scopeTarget } from '@liusiqi-dev/sqh-scope'
+import { SessionId } from '@liusiqi-dev/sqh-session'
+import SubagentRuntime, { SubagentRunId } from '@liusiqi-dev/sqh-subagent'
 import type {
   SubagentProvider,
   SubagentRunEndInfo,
   SubagentRunInfo,
-} from '@liusiqi-dev/dsh-subagent'
-import * as SubagentInvariant from '@liusiqi-dev/dsh-subagent/invariant'
-import InvariantRegistry from '@liusiqi-dev/dsh-invariants'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
+} from '@liusiqi-dev/sqh-subagent'
+import * as SubagentInvariant from '@liusiqi-dev/sqh-subagent/invariant'
+import InvariantRegistry from '@liusiqi-dev/sqh-invariants'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
 
 async function setup(): Promise<Context> {
   const ctx = new Context()

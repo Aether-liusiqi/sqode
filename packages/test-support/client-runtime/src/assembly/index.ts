@@ -1,8 +1,8 @@
 /**
  * Whole-client tier entry (deep import only:
- * `@liusiqi-dev/dsh-client-test-runtime/src/assembly/index.ts`). Kept out of
+ * `@liusiqi-dev/sqh-client-test-runtime/src/assembly/index.ts`). Kept out of
  * the package root so slot-tier specs do not load the assembly machinery.
- * @module @liusiqi-dev/dsh-client-test-runtime/src/assembly
+ * @module @liusiqi-dev/sqh-client-test-runtime/src/assembly
  */
 export { ClientRoster } from './roster.ts'
 export type { AssemblyPlan, ClientPluginModule, ClientRosterRow } from './roster.ts'

@@ -1,17 +1,17 @@
 import { Context } from '@liusiqi-dev/cordis'
-import type { Agent, Inbox, InboxState } from '@liusiqi-dev/dsh-agent'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-import { SessionId } from '@liusiqi-dev/dsh-session'
+import type { Agent, Inbox, InboxState } from '@liusiqi-dev/sqh-agent'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+import { SessionId } from '@liusiqi-dev/sqh-session'
 import { afterEach, describe, expect, it } from 'vitest'
 import { SessionControlController } from '../src/control.ts'
 import type { SessionControlFrame } from '../src/types.ts'
 import {
   mountAgentLoopTestDependencies,
   mountAgentLoopTestHarness,
-} from '@liusiqi-dev/dsh-agent-loop-testkit'
+} from '@liusiqi-dev/sqh-agent-loop-testkit'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'fixture': { kind: 'fixture' } & ContextFormed
   }

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { isRemoteJsonValue } from '@liusiqi-dev/dsh-typert-protocol'
+import { isRemoteJsonValue } from '@liusiqi-dev/sqh-typert-protocol'
 import {
   parseRemoteEventResult,
   parseRemoteStreamClientMessage,

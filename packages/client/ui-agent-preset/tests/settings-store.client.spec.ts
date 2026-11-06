@@ -7,11 +7,11 @@
 
 import { describe, expect, it } from 'vitest'
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import type { RemoteErrorCode } from '@liusiqi-dev/dsh-api-remotes/client'
-import { RemoteError } from '@liusiqi-dev/dsh-client-test-runtime'
-import type { SessionSummary } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import { createSnapshotStore, type ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
+import type { RemoteErrorCode } from '@liusiqi-dev/sqh-api-remotes/client'
+import { RemoteError } from '@liusiqi-dev/sqh-client-test-runtime'
+import type { SessionSummary } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import { createSnapshotStore, type ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
 import {
   AGENT_PRESET_SETTINGS_NS, AgentPresetSettingsController,
   writeDefaultPreset,

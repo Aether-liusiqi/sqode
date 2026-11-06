@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
-import { SessionFormatEventCollector } from '@liusiqi-dev/dsh-session-format'
-import type { SessionFormatEvent, SessionFormatJsonObject } from '@liusiqi-dev/dsh-session-format'
-import { sessionFormatCatalog } from '@liusiqi-dev/dsh-session-format-catalog'
-import { releasedV2SessionFormatCodec } from '@liusiqi-dev/dsh-session-format-v2-to-v3'
+import { SessionFormatEventCollector } from '@liusiqi-dev/sqh-session-format'
+import type { SessionFormatEvent, SessionFormatJsonObject } from '@liusiqi-dev/sqh-session-format'
+import { sessionFormatCatalog } from '@liusiqi-dev/sqh-session-format-catalog'
+import { releasedV2SessionFormatCodec } from '@liusiqi-dev/sqh-session-format-v2-to-v3'
 import { assertReleasedV4Header, assertV4RowAdmission, releasedV4SessionFormatCodec, restoreReleasedV4Artifact } from '../src/index.ts'
 
 const header = { version: 4, id: 'parent', createdAt: 1, isSeeded: false, delegationDepth: 0 }

@@ -8,7 +8,7 @@
  * can reach). Consumers switch on `capability().kind`; the union is
  * merge-extensible, and the documented default for an unknown kind is to
  * hide the picking affordance rather than fail.
- * @module @liusiqi-dev/dsh-host-directory-picker
+ * @module @liusiqi-dev/sqh-host-directory-picker
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'

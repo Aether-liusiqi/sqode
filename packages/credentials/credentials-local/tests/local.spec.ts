@@ -3,9 +3,9 @@ import { Context } from '@liusiqi-dev/cordis'
 import { mkdir, mkdtemp, readFile, rm, stat, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
-import { credentialRef } from '@liusiqi-dev/dsh-credentials'
-import { createLaunchEnvironmentSnapshot, SQODE_LAUNCH_ENVIRONMENT_KEY } from '@liusiqi-dev/dsh-launch-environment'
-import type { CredentialRef } from '@liusiqi-dev/dsh-credentials'
+import { credentialRef } from '@liusiqi-dev/sqh-credentials'
+import { createLaunchEnvironmentSnapshot, SQODE_LAUNCH_ENVIRONMENT_KEY } from '@liusiqi-dev/sqh-launch-environment'
+import type { CredentialRef } from '@liusiqi-dev/sqh-credentials'
 import { LocalCredentialProvider, resolveSpec } from '../src/index.ts'
 
 function writeCredentials(file: string, text: string): Promise<void> {

@@ -3,12 +3,12 @@
  * `--session-id`, `--json`, and `--help`, then publishes
  * {@link HEADLESS_STARTUP_SERVICE}. The runner is an ordinary consumer whose
  * lazy config waits for that service.
- * @module @liusiqi-dev/dsh-headless/startup
+ * @module @liusiqi-dev/sqh-headless/startup
  */
 
 import { Command, CommanderError } from 'commander'
 import type { Context } from '@liusiqi-dev/cordis'
-import { parseCmdline } from '@liusiqi-dev/dsh-cmdline'
+import { parseCmdline } from '@liusiqi-dev/sqh-cmdline'
 import { boundJsonLine } from './json-stream.ts'
 import { internals } from './startup-internals.ts'
 

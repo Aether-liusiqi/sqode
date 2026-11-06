@@ -1,5 +1,5 @@
 /** Host registration for browser conversation preferences. */
-import type {} from '@liusiqi-dev/dsh-settings'
+import type {} from '@liusiqi-dev/sqh-settings'
 
 import type { Volatile, Context } from '@liusiqi-dev/cordis'
 import type { BusyEnterBehavior } from './submission-settings.ts'

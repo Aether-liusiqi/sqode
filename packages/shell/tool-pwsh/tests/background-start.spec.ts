@@ -1,5 +1,5 @@
 import { describe, expect, it, onTestFinished, vi } from 'vitest'
-import type { ShellProcess } from '@liusiqi-dev/dsh-shell'
+import type { ShellProcess } from '@liusiqi-dev/sqh-shell'
 import { processJob, processOutcome, processSources } from '../src/background.ts'
 
 function processHandle() {

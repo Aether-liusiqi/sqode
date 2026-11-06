@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
-import { SessionFormatEventCollector } from '@liusiqi-dev/dsh-session-format'
+import { SessionFormatEventCollector } from '@liusiqi-dev/sqh-session-format'
 import type {
   SessionFormatEvent,
   SessionFormatEventRun,
-} from '@liusiqi-dev/dsh-session-format'
+} from '@liusiqi-dev/sqh-session-format'
 import {
   RELEASED_V0_EVENT_TYPES,
   releasedV1SessionFormatCodec,

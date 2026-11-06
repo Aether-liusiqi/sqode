@@ -1,8 +1,8 @@
 /** Browser terminal identities, metadata and screen-stream frames. */
-import type { Branded } from '@liusiqi-dev/dsh-brand'
-import type {} from '@liusiqi-dev/dsh-typert-protocol'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
+import type {} from '@liusiqi-dev/sqh-typert-protocol'
 
-declare module '@liusiqi-dev/dsh-typert-protocol' {
+declare module '@liusiqi-dev/sqh-typert-protocol' {
   interface RemoteErrorDetailsMap {
     /** The terminal identity is missing or has begun process cleanup. */
     'terminal/unavailable': Record<string, never>

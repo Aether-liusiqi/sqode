@@ -4,8 +4,8 @@ import { resolve } from 'node:path'
 import ts from 'typescript'
 import type { MaybeMockedDeep } from '@vitest/spy'
 import { describe, expect, expectTypeOf, it } from 'vitest'
-import type { TypertRemoteNamespace, TypertRemoteNamespaceMap } from '@liusiqi-dev/dsh-typert-protocol'
-import type {} from '@liusiqi-dev/dsh-api-settings-controller/remote'
+import type { TypertRemoteNamespace, TypertRemoteNamespaceMap } from '@liusiqi-dev/sqh-typert-protocol'
+import type {} from '@liusiqi-dev/sqh-api-settings-controller/remote'
 import type { RemoteMock } from '../src/index.ts'
 
 const root = resolve(import.meta.dirname, '../../../..')
@@ -41,8 +41,8 @@ function compile(source: string, artifact?: string) {
     types: ['node'],
     paths: {
       '@liusiqi-dev/cordis': [cordisEntry],
-      '@liusiqi-dev/dsh-brand': [brandEntry],
-      '@liusiqi-dev/dsh-typert-protocol': [protocolEntry],
+      '@liusiqi-dev/sqh-brand': [brandEntry],
+      '@liusiqi-dev/sqh-typert-protocol': [protocolEntry],
       '@liusiqi-dev/fixture/remote': [artifactPath],
     },
   }
@@ -80,7 +80,7 @@ function compile(source: string, artifact?: string) {
 describe('RemoteMock proxy types', { timeout: 60_000 }, () => {
   it('keeps production closed while an empty generated map permits Mock calls and overrides', () => {
     compile(`
-import type { TypertRemoteNamespace, TypertClientRemote } from '@liusiqi-dev/dsh-typert-protocol'
+import type { TypertRemoteNamespace, TypertClientRemote } from '@liusiqi-dev/sqh-typert-protocol'
 import type { MockedRemote } from '../src/remote-proxy.ts'
 type IsAny<T> = 0 extends (1 & T) ? true : false
 declare const local: MockedRemote
@@ -124,7 +124,7 @@ void [argumentIsTyped, resultIsTyped, result]
 
   it('keeps partial and empty namespaces closed inside a non-empty map', () => {
     compile(`
-import type { TypertClientRemote, TypertRemoteNamespace } from '@liusiqi-dev/dsh-typert-protocol'
+import type { TypertClientRemote, TypertRemoteNamespace } from '@liusiqi-dev/sqh-typert-protocol'
 import type { MockedRemote } from '../src/remote-proxy.ts'
 import type {} from '@liusiqi-dev/fixture/remote'
 type PartialMap = { fixture: Pick<TypertRemoteNamespace<'fixture'>, 'echo'>; empty: {} }
@@ -166,15 +166,15 @@ void known
       fileName: proxyPath,
       compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2024 },
     })
-    expect(runtime.outputText).not.toContain('@liusiqi-dev/dsh-typert-protocol')
+    expect(runtime.outputText).not.toContain('@liusiqi-dev/sqh-typert-protocol')
     expect(runtime.outputText).not.toContain('@vitest/spy')
   })
 })
 
 /** Synthetic Remote methods exercise the mapping without copying business signatures. */
 const fixtureDeclaration = `
-import type { TypertRemoteNamespace } from '@liusiqi-dev/dsh-typert-protocol'
-declare module '@liusiqi-dev/dsh-typert-protocol' {
+import type { TypertRemoteNamespace } from '@liusiqi-dev/sqh-typert-protocol'
+declare module '@liusiqi-dev/sqh-typert-protocol' {
   interface TypertRemoteMap {
     'fixture/echo': (value: string) => number
     'fixture/watch': (after: number, signal?: AbortSignal) => AsyncIterable<number>

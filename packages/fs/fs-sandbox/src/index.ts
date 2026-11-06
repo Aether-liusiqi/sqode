@@ -1,6 +1,6 @@
 /**
  * `SandboxedFileSystem`: the sandbox-enforcing implementation of the
- * `@liusiqi-dev/dsh-fs` Service Definition. It extends `LocalFileSystem` so all
+ * `@liusiqi-dev/sqh-fs` Service Definition. It extends `LocalFileSystem` so all
  * text-storage mechanics — resolve, stat, read/stream, list, the atomic
  * write and the read-match-write edit critical section — are the local
  * implementation's, verbatim; this package adds only the per-call POLICY fence
@@ -12,7 +12,7 @@
  * and only the target path is untrusted, so canonicalize-then-contain is the
  * complete answer to this surface. This is containment, not a security
  * boundary; kernel-grade isolation of untrusted CODE stays `ctx.shell`'s job
- * (`@liusiqi-dev/dsh-bash-sandbox`). The residual
+ * (`@liusiqi-dev/sqh-bash-sandbox`). The residual
  * TOCTOU (an ancestor symlink swapped between the containment re-check and the
  * syscall) is narrowed by re-canonicalizing immediately before delegating and
  * is accepted for this threat model.
@@ -23,17 +23,17 @@
  * `danger-full-access` delegates unfenced. A denial throws the structured
  * `FS_SANDBOX_DENIED`.
  *
- * @module @liusiqi-dev/dsh-fs-sandbox
+ * @module @liusiqi-dev/sqh-fs-sandbox
  */
 
 import { Context } from '@liusiqi-dev/cordis'
-import { LocalFileSystem } from '@liusiqi-dev/dsh-fs-local'
-import type { Config as LocalConfig } from '@liusiqi-dev/dsh-fs-local'
-import { FsError } from '@liusiqi-dev/dsh-fs'
-import type { FsEditOutcome, FsEditRequest, FsTarget, FsVersion, FsWriteIntent, FsWriteOutcome } from '@liusiqi-dev/dsh-fs'
-import { writableRoots } from '@liusiqi-dev/dsh-sandbox'
-import type { SandboxExecutionPolicy, SandboxMode } from '@liusiqi-dev/dsh-sandbox'
-import type {} from '@liusiqi-dev/dsh-sandbox-policy'
+import { LocalFileSystem } from '@liusiqi-dev/sqh-fs-local'
+import type { Config as LocalConfig } from '@liusiqi-dev/sqh-fs-local'
+import { FsError } from '@liusiqi-dev/sqh-fs'
+import type { FsEditOutcome, FsEditRequest, FsTarget, FsVersion, FsWriteIntent, FsWriteOutcome } from '@liusiqi-dev/sqh-fs'
+import { writableRoots } from '@liusiqi-dev/sqh-sandbox'
+import type { SandboxExecutionPolicy, SandboxMode } from '@liusiqi-dev/sqh-sandbox'
+import type {} from '@liusiqi-dev/sqh-sandbox-policy'
 import { isPathUnder } from './containment.ts'
 
 /**

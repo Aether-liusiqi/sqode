@@ -1,6 +1,6 @@
 import { staticLinked } from '../tsdown.client.ts'
 
 export default staticLinked(
-  '@liusiqi-dev/dsh-client-store',
+  '@liusiqi-dev/sqh-client-store',
   ['lib/types/index.js'],
 )

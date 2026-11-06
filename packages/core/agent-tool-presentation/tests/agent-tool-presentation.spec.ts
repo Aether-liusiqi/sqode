@@ -8,18 +8,18 @@
 
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { createScope } from '@liusiqi-dev/dsh-scope'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import { PtcRuntime } from '@liusiqi-dev/dsh-ptc-runtime'
-import type { PtcRunRequest, PtcRunResult } from '@liusiqi-dev/dsh-ptc-runtime'
-import ToolRuntime, { RUN_CODE_NAME, defineTool } from '@liusiqi-dev/dsh-tools'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { SessionId } from '@liusiqi-dev/dsh-session'
-import { apply, Config, inject, name } from '@liusiqi-dev/dsh-agent-tool-presentation'
+import { createScope } from '@liusiqi-dev/sqh-scope'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import { PtcRuntime } from '@liusiqi-dev/sqh-ptc-runtime'
+import type { PtcRunRequest, PtcRunResult } from '@liusiqi-dev/sqh-ptc-runtime'
+import ToolRuntime, { RUN_CODE_NAME, defineTool } from '@liusiqi-dev/sqh-tools'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { SessionId } from '@liusiqi-dev/sqh-session'
+import { apply, Config, inject, name } from '@liusiqi-dev/sqh-agent-tool-presentation'
 
 /** A runtime that never runs anything: presentation never dispatches. */
 class StubRuntime extends PtcRuntime {
-  resolve(request: import('@liusiqi-dev/dsh-ptc-runtime').PtcRunRequest): import('@liusiqi-dev/dsh-ptc-runtime').PtcRunSpec { return { ...request, cwd: request.cwd ?? process.cwd(), timeoutMs: request.timeoutMs ?? 120_000 } }
+  resolve(request: import('@liusiqi-dev/sqh-ptc-runtime').PtcRunRequest): import('@liusiqi-dev/sqh-ptc-runtime').PtcRunSpec { return { ...request, cwd: request.cwd ?? process.cwd(), timeoutMs: request.timeoutMs ?? 120_000 } }
 
   readonly language = 'typescript'
   readonly isolation = 'stub'

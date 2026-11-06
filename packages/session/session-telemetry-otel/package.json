@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-session-telemetry-otel",
+  "name": "@liusiqi-dev/sqh-session-telemetry-otel",
   "description": "Feedback-authorized Session logs over byte-bounded OpenTelemetry HTTP requests",
   "version": "1.0.0",
   "publishConfig": {
@@ -33,32 +33,32 @@
     "@liusiqi-dev/schemastery": "workspace:~"
   },
   "peerDependencies": {
-    "@liusiqi-dev/dsh-command-feedback": "workspace:*",
-    "@liusiqi-dev/dsh-message-feedback": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-telemetry": "workspace:*",
-    "@liusiqi-dev/dsh-anonymous-user-id": "workspace:*",
+    "@liusiqi-dev/sqh-command-feedback": "workspace:*",
+    "@liusiqi-dev/sqh-message-feedback": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-telemetry": "workspace:*",
+    "@liusiqi-dev/sqh-anonymous-user-id": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-otel": "workspace:*"
+    "@liusiqi-dev/sqh-otel": "workspace:*"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis-plugin-logger-console": "workspace:~",
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
-    "@liusiqi-dev/dsh-app-boot": "workspace:*",
-    "@liusiqi-dev/dsh-bash-local": "workspace:*",
-    "@liusiqi-dev/dsh-command-feedback": "workspace:*",
-    "@liusiqi-dev/dsh-message-feedback": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-loader-smoke": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-checkpoint-policy": "workspace:*",
-    "@liusiqi-dev/dsh-session-persistence-jsonl": "workspace:*",
-    "@liusiqi-dev/dsh-session-telemetry": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess-local": "workspace:*",
-    "@liusiqi-dev/dsh-anonymous-user-id": "workspace:*",
+    "@liusiqi-dev/sqh-app-boot": "workspace:*",
+    "@liusiqi-dev/sqh-bash-local": "workspace:*",
+    "@liusiqi-dev/sqh-command-feedback": "workspace:*",
+    "@liusiqi-dev/sqh-message-feedback": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-loader-smoke": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-checkpoint-policy": "workspace:*",
+    "@liusiqi-dev/sqh-session-persistence-jsonl": "workspace:*",
+    "@liusiqi-dev/sqh-session-telemetry": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess-local": "workspace:*",
+    "@liusiqi-dev/sqh-anonymous-user-id": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-http-proxy": "workspace:*",
-    "@liusiqi-dev/dsh-otel": "workspace:*"
+    "@liusiqi-dev/sqh-http-proxy": "workspace:*",
+    "@liusiqi-dev/sqh-otel": "workspace:*"
   }
 }

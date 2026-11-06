@@ -1,8 +1,8 @@
 /** Authoritative Schedule queries and deletion for Session and Host catalogs. */
 
-import type { RemoteResult } from '@liusiqi-dev/dsh-api-remotes/client'
-import type { HostObservable } from '@liusiqi-dev/dsh-client-ui-slots'
-import type { ScheduleDeleteResult, ScheduleId, ScheduleRecord } from '@liusiqi-dev/dsh-schedule/client'
+import type { RemoteResult } from '@liusiqi-dev/sqh-api-remotes/client'
+import type { HostObservable } from '@liusiqi-dev/sqh-client-ui-slots'
+import type { ScheduleDeleteResult, ScheduleId, ScheduleRecord } from '@liusiqi-dev/sqh-schedule/client'
 
 /** How one deletion settled; the wiring reports it as a transient notice. */
 export type CatalogDeleteOutcome = 'deleted' | 'failed' | 'pending'

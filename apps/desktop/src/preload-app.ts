@@ -1,6 +1,6 @@
 /** Origin-scoped boot, native directory selection, host paths of picked files, and update presentation with native confirmation actions. */
 
-import type { DesktopShortcutInput, ShortcutConfigSnapshot, ShortcutSaveResult } from '@liusiqi-dev/dsh-client-shortcuts/protocol'
+import type { DesktopShortcutInput, ShortcutConfigSnapshot, ShortcutSaveResult } from '@liusiqi-dev/sqh-client-shortcuts/protocol'
 import { contextBridge, ipcRenderer, webUtils } from 'electron'
 import {
   DESKTOP_IPC, SCHEME, type DesktopFeedbackSaved, type SqhDesktopProductApi, type DesktopUpdatePresentation,

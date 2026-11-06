@@ -2,7 +2,7 @@
 import { Context } from '@liusiqi-dev/cordis'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, render } from '@testing-library/react'
-import { SlotRegistry } from '@liusiqi-dev/dsh-client-ui-renderer/client'
+import { SlotRegistry } from '@liusiqi-dev/sqh-client-ui-renderer/client'
 import { apply, inject } from '../src/client/index.ts'
 import { OfficialBrandMark, OfficialBrandName } from '../src/client/Brand.tsx'
 import { apply as hostApply } from '../src/index.ts'

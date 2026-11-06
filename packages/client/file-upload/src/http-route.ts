@@ -1,8 +1,8 @@
 /** Authenticated raw-byte upload route registered on the Connection fetch registry. */
 
-import { brandString } from '@liusiqi-dev/dsh-brand'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
-import { remoteErrorOf } from '@liusiqi-dev/dsh-typert-protocol'
+import { brandString } from '@liusiqi-dev/sqh-brand'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
+import { remoteErrorOf } from '@liusiqi-dev/sqh-typert-protocol'
 import type { FileUploads } from './index.ts'
 import type { FileUploadValue } from './types.ts'
 

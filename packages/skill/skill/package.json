@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-skill",
+  "name": "@liusiqi-dev/sqh-skill",
   "description": "Agent skill provider registry for the Siqi Harness",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,16 +28,16 @@
   "license": "MIT",
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-scope": "workspace:*"
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-scope": "workspace:*"
   },
   "dependencies": {
-    "@liusiqi-dev/dsh-util-values": "workspace:*",
+    "@liusiqi-dev/sqh-util-values": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-scope": "workspace:*"
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-scope": "workspace:*"
   }
 }

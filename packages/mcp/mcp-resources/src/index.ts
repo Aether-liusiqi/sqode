@@ -1,14 +1,14 @@
 /**
  * Scoped MCP resource providers and the shared model-facing resource tools.
  *
- * @module @liusiqi-dev/dsh-mcp-resources
+ * @module @liusiqi-dev/sqh-mcp-resources
  */
 
 import { Service, type Context } from '@liusiqi-dev/cordis'
-import { createScope, NamedEntries, ScopedLayers, scopeOf, type ScopeKey, type ScopeLayer } from '@liusiqi-dev/dsh-scope'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
-import type { ToolExecution } from '@liusiqi-dev/dsh-tools'
-import type {} from '@liusiqi-dev/dsh-system-prompt'
+import { createScope, NamedEntries, ScopedLayers, scopeOf, type ScopeKey, type ScopeLayer } from '@liusiqi-dev/sqh-scope'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
+import type { ToolExecution } from '@liusiqi-dev/sqh-tools'
+import type {} from '@liusiqi-dev/sqh-system-prompt'
 import { registerResourceTools } from './tools.ts'
 
 declare module '@liusiqi-dev/cordis' {

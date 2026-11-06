@@ -3,7 +3,7 @@ description: "Right-Sidebar browser tabs for sandboxed HTTP(S) pages, including 
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-ui-sidebar-browser
+# @liusiqi-dev/sqh-client-ui-sidebar-browser
 
 English | [中文](README.zh.md)
 

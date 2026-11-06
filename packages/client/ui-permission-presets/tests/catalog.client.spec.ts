@@ -2,9 +2,9 @@ import { Context } from '@liusiqi-dev/cordis'
 import { describe, expect, it, vi } from 'vitest'
 import type {
   ConnectionGeneration, ConnectionHandle,
-} from '@liusiqi-dev/dsh-client-connection/client'
-import { TestRemote } from '@liusiqi-dev/dsh-client-test-runtime'
-import type { PermissionCatalog } from '@liusiqi-dev/dsh-permission-presets/client'
+} from '@liusiqi-dev/sqh-client-connection/client'
+import { TestRemote } from '@liusiqi-dev/sqh-client-test-runtime'
+import type { PermissionCatalog } from '@liusiqi-dev/sqh-permission-presets/client'
 import { PermissionCatalogDirectory } from '../src/client/catalog.ts'
 
 const FIRST: PermissionCatalog = {

@@ -1,21 +1,21 @@
 /** Question composer props and one pending Remote waterfall response. */
-import type { InjectFace, PropsLocale, PropsRenderSlots, PropsRuntime, PropsStore } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { InjectFace, PropsLocale, PropsRenderSlots, PropsRuntime, PropsStore } from '@liusiqi-dev/sqh-client-ui-slots'
 // The client module declares the conversation.composer SlotMap entry required by PropsRuntime.
-import type { ToolCallId } from '@liusiqi-dev/dsh-llm/brand'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { ToolCallId } from '@liusiqi-dev/sqh-llm/brand'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import type {
   AskUserQuestionAnswer, AskUserQuestionAnswerItem, AskUserQuestionItem, UserQuestionState,
-} from '@liusiqi-dev/dsh-user-questions/types'
+} from '@liusiqi-dev/sqh-user-questions/types'
 import type { createQuestionDraftStore } from '../draft-store.ts'
 
-declare module '@liusiqi-dev/dsh-client-ui-session/client' {
+declare module '@liusiqi-dev/sqh-client-ui-session/client' {
   interface SessionPendingInteractionMap {
     /** Pending question or plan-review request. */
     question: PendingQuestion
   }
 }
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface SlotMap {
     /** Actions for the exact plan under review; approval remains with the question composer. */
     'conversation.plan-review.actions': { kind: 'list'; scope: 'session'; owner: { review: PlanReview; requestKey: PendingQuestion['key'] } }

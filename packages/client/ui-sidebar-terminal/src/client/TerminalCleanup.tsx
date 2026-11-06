@@ -1,9 +1,9 @@
 /** Failed background cleanup remains actionable after the originating tab disappears. */
 import type { ReactNode } from 'react'
-import type { TerminalCloseFailure } from '@liusiqi-dev/dsh-api-terminal-controller/client'
-import type { WebTerminalId } from '@liusiqi-dev/dsh-api-terminal-controller/types'
-import type { HostObservable, InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
-import type {} from '@liusiqi-dev/dsh-client-ui-layout/client'
+import type { TerminalCloseFailure } from '@liusiqi-dev/sqh-api-terminal-controller/client'
+import type { WebTerminalId } from '@liusiqi-dev/sqh-api-terminal-controller/types'
+import type { HostObservable, InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
+import type {} from '@liusiqi-dev/sqh-client-ui-layout/client'
 import type {} from './locales.ts'
 import css from './TerminalCleanup.module.css'
 

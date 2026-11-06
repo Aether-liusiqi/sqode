@@ -10,13 +10,13 @@ import {
   type SessionHeader,
   type SessionLogOffset as SessionLogOffsetType,
   type SessionSeq as SessionSeqType,
-} from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-session'
 import {
   eventLines, generationLogFilename, projectKey, toHeaderLine,
-} from '@liusiqi-dev/dsh-session-persistence-jsonl/src/format.ts'
-import { projectionCacheDomainSpec } from '@liusiqi-dev/dsh-session-projection-cache'
-import { scheduleDomain } from '@liusiqi-dev/dsh-schedule'
-import { snapshotSubagentDescriptor } from '@liusiqi-dev/dsh-subagent'
+} from '@liusiqi-dev/sqh-session-persistence-jsonl/src/format.ts'
+import { projectionCacheDomainSpec } from '@liusiqi-dev/sqh-session-projection-cache'
+import { scheduleDomain } from '@liusiqi-dev/sqh-schedule'
+import { snapshotSubagentDescriptor } from '@liusiqi-dev/sqh-subagent'
 
 /** Root copied by the preview image's repository adapter. */
 export const VFS_EXAMPLE_ROOT = fileURLToPath(new URL('./fixtures/vfs-example', import.meta.url))

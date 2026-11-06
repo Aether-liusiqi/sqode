@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-api-remotes",
+  "name": "@liusiqi-dev/sqh-api-remotes",
   "description": "Remote BFF assembly for application-selected Host capabilities",
   "version": "1.0.0",
   "publishConfig": {
@@ -32,7 +32,7 @@
   "dsh": {
     "client": {
       "inject": [
-        "@liusiqi-dev/dsh-api-gateway"
+        "@liusiqi-dev/sqh-api-gateway"
       ],
       "platform": "web",
       "immediately": true
@@ -50,51 +50,51 @@
     "lib/types/**/*.d.ts"
   ],
   "dependencies": {
-    "@liusiqi-dev/dsh-deque": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-util-values": "workspace:*"
+    "@liusiqi-dev/sqh-deque": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-util-values": "workspace:*"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-scope": "workspace:*"
+    "@liusiqi-dev/sqh-scope": "workspace:*"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-agent-preset-registry": "workspace:*",
-    "@liusiqi-dev/dsh-api-gateway": "workspace:*",
-    "@liusiqi-dev/dsh-api-job-controller": "workspace:*",
-    "@liusiqi-dev/dsh-api-session-controller": "workspace:*",
-    "@liusiqi-dev/dsh-api-settings-controller": "workspace:*",
-    "@liusiqi-dev/dsh-api-workspace-controller": "workspace:*",
-    "@liusiqi-dev/dsh-api-workspace-files": "workspace:*",
-    "@liusiqi-dev/dsh-client-connection": "workspace:*",
-    "@liusiqi-dev/dsh-client-file-upload": "workspace:*",
-    "@liusiqi-dev/dsh-commands": "workspace:*",
-    "@liusiqi-dev/dsh-cordis-host-runner": "workspace:*",
-    "@liusiqi-dev/dsh-credentials": "workspace:*",
-    "@liusiqi-dev/dsh-file-reference": "workspace:*",
-    "@liusiqi-dev/dsh-goal": "workspace:*",
-    "@liusiqi-dev/dsh-host-plugin-inventory": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-message-feedback": "workspace:*",
-    "@liusiqi-dev/dsh-permission-presets": "workspace:*",
-    "@liusiqi-dev/dsh-schedule": "workspace:*",
-    "@liusiqi-dev/dsh-scope": "workspace:*",
-    "@liusiqi-dev/dsh-session-reference": "workspace:*",
-    "@liusiqi-dev/dsh-settings": "workspace:*",
-    "@liusiqi-dev/dsh-subagent": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
-    "@liusiqi-dev/dsh-user-approval": "workspace:*",
-    "@liusiqi-dev/dsh-user-questions": "workspace:*",
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-agent-preset-registry": "workspace:*",
+    "@liusiqi-dev/sqh-api-gateway": "workspace:*",
+    "@liusiqi-dev/sqh-api-job-controller": "workspace:*",
+    "@liusiqi-dev/sqh-api-session-controller": "workspace:*",
+    "@liusiqi-dev/sqh-api-settings-controller": "workspace:*",
+    "@liusiqi-dev/sqh-api-workspace-controller": "workspace:*",
+    "@liusiqi-dev/sqh-api-workspace-files": "workspace:*",
+    "@liusiqi-dev/sqh-client-connection": "workspace:*",
+    "@liusiqi-dev/sqh-client-file-upload": "workspace:*",
+    "@liusiqi-dev/sqh-commands": "workspace:*",
+    "@liusiqi-dev/sqh-cordis-host-runner": "workspace:*",
+    "@liusiqi-dev/sqh-credentials": "workspace:*",
+    "@liusiqi-dev/sqh-file-reference": "workspace:*",
+    "@liusiqi-dev/sqh-goal": "workspace:*",
+    "@liusiqi-dev/sqh-host-plugin-inventory": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-message-feedback": "workspace:*",
+    "@liusiqi-dev/sqh-permission-presets": "workspace:*",
+    "@liusiqi-dev/sqh-schedule": "workspace:*",
+    "@liusiqi-dev/sqh-scope": "workspace:*",
+    "@liusiqi-dev/sqh-session-reference": "workspace:*",
+    "@liusiqi-dev/sqh-settings": "workspace:*",
+    "@liusiqi-dev/sqh-subagent": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/sqh-user-approval": "workspace:*",
+    "@liusiqi-dev/sqh-user-questions": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~",
     "zod": "^4.4.3",
-    "@liusiqi-dev/dsh-command-feedback": "workspace:*",
-    "@liusiqi-dev/dsh-api-terminal-controller": "workspace:*",
-    "@liusiqi-dev/dsh-plugin-manager": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-plugin-manager": "workspace:*",
-    "@liusiqi-dev/dsh-office-to-pdf": "workspace:*",
-    "@liusiqi-dev/dsh-api-account-controller": "workspace:*",
-    "@liusiqi-dev/dsh-deepseek-account": "workspace:*",
-    "@liusiqi-dev/dsh-client-product-analytics": "workspace:*"
+    "@liusiqi-dev/sqh-command-feedback": "workspace:*",
+    "@liusiqi-dev/sqh-api-terminal-controller": "workspace:*",
+    "@liusiqi-dev/sqh-plugin-manager": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-plugin-manager": "workspace:*",
+    "@liusiqi-dev/sqh-office-to-pdf": "workspace:*",
+    "@liusiqi-dev/sqh-api-account-controller": "workspace:*",
+    "@liusiqi-dev/sqh-deepseek-account": "workspace:*",
+    "@liusiqi-dev/sqh-client-product-analytics": "workspace:*"
   }
 }

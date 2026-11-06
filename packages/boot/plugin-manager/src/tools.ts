@@ -1,13 +1,13 @@
 /** Agent-facing current-profile management using the same service as Web controls. */
-import { assertNever } from '@liusiqi-dev/dsh-util-values'
+import { assertNever } from '@liusiqi-dev/sqh-util-values'
 import type { Context } from '@liusiqi-dev/cordis'
 import type {} from './index.ts'
-import type {} from '@liusiqi-dev/dsh-sandbox-policy'
-import type {} from '@liusiqi-dev/dsh-user-approval'
-import { approveEscalation } from '@liusiqi-dev/dsh-sandbox'
+import type {} from '@liusiqi-dev/sqh-sandbox-policy'
+import type {} from '@liusiqi-dev/sqh-user-approval'
+import { approveEscalation } from '@liusiqi-dev/sqh-sandbox'
 import type { PluginEntryId } from './types.ts'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
-import { getDshRuntimeVersion } from '@liusiqi-dev/dsh-app-boot'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
+import { getDshRuntimeVersion } from '@liusiqi-dev/sqh-app-boot'
 
 /** Required services for the management tool. */
 export const inject = ['tools', 'pluginManager', 'sandboxPolicy']

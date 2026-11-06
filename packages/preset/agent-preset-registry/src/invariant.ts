@@ -1,20 +1,20 @@
 /**
- * Package-owned invariant companion for `@liusiqi-dev/dsh-agent-preset-registry`.
- * @module @liusiqi-dev/dsh-agent-preset-registry/invariant
+ * Package-owned invariant companion for `@liusiqi-dev/sqh-agent-preset-registry`.
+ * @module @liusiqi-dev/sqh-agent-preset-registry/invariant
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
+import type { InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
 // Type-only: resolves the `system-prompt/assemble` waterfall this companion
 // joins, and the `agent` field `dsh-agent` merges into its context.
-import type {} from '@liusiqi-dev/dsh-system-prompt'
-import type {} from '@liusiqi-dev/dsh-agent'
+import type {} from '@liusiqi-dev/sqh-system-prompt'
+import type {} from '@liusiqi-dev/sqh-agent'
 // Imported through the package name, not `./mount.ts`: a module shared between
 // the two build entry points becomes a third chunk that the published `files`
 // list does not carry, which `verify-built-package-invariants` rejects.
-import { leakedServices, livePresetMounts } from '@liusiqi-dev/dsh-agent-preset-registry'
+import { leakedServices, livePresetMounts } from '@liusiqi-dev/sqh-agent-preset-registry'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-agent-preset-registry'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-agent-preset-registry'
 
 /** Cordis companion plugin name. */
 export const name = 'agent-presets-invariant'

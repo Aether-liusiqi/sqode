@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
-import type { SettingsPathOpView } from '@liusiqi-dev/dsh-api-remotes/client'
-import { stubConfigForm, type StubConfigForm } from '@liusiqi-dev/dsh-client-test-runtime'
+import type { SettingsPathOpView } from '@liusiqi-dev/sqh-api-remotes/client'
+import { stubConfigForm, type StubConfigForm } from '@liusiqi-dev/sqh-client-test-runtime'
 import { ShellCardController, type ShellSettings } from '../src/client/shell-card-controller.ts'
 
 /** Make the stub behave like a Host that accepts every write. */

@@ -6,16 +6,16 @@
  * Export discipline:
  * packages/client/AGENTS.md.
  */
-import type {} from '@liusiqi-dev/dsh-client-product-analytics/client'
+import type {} from '@liusiqi-dev/sqh-client-product-analytics/client'
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
 // Type-only: pulls the shell's SlotMap merge (the 'settings.section' entry).
-import type {} from '@liusiqi-dev/dsh-client-ui-settings/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-settings/client'
 // Type-only: pulls the locale plugin's Context merge (ctx.locale).
-import type {} from '@liusiqi-dev/dsh-client-locale/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
+import type {} from '@liusiqi-dev/sqh-client-locale/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
 // Type-only: pulls the ctx.remote merge and the forwarded-event key face
 // (settings/credentials invalidations ride the allowlist) into this program.
-import type {} from '@liusiqi-dev/dsh-api-remotes/client'
+import type {} from '@liusiqi-dev/sqh-api-remotes/client'
 import { ModelsSection } from './ModelsSection.tsx'
 import type { ModelsSectionInjected } from './ModelsSection.tsx'
 import { DeepSeekOnboardingDialog } from './DeepSeekOnboardingDialog.tsx'
@@ -34,7 +34,7 @@ export type { ModelsSectionInjected, ModelsSectionProps } from './ModelsSection.
 export type { ModelsFooterOwnerProps, ProviderCardExtrasOwnerProps } from './slot-contract.ts'
 export type { ModelsKey } from './locales.ts'
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** The Models page + product-onboarding copy. */
     'settings.models': ModelsKey

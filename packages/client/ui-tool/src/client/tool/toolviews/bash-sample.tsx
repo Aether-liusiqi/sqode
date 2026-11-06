@@ -4,8 +4,8 @@ import clsx from 'clsx'
 import {
   IconApiOutlineRegular, IconChevronDownOutlineRegular, IconChevronUpOutlineRegular, IconInspectOutlineRegular,
   TerminalBlock, TextShimmer,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { PropsLocale } from '@liusiqi-dev/dsh-client-ui-slots'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { PropsLocale } from '@liusiqi-dev/sqh-client-ui-slots'
 import type { ToolCallViewProps } from '../../contract/slots.ts'
 import {
   isSettledPersistentShellCall,

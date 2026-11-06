@@ -1,10 +1,10 @@
 /** Workspace command registration and browser-owned opening requests. */
 import type { Context } from '@liusiqi-dev/cordis'
-import type { SessionForkError } from '@liusiqi-dev/dsh-api-session-controller/client'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { ShortcutCommand, ShortcutCommandId } from '@liusiqi-dev/dsh-client-shortcuts/client'
-import type { SnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { SessionForkError } from '@liusiqi-dev/sqh-api-session-controller/client'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { ShortcutCommand, ShortcutCommandId } from '@liusiqi-dev/sqh-client-shortcuts/client'
+import type { SnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import type { UiWorkspace } from './navigation.ts'
 
 /** Transient requests consumed by the existing workspace browser. */

@@ -4,14 +4,14 @@
  * Session's feedback dialog, whose submission records that judgment with its
  * category and text. Clicking the recorded rating retracts it. A recorded rating
  * shows the filled glyph so the signal survives a pointer leaving the row.
- * @module @liusiqi-dev/dsh-client-ui-message-feedback/client/MessageFeedbackActions
+ * @module @liusiqi-dev/sqh-client-ui-message-feedback/client/MessageFeedbackActions
  */
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   IconDislikeFillRegular, IconDislikeOutlineRegular, IconLikeFillRegular, IconLikeOutlineRegular, Tooltip,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { MessageFeedbackRating } from '@liusiqi-dev/dsh-message-feedback/types'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { MessageFeedbackRating } from '@liusiqi-dev/sqh-message-feedback/types'
 import type { MessageFeedbackActionFailure } from './controller.ts'
 import type { MessageFeedbackActionProps } from './slots.ts'
 import css from './MessageFeedbackActions.module.css'

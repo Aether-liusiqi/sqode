@@ -8,7 +8,7 @@
  * Not part of the product plugin graph (no `dsh.client`); feature packages
  * depend on it in devDependencies only. It copies no SlotCore/renderer/store
  * machinery — everything mounts the production implementations.
- * @module @liusiqi-dev/dsh-client-test-runtime
+ * @module @liusiqi-dev/sqh-client-test-runtime
  */
 /* oxlint-disable typescript/no-redundant-type-constituents --
  * `keyof SlotMap & string` is the declare-merge key pattern (see ui-slots):
@@ -22,28 +22,28 @@ import { act, render, within } from '@testing-library/react'
 import type { RenderResult } from '@testing-library/react'
 import type { queries } from '@testing-library/dom'
 import type { BoundFunctions } from '@testing-library/dom'
-import { SlotRegistry } from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import { bindSnapshotSelector as bindRendererSnapshotSelector } from '@liusiqi-dev/dsh-client-ui-renderer/src/client/bind.ts'
-import { createSlotRenderer as createRenderer } from '@liusiqi-dev/dsh-client-ui-renderer/src/client/scoped-slots.tsx'
+import { SlotRegistry } from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import { bindSnapshotSelector as bindRendererSnapshotSelector } from '@liusiqi-dev/sqh-client-ui-renderer/src/client/bind.ts'
+import { createSlotRenderer as createRenderer } from '@liusiqi-dev/sqh-client-ui-renderer/src/client/scoped-slots.tsx'
 import {
   apply as applyUiSession, inject as uiSessionInject,
-} from '@liusiqi-dev/dsh-client-ui-session/client'
-import type { SessionReference } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { PanelInfo } from '@liusiqi-dev/dsh-client-ui-layout/client'
+} from '@liusiqi-dev/sqh-client-ui-session/client'
+import type { SessionReference } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { PanelInfo } from '@liusiqi-dev/sqh-client-ui-layout/client'
 import type {
   ChildrenDecl, ComposedProps, HostObservable, OwnerOf, RenderOpts, SlotComponent, SlotMap, SlotRenderer,
   ScopedStandardSourceBinding, SessionProviderComponent, SlotEntryDef, SlotFactoryMap, SlotRendererHost, SlotSpec,
   SnapshotSelectorHook, StoredFactory, StoreInstanceLike,
-} from '@liusiqi-dev/dsh-client-ui-slots'
+} from '@liusiqi-dev/sqh-client-ui-slots'
 import { registerDomSnapshotSerializer } from './snapshot.ts'
 import { TestRemote } from './remote.ts'
 import { TestSessions } from './sessions.ts'
 import { TestWorkspaces } from './workspaces.ts'
 import type { Stabilizer } from './fixtures.ts'
 
-export type { UseSession } from '@liusiqi-dev/dsh-client-ui-session/client'
+export type { UseSession } from '@liusiqi-dev/sqh-client-ui-session/client'
 export { domSnapshotSerializer, registerDomSnapshotSerializer } from './snapshot.ts'
 export { FixtureSession, TestSessions } from './sessions.ts'
 export { stubConfigForm } from './config-form.ts'

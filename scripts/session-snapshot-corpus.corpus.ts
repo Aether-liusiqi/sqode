@@ -16,7 +16,7 @@ import {
   sessionFixtureFiles,
   sessionFixtureNames,
   type SnapshotManifest,
-} from '@liusiqi-dev/dsh-session-snapshot'
+} from '@liusiqi-dev/sqh-session-snapshot'
 import { assertSnapshotCorpusPolicy } from './session-snapshot-corpus-policy.ts'
 
 const repoRoot = resolve(import.meta.dirname, '..')

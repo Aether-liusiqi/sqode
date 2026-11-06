@@ -1,7 +1,7 @@
-import type { ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import { Button, Modal } from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import { Button, Modal } from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
 import type { SessionLogDownloadState } from './controller.ts'
 import { NS } from './locales.ts'
 

@@ -1,9 +1,9 @@
-import type { LlmFailure } from '@liusiqi-dev/dsh-llm/types'
+import type { LlmFailure } from '@liusiqi-dev/sqh-llm/types'
 import type { RetryId } from './brand.ts'
 
 export type { RetryId }
 
-declare module '@liusiqi-dev/dsh-session/types' {
+declare module '@liusiqi-dev/sqh-session/types' {
   interface SessionEventMap {
     /** Durable, non-surface record of one provider-routed retry scheduled after a failed request attempt. */
     'llm/retry': LlmRetryEventData

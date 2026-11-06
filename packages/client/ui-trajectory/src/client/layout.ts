@@ -11,8 +11,8 @@ import type {
   RequestView,
   ToolCallBlock,
   ToolResultNode,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type { FileAttachmentRef, ImageAttachmentRef } from '@liusiqi-dev/dsh-attachment'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type { FileAttachmentRef, ImageAttachmentRef } from '@liusiqi-dev/sqh-attachment'
 import type {
   TrajectoryCellProps,
   TrajectorySourceBlock,

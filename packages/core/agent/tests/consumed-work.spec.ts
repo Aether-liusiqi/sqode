@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import { Session, SessionId } from '@liusiqi-dev/dsh-session'
-import type { TurnEndReason } from '@liusiqi-dev/dsh-session'
-import { foldConsumedWork } from '@liusiqi-dev/dsh-agent'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import { Session, SessionId } from '@liusiqi-dev/sqh-session'
+import type { TurnEndReason } from '@liusiqi-dev/sqh-session'
+import { foldConsumedWork } from '@liusiqi-dev/sqh-agent'
 
 /** One pending message, as the inbox records it. */
 function message(text: string) {

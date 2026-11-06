@@ -1,22 +1,22 @@
 import { describe, expect, expectTypeOf, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import LlmRuntime, { createUserMessage, ToolCallId, HarnessError, type ContentBlock  } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { Session, SessionId } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import AgentRegistry, { type Agent } from '@liusiqi-dev/dsh-agent'
-import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
-import ApprovalService, { type ApprovalOutcome, type ApprovalRequest } from '@liusiqi-dev/dsh-user-approval'
+import LlmRuntime, { createUserMessage, ToolCallId, HarnessError, type ContentBlock  } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { Session, SessionId } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import AgentRegistry, { type Agent } from '@liusiqi-dev/sqh-agent'
+import AgentLoop from '@liusiqi-dev/sqh-agent-loop'
+import ApprovalService, { type ApprovalOutcome, type ApprovalRequest } from '@liusiqi-dev/sqh-user-approval'
 import ToolRuntime, {
   defineContentToolFixture, defineTool, JsonSchemaError, parameterSchemaSpecToJsonSchema, validateArgs, ToolArgsError, ToolNotFoundError,
   TOOL_ABORTED, TOOL_ABORTED_BEFORE_DISPATCH,
   type InferArgs, type ParameterSchemaSpec, type PreToolDecision, type PostToolDecision,
   type JsonSchemaNode, type ToolDefinition, type ToolDispatchExecution, type ToolExecutionResult, type ToolExecutionToken,
-} from '@liusiqi-dev/dsh-tools'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
+} from '@liusiqi-dev/sqh-tools'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'blocker': { kind: 'blocker' } & ContextFormed
     'child': { kind: 'child' } & ContextFormed
@@ -734,7 +734,7 @@ describe('ToolRuntime', () => {
   })
 
   it('ToolNotFoundError carries a stable message and code', async () => {
-    const { HarnessError } = await import('@liusiqi-dev/dsh-llm')
+    const { HarnessError } = await import('@liusiqi-dev/sqh-llm')
     const err = new ToolNotFoundError('ghost')
     expect(err).toBeInstanceOf(HarnessError)
     expect(err.name).toBe('ToolNotFoundError')
@@ -2740,7 +2740,7 @@ describe('defineTool validation (the runtime-validation Agent Note, part 1)', ()
   })
 
   it('a tool throwing a HarnessError surfaces its name and code', async () => {
-    const { HarnessError } = await import('@liusiqi-dev/dsh-llm')
+    const { HarnessError } = await import('@liusiqi-dev/sqh-llm')
     const ctx = await setup()
     ctx.tools.register({
       ...echoTool,

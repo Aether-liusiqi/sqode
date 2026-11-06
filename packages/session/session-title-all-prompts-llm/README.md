@@ -3,7 +3,7 @@ description: "All-messages LLM session-title provider for users and maintainers 
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-session-title-all-prompts-llm
+# @liusiqi-dev/sqh-session-title-all-prompts-llm
 
 English | [中文](README.zh.md)
 

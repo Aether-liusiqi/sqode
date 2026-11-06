@@ -1,7 +1,7 @@
 /** Select and log permanent image omissions in current model-request order. */
 
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import type { Session, SessionSeq } from '@liusiqi-dev/dsh-session'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import type { Session, SessionSeq } from '@liusiqi-dev/sqh-session'
 import type { ImageOffloadTarget } from './projection.ts'
 
 /**

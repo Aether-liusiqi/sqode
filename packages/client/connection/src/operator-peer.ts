@@ -2,13 +2,13 @@
  * The operator Peer: the one party this Host answers to. Connection owns it
  * for its own lifetime, admits every request as it, and hands it to each
  * Remote call as `invocation.peer`.
- * @module @liusiqi-dev/dsh-client-connection/src/operator-peer
+ * @module @liusiqi-dev/sqh-client-connection/src/operator-peer
  */
 
 import { randomUUID } from 'node:crypto'
 import type { Context } from '@liusiqi-dev/cordis'
-import { createScope, type Scope } from '@liusiqi-dev/dsh-scope'
-import type { PeerId, PeerScope } from '@liusiqi-dev/dsh-typert-protocol'
+import { createScope, type Scope } from '@liusiqi-dev/sqh-scope'
+import type { PeerId, PeerScope } from '@liusiqi-dev/sqh-typert-protocol'
 
 /**
  * The operator's scope. The instance is its own scope key, so `scopeOf(peer.ctx)`

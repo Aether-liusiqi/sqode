@@ -4,12 +4,12 @@
  * {@link CompactionEngine}. This interface necessarily depends on session and LLM
  * vocabulary; the rationale is in the
  * [compaction Agent Note](../../../../.agents/notes/implemented/feature/2026-06-18-compaction-capability-seam.md).
- * @module @liusiqi-dev/dsh-compaction
+ * @module @liusiqi-dev/sqh-compaction
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'
-import type { Session, SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { CommandId } from '@liusiqi-dev/dsh-commands/brand'
+import type { Session, SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { CommandId } from '@liusiqi-dev/sqh-commands/brand'
 import type { CompactionResult } from './types.ts'
 import type { CompactionCheckpointSource } from './checkpoint.ts'
 
@@ -22,7 +22,7 @@ export { toolPairingBalancedAfter, toolPairingBalancedBefore } from './tool-pair
 export { compactCheckpointSource, isCompactCheckpointSource } from './checkpoint.ts'
 export type { CompactionCheckpointSource } from './checkpoint.ts'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'compact-checkpoint': CompactionCheckpointSource
   }

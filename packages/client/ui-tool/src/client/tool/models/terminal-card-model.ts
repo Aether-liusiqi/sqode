@@ -1,8 +1,8 @@
 /** Pure terminal-card derivation from raw Tool call and result fields. @module */
-import type { TerminalBlockLabels, TerminalBlockProps } from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { TranslateNS } from '@liusiqi-dev/dsh-client-ui-slots'
-import { resolveWorkspacePath } from '@liusiqi-dev/dsh-util-workspace-path'
-import { hasSpillNotice } from '@liusiqi-dev/dsh-spill-policy/notice'
+import type { TerminalBlockLabels, TerminalBlockProps } from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { TranslateNS } from '@liusiqi-dev/sqh-client-ui-slots'
+import { resolveWorkspacePath } from '@liusiqi-dev/sqh-util-workspace-path'
+import { hasSpillNotice } from '@liusiqi-dev/sqh-spill-policy/notice'
 import type { ToolCallBlock } from './tool-call-model.ts'
 import { parsedToolCall, singleResultText, validEscalationFields } from './raw-tool-call.ts'
 
@@ -258,7 +258,7 @@ function terminalSendCall(name: string, args: Record<string, unknown>): Terminal
 }
 
 /**
- * Parse the marker literals owned by `@liusiqi-dev/dsh-shell/render` without
+ * Parse the marker literals owned by `@liusiqi-dev/sqh-shell/render` without
  * importing that Host-only package into the Client dependency graph.
  * @param text - rendered shell result text.
  * @returns output with a trailing exit-code or signal marker extracted.

@@ -1,7 +1,7 @@
 /** First-class tool-role messages in the V4 representation. */
 
-import { SessionFormatError, SessionFormatUnsupportedMigrationError, isSessionFormatJsonObject } from '@liusiqi-dev/dsh-session-format'
-import type { SessionFormatEvent, SessionFormatJsonValue } from '@liusiqi-dev/dsh-session-format'
+import { SessionFormatError, SessionFormatUnsupportedMigrationError, isSessionFormatJsonObject } from '@liusiqi-dev/sqh-session-format'
+import type { SessionFormatEvent, SessionFormatJsonValue } from '@liusiqi-dev/sqh-session-format'
 
 const WRAPPER_FIELDS = new Set(['type', 'toolCallId', 'content', 'isError'])
 const MESSAGE_FIELDS = new Set(['id', 'role', 'source', 'content'])

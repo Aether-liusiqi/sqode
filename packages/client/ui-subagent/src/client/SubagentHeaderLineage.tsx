@@ -3,16 +3,16 @@ import { createPortal } from 'react-dom'
 import {
   type SessionProjectionMap, type SessionSummary,
   type SessionProjectionSnapshot,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { SubagentAddress } from '@liusiqi-dev/dsh-subagent/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { SubagentAddress } from '@liusiqi-dev/sqh-subagent/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import {
   IconChevronDownOutlineRegular, IconChevronRightOutlineRegular, IconRefreshOutlineRegular, StateDot, Tooltip,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { PropsLocale, PropsRuntime, TranslateNS } from '@liusiqi-dev/dsh-client-ui-slots'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { PropsLocale, PropsRuntime, TranslateNS } from '@liusiqi-dev/sqh-client-ui-slots'
 import { NS } from './locales.ts'
-import type {} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type {} from '@liusiqi-dev/dsh-token-meter/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type {} from '@liusiqi-dev/sqh-token-meter/client'
 import css from './SubagentHeaderLineage.module.css'
 
 type SubagentCatalogSnapshot = Omit<SessionProjectionSnapshot, 'values' | 'state'> & {

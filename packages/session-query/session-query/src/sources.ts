@@ -1,6 +1,6 @@
 /** Shared immutable-header checks for logical session source observers. */
 
-import type { SessionHeader } from '@liusiqi-dev/dsh-session'
+import type { SessionHeader } from '@liusiqi-dev/sqh-session'
 import { SessionQueryError } from './config.ts'
 
 /**

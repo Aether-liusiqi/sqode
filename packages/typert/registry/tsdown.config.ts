@@ -1,3 +1,3 @@
 import { clientBundle } from '../../client/tsdown.client.ts'
 
-export default clientBundle('@liusiqi-dev/dsh-typert-registry', ['lib/types/index.js'])
+export default clientBundle('@liusiqi-dev/sqh-typert-registry', ['lib/types/index.js'])

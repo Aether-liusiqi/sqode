@@ -2,8 +2,8 @@
 
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
-import { Remote, TypertRemoteService } from '@liusiqi-dev/dsh-typert-protocol'
+import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/sqh-timeout'
+import { Remote, TypertRemoteService } from '@liusiqi-dev/sqh-typert-protocol'
 
 declare module '@liusiqi-dev/cordis' {
   interface Context {

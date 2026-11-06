@@ -1,5 +1,5 @@
 /** Pure replay-safe render intents for runtime inspection. */
-import type { GenericCallView } from '@liusiqi-dev/dsh-tools'
+import type { GenericCallView } from '@liusiqi-dev/sqh-tools'
 
 /**
  * Render provider-directory inspection.

@@ -1,16 +1,16 @@
 /** ui-subagent browser half: catalog actions and read-only composer routing. */
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import { Context } from '@liusiqi-dev/cordis'
-import { stubConfigForm } from '@liusiqi-dev/dsh-client-test-runtime'
+import { stubConfigForm } from '@liusiqi-dev/sqh-client-test-runtime'
 import { describe, expect, it } from 'vitest'
 import type {
   SessionListState, SessionSnapshot, SessionSummary,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { SubagentAddress } from '@liusiqi-dev/dsh-subagent/client'
-import { SlotRegistry } from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { ComposerChainProps } from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import { apply as applyLocale, inject as localeInject } from '@liusiqi-dev/dsh-client-locale/client'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { SubagentAddress } from '@liusiqi-dev/sqh-subagent/client'
+import { SlotRegistry } from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { ComposerChainProps } from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import { apply as applyLocale, inject as localeInject } from '@liusiqi-dev/sqh-client-locale/client'
 import {
   SubagentHeaderLineage, type SubagentCatalogInjected,
 } from '../src/client/SubagentHeaderLineage.tsx'

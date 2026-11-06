@@ -1,8 +1,8 @@
 /** The agent loop's settings page: how many tool calls one step may run at once. */
 
-import type {} from '@liusiqi-dev/dsh-client-ui-plugin-manager/client'
-import { SettingsForm, SettingsValueField } from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
+import type {} from '@liusiqi-dev/sqh-client-ui-plugin-manager/client'
+import { SettingsForm, SettingsValueField } from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
 import { formLabels } from './locales.ts'
 import type { AgentLoopCardFace } from './agent-loop-card-controller.ts'
 

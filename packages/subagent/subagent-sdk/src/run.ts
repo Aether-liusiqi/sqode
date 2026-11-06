@@ -1,17 +1,17 @@
 /**
  * Fresh-process SDK subagent client. Drives one child Siqi Harness
- * runtime over stdio JSON-RPC through `@liusiqi-dev/dsh-sdk-client` and owns
+ * runtime over stdio JSON-RPC through `@liusiqi-dev/sqh-sdk-client` and owns
  * cancellation and quiescent disposal. It publishes after the child
  * handshake, maps child failures to stop reasons, and tears down to
  * quiescence. The SDK client spawns the child rather than using
  * `ctx.subprocess` — the subprocess seam's documented exception for
  * SDK-managed transports — so this driver applies the seam's shared env scrub.
  *
- * @module @liusiqi-dev/dsh-subagent-dsh-sdk/run
+ * @module @liusiqi-dev/sqh-subagent-sdk/run
  */
 
 import { randomUUID } from 'node:crypto'
-import { brandString } from '@liusiqi-dev/dsh-brand'
+import { brandString } from '@liusiqi-dev/sqh-brand'
 import {
   DeepSeekHarness,
   type DeepSeekHarnessOptions,
@@ -19,12 +19,12 @@ import {
   JsonRpcResponseError,
   SdkProtocolError,
   TransportClosedError,
-} from '@liusiqi-dev/dsh-sdk-client'
-import type { ContentBlock, ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
-import type { SessionEvent, SessionId, TurnEndReason } from '@liusiqi-dev/dsh-session'
-import type { SubagentResult, SubagentRun, SubagentStartRequest, SubagentStopReason } from '@liusiqi-dev/dsh-subagent'
-import { AssistantOutputFold, settleRunResult, subprocessRunHandle } from '@liusiqi-dev/dsh-subagent'
-import { scrubbedParentEnv } from '@liusiqi-dev/dsh-subprocess'
+} from '@liusiqi-dev/sqh-sdk-client'
+import type { ContentBlock, ReasoningEffortId } from '@liusiqi-dev/sqh-llm'
+import type { SessionEvent, SessionId, TurnEndReason } from '@liusiqi-dev/sqh-session'
+import type { SubagentResult, SubagentRun, SubagentStartRequest, SubagentStopReason } from '@liusiqi-dev/sqh-subagent'
+import { AssistantOutputFold, settleRunResult, subprocessRunHandle } from '@liusiqi-dev/sqh-subagent'
+import { scrubbedParentEnv } from '@liusiqi-dev/sqh-subprocess'
 
 /** Resolved spawn spec for an SDK runtime child process (no defaults — see Config). */
 export interface SdkRunSpec {
@@ -109,7 +109,7 @@ function failureDiagnostic(facts: SdkFailureFacts): string {
 
 class SdkRunFailure extends Error {
   constructor(readonly facts: SdkFailureFacts, cause: unknown) {
-    super(`subagent-dsh-sdk: ${failureDiagnostic(facts)}`, { cause })
+    super(`subagent-sdk: ${failureDiagnostic(facts)}`, { cause })
     this.name = 'SdkRunFailure'
   }
 }

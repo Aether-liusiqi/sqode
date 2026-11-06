@@ -1,19 +1,19 @@
 // @vitest-environment jsdom
 
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { useDisclosure } from '@liusiqi-dev/dsh-client-ui-chat/src/client/chat/use-disclosure.ts'
+import { useDisclosure } from '@liusiqi-dev/sqh-client-ui-chat/src/client/chat/use-disclosure.ts'
 import { cleanup, fireEvent, render } from '@testing-library/react'
-import { bindSnapshotSelector } from '@liusiqi-dev/dsh-client-test-runtime'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { StartedToolCall, ToolResultNode } from '@liusiqi-dev/dsh-client-ui-chat/client'
-import type { SessionListState } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import { makeTranslate } from '@liusiqi-dev/dsh-client-test-runtime'
-import { zh as commonZh } from '@liusiqi-dev/dsh-client-locale/src/locales/zh.ts'
+import { bindSnapshotSelector } from '@liusiqi-dev/sqh-client-test-runtime'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { StartedToolCall, ToolResultNode } from '@liusiqi-dev/sqh-client-ui-chat/client'
+import type { SessionListState } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import { makeTranslate } from '@liusiqi-dev/sqh-client-test-runtime'
+import { zh as commonZh } from '@liusiqi-dev/sqh-client-locale/src/locales/zh.ts'
 import { CHAT_DIFF_MAX_LINES, diffCardModel } from '../src/client/tool/models/diff-card-model.ts'
 import { GenericToolCard, type GenericToolCardProps } from '../src/client/tool/toolviews/GenericToolCard.tsx'
 import { FileMutationRow, fileMutationToolview } from '../src/client/tool/toolviews/file-mutation-row.tsx'
-import { zh } from '@liusiqi-dev/dsh-client-ui-conversation/src/client/locales.ts'
+import { zh } from '@liusiqi-dev/sqh-client-ui-conversation/src/client/locales.ts'
 
 afterEach(cleanup)
 

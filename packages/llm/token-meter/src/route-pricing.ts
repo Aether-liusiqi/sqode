@@ -2,10 +2,10 @@
  * Request-projected surface pricing: replaces attachment-block heuristics with
  * the image and file representations sent to the routed model.
  *
- * @module @liusiqi-dev/dsh-token-meter/route-pricing
+ * @module @liusiqi-dev/sqh-token-meter/route-pricing
  */
 
-import type { ContentBlock, LlmImageRequestPricing } from '@liusiqi-dev/dsh-llm'
+import type { ContentBlock, LlmImageRequestPricing } from '@liusiqi-dev/sqh-llm'
 import { estimateContent } from './estimate.ts'
 import type { MeterSurfaceNode } from './surface-fold.ts'
 import type { TokenSurfaceNode } from './types.ts'

@@ -365,8 +365,8 @@ describe('experimental Inspector Client plugin', () => {
     Reflect.set(globalThis, '__SQH_BOOT__', {
       rev: 'graph',
       entries: [{
-        id: '@liusiqi-dev/dsh-experimental-inspector',
-        url: 'plugins/@liusiqi-dev/dsh-experimental-inspector/client.js?rev=bundle-rev',
+        id: '@liusiqi-dev/sqh-experimental-inspector',
+        url: 'plugins/@liusiqi-dev/sqh-experimental-inspector/client.js?rev=bundle-rev',
         rev: 'bundle-rev',
       }],
     })
@@ -409,9 +409,9 @@ describe('experimental Inspector Client plugin', () => {
         outcome?: { result?: { scripts?: Array<{ scriptKey: string; url: string; sourceMapUrl: string }> } }
       }).find(frame => frame.requestId === 'source-request-1')
       const script = response?.outcome?.result?.scripts?.[0]
-      expect(script?.url).toContain('/plugins/@liusiqi-dev/dsh-experimental-inspector/client.js?rev=bundle-rev')
+      expect(script?.url).toContain('/plugins/@liusiqi-dev/sqh-experimental-inspector/client.js?rev=bundle-rev')
       expect(script?.sourceMapUrl)
-        .toContain('/plugins/@liusiqi-dev/dsh-experimental-inspector/client.js.map?rev=bundle-rev')
+        .toContain('/plugins/@liusiqi-dev/sqh-experimental-inspector/client.js.map?rev=bundle-rev')
       scriptKey = script?.scriptKey
     })
     socket.receive({

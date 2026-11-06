@@ -3,7 +3,7 @@
 # deterministic test composition and raw persistence needed for recording.
 
 - id: llm-deepseek
-  name: '@liusiqi-dev/dsh-llm-deepseek-api-key'
+  name: '@liusiqi-dev/sqh-llm-deepseek-api-key'
   config:
     thinking: enabled
     reasoningEffort: max
@@ -14,18 +14,18 @@
         inputModalities: [text, image]
 
 - id: sandbox-policy
-  name: '@liusiqi-dev/dsh-sandbox-policy'
+  name: '@liusiqi-dev/sqh-sandbox-policy'
   config:
     mode: !!js "process.env.SQODE_PERMISSION_MODE ?? (process.env.SQODE_SNAPSHOT === undefined ? 'workspace-write' : 'danger-full-access')"
     workspaceRoot: !!js process.cwd()
 
 - id: approval
-  name: '@liusiqi-dev/dsh-user-approval'
+  name: '@liusiqi-dev/sqh-user-approval'
   config:
     policy: !!js "(process.env.SQODE_PERMISSION_MODE ?? (process.env.SQODE_SNAPSHOT === undefined ? 'workspace-write' : 'danger-full-access')) === 'danger-full-access' ? 'never' : 'ask'"
 
 - id: session-persistence-jsonl
-  name: '@liusiqi-dev/dsh-session-persistence-jsonl'
+  name: '@liusiqi-dev/sqh-session-persistence-jsonl'
   config:
     root: !!js dshHomePath('sessions')
     compression: none
@@ -34,7 +34,7 @@
   disabled: true
 
 - id: system-prompt
-  name: '@liusiqi-dev/dsh-system-prompt'
+  name: '@liusiqi-dev/sqh-system-prompt'
   config:
     personaPrefix: |
       You are a coding assistant powered by the {{model}} model. Your working directory is {{cwd}}. Your bash tool runs under a file sandbox — a `[sandbox: file access denied …]` result is policy, not a command bug.
@@ -42,12 +42,12 @@
       Verify your work by running the code or tests. Keep answers brief and factual.
 
 - id: agent-instructions
-  name: '@liusiqi-dev/dsh-agent-instructions'
+  name: '@liusiqi-dev/sqh-agent-instructions'
   config:
     maxBytes: 65536
 
 - id: tool-subagent
-  name: '@liusiqi-dev/dsh-tool-subagent'
+  name: '@liusiqi-dev/sqh-tool-subagent'
   config:
     provider: spawn
     toolName: subagent
@@ -55,7 +55,7 @@
     maxDepth: 1
 
 - id: tool-subagent-fork
-  name: '@liusiqi-dev/dsh-tool-subagent'
+  name: '@liusiqi-dev/sqh-tool-subagent'
   config:
     provider: fork
     toolName: subagent_fork
@@ -64,18 +64,18 @@
     maxDepth: 1
 
 - id: fs-sandbox
-  name: '@liusiqi-dev/dsh-fs-sandbox'
+  name: '@liusiqi-dev/sqh-fs-sandbox'
   config:
     cwd: !!js process.cwd()
 
 - insert:
     - id: hooks-claude-code
-      name: '@liusiqi-dev/dsh-hooks-claude-code'
+      name: '@liusiqi-dev/sqh-hooks-claude-code'
       config:
         configPath: ./hooks.json
 
     - id: hooks-codex
-      name: '@liusiqi-dev/dsh-hooks-codex'
+      name: '@liusiqi-dev/sqh-hooks-codex'
       config:
         configPath: ./codex-hooks.json
 

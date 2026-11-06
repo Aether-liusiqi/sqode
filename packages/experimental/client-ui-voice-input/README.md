@@ -3,7 +3,7 @@ description: "Record speech and insert reviewable transcripts into the conversat
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-experimental-client-ui-voice-input
+# @liusiqi-dev/sqh-experimental-client-ui-voice-input
 
 English | [中文](README.zh.md)
 

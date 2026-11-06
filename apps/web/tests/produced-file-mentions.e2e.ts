@@ -2,9 +2,9 @@
 import type { Browser, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
-import { ToolCallId, createAssistantMessage, createToolResultMessage, createUserMessage } from '@liusiqi-dev/dsh-llm'
-import { SESSION_FORMAT_VERSION, Session, SessionId } from '@liusiqi-dev/dsh-session'
-import type {} from '@liusiqi-dev/dsh-session-title'
+import { ToolCallId, createAssistantMessage, createToolResultMessage, createUserMessage } from '@liusiqi-dev/sqh-llm'
+import { SESSION_FORMAT_VERSION, Session, SessionId } from '@liusiqi-dev/sqh-session'
+import type {} from '@liusiqi-dev/sqh-session-title'
 import {
   launchWebScaffold, seedSession, watchConsole, webSnapshotMode, type WebScaffold,
 } from './scaffold.ts'

@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-api-gateway",
+  "name": "@liusiqi-dev/sqh-api-gateway",
   "description": "Typert Remote Host dispatcher and Client API endpoint",
   "version": "1.0.0",
   "publishConfig": {
@@ -36,8 +36,8 @@
   "dsh": {
     "client": {
       "inject": [
-        "@liusiqi-dev/dsh-typert-registry",
-        "@liusiqi-dev/dsh-client-connection"
+        "@liusiqi-dev/sqh-typert-registry",
+        "@liusiqi-dev/sqh-client-connection"
       ],
       "platform": "web",
       "immediately": true
@@ -55,24 +55,24 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@liusiqi-dev/dsh-deque": "workspace:*",
-    "@liusiqi-dev/dsh-timeout": "workspace:*",
+    "@liusiqi-dev/sqh-deque": "workspace:*",
+    "@liusiqi-dev/sqh-timeout": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
     "ws": "^8.21.0",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*"
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-client-connection": "workspace:*"
+    "@liusiqi-dev/sqh-client-connection": "workspace:*"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-brand": "workspace:*",
-    "@liusiqi-dev/dsh-cmdline": "workspace:*",
-    "@liusiqi-dev/dsh-client-connection": "workspace:*",
-    "@liusiqi-dev/dsh-host-webserver": "workspace:*",
-    "@liusiqi-dev/dsh-remote-mock": "workspace:*",
-    "@liusiqi-dev/dsh-typert-registry": "workspace:*",
-    "@liusiqi-dev/dsh-util-crypto": "workspace:*",
+    "@liusiqi-dev/sqh-brand": "workspace:*",
+    "@liusiqi-dev/sqh-cmdline": "workspace:*",
+    "@liusiqi-dev/sqh-client-connection": "workspace:*",
+    "@liusiqi-dev/sqh-host-webserver": "workspace:*",
+    "@liusiqi-dev/sqh-remote-mock": "workspace:*",
+    "@liusiqi-dev/sqh-typert-registry": "workspace:*",
+    "@liusiqi-dev/sqh-util-crypto": "workspace:*",
     "@types/ws": "^8.18.1",
     "@liusiqi-dev/cordis": "workspace:~",
     "zod": "^4.4.3"

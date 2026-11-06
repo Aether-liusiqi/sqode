@@ -3,7 +3,7 @@ description: "通过带认证的 Web Remote 提供有界临时转写。"
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-experimental-api-speech-to-text
+# @liusiqi-dev/sqh-experimental-api-speech-to-text
 
 [English](README.md) | 中文
 

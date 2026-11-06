@@ -2,7 +2,7 @@
 # first; SQH starts it but does not run a package manager.
 - insert:
     - id: memory-memorix
-      name: '@liusiqi-dev/dsh-mcp-client'
+      name: '@liusiqi-dev/sqh-mcp-client'
       config:
         serverName: memorix
         transport: stdio

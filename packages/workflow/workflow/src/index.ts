@@ -1,11 +1,11 @@
 /**
  * Service Definition for the workflow capability seam. Service Providers execute orchestration scripts;
  * observe-only lifecycle events never expose run control.
- * @module @liusiqi-dev/dsh-workflow
+ * @module @liusiqi-dev/sqh-workflow
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'
-import { HarnessError } from '@liusiqi-dev/dsh-llm'
+import { HarnessError } from '@liusiqi-dev/sqh-llm'
 import type {
   WorkflowAgentEndInfo,
   WorkflowAgentInfo,

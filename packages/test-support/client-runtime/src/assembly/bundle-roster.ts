@@ -11,7 +11,7 @@
  * bundle change is visible at the next import. Node only — the
  * whole-client tier runs under vitest, and this is the one place it reads the
  * repository.
- * @module @liusiqi-dev/dsh-client-test-runtime/src/assembly/bundle-roster
+ * @module @liusiqi-dev/sqh-client-test-runtime/src/assembly/bundle-roster
  */
 import { existsSync, readFileSync, realpathSync } from 'node:fs'
 import { createRequire } from 'node:module'
@@ -19,12 +19,12 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { evaluate, isJsExpr, type EntryOptions } from '@liusiqi-dev/cordis-plugin-loader'
 import { applyEntryPatches, entryListSchema, type PatchOptions } from '@liusiqi-dev/cordis-plugin-include'
-import { exactPackageSpecifier, parseDshClient } from '@liusiqi-dev/dsh-client-modules/client'
+import { exactPackageSpecifier, parseDshClient } from '@liusiqi-dev/sqh-client-modules/client'
 import * as yaml from 'js-yaml'
 import { ClientRoster, type ClientRosterRow } from './roster.ts'
 
 /** The `web` profile's bundle layers, in the order `dsh --profile web` applies them (app-boot `PROFILE_TEMPLATES.web`). */
-export const WEB_PROFILE_BUNDLES: readonly string[] = ['@liusiqi-dev/dsh-base', '@liusiqi-dev/dsh-web-app']
+export const WEB_PROFILE_BUNDLES: readonly string[] = ['@liusiqi-dev/sqh-base', '@liusiqi-dev/sqh-web-app']
 
 interface PackageManifest {
   name?: unknown

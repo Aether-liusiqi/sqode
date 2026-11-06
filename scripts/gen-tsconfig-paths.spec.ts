@@ -16,9 +16,9 @@ describe('generated tsconfig package aliases', () => {
   it('maps each package to its own source directory', () => {
     const aliases = collectPackageAliases()
     expect(aliases.length).toBeGreaterThan(100)
-    const session = aliases.find(alias => alias.specifier === '@liusiqi-dev/dsh-session')
+    const session = aliases.find(alias => alias.specifier === '@liusiqi-dev/sqh-session')
     expect(session).toEqual({
-      specifier: '@liusiqi-dev/dsh-session',
+      specifier: '@liusiqi-dev/sqh-session',
       source: './packages/core/session/src',
       hasInvariant: true,
     })
@@ -26,20 +26,20 @@ describe('generated tsconfig package aliases', () => {
     expect([...aliases].sort((a, b) => a.specifier.localeCompare(b.specifier))).toEqual(aliases)
     // Only packages named after their directory: the rest carry hand-written
     // aliases, because the removed wildcards could never have resolved them.
-    expect(aliases.some(alias => alias.specifier === '@liusiqi-dev/dsh-typert-protocol')).toBe(false)
+    expect(aliases.some(alias => alias.specifier === '@liusiqi-dev/sqh-typert-protocol')).toBe(false)
   })
 
   it('yields to a hand-written alias and closes without a trailing comma', () => {
     const aliases = [
-      { specifier: '@liusiqi-dev/dsh-a', source: './packages/g/a/src', hasInvariant: true },
-      { specifier: '@liusiqi-dev/dsh-b', source: './packages/g/b/src', hasInvariant: false },
+      { specifier: '@liusiqi-dev/sqh-a', source: './packages/g/a/src', hasInvariant: true },
+      { specifier: '@liusiqi-dev/sqh-b', source: './packages/g/b/src', hasInvariant: false },
     ]
-    const body = renderAliases(aliases, new Set(['@liusiqi-dev/dsh-a']))
+    const body = renderAliases(aliases, new Set(['@liusiqi-dev/sqh-a']))
 
     // The hand-written bare alias is skipped; its /invariant sibling is not.
     expect(body).toBe([
-      '      "@liusiqi-dev/dsh-a/invariant": ["./packages/g/a/src/invariant.ts"]',
-      '      "@liusiqi-dev/dsh-b": ["./packages/g/b/src"]',
+      '      "@liusiqi-dev/sqh-a/invariant": ["./packages/g/a/src/invariant.ts"]',
+      '      "@liusiqi-dev/sqh-b": ["./packages/g/b/src"]',
     ].join(',\n'))
     expect(body.endsWith(',')).toBe(false)
   })
@@ -71,11 +71,11 @@ describe('generated tsconfig package aliases', () => {
     // directory is skipped by the generator, so without this check it would
     // resolve through the workspace symlink to built lib/types instead.
     expect(uncoveredPackages(
-      ['@liusiqi-dev/dsh-a', '@liusiqi-dev/dsh-b'],
-      new Set(['@liusiqi-dev/dsh-a', '@liusiqi-dev/dsh-a/invariant']),
-    )).toEqual(['@liusiqi-dev/dsh-b'])
+      ['@liusiqi-dev/sqh-a', '@liusiqi-dev/sqh-b'],
+      new Set(['@liusiqi-dev/sqh-a', '@liusiqi-dev/sqh-a/invariant']),
+    )).toEqual(['@liusiqi-dev/sqh-b'])
 
-    expect(uncoveredPackages(['@liusiqi-dev/dsh-a'], new Set(['@liusiqi-dev/dsh-a']))).toEqual([])
+    expect(uncoveredPackages(['@liusiqi-dev/sqh-a'], new Set(['@liusiqi-dev/sqh-a']))).toEqual([])
   })
 
   it('covers every workspace package in the committed config', () => {
@@ -83,7 +83,7 @@ describe('generated tsconfig package aliases', () => {
     // Includes the packages the generator skips because their name does not
     // match their directory: those carry hand-written aliases.
     const names = collectPackageNames()
-    expect(names).toContain('@liusiqi-dev/dsh-typert-protocol')
+    expect(names).toContain('@liusiqi-dev/sqh-typert-protocol')
     expect(uncoveredPackages(names, mappedSpecifiers(config))).toEqual([])
   })
 
@@ -92,7 +92,7 @@ describe('generated tsconfig package aliases', () => {
     // These two listed one candidate per group, so resolving a package late in
     // the list cost a filesystem probe — and under tsx a decorated module
     // error — for every group before it.
-    expect(config).not.toContain('"@liusiqi-dev/dsh-*":')
-    expect(config).not.toContain('"@liusiqi-dev/dsh-*/invariant":')
+    expect(config).not.toContain('"@liusiqi-dev/sqh-*":')
+    expect(config).not.toContain('"@liusiqi-dev/sqh-*/invariant":')
   })
 })

@@ -1,9 +1,9 @@
 // @vitest-environment jsdom
 /** Activation guidance waits for cache inspection and leaves installation to the detail page. */
 import { act, cleanup, fireEvent, render, screen } from '@testing-library/react'
-import { bindSnapshotSelector, makeTranslate } from '@liusiqi-dev/dsh-client-test-runtime'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { SpeechPreparationState, SpeechProviderId } from '@liusiqi-dev/dsh-experimental-speech-to-text/types'
+import { bindSnapshotSelector, makeTranslate } from '@liusiqi-dev/sqh-client-test-runtime'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { SpeechPreparationState, SpeechProviderId } from '@liusiqi-dev/sqh-experimental-speech-to-text/types'
 import { afterEach, expect, it, vi } from 'vitest'
 import { VoiceSetupPrompt, type VoiceSetupPromptProps } from '../src/client/VoiceSetupPrompt.tsx'
 import type { SpeechReadiness } from '../src/client/readiness.ts'

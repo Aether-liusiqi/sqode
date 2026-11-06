@@ -24,7 +24,7 @@ function workspaceRange(name: string): 'workspace:*' | 'workspace:~' {
   // Two sub-prefixes while the packages are being renamed. The bare scope is too
   // wide: vendored libraries share it and take the other protocol. Drop the old
   // entry once the rename lands.
-  return name === '@liusiqi-dev/sqode' || name.startsWith('@liusiqi-dev/sqh-') || name.startsWith('@liusiqi-dev/dsh-')
+  return name === '@liusiqi-dev/sqode' || name.startsWith('@liusiqi-dev/sqh-') || name.startsWith('@liusiqi-dev/sqh-')
     ? 'workspace:*'
     : 'workspace:~'
 }
@@ -223,7 +223,7 @@ export function collectRuntimeSourceExportUses(path: string, source: string): Ru
   for (const statement of sourceFile.statements) {
     if (!ts.isImportDeclaration(statement)
       || !ts.isStringLiteralLike(statement.moduleSpecifier)
-      || statement.moduleSpecifier.text !== '@liusiqi-dev/dsh-lazy-require') continue
+      || statement.moduleSpecifier.text !== '@liusiqi-dev/sqh-lazy-require') continue
     const bindings = statement.importClause?.namedBindings
     if (bindings !== undefined && ts.isNamespaceImport(bindings)) {
       lazyRequireNamespaces.add(bindings.name.text)

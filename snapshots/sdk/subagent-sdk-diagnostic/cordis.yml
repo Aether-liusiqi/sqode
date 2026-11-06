@@ -1,30 +1,30 @@
 # TypeScript SDK snapshot patch for foreground and background SQH SDK failures.
 
 - id: skill-filesystem
-  name: '@liusiqi-dev/dsh-skill-filesystem'
+  name: '@liusiqi-dev/sqh-skill-filesystem'
   config:
     includeDefaultRoots: false
 
 - id: llm-deepseek
-  name: '@liusiqi-dev/dsh-llm-deepseek-api-key'
+  name: '@liusiqi-dev/sqh-llm-deepseek-api-key'
   config:
     thinking: enabled
     reasoningEffort: max
 
 - id: session-persistence-jsonl
-  name: '@liusiqi-dev/dsh-session-persistence-jsonl'
+  name: '@liusiqi-dev/sqh-session-persistence-jsonl'
   config:
     root: !!js dshHomePath('sessions')
     compression: !!js "process.env.SQODE_SNAPSHOT === undefined ? 'zstd' : 'none'"
 
 - id: session-log-deepseek
-  name: '@liusiqi-dev/dsh-session-log-deepseek'
+  name: '@liusiqi-dev/sqh-session-log-deepseek'
   config:
     enabled: true
 
 - insert:
-    - id: subagent-dsh-sdk-diagnostic
-      name: '@liusiqi-dev/dsh-subagent-dsh-sdk'
+    - id: subagent-sdk-diagnostic
+      name: '@liusiqi-dev/sqh-subagent-sdk'
       config:
         providerName: dsh-sdk-diagnostic
         profile: sdk
@@ -36,15 +36,15 @@
         env:
           SQODE_TELEMETRY_DISABLED: '1'
           SQODE_TEST_CHILD_FAILURE: '1'
-    - id: tool-subagent-dsh-sdk-diagnostic
-      name: '@liusiqi-dev/dsh-tool-subagent'
+    - id: tool-subagent-sdk-diagnostic
+      name: '@liusiqi-dev/sqh-tool-subagent'
       config:
         provider: dsh-sdk-diagnostic
         toolName: subagent_dsh_sdk
         backgroundMode: one-shot
         maxDepth: provider-managed
-    - id: subagent-dsh-sdk-diagnostic-background
-      name: '@liusiqi-dev/dsh-subagent-dsh-sdk'
+    - id: subagent-sdk-diagnostic-background
+      name: '@liusiqi-dev/sqh-subagent-sdk'
       config:
         providerName: dsh-sdk-diagnostic-background
         profile: sdk
@@ -57,12 +57,12 @@
           SQODE_TELEMETRY_DISABLED: '1'
           SQODE_TEST_CHILD_FAILURE: '1'
           FAKE_INIT_GO: .dsh-sdk-background-release
-    - id: tool-subagent-dsh-sdk-diagnostic-background
-      name: '@liusiqi-dev/dsh-tool-subagent'
+    - id: tool-subagent-sdk-diagnostic-background
+      name: '@liusiqi-dev/sqh-tool-subagent'
       config:
         provider: dsh-sdk-diagnostic-background
         toolName: subagent_dsh_sdk_background
         backgroundMode: one-shot
         maxDepth: provider-managed
     - id: release-dsh-sdk-background-on-job-output
-      name: '../../../apps/cli/tests/profiles/sdk/fixtures/subagent-dsh-sdk-release-on-job-output.ts'
+      name: '../../../apps/cli/tests/profiles/sdk/fixtures/subagent-sdk-release-on-job-output.ts'

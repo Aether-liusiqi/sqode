@@ -1,10 +1,10 @@
 /** Request-header canonicalization, equality, and snapshot folding. */
 
 import { describe, expect, it } from 'vitest'
-import { Session, SessionId, SessionSeq, canonicalHeader, foldRequestHeader, headerEquals } from '@liusiqi-dev/dsh-session'
-import type { EpochHeader, SessionEvent } from '@liusiqi-dev/dsh-session'
-import { createUserMessage, ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
-import type { ToolSchema } from '@liusiqi-dev/dsh-llm'
+import { Session, SessionId, SessionSeq, canonicalHeader, foldRequestHeader, headerEquals } from '@liusiqi-dev/sqh-session'
+import type { EpochHeader, SessionEvent } from '@liusiqi-dev/sqh-session'
+import { createUserMessage, ReasoningEffortId } from '@liusiqi-dev/sqh-llm'
+import type { ToolSchema } from '@liusiqi-dev/sqh-llm'
 
 const CONFIG = { provider: 'mock', model: 'm' }
 

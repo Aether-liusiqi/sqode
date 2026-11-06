@@ -1,9 +1,9 @@
-import type { SessionEvent } from '@liusiqi-dev/dsh-session/types'
-import type { CommandId } from '@liusiqi-dev/dsh-commands/brand'
-import type {} from '@liusiqi-dev/dsh-commands/types'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session/types'
+import type { CommandId } from '@liusiqi-dev/sqh-commands/brand'
+import type {} from '@liusiqi-dev/sqh-commands/types'
 import type {
   ConversationNodeDefinition,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 
 /** The command name whose runs this projection owns. */
 export const GOAL_COMMAND = 'goal'
@@ -15,7 +15,7 @@ export interface GoalCommandInputData {
   readonly time: number
 }
 
-declare module '@liusiqi-dev/dsh-client-ui-chat/client' {
+declare module '@liusiqi-dev/sqh-client-ui-chat/client' {
   interface ChatNodeDataMap {
     /** Human-entered `/goal` command input. */
     'command-input': GoalCommandInputData

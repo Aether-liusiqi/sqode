@@ -1,6 +1,6 @@
 /** Menu reservations contributed by the product's shortcut reference integration. */
-import type { ShortcutFixedCommand, ShortcutCommandId } from '@liusiqi-dev/dsh-client-shortcuts/client'
-import type { PropsLocale } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { ShortcutFixedCommand, ShortcutCommandId } from '@liusiqi-dev/sqh-client-shortcuts/client'
+import type { PropsLocale } from '@liusiqi-dev/sqh-client-ui-slots'
 
 /**
  * Describe shared menu actions for display and conflict checking.

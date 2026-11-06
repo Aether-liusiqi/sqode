@@ -2,11 +2,11 @@
 
 import { Context } from '@liusiqi-dev/cordis'
 import { describe, expect, it, vi } from 'vitest'
-import { resolveSlotLabel } from '@liusiqi-dev/dsh-client-ui-slots'
-import { SlotRegistry } from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import { LocaleRuntime } from '@liusiqi-dev/dsh-client-locale/client'
-import { apply, inject } from '@liusiqi-dev/dsh-client-ui-settings-plugins/client'
-import type { PluginsSettingsSectionInjected } from '@liusiqi-dev/dsh-client-ui-settings-plugins/client'
+import { resolveSlotLabel } from '@liusiqi-dev/sqh-client-ui-slots'
+import { SlotRegistry } from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import { LocaleRuntime } from '@liusiqi-dev/sqh-client-locale/client'
+import { apply, inject } from '@liusiqi-dev/sqh-client-ui-settings-plugins/client'
+import type { PluginsSettingsSectionInjected } from '@liusiqi-dev/sqh-client-ui-settings-plugins/client'
 import { apply as hostApply } from '../src/index.ts'
 
 // These specs assert the shipped Chinese copy. The lane has no jsdom `window`,

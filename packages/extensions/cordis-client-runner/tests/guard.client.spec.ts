@@ -15,8 +15,8 @@ import type {
   CordisDynamicPluginId,
   CordisDynamicPluginRunId,
   DynamicCordisPackage,
-} from '@liusiqi-dev/dsh-api-remotes/client'
-import { SlotRegistry } from '@liusiqi-dev/dsh-client-ui-renderer/client'
+} from '@liusiqi-dev/sqh-api-remotes/client'
+import { SlotRegistry } from '@liusiqi-dev/sqh-client-ui-renderer/client'
 import { dynamicCordisContext } from '../src/client/guard.ts'
 import type { DynamicCordisSlotLedgerRow } from '../src/client/guard.ts'
 

@@ -1,14 +1,14 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { agentEvents, installModelSelection, type Agent, type ModelSelectionRef } from '@liusiqi-dev/dsh-agent'
-import { CompactionId, compactCheckpointSource } from '@liusiqi-dev/dsh-compaction'
-import LlmRuntime, { createDeveloperMessage, createMessage, createSystemMessage, createToolResultMessage, createUserMessage, LlmError, ToolCallId } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { Session, SessionId, SessionSeq } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import SessionQueryEngine from '@liusiqi-dev/dsh-session-query'
-import SessionTitleService from '@liusiqi-dev/dsh-session-title'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
+import { agentEvents, installModelSelection, type Agent, type ModelSelectionRef } from '@liusiqi-dev/sqh-agent'
+import { CompactionId, compactCheckpointSource } from '@liusiqi-dev/sqh-compaction'
+import LlmRuntime, { createDeveloperMessage, createMessage, createSystemMessage, createToolResultMessage, createUserMessage, LlmError, ToolCallId } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { Session, SessionId, SessionSeq } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import SessionQueryEngine from '@liusiqi-dev/sqh-session-query'
+import SessionTitleService from '@liusiqi-dev/sqh-session-title'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
 import SessionReferenceResolver, {
   decodeSessionReferenceUri,
   encodeSessionReferenceUri,
@@ -16,11 +16,11 @@ import SessionReferenceResolver, {
   parseSessionReferenceText,
   type Config,
   type SessionReferenceErrorCode,
-} from '@liusiqi-dev/dsh-session-reference'
+} from '@liusiqi-dev/sqh-session-reference'
 import { stringifyTagSafeJson } from '../src/serialization.ts'
-import { SpillLocator, SpillStore, type SaveTextSpill, type SpillRef } from '@liusiqi-dev/dsh-spill'
+import { SpillLocator, SpillStore, type SaveTextSpill, type SpillRef } from '@liusiqi-dev/sqh-spill'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
     'workspace': { kind: 'workspace' } & ContextFormed

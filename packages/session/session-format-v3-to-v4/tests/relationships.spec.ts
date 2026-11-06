@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { Session, SessionId, SessionLogOffset, type SessionEvent, type SessionHeader } from '@liusiqi-dev/dsh-session'
-import { sessionFormatCatalog } from '@liusiqi-dev/dsh-session-format-catalog'
-import type { SessionFormatEvent } from '@liusiqi-dev/dsh-session-format'
+import { Session, SessionId, SessionLogOffset, type SessionEvent, type SessionHeader } from '@liusiqi-dev/sqh-session'
+import { sessionFormatCatalog } from '@liusiqi-dev/sqh-session-format-catalog'
+import type { SessionFormatEvent } from '@liusiqi-dev/sqh-session-format'
 
 type Row = { type: string; data: Record<string, unknown>; surfaceOp?: unknown; sourceEventSeqs?: number[]; ignorable?: true }
 const row = (type: string, data: Record<string, unknown>): Row => ({ type, data })

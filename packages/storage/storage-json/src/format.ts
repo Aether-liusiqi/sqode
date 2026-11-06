@@ -6,11 +6,11 @@
  * with one version-stamped document per record (`<table>/<key>.json`) plus a
  * `global.json` for the global slot, so a write rewrites one record instead
  * of the whole unit.
- * @module @liusiqi-dev/dsh-storage-json/src/format
+ * @module @liusiqi-dev/sqh-storage-json/src/format
  */
 
-import { StorageError } from '@liusiqi-dev/dsh-storage'
-import type { KvUnitDescriptor } from '@liusiqi-dev/dsh-storage'
+import { StorageError } from '@liusiqi-dev/sqh-storage'
+import type { KvUnitDescriptor } from '@liusiqi-dev/sqh-storage'
 
 /** In-memory authoritative state of one unit; the file is its projection. `global` is `null` until first written. */
 export interface UnitState {

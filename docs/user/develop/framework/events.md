@@ -122,7 +122,7 @@ This plugin logs tool calls and results:
 
 ```ts
 import type { Context } from '@liusiqi-dev/cordis'
-import '@liusiqi-dev/dsh-tools'
+import '@liusiqi-dev/sqh-tools'
 
 export const name = 'tool-logger'
 

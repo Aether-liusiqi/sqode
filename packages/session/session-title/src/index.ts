@@ -1,24 +1,24 @@
 /**
  * Log-backed session title service, deterministic fallback, and provider contract.
- * @module @liusiqi-dev/dsh-session-title
+ * @module @liusiqi-dev/sqh-session-title
  */
 
 import { Context, FiberState, Service, type Fiber } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
 import { z as zod } from 'zod'
 import type { ZodType } from 'zod'
-import type { Branded } from '@liusiqi-dev/dsh-brand'
-import { isAgentLoopRequest } from '@liusiqi-dev/dsh-llm'
-import type { GenerateOptions } from '@liusiqi-dev/dsh-llm'
-import { assertNever, deepFreeze } from '@liusiqi-dev/dsh-util-values'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
+import { isAgentLoopRequest } from '@liusiqi-dev/sqh-llm'
+import type { GenerateOptions } from '@liusiqi-dev/sqh-llm'
+import { assertNever, deepFreeze } from '@liusiqi-dev/sqh-util-values'
 import type {
   Session,
   SessionEvent,
-} from '@liusiqi-dev/dsh-session'
-import { SessionSeq } from '@liusiqi-dev/dsh-session'
-import type {} from '@liusiqi-dev/dsh-session-projection'
-import type { ProjectionDefinition } from '@liusiqi-dev/dsh-session-projection'
-import type {} from '@liusiqi-dev/dsh-agent'
+} from '@liusiqi-dev/sqh-session'
+import { SessionSeq } from '@liusiqi-dev/sqh-session'
+import type {} from '@liusiqi-dev/sqh-session-projection'
+import type { ProjectionDefinition } from '@liusiqi-dev/sqh-session-projection'
+import type {} from '@liusiqi-dev/sqh-agent'
 export type {
   SessionTitleEventData,
   SessionTitleModelIdentity,
@@ -68,7 +68,7 @@ declare module '@liusiqi-dev/cordis' {
   }
 }
 
-declare module '@liusiqi-dev/dsh-session/types' {
+declare module '@liusiqi-dev/sqh-session/types' {
   interface SessionEventMap {
     /**
      * Latest-wins session title snapshot. Log-only: it never enters the model

@@ -1,12 +1,12 @@
 import { Context } from '@liusiqi-dev/cordis'
 import { describe, expect, it, vi } from 'vitest'
-import LlmRuntime, { createUserMessage, LlmAdapter  } from '@liusiqi-dev/dsh-llm'
-import type { GenerateOptions, StreamChunk } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { Session, SessionId } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import { turnBoundaryProjectionDefinition } from '@liusiqi-dev/dsh-agent-loop'
-import SessionTitleService, { type SessionTitleProvider } from '@liusiqi-dev/dsh-session-title'
-import * as providerPlugin from '@liusiqi-dev/dsh-session-title-first-prompt-llm'
+import LlmRuntime, { createUserMessage, LlmAdapter  } from '@liusiqi-dev/sqh-llm'
+import type { GenerateOptions, StreamChunk } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { Session, SessionId } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import { turnBoundaryProjectionDefinition } from '@liusiqi-dev/sqh-agent-loop'
+import SessionTitleService, { type SessionTitleProvider } from '@liusiqi-dev/sqh-session-title'
+import * as providerPlugin from '@liusiqi-dev/sqh-session-title-first-prompt-llm'
 
 class RecordingAdapter extends LlmAdapter {
   readonly requests: GenerateOptions[] = []

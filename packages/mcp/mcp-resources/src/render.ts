@@ -1,11 +1,11 @@
 /**
  * Resource-result projection keeps binary payloads out of model history.
  *
- * @module @liusiqi-dev/dsh-mcp-resources
+ * @module @liusiqi-dev/sqh-mcp-resources
  */
 
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
 
 /**
  * Render resource JSON while retaining raw binary data only for programmatic callers.

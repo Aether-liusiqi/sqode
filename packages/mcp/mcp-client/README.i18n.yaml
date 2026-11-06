@@ -5,93 +5,93 @@
 /:
   en: 6440e0efb151c0fa
   zh: d767308eb95b9d3f
-/liusiqi-dev-dsh-mcp-client:
-  en: 8305c0ae79f5d322
-  zh: f40b1d25a399b8e1
-/liusiqi-dev-dsh-mcp-client/summary:
+/liusiqi-dev-sqh-mcp-client:
+  en: 501802a37a31de5b
+  zh: 8077ce504ab131e9
+/liusiqi-dev-sqh-mcp-client/summary:
   en: 428cc4078a9d5b53
   zh: 49b867131f518c0f
-/liusiqi-dev-dsh-mcp-client/table-of-contents:
+/liusiqi-dev-sqh-mcp-client/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
-/liusiqi-dev-dsh-mcp-client/use-this-package:
+/liusiqi-dev-sqh-mcp-client/use-this-package:
   en: e77871d58566601a
   zh: c5ef229d22eb3ebf
-/liusiqi-dev-dsh-mcp-client/use-this-package/minimal-configuration:
+/liusiqi-dev-sqh-mcp-client/use-this-package/minimal-configuration:
   en: 4d8b58f6a5e0c3f1
   zh: 28e1c06aeef33131
-/liusiqi-dev-dsh-mcp-client/use-this-package/tool-naming-and-coexistence:
+/liusiqi-dev-sqh-mcp-client/use-this-package/tool-naming-and-coexistence:
   en: 75ae9745d5b04796
   zh: 8ae5b8ca6e73296e
-/liusiqi-dev-dsh-mcp-client/use-this-package/calling-tools-and-reading-results:
+/liusiqi-dev-sqh-mcp-client/use-this-package/calling-tools-and-reading-results:
   en: cad16c6102b0e316
   zh: 03841eea6ead54cd
-/liusiqi-dev-dsh-mcp-client/use-this-package/startup-updates-and-reconnection:
+/liusiqi-dev-sqh-mcp-client/use-this-package/startup-updates-and-reconnection:
   en: d7b393106cf6b8fc
   zh: a95bdc34e914b0da
-/liusiqi-dev-dsh-mcp-client/understand-the-implementation:
+/liusiqi-dev-sqh-mcp-client/understand-the-implementation:
   en: d33ddd080880b3f5
   zh: 64328f5239c26752
-/liusiqi-dev-dsh-mcp-client/understand-the-implementation/design-philosophy:
+/liusiqi-dev-sqh-mcp-client/understand-the-implementation/design-philosophy:
   en: 4e213d68082b07f0
   zh: 7617949ba46a3b63
-/liusiqi-dev-dsh-mcp-client/understand-the-implementation/source-map:
+/liusiqi-dev-sqh-mcp-client/understand-the-implementation/source-map:
   en: ab2bbaa701f24c2c
   zh: c6db79438239388e
-/liusiqi-dev-dsh-mcp-client/understand-the-implementation/lifecycle-and-sync:
+/liusiqi-dev-sqh-mcp-client/understand-the-implementation/lifecycle-and-sync:
   en: ae9029b48b2a2e4e
   zh: 048f08361b799667
-/liusiqi-dev-dsh-mcp-client/understand-the-implementation/tool-execution-internals:
+/liusiqi-dev-sqh-mcp-client/understand-the-implementation/tool-execution-internals:
   en: b4333df1bd3f027c
   zh: 6bb4be691452c27a
-/liusiqi-dev-dsh-mcp-client/understand-the-implementation/environment-scrubbing-stdio:
+/liusiqi-dev-sqh-mcp-client/understand-the-implementation/environment-scrubbing-stdio:
   en: 22e69696b4e8208c
   zh: 25ae6d0f8a781633
-/liusiqi-dev-dsh-mcp-client/further-exploration:
+/liusiqi-dev-sqh-mcp-client/further-exploration:
   en: 402f4148cc9a39eb
   zh: 02060d6909b39f7e
-/liusiqi-dev-dsh-mcp-client/model-experience:
+/liusiqi-dev-sqh-mcp-client/model-experience:
   en: 215e7ba838619b7b
   zh: a311da3843709f90
-/liusiqi-dev-dsh-mcp-client/model-experience/discovered-mcp-tools:
+/liusiqi-dev-sqh-mcp-client/model-experience/discovered-mcp-tools:
   en: 9f6397197d9a607d
   zh: 79cf93aaf2e25a39
-/liusiqi-dev-dsh-mcp-client/model-experience/discovered-mcp-tools/what-the-model-sees:
+/liusiqi-dev-sqh-mcp-client/model-experience/discovered-mcp-tools/what-the-model-sees:
   en: 866a129e71634e0e
   zh: b27e4b22a07c2f26
-/liusiqi-dev-dsh-mcp-client/model-experience/discovered-mcp-tools/token-effect:
+/liusiqi-dev-sqh-mcp-client/model-experience/discovered-mcp-tools/token-effect:
   en: ac85a6a5130c6440
   zh: 9a31229f5355432b
-/liusiqi-dev-dsh-mcp-client/model-experience/discovered-mcp-tools/kv-cache-effect:
+/liusiqi-dev-sqh-mcp-client/model-experience/discovered-mcp-tools/kv-cache-effect:
   en: dae97512f6d61027
   zh: 5e6103fab15ab42d
-/liusiqi-dev-dsh-mcp-client/model-experience/tool-call-history-and-results:
+/liusiqi-dev-sqh-mcp-client/model-experience/tool-call-history-and-results:
   en: a8503137ad03720c
   zh: 611a2dadf7c0c706
-/liusiqi-dev-dsh-mcp-client/model-experience/tool-call-history-and-results/what-the-model-sees:
+/liusiqi-dev-sqh-mcp-client/model-experience/tool-call-history-and-results/what-the-model-sees:
   en: 5b3a7fe5bf11e73b
   zh: e015c2468962fcf3
-/liusiqi-dev-dsh-mcp-client/model-experience/tool-call-history-and-results/token-effect:
+/liusiqi-dev-sqh-mcp-client/model-experience/tool-call-history-and-results/token-effect:
   en: cc030374eca00e1c
   zh: d4b19b9db621b367
-/liusiqi-dev-dsh-mcp-client/model-experience/tool-call-history-and-results/kv-cache-effect:
+/liusiqi-dev-sqh-mcp-client/model-experience/tool-call-history-and-results/kv-cache-effect:
   en: f5d5f97a153f7c70
   zh: 31911b4f3506d6c8
-/liusiqi-dev-dsh-mcp-client/model-experience/server-instructions:
+/liusiqi-dev-sqh-mcp-client/model-experience/server-instructions:
   en: a3cb7c5760a8c141
   zh: ec9fc8d4f00a5eb6
-/liusiqi-dev-dsh-mcp-client/model-experience/server-instructions/what-the-model-sees:
+/liusiqi-dev-sqh-mcp-client/model-experience/server-instructions/what-the-model-sees:
   en: d3e9d53702f9c494
   zh: 62bd2b185abbd38c
-/liusiqi-dev-dsh-mcp-client/model-experience/server-instructions/token-effect:
+/liusiqi-dev-sqh-mcp-client/model-experience/server-instructions/token-effect:
   en: 082214331ebf38d7
   zh: 2251c4f8e4d2e05c
-/liusiqi-dev-dsh-mcp-client/model-experience/server-instructions/kv-cache-effect:
+/liusiqi-dev-sqh-mcp-client/model-experience/server-instructions/kv-cache-effect:
   en: 189198f7ace2a991
   zh: 00948145a803d614
-/liusiqi-dev-dsh-mcp-client/known-limitations-and-deferred-work:
+/liusiqi-dev-sqh-mcp-client/known-limitations-and-deferred-work:
   en: 56be94497d0658a1
   zh: df9bfeee7300a101
-/liusiqi-dev-dsh-mcp-client/known-limitations-and-deferred-work/dev-note:
+/liusiqi-dev-sqh-mcp-client/known-limitations-and-deferred-work/dev-note:
   en: 0ecb59b2a09b5b57
   zh: 1f20ed42dc9f2443

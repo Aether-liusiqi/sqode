@@ -1,8 +1,8 @@
 /** Turn changes use a compact single-file card or a header with a folded file list. */
 import { useEffect, useId, useRef, useState } from 'react'
-import { resolveWorkspacePath } from '@liusiqi-dev/dsh-util-workspace-path'
-import { FileTypeIcon, HoverCard, IconChevronDownOutlineRegular, IconChevronUpOutlineRegular } from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { InjectFace, PropsLocale, SessionStandardProps } from '@liusiqi-dev/dsh-client-ui-slots'
+import { resolveWorkspacePath } from '@liusiqi-dev/sqh-util-workspace-path'
+import { FileTypeIcon, HoverCard, IconChevronDownOutlineRegular, IconChevronUpOutlineRegular } from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { InjectFace, PropsLocale, SessionStandardProps } from '@liusiqi-dev/sqh-client-ui-slots'
 import { changesDiffUrl, type ChangesSummary } from '../changes.ts'
 import type { DeliverablesInjected } from './Deliverables.tsx'
 import { FileDiff } from './FileDiff.tsx'

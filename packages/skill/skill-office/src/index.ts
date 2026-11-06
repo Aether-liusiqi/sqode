@@ -7,7 +7,7 @@ import { isSea } from 'node:sea'
 import { fileURLToPath } from 'node:url'
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { BUNDLED_SKILL_RANK, type SkillCandidate, type SkillProvider } from '@liusiqi-dev/dsh-skill'
+import { BUNDLED_SKILL_RANK, type SkillCandidate, type SkillProvider } from '@liusiqi-dev/sqh-skill'
 import { parse as parseYaml } from 'yaml'
 
 const SKILL_NAMES = ['office-docx', 'office-pptx', 'office-xlsx'] as const

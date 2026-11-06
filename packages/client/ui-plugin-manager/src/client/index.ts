@@ -6,20 +6,20 @@
  * A plugin that carries its own configuration renders it on this page through
  * the slots the page declares (`slot-contract.ts`).
  */
-import type {} from '@liusiqi-dev/dsh-client-product-analytics/client'
-import type {} from '@liusiqi-dev/dsh-client-locale/client'
+import type {} from '@liusiqi-dev/sqh-client-product-analytics/client'
+import type {} from '@liusiqi-dev/sqh-client-locale/client'
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
 // Type-only: the root `main` keyed slot the page registers into, declared by
 // ui-layout with the panel id brand, and the `sidebar.panellist` list the
 // entry registers into, declared by ui-sidebar.
-import type { MainPanelId } from '@liusiqi-dev/dsh-client-ui-layout/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-sidebar/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
+import type { MainPanelId } from '@liusiqi-dev/sqh-client-ui-layout/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-sidebar/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
 // Type-only: the ctx.remote Context merge and the forwarded-event key face.
-import type {} from '@liusiqi-dev/dsh-api-remotes/client'
+import type {} from '@liusiqi-dev/sqh-api-remotes/client'
 // Type-only: the forwarded events' own declaration (`$on`'s key face resolves
 // through the owning package's client-safe types subpath).
-import type {} from '@liusiqi-dev/dsh-plugin-manager/types'
+import type {} from '@liusiqi-dev/sqh-plugin-manager/types'
 import { PluginManagerPage } from './PluginManagerPage.tsx'
 import { PluginRefreshToast, type PluginRefreshToastFace } from './PluginRefreshToast.tsx'
 import { PluginsPanelIcon } from './PluginsPanelIcon.tsx'
@@ -51,7 +51,7 @@ export type {
   ConfigPageForm, PluginActivationOwnerProps, PluginConfigViewProps, PluginDetailProps, PluginPackageRef, PluginRowRef, PluginsSubject,
 } from './slot-contract.ts'
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** Plugin manager tab copy. */
     'pluginManager': PluginManagerLocaleKey

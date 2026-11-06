@@ -1,14 +1,14 @@
 /**
  * Durable and model-facing Schedule value types.
- * @module @liusiqi-dev/dsh-schedule
+ * @module @liusiqi-dev/sqh-schedule
  */
 
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { MessageId } from '@liusiqi-dev/dsh-llm/brand'
-import type { Branded } from '@liusiqi-dev/dsh-brand'
-import type {} from '@liusiqi-dev/dsh-session/types'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { MessageId } from '@liusiqi-dev/sqh-llm/brand'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
+import type {} from '@liusiqi-dev/sqh-session/types'
 // Type-only: the Workspace registry's archive-admission family map this plugin merges `schedule` into.
-import type {} from '@liusiqi-dev/dsh-workspace/types'
+import type {} from '@liusiqi-dev/sqh-workspace/types'
 
 /** Stable globally unique reminder identity. */
 export type ScheduleId = Branded<'ScheduleId'>
@@ -342,14 +342,14 @@ export type ScheduleDeleteResult =
 /** Canonical `schedule_delete` value. */
 export type ScheduleDeleteValue = ScheduleDeleteResult | ScheduleToolError
 
-declare module '@liusiqi-dev/dsh-workspace/types' {
+declare module '@liusiqi-dev/sqh-workspace/types' {
   interface SessionActivityKindMap {
     /** A scheduled follow-up for this session is still active. */
     schedule: true
   }
 }
 
-declare module '@liusiqi-dev/dsh-session/types' {
+declare module '@liusiqi-dev/sqh-session/types' {
   interface SessionEventMap {
     /**
      * Versioned Schedule mutation. The owning package validates the complete

@@ -3,13 +3,13 @@
  * recovery after an HMR collapse of the declaring entry. */
 import { Context } from '@liusiqi-dev/cordis'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { SlotRegistry } from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import { apply as settingsApply, inject as settingsInject } from '@liusiqi-dev/dsh-client-ui-settings/client'
-import { TestRemote } from '@liusiqi-dev/dsh-client-test-runtime'
+import { SlotRegistry } from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import { apply as settingsApply, inject as settingsInject } from '@liusiqi-dev/sqh-client-ui-settings/client'
+import { TestRemote } from '@liusiqi-dev/sqh-client-test-runtime'
 import {
   apply, inject, SETTINGS_NS,
-} from '@liusiqi-dev/dsh-client-locale/client'
-import type { LanguageRowInjected, LocaleRuntime } from '@liusiqi-dev/dsh-client-locale/client'
+} from '@liusiqi-dev/sqh-client-locale/client'
+import type { LanguageRowInjected, LocaleRuntime } from '@liusiqi-dev/sqh-client-locale/client'
 import { LOCALE_SETTINGS_NAMESPACE, LocaleSettingsSchema } from '../src/locale-settings.ts'
 import { LanguageRow } from '../src/client/LanguageRow.tsx'
 import type { createLanguageRowStore } from '../src/client/settings-store.ts'

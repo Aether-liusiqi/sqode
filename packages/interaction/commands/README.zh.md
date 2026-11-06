@@ -3,7 +3,7 @@ description: "交互式 UI 的面向用户斜杠命令注册表：插件拥有�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-commands
+# @liusiqi-dev/sqh-commands
 
 [English](README.md) | 中文
 

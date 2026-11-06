@@ -1,22 +1,22 @@
 /**
  * Six model-facing persistent terminal tools. Owner identity comes from the exact
  * tool execution Agent; generic `ctx.jobs` owns background ids and collection.
- * @module @liusiqi-dev/dsh-tool-terminal
+ * @module @liusiqi-dev/sqh-tool-terminal
  */
 
 import { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import { TerminalSessionId } from '@liusiqi-dev/dsh-terminal'
-import type { TerminalSendOperation, TerminalSendResult, TerminalSessionId as TerminalSessionIdType, TerminalSignal } from '@liusiqi-dev/dsh-terminal'
-import type {} from '@liusiqi-dev/dsh-jobs'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
-import type { ToolDefinition } from '@liusiqi-dev/dsh-tools'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import { TerminalSessionId } from '@liusiqi-dev/sqh-terminal'
+import type { TerminalSendOperation, TerminalSendResult, TerminalSessionId as TerminalSessionIdType, TerminalSignal } from '@liusiqi-dev/sqh-terminal'
+import type {} from '@liusiqi-dev/sqh-jobs'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
+import type { ToolDefinition } from '@liusiqi-dev/sqh-tools'
 import { sendSource } from './background.ts'
 import { boundTerminalText, renderList, renderRead, renderSend, renderSpawn } from './render.ts'
 
-declare module '@liusiqi-dev/dsh-jobs' {
+declare module '@liusiqi-dev/sqh-jobs' {
   interface JobKindMap {
     'pty-send': 'pty-send'
   }
@@ -251,7 +251,7 @@ export function apply(ctx: Context, config: Config = {}): void {
       if (args.run_in_background === true) {
         if (!enableRunInBackground) throw new Error('background terminal sends are disabled by tool-terminal configuration')
         const jobs = ctx.get('jobs')
-        if (jobs === undefined) throw new Error('background terminal sends require @liusiqi-dev/dsh-jobs and @liusiqi-dev/dsh-tool-jobs')
+        if (jobs === undefined) throw new Error('background terminal sends require @liusiqi-dev/sqh-jobs and @liusiqi-dev/sqh-tool-jobs')
         let cancelRequested = false
         let operation: TerminalSendOperation | undefined
         const jobId = jobs.start({

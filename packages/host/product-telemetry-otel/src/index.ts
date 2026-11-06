@@ -3,7 +3,7 @@ import { Context, Service } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
 import { validateHeaderValue } from 'node:http'
 import { CompressionAlgorithm } from '@opentelemetry/otlp-exporter-base'
-import type { EventLogReporter, OTelEventRecord, OTelEventScalar } from '@liusiqi-dev/dsh-otel'
+import type { EventLogReporter, OTelEventRecord, OTelEventScalar } from '@liusiqi-dev/sqh-otel'
 
 declare module '@liusiqi-dev/cordis' {
   interface Context { productTelemetry: ProductTelemetry }
@@ -88,7 +88,7 @@ export default class ProductTelemetry extends Service {
         ...(config.compression === undefined ? {} : { compression: config.compression === 'gzip' ? CompressionAlgorithm.GZIP : CompressionAlgorithm.NONE }),
       },
       resourceAttributes: { 'service.name': config.serviceName, 'service.version': config.serviceVersion },
-      scope: { name: '@liusiqi-dev/dsh-host-product-telemetry-otel' },
+      scope: { name: '@liusiqi-dev/sqh-host-product-telemetry-otel' },
       processor: {
         maxExportBatchSize: config.maxExportBatchSize, maxQueueSize: config.maxQueueSize,
         scheduledDelayMillis: config.scheduledDelayMillis, exportTimeoutMillis: config.exportTimeoutMillis,

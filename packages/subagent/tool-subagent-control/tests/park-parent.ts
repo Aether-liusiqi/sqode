@@ -5,7 +5,7 @@
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
 
 /**
  * Reject every step of the stand-in parent. Each child settlement wakes its

@@ -9,13 +9,13 @@
  */
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, render, screen } from '@testing-library/react'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import { makeTranslate } from '@liusiqi-dev/dsh-client-test-runtime'
-import { zh as commonZh } from '@liusiqi-dev/dsh-client-locale/src/locales/zh.ts'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import { makeTranslate } from '@liusiqi-dev/sqh-client-test-runtime'
+import { zh as commonZh } from '@liusiqi-dev/sqh-client-locale/src/locales/zh.ts'
 import { zh } from '../src/client/locales.ts'
 import type {
   InputTriggerCrumb, MenuState, TriggerHit,
-} from '@liusiqi-dev/dsh-client-ui-input-trigger/client'
+} from '@liusiqi-dev/sqh-client-ui-input-trigger/client'
 import { MenuView } from '../src/client/MenuView.tsx'
 
 const hit: TriggerHit = {

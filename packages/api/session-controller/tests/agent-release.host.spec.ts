@@ -7,11 +7,11 @@
  */
 
 import { Context } from '@liusiqi-dev/cordis'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import type { Agent, AgentHandle } from '@liusiqi-dev/dsh-agent'
-import { agentPresetProjectionDefinition } from '@liusiqi-dev/dsh-agent-preset-registry'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import TypertRegistry from '@liusiqi-dev/dsh-typert-registry'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import type { Agent, AgentHandle } from '@liusiqi-dev/sqh-agent'
+import { agentPresetProjectionDefinition } from '@liusiqi-dev/sqh-agent-preset-registry'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import TypertRegistry from '@liusiqi-dev/sqh-typert-registry'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { ApiSessionAgentController } from '../src/agent.ts'
 import { installModelSelectionProjection } from '../src/model-selection-projection.ts'

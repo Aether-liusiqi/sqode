@@ -6,14 +6,14 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import Include from '@liusiqi-dev/cordis-plugin-include'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
-import LlmRuntime, { createUserMessage, LlmAdapter, LlmError, resolveRetryPolicy  } from '@liusiqi-dev/dsh-llm'
-import type { GenerateOptions, ResolvedRetryPolicy, StreamChunk } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import AgentLoop from '@liusiqi-dev/sqh-agent-loop'
+import LlmRuntime, { createUserMessage, LlmAdapter, LlmError, resolveRetryPolicy  } from '@liusiqi-dev/sqh-llm'
+import type { GenerateOptions, ResolvedRetryPolicy, StreamChunk } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
 import * as retry from '../src/index.ts'
 
 let root: string | undefined
@@ -59,14 +59,14 @@ async function loadYaml(lines: readonly string[]): Promise<Context> {
   await context.plugin(Loader)
   context.loader.builtins.include = Include
   const modules = new Map<string, unknown>([
-    ['@liusiqi-dev/dsh-llm', LlmRuntime],
-    ['@liusiqi-dev/dsh-session', SessionStore],
-    ['@liusiqi-dev/dsh-session-projection', SessionProjectionRegistry],
-    ['@liusiqi-dev/dsh-system-prompt', SystemPrompt],
-    ['@liusiqi-dev/dsh-tools', ToolRuntime],
-    ['@liusiqi-dev/dsh-agent', AgentRegistry],
-    ['@liusiqi-dev/dsh-llm-retry', retry],
-    ['@liusiqi-dev/dsh-agent-loop', AgentLoop],
+    ['@liusiqi-dev/sqh-llm', LlmRuntime],
+    ['@liusiqi-dev/sqh-session', SessionStore],
+    ['@liusiqi-dev/sqh-session-projection', SessionProjectionRegistry],
+    ['@liusiqi-dev/sqh-system-prompt', SystemPrompt],
+    ['@liusiqi-dev/sqh-tools', ToolRuntime],
+    ['@liusiqi-dev/sqh-agent', AgentRegistry],
+    ['@liusiqi-dev/sqh-llm-retry', retry],
+    ['@liusiqi-dev/sqh-agent-loop', AgentLoop],
   ])
   context.loader.internal = {
     version: 'v2',
@@ -89,14 +89,14 @@ describe('real Loader composition', () => {
   // to trip the default 5s budget on cold caches.
   it('loads provider-supplied policy and records recovery through the shipping loop', { timeout: 60_000 }, async () => {
     const loaded = await loadYaml([
-      "- name: '@liusiqi-dev/dsh-llm'",
-      "- name: '@liusiqi-dev/dsh-session'",
-      "- name: '@liusiqi-dev/dsh-session-projection'",
-      "- name: '@liusiqi-dev/dsh-system-prompt'",
-      "- name: '@liusiqi-dev/dsh-tools'",
-      "- name: '@liusiqi-dev/dsh-agent'",
-      "- name: '@liusiqi-dev/dsh-llm-retry'",
-      "- name: '@liusiqi-dev/dsh-agent-loop'",
+      "- name: '@liusiqi-dev/sqh-llm'",
+      "- name: '@liusiqi-dev/sqh-session'",
+      "- name: '@liusiqi-dev/sqh-session-projection'",
+      "- name: '@liusiqi-dev/sqh-system-prompt'",
+      "- name: '@liusiqi-dev/sqh-tools'",
+      "- name: '@liusiqi-dev/sqh-agent'",
+      "- name: '@liusiqi-dev/sqh-llm-retry'",
+      "- name: '@liusiqi-dev/sqh-agent-loop'",
     ])
 
     const unloaded = [...loaded.loader.entries()]

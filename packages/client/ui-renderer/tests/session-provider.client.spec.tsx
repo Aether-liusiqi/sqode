@@ -3,13 +3,13 @@ import { useState, useSyncExternalStore, type ReactNode } from 'react'
 import { Context } from '@liusiqi-dev/cordis'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, render } from '@testing-library/react'
-import type { SessionBinding as ControllerBinding, SessionReference } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { SessionBinding as ControllerBinding, SessionReference } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import type {
   SessionProviderComponent, StoredEntry, ScopedStandardSourceBinding,
   SlotRendererHost, SlotScopeAdapter, StandardSourceBinding,
-} from '@liusiqi-dev/dsh-client-ui-slots'
-import type {} from '@liusiqi-dev/dsh-client-ui-session/client'
+} from '@liusiqi-dev/sqh-client-ui-slots'
+import type {} from '@liusiqi-dev/sqh-client-ui-session/client'
 import { renderSessionArea } from '../../ui-session/src/client/session-provider.tsx'
 import { createSlotRenderer } from '../src/client/scoped-slots.tsx'
 

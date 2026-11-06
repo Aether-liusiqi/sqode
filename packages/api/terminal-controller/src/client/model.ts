@@ -1,11 +1,11 @@
 /** React-free browser terminal state and reconnecting Remote-stream ownership. */
 import { preferredShell, rememberShell } from './shell-preference.ts'
-import { randomUUID } from '@liusiqi-dev/dsh-util-crypto'
-import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import { RemoteStreamCarrierError, type ClientRemote, type RemoteStream } from '@liusiqi-dev/dsh-api-gateway/client'
-import { RemoteError, remoteErrorOf, type RemoteResult } from '@liusiqi-dev/dsh-typert-protocol'
-import type {} from '@liusiqi-dev/dsh-api-terminal-controller/remote'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import { randomUUID } from '@liusiqi-dev/sqh-util-crypto'
+import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import { RemoteStreamCarrierError, type ClientRemote, type RemoteStream } from '@liusiqi-dev/sqh-api-gateway/client'
+import { RemoteError, remoteErrorOf, type RemoteResult } from '@liusiqi-dev/sqh-typert-protocol'
+import type {} from '@liusiqi-dev/sqh-api-terminal-controller/remote'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import type {
   TerminalAttachmentId, TerminalEnvironment, TerminalFrame,
   WebTerminalId, WebTerminalInfo,
@@ -17,7 +17,7 @@ export type TerminalRemote = ClientRemote['terminal']
 /** Product error identifiers translated by the terminal UI. */
 export type TerminalViewIssue = 'missingTerminal' | 'inputFull' | 'attachmentEnded' | 'invalidOutput' | 'terminalLimit'
 
-declare module '@liusiqi-dev/dsh-typert-protocol' {
+declare module '@liusiqi-dev/sqh-typert-protocol' {
   interface RemoteErrorDetailsMap {
     /** Client terminal failure preserved through the Remote stream supervisor. */
     'terminal/view': { readonly issue: TerminalViewIssue }

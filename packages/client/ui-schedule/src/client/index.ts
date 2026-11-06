@@ -29,19 +29,19 @@
  */
 
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-client-locale/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-session/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-sidebar/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-sidebar-right/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-tool/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-workspace/client'
-import type { MainPanelId } from '@liusiqi-dev/dsh-client-ui-layout/client'
-import type {} from '@liusiqi-dev/dsh-api-remotes/client'
-import type {} from '@liusiqi-dev/dsh-client-connection/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { ScheduleCatalogEntry, ScheduleDeliveryHistoryRequest, ScheduleId, ScheduleUpdateRequest } from '@liusiqi-dev/dsh-schedule/client'
+import type {} from '@liusiqi-dev/sqh-client-locale/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-session/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-sidebar/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-sidebar-right/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-tool/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-workspace/client'
+import type { MainPanelId } from '@liusiqi-dev/sqh-client-ui-layout/client'
+import type {} from '@liusiqi-dev/sqh-api-remotes/client'
+import type {} from '@liusiqi-dev/sqh-client-connection/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { ScheduleCatalogEntry, ScheduleDeliveryHistoryRequest, ScheduleId, ScheduleUpdateRequest } from '@liusiqi-dev/sqh-schedule/client'
 import { createCatalogSource, type CatalogDeleteOutcome, type CatalogInjected } from './catalog-source.ts'
 import { createDeleteToastSource, ScheduleDeleteToast } from './DeleteToast.tsx'
 import { SCHEDULE_TASK_ID, SCHEDULE_TASK_KIND, scheduleTaskDefinition } from './definition.ts'
@@ -64,7 +64,7 @@ import { en as managerEn, zh as managerZh, type TaskManagerKey } from './task-ma
 const MANAGER_NS = 'schedule.manager'
 const PANEL_ID = 'schedules' as MainPanelId
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** Active Schedule catalog copy. */
     'schedule.catalog': ScheduleCatalogKey

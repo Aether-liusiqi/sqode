@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-client-ui-settings-shell",
+  "name": "@liusiqi-dev/sqh-client-ui-settings-shell",
   "description": "Settings page of the shell executor on the dsh web client's Plugins page: the command timeout and the per-stream output cap of the shell namespace",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,9 +28,9 @@
   "dsh": {
     "client": {
       "inject": [
-        "@liusiqi-dev/dsh-client-locale",
-        "@liusiqi-dev/dsh-client-ui-settings",
-        "@liusiqi-dev/dsh-client-ui-plugin-manager"
+        "@liusiqi-dev/sqh-client-locale",
+        "@liusiqi-dev/sqh-client-ui-settings",
+        "@liusiqi-dev/sqh-client-ui-plugin-manager"
       ],
       "platform": "web"
     }
@@ -45,15 +45,15 @@
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-api-remotes": "workspace:*",
-    "@liusiqi-dev/dsh-client-locale": "workspace:*",
-    "@liusiqi-dev/dsh-client-store": "workspace:*",
-    "@liusiqi-dev/dsh-client-test-runtime": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-plugin-manager": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-primitives": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-renderer": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-settings": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-slots": "workspace:*",
+    "@liusiqi-dev/sqh-api-remotes": "workspace:*",
+    "@liusiqi-dev/sqh-client-locale": "workspace:*",
+    "@liusiqi-dev/sqh-client-store": "workspace:*",
+    "@liusiqi-dev/sqh-client-test-runtime": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-plugin-manager": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-primitives": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-renderer": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-settings": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-slots": "workspace:*",
     "@types/react": "~18.3.1",
     "react": "^18.2.0"
   },

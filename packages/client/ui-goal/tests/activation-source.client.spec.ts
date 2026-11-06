@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from 'vitest'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { RemoteResult } from '@liusiqi-dev/dsh-api-remotes/client'
-import type { GoalActivationChanged, GoalId, GoalProjection, GoalView } from '@liusiqi-dev/dsh-goal/client'
-import { RemoteError } from '@liusiqi-dev/dsh-client-test-runtime'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { RemoteResult } from '@liusiqi-dev/sqh-api-remotes/client'
+import type { GoalActivationChanged, GoalId, GoalProjection, GoalView } from '@liusiqi-dev/sqh-goal/client'
+import { RemoteError } from '@liusiqi-dev/sqh-client-test-runtime'
 import { createGoalActivationSource } from '../src/client/activation-source.ts'
 
 const GOAL_ID = 'g-1' as GoalId

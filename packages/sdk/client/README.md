@@ -3,7 +3,7 @@ description: "The TypeScript SDK client for callers that spawn a Siqi Harness ru
 kind: "package-library"
 ---
 
-# @liusiqi-dev/dsh-sdk-client
+# @liusiqi-dev/sqh-sdk-client
 
 English | [中文](README.zh.md)
 
@@ -30,8 +30,8 @@ Use this client when TypeScript code must drive a complete Harness runtime from 
 ### Running agent turns with DeepSeekHarness
 
 ```ts
-import { DeepSeekHarness } from '@liusiqi-dev/dsh-sdk-client'
-import { ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
+import { DeepSeekHarness } from '@liusiqi-dev/sqh-sdk-client'
+import { ReasoningEffortId } from '@liusiqi-dev/sqh-llm'
 
 await using harness = new DeepSeekHarness({
   profile: 'sdk',
@@ -98,7 +98,7 @@ Read these pages when the client contract is not enough. They move from the wire
 - [SDK wire protocol](../protocol/README.md) — the JSON-RPC methods and payload shapes this client speaks.
 - [JSON-RPC serving plugin](../server/README.md) — the runtime plugin that serves this client.
 - [Python SDK](../../../python/README.md) — the design twin that shares the same runtime peer and protocol.
-- [SDK subagent backend](../../subagent/subagent-dsh-sdk/README.md) — a harness-internal consumer of this client.
+- [SDK subagent backend](../../subagent/subagent-sdk/README.md) — a harness-internal consumer of this client.
 - [SDK application bundle](../../bundle/sdk-app/README.md) — the `dsh --profile sdk` runtime application this client launches.
 
 -----

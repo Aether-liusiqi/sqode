@@ -1,6 +1,6 @@
-/** Durable request-route lookup for one open model step. @module @liusiqi-dev/dsh-llm-retry/history */
+/** Durable request-route lookup for one open model step. @module @liusiqi-dev/sqh-llm-retry/history */
 
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
 
 /**
  * Find the provider in force for one currently open step.

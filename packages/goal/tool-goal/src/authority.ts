@@ -1,12 +1,12 @@
 /** Execution-time authority checks for the model-facing goal tools. */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type { GoalView } from '@liusiqi-dev/dsh-goal'
-import { HarnessError } from '@liusiqi-dev/dsh-llm'
-import type { SessionEvent, SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { ToolRunContext } from '@liusiqi-dev/dsh-tools'
-import type {} from '@liusiqi-dev/dsh-session-projection'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type { GoalView } from '@liusiqi-dev/sqh-goal'
+import { HarnessError } from '@liusiqi-dev/sqh-llm'
+import type { SessionEvent, SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { ToolRunContext } from '@liusiqi-dev/sqh-tools'
+import type {} from '@liusiqi-dev/sqh-session-projection'
 
 /** The calling agent plus the immutable event cut and open-turn start seq used for authority checks. */
 export interface GoalToolExecution {

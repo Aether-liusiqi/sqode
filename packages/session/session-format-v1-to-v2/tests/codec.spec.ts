@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest'
-import { SessionFormatEventCollector } from '@liusiqi-dev/dsh-session-format'
+import { SessionFormatEventCollector } from '@liusiqi-dev/sqh-session-format'
 import type {
   SessionFormatArtifact,
   SessionFormatArtifactDecoder,
   SessionFormatEvent,
   SessionFormatJsonObject,
   SessionFormatRecovery,
-} from '@liusiqi-dev/dsh-session-format'
-import { decodeSeqRanges as decodeCurrentSeqRanges } from '@liusiqi-dev/dsh-session'
-import { releasedV2SessionFormatCodec } from '@liusiqi-dev/dsh-session-format-v1-to-v2'
+} from '@liusiqi-dev/sqh-session-format'
+import { decodeSeqRanges as decodeCurrentSeqRanges } from '@liusiqi-dev/sqh-session'
+import { releasedV2SessionFormatCodec } from '@liusiqi-dev/sqh-session-format-v1-to-v2'
 
 const minimalPhysicalHeader = {
   type: 'session', version: 2, id: 'codec', createdAt: 1, isSeeded: false, delegationDepth: 0,

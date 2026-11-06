@@ -211,15 +211,15 @@ describe('initProfile', () => {
   it('creates manifest, user patch layer, and pnpm workspace once, never overwriting', () => {
     const home = tmp()
     const dir = resolveProfileDir('tui', home)
-    initProfile(dir, ['@liusiqi-dev/dsh-base'])
+    initProfile(dir, ['@liusiqi-dev/sqh-base'])
     const manifest = readProfileManifest('t', dir)
-    expect(manifest.dsh?.profile?.bundles).toEqual(['@liusiqi-dev/dsh-base'])
+    expect(manifest.dsh?.profile?.bundles).toEqual(['@liusiqi-dev/sqh-base'])
     expect(readFileSync(join(dir, PROFILE_PATCH_FILENAME), 'utf8')).toContain('[]')
     expect(readFileSync(join(dir, 'pnpm-workspace.yaml'), 'utf8')).toContain('nodeLinker: hoisted')
     // Re-init keeps user edits.
     writeFileSync(join(dir, PROFILE_PATCH_FILENAME), '- id: x\n  config: {}\n')
     initProfile(dir, ['other'])
-    expect(readProfileManifest('t', dir).dsh?.profile?.bundles).toEqual(['@liusiqi-dev/dsh-base'])
+    expect(readProfileManifest('t', dir).dsh?.profile?.bundles).toEqual(['@liusiqi-dev/sqh-base'])
     expect(readFileSync(join(dir, PROFILE_PATCH_FILENAME), 'utf8')).toContain('- id: x')
   })
 })
@@ -341,15 +341,15 @@ describe('loadProfile', () => {
     const home = tmp()
     expect(() => loadProfile('t', 'custom', anchor, home))
       .toThrow('profile "custom" does not exist')
-    expect(PROFILE_TEMPLATES.web?.bundles).toContain('@liusiqi-dev/dsh-base')
+    expect(PROFILE_TEMPLATES.web?.bundles).toContain('@liusiqi-dev/sqh-base')
     expect(PROFILE_TEMPLATES.acp).toEqual({
-      bundles: ['@liusiqi-dev/dsh-base', '@liusiqi-dev/dsh-acp-app'],
+      bundles: ['@liusiqi-dev/sqh-base', '@liusiqi-dev/sqh-acp-app'],
     })
     expect(PROFILE_TEMPLATES.sdk).toEqual({
-      bundles: ['@liusiqi-dev/dsh-base', '@liusiqi-dev/dsh-sdk-app'],
+      bundles: ['@liusiqi-dev/sqh-base', '@liusiqi-dev/sqh-sdk-app'],
     })
     expect(PROFILE_TEMPLATES['sdk-minimal']).toEqual({
-      bundles: ['@liusiqi-dev/dsh-sdk-minimal'],
+      bundles: ['@liusiqi-dev/sqh-sdk-minimal'],
     })
     loadProfile('t', 'web', anchor, home)
     expect(readProfileManifest('t', resolveProfileDir('web', home)).dsh?.profile?.bundles)
@@ -358,31 +358,31 @@ describe('loadProfile', () => {
 
   it('normalizes only the exact installation-owned headless bundle tuple', () => {
     const anchor = stageInstallation({
-      '@liusiqi-dev/dsh-base': { patch: '[]\n' },
-      '@liusiqi-dev/dsh-web-app': { patch: '[]\n' },
-      '@liusiqi-dev/dsh-headless': { patch: '[]\n' },
+      '@liusiqi-dev/sqh-base': { patch: '[]\n' },
+      '@liusiqi-dev/sqh-web-app': { patch: '[]\n' },
+      '@liusiqi-dev/sqh-headless': { patch: '[]\n' },
       'custom-bundle': { patch: '[]\n' },
     })
     const home = tmp()
     const stock = resolveProfileDir('headless', home)
     initProfile(stock, [
-      '@liusiqi-dev/dsh-base', '@liusiqi-dev/dsh-web-app', '@liusiqi-dev/dsh-headless',
+      '@liusiqi-dev/sqh-base', '@liusiqi-dev/sqh-web-app', '@liusiqi-dev/sqh-headless',
     ])
     const retiredManifest = readProfileManifest('t', stock)
     writeProfileManifest(stock, retiredManifest)
     loadProfile('t', 'headless', anchor, home)
     expect(readProfileManifest('t', stock).dsh?.profile).toEqual({
-      bundles: ['@liusiqi-dev/dsh-base', '@liusiqi-dev/dsh-headless'],
+      bundles: ['@liusiqi-dev/sqh-base', '@liusiqi-dev/sqh-headless'],
     })
 
     const customHome = tmp()
     const custom = resolveProfileDir('headless', customHome)
     initProfile(custom, [
-      '@liusiqi-dev/dsh-base', '@liusiqi-dev/dsh-web-app', '@liusiqi-dev/dsh-headless', 'custom-bundle',
+      '@liusiqi-dev/sqh-base', '@liusiqi-dev/sqh-web-app', '@liusiqi-dev/sqh-headless', 'custom-bundle',
     ])
     loadProfile('t', 'headless', anchor, customHome)
     expect(readProfileManifest('t', custom).dsh?.profile?.bundles).toEqual([
-      '@liusiqi-dev/dsh-base', '@liusiqi-dev/dsh-web-app', '@liusiqi-dev/dsh-headless', 'custom-bundle',
+      '@liusiqi-dev/sqh-base', '@liusiqi-dev/sqh-web-app', '@liusiqi-dev/sqh-headless', 'custom-bundle',
     ])
   })
 

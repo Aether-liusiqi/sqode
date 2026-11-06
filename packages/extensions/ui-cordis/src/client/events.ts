@@ -1,7 +1,7 @@
 /** Client-safe dynamic Cordis vocabulary re-exported through the Remote assembly. */
 
 // Type-only: merges `ctx.remote` and the forwarded-event key set into this program.
-import type {} from '@liusiqi-dev/dsh-api-remotes/client'
+import type {} from '@liusiqi-dev/sqh-api-remotes/client'
 
 export type {
   ApprovalRequestId,
@@ -14,4 +14,4 @@ export type {
   DynamicCordisRequestResolved,
   DynamicCordisRetracted,
   DynamicCordisRunRequest,
-} from '@liusiqi-dev/dsh-api-remotes/client'
+} from '@liusiqi-dev/sqh-api-remotes/client'

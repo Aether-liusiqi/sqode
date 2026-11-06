@@ -1,13 +1,13 @@
 // @vitest-environment jsdom
-import type { GlobalStandardProps } from '@liusiqi-dev/dsh-client-ui-slots'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import type { GlobalStandardProps } from '@liusiqi-dev/sqh-client-ui-slots'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
-import { bindSnapshotSelector, RemoteError } from '@liusiqi-dev/dsh-client-test-runtime'
-import type { SettingsNamespaceView } from '@liusiqi-dev/dsh-api-remotes/client'
+import { bindSnapshotSelector, RemoteError } from '@liusiqi-dev/sqh-client-test-runtime'
+import type { SettingsNamespaceView } from '@liusiqi-dev/sqh-api-remotes/client'
 import { PermissionRow, type PermissionRowProps } from '../src/client/PermissionRow.tsx'
 import { zh } from '../src/client/locales.ts'
-import { SettingsDescribeMirror } from '@liusiqi-dev/dsh-client-ui-settings/src/client/settings-mirror.ts'
+import { SettingsDescribeMirror } from '@liusiqi-dev/sqh-client-ui-settings/src/client/settings-mirror.ts'
 import { PermissionPresetSettingsController } from '../src/client/settings-store.ts'
 
 // Every fixture carries the resource hook the resources plugin merges into GlobalStandardProps.

@@ -13,9 +13,9 @@ import { fileURLToPath } from 'node:url'
 import type { Browser, Locator, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
-import { ToolCallId, type StreamChunk } from '@liusiqi-dev/dsh-llm'
-import type { ReplayEntry } from '@liusiqi-dev/dsh-llm-replay'
-import type { SessionEvent, SessionId } from '@liusiqi-dev/dsh-session'
+import { ToolCallId, type StreamChunk } from '@liusiqi-dev/sqh-llm'
+import type { ReplayEntry } from '@liusiqi-dev/sqh-llm-replay'
+import type { SessionEvent, SessionId } from '@liusiqi-dev/sqh-session'
 import {
   assertFixtureInventory, captureStableAria, compareOrRefreshGolden, launchWebScaffold, readPersistedEvents,
   watchConsole, webSnapshotMode, type WebScaffold,

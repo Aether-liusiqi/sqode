@@ -3,7 +3,7 @@ description: "The model-facing persistent pwsh tool for users and maintainers ch
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-tool-pwsh-persistent
+# @liusiqi-dev/sqh-tool-pwsh-persistent
 
 English | [中文](README.zh.md)
 
@@ -36,11 +36,11 @@ Choose the persistent tool when work depends on cross-call PowerShell state, and
 The default `shell` backend starts a PowerShell shell through a `dsh-terminal-bash` instance configured with `shellDialect: pwsh`; deployments may register another pwsh-dialect PTY backend and select it by name.
 
 ```yaml
-- name: '@liusiqi-dev/dsh-terminal'
-- name: '@liusiqi-dev/dsh-terminal-bash'
+- name: '@liusiqi-dev/sqh-terminal'
+- name: '@liusiqi-dev/sqh-terminal-bash'
   config:
     shellDialect: pwsh
-- name: '@liusiqi-dev/dsh-tool-pwsh-persistent'
+- name: '@liusiqi-dev/sqh-tool-pwsh-persistent'
 ```
 
 | Field | Default | Meaning |

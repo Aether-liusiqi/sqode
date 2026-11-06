@@ -2,12 +2,12 @@
 
 import { performance } from 'node:perf_hooks'
 import { Context } from '@liusiqi-dev/cordis'
-import SessionStore, { SESSION_FORMAT_VERSION, SessionId, SessionLogOffset, SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
-import JsonlSessionPersistence from '@liusiqi-dev/dsh-session-persistence-jsonl'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import SessionQueryEngine from '@liusiqi-dev/dsh-session-query'
-import SubagentRuntime, { SUBAGENT_DESCRIPTOR_VERSION } from '@liusiqi-dev/dsh-subagent'
+import SessionStore, { SESSION_FORMAT_VERSION, SessionId, SessionLogOffset, SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
+import JsonlSessionPersistence from '@liusiqi-dev/sqh-session-persistence-jsonl'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import SessionQueryEngine from '@liusiqi-dev/sqh-session-query'
+import SubagentRuntime, { SUBAGENT_DESCRIPTOR_VERSION } from '@liusiqi-dev/sqh-subagent'
 import { assertBuiltBenchmarkRuntime } from '../support/built-worker.ts'
 import { PARENT_ID, syntheticHistory, TIME_ZERO, WORKLOAD } from './workload.ts'
 
@@ -99,8 +99,8 @@ async function run(root: string, mode: string): Promise<CatalogReport | { seeded
 }
 
 assertBuiltBenchmarkRuntime(import.meta.url, Object.fromEntries([
-  '@liusiqi-dev/dsh-subagent', '@liusiqi-dev/dsh-session-query',
-  '@liusiqi-dev/dsh-session-persistence-jsonl',
+  '@liusiqi-dev/sqh-subagent', '@liusiqi-dev/sqh-session-query',
+  '@liusiqi-dev/sqh-session-persistence-jsonl',
 ].map(name => [name, import.meta.resolve(name)])))
 const [root, mode] = process.argv.slice(2)
 if (root === undefined || (mode !== 'seed' && mode !== 'catalog')) {

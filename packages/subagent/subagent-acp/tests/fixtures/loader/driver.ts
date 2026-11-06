@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /** Test driver: one delegation turn through a headless Loader composition. */
 
-import { resolveConfigPath } from '@liusiqi-dev/dsh-app-boot'
-import { runFixtureTurn } from '@liusiqi-dev/dsh-loader-smoke'
+import { resolveConfigPath } from '@liusiqi-dev/sqh-app-boot'
+import { runFixtureTurn } from '@liusiqi-dev/sqh-loader-smoke'
 import { bootProductionProfile } from '../../../../../test-support/loader-smoke/tests/fixtures/production-profile.ts'
 
 const configPath = process.argv[2]

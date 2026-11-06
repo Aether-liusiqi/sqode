@@ -1,10 +1,10 @@
 /** Background browser upload implementation for Blob and byte-stream bodies. */
 
 import { Service, type Context } from '@liusiqi-dev/cordis'
-import { bytesToBase64 } from '@liusiqi-dev/dsh-util-crypto'
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
-import type { RemoteResult } from '@liusiqi-dev/dsh-typert-protocol'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import { bytesToBase64 } from '@liusiqi-dev/sqh-util-crypto'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
+import type { RemoteResult } from '@liusiqi-dev/sqh-typert-protocol'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import { FILE_UPLOAD_ROUTE } from '../protocol.ts'
 import type {
   ClientFileUploadHooks, EncodedFileUploadRequest, FileUploadFetch, FileUploadValue,

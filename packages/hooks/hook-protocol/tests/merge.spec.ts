@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { mergeHookOutputs } from '@liusiqi-dev/dsh-hook-protocol'
-import type { HookOutput } from '@liusiqi-dev/dsh-hook-protocol'
+import { mergeHookOutputs } from '@liusiqi-dev/sqh-hook-protocol'
+import type { HookOutput } from '@liusiqi-dev/sqh-hook-protocol'
 
 function out(over: Partial<HookOutput> = {}): HookOutput {
   return { exitCode: 0, stderr: '', stdout: '', ...over }

@@ -4,25 +4,25 @@ import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
-import { ToolCallId, ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime, { TOOL_ABORTED_BEFORE_DISPATCH } from '@liusiqi-dev/dsh-tools'
-import { assembleContextFor, type Agent } from '@liusiqi-dev/dsh-agent'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
-import { mountAgentLoopTestDependencies } from '@liusiqi-dev/dsh-agent-loop-testkit'
-import JsonlSessionPersistence from '@liusiqi-dev/dsh-session-persistence-jsonl'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import SubagentRuntime from '@liusiqi-dev/dsh-subagent'
-import type { SubagentStartRequest } from '@liusiqi-dev/dsh-subagent'
-import LocalJobRegistry from '@liusiqi-dev/dsh-jobs-local'
-import * as SubagentSpawn from '@liusiqi-dev/dsh-subagent-spawn-in-process'
-import * as ToolJobs from '@liusiqi-dev/dsh-tool-jobs'
+import { ToolCallId, ReasoningEffortId } from '@liusiqi-dev/sqh-llm'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime, { TOOL_ABORTED_BEFORE_DISPATCH } from '@liusiqi-dev/sqh-tools'
+import { assembleContextFor, type Agent } from '@liusiqi-dev/sqh-agent'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import AgentLoop from '@liusiqi-dev/sqh-agent-loop'
+import { mountAgentLoopTestDependencies } from '@liusiqi-dev/sqh-agent-loop-testkit'
+import JsonlSessionPersistence from '@liusiqi-dev/sqh-session-persistence-jsonl'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import SubagentRuntime from '@liusiqi-dev/sqh-subagent'
+import type { SubagentStartRequest } from '@liusiqi-dev/sqh-subagent'
+import LocalJobRegistry from '@liusiqi-dev/sqh-jobs-local'
+import * as SubagentSpawn from '@liusiqi-dev/sqh-subagent-spawn-in-process'
+import * as ToolJobs from '@liusiqi-dev/sqh-tool-jobs'
 import { MockAdapter, textResponse } from '../../../core/agent-loop/tests/mock-adapter.ts'
 import { loadStoredSession } from '../../subagent/tests/persistence-helpers.ts'
 import * as mock from './scripted-provider.ts'
 import * as tool from '../src/index.ts'
-import { Session, SessionId } from '@liusiqi-dev/dsh-session'
+import { Session, SessionId } from '@liusiqi-dev/sqh-session'
 import {
   callSubagent,
   disposeSetupProvider,
@@ -928,7 +928,7 @@ describe('dsh-tool-subagent background mode', () => {
     const ctx = await setup({ provider: 'mock' })
     const result = await callSubagent(ctx, { description: 'd', prompt: 'p', run_in_background: true })
     expect(result.isError).toBe(true)
-    expect(text(result)).toContain('background jobs unavailable: load @liusiqi-dev/dsh-jobs')
+    expect(text(result)).toContain('background jobs unavailable: load @liusiqi-dev/sqh-jobs')
   })
 
   it('skips background startup when the tool signal is already aborted', async () => {

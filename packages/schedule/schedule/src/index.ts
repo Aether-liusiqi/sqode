@@ -2,11 +2,11 @@
 import { randomUUID } from 'node:crypto'
 import z from '@liusiqi-dev/schemastery'
 import { Context, Service } from '@liusiqi-dev/cordis'
-import { TypertRemoteService, Remote } from '@liusiqi-dev/dsh-typert-protocol'
-import type { Domain } from '@liusiqi-dev/dsh-storage-domain'
-import type {} from '@liusiqi-dev/dsh-api-session-controller'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
-import type { SessionActivity } from '@liusiqi-dev/dsh-workspace'
+import { TypertRemoteService, Remote } from '@liusiqi-dev/sqh-typert-protocol'
+import type { Domain } from '@liusiqi-dev/sqh-storage-domain'
+import type {} from '@liusiqi-dev/sqh-api-session-controller'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
+import type { SessionActivity } from '@liusiqi-dev/sqh-workspace'
 import { ScheduleRuntime } from './runtime.ts'
 import { registerScheduleTools } from './tools.ts'
 import { scheduleDomain } from './storage.ts'
@@ -165,8 +165,8 @@ export class ScheduleService extends TypertRemoteService {
       return cleanup
     })
     const registered = new WeakSet<object>()
-    const attached = new Map<import('@liusiqi-dev/dsh-agent').Agent, () => Promise<void>>()
-    const attach = (agent: import('@liusiqi-dev/dsh-agent').Agent): void => {
+    const attached = new Map<import('@liusiqi-dev/sqh-agent').Agent, () => Promise<void>>()
+    const attach = (agent: import('@liusiqi-dev/sqh-agent').Agent): void => {
       if (this.stopping || registered.has(agent) || !ctx.agents.roots().includes(agent)) return
       registered.add(agent)
       // The plugin-scope effect is what tears the Agent-scoped registration down when this

@@ -3,7 +3,7 @@ description: "Theme and content-font-size settings for the dsh web client: --dsw
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-ui-theme
+# @liusiqi-dev/sqh-client-ui-theme
 
 English | [中文](README.zh.md)
 

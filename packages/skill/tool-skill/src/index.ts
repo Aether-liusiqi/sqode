@@ -1,16 +1,16 @@
 /**
  * Durable session skill catalog and model-facing `skill` loader tool.
  *
- * @module @liusiqi-dev/dsh-tool-skill
+ * @module @liusiqi-dev/sqh-tool-skill
  */
 
 import { createHash } from 'node:crypto'
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import type { Agent, PreStepDecision } from '@liusiqi-dev/dsh-agent'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import { SessionSeq, type UserMessage } from '@liusiqi-dev/dsh-session'
+import type { Agent, PreStepDecision } from '@liusiqi-dev/sqh-agent'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import { SessionSeq, type UserMessage } from '@liusiqi-dev/sqh-session'
 import {
   escapeText,
   isModelInvocable,
@@ -19,7 +19,7 @@ import {
   renderSkillContent,
   type SkillInvocationSource,
   type SkillSummary,
-} from '@liusiqi-dev/dsh-skill'
+} from '@liusiqi-dev/sqh-skill'
 
 export const name = 'tool-skill'
 export const inject = ['agents', 'tools', 'skills']
@@ -40,7 +40,7 @@ export interface SkillCatalogSource {
   readonly entries: readonly { readonly name: string; readonly description: string }[]
 }
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'skill-catalog': SkillCatalogSource
   }

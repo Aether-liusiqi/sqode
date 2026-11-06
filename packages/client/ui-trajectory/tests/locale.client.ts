@@ -1,5 +1,5 @@
-import { en as commonEn } from '@liusiqi-dev/dsh-client-locale/src/locales/en.ts'
-import { zh as commonZh } from '@liusiqi-dev/dsh-client-locale/src/locales/zh.ts'
+import { en as commonEn } from '@liusiqi-dev/sqh-client-locale/src/locales/en.ts'
+import { zh as commonZh } from '@liusiqi-dev/sqh-client-locale/src/locales/zh.ts'
 import { en, zh, type TrajectoryTranslate } from '../src/client/locales.ts'
 
 function translator(dictionary: Record<string, string>): TrajectoryTranslate {

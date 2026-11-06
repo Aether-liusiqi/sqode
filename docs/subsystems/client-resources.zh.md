@@ -25,12 +25,12 @@
 
 ```ts ignore-check
 import type { Context } from '@liusiqi-dev/cordis'
-import type { RemoteResult } from '@liusiqi-dev/dsh-typert-protocol'
-import type {} from '@liusiqi-dev/dsh-client-resources/client'
+import type { RemoteResult } from '@liusiqi-dev/sqh-typert-protocol'
+import type {} from '@liusiqi-dev/sqh-client-resources/client'
 
 interface NoteView { readonly title: string; readonly updatedAt: string }
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface ResourceProtocolMap { note: NoteView }
 }
 
@@ -62,8 +62,8 @@ export function apply(ctx: Context): void {
 | `failed` | 最新一帧报告了失败 | 保留的上一个 `ok` 值 | 该帧的 `RemoteFailure` |
 
 ```tsx ignore-check
-import type { PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
-import type {} from '@liusiqi-dev/dsh-api-workspace-files/client'
+import type { PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
+import type {} from '@liusiqi-dev/sqh-api-workspace-files/client'
 
 type Props = PropsRuntime<'sidebar.right.pane.tab'>
 

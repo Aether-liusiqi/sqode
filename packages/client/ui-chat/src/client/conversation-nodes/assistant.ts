@@ -2,10 +2,10 @@ import type { Context } from '@liusiqi-dev/cordis'
 import type {
   AssistantBlock, AssistantMessageNode, ConversationLocation, ConversationMatch,
   ConversationNodeContext, ConversationNodeDefinition,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type { StreamChunk } from '@liusiqi-dev/dsh-llm'
-import type {} from '@liusiqi-dev/dsh-llm-retry/types'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session/types'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type { StreamChunk } from '@liusiqi-dev/sqh-llm'
+import type {} from '@liusiqi-dev/sqh-llm-retry/types'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session/types'
 import type { AssistantChatData } from '../contract/chat-nodes.ts'
 import { CHAT_SYNTHETIC_SEQ_OFFSETS, chatNode } from './common.ts'
 import {
@@ -19,7 +19,7 @@ declare module '../contract/chat-nodes.ts' {
   }
 }
 
-declare module '@liusiqi-dev/dsh-client-ui-conversation/client' {
+declare module '@liusiqi-dev/sqh-client-ui-conversation/client' {
   interface ConversationStepDataMap {
     /** Streaming, settled, or interrupted Assistant material for this Step. */
     'assistant-step': AssistantChatData

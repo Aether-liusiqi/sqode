@@ -1,18 +1,18 @@
 // @vitest-environment jsdom
 /** Detail adapters accept the exact recorded result text and retain safe fallback paths. */
 import { describe, expect, it } from 'vitest'
-import type { ToolResultNode } from '@liusiqi-dev/dsh-client-ui-chat/client'
-import { makeTranslate } from '@liusiqi-dev/dsh-client-test-runtime'
-import { en, zh } from '@liusiqi-dev/dsh-client-ui-conversation/src/client/locales.ts'
-import { en as commonEn } from '@liusiqi-dev/dsh-client-locale/src/locales/en.ts'
-import { zh as commonZh } from '@liusiqi-dev/dsh-client-locale/src/locales/zh.ts'
-import { statusLine } from '@liusiqi-dev/dsh-tool-jobs/src/render.ts'
-import { presentation } from '@liusiqi-dev/dsh-tool-session-query/src/presentation.ts'
-import { renderList, renderRead, renderSpawn } from '@liusiqi-dev/dsh-tool-terminal/src/render.ts'
-import { formatSpillNotice } from '@liusiqi-dev/dsh-spill-policy/notice'
+import type { ToolResultNode } from '@liusiqi-dev/sqh-client-ui-chat/client'
+import { makeTranslate } from '@liusiqi-dev/sqh-client-test-runtime'
+import { en, zh } from '@liusiqi-dev/sqh-client-ui-conversation/src/client/locales.ts'
+import { en as commonEn } from '@liusiqi-dev/sqh-client-locale/src/locales/en.ts'
+import { zh as commonZh } from '@liusiqi-dev/sqh-client-locale/src/locales/zh.ts'
+import { statusLine } from '@liusiqi-dev/sqh-tool-jobs/src/render.ts'
+import { presentation } from '@liusiqi-dev/sqh-tool-session-query/src/presentation.ts'
+import { renderList, renderRead, renderSpawn } from '@liusiqi-dev/sqh-tool-terminal/src/render.ts'
+import { formatSpillNotice } from '@liusiqi-dev/sqh-spill-policy/notice'
 import { detailBadge, detailJson, detailList, detailRecord, inspectionItems, nonempty } from '../src/client/tool/models/detail-model-shared.ts'
 import { detailsCardModel } from '../src/client/tool/models/details-card-model.ts'
-import { SpillLocator } from '@liusiqi-dev/dsh-spill'
+import { SpillLocator } from '@liusiqi-dev/sqh-spill'
 
 const t = makeTranslate(en, commonEn)
 

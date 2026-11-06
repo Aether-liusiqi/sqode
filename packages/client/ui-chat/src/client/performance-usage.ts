@@ -1,6 +1,6 @@
 /** Performance detail preference with process-local choices on memory-only settings scopes. */
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { ConfigForm } from '@liusiqi-dev/dsh-client-ui-settings/client'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { ConfigForm } from '@liusiqi-dev/sqh-client-ui-settings/client'
 import { DEFAULT_PERFORMANCE_USAGE, type ChatSettings, type PerformanceUsageMode } from '../chat-settings.ts'
 
 /** Shared live preference for the settings row and chat statistics. */

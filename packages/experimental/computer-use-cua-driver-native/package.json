@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-experimental-computer-use-cua-driver-native",
+  "name": "@liusiqi-dev/sqh-experimental-computer-use-cua-driver-native",
   "description": "Experimental computer-use provider embedding the Cua Driver native npm SDK",
   "version": "1.0.0",
   "publishConfig": {
@@ -30,12 +30,12 @@
   "license": "MIT",
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-computer-use": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*"
+    "@liusiqi-dev/sqh-computer-use": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*"
   },
   "dependencies": {
-    "@liusiqi-dev/dsh-mcp-client": "workspace:*",
+    "@liusiqi-dev/sqh-mcp-client": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
     "@trycua/cua-driver": "0.28.0",
     "zod": "^4.4.3"
@@ -44,16 +44,16 @@
     "@liusiqi-dev/cordis": "workspace:~",
     "@liusiqi-dev/cordis-plugin-include": "workspace:~",
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-agent-loop": "workspace:*",
-    "@liusiqi-dev/dsh-agent-loop-testkit": "workspace:*",
-    "@liusiqi-dev/dsh-attachment": "workspace:*",
-    "@liusiqi-dev/dsh-attachment-local": "workspace:*",
-    "@liusiqi-dev/dsh-computer-use": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*"
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-agent-loop": "workspace:*",
+    "@liusiqi-dev/sqh-agent-loop-testkit": "workspace:*",
+    "@liusiqi-dev/sqh-attachment": "workspace:*",
+    "@liusiqi-dev/sqh-attachment-local": "workspace:*",
+    "@liusiqi-dev/sqh-computer-use": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*"
   }
 }

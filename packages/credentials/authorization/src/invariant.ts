@@ -1,12 +1,12 @@
 /**
- * Package-owned invariant companion for `@liusiqi-dev/dsh-authorization`.
- * @module @liusiqi-dev/dsh-authorization/invariant
+ * Package-owned invariant companion for `@liusiqi-dev/sqh-authorization`.
+ * @module @liusiqi-dev/sqh-authorization/invariant
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
+import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-authorization'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-authorization'
 
 /** Cordis companion plugin name. */
 export const name = 'authorization-invariant'

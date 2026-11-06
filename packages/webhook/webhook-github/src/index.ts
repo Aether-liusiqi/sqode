@@ -1,8 +1,8 @@
 /** Signed GitHub HTTP adapter for the provider-neutral webhook runtime. */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { credentialRef } from '@liusiqi-dev/dsh-credentials'
-import type {} from '@liusiqi-dev/dsh-host-webserver'
+import { credentialRef } from '@liusiqi-dev/sqh-credentials'
+import type {} from '@liusiqi-dev/sqh-host-webserver'
 import z from '@liusiqi-dev/schemastery'
 import { createGitHubWebhookHandler } from './handler.ts'
 

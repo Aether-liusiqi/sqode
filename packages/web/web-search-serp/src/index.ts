@@ -5,14 +5,14 @@
  * and no browser: connectivity is the whole prerequisite. Requests are spaced
  * per provider instance and capped per host, and a challenge page is reported
  * as such rather than as an empty result set.
- * @module @liusiqi-dev/dsh-web-search-serp
+ * @module @liusiqi-dev/sqh-web-search-serp
  */
 import type { Volatile } from '@liusiqi-dev/cordis'
 
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import type {} from '@liusiqi-dev/dsh-launch-environment'
-import type {} from '@liusiqi-dev/dsh-web'
+import type {} from '@liusiqi-dev/sqh-launch-environment'
+import type {} from '@liusiqi-dev/sqh-web'
 
 import { SerpSearchProvider } from './provider.ts'
 import type { SerpSearchOptions } from './types.ts'

@@ -4,7 +4,7 @@ import {
   Remote,
   RemoteScope,
   remoteMethods,
-} from '@liusiqi-dev/dsh-typert-protocol'
+} from '@liusiqi-dev/sqh-typert-protocol'
 
 class Goals extends TypertRemoteService {
   constructor(ctx: Context) {

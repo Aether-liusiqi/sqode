@@ -8,7 +8,7 @@
  */
 import { Context } from '@liusiqi-dev/cordis'
 import { describe, expect, it } from 'vitest'
-import type { SessionId } from '@liusiqi-dev/dsh-api-remotes/client'
+import type { SessionId } from '@liusiqi-dev/sqh-api-remotes/client'
 import { createScope, scopeOf } from '../src/client/scope.ts'
 
 const sid = (k: string): SessionId => k as SessionId

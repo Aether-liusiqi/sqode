@@ -18,7 +18,7 @@ import type {
   DynamicCordisRunResolution,
   DynamicCordisRunResponse,
   SessionId,
-} from '@liusiqi-dev/dsh-api-remotes/client'
+} from '@liusiqi-dev/sqh-api-remotes/client'
 import { errorDetails } from './runtime.ts'
 import type { CordisErrorDetails, CordisObservable, DynamicCordisPackageRunner } from './runtime.ts'
 

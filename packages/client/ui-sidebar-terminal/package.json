@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-client-ui-sidebar-terminal",
+  "name": "@liusiqi-dev/sqh-client-ui-sidebar-terminal",
   "description": "Interactive shell tabs for the right Sidebar",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,11 +28,11 @@
   "dsh": {
     "client": {
       "inject": [
-        "@liusiqi-dev/dsh-api-terminal-controller",
-        "@liusiqi-dev/dsh-client-ui-sidebar-right",
-        "@liusiqi-dev/dsh-api-remotes",
-        "@liusiqi-dev/dsh-client-ui-theme",
-        "@liusiqi-dev/dsh-client-shortcuts"
+        "@liusiqi-dev/sqh-api-terminal-controller",
+        "@liusiqi-dev/sqh-client-ui-sidebar-right",
+        "@liusiqi-dev/sqh-api-remotes",
+        "@liusiqi-dev/sqh-client-ui-theme",
+        "@liusiqi-dev/sqh-client-shortcuts"
       ],
       "platform": "web"
     }
@@ -47,30 +47,30 @@
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-api-remotes": "workspace:*",
-    "@liusiqi-dev/dsh-client-locale": "workspace:*",
-    "@liusiqi-dev/dsh-client-store": "workspace:*",
-    "@liusiqi-dev/dsh-client-test-runtime": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-dockkit": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-primitives": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-renderer": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-session": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-sidebar-right": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-slots": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
+    "@liusiqi-dev/sqh-api-remotes": "workspace:*",
+    "@liusiqi-dev/sqh-client-locale": "workspace:*",
+    "@liusiqi-dev/sqh-client-store": "workspace:*",
+    "@liusiqi-dev/sqh-client-test-runtime": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-dockkit": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-primitives": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-renderer": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-session": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-sidebar-right": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-slots": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
     "@testing-library/react": "^16.1.0",
     "@types/react": "~18.3.1",
     "@types/react-dom": "~18.3.0",
     "react": "^18.2.0",
     "clsx": "^2.0.0",
     "react-dom": "^18.2.0",
-    "@liusiqi-dev/dsh-api-terminal-controller": "workspace:*",
+    "@liusiqi-dev/sqh-api-terminal-controller": "workspace:*",
     "@xterm/xterm": "^6.0.0",
     "@xterm/addon-fit": "^0.11.0",
-    "@liusiqi-dev/dsh-client-ui-layout": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-conversation": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-theme": "workspace:*",
-    "@liusiqi-dev/dsh-client-shortcuts": "workspace:*"
+    "@liusiqi-dev/sqh-client-ui-layout": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-conversation": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-theme": "workspace:*",
+    "@liusiqi-dev/sqh-client-shortcuts": "workspace:*"
   },
   "files": [
     "lib/index.js",

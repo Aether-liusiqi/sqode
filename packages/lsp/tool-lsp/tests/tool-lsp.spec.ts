@@ -2,12 +2,12 @@ import { describe, expect, it } from 'vitest'
 import { join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { Context } from '@liusiqi-dev/cordis'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
-import Lsp, { LspProviderId, type LspProvider, type LspProviderQuery, type LspQueryResult } from '@liusiqi-dev/dsh-lsp'
-import * as ToolLsp from '@liusiqi-dev/dsh-tool-lsp'
-import { DEFAULT_LSP_TOOL_TIMEOUT_MS, LSP_PROMPT_TEXT } from '@liusiqi-dev/dsh-tool-lsp'
-import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
+import Lsp, { LspProviderId, type LspProvider, type LspProviderQuery, type LspQueryResult } from '@liusiqi-dev/sqh-lsp'
+import * as ToolLsp from '@liusiqi-dev/sqh-tool-lsp'
+import { DEFAULT_LSP_TOOL_TIMEOUT_MS, LSP_PROMPT_TEXT } from '@liusiqi-dev/sqh-tool-lsp'
+import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/sqh-timeout'
 
 /** A scripted provider recording queries; `respond` yields the result or throws. */
 function stubProvider(

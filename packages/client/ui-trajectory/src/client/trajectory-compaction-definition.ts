@@ -1,8 +1,8 @@
 import type { Context } from '@liusiqi-dev/cordis'
 import type {
   ConversationMatch, ConversationNodeDefinition, RequestView,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type {} from '@liusiqi-dev/dsh-compaction/types'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type {} from '@liusiqi-dev/sqh-compaction/types'
 import { trajectoryNode } from './trajectory-definition-common.ts'
 
 interface CompactionState {

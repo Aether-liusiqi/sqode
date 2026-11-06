@@ -1,9 +1,9 @@
 /** React-free Client Workspace service and command facade. */
 
 import { Service, type Context } from '@liusiqi-dev/cordis'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { RemoteFailure } from '@liusiqi-dev/dsh-typert-protocol'
-import type { WorkspaceId } from '@liusiqi-dev/dsh-workspace/types'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { RemoteFailure } from '@liusiqi-dev/sqh-typert-protocol'
+import type { WorkspaceId } from '@liusiqi-dev/sqh-workspace/types'
 import type { WorkspaceView } from '../types.ts'
 import type { ClientWorkspaceModel, WorkspaceSnapshot } from './model.ts'
 

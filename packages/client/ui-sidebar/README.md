@@ -3,7 +3,7 @@ description: "Sidebar shell plugin for the dsh web client: brand row, New Sessio
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-ui-sidebar
+# @liusiqi-dev/sqh-client-ui-sidebar
 
 English | [中文](README.zh.md)
 

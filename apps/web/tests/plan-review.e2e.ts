@@ -13,8 +13,8 @@ import { join } from 'node:path'
 import type { Browser, ConsoleMessage, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import {
   acknowledgeReloadConnectionLoss, assertFixtureInventory, captureExpandedTurnProcessAria, captureStableAria,
   compareOrRefreshGolden, fixtureUserPrompts,

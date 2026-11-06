@@ -1,4 +1,4 @@
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
 /**
  * Loop-level tool-order determinism: the request/header event — and therefore the frozen
  * request the adapter receives — carries the assembly's canonical tool order (system-prompt's
@@ -9,15 +9,15 @@ import { createUserMessage } from '@liusiqi-dev/dsh-llm'
 
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import LlmRuntime from '@liusiqi-dev/dsh-llm'
-import SessionStore, { SessionId, foldRequestHeader } from '@liusiqi-dev/dsh-session'
-import SystemPrompt, { TOOL_ORDER_REST } from '@liusiqi-dev/dsh-system-prompt'
-import type { Config as SystemPromptConfig } from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime, { defineContentToolFixture } from '@liusiqi-dev/dsh-tools'
-import AgentRegistry, { type Agent } from '@liusiqi-dev/dsh-agent'
+import LlmRuntime from '@liusiqi-dev/sqh-llm'
+import SessionStore, { SessionId, foldRequestHeader } from '@liusiqi-dev/sqh-session'
+import SystemPrompt, { TOOL_ORDER_REST } from '@liusiqi-dev/sqh-system-prompt'
+import type { Config as SystemPromptConfig } from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime, { defineContentToolFixture } from '@liusiqi-dev/sqh-tools'
+import AgentRegistry, { type Agent } from '@liusiqi-dev/sqh-agent'
 
-import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
+import AgentLoop from '@liusiqi-dev/sqh-agent-loop'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
 import { MockAdapter, textResponse } from './mock-adapter.ts'
 
 async function harness(adapter: MockAdapter, toolOrder?: SystemPromptConfig['toolOrder']) {

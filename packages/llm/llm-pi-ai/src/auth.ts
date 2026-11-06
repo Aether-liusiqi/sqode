@@ -15,10 +15,10 @@ import type { AuthContext, Credential, CredentialInfo, CredentialStore } from '@
 import type { Context } from '@liusiqi-dev/cordis'
 import {
   credentialKey, credentialKeyId, credentialKeyScope, credentialRef, isCredentialKeySegment, isCredentialRefName,
-} from '@liusiqi-dev/dsh-credentials'
-import type { CredentialKey, CredentialProvider, CredentialRecord } from '@liusiqi-dev/dsh-credentials'
-import { launchEnvironmentOf } from '@liusiqi-dev/dsh-launch-environment'
-import { LlmError } from '@liusiqi-dev/dsh-llm'
+} from '@liusiqi-dev/sqh-credentials'
+import type { CredentialKey, CredentialProvider, CredentialRecord } from '@liusiqi-dev/sqh-credentials'
+import { launchEnvironmentOf } from '@liusiqi-dev/sqh-launch-environment'
+import { LlmError } from '@liusiqi-dev/sqh-llm'
 
 /**
  * The record scope every credential this adapter family stores is written

@@ -7,7 +7,7 @@
 import { mkdtempSync, readFileSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import type { Session } from '@liusiqi-dev/dsh-session'
+import type { Session } from '@liusiqi-dev/sqh-session'
 import { afterEach, describe, expect, it } from 'vitest'
 import { capToolResultContent, toolResultBudgets } from '../src/tool-calls.ts'
 

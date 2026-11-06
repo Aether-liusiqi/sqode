@@ -5,60 +5,60 @@
 /:
   en: d2aaa955e01c2679
   zh: 9d264cf8be1536cf
-/liusiqi-dev-dsh-client-locale:
-  en: a3991bb729317c98
-  zh: 269507b73189bc0b
-/liusiqi-dev-dsh-client-locale/summary:
+/liusiqi-dev-sqh-client-locale:
+  en: 5907edbc9dd86b14
+  zh: 55e9ece906ec9dfe
+/liusiqi-dev-sqh-client-locale/summary:
   en: dc2ae9f181d3b34a
   zh: 787eb3ee7f52cec8
-/liusiqi-dev-dsh-client-locale/table-of-contents:
+/liusiqi-dev-sqh-client-locale/table-of-contents:
   en: d152484eb41ac6b4
   zh: bda879a892f240f0
-/liusiqi-dev-dsh-client-locale/use-this-package:
+/liusiqi-dev-sqh-client-locale/use-this-package:
   en: 7fedfbcbc3ad8cea
   zh: e29ba5230e0b9ecb
-/liusiqi-dev-dsh-client-locale/use-this-package/choosing-a-language:
+/liusiqi-dev-sqh-client-locale/use-this-package/choosing-a-language:
   en: 2bfed894d130dc23
   zh: b2a6751f341d6007
-/liusiqi-dev-dsh-client-locale/use-this-package/registering-a-dictionary:
+/liusiqi-dev-sqh-client-locale/use-this-package/registering-a-dictionary:
   en: 9b2fcfa8cae8dc4b
   zh: 293012a4d364ef59
-/liusiqi-dev-dsh-client-locale/use-this-package/resolving-package-text:
+/liusiqi-dev-sqh-client-locale/use-this-package/resolving-package-text:
   en: 3b63e84fe0fdf8f4
   zh: e97b5d1b92dff7ec
-/liusiqi-dev-dsh-client-locale/use-this-package/registering-a-language-pack:
+/liusiqi-dev-sqh-client-locale/use-this-package/registering-a-language-pack:
   en: aa4e9c70523339cc
   zh: 3359eddc4e9ef15e
-/liusiqi-dev-dsh-client-locale/use-this-package/what-the-host-half-does:
+/liusiqi-dev-sqh-client-locale/use-this-package/what-the-host-half-does:
   en: 8fa91333f7fc3387
   zh: 789a9cbb3eace3b0
-/liusiqi-dev-dsh-client-locale/understand-the-implementation:
+/liusiqi-dev-sqh-client-locale/understand-the-implementation:
   en: 288d8db39f9acfc5
   zh: d65cf2ffae8ad35c
-/liusiqi-dev-dsh-client-locale/understand-the-implementation/design-concept:
+/liusiqi-dev-sqh-client-locale/understand-the-implementation/design-concept:
   en: c2e0ab8bb6bcb26a
   zh: 508dec4db2c0fde6
-/liusiqi-dev-dsh-client-locale/understand-the-implementation/preference-resolution:
+/liusiqi-dev-sqh-client-locale/understand-the-implementation/preference-resolution:
   en: 4bc9dffa4629f537
   zh: f51633c658b8d25b
-/liusiqi-dev-dsh-client-locale/understand-the-implementation/dictionary-lookup:
+/liusiqi-dev-sqh-client-locale/understand-the-implementation/dictionary-lookup:
   en: f8dcc4035830e738
   zh: 8452ac63ee148c61
-/liusiqi-dev-dsh-client-locale/understand-the-implementation/source-map:
+/liusiqi-dev-sqh-client-locale/understand-the-implementation/source-map:
   en: a382e032c06ced3f
   zh: 419cb5f60b075388
-/liusiqi-dev-dsh-client-locale/further-exploration:
+/liusiqi-dev-sqh-client-locale/further-exploration:
   en: b6986484dd8ae2c5
   zh: 003635bfa6ea1b9d
-/liusiqi-dev-dsh-client-locale/model-experience:
+/liusiqi-dev-sqh-client-locale/model-experience:
   en: 209321ba2d2e6710
   zh: 21deb6c973f69b66
-/liusiqi-dev-dsh-client-locale/model-experience/kv-cache-effect:
+/liusiqi-dev-sqh-client-locale/model-experience/kv-cache-effect:
   en: ca75c51c89c2c9b0
   zh: de54f3467ef3b9be
-/liusiqi-dev-dsh-client-locale/known-limitations-and-deferred-work:
+/liusiqi-dev-sqh-client-locale/known-limitations-and-deferred-work:
   en: 500ede048ef44c6a
   zh: f741fae55b29a627
-/liusiqi-dev-dsh-client-locale/known-limitations-and-deferred-work/dev-note:
+/liusiqi-dev-sqh-client-locale/known-limitations-and-deferred-work/dev-note:
   en: 82fb34d8a128a0ac
   zh: fa3f40c900032aae

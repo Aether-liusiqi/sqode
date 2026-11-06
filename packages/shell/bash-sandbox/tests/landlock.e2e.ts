@@ -6,12 +6,12 @@ import { join } from 'node:path'
 import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import { launcherPath } from '@liusiqi-dev/node-addon-system/landlock-run'
-import { LocalSandboxProvider } from '@liusiqi-dev/dsh-sandbox-local'
-import { SandboxPolicyService } from '@liusiqi-dev/dsh-sandbox-policy'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import { SandboxBashExecutor } from '@liusiqi-dev/dsh-bash-sandbox'
-import LocalSubprocessRuntime from '@liusiqi-dev/dsh-subprocess-local'
-import type { ShellExecSpec, ShellExecution, ShellRunResult } from '@liusiqi-dev/dsh-shell'
+import { LocalSandboxProvider } from '@liusiqi-dev/sqh-sandbox-local'
+import { SandboxPolicyService } from '@liusiqi-dev/sqh-sandbox-policy'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import { SandboxBashExecutor } from '@liusiqi-dev/sqh-bash-sandbox'
+import LocalSubprocessRuntime from '@liusiqi-dev/sqh-subprocess-local'
+import type { ShellExecSpec, ShellExecution, ShellRunResult } from '@liusiqi-dev/sqh-shell'
 
 /** Historical foreground shorthand over the unified execute() seam. */
 async function run(x: { execute(spec: ShellExecSpec): Promise<ShellExecution> }, spec: ShellExecSpec): Promise<ShellRunResult> {
@@ -30,7 +30,7 @@ function start(x: { execute(spec: ShellExecSpec): Promise<ShellExecution> }, spe
  * REAL `SandboxBashExecutor`, driven through the executor's public run/start
  * paths. Verifies the WORLD (files exist or don't) plus the stamped result
  * facts; the backend-only confinement proofs live with
- * `@liusiqi-dev/dsh-sandbox-local`.
+ * `@liusiqi-dev/sqh-sandbox-local`.
  *
  * Self-skips when the running kernel does not enforce Landlock. CI builds the launcher from
  * `native/system` before running this file.

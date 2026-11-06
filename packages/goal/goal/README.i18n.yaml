@@ -5,69 +5,69 @@
 /:
   en: 6509c63744950c59
   zh: b7d4e056e0591155
-/liusiqi-dev-dsh-goal:
-  en: 4fbb0423a3228a29
-  zh: 805e3b9165a27e9c
-/liusiqi-dev-dsh-goal/summary:
+/liusiqi-dev-sqh-goal:
+  en: 7de944a96380533f
+  zh: 76f4e28f11c278c2
+/liusiqi-dev-sqh-goal/summary:
   en: 31ad6391c24650bd
   zh: e52f84b741d192b4
-/liusiqi-dev-dsh-goal/table-of-contents:
+/liusiqi-dev-sqh-goal/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
-/liusiqi-dev-dsh-goal/use-this-package:
+/liusiqi-dev-sqh-goal/use-this-package:
   en: 95829ddf63e72e3e
   zh: 9bd77a0ce737b2b0
-/liusiqi-dev-dsh-goal/use-this-package/when-to-use-it:
+/liusiqi-dev-sqh-goal/use-this-package/when-to-use-it:
   en: 44fbecf68641514a
   zh: afa1720f5128cf1b
-/liusiqi-dev-dsh-goal/use-this-package/set-up-the-service:
+/liusiqi-dev-sqh-goal/use-this-package/set-up-the-service:
   en: 81d959eecdec4bbd
   zh: ff47fb2cba8f1e73
-/liusiqi-dev-dsh-goal/use-this-package/session-projection:
-  en: 5cd78076bad0531a
-  zh: 67190f7c2c956818
-/liusiqi-dev-dsh-goal/use-this-package/drive-the-lifecycle:
+/liusiqi-dev-sqh-goal/use-this-package/session-projection:
+  en: 3a8f9e04e731ab94
+  zh: e03598fc17fb27b6
+/liusiqi-dev-sqh-goal/use-this-package/drive-the-lifecycle:
   en: 622890ced87a44e9
   zh: 6ba1f3f872400452
-/liusiqi-dev-dsh-goal/use-this-package/what-survives-and-what-does-not:
+/liusiqi-dev-sqh-goal/use-this-package/what-survives-and-what-does-not:
   en: e5cd2097500a9027
   zh: 3ecae388f839c944
-/liusiqi-dev-dsh-goal/use-this-package/observing-a-goal:
+/liusiqi-dev-sqh-goal/use-this-package/observing-a-goal:
   en: 3074e4c76de81d22
   zh: 10134afe344dafb3
-/liusiqi-dev-dsh-goal/understand-the-implementation:
+/liusiqi-dev-sqh-goal/understand-the-implementation:
   en: 592af7e68423bd1c
   zh: 9b1f08393db1b14e
-/liusiqi-dev-dsh-goal/understand-the-implementation/design:
+/liusiqi-dev-sqh-goal/understand-the-implementation/design:
   en: 6f19e891ffc79754
   zh: 9599e3b142f1e6b5
-/liusiqi-dev-dsh-goal/understand-the-implementation/source-map:
+/liusiqi-dev-sqh-goal/understand-the-implementation/source-map:
   en: f0451101cf73da7d
   zh: 73176ab69bb63a7f
-/liusiqi-dev-dsh-goal/understand-the-implementation/events-and-attribution:
+/liusiqi-dev-sqh-goal/understand-the-implementation/events-and-attribution:
   en: 502cf61dba8b22ca
   zh: 2b6f672bb2ac84ba
-/liusiqi-dev-dsh-goal/further-exploration:
+/liusiqi-dev-sqh-goal/further-exploration:
   en: d94098c1e3f3c8cf
   zh: f4be4de55703097a
-/liusiqi-dev-dsh-goal/model-experience:
+/liusiqi-dev-sqh-goal/model-experience:
   en: 215e7ba838619b7b
   zh: a311da3843709f90
-/liusiqi-dev-dsh-goal/model-experience/goal-state-mutations:
+/liusiqi-dev-sqh-goal/model-experience/goal-state-mutations:
   en: 6e6274de7991ef9e
   zh: be2048ca18b3cbab
-/liusiqi-dev-dsh-goal/model-experience/goal-state-mutations/what-the-model-sees:
+/liusiqi-dev-sqh-goal/model-experience/goal-state-mutations/what-the-model-sees:
   en: 7f3f6cf3e85ca188
   zh: 758596ce93635eab
-/liusiqi-dev-dsh-goal/model-experience/goal-state-mutations/token-effect:
+/liusiqi-dev-sqh-goal/model-experience/goal-state-mutations/token-effect:
   en: 5c3d2b320679252b
   zh: 67156a0cec8c8e60
-/liusiqi-dev-dsh-goal/model-experience/goal-state-mutations/kv-cache-effect:
+/liusiqi-dev-sqh-goal/model-experience/goal-state-mutations/kv-cache-effect:
   en: 5fcc49f70cf6604d
   zh: 39a3ba8fcdfba009
-/liusiqi-dev-dsh-goal/known-limitations-and-deferred-work:
+/liusiqi-dev-sqh-goal/known-limitations-and-deferred-work:
   en: c116ddcdd86c93df
   zh: aa0430d35e8604ff
-/liusiqi-dev-dsh-goal/known-limitations-and-deferred-work/dev-note:
+/liusiqi-dev-sqh-goal/known-limitations-and-deferred-work/dev-note:
   en: 0b672d0c3b09cd5d
   zh: 8f5d79353a6e5d63

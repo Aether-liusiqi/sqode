@@ -1,6 +1,6 @@
 import { Context } from '@liusiqi-dev/cordis'
 import { describe, expect, it, vi } from 'vitest'
-import { TestRemote } from '@liusiqi-dev/dsh-client-test-runtime'
+import { TestRemote } from '@liusiqi-dev/sqh-client-test-runtime'
 import { apply, inject } from '../src/client/index.ts'
 import { SettingsSchemaService } from '../src/client/schema.ts'
 import { ConfigForms } from '../src/client/config-form.ts'

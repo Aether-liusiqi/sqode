@@ -3,10 +3,10 @@ import { FiberState } from '@liusiqi-dev/cordis'
 import { describe, expect, vi } from 'vitest'
 import { createClientTest, webApp } from '../src/assembly/index.ts'
 
-const HMR = '@liusiqi-dev/dsh-client-hmr'
-const MODULES = '@liusiqi-dev/dsh-client-modules'
-const SESSIONS = '@liusiqi-dev/dsh-api-session-controller'
-const FILE_UPLOAD = '@liusiqi-dev/dsh-client-file-upload'
+const HMR = '@liusiqi-dev/sqh-client-hmr'
+const MODULES = '@liusiqi-dev/sqh-client-modules'
+const SESSIONS = '@liusiqi-dev/sqh-api-session-controller'
+const FILE_UPLOAD = '@liusiqi-dev/sqh-client-file-upload'
 const hmrRoster = webApp.closure([HMR])
 const sessionRoster = webApp.closure([SESSIONS])
 const hmrTest = createClientTest({ roster: hmrRoster }, { awaitConnected: false })

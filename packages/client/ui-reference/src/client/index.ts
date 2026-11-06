@@ -11,26 +11,26 @@
  * workspace is not the current one. A session is dated from the Host session
  * list, so the `@` menu and the session list never disagree about its age.
  *
- * @module @liusiqi-dev/dsh-client-ui-reference/client
+ * @module @liusiqi-dev/sqh-client-ui-reference/client
  */
 // Type-only: pulls the generated Remote API and ctx.remote merge through the Client assembly boundary.
-import type {} from '@liusiqi-dev/dsh-api-remotes/client'
+import type {} from '@liusiqi-dev/sqh-api-remotes/client'
 // Type-only: pulls the locale plugin's Context merge (ctx.locale).
-import type {} from '@liusiqi-dev/dsh-client-locale/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-sidebar-right/client'
+import type {} from '@liusiqi-dev/sqh-client-locale/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-sidebar-right/client'
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import type { ISessions } from '@liusiqi-dev/dsh-api-session-controller/client'
-import { relativeTime } from '@liusiqi-dev/dsh-client-ui-primitives'
+import type { ISessions } from '@liusiqi-dev/sqh-api-session-controller/client'
+import { relativeTime } from '@liusiqi-dev/sqh-client-ui-primitives'
 import type {
   ClientSessionContext, InputTriggerCrumb, InputTriggerServiceContract, InputTriggerSource,
-} from '@liusiqi-dev/dsh-client-ui-input-trigger/client'
-import { formatFileMention } from '@liusiqi-dev/dsh-file-reference/grammar'
-import type { FileReferenceCandidate } from '@liusiqi-dev/dsh-file-reference/types'
-import type { SessionReferenceMentionCandidate } from '@liusiqi-dev/dsh-session-reference/types'
-import { abbreviateHomePath, fileAddressFor } from '@liusiqi-dev/dsh-util-workspace-path'
+} from '@liusiqi-dev/sqh-client-ui-input-trigger/client'
+import { formatFileMention } from '@liusiqi-dev/sqh-file-reference/grammar'
+import type { FileReferenceCandidate } from '@liusiqi-dev/sqh-file-reference/types'
+import type { SessionReferenceMentionCandidate } from '@liusiqi-dev/sqh-session-reference/types'
+import { abbreviateHomePath, fileAddressFor } from '@liusiqi-dev/sqh-util-workspace-path'
 import { en, NS, zh, type ReferenceKey } from './locales.ts'
 
-declare module '@liusiqi-dev/dsh-api-session-controller/client' {
+declare module '@liusiqi-dev/sqh-api-session-controller/client' {
   interface SessionReferenceSourceMap {
     /** File and Session candidates waiting for initial history and their RPC results. */
     referenceCandidates: unknown

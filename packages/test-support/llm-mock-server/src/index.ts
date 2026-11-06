@@ -3,7 +3,7 @@
  * semantic-empty LLM recovery tests. Each accepted Messages request
  * consumes one behavior; the server never retries or interprets harness policy.
  *
- * @module @liusiqi-dev/dsh-llm-mock-server
+ * @module @liusiqi-dev/sqh-llm-mock-server
  */
 
 import { createServer } from 'node:http'

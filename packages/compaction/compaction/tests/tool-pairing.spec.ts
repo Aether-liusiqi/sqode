@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest'
-import { createUserMessage, ToolCallId , createMessage, createToolResultMessage } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-import { CompactionId, compactCheckpointSource, toolPairingBalancedAfter, toolPairingBalancedBefore } from '@liusiqi-dev/dsh-compaction'
-import { Session, SessionId, SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { SessionEvent, SessionSeq as SessionSeqType } from '@liusiqi-dev/dsh-session'
+import { createUserMessage, ToolCallId , createMessage, createToolResultMessage } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+import { CompactionId, compactCheckpointSource, toolPairingBalancedAfter, toolPairingBalancedBefore } from '@liusiqi-dev/sqh-compaction'
+import { Session, SessionId, SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { SessionEvent, SessionSeq as SessionSeqType } from '@liusiqi-dev/sqh-session'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }

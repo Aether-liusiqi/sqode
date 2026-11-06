@@ -1,9 +1,9 @@
 /** All voice views share one readiness subscription, including reconnect and terminal failure. */
 import { Context } from '@liusiqi-dev/cordis'
-import type { RemoteStreamOptions } from '@liusiqi-dev/dsh-api-gateway/client'
-import { RemoteStreamCarrierError } from '@liusiqi-dev/dsh-api-gateway/client'
-import type { SpeechProviderId } from '@liusiqi-dev/dsh-experimental-speech-to-text/types'
-import type { SpeechCatalog } from '@liusiqi-dev/dsh-experimental-api-speech-to-text/types'
+import type { RemoteStreamOptions } from '@liusiqi-dev/sqh-api-gateway/client'
+import { RemoteStreamCarrierError } from '@liusiqi-dev/sqh-api-gateway/client'
+import type { SpeechProviderId } from '@liusiqi-dev/sqh-experimental-speech-to-text/types'
+import type { SpeechCatalog } from '@liusiqi-dev/sqh-experimental-api-speech-to-text/types'
 import { expect, it, vi, onTestFinished } from 'vitest'
 import { observeReadiness } from '../src/client/readiness.ts'
 

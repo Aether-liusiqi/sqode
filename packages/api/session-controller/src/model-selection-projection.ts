@@ -1,8 +1,8 @@
 /** Durable model-selection intent and request-use projection. */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
-import type { ProjectionDefinition } from '@liusiqi-dev/dsh-session-projection'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
+import type { ProjectionDefinition } from '@liusiqi-dev/sqh-session-projection'
 import { z } from 'zod'
 import type {
   ModelSelection,

@@ -4,9 +4,9 @@
  * Both engines answer a keyword query with a JSON document whose items carry a
  * title, a link and an extractive snippet. Nothing here summarizes: the snippet
  * is the page's own text, so a citation can be checked against the page.
- * @module @liusiqi-dev/dsh-web-search-http/engines
+ * @module @liusiqi-dev/sqh-web-search-http/engines
  */
-import { WebError } from '@liusiqi-dev/dsh-web'
+import { WebError } from '@liusiqi-dev/sqh-web'
 
 import type { SearchEngine, SearchHit } from './types.ts'
 

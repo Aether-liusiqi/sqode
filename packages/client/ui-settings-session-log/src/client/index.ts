@@ -1,14 +1,14 @@
 /** General settings companion for the Host Session-log upload configuration. */
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-client-locale/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-settings/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-layout/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
+import type {} from '@liusiqi-dev/sqh-client-locale/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-settings/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-layout/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
 import { UploadPreference, type UploadSettings } from './upload-preference.ts'
 import { UploadRow, UploadToast, type UploadInjected } from './UploadRow.tsx'
 import { en, zh } from './locales.ts'
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** API Session-log preference copy. */
     'settings.sessionLog': keyof typeof en

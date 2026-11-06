@@ -1,11 +1,11 @@
-import { freezeMessage, MessageId } from '@liusiqi-dev/dsh-llm'
+import { freezeMessage, MessageId } from '@liusiqi-dev/sqh-llm'
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import type { Events } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { scopeTarget } from '@liusiqi-dev/dsh-scope'
-import * as ScopeInvariant from '@liusiqi-dev/dsh-scope/invariant'
-import InvariantRegistry from '@liusiqi-dev/dsh-invariants'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { scopeTarget } from '@liusiqi-dev/sqh-scope'
+import * as ScopeInvariant from '@liusiqi-dev/sqh-scope/invariant'
+import InvariantRegistry from '@liusiqi-dev/sqh-invariants'
 
 async function setup(): Promise<Context> {
   const ctx = new Context()

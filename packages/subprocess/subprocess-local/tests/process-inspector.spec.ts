@@ -3,9 +3,9 @@ import {
   createProcessInspector,
   linuxProcessGroupHasLiveMembers,
   parseProcStat,
-} from '@liusiqi-dev/dsh-subprocess-local/src/process-inspector.ts'
-import type { ProcessInspectorInternals } from '@liusiqi-dev/dsh-subprocess-local/src/process-inspector.ts'
-import { WindowsProcessInspector } from '@liusiqi-dev/dsh-subprocess-local/src/windows-inspector.ts'
+} from '@liusiqi-dev/sqh-subprocess-local/src/process-inspector.ts'
+import type { ProcessInspectorInternals } from '@liusiqi-dev/sqh-subprocess-local/src/process-inspector.ts'
+import { WindowsProcessInspector } from '@liusiqi-dev/sqh-subprocess-local/src/windows-inspector.ts'
 
 function stat(
   pid: number,

@@ -5,9 +5,9 @@
  * handed over from here. This is a projection of the dictionary, not a second
  * home for copy: the strings live in `locales.ts`.
  */
-import type { ShortcutCatalogEntry } from '@liusiqi-dev/dsh-client-shortcuts/client'
-import type { DockLabels } from '@liusiqi-dev/dsh-client-ui-dockkit'
-import type { TranslateNS } from '@liusiqi-dev/dsh-client-locale/client'
+import type { ShortcutCatalogEntry } from '@liusiqi-dev/sqh-client-shortcuts/client'
+import type { DockLabels } from '@liusiqi-dev/sqh-client-ui-dockkit'
+import type { TranslateNS } from '@liusiqi-dev/sqh-client-locale/client'
 
 /**
  * Project the dictionary into the kit's label contract.

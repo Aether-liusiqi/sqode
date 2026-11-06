@@ -1,12 +1,12 @@
-/** Package-owned approval audit-stream invariants. @module @liusiqi-dev/dsh-user-approval/invariant */
+/** Package-owned approval audit-stream invariants. @module @liusiqi-dev/sqh-user-approval/invariant */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Session, SessionEvent } from '@liusiqi-dev/dsh-session'
-import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
+import type { Session, SessionEvent } from '@liusiqi-dev/sqh-session'
+import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
 import type { ApprovalRequestId } from './index.ts'
 import { APPROVAL_POLICIES } from './index.ts'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-user-approval'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-user-approval'
 const APPROVAL_OUTCOMES = ['allowed-once', 'rejected', 'cancelled', 'unavailable'] as const
 
 /** Cordis companion plugin name. */

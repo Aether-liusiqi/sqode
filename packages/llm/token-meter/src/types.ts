@@ -1,11 +1,11 @@
 /**
  * Public configuration and measurement vocabulary for replay token metering.
  *
- * @module @liusiqi-dev/dsh-token-meter/types
+ * @module @liusiqi-dev/sqh-token-meter/types
  */
 
-import type { TokenUsage } from '@liusiqi-dev/dsh-llm'
-import type { SessionLogOffset, SessionSeq } from '@liusiqi-dev/dsh-session/types'
+import type { TokenUsage } from '@liusiqi-dev/sqh-llm'
+import type { SessionLogOffset, SessionSeq } from '@liusiqi-dev/sqh-session/types'
 
 export type { ContextBreakdownProjection, ContextPressureProjection, TokenUsageProjection } from './projection.ts'
 

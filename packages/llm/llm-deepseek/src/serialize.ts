@@ -1,8 +1,8 @@
 /** Map system snapshots, tool changes, and conversation turns to Messages using the configured route capability. */
 
-import { LlmError, requestImageHandleText } from '@liusiqi-dev/dsh-llm'
-import type { ContentBlock, GenerateOptions, ImageAttachmentAccessResolver, Message, RequestMessage } from '@liusiqi-dev/dsh-llm'
-import type { ImageAttachmentRef, RequestImageAttachment } from '@liusiqi-dev/dsh-attachment'
+import { LlmError, requestImageHandleText } from '@liusiqi-dev/sqh-llm'
+import type { ContentBlock, GenerateOptions, ImageAttachmentAccessResolver, Message, RequestMessage } from '@liusiqi-dev/sqh-llm'
+import type { ImageAttachmentRef, RequestImageAttachment } from '@liusiqi-dev/sqh-attachment'
 import type { DeepSeekConnectionOptions as Connection } from './types.ts'
 import type { DeepSeekFileId } from './file-id.ts'
 import { readReplay } from './replay.ts'

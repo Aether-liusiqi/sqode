@@ -4,7 +4,7 @@
  * the ONE thing it reads off `request.parent` is the session's workspace cwd (see
  * {@link resolveCwd}). This plugin uses named exports only; a default would hide its
  * loader metadata (see `docs/postmortem/0001-acp-default-export-drops-inject.md`).
- * @module @liusiqi-dev/dsh-subagent-acp
+ * @module @liusiqi-dev/sqh-subagent-acp
  */
 
 import { accessSync, constants, statSync } from 'node:fs'
@@ -16,8 +16,8 @@ import type {
   SubagentCapabilities,
   SubagentProvider,
   SubagentStartRequest,
-} from '@liusiqi-dev/dsh-subagent'
-import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
+} from '@liusiqi-dev/sqh-subagent'
+import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/sqh-timeout'
 import { acpConfigurationFailure, type AcpRunSpec, DEFAULT_DISPOSE_EOF_GRACE_MS, DEFAULT_DISPOSE_GRACE_MS, type PermissionPolicy, startAcpRun } from './run.ts'
 
 export const name = 'subagent-acp'

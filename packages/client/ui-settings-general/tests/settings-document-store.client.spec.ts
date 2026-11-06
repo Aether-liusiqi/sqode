@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
-import { RemoteError } from '@liusiqi-dev/dsh-client-test-runtime'
-import type { RemoteResult } from '@liusiqi-dev/dsh-api-remotes/client'
-import { SettingsDescribeMirror } from '@liusiqi-dev/dsh-client-ui-settings/src/client/settings-mirror.ts'
+import { RemoteError } from '@liusiqi-dev/sqh-client-test-runtime'
+import type { RemoteResult } from '@liusiqi-dev/sqh-api-remotes/client'
+import { SettingsDescribeMirror } from '@liusiqi-dev/sqh-client-ui-settings/src/client/settings-mirror.ts'
 import { SettingsDocumentStore } from '../src/client/settings-document-store.ts'
 
 /** Store over a real mirror derived from the same scripted context. */

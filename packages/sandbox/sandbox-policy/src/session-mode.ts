@@ -18,10 +18,10 @@
  * @module dsh-sandbox-policy/session-mode
  */
 
-import type { Session } from '@liusiqi-dev/dsh-session'
-import type { SandboxMode } from '@liusiqi-dev/dsh-sandbox'
+import type { Session } from '@liusiqi-dev/sqh-session'
+import type { SandboxMode } from '@liusiqi-dev/sqh-sandbox'
 
-declare module '@liusiqi-dev/dsh-session/types' {
+declare module '@liusiqi-dev/sqh-session/types' {
   interface SessionEventMap {
     /**
      * The session's sandbox mode was switched — log-only (like `approval/*`;

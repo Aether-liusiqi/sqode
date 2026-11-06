@@ -1,8 +1,8 @@
 import type { Context } from '@liusiqi-dev/cordis'
 import type {
   ConversationNodeDefinition, UnknownSurfaceNode,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import { isAppendSurfaceEvent } from '@liusiqi-dev/dsh-session/surface'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import { isAppendSurfaceEvent } from '@liusiqi-dev/sqh-session/surface'
 import { chatNode } from './common.ts'
 
 declare module '../contract/chat-nodes.ts' {

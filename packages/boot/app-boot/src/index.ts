@@ -3,7 +3,7 @@
  * `.env`, install the fail-loud Loader guards, resolve the config path (snapshot-aware), load the
  * optional user patch layers from the Harness home (`~/.sqode`), expose its path resolver to
  * config expressions, and drive the Cordis Loader against a leaf `cordis.yml` until the tree settles.
- * @module @liusiqi-dev/dsh-app-boot
+ * @module @liusiqi-dev/sqh-app-boot
  */
 
 import { pathToFileURL } from 'node:url'
@@ -15,8 +15,8 @@ import { Context, type FiberState } from '@liusiqi-dev/cordis'
 import Loader, { type Entry, type EntryOptions } from '@liusiqi-dev/cordis-plugin-loader'
 import Include, { applyEntryPatches, entryListSchema, type PatchOptions } from '@liusiqi-dev/cordis-plugin-include'
 import Group from '@liusiqi-dev/cordis-plugin-group'
-import { dshHomePath, resolveDshHome } from '@liusiqi-dev/dsh-home-paths'
-import { createLaunchEnvironmentSnapshot, type LaunchEnvironmentSnapshot } from '@liusiqi-dev/dsh-launch-environment'
+import { dshHomePath, resolveDshHome } from '@liusiqi-dev/sqh-home-paths'
+import { createLaunchEnvironmentSnapshot, type LaunchEnvironmentSnapshot } from '@liusiqi-dev/sqh-launch-environment'
 export { readProfilePatches, resolveTelemetryPatch, type ProfileContext, type ProfilePnpmInvocation } from './profile-context.ts'
 export { sanitizeProfile } from './profile-sanitize.ts'
 export { getDshRuntimeVersion, evaluatePluginCompatibility, pluginCompatibilityWarning, type PluginCompatibility } from './plugin-compatibility.ts'
@@ -30,7 +30,7 @@ export { readPluginMeta } from './package-meta.ts'
 export { generateConfigSchema, type ConfigSchemaDump, type NativeConfigSchema } from './config-schema/index.ts'
 export { createConfigProjector, LOADER_EXPRESSION_SCHEMA, type ConfigProjection } from './config-schema/projector.ts'
 export { isNativeConfigSchema } from './config-schema/native.ts'
-import type {} from '@liusiqi-dev/dsh-system-prompt'
+import type {} from '@liusiqi-dev/sqh-system-prompt'
 
 export {
   readProfilePlugins, reconcileProfilePlugins, writeProfileBundles,

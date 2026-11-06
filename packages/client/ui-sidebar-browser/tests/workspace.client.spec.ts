@@ -1,7 +1,7 @@
 import { afterEach, expect, it, vi } from 'vitest'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { WorkspaceId, WorkspaceSnapshot, WorkspaceView } from '@liusiqi-dev/dsh-api-workspace-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { WorkspaceId, WorkspaceSnapshot, WorkspaceView } from '@liusiqi-dev/sqh-api-workspace-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import { browserWorkspace } from '../src/client/electron/workspace.ts'
 
 const SESSION = 'session' as SessionId

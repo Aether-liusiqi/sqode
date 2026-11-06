@@ -2,16 +2,16 @@
  * Provider-routed model-request retry policy on the agent loop's request
  * recovery extension point. Each scheduled retry is durable before its cancellable wait.
  *
- * @module @liusiqi-dev/dsh-llm-retry
+ * @module @liusiqi-dev/sqh-llm-retry
  */
 
 import { randomUUID } from 'node:crypto'
 import type { Context, Events } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
 import { z as zod } from 'zod'
-import type { Agent, RequestErrorAction } from '@liusiqi-dev/dsh-agent'
-import type { LlmFailure, ResolvedRetryPolicy } from '@liusiqi-dev/dsh-llm'
-import type {} from '@liusiqi-dev/dsh-session-projection'
+import type { Agent, RequestErrorAction } from '@liusiqi-dev/sqh-agent'
+import type { LlmFailure, ResolvedRetryPolicy } from '@liusiqi-dev/sqh-llm'
+import type {} from '@liusiqi-dev/sqh-session-projection'
 import { RetryId } from './brand.ts'
 import type { LlmRetryEventData } from './types.ts'
 
@@ -113,7 +113,7 @@ const llmRetryStateSchema: zod.ZodType<LlmRetryState> = zod.record(zod.string(),
   retry: zod.number().int().nonnegative(),
   retryId: zod.string(),
 })) as unknown as zod.ZodType<LlmRetryState>
-declare module '@liusiqi-dev/dsh-session-projection/types' {
+declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionStateMap {
     /** Retry state for the current step by provider and policy. */
     llmRetry: LlmRetryState

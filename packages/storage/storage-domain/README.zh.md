@@ -3,7 +3,7 @@ description: "领域数据形式（ctx.storageDomain）：面向在存储后端�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-storage-domain
+# @liusiqi-dev/sqh-storage-domain
 
 [English](README.md) | 中文
 

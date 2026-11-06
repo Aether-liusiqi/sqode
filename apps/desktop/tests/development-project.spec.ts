@@ -42,7 +42,7 @@ describe('desktop development project', () => {
     mkdirSync(dependency)
     mkdirSync(hoisted)
     writeFileSync(join(cli, 'package.json'), JSON.stringify({ name: '@liusiqi-dev/sqode', version: '1.2.3', dependencies: { unhoisted: 'workspace:^' } }))
-    writeFileSync(join(host, 'package.json'), JSON.stringify({ name: '@liusiqi-dev/dsh-desktop-host', version: '1.2.3' }))
+    writeFileSync(join(host, 'package.json'), JSON.stringify({ name: '@liusiqi-dev/sqh-desktop-host', version: '1.2.3' }))
     writeFileSync(join(host, 'lib/index.js'), '')
     writeFileSync(join(dependency, 'package.json'), JSON.stringify({ name: 'unhoisted', version: '1.2.3' }))
     symlinkSync(dependency, join(cli, 'node_modules/unhoisted'), process.platform === 'win32' ? 'junction' : 'dir')
@@ -63,7 +63,7 @@ describe('desktop development project', () => {
     mkdirSync(join(dependencies, '@scope'), { recursive: true })
     mkdirSync(join(dependencies, '@liusiqi-dev', 'sqode'), { recursive: true })
     writeFileSync(join(cli, 'package.json'), '{"name":"@liusiqi-dev/sqode","version":"1.2.3"}\n')
-    writeFileSync(join(host, 'package.json'), '{"name":"@liusiqi-dev/dsh-desktop-host","version":"1.2.3"}\n')
+    writeFileSync(join(host, 'package.json'), '{"name":"@liusiqi-dev/sqh-desktop-host","version":"1.2.3"}\n')
     writeFileSync(join(host, 'lib', 'index.js'), '')
     writeFileSync(join(dependencies, '@liusiqi-dev', 'sqode', 'package.json'), '{}\n')
     mkdirSync(join(dependencies, 'plain-dependency'))
@@ -89,7 +89,7 @@ describe('desktop development project', () => {
       dependencies: Record<string, string>
     }
     expect(manifest.dependencies['@liusiqi-dev/sqode']).toBe('1.2.3')
-    expect(manifest.dependencies['@liusiqi-dev/dsh-desktop-host']).toBe('1.2.3')
+    expect(manifest.dependencies['@liusiqi-dev/sqh-desktop-host']).toBe('1.2.3')
     const descriptor = JSON.parse(readFileSync(join(project, 'desktop-runtime.json'), 'utf8')) as { platform: string; arch: string }
     expect(descriptor).toMatchObject({ platform: 'win32', arch: 'x64' })
     const manager = new DesktopProjectManager(resolveDesktopPaths(join(root, 'home')), {
@@ -111,7 +111,7 @@ describe('desktop development project', () => {
     mkdirSync(join(host, 'lib'), { recursive: true })
     mkdirSync(dependencies, { recursive: true })
     writeFileSync(join(cli, 'package.json'), '{"name":"@liusiqi-dev/sqode","version":"2.0.0"}\n')
-    writeFileSync(join(host, 'package.json'), '{"name":"@liusiqi-dev/dsh-desktop-host","version":"1.2.3"}\n')
+    writeFileSync(join(host, 'package.json'), '{"name":"@liusiqi-dev/sqh-desktop-host","version":"1.2.3"}\n')
     writeFileSync(join(host, 'lib', 'index.js'), '')
     expect(() => prepareDevelopmentProject({
       projectDir: join(root, 'development'),

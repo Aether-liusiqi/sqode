@@ -7,8 +7,8 @@ import type {
   ReadBlockLabels,
   SearchBlockLabels,
   WebBlockLabels,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { TranslateNS } from '@liusiqi-dev/dsh-client-ui-slots'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { TranslateNS } from '@liusiqi-dev/sqh-client-ui-slots'
 
 type T = TranslateNS<'conversation'>
 

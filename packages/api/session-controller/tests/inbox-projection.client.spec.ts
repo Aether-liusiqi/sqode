@@ -1,16 +1,16 @@
 /** Inbox projection delivery and queue-operation transport. */
 
 import { describe, expect, onTestFinished } from 'vitest'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { InboxState } from '@liusiqi-dev/dsh-agent/types'
-import type { SessionControlFrame } from '@liusiqi-dev/dsh-api-session-controller/types'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { InboxState } from '@liusiqi-dev/sqh-agent/types'
+import type { SessionControlFrame } from '@liusiqi-dev/sqh-api-session-controller/types'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import { SessionManager } from '../src/client/sessions/manager.ts'
-import { ok } from '@liusiqi-dev/dsh-remote-mock'
-import { createClientTest, type ClientTestFixtures, webApp } from '@liusiqi-dev/dsh-client-test-runtime/src/assembly/index.ts'
+import { ok } from '@liusiqi-dev/sqh-remote-mock'
+import { createClientTest, type ClientTestFixtures, webApp } from '@liusiqi-dev/sqh-client-test-runtime/src/assembly/index.ts'
 import type { SessionRemotes } from '../src/client/sessions/remotes.ts'
 
-const it = createClientTest({ roster: webApp.closure(['@liusiqi-dev/dsh-api-gateway']) })
+const it = createClientTest({ roster: webApp.closure(['@liusiqi-dev/sqh-api-gateway']) })
 
 function makeManager(remote: ClientTestFixtures['remote']): SessionManager {
   const manager = new SessionManager(remote as unknown as SessionRemotes)

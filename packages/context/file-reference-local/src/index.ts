@@ -1,17 +1,17 @@
 /**
  * Local-filesystem implementation of `ctx.fileReferences`.
  *
- * @module @liusiqi-dev/dsh-file-reference-local
+ * @module @liusiqi-dev/sqh-file-reference-local
  */
 
 import { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
 import FileReferenceService, {
   FILE_REFERENCE_PROMPT,
   type FileReferenceCandidate,
-} from '@liusiqi-dev/dsh-file-reference'
-import type {} from '@liusiqi-dev/dsh-tools'
+} from '@liusiqi-dev/sqh-file-reference'
+import type {} from '@liusiqi-dev/sqh-tools'
 import {
   DEFAULT_FILE_SEARCH_EXCLUDED_DIRECTORIES,
   DEFAULT_FILE_SEARCH_MAX_ENTRIES,
@@ -27,8 +27,8 @@ export {
   WorkspaceFileSearch,
 } from './search.ts'
 export type { FileSearchConfig } from './search.ts'
-export { FILE_REFERENCE_PROMPT } from '@liusiqi-dev/dsh-file-reference'
-export { activeAtToken, formatFileMention } from '@liusiqi-dev/dsh-file-reference/grammar'
+export { FILE_REFERENCE_PROMPT } from '@liusiqi-dev/sqh-file-reference'
+export { activeAtToken, formatFileMention } from '@liusiqi-dev/sqh-file-reference/grammar'
 
 /** Local file-reference discovery configuration. */
 export interface Config {

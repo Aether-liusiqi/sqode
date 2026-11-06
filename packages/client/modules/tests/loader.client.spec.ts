@@ -8,7 +8,7 @@ import {
   type ClientModuleLoader, type ClientModuleLoaderTarget, type SqhWindow,
 } from '../src/client/index.ts'
 
-const MODULES_ID = '@liusiqi-dev/dsh-client-modules'
+const MODULES_ID = '@liusiqi-dev/sqh-client-modules'
 
 // The host composes graph rows and batch descriptors as app-directory-relative
 // browser references, so these fixtures carry the same form.

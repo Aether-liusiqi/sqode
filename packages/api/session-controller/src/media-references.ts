@@ -2,14 +2,14 @@
  * Authenticated GET/HEAD /api/file reads bounded file responses through
  * the composed filesystem provider. Paths and MIME types do not restrict access;
  * the connection service authenticates requests before this handler.
- * @module @liusiqi-dev/dsh-api-session-controller/media-references
+ * @module @liusiqi-dev/sqh-api-session-controller/media-references
  */
 
 import { isAbsolute } from 'node:path'
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-client-connection'
-import type {} from '@liusiqi-dev/dsh-attachment'
-import { FsError, type FileSystem } from '@liusiqi-dev/dsh-fs'
+import type {} from '@liusiqi-dev/sqh-client-connection'
+import type {} from '@liusiqi-dev/sqh-attachment'
+import { FsError, type FileSystem } from '@liusiqi-dev/sqh-fs'
 import mime from 'mime-types'
 
 const BASE_HEADERS = {

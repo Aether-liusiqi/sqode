@@ -2,7 +2,7 @@
 # first; storage and project selection remain Engram-owned.
 - insert:
     - id: memory-engram
-      name: '@liusiqi-dev/dsh-mcp-client'
+      name: '@liusiqi-dev/sqh-mcp-client'
       config:
         serverName: engram
         transport: stdio

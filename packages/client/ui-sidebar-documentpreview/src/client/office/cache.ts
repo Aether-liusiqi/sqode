@@ -1,7 +1,7 @@
 /** Session-authorized, version-checked Office bytes shared by concurrent preview reads. */
-import type { OfficeToPdfPriority, OfficeToPdfGeneration } from '@liusiqi-dev/dsh-office-to-pdf/types'
-import type { RemoteResult } from '@liusiqi-dev/dsh-api-remotes/client'
-import type { WorkspaceFileStat } from '@liusiqi-dev/dsh-api-workspace-files/types'
+import type { OfficeToPdfPriority, OfficeToPdfGeneration } from '@liusiqi-dev/sqh-office-to-pdf/types'
+import type { RemoteResult } from '@liusiqi-dev/sqh-api-remotes/client'
+import type { WorkspaceFileStat } from '@liusiqi-dev/sqh-api-workspace-files/types'
 import type { DocumentFileBytes, SessionFile } from '../rpc.ts'
 
 /** PDF bytes and conversion metadata owned by Office preview. */

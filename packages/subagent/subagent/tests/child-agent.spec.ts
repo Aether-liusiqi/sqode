@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
-import { Session, SessionId } from '@liusiqi-dev/dsh-session'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { ReasoningEffortId } from '@liusiqi-dev/sqh-llm'
+import { Session, SessionId } from '@liusiqi-dev/sqh-session'
 import { resolveChildAgentOptions } from '../src/child-agent.ts'
 
 function parentAgent(): Agent {

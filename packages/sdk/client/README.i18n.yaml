@@ -5,51 +5,51 @@
 /:
   en: dd3be7a1c1a3a9d6
   zh: 0060cb7a8dcccc1d
-/liusiqi-dev-dsh-sdk-client:
-  en: d8ec2d9119da98ef
-  zh: f4452efc333d5ed2
-/liusiqi-dev-dsh-sdk-client/summary:
+/liusiqi-dev-sqh-sdk-client:
+  en: f4dcc88b13dcc9bc
+  zh: 9b5965f044dca549
+/liusiqi-dev-sqh-sdk-client/summary:
   en: 51b242367a3ac25d
   zh: 01600b445d1028cb
-/liusiqi-dev-dsh-sdk-client/table-of-contents:
+/liusiqi-dev-sqh-sdk-client/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
-/liusiqi-dev-dsh-sdk-client/use-this-package:
+/liusiqi-dev-sqh-sdk-client/use-this-package:
   en: 3c21c7ec64d17346
   zh: c6ba1b632b8a4d72
-/liusiqi-dev-dsh-sdk-client/use-this-package/running-agent-turns-with-deepseekharness:
+/liusiqi-dev-sqh-sdk-client/use-this-package/running-agent-turns-with-deepseekharness:
   en: 01c58dddd7e62de2
   zh: 6dbd46e244f3f135
-/liusiqi-dev-dsh-sdk-client/use-this-package/lower-level-control-with-harnessclient:
+/liusiqi-dev-sqh-sdk-client/use-this-package/lower-level-control-with-harnessclient:
   en: 8e7eb3a9b3f91404
   zh: 277a722586dcb549
-/liusiqi-dev-dsh-sdk-client/understand-the-implementation:
+/liusiqi-dev-sqh-sdk-client/understand-the-implementation:
   en: 8773f50c51da85f0
   zh: 4649ebc69357deb0
-/liusiqi-dev-dsh-sdk-client/understand-the-implementation/design-concept:
+/liusiqi-dev-sqh-sdk-client/understand-the-implementation/design-concept:
   en: 6632c06d819233cc
   zh: 207d55d8217ec6b1
-/liusiqi-dev-dsh-sdk-client/understand-the-implementation/source-map:
+/liusiqi-dev-sqh-sdk-client/understand-the-implementation/source-map:
   en: f8a986c22b7a2953
   zh: 35937eb44e1ee909
-/liusiqi-dev-dsh-sdk-client/understand-the-implementation/owned-activity-flow:
+/liusiqi-dev-sqh-sdk-client/understand-the-implementation/owned-activity-flow:
   en: 94a42babac5f1c7d
   zh: df9e42ed02f7d002
-/liusiqi-dev-dsh-sdk-client/understand-the-implementation/errors-and-teardown:
+/liusiqi-dev-sqh-sdk-client/understand-the-implementation/errors-and-teardown:
   en: 165364de2cee0a9f
   zh: c4dc37b44e1e621e
-/liusiqi-dev-dsh-sdk-client/further-exploration:
-  en: 1048b6b2c0954717
-  zh: 7ce29dd1ca545e06
-/liusiqi-dev-dsh-sdk-client/model-experience:
+/liusiqi-dev-sqh-sdk-client/further-exploration:
+  en: 7807e5b1f41b32f5
+  zh: 330b8bf81ad05247
+/liusiqi-dev-sqh-sdk-client/model-experience:
   en: e82a55513d3cd30e
   zh: ecd8c0875ff2fb87
-/liusiqi-dev-dsh-sdk-client/model-experience/kv-cache-effect:
+/liusiqi-dev-sqh-sdk-client/model-experience/kv-cache-effect:
   en: 7abe0be104a791e7
   zh: 445311f78b1069ca
-/liusiqi-dev-dsh-sdk-client/known-limitations-and-deferred-work:
+/liusiqi-dev-sqh-sdk-client/known-limitations-and-deferred-work:
   en: 970eedf6020a0fef
   zh: cb58212d3e4dbbdd
-/liusiqi-dev-dsh-sdk-client/known-limitations-and-deferred-work/dev-note:
+/liusiqi-dev-sqh-sdk-client/known-limitations-and-deferred-work/dev-note:
   en: 6177a56f053936a4
   zh: 0f4b20228c2d15da

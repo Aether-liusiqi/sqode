@@ -6,7 +6,7 @@ import { pathToFileURL } from 'node:url'
 import { Context } from '@liusiqi-dev/cordis'
 import Include from '@liusiqi-dev/cordis-plugin-include'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
-import WebServer from '@liusiqi-dev/dsh-host-webserver'
+import WebServer from '@liusiqi-dev/sqh-host-webserver'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import * as GitHubAdapter from '../src/index.ts'
 
@@ -26,11 +26,11 @@ describe('real Loader composition', () => {
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
       '- name: fixture-dependencies',
-      "- name: '@liusiqi-dev/dsh-host-webserver'",
+      "- name: '@liusiqi-dev/sqh-host-webserver'",
       '  config:',
       "    host: '127.0.0.1'",
       '    port: 0',
-      "- name: '@liusiqi-dev/dsh-webhook-github'",
+      "- name: '@liusiqi-dev/sqh-webhook-github'",
       '  config:',
       '    source: loader',
       '    path: /github',
@@ -55,8 +55,8 @@ describe('real Loader composition', () => {
     context.loader.builtins.include = Include
     const modules = new Map<string, unknown>([
       ['fixture-dependencies', dependencies],
-      ['@liusiqi-dev/dsh-host-webserver', WebServer],
-      ['@liusiqi-dev/dsh-webhook-github', GitHubAdapter],
+      ['@liusiqi-dev/sqh-host-webserver', WebServer],
+      ['@liusiqi-dev/sqh-webhook-github', GitHubAdapter],
     ])
     context.loader.internal = {
       version: 'v2',

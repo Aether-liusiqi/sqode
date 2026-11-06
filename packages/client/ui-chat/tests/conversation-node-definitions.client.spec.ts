@@ -1,20 +1,20 @@
 import { describe, expect, it } from 'vitest'
 import type {
   ChatConversationViewNode, ChatSnapshot,
-} from '@liusiqi-dev/dsh-client-ui-chat/client'
+} from '@liusiqi-dev/sqh-client-ui-chat/client'
 import type {
   SessionEventLikeEntry, SessionLiveEventEntry,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
 import {
   ConversationNodeAssembler,
   type ConversationNodeDefinition,
   type ConversationViewDefinition,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session/types'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session/types'
 import { inspectSystemPrompt } from '../../ui-conversation/src/client/contract/system-prompt.ts'
-import { AssistantStreamAccumulator } from '@liusiqi-dev/dsh-llm/assistant-stream'
-import { LlmAttemptId } from '@liusiqi-dev/dsh-llm/brand'
-import type { StreamChunk } from '@liusiqi-dev/dsh-llm'
+import { AssistantStreamAccumulator } from '@liusiqi-dev/sqh-llm/assistant-stream'
+import { LlmAttemptId } from '@liusiqi-dev/sqh-llm/brand'
+import type { StreamChunk } from '@liusiqi-dev/sqh-llm'
 import { hasAssistantReplyContent } from '../src/client/contract/assistant-content.ts'
 import { assistantDefinition } from '../src/client/conversation-nodes/assistant.ts'
 import { chatViewDefinition } from '../src/client/conversation-nodes/chat-snapshot-builder.ts'
@@ -23,7 +23,7 @@ import { compactionDefinition } from '../src/client/conversation-nodes/compactio
 import { unknownFallbackDefinition } from '../src/client/conversation-nodes/fallback.ts'
 import { nextStepInboxDefinition, nextTurnInboxDefinition } from '../src/client/conversation-nodes/inbox.ts'
 import { developerMessageDefinition, messageDefinition } from '../src/client/conversation-nodes/message.ts'
-import { inspectRequestPrompt } from '@liusiqi-dev/dsh-client-ui-conversation/client'
+import { inspectRequestPrompt } from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import { requestPromptDefinition, systemMessageDefinition } from '../src/client/conversation-nodes/request-prompt.ts'
 import { retryDefinition } from '../src/client/conversation-nodes/retry.ts'
 import { toolDefinition } from '../src/client/conversation-nodes/tool.ts'

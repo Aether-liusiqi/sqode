@@ -4,12 +4,12 @@ import { fileURLToPath } from 'node:url'
 import type { Browser, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
-import type { AgentHandle } from '@liusiqi-dev/dsh-agent'
-import { ToolCallId, createUserMessage } from '@liusiqi-dev/dsh-llm'
-import { SessionId } from '@liusiqi-dev/dsh-session'
-import type { Session } from '@liusiqi-dev/dsh-session'
-import type {} from '@liusiqi-dev/dsh-agent-preset-registry'
-import type {} from '@liusiqi-dev/dsh-system-prompt'
+import type { AgentHandle } from '@liusiqi-dev/sqh-agent'
+import { ToolCallId, createUserMessage } from '@liusiqi-dev/sqh-llm'
+import { SessionId } from '@liusiqi-dev/sqh-session'
+import type { Session } from '@liusiqi-dev/sqh-session'
+import type {} from '@liusiqi-dev/sqh-agent-preset-registry'
+import type {} from '@liusiqi-dev/sqh-system-prompt'
 import {
   assertFixtureInventory,
   captureStableAria,

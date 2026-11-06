@@ -3,7 +3,7 @@ description: "Remote filesystem semantics for consumers sharing files with SSH s
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-fs-ssh
+# @liusiqi-dev/sqh-fs-ssh
 
 English | [中文](README.zh.md)
 

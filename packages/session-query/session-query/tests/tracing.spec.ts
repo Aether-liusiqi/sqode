@@ -1,25 +1,25 @@
-import { createUserMessage, createMessage } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
+import { createUserMessage, createMessage } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import SessionStore, { SessionLogOffset, SessionSeq, SESSION_FORMAT_VERSION, SessionId } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import type { Session, SessionEvent, SessionHeader, SessionId as SessionIdType } from '@liusiqi-dev/dsh-session'
+import SessionStore, { SessionLogOffset, SessionSeq, SESSION_FORMAT_VERSION, SessionId } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import type { Session, SessionEvent, SessionHeader, SessionId as SessionIdType } from '@liusiqi-dev/sqh-session'
 import SessionPersistence, {
   SessionPersistenceNotFoundError,
   SessionPersistenceRevision,
   SessionReadOnlyError,
-} from '@liusiqi-dev/dsh-session-persistence'
+} from '@liusiqi-dev/sqh-session-persistence'
 import type {
   SessionAccess,
   SessionHandle,
   SessionHandleReadResult,
   SessionPersistenceSnapshot,
-} from '@liusiqi-dev/dsh-session-persistence'
-import { type SessionQueryErrorCode } from '@liusiqi-dev/dsh-session-query'
+} from '@liusiqi-dev/sqh-session-persistence'
+import { type SessionQueryErrorCode } from '@liusiqi-dev/sqh-session-query'
 import { TestSessionQueryEngine } from './test-service.ts'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }

@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-client-ui-sidebar-browser",
+  "name": "@liusiqi-dev/sqh-client-ui-sidebar-browser",
   "description": "Sandboxed Web browser tabs for the right Sidebar",
   "version": "1.0.0",
   "publishConfig": {
@@ -31,9 +31,9 @@
   "dsh": {
     "client": {
       "inject": [
-        "@liusiqi-dev/dsh-api-workspace-controller",
-        "@liusiqi-dev/dsh-client-ui-sidebar-right",
-        "@liusiqi-dev/dsh-client-ui-session"
+        "@liusiqi-dev/sqh-api-workspace-controller",
+        "@liusiqi-dev/sqh-client-ui-sidebar-right",
+        "@liusiqi-dev/sqh-client-ui-session"
       ],
       "platform": "web"
     }
@@ -48,17 +48,17 @@
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-api-workspace-controller": "workspace:*",
-    "@liusiqi-dev/dsh-brand": "workspace:*",
-    "@liusiqi-dev/dsh-client-locale": "workspace:*",
-    "@liusiqi-dev/dsh-client-shortcuts": "workspace:*",
-    "@liusiqi-dev/dsh-client-store": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-dockkit": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-primitives": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-renderer": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-session": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-sidebar-right": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-slots": "workspace:*",
+    "@liusiqi-dev/sqh-api-workspace-controller": "workspace:*",
+    "@liusiqi-dev/sqh-brand": "workspace:*",
+    "@liusiqi-dev/sqh-client-locale": "workspace:*",
+    "@liusiqi-dev/sqh-client-shortcuts": "workspace:*",
+    "@liusiqi-dev/sqh-client-store": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-dockkit": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-primitives": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-renderer": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-session": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-sidebar-right": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-slots": "workspace:*",
     "@testing-library/react": "^16.1.0",
     "@types/react": "~18.3.1",
     "@types/react-dom": "~18.3.0",

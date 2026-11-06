@@ -3,11 +3,11 @@
  * including the format refusals shared by every backend: a stored log this
  * build cannot faithfully interpret is refused, never misread, and the
  * refusal points at the raw artifact when the backend keeps one per session.
- * @module @liusiqi-dev/dsh-session-persistence/errors
+ * @module @liusiqi-dev/sqh-session-persistence/errors
  */
 
-import { SESSION_FORMAT_VERSION } from '@liusiqi-dev/dsh-session'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
+import { SESSION_FORMAT_VERSION } from '@liusiqi-dev/sqh-session'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
 
 /** The requested Session identity has no durable log visible to this caller. */
 export class SessionPersistenceNotFoundError extends Error {

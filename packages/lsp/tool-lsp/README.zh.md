@@ -3,7 +3,7 @@ description: "面向模型的 lsp 工具：四种只读代码导航操作、从 
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-tool-lsp
+# @liusiqi-dev/sqh-tool-lsp
 
 [English](README.md) | 中文
 

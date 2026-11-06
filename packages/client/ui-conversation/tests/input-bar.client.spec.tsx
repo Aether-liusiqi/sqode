@@ -9,21 +9,21 @@
 // the shell (jsdom's beforeinput lacks the ranges Lexical needs).
 
 import './control-row-dom.ts'
-import type { InboxState } from '@liusiqi-dev/dsh-agent/types'
-import type { GlobalStandardProps } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { InboxState } from '@liusiqi-dev/sqh-agent/types'
+import type { GlobalStandardProps } from '@liusiqi-dev/sqh-client-ui-slots'
 import { afterEach, describe, expect, it, onTestFinished, vi } from 'vitest'
 import { act, cleanup, fireEvent, render } from '@testing-library/react'
 import { $getRoot, $isTextNode } from 'lexical'
 import {
   bindSnapshotSelector, conversationSnapshot as conversationFixture, makeTranslate, RemoteError,
   sessionSnapshot as sessionFixture,
-} from '@liusiqi-dev/dsh-client-test-runtime'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { SessionListState, SessionSnapshot } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { ContextPressureProjection } from '@liusiqi-dev/dsh-token-meter/client'
-import { zh as commonZh } from '@liusiqi-dev/dsh-client-locale/src/locales/zh.ts'
+} from '@liusiqi-dev/sqh-client-test-runtime'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { SessionListState, SessionSnapshot } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { ContextPressureProjection } from '@liusiqi-dev/sqh-token-meter/client'
+import { zh as commonZh } from '@liusiqi-dev/sqh-client-locale/src/locales/zh.ts'
 import type { Context } from '@liusiqi-dev/cordis'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import type { SubmitOutcome } from '../src/client/contract/input.ts'
 import { SessionInputShell } from '../src/client/input/facade.ts'
 import { $replaceDetectSpanWithText, $selectDetectSpan } from '../src/client/input/editor/span-map.ts'

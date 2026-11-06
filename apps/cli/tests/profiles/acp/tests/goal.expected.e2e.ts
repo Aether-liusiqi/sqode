@@ -10,9 +10,9 @@ import {
   type AgentUnderTest,
   type InputScript,
   type NormalizeContext,
-} from '@liusiqi-dev/dsh-session-snapshot'
-import { foldGoal } from '@liusiqi-dev/dsh-goal'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-session-snapshot'
+import { foldGoal } from '@liusiqi-dev/sqh-goal'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
 import { describe, expect, it } from 'vitest'
 
 // This lifecycle proof has goal-specific timestamp normalization and semantic

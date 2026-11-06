@@ -1,11 +1,11 @@
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { SessionId, type SessionEvent } from '@liusiqi-dev/dsh-session'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
-import { mountAgentLoopTestDependencies } from '@liusiqi-dev/dsh-agent-loop-testkit'
-import * as ToolTodo from '@liusiqi-dev/dsh-tool-todo'
+import { SessionId, type SessionEvent } from '@liusiqi-dev/sqh-session'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import AgentLoop from '@liusiqi-dev/sqh-agent-loop'
+import { mountAgentLoopTestDependencies } from '@liusiqi-dev/sqh-agent-loop-testkit'
+import * as ToolTodo from '@liusiqi-dev/sqh-tool-todo'
 import { MockAdapter, textResponse, toolCallResponse } from '../../../core/agent-loop/tests/mock-adapter.ts'
 
 /**

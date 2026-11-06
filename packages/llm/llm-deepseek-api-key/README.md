@@ -3,7 +3,7 @@ description: "DeepSeek api-key authentication and model discovery."
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-llm-deepseek-api-key
+# @liusiqi-dev/sqh-llm-deepseek-api-key
 
 English | [中文](README.zh.md)
 
@@ -29,7 +29,7 @@ Authentication resolution returns the validated API key in `x-api-key` for both 
 
 ```yaml
 - id: llm-deepseek
-  name: '@liusiqi-dev/dsh-llm-deepseek-api-key'
+  name: '@liusiqi-dev/sqh-llm-deepseek-api-key'
   config:
     reasoningEffort: high
     apiKeyEnv: DEEPSEEK_API_KEY

@@ -7,11 +7,11 @@
  * must stub); implementation-internal entry points (history staging, wire-frame
  * dispatch) stay on the class, invisible out here.
  */
-import type { AttachmentIdType, FileAttachmentRef, ImageAttachmentRef } from '@liusiqi-dev/dsh-attachment'
-import type { MessageId } from '@liusiqi-dev/dsh-llm/brand'
-import type { SessionId, SessionSeq } from '@liusiqi-dev/dsh-session/types'
-import type { RemoteResult } from '@liusiqi-dev/dsh-typert-protocol'
-import type { ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
+import type { AttachmentIdType, FileAttachmentRef, ImageAttachmentRef } from '@liusiqi-dev/sqh-attachment'
+import type { MessageId } from '@liusiqi-dev/sqh-llm/brand'
+import type { SessionId, SessionSeq } from '@liusiqi-dev/sqh-session/types'
+import type { RemoteResult } from '@liusiqi-dev/sqh-typert-protocol'
+import type { ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
 import type { PromptContentPart, QueueAction, SessionRequestId } from '../../types.ts'
 import type { PendingSubmissionAttachment, SessionSnapshot } from './snapshot.ts'
 

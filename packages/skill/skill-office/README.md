@@ -3,7 +3,7 @@ description: "Bundled Word, PowerPoint, and Excel instructions for deployments p
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-skill-office
+# @liusiqi-dev/sqh-skill-office
 
 English | [中文](README.zh.md)
 
@@ -30,7 +30,7 @@ Mount this provider beside the skill registry and `dsh-tool-skill` to expose `of
 ### Minimal configuration
 
 ```yaml
-- name: '@liusiqi-dev/dsh-skill-office'
+- name: '@liusiqi-dev/sqh-skill-office'
 ```
 
 | Field | Default | Meaning |

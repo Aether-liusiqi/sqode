@@ -3,7 +3,7 @@ description: "Low-level Win32 process primitives for maintainers implementing or
 kind: "package-library"
 ---
 
-# @liusiqi-dev/dsh-win32-process
+# @liusiqi-dev/sqh-win32-process
 
 English | [中文](README.zh.md)
 

@@ -17,9 +17,9 @@
 
 import { Client, type Transport } from '@modelcontextprotocol/client'
 import type { Context } from '@liusiqi-dev/cordis'
-import { assertNever, type JsonValue } from '@liusiqi-dev/dsh-util-values'
+import { assertNever, type JsonValue } from '@liusiqi-dev/sqh-util-values'
 import type { ServerContext } from './server-context.ts'
-import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
+import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/sqh-timeout'
 import { createTransport } from './transport.ts'
 import { syncTools } from './tools.ts'
 import type { ToolBridgeOptions, ToolDisposers } from './tools.ts'

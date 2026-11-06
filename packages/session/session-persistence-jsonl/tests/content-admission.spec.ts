@@ -1,10 +1,10 @@
 /** V2 content admission refuses entire generations without publishing a valid prefix. */
 
 import { Context } from '@liusiqi-dev/cordis'
-import { SESSION_FORMAT_VERSION, SessionId } from '@liusiqi-dev/dsh-session'
-import type { SessionFormatJsonObject } from '@liusiqi-dev/dsh-session-format'
-import { SessionFormatUnsupportedError } from '@liusiqi-dev/dsh-session-persistence'
-import JsonlSessionPersistence from '@liusiqi-dev/dsh-session-persistence-jsonl'
+import { SESSION_FORMAT_VERSION, SessionId } from '@liusiqi-dev/sqh-session'
+import type { SessionFormatJsonObject } from '@liusiqi-dev/sqh-session-format'
+import { SessionFormatUnsupportedError } from '@liusiqi-dev/sqh-session-persistence'
+import JsonlSessionPersistence from '@liusiqi-dev/sqh-session-persistence-jsonl'
 import { mkdir, mkdtemp, readFile, readdir, rm, stat, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { basename, dirname, join } from 'node:path'

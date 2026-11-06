@@ -1,8 +1,8 @@
 /** Host registry and HTTP adapter for generic Connection RPC channels. */
 
 import { Context, Service } from '@liusiqi-dev/cordis'
-import type { WebRoute } from '@liusiqi-dev/dsh-host-webserver'
-import type { PeerScope } from '@liusiqi-dev/dsh-typert-protocol'
+import type { WebRoute } from '@liusiqi-dev/sqh-host-webserver'
+import type { PeerScope } from '@liusiqi-dev/sqh-typert-protocol'
 import {
   RpcId,
   type ClientRequest,

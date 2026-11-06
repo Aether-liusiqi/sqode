@@ -1,8 +1,8 @@
 /** Parent adapter that fails if the composition-only Loader test starts a turn. */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { GenerateOptions, StreamChunk } from '@liusiqi-dev/dsh-llm'
-import { LlmAdapter } from '@liusiqi-dev/dsh-llm'
+import type { GenerateOptions, StreamChunk } from '@liusiqi-dev/sqh-llm'
+import { LlmAdapter } from '@liusiqi-dev/sqh-llm'
 
 class CompositionOnlyAdapter extends LlmAdapter {
   async * stream(_options: GenerateOptions): AsyncIterable<StreamChunk> {

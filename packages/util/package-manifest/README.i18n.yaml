@@ -5,33 +5,33 @@
 /:
   en: 392a9b2717266998
   zh: f9d597c956586ead
-/liusiqi-dev-dsh-package-manifest:
-  en: 76fe0d559616931d
-  zh: a8d48eed5034b4a7
-/liusiqi-dev-dsh-package-manifest/summary:
+/liusiqi-dev-sqh-package-manifest:
+  en: 40f7080d32d2ddcc
+  zh: 3fd9acdd17ddd5b1
+/liusiqi-dev-sqh-package-manifest/summary:
   en: f68bfdd934eb4af6
   zh: 41a873a9f251c814
-/liusiqi-dev-dsh-package-manifest/table-of-contents:
+/liusiqi-dev-sqh-package-manifest/table-of-contents:
   en: d152484eb41ac6b4
   zh: 1db86285abf6c499
-/liusiqi-dev-dsh-package-manifest/use-this-package:
+/liusiqi-dev-sqh-package-manifest/use-this-package:
   en: 3fd50f29f801d833
   zh: 2660d84dece27694
-/liusiqi-dev-dsh-package-manifest/understand-the-implementation:
+/liusiqi-dev-sqh-package-manifest/understand-the-implementation:
   en: 64e1e57d1c3761e0
   zh: 9fc039770ce43c63
-/liusiqi-dev-dsh-package-manifest/further-exploration:
+/liusiqi-dev-sqh-package-manifest/further-exploration:
   en: f2352ec5d94ac3bd
   zh: c2eb0889554f1a7f
-/liusiqi-dev-dsh-package-manifest/model-experience:
+/liusiqi-dev-sqh-package-manifest/model-experience:
   en: 0b5aaa4787068a57
   zh: bdb5dabe0b33ff9d
-/liusiqi-dev-dsh-package-manifest/model-experience/kv-cache-effect:
+/liusiqi-dev-sqh-package-manifest/model-experience/kv-cache-effect:
   en: 2ed74a2a33958543
   zh: 7d63c3a3801bef13
-/liusiqi-dev-dsh-package-manifest/known-limitations-and-deferred-work:
+/liusiqi-dev-sqh-package-manifest/known-limitations-and-deferred-work:
   en: e64464780f3e36b6
   zh: fec64944da4710ce
-/liusiqi-dev-dsh-package-manifest/known-limitations-and-deferred-work/dev-note:
+/liusiqi-dev-sqh-package-manifest/known-limitations-and-deferred-work/dev-note:
   en: e67f633dc6fe7773
   zh: 3bb0c20c93f16f98

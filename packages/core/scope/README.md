@@ -3,7 +3,7 @@ description: "The scoped-registration library for plugin authors and maintainers
 kind: "package-library"
 ---
 
-# @liusiqi-dev/dsh-scope
+# @liusiqi-dev/sqh-scope
 
 English | [中文](README.zh.md)
 

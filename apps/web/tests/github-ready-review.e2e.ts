@@ -7,9 +7,9 @@ import { fileURLToPath } from 'node:url'
 import type { Browser, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed, onTestFinished, vi } from 'vitest'
-import type { GenerateOptions, StreamChunk } from '@liusiqi-dev/dsh-llm'
-import { LlmAdapter } from '@liusiqi-dev/dsh-llm'
-import type {} from '@liusiqi-dev/dsh-webhook'
+import type { GenerateOptions, StreamChunk } from '@liusiqi-dev/sqh-llm'
+import { LlmAdapter } from '@liusiqi-dev/sqh-llm'
+import type {} from '@liusiqi-dev/sqh-webhook'
 import {
   captureExpandedTurnProcessAria,
   captureStableAria,

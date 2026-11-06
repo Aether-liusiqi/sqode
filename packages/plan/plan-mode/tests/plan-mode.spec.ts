@@ -1,18 +1,18 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { createUserMessage, ToolCallId } from '@liusiqi-dev/dsh-llm'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime, { RUN_CODE_NAME, defineContentToolFixture } from '@liusiqi-dev/dsh-tools'
-import { Session, SessionId, type SessionEvent, type UserMessage } from '@liusiqi-dev/dsh-session'
-import AgentRegistry, { agentEvents, type Agent } from '@liusiqi-dev/dsh-agent'
-import { createScope } from '@liusiqi-dev/dsh-scope'
+import { createUserMessage, ToolCallId } from '@liusiqi-dev/sqh-llm'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime, { RUN_CODE_NAME, defineContentToolFixture } from '@liusiqi-dev/sqh-tools'
+import { Session, SessionId, type SessionEvent, type UserMessage } from '@liusiqi-dev/sqh-session'
+import AgentRegistry, { agentEvents, type Agent } from '@liusiqi-dev/sqh-agent'
+import { createScope } from '@liusiqi-dev/sqh-scope'
 import UserQuestionService, {
   UserQuestionError, type AskUserQuestionAnswer, type AskUserQuestionRequest,
-} from '@liusiqi-dev/dsh-user-questions'
-import CommandRuntime from '@liusiqi-dev/dsh-commands'
-import { PtcRuntime, type PtcRunRequest, type PtcRunResult } from '@liusiqi-dev/dsh-ptc-runtime'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import { turnBoundaryProjectionDefinition } from '@liusiqi-dev/dsh-agent-loop'
+} from '@liusiqi-dev/sqh-user-questions'
+import CommandRuntime from '@liusiqi-dev/sqh-commands'
+import { PtcRuntime, type PtcRunRequest, type PtcRunResult } from '@liusiqi-dev/sqh-ptc-runtime'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import { turnBoundaryProjectionDefinition } from '@liusiqi-dev/sqh-agent-loop'
 import PlanModeController, { EXIT_PLAN_MODE, planProjectionDefinition, resolveConfig } from '../src/index.ts'
 import type { PlanModeConfig } from '../src/index.ts'
 import type { PlanUnitState } from '../src/types.ts'
@@ -509,7 +509,7 @@ describe('the soft layer', () => {
     // Minimal scriptable runtime: the SDK section resolves ctx.ptcRuntime at
     // assembly time (the ptc.spec fake's shape).
     class FakeRuntime extends PtcRuntime {
-      resolve(request: import('@liusiqi-dev/dsh-ptc-runtime').PtcRunRequest): import('@liusiqi-dev/dsh-ptc-runtime').PtcRunSpec { return { ...request, cwd: request.cwd ?? process.cwd(), timeoutMs: request.timeoutMs ?? 120_000 } }
+      resolve(request: import('@liusiqi-dev/sqh-ptc-runtime').PtcRunRequest): import('@liusiqi-dev/sqh-ptc-runtime').PtcRunSpec { return { ...request, cwd: request.cwd ?? process.cwd(), timeoutMs: request.timeoutMs ?? 120_000 } }
 
       readonly language = 'typescript'
       readonly isolation = 'fake'
@@ -533,7 +533,7 @@ describe('the soft layer', () => {
 
   it('keeps native wire schemas and the SDK in step under mode both', async () => {
     class FakeRuntime extends PtcRuntime {
-      resolve(request: import('@liusiqi-dev/dsh-ptc-runtime').PtcRunRequest): import('@liusiqi-dev/dsh-ptc-runtime').PtcRunSpec { return { ...request, cwd: request.cwd ?? process.cwd(), timeoutMs: request.timeoutMs ?? 120_000 } }
+      resolve(request: import('@liusiqi-dev/sqh-ptc-runtime').PtcRunRequest): import('@liusiqi-dev/sqh-ptc-runtime').PtcRunSpec { return { ...request, cwd: request.cwd ?? process.cwd(), timeoutMs: request.timeoutMs ?? 120_000 } }
 
       readonly language = 'typescript'
       readonly isolation = 'fake'
@@ -557,7 +557,7 @@ describe('the soft layer', () => {
 
   it('keeps the PTC mode SDK byte-identical across mode switches', async () => {
     class FakeRuntime extends PtcRuntime {
-      resolve(request: import('@liusiqi-dev/dsh-ptc-runtime').PtcRunRequest): import('@liusiqi-dev/dsh-ptc-runtime').PtcRunSpec { return { ...request, cwd: request.cwd ?? process.cwd(), timeoutMs: request.timeoutMs ?? 120_000 } }
+      resolve(request: import('@liusiqi-dev/sqh-ptc-runtime').PtcRunRequest): import('@liusiqi-dev/sqh-ptc-runtime').PtcRunSpec { return { ...request, cwd: request.cwd ?? process.cwd(), timeoutMs: request.timeoutMs ?? 120_000 } }
 
       readonly language = 'typescript'
       readonly isolation = 'fake'
@@ -626,7 +626,7 @@ describe('/plan', () => {
     const plainSteer = vi.fn()
     ;(plainAgent as unknown as { steer: typeof plainSteer }).steer = plainSteer
     expect(ctx.commands.list(plainAgent)).toEqual([
-      { definitionId: '@liusiqi-dev/dsh-plan-mode', name: 'plan', description: 'Enter or leave plan mode', input: { hint: '[off|message]', attachments: true } },
+      { definitionId: '@liusiqi-dev/sqh-plan-mode', name: 'plan', description: 'Enter or leave plan mode', input: { hint: '[off|message]', attachments: true } },
     ])
 
     const signal = new AbortController().signal
@@ -932,7 +932,7 @@ describe('exit_plan_mode', () => {
   it('carries the exact plan through a PTC mode review and logs the nested dispatch', async () => {
     const plan = '# PTC mode plan\n\nUse the existing seam.'
     class ExitRuntime extends PtcRuntime {
-      resolve(request: import('@liusiqi-dev/dsh-ptc-runtime').PtcRunRequest): import('@liusiqi-dev/dsh-ptc-runtime').PtcRunSpec { return { ...request, cwd: request.cwd ?? process.cwd(), timeoutMs: request.timeoutMs ?? 120_000 } }
+      resolve(request: import('@liusiqi-dev/sqh-ptc-runtime').PtcRunRequest): import('@liusiqi-dev/sqh-ptc-runtime').PtcRunSpec { return { ...request, cwd: request.cwd ?? process.cwd(), timeoutMs: request.timeoutMs ?? 120_000 } }
 
       readonly language = 'typescript'
       readonly isolation = 'fake'

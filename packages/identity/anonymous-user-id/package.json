@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-anonymous-user-id",
+  "name": "@liusiqi-dev/sqh-anonymous-user-id",
   "description": "Shared anonymous user identity for Siqi Harness telemetry and feedback correlation",
   "version": "1.0.0",
   "publishConfig": {
@@ -27,13 +27,13 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@liusiqi-dev/dsh-brand": "workspace:*",
-    "@liusiqi-dev/dsh-home-paths": "workspace:*",
+    "@liusiqi-dev/sqh-brand": "workspace:*",
+    "@liusiqi-dev/sqh-home-paths": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-brand": "workspace:*",
-    "@liusiqi-dev/dsh-home-paths": "workspace:*",
+    "@liusiqi-dev/sqh-brand": "workspace:*",
+    "@liusiqi-dev/sqh-home-paths": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   }
 }

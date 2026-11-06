@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-subprocess-local",
+  "name": "@liusiqi-dev/sqh-subprocess-local",
   "description": "Local-subprocess implementation of the Siqi Harness subprocess seam",
   "version": "1.0.0",
   "publishConfig": {
@@ -42,20 +42,20 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "@liusiqi-dev/dsh-subprocess": "workspace:*",
-    "@liusiqi-dev/dsh-timeout": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess": "workspace:*",
+    "@liusiqi-dev/sqh-timeout": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "dependencies": {
-    "@liusiqi-dev/dsh-lazy-require": "workspace:*",
-    "@liusiqi-dev/dsh-win32-process": "workspace:*",
+    "@liusiqi-dev/sqh-lazy-require": "workspace:*",
+    "@liusiqi-dev/sqh-win32-process": "workspace:*",
     "koffi": "3.1.1",
     "node-pty": "1.2.0-beta.15"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-loader-smoke": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess": "workspace:*",
-    "@liusiqi-dev/dsh-timeout": "workspace:*",
+    "@liusiqi-dev/sqh-loader-smoke": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess": "workspace:*",
+    "@liusiqi-dev/sqh-timeout": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   }
 }

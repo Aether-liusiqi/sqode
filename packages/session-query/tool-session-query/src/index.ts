@@ -1,18 +1,18 @@
 /**
  * Model-facing, workspace-authorized session-history search and read tools.
  *
- * @module @liusiqi-dev/dsh-tool-session-query
+ * @module @liusiqi-dev/sqh-tool-session-query
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
+import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/sqh-timeout'
 import {
   SCHEMA_CHARS_PER_TOKEN,
   declarationBudgetChars,
   defineTool,
   type ToolRunContext,
-} from '@liusiqi-dev/dsh-tools'
+} from '@liusiqi-dev/sqh-tools'
 import { toolInput } from './input.ts'
 import { operations } from './operations.ts'
 import { presentation } from './presentation.ts'

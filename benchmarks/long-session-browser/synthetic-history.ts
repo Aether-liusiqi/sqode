@@ -1,9 +1,9 @@
 /** Synthetic current-generation history and paced reply for browser measurements. */
-import { createAssistantMessage, createSystemMessage, createUserMessage, createToolResultMessage, ToolCallId } from '@liusiqi-dev/dsh-llm'
-import type { StreamChunk } from '@liusiqi-dev/dsh-llm'
-import { AssistantStreamAccumulator } from '@liusiqi-dev/dsh-llm/assistant-stream'
-import { Session, SessionId, SESSION_FORMAT_VERSION } from '@liusiqi-dev/dsh-session'
-import type {} from '@liusiqi-dev/dsh-session-title'
+import { createAssistantMessage, createSystemMessage, createUserMessage, createToolResultMessage, ToolCallId } from '@liusiqi-dev/sqh-llm'
+import type { StreamChunk } from '@liusiqi-dev/sqh-llm'
+import { AssistantStreamAccumulator } from '@liusiqi-dev/sqh-llm/assistant-stream'
+import { Session, SessionId, SESSION_FORMAT_VERSION } from '@liusiqi-dev/sqh-session'
+import type {} from '@liusiqi-dev/sqh-session-title'
 
 /** Closed turns in the browser history workload. */
 export const HISTORY_TURNS = 240

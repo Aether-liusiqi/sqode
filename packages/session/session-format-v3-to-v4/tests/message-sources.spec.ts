@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { SessionFormatEventCollector } from '@liusiqi-dev/dsh-session-format'
-import type { SessionFormatEvent, SessionFormatJsonObject } from '@liusiqi-dev/dsh-session-format'
-import { createSessionFormatCatalogWithChildren, sessionFormatCatalog } from '@liusiqi-dev/dsh-session-format-catalog'
+import { SessionFormatEventCollector } from '@liusiqi-dev/sqh-session-format'
+import type { SessionFormatEvent, SessionFormatJsonObject } from '@liusiqi-dev/sqh-session-format'
+import { createSessionFormatCatalogWithChildren, sessionFormatCatalog } from '@liusiqi-dev/sqh-session-format-catalog'
 import { assertV4MessageSources, assertV4SourceRowAdmission } from '../src/message-sources.ts'
 import { releasedV4SessionFormatCodec } from '../src/codec.ts'
 

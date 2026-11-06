@@ -5,8 +5,8 @@ import { homedir, tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import type { SandboxPolicy } from '@liusiqi-dev/dsh-sandbox'
-import { LocalSandboxProvider } from '@liusiqi-dev/dsh-sandbox-local'
+import type { SandboxPolicy } from '@liusiqi-dev/sqh-sandbox'
+import { LocalSandboxProvider } from '@liusiqi-dev/sqh-sandbox-local'
 import { seatbeltProfileArgs } from '../src/profiles.ts'
 
 /**

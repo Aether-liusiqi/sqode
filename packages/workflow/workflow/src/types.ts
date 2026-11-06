@@ -3,11 +3,11 @@
  * consumes and produces, plus the fields in the `workflow/*` event payloads.
  * Types only (plus the id-brand factory), per the package convention.
  *
- * @module @liusiqi-dev/dsh-workflow/types
+ * @module @liusiqi-dev/sqh-workflow/types
  */
 
-import type { Branded } from '@liusiqi-dev/dsh-brand'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 
 /** Identifies one workflow run. */
 export type WorkflowRunId = Branded<'WorkflowRunId'>

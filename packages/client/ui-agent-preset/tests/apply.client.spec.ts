@@ -7,14 +7,14 @@
 
 import { Context } from '@liusiqi-dev/cordis'
 import { describe, expect, it, vi } from 'vitest'
-import { resolveSlotLabel } from '@liusiqi-dev/dsh-client-ui-slots'
-import { SlotRegistry } from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import { LocaleRuntime } from '@liusiqi-dev/dsh-client-locale/client'
-import { createSnapshotStore, type ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
-import { RemoteError, TestRemote } from '@liusiqi-dev/dsh-client-test-runtime'
-import { SessionId } from '@liusiqi-dev/dsh-session'
-import { apply as settingsApply, inject as settingsInject } from '@liusiqi-dev/dsh-client-ui-settings/client'
-import { apply, inject } from '@liusiqi-dev/dsh-client-ui-agent-preset/client'
+import { resolveSlotLabel } from '@liusiqi-dev/sqh-client-ui-slots'
+import { SlotRegistry } from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import { LocaleRuntime } from '@liusiqi-dev/sqh-client-locale/client'
+import { createSnapshotStore, type ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
+import { RemoteError, TestRemote } from '@liusiqi-dev/sqh-client-test-runtime'
+import { SessionId } from '@liusiqi-dev/sqh-session'
+import { apply as settingsApply, inject as settingsInject } from '@liusiqi-dev/sqh-client-ui-settings/client'
+import { apply, inject } from '@liusiqi-dev/sqh-client-ui-agent-preset/client'
 import { AgentPresetLabel } from '../src/client/AgentPresetLabel.tsx'
 import type { AgentPresetLabelInjected } from '../src/client/AgentPresetLabel.tsx'
 import { AgentPresetSection } from '../src/client/AgentPresetSection.tsx'
@@ -1095,7 +1095,7 @@ describe('AgentPresetSeatController reconciliation', () => {
   })
 
   it('keeps the bare cause of a mount failure, not the frame that names the preset again', async () => {
-    const reason = 'failed to import loader entry ctx (@liusiqi-dev/dsh-gone): Cannot find package'
+    const reason = 'failed to import loader entry ctx (@liusiqi-dev/sqh-gone): Cannot find package'
     const controller = new AgentPresetSeatController({
       ...developerTools(),
       remote: {

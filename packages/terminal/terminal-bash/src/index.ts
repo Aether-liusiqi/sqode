@@ -1,19 +1,19 @@
 /**
  * Persistent shell PTY backend over the subprocess terminal primitive, shared
  * sandbox policy, bounded output, and provider-owned session cleanup.
- * @module @liusiqi-dev/dsh-terminal-bash
+ * @module @liusiqi-dev/sqh-terminal-bash
  */
 
 import { Context } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type { Session, SessionEvent } from '@liusiqi-dev/dsh-session'
-import { TerminalBackendCleanupError } from '@liusiqi-dev/dsh-terminal'
-import type { TerminalBackend, TerminalBackendSpawnSpec, TerminalSendOperation } from '@liusiqi-dev/dsh-terminal'
-import type { SubprocessTerminalHandle, SubprocessTerminalSpawnSpec } from '@liusiqi-dev/dsh-subprocess'
-import type { SandboxExecutionPolicy } from '@liusiqi-dev/dsh-sandbox'
-import type {} from '@liusiqi-dev/dsh-sandbox-policy'
-import type {} from '@liusiqi-dev/dsh-session-projection'
-import { ENCODING_PREAMBLE } from '@liusiqi-dev/dsh-pwsh-local'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type { Session, SessionEvent } from '@liusiqi-dev/sqh-session'
+import { TerminalBackendCleanupError } from '@liusiqi-dev/sqh-terminal'
+import type { TerminalBackend, TerminalBackendSpawnSpec, TerminalSendOperation } from '@liusiqi-dev/sqh-terminal'
+import type { SubprocessTerminalHandle, SubprocessTerminalSpawnSpec } from '@liusiqi-dev/sqh-subprocess'
+import type { SandboxExecutionPolicy } from '@liusiqi-dev/sqh-sandbox'
+import type {} from '@liusiqi-dev/sqh-sandbox-policy'
+import type {} from '@liusiqi-dev/sqh-session-projection'
+import { ENCODING_PREAMBLE } from '@liusiqi-dev/sqh-pwsh-local'
 import { type Config, type ResolvedConfig, resolveConfig, type ShellDialect, validateConfig } from './config.ts'
 import { LocalPtySession } from './session.ts'
 import { CONTROLLED_PROMPT } from './sanitize.ts'

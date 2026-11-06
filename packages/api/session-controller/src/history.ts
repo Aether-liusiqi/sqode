@@ -1,24 +1,24 @@
 /** Cold Session history pagination and live-event source. */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { Deque } from '@liusiqi-dev/dsh-deque'
-import type { AssistantStreamFrame } from '@liusiqi-dev/dsh-agent'
+import { Deque } from '@liusiqi-dev/sqh-deque'
+import type { AssistantStreamFrame } from '@liusiqi-dev/sqh-agent'
 import {
   isAppendSurfaceEvent,
   SessionLogOffset,
   SessionSeq,
-} from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-session'
 import type {
   SessionEvent,
   SessionHeader,
   SessionId,
   SessionLogOffset as SessionLogOffsetType,
   SessionSeqCursor,
-} from '@liusiqi-dev/dsh-session'
-import { SessionQueryError, type SessionObservation } from '@liusiqi-dev/dsh-session-query'
-import type {} from '@liusiqi-dev/dsh-subagent'
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
+} from '@liusiqi-dev/sqh-session'
+import { SessionQueryError, type SessionObservation } from '@liusiqi-dev/sqh-session-query'
+import type {} from '@liusiqi-dev/sqh-subagent'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
 import type {
   SessionAddress,
   SessionAssistantStreamFrame,

@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-api-account-controller",
+  "name": "@liusiqi-dev/sqh-api-account-controller",
   "description": "Expose safe account operations over authenticated Remote",
   "version": "1.0.0",
   "publishConfig": {
@@ -48,14 +48,14 @@
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-deepseek-account": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
-    "@liusiqi-dev/dsh-agent": "workspace:*"
+    "@liusiqi-dev/sqh-deepseek-account": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/sqh-agent": "workspace:*"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-deepseek-account": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
-    "@liusiqi-dev/dsh-agent": "workspace:*"
+    "@liusiqi-dev/sqh-deepseek-account": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/sqh-agent": "workspace:*"
   }
 }

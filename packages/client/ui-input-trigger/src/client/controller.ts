@@ -8,11 +8,11 @@
  * disposes it with the scope fiber.
  */
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import type {
   ArbitrateKey, ArbitrateOutcome, PickOutcome, ReferenceInsert,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import { detectTrigger } from '../core/detect.ts'
 import { MENU_CLOSED, menuReduce, seedGroups } from '../core/menu.ts'
 import type { MenuEvent, MenuState, TriggerHit } from '../core/contract.ts'

@@ -5,10 +5,10 @@
  * here reaches a Host-only symbol, so a Client compilation face reads exactly
  * the signature the Host emits.
  *
- * @module @liusiqi-dev/dsh-credentials/types
+ * @module @liusiqi-dev/sqh-credentials/types
  */
 
-import type { Branded } from '@liusiqi-dev/dsh-brand'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
 
 /** Nominal reference to one credential: a POSIX-style environment-variable name. */
 export type CredentialRef = Branded<'CredentialRef'>

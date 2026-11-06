@@ -1,7 +1,7 @@
 import type { Context } from '@liusiqi-dev/cordis'
 import { appendFileSync } from 'node:fs'
-import type { GenerateOptions, LlmResolvedModelInfo, StreamChunk } from '@liusiqi-dev/dsh-llm'
-import { ToolCallId, LlmAdapter, ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
+import type { GenerateOptions, LlmResolvedModelInfo, StreamChunk } from '@liusiqi-dev/sqh-llm'
+import { ToolCallId, LlmAdapter, ReasoningEffortId } from '@liusiqi-dev/sqh-llm'
 
 /**
  * Test adapter for the `mock-delegate` model: the first request calls the

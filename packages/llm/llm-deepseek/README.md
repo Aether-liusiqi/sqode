@@ -3,7 +3,7 @@ description: "Configure DeepSeek Messages, reasoning, and image input."
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-llm-deepseek
+# @liusiqi-dev/sqh-llm-deepseek
 
 English | [中文](README.zh.md)
 
@@ -38,7 +38,7 @@ Choose this adapter for DeepSeek's official API or a Messages-compatible gateway
 ### Minimal configuration
 
 ```yaml
-- name: '@liusiqi-dev/dsh-llm-deepseek-api-key'
+- name: '@liusiqi-dev/sqh-llm-deepseek-api-key'
   config:
     apiKeyEnv: DEEPSEEK_API_KEY  # credential reference, resolved per request
     reasoningEffort: high        # optional; off | low | high | max

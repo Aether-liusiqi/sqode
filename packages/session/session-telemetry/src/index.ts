@@ -11,11 +11,11 @@
  * design and its trade-offs are pinned in
  * .agents/notes/implemented/feature/2026-07-23-session-telemetry-otel-revival.md.
  *
- * @module @liusiqi-dev/dsh-session-telemetry
+ * @module @liusiqi-dev/sqh-session-telemetry
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'
-import type { SessionEvent, SessionId } from '@liusiqi-dev/dsh-session'
+import type { SessionEvent, SessionId } from '@liusiqi-dev/sqh-session'
 
 declare module '@liusiqi-dev/cordis' {
   interface Context {

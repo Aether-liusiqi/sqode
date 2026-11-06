@@ -1,7 +1,7 @@
 /** Shell-result projection over shared sandbox diagnostics. */
-import type { ShellRunResult } from '@liusiqi-dev/dsh-shell'
-import { matchesSignature } from '@liusiqi-dev/dsh-sandbox'
-export { isRunnerSpawnFailure, classifyRunnerFailure, matchesSignature } from '@liusiqi-dev/dsh-sandbox'
+import type { ShellRunResult } from '@liusiqi-dev/sqh-shell'
+import { matchesSignature } from '@liusiqi-dev/sqh-sandbox'
+export { isRunnerSpawnFailure, classifyRunnerFailure, matchesSignature } from '@liusiqi-dev/sqh-sandbox'
 
 /**
  * Classify a failed run against the selected backend's denial dialect.

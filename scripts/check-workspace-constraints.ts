@@ -61,7 +61,7 @@ const experimentalPackageDirectory = /^packages\/experimental\/[^/]+$/
  * experimental package fails between the two commits. Drop the old entry in the
  * commit that renames the packages.
  */
-const experimentalPackageNamePrefixes = ['@liusiqi-dev/sqh-experimental-', '@liusiqi-dev/dsh-experimental-'] as const
+const experimentalPackageNamePrefixes = ['@liusiqi-dev/sqh-experimental-'] as const
 
 /**
  * npm sub-prefixes that identify this repository's own packages.
@@ -69,7 +69,7 @@ const experimentalPackageNamePrefixes = ['@liusiqi-dev/sqh-experimental-', '@liu
  * Two are listed while the packages are being renamed; drop the old entry with the
  * commit that renames them.
  */
-const FIRST_PARTY_PREFIXES = ['@liusiqi-dev/sqh-', '@liusiqi-dev/dsh-'] as const
+const FIRST_PARTY_PREFIXES = ['@liusiqi-dev/sqh-'] as const
 /** Ordinary directories whose packages this repository publishes: one release member each. */
 const standardReleaseMemberDirectory = /^(?:packages\/(?!experimental\/)[^/]+\/[^/]+|apps\/(?!desktop(?:-host)?$)[^/]+|vendor\/[^/]+)$/
 /** Installable application assembled by electron-builder rather than published to npm. */
@@ -77,13 +77,13 @@ const desktopApplicationDirectory = 'apps/desktop'
 const localArtifactDirs = new Set(['node_modules'])
 const appPackageFiles: Readonly<Record<string, readonly string[]>> = {
   '@liusiqi-dev/sqode': ['lib/*.js', 'lib/types/*.d.ts'],
-  '@liusiqi-dev/dsh-desktop-host': [
+  '@liusiqi-dev/sqh-desktop-host': [
     'lib/index.js', 'lib/cli.js',
   ],
   // Sourcemaps stay out by payload policy; the worker-preview surface
   // (dist/preview.html and dist/preview/) backs opt-in experimental
   // packages and is not published.
-  '@liusiqi-dev/dsh-web-frontend': ['dist', '!dist/**/*.map', '!dist/preview.html', '!dist/preview'],
+  '@liusiqi-dev/sqh-web-frontend': ['dist', '!dist/**/*.map', '!dist/preview.html', '!dist/preview'],
 }
 
 /** The subset of package.json fields this constraint check cares about. */
@@ -190,51 +190,51 @@ export function readWorkspaceManifests(repositoryRoot: string): WorkspaceManifes
 
 const packageFileExtras: Readonly<Record<string, readonly string[]>> = {
   // Owned Worker bundles import this public bootstrap before their business entry.
-  '@liusiqi-dev/dsh-app-boot': ['lib/worker/profile-resolution-bootstrap.js'],
+  '@liusiqi-dev/sqh-app-boot': ['lib/worker/profile-resolution-bootstrap.js'],
   // Statically linked client libraries keep their stylesheets next to the emitted
   // JavaScript, which imports them by relative path: the compile shell runs
   // them through its own CSS pipeline, so the sheets are published artifacts.
   // The glob covers whichever sheets a package emits; sourcemaps stay
   // unpublished, as everywhere else in the repository.
-  '@liusiqi-dev/dsh-client-ui-primitives': ['lib/**/*.css'],
-  '@liusiqi-dev/dsh-client-ui-dockkit': ['lib/**/*.css'],
-  '@liusiqi-dev/dsh-client-ui-sidebar-documentpreview': ['lib/client.*.js'],
-  '@liusiqi-dev/dsh-client-ui-sidebar-terminal': ['lib/client.*.js'],
-  '@liusiqi-dev/dsh-client-web': ['lib/**/*.css', 'lib/apply-injections.js'],
-  '@liusiqi-dev/dsh-client-ui-theme': ['lib/styles'],
+  '@liusiqi-dev/sqh-client-ui-primitives': ['lib/**/*.css'],
+  '@liusiqi-dev/sqh-client-ui-dockkit': ['lib/**/*.css'],
+  '@liusiqi-dev/sqh-client-ui-sidebar-documentpreview': ['lib/client.*.js'],
+  '@liusiqi-dev/sqh-client-ui-sidebar-terminal': ['lib/client.*.js'],
+  '@liusiqi-dev/sqh-client-web': ['lib/**/*.css', 'lib/apply-injections.js'],
+  '@liusiqi-dev/sqh-client-ui-theme': ['lib/styles'],
   // The physical-key protocol is a public entry usable without the browser service.
-  '@liusiqi-dev/dsh-client-shortcuts': ['lib/protocol.js'],
+  '@liusiqi-dev/sqh-client-shortcuts': ['lib/protocol.js'],
   // The CPython side ships as source .py files, published as-is rather than built.
-  '@liusiqi-dev/dsh-experimental-ptc-runtime-python': ['py/**/*.py'],
-  '@liusiqi-dev/dsh-experimental-speech-to-text-sensevoice': ['runtime/assets.json'],
+  '@liusiqi-dev/sqh-experimental-ptc-runtime-python': ['py/**/*.py'],
+  '@liusiqi-dev/sqh-experimental-speech-to-text-sensevoice': ['runtime/assets.json'],
   // The isolated Node bootstrap is a separately launched bundle.
-  '@liusiqi-dev/dsh-ptc-runtime-node': ['lib/process.js'],
+  '@liusiqi-dev/sqh-ptc-runtime-node': ['lib/process.js'],
   // The Host entry starts its sibling Worker by URL rather than a package export.
-  '@liusiqi-dev/dsh-experimental-inspector': ['lib/worker.js'],
+  '@liusiqi-dev/sqh-experimental-inspector': ['lib/worker.js'],
   // Creator's composition guidance travels with the declaration package.
-  '@liusiqi-dev/dsh-agent-preset': ['skills'],
+  '@liusiqi-dev/sqh-agent-preset': ['skills'],
   // The Web Host mounts the default-off settings owner independently of each
   // Agent-scoped delegation-tool instance.
-  '@liusiqi-dev/dsh-tool-subagent': ['lib/model-selection-settings.js'],
+  '@liusiqi-dev/sqh-tool-subagent': ['lib/model-selection-settings.js'],
   // The JSONL backend resolves its private verification Worker relative to
   // import.meta.url; it is shipped without a public package subpath.
-  '@liusiqi-dev/dsh-session-persistence-jsonl': ['lib/worker.cjs'],
+  '@liusiqi-dev/sqh-session-persistence-jsonl': ['lib/worker.cjs'],
   // The argv-prefix runner entry ships beside the lib as its own bundle;
   // sandbox-local resolves it through the package's ./runner export. tsdown
   // also shares its generated FFI code through a hashed runtime chunk.
-  '@liusiqi-dev/dsh-sandbox-windows-acl': ['lib/runner.js', 'lib/types-*.js', 'assets'],
-  '@liusiqi-dev/dsh-skill-badge': ['assets'],
-  '@liusiqi-dev/dsh-skill-office': ['assets'],
-  '@liusiqi-dev/dsh-subprocess': ['lib/control.js'],
+  '@liusiqi-dev/sqh-sandbox-windows-acl': ['lib/runner.js', 'lib/types-*.js', 'assets'],
+  '@liusiqi-dev/sqh-skill-badge': ['assets'],
+  '@liusiqi-dev/sqh-skill-office': ['assets'],
+  '@liusiqi-dev/sqh-subprocess': ['lib/control.js'],
   // SSH launches a private helper and shares wire definitions and TLS setup
   // between that helper and the connection owner.
-  '@liusiqi-dev/dsh-ssh': [
+  '@liusiqi-dev/sqh-ssh': [
     'lib/helper.js', 'lib/protocol.js', 'lib/schemas.js',
     'lib/protocol-*.js', 'lib/schemas-*.js', 'lib/stream-security-*.js',
   ],
   // Ordinary native containment ships a path-loaded runner and its shared
   // runner chunk beside the existing node-pty permission repair.
-  '@liusiqi-dev/dsh-subprocess-local': [
+  '@liusiqi-dev/sqh-subprocess-local': [
     'lib/runner.js',
     'lib/runner-*.js',
     'lib/output.js',
@@ -243,10 +243,10 @@ const packageFileExtras: Readonly<Record<string, readonly string[]>> = {
   // tsdown shares the repository/pack code between the lib entry and the bin
   // through a hashed chunk. The committed bin.js is the link target pnpm can
   // resolve at install time, before the build produces lib/bin.js.
-  '@liusiqi-dev/dsh-experimental-webworker-packer': ['bin.js', 'lib/repository-*.js'],
+  '@liusiqi-dev/sqh-experimental-webworker-packer': ['bin.js', 'lib/repository-*.js'],
   // The headless entry and its startup row share the JSON projection code
   // through a hashed tsdown chunk; both import it by relative path.
-  '@liusiqi-dev/dsh-headless': ['lib/json-stream-*.js'],
+  '@liusiqi-dev/sqh-headless': ['lib/json-stream-*.js'],
 }
 
 function sameStringList(actual: readonly string[] | undefined, expected: readonly string[]): boolean {

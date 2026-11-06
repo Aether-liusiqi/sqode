@@ -1,8 +1,8 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { SessionId } from '@liusiqi-dev/dsh-session'
-import { MessageId } from '@liusiqi-dev/dsh-llm/brand'
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { SessionId } from '@liusiqi-dev/sqh-session'
+import { MessageId } from '@liusiqi-dev/sqh-llm/brand'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
 import { ScheduleRuntime, MAX_TIMER_DELAY_MS } from '../src/runtime.ts'
 import {
   createAfterScheduleRecord, createAtScheduleRecord, createDailyScheduleRecord, createEveryScheduleRecord, ScheduleId,

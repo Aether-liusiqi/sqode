@@ -5,20 +5,20 @@
 
 import { describe, expect, it, onTestFinished } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { createUserMessage, ToolCallId, StreamChunk  } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { SessionEvent, SessionId, TOOL_NOT_STARTED, TOOL_OUTCOME_UNKNOWN } from '@liusiqi-dev/dsh-session'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import LlmRuntime from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-import ToolRuntime, { defineContentToolFixture, TOOL_ABORTED_BEFORE_DISPATCH, TOOL_RUNTIME_SCHEDULER, type PostToolDecision, type PreToolDecision } from '@liusiqi-dev/dsh-tools'
-import AgentRegistry, { type Agent } from '@liusiqi-dev/dsh-agent'
-import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
+import { createUserMessage, ToolCallId, StreamChunk  } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { SessionEvent, SessionId, TOOL_NOT_STARTED, TOOL_OUTCOME_UNKNOWN } from '@liusiqi-dev/sqh-session'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import LlmRuntime from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+import ToolRuntime, { defineContentToolFixture, TOOL_ABORTED_BEFORE_DISPATCH, TOOL_RUNTIME_SCHEDULER, type PostToolDecision, type PreToolDecision } from '@liusiqi-dev/sqh-tools'
+import AgentRegistry, { type Agent } from '@liusiqi-dev/sqh-agent'
+import AgentLoop from '@liusiqi-dev/sqh-agent-loop'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
 import { MockAdapter, textResponse } from './mock-adapter.ts'
-import { PtcRuntime } from '@liusiqi-dev/dsh-ptc-runtime'
-import type { PtcRunRequest, PtcRunResult } from '@liusiqi-dev/dsh-ptc-runtime'
+import { PtcRuntime } from '@liusiqi-dev/sqh-ptc-runtime'
+import type { PtcRunRequest, PtcRunResult } from '@liusiqi-dev/sqh-ptc-runtime'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'p': { kind: 'p' } & ContextFormed
   }
@@ -882,7 +882,7 @@ describe('tool-call scheduler: failure quiescence', () => {
 describe('PTC mode native-tool denial through the agent loop', () => {
   /** A minimal in-process PTC runtime for test purposes — never actually runs. */
   class FakePtcRuntime extends PtcRuntime {
-    resolve(request: import('@liusiqi-dev/dsh-ptc-runtime').PtcRunRequest): import('@liusiqi-dev/dsh-ptc-runtime').PtcRunSpec { return { ...request, cwd: request.cwd ?? process.cwd(), timeoutMs: request.timeoutMs ?? 120_000 } }
+    resolve(request: import('@liusiqi-dev/sqh-ptc-runtime').PtcRunRequest): import('@liusiqi-dev/sqh-ptc-runtime').PtcRunSpec { return { ...request, cwd: request.cwd ?? process.cwd(), timeoutMs: request.timeoutMs ?? 120_000 } }
 
     readonly language = 'typescript'
     readonly isolation = 'fake' as const

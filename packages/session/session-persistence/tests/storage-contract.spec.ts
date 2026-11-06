@@ -4,8 +4,8 @@
  */
 
 import { describe, expect, it } from 'vitest'
-import { SESSION_FORMAT_VERSION, SessionId } from '@liusiqi-dev/dsh-session'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
+import { SESSION_FORMAT_VERSION, SessionId } from '@liusiqi-dev/sqh-session'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
 import {
   SessionAlreadyExistsError,
   SessionAlreadyOwnedError,

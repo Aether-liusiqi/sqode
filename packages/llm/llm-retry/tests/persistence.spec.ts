@@ -3,9 +3,9 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import JsonlSessionPersistence from '@liusiqi-dev/dsh-session-persistence-jsonl'
-import { RetryId } from '@liusiqi-dev/dsh-llm-retry'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import JsonlSessionPersistence from '@liusiqi-dev/sqh-session-persistence-jsonl'
+import { RetryId } from '@liusiqi-dev/sqh-llm-retry'
 import type {} from '../src/index.ts'
 
 const dirs: string[] = []

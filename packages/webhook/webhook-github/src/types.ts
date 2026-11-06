@@ -1,6 +1,6 @@
 /** GitHub event values projected after signature verification. */
 
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
 
 /** Signed GitHub JSON object. Event-specific field validation belongs to each rule. */
 export type GitHubJsonObject = { readonly [key: string]: JsonValue }
@@ -13,7 +13,7 @@ export interface GitHubWebhookEvent {
   readonly payload: GitHubJsonObject
 }
 
-declare module '@liusiqi-dev/dsh-webhook' {
+declare module '@liusiqi-dev/sqh-webhook' {
   interface WebhookEventMap {
     github: GitHubWebhookEvent
   }

@@ -1,13 +1,13 @@
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
 import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import { mkdtemp, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import JsonlSessionPersistence from '@liusiqi-dev/dsh-session-persistence-jsonl'
-import SessionTitleService, { foldSessionTitle } from '@liusiqi-dev/dsh-session-title'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import JsonlSessionPersistence from '@liusiqi-dev/sqh-session-persistence-jsonl'
+import SessionTitleService, { foldSessionTitle } from '@liusiqi-dev/sqh-session-title'
 
 const CONFIG = {
   fallbackMaxWords: 5,

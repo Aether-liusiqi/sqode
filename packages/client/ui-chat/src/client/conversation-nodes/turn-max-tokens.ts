@@ -1,7 +1,7 @@
 import type { Context } from '@liusiqi-dev/cordis'
 import type {
   ConversationMatch, ConversationNodeContext, ConversationNodeDefinition, TurnMaxTokensNode,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import { CHAT_SYNTHETIC_SEQ_OFFSETS, chatNode } from './common.ts'
 
 declare module '../contract/chat-nodes.ts' {

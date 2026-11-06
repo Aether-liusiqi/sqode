@@ -1,21 +1,21 @@
 /**
  * Model argument schemas, normalization, and filter construction.
  *
- * @module @liusiqi-dev/dsh-tool-session-query/input
+ * @module @liusiqi-dev/sqh-tool-session-query/input
  */
 
 import {
   type SessionEventType,
   type SessionId as SessionIdValue,
-} from '@liusiqi-dev/dsh-session'
-import { brandString } from '@liusiqi-dev/dsh-brand'
+} from '@liusiqi-dev/sqh-session'
+import { brandString } from '@liusiqi-dev/sqh-brand'
 import {
   SessionQueryError,
   type SessionAvailability,
   type SessionEventMetadataFilter,
   type SessionEventSurface,
   type SessionResultFilter,
-} from '@liusiqi-dev/dsh-session-query'
+} from '@liusiqi-dev/sqh-session-query'
 
 interface SessionSearchArgs {
   query: string

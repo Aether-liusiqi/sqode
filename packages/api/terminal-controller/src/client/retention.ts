@@ -1,7 +1,7 @@
 /** One reconnecting window hold, shared by all occurrences of a terminal. */
-import type { ClientRemote, RemoteStream } from '@liusiqi-dev/dsh-api-gateway/client'
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { ClientRemote, RemoteStream } from '@liusiqi-dev/sqh-api-gateway/client'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import type { TerminalRetentionFrame, WebTerminalId } from '../types.ts'
 import type { TerminalRemote } from './model.ts'
 

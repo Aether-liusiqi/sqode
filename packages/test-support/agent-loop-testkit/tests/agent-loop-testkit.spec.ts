@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import { Session, SessionId, SessionSeq } from '@liusiqi-dev/dsh-session'
-import { renderPrompt } from '@liusiqi-dev/dsh-system-prompt'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import { Session, SessionId, SessionSeq } from '@liusiqi-dev/sqh-session'
+import { renderPrompt } from '@liusiqi-dev/sqh-system-prompt'
 import {
   createInboxStub,
   mountAgentLoopTestDependencies,

@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
 /**
  * The session-rename assembly chain on SlotTestRuntime (real apply, real
  * WorkspaceBrowser occupying the sidebar hole, the shipped row actions and
@@ -16,14 +16,14 @@ import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
  */
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, waitFor, within } from '@testing-library/react'
-import type { ISession } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { WorkspaceId } from '@liusiqi-dev/dsh-api-workspace-controller/client'
-import { SessionSeq, type SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { PropsRenderSlots, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
-import { RemoteError, SlotTestRuntime, usePinnedBrowserLanguages } from '@liusiqi-dev/dsh-client-test-runtime'
-import { LocaleRuntime } from '@liusiqi-dev/dsh-client-locale/client'
-import { MenuItemButton } from '@liusiqi-dev/dsh-client-ui-primitives'
-import { apply, inject } from '@liusiqi-dev/dsh-client-ui-workspace/client'
+import type { ISession } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { WorkspaceId } from '@liusiqi-dev/sqh-api-workspace-controller/client'
+import { SessionSeq, type SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { PropsRenderSlots, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
+import { RemoteError, SlotTestRuntime, usePinnedBrowserLanguages } from '@liusiqi-dev/sqh-client-test-runtime'
+import { LocaleRuntime } from '@liusiqi-dev/sqh-client-locale/client'
+import { MenuItemButton } from '@liusiqi-dev/sqh-client-ui-primitives'
+import { apply, inject } from '@liusiqi-dev/sqh-client-ui-workspace/client'
 
 // The service reads its initial locale from the browser; these specs assert
 // the shipped Chinese copy, so they state the browser they assume.

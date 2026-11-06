@@ -1,14 +1,14 @@
-/** Package-owned durable retry-event invariants. @module @liusiqi-dev/dsh-llm-retry/invariant */
+/** Package-owned durable retry-event invariants. @module @liusiqi-dev/sqh-llm-retry/invariant */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Session, SessionEvent } from '@liusiqi-dev/dsh-session'
-import type { LlmFailure } from '@liusiqi-dev/dsh-llm'
-import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
-import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
+import type { Session, SessionEvent } from '@liusiqi-dev/sqh-session'
+import type { LlmFailure } from '@liusiqi-dev/sqh-llm'
+import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/sqh-timeout'
+import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
 import { providerForOpenStep } from './history.ts'
 import type {} from './index.ts'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-llm-retry'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-llm-retry'
 
 /** Cordis companion plugin name. */
 export const name = 'llm-retry-invariant'

@@ -3,7 +3,7 @@ description: "Tool-output trimming for deployments composing compaction: choosin
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-compaction-tool-result-pruner
+# @liusiqi-dev/sqh-compaction-tool-result-pruner
 
 English | [中文](README.zh.md)
 
@@ -32,9 +32,9 @@ Mount this package next to `dsh-compaction-basic` when tool output regularly dom
 Mount token measurement, this package, and the backend in this order:
 
 ```yaml
-- name: '@liusiqi-dev/dsh-token-meter'
-- name: '@liusiqi-dev/dsh-compaction-tool-result-pruner'
-- name: '@liusiqi-dev/dsh-compaction-basic'
+- name: '@liusiqi-dev/sqh-token-meter'
+- name: '@liusiqi-dev/sqh-compaction-tool-result-pruner'
+- name: '@liusiqi-dev/sqh-compaction-basic'
 ```
 
 With these rows, oversized tool results are trimmed automatically as part of condensation. You can verify success by checking that future requests show the trimmed results; the full originals remain in the session log.

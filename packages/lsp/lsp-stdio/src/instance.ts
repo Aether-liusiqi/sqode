@@ -4,16 +4,16 @@
  * instance owns one `(provider id, canonical workspace)` process. Queries serialize through a single
  * queue so a cancellation that fails to stop the server can terminate it without killing unrelated
  * work; distinct instances run in parallel.
- * @module @liusiqi-dev/dsh-lsp-stdio/instance
+ * @module @liusiqi-dev/sqh-lsp-stdio/instance
  */
 
-import { LspError } from '@liusiqi-dev/dsh-lsp'
+import { LspError } from '@liusiqi-dev/sqh-lsp'
 import type {
   LspOperation,
   LspProviderQuery,
   LspQueryResult,
-} from '@liusiqi-dev/dsh-lsp'
-import { deadline } from '@liusiqi-dev/dsh-timeout'
+} from '@liusiqi-dev/sqh-lsp'
+import { deadline } from '@liusiqi-dev/sqh-timeout'
 import { abortable, abortError } from './abort.ts'
 import { LspConnection } from './connection.ts'
 import type { ConnectionSpawner, ConnectionSpec, ConnectionWriter } from './connection.ts'

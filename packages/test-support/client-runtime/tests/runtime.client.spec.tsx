@@ -11,16 +11,16 @@ import { Context } from '@liusiqi-dev/cordis'
 import { stubConfigForm } from '../src/config-form.ts'
 import { act, cleanup } from '@testing-library/react'
 import { useSyncExternalStore } from 'react'
-import { createSnapshotStore, defineStore } from '@liusiqi-dev/dsh-client-store'
-import { createScope, type SessionReference } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { WorkspaceId } from '@liusiqi-dev/dsh-api-workspace-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import { createSnapshotStore, defineStore } from '@liusiqi-dev/sqh-client-store'
+import { createScope, type SessionReference } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { WorkspaceId } from '@liusiqi-dev/sqh-api-workspace-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import type {
   PropsRenderSlots, SessionStandardProps, SlotRendererHost,
-} from '@liusiqi-dev/dsh-client-ui-slots'
-import { SlotTestRuntime } from '@liusiqi-dev/dsh-client-test-runtime'
+} from '@liusiqi-dev/sqh-client-ui-slots'
+import { SlotTestRuntime } from '@liusiqi-dev/sqh-client-test-runtime'
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface SlotMap {
     'trt.panel': { kind: 'single'; scope: 'root'; owner: { label?: string } }
     'trt.chat': { kind: 'single'; scope: 'session' }

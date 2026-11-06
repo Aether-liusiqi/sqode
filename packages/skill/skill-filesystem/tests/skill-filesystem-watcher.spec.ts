@@ -5,7 +5,7 @@ import { join } from 'node:path'
 import { tmpdir } from 'node:os'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import SkillRegistry from '@liusiqi-dev/dsh-skill'
+import SkillRegistry from '@liusiqi-dev/sqh-skill'
 
 interface FakeWatcherControl {
   emitter: EventEmitter

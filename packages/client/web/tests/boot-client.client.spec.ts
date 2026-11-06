@@ -3,12 +3,12 @@ import { Context } from '@liusiqi-dev/cordis'
 import {
   createClientModuleSystem, parseBootManifest,
   type ClientBundleRegistration, type ClientModuleLoader, type ClientModuleLoaderTarget, type WebBootEntry, type WebBootGraph,
-} from '@liusiqi-dev/dsh-client-modules/client'
+} from '@liusiqi-dev/sqh-client-modules/client'
 import { describe, expect, it, onTestFinished, vi } from 'vitest'
 import { assertEntriesActive, bootClient, type EntryStateLabel } from '../src/boot-client.ts'
 import { FIBER_STATE } from '../src/loader-status.ts'
 
-const BOOTSTRAP_ID = '@liusiqi-dev/dsh-client-modules'
+const BOOTSTRAP_ID = '@liusiqi-dev/sqh-client-modules'
 
 function graphOf(ids: readonly string[]): WebBootGraph {
   const entries: WebBootEntry[] = ids.map(id => ({ id, url: `/${id}.js`, rev: '1' }))

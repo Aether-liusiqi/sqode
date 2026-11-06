@@ -19,9 +19,9 @@ import type { Loader } from '@liusiqi-dev/cordis-plugin-loader'
 import type {
   CordisDynamicPackageId, CordisDynamicPluginId, CordisDynamicPluginRunId, DynamicCordisPackage,
   SessionId,
-} from '@liusiqi-dev/dsh-api-remotes/client'
-import type { ClientModuleSystem } from '@liusiqi-dev/dsh-client-modules/client'
-import type { SlotRegistry } from '@liusiqi-dev/dsh-client-ui-renderer/client'
+} from '@liusiqi-dev/sqh-api-remotes/client'
+import type { ClientModuleSystem } from '@liusiqi-dev/sqh-client-modules/client'
+import type { SlotRegistry } from '@liusiqi-dev/sqh-client-ui-renderer/client'
 import { DynamicCordisStyles, evaluateClientHalf, DYNAMIC_CLIENT_REDIRECTS } from './evaluator.ts'
 import type { DynamicCordisEvaluatedPlugin } from './evaluator.ts'
 import { dynamicCordisContext } from './guard.ts'

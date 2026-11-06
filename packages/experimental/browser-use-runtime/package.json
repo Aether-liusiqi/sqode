@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-experimental-browser-use-runtime",
+  "name": "@liusiqi-dev/sqh-experimental-browser-use-runtime",
   "description": "Session-owned browser resource lifecycles and MCP integration for experimental providers",
   "version": "1.0.0",
   "publishConfig": {
@@ -33,34 +33,34 @@
   "license": "MIT",
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-browser-use": "workspace:*",
-    "@liusiqi-dev/dsh-mcp-client": "workspace:*",
-    "@liusiqi-dev/dsh-scope": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*"
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-browser-use": "workspace:*",
+    "@liusiqi-dev/sqh-mcp-client": "workspace:*",
+    "@liusiqi-dev/sqh-scope": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*"
   },
   "dependencies": {
     "@liusiqi-dev/schemastery": "workspace:~"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-browser-use": "workspace:*",
-    "@liusiqi-dev/dsh-mcp-client": "workspace:*",
-    "@liusiqi-dev/dsh-scope": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*",
-    "@liusiqi-dev/dsh-agent-loop-testkit": "workspace:*",
-    "@liusiqi-dev/dsh-agent-loop": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
-    "@liusiqi-dev/dsh-mcp-resources": "workspace:*",
-    "@liusiqi-dev/dsh-ptc-runtime": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-browser-use": "workspace:*",
+    "@liusiqi-dev/sqh-mcp-client": "workspace:*",
+    "@liusiqi-dev/sqh-scope": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*",
+    "@liusiqi-dev/sqh-agent-loop-testkit": "workspace:*",
+    "@liusiqi-dev/sqh-agent-loop": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*",
+    "@liusiqi-dev/sqh-mcp-resources": "workspace:*",
+    "@liusiqi-dev/sqh-ptc-runtime": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
     "@liusiqi-dev/cordis-plugin-include": "workspace:~",
-    "@liusiqi-dev/dsh-attachment-local": "workspace:*",
-    "@liusiqi-dev/dsh-session-persistence-jsonl": "workspace:*"
+    "@liusiqi-dev/sqh-attachment-local": "workspace:*",
+    "@liusiqi-dev/sqh-session-persistence-jsonl": "workspace:*"
   }
 }

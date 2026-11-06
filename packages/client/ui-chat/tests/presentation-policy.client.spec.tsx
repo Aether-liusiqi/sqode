@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 import { act, cleanup, render } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import { bindSnapshotSelector } from '@liusiqi-dev/dsh-client-test-runtime'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import { bindSnapshotSelector } from '@liusiqi-dev/sqh-client-test-runtime'
 import type { TranscriptViewMode } from '../src/chat-settings.ts'
 import { derivePresentationPolicy, presentationPolicyFor } from '../src/client/presentation-policy.ts'
 

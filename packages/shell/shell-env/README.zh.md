@@ -3,7 +3,7 @@ description: "受管 SQH_* shell 环境，供选择、配置或扩展每次模�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-shell-env
+# @liusiqi-dev/sqh-shell-env
 
 [English](README.md) | 中文
 
@@ -37,7 +37,7 @@ kind: "package-reference"
 
 ```ts
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-shell-env'
+import type {} from '@liusiqi-dev/sqh-shell-env'
 
 export const inject = ['shellEnv']
 

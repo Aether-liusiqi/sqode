@@ -14,18 +14,18 @@
  * carry the complete post-change state, never a bare delta — it keeps every
  * unit's transition trivially cheap and every served value self-describing.
  *
- * @module @liusiqi-dev/dsh-session-projection
+ * @module @liusiqi-dev/sqh-session-projection
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'
 import type { ZodType } from 'zod'
-import { SessionLogOffset, SessionSeq } from '@liusiqi-dev/dsh-session'
+import { SessionLogOffset, SessionSeq } from '@liusiqi-dev/sqh-session'
 import type {
   Session,
   SessionEvent,
   SessionHeader,
   SessionSeqCursor,
-} from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-session'
 
 declare module '@liusiqi-dev/cordis' {
   interface Context {

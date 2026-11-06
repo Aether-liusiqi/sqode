@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-client-ui-goal",
+  "name": "@liusiqi-dev/sqh-client-ui-goal",
   "description": "Session goal surface: GoalBar docked above the composer, read from the goal session projection",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,13 +28,13 @@
   "dsh": {
     "client": {
       "inject": [
-        "@liusiqi-dev/dsh-api-remotes",
-        "@liusiqi-dev/dsh-api-session-controller",
-        "@liusiqi-dev/dsh-client-locale",
-        "@liusiqi-dev/dsh-client-ui-chat",
-        "@liusiqi-dev/dsh-client-ui-conversation",
-        "@liusiqi-dev/dsh-client-ui-renderer",
-        "@liusiqi-dev/dsh-client-ui-session"
+        "@liusiqi-dev/sqh-api-remotes",
+        "@liusiqi-dev/sqh-api-session-controller",
+        "@liusiqi-dev/sqh-client-locale",
+        "@liusiqi-dev/sqh-client-ui-chat",
+        "@liusiqi-dev/sqh-client-ui-conversation",
+        "@liusiqi-dev/sqh-client-ui-renderer",
+        "@liusiqi-dev/sqh-client-ui-session"
       ],
       "platform": "web"
     }
@@ -48,25 +48,25 @@
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-api-remotes": "workspace:*",
-    "@liusiqi-dev/dsh-api-session-controller": "workspace:*",
-    "@liusiqi-dev/dsh-client-locale": "workspace:*",
-    "@liusiqi-dev/dsh-client-test-runtime": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-chat": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-conversation": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-primitives": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-slots": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-renderer": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-session": "workspace:*",
-    "@liusiqi-dev/dsh-commands": "workspace:*",
-    "@liusiqi-dev/dsh-goal": "workspace:*",
+    "@liusiqi-dev/sqh-api-remotes": "workspace:*",
+    "@liusiqi-dev/sqh-api-session-controller": "workspace:*",
+    "@liusiqi-dev/sqh-client-locale": "workspace:*",
+    "@liusiqi-dev/sqh-client-test-runtime": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-chat": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-conversation": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-primitives": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-slots": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-renderer": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-session": "workspace:*",
+    "@liusiqi-dev/sqh-commands": "workspace:*",
+    "@liusiqi-dev/sqh-goal": "workspace:*",
     "@testing-library/react": "^16.1.0",
     "@types/react": "~18.3.1",
     "@liusiqi-dev/cordis": "workspace:~",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*"
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*"
   },
   "files": [
     "lib/index.js",

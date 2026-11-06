@@ -15,9 +15,9 @@ import { chmodSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, st
 import { realpath } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { basename, dirname, isAbsolute, join, normalize } from 'node:path'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import { SessionId } from '@liusiqi-dev/dsh-session'
-import type { SaveTextSpill } from '@liusiqi-dev/dsh-spill'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import { SessionId } from '@liusiqi-dev/sqh-session'
+import type { SaveTextSpill } from '@liusiqi-dev/sqh-spill'
 import LocalSpillStore, {
   DEFAULT_ROOT_PREFIX,
   discoverDefaultRoots,
@@ -27,8 +27,8 @@ import LocalSpillStore, {
   saveTextFile,
   sessionDir,
   sweepSpillRoots,
-} from '@liusiqi-dev/dsh-spill-local'
-import type { SweepRoot } from '@liusiqi-dev/dsh-spill-local'
+} from '@liusiqi-dev/sqh-spill-local'
+import type { SweepRoot } from '@liusiqi-dev/sqh-spill-local'
 import { gatherSweepRoots } from '../src/cleanup.ts'
 
 const DAY_MS = 24 * 60 * 60 * 1000

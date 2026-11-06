@@ -1,10 +1,10 @@
 import { Context } from '@liusiqi-dev/cordis'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import { unsupportedInbox } from '@liusiqi-dev/dsh-agent-loop-testkit'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type { JobAppendOptions, JobHandle, JobOutcome } from '@liusiqi-dev/dsh-jobs'
-import LocalJobRegistry from '@liusiqi-dev/dsh-jobs-local'
-import { Session, SessionId } from '@liusiqi-dev/dsh-session'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import { unsupportedInbox } from '@liusiqi-dev/sqh-agent-loop-testkit'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type { JobAppendOptions, JobHandle, JobOutcome } from '@liusiqi-dev/sqh-jobs'
+import LocalJobRegistry from '@liusiqi-dev/sqh-jobs-local'
+import { Session, SessionId } from '@liusiqi-dev/sqh-session'
 
 /** A registry with a tiny ring so eviction is cheap to reach. */
 export async function harness(): Promise<Context> {

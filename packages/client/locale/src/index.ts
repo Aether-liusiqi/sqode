@@ -1,5 +1,5 @@
 /** Host registration for the browser locale preference. */
-import type {} from '@liusiqi-dev/dsh-settings'
+import type {} from '@liusiqi-dev/sqh-settings'
 
 import type { Volatile, Context } from '@liusiqi-dev/cordis'
 

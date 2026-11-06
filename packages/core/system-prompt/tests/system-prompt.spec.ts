@@ -2,8 +2,8 @@ import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import SystemPrompt, {
   AssembleContext, PromptAssembly, renderContextSnapshot, renderPrompt,
-} from '@liusiqi-dev/dsh-system-prompt'
-import type { PromptContextOrderName, PromptSectionOrderName } from '@liusiqi-dev/dsh-system-prompt'
+} from '@liusiqi-dev/sqh-system-prompt'
+import type { PromptContextOrderName, PromptSectionOrderName } from '@liusiqi-dev/sqh-system-prompt'
 
 /**
  * Every assembly carries the plugin's own built-ins — `harness:identity`

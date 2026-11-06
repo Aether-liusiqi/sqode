@@ -1,20 +1,20 @@
 // @vitest-environment jsdom
 
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, fireEvent } from '@testing-library/react'
-import type { ISession } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { WorkspaceId } from '@liusiqi-dev/dsh-workspace/types'
+import type { ISession } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { WorkspaceId } from '@liusiqi-dev/sqh-workspace/types'
 import {
   apply as applyChat, inject as injectChat, type ToolResultNode,
-} from '@liusiqi-dev/dsh-client-ui-chat/client'
-import type { PropsRenderSlots } from '@liusiqi-dev/dsh-client-ui-slots'
-import { SlotTestRuntime, stubConfigForm } from '@liusiqi-dev/dsh-client-test-runtime'
-import { LocaleRuntime } from '@liusiqi-dev/dsh-client-locale/client'
-import { apply as applyConversation, inject as injectConversation } from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import { apply as applyTool, inject as injectTool } from '@liusiqi-dev/dsh-client-ui-tool/client'
-import type { ToolCallViewProps } from '@liusiqi-dev/dsh-client-ui-tool/client'
+} from '@liusiqi-dev/sqh-client-ui-chat/client'
+import type { PropsRenderSlots } from '@liusiqi-dev/sqh-client-ui-slots'
+import { SlotTestRuntime, stubConfigForm } from '@liusiqi-dev/sqh-client-test-runtime'
+import { LocaleRuntime } from '@liusiqi-dev/sqh-client-locale/client'
+import { apply as applyConversation, inject as injectConversation } from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import { apply as applyTool, inject as injectTool } from '@liusiqi-dev/sqh-client-ui-tool/client'
+import type { ToolCallViewProps } from '@liusiqi-dev/sqh-client-ui-tool/client'
 import { toolSessionEvents } from './tool-fixtures.client.ts'
 
 const SID = 's1' as SessionId

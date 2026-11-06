@@ -1,3 +1,3 @@
 import { clientBundle } from '../tsdown.client.ts'
 
-export default clientBundle('@liusiqi-dev/dsh-client-product-analytics', ['lib/types/index.js'], { hostPhase: true })
+export default clientBundle('@liusiqi-dev/sqh-client-product-analytics', ['lib/types/index.js'], { hostPhase: true })

@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-web-search-serp",
+  "name": "@liusiqi-dev/sqh-web-search-serp",
   "description": "Keyless search provider that reads a public search result page (Bing) for the web capability seam (ctx.web)",
   "version": "1.0.0",
   "publishConfig": {
@@ -27,8 +27,8 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@liusiqi-dev/dsh-launch-environment": "workspace:*",
-    "@liusiqi-dev/dsh-web": "workspace:*",
+    "@liusiqi-dev/sqh-launch-environment": "workspace:*",
+    "@liusiqi-dev/sqh-web": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "dependencies": {
@@ -36,8 +36,8 @@
     "cheerio": "^1.0.0"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-launch-environment": "workspace:*",
-    "@liusiqi-dev/dsh-web": "workspace:*",
+    "@liusiqi-dev/sqh-launch-environment": "workspace:*",
+    "@liusiqi-dev/sqh-web": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   }
 }

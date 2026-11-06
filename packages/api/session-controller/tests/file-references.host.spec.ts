@@ -1,6 +1,6 @@
 import { Context } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type { FileReferenceCandidate } from '@liusiqi-dev/dsh-file-reference/types'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type { FileReferenceCandidate } from '@liusiqi-dev/sqh-file-reference/types'
 import { describe, expect, it, vi } from 'vitest'
 import { SessionFileReferences } from '../src/file-references.ts'
 

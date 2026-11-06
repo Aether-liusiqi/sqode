@@ -8,7 +8,7 @@
  * its bootstrap export, which constructs the system and retains the same
  * exports for this package's graph row. The plugin face enrolls the module
  * system attached to its own Loader as `ctx.modules`.
- * @module @liusiqi-dev/dsh-client-modules/client
+ * @module @liusiqi-dev/sqh-client-modules/client
  */
 import type { Context } from '@liusiqi-dev/cordis'
 import type { Loader } from '@liusiqi-dev/cordis-plugin-loader'

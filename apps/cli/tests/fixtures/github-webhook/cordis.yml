@@ -3,7 +3,7 @@
 
 - insert:
     - id: webhook-runtime
-      name: '@liusiqi-dev/dsh-webhook'
+      name: '@liusiqi-dev/sqh-webhook'
 
     - id: github-webhook-real-e2e-rule
       name: './github-webhook-rule.mjs'
@@ -22,13 +22,13 @@
         webServer: true
       config:
         - id: github-webhook-real-e2e-server
-          name: '@liusiqi-dev/dsh-host-webserver'
+          name: '@liusiqi-dev/sqh-host-webserver'
           config:
             host: '127.0.0.1'
             port: !!js Number(process.env.SQODE_GITHUB_WEBHOOK_PORT)
 
         - id: github-webhook-real-e2e-adapter
-          name: '@liusiqi-dev/dsh-webhook-github'
+          name: '@liusiqi-dev/sqh-webhook-github'
           config:
             source: github-real-e2e
             path: /github

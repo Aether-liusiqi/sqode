@@ -12,19 +12,19 @@
 
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { createScope, type Scope } from '@liusiqi-dev/dsh-scope'
+import { createScope, type Scope } from '@liusiqi-dev/sqh-scope'
 import { join, sep } from 'node:path'
-import { createUserMessage, ToolCallId } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-import SystemPrompt, { renderPrompt } from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime, { TOOL_ABORTED_BEFORE_DISPATCH, type ToolExecution, type ToolExecutionToken } from '@liusiqi-dev/dsh-tools'
-import { SubprocessRuntime } from '@liusiqi-dev/dsh-subprocess'
-import type { SubprocessCollectedOutputs, SubprocessHandle, SubprocessOutcome, SubprocessOutputRead, SubprocessOutputReader, SubprocessSpawnSpec } from '@liusiqi-dev/dsh-subprocess'
-import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
+import { createUserMessage, ToolCallId } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+import SystemPrompt, { renderPrompt } from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime, { TOOL_ABORTED_BEFORE_DISPATCH, type ToolExecution, type ToolExecutionToken } from '@liusiqi-dev/sqh-tools'
+import { SubprocessRuntime } from '@liusiqi-dev/sqh-subprocess'
+import type { SubprocessCollectedOutputs, SubprocessHandle, SubprocessOutcome, SubprocessOutputRead, SubprocessOutputReader, SubprocessSpawnSpec } from '@liusiqi-dev/sqh-subprocess'
+import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/sqh-timeout'
 import { rgPath } from '@vscode/ripgrep'
-import { SpillLocator, SpillStore } from '@liusiqi-dev/dsh-spill'
-import type { SaveTextSpill, SpillRef } from '@liusiqi-dev/dsh-spill'
-import * as ToolFsSearch from '@liusiqi-dev/dsh-tool-fs-search'
+import { SpillLocator, SpillStore } from '@liusiqi-dev/sqh-spill'
+import type { SaveTextSpill, SpillRef } from '@liusiqi-dev/sqh-spill'
+import * as ToolFsSearch from '@liusiqi-dev/sqh-tool-fs-search'
 import {
   buildGlobCommand,
   buildGrepCommand,
@@ -39,9 +39,9 @@ import {
   runRipgrep,
   sampleAcrossTopLevel,
   toWorkdirRelative,
-} from '@liusiqi-dev/dsh-tool-fs-search'
+} from '@liusiqi-dev/sqh-tool-fs-search'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }

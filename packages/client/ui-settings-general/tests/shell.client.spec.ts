@@ -6,15 +6,15 @@
  * roster's Connection, and it survives a Loader rebuild of the declarer.
  */
 import { describe, expect, onTestFinished, vi } from 'vitest'
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import { createClientTest, type TestClient, webApp } from '@liusiqi-dev/dsh-client-test-runtime/src/assembly/index.ts'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import { createClientTest, type TestClient, webApp } from '@liusiqi-dev/sqh-client-test-runtime/src/assembly/index.ts'
 import { inject } from '../src/client/index.ts'
 import type { SettingsRootInjected } from '../src/client/shell-contract.ts'
 import { SettingsRoot } from '../src/client/SettingsRoot.tsx'
 import type { DesktopUpdatePresentation } from '../src/types.ts'
 
-const SELF = '@liusiqi-dev/dsh-client-ui-settings-general'
-const SIDEBAR = '@liusiqi-dev/dsh-client-ui-sidebar'
+const SELF = '@liusiqi-dev/sqh-client-ui-settings-general'
+const SIDEBAR = '@liusiqi-dev/sqh-client-ui-sidebar'
 const it = createClientTest({ roster: webApp })
 /** The whole roster's first boot pays the cold module transform of every plugin package. */
 const COLD_BOOT_TIMEOUT_MS = 60_000

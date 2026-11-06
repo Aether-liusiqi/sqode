@@ -3,7 +3,7 @@ description: "Keyless LLM replay plugin for snapshot tests, for test authors boo
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-llm-replay
+# @liusiqi-dev/sqh-llm-replay
 
 English | [中文](README.zh.md)
 
@@ -33,7 +33,7 @@ With `providers` configured, the plugin registers a replay-only adapter whose ca
 
 ```yaml
 - id: llm-replay
-  name: '@liusiqi-dev/dsh-llm-replay'
+  name: '@liusiqi-dev/sqh-llm-replay'
   config:
     providers:
       - id: deepseek-official

@@ -20,9 +20,9 @@ Registrations and declarations follow Cordis effect lifetimes. Disposing an entr
 
 ```tsx ignore-check
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-session/client'
-import type { PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
+import type {} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-session/client'
+import type { PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
 
 type HeaderActionProps = PropsRuntime<'conversation.session.header.actions'>
 

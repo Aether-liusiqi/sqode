@@ -2,11 +2,11 @@
  * Generic-job adaptation for background terminal sends: the registry pull
  * source over the backend's consuming send reader.
  *
- * @module @liusiqi-dev/dsh-tool-terminal/background
+ * @module @liusiqi-dev/sqh-tool-terminal/background
  */
 
-import type { JobOutputSource } from '@liusiqi-dev/dsh-jobs'
-import type { TerminalSendOperation } from '@liusiqi-dev/dsh-terminal'
+import type { JobOutputSource } from '@liusiqi-dev/sqh-jobs'
+import type { TerminalSendOperation } from '@liusiqi-dev/sqh-terminal'
 import { renderSendRead } from './render.ts'
 
 /**

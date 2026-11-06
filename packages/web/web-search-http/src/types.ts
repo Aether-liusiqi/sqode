@@ -1,7 +1,7 @@
 /**
  * Vocabulary for the search-engine provider. Kept separate from the seam types
  * so the seam stays free of any one vendor's query parameters.
- * @module @liusiqi-dev/dsh-web-search-http/types
+ * @module @liusiqi-dev/sqh-web-search-http/types
  */
 
 /** Engines this provider can query. */

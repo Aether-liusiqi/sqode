@@ -1,6 +1,6 @@
 /** Exact recorded shell-command path translation; execution and reported outcomes remain real. */
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-shell'
+import type {} from '@liusiqi-dev/sqh-shell'
 
 export const name = 'snapshot-shell-path'
 export const inject = ['shell']

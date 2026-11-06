@@ -9,13 +9,13 @@
 
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import SessionStore from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import type { Agent, AgentHandle, CreateAgentOptions } from '@liusiqi-dev/dsh-agent'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import SessionTitleService from '@liusiqi-dev/dsh-session-title'
-import type { Session, SessionId } from '@liusiqi-dev/dsh-session'
+import SessionStore from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import type { Agent, AgentHandle, CreateAgentOptions } from '@liusiqi-dev/sqh-agent'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import SessionTitleService from '@liusiqi-dev/sqh-session-title'
+import type { Session, SessionId } from '@liusiqi-dev/sqh-session'
 import { createSessionTestRemote } from './test-remote.ts'
 
 const sid = (id: string): SessionId => id as SessionId

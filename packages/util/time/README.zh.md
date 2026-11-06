@@ -36,7 +36,7 @@ kind: "package-library"
 ## API
 
 ```ts
-import { canonicalClientTimeZone } from '@liusiqi-dev/dsh-util-time'
+import { canonicalClientTimeZone } from '@liusiqi-dev/sqh-util-time'
 ```
 
 | 导出 | 职责 |

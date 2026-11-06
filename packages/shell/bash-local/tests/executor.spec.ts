@@ -3,12 +3,12 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { LocalBashExecutor } from '@liusiqi-dev/dsh-bash-local'
-import LocalSubprocessRuntime from '@liusiqi-dev/dsh-subprocess-local'
-import SubprocessRuntime from '@liusiqi-dev/dsh-subprocess'
-import type { SubprocessHandle, SubprocessOutcome, SubprocessOutputReader } from '@liusiqi-dev/dsh-subprocess'
-import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
-import type { ShellExecSpec, ShellExecution, ShellProcess, ShellRunResult } from '@liusiqi-dev/dsh-shell'
+import { LocalBashExecutor } from '@liusiqi-dev/sqh-bash-local'
+import LocalSubprocessRuntime from '@liusiqi-dev/sqh-subprocess-local'
+import SubprocessRuntime from '@liusiqi-dev/sqh-subprocess'
+import type { SubprocessHandle, SubprocessOutcome, SubprocessOutputReader } from '@liusiqi-dev/sqh-subprocess'
+import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/sqh-timeout'
+import type { ShellExecSpec, ShellExecution, ShellProcess, ShellRunResult } from '@liusiqi-dev/sqh-shell'
 
 /** Historical foreground shorthand over the unified execute() seam. */
 async function run(x: { execute(spec: ShellExecSpec): Promise<ShellExecution> }, spec: ShellExecSpec): Promise<ShellRunResult> {

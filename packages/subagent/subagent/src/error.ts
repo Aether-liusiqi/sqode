@@ -1,10 +1,10 @@
 /**
  * Typed failures shared by subagent service and provider operations.
  *
- * @module @liusiqi-dev/dsh-subagent
+ * @module @liusiqi-dev/sqh-subagent
  */
 
-import { HarnessError } from '@liusiqi-dev/dsh-llm'
+import { HarnessError } from '@liusiqi-dev/sqh-llm'
 
 /** Typed failure for the subagent seam. */
 export class SubagentError extends HarnessError {

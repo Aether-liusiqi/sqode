@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-sandbox-ssh",
+  "name": "@liusiqi-dev/sqh-sandbox-ssh",
   "description": "Remote POSIX sandbox argv provider over the shared SSH helper",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,8 +28,8 @@
   "license": "MIT",
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-ssh": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox": "workspace:*"
+    "@liusiqi-dev/sqh-ssh": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox": "workspace:*"
   },
   "dependencies": {
     "@liusiqi-dev/schemastery": "workspace:~",
@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-ssh": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox": "workspace:*"
+    "@liusiqi-dev/sqh-ssh": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox": "workspace:*"
   }
 }

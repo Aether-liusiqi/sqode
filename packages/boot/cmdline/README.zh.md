@@ -3,7 +3,7 @@ description: "dsh app bin 的应用自有命令行：应用从启动器剩余参
 kind: "package-library"
 ---
 
-# @liusiqi-dev/dsh-cmdline
+# @liusiqi-dev/sqh-cmdline
 
 [English](README.md) | 中文
 
@@ -45,14 +45,14 @@ kind: "package-library"
 
 ```yaml
 - id: web-startup
-  name: '@liusiqi-dev/dsh-web-app/startup'
+  name: '@liusiqi-dev/sqh-web-app/startup'
 ```
 
 由解析值配置的行注入发布的服务，并在其配置中直接读取它：
 
 ```yaml
 - id: webserver
-  name: '@liusiqi-dev/dsh-host-webserver'
+  name: '@liusiqi-dev/sqh-host-webserver'
   inject: [webStartup]
   config:
     host: !!js ctx.webStartup.host ?? '127.0.0.1'

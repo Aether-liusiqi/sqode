@@ -1,6 +1,6 @@
 /** Native V4 fork-result identity and not-started error validation. */
 
-import { SessionFormatError, isSessionFormatJsonObject } from '@liusiqi-dev/dsh-session-format'
+import { SessionFormatError, isSessionFormatJsonObject } from '@liusiqi-dev/sqh-session-format'
 
 /**
  * Validate fork-generated not-started results without changing their identity or text.

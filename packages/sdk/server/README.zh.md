@@ -3,7 +3,7 @@ description: "面向让进程外 SDK 客户端在 Siqi Harness 运行时中打�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-sdk-jsonrpc-server
+# @liusiqi-dev/sqh-sdk-jsonrpc-server
 
 [English](README.md) | 中文
 

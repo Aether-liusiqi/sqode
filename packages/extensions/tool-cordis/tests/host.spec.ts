@@ -1,7 +1,7 @@
 import { Context } from '@liusiqi-dev/cordis'
-import { CordisInspectRegistryService } from '@liusiqi-dev/dsh-cordis-host-runner'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRegistry from '@liusiqi-dev/dsh-tools'
+import { CordisInspectRegistryService } from '@liusiqi-dev/sqh-cordis-host-runner'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRegistry from '@liusiqi-dev/sqh-tools'
 import { describe, expect, it } from 'vitest'
 import * as CordisInspectProviders from '../src/host.ts'
 

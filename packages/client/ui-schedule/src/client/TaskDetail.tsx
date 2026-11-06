@@ -1,5 +1,5 @@
 /** One retained task's rule, saved deliveries, run-time edits, deletion, and original-Session link. */
-import { assertNever } from '@liusiqi-dev/dsh-util-values'
+import { assertNever } from '@liusiqi-dev/sqh-util-values'
 import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import type { CSSProperties, KeyboardEvent, ReactNode } from 'react'
 import clsx from 'clsx'
@@ -7,14 +7,14 @@ import {
   Button, IconChevronDownOutlineRegular, IconChevronRightOutlineRegular, IconChevronUpOutlineRegular,
   IconClockOutlineRegular, IconCloseOutlineRegular,
   IconEllipsisOutlineRegular, IconTrashOutlineRegular, Modal, Pill,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
-import type { RemoteResult } from '@liusiqi-dev/dsh-api-remotes/client'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { PropsLocale, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
+import type { RemoteResult } from '@liusiqi-dev/sqh-api-remotes/client'
 import type {
   ScheduleCatalogEntry, ScheduleId, ScheduleRecord, ScheduleTimingChange, ScheduleUpdateContent,
   ScheduleUpdateRequest, ScheduleUpdateResult,
-} from '@liusiqi-dev/dsh-schedule/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+} from '@liusiqi-dev/sqh-schedule/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import { CatalogFeedback } from './CatalogFeedback.tsx'
 import { IconCalendarOutlineRegular } from './CalendarIcon.tsx'
 import { ClockPicker } from './ClockPicker.tsx'

@@ -1,12 +1,12 @@
 # Keyless parent-model overlay for the SQH SDK diagnostic snapshot.
 
 - id: llm-deepseek
-  name: '@liusiqi-dev/dsh-llm-deepseek-api-key'
+  name: '@liusiqi-dev/sqh-llm-deepseek-api-key'
   disabled: true
 
 - insert:
     - id: llm-replay
-      name: '@liusiqi-dev/dsh-llm-replay'
+      name: '@liusiqi-dev/sqh-llm-replay'
       config:
         providers:
           - id: deepseek-official

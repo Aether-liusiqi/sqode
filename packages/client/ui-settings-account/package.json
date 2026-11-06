@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-client-ui-settings-account",
+  "name": "@liusiqi-dev/sqh-client-ui-settings-account",
   "description": "Manage DeepSeek login and open Platform billing pages",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,12 +28,12 @@
   "dsh": {
     "client": {
       "inject": [
-        "@liusiqi-dev/dsh-api-remotes",
-        "@liusiqi-dev/dsh-client-locale",
-        "@liusiqi-dev/dsh-client-ui-chat",
-        "@liusiqi-dev/dsh-client-ui-layout",
-        "@liusiqi-dev/dsh-client-ui-settings",
-        "@liusiqi-dev/dsh-client-ui-theme"
+        "@liusiqi-dev/sqh-api-remotes",
+        "@liusiqi-dev/sqh-client-locale",
+        "@liusiqi-dev/sqh-client-ui-chat",
+        "@liusiqi-dev/sqh-client-ui-layout",
+        "@liusiqi-dev/sqh-client-ui-settings",
+        "@liusiqi-dev/sqh-client-ui-theme"
       ],
       "platform": "web"
     }
@@ -48,29 +48,29 @@
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-api-remotes": "workspace:*",
-    "@liusiqi-dev/dsh-client-locale": "workspace:*",
-    "@liusiqi-dev/dsh-client-store": "workspace:*",
-    "@liusiqi-dev/dsh-client-test-runtime": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-chat": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-layout": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-primitives": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-renderer": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-settings": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-slots": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-theme": "workspace:*",
-    "@liusiqi-dev/dsh-deepseek-account": "workspace:*",
-    "@liusiqi-dev/dsh-settings": "workspace:*",
+    "@liusiqi-dev/sqh-api-remotes": "workspace:*",
+    "@liusiqi-dev/sqh-client-locale": "workspace:*",
+    "@liusiqi-dev/sqh-client-store": "workspace:*",
+    "@liusiqi-dev/sqh-client-test-runtime": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-chat": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-layout": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-primitives": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-renderer": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-settings": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-slots": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-theme": "workspace:*",
+    "@liusiqi-dev/sqh-deepseek-account": "workspace:*",
+    "@liusiqi-dev/sqh-settings": "workspace:*",
     "@testing-library/react": "^16.1.0",
     "@types/big.js": "^6.2.2",
     "@types/react": "~18.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@liusiqi-dev/dsh-client-ui-settings-models": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-settings-models": "workspace:*",
     "@types/react-dom": "~18.3.0",
-    "@liusiqi-dev/dsh-host-webserver": "workspace:*",
+    "@liusiqi-dev/sqh-host-webserver": "workspace:*",
     "big.js": "^7.0.1",
-    "@liusiqi-dev/dsh-client-product-analytics": "workspace:*"
+    "@liusiqi-dev/sqh-client-product-analytics": "workspace:*"
   },
   "files": [
     "lib/index.js",

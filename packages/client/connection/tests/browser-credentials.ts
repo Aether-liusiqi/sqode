@@ -1,5 +1,5 @@
 import type { Context } from '@liusiqi-dev/cordis'
-import type { CredentialProvider, CredentialRecord } from '@liusiqi-dev/dsh-credentials'
+import type { CredentialProvider, CredentialRecord } from '@liusiqi-dev/sqh-credentials'
 
 /** Mutable credential-record double for Connection authentication tests. */
 export class RecordCredentials {

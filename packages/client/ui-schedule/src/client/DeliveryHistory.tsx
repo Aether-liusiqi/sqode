@@ -1,12 +1,12 @@
 /** Lazy saved delivery pages owned by the selected task's mounted records view. */
 import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from 'react'
-import type { RemoteResult } from '@liusiqi-dev/dsh-api-remotes/client'
-import type { PropsLocale } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { RemoteResult } from '@liusiqi-dev/sqh-api-remotes/client'
+import type { PropsLocale } from '@liusiqi-dev/sqh-client-ui-slots'
 import {
   Button, IconChevronDownOutlineRegular, IconChevronUpOutlineRegular, IconClockOutlineRegular, IconInfoOutlineRegular,
   IconWarningOutlineRegular, StateDot, Tooltip,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { ScheduleDeliveryHistoryRequest, ScheduleDeliveryHistoryResult } from '@liusiqi-dev/dsh-schedule/client'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { ScheduleDeliveryHistoryRequest, ScheduleDeliveryHistoryResult } from '@liusiqi-dev/sqh-schedule/client'
 import { formatScheduleNextRun } from './schedule-format.ts'
 import css from './TaskManagerPage.module.css'
 

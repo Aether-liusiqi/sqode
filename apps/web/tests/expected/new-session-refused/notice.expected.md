@@ -1,1 +1,1 @@
-- alert: "新建会话失败：agent-preset/invalid: ghost (@liusiqi-dev/dsh-no-such-plugin): never started"
+- alert: "新建会话失败：agent-preset/invalid: ghost (@liusiqi-dev/sqh-no-such-plugin): never started"

@@ -3,15 +3,15 @@
 import { Profiler } from 'react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, render, screen } from '@testing-library/react'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import type {
   TeamMemberProjection, TeamProjection, TeamTaskId, TeamTaskView as TeamTask,
-} from '@liusiqi-dev/dsh-experimental-agent-team/client'
-import type { SessionListState, SessionSnapshot, SessionSummary, UseProjection } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { SessionStatusSnapshot } from '@liusiqi-dev/dsh-client-ui-session/client'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import { bindSnapshotSelector, makeTranslate } from '@liusiqi-dev/dsh-client-test-runtime'
-import { zh as commonZh } from '@liusiqi-dev/dsh-client-locale/src/locales/zh.ts'
+} from '@liusiqi-dev/sqh-experimental-agent-team/client'
+import type { SessionListState, SessionSnapshot, SessionSummary, UseProjection } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { SessionStatusSnapshot } from '@liusiqi-dev/sqh-client-ui-session/client'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import { bindSnapshotSelector, makeTranslate } from '@liusiqi-dev/sqh-client-test-runtime'
+import { zh as commonZh } from '@liusiqi-dev/sqh-client-locale/src/locales/zh.ts'
 import { TeamAction, type TeamActionInjected, type TeamActionProps } from '../src/client/TeamAction.tsx'
 import { zh } from '../src/client/locales.ts'
 

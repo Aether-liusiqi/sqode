@@ -1,8 +1,8 @@
 /** Incrementally highlighted source; the document owner supplies the accumulated text and wrap preference. */
 import type { ReactNode } from 'react'
-import type { PropsLocale } from '@liusiqi-dev/dsh-client-ui-slots'
-import { CodeBlock, languageForPath } from '@liusiqi-dev/dsh-client-ui-primitives'
-import { parseFileAddress } from '@liusiqi-dev/dsh-util-workspace-path'
+import type { PropsLocale } from '@liusiqi-dev/sqh-client-ui-slots'
+import { CodeBlock, languageForPath } from '@liusiqi-dev/sqh-client-ui-primitives'
+import { parseFileAddress } from '@liusiqi-dev/sqh-util-workspace-path'
 import type { DocumentPreviewProps } from '../document/contract.ts'
 import type {} from './locales.ts'
 import css from './CodeBody.module.css'

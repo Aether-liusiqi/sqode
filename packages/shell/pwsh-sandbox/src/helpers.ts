@@ -1,15 +1,15 @@
 /**
  * Internal sandbox-result classification helpers — deliberate call-for-call
- * mirror of `@liusiqi-dev/dsh-bash-sandbox/src/helpers.ts` (the pwsh twin of
+ * mirror of `@liusiqi-dev/sqh-bash-sandbox/src/helpers.ts` (the pwsh twin of
  * the bash consumer shares the identical classification dialect).
  *
- * @module @liusiqi-dev/dsh-pwsh-sandbox/helpers
+ * @module @liusiqi-dev/sqh-pwsh-sandbox/helpers
  */
 
 /* jscpd:ignore-start */
 import { accessSync, constants, statSync } from 'node:fs'
-import type { ShellRunResult } from '@liusiqi-dev/dsh-shell'
-import type { RunnerFailureRule } from '@liusiqi-dev/dsh-sandbox'
+import type { ShellRunResult } from '@liusiqi-dev/sqh-shell'
+import type { RunnerFailureRule } from '@liusiqi-dev/sqh-sandbox'
 
 /** Node-local spawn codes proven to identify executable resolution or permission failure. */
 const EXECUTABLE_SPAWN_CODES = new Set(['EACCES', 'ENOENT'])

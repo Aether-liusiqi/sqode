@@ -1,27 +1,27 @@
 /** Test-owned Session Controller faces over declarative fixtures. */
 import type { Context } from '@liusiqi-dev/cordis'
-import type { AttachmentIdType } from '@liusiqi-dev/dsh-attachment'
+import type { AttachmentIdType } from '@liusiqi-dev/sqh-attachment'
 import {
   createScope, MutableSessionEventSource, scopeOf, SESSION_SEARCH_RESULT_LIMIT,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
 import type {
   AgentContext, ISessions, ProjectionsFace, SessionBinding, SessionFace, SessionListState,
   SessionEventLikeEntry, SessionLiveEventEntry, SessionSearchResultItem,
   SessionReference, SessionReferenceSource, SessionRetainInfo, SessionRetainOptions,
   SessionSnapshot, SessionSummary, SessionTarget, SubmissionHandle,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
-import { scopeIdentityOf } from '@liusiqi-dev/dsh-api-session-controller/src/client/scope.ts'
-import type { SessionRequestId } from '@liusiqi-dev/dsh-api-session-controller/types'
-import type { SubagentAddress } from '@liusiqi-dev/dsh-subagent/client'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { ObservableSnapshot, SnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
+import { scopeIdentityOf } from '@liusiqi-dev/sqh-api-session-controller/src/client/scope.ts'
+import type { SessionRequestId } from '@liusiqi-dev/sqh-api-session-controller/types'
+import type { SubagentAddress } from '@liusiqi-dev/sqh-subagent/client'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { ObservableSnapshot, SnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import { sessionSnapshot } from './fixtures.ts'
 import type {
   SessionFixture, SessionFixtureSnapshot, Stabilizer,
 } from './fixtures.ts'
 
-declare module '@liusiqi-dev/dsh-api-session-controller/client' {
+declare module '@liusiqi-dev/sqh-api-session-controller/client' {
   interface SessionReferenceSourceMap {
     testFixture: unknown
     testView: unknown

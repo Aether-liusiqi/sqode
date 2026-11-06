@@ -2,11 +2,11 @@
 # seam, model-facing tool, and tripwire provider while replacing DeepSeek with
 # per-session replay.
 - id: llm-deepseek
-  name: '@liusiqi-dev/dsh-llm-deepseek-api-key'
+  name: '@liusiqi-dev/sqh-llm-deepseek-api-key'
   disabled: true
 
 - id: sandbox
-  name: '@liusiqi-dev/dsh-sandbox-local'
+  name: '@liusiqi-dev/sqh-sandbox-local'
   config:
     runnerCommand:
       - bash
@@ -17,24 +17,24 @@
       - 'passthrough-runner: profile rejected'
 
 - id: agent-default-model
-  name: '@liusiqi-dev/dsh-agent-default-model'
+  name: '@liusiqi-dev/sqh-agent-default-model'
   config:
     provider: deepseek-official
     model: deepseek-v4-flash
 
 - id: session-persistence-jsonl
-  name: '@liusiqi-dev/dsh-session-persistence-jsonl'
+  name: '@liusiqi-dev/sqh-session-persistence-jsonl'
   config:
     root: !!js dshHomePath('sessions')
     compression: none
 
 - id: agent-instructions
-  name: '@liusiqi-dev/dsh-agent-instructions'
+  name: '@liusiqi-dev/sqh-agent-instructions'
   config:
     maxBytes: 65536
 
 - id: system-prompt
-  name: '@liusiqi-dev/dsh-system-prompt'
+  name: '@liusiqi-dev/sqh-system-prompt'
   config:
     personaPrefix: |
       You are a coding assistant powered by the {{model}} model. Your working directory is {{cwd}}. Your bash tool runs under a file sandbox — a `[sandbox: file access denied …]` result is policy, not a command bug.
@@ -43,7 +43,7 @@
 
 - insert:
     - id: llm-replay
-      name: '@liusiqi-dev/dsh-llm-replay'
+      name: '@liusiqi-dev/sqh-llm-replay'
       config:
         providers:
           - id: deepseek-official
@@ -52,9 +52,9 @@
               - id: deepseek-v4-flash
               - id: deepseek-v4-pro
     - id: tool-ask-user
-      name: '@liusiqi-dev/dsh-tool-ask-user'
+      name: '@liusiqi-dev/sqh-tool-ask-user'
     - id: child-question-tripwire
       name: '../../../packages/test-support/session-snapshot/tests/fixtures/child-question-tripwire.ts'
 
 - id: user-questions
-  name: '@liusiqi-dev/dsh-user-questions'
+  name: '@liusiqi-dev/sqh-user-questions'

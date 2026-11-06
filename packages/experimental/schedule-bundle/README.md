@@ -3,7 +3,7 @@ description: "Add Schedule, its reminder catalog, and the Automation tasks page 
 kind: "package-bundle"
 ---
 
-# @liusiqi-dev/dsh-experimental-schedule-bundle
+# @liusiqi-dev/sqh-experimental-schedule-bundle
 
 English | [中文](README.zh.md)
 

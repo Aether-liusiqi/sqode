@@ -9,11 +9,11 @@ import SessionStore, {
   type CreateSessionOptions,
   type SessionEvent,
   type SessionHeader,
-} from '@liusiqi-dev/dsh-session'
-import { createSessionFormatCatalogWithChildren } from '@liusiqi-dev/dsh-session-format-catalog'
-import DeepSeekLlmApiExtensionRegistry from '@liusiqi-dev/dsh-deepseek-llm-api-extensions'
-import { createDeveloperMessage, createAssistantMessage, createSystemMessage, createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
+} from '@liusiqi-dev/sqh-session'
+import { createSessionFormatCatalogWithChildren } from '@liusiqi-dev/sqh-session-format-catalog'
+import DeepSeekLlmApiExtensionRegistry from '@liusiqi-dev/sqh-deepseek-llm-api-extensions'
+import { createDeveloperMessage, createAssistantMessage, createSystemMessage, createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
 import * as SessionLogDeepSeek from '../src/index.ts'
 import type { DeepSeekSessionLogExtension, DeepSeekSessionLogWireEvent, DeepSeekSessionLogWireSurfaceOp } from '../src/types.ts'
 

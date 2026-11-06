@@ -18,7 +18,7 @@ function declaration(over: Partial<SlotDeclaration> = {}): SlotDeclaration {
     kind: 'single',
     scope: 'root',
     jsDoc: '/** A seat. Registering here replaces the shipped entry. */',
-    package: '@liusiqi-dev/dsh-client-demo',
+    package: '@liusiqi-dev/sqh-client-demo',
     source: 'packages/client/demo/src/client/contract/slots.ts:1',
     ...over,
   }
@@ -28,7 +28,7 @@ function declaration(over: Partial<SlotDeclaration> = {}): SlotDeclaration {
 function registration(over: Partial<SlotRegistration> = {}): SlotRegistration {
   return {
     key: 'demo.seat',
-    package: '@liusiqi-dev/dsh-client-demo',
+    package: '@liusiqi-dev/sqh-client-demo',
     component: 'DemoSeat',
     children: [],
     source: 'packages/client/demo/src/client/index.ts:10',

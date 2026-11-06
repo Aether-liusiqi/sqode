@@ -1,4 +1,4 @@
-import { notifySubscribers } from '@liusiqi-dev/dsh-client-store'
+import { notifySubscribers } from '@liusiqi-dev/sqh-client-store'
 
 /**
  * Batches structural updates in microtasks and stream updates by animation

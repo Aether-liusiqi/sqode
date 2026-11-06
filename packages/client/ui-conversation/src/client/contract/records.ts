@@ -2,12 +2,12 @@
 // substructure references. Stable node and location stores make old snapshots
 // live readers rather than time-point views.
 
-import type { CommandId } from '@liusiqi-dev/dsh-commands/brand'
-import type { MessageId } from '@liusiqi-dev/dsh-llm/brand'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm/types'
-import type { ImageAttachmentRef } from '@liusiqi-dev/dsh-attachment'
-import type { LlmRetryEventData } from '@liusiqi-dev/dsh-llm-retry/types'
-import type { TodoItem } from '@liusiqi-dev/dsh-tool-todo/client'
+import type { CommandId } from '@liusiqi-dev/sqh-commands/brand'
+import type { MessageId } from '@liusiqi-dev/sqh-llm/brand'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm/types'
+import type { ImageAttachmentRef } from '@liusiqi-dev/sqh-attachment'
+import type { LlmRetryEventData } from '@liusiqi-dev/sqh-llm-retry/types'
+import type { TodoItem } from '@liusiqi-dev/sqh-tool-todo/client'
 import type { ContextProducerView, KnownContextForm } from './context-producer.ts'
 export type { TodoItem }
 

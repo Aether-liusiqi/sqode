@@ -2,7 +2,7 @@
  * Fiber-state projection vocabulary for the framework-free boot page. The
  * boot chain subscribes to `internal/status` and projects the owning loader
  * entry's current state.
- * @module @liusiqi-dev/dsh-client-web/src/loader-status
+ * @module @liusiqi-dev/sqh-client-web/src/loader-status
  */
 import type { FiberState } from '@liusiqi-dev/cordis'
 

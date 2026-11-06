@@ -6,9 +6,9 @@
 
 import type { Context, Fiber } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { ComputerUseProviderName } from '@liusiqi-dev/dsh-computer-use/brand'
-import * as McpClient from '@liusiqi-dev/dsh-mcp-client'
-import type {} from '@liusiqi-dev/dsh-computer-use'
+import { ComputerUseProviderName } from '@liusiqi-dev/sqh-computer-use/brand'
+import * as McpClient from '@liusiqi-dev/sqh-mcp-client'
+import type {} from '@liusiqi-dev/sqh-computer-use'
 
 /** Cordis plugin identity for the installed Cua Driver provider. */
 export const name = 'experimental-computer-use-cua-driver-mcp'

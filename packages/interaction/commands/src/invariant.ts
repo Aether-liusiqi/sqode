@@ -1,14 +1,14 @@
 /**
- * Package-owned invariant companion for `@liusiqi-dev/dsh-commands`:
+ * Package-owned invariant companion for `@liusiqi-dev/sqh-commands`:
  * command lifecycle events pair by commandId within one session log.
- * @module @liusiqi-dev/dsh-commands/invariant
+ * @module @liusiqi-dev/sqh-commands/invariant
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Session, SessionEvent } from '@liusiqi-dev/dsh-session'
-import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
+import type { Session, SessionEvent } from '@liusiqi-dev/sqh-session'
+import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-commands'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-commands'
 
 /** Cordis companion plugin name. */
 export const name = 'commands-invariant'

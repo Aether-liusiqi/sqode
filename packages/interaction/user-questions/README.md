@@ -3,7 +3,7 @@ description: "Waterfall-based question and answer service for tools, permission 
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-user-questions
+# @liusiqi-dev/sqh-user-questions
 
 English | [中文](README.zh.md)
 

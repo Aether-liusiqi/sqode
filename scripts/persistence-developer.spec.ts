@@ -1,10 +1,10 @@
 /** Developer field classification matches native admission and metadata preservation. */
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
-import { Session, SessionId, SessionLogOffset } from '@liusiqi-dev/dsh-session'
-import type { SessionEvent, SessionHeader } from '@liusiqi-dev/dsh-session'
-import type { SessionFormatEvent } from '@liusiqi-dev/dsh-session-format'
-import { sessionFormatCatalog } from '@liusiqi-dev/dsh-session-format-catalog'
+import { Session, SessionId, SessionLogOffset } from '@liusiqi-dev/sqh-session'
+import type { SessionEvent, SessionHeader } from '@liusiqi-dev/sqh-session'
+import type { SessionFormatEvent } from '@liusiqi-dev/sqh-session-format'
+import { sessionFormatCatalog } from '@liusiqi-dev/sqh-session-format-catalog'
 import { canonicalizeSchema, schemaDigest } from './persistence-schema-model.ts'
 import { classifyPersistenceChange, parsePersistenceSnapshot } from './persistence-changes.ts'
 

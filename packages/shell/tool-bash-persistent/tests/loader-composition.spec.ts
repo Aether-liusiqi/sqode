@@ -6,21 +6,21 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import Include from '@liusiqi-dev/cordis-plugin-include'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import { SESSION_FORMAT_VERSION, Session, SessionId } from '@liusiqi-dev/dsh-session'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import TerminalSessionService from '@liusiqi-dev/dsh-terminal'
-import * as TerminalLocal from '@liusiqi-dev/dsh-terminal-bash'
-import SandboxProvider from '@liusiqi-dev/dsh-sandbox'
-import type { ConfinedArgv, SandboxPolicy } from '@liusiqi-dev/dsh-sandbox'
-import SandboxPolicyService from '@liusiqi-dev/dsh-sandbox-policy'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import LocalSubprocessRuntime from '@liusiqi-dev/dsh-subprocess-local'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
-import * as ToolBashPersistent from '@liusiqi-dev/dsh-tool-bash-persistent'
-import { unsupportedInbox } from '@liusiqi-dev/dsh-agent-loop-testkit'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import { SESSION_FORMAT_VERSION, Session, SessionId } from '@liusiqi-dev/sqh-session'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import TerminalSessionService from '@liusiqi-dev/sqh-terminal'
+import * as TerminalLocal from '@liusiqi-dev/sqh-terminal-bash'
+import SandboxProvider from '@liusiqi-dev/sqh-sandbox'
+import type { ConfinedArgv, SandboxPolicy } from '@liusiqi-dev/sqh-sandbox'
+import SandboxPolicyService from '@liusiqi-dev/sqh-sandbox-policy'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import LocalSubprocessRuntime from '@liusiqi-dev/sqh-subprocess-local'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
+import * as ToolBashPersistent from '@liusiqi-dev/sqh-tool-bash-persistent'
+import { unsupportedInbox } from '@liusiqi-dev/sqh-agent-loop-testkit'
 
 let root: string | undefined
 let context: Context | undefined
@@ -74,18 +74,18 @@ suite('persistent Bash through a real cordis.yml Loader composition', () => {
     root = await mkdtemp(join(tmpdir(), 'dsh-persistent-bash-loader-'))
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
-      "- name: '@liusiqi-dev/dsh-agent'",
-      "- name: '@liusiqi-dev/dsh-system-prompt'",
-      "- name: '@liusiqi-dev/dsh-tools'",
-      "- name: '@liusiqi-dev/dsh-terminal'",
-      "- name: '@liusiqi-dev/dsh-test-sandbox'",
-      "- name: '@liusiqi-dev/dsh-session-projection'",
-      "- name: '@liusiqi-dev/dsh-sandbox-policy'",
+      "- name: '@liusiqi-dev/sqh-agent'",
+      "- name: '@liusiqi-dev/sqh-system-prompt'",
+      "- name: '@liusiqi-dev/sqh-tools'",
+      "- name: '@liusiqi-dev/sqh-terminal'",
+      "- name: '@liusiqi-dev/sqh-test-sandbox'",
+      "- name: '@liusiqi-dev/sqh-session-projection'",
+      "- name: '@liusiqi-dev/sqh-sandbox-policy'",
       '  config:',
       '    mode: danger-full-access',
       `    workspaceRoot: ${JSON.stringify(root)}`,
-      "- name: '@liusiqi-dev/dsh-subprocess-local'",
-      "- name: '@liusiqi-dev/dsh-terminal-bash'",
+      "- name: '@liusiqi-dev/sqh-subprocess-local'",
+      "- name: '@liusiqi-dev/sqh-terminal-bash'",
       '  config:',
       '    pollIntervalMs: 10',
       '    exactProbeAfterMs: 20',
@@ -97,7 +97,7 @@ suite('persistent Bash through a real cordis.yml Loader composition', () => {
       '    scrollbackLines: 20000',
       '    timeoutMs: 2000',
       '    disposeGraceMs: 500',
-      "- name: '@liusiqi-dev/dsh-tool-bash-persistent'",
+      "- name: '@liusiqi-dev/sqh-tool-bash-persistent'",
       '  config:',
       '    timeoutMs: 5000',
       '',
@@ -108,16 +108,16 @@ suite('persistent Bash through a real cordis.yml Loader composition', () => {
     await context.plugin(Loader)
     context.loader.builtins.include = Include
     const modules = new Map<string, unknown>([
-      ['@liusiqi-dev/dsh-agent', AgentRegistry],
-      ['@liusiqi-dev/dsh-system-prompt', SystemPrompt],
-      ['@liusiqi-dev/dsh-tools', ToolRuntime],
-      ['@liusiqi-dev/dsh-terminal', TerminalSessionService],
-      ['@liusiqi-dev/dsh-test-sandbox', PassthroughSandbox],
-      ['@liusiqi-dev/dsh-session-projection', SessionProjectionRegistry],
-      ['@liusiqi-dev/dsh-sandbox-policy', SandboxPolicyService],
-      ['@liusiqi-dev/dsh-subprocess-local', LocalSubprocessRuntime],
-      ['@liusiqi-dev/dsh-terminal-bash', TerminalLocal],
-      ['@liusiqi-dev/dsh-tool-bash-persistent', ToolBashPersistent],
+      ['@liusiqi-dev/sqh-agent', AgentRegistry],
+      ['@liusiqi-dev/sqh-system-prompt', SystemPrompt],
+      ['@liusiqi-dev/sqh-tools', ToolRuntime],
+      ['@liusiqi-dev/sqh-terminal', TerminalSessionService],
+      ['@liusiqi-dev/sqh-test-sandbox', PassthroughSandbox],
+      ['@liusiqi-dev/sqh-session-projection', SessionProjectionRegistry],
+      ['@liusiqi-dev/sqh-sandbox-policy', SandboxPolicyService],
+      ['@liusiqi-dev/sqh-subprocess-local', LocalSubprocessRuntime],
+      ['@liusiqi-dev/sqh-terminal-bash', TerminalLocal],
+      ['@liusiqi-dev/sqh-tool-bash-persistent', ToolBashPersistent],
     ])
     context.loader.internal = {
       version: 'v2',

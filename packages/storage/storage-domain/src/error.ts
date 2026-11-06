@@ -1,6 +1,6 @@
 /**
  * Error vocabulary of the domain data form.
- * @module @liusiqi-dev/dsh-storage-domain/src/error
+ * @module @liusiqi-dev/sqh-storage-domain/src/error
  */
 
 /** Discriminant codes carried by every {@link DomainError}. */

@@ -3,15 +3,15 @@
  * API. Exports the `LlmRuntime` default, the abstract `LlmAdapter` for
  * provider backends, and `BlockAssembler` for chunk assembly.
  *
- * @module @liusiqi-dev/dsh-llm
+ * @module @liusiqi-dev/sqh-llm
  */
 
 import { appendFileSync, existsSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { join } from 'node:path'
 import { Context } from '@liusiqi-dev/cordis'
-import { Remote, RemoteError, TypertRemoteService } from '@liusiqi-dev/dsh-typert-protocol'
-import { deepFreeze } from '@liusiqi-dev/dsh-util-values'
+import { Remote, RemoteError, TypertRemoteService } from '@liusiqi-dev/sqh-typert-protocol'
+import { deepFreeze } from '@liusiqi-dev/sqh-util-values'
 import type {
   GenerateOptions,
   RequestMessage,
@@ -42,7 +42,7 @@ import { normalizeApiKey } from './api-key.ts'
 import {
   contentHasFile, contentHasImage, fileHandleText, projectFilesToText, projectImagesForTextModel, projectToolUpdates,
 } from './content.ts'
-import type { FileAttachmentRef } from '@liusiqi-dev/dsh-attachment'
+import type { FileAttachmentRef } from '@liusiqi-dev/sqh-attachment'
 
 export * from './attribution.ts'
 export * from './brand.ts'

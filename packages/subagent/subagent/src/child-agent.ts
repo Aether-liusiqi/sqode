@@ -5,28 +5,28 @@
  * provider driver and the continuation manager compose children this way, so
  * depth accounting, lineage stamping, and delegation policy have one home.
  *
- * @module @liusiqi-dev/dsh-subagent/child-agent
+ * @module @liusiqi-dev/sqh-subagent/child-agent
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Agent, AgentOptions, CreateAgentOptions } from '@liusiqi-dev/dsh-agent'
-import type { SandboxMode } from '@liusiqi-dev/dsh-sandbox'
-import type { Session, SessionId } from '@liusiqi-dev/dsh-session'
-import type {} from '@liusiqi-dev/dsh-system-prompt'
-import type { ToolRestriction } from '@liusiqi-dev/dsh-tools'
+import type { Agent, AgentOptions, CreateAgentOptions } from '@liusiqi-dev/sqh-agent'
+import type { SandboxMode } from '@liusiqi-dev/sqh-sandbox'
+import type { Session, SessionId } from '@liusiqi-dev/sqh-session'
+import type {} from '@liusiqi-dev/sqh-system-prompt'
+import type { ToolRestriction } from '@liusiqi-dev/sqh-tools'
 // Type-only: make `ctx.get('sandboxPolicy')`, `ctx.get('approval')`, and
 // `ctx.get('permissionPresets')` resolve to their services when composed — delegation consumes them
 // opportunistically (the documented `ctx.get` pattern), never as a hard dep —
 // and merge the inherited permission session-event payloads.
-import type {} from '@liusiqi-dev/dsh-sandbox-policy'
-import type {} from '@liusiqi-dev/dsh-user-approval'
-import type {} from '@liusiqi-dev/dsh-permission-presets'
+import type {} from '@liusiqi-dev/sqh-sandbox-policy'
+import type {} from '@liusiqi-dev/sqh-user-approval'
+import type {} from '@liusiqi-dev/sqh-permission-presets'
 // Type-only: make `ctx.get('agentPresets')` resolve to the preset roster when
 // composed — a child inherits its parent's composition opportunistically (the
 // documented `ctx.get` pattern), never as a hard dep. A rosterless deployment
 // keeps its model-facing rows on the host plane, where the child already sees
 // them through the tool registry's global layer.
-import type {} from '@liusiqi-dev/dsh-agent-preset-registry'
+import type {} from '@liusiqi-dev/sqh-agent-preset-registry'
 import { delegationDepthOf } from './depth.ts'
 
 /** Thrown when starting a child would exceed the requested depth cap. */

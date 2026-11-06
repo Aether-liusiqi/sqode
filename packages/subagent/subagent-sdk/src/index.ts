@@ -8,16 +8,16 @@
  * is the session's workspace cwd. This plugin uses named
  * exports only; a default would hide its loader metadata (see
  * `docs/postmortem/0001-acp-default-export-drops-inject.md`).
- * @module @liusiqi-dev/dsh-subagent-dsh-sdk
+ * @module @liusiqi-dev/sqh-subagent-sdk
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
 import { statSync } from 'node:fs'
 import { isAbsolute, resolve } from 'node:path'
 import z from '@liusiqi-dev/schemastery'
-import type { AgentOptions } from '@liusiqi-dev/dsh-agent'
-import type { SubagentCapabilities, SubagentProvider, SubagentStartRequest } from '@liusiqi-dev/dsh-subagent'
-import { assertPositiveFinite, NO_START_CAPABILITIES, resolveChildCwd, validateConfiguredCwd } from '@liusiqi-dev/dsh-subagent'
+import type { AgentOptions } from '@liusiqi-dev/sqh-agent'
+import type { SubagentCapabilities, SubagentProvider, SubagentStartRequest } from '@liusiqi-dev/sqh-subagent'
+import { assertPositiveFinite, NO_START_CAPABILITIES, resolveChildCwd, validateConfiguredCwd } from '@liusiqi-dev/sqh-subagent'
 import {
   DEFAULT_DISPOSE_EOF_GRACE_MS,
   DEFAULT_DISPOSE_GRACE_MS,
@@ -27,7 +27,7 @@ import {
   type SdkRunSpec,
 } from './run.ts'
 
-export const name = 'subagent-dsh-sdk'
+export const name = 'subagent-sdk'
 export const inject = ['subagents']
 
 /** Config: how to spawn and drive the child SDK runtime process. */
@@ -103,7 +103,7 @@ function resolveConfiguredFile(field: string, value: string): string {
   } catch {
     // The diagnostic below owns missing, inaccessible, and non-file paths uniformly.
   }
-  throw new TypeError(`subagent-dsh-sdk ${field} must name an existing file: ${path}`)
+  throw new TypeError(`subagent-sdk ${field} must name an existing file: ${path}`)
 }
 
 /** SQH SDK can apply Agent route options while the other start features remain child-owned. */
@@ -147,10 +147,10 @@ class SdkSubagentProvider implements SubagentProvider {
     }
     let cwd: string
     try {
-      cwd = resolveChildCwd('subagent-dsh-sdk', this.config.cwd, request.parent.session.header.cwd)
+      cwd = resolveChildCwd('subagent-sdk', this.config.cwd, request.parent.session.header.cwd)
     } catch (error: unknown) {
       const failure = sdkConfigurationFailure(error)
-      this.ctx.logger.warn(`subagent-dsh-sdk "${this.name}": child start failed: %o`, error)
+      this.ctx.logger.warn(`subagent-sdk "${this.name}": child start failed: %o`, error)
       throw failure
     }
     const route = resolveSdkRoute(this.config, request.agentOptions)
@@ -168,7 +168,7 @@ class SdkSubagentProvider implements SubagentProvider {
       onError: (error, stopReason) => {
         // The seam forbids `result` rejecting, so a child-level failure is
         // flattened to a stop reason — preserve it here rather than losing it.
-        this.ctx.logger.warn(`subagent-dsh-sdk "${this.name}": child run failed (${stopReason}): ${error.message}`)
+        this.ctx.logger.warn(`subagent-sdk "${this.name}": child run failed (${stopReason}): ${error.message}`)
       },
     }
     return startSdkRun(request, spec)
@@ -178,13 +178,13 @@ class SdkSubagentProvider implements SubagentProvider {
 export function apply(ctx: Context, config: Config): void {
   // schemastery (Config) has already filled every defaulted field.
   const resolved = config as ResolvedConfig
-  assertPositiveFinite('subagent-dsh-sdk', 'shutdownTimeoutMs', resolved.shutdownTimeoutMs)
-  assertPositiveFinite('subagent-dsh-sdk', 'disposeEofGraceMs', resolved.disposeEofGraceMs)
-  assertPositiveFinite('subagent-dsh-sdk', 'disposeGraceMs', resolved.disposeGraceMs)
+  assertPositiveFinite('subagent-sdk', 'shutdownTimeoutMs', resolved.shutdownTimeoutMs)
+  assertPositiveFinite('subagent-sdk', 'disposeEofGraceMs', resolved.disposeEofGraceMs)
+  assertPositiveFinite('subagent-sdk', 'disposeGraceMs', resolved.disposeGraceMs)
   if (resolved.maxTokens !== undefined && (!Number.isSafeInteger(resolved.maxTokens) || resolved.maxTokens <= 0)) {
-    throw new TypeError('subagent-dsh-sdk maxTokens must be a positive safe integer')
+    throw new TypeError('subagent-sdk maxTokens must be a positive safe integer')
   }
-  if (!isAbsolute(resolved.dshHome)) throw new TypeError('subagent-dsh-sdk dshHome must be an absolute path')
+  if (!isAbsolute(resolved.dshHome)) throw new TypeError('subagent-sdk dshHome must be an absolute path')
   const launchPaths: ResolvedConfig = {
     ...resolved,
     patches: resolved.patches.map((path, index) => resolveConfiguredFile(`patches[${String(index)}]`, path)),
@@ -192,7 +192,7 @@ export function apply(ctx: Context, config: Config): void {
   }
   // Interpret a relative configured cwd against the harness launch directory
   // ONCE, at load, and fail a misconfigured directory here — not per start.
-  const configuredCwd = validateConfiguredCwd('subagent-dsh-sdk', resolved.cwd)
+  const configuredCwd = validateConfiguredCwd('subagent-sdk', resolved.cwd)
   const validated: ResolvedConfig = configuredCwd === undefined
     ? launchPaths
     : { ...launchPaths, cwd: configuredCwd }

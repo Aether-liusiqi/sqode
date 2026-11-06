@@ -39,9 +39,9 @@ import clsx from 'clsx'
 import {
   Button, IconCheckOutlineRegular, IconChevronRightOutlineRegular, IconEditOutlineRegular, IconFolderCloseRegular, IconFolderOpenRegular,
   IconPlusOutlineRegular, Modal,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { DirectoryEntry, DirectoryListing } from '@liusiqi-dev/dsh-api-remotes/client'
-import type { Translate } from '@liusiqi-dev/dsh-client-locale/client'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { DirectoryEntry, DirectoryListing } from '@liusiqi-dev/sqh-api-remotes/client'
+import type { Translate } from '@liusiqi-dev/sqh-client-locale/client'
 import css from './DirectoryBrowser.module.css'
 
 /** Owner-supplied browser props: browse calls, pick semantics, and copy. */

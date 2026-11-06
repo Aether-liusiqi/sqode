@@ -5,14 +5,14 @@ import type {
   ConnectionGenerationSource,
   ConnectionHostInfo,
   ConnectionHandle,
-} from '@liusiqi-dev/dsh-client-connection/client'
+} from '@liusiqi-dev/sqh-client-connection/client'
 import type {
   TypertClientEventListener,
   TypertOwnedValue,
   TypertRemoteEvent,
-} from '@liusiqi-dev/dsh-typert-protocol'
-import { isRemoteJsonValue, isTypertOwnedValue } from '@liusiqi-dev/dsh-typert-protocol'
-import { randomUUID } from '@liusiqi-dev/dsh-util-crypto'
+} from '@liusiqi-dev/sqh-typert-protocol'
+import { isRemoteJsonValue, isTypertOwnedValue } from '@liusiqi-dev/sqh-typert-protocol'
+import { randomUUID } from '@liusiqi-dev/sqh-util-crypto'
 import {
   REMOTE_EVENT_RESULT_ENDPOINT,
   REMOTE_EVENT_STREAM_ENDPOINT,

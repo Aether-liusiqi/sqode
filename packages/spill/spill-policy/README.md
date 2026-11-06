@@ -3,7 +3,7 @@ description: "Tool-result retention with a shared text/image token budget and re
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-spill-policy
+# @liusiqi-dev/sqh-spill-policy
 
 English | [中文](README.zh.md)
 
@@ -32,8 +32,8 @@ Mount the policy alongside a spill backend. Text and images share the configured
 Load a spill backend and set `maxInlineTokens` in estimated tokens:
 
 ```yaml
-- name: '@liusiqi-dev/dsh-spill-local'
-- name: '@liusiqi-dev/dsh-spill-policy'
+- name: '@liusiqi-dev/sqh-spill-local'
+- name: '@liusiqi-dev/sqh-spill-policy'
   config:
     maxInlineTokens: 12500
 ```

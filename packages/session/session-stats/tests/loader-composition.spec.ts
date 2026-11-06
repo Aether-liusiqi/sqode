@@ -13,9 +13,9 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import Include from '@liusiqi-dev/cordis-plugin-include'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import * as SessionStatsPlugin from '@liusiqi-dev/dsh-session-stats'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import * as SessionStatsPlugin from '@liusiqi-dev/sqh-session-stats'
 
 let root: string | undefined
 let context: Context | undefined
@@ -37,9 +37,9 @@ async function loadYaml(lines: readonly string[]): Promise<Context> {
   await context.plugin(Loader)
   context.loader.builtins.include = Include
   const modules = new Map<string, unknown>([
-    ['@liusiqi-dev/dsh-session', SessionStore],
-    ['@liusiqi-dev/dsh-session-projection', SessionProjectionRegistry],
-    ['@liusiqi-dev/dsh-session-stats', SessionStatsPlugin],
+    ['@liusiqi-dev/sqh-session', SessionStore],
+    ['@liusiqi-dev/sqh-session-projection', SessionProjectionRegistry],
+    ['@liusiqi-dev/sqh-session-stats', SessionStatsPlugin],
   ])
   context.loader.internal = {
     version: 'v2',
@@ -59,9 +59,9 @@ async function loadYaml(lines: readonly string[]): Promise<Context> {
 describe('real Loader composition', () => {
   it('loads the shipped session-stats YAML shape and serves whole-log counts', async () => {
     const loaded = await loadYaml([
-      "- name: '@liusiqi-dev/dsh-session'",
-      "- name: '@liusiqi-dev/dsh-session-projection'",
-      "- name: '@liusiqi-dev/dsh-session-stats'",
+      "- name: '@liusiqi-dev/sqh-session'",
+      "- name: '@liusiqi-dev/sqh-session-projection'",
+      "- name: '@liusiqi-dev/sqh-session-stats'",
     ])
 
     const unloaded = [...loaded.loader.entries()]

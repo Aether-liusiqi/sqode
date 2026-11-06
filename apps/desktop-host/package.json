@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-desktop-host",
+  "name": "@liusiqi-dev/sqh-desktop-host",
   "description": "Private Node-mode host process for the Electron desktop application",
   "version": "1.0.0",
   "private": true,
@@ -15,21 +15,21 @@
     "@deepseek-ai/libreoffice-kit": "^0.1.1",
     "@liusiqi-dev/cordis": "workspace:~",
     "@liusiqi-dev/sqode": "workspace:*",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-app-boot": "workspace:*",
-    "@liusiqi-dev/dsh-client-connection": "workspace:*",
-    "@liusiqi-dev/dsh-host-webserver": "workspace:*",
-    "@liusiqi-dev/dsh-home-paths": "workspace:*",
-    "@liusiqi-dev/dsh-jobs": "workspace:*",
-    "@liusiqi-dev/dsh-schedule": "workspace:*",
-    "@liusiqi-dev/dsh-tool-workspace-dependencies": "workspace:*",
-    "@liusiqi-dev/dsh-skill-office": "workspace:*",
-    "@liusiqi-dev/dsh-deepseek-account": "workspace:*",
-    "@liusiqi-dev/dsh-workspace": "workspace:*"
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-app-boot": "workspace:*",
+    "@liusiqi-dev/sqh-client-connection": "workspace:*",
+    "@liusiqi-dev/sqh-host-webserver": "workspace:*",
+    "@liusiqi-dev/sqh-home-paths": "workspace:*",
+    "@liusiqi-dev/sqh-jobs": "workspace:*",
+    "@liusiqi-dev/sqh-schedule": "workspace:*",
+    "@liusiqi-dev/sqh-tool-workspace-dependencies": "workspace:*",
+    "@liusiqi-dev/sqh-skill-office": "workspace:*",
+    "@liusiqi-dev/sqh-deepseek-account": "workspace:*",
+    "@liusiqi-dev/sqh-workspace": "workspace:*"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
     "@liusiqi-dev/cordis-plugin-include": "workspace:~",
-    "@liusiqi-dev/dsh-skill": "workspace:*"
+    "@liusiqi-dev/sqh-skill": "workspace:*"
   }
 }

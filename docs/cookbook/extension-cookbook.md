@@ -14,7 +14,7 @@ This permission gate is one example of a hook plugin. It returns a typed decisio
 
 ```ts
 import type { Context } from '@liusiqi-dev/cordis'
-import type { PreToolDecision, ToolExecution } from '@liusiqi-dev/dsh-tools'
+import type { PreToolDecision, ToolExecution } from '@liusiqi-dev/sqh-tools'
 
 declare function isAllowed(exec: ToolExecution): Promise<boolean>
 
@@ -38,9 +38,9 @@ A UI plugin combines durable `session/event` records (Assistant settlements, tur
 
 ```ts
 import type { Context } from '@liusiqi-dev/cordis'
-import { brandString } from '@liusiqi-dev/dsh-brand'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
+import { brandString } from '@liusiqi-dev/sqh-brand'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
 
 declare function render(text: string): void
 declare function onUserInput(handler: (text: string) => void): void
@@ -69,7 +69,7 @@ A *protocol driver* adapts a wire peer to `ctx.agents`; it may serve a UI or an 
 
 ```ts
 import type { Context } from '@liusiqi-dev/cordis'
-import { expandAssistantStream } from '@liusiqi-dev/dsh-llm'
+import { expandAssistantStream } from '@liusiqi-dev/sqh-llm'
 
 export const name = 'my-protocol-bridge'
 export const inject = ['agents', 'sessions', 'sessionPersistence']
@@ -119,8 +119,8 @@ Every product feature maps to a listener on a documented extension point — the
 | Monotonic terminal turn policy | call `ToolExecution.concludeTurn()` from the successful terminal tool; later tool calls in the same response remain guardable, and the loop stops after the step |
 | Subprocess sandbox (landlock / sandbox-exec) | use a `ctx.sandbox` backend through `dsh-bash-sandbox`; use `tools/pre-execute` for capability-level denial |
 | Permission system / AskUserQuestion | return `ask` from `tools/pre-execute` and answer through `ctx.approval`; register a separate model-facing ask tool for ordinary user questions |
-| Plan mode | [`@liusiqi-dev/dsh-plan-mode`](../../packages/plan/plan-mode/README.md) — logged `plan/mode` state, the `plan:policy` guidance section, `/plan [message]` entry, `/plan off` direct exit, and the user-reviewed `exit_plan_mode` exit; enforcement stays on the independent sandbox/approval axes |
-| Sub-agent delegation | the `ctx.subagents` provider registry (`dsh-subagent-spawn-in-process`/`dsh-subagent-fork-in-process`/`dsh-subagent-acp`/`dsh-subagent-codex`/`dsh-subagent-claude-code`/`dsh-subagent-dsh-sdk`) + `dsh-tool-subagent` exposing one configured provider to the model |
+| Plan mode | [`@liusiqi-dev/sqh-plan-mode`](../../packages/plan/plan-mode/README.md) — logged `plan/mode` state, the `plan:policy` guidance section, `/plan [message]` entry, `/plan off` direct exit, and the user-reviewed `exit_plan_mode` exit; enforcement stays on the independent sandbox/approval axes |
+| Sub-agent delegation | the `ctx.subagents` provider registry (`dsh-subagent-spawn-in-process`/`dsh-subagent-fork-in-process`/`dsh-subagent-acp`/`dsh-subagent-codex`/`dsh-subagent-claude-code`/`dsh-subagent-sdk`) + `dsh-tool-subagent` exposing one configured provider to the model |
 | MCP | one plugin per server: discover tools → `ctx.tools.register()` |
 | Skills | section + tool registration; `inject()` skill content on invocation |
 | Memory | section provider + tool |

@@ -3,8 +3,8 @@ import { Context, Service } from '@liusiqi-dev/cordis'
 import { access, mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import LlmRuntime, { createUserMessage, INVALID_CREDENTIAL_CODE } from '@liusiqi-dev/dsh-llm'
-import AttachmentStore, { AttachmentId, ImageVariantId } from '@liusiqi-dev/dsh-attachment'
+import LlmRuntime, { createUserMessage, INVALID_CREDENTIAL_CODE } from '@liusiqi-dev/sqh-llm'
+import AttachmentStore, { AttachmentId, ImageVariantId } from '@liusiqi-dev/sqh-attachment'
 import type {
   ImageAttachmentLimits,
   ImageAttachmentRef,
@@ -12,16 +12,16 @@ import type {
   RequestImageAttachment,
   SaveImageAttachment,
   StoredImageAttachment,
-} from '@liusiqi-dev/dsh-attachment'
-import { credentialRef } from '@liusiqi-dev/dsh-credentials'
-import { LocalCredentialProvider } from '@liusiqi-dev/dsh-credentials-local'
+} from '@liusiqi-dev/sqh-attachment'
+import { credentialRef } from '@liusiqi-dev/sqh-credentials'
+import { LocalCredentialProvider } from '@liusiqi-dev/sqh-credentials-local'
 import { liveConfig } from '../../../settings/settings/tests/live-config.ts'
-import * as LlmDeepSeek from '@liusiqi-dev/dsh-llm-deepseek-api-key'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
+import * as LlmDeepSeek from '@liusiqi-dev/sqh-llm-deepseek-api-key'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
 import { assemble } from './assemble.ts'
 import { closeMockServers, mockServer, textEvents } from './mock-server.ts'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }

@@ -13,10 +13,10 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import Include from '@liusiqi-dev/cordis-plugin-include'
-import { createAssistantMessage, createUserMessage } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import * as SessionTurnOutlinePlugin from '@liusiqi-dev/dsh-session-turn-outline'
+import { createAssistantMessage, createUserMessage } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import * as SessionTurnOutlinePlugin from '@liusiqi-dev/sqh-session-turn-outline'
 
 let root: string | undefined
 let context: Context | undefined
@@ -38,9 +38,9 @@ async function loadYaml(lines: readonly string[]): Promise<Context> {
   await context.plugin(Loader)
   context.loader.builtins.include = Include
   const modules = new Map<string, unknown>([
-    ['@liusiqi-dev/dsh-session', SessionStore],
-    ['@liusiqi-dev/dsh-session-projection', SessionProjectionRegistry],
-    ['@liusiqi-dev/dsh-session-turn-outline', SessionTurnOutlinePlugin],
+    ['@liusiqi-dev/sqh-session', SessionStore],
+    ['@liusiqi-dev/sqh-session-projection', SessionProjectionRegistry],
+    ['@liusiqi-dev/sqh-session-turn-outline', SessionTurnOutlinePlugin],
   ])
   context.loader.internal = {
     version: 'v2',
@@ -60,9 +60,9 @@ async function loadYaml(lines: readonly string[]): Promise<Context> {
 describe('real Loader composition', () => {
   it('loads the shipped session-turn-outline YAML shape and serves the outline', async () => {
     const loaded = await loadYaml([
-      "- name: '@liusiqi-dev/dsh-session'",
-      "- name: '@liusiqi-dev/dsh-session-projection'",
-      "- name: '@liusiqi-dev/dsh-session-turn-outline'",
+      "- name: '@liusiqi-dev/sqh-session'",
+      "- name: '@liusiqi-dev/sqh-session-projection'",
+      "- name: '@liusiqi-dev/sqh-session-turn-outline'",
     ])
 
     const unloaded = [...loaded.loader.entries()]

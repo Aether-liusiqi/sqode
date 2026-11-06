@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-client-ui-session",
+  "name": "@liusiqi-dev/sqh-client-ui-session",
   "description": "Session Controller adapter for React and session-scoped slots",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,9 +28,9 @@
   "dsh": {
     "client": {
       "inject": [
-        "@liusiqi-dev/dsh-api-remotes",
-        "@liusiqi-dev/dsh-api-session-controller",
-        "@liusiqi-dev/dsh-client-ui-renderer"
+        "@liusiqi-dev/sqh-api-remotes",
+        "@liusiqi-dev/sqh-api-session-controller",
+        "@liusiqi-dev/sqh-client-ui-renderer"
       ],
       "platform": "web"
     }
@@ -45,15 +45,15 @@
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-api-remotes": "workspace:*",
-    "@liusiqi-dev/dsh-api-session-controller": "workspace:*",
-    "@liusiqi-dev/dsh-client-store": "workspace:*",
-    "@liusiqi-dev/dsh-client-test-runtime": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-renderer": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-slots": "workspace:*",
-    "@liusiqi-dev/dsh-remote-mock": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-util-values": "workspace:*",
+    "@liusiqi-dev/sqh-api-remotes": "workspace:*",
+    "@liusiqi-dev/sqh-api-session-controller": "workspace:*",
+    "@liusiqi-dev/sqh-client-store": "workspace:*",
+    "@liusiqi-dev/sqh-client-test-runtime": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-renderer": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-slots": "workspace:*",
+    "@liusiqi-dev/sqh-remote-mock": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-util-values": "workspace:*",
     "@types/react": "~18.3.1",
     "react": "^18.2.0"
   },

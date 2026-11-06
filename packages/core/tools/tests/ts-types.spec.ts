@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
-import { jsonSchemaToTs, renderToolsSdk } from '@liusiqi-dev/dsh-tools/src/ts-types.ts'
-import type { ToolSdkSchema } from '@liusiqi-dev/dsh-tools/src/ts-types.ts'
-import type { JsonSchemaNode } from '@liusiqi-dev/dsh-tools/src/json-schema.ts'
-import { parameterSchemaSpecToJsonSchema } from '@liusiqi-dev/dsh-tools'
+import { jsonSchemaToTs, renderToolsSdk } from '@liusiqi-dev/sqh-tools/src/ts-types.ts'
+import type { ToolSdkSchema } from '@liusiqi-dev/sqh-tools/src/ts-types.ts'
+import type { JsonSchemaNode } from '@liusiqi-dev/sqh-tools/src/json-schema.ts'
+import { parameterSchemaSpecToJsonSchema } from '@liusiqi-dev/sqh-tools'
 
 describe('jsonSchemaToTs', () => {
   it('maps every unified schema construct', () => {

@@ -4,10 +4,10 @@
  * chooser; the unchanged Host connector then owns the Worker handshake.
  * Everything after those calls is the served startup chain verbatim.
  */
-import SqhWorker from '@liusiqi-dev/dsh-experimental-webworker-runtime/worker?worker'
+import SqhWorker from '@liusiqi-dev/sqh-experimental-webworker-runtime/worker?worker'
 import {
   chooseWorkerHostSource, connectWorkerHost, IMAGE_FILE_NAME,
-} from '@liusiqi-dev/dsh-experimental-webworker-runtime/client'
+} from '@liusiqi-dev/sqh-experimental-webworker-runtime/client'
 
 const image = `preview/${IMAGE_FILE_NAME}`
 const source = await chooseWorkerHostSource({ image })

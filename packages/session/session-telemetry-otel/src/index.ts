@@ -5,15 +5,15 @@
  * Session-log reporter. This plugin owns resource identity and an outer
  * shutdown deadline; the reporter owns byte-bounded SDK delivery.
  *
- * @module @liusiqi-dev/dsh-session-telemetry-otel
+ * @module @liusiqi-dev/sqh-session-telemetry-otel
  */
 
 import { createRequire } from 'node:module'
 import z from '@liusiqi-dev/schemastery'
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-command-feedback'
-import type {} from '@liusiqi-dev/dsh-message-feedback'
-import { Session, type SessionEvent } from '@liusiqi-dev/dsh-session'
+import type {} from '@liusiqi-dev/sqh-command-feedback'
+import type {} from '@liusiqi-dev/sqh-message-feedback'
+import { Session, type SessionEvent } from '@liusiqi-dev/sqh-session'
 import {
   SessionTelemetryBackend,
   SessionTelemetryCoordinator,
@@ -21,10 +21,10 @@ import {
   type SessionTelemetryRecord,
   type SessionTelemetrySeverity,
   type SessionTelemetrySharingStatus,
-} from '@liusiqi-dev/dsh-session-telemetry'
-import { APP_IDENTITY } from '@liusiqi-dev/dsh-llm'
-import { getOrCreateAnonymousUserId } from '@liusiqi-dev/dsh-anonymous-user-id'
-import type { SessionLogReporter } from '@liusiqi-dev/dsh-otel'
+} from '@liusiqi-dev/sqh-session-telemetry'
+import { APP_IDENTITY } from '@liusiqi-dev/sqh-llm'
+import { getOrCreateAnonymousUserId } from '@liusiqi-dev/sqh-anonymous-user-id'
+import type { SessionLogReporter } from '@liusiqi-dev/sqh-otel'
 import type { BatchLogRecordProcessorOptions } from '@opentelemetry/sdk-logs'
 import type { OTLPExporterNodeConfigBase } from '@opentelemetry/otlp-exporter-base'
 import { SeverityNumber } from '@opentelemetry/api-logs'
@@ -187,7 +187,7 @@ export class OpenTelemetrySessionBackend extends SessionTelemetryBackend {
     this.shutdownTimeoutMillis = shutdownTimeoutMillis
     const { version } = createRequire(import.meta.url)('../package.json') as { version: string }
     const reporter = ctx.otel.createSessionLogReporter({
-      scope: { name: '@liusiqi-dev/dsh-session-telemetry-otel', version },
+      scope: { name: '@liusiqi-dev/sqh-session-telemetry-otel', version },
       exporter: { ...config.exporter, url },
       ...(config.processor === undefined ? {} : { processor: config.processor }),
       ...(config.maxRequestBytes === undefined ? {} : { maxRequestBytes: config.maxRequestBytes }),

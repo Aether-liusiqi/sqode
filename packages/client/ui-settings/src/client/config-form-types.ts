@@ -2,7 +2,7 @@
  * Client configuration values and atomic write operations.
  */
 
-import type { SettingsPathOpView } from '@liusiqi-dev/dsh-api-remotes/client'
+import type { SettingsPathOpView } from '@liusiqi-dev/sqh-api-remotes/client'
 
 /** Client-side sync state of one settings namespace. */
 export interface ConfigFormSnapshot<T> {

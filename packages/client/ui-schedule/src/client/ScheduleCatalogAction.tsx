@@ -7,10 +7,10 @@ import {
   IconTrashOutlineRegular,
   useAnchoredPosition,
   useDismissOnOutsidePointer,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
-import type {} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type { ScheduleId } from '@liusiqi-dev/dsh-schedule/client'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
+import type {} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type { ScheduleId } from '@liusiqi-dev/sqh-schedule/client'
 import type { CatalogInjected } from './catalog-source.ts'
 import { NS } from './locales.ts'
 import {

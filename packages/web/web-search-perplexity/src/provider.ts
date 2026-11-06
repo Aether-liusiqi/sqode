@@ -3,16 +3,16 @@
  * becomes `content`; sources prefer structured `search_results[]` and fall back to URL-only
  * `citations[]`. The wire format and native `fetch` client are provider-private and do not use
  * `ctx.llm`.
- * @module @liusiqi-dev/dsh-web-search-perplexity/provider
+ * @module @liusiqi-dev/sqh-web-search-perplexity/provider
  */
 
-import { WebError } from '@liusiqi-dev/dsh-web'
+import { WebError } from '@liusiqi-dev/sqh-web'
 import type {
   WebSearchProvider,
   WebSearchRequest,
   WebSearchResult,
   WebSearchSource,
-} from '@liusiqi-dev/dsh-web'
+} from '@liusiqi-dev/sqh-web'
 import type { PerplexityError, PerplexityResponse, PerplexitySearchResult } from './types.ts'
 
 /** Stable id this provider registers under. */

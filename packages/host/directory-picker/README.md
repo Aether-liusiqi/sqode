@@ -3,7 +3,7 @@ description: "Workspace-directory picking seam for the web GUI host: the service
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-host-directory-picker
+# @liusiqi-dev/sqh-host-directory-picker
 
 English | [中文](README.zh.md)
 

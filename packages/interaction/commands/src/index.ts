@@ -1,19 +1,19 @@
 /**
  * Plugin-owned human-command registry shared by interactive UI adapters.
- * @module @liusiqi-dev/dsh-commands
+ * @module @liusiqi-dev/sqh-commands
  */
 
 import { Context } from '@liusiqi-dev/cordis'
-import { randomUUID } from '@liusiqi-dev/dsh-util-crypto'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { AttachmentError, admitEncodedImages } from '@liusiqi-dev/dsh-attachment'
-import type { EncodedImageAttachment, FileAttachmentRef, ImageAttachmentRef } from '@liusiqi-dev/dsh-attachment/types'
-import type { FileBlock, ImageBlock } from '@liusiqi-dev/dsh-llm'
-import { NamedEntries, ScopedLayers } from '@liusiqi-dev/dsh-scope'
-import type { ScopeKey, ScopeLayer } from '@liusiqi-dev/dsh-scope'
-import { SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { Session, SessionEvent, SessionEventMap } from '@liusiqi-dev/dsh-session'
-import { TypertRemoteService, Remote } from '@liusiqi-dev/dsh-typert-protocol'
+import { randomUUID } from '@liusiqi-dev/sqh-util-crypto'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { AttachmentError, admitEncodedImages } from '@liusiqi-dev/sqh-attachment'
+import type { EncodedImageAttachment, FileAttachmentRef, ImageAttachmentRef } from '@liusiqi-dev/sqh-attachment/types'
+import type { FileBlock, ImageBlock } from '@liusiqi-dev/sqh-llm'
+import { NamedEntries, ScopedLayers } from '@liusiqi-dev/sqh-scope'
+import type { ScopeKey, ScopeLayer } from '@liusiqi-dev/sqh-scope'
+import { SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { Session, SessionEvent, SessionEventMap } from '@liusiqi-dev/sqh-session'
+import { TypertRemoteService, Remote } from '@liusiqi-dev/sqh-typert-protocol'
 import { CommandId } from './brand.ts'
 import type { CommandDefinitionId } from './brand.ts'
 import type {

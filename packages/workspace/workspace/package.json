@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-workspace",
+  "name": "@liusiqi-dev/sqh-workspace",
   "description": "Workspace entity registry (ctx.workspaceRegistry): durable workspace records with validated session attachment over the domain data form for the Siqi Harness",
   "version": "1.0.0",
   "publishConfig": {
@@ -38,24 +38,24 @@
   "license": "MIT",
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-invariants": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-persistence": "workspace:*",
-    "@liusiqi-dev/dsh-storage": "workspace:*",
-    "@liusiqi-dev/dsh-storage-domain": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*"
+    "@liusiqi-dev/sqh-invariants": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-persistence": "workspace:*",
+    "@liusiqi-dev/sqh-storage": "workspace:*",
+    "@liusiqi-dev/sqh-storage-domain": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*"
   },
   "dependencies": {
-    "@liusiqi-dev/dsh-brand": "workspace:*",
+    "@liusiqi-dev/sqh-brand": "workspace:*",
     "zod": "^4.4.3"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-invariants": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-persistence": "workspace:*",
-    "@liusiqi-dev/dsh-storage": "workspace:*",
-    "@liusiqi-dev/dsh-storage-domain": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*"
+    "@liusiqi-dev/sqh-invariants": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-persistence": "workspace:*",
+    "@liusiqi-dev/sqh-storage": "workspace:*",
+    "@liusiqi-dev/sqh-storage-domain": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*"
   }
 }

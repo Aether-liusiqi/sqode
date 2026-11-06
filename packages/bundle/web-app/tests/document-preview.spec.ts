@@ -6,17 +6,17 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import Include, { applyEntryPatches } from '@liusiqi-dev/cordis-plugin-include'
-import { loadOverlayPatches } from '@liusiqi-dev/dsh-app-boot'
-import WorkspaceFiles, { type WorkspaceFileScope } from '@liusiqi-dev/dsh-api-workspace-files'
-import OfficeToPdf from '@liusiqi-dev/dsh-office-to-pdf'
-import * as DocumentPreview from '@liusiqi-dev/dsh-client-ui-sidebar-documentpreview'
-import type { IndexInjection } from '@liusiqi-dev/dsh-host-webserver'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import SandboxPolicyService from '@liusiqi-dev/dsh-sandbox-policy'
-import LocalFileSystem from '@liusiqi-dev/dsh-fs-local'
-import { FsError } from '@liusiqi-dev/dsh-fs'
-import TypertRegistry from '@liusiqi-dev/dsh-typert-registry'
+import { loadOverlayPatches } from '@liusiqi-dev/sqh-app-boot'
+import WorkspaceFiles, { type WorkspaceFileScope } from '@liusiqi-dev/sqh-api-workspace-files'
+import OfficeToPdf from '@liusiqi-dev/sqh-office-to-pdf'
+import * as DocumentPreview from '@liusiqi-dev/sqh-client-ui-sidebar-documentpreview'
+import type { IndexInjection } from '@liusiqi-dev/sqh-host-webserver'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import SandboxPolicyService from '@liusiqi-dev/sqh-sandbox-policy'
+import LocalFileSystem from '@liusiqi-dev/sqh-fs-local'
+import { FsError } from '@liusiqi-dev/sqh-fs'
+import TypertRegistry from '@liusiqi-dev/sqh-typert-registry'
 import type { Converter, ConverterOptions } from '@deepseek-ai/libreoffice-kit'
 import { expect, it, onTestFinished, vi } from 'vitest'
 
@@ -32,8 +32,8 @@ it('loads the shipped Office rows with separately patched settings and authorize
   })
   const configPath = join(directory, 'cordis.yml')
   const expectedRows = {
-    'office-to-pdf': '@liusiqi-dev/dsh-office-to-pdf',
-    'ui-sidebar-documentpreview': '@liusiqi-dev/dsh-client-ui-sidebar-documentpreview',
+    'office-to-pdf': '@liusiqi-dev/sqh-office-to-pdf',
+    'ui-sidebar-documentpreview': '@liusiqi-dev/sqh-client-ui-sidebar-documentpreview',
   }
   const rows = loadOverlayPatches('web-office-test', fileURLToPath(new URL('../cordis.patch.yml', import.meta.url)))
     .flatMap(patch => patch.insert ?? []).filter(row => row.id !== undefined && Object.hasOwn(expectedRows, row.id))
@@ -46,12 +46,12 @@ it('loads the shipped Office rows with separately patched settings and authorize
   ], (message) => { throw new Error(message) })
   expect(configured.find(row => row.id === 'ui-sidebar-documentpreview')!.config).toEqual(clientConfig)
   await writeFile(configPath, JSON.stringify([
-    { name: '@liusiqi-dev/dsh-session' },
-    { name: '@liusiqi-dev/dsh-session-projection' },
-    { name: '@liusiqi-dev/dsh-sandbox-policy', config: { workspaceRoot: directory } },
-    { name: '@liusiqi-dev/dsh-fs-local', config: { cwd: directory } },
-    { name: '@liusiqi-dev/dsh-typert-registry' },
-    { name: '@liusiqi-dev/dsh-api-workspace-files', config: { maxFileBytes: 1 } },
+    { name: '@liusiqi-dev/sqh-session' },
+    { name: '@liusiqi-dev/sqh-session-projection' },
+    { name: '@liusiqi-dev/sqh-sandbox-policy', config: { workspaceRoot: directory } },
+    { name: '@liusiqi-dev/sqh-fs-local', config: { cwd: directory } },
+    { name: '@liusiqi-dev/sqh-typert-registry' },
+    { name: '@liusiqi-dev/sqh-api-workspace-files', config: { maxFileBytes: 1 } },
     ...configured,
   ]))
   const pdf = Buffer.from('%PDF-1.7\nLoader preview\n%%EOF\n')
@@ -71,14 +71,14 @@ it('loads the shipped Office rows with separately patched settings and authorize
   ctx.loader.builtins.include = Include
   // Loader's native imports must share the test's source-plane Service classes.
   const modules = new Map<string, unknown>([
-    ['@liusiqi-dev/dsh-session', SessionStore],
-    ['@liusiqi-dev/dsh-session-projection', SessionProjectionRegistry],
-    ['@liusiqi-dev/dsh-sandbox-policy', SandboxPolicyService],
-    ['@liusiqi-dev/dsh-fs-local', LocalFileSystem],
-    ['@liusiqi-dev/dsh-typert-registry', TypertRegistry],
-    ['@liusiqi-dev/dsh-api-workspace-files', WorkspaceFiles],
-    ['@liusiqi-dev/dsh-office-to-pdf', OfficeToPdf],
-    ['@liusiqi-dev/dsh-client-ui-sidebar-documentpreview', DocumentPreview],
+    ['@liusiqi-dev/sqh-session', SessionStore],
+    ['@liusiqi-dev/sqh-session-projection', SessionProjectionRegistry],
+    ['@liusiqi-dev/sqh-sandbox-policy', SandboxPolicyService],
+    ['@liusiqi-dev/sqh-fs-local', LocalFileSystem],
+    ['@liusiqi-dev/sqh-typert-registry', TypertRegistry],
+    ['@liusiqi-dev/sqh-api-workspace-files', WorkspaceFiles],
+    ['@liusiqi-dev/sqh-office-to-pdf', OfficeToPdf],
+    ['@liusiqi-dev/sqh-client-ui-sidebar-documentpreview', DocumentPreview],
   ])
   ctx.loader.internal = {
     version: 'v2',

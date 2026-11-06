@@ -3,7 +3,7 @@ description: "Remote file-effect confinement for compositions using SSH filesyst
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-sandbox-ssh
+# @liusiqi-dev/sqh-sandbox-ssh
 
 English | [中文](README.zh.md)
 

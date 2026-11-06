@@ -7,11 +7,11 @@ const root = resolve(import.meta.dirname, '..')
 const probePath = resolve(import.meta.dirname, '__request_input_probe.ts')
 
 const probe = `
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type { Session } from '@liusiqi-dev/dsh-session'
-import type { SessionTitleLlmRequestEventData } from '@liusiqi-dev/dsh-session-title-llm'
-import { createUserMessage, projectFilesToText, projectImagesForTextModel, projectOffloadedImages } from '@liusiqi-dev/dsh-llm'
-import type { GenerateOptions, Message, MessageId, MessageSource, RequestMessage, RequestUserInput } from '@liusiqi-dev/dsh-llm'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type { Session } from '@liusiqi-dev/sqh-session'
+import type { SessionTitleLlmRequestEventData } from '@liusiqi-dev/sqh-session-title-llm'
+import { createUserMessage, projectFilesToText, projectImagesForTextModel, projectOffloadedImages } from '@liusiqi-dev/sqh-llm'
+import type { GenerateOptions, Message, MessageId, MessageSource, RequestMessage, RequestUserInput } from '@liusiqi-dev/sqh-llm'
 
 declare const session: Session
 declare const agent: Agent

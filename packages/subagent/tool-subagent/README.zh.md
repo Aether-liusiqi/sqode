@@ -3,7 +3,7 @@ description: "面向模型的 subagent 委派工具，供用户与维护者配�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-tool-subagent
+# @liusiqi-dev/sqh-tool-subagent
 
 [English](README.md) | 中文
 
@@ -32,9 +32,9 @@ kind: "package-reference"
 先加载 subagent 服务、一个进程内或远程后端与本工具，然后指定提供方名称。此组合暴露一个委派给 `spawn` 后端的 `subagent` 工具：
 
 ```yaml
-- name: '@liusiqi-dev/dsh-subagent'
-- name: '@liusiqi-dev/dsh-subagent-spawn-in-process'
-- name: '@liusiqi-dev/dsh-tool-subagent'
+- name: '@liusiqi-dev/sqh-subagent'
+- name: '@liusiqi-dev/sqh-subagent-spawn-in-process'
+- name: '@liusiqi-dev/sqh-tool-subagent'
   config:
     provider: spawn
     toolName: subagent

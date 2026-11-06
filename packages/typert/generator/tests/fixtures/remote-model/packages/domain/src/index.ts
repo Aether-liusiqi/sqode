@@ -1,4 +1,4 @@
-import type { TypertContext, TypertLookup } from '@liusiqi-dev/dsh-typert-protocol'
+import type { TypertContext, TypertLookup } from '@liusiqi-dev/sqh-typert-protocol'
 import type { AgentId } from './types.ts'
 
 /** Host-only live Agent object. */
@@ -6,7 +6,7 @@ export class Agent {
   constructor(readonly id: AgentId) {}
 }
 
-declare module '@liusiqi-dev/dsh-typert-protocol' {
+declare module '@liusiqi-dev/sqh-typert-protocol' {
   interface TypertLookupMap {
     agent: TypertLookup<Agent, AgentId>
   }

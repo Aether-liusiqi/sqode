@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { jsonSchemaToPy, renderToolsSdkPy } from '@liusiqi-dev/dsh-tools/src/py-types.ts'
-import { parameterSchemaSpecToJsonSchema } from '@liusiqi-dev/dsh-tools'
-import type { ToolSdkSchema } from '@liusiqi-dev/dsh-tools/src/ts-types.ts'
+import { jsonSchemaToPy, renderToolsSdkPy } from '@liusiqi-dev/sqh-tools/src/py-types.ts'
+import { parameterSchemaSpecToJsonSchema } from '@liusiqi-dev/sqh-tools'
+import type { ToolSdkSchema } from '@liusiqi-dev/sqh-tools/src/ts-types.ts'
 
 describe('jsonSchemaToPy', () => {
   it('maps the defineTool DSL subset', () => {

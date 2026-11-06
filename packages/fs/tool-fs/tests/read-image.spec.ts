@@ -11,19 +11,19 @@ import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { Context } from '@liusiqi-dev/cordis'
-import { PtcRuntime } from '@liusiqi-dev/dsh-ptc-runtime'
-import type { PtcRunRequest, PtcRunResult } from '@liusiqi-dev/dsh-ptc-runtime'
-import { ToolCallId, LlmAdapter, LlmRuntime } from '@liusiqi-dev/dsh-llm'
-import type { GenerateOptions, LlmModelInfo, LlmResolvedModelInfo, Message, StreamChunk } from '@liusiqi-dev/dsh-llm'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime, { RUN_CODE_NAME } from '@liusiqi-dev/dsh-tools'
-import type { Config as ToolConfig } from '@liusiqi-dev/dsh-tools'
-import LocalFileSystem from '@liusiqi-dev/dsh-fs-local'
-import * as FsPolicy from '@liusiqi-dev/dsh-fs-observation-policy'
-import LocalAttachmentStore from '@liusiqi-dev/dsh-attachment-local'
-import { AttachmentError, AttachmentId, AttachmentStore } from '@liusiqi-dev/dsh-attachment'
-import type { ImageAttachmentLimits, ImageAttachmentRef, SaveImageAttachment, StoredImageAttachment } from '@liusiqi-dev/dsh-attachment'
-import * as ToolFs from '@liusiqi-dev/dsh-tool-fs'
+import { PtcRuntime } from '@liusiqi-dev/sqh-ptc-runtime'
+import type { PtcRunRequest, PtcRunResult } from '@liusiqi-dev/sqh-ptc-runtime'
+import { ToolCallId, LlmAdapter, LlmRuntime } from '@liusiqi-dev/sqh-llm'
+import type { GenerateOptions, LlmModelInfo, LlmResolvedModelInfo, Message, StreamChunk } from '@liusiqi-dev/sqh-llm'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime, { RUN_CODE_NAME } from '@liusiqi-dev/sqh-tools'
+import type { Config as ToolConfig } from '@liusiqi-dev/sqh-tools'
+import LocalFileSystem from '@liusiqi-dev/sqh-fs-local'
+import * as FsPolicy from '@liusiqi-dev/sqh-fs-observation-policy'
+import LocalAttachmentStore from '@liusiqi-dev/sqh-attachment-local'
+import { AttachmentError, AttachmentId, AttachmentStore } from '@liusiqi-dev/sqh-attachment'
+import type { ImageAttachmentLimits, ImageAttachmentRef, SaveImageAttachment, StoredImageAttachment } from '@liusiqi-dev/sqh-attachment'
+import * as ToolFs from '@liusiqi-dev/sqh-tool-fs'
 import {
   applyReadImageTool,
   formatImageReadOutput,
@@ -71,7 +71,7 @@ class CatalogAdapter extends LlmAdapter {
 
 /** In-process PTC mode seam fake that invokes the real registry bindings. */
 class FakeRuntime extends PtcRuntime {
-  resolve(request: import('@liusiqi-dev/dsh-ptc-runtime').PtcRunRequest): import('@liusiqi-dev/dsh-ptc-runtime').PtcRunSpec { return { ...request, cwd: request.cwd ?? process.cwd(), timeoutMs: request.timeoutMs ?? 120_000 } }
+  resolve(request: import('@liusiqi-dev/sqh-ptc-runtime').PtcRunRequest): import('@liusiqi-dev/sqh-ptc-runtime').PtcRunSpec { return { ...request, cwd: request.cwd ?? process.cwd(), timeoutMs: request.timeoutMs ?? 120_000 } }
 
   readonly language = 'typescript'
   readonly isolation = 'fake'

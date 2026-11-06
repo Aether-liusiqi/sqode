@@ -1,12 +1,12 @@
 /**
  * Workflow guest inputs and the child callbacks consumed by its VM helpers.
  * PTC transfers initialization data, requests and results as lossless JSON.
- * @module @liusiqi-dev/dsh-workflow-ptc/types
+ * @module @liusiqi-dev/sqh-workflow-ptc/types
  */
 
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import type { ObjectJsonSchema } from '@liusiqi-dev/dsh-tools'
-import type { WorkflowMeta } from '@liusiqi-dev/dsh-workflow'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import type { ObjectJsonSchema } from '@liusiqi-dev/sqh-tools'
+import type { WorkflowMeta } from '@liusiqi-dev/sqh-workflow'
 
 /**
  * Ordinary script limits enforced by the guest helpers.

@@ -2,7 +2,7 @@
  * Runtime registry for generated Typert reflection, Remote invocations, and
  * dependency-inverted lookup/Context providers. It performs no TypeScript
  * analysis or schema generation.
- * @module @liusiqi-dev/dsh-typert-registry
+ * @module @liusiqi-dev/sqh-typert-registry
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'
@@ -29,7 +29,7 @@ import type {
   TypertRegistryChange,
   TypertRegistryListener,
   TypertRegistryContract,
-} from '@liusiqi-dev/dsh-typert-protocol'
+} from '@liusiqi-dev/sqh-typert-protocol'
 import type {
   TypertContribution,
   TypertFace,

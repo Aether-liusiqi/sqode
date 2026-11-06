@@ -127,24 +127,24 @@ function checkManifest(
   if (!manifest.files?.includes('lib/invariant.js')) {
     addViolation(violations, owner.manifestPath, 'files must publish lib/invariant.js')
   }
-  if (owner.packageName === '@liusiqi-dev/dsh-invariants') return
+  if (owner.packageName === '@liusiqi-dev/sqh-invariants') return
   const developmentOnlyInvariant = usesFlattenedPackageDependencies(
     owner.manifestPath,
     owner.packageName,
     manifest.dsh,
   )
   const expectedRange = 'workspace:*'
-  const peerRange = manifest.peerDependencies?.['@liusiqi-dev/dsh-invariants']
+  const peerRange = manifest.peerDependencies?.['@liusiqi-dev/sqh-invariants']
   if (developmentOnlyInvariant ? peerRange !== undefined : peerRange !== expectedRange) {
     addViolation(violations, owner.manifestPath, developmentOnlyInvariant
-      ? '@liusiqi-dev/dsh-invariants must not be a peerDependency under this package dependency policy'
-      : '@liusiqi-dev/dsh-invariants must be a workspace:* peerDependency')
+      ? '@liusiqi-dev/sqh-invariants must not be a peerDependency under this package dependency policy'
+      : '@liusiqi-dev/sqh-invariants must be a workspace:* peerDependency')
   }
-  if (manifest.devDependencies?.['@liusiqi-dev/dsh-invariants'] !== expectedRange) {
+  if (manifest.devDependencies?.['@liusiqi-dev/sqh-invariants'] !== expectedRange) {
     addViolation(
       violations,
       owner.manifestPath,
-      `@liusiqi-dev/dsh-invariants must be a ${expectedRange} devDependency`,
+      `@liusiqi-dev/sqh-invariants must be a ${expectedRange} devDependency`,
     )
   }
 }
@@ -157,7 +157,7 @@ function checkBuild(
 ): void {
   const tsconfigPath = `${owner.dir}/tsconfig.json`
   if (hasCompanion
-    && owner.packageName !== '@liusiqi-dev/dsh-invariants'
+    && owner.packageName !== '@liusiqi-dev/sqh-invariants'
     && !projectReferencesInvariants(root, owner.dir, tsconfigPath)) {
     addViolation(
       violations,

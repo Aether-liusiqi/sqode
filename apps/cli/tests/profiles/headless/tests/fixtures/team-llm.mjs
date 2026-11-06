@@ -1,6 +1,6 @@
 /** Deterministic keyless Agent Teams adapter shared by profile snapshot and CLI e2e. */
 
-import { ToolCallId, LlmAdapter } from '@liusiqi-dev/dsh-llm'
+import { ToolCallId, LlmAdapter } from '@liusiqi-dev/sqh-llm'
 
 let nextCall = 0
 

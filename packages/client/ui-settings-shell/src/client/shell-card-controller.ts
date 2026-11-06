@@ -1,10 +1,10 @@
 /** The shell page's staged form over the composed shell executor entry. */
 
-import type { SnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import type { SnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import {
   SettingsFormModel, settingsNumberField,
   type SettingsFieldState, type SettingsFormActions, type SettingsFormScope, type SettingsFormShell,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
 
 /** Profile entry id of the POSIX shell executor; the base bundle composes it off Windows. */
 export const BASH_NS = 'bash-sandbox'

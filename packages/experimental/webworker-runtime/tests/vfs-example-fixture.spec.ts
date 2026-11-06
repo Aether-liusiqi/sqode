@@ -1,15 +1,15 @@
 import { readFileSync, readdirSync } from 'node:fs'
 import { join, relative } from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { SESSION_FORMAT_VERSION, Session, SessionId, type SessionEvent } from '@liusiqi-dev/dsh-session'
-import { scheduleDomain } from '@liusiqi-dev/dsh-schedule'
-import { createSessionFormatCatalogWithChildren } from '@liusiqi-dev/dsh-session-format-catalog'
+import { SESSION_FORMAT_VERSION, Session, SessionId, type SessionEvent } from '@liusiqi-dev/sqh-session'
+import { scheduleDomain } from '@liusiqi-dev/sqh-schedule'
+import { createSessionFormatCatalogWithChildren } from '@liusiqi-dev/sqh-session-format-catalog'
 import {
   generationLogFilename,
   scanLog,
-} from '@liusiqi-dev/dsh-session-persistence-jsonl/src/format.ts'
-import { foldSubagentDescriptor } from '@liusiqi-dev/dsh-subagent'
-import { projectionCacheDomainSpec } from '@liusiqi-dev/dsh-session-projection-cache'
+} from '@liusiqi-dev/sqh-session-persistence-jsonl/src/format.ts'
+import { foldSubagentDescriptor } from '@liusiqi-dev/sqh-subagent'
+import { projectionCacheDomainSpec } from '@liusiqi-dev/sqh-session-projection-cache'
 import {
   buildVfsExampleFiles,
   VFS_EXAMPLE_OLDEST_MESSAGE,

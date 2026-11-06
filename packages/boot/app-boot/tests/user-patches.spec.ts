@@ -46,12 +46,12 @@ describe('loadOptionalPatches', () => {
     const dir = tmp()
     writeFileSync(join(dir, PROFILE_PATCH_FILENAME), [
       '- id: agent-loop',
-      "  name: '@liusiqi-dev/dsh-agent-loop'",
+      "  name: '@liusiqi-dev/sqh-agent-loop'",
       '  config:',
       '    model: !!js process.env.SQODE_SPEC_MODEL',
       '- insert:',
       '    - id: llm',
-      "      name: '@liusiqi-dev/dsh-llm-pi-ai'",
+      "      name: '@liusiqi-dev/sqh-llm-pi-ai'",
       '',
     ].join('\n'))
     const patches = loadOptionalPatches(NAME, join(dir, PROFILE_PATCH_FILENAME))
@@ -77,7 +77,7 @@ describe('loadOptionalPatches', () => {
       { insert: [
         { id: 'absolute', name: pluginPath },
         { id: 'url', name: pluginUrl },
-        { id: 'bare', name: '@liusiqi-dev/dsh-system-prompt' },
+        { id: 'bare', name: '@liusiqi-dev/sqh-system-prompt' },
         { id: 'nested', name: 'cordis:group', group: true, config: [
           { id: 'child', name: pluginPath },
         ] },
@@ -86,7 +86,7 @@ describe('loadOptionalPatches', () => {
     const patches = load(NAME, patchPath)!
     expect(patches[0]?.name).toBe(pluginPath)
     expect(patches[1]?.insert?.map(entry => entry.name)).toEqual([
-      pluginUrl, pluginUrl, '@liusiqi-dev/dsh-system-prompt', 'cordis:group',
+      pluginUrl, pluginUrl, '@liusiqi-dev/sqh-system-prompt', 'cordis:group',
     ])
     expect((patches[1]?.insert?.[3]?.config as { name: string }[])[0]?.name).toBe(pluginUrl)
 

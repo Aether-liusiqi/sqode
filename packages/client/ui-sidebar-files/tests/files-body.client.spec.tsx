@@ -2,9 +2,9 @@
 /** File-tree presentation over controlled directory watches and deferred listings. */
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent } from '@testing-library/react'
-import { makeTranslate, RemoteError } from '@liusiqi-dev/dsh-client-test-runtime'
-import type { RemoteFailure } from '@liusiqi-dev/dsh-api-remotes/client'
-import { fileAddressFor } from '@liusiqi-dev/dsh-util-workspace-path'
+import { makeTranslate, RemoteError } from '@liusiqi-dev/sqh-client-test-runtime'
+import type { RemoteFailure } from '@liusiqi-dev/sqh-api-remotes/client'
+import { fileAddressFor } from '@liusiqi-dev/sqh-util-workspace-path'
 import { failureLine, orderEntries } from '../src/client/FilesBody.tsx'
 import type { DirLevel } from '../src/client/store.ts'
 import { zh } from '../src/client/locales.ts'

@@ -1,7 +1,7 @@
 /**
  * Model text rendering and generic tool-call presentation.
  *
- * @module @liusiqi-dev/dsh-tool-session-query/presentation
+ * @module @liusiqi-dev/sqh-tool-session-query/presentation
  */
 
 import {
@@ -12,12 +12,12 @@ import {
   type SessionLineageTrace,
   type SessionRecord,
   type SessionSearchHit,
-} from '@liusiqi-dev/dsh-session-query'
+} from '@liusiqi-dev/sqh-session-query'
 import type {
   SessionEvent,
   SessionId,
-} from '@liusiqi-dev/dsh-session'
-import type { GenericCallView } from '@liusiqi-dev/dsh-tools'
+} from '@liusiqi-dev/sqh-session'
+import type { GenericCallView } from '@liusiqi-dev/sqh-tools'
 import { workspaceAccess } from './workspace-access.ts'
 
 type TitleView = Awaited<ReturnType<typeof workspaceAccess.readTitle>>

@@ -1,14 +1,14 @@
 /**
  * Vocabulary for the spill storage Service Definition. Types only — the abstract service
  * lives in `./index.ts`, implementations in sibling packages
- * (`@liusiqi-dev/dsh-spill-local` first).
+ * (`@liusiqi-dev/sqh-spill-local` first).
  *
- * @module @liusiqi-dev/dsh-spill/types
+ * @module @liusiqi-dev/sqh-spill/types
  */
 
-import type { Branded } from '@liusiqi-dev/dsh-brand'
-import type { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
+import type { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
 
 /**
  * Opaque model-facing handle for one spilled artifact. A local backend may use a

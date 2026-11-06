@@ -1,7 +1,7 @@
 /**
  * Host-filesystem implementation of `ctx.fs`. Realpath-derived target identity makes aliases
  * share stale guards, and writes through a symlink update its target without replacing the link.
- * @module @liusiqi-dev/dsh-fs-local
+ * @module @liusiqi-dev/sqh-fs-local
  */
 
 import { Context } from '@liusiqi-dev/cordis'
@@ -11,7 +11,7 @@ import { watch } from 'chokidar'
 import { dirname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import z from '@liusiqi-dev/schemastery'
-import { FileSystem, FsError, FsVersion } from '@liusiqi-dev/dsh-fs'
+import { FileSystem, FsError, FsVersion } from '@liusiqi-dev/sqh-fs'
 import type {
   FsDirEntry,
   FsEditOutcome,
@@ -21,7 +21,7 @@ import type {
   FsTarget,
   FsWriteIntent,
   FsWriteOutcome,
-} from '@liusiqi-dev/dsh-fs'
+} from '@liusiqi-dev/sqh-fs'
 import {
   applyLiteralEdit,
   listDirectory,

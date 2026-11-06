@@ -1,13 +1,13 @@
 /** V3 framing with hard structural admission and recoverable canonical event validation. */
 
-import { SessionFormatError, isSessionFormatJsonObject, snapshotSessionFormatJson } from '@liusiqi-dev/dsh-session-format'
+import { SessionFormatError, isSessionFormatJsonObject, snapshotSessionFormatJson } from '@liusiqi-dev/sqh-session-format'
 import type {
   SessionFormatCodec,
   SessionFormatCurrentEncoder,
   SessionFormatEvent,
   SessionFormatHeader,
-} from '@liusiqi-dev/dsh-session-format'
-import { releasedV2SessionFormatCodec } from '@liusiqi-dev/dsh-session-format-v1-to-v2'
+} from '@liusiqi-dev/sqh-session-format'
+import { releasedV2SessionFormatCodec } from '@liusiqi-dev/sqh-session-format-v1-to-v2'
 import { assertReleasedV3Header, assertV3EventAdmission } from './validation.ts'
 import { assertV3Event, assertV3StructuralRow } from './payload.ts'
 

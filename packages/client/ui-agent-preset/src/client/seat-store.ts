@@ -12,12 +12,12 @@
 
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
 // Type-only: pulls the ctx.remote merge into this program.
-import type {} from '@liusiqi-dev/dsh-api-remotes/client'
+import type {} from '@liusiqi-dev/sqh-api-remotes/client'
 // Type-only: pulls the Developer tools preference (ctx.configForms) into this program.
-import type {} from '@liusiqi-dev/dsh-client-ui-settings/client'
-import type { SessionSummary } from '@liusiqi-dev/dsh-api-session-controller/client'
-import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type {} from '@liusiqi-dev/dsh-agent-preset-registry/types'
+import type {} from '@liusiqi-dev/sqh-client-ui-settings/client'
+import type { SessionSummary } from '@liusiqi-dev/sqh-api-session-controller/client'
+import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type {} from '@liusiqi-dev/sqh-agent-preset-registry/types'
 import { presetOptions, readRoster } from './settings-store.ts'
 import type { AgentPresetOption } from './settings-store.ts'
 

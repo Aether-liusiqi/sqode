@@ -3,7 +3,7 @@ description: "Web GUI 的输入触发流水线：光标处的 / 与 @ 检测、�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-ui-input-trigger
+# @liusiqi-dev/sqh-client-ui-input-trigger
 
 [English](README.md) | 中文
 

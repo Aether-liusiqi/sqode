@@ -2,15 +2,15 @@
  * Named wire types for the Siqi Harness SDK runtime protocol: the three
  * request/result pairs and the four server-to-client notification payloads
  * exchanged over the newline-delimited JSON-RPC stdio transport. The server
- * plugin (`@liusiqi-dev/dsh-sdk-jsonrpc-server`) and SDK clients share these shapes;
+ * plugin (`@liusiqi-dev/sqh-sdk-jsonrpc-server`) and SDK clients share these shapes;
  * `serverInfo.name` stays the wire-stable `siqi-harness-sdk-runtime`.
  *
- * @module @liusiqi-dev/dsh-sdk-protocol/types
+ * @module @liusiqi-dev/sqh-sdk-protocol/types
  */
 
-import type { ContentBlock, ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
-import type { SubagentStopReason } from '@liusiqi-dev/dsh-subagent'
+import type { ContentBlock, ReasoningEffortId } from '@liusiqi-dev/sqh-llm'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
+import type { SubagentStopReason } from '@liusiqi-dev/sqh-subagent'
 
 /** Parameters for the process-wide SDK handshake. */
 export interface InitializeParams {

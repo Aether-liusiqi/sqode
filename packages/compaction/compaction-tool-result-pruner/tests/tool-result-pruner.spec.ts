@@ -1,25 +1,25 @@
-import { imageOffloadProjection } from '@liusiqi-dev/dsh-compaction-image-offload/projection'
+import { imageOffloadProjection } from '@liusiqi-dev/sqh-compaction-image-offload/projection'
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { ToolCallId , createMessage, createToolResultMessage } from '@liusiqi-dev/dsh-llm'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
+import { ToolCallId , createMessage, createToolResultMessage } from '@liusiqi-dev/sqh-llm'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
 import SessionStore, {
   Session,
   SessionId,
   SessionSeq,
-} from '@liusiqi-dev/dsh-session'
-import type { SurfaceEvent } from '@liusiqi-dev/dsh-session'
-import * as SessionInvariant from '@liusiqi-dev/dsh-session/invariant'
-import InvariantRegistry from '@liusiqi-dev/dsh-invariants'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import TokenMeter from '@liusiqi-dev/dsh-token-meter'
+} from '@liusiqi-dev/sqh-session'
+import type { SurfaceEvent } from '@liusiqi-dev/sqh-session'
+import * as SessionInvariant from '@liusiqi-dev/sqh-session/invariant'
+import InvariantRegistry from '@liusiqi-dev/sqh-invariants'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import TokenMeter from '@liusiqi-dev/sqh-token-meter'
 import ToolResultPruner, {
   codePointLength,
   DEFAULTS,
   PRUNE_MARKER,
   resolveConfig,
-} from '@liusiqi-dev/dsh-compaction-tool-result-pruner'
-import type { ToolResultPruneConfig } from '@liusiqi-dev/dsh-compaction-tool-result-pruner'
+} from '@liusiqi-dev/sqh-compaction-tool-result-pruner'
+import type { ToolResultPruneConfig } from '@liusiqi-dev/sqh-compaction-tool-result-pruner'
 
 const MODEL = 'test-model'
 const SMALL: ToolResultPruneConfig = {

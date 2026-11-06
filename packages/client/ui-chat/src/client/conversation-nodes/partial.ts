@@ -1,7 +1,7 @@
-import type { StreamChunk } from '@liusiqi-dev/dsh-llm/types'
+import type { StreamChunk } from '@liusiqi-dev/sqh-llm/types'
 import type {
   AssistantBlock, PartialAssistant,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import { emptyAssistantBlock, toAssistantBlock } from './event-projection.ts'
 
 /**

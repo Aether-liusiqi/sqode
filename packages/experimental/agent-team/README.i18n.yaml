@@ -5,96 +5,96 @@
 /:
   en: 6dbca19f6b32549f
   zh: dae9c49eab8f6fee
-/liusiqi-dev-dsh-experimental-agent-team:
-  en: 242549ce7a33685a
-  zh: b2d8d3bcfe1b2188
-/liusiqi-dev-dsh-experimental-agent-team/summary:
+/liusiqi-dev-sqh-experimental-agent-team:
+  en: c096c0748317ee65
+  zh: 26a8150236b40ad7
+/liusiqi-dev-sqh-experimental-agent-team/summary:
   en: 5b981abe3a308e53
   zh: 7116e552a40dc79f
-/liusiqi-dev-dsh-experimental-agent-team/table-of-contents:
+/liusiqi-dev-sqh-experimental-agent-team/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
-/liusiqi-dev-dsh-experimental-agent-team/use-this-package:
-  en: 17b2a3614c4fb336
-  zh: fda7b97ac1f978bd
-/liusiqi-dev-dsh-experimental-agent-team/use-this-package/when-to-choose-it:
+/liusiqi-dev-sqh-experimental-agent-team/use-this-package:
+  en: f615c6619c14da96
+  zh: e9c528e4d7ce4e2d
+/liusiqi-dev-sqh-experimental-agent-team/use-this-package/when-to-choose-it:
   en: 8da318ac2f4343d7
   zh: b31a399d6e3fd64e
-/liusiqi-dev-dsh-experimental-agent-team/use-this-package/smallest-working-setup:
+/liusiqi-dev-sqh-experimental-agent-team/use-this-package/smallest-working-setup:
   en: 4fccad6758905210
   zh: 9037ddb1dc4b2666
-/liusiqi-dev-dsh-experimental-agent-team/use-this-package/teammates:
+/liusiqi-dev-sqh-experimental-agent-team/use-this-package/teammates:
   en: 5a314d1f80ecd31b
   zh: c34e6a93dd1e2045
-/liusiqi-dev-dsh-experimental-agent-team/use-this-package/messages-between-teammates:
+/liusiqi-dev-sqh-experimental-agent-team/use-this-package/messages-between-teammates:
   en: 2c45b2c18c8317e7
   zh: d4ab2259f976b19d
-/liusiqi-dev-dsh-experimental-agent-team/use-this-package/shared-task-board:
+/liusiqi-dev-sqh-experimental-agent-team/use-this-package/shared-task-board:
   en: 73682f0d2001b517
   zh: 3744d82eb3b7fcb9
-/liusiqi-dev-dsh-experimental-agent-team/use-this-package/waiting-and-interruption:
+/liusiqi-dev-sqh-experimental-agent-team/use-this-package/waiting-and-interruption:
   en: f8e38ccf6295b375
   zh: 44f008e23613c0af
-/liusiqi-dev-dsh-experimental-agent-team/use-this-package/what-success-and-failure-look-like:
+/liusiqi-dev-sqh-experimental-agent-team/use-this-package/what-success-and-failure-look-like:
   en: 0d523eb8ffe0a928
   zh: 270b2502db285ed8
-/liusiqi-dev-dsh-experimental-agent-team/understand-the-implementation:
+/liusiqi-dev-sqh-experimental-agent-team/understand-the-implementation:
   en: 6a18034f1ccc247a
   zh: e08b0eb0ccb41ea8
-/liusiqi-dev-dsh-experimental-agent-team/understand-the-implementation/design-philosophy:
+/liusiqi-dev-sqh-experimental-agent-team/understand-the-implementation/design-philosophy:
   en: c08e8eb5bbac71ae
   zh: d6fb32f1243a28d6
-/liusiqi-dev-dsh-experimental-agent-team/understand-the-implementation/source-map:
+/liusiqi-dev-sqh-experimental-agent-team/understand-the-implementation/source-map:
   en: 53e2dda7c2adb34c
   zh: 562590e3d42c029e
-/liusiqi-dev-dsh-experimental-agent-team/understand-the-implementation/team-identity-and-roster:
+/liusiqi-dev-sqh-experimental-agent-team/understand-the-implementation/team-identity-and-roster:
   en: 85f97723e45e43de
   zh: def66721e21339cc
-/liusiqi-dev-dsh-experimental-agent-team/understand-the-implementation/durable-mailbox:
+/liusiqi-dev-sqh-experimental-agent-team/understand-the-implementation/durable-mailbox:
   en: 26041ce90cc48a35
   zh: 677d85f22969f941
-/liusiqi-dev-dsh-experimental-agent-team/understand-the-implementation/shared-task-board:
+/liusiqi-dev-sqh-experimental-agent-team/understand-the-implementation/shared-task-board:
   en: 2dc37ba97a8a7178
   zh: 96bd24033030e19d
-/liusiqi-dev-dsh-experimental-agent-team/understand-the-implementation/waiting-and-interruption:
+/liusiqi-dev-sqh-experimental-agent-team/understand-the-implementation/waiting-and-interruption:
   en: 3becd36b407aac95
   zh: c9e4895ee59696bb
-/liusiqi-dev-dsh-experimental-agent-team/understand-the-implementation/durability-model:
+/liusiqi-dev-sqh-experimental-agent-team/understand-the-implementation/durability-model:
   en: 66dcbc543f2d3576
   zh: cd8de23c555696df
-/liusiqi-dev-dsh-experimental-agent-team/understand-the-implementation/disposal:
+/liusiqi-dev-sqh-experimental-agent-team/understand-the-implementation/disposal:
   en: 3ae69e3b7905cffe
   zh: 0fb159101f6d646b
-/liusiqi-dev-dsh-experimental-agent-team/further-exploration:
+/liusiqi-dev-sqh-experimental-agent-team/further-exploration:
   en: 2bbfd4ffbaeedd00
   zh: d1afb5d320b469a1
-/liusiqi-dev-dsh-experimental-agent-team/further-exploration/browser-projection:
+/liusiqi-dev-sqh-experimental-agent-team/further-exploration/browser-projection:
   en: 4b3033806e6db528
   zh: 53e0dfef7309840e
-/liusiqi-dev-dsh-experimental-agent-team/model-experience:
+/liusiqi-dev-sqh-experimental-agent-team/model-experience:
   en: 215e7ba838619b7b
   zh: a311da3843709f90
-/liusiqi-dev-dsh-experimental-agent-team/model-experience/peer-messages:
+/liusiqi-dev-sqh-experimental-agent-team/model-experience/peer-messages:
   en: 7a72088145dd45ec
   zh: 6763071c604c2edd
-/liusiqi-dev-dsh-experimental-agent-team/model-experience/peer-messages/what-the-model-sees:
+/liusiqi-dev-sqh-experimental-agent-team/model-experience/peer-messages/what-the-model-sees:
   en: 4f9110ba058f25cd
   zh: cf820293929ea993
-/liusiqi-dev-dsh-experimental-agent-team/model-experience/peer-messages/token-effect:
-  en: a67436391ca7ad5f
-  zh: 939654de33ae8a00
-/liusiqi-dev-dsh-experimental-agent-team/model-experience/peer-messages/kv-cache-effect:
+/liusiqi-dev-sqh-experimental-agent-team/model-experience/peer-messages/token-effect:
+  en: 2f0cf9652eb6610e
+  zh: 940e30621252000d
+/liusiqi-dev-sqh-experimental-agent-team/model-experience/peer-messages/kv-cache-effect:
   en: ff845d434b857afe
   zh: 04479bddf7650ede
-/liusiqi-dev-dsh-experimental-agent-team/known-limitations-and-deferred-work:
+/liusiqi-dev-sqh-experimental-agent-team/known-limitations-and-deferred-work:
   en: 777abba6e3b496eb
   zh: 2b8cd95e73f5e369
-/liusiqi-dev-dsh-experimental-agent-team/known-limitations-and-deferred-work/dev-note:
+/liusiqi-dev-sqh-experimental-agent-team/known-limitations-and-deferred-work/dev-note:
   en: 498e4cf9fe5741a7
   zh: 9d2bab630e655c99
-/liusiqi-dev-dsh-experimental-agent-team/known-limitations-and-deferred-work/dev-note/promotion:
+/liusiqi-dev-sqh-experimental-agent-team/known-limitations-and-deferred-work/dev-note/promotion:
   en: 3d126e3b1015e4ce
   zh: 22f0d18e2ce5c30f
-/liusiqi-dev-dsh-experimental-agent-team/known-limitations-and-deferred-work/dev-note/future-directions:
+/liusiqi-dev-sqh-experimental-agent-team/known-limitations-and-deferred-work/dev-note/future-directions:
   en: 38eadeacd73b9c02
   zh: 05c5b55022e0b8d9

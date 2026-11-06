@@ -5,13 +5,13 @@
  * projections of `ctx.jobs`; the model's consuming cursor and notice state
  * never observe them, and a human kill is not the model's own, so the
  * completion notice still reaches the owning agent.
- * @module @liusiqi-dev/dsh-api-job-controller
+ * @module @liusiqi-dev/sqh-api-job-controller
  */
 
 import { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import type {} from '@liusiqi-dev/dsh-jobs'
-import { Remote, RemoteError, TypertRemoteService } from '@liusiqi-dev/dsh-typert-protocol'
+import type {} from '@liusiqi-dev/sqh-jobs'
+import { Remote, RemoteError, TypertRemoteService } from '@liusiqi-dev/sqh-typert-protocol'
 import { observeJobOutput } from './observe.ts'
 import { streamJobRows } from './rows.ts'
 import type { JobKillRequest, JobKillValue, JobFollowFrame, JobFollowRequest, JobListFrame, JobListRequest } from './types.ts'

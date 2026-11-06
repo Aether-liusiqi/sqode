@@ -2,10 +2,10 @@
  * Shared wire protocol for the Siqi Harness SDK runtime: the
  * newline-delimited JSON-RPC stdio transport plus the named request, result,
  * and notification types both wire ends speak. The runtime server plugin
- * (`@liusiqi-dev/dsh-sdk-jsonrpc-server`) serves this protocol; SDK clients
- * (`@liusiqi-dev/dsh-sdk-client`, the Python SDK) drive it.
+ * (`@liusiqi-dev/sqh-sdk-jsonrpc-server`) serves this protocol; SDK clients
+ * (`@liusiqi-dev/sqh-sdk-client`, the Python SDK) drive it.
  *
- * @module @liusiqi-dev/dsh-sdk-protocol
+ * @module @liusiqi-dev/sqh-sdk-protocol
  */
 
 export { JsonRpcLineTransport, JsonRpcResponseError } from './transport.ts'

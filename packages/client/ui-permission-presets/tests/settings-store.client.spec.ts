@@ -1,8 +1,8 @@
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import { describe, expect, it, vi } from 'vitest'
-import type { SettingsNamespaceView } from '@liusiqi-dev/dsh-api-remotes/client'
-import { SettingsDescribeMirror } from '@liusiqi-dev/dsh-client-ui-settings/src/client/settings-mirror.ts'
-import { RemoteError } from '@liusiqi-dev/dsh-client-test-runtime'
+import type { SettingsNamespaceView } from '@liusiqi-dev/sqh-api-remotes/client'
+import { SettingsDescribeMirror } from '@liusiqi-dev/sqh-client-ui-settings/src/client/settings-mirror.ts'
+import { RemoteError } from '@liusiqi-dev/sqh-client-test-runtime'
 import {
   PermissionPresetSettingsController, permissionDefaultOf,
 } from '../src/client/settings-store.ts'

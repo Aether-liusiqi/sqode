@@ -3,7 +3,7 @@ description: "Named experimental transcription providers and cancellation owners
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-experimental-speech-to-text
+# @liusiqi-dev/sqh-experimental-speech-to-text
 
 English | [中文](README.zh.md)
 

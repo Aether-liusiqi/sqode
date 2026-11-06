@@ -3,7 +3,7 @@ description: "Browser-worker harness hosting for maintainers building or debuggi
 kind: "package-library"
 ---
 
-# `@liusiqi-dev/dsh-experimental-webworker-runtime`
+# `@liusiqi-dev/sqh-experimental-webworker-runtime`
 
 English | [中文](README.zh.md)
 

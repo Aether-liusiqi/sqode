@@ -21,11 +21,11 @@
  * the stream: the next write stats again. One {@link ChangeFeed}
  * serves every open file of the Client.
  */
-import type { ResourceProvider } from '@liusiqi-dev/dsh-client-resources/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
-import type { RemoteResult } from '@liusiqi-dev/dsh-typert-protocol'
-import { parseFileAddress } from '@liusiqi-dev/dsh-util-workspace-path'
+import type { ResourceProvider } from '@liusiqi-dev/sqh-client-resources/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
+import type { RemoteResult } from '@liusiqi-dev/sqh-typert-protocol'
+import { parseFileAddress } from '@liusiqi-dev/sqh-util-workspace-path'
 import type { WorkspaceFileStat } from '../types.ts'
 import type { ChangeFeed } from './change-feed.ts'
 import type { WorkspaceFilesRemote } from './remote.ts'

@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { installProxyFromEnvironment } from '@liusiqi-dev/dsh-http-proxy'
-import SubagentRuntime from '@liusiqi-dev/dsh-subagent'
+import { installProxyFromEnvironment } from '@liusiqi-dev/sqh-http-proxy'
+import SubagentRuntime from '@liusiqi-dev/sqh-subagent'
 import PtcWorkflowEngine from '../src/index.ts'
 import { fakeParent, mountPtcRuntime } from './setup.ts'
 

@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-experimental-voice-input-bundle",
+  "name": "@liusiqi-dev/sqh-experimental-voice-input-bundle",
   "description": "Experimental voice input with local SenseVoice; downloads its runtime on first use",
   "version": "1.0.0",
   "icon": "./icon.svg",
@@ -33,10 +33,10 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@liusiqi-dev/dsh-experimental-speech-to-text": "workspace:*",
-    "@liusiqi-dev/dsh-experimental-speech-to-text-sensevoice": "workspace:*",
-    "@liusiqi-dev/dsh-experimental-api-speech-to-text": "workspace:*",
-    "@liusiqi-dev/dsh-experimental-client-ui-voice-input": "workspace:*"
+    "@liusiqi-dev/sqh-experimental-speech-to-text": "workspace:*",
+    "@liusiqi-dev/sqh-experimental-speech-to-text-sensevoice": "workspace:*",
+    "@liusiqi-dev/sqh-experimental-api-speech-to-text": "workspace:*",
+    "@liusiqi-dev/sqh-experimental-client-ui-voice-input": "workspace:*"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~"

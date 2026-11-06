@@ -1,6 +1,6 @@
 import type { Context } from '@liusiqi-dev/cordis'
-import { IconEditOutlineRegular } from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { PropsLocale } from '@liusiqi-dev/dsh-client-ui-slots'
+import { IconEditOutlineRegular } from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { PropsLocale } from '@liusiqi-dev/sqh-client-ui-slots'
 import type { ToolCallViewProps } from '../../contract/slots.ts'
 import { diffCardModel } from '../models/diff-card-model.ts'
 import { toolRowModel, toolTitleKey } from '../models/tool-call-model.ts'

@@ -13,7 +13,7 @@
  *
  * See .agents/notes/implemented/testing/2026-06-19-acp-snapshot-tests.md.
  *
- * @module @liusiqi-dev/dsh-session-snapshot/harness
+ * @module @liusiqi-dev/sqh-session-snapshot/harness
  */
 
 import { cp, mkdtemp, readFile, readdir, rm } from 'node:fs/promises'
@@ -35,7 +35,7 @@ import {
   type AgentUnderTest,
   type LaunchedAcpTestAgent,
 } from './launcher.ts'
-import { clearedProxyEnv } from '@liusiqi-dev/dsh-http-proxy'
+import { clearedProxyEnv } from '@liusiqi-dev/sqh-http-proxy'
 import {
   assertPersistedSessionVersion,
   latestPersistedSessionPaths,

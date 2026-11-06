@@ -2,19 +2,19 @@
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, fireEvent } from '@testing-library/react'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import type {
   ChatSnapshot, StartedToolCall, ToolCallBlock, ToolResultNode,
-} from '@liusiqi-dev/dsh-client-ui-chat/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import { SlotTestRuntime, stubConfigForm } from '@liusiqi-dev/dsh-client-test-runtime'
-import { LocaleRuntime } from '@liusiqi-dev/dsh-client-locale/client'
-import type { PropsRenderSlots } from '@liusiqi-dev/dsh-client-ui-slots'
+} from '@liusiqi-dev/sqh-client-ui-chat/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import { SlotTestRuntime, stubConfigForm } from '@liusiqi-dev/sqh-client-test-runtime'
+import { LocaleRuntime } from '@liusiqi-dev/sqh-client-locale/client'
+import type { PropsRenderSlots } from '@liusiqi-dev/sqh-client-ui-slots'
 import {
   ConversationEventRegistry, ConversationViewRegistry, EMPTY_CONVERSATION_SNAPSHOT, type ConvViewOwnerProps,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import { en as conversationEn, NS as CONVERSATION_NS, zh as conversationZh } from '@liusiqi-dev/dsh-client-ui-conversation/src/client/locales.ts'
-import { apply as applyChat, inject as injectChat } from '@liusiqi-dev/dsh-client-ui-chat/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import { en as conversationEn, NS as CONVERSATION_NS, zh as conversationZh } from '@liusiqi-dev/sqh-client-ui-conversation/src/client/locales.ts'
+import { apply as applyChat, inject as injectChat } from '@liusiqi-dev/sqh-client-ui-chat/client'
 import { apply as applyTool, inject as injectTool } from '../src/client/apply.ts'
 import { toolChatSnapshot } from './tool-fixtures.client.ts'
 

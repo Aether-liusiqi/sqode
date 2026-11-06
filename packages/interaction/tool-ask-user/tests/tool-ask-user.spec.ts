@@ -1,18 +1,18 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { createToolResultMessage, ToolCallId, type ToolSchema } from '@liusiqi-dev/dsh-llm'
-import AgentRegistry, { type Agent } from '@liusiqi-dev/dsh-agent'
-import { Session, SessionId, SessionSeq, SESSION_FORMAT_VERSION, type SessionEvent } from '@liusiqi-dev/dsh-session'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
+import { createToolResultMessage, ToolCallId, type ToolSchema } from '@liusiqi-dev/sqh-llm'
+import AgentRegistry, { type Agent } from '@liusiqi-dev/sqh-agent'
+import { Session, SessionId, SessionSeq, SESSION_FORMAT_VERSION, type SessionEvent } from '@liusiqi-dev/sqh-session'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
 import UserQuestionService, {
   isTimedAskUserQuestionSchema,
   type AskUserQuestionAnswer,
   type AskUserQuestionRequest,
-} from '@liusiqi-dev/dsh-user-questions'
+} from '@liusiqi-dev/sqh-user-questions'
 // The fold is the projection's own reader of a recorded result, not a service method.
-import { foldUserQuestions } from '@liusiqi-dev/dsh-user-questions/src/projection.ts'
-import * as toolAskUser from '@liusiqi-dev/dsh-tool-ask-user'
+import { foldUserQuestions } from '@liusiqi-dev/sqh-user-questions/src/projection.ts'
+import * as toolAskUser from '@liusiqi-dev/sqh-tool-ask-user'
 
 const testToolSignal = new AbortController().signal
 

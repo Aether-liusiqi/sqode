@@ -3,7 +3,7 @@ description: "Canonical Session-log ratings, categories, and notes for finalized
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-message-feedback
+# @liusiqi-dev/sqh-message-feedback
 
 English | [中文](README.zh.md)
 

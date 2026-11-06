@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-sdk-app",
+  "name": "@liusiqi-dev/sqh-sdk-app",
   "description": "The dsh SDK profile bundle: stdio JSON-RPC serving and process lifecycle over dsh-base",
   "version": "1.0.0",
   "publishConfig": {
@@ -34,12 +34,12 @@
     }
   },
   "dependencies": {
-    "@liusiqi-dev/dsh-cmdline": "workspace:*",
-    "@liusiqi-dev/dsh-sdk-jsonrpc-server": "workspace:*",
+    "@liusiqi-dev/sqh-cmdline": "workspace:*",
+    "@liusiqi-dev/sqh-sdk-jsonrpc-server": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
     "commander": "^15.0.0",
-    "@liusiqi-dev/dsh-skill-office": "workspace:*",
-    "@liusiqi-dev/dsh-tool-workspace-dependencies": "workspace:*"
+    "@liusiqi-dev/sqh-skill-office": "workspace:*",
+    "@liusiqi-dev/sqh-tool-workspace-dependencies": "workspace:*"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~"

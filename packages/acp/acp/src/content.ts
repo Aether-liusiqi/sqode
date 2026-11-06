@@ -2,10 +2,10 @@
 
 import type { ContentBlock as AcpContentBlock } from '@agentclientprotocol/sdk'
 import type { Context } from '@liusiqi-dev/cordis'
-import { isImageAdmissionError } from '@liusiqi-dev/dsh-attachment'
-import type { ImageAttachmentRef, ImageMediaType, SaveImageAttachment } from '@liusiqi-dev/dsh-attachment'
-import type { ModelSelection } from '@liusiqi-dev/dsh-agent'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
+import { isImageAdmissionError } from '@liusiqi-dev/sqh-attachment'
+import type { ImageAttachmentRef, ImageMediaType, SaveImageAttachment } from '@liusiqi-dev/sqh-attachment'
+import type { ModelSelection } from '@liusiqi-dev/sqh-agent'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
 
 /** Raster formats shared by ACP image blocks and the core attachment vocabulary. */
 const IMAGE_MEDIA_TYPES: readonly ImageMediaType[] = [

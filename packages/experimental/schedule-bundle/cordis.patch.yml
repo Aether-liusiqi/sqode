@@ -7,10 +7,10 @@
 
 - insert:
     - id: time-context
-      name: '@liusiqi-dev/dsh-time-context'
+      name: '@liusiqi-dev/sqh-time-context'
 
     - id: schedule
-      name: '@liusiqi-dev/dsh-schedule'
+      name: '@liusiqi-dev/sqh-schedule'
 
     - id: ui-schedule
-      name: '@liusiqi-dev/dsh-client-ui-schedule'
+      name: '@liusiqi-dev/sqh-client-ui-schedule'

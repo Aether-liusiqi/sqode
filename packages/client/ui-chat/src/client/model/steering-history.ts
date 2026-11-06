@@ -1,7 +1,7 @@
 /** Reconstruct durable steering identity from the event-sourced agent inbox. */
 
-import type { SessionEvent } from '@liusiqi-dev/dsh-session/types'
-import type { InboxTarget } from '@liusiqi-dev/dsh-agent/types'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session/types'
+import type { InboxTarget } from '@liusiqi-dev/sqh-agent/types'
 
 /** Minimal pending identity retained while replaying durable inbox splices. */
 interface PendingIdentity {

@@ -3,14 +3,14 @@
 
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import AttachmentStore, { AttachmentError } from '@liusiqi-dev/dsh-attachment'
-import type { MessageId } from '@liusiqi-dev/dsh-llm'
-import { SessionId } from '@liusiqi-dev/dsh-session'
+import AttachmentStore, { AttachmentError } from '@liusiqi-dev/sqh-attachment'
+import type { MessageId } from '@liusiqi-dev/sqh-llm'
+import { SessionId } from '@liusiqi-dev/sqh-session'
 import SubagentRuntime, {
   SubagentError,
   type SubagentPromptRequestId,
-} from '@liusiqi-dev/dsh-subagent'
-import { deliverSubagentPrompt, type HostPromptDeliverer } from '@liusiqi-dev/dsh-subagent/internal'
+} from '@liusiqi-dev/sqh-subagent'
+import { deliverSubagentPrompt, type HostPromptDeliverer } from '@liusiqi-dev/sqh-subagent/internal'
 
 const PARENT = SessionId('parent')
 const CHILD = SessionId('child')

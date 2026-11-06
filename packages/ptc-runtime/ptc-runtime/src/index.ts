@@ -1,12 +1,12 @@
 /**
  * Service Definition for the PTC execution capability seam that runs one model-written program against host async bindings.
  * Runtimes know nothing about tools or sessions; consumers own those concerns.
- * @module @liusiqi-dev/dsh-ptc-runtime
+ * @module @liusiqi-dev/sqh-ptc-runtime
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'
 import type { PtcRunRequest, PtcRunResult, PtcRunSpec } from './types.ts'
-import type { SandboxMode } from '@liusiqi-dev/dsh-sandbox'
+import type { SandboxMode } from '@liusiqi-dev/sqh-sandbox'
 
 export type {
   PtcBindingErrorClass,

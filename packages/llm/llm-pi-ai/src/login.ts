@@ -9,8 +9,8 @@
 
 import type { AuthEvent, AuthPrompt, AuthType, Provider } from '@earendil-works/pi-ai'
 import type { Context } from '@liusiqi-dev/cordis'
-import type { AuthorizationMethod, AuthorizationPrompt, AuthorizationSession } from '@liusiqi-dev/dsh-authorization'
-import { isCredentialKeySegment } from '@liusiqi-dev/dsh-credentials'
+import type { AuthorizationMethod, AuthorizationPrompt, AuthorizationSession } from '@liusiqi-dev/sqh-authorization'
+import { isCredentialKeySegment } from '@liusiqi-dev/sqh-credentials'
 import { catalogProvider, catalogProviderIds } from './catalog.ts'
 import { recordKeyFor } from './auth.ts'
 import type { PiAiAuthInjection } from './adapter.ts'

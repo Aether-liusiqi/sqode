@@ -18,9 +18,9 @@ function fixture(packages: Readonly<Record<string, readonly string[]>>): string 
     const directory = join(root, 'packages', 'client', name)
     mkdirSync(directory, { recursive: true })
     writeFileSync(join(directory, 'package.json'), `${JSON.stringify({
-      name: `@liusiqi-dev/dsh-${name}`,
+      name: `@liusiqi-dev/sqh-${name}`,
       peerDependencies: Object.fromEntries(dependencies.map(dependency => [
-        `@liusiqi-dev/dsh-${dependency}`,
+        `@liusiqi-dev/sqh-${dependency}`,
         'workspace:^',
       ])),
     }, null, 2)}\n`)
@@ -47,15 +47,15 @@ describe('collectPackageGraph', () => {
     const root = fixture({ consumer: ['missing'] })
 
     expect(() => collectPackageGraph(root, ['client'], 'fixture'))
-      .toThrow('fixture: @liusiqi-dev/dsh-consumer references missing in-repo peer @liusiqi-dev/dsh-missing')
+      .toThrow('fixture: @liusiqi-dev/sqh-consumer references missing in-repo peer @liusiqi-dev/sqh-missing')
   })
 })
 
 describe('renderModuleGraph', () => {
   it('renders the same peer edge in both generated languages', () => {
     const packages = [
-      { short: 'provider', name: '@liusiqi-dev/dsh-provider', group: 'core', rel: 'packages/core/provider', deps: [] },
-      { short: 'consumer', name: '@liusiqi-dev/dsh-consumer', group: 'core', rel: 'packages/core/consumer', deps: ['provider'] },
+      { short: 'provider', name: '@liusiqi-dev/sqh-provider', group: 'core', rel: 'packages/core/provider', deps: [] },
+      { short: 'consumer', name: '@liusiqi-dev/sqh-consumer', group: 'core', rel: 'packages/core/consumer', deps: ['provider'] },
     ]
 
     const english = renderModuleGraph(packages, 'en')

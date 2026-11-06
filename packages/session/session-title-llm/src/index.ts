@@ -1,34 +1,34 @@
 /**
  * Shared route, framing, timeout, assembly, and validation policy for
  * model-backed session-title providers.
- * @module @liusiqi-dev/dsh-session-title-llm
+ * @module @liusiqi-dev/sqh-session-title-llm
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { createUserMessage, BlockAssembler } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-declare module '@liusiqi-dev/dsh-llm' {
+import { createUserMessage, BlockAssembler } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'dsh-session-title-llm': { kind: 'dsh-session-title-llm' } & ContextFormed
   }
 }
 
-import type { FinishReason, GenerateOptions, Message } from '@liusiqi-dev/dsh-llm'
-import { deadline, MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
-import { deepFreeze } from '@liusiqi-dev/dsh-util-values'
-import type { SessionSeq } from '@liusiqi-dev/dsh-session'
+import type { FinishReason, GenerateOptions, Message } from '@liusiqi-dev/sqh-llm'
+import { deadline, MAX_TIMER_DELAY_MS } from '@liusiqi-dev/sqh-timeout'
+import { deepFreeze } from '@liusiqi-dev/sqh-util-values'
+import type { SessionSeq } from '@liusiqi-dev/sqh-session'
 import {
   normalizeSessionTitle,
   SessionTitleProviderId,
-} from '@liusiqi-dev/dsh-session-title'
+} from '@liusiqi-dev/sqh-session-title'
 import type {
   SessionTitleAutomaticMode,
   SessionTitleModelIdentity,
   SessionTitleProviderRequest,
   SessionTitleProviderResult,
   SessionTitleUserMessage,
-} from '@liusiqi-dev/dsh-session-title'
+} from '@liusiqi-dev/sqh-session-title'
 
 /** Exact model-visible request recorded before one auxiliary title dispatch. */
 export interface SessionTitleLlmRequestEventData {
@@ -46,7 +46,7 @@ export interface SessionTitleLlmRequestEventData {
   readonly maxTokens: number
 }
 
-declare module '@liusiqi-dev/dsh-session/types' {
+declare module '@liusiqi-dev/sqh-session/types' {
   interface SessionEventMap {
     /** Log-only pre-dispatch record of one session-title model request. */
     'session/title-llm-request': SessionTitleLlmRequestEventData

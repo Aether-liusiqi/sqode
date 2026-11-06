@@ -1,5 +1,5 @@
 import type { Context } from '@liusiqi-dev/cordis'
-import { ReasoningEffortId, type LlmCallConfig } from '@liusiqi-dev/dsh-llm'
+import { ReasoningEffortId, type LlmCallConfig } from '@liusiqi-dev/sqh-llm'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import {
   WebhookDeliveryId,

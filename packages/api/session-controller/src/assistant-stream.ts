@@ -1,9 +1,9 @@
 /** Process-local assistant state retained for reconnecting Web followers. */
 
-import type { AssistantStreamFrame } from '@liusiqi-dev/dsh-agent'
-import { AssistantStreamAccumulator } from '@liusiqi-dev/dsh-llm'
-import type { SessionSeqCursor } from '@liusiqi-dev/dsh-session'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
+import type { AssistantStreamFrame } from '@liusiqi-dev/sqh-agent'
+import { AssistantStreamAccumulator } from '@liusiqi-dev/sqh-llm'
+import type { SessionSeqCursor } from '@liusiqi-dev/sqh-session'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
 import type {
   SessionAssistantStreamAttempt,
   SessionAssistantStreamBaseline,

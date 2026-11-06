@@ -240,7 +240,7 @@ function browserFixture(bootstrap: InspectorHandle['endpoint']['client']): strin
   const boot = {
     rev: 'browser-test',
     entries: [{
-      id: '@liusiqi-dev/dsh-experimental-inspector',
+      id: '@liusiqi-dev/sqh-experimental-inspector',
       url: '/client.js?rev=browser-test',
       rev: 'browser-test',
     }],

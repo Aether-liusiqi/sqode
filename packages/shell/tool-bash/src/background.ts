@@ -3,13 +3,13 @@
  * registry records, the pull sources it pumps, and the ring read a foreground
  * call renders when it stops waiting.
  *
- * @module @liusiqi-dev/dsh-tool-bash/background
+ * @module @liusiqi-dev/sqh-tool-bash/background
  */
 
-import type { SandboxMode } from '@liusiqi-dev/dsh-sandbox'
-import { escalationHintMarker, sandboxDenialMarker } from '@liusiqi-dev/dsh-sandbox'
-import type { ShellProcess, ShellSandboxInfo } from '@liusiqi-dev/dsh-shell'
-import type { JobChunk, JobHooks, JobOutcome, JobOutputSource } from '@liusiqi-dev/dsh-jobs'
+import type { SandboxMode } from '@liusiqi-dev/sqh-sandbox'
+import { escalationHintMarker, sandboxDenialMarker } from '@liusiqi-dev/sqh-sandbox'
+import type { ShellProcess, ShellSandboxInfo } from '@liusiqi-dev/sqh-shell'
+import type { JobChunk, JobHooks, JobOutcome, JobOutputSource } from '@liusiqi-dev/sqh-jobs'
 
 /**
  * Sandbox facts worth the terminal detail: a runner that never ran the

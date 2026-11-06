@@ -6,7 +6,7 @@
  * which areas are involved, and what the user wants to say about them.
  */
 import { useState } from 'react'
-import { Button, IconCloseOutlineRegular, Modal } from '@liusiqi-dev/dsh-client-ui-primitives'
+import { Button, IconCloseOutlineRegular, Modal } from '@liusiqi-dev/sqh-client-ui-primitives'
 import type { AccountKey } from './locales.ts'
 import css from './FeedbackDialog.module.css'
 

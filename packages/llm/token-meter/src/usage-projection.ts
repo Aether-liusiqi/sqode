@@ -3,11 +3,11 @@
  */
 
 import { z } from 'zod'
-import { lastAssistantStreamChunk, type TokenUsage } from '@liusiqi-dev/dsh-llm'
-import type {} from '@liusiqi-dev/dsh-llm-retry/types'
-import { SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
-import type { ProjectionDefinition } from '@liusiqi-dev/dsh-session-projection'
+import { lastAssistantStreamChunk, type TokenUsage } from '@liusiqi-dev/sqh-llm'
+import type {} from '@liusiqi-dev/sqh-llm-retry/types'
+import { SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
+import type { ProjectionDefinition } from '@liusiqi-dev/sqh-session-projection'
 import type { ContextPressureProjection, TokenUsageProjection } from './projection.ts'
 import { foldSurfaceProjection } from './surface-projection.ts'
 
@@ -85,7 +85,7 @@ function usageOf(event: SessionEvent): TokenUsage | undefined {
   return lastAssistantStreamChunk(event.data.stream, 'usage')?.usage
 }
 
-declare module '@liusiqi-dev/dsh-session-projection/types' {
+declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionStateMap {
     tokenUsage: TokenUsageState
     contextPressure: ContextPressureState

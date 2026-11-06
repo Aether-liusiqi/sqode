@@ -1,13 +1,13 @@
 /** Package-owned relationship invariant for webhook-origin prompt admission. */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-agent'
-import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
-import type { Session, SessionEvent } from '@liusiqi-dev/dsh-session'
-import type {} from '@liusiqi-dev/dsh-workspace'
+import type {} from '@liusiqi-dev/sqh-agent'
+import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
+import type { Session, SessionEvent } from '@liusiqi-dev/sqh-session'
+import type {} from '@liusiqi-dev/sqh-workspace'
 import type {} from './types.ts'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-webhook'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-webhook'
 
 /** Cordis invariant-companion plugin name. */
 export const name = 'webhook-invariant'

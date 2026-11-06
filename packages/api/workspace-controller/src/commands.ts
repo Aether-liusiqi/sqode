@@ -1,7 +1,7 @@
 /** Workspace command implementation and stable Remote failure mapping. */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { SessionActivity, Workspace } from '@liusiqi-dev/dsh-workspace'
+import type { SessionActivity, Workspace } from '@liusiqi-dev/sqh-workspace'
 import {
   WorkspaceActiveSessionError,
   WorkspaceArchivedSessionPinError,
@@ -9,9 +9,9 @@ import {
   WorkspaceMoveInvalidError,
   WorkspaceOrderInvalidError,
   WorkspaceUnknownSessionError,
-} from '@liusiqi-dev/dsh-workspace'
-import type {} from '@liusiqi-dev/dsh-session-persistence'
-import { RemoteError, remoteErrorOf } from '@liusiqi-dev/dsh-typert-protocol'
+} from '@liusiqi-dev/sqh-workspace'
+import type {} from '@liusiqi-dev/sqh-session-persistence'
+import { RemoteError, remoteErrorOf } from '@liusiqi-dev/sqh-typert-protocol'
 import { workspaceView } from './feed.ts'
 import type {
   WorkspaceArchiveSessionRequest,

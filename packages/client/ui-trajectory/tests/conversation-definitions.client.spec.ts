@@ -2,15 +2,15 @@ import type { Context } from '@liusiqi-dev/cordis'
 import { describe, expect, it } from 'vitest'
 import type {
   SessionEventLikeEntry, SessionLiveEventEntry,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
 import type {
   ConversationNodeDefinition, ConversationViewDefinition,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import { ConversationNodeAssembler, inspectRequestPrompt } from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session/types'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import { ConversationNodeAssembler, inspectRequestPrompt } from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session/types'
 import { inspectSystemPrompt } from '../../ui-conversation/src/client/contract/system-prompt.ts'
-import { AssistantStreamAccumulator } from '@liusiqi-dev/dsh-llm/assistant-stream'
-import type { StreamChunk } from '@liusiqi-dev/dsh-llm'
+import { AssistantStreamAccumulator } from '@liusiqi-dev/sqh-llm/assistant-stream'
+import type { StreamChunk } from '@liusiqi-dev/sqh-llm'
 import { registerTrajectoryAssistantDefinition } from '../src/client/trajectory-assistant-definition.ts'
 import { registerTrajectoryCompactionDefinitions } from '../src/client/trajectory-compaction-definition.ts'
 import type { TrajectorySnapshot } from '../src/client/trajectory-contract.ts'

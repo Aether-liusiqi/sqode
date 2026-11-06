@@ -3,18 +3,18 @@
  *
  * This package owns the Service Definition role of the skill capability seam.
  * Concrete
- * providers such as `@liusiqi-dev/dsh-skill-filesystem` decide where skills come
+ * providers such as `@liusiqi-dev/sqh-skill-filesystem` decide where skills come
  * from; this service only merges provider catalogs, resolves the winning skill
  * for a name, and exposes the winning summaries and definitions to consumers.
  *
- * @module @liusiqi-dev/dsh-skill
+ * @module @liusiqi-dev/sqh-skill
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-llm'
-import { assertNever } from '@liusiqi-dev/dsh-util-values'
-import { NamedEntries, ScopedLayers, scopeChainOf, scopeOf } from '@liusiqi-dev/dsh-scope'
-import type { ScopeKey, ScopeLayer } from '@liusiqi-dev/dsh-scope'
+import type {} from '@liusiqi-dev/sqh-llm'
+import { assertNever } from '@liusiqi-dev/sqh-util-values'
+import { NamedEntries, ScopedLayers, scopeChainOf, scopeOf } from '@liusiqi-dev/sqh-scope'
+import type { ScopeKey, ScopeLayer } from '@liusiqi-dev/sqh-scope'
 import z from '@liusiqi-dev/schemastery'
 import type Schema from '@liusiqi-dev/schemastery'
 
@@ -151,7 +151,7 @@ export interface SkillInvocationSource {
   readonly form: 'instructions'
 }
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     /** A user-explicit skill invocation injected by the host. */
     'skill-invocation': SkillInvocationSource

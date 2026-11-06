@@ -3,7 +3,7 @@ description: "面向用户与维护者的进程外 ACP（Agent Client Protocol�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-subagent-acp
+# @liusiqi-dev/sqh-subagent-acp
 
 [English](README.md) | 中文
 
@@ -50,7 +50,7 @@ Siqi Harness 子进程使用产品启动器和一个显式的绝对路径 `SQODE
 
 ```yaml
 - id: subagent-acp
-  name: '@liusiqi-dev/dsh-subagent-acp'
+  name: '@liusiqi-dev/sqh-subagent-acp'
   config:
     providerName: acp
     command: dsh

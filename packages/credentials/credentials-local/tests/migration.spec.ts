@@ -7,8 +7,8 @@ import { Context } from '@liusiqi-dev/cordis'
 import { mkdtemp, readFile, rm, stat } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { credentialRef } from '@liusiqi-dev/dsh-credentials'
-import { withFileLock, writeFileAtomic } from '@liusiqi-dev/dsh-atomic-write'
+import { credentialRef } from '@liusiqi-dev/sqh-credentials'
+import { withFileLock, writeFileAtomic } from '@liusiqi-dev/sqh-atomic-write'
 import { LocalCredentialProvider, renderFlatLayoutMigration } from '../src/index.ts'
 
 /** Credential documents are seeded owner-only, exactly as the provider creates them. */

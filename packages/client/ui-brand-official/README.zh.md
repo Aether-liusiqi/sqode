@@ -3,7 +3,7 @@ description: "面向侧栏的官方 Siqi Harness 品牌填充，仅在官方构�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-ui-brand-official
+# @liusiqi-dev/sqh-client-ui-brand-official
 
 [English](README.md) | 中文
 

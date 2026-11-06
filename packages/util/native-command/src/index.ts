@@ -1,6 +1,6 @@
 /**
  * Host-native command execution and path-opening utilities.
- * @module @liusiqi-dev/dsh-native-command
+ * @module @liusiqi-dev/sqh-native-command
  */
 
 export { runNativeCommand } from './runner.ts'

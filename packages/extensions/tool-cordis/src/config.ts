@@ -3,8 +3,8 @@
 import type { Context } from '@liusiqi-dev/cordis'
 import type { Entry } from '@liusiqi-dev/cordis-plugin-loader'
 // Declares `Context.pluginPackages`, the profile package lookup that resolves an entry's package directory.
-import { createConfigProjector, isNativeConfigSchema, LOADER_EXPRESSION_SCHEMA, type NativeConfigSchema } from '@liusiqi-dev/dsh-app-boot'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
+import { createConfigProjector, isNativeConfigSchema, LOADER_EXPRESSION_SCHEMA, type NativeConfigSchema } from '@liusiqi-dev/sqh-app-boot'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
 
 /**
  * `schema`: the running plugin declares a native Schemastery Config. `absent`: it runs without one.

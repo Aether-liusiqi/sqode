@@ -5,7 +5,7 @@
  */
 import { Context } from '@liusiqi-dev/cordis'
 import { describe, expect, it } from 'vitest'
-import InvariantRegistry from '@liusiqi-dev/dsh-invariants'
+import InvariantRegistry from '@liusiqi-dev/sqh-invariants'
 import * as RendererInvariant from '../src/invariant.ts'
 import { SlotRegistry } from '../src/client/registry.ts'
 

@@ -6,7 +6,7 @@
  * turn of a session and target history paging at exact seqs without holding
  * the events. The plugin owns only the fold; delivery is the seam's.
  *
- * @module @liusiqi-dev/dsh-session-turn-outline
+ * @module @liusiqi-dev/sqh-session-turn-outline
  */
 
 import type { Context } from '@liusiqi-dev/cordis'

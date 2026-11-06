@@ -1,21 +1,21 @@
-import { ToolCallId, createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
+import { ToolCallId, createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { type Agent, type AgentOptions } from '@liusiqi-dev/dsh-agent'
-import { SessionId } from '@liusiqi-dev/dsh-session'
-import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
-import { mountAgentLoopTestDependencies } from '@liusiqi-dev/dsh-agent-loop-testkit'
-import InvariantRegistry from '@liusiqi-dev/dsh-invariants'
-import * as SessionInvariant from '@liusiqi-dev/dsh-session/invariant'
-import * as AgentInvariant from '@liusiqi-dev/dsh-agent/invariant'
-import * as AgentLoopInvariant from '@liusiqi-dev/dsh-agent-loop/invariant'
-import SubagentRuntime, { snapshotSubagentDescriptor } from '@liusiqi-dev/dsh-subagent'
-import { defineContentToolFixture } from '@liusiqi-dev/dsh-tools'
+import { type Agent, type AgentOptions } from '@liusiqi-dev/sqh-agent'
+import { SessionId } from '@liusiqi-dev/sqh-session'
+import AgentLoop from '@liusiqi-dev/sqh-agent-loop'
+import { mountAgentLoopTestDependencies } from '@liusiqi-dev/sqh-agent-loop-testkit'
+import InvariantRegistry from '@liusiqi-dev/sqh-invariants'
+import * as SessionInvariant from '@liusiqi-dev/sqh-session/invariant'
+import * as AgentInvariant from '@liusiqi-dev/sqh-agent/invariant'
+import * as AgentLoopInvariant from '@liusiqi-dev/sqh-agent-loop/invariant'
+import SubagentRuntime, { snapshotSubagentDescriptor } from '@liusiqi-dev/sqh-subagent'
+import { defineContentToolFixture } from '@liusiqi-dev/sqh-tools'
 import { maxTokensResponse, MockAdapter, textResponse, toolCallResponse } from '../../../core/agent-loop/tests/mock-adapter.ts'
 import { startInProcessRun } from '../src/index.ts'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'late-metadata': { kind: 'late-metadata' } & ContextFormed
   }

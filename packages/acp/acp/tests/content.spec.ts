@@ -1,8 +1,8 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import type { Context } from '@liusiqi-dev/cordis'
-import { AttachmentError, AttachmentId } from '@liusiqi-dev/dsh-attachment'
-import type { ImageAttachmentRef, SaveImageAttachment } from '@liusiqi-dev/dsh-attachment'
-import type { ModelSelection } from '@liusiqi-dev/dsh-agent'
+import { AttachmentError, AttachmentId } from '@liusiqi-dev/sqh-attachment'
+import type { ImageAttachmentRef, SaveImageAttachment } from '@liusiqi-dev/sqh-attachment'
+import type { ModelSelection } from '@liusiqi-dev/sqh-agent'
 import {
   AcpContentError,
   admitAcpPrompt,

@@ -11,10 +11,10 @@ import * as ReactJsxRuntime from 'react/jsx-runtime'
 import * as ReactDom from 'react-dom'
 import * as ReactDomClient from 'react-dom/client'
 import * as Cordis from '@liusiqi-dev/cordis'
-import * as ClientStore from '@liusiqi-dev/dsh-client-store'
-import * as UiSlots from '@liusiqi-dev/dsh-client-ui-slots'
-import * as UiPrimitives from '@liusiqi-dev/dsh-client-ui-primitives'
-import * as UiDockkit from '@liusiqi-dev/dsh-client-ui-dockkit'
+import * as ClientStore from '@liusiqi-dev/sqh-client-store'
+import * as UiSlots from '@liusiqi-dev/sqh-client-ui-slots'
+import * as UiPrimitives from '@liusiqi-dev/sqh-client-ui-primitives'
+import * as UiDockkit from '@liusiqi-dev/sqh-client-ui-dockkit'
 import type { PlatformModule } from './platform.ts'
 
 /**
@@ -31,9 +31,9 @@ export function getStaticModules(): Record<string, unknown> {
     'react-dom': ReactDom,
     'react-dom/client': ReactDomClient,
     '@liusiqi-dev/cordis': Cordis,
-    '@liusiqi-dev/dsh-client-store': ClientStore,
-    '@liusiqi-dev/dsh-client-ui-slots': UiSlots,
-    '@liusiqi-dev/dsh-client-ui-primitives': UiPrimitives,
-    '@liusiqi-dev/dsh-client-ui-dockkit': UiDockkit,
+    '@liusiqi-dev/sqh-client-store': ClientStore,
+    '@liusiqi-dev/sqh-client-ui-slots': UiSlots,
+    '@liusiqi-dev/sqh-client-ui-primitives': UiPrimitives,
+    '@liusiqi-dev/sqh-client-ui-dockkit': UiDockkit,
   } satisfies Record<PlatformModule, unknown>
 }

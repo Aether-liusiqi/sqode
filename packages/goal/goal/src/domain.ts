@@ -4,10 +4,10 @@
  * event. Kept separate from ./types.ts (the pure client-safe outlet) because
  * these declarations pull dsh-agent, dsh-llm, and cordis into the program —
  * the one-program-per-side layout forbids that on client aggregates.
- * @module @liusiqi-dev/dsh-goal
+ * @module @liusiqi-dev/sqh-goal
  */
 
-import type { Agent } from '@liusiqi-dev/dsh-agent'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
 import type { GoalId, GoalRef, GoalSnapshot, GoalView } from './types.ts'
 
 /** Goal state-changing verbs recorded in the durable source change. */
@@ -52,13 +52,13 @@ export interface GoalMessageSource {
   readonly round: number
 }
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     goal: GoalMessageSource
   }
 }
 
-declare module '@liusiqi-dev/dsh-session/types' {
+declare module '@liusiqi-dev/sqh-session/types' {
   interface SessionEventMap {
     /**
      * Complete post-mutation goal state or clear tombstone.
@@ -106,11 +106,11 @@ declare module '@liusiqi-dev/cordis' {
     /**
      * Goal mutation accepted by one live agent. The matching `goal/change`
      * session event has already committed. Listener failures are contained.
-     * Scope-filtered dispatch (`@liusiqi-dev/dsh-scope`): agent-scoped listeners receive only that agent.
+     * Scope-filtered dispatch (`@liusiqi-dev/sqh-scope`): agent-scoped listeners receive only that agent.
      * @param payload.agent - agent whose session owns the goal.
      * @param payload.change - fresh current projection or clear tombstone.
      * @mode emit
      */
-    'goal/changed'(this: import('@liusiqi-dev/dsh-scope').Scoped<Agent>, payload: { agent: Agent; change: GoalChanged }): void
+    'goal/changed'(this: import('@liusiqi-dev/sqh-scope').Scoped<Agent>, payload: { agent: Agent; change: GoalChanged }): void
   }
 }

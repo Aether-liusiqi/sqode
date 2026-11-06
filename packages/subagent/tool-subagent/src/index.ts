@@ -5,26 +5,26 @@
  * Background policy is selected by this plugin's configuration: one-shot
  * calls own a plain Task, while continuable calls use
  * `ctx.subagents.startContinuable()`.
- * @module @liusiqi-dev/dsh-tool-subagent
+ * @module @liusiqi-dev/sqh-tool-subagent
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { scopeChainOf, scopeOf } from '@liusiqi-dev/dsh-scope'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
-import type { Agent, AgentOptions } from '@liusiqi-dev/dsh-agent'
-import { ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
-import { SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { Session } from '@liusiqi-dev/dsh-session'
+import { scopeChainOf, scopeOf } from '@liusiqi-dev/sqh-scope'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
+import type { Agent, AgentOptions } from '@liusiqi-dev/sqh-agent'
+import { ReasoningEffortId } from '@liusiqi-dev/sqh-llm'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
+import { SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { Session } from '@liusiqi-dev/sqh-session'
 import {
   assertSubagentMaxDepth,
   parentAgentOptionsForDelegation,
   settleRun,
-} from '@liusiqi-dev/dsh-subagent'
-import type { SubagentProvider, SubagentResult, SubagentRun } from '@liusiqi-dev/dsh-subagent'
-import type { JobOutcome } from '@liusiqi-dev/dsh-jobs'
+} from '@liusiqi-dev/sqh-subagent'
+import type { SubagentProvider, SubagentResult, SubagentRun } from '@liusiqi-dev/sqh-subagent'
+import type { JobOutcome } from '@liusiqi-dev/sqh-jobs'
 import {
   assertAllowedModelSelection,
   hasConfiguredLlmSelection,
@@ -537,7 +537,7 @@ export function apply(ctx: Context, config: Config, session?: Session): void {
             }
             const jobs = runtimeCtx.get('jobs')
             if (jobs === undefined) {
-              throw new Error('background jobs unavailable: load @liusiqi-dev/dsh-jobs and @liusiqi-dev/dsh-tool-jobs')
+              throw new Error('background jobs unavailable: load @liusiqi-dev/sqh-jobs and @liusiqi-dev/sqh-tool-jobs')
             }
             // One-shot background child: job preflight finishes before the
             // starter can spawn, and the task-owned signal covers startup.
@@ -614,7 +614,7 @@ export function apply(ctx: Context, config: Config, session?: Session): void {
   if (settings === undefined) {
     throw new Error(
       'tool-subagent: `modelSelectionSettings` requires '
-      + '@liusiqi-dev/dsh-tool-subagent/model-selection-settings in the Host scope',
+      + '@liusiqi-dev/sqh-tool-subagent/model-selection-settings in the Host scope',
     )
   }
   const selectForSession = (target: Session): ModelSelectionPolicy | undefined => {

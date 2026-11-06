@@ -1,9 +1,9 @@
 /** Chat-owned conversion from durable Session events to Chat view data. */
 
-import type { ContentBlock, StreamChunk } from '@liusiqi-dev/dsh-llm/types'
+import type { ContentBlock, StreamChunk } from '@liusiqi-dev/sqh-llm/types'
 import type {
   AssistantBlock, ContextProducerView, KnownContextForm,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 
 /* jscpd:ignore-start -- Chat and Trajectory own independent event-to-view projections. */
 

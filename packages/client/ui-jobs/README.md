@@ -3,7 +3,7 @@ description: "The session-header background-job list: expandable streaming outpu
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-ui-jobs
+# @liusiqi-dev/sqh-client-ui-jobs
 
 English | [中文](README.zh.md)
 

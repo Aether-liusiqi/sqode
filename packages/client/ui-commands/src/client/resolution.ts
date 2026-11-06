@@ -1,15 +1,15 @@
 /** Command identity and localized input spelling over the effective Host catalog. */
-import type { CommandDescriptor } from '@liusiqi-dev/dsh-commands/types'
-import type { TranslateNS } from '@liusiqi-dev/dsh-client-locale/client'
+import type { CommandDescriptor } from '@liusiqi-dev/sqh-commands/types'
+import type { TranslateNS } from '@liusiqi-dev/sqh-client-locale/client'
 import { en, zh } from './locales.ts'
 
 const BUILTINS = {
-  goal: '@liusiqi-dev/dsh-command-goal',
-  plan: '@liusiqi-dev/dsh-plan-mode',
-  feedback: '@liusiqi-dev/dsh-command-feedback',
-  compact: '@liusiqi-dev/dsh-command-compact',
-  permission: '@liusiqi-dev/dsh-permission-presets',
-  export: '@liusiqi-dev/dsh-session-log-export',
+  goal: '@liusiqi-dev/sqh-command-goal',
+  plan: '@liusiqi-dev/sqh-plan-mode',
+  feedback: '@liusiqi-dev/sqh-command-feedback',
+  compact: '@liusiqi-dev/sqh-command-compact',
+  permission: '@liusiqi-dev/sqh-permission-presets',
+  export: '@liusiqi-dev/sqh-session-log-export',
 } as const
 
 /** Names whose first-party definitions have localized client presentation. */

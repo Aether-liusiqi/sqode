@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type {
   ComposerAttachment, ComposerAttachmentsProps, ComposerImageAttachment,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import { IconCloseFillRegular } from '@liusiqi-dev/dsh-client-ui-primitives'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import { IconCloseFillRegular } from '@liusiqi-dev/sqh-client-ui-primitives'
 import { AttachmentRail } from '../AttachmentRail.tsx'
 import type { AttachmentRailItem } from '../AttachmentRail.tsx'
 import { DropOverlay } from '../DropOverlay.tsx'
 import { FileCard } from '../FileCard.tsx'
-import { ImageLightbox } from '@liusiqi-dev/dsh-client-ui-primitives'
+import { ImageLightbox } from '@liusiqi-dev/sqh-client-ui-primitives'
 import { attachmentRailLabels, dropOverlayLabels, fileCardLabels, lightboxLabels } from './labels.ts'
 import { installDocumentDropEvents } from './drop-events.ts'
 import css from './ComposerAttachments.module.css'

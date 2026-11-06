@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-experimental-ptc-runtime-python",
+  "name": "@liusiqi-dev/sqh-experimental-ptc-runtime-python",
   "description": "CPython subprocess implementation of the Siqi Harness PTC execution seam",
   "version": "1.0.0",
   "repository": {
@@ -24,16 +24,16 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@liusiqi-dev/dsh-ptc-runtime": "workspace:*",
-    "@liusiqi-dev/dsh-timeout": "workspace:*",
+    "@liusiqi-dev/sqh-ptc-runtime": "workspace:*",
+    "@liusiqi-dev/sqh-timeout": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-util-values": "workspace:*"
+    "@liusiqi-dev/sqh-util-values": "workspace:*"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-ptc-runtime": "workspace:*",
-    "@liusiqi-dev/dsh-timeout": "workspace:*",
+    "@liusiqi-dev/sqh-ptc-runtime": "workspace:*",
+    "@liusiqi-dev/sqh-timeout": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-util-values": "workspace:*"
+    "@liusiqi-dev/sqh-util-values": "workspace:*"
   },
   "dependencies": {
     "@liusiqi-dev/schemastery": "workspace:~"

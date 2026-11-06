@@ -6,9 +6,9 @@
  */
 import { describe, expect, it } from 'vitest'
 import type { Context } from '@liusiqi-dev/cordis'
-import { CONTEXT_WINDOW_EXCEEDED_CODE, LlmError } from '@liusiqi-dev/dsh-llm'
-import type { GenerateOptions, Message, StreamChunk } from '@liusiqi-dev/dsh-llm'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
+import { CONTEXT_WINDOW_EXCEEDED_CODE, LlmError } from '@liusiqi-dev/sqh-llm'
+import type { GenerateOptions, Message, StreamChunk } from '@liusiqi-dev/sqh-llm'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
 import { summarizeWithLlm } from '../src/summarizer.ts'
 
 const CONFIG = { summarizationProvider: 'test', summarizationModel: 'target', maxTokens: 4096 }

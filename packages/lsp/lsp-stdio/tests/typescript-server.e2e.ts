@@ -10,10 +10,10 @@ import { mkdtemp, mkdir, rm, writeFile, realpath } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { Context } from '@liusiqi-dev/cordis'
-import LocalSubprocessRuntime from '@liusiqi-dev/dsh-subprocess-local'
-import LocalFileSystem from '@liusiqi-dev/dsh-fs-local'
-import Lsp, { type LspQueryRequest, type LspQueryResult } from '@liusiqi-dev/dsh-lsp'
-import * as LspLocal from '@liusiqi-dev/dsh-lsp-stdio'
+import LocalSubprocessRuntime from '@liusiqi-dev/sqh-subprocess-local'
+import LocalFileSystem from '@liusiqi-dev/sqh-fs-local'
+import Lsp, { type LspQueryRequest, type LspQueryResult } from '@liusiqi-dev/sqh-lsp'
+import * as LspLocal from '@liusiqi-dev/sqh-lsp-stdio'
 
 // The server binary is a dev dependency of this package; resolve its pnpm-hoisted .bin path.
 const serverBin = join(

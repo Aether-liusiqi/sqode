@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { SessionFormatEventCollector } from '@liusiqi-dev/dsh-session-format'
+import { SessionFormatEventCollector } from '@liusiqi-dev/sqh-session-format'
 import type {
   SessionFormatArtifact,
   SessionFormatArtifactDecoder,
@@ -8,7 +8,7 @@ import type {
   SessionFormatJsonValue,
   SessionFormatMigrationContext,
   SessionFormatRecovery,
-} from '@liusiqi-dev/dsh-session-format'
+} from '@liusiqi-dev/sqh-session-format'
 import {
   releasedV0SessionFormatCodec,
   releasedV1SessionFormatCodec,

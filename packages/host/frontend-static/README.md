@@ -3,7 +3,7 @@ description: "SPA dist server for the Web shell: claims the webserver fallback s
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-host-frontend-static
+# @liusiqi-dev/sqh-host-frontend-static
 
 English | [中文](README.zh.md)
 
@@ -30,7 +30,7 @@ Compose this plugin in a browser-facing host that serves the built Web shell: it
 ### Minimal configuration
 
 ```yaml
-- name: '@liusiqi-dev/dsh-host-frontend-static'
+- name: '@liusiqi-dev/sqh-host-frontend-static'
   config:
     distIndex: /absolute/path/to/dist/index.html
 ```

@@ -6,17 +6,17 @@ import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import * as yaml from 'js-yaml'
 import { describe, expect, it, vi } from 'vitest'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import SubagentRuntime from '@liusiqi-dev/dsh-subagent'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import SubagentRuntime from '@liusiqi-dev/sqh-subagent'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/sqh-timeout'
 import type {
   SubprocessHandle,
   SubprocessOutcome,
   SubprocessSpawnSpec,
-} from '@liusiqi-dev/dsh-subprocess'
-import LocalSubprocessRuntime from '@liusiqi-dev/dsh-subprocess-local'
+} from '@liusiqi-dev/sqh-subprocess'
+import LocalSubprocessRuntime from '@liusiqi-dev/sqh-subprocess-local'
 import * as codex from '../src/index.ts'
 import {
   CODEX_PERMISSION_MODES,
@@ -366,11 +366,11 @@ describe('task admission and package contracts', () => {
     expect(manifest.dsh?.bundle?.patch).toBe('./cordis.patch.yml')
     expect(manifest.files).toContain('cordis.patch.yml')
     expect(manifest.dependencies).toHaveProperty(
-      '@liusiqi-dev/dsh-sdk-protocol',
+      '@liusiqi-dev/sqh-sdk-protocol',
       'workspace:*',
     )
     expect(manifest.dependencies).toHaveProperty('@openai/codex', CODEX_VERSION)
-    expect(manifest.dependencies).not.toHaveProperty('@liusiqi-dev/dsh-subagent-claude-code')
+    expect(manifest.dependencies).not.toHaveProperty('@liusiqi-dev/sqh-subagent-claude-code')
 
     const codexPackageJson = fileURLToPath(import.meta.resolve('@openai/codex/package.json'))
     const codexManifest = JSON.parse(readFileSync(codexPackageJson, 'utf8')) as {
@@ -408,7 +408,7 @@ describe('task admission and package contracts', () => {
       : []
     expect(rows).toEqual([{
       id: 'subagent-codex',
-      name: '@liusiqi-dev/dsh-subagent-codex',
+      name: '@liusiqi-dev/sqh-subagent-codex',
     }])
     expect(JSON.stringify(rows)).not.toContain('tool-subagent')
   })

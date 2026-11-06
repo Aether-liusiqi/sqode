@@ -1,9 +1,9 @@
 /** Tab-local directory caches, expansion preferences, and refresh settings. */
 import { describe, expect, it } from 'vitest'
-import { RemoteError } from '@liusiqi-dev/dsh-client-test-runtime'
+import { RemoteError } from '@liusiqi-dev/sqh-client-test-runtime'
 import { createFilesStore } from '../src/client/store.ts'
 import type { DirLevel } from '../src/client/store.ts'
-import type { TabId } from '@liusiqi-dev/dsh-client-ui-dockkit'
+import type { TabId } from '@liusiqi-dev/sqh-client-ui-dockkit'
 
 const ROOT = '/work/app'
 const TAB = 'tab-1' as TabId

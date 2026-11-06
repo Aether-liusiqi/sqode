@@ -1,4 +1,4 @@
-import OTel from '@liusiqi-dev/dsh-otel'
+import OTel from '@liusiqi-dev/sqh-otel'
 import { createServer, type IncomingHttpHeaders } from 'node:http'
 import { once } from 'node:events'
 import { gunzipSync } from 'node:zlib'

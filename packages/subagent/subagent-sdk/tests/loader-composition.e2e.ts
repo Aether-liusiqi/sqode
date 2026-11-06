@@ -13,8 +13,8 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { describe, expect, it } from 'vitest'
-import { type SessionEvent } from '@liusiqi-dev/dsh-session'
-import { runLoaderSmoke } from '@liusiqi-dev/dsh-loader-smoke'
+import { type SessionEvent } from '@liusiqi-dev/sqh-session'
+import { runLoaderSmoke } from '@liusiqi-dev/sqh-loader-smoke'
 
 const fixtureDir = new URL('./fixtures/loader/', import.meta.url)
 const driver = fileURLToPath(new URL('driver.ts', fixtureDir))

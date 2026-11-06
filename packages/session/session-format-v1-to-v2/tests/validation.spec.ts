@@ -5,12 +5,12 @@ import type {
   SessionFormatHeader,
   SessionFormatJsonObject,
   SessionFormatJsonValue,
-} from '@liusiqi-dev/dsh-session-format'
+} from '@liusiqi-dev/sqh-session-format'
 import {
   RELEASED_V2_EVENT_TYPES,
   assertReleasedV2Header,
   restoreReleasedV2Artifact,
-} from '@liusiqi-dev/dsh-session-format-v1-to-v2'
+} from '@liusiqi-dev/sqh-session-format-v1-to-v2'
 import { assertReleasedV2Artifact } from '../src/testing/validation.ts'
 
 const textBlock = { type: 'text', text: 'hello' } as const

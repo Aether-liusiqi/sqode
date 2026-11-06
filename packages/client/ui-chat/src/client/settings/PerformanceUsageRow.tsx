@@ -1,6 +1,6 @@
 /** General Settings row for performance and usage detail. */
 
-import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
 import type { PerformanceUsageMode } from '../../chat-settings.ts'
 import type { PerformanceUsageInjected } from '../contract/slots.ts'
 import type { ChatKey } from '../locale.ts'

@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-webhook",
+  "name": "@liusiqi-dev/sqh-webhook",
   "description": "Fire-and-forget webhook rule runtime that creates Workspace-backed Siqi Harness Sessions",
   "version": "1.0.0",
   "publishConfig": {
@@ -38,32 +38,32 @@
   "license": "MIT",
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-agent-default-model": "workspace:*",
-    "@liusiqi-dev/dsh-agent-preset-registry": "workspace:*",
-    "@liusiqi-dev/dsh-invariants": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-permission-presets": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-title": "workspace:*",
-    "@liusiqi-dev/dsh-workspace": "workspace:*"
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-agent-default-model": "workspace:*",
+    "@liusiqi-dev/sqh-agent-preset-registry": "workspace:*",
+    "@liusiqi-dev/sqh-invariants": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-permission-presets": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-title": "workspace:*",
+    "@liusiqi-dev/sqh-workspace": "workspace:*"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
     "@liusiqi-dev/cordis-plugin-include": "workspace:~",
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-agent-default-model": "workspace:*",
-    "@liusiqi-dev/dsh-agent-preset-registry": "workspace:*",
-    "@liusiqi-dev/dsh-invariants": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-permission-presets": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-title": "workspace:*",
-    "@liusiqi-dev/dsh-workspace": "workspace:*"
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-agent-default-model": "workspace:*",
+    "@liusiqi-dev/sqh-agent-preset-registry": "workspace:*",
+    "@liusiqi-dev/sqh-invariants": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-permission-presets": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-title": "workspace:*",
+    "@liusiqi-dev/sqh-workspace": "workspace:*"
   },
   "dependencies": {
-    "@liusiqi-dev/dsh-brand": "workspace:*",
-    "@liusiqi-dev/dsh-util-values": "workspace:*"
+    "@liusiqi-dev/sqh-brand": "workspace:*",
+    "@liusiqi-dev/sqh-util-values": "workspace:*"
   }
 }

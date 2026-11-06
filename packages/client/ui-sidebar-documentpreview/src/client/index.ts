@@ -11,15 +11,15 @@
  * client plugin is a type.
  */
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-api-remotes/client'
-import type {} from '@liusiqi-dev/dsh-client-locale/client'
-import type {} from '@liusiqi-dev/dsh-client-resources/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-session/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-sidebar-right/client'
-import type {} from '@liusiqi-dev/dsh-api-gateway/client'
-import type {} from '@liusiqi-dev/dsh-api-workspace-files/remote'
-import type { WorkspaceFileParams } from '@liusiqi-dev/dsh-api-workspace-files/client'
+import type {} from '@liusiqi-dev/sqh-api-remotes/client'
+import type {} from '@liusiqi-dev/sqh-client-locale/client'
+import type {} from '@liusiqi-dev/sqh-client-resources/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-session/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-sidebar-right/client'
+import type {} from '@liusiqi-dev/sqh-api-gateway/client'
+import type {} from '@liusiqi-dev/sqh-api-workspace-files/remote'
+import type { WorkspaceFileParams } from '@liusiqi-dev/sqh-api-workspace-files/client'
 import { TextPreview } from './TextPreview.tsx'
 import type { TextPreviewInjected } from './TextPreview.tsx'
 import { TextTitle } from './TextTitle.tsx'
@@ -61,14 +61,14 @@ declare module '@liusiqi-dev/cordis' {
 /** This package's copy namespace. */
 const NS = 'sidebarDocumentPreview'
 
-declare module '@liusiqi-dev/dsh-client-ui-sidebar-right/client' {
+declare module '@liusiqi-dev/sqh-client-ui-sidebar-right/client' {
   interface SidebarRightResourceParamsMap {
     /** File line navigation supported by the text preview. */
     file: WorkspaceFileParams
   }
 }
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** Text-preview progress, paging, change, control, and failure lines. */
     sidebarDocumentPreview: import('./locales.ts').SidebarDocumentPreviewKey

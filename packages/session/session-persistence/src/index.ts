@@ -3,16 +3,16 @@
  * {@link SessionEvent}s as the event-sourced log and carry non-replayable
  * {@link SessionHeader} metadata separately; callers address one stored
  * session through a {@link SessionHandle} obtained from `create`/`open`.
- * @module @liusiqi-dev/dsh-session-persistence
+ * @module @liusiqi-dev/sqh-session-persistence
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'
-import type { SessionEvent, SessionHeader, SessionId, SessionLogOffset } from '@liusiqi-dev/dsh-session'
+import type { SessionEvent, SessionHeader, SessionId, SessionLogOffset } from '@liusiqi-dev/sqh-session'
 import type { SessionHandle, SessionAccess } from './handle.ts'
 import type { SessionPersistenceRevision } from './revision.ts'
 
 // Re-export the metadata vocabulary so Consumers import it from the Service Definition.
-export type { SessionHeader } from '@liusiqi-dev/dsh-session'
+export type { SessionHeader } from '@liusiqi-dev/sqh-session'
 export { SessionPersistenceRevision } from './revision.ts'
 export type {
   SessionAccess,

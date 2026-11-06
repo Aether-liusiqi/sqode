@@ -3,7 +3,7 @@
 import { Context } from '@liusiqi-dev/cordis'
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
-import SkillRegistry from '@liusiqi-dev/dsh-skill'
+import SkillRegistry from '@liusiqi-dev/sqh-skill'
 import { describe, expect, it } from 'vitest'
 import { ACL_DIAGNOSIS_SKILL, registerAclDiagnosisSkill } from '../src/acl-skill.ts'
 

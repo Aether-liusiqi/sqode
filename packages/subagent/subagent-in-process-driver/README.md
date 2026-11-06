@@ -3,7 +3,7 @@ description: "Shared in-process subagent run driver for maintainers and backend 
 kind: "package-library"
 ---
 
-# @liusiqi-dev/dsh-subagent-in-process-driver
+# @liusiqi-dev/sqh-subagent-in-process-driver
 
 English | [中文](README.zh.md)
 

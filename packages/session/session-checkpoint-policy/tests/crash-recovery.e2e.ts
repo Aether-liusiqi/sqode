@@ -8,8 +8,8 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import SessionStore, {
   SessionId, TOOL_OUTCOME_UNKNOWN, interruptedTurnClosers,
   type SessionEvent,
-} from '@liusiqi-dev/dsh-session'
-import JsonlSessionPersistence from '@liusiqi-dev/dsh-session-persistence-jsonl'
+} from '@liusiqi-dev/sqh-session'
+import JsonlSessionPersistence from '@liusiqi-dev/sqh-session-persistence-jsonl'
 
 const repoRoot = fileURLToPath(new URL('../../../../', import.meta.url))
 const childScript = fileURLToPath(new URL('./fixtures/crash-child.ts', import.meta.url))

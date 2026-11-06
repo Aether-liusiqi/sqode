@@ -2,10 +2,10 @@
 
 import { expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import ComputerUseRegistry from '@liusiqi-dev/dsh-computer-use'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
+import ComputerUseRegistry from '@liusiqi-dev/sqh-computer-use'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
 import * as NativeProvider from '../src/index.ts'
 
 it.skipIf(process.env.SQODE_COMPUTER_USE_NATIVE_E2E !== '1')(

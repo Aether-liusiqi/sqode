@@ -1,21 +1,21 @@
 /** Workspace archive and directory UI capability. */
 
 import { Service, type Context } from '@liusiqi-dev/cordis'
-import type { ClientRemote, DirectoryListing, RemoteFailure } from '@liusiqi-dev/dsh-api-remotes/client'
+import type { ClientRemote, DirectoryListing, RemoteFailure } from '@liusiqi-dev/sqh-api-remotes/client'
 import type {
   ISessions,
   SessionCreateError,
   SessionReference,
   SessionTarget,
   SessionListState,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { SubagentAddress } from '@liusiqi-dev/dsh-subagent/client'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { SubagentAddress } from '@liusiqi-dev/sqh-subagent/client'
 import type {
   IWorkspaces, WorkspaceId, WorkspaceSnapshot, WorkspaceView,
-} from '@liusiqi-dev/dsh-api-workspace-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type {} from '@liusiqi-dev/dsh-client-ui-layout/client'
+} from '@liusiqi-dev/sqh-api-workspace-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type {} from '@liusiqi-dev/sqh-client-ui-layout/client'
 import type { RowToast } from './contract/slots.ts'
 import { pinOrderAccounts, pinOrderSource } from './pin-order.ts'
 import type { WorkspaceViewStoreActions } from './stores.ts'

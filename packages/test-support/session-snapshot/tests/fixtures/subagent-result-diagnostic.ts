@@ -5,8 +5,8 @@ import {
   NO_START_CAPABILITIES,
   type ResolvedSubagentStartRequest,
   type SubagentProvider,
-} from '@liusiqi-dev/dsh-subagent'
-import { SessionId } from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-subagent'
+import { SessionId } from '@liusiqi-dev/sqh-session'
 
 export const name = 'subagent-result-diagnostic'
 export const inject = ['subagents']

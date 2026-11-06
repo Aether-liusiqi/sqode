@@ -14,9 +14,9 @@
  */
 
 import { Context } from '@liusiqi-dev/cordis'
-import type { DynamicCordisPackage } from '@liusiqi-dev/dsh-api-remotes/client'
-import type { SlotRegistry } from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type { ThemeRuntime } from '@liusiqi-dev/dsh-client-ui-theme/client'
+import type { DynamicCordisPackage } from '@liusiqi-dev/sqh-api-remotes/client'
+import type { SlotRegistry } from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type { ThemeRuntime } from '@liusiqi-dev/sqh-client-ui-theme/client'
 
 /** Facade verbs beyond declared services (host CTX_VERBS twin). */
 const CTX_VERBS = new Set([

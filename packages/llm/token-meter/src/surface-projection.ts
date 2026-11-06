@@ -12,13 +12,13 @@
  * armed claim folds with zero delta because bounded state cannot reconstruct
  * the replaced range; this preserves replay at the cost of possible drift.
  *
- * @module @liusiqi-dev/dsh-token-meter/surface-projection
+ * @module @liusiqi-dev/sqh-token-meter/surface-projection
  */
 
-import { deriveEventMessage, isSurfaceEvent, SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
+import { deriveEventMessage, isSurfaceEvent, SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
 // Type-only: the `compaction/*` SessionEventMap merges (shadow-price events).
-import type {} from '@liusiqi-dev/dsh-compaction'
+import type {} from '@liusiqi-dev/sqh-compaction'
 import { estimateMessage } from './estimate.ts'
 
 /**

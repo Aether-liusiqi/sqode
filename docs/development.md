@@ -74,7 +74,7 @@ The root build follows the generated dependency order:
 ```sh
 tsc -b tsconfig.host.json
 tsdown --env.SQODE_BUILD_FACE host
-pnpm --filter @liusiqi-dev/dsh-desktop run bundle
+pnpm --filter @liusiqi-dev/sqh-desktop run bundle
 tsc -b tsconfig.client.json
 tsdown --env.SQODE_BUILD_FACE client
 pnpm run build:web

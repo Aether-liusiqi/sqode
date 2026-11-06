@@ -3,7 +3,7 @@ description: "Live graph synchronization and development bundle reloads for Web 
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-hmr
+# @liusiqi-dev/sqh-client-hmr
 
 English | [中文](README.zh.md)
 

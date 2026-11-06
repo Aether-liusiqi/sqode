@@ -1,12 +1,12 @@
 /**
  * Publish connection-owned MCP resources and literal server instructions.
  *
- * @module @liusiqi-dev/dsh-mcp-client
+ * @module @liusiqi-dev/sqh-mcp-client
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { McpResourceProvider } from '@liusiqi-dev/dsh-mcp-resources'
-import type {} from '@liusiqi-dev/dsh-system-prompt'
+import type { McpResourceProvider } from '@liusiqi-dev/sqh-mcp-resources'
+import type {} from '@liusiqi-dev/sqh-system-prompt'
 
 /** Connection-owned values used by the resource and prompt consumers. */
 export interface ServerContext {

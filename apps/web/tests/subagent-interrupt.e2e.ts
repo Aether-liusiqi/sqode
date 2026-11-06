@@ -11,8 +11,8 @@ import { mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
-import { SessionId as sessionId, type SessionId } from '@liusiqi-dev/dsh-session'
-import type {} from '@liusiqi-dev/dsh-agent'
+import { SessionId as sessionId, type SessionId } from '@liusiqi-dev/sqh-session'
+import type {} from '@liusiqi-dev/sqh-agent'
 import { launchWebScaffold, readPersistedEvents, webSnapshotMode, type WebScaffold } from './scaffold.ts'
 
 const MODE = webSnapshotMode()

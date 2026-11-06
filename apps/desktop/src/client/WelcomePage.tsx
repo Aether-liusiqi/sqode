@@ -1,9 +1,9 @@
 /** Desktop welcome presentation; account and credential operations stay in the preload. */
 import { useEffect, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
-import { Toast } from '@liusiqi-dev/dsh-client-ui-primitives/src/Toast.tsx'
-import { StateDot } from '@liusiqi-dev/dsh-client-ui-primitives/src/StateDot.tsx'
-import type { AccountView } from '@liusiqi-dev/dsh-deepseek-account/types'
+import { Toast } from '@liusiqi-dev/sqh-client-ui-primitives/src/Toast.tsx'
+import { StateDot } from '@liusiqi-dev/sqh-client-ui-primitives/src/StateDot.tsx'
+import type { AccountView } from '@liusiqi-dev/sqh-deepseek-account/types'
 import type { WelcomeApi } from '../welcome-api.ts'
 
 type Page = 'entry' | 'key' | 'account'

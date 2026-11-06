@@ -2,9 +2,9 @@
  * Host desktop availability, file associations, and open/reveal actions over the Session Remote.
  * The desktop answer is read once per page; a failed read renders no control.
  */
-import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { RemoteResult } from '@liusiqi-dev/dsh-api-remotes/client'
-import type { SessionOpenWorkspacePathRequest, SessionWorkspacePathApplication } from '@liusiqi-dev/dsh-api-session-controller/types'
+import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { RemoteResult } from '@liusiqi-dev/sqh-api-remotes/client'
+import type { SessionOpenWorkspacePathRequest, SessionWorkspacePathApplication } from '@liusiqi-dev/sqh-api-session-controller/types'
 
 /** What a path gesture asks of the Host desktop: the default application, or the file manager showing the file. */
 export type OpenInAppPathAction = 'open' | 'reveal'

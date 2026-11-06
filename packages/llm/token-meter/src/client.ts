@@ -1,7 +1,7 @@
 /**
  * Client-namespace projection of token-meter's browser-safe contracts and folds.
  *
- * @module @liusiqi-dev/dsh-token-meter/client
+ * @module @liusiqi-dev/sqh-token-meter/client
  */
 
 export type * from './projection.ts'

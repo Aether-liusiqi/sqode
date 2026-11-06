@@ -1,7 +1,7 @@
 import { createRequire } from 'node:module'
 import { describe, expect, it } from 'vitest'
-import { APP_IDENTITY, attributionHeaders, userAgent } from '@liusiqi-dev/dsh-llm'
-import type { AppIdentity } from '@liusiqi-dev/dsh-llm'
+import { APP_IDENTITY, attributionHeaders, userAgent } from '@liusiqi-dev/sqh-llm'
+import type { AppIdentity } from '@liusiqi-dev/sqh-llm'
 
 const manifest = createRequire(import.meta.url)('../package.json') as { version: string }
 

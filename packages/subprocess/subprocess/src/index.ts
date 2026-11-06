@@ -4,12 +4,12 @@
  * collected stdio, and one terminal-process primitive. Command defaulting,
  * shell semantics, deadlines, protocol framing, terminal readiness, and
  * presentation belong to consumers. The local implementation lives in
- * `@liusiqi-dev/dsh-subprocess-local`.
- * @module @liusiqi-dev/dsh-subprocess
+ * `@liusiqi-dev/sqh-subprocess-local`.
+ * @module @liusiqi-dev/sqh-subprocess
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'
-import { proxyEnvironmentForChild } from '@liusiqi-dev/dsh-http-proxy'
+import { proxyEnvironmentForChild } from '@liusiqi-dev/sqh-http-proxy'
 import { SQODE_ENV_PREFIX } from './types.ts'
 import type { SubprocessHandle, SubprocessSpawnSpec } from './types.ts'
 import type { SubprocessTerminalEnvironment, SubprocessTerminalHandle, SubprocessTerminalSpawnSpec } from './types.ts'

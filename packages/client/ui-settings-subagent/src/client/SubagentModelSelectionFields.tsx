@@ -1,7 +1,7 @@
 /** User control for model-selectable subagent delegation in new sessions. */
 
-import { Switch } from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { PropsLocale } from '@liusiqi-dev/dsh-client-ui-slots'
+import { Switch } from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { PropsLocale } from '@liusiqi-dev/sqh-client-ui-slots'
 import type {
   SubagentModelCandidate,
   SubagentModelSelectionCardFace,

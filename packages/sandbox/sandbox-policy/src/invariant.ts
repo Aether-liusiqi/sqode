@@ -1,11 +1,11 @@
-/** Package-owned session-event invariants for sandbox policy. @module @liusiqi-dev/dsh-sandbox-policy/invariant */
+/** Package-owned session-event invariants for sandbox policy. @module @liusiqi-dev/sqh-sandbox-policy/invariant */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Session, SessionEvent } from '@liusiqi-dev/dsh-session'
-import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
+import type { Session, SessionEvent } from '@liusiqi-dev/sqh-session'
+import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
 import { SANDBOX_MODES } from './session-mode.ts'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-sandbox-policy'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-sandbox-policy'
 
 /** Cordis companion plugin name. */
 export const name = 'sandbox-policy-invariant'

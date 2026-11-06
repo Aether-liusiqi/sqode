@@ -10,10 +10,10 @@ import { fileURLToPath } from 'node:url'
 import type { Browser, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
-import { canonicalPath } from '@liusiqi-dev/dsh-sandbox'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
-import type { WebTerminalId } from '@liusiqi-dev/dsh-api-terminal-controller/types'
-import type {} from '@liusiqi-dev/dsh-api-terminal-controller'
+import { canonicalPath } from '@liusiqi-dev/sqh-sandbox'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
+import type { WebTerminalId } from '@liusiqi-dev/sqh-api-terminal-controller/types'
+import type {} from '@liusiqi-dev/sqh-api-terminal-controller'
 import {
   assertFinalWorkspaceSnapshot, assertFixtureInventory, fixtureUserPrompts, launchWebScaffold, recordFixture,
   watchConsole, webSnapshotMode, type WebScaffold,

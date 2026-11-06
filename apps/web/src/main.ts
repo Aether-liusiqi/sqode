@@ -1,6 +1,6 @@
 /** Browser entry for the Web client. */
-import '@liusiqi-dev/dsh-client-ui-theme/brand-font.css'
-import { AppWebEntry, applyIndexInjections } from '@liusiqi-dev/dsh-client-web'
+import '@liusiqi-dev/sqh-client-ui-theme/brand-font.css'
+import { AppWebEntry, applyIndexInjections } from '@liusiqi-dev/sqh-client-web'
 
 interface DesktopBootGlobal {
   dshDesktopBoot?: {

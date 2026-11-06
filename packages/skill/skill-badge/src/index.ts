@@ -1,7 +1,7 @@
 /**
  * Bundled `dsh-badge` skill provider.
  *
- * @module @liusiqi-dev/dsh-skill-badge
+ * @module @liusiqi-dev/sqh-skill-badge
  */
 
 import { readFile } from 'node:fs/promises'
@@ -12,7 +12,7 @@ import {
   type SkillCandidate,
   type SkillDefinition,
   type SkillProvider,
-} from '@liusiqi-dev/dsh-skill'
+} from '@liusiqi-dev/sqh-skill'
 
 const PROVIDER_NAME = 'dsh-badge'
 const SKILL_BODY_URL = new URL('../assets/dsh-badge.md', import.meta.url)

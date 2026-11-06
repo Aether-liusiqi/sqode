@@ -7,15 +7,15 @@
  */
 
 // Type-only: pulls the locale plugin's Context merge (ctx.locale).
-import type {} from '@liusiqi-dev/dsh-client-locale/client'
+import type {} from '@liusiqi-dev/sqh-client-locale/client'
 // Type-only: the ctx.configForms Context merge. Cross-plugin collaboration
 // goes through the service, never a value import (client bundle purity gate).
-import type {} from '@liusiqi-dev/dsh-client-ui-settings/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-settings/client'
 // Type-only: the Plugins page's SlotMap merge (the 'plugins.item' entry).
-import type {} from '@liusiqi-dev/dsh-client-ui-plugin-manager/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-plugin-manager/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
 // Type-only: the ctx.remote Context merge and the forwarded-event key face.
-import type {} from '@liusiqi-dev/dsh-api-remotes/client'
+import type {} from '@liusiqi-dev/sqh-api-remotes/client'
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
 import { SubagentCard } from './SubagentCard.tsx'
 import { subagentCardFace } from './subagent-card-controller.ts'
@@ -33,7 +33,7 @@ export type {
 } from './subagent-model-selection-card-controller.ts'
 export type { SubagentSettingsLocaleKey } from './locales.ts'
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** Subagent settings page copy. */
     'settings.subagent': SubagentSettingsLocaleKey

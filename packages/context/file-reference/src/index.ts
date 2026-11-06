@@ -1,11 +1,11 @@
 /**
  * File-reference discovery seam shared by host-backed user interfaces.
  *
- * @module @liusiqi-dev/dsh-file-reference
+ * @module @liusiqi-dev/sqh-file-reference
  */
 
 import { Service, type Context } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
 
 import type { FileReferenceCandidate } from './types.ts'
 

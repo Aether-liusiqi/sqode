@@ -78,12 +78,12 @@ Group 存储在安装前校验完整提交结果：根 Group 引用与记录一�
 ```ts ignore-check
 import { createElement } from 'react'
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import type { Branded } from '@liusiqi-dev/dsh-brand'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
 import type {
   ConversationLocation, ConversationNodeContext,
   ConversationNodeDefinition,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type { ChatNodeViewProps } from '@liusiqi-dev/dsh-client-ui-chat/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type { ChatNodeViewProps } from '@liusiqi-dev/sqh-client-ui-chat/client'
 
 type ReviewId = Branded<'ReviewId'>
 
@@ -108,7 +108,7 @@ interface ReviewEndData {
   readonly summary: string
 }
 
-declare module '@liusiqi-dev/dsh-session/types' {
+declare module '@liusiqi-dev/sqh-session/types' {
   interface SessionEventMap {
     /**
      * Opens one durable review job.
@@ -138,13 +138,13 @@ interface ReviewChatData {
   readonly summary?: string
 }
 
-declare module '@liusiqi-dev/dsh-client-ui-chat/client' {
+declare module '@liusiqi-dev/sqh-client-ui-chat/client' {
   interface ChatNodeDataMap {
     'review-job': ReviewChatData
   }
 }
 
-declare module '@liusiqi-dev/dsh-client-ui-conversation/client' {
+declare module '@liusiqi-dev/sqh-client-ui-conversation/client' {
   interface ConversationStepDataMap {
     'review-job': ReviewChatData
   }

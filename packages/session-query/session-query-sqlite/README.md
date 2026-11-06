@@ -3,7 +3,7 @@ description: "The SQLite FTS5 full-text search backend for session history, for 
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-session-query-sqlite
+# @liusiqi-dev/sqh-session-query-sqlite
 
 English | [中文](README.zh.md)
 
@@ -34,8 +34,8 @@ Choose it when you want full-text recall over prior sessions with ranking and pa
 ### Minimal configuration
 
 ```yaml
-- name: '@liusiqi-dev/dsh-session'
-- name: '@liusiqi-dev/dsh-session-query-sqlite'
+- name: '@liusiqi-dev/sqh-session'
+- name: '@liusiqi-dev/sqh-session-query-sqlite'
   config:
     path: /absolute/path/to/session-search.db
 ```

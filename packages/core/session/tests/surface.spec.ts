@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import type { SessionEvent, SurfaceEvent, SurfaceEventType } from '@liusiqi-dev/dsh-session'
+import type { SessionEvent, SurfaceEvent, SurfaceEventType } from '@liusiqi-dev/sqh-session'
 import {
   Session,
   SessionId,
@@ -11,8 +11,8 @@ import {
   isReplacementSurfaceEvent,
   isSurfaceEligibleType,
   isSurfaceEvent,
-} from '@liusiqi-dev/dsh-session'
-import { SurfaceManager } from '@liusiqi-dev/dsh-session/surface'
+} from '@liusiqi-dev/sqh-session'
+import { SurfaceManager } from '@liusiqi-dev/sqh-session/surface'
 import {
   MessageId,
   ToolCallId,
@@ -22,10 +22,10 @@ import {
   createToolResultMessage,
   createUserMessage,
   freezeMessage,
-} from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed, MessageSource } from '@liusiqi-dev/dsh-llm'
+} from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed, MessageSource } from '@liusiqi-dev/sqh-llm'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
     'watcher': { kind: 'watcher' } & ContextFormed

@@ -4,10 +4,10 @@
  * every input write, and how each send settled, formatted for a failure message so a
  * lost controlled-prompt fast path names the state that lost it.
  */
-import type { SubprocessTerminalForeground, SubprocessTerminalHandle } from '@liusiqi-dev/dsh-subprocess'
-import type { TerminalSendOperation, TerminalSendRequest, TerminalWaitReason } from '@liusiqi-dev/dsh-terminal'
-import { CONTROLLED_PROMPT, TerminalSanitizer } from '@liusiqi-dev/dsh-terminal-bash/src/sanitize.ts'
-import type { SanitizedChunk } from '@liusiqi-dev/dsh-terminal-bash/src/sanitize.ts'
+import type { SubprocessTerminalForeground, SubprocessTerminalHandle } from '@liusiqi-dev/sqh-subprocess'
+import type { TerminalSendOperation, TerminalSendRequest, TerminalWaitReason } from '@liusiqi-dev/sqh-terminal'
+import { CONTROLLED_PROMPT, TerminalSanitizer } from '@liusiqi-dev/sqh-terminal-bash/src/sanitize.ts'
+import type { SanitizedChunk } from '@liusiqi-dev/sqh-terminal-bash/src/sanitize.ts'
 import { vi } from 'vitest'
 
 /** First line of the formatted timeline; a failure message carrying it needs no second print. */

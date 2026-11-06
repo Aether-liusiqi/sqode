@@ -1,8 +1,8 @@
 /** Message value types, identity, and immutable construction helpers. */
 
-import { randomUUID } from '@liusiqi-dev/dsh-util-crypto'
-import { brandString } from '@liusiqi-dev/dsh-brand'
-import { deepFreeze } from '@liusiqi-dev/dsh-util-values'
+import { randomUUID } from '@liusiqi-dev/sqh-util-crypto'
+import { brandString } from '@liusiqi-dev/sqh-brand'
+import { deepFreeze } from '@liusiqi-dev/sqh-util-values'
 import type { MessageId, ToolCallId } from './brand.ts'
 import type { ContentBlock } from './types.ts'
 

@@ -6,8 +6,8 @@
  * stream, and this module only wires them into `ctx.resources`.
  */
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-api-gateway/client'
-import type {} from '@liusiqi-dev/dsh-client-resources/client'
+import type {} from '@liusiqi-dev/sqh-api-gateway/client'
+import type {} from '@liusiqi-dev/sqh-client-resources/client'
 import { ChangeFeed } from './change-feed.ts'
 import { createFileResourceProvider } from './provider.ts'
 

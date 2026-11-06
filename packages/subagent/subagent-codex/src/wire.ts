@@ -4,13 +4,13 @@
  * product methods, current thread/turn association, unattended approval
  * responses, and terminal-answer selection.
  *
- * @module @liusiqi-dev/dsh-subagent-codex/wire
+ * @module @liusiqi-dev/sqh-subagent-codex/wire
  */
 
 import type { Readable, Writable } from 'node:stream'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import type { SubagentResult } from '@liusiqi-dev/dsh-subagent'
-import { JsonRpcLineTransport } from '@liusiqi-dev/dsh-sdk-protocol'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import type { SubagentResult } from '@liusiqi-dev/sqh-subagent'
+import { JsonRpcLineTransport } from '@liusiqi-dev/sqh-sdk-protocol'
 import type { CodexPermissionMode } from './run.ts'
 
 type JsonObject = Record<string, unknown>

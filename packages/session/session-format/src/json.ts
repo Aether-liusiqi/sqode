@@ -1,4 +1,4 @@
-import { deepFreeze, snapshotJsonValue } from '@liusiqi-dev/dsh-util-values'
+import { deepFreeze, snapshotJsonValue } from '@liusiqi-dev/sqh-util-values'
 import { SessionFormatError } from './error.ts'
 import type {
   SessionFormatHeader,

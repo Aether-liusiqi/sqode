@@ -1,9 +1,9 @@
 /** Client scope generations route local events independently of Host Agent residency. */
 import { Context as CordisContext } from '@liusiqi-dev/cordis'
 import type { Context, Fiber } from '@liusiqi-dev/cordis'
-import type { ClientRemote } from '@liusiqi-dev/dsh-api-gateway/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { TypertRemoteScopeApi } from '@liusiqi-dev/dsh-typert-protocol'
+import type { ClientRemote } from '@liusiqi-dev/sqh-api-gateway/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { TypertRemoteScopeApi } from '@liusiqi-dev/sqh-typert-protocol'
 
 /** Client Cordis Context carrying one Agent identity and its scoped Remote namespaces. */
 export type AgentContext = Omit<Context, 'remote'> & {

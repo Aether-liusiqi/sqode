@@ -1,6 +1,6 @@
 /** Browser-safe formatting and recognition of persisted spill-policy notices. */
-import { describeOmitted, type Omitted } from '@liusiqi-dev/dsh-output-retention'
-import type { SpillRef } from '@liusiqi-dev/dsh-spill'
+import { describeOmitted, type Omitted } from '@liusiqi-dev/sqh-output-retention'
+import type { SpillRef } from '@liusiqi-dev/sqh-spill'
 
 const OPEN = '('
 const CLOSE = ')'

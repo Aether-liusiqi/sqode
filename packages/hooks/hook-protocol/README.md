@@ -3,7 +3,7 @@ description: "The shared hook rules behind the Claude Code and Codex bridges —
 kind: "package-library"
 ---
 
-# @liusiqi-dev/dsh-hook-protocol
+# @liusiqi-dev/sqh-hook-protocol
 
 English | [中文](README.zh.md)
 

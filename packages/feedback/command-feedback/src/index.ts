@@ -5,15 +5,15 @@
  * authoritative log-only event and does not start model work. The append is
  * eager but unflushed, so acknowledgement reports that the entry is logged,
  * not that it reached disk.
- * @module @liusiqi-dev/dsh-command-feedback
+ * @module @liusiqi-dev/sqh-command-feedback
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { CommandDefinitionId } from '@liusiqi-dev/dsh-commands/brand'
-import type { CommandInvocation, CommandResult } from '@liusiqi-dev/dsh-commands'
-import type { Session } from '@liusiqi-dev/dsh-session'
-import { getOrCreateAnonymousUserId } from '@liusiqi-dev/dsh-anonymous-user-id'
-import { TypertRemoteService, Remote } from '@liusiqi-dev/dsh-typert-protocol'
+import { CommandDefinitionId } from '@liusiqi-dev/sqh-commands/brand'
+import type { CommandInvocation, CommandResult } from '@liusiqi-dev/sqh-commands'
+import type { Session } from '@liusiqi-dev/sqh-session'
+import { getOrCreateAnonymousUserId } from '@liusiqi-dev/sqh-anonymous-user-id'
+import { TypertRemoteService, Remote } from '@liusiqi-dev/sqh-typert-protocol'
 import type {
   FeedbackCategory,
   FeedbackRecord,
@@ -117,7 +117,7 @@ export class SessionFeedbackService extends TypertRemoteService {
 export function apply(ctx: Context): void {
   ctx.plugin(SessionFeedbackService)
   ctx.commands.register({
-    definitionId: CommandDefinitionId('@liusiqi-dev/dsh-command-feedback'),
+    definitionId: CommandDefinitionId('@liusiqi-dev/sqh-command-feedback'),
     name: 'feedback',
     description: 'Record feedback about this session',
     input: { hint: '<text>' },

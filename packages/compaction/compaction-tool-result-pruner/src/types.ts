@@ -1,5 +1,5 @@
-import type { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import type { SessionSeq } from '@liusiqi-dev/dsh-session/types'
+import type { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import type { SessionSeq } from '@liusiqi-dev/sqh-session/types'
 
 /** Character-budget policy for deterministic tool-result pruning. */
 export interface ToolResultPruneConfig {

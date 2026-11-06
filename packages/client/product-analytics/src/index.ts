@@ -1,13 +1,13 @@
 /** Desktop-only analytics RPC and live compaction collection. */
 import { type Context, type Volatile } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { Remote, TypertRemoteService } from '@liusiqi-dev/dsh-typert-protocol'
-import type {} from '@liusiqi-dev/dsh-host-product-telemetry-otel'
-import type {} from '@liusiqi-dev/dsh-deepseek-account'
-import type {} from '@liusiqi-dev/dsh-settings'
+import { Remote, TypertRemoteService } from '@liusiqi-dev/sqh-typert-protocol'
+import type {} from '@liusiqi-dev/sqh-host-product-telemetry-otel'
+import type {} from '@liusiqi-dev/sqh-deepseek-account'
+import type {} from '@liusiqi-dev/sqh-settings'
 import type {} from '@liusiqi-dev/cordis-plugin-loader'
-import type {} from '@liusiqi-dev/dsh-session'
-import type {} from '@liusiqi-dev/dsh-compaction/types'
+import type {} from '@liusiqi-dev/sqh-session'
+import type {} from '@liusiqi-dev/sqh-compaction/types'
 import type { ProductEvent } from './events.ts'
 
 /** Application-owned collection policy; no user settings surface. */

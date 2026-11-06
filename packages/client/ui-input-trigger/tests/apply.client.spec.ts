@@ -6,12 +6,12 @@
  */
 import { Context } from '@liusiqi-dev/cordis'
 import { describe, expect, it } from 'vitest'
-import { LocaleRuntime } from '@liusiqi-dev/dsh-client-locale/client'
-import { createScope, scopeOf } from '@liusiqi-dev/dsh-api-session-controller/client'
-import { SlotRegistry } from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import { apply, inject, InputTriggerService } from '@liusiqi-dev/dsh-client-ui-input-trigger/client'
-import type { MenuViewInjected } from '@liusiqi-dev/dsh-client-ui-input-trigger/client'
+import { LocaleRuntime } from '@liusiqi-dev/sqh-client-locale/client'
+import { createScope, scopeOf } from '@liusiqi-dev/sqh-api-session-controller/client'
+import { SlotRegistry } from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import { apply, inject, InputTriggerService } from '@liusiqi-dev/sqh-client-ui-input-trigger/client'
+import type { MenuViewInjected } from '@liusiqi-dev/sqh-client-ui-input-trigger/client'
 
 const sid = (k: string): SessionId => k as SessionId
 

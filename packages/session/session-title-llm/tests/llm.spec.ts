@@ -1,17 +1,17 @@
 import { Context } from '@liusiqi-dev/cordis'
 import { describe, expect, it, vi } from 'vitest'
-import LlmRuntime, { createUserMessage, ToolCallId, isAgentLoopRequest, LlmAdapter  } from '@liusiqi-dev/dsh-llm'
-import type { FinishReason, GenerateOptions, StreamChunk } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import { SessionTitleProviderId } from '@liusiqi-dev/dsh-session-title'
-import type { SessionTitleProviderRequest } from '@liusiqi-dev/dsh-session-title'
-import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
+import LlmRuntime, { createUserMessage, ToolCallId, isAgentLoopRequest, LlmAdapter  } from '@liusiqi-dev/sqh-llm'
+import type { FinishReason, GenerateOptions, StreamChunk } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import { SessionTitleProviderId } from '@liusiqi-dev/sqh-session-title'
+import type { SessionTitleProviderRequest } from '@liusiqi-dev/sqh-session-title'
+import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/sqh-timeout'
 import {
   generateSessionTitleWithLlm,
   resolveSessionTitleLlmConfig,
   SESSION_TITLE_TIMEOUT_CODE,
-} from '@liusiqi-dev/dsh-session-title-llm'
-import type { SessionTitleLlmConfig } from '@liusiqi-dev/dsh-session-title-llm'
+} from '@liusiqi-dev/sqh-session-title-llm'
+import type { SessionTitleLlmConfig } from '@liusiqi-dev/sqh-session-title-llm'
 
 class RecordingAdapter extends LlmAdapter {
   readonly requests: GenerateOptions[] = []

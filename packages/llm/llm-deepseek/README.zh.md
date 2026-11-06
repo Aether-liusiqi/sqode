@@ -3,7 +3,7 @@ description: "配置 DeepSeek Messages、推理与图片输入。"
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-llm-deepseek
+# @liusiqi-dev/sqh-llm-deepseek
 
 [English](README.md) | 中文
 
@@ -38,7 +38,7 @@ kind: "package-reference"
 ### 最小配置
 
 ```yaml
-- name: '@liusiqi-dev/dsh-llm-deepseek-api-key'
+- name: '@liusiqi-dev/sqh-llm-deepseek-api-key'
   config:
     apiKeyEnv: DEEPSEEK_API_KEY  # credential reference, resolved per request
     reasoningEffort: high        # optional; off | low | high | max

@@ -1,15 +1,15 @@
 // @vitest-environment jsdom
-import type { GlobalStandardProps } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { GlobalStandardProps } from '@liusiqi-dev/sqh-client-ui-slots'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
-import type { SessionListState } from '@liusiqi-dev/dsh-api-session-controller/client'
+import type { SessionListState } from '@liusiqi-dev/sqh-api-session-controller/client'
 import type {
   WorkspaceId, WorkspaceSnapshot, WorkspaceView,
-} from '@liusiqi-dev/dsh-api-workspace-controller/client'
-import type {} from '@liusiqi-dev/dsh-client-locale/client'
-import { bindSnapshotSelector, makeTranslate } from '@liusiqi-dev/dsh-client-test-runtime'
-import { zh as commonZh } from '@liusiqi-dev/dsh-client-locale/src/locales/zh.ts'
-import type { SessionStatusSnapshot } from '@liusiqi-dev/dsh-client-ui-session/client'
+} from '@liusiqi-dev/sqh-api-workspace-controller/client'
+import type {} from '@liusiqi-dev/sqh-client-locale/client'
+import { bindSnapshotSelector, makeTranslate } from '@liusiqi-dev/sqh-client-test-runtime'
+import { zh as commonZh } from '@liusiqi-dev/sqh-client-locale/src/locales/zh.ts'
+import type { SessionStatusSnapshot } from '@liusiqi-dev/sqh-client-ui-session/client'
 import type { DirectoryFlowOwnerProps, WorkspacePickerProps } from '../src/client/contract/slots.ts'
 import { WorkspacePicker } from '../src/client/WorkspacePicker.tsx'
 import { zh } from '../src/client/locales.ts'

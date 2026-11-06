@@ -9,8 +9,8 @@
  */
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import type { ShortcutCommand } from '@liusiqi-dev/dsh-client-shortcuts/client'
-import { SidebarRightTabRegistry } from '@liusiqi-dev/dsh-client-ui-sidebar-right/src/client/tab-registry.ts'
+import type { ShortcutCommand } from '@liusiqi-dev/sqh-client-shortcuts/client'
+import { SidebarRightTabRegistry } from '@liusiqi-dev/sqh-client-ui-sidebar-right/src/client/tab-registry.ts'
 import { FILES_ID, FILES_KIND } from '../src/client/definition.tsx'
 import { apply, inject } from '../src/client/index.ts'
 import { apply as hostApply } from '../src/index.ts'

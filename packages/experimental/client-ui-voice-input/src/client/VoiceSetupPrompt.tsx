@@ -1,8 +1,8 @@
 /** Activation guidance after the Host inspects local recognition resources. */
 import { useEffect } from 'react'
 import { VoiceSetupDialog } from './VoiceSetupDialog.tsx'
-import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
-import type {} from '@liusiqi-dev/dsh-client-ui-plugin-manager/client'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
+import type {} from '@liusiqi-dev/sqh-client-ui-plugin-manager/client'
 import type { VoiceInputInjected } from './VoiceInput.tsx'
 import type { NS } from './locales.ts'
 

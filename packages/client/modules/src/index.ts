@@ -20,7 +20,7 @@
  * the browser module; distinct active Loader sources for that package are a
  * composition error. Bundle content changes reach the graph only through
  * {@link ClientModuleRegistry.rebuilt}.
- * @module @liusiqi-dev/dsh-client-modules
+ * @module @liusiqi-dev/sqh-client-modules
  */
 
 import { createHash } from 'node:crypto'
@@ -32,7 +32,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 import { Service } from '@liusiqi-dev/cordis'
 import type { Context } from '@liusiqi-dev/cordis'
 import type { Entry } from '@liusiqi-dev/cordis-plugin-loader'
-import type { IndexInjection } from '@liusiqi-dev/dsh-host-webserver'
+import type { IndexInjection } from '@liusiqi-dev/sqh-host-webserver'
 import { exactPackageSpecifier, parseDshClient, stripClientSuffix } from './client/manifest.ts'
 import type { WebBootBatch, WebBootBatchPhase, WebBootEntry, WebBootGraph } from './client/manifest.ts'
 
@@ -533,7 +533,7 @@ export function orderByModuleGraph(entries: readonly WebBootEntry[]): WebBootEnt
 }
 
 /** Bootstrap package whose ordinary client bundle supplies the module-system implementation. */
-const CLIENT_MODULES_ID = '@liusiqi-dev/dsh-client-modules'
+const CLIENT_MODULES_ID = '@liusiqi-dev/sqh-client-modules'
 
 /** Dynamic bundles grouped into the parser bootstrap batch before the Vite shell. */
 const PARSER_PRELOAD_IDS = [CLIENT_MODULES_ID] as const

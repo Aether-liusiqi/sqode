@@ -3,7 +3,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import Storage, { storageBackendServiceKey } from '@liusiqi-dev/dsh-storage'
+import Storage, { storageBackendServiceKey } from '@liusiqi-dev/sqh-storage'
 import { runKvBackendContract } from '../../storage/tests/contract.ts'
 import { Config, JsonStorageBackend, apply } from '../src/index.ts'
 

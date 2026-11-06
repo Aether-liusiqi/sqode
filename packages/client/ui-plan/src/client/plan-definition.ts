@@ -1,10 +1,10 @@
 /** Per-invocation plans use resolved Conversation locations for final Turn artifacts. */
-import type {} from '@liusiqi-dev/dsh-tools/types'
-import type { ChatNode } from '@liusiqi-dev/dsh-client-ui-chat/client'
-import type { ConversationNodeDefinition } from '@liusiqi-dev/dsh-client-ui-conversation/client'
+import type {} from '@liusiqi-dev/sqh-tools/types'
+import type { ChatNode } from '@liusiqi-dev/sqh-client-ui-chat/client'
+import type { ConversationNodeDefinition } from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import { submittedPlan, type SubmittedPlan } from './plan.ts'
 
-declare module '@liusiqi-dev/dsh-client-ui-chat/client' {
+declare module '@liusiqi-dev/sqh-client-ui-chat/client' {
   interface ChatNodeDataMap {
     /** Complete plan submitted through exit_plan_mode, including rejected or dismissed reviews. */
     'submitted-plan': SubmittedPlan

@@ -30,7 +30,7 @@
  */
 
 import type {} from '@liusiqi-dev/cordis'
-import type { SqhClientManifest } from '@liusiqi-dev/dsh-package-manifest'
+import type { SqhClientManifest } from '@liusiqi-dev/sqh-package-manifest'
 import type { ClientEntries } from './entries.ts'
 import type { ClientModuleSystem } from './system.ts'
 

@@ -1,13 +1,13 @@
 /** Filesystem provider preserving remote identities and helper-owned atomic mutations. */
 import { posix } from 'node:path'
 import { pathToFileURL } from 'node:url'
-import { FileSystem, FsError } from '@liusiqi-dev/dsh-fs'
-import type { FsDirEntry, FsEditOutcome, FsEditRequest, FsErrorCode, FsInfo, FsPathInfo, FsTarget, FsVersion, FsWriteIntent, FsWriteOutcome } from '@liusiqi-dev/dsh-fs'
-import type { SandboxExecutionPolicy, SandboxMode } from '@liusiqi-dev/dsh-sandbox'
-import type {} from '@liusiqi-dev/dsh-sandbox-policy'
-import type {} from '@liusiqi-dev/dsh-ssh'
-import { RemoteOperationError } from '@liusiqi-dev/dsh-ssh/protocol'
-import { editResultSchema, entriesSchema, infoSchema, pathInfoSchema, targetSchema, textStreamIdSchema, writeResultSchema } from '@liusiqi-dev/dsh-ssh/schemas'
+import { FileSystem, FsError } from '@liusiqi-dev/sqh-fs'
+import type { FsDirEntry, FsEditOutcome, FsEditRequest, FsErrorCode, FsInfo, FsPathInfo, FsTarget, FsVersion, FsWriteIntent, FsWriteOutcome } from '@liusiqi-dev/sqh-fs'
+import type { SandboxExecutionPolicy, SandboxMode } from '@liusiqi-dev/sqh-sandbox'
+import type {} from '@liusiqi-dev/sqh-sandbox-policy'
+import type {} from '@liusiqi-dev/sqh-ssh'
+import { RemoteOperationError } from '@liusiqi-dev/sqh-ssh/protocol'
+import { editResultSchema, entriesSchema, infoSchema, pathInfoSchema, targetSchema, textStreamIdSchema, writeResultSchema } from '@liusiqi-dev/sqh-ssh/schemas'
 import { z } from 'zod'
 
 const errorCodes: Record<FsErrorCode, true> = {

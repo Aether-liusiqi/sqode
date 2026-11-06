@@ -1,8 +1,8 @@
 /** JSON-safe inputs and results of the experimental speech Remote namespace. */
-import type { SpeechProviderId, SpeechSnapshot } from '@liusiqi-dev/dsh-experimental-speech-to-text/types'
-import type {} from '@liusiqi-dev/dsh-typert-protocol'
+import type { SpeechProviderId, SpeechSnapshot } from '@liusiqi-dev/sqh-experimental-speech-to-text/types'
+import type {} from '@liusiqi-dev/sqh-typert-protocol'
 
-declare module '@liusiqi-dev/dsh-typert-protocol' {
+declare module '@liusiqi-dev/sqh-typert-protocol' {
   interface RemoteErrorDetailsMap {
     /** Audio encoding or intake limits prevented transcription. */
     'speech/invalid-audio': { readonly reason: string }

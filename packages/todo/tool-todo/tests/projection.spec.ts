@@ -9,17 +9,17 @@
 
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import SessionStore from '@liusiqi-dev/dsh-session'
-import type { Session } from '@liusiqi-dev/dsh-session'
-import type { TodoItem } from '@liusiqi-dev/dsh-tool-todo'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import UserQuestionService from '@liusiqi-dev/dsh-user-questions'
-import * as ToolTodo from '@liusiqi-dev/dsh-tool-todo'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import SessionStore from '@liusiqi-dev/sqh-session'
+import type { Session } from '@liusiqi-dev/sqh-session'
+import type { TodoItem } from '@liusiqi-dev/sqh-tool-todo'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import UserQuestionService from '@liusiqi-dev/sqh-user-questions'
+import * as ToolTodo from '@liusiqi-dev/sqh-tool-todo'
 
 interface Bench {
   ctx: Context

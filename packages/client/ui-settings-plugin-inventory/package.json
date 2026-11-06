@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-client-ui-settings-plugin-inventory",
+  "name": "@liusiqi-dev/sqh-client-ui-settings-plugin-inventory",
   "description": "Read-only Cordis Loader inventory tab in Web Plugins settings",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,11 +28,11 @@
   "dsh": {
     "client": {
       "inject": [
-        "@liusiqi-dev/dsh-api-remotes",
-        "@liusiqi-dev/dsh-client-ui-settings",
-        "@liusiqi-dev/dsh-client-locale",
-        "@liusiqi-dev/dsh-client-ui-agent-preset",
-        "@liusiqi-dev/dsh-client-modules"
+        "@liusiqi-dev/sqh-api-remotes",
+        "@liusiqi-dev/sqh-client-ui-settings",
+        "@liusiqi-dev/sqh-client-locale",
+        "@liusiqi-dev/sqh-client-ui-agent-preset",
+        "@liusiqi-dev/sqh-client-modules"
       ],
       "platform": "web"
     }
@@ -46,23 +46,23 @@
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-api-remotes": "workspace:*",
-    "@liusiqi-dev/dsh-client-locale": "workspace:*",
-    "@liusiqi-dev/dsh-client-test-runtime": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-agent-preset": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-primitives": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-settings": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-slots": "workspace:*",
-    "@liusiqi-dev/dsh-package-manifest": "workspace:*",
+    "@liusiqi-dev/sqh-api-remotes": "workspace:*",
+    "@liusiqi-dev/sqh-client-locale": "workspace:*",
+    "@liusiqi-dev/sqh-client-test-runtime": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-agent-preset": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-primitives": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-settings": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-slots": "workspace:*",
+    "@liusiqi-dev/sqh-package-manifest": "workspace:*",
     "@testing-library/react": "^16.1.0",
     "@types/react": "~18.3.1",
     "@liusiqi-dev/cordis": "workspace:~",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@liusiqi-dev/dsh-client-ui-renderer": "workspace:*",
-    "@liusiqi-dev/dsh-agent-preset-registry": "workspace:*",
-    "@liusiqi-dev/dsh-client-modules": "workspace:*",
-    "@liusiqi-dev/dsh-client-store": "workspace:*"
+    "@liusiqi-dev/sqh-client-ui-renderer": "workspace:*",
+    "@liusiqi-dev/sqh-agent-preset-registry": "workspace:*",
+    "@liusiqi-dev/sqh-client-modules": "workspace:*",
+    "@liusiqi-dev/sqh-client-store": "workspace:*"
   },
   "files": [
     "lib/index.js",

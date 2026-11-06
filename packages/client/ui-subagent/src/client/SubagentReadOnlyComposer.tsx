@@ -1,4 +1,4 @@
-import type { PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { PropsLocale, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
 import { NS } from './locales.ts'
 import css from './SubagentReadOnlyComposer.module.css'
 

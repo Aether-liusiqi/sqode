@@ -1,7 +1,7 @@
 import { createServer, type Server } from 'node:http'
 import type { AddressInfo } from 'node:net'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
-import { installProxyFromEnvironment } from '@liusiqi-dev/dsh-http-proxy'
+import { installProxyFromEnvironment } from '@liusiqi-dev/sqh-http-proxy'
 
 let seen: string[] = []
 let proxy: Server
@@ -36,9 +36,9 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import LlmRuntime from '@liusiqi-dev/dsh-llm'
-import DeepSeekLlmApiExtensionRegistry from '@liusiqi-dev/dsh-deepseek-llm-api-extensions'
-import * as LlmDeepSeek from '@liusiqi-dev/dsh-llm-deepseek-api-key'
+import LlmRuntime from '@liusiqi-dev/sqh-llm'
+import DeepSeekLlmApiExtensionRegistry from '@liusiqi-dev/sqh-deepseek-llm-api-extensions'
+import * as LlmDeepSeek from '@liusiqi-dev/sqh-llm-deepseek-api-key'
 
 let home: string
 beforeAll(() => {

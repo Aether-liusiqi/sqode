@@ -1,18 +1,18 @@
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import AgentRegistry, { type Agent } from '@liusiqi-dev/dsh-agent'
-import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import LlmRuntime from '@liusiqi-dev/dsh-llm'
-import type { MessageSource } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
+import AgentRegistry, { type Agent } from '@liusiqi-dev/sqh-agent'
+import AgentLoop from '@liusiqi-dev/sqh-agent-loop'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import LlmRuntime from '@liusiqi-dev/sqh-llm'
+import type { MessageSource } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
 import { MockAdapter, textResponse } from './mock-adapter.ts'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'p': { kind: 'p' } & ContextFormed
     'test': { kind: 'test' } & ContextFormed

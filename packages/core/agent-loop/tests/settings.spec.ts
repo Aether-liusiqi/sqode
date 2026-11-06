@@ -2,14 +2,14 @@
 
 import { expect, it, onTestFinished } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import LlmRuntime from '@liusiqi-dev/dsh-llm'
-import SessionStore from '@liusiqi-dev/dsh-session'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
+import LlmRuntime from '@liusiqi-dev/sqh-llm'
+import SessionStore from '@liusiqi-dev/sqh-session'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
 import { liveConfig } from '../../../settings/settings/tests/live-config.ts'
-import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
+import AgentLoop from '@liusiqi-dev/sqh-agent-loop'
 
 async function boot() {
   const ctx = new Context()

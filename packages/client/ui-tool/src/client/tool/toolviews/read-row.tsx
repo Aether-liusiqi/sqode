@@ -1,5 +1,5 @@
 import type { Context } from '@liusiqi-dev/cordis'
-import type { PropsLocale } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { PropsLocale } from '@liusiqi-dev/sqh-client-ui-slots'
 import type { ToolCallViewProps } from '../../contract/slots.ts'
 import { readCallLine, readCardModel } from '../models/read-card-model.ts'
 import { readFamilyRow } from './read-family-row.tsx'

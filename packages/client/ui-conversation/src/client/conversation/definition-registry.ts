@@ -1,5 +1,5 @@
 import { Service, type Context } from '@liusiqi-dev/cordis'
-import { notifySubscribers } from '@liusiqi-dev/dsh-client-store'
+import { notifySubscribers } from '@liusiqi-dev/sqh-client-store'
 
 /** Shared lifecycle and stable-entry storage for one Conversation Definition registry. */
 export abstract class ConversationDefinitionRegistry<Definition> {

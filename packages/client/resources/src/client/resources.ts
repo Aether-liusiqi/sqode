@@ -9,8 +9,8 @@
  * recreated record would make every render resubscribe and restart the stream.
  */
 import type { Context } from '@liusiqi-dev/cordis'
-import type { RemoteResult } from '@liusiqi-dev/dsh-typert-protocol'
-import { createSnapshotStore, type ObservableSnapshot, type SnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import type { RemoteResult } from '@liusiqi-dev/sqh-typert-protocol'
+import { createSnapshotStore, type ObservableSnapshot, type SnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import type {
   ResourceOpenContext,
   ResourceProtocol,

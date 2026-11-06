@@ -3,7 +3,7 @@ description: "面向选择、挂载或排查持久 workspace 记录与会话头�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-workspace
+# @liusiqi-dev/sqh-workspace
 
 [English](README.md) | 中文
 
@@ -36,14 +36,14 @@ kind: "package-reference"
 此包需要会话存储、会话持久化后端，以及保存其记录的存储行。最小组合如下：
 
 ```yaml
-- name: '@liusiqi-dev/dsh-session'
-- name: '@liusiqi-dev/dsh-session-persistence-jsonl'
-- name: '@liusiqi-dev/dsh-storage'
-- name: '@liusiqi-dev/dsh-storage-json'
-- name: '@liusiqi-dev/dsh-storage-domain'
+- name: '@liusiqi-dev/sqh-session'
+- name: '@liusiqi-dev/sqh-session-persistence-jsonl'
+- name: '@liusiqi-dev/sqh-storage'
+- name: '@liusiqi-dev/sqh-storage-json'
+- name: '@liusiqi-dev/sqh-storage-domain'
   config:
     backend: json
-- name: '@liusiqi-dev/dsh-workspace'
+- name: '@liusiqi-dev/sqh-workspace'
 ```
 
 挂载这些行之后，创建项目会立即出现在列表中并在重启后保留；首次启动还会按会话运行的目录对既有会话分组。如果缺少某个必需依赖，workspace 功能会一直不可用，直到它被挂载。

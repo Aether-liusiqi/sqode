@@ -2,28 +2,28 @@
  * The model-facing `workflow` tool: run a JavaScript orchestration script that fans out
  * subagents, and return the script's final value. It owns the model-facing schema and run lifecycle; script
  * parsing, execution, caps, and cancellation live behind `ctx.workflowEngine`
- * (`@liusiqi-dev/dsh-workflow`), so a hardened engine swaps in without touching what the model
+ * (`@liusiqi-dev/sqh-workflow`), so a hardened engine swaps in without touching what the model
  * sees. Foreground execution awaits `run.result` and always disposes the run; non-completed reasons
  * become tool errors. `run_in_background: true` instead registers the run as an owned `ctx.jobs` job
  * and returns its id immediately — the job's output ring streams live progress, and the run's value
  * arrives with the job's completion notice. Presentation is an args-only generic card
  * titled from `meta.name`. Explicit-ask usage guidance is registered as the tool's own prompt
  * section rather than deployment persona prose.
- * @module @liusiqi-dev/dsh-tool-workflow
+ * @module @liusiqi-dev/sqh-tool-workflow
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
-import type { ToolCallView, ToolResultView } from '@liusiqi-dev/dsh-tools'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import type { JobId, JobOutcome } from '@liusiqi-dev/dsh-jobs'
-import type { Session, SessionEventMap } from '@liusiqi-dev/dsh-session'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
+import type { ToolCallView, ToolResultView } from '@liusiqi-dev/sqh-tools'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import type { JobId, JobOutcome } from '@liusiqi-dev/sqh-jobs'
+import type { Session, SessionEventMap } from '@liusiqi-dev/sqh-session'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
 import type {
   WorkflowResult, WorkflowRun, WorkflowRunId, WorkflowStopReason,
-} from '@liusiqi-dev/dsh-workflow'
+} from '@liusiqi-dev/sqh-workflow'
 import { createWorkflowRecordMirror } from './record.ts'
 import type { WorkflowRecordMirror } from './record.ts'
 import type {
@@ -31,7 +31,7 @@ import type {
   ToolWorkflowRunEndData, ToolWorkflowRunStartData,
 } from './types.ts'
 
-declare module '@liusiqi-dev/dsh-jobs' {
+declare module '@liusiqi-dev/sqh-jobs' {
   interface JobKindMap {
     workflow: 'workflow'
   }
@@ -268,7 +268,7 @@ function startBackgroundRun(
 ): { kind: 'background'; jobId: JobId; runId: WorkflowRunId } {
   const jobs = ctx.get('jobs')
   if (jobs === undefined) {
-    throw new Error('background jobs unavailable: load @liusiqi-dev/dsh-jobs and @liusiqi-dev/dsh-tool-jobs')
+    throw new Error('background jobs unavailable: load @liusiqi-dev/sqh-jobs and @liusiqi-dev/sqh-tool-jobs')
   }
   let run!: WorkflowRun
   const jobId = jobs.start({

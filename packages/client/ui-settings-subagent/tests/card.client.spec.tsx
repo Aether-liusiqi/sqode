@@ -3,11 +3,11 @@
 
 import { act, cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { bindSnapshotSelector } from '@liusiqi-dev/dsh-client-test-runtime'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import { bindSnapshotSelector } from '@liusiqi-dev/sqh-client-test-runtime'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import { SubagentCard, type SubagentCardProps } from '../src/client/SubagentCard.tsx'
 import type { SubagentLimitsCardState } from '../src/client/subagent-limits-card-controller.ts'
-import type { SettingsFieldState, SettingsFormShell } from '@liusiqi-dev/dsh-client-ui-primitives'
+import type { SettingsFieldState, SettingsFormShell } from '@liusiqi-dev/sqh-client-ui-primitives'
 import type { SubagentModelSelectionCardState } from '../src/client/subagent-model-selection-card-controller.ts'
 import { en } from '../src/client/locales.ts'
 

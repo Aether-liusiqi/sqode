@@ -2,11 +2,11 @@
 
 import { Service } from '@liusiqi-dev/cordis'
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type {} from '@liusiqi-dev/dsh-api-gateway'
-import { snapshotJsonValue, type JsonValue } from '@liusiqi-dev/dsh-util-values'
-import { assertSupportedJsonSchema, validateJsonSchemaValue } from '@liusiqi-dev/dsh-tools'
-import type { JsonSchemaNode } from '@liusiqi-dev/dsh-tools'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type {} from '@liusiqi-dev/sqh-api-gateway'
+import { snapshotJsonValue, type JsonValue } from '@liusiqi-dev/sqh-util-values'
+import { assertSupportedJsonSchema, validateJsonSchemaValue } from '@liusiqi-dev/sqh-tools'
+import type { JsonSchemaNode } from '@liusiqi-dev/sqh-tools'
 import type {
   CordisInspectMethodManifest, CordisInspectPlatform, CordisInspectProviderManifest,
   CordisInspectProviderView, CordisInspectQueryRequest, CordisInspectQueryResolution,

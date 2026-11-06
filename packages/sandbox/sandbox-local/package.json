@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-sandbox-local",
+  "name": "@liusiqi-dev/sqh-sandbox-local",
   "description": "Local process-sandbox backends for the Siqi Harness sandbox seam: bwrap, the npm-distributed landlock-run launcher, macOS Seatbelt, or the Windows ACL restricted-token runner — functionally probed, fail-closed",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,20 +28,20 @@
   "license": "MIT",
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*"
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*"
   },
   "dependencies": {
-    "@liusiqi-dev/dsh-sandbox-windows-acl": "workspace:*",
-    "@liusiqi-dev/dsh-util-values": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox-windows-acl": "workspace:*",
+    "@liusiqi-dev/sqh-util-values": "workspace:*",
     "@liusiqi-dev/node-addon-system": "workspace:~",
     "@liusiqi-dev/schemastery": "workspace:~"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*"
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*"
   }
 }

@@ -1,11 +1,11 @@
 /**
  * Load-time validation and routed-model policy resolution for compaction-basic.
  *
- * @module @liusiqi-dev/dsh-compaction-basic/config
+ * @module @liusiqi-dev/sqh-compaction-basic/config
  */
 
-import type { LlmCallConfig } from '@liusiqi-dev/dsh-llm'
-import { deepFreeze } from '@liusiqi-dev/dsh-util-values'
+import type { LlmCallConfig } from '@liusiqi-dev/sqh-llm'
+import { deepFreeze } from '@liusiqi-dev/sqh-util-values'
 import type {
   BasicCompactionConfig,
   CompactionPolicyConfig,

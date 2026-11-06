@@ -2,17 +2,17 @@
  * Model-facing foreground Ralph loop over the workflow and subagent seams. A
  * fixed script starts one fresh structured-output child per round, carrying
  * only the immutable objective and the previous bounded handoff between them.
- * @module @liusiqi-dev/dsh-tool-ralph
+ * @module @liusiqi-dev/sqh-tool-ralph
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
-import type { SubagentProvider } from '@liusiqi-dev/dsh-subagent'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
-import type { ToolCallView, ToolResultView } from '@liusiqi-dev/dsh-tools'
-import type { WorkflowResult, WorkflowRun } from '@liusiqi-dev/dsh-workflow'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
+import type { SubagentProvider } from '@liusiqi-dev/sqh-subagent'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
+import type { ToolCallView, ToolResultView } from '@liusiqi-dev/sqh-tools'
+import type { WorkflowResult, WorkflowRun } from '@liusiqi-dev/sqh-workflow'
 
 export const name = 'tool-ralph'
 export const inject = ['tools', 'workflowEngine', 'subagents', 'systemPrompt']

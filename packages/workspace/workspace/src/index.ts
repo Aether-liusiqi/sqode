@@ -2,15 +2,15 @@
  * Workspace entity registry (`ctx.workspaceRegistry`): durable workspace records,
  * stable registry order, and header-validated session membership over the
  * domain data form.
- * @module @liusiqi-dev/dsh-workspace
+ * @module @liusiqi-dev/sqh-workspace
  */
 
 import { randomUUID } from 'node:crypto'
 import { mkdir, stat } from 'node:fs/promises'
 import { Context, Service } from '@liusiqi-dev/cordis'
-import type { SessionHeader, SessionId } from '@liusiqi-dev/dsh-session'
-import type {} from '@liusiqi-dev/dsh-session-persistence'
-import type { DomainGlobal, KvTable } from '@liusiqi-dev/dsh-storage-domain'
+import type { SessionHeader, SessionId } from '@liusiqi-dev/sqh-session'
+import type {} from '@liusiqi-dev/sqh-session-persistence'
+import type { DomainGlobal, KvTable } from '@liusiqi-dev/sqh-storage-domain'
 import { WorkspaceEntity } from './entity.ts'
 import type { WorkspaceEntityHost } from './entity.ts'
 

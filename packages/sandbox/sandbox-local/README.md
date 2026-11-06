@@ -3,7 +3,7 @@ description: "Local per-platform sandbox backends for users and maintainers choo
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-sandbox-local
+# @liusiqi-dev/sqh-sandbox-local
 
 English | [中文](README.zh.md)
 
@@ -37,7 +37,7 @@ Load the sandbox service and mount the provider; the defaults below are the sele
 
 ```yaml
 - id: sandbox
-  name: '@liusiqi-dev/dsh-sandbox-local'
+  name: '@liusiqi-dev/sqh-sandbox-local'
 ```
 
 | Field | Default | Meaning |

@@ -8,11 +8,11 @@ import type { ReactNode } from 'react'
 import {
   IconChevronDownOutlineRegular, IconCompareSplitOutlineRegular, IconInspectOutlineRegular,
   IconNowrapFillRegular, IconWrapFillRegular, Menu, PathLabel, Tooltip,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { InjectFace, PropsLocale, PropsRenderSlots, PropsRuntime, PropsStore } from '@liusiqi-dev/dsh-client-ui-slots'
-import type { ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
-import { fileAddressFor } from '@liusiqi-dev/dsh-util-workspace-path'
-import type { WorkspaceChangedFile } from '@liusiqi-dev/dsh-workspace-changes/types'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { InjectFace, PropsLocale, PropsRenderSlots, PropsRuntime, PropsStore } from '@liusiqi-dev/sqh-client-ui-slots'
+import type { ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
+import { fileAddressFor } from '@liusiqi-dev/sqh-util-workspace-path'
+import type { WorkspaceChangedFile } from '@liusiqi-dev/sqh-workspace-changes/types'
 import { changedFileUrl, changesDiffUrl, changesSummaryUrl, parseChangesReviewAddress } from '../changes.ts'
 import type { ChangesDiffStore } from './changes-diff.ts'
 import type { ChangesSummaryStore } from './changes-summary.ts'

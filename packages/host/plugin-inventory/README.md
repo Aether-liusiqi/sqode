@@ -3,7 +3,7 @@ description: "Read-only projection of the current Cordis Loader plugin state wit
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-host-plugin-inventory
+# @liusiqi-dev/sqh-host-plugin-inventory
 
 English | [中文](README.zh.md)
 

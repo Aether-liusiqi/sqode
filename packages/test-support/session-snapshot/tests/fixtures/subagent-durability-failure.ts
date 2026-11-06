@@ -1,6 +1,6 @@
 import type { Context } from '@liusiqi-dev/cordis'
-import { SessionId } from '@liusiqi-dev/dsh-session'
-import type { SubagentPromptRequestId } from '@liusiqi-dev/dsh-subagent'
+import { SessionId } from '@liusiqi-dev/sqh-session'
+import type { SubagentPromptRequestId } from '@liusiqi-dev/sqh-subagent'
 
 export const name = 'subagent-durability-failure'
 export const inject = ['agents', 'sessionPersistence', 'subagents']

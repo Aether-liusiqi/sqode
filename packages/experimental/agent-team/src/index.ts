@@ -2,8 +2,8 @@
 
 import { Context, Service } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type {} from '@liusiqi-dev/dsh-session-persistence'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type {} from '@liusiqi-dev/sqh-session-persistence'
 import { TeamActivity } from './activity.ts'
 import { errorMessage, TeamError } from './error.ts'
 import { TeamJournal } from './journal.ts'

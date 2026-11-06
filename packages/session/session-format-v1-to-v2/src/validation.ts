@@ -4,14 +4,14 @@ import {
   SessionFormatUnsupportedMigrationError,
   sessionFormatCount,
   sessionFormatSafeInteger,
-} from '@liusiqi-dev/dsh-session-format'
+} from '@liusiqi-dev/sqh-session-format'
 import type {
   SessionFormatArtifact,
   SessionFormatHeader,
   SessionFormatJsonObject,
   SessionFormatJsonValue,
-} from '@liusiqi-dev/dsh-session-format'
-import { assertReleasedArtifactRelationships } from '@liusiqi-dev/dsh-session-format-v0-to-v1'
+} from '@liusiqi-dev/sqh-session-format'
+import { assertReleasedArtifactRelationships } from '@liusiqi-dev/sqh-session-format-v0-to-v1'
 import { RELEASED_V2_EVENT_DISPOSITIONS } from './dispositions.ts'
 
 const HEADER_REQUIRED = ['version', 'id', 'createdAt', 'isSeeded', 'delegationDepth'] as const

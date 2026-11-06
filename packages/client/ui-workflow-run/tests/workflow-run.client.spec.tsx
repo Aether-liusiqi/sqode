@@ -1,27 +1,27 @@
 // @vitest-environment jsdom
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { GlobalStandardProps } from '@liusiqi-dev/dsh-client-ui-slots'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { GlobalStandardProps } from '@liusiqi-dev/sqh-client-ui-slots'
 import { Context } from '@liusiqi-dev/cordis'
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import {
   ConversationNodeAssembler, UiConversation,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import type {
   ConversationMatch, ConversationNodeDefinition, ConversationStartMatch,
   ConversationViewDefinition,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type { ChatConversationViewNode } from '@liusiqi-dev/dsh-client-ui-chat/client'
-import { SlotRegistry } from '@liusiqi-dev/dsh-client-ui-renderer/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type { ChatConversationViewNode } from '@liusiqi-dev/sqh-client-ui-chat/client'
+import { SlotRegistry } from '@liusiqi-dev/sqh-client-ui-renderer/client'
 import type {
   SessionListState, SessionLiveEventEntry,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { SessionEvent, SessionId } from '@liusiqi-dev/dsh-session/types'
-import { apply as applyLocale, inject as localeInject } from '@liusiqi-dev/dsh-client-locale/client'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { SessionEvent, SessionId } from '@liusiqi-dev/sqh-session/types'
+import { apply as applyLocale, inject as localeInject } from '@liusiqi-dev/sqh-client-locale/client'
 import {
   chatSnapshot as emptyChatSnapshot, conversationSnapshot, makeTranslate, sessionSnapshot,
   stubConfigForm, TestSessions, workspaceSnapshot,
-} from '@liusiqi-dev/dsh-client-test-runtime'
+} from '@liusiqi-dev/sqh-client-test-runtime'
 import {
   WorkflowRunPanel, type WorkflowRunInjected, type WorkflowRunPanelProps,
 } from '../src/client/WorkflowRunPanel.tsx'

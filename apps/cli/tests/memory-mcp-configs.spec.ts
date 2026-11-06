@@ -10,10 +10,10 @@ import { resolve } from 'node:path'
 import { afterEach, describe, expect, it } from 'vitest'
 import type { Context } from '@liusiqi-dev/cordis'
 import type { PatchOptions } from '@liusiqi-dev/cordis-plugin-include'
-import { boot, loadOverlayPatches } from '@liusiqi-dev/dsh-app-boot'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
-import * as McpClient from '@liusiqi-dev/dsh-mcp-client/src/index.ts'
+import { boot, loadOverlayPatches } from '@liusiqi-dev/sqh-app-boot'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
+import * as McpClient from '@liusiqi-dev/sqh-mcp-client/src/index.ts'
 
 interface ExampleContract {
   file: string
@@ -87,7 +87,7 @@ describe('third-party memory MCP example overlays', () => {
     const row = insertedRow(loadOverlayPatches('memory-mcp-config-test', file))
 
     expect(row.id).toBe(contract.id)
-    expect(row.name).toBe('@liusiqi-dev/dsh-mcp-client')
+    expect(row.name).toBe('@liusiqi-dev/sqh-mcp-client')
     expect(row.config?.serverName).toBe(contract.serverName)
     expect(row.config?.transport).toBe(contract.transport)
     expect(source.split('\n', 1)[0]).toContain(contract.pin)

@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-host-directory-picker-native",
+  "name": "@liusiqi-dev/sqh-host-directory-picker-native",
   "description": "Native-OS-chooser backend of the directory-picker seam for the Siqi Harness web GUI host",
   "version": "1.0.0",
   "publishConfig": {
@@ -32,8 +32,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@liusiqi-dev/dsh-host-directory-picker": "workspace:*",
-    "@liusiqi-dev/dsh-native-command": "workspace:*",
+    "@liusiqi-dev/sqh-host-directory-picker": "workspace:*",
+    "@liusiqi-dev/sqh-native-command": "workspace:*",
     "koffi": "3.1.1"
   },
   "peerDependencies": {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { SpillLocator } from '@liusiqi-dev/dsh-spill'
+import { SpillLocator } from '@liusiqi-dev/sqh-spill'
 import { formatSpillNotice, hasSpillNotice } from '../src/notice.ts'
 
 const ref = { locator: SpillLocator('/spill/output.txt'), retrievalHint: 'Read the file.' }

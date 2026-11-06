@@ -4,9 +4,9 @@ import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import type { TokenUsage } from '@liusiqi-dev/dsh-llm'
-import { DeepSeekHarness } from '@liusiqi-dev/dsh-sdk-client'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
+import type { TokenUsage } from '@liusiqi-dev/sqh-llm'
+import { DeepSeekHarness } from '@liusiqi-dev/sqh-sdk-client'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
 import { describe, expect, it, onTestFinished } from 'vitest'
 
 const fixturePath = fileURLToPath(new URL('./fixtures/dynamic-tool-cache.mjs', import.meta.url))

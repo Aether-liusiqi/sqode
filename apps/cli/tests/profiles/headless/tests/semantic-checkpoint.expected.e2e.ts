@@ -7,11 +7,11 @@ import {
   normalizeSessionSnapshot,
   normalizeSessionSnapshots,
   type NormalizeContext,
-} from '@liusiqi-dev/dsh-session-snapshot'
-import { LOADER_SMOKE_TEST_TIMEOUT_MS, runLoaderSmoke } from '@liusiqi-dev/dsh-loader-smoke'
-import { createUserMessage, ToolCallId, createMessage } from '@liusiqi-dev/dsh-llm'
-import { SessionSeq, SESSION_FORMAT_VERSION, SessionId, type SessionEvent, type SessionHeader } from '@liusiqi-dev/dsh-session'
-import JsonlSessionPersistence from '@liusiqi-dev/dsh-session-persistence-jsonl'
+} from '@liusiqi-dev/sqh-session-snapshot'
+import { LOADER_SMOKE_TEST_TIMEOUT_MS, runLoaderSmoke } from '@liusiqi-dev/sqh-loader-smoke'
+import { createUserMessage, ToolCallId, createMessage } from '@liusiqi-dev/sqh-llm'
+import { SessionSeq, SESSION_FORMAT_VERSION, SessionId, type SessionEvent, type SessionHeader } from '@liusiqi-dev/sqh-session'
+import JsonlSessionPersistence from '@liusiqi-dev/sqh-session-persistence-jsonl'
 import { logPath } from '../../../../../../packages/session/session-persistence-jsonl/src/format.ts'
 import { describe, expect, it } from 'vitest'
 

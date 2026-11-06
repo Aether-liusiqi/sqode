@@ -2,7 +2,7 @@
 import type { ReactNode } from 'react'
 import type {
   SessionAreaProps, StandardSourceBinding,
-} from '@liusiqi-dev/dsh-client-ui-slots'
+} from '@liusiqi-dev/sqh-client-ui-slots'
 
 /**
  * Render the selected Session body or its empty branch.

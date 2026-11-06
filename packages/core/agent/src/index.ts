@@ -2,16 +2,16 @@
  * Agent service: live registry, factory delegation, and process-local
  * initiator scope. Concrete creation and driving belong to the loop.
  *
- * @module @liusiqi-dev/dsh-agent
+ * @module @liusiqi-dev/sqh-agent
  */
 
 import { Context, FiberState, getTraceable, Service, symbols } from '@liusiqi-dev/cordis'
 import type { Fiber } from '@liusiqi-dev/cordis'
 import { AsyncLocalStorage } from 'node:async_hooks'
 import { isPromise } from 'node:util/types'
-import { scopeTarget } from '@liusiqi-dev/dsh-scope'
-import type { Scoped } from '@liusiqi-dev/dsh-scope'
-import type { SessionEvent, SessionId, SessionLogOffset } from '@liusiqi-dev/dsh-session'
+import { scopeTarget } from '@liusiqi-dev/sqh-scope'
+import type { Scoped } from '@liusiqi-dev/sqh-scope'
+import type { SessionEvent, SessionId, SessionLogOffset } from '@liusiqi-dev/sqh-session'
 import { installTurnArchiveAdmission } from './archive-admission.ts'
 import type { Agent } from './types.ts'
 import type { AgentOptions, SessionStartSource } from './runtime-types.ts'
@@ -234,7 +234,7 @@ interface FactorySlot {
  * Agent service (`ctx.agents`): tracks live agents and carries the initiating
  * Agent through one process-local asynchronous driver chain. Agent *creation*
  * is provided by whichever plugin implements the {@link AgentFactory}
- * (`@liusiqi-dev/dsh-agent-loop`), registered via {@link setFactory}.
+ * (`@liusiqi-dev/sqh-agent-loop`), registered via {@link setFactory}.
  *
  * Initiator methods provide same-process causal attribution only. Ambient
  * presence is neither liveness proof nor authorization; subjects and owners
@@ -258,13 +258,13 @@ export class AgentRegistry extends Service {
       typeCtx.typert.lookups.register('agent', {
         parameter: 'agent',
         wire: 'agentId',
-        hostTypeSymbol: '@liusiqi-dev/dsh-agent#Agent',
-        wireTypeSymbol: '@liusiqi-dev/dsh-session/types#SessionId',
+        hostTypeSymbol: '@liusiqi-dev/sqh-agent#Agent',
+        wireTypeSymbol: '@liusiqi-dev/sqh-session/types#SessionId',
         resolve: sessionId => this.get(sessionId),
       })
       typeCtx.typert.contexts.registerHost('agent', {
         wire: 'agentId',
-        wireTypeSymbol: '@liusiqi-dev/dsh-session/types#SessionId',
+        wireTypeSymbol: '@liusiqi-dev/sqh-session/types#SessionId',
         resolve: sessionId => this.get(sessionId)?.ctx,
       })
     })

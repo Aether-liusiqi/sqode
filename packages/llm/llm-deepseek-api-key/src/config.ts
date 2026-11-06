@@ -1,10 +1,10 @@
 /** API-key configuration resolved together with one Messages endpoint generation. */
 import type { Volatile } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { credentialRef, type CredentialRef } from '@liusiqi-dev/dsh-credentials'
-import type { LaunchEnvironmentSnapshot } from '@liusiqi-dev/dsh-launch-environment'
-import { deepSeekConfigFields, type Config as ProtocolConfig, plainOptions as protocolOptions, resolveAdapterOptions as resolveProtocolOptions } from '@liusiqi-dev/dsh-llm-deepseek'
-import type { Options as ProtocolOptions, DeepSeekConnectionOptions } from '@liusiqi-dev/dsh-llm-deepseek'
+import { credentialRef, type CredentialRef } from '@liusiqi-dev/sqh-credentials'
+import type { LaunchEnvironmentSnapshot } from '@liusiqi-dev/sqh-launch-environment'
+import { deepSeekConfigFields, type Config as ProtocolConfig, plainOptions as protocolOptions, resolveAdapterOptions as resolveProtocolOptions } from '@liusiqi-dev/sqh-llm-deepseek'
+import type { Options as ProtocolOptions, DeepSeekConnectionOptions } from '@liusiqi-dev/sqh-llm-deepseek'
 
 /** Messages configuration with a per-request API-key reference. */
 export interface Config extends ProtocolConfig {

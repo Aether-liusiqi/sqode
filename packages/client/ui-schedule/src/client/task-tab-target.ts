@@ -10,8 +10,8 @@
  * @module
  */
 import { useEffect, useMemo } from 'react'
-import type { SidebarRightNavigationParams } from '@liusiqi-dev/dsh-client-ui-sidebar-right/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { SidebarRightNavigationParams } from '@liusiqi-dev/sqh-client-ui-sidebar-right/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import { scheduleTaskParams } from './definition.ts'
 import type { TaskTabBindings, TaskTabPage, TaskTabTarget } from './task-tab-bindings.ts'
 

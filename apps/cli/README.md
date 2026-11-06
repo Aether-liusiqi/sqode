@@ -43,7 +43,7 @@ The tree composes over an empty root:
 - then the profile's `cordis.patch.yml`, then the home-level `$SQODE_HOME/cordis.patch.yml`
 - then `--patch` overlays
 
-Bundles named in `dsh.profile.bundles` resolve from the dsh installation first (`@liusiqi-dev/dsh-base`, `@liusiqi-dev/dsh-web-app`, `@liusiqi-dev/dsh-headless`, `@liusiqi-dev/dsh-sdk-app`, `@liusiqi-dev/dsh-sdk-minimal`, `@liusiqi-dev/dsh-acp-app`), then from the profile's own `node_modules`, where pnpm installs out-of-tree plugins.
+Bundles named in `dsh.profile.bundles` resolve from the dsh installation first (`@liusiqi-dev/sqh-base`, `@liusiqi-dev/sqh-web-app`, `@liusiqi-dev/sqh-headless`, `@liusiqi-dev/sqh-sdk-app`, `@liusiqi-dev/sqh-sdk-minimal`, `@liusiqi-dev/sqh-acp-app`), then from the profile's own `node_modules`, where pnpm installs out-of-tree plugins.
 
 Use `--dump-default-config` and `--dump-config` to inspect the composed tree without booting it. `--dump-config-schema` imports the composed tree's declared plugin schemas and prints JSON Schema for entries and patches instead of configuration values; read the [schema-dump safety and scope](reference/README.md#config-schema-dump) before inspecting untrusted plugins.
 

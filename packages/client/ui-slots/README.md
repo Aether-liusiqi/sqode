@@ -3,7 +3,7 @@ description: "Slot registry pure core for the dsh web client: ordinary extension
 kind: "package-library"
 ---
 
-# @liusiqi-dev/dsh-client-ui-slots
+# @liusiqi-dev/sqh-client-ui-slots
 
 English | [中文](README.zh.md)
 

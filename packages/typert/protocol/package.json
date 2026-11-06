@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-typert-protocol",
+  "name": "@liusiqi-dev/sqh-typert-protocol",
   "description": "Compiler-independent Remote metadata and Typert provider protocols",
   "version": "1.0.0",
   "publishConfig": {
@@ -32,7 +32,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@liusiqi-dev/dsh-brand": "workspace:*"
+    "@liusiqi-dev/sqh-brand": "workspace:*"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~"

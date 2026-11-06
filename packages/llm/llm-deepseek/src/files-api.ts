@@ -1,7 +1,7 @@
 /** DeepSeek Files API transport. @module dsh-llm-deepseek/files-api */
 
-import { attributionHeaders, LlmError } from '@liusiqi-dev/dsh-llm'
-import type { ImageMediaType } from '@liusiqi-dev/dsh-attachment'
+import { attributionHeaders, LlmError } from '@liusiqi-dev/sqh-llm'
+import type { ImageMediaType } from '@liusiqi-dev/sqh-attachment'
 import { DeepSeekFileId } from './file-id.ts'
 import type { DeepSeekFileId as DeepSeekFileIdType } from './file-id.ts'
 import { messagesApiRoot, MESSAGES_FILES_BETA } from './messages-api.ts'

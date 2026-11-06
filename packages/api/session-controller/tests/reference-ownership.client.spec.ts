@@ -3,15 +3,15 @@ import { Context } from '@liusiqi-dev/cordis'
 import { describe, expect, onTestFinished, vi } from 'vitest'
 import type {
   SessionReference, SessionReferenceSource, SessionRetainInfo,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
-import { SessionId } from '@liusiqi-dev/dsh-session/types'
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
-import { ok, type RemoteMock } from '@liusiqi-dev/dsh-remote-mock'
-import { createClientTest, webApp, type TestClient } from '@liusiqi-dev/dsh-client-test-runtime/src/assembly/index.ts'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
+import { SessionId } from '@liusiqi-dev/sqh-session/types'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
+import { ok, type RemoteMock } from '@liusiqi-dev/sqh-remote-mock'
+import { createClientTest, webApp, type TestClient } from '@liusiqi-dev/sqh-client-test-runtime/src/assembly/index.ts'
 import { ClientSessions } from '../src/client/sessions/service.ts'
 import { FOLLOW, followScript, type HistoryAnswer } from './remote/session.client.ts'
 
-declare module '@liusiqi-dev/dsh-api-session-controller/client' {
+declare module '@liusiqi-dev/sqh-api-session-controller/client' {
   interface SessionReferenceSourceMap {
     referenceTestView: unknown
     referenceTestWork: unknown
@@ -22,7 +22,7 @@ const viewSource: SessionReferenceSource = 'referenceTestView'
 const workSource: SessionReferenceSource = 'referenceTestWork'
 const ID = SessionId('reference-session')
 const EMPTY_HISTORY = ok({ records: [], hasMore: false })
-const it = createClientTest({ roster: webApp.closure(['@liusiqi-dev/dsh-api-gateway']) })
+const it = createClientTest({ roster: webApp.closure(['@liusiqi-dev/sqh-api-gateway']) })
 
 async function bench(mock: RemoteMock, start: () => Promise<TestClient>, listed = true) {
   const client = await start()

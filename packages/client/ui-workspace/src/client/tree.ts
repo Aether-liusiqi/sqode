@@ -5,14 +5,14 @@
  */
 import {
   type SessionListState, type SessionSearchResultItem, type SessionSummary,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { WorkspaceId, WorkspaceView } from '@liusiqi-dev/dsh-api-workspace-controller/client'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { WorkspaceId, WorkspaceView } from '@liusiqi-dev/sqh-api-workspace-controller/client'
 import type {
   SessionStatusSnapshot,
-} from '@liusiqi-dev/dsh-client-ui-session/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import { assertNever } from '@liusiqi-dev/dsh-util-values'
-import { workspaceTitleOf } from '@liusiqi-dev/dsh-util-workspace-path'
+} from '@liusiqi-dev/sqh-client-ui-session/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import { assertNever } from '@liusiqi-dev/sqh-util-values'
+import { workspaceTitleOf } from '@liusiqi-dev/sqh-util-workspace-path'
 
 /** Group key for Sessions outside every Workspace. */
 export const UNGROUPED_KEY = ''

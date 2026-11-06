@@ -15,7 +15,7 @@ describe('dsh-sdk-app bundle', () => {
       dsh?: { bundle?: { patch?: string } }
     }
     expect(manifest.dsh?.bundle?.patch).toBe('./cordis.patch.yml')
-    expect(manifest.dependencies).toHaveProperty('@liusiqi-dev/dsh-sdk-jsonrpc-server')
+    expect(manifest.dependencies).toHaveProperty('@liusiqi-dev/sqh-sdk-jsonrpc-server')
     const patches = yaml.load(
       readFileSync(resolve(root, manifest.dsh!.bundle!.patch!), 'utf8'),
       { schema: entryListSchema },
@@ -23,7 +23,7 @@ describe('dsh-sdk-app bundle', () => {
     expect(patches.find(patch => patch.id === 'hmr')).toMatchObject({ disabled: true })
     expect(patches.find(patch => patch.id === 'session-title-llm')).toMatchObject({ disabled: true })
     const rows = patches.flatMap(patch => patch.insert ?? [])
-    expect(rows.find(row => row.id === 'sdk-app-startup')?.name).toBe('@liusiqi-dev/dsh-sdk-app')
+    expect(rows.find(row => row.id === 'sdk-app-startup')?.name).toBe('@liusiqi-dev/sqh-sdk-app')
     expect(rows.find(row => row.id === 'sdk-jsonrpc-server')?.inject).toEqual(['sdkAppStartup', 'loader'])
   })
 })

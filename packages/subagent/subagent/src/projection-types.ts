@@ -1,10 +1,10 @@
 /**
  * Pure client-safe subagent projection vocabulary.
  *
- * @module @liusiqi-dev/dsh-subagent/projection-types
+ * @module @liusiqi-dev/sqh-subagent/projection-types
  */
 
-import type { SessionId, SessionSeq } from '@liusiqi-dev/dsh-session/types'
+import type { SessionId, SessionSeq } from '@liusiqi-dev/sqh-session/types'
 
 /** One current direct-child discovery row materialized from parent facts. */
 export type SubagentCatalogEntry =
@@ -65,7 +65,7 @@ export type SubagentIdentityProjection =
     seq: SessionSeq
   }
 
-declare module '@liusiqi-dev/dsh-session-projection/types' {
+declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionMap {
     /** Direct children in parent catalog event order, excluding fork-inherited facts. */
     subagentCatalog: SubagentCatalogEntry[]

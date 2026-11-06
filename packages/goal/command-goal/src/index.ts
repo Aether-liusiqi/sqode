@@ -1,14 +1,14 @@
 /**
  * Human-facing `/goal` command over the persisted same-session goal domain.
- * @module @liusiqi-dev/dsh-command-goal
+ * @module @liusiqi-dev/sqh-command-goal
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { CommandDefinitionId } from '@liusiqi-dev/dsh-commands/brand'
-import type { CommandInvocation, CommandResult } from '@liusiqi-dev/dsh-commands'
-import { GoalError } from '@liusiqi-dev/dsh-goal'
-import type { GoalPhase, GoalRef, GoalView } from '@liusiqi-dev/dsh-goal'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
+import { CommandDefinitionId } from '@liusiqi-dev/sqh-commands/brand'
+import type { CommandInvocation, CommandResult } from '@liusiqi-dev/sqh-commands'
+import { GoalError } from '@liusiqi-dev/sqh-goal'
+import type { GoalPhase, GoalRef, GoalView } from '@liusiqi-dev/sqh-goal'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
 
 export const name = 'command-goal'
 export const inject = ['commands', 'goals']
@@ -189,7 +189,7 @@ function executeGoalCommand(ctx: Context, invocation: CommandInvocation): Comman
 /** Register the Codex-shaped `/goal` command for every composed command adapter. */
 export function apply(ctx: Context): void {
   ctx.commands.register({
-    definitionId: CommandDefinitionId('@liusiqi-dev/dsh-command-goal'),
+    definitionId: CommandDefinitionId('@liusiqi-dev/sqh-command-goal'),
     name: 'goal',
     description: 'Set or view the goal for a long-running task',
     input: { hint: '[<objective>|clear|edit <objective>|pause|resume]', attachments: true },

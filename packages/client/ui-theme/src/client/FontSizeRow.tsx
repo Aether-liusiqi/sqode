@@ -9,10 +9,10 @@
  */
 import {
   IconChevronDownOutlineRegular, IconChevronUpOutlineRegular,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { PropsLocale, PropsRuntime, PropsStore } from '@liusiqi-dev/dsh-client-ui-slots'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { PropsLocale, PropsRuntime, PropsStore } from '@liusiqi-dev/sqh-client-ui-slots'
 import { FONT_SIZE_MAX, FONT_SIZE_MIN } from '../theme-settings.ts'
-import type {} from '@liusiqi-dev/dsh-client-ui-settings/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-settings/client'
 import type { createFontSizeRowStore } from './settings-store.ts'
 import css from './FontSizeRow.module.css'
 

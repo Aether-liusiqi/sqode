@@ -1,6 +1,6 @@
 /** Keeps Electron's private Platform credentials bound to the active account provider. */
 import type { Context } from '@liusiqi-dev/cordis'
-import type { PlatformSession } from '@liusiqi-dev/dsh-deepseek-account'
+import type { PlatformSession } from '@liusiqi-dev/sqh-deepseek-account'
 
 /**
  * Publish account sessions for each provider lifetime, clearing them on removal or stream termination.

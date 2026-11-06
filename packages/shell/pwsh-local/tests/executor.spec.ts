@@ -1,5 +1,5 @@
 /**
- * Real-process tests for `@liusiqi-dev/dsh-pwsh-local`: the LOCAL subprocess
+ * Real-process tests for `@liusiqi-dev/sqh-pwsh-local`: the LOCAL subprocess
  * service plus a REAL pwsh executable, exercised through the executor seam
  * (`resolve` → `run`/`start`). These verify the world — actual PowerShell
  * runs, output capture, truncation and spill, deadlines, kill escalation, and
@@ -15,12 +15,12 @@ import { join } from 'node:path'
 import { spawnSync } from 'node:child_process'
 import { afterAll, afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { PwshLocalExecutor, ENCODING_PREAMBLE, candidatePwshPaths, resolvePwshPath } from '@liusiqi-dev/dsh-pwsh-local'
-import LocalSubprocessRuntime from '@liusiqi-dev/dsh-subprocess-local'
-import SubprocessRuntime from '@liusiqi-dev/dsh-subprocess'
-import type { SubprocessHandle, SubprocessOutcome, SubprocessOutputReader, SubprocessSpawnSpec } from '@liusiqi-dev/dsh-subprocess'
-import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
-import type { ShellExecSpec, ShellExecution, ShellProcess, ShellRunResult } from '@liusiqi-dev/dsh-shell'
+import { PwshLocalExecutor, ENCODING_PREAMBLE, candidatePwshPaths, resolvePwshPath } from '@liusiqi-dev/sqh-pwsh-local'
+import LocalSubprocessRuntime from '@liusiqi-dev/sqh-subprocess-local'
+import SubprocessRuntime from '@liusiqi-dev/sqh-subprocess'
+import type { SubprocessHandle, SubprocessOutcome, SubprocessOutputReader, SubprocessSpawnSpec } from '@liusiqi-dev/sqh-subprocess'
+import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/sqh-timeout'
+import type { ShellExecSpec, ShellExecution, ShellProcess, ShellRunResult } from '@liusiqi-dev/sqh-shell'
 
 /** Historical foreground shorthand over the unified execute() seam. */
 async function run(x: { execute(spec: ShellExecSpec): Promise<ShellExecution> }, spec: ShellExecSpec): Promise<ShellRunResult> {

@@ -1,6 +1,6 @@
-/** Computer-use provider identities. @module @liusiqi-dev/dsh-computer-use/brand */
+/** Computer-use provider identities. @module @liusiqi-dev/sqh-computer-use/brand */
 
-import type { Branded } from '@liusiqi-dev/dsh-brand'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
 
 /** Provider-owned name identifying a computer-use registration. */
 export type ComputerUseProviderName = Branded<'ComputerUseProviderName'>

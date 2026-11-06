@@ -10,9 +10,9 @@
 
 ```ts
 import type { Context } from '@liusiqi-dev/cordis'
-import { brandString } from '@liusiqi-dev/dsh-brand'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
-import type { ToolCallId } from '@liusiqi-dev/dsh-llm'
+import { brandString } from '@liusiqi-dev/sqh-brand'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
+import type { ToolCallId } from '@liusiqi-dev/sqh-llm'
 
 export const name = 'greet-tool'
 export const inject = ['tools']
@@ -55,7 +55,7 @@ export function apply(ctx: Context) {
 
 ```ts
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-tools'
+import type {} from '@liusiqi-dev/sqh-tools'
 
 export const name = 'tool-logger'
 export const inject = ['tools']
@@ -70,18 +70,18 @@ export function apply(ctx: Context) {
 }
 ```
 
-`import type {} from '@liusiqi-dev/dsh-tools'` 行会引入该包的声明合并，使 `'tools/result'` 及其 payload 具有类型。这与第 4 章导入 `stats.ts` 的做法相同，只是扩展到了包级别。
+`import type {} from '@liusiqi-dev/sqh-tools'` 行会引入该包的声明合并，使 `'tools/result'` 及其 payload 具有类型。这与第 4 章导入 `stats.ts` 的做法相同，只是扩展到了包级别。
 
 ## 组合并运行
 
 ```yaml
-- name: '@liusiqi-dev/dsh-system-prompt'
-- name: '@liusiqi-dev/dsh-tools'
+- name: '@liusiqi-dev/sqh-system-prompt'
+- name: '@liusiqi-dev/sqh-tools'
 - name: './tool-logger.ts'
 - name: './greet-tool.ts'
 ```
 
-`@liusiqi-dev/dsh-tools` 会注入 `systemPrompt` 服务，因为工具需要向系统提示词贡献 schema，所以组合中也要列出该服务的提供方。缺少提供方时，工具插件会像[第 6 章](06-composition-and-hmr.zh.md)所述那样保持 PENDING。
+`@liusiqi-dev/sqh-tools` 会注入 `systemPrompt` 服务，因为工具需要向系统提示词贡献 schema，所以组合中也要列出该服务的提供方。缺少提供方时，工具插件会像[第 6 章](06-composition-and-hmr.zh.md)所述那样保持 PENDING。
 
 ```sh
 node --import tsx ../../vendor/cordis/bin.js

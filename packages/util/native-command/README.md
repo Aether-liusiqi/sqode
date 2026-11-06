@@ -3,7 +3,7 @@ description: "Host-native command and path-opening utilities with shell-free exe
 kind: "package-library"
 ---
 
-# @liusiqi-dev/dsh-native-command
+# @liusiqi-dev/sqh-native-command
 
 English | [中文](README.zh.md)
 
@@ -30,7 +30,7 @@ Use this runner when a host-side integration must execute one native command and
 ### Running a command
 
 ```ts
-import { runNativeCommand } from '@liusiqi-dev/dsh-native-command'
+import { runNativeCommand } from '@liusiqi-dev/sqh-native-command'
 
 declare const script: string
 declare const signal: AbortSignal

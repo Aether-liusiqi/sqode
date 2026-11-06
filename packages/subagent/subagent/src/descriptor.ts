@@ -18,15 +18,15 @@
  * durable descriptor, so it neither restores the prior budget nor inherits
  * the parent's current one; the resumed route's defaults apply instead.
  *
- * @module @liusiqi-dev/dsh-subagent/descriptor
+ * @module @liusiqi-dev/sqh-subagent/descriptor
  */
 
-import { snapshotJsonValue } from '@liusiqi-dev/dsh-util-values'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
-import type { ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
-import type { ToolRestriction } from '@liusiqi-dev/dsh-tools'
+import { snapshotJsonValue } from '@liusiqi-dev/sqh-util-values'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
+import type { ReasoningEffortId } from '@liusiqi-dev/sqh-llm'
+import type { ToolRestriction } from '@liusiqi-dev/sqh-tools'
 
-declare module '@liusiqi-dev/dsh-session/types' {
+declare module '@liusiqi-dev/sqh-session/types' {
   interface SessionEventMap {
     /**
      * Durable identity and lifecycle mode of a session-backed subagent child,

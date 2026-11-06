@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 import type { Context } from '@liusiqi-dev/cordis'
-import { ToolCallId, MessageId } from '@liusiqi-dev/dsh-llm'
-import { SessionSeq, type Session, type SessionEvent } from '@liusiqi-dev/dsh-session'
+import { ToolCallId, MessageId } from '@liusiqi-dev/sqh-llm'
+import { SessionSeq, type Session, type SessionEvent } from '@liusiqi-dev/sqh-session'
 import { assistantUpdates, toolCallUpdate, toolResultUpdate } from '../src/updates.ts'
 
 /** Minimal committed assistant event for pure update projection tests. */

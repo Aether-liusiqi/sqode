@@ -1,6 +1,6 @@
 /**
  * Program evaluation, output capture, and host binding proxies over the process channel.
- * @module @liusiqi-dev/dsh-ptc-runtime-node/src/bootstrap
+ * @module @liusiqi-dev/sqh-ptc-runtime-node/src/bootstrap
  */
 
 import { inspect } from 'node:util'

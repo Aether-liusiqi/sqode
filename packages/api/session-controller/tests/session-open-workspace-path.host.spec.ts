@@ -1,9 +1,9 @@
 import { resolve } from 'node:path'
-import * as nativeCommand from '@liusiqi-dev/dsh-native-command'
+import * as nativeCommand from '@liusiqi-dev/sqh-native-command'
 import { Context } from '@liusiqi-dev/cordis'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import SessionStore from '@liusiqi-dev/dsh-session'
-import FsLocal from '@liusiqi-dev/dsh-fs-local'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import SessionStore from '@liusiqi-dev/sqh-session'
+import FsLocal from '@liusiqi-dev/sqh-fs-local'
 import { onTestFinished } from 'vitest'
 import { describe, expect, it, vi } from 'vitest'
 import {

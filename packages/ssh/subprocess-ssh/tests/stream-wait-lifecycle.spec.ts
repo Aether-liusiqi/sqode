@@ -4,7 +4,7 @@ import { getEventListeners } from 'node:events'
 import { Context } from '@liusiqi-dev/cordis'
 import { describe, expect, it, onTestFinished } from 'vitest'
 import { z } from 'zod'
-import type { SubprocessSpawnSpec } from '@liusiqi-dev/dsh-subprocess'
+import type { SubprocessSpawnSpec } from '@liusiqi-dev/sqh-subprocess'
 import { SshSubprocessRuntime } from '../src/index.ts'
 
 type Stage = 'prepare' | 'connect' | 'start' | 'wait' | 'terminate'

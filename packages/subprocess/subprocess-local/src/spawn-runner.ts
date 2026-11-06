@@ -1,6 +1,6 @@
 /** One-shot Linux exec bootstrap and Windows Job-owning subprocess runner. */
 
-import { SUBPROCESS_CONTROL_FD } from '@liusiqi-dev/dsh-subprocess/control'
+import { SUBPROCESS_CONTROL_FD } from '@liusiqi-dev/sqh-subprocess/control'
 import { closeSync } from 'node:fs'
 import {
   closeHandleChecked,
@@ -10,11 +10,11 @@ import {
   spawnCurrentTokenJobProcess,
   terminateJob,
   Win32Error,
-} from '@liusiqi-dev/dsh-win32-process'
+} from '@liusiqi-dev/sqh-win32-process'
 import type {
   CurrentTokenProcessBindings,
   NativePtr,
-} from '@liusiqi-dev/dsh-win32-process'
+} from '@liusiqi-dev/sqh-win32-process'
 import { loadLinuxExecve } from './linux-execve.ts'
 import {
   consumeLinuxLaunchRequest,

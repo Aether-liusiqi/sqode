@@ -9,14 +9,14 @@
  */
 import { Context } from '@liusiqi-dev/cordis'
 import { describe, expect, it, vi } from 'vitest'
-import { createScope, scopeOf } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { LocaleSnapshot } from '@liusiqi-dev/dsh-client-locale/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import { InputTriggerController, InputTriggerService } from '@liusiqi-dev/dsh-client-ui-input-trigger/client'
+import { createScope, scopeOf } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { LocaleSnapshot } from '@liusiqi-dev/sqh-client-locale/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import { InputTriggerController, InputTriggerService } from '@liusiqi-dev/sqh-client-ui-input-trigger/client'
 import type {
   BeginCommandRequest, ClientSessionContext, CommandClaim, InsertReferenceRequest, PickOutcome,
   ReferenceInsert, InputTriggerCandidate, InputTriggerPick, InputTriggerSource, SourceRoster, TriggerChar,
-} from '@liusiqi-dev/dsh-client-ui-input-trigger/client'
+} from '@liusiqi-dev/sqh-client-ui-input-trigger/client'
 
 const sid = (k: string): SessionId => k as SessionId
 

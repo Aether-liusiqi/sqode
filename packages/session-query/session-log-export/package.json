@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-session-log-export",
+  "name": "@liusiqi-dev/sqh-session-log-export",
   "description": "Web Session-log export command and shared download dialog",
   "version": "1.0.0",
   "publishConfig": {
@@ -36,46 +36,46 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@liusiqi-dev/dsh-session-format": "workspace:*",
+    "@liusiqi-dev/sqh-session-format": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
     "fflate": "^0.8.2",
-    "@liusiqi-dev/dsh-brand": "workspace:*"
+    "@liusiqi-dev/sqh-brand": "workspace:*"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-persistence": "workspace:*"
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-persistence": "workspace:*"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-attachment": "workspace:*",
-    "@liusiqi-dev/dsh-client-connection": "workspace:*",
-    "@liusiqi-dev/dsh-client-locale": "workspace:*",
-    "@liusiqi-dev/dsh-client-store": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-commands": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-conversation": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-message-feedback": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-primitives": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-renderer": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-session": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-slots": "workspace:*",
-    "@liusiqi-dev/dsh-commands": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-persistence": "workspace:*",
-    "@liusiqi-dev/dsh-session-query": "workspace:*",
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-attachment": "workspace:*",
+    "@liusiqi-dev/sqh-client-connection": "workspace:*",
+    "@liusiqi-dev/sqh-client-locale": "workspace:*",
+    "@liusiqi-dev/sqh-client-store": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-commands": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-conversation": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-message-feedback": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-primitives": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-renderer": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-session": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-slots": "workspace:*",
+    "@liusiqi-dev/sqh-commands": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-persistence": "workspace:*",
+    "@liusiqi-dev/sqh-session-query": "workspace:*",
     "@types/react": "~18.3.1",
     "react": "^18.2.0"
   },
   "dsh": {
     "client": {
       "inject": [
-        "@liusiqi-dev/dsh-client-locale",
-        "@liusiqi-dev/dsh-client-ui-commands",
-        "@liusiqi-dev/dsh-client-ui-conversation",
-        "@liusiqi-dev/dsh-client-ui-renderer",
-        "@liusiqi-dev/dsh-client-ui-session"
+        "@liusiqi-dev/sqh-client-locale",
+        "@liusiqi-dev/sqh-client-ui-commands",
+        "@liusiqi-dev/sqh-client-ui-conversation",
+        "@liusiqi-dev/sqh-client-ui-renderer",
+        "@liusiqi-dev/sqh-client-ui-session"
       ],
       "platform": "web"
     }

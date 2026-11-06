@@ -1,4 +1,4 @@
-import type { AssistantBlock } from '@liusiqi-dev/dsh-client-ui-conversation/client'
+import type { AssistantBlock } from '@liusiqi-dev/sqh-client-ui-conversation/client'
 
 /**
  * Test whether Assistant blocks contain a user-facing reply rather than only

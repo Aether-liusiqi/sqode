@@ -3,9 +3,9 @@ import { useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import {
   IconChevronDownOutlineRegular, IconFolderOpenOutlineRegular, IconRightUpOutlineRegular, Menu, Tooltip,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { ShortcutCatalogEntry } from '@liusiqi-dev/dsh-client-shortcuts/client'
-import type { TranslateNS } from '@liusiqi-dev/dsh-client-ui-slots'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { ShortcutCatalogEntry } from '@liusiqi-dev/sqh-client-shortcuts/client'
+import type { TranslateNS } from '@liusiqi-dev/sqh-client-ui-slots'
 import type { OpenInAppPathFailure } from './open-path.ts'
 import { useOpenFailureToast } from './open-failure-toast.tsx'
 import type { NS } from './locales.ts'

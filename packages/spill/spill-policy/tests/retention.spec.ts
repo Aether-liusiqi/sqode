@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { AttachmentId } from '@liusiqi-dev/dsh-attachment'
+import { AttachmentId } from '@liusiqi-dev/sqh-attachment'
 import { retainContent, type RetainableBlock } from '../src/retention.ts'
 
 const text = (value: string): RetainableBlock => ({ type: 'text', text: value })

@@ -1,9 +1,9 @@
 /** The sidebar's Plugins entry icon; the sidebar owns the button, label, and selected state around it. */
 
 import type { ReactNode } from 'react'
-import { IconPluginPinwheelOutlineRegular } from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
-import type {} from '@liusiqi-dev/dsh-client-ui-sidebar/client'
+import { IconPluginPinwheelOutlineRegular } from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
+import type {} from '@liusiqi-dev/sqh-client-ui-sidebar/client'
 
 /**
  * Render the plugin glyph at the size the sidebar asks for.

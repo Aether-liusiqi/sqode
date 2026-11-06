@@ -5,57 +5,57 @@
 /:
   en: a55f23f2363fdbd6
   zh: b1fd7328e041ec52
-/liusiqi-dev-dsh-web-fetch-http:
-  en: 1fac180efd79da31
-  zh: 15f2cc3ced310a85
-/liusiqi-dev-dsh-web-fetch-http/summary:
+/liusiqi-dev-sqh-web-fetch-http:
+  en: fb4b2b46a625e02e
+  zh: 366be7d759d13c18
+/liusiqi-dev-sqh-web-fetch-http/summary:
   en: 88157c32f36635d5
   zh: a149d576df0349bc
-/liusiqi-dev-dsh-web-fetch-http/table-of-contents:
+/liusiqi-dev-sqh-web-fetch-http/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
-/liusiqi-dev-dsh-web-fetch-http/use-this-package:
+/liusiqi-dev-sqh-web-fetch-http/use-this-package:
   en: 630b12516d53e905
   zh: eed124cfe9c8dc1f
-/liusiqi-dev-dsh-web-fetch-http/use-this-package/when-to-choose-it:
+/liusiqi-dev-sqh-web-fetch-http/use-this-package/when-to-choose-it:
   en: eb52e77279c21d6f
   zh: 0560e89caa377bfc
-/liusiqi-dev-dsh-web-fetch-http/use-this-package/minimal-configuration:
+/liusiqi-dev-sqh-web-fetch-http/use-this-package/minimal-configuration:
   en: 8d36e92de6687073
   zh: 6c0cbd310b7a74eb
-/liusiqi-dev-dsh-web-fetch-http/use-this-package/what-a-fetch-returns:
+/liusiqi-dev-sqh-web-fetch-http/use-this-package/what-a-fetch-returns:
   en: 2d18cdcc9b53dd0f
   zh: 3bc6ca7c5933ee5d
-/liusiqi-dev-dsh-web-fetch-http/use-this-package/transport-behavior:
+/liusiqi-dev-sqh-web-fetch-http/use-this-package/transport-behavior:
   en: c432147daf2877cf
   zh: c14d507dd66e124a
-/liusiqi-dev-dsh-web-fetch-http/use-this-package/failures-and-recovery:
+/liusiqi-dev-sqh-web-fetch-http/use-this-package/failures-and-recovery:
   en: 35407f106dc65deb
   zh: 02118072fba68b8f
-/liusiqi-dev-dsh-web-fetch-http/understand-the-implementation:
+/liusiqi-dev-sqh-web-fetch-http/understand-the-implementation:
   en: 9842c69ad3636bb3
   zh: 3cdc3f816cbdd0cb
-/liusiqi-dev-dsh-web-fetch-http/understand-the-implementation/design-philosophy:
+/liusiqi-dev-sqh-web-fetch-http/understand-the-implementation/design-philosophy:
   en: a8d806f0706f02e2
   zh: d922732a5b7e88bd
-/liusiqi-dev-dsh-web-fetch-http/understand-the-implementation/source-map:
+/liusiqi-dev-sqh-web-fetch-http/understand-the-implementation/source-map:
   en: e22ec70d55e0d8f7
   zh: 1a333660eae37b1f
-/liusiqi-dev-dsh-web-fetch-http/understand-the-implementation/read-path:
+/liusiqi-dev-sqh-web-fetch-http/understand-the-implementation/read-path:
   en: 749c0ffeac145807
   zh: 1468821a33a9518a
-/liusiqi-dev-dsh-web-fetch-http/further-exploration:
+/liusiqi-dev-sqh-web-fetch-http/further-exploration:
   en: eeaaf0b455673a1c
   zh: 0874f9f44ff9a220
-/liusiqi-dev-dsh-web-fetch-http/model-experience:
+/liusiqi-dev-sqh-web-fetch-http/model-experience:
   en: 5c488f8d23ce3e90
   zh: 3cc8f8dc3ab60b65
-/liusiqi-dev-dsh-web-fetch-http/model-experience/kv-cache-effect:
+/liusiqi-dev-sqh-web-fetch-http/model-experience/kv-cache-effect:
   en: 40294c1c31b74824
   zh: d75d48f485447a74
-/liusiqi-dev-dsh-web-fetch-http/known-limitations-and-deferred-work:
+/liusiqi-dev-sqh-web-fetch-http/known-limitations-and-deferred-work:
   en: 4d935fd8f466a234
   zh: c398eb7aa737f5ea
-/liusiqi-dev-dsh-web-fetch-http/known-limitations-and-deferred-work/dev-note:
+/liusiqi-dev-sqh-web-fetch-http/known-limitations-and-deferred-work/dev-note:
   en: e67f633dc6fe7773
   zh: 3bb0c20c93f16f98

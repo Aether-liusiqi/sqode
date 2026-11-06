@@ -3,7 +3,7 @@ description: "Attachment presentation for the conversation UI: mixed draft-attac
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-ui-attachment
+# @liusiqi-dev/sqh-client-ui-attachment
 
 English | [中文](README.zh.md)
 

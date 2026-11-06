@@ -3,7 +3,7 @@ description: "面向无密钥 profile 测试的会话日志快照支持：manife
 kind: "package-library"
 ---
 
-# @liusiqi-dev/dsh-session-snapshot
+# @liusiqi-dev/sqh-session-snapshot
 
 [English](README.md) | 中文
 
@@ -38,7 +38,7 @@ import {
   defineAcpSnapshotSuite,
   type Scenario,
   type SnapshotSuiteOptions,
-} from '@liusiqi-dev/dsh-session-snapshot'
+} from '@liusiqi-dev/sqh-session-snapshot'
 
 function snapshotMode(value: string | undefined): SnapshotSuiteOptions['mode'] {
   switch (value) {

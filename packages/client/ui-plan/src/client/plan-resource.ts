@@ -1,12 +1,12 @@
 /** Read immutable plan arguments from a Session snapshot and earlier history pages. */
 import type { Context } from '@liusiqi-dev/cordis'
-import type { SessionFollowFrame } from '@liusiqi-dev/dsh-api-session-controller/types'
-import type { ResourceProvider } from '@liusiqi-dev/dsh-client-resources/client'
-import { RemoteError, remoteErrorOf } from '@liusiqi-dev/dsh-typert-protocol'
-import type { RemoteResult } from '@liusiqi-dev/dsh-typert-protocol'
+import type { SessionFollowFrame } from '@liusiqi-dev/sqh-api-session-controller/types'
+import type { ResourceProvider } from '@liusiqi-dev/sqh-client-resources/client'
+import { RemoteError, remoteErrorOf } from '@liusiqi-dev/sqh-typert-protocol'
+import type { RemoteResult } from '@liusiqi-dev/sqh-typert-protocol'
 import { parsePlanAddress, submittedPlan, type SubmittedPlan } from './plan.ts'
 
-declare module '@liusiqi-dev/dsh-typert-protocol' {
+declare module '@liusiqi-dev/sqh-typert-protocol' {
   interface RemoteErrorDetailsMap {
     /** The resource URL does not identify a plan invocation. */
     'plan/invalid-address': Record<string, never>
@@ -19,7 +19,7 @@ declare module '@liusiqi-dev/dsh-typert-protocol' {
   }
 }
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface ResourceProtocolMap {
     /** Immutable Markdown from a logged exit_plan_mode invocation. */
     plan: SubmittedPlan

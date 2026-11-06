@@ -5,8 +5,8 @@ import { fileURLToPath } from 'node:url'
 import type { Browser, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session/types'
-import type {} from '@liusiqi-dev/dsh-commands/types'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session/types'
+import type {} from '@liusiqi-dev/sqh-commands/types'
 import {
   acknowledgeReloadConnectionLoss, assertFixtureInventory, captureStableAria,
   compareOrRefreshGolden, launchWebScaffold, watchConsole, webSnapshotMode,

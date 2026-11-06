@@ -1,8 +1,8 @@
 /** Child LLM route selection for the subagent tool. */
 
-import { ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
-import type { LlmRuntime } from '@liusiqi-dev/dsh-llm'
-import type { AgentOptions } from '@liusiqi-dev/dsh-agent'
+import { ReasoningEffortId } from '@liusiqi-dev/sqh-llm'
+import type { LlmRuntime } from '@liusiqi-dev/sqh-llm'
+import type { AgentOptions } from '@liusiqi-dev/sqh-agent'
 import z from '@liusiqi-dev/schemastery'
 
 /** One exact child LLM route authorized by a user setting. */

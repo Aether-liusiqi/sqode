@@ -3,7 +3,7 @@ description: "The session-projection registry for developers serving whole curre
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-session-projection
+# @liusiqi-dev/sqh-session-projection
 
 English | [中文](README.zh.md)
 

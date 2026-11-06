@@ -1,13 +1,13 @@
 import { Context } from '@liusiqi-dev/cordis'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { SessionLogOffset, SessionSeq, SESSION_FORMAT_VERSION, SessionId } from '@liusiqi-dev/dsh-session'
-import type { SessionEvent, SessionHeader, SessionId as SessionIdType } from '@liusiqi-dev/dsh-session'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { SessionLogOffset, SessionSeq, SESSION_FORMAT_VERSION, SessionId } from '@liusiqi-dev/sqh-session'
+import type { SessionEvent, SessionHeader, SessionId as SessionIdType } from '@liusiqi-dev/sqh-session'
 import SessionPersistence, {
   SessionPersistenceCorruptionError,
   SessionPersistenceNotFoundError,
   SessionPersistenceRevision,
   SessionReadOnlyError,
-} from '@liusiqi-dev/dsh-session-persistence'
+} from '@liusiqi-dev/sqh-session-persistence'
 import type {
   SessionAccess,
   SessionHandle,
@@ -15,8 +15,8 @@ import type {
   SessionHandleReadResult,
   SessionPersistenceSnapshot,
   SessionPersistenceStatOptions,
-} from '@liusiqi-dev/dsh-session-persistence'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
+} from '@liusiqi-dev/sqh-session-persistence'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
 import { describe, expect, it, vi } from 'vitest'
 import { SessionObservationReader } from '../src/observation.ts'
 

@@ -4,8 +4,8 @@
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-agent-loop'
-import type {} from '@liusiqi-dev/dsh-subagent'
+import type {} from '@liusiqi-dev/sqh-agent-loop'
+import type {} from '@liusiqi-dev/sqh-subagent'
 
 /** Fixture plugin name. */
 export const name = 'subagent-settlement-fence'

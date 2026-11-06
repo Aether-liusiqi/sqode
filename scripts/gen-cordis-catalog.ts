@@ -26,8 +26,8 @@ import {
   renderPageRegion,
   REGION_BEGIN,
   REGION_END,
-} from '@liusiqi-dev/dsh-typert-generator'
-import type { CordisCatalogPolicy } from '@liusiqi-dev/dsh-typert-generator'
+} from '@liusiqi-dev/sqh-typert-generator'
+import type { CordisCatalogPolicy } from '@liusiqi-dev/sqh-typert-generator'
 import { renderCordisCoreApiPages } from './cordis-core-api.ts'
 import { contextKeyMap, contextMergeFiles, eventNameList } from './cordis-walk.ts'
 import {

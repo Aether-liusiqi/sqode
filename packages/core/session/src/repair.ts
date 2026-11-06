@@ -2,12 +2,12 @@
  * Pending tool-result recovery shared by failed live steps, interrupted logs,
  * and fork seeds. Tail repair preserves closed steps and supplies only missing
  * tool results and lifecycle boundaries, with cause-specific retry guidance.
- * @module @liusiqi-dev/dsh-session/repair
+ * @module @liusiqi-dev/sqh-session/repair
  */
 
-import { brandString } from '@liusiqi-dev/dsh-brand'
-import type { MessageId, ToolCallId, ToolResultMessage } from '@liusiqi-dev/dsh-llm'
-import { deepFreeze } from '@liusiqi-dev/dsh-util-values'
+import { brandString } from '@liusiqi-dev/sqh-brand'
+import type { MessageId, ToolCallId, ToolResultMessage } from '@liusiqi-dev/sqh-llm'
+import { deepFreeze } from '@liusiqi-dev/sqh-util-values'
 import { SessionSeq } from './types.ts'
 import type { SessionEvent, SessionSeq as SessionSeqType } from './types.ts'
 

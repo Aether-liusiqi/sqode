@@ -1,11 +1,11 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, render, screen } from '@testing-library/react'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import { bindSnapshotSelector, makeTranslate } from '@liusiqi-dev/dsh-client-test-runtime'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import { bindSnapshotSelector, makeTranslate } from '@liusiqi-dev/sqh-client-test-runtime'
 import type {
   PermissionCatalog, PermissionSelection,
-} from '@liusiqi-dev/dsh-permission-presets/client'
+} from '@liusiqi-dev/sqh-permission-presets/client'
 import {
   PermissionSelect, type PermissionSelectProps,
 } from '../src/client/PermissionSelect.tsx'

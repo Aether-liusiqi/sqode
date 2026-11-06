@@ -1,5 +1,5 @@
 /** Host registration for browser Chat preferences. */
-import type {} from '@liusiqi-dev/dsh-settings'
+import type {} from '@liusiqi-dev/sqh-settings'
 
 import type { Volatile, Context } from '@liusiqi-dev/cordis'
 import type { ChatSettings, LinkOpening, PerformanceUsageMode } from './chat-settings.ts'

@@ -3,9 +3,9 @@
 import type { Context, FiberState } from '@liusiqi-dev/cordis'
 import type {} from '@liusiqi-dev/cordis-plugin-loader'
 // Type-only: the optional agent-preset roster resolved through `ctx.get`.
-import type {} from '@liusiqi-dev/dsh-agent-preset-registry'
-import type {} from '@liusiqi-dev/dsh-app-boot'
-import { TypertRemoteService, Remote } from '@liusiqi-dev/dsh-typert-protocol'
+import type {} from '@liusiqi-dev/sqh-agent-preset-registry'
+import type {} from '@liusiqi-dev/sqh-app-boot'
+import { TypertRemoteService, Remote } from '@liusiqi-dev/sqh-typert-protocol'
 // Typert-generated ./typert and ./remote artifacts import Zod at runtime.
 import type {} from 'zod'
 import type {

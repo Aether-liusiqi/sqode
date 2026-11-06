@@ -1,19 +1,19 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import type { Agent, PreStepDecision } from '@liusiqi-dev/dsh-agent'
-import { agentEvents } from '@liusiqi-dev/dsh-agent'
-import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
-import { mountAgentLoopTestDependencies } from '@liusiqi-dev/dsh-agent-loop-testkit'
-import GoalService, { GoalId } from '@liusiqi-dev/dsh-goal'
-import type { GoalView } from '@liusiqi-dev/dsh-goal'
-import { createUserMessage, LlmAdapter, LlmError  } from '@liusiqi-dev/dsh-llm'
-import type { GenerateOptions, StreamChunk } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-import { SessionId } from '@liusiqi-dev/dsh-session'
-import type { UserMessage } from '@liusiqi-dev/dsh-session'
+import type { Agent, PreStepDecision } from '@liusiqi-dev/sqh-agent'
+import { agentEvents } from '@liusiqi-dev/sqh-agent'
+import AgentLoop from '@liusiqi-dev/sqh-agent-loop'
+import { mountAgentLoopTestDependencies } from '@liusiqi-dev/sqh-agent-loop-testkit'
+import GoalService, { GoalId } from '@liusiqi-dev/sqh-goal'
+import type { GoalView } from '@liusiqi-dev/sqh-goal'
+import { createUserMessage, LlmAdapter, LlmError  } from '@liusiqi-dev/sqh-llm'
+import type { GenerateOptions, StreamChunk } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+import { SessionId } from '@liusiqi-dev/sqh-session'
+import type { UserMessage } from '@liusiqi-dev/sqh-session'
 import * as goalSession from '../src/index.ts'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }

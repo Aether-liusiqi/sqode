@@ -1,11 +1,11 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import WebRuntime from '@liusiqi-dev/dsh-web'
+import WebRuntime from '@liusiqi-dev/sqh-web'
 import {
   PerplexitySearchProvider,
   PERPLEXITY_PROVIDER_ID,
-} from '@liusiqi-dev/dsh-web-search-perplexity'
-import * as perplexityPlugin from '@liusiqi-dev/dsh-web-search-perplexity'
+} from '@liusiqi-dev/sqh-web-search-perplexity'
+import * as perplexityPlugin from '@liusiqi-dev/sqh-web-search-perplexity'
 import { mapPerplexityResponse } from '../src/provider.ts'
 
 const options = { apiKey: 'pplx-key', baseURL: 'https://api.perplexity.test', model: 'sonar', maxTokens: 1024 }

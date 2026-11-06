@@ -11,7 +11,7 @@
  * cursor tooltip says why.
  */
 import { useState } from 'react'
-import { Button, IconTrashOutlineRegular, MenuItemButton, Modal } from '@liusiqi-dev/dsh-client-ui-primitives'
+import { Button, IconTrashOutlineRegular, MenuItemButton, Modal } from '@liusiqi-dev/sqh-client-ui-primitives'
 import type {
   DeleteSessionInjected, SessionDeleteConfirmProps, SessionDeleteConfirmRequest,
   SessionMenuItemProps,

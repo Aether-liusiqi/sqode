@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import InvariantRegistry from '@liusiqi-dev/dsh-invariants'
-import * as AgentLoopInvariant from '@liusiqi-dev/dsh-agent-loop/invariant'
-import { createUserMessage, markAgentLoopRequest, type GenerateOptions  } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import InvariantRegistry from '@liusiqi-dev/sqh-invariants'
+import * as AgentLoopInvariant from '@liusiqi-dev/sqh-agent-loop/invariant'
+import { createUserMessage, markAgentLoopRequest, type GenerateOptions  } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'x': { kind: 'x' } & ContextFormed
   }

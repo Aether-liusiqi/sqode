@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-client-ui-slots",
+  "name": "@liusiqi-dev/sqh-client-ui-slots",
   "description": "Slot registry pure core: typed ordinary Slots and reusable Component Factories, derived props, Store seats, and renderer installation",
   "version": "1.0.0",
   "publishConfig": {
@@ -23,7 +23,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@liusiqi-dev/dsh-client-store": "workspace:*",
+    "@liusiqi-dev/sqh-client-store": "workspace:*",
     "@types/react": "~18.3.1",
     "@liusiqi-dev/cordis": "workspace:~"
   },

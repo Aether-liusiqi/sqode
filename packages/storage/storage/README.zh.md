@@ -3,7 +3,7 @@ description: "存储枢纽（ctx.storage）：面向选择、挂载或排查具�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-storage
+# @liusiqi-dev/sqh-storage
 
 [English](README.md) | 中文
 
@@ -34,11 +34,11 @@ kind: "package-reference"
 ### 最小组合
 
 ```yaml
-- name: '@liusiqi-dev/dsh-storage'
-- name: '@liusiqi-dev/dsh-storage-json'
+- name: '@liusiqi-dev/sqh-storage'
+- name: '@liusiqi-dev/sqh-storage-json'
   config:
     root: /var/lib/dsh/data
-- name: '@liusiqi-dev/dsh-storage-domain'
+- name: '@liusiqi-dev/sqh-storage-domain'
   config:
     backend: json
 ```

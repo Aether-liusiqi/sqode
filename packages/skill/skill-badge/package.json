@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-skill-badge",
+  "name": "@liusiqi-dev/sqh-skill-badge",
   "description": "Bundled dsh badge skill provider for Siqi Harness",
   "version": "1.0.0",
   "publishConfig": {
@@ -27,11 +27,11 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@liusiqi-dev/dsh-skill": "workspace:*",
+    "@liusiqi-dev/sqh-skill": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-skill": "workspace:*",
+    "@liusiqi-dev/sqh-skill": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   }
 }

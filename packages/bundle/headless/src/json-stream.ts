@@ -4,13 +4,13 @@
  * text and reasoning come from committed `assistant/message` content, never
  * from a live attempt that may still be retried or discarded, so the stream
  * never carries content the durable log does not contain.
- * @module @liusiqi-dev/dsh-headless/json-stream
+ * @module @liusiqi-dev/sqh-headless/json-stream
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { lastAssistantStreamChunk } from '@liusiqi-dev/dsh-llm/assistant-stream'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { lastAssistantStreamChunk } from '@liusiqi-dev/sqh-llm/assistant-stream'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
 
 /** Default per-string and per-key cap applied to every bounded projected payload. */
 export const MAX_STRING_BYTES = 8 * 1024

@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { type Agent } from '@liusiqi-dev/dsh-agent'
-import SubagentRuntime, { type SubagentStartRequest } from '@liusiqi-dev/dsh-subagent'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import { SessionId } from '@liusiqi-dev/dsh-session'
+import { type Agent } from '@liusiqi-dev/sqh-agent'
+import SubagentRuntime, { type SubagentStartRequest } from '@liusiqi-dev/sqh-subagent'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import { SessionId } from '@liusiqi-dev/sqh-session'
 import * as scripted from './scripted-provider.ts'
 
 /** A minimal parent; the scripted provider only reads its id. */

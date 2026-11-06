@@ -1,6 +1,6 @@
 /**
  * Sandbox-consuming PowerShell executor — the pwsh twin of
- * `@liusiqi-dev/dsh-bash-sandbox`. It wraps the exact local pwsh argv through
+ * `@liusiqi-dev/sqh-bash-sandbox`. It wraps the exact local pwsh argv through
  * `ctx.sandbox` (which on Windows resolves to the ACL restricted-token runner
  * chain), inherits local process mechanics, and reports the selected mode,
  * enforcement, and denial facts. Positive runner-executable evidence
@@ -9,12 +9,12 @@
  * other provider rejections retain stage-neutral local-executor semantics. The
  * tool layer owns the escalation approval flow through `ctx.approval`; this
  * executor reports the sandbox facts the tool renders.
- * @module @liusiqi-dev/dsh-pwsh-sandbox
+ * @module @liusiqi-dev/sqh-pwsh-sandbox
  */
 
 import { Context } from '@liusiqi-dev/cordis'
-import type { ShellExecRequest, ShellExecSpec, ShellExecution, ShellProcess, ShellRunResult } from '@liusiqi-dev/dsh-shell'
-import { SandboxUnavailableError } from '@liusiqi-dev/dsh-sandbox'
+import type { ShellExecRequest, ShellExecSpec, ShellExecution, ShellProcess, ShellRunResult } from '@liusiqi-dev/sqh-shell'
+import { SandboxUnavailableError } from '@liusiqi-dev/sqh-sandbox'
 import type {
   ConfinedArgv,
   ConfinedSandboxMode,
@@ -23,16 +23,16 @@ import type {
   SandboxExecutionPolicy,
   SandboxMode,
   SandboxPolicy,
-} from '@liusiqi-dev/dsh-sandbox'
-import type {} from '@liusiqi-dev/dsh-sandbox-policy'
-import { PwshLocalExecutor } from '@liusiqi-dev/dsh-pwsh-local'
-import type { Config as LocalConfig } from '@liusiqi-dev/dsh-pwsh-local'
+} from '@liusiqi-dev/sqh-sandbox'
+import type {} from '@liusiqi-dev/sqh-sandbox-policy'
+import { PwshLocalExecutor } from '@liusiqi-dev/sqh-pwsh-local'
+import type { Config as LocalConfig } from '@liusiqi-dev/sqh-pwsh-local'
 import { classifyDenial, classifyRunnerFailure, isRunnerSpawnFailure, matchesSignature } from './helpers.ts'
 
 /**
  * Plugin config: the local executor's knobs, verbatim. The sandbox policy —
  * the default mode and fallback `workspace-write` root — is NOT here: it lives
- * on `ctx.sandboxPolicy` (`@liusiqi-dev/dsh-sandbox-policy`), which resolves
+ * on `ctx.sandboxPolicy` (`@liusiqi-dev/sqh-sandbox-policy`), which resolves
  * each calling session's mode and cwd for every enforcing capability. The
  * runner choice is likewise the `ctx.sandbox` provider's config, not this
  * executor's.

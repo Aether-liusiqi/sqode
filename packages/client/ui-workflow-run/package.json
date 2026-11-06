@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-client-ui-workflow-run",
+  "name": "@liusiqi-dev/sqh-client-ui-workflow-run",
   "description": "Durable workflow-run Conversation Node and nested member disclosure for dsh web",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,13 +28,13 @@
   "dsh": {
     "client": {
       "inject": [
-        "@liusiqi-dev/dsh-api-session-controller",
-        "@liusiqi-dev/dsh-client-locale",
-        "@liusiqi-dev/dsh-client-ui-chat",
-        "@liusiqi-dev/dsh-client-ui-conversation",
-        "@liusiqi-dev/dsh-client-ui-renderer",
-        "@liusiqi-dev/dsh-client-ui-session",
-        "@liusiqi-dev/dsh-client-ui-workspace"
+        "@liusiqi-dev/sqh-api-session-controller",
+        "@liusiqi-dev/sqh-client-locale",
+        "@liusiqi-dev/sqh-client-ui-chat",
+        "@liusiqi-dev/sqh-client-ui-conversation",
+        "@liusiqi-dev/sqh-client-ui-renderer",
+        "@liusiqi-dev/sqh-client-ui-session",
+        "@liusiqi-dev/sqh-client-ui-workspace"
       ],
       "platform": "web"
     }
@@ -53,20 +53,20 @@
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-api-session-controller": "workspace:*",
-    "@liusiqi-dev/dsh-client-locale": "workspace:*",
-    "@liusiqi-dev/dsh-client-store": "workspace:*",
-    "@liusiqi-dev/dsh-client-test-runtime": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-chat": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-conversation": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-primitives": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-slots": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-renderer": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-session": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-workspace": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-tool-workflow": "workspace:*",
-    "@liusiqi-dev/dsh-workflow": "workspace:*",
+    "@liusiqi-dev/sqh-api-session-controller": "workspace:*",
+    "@liusiqi-dev/sqh-client-locale": "workspace:*",
+    "@liusiqi-dev/sqh-client-store": "workspace:*",
+    "@liusiqi-dev/sqh-client-test-runtime": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-chat": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-conversation": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-primitives": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-slots": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-renderer": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-session": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-workspace": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-tool-workflow": "workspace:*",
+    "@liusiqi-dev/sqh-workflow": "workspace:*",
     "@types/react": "~18.3.1",
     "@liusiqi-dev/cordis": "workspace:~",
     "react": "^18.2.0"

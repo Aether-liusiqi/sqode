@@ -2,33 +2,33 @@
 
 import { homedir } from 'node:os'
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
 import type {
   TypertRemoteEventDispatch,
   TypertRemoteEventInvocation,
   TypertRemoteEventOutcome,
   TypertRemoteEventSource,
-} from '@liusiqi-dev/dsh-api-gateway'
-import { Deque } from '@liusiqi-dev/dsh-deque'
-import { carrierKeyOf } from '@liusiqi-dev/dsh-scope'
-import { isJsonValue, type JsonValue } from '@liusiqi-dev/dsh-util-values'
+} from '@liusiqi-dev/sqh-api-gateway'
+import { Deque } from '@liusiqi-dev/sqh-deque'
+import { carrierKeyOf } from '@liusiqi-dev/sqh-scope'
+import { isJsonValue, type JsonValue } from '@liusiqi-dev/sqh-util-values'
 import { API_REMOTE_FORWARDED_EVENTS } from './remote-events.ts'
 
 // The owner packages' client-safe `./types` exports carry the cordis `Events`
 // declarations for every allowlisted event. Pulling them into this face is what
 // makes the shape assertion below judge real signatures rather than an empty
 // event vocabulary.
-import type {} from '@liusiqi-dev/dsh-commands/types'
-import type {} from '@liusiqi-dev/dsh-cordis-host-runner/types'
-import type {} from '@liusiqi-dev/dsh-credentials/types'
-import type {} from '@liusiqi-dev/dsh-goal/types'
-import type {} from '@liusiqi-dev/dsh-llm/types'
-import type {} from '@liusiqi-dev/dsh-agent-preset-registry/types'
-import type {} from '@liusiqi-dev/dsh-permission-presets/types'
-import type {} from '@liusiqi-dev/dsh-settings/types'
-import type {} from '@liusiqi-dev/dsh-user-approval'
-import type {} from '@liusiqi-dev/dsh-user-questions'
-export type {} from '@liusiqi-dev/dsh-api-session-controller/types'
+import type {} from '@liusiqi-dev/sqh-commands/types'
+import type {} from '@liusiqi-dev/sqh-cordis-host-runner/types'
+import type {} from '@liusiqi-dev/sqh-credentials/types'
+import type {} from '@liusiqi-dev/sqh-goal/types'
+import type {} from '@liusiqi-dev/sqh-llm/types'
+import type {} from '@liusiqi-dev/sqh-agent-preset-registry/types'
+import type {} from '@liusiqi-dev/sqh-permission-presets/types'
+import type {} from '@liusiqi-dev/sqh-settings/types'
+import type {} from '@liusiqi-dev/sqh-user-approval'
+import type {} from '@liusiqi-dev/sqh-user-questions'
+export type {} from '@liusiqi-dev/sqh-api-session-controller/types'
 
 export { API_REMOTE_FORWARDED_EVENTS } from './remote-events.ts'
 export type { ApiRemoteForwardedEvent } from './types.ts'

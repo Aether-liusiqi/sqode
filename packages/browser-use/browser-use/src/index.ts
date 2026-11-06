@@ -1,6 +1,6 @@
 /**
  * Exclusive named registration for the browser-use capability.
- * @module @liusiqi-dev/dsh-browser-use
+ * @module @liusiqi-dev/sqh-browser-use
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'

@@ -1,23 +1,23 @@
 # Keyless replay counterpart of agent-instructions.cordis.yml: apply the
 # scenario values and model swap to the ACP profile.
 - id: llm-deepseek
-  name: '@liusiqi-dev/dsh-llm-deepseek-api-key'
+  name: '@liusiqi-dev/sqh-llm-deepseek-api-key'
   disabled: true
 
 - id: agent-default-model
-  name: '@liusiqi-dev/dsh-agent-default-model'
+  name: '@liusiqi-dev/sqh-agent-default-model'
   config:
     provider: deepseek-official
     model: deepseek-v4-flash
 
 - id: session-persistence-jsonl
-  name: '@liusiqi-dev/dsh-session-persistence-jsonl'
+  name: '@liusiqi-dev/sqh-session-persistence-jsonl'
   config:
     root: !!js dshHomePath('sessions')
     compression: none
 
 - id: agent-instructions
-  name: '@liusiqi-dev/dsh-agent-instructions'
+  name: '@liusiqi-dev/sqh-agent-instructions'
   config:
     maxBytes: 65536
     dshHome: !!js process.cwd() + '/.sqode'
@@ -25,7 +25,7 @@
       - .dsh-project
 
 - id: system-prompt
-  name: '@liusiqi-dev/dsh-system-prompt'
+  name: '@liusiqi-dev/sqh-system-prompt'
   config:
     personaPrefix: |
       You are a coding assistant powered by the {{model}} model. Your working directory is {{cwd}}.
@@ -34,7 +34,7 @@
 
 - insert:
     - id: llm-replay
-      name: '@liusiqi-dev/dsh-llm-replay'
+      name: '@liusiqi-dev/sqh-llm-replay'
       config:
         providers:
           - id: deepseek-official

@@ -8,9 +8,9 @@
  */
 
 import type { Context, Plugin } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
-import type {} from '@liusiqi-dev/dsh-workspace'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
+import type {} from '@liusiqi-dev/sqh-workspace'
 
 /**
  * The gate as a plugin for `ctx.plugin(...)`: it loads once the Agent

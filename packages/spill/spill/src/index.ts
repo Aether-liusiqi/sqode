@@ -3,15 +3,15 @@
  * spill backend does — persist oversized text and return a model-facing
  * locator plus retrieval guidance — without saying HOW. Implementations
  * subclass {@link SpillStore} and register as the `spillStore` service;
- * `@liusiqi-dev/dsh-spill-local` (host filesystem) is the first.
+ * `@liusiqi-dev/sqh-spill-local` (host filesystem) is the first.
  *
  * The Service Definition is deliberately minimal: `saveText` and nothing else. It owns NO
- * retention policy (that is `@liusiqi-dev/dsh-output-retention`), NO tool-result
- * replacement (that is `@liusiqi-dev/dsh-spill-policy`), and NO retrieval or
+ * retention policy (that is `@liusiqi-dev/sqh-output-retention`), NO tool-result
+ * replacement (that is `@liusiqi-dev/sqh-spill-policy`), and NO retrieval or
  * search API. The backend supplies the locator and retrieval hint appropriate
  * for its storage substrate.
  *
- * @module @liusiqi-dev/dsh-spill
+ * @module @liusiqi-dev/sqh-spill
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'

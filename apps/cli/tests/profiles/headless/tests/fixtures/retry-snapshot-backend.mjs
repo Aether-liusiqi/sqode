@@ -4,7 +4,7 @@ import {
   LlmAdapter,
   LlmError,
   resolveRetryPolicy,
-} from '@liusiqi-dev/dsh-llm'
+} from '@liusiqi-dev/sqh-llm'
 
 class RetrySnapshotAdapter extends LlmAdapter {
   requests = 0

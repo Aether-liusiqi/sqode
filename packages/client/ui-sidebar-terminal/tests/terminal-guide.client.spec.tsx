@@ -2,12 +2,12 @@
 /** Guide shell discovery, direct launch and cancellation stay within the entry lifetime. */
 import { act, cleanup, fireEvent, render } from '@testing-library/react'
 import { afterEach, expect, it, vi } from 'vitest'
-import { makeTranslate } from '@liusiqi-dev/dsh-client-test-runtime'
-import type { TerminalLaunchShells } from '@liusiqi-dev/dsh-api-terminal-controller/client'
-import type { GlobalStandardProps, SessionStandardProps } from '@liusiqi-dev/dsh-client-ui-slots'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { PaneId, TabId } from '@liusiqi-dev/dsh-client-ui-dockkit'
-import type { ShortcutCommandId, ShortcutCatalogEntry } from '@liusiqi-dev/dsh-client-shortcuts/client'
+import { makeTranslate } from '@liusiqi-dev/sqh-client-test-runtime'
+import type { TerminalLaunchShells } from '@liusiqi-dev/sqh-api-terminal-controller/client'
+import type { GlobalStandardProps, SessionStandardProps } from '@liusiqi-dev/sqh-client-ui-slots'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { PaneId, TabId } from '@liusiqi-dev/sqh-client-ui-dockkit'
+import type { ShortcutCommandId, ShortcutCatalogEntry } from '@liusiqi-dev/sqh-client-shortcuts/client'
 import { TerminalGuide, type TerminalGuideProps } from '../src/client/TerminalGuide.tsx'
 import { en } from '../src/client/locales.ts'
 

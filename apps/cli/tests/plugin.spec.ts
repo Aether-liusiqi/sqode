@@ -3,13 +3,13 @@ import { existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { expect, it, onTestFinished, vi } from 'vitest'
-import { getDshRuntimeVersion, initProfile, PROFILE_TEMPLATES, readProfileVersionExemptions } from '@liusiqi-dev/dsh-app-boot'
-import { runPluginCommand, runProfilePnpm } from '@liusiqi-dev/dsh-plugin-manager/operations'
+import { getDshRuntimeVersion, initProfile, PROFILE_TEMPLATES, readProfileVersionExemptions } from '@liusiqi-dev/sqh-app-boot'
+import { runPluginCommand, runProfilePnpm } from '@liusiqi-dev/sqh-plugin-manager/operations'
 import { runPlugin } from '../src/plugin.ts'
 
 vi.mock('../src/profile-boot.ts', () => ({ INSTALL_ANCHOR: '/installation/package.json' }))
-vi.mock('@liusiqi-dev/dsh-plugin-manager/operations', async importOriginal => ({
-  ...await importOriginal<typeof import('@liusiqi-dev/dsh-plugin-manager/operations')>(),
+vi.mock('@liusiqi-dev/sqh-plugin-manager/operations', async importOriginal => ({
+  ...await importOriginal<typeof import('@liusiqi-dev/sqh-plugin-manager/operations')>(),
   runPluginCommand: vi.fn(),
   runProfilePnpm: vi.fn(),
 }))

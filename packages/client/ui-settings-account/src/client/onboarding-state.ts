@@ -1,9 +1,9 @@
 /** Resumable desktop onboarding and preference application over Host settings. */
-import type { TranscriptViewMode } from '@liusiqi-dev/dsh-client-ui-chat/client'
-import { createSnapshotStore, shallowEqual } from '@liusiqi-dev/dsh-client-store'
+import type { TranscriptViewMode } from '@liusiqi-dev/sqh-client-ui-chat/client'
+import { createSnapshotStore, shallowEqual } from '@liusiqi-dev/sqh-client-store'
 import { hasOnboardingCredit } from './onboarding-balance.ts'
-import type { HostObservable } from '@liusiqi-dev/dsh-client-ui-slots'
-import type { SettingsDescribeFace, ConfigForm } from '@liusiqi-dev/dsh-client-ui-settings/client'
+import type { HostObservable } from '@liusiqi-dev/sqh-client-ui-slots'
+import type { SettingsDescribeFace, ConfigForm } from '@liusiqi-dev/sqh-client-ui-settings/client'
 import type { OnboardingProgress, OnboardingSettings } from '../onboarding-settings.ts'
 import type { AccountSnapshot } from './AccountSection.tsx'
 import type { DesktopOnboardingState, OnboardingChange } from './onboarding-contract.ts'

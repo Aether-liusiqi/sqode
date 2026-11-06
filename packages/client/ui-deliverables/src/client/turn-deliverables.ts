@@ -4,11 +4,11 @@
  * changed files from the Host's recorded git summary, and deliveries from
  * `present`; never from presentation data or the closing prose.
  */
-import { isAppendSurfaceEvent } from '@liusiqi-dev/dsh-session/surface'
-import type { TurnTailOwnerProps } from '@liusiqi-dev/dsh-client-ui-chat/client'
-import type { ConversationNodeDefinition } from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type { MarkdownFileMentions } from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { PresentedFile } from '@liusiqi-dev/dsh-tool-present/types'
+import { isAppendSurfaceEvent } from '@liusiqi-dev/sqh-session/surface'
+import type { TurnTailOwnerProps } from '@liusiqi-dev/sqh-client-ui-chat/client'
+import type { ConversationNodeDefinition } from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type { MarkdownFileMentions } from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { PresentedFile } from '@liusiqi-dev/sqh-tool-present/types'
 import { isChangesEvent } from '../changes.ts'
 import { basename, isPresentedData, isPresentedFile } from '../presented.ts'
 
@@ -35,7 +35,7 @@ export interface DeliverablesTurnData {
   readonly changes?: ChangesTurnData
 }
 
-declare module '@liusiqi-dev/dsh-client-ui-conversation/client' {
+declare module '@liusiqi-dev/sqh-client-ui-conversation/client' {
   interface ConversationTurnDataMap {
     /** Successful mutation paths, recorded changed files, and deliveries accumulated in this Turn. */
     deliverables: DeliverablesTurnData

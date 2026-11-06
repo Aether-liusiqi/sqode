@@ -2,7 +2,7 @@
  * Remote decorators and explicit Gateway bindings backed by versioned
  * descriptors carried on decorated class prototypes. Strict reflection
  * remains a Typert compiler responsibility.
- * @module @liusiqi-dev/dsh-typert-protocol
+ * @module @liusiqi-dev/sqh-typert-protocol
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'
@@ -137,7 +137,7 @@ interface RemoteMethodDescriptorV1 {
   readonly methods: readonly StoredRemoteMethod[]
 }
 
-const REMOTE_METHOD_DESCRIPTOR = '@liusiqi-dev/dsh-typert-protocol/remote-methods'
+const REMOTE_METHOD_DESCRIPTOR = '@liusiqi-dev/sqh-typert-protocol/remote-methods'
 
 /**
  * Bind one visible Service field to a Cordis key and Remote namespace. A

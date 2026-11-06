@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-client-modules",
+  "name": "@liusiqi-dev/sqh-client-modules",
   "description": "Client module system, dual-face: node half composes the __SQH_BOOT__ entry graph (incremental dsh.client scan, bundle route, index tap, webPlugins service); browser half is the lazy-CJS module table the vendored cordis Loader consumes as its internal seam",
   "version": "1.0.0",
   "publishConfig": {
@@ -43,11 +43,11 @@
   "license": "MIT",
   "devDependencies": {
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
-    "@liusiqi-dev/dsh-host-webserver": "workspace:*",
-    "@liusiqi-dev/dsh-invariants": "workspace:*",
+    "@liusiqi-dev/sqh-host-webserver": "workspace:*",
+    "@liusiqi-dev/sqh-invariants": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-package-manifest": "workspace:*",
-    "@liusiqi-dev/dsh-client-store": "workspace:*"
+    "@liusiqi-dev/sqh-package-manifest": "workspace:*",
+    "@liusiqi-dev/sqh-client-store": "workspace:*"
   },
   "files": [
     "lib/index.js",

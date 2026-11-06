@@ -15,24 +15,24 @@ import { Context } from '@liusiqi-dev/cordis'
 import { mkdtempSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join, resolve as resolvePath } from 'node:path'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import SystemPrompt, { renderPrompt } from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime, { TOOL_ABORTED, TOOL_ABORTED_BEFORE_DISPATCH } from '@liusiqi-dev/dsh-tools'
-import LocalJobRegistry from '@liusiqi-dev/dsh-jobs-local'
-import * as ToolJobs from '@liusiqi-dev/dsh-tool-jobs'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { SESSION_FORMAT_VERSION, SessionId, SessionLogOffset, SessionSeq } from '@liusiqi-dev/dsh-session'
-import ApprovalService from '@liusiqi-dev/dsh-user-approval'
-import type { ApprovalOutcome } from '@liusiqi-dev/dsh-user-approval'
-import { ShellExecutor } from '@liusiqi-dev/dsh-shell'
-import type { ShellExecRequest, ShellExecSpec, ShellExecution, ShellProcess, ShellRunResult } from '@liusiqi-dev/dsh-shell'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import { turnBoundaryProjectionDefinition } from '@liusiqi-dev/dsh-agent-loop'
-import SandboxPolicyService from '@liusiqi-dev/dsh-sandbox-policy'
-import { escalationHintMarker, sandboxDenialMarker } from '@liusiqi-dev/dsh-sandbox'
-import * as ToolPwsh from '@liusiqi-dev/dsh-tool-pwsh'
-import * as BashEnvPlugin from '@liusiqi-dev/dsh-shell-env'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import SystemPrompt, { renderPrompt } from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime, { TOOL_ABORTED, TOOL_ABORTED_BEFORE_DISPATCH } from '@liusiqi-dev/sqh-tools'
+import LocalJobRegistry from '@liusiqi-dev/sqh-jobs-local'
+import * as ToolJobs from '@liusiqi-dev/sqh-tool-jobs'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { SESSION_FORMAT_VERSION, SessionId, SessionLogOffset, SessionSeq } from '@liusiqi-dev/sqh-session'
+import ApprovalService from '@liusiqi-dev/sqh-user-approval'
+import type { ApprovalOutcome } from '@liusiqi-dev/sqh-user-approval'
+import { ShellExecutor } from '@liusiqi-dev/sqh-shell'
+import type { ShellExecRequest, ShellExecSpec, ShellExecution, ShellProcess, ShellRunResult } from '@liusiqi-dev/sqh-shell'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import { turnBoundaryProjectionDefinition } from '@liusiqi-dev/sqh-agent-loop'
+import SandboxPolicyService from '@liusiqi-dev/sqh-sandbox-policy'
+import { escalationHintMarker, sandboxDenialMarker } from '@liusiqi-dev/sqh-sandbox'
+import * as ToolPwsh from '@liusiqi-dev/sqh-tool-pwsh'
+import * as BashEnvPlugin from '@liusiqi-dev/sqh-shell-env'
 import { processOutcome } from '../src/background.ts'
 import { renderPwshJobRead, renderPwshResult } from '../src/render.ts'
 
@@ -821,7 +821,7 @@ describe('background execution through the job runtime', () => {
     const { ctx } = await setup() // no LocalJobRegistry / ToolJobs
     const result = await call(ctx, 'pwsh', { command: 'Start-Sleep -Seconds 60', description: 'test command', run_in_background: true })
     expect(result.isError).toBe(true)
-    expect(text(result)).toContain('background jobs unavailable: load @liusiqi-dev/dsh-jobs and @liusiqi-dev/dsh-tool-jobs')
+    expect(text(result)).toContain('background jobs unavailable: load @liusiqi-dev/sqh-jobs and @liusiqi-dev/sqh-tool-jobs')
   })
 
   it('a pre-aborted call is skipped before the process starts', async () => {

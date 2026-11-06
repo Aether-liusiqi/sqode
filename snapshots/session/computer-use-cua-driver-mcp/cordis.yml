@@ -1,22 +1,22 @@
 - id: agent-default-model
-  name: '@liusiqi-dev/dsh-agent-default-model'
+  name: '@liusiqi-dev/sqh-agent-default-model'
   config:
     provider: deepseek-official
     model: deepseek-v4-flash-vision-exp
 
 - id: session-persistence-jsonl
-  name: '@liusiqi-dev/dsh-session-persistence-jsonl'
+  name: '@liusiqi-dev/sqh-session-persistence-jsonl'
   config:
     root: !!js dshHomePath('sessions')
     compression: none
 
 - id: agent-instructions
-  name: '@liusiqi-dev/dsh-agent-instructions'
+  name: '@liusiqi-dev/sqh-agent-instructions'
   config:
     maxBytes: 65536
 
 - id: system-prompt
-  name: '@liusiqi-dev/dsh-system-prompt'
+  name: '@liusiqi-dev/sqh-system-prompt'
   config:
     personaPrefix: |
       You are a coding assistant powered by the {{model}} model. Your working directory is {{cwd}}. Your bash tool runs under a file sandbox — a `[sandbox: file access denied …]` result is policy, not a command bug.
@@ -24,13 +24,13 @@
       Verify your work by running the code or tests. Keep answers brief and factual.
 
 - id: attachment-local
-  name: '@liusiqi-dev/dsh-attachment-local'
+  name: '@liusiqi-dev/sqh-attachment-local'
 
 - insert:
     - id: computer-use
-      name: '@liusiqi-dev/dsh-computer-use'
+      name: '@liusiqi-dev/sqh-computer-use'
     - id: computer-use-cua-driver-mcp
-      name: '@liusiqi-dev/dsh-experimental-computer-use-cua-driver-mcp'
+      name: '@liusiqi-dev/sqh-experimental-computer-use-cua-driver-mcp'
       config:
         command: !!js process.execPath
         args: [driver.mjs, .sqode/computer-use-fixture]

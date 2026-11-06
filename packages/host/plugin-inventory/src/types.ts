@@ -1,5 +1,5 @@
-import type { Branded } from '@liusiqi-dev/dsh-brand'
-import type { PluginLocalizedMeta } from '@liusiqi-dev/dsh-package-manifest'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
+import type { PluginLocalizedMeta } from '@liusiqi-dev/sqh-package-manifest'
 
 /** Stable Loader-tree identity of one configured plugin entry. */
 export type PluginEntryId = Branded<'PluginEntryId'>

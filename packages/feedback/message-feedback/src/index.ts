@@ -1,6 +1,6 @@
 /**
  * Canonical Session-log feedback for finalized assistant messages.
- * @module @liusiqi-dev/dsh-message-feedback
+ * @module @liusiqi-dev/sqh-message-feedback
  */
 
 import { Buffer } from 'node:buffer'
@@ -9,13 +9,13 @@ import { isDeepStrictEqual } from 'node:util'
 import { Context, Service } from '@liusiqi-dev/cordis'
 import s from '@liusiqi-dev/schemastery'
 import { z } from 'zod'
-import { FEEDBACK_CATEGORIES } from '@liusiqi-dev/dsh-command-feedback'
-import { SessionSeq } from '@liusiqi-dev/dsh-session/types'
-import { deriveEventMessage, isAppendSurfaceEvent } from '@liusiqi-dev/dsh-session/surface'
-import type { SessionEvent, SessionId } from '@liusiqi-dev/dsh-session/types'
-import type {} from '@liusiqi-dev/dsh-session'
-import type { SessionInspection } from '@liusiqi-dev/dsh-session-persistence'
-import { TypertRemoteService, Remote } from '@liusiqi-dev/dsh-typert-protocol'
+import { FEEDBACK_CATEGORIES } from '@liusiqi-dev/sqh-command-feedback'
+import { SessionSeq } from '@liusiqi-dev/sqh-session/types'
+import { deriveEventMessage, isAppendSurfaceEvent } from '@liusiqi-dev/sqh-session/surface'
+import type { SessionEvent, SessionId } from '@liusiqi-dev/sqh-session/types'
+import type {} from '@liusiqi-dev/sqh-session'
+import type { SessionInspection } from '@liusiqi-dev/sqh-session-persistence'
+import { TypertRemoteService, Remote } from '@liusiqi-dev/sqh-typert-protocol'
 import type {
   MessageFeedbackDeleteRequest,
   MessageFeedbackDeleteResult,

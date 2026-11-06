@@ -7,9 +7,9 @@ import { fileURLToPath } from 'node:url'
 import type { Browser, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
-import type { StreamChunk } from '@liusiqi-dev/dsh-llm'
-import type { ReplayEntry } from '@liusiqi-dev/dsh-llm-replay'
-import { SessionId, type SessionEvent } from '@liusiqi-dev/dsh-session'
+import type { StreamChunk } from '@liusiqi-dev/sqh-llm'
+import type { ReplayEntry } from '@liusiqi-dev/sqh-llm-replay'
+import { SessionId, type SessionEvent } from '@liusiqi-dev/sqh-session'
 import {
   assertFixtureInventory, captureStableAria, compareOrRefreshGolden,
   launchWebScaffold, parseSeedFixture, seedSession,

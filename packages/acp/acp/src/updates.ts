@@ -2,8 +2,8 @@
 
 import type { Context } from '@liusiqi-dev/cordis'
 import type { SessionUpdate, ToolCallContent } from '@agentclientprotocol/sdk'
-import type { Session, SessionEvent } from '@liusiqi-dev/dsh-session'
-import type {} from '@liusiqi-dev/dsh-token-meter'
+import type { Session, SessionEvent } from '@liusiqi-dev/sqh-session'
+import type {} from '@liusiqi-dev/sqh-token-meter'
 import { assistantBlockToAcp } from './content.ts'
 
 /**

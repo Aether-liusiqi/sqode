@@ -3,7 +3,7 @@ description: "Storage hub (ctx.storage) for compositions and maintainers choosin
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-storage
+# @liusiqi-dev/sqh-storage
 
 English | [中文](README.zh.md)
 
@@ -34,11 +34,11 @@ Mount the hub whenever any package in the composition persists data that is not 
 ### A minimal composition
 
 ```yaml
-- name: '@liusiqi-dev/dsh-storage'
-- name: '@liusiqi-dev/dsh-storage-json'
+- name: '@liusiqi-dev/sqh-storage'
+- name: '@liusiqi-dev/sqh-storage-json'
   config:
     root: /var/lib/dsh/data
-- name: '@liusiqi-dev/dsh-storage-domain'
+- name: '@liusiqi-dev/sqh-storage-domain'
   config:
     backend: json
 ```

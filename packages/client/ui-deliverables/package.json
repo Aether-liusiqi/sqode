@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-client-ui-deliverables",
+  "name": "@liusiqi-dev/sqh-client-ui-deliverables",
   "description": "Changed-files card with per-file comparison tabs, delivery cards, and clickable final-response file references for Web",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,15 +28,15 @@
   "dsh": {
     "client": {
       "inject": [
-        "@liusiqi-dev/dsh-api-remotes",
-        "@liusiqi-dev/dsh-client-connection",
-        "@liusiqi-dev/dsh-client-locale",
-        "@liusiqi-dev/dsh-client-ui-chat",
-        "@liusiqi-dev/dsh-client-ui-conversation",
-        "@liusiqi-dev/dsh-client-ui-renderer",
-        "@liusiqi-dev/dsh-client-ui-sidebar-right",
-        "@liusiqi-dev/dsh-client-ui-tool",
-        "@liusiqi-dev/dsh-client-ui-settings"
+        "@liusiqi-dev/sqh-api-remotes",
+        "@liusiqi-dev/sqh-client-connection",
+        "@liusiqi-dev/sqh-client-locale",
+        "@liusiqi-dev/sqh-client-ui-chat",
+        "@liusiqi-dev/sqh-client-ui-conversation",
+        "@liusiqi-dev/sqh-client-ui-renderer",
+        "@liusiqi-dev/sqh-client-ui-sidebar-right",
+        "@liusiqi-dev/sqh-client-ui-tool",
+        "@liusiqi-dev/sqh-client-ui-settings"
       ],
       "platform": "web"
     }
@@ -50,36 +50,36 @@
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-api-remotes": "workspace:*",
-    "@liusiqi-dev/dsh-client-connection": "workspace:*",
-    "@liusiqi-dev/dsh-client-locale": "workspace:*",
-    "@liusiqi-dev/dsh-client-store": "workspace:*",
-    "@liusiqi-dev/dsh-client-test-runtime": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-chat": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-conversation": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-dockkit": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-renderer": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-sidebar-right": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-slots": "workspace:*",
+    "@liusiqi-dev/sqh-api-remotes": "workspace:*",
+    "@liusiqi-dev/sqh-client-connection": "workspace:*",
+    "@liusiqi-dev/sqh-client-locale": "workspace:*",
+    "@liusiqi-dev/sqh-client-store": "workspace:*",
+    "@liusiqi-dev/sqh-client-test-runtime": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-chat": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-conversation": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-dockkit": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-renderer": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-sidebar-right": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-slots": "workspace:*",
     "@types/react": "~18.3.1",
     "@liusiqi-dev/cordis": "workspace:~",
     "react": "^18.2.0",
-    "@liusiqi-dev/dsh-client-ui-primitives": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
-    "@liusiqi-dev/dsh-session-query": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-tool": "workspace:*",
-    "@liusiqi-dev/dsh-tool-present": "workspace:*",
-    "@liusiqi-dev/dsh-workspace-changes": "workspace:*",
-    "@liusiqi-dev/dsh-api-session-controller": "workspace:*",
-    "@liusiqi-dev/dsh-util-workspace-path": "workspace:*",
-    "@liusiqi-dev/dsh-api-workspace-files": "workspace:*",
-    "@liusiqi-dev/dsh-fs": "workspace:*",
-    "@liusiqi-dev/dsh-fs-local": "workspace:*",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox-policy": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-settings": "workspace:*"
+    "@liusiqi-dev/sqh-client-ui-primitives": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*",
+    "@liusiqi-dev/sqh-session-query": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-tool": "workspace:*",
+    "@liusiqi-dev/sqh-tool-present": "workspace:*",
+    "@liusiqi-dev/sqh-workspace-changes": "workspace:*",
+    "@liusiqi-dev/sqh-api-session-controller": "workspace:*",
+    "@liusiqi-dev/sqh-util-workspace-path": "workspace:*",
+    "@liusiqi-dev/sqh-api-workspace-files": "workspace:*",
+    "@liusiqi-dev/sqh-fs": "workspace:*",
+    "@liusiqi-dev/sqh-fs-local": "workspace:*",
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox-policy": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-settings": "workspace:*"
   },
   "files": [
     "lib/index.js",
@@ -87,6 +87,6 @@
     "lib/types/**/*.d.ts"
   ],
   "dependencies": {
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*"
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*"
   }
 }

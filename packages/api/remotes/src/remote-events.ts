@@ -6,12 +6,12 @@
  * type-only.
  */
 
-import type {} from '@liusiqi-dev/dsh-api-session-controller/remote-events'
-import type {} from '@liusiqi-dev/dsh-deepseek-account/types'
-import type {} from '@liusiqi-dev/dsh-permission-presets/types'
-import type {} from '@liusiqi-dev/dsh-plugin-manager/types'
-import type {} from '@liusiqi-dev/dsh-schedule/client'
-import type { TypertForwardableEventEntry } from '@liusiqi-dev/dsh-typert-protocol'
+import type {} from '@liusiqi-dev/sqh-api-session-controller/remote-events'
+import type {} from '@liusiqi-dev/sqh-deepseek-account/types'
+import type {} from '@liusiqi-dev/sqh-permission-presets/types'
+import type {} from '@liusiqi-dev/sqh-plugin-manager/types'
+import type {} from '@liusiqi-dev/sqh-schedule/client'
+import type { TypertForwardableEventEntry } from '@liusiqi-dev/sqh-typert-protocol'
 
 /**
  * Host events this application forwards without renaming. The explicit mode is

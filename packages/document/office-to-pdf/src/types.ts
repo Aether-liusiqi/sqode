@@ -1,6 +1,6 @@
 /** Authorized Office input and complete PDF output, for the shared Host converter. */
-import type { WorkspaceFileBytes } from '@liusiqi-dev/dsh-api-workspace-files/types'
-import type {} from '@liusiqi-dev/dsh-typert-protocol'
+import type { WorkspaceFileBytes } from '@liusiqi-dev/sqh-api-workspace-files/types'
+import type {} from '@liusiqi-dev/sqh-typert-protocol'
 import type { OfficeSourceKey, OfficeToPdfGeneration, OfficeToPdfKey } from './identity.ts'
 export type { OfficeSourceKey, OfficeToPdfGeneration, OfficeToPdfKey } from './identity.ts'
 
@@ -50,7 +50,7 @@ export interface RenderedDocumentBytes extends WorkspaceFileBytes {
   readonly generation: OfficeToPdfGeneration
 }
 
-declare module '@liusiqi-dev/dsh-typert-protocol' {
+declare module '@liusiqi-dev/sqh-typert-protocol' {
   interface RemoteErrorDetailsMap {
     /** The source was authorized, but its conversion failed. */
     'document-render/failed': { readonly reason: OfficeToPdfErrorCode }

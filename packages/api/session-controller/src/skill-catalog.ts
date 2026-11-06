@@ -1,11 +1,11 @@
 /** Session-addressed, cold-readable skill catalog Remote. */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-agent-preset-registry/types'
-import { SessionQueryError } from '@liusiqi-dev/dsh-session-query'
-import { isUserInvocable } from '@liusiqi-dev/dsh-skill'
-import type { ScopeKey } from '@liusiqi-dev/dsh-scope'
-import { Remote, RemoteError, TypertRemoteService } from '@liusiqi-dev/dsh-typert-protocol'
+import type {} from '@liusiqi-dev/sqh-agent-preset-registry/types'
+import { SessionQueryError } from '@liusiqi-dev/sqh-session-query'
+import { isUserInvocable } from '@liusiqi-dev/sqh-skill'
+import type { ScopeKey } from '@liusiqi-dev/sqh-scope'
+import { Remote, RemoteError, TypertRemoteService } from '@liusiqi-dev/sqh-typert-protocol'
 import type { SkillListRequest, SkillListValue } from './types.ts'
 
 declare module '@liusiqi-dev/cordis' {
@@ -66,7 +66,7 @@ export class SessionSkillCatalog extends TypertRemoteService {
     if (skillRegistry === undefined) {
       throw new RemoteError(
         'gateway/internal',
-        'skill registry is absent: neither this session\'s agent preset nor the host composition mounts @liusiqi-dev/dsh-skill',
+        'skill registry is absent: neither this session\'s agent preset nor the host composition mounts @liusiqi-dev/sqh-skill',
         {},
       )
     }

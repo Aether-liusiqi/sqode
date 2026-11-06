@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
 import {
   agentEvents,
   installModelSelection,
@@ -13,8 +13,8 @@ import {
   ReasoningEffortId,
   type LlmCallConfig,
   type UserMessage,
-} from '@liusiqi-dev/dsh-llm'
-import { Session, SessionId } from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-llm'
+import { Session, SessionId } from '@liusiqi-dev/sqh-session'
 
 const SIGNAL = new AbortController().signal
 const INPUT = createUserMessage({

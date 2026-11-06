@@ -16,7 +16,7 @@
  * same budget: the loop decides what to declare, and `tool_search` reports what it
  * just spent. Two copies of this number would drift.
  *
- * @module @liusiqi-dev/dsh-tools/declaration
+ * @module @liusiqi-dev/sqh-tools/declaration
  */
 
 /** Share of a window the declared tool catalog may claim. */

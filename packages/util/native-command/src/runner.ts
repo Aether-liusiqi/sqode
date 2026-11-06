@@ -1,6 +1,6 @@
 /**
  * Shared no-shell `execFile` runner for host-native OS integrations.
- * @module @liusiqi-dev/dsh-native-command/runner
+ * @module @liusiqi-dev/sqh-native-command/runner
  */
 
 import { execFile } from 'node:child_process'

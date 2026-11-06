@@ -5,12 +5,12 @@ import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { chromium, type Page } from 'playwright'
 import { expect, it } from 'vitest'
-import type { InboxState } from '@liusiqi-dev/dsh-agent/types'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session/types'
-import { deriveReplayScript, parseSessionLog } from '@liusiqi-dev/dsh-llm-replay'
+import type { InboxState } from '@liusiqi-dev/sqh-agent/types'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session/types'
+import { deriveReplayScript, parseSessionLog } from '@liusiqi-dev/sqh-llm-replay'
 import {
   parseRemoteStreamClientMessage, parseRemoteStreamServerMessage,
-} from '@liusiqi-dev/dsh-api-gateway/stream-protocol'
+} from '@liusiqi-dev/sqh-api-gateway/stream-protocol'
 import { launchWebScaffold, seedSession, watchConsole, webSnapshotMode } from './scaffold.ts'
 import { newEnglishPage } from './support.ts'
 

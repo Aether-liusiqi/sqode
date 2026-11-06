@@ -3,7 +3,7 @@ description: "面向模型的持久 pwsh 工具，供选择、配置或排查跨
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-tool-pwsh-persistent
+# @liusiqi-dev/sqh-tool-pwsh-persistent
 
 [English](README.md) | 中文
 
@@ -36,11 +36,11 @@ kind: "package-reference"
 默认的 `shell` 后端通过配置了 `shellDialect: pwsh` 的 `dsh-terminal-bash` 实例启动 PowerShell shell；部署方可以注册其他 pwsh 方言 PTY 后端并按名称选择。
 
 ```yaml
-- name: '@liusiqi-dev/dsh-terminal'
-- name: '@liusiqi-dev/dsh-terminal-bash'
+- name: '@liusiqi-dev/sqh-terminal'
+- name: '@liusiqi-dev/sqh-terminal-bash'
   config:
     shellDialect: pwsh
-- name: '@liusiqi-dev/dsh-tool-pwsh-persistent'
+- name: '@liusiqi-dev/sqh-tool-pwsh-persistent'
 ```
 
 | 字段 | 默认值 | 含义 |

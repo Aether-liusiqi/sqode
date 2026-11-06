@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { bindScopeParent, createScope, scopeOf } from '@liusiqi-dev/dsh-scope'
+import { bindScopeParent, createScope, scopeOf } from '@liusiqi-dev/sqh-scope'
 import SkillRegistry, {
   isModelInvocable,
   isUserInvocable,
@@ -11,7 +11,7 @@ import SkillRegistry, {
   type SkillLookupOptions,
   type SkillProvider,
   type SkillProviderObservation,
-} from '@liusiqi-dev/dsh-skill'
+} from '@liusiqi-dev/sqh-skill'
 
 function memorySkill(name: string, description: string, rank: number, body = `${name} body.`): SkillCandidate {
   return {

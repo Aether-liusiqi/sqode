@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-session-snapshot",
+  "name": "@liusiqi-dev/sqh-session-snapshot",
   "description": "Session-log snapshot core with an ACP protocol adapter, expected-output normalization, and fixture invariants",
   "version": "1.0.0",
   "publishConfig": {
@@ -29,30 +29,30 @@
   "dependencies": {
     "@agentclientprotocol/sdk": "1.4.0",
     "@liusiqi-dev/cordis-plugin-include": "workspace:~",
-    "@liusiqi-dev/dsh-llm-replay": "workspace:*",
-    "@liusiqi-dev/dsh-loader-smoke": "workspace:*",
-    "@liusiqi-dev/dsh-session-format": "workspace:*",
+    "@liusiqi-dev/sqh-llm-replay": "workspace:*",
+    "@liusiqi-dev/sqh-loader-smoke": "workspace:*",
+    "@liusiqi-dev/sqh-session-format": "workspace:*",
     "js-yaml": "^4.2.0",
     "vitest": "^4.1.8"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-http-proxy": "workspace:*"
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-http-proxy": "workspace:*"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-agent-loop": "workspace:*",
-    "@liusiqi-dev/dsh-compaction": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox-policy": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-subagent": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*",
-    "@liusiqi-dev/dsh-user-questions": "workspace:*",
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-agent-loop": "workspace:*",
+    "@liusiqi-dev/sqh-compaction": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox-policy": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-subagent": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*",
+    "@liusiqi-dev/sqh-user-questions": "workspace:*",
     "@types/js-yaml": "^4.0.9",
-    "@liusiqi-dev/dsh-http-proxy": "workspace:*"
+    "@liusiqi-dev/sqh-http-proxy": "workspace:*"
   }
 }

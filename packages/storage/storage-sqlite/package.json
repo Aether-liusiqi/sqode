@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-storage-sqlite",
+  "name": "@liusiqi-dev/sqh-storage-sqlite",
   "description": "SQLite storage backend (kv facet) for the Siqi Harness storage hub",
   "version": "1.0.0",
   "publishConfig": {
@@ -27,14 +27,14 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@liusiqi-dev/dsh-storage": "workspace:*",
+    "@liusiqi-dev/sqh-storage": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "dependencies": {
     "@liusiqi-dev/schemastery": "workspace:~"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-storage": "workspace:*",
+    "@liusiqi-dev/sqh-storage": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   }
 }

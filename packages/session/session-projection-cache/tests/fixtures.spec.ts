@@ -20,23 +20,23 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Context } from '@liusiqi-dev/cordis'
 import { z } from 'zod'
-import SessionStore, { SESSION_FORMAT_VERSION, SessionId } from '@liusiqi-dev/dsh-session'
-import type { SessionHeader } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import type { ProjectionDefinition } from '@liusiqi-dev/dsh-session-projection'
-import Storage from '@liusiqi-dev/dsh-storage'
+import SessionStore, { SESSION_FORMAT_VERSION, SessionId } from '@liusiqi-dev/sqh-session'
+import type { SessionHeader } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import type { ProjectionDefinition } from '@liusiqi-dev/sqh-session-projection'
+import Storage from '@liusiqi-dev/sqh-storage'
 import {
   apply as storageJsonApply, Config as storageJsonConfig, inject as storageJsonInject, name as storageJsonName,
-} from '@liusiqi-dev/dsh-storage-json'
+} from '@liusiqi-dev/sqh-storage-json'
 import {
   apply as storageDomainApply, Config as storageDomainConfig, inject as storageDomainInject, name as storageDomainName,
-} from '@liusiqi-dev/dsh-storage-domain'
+} from '@liusiqi-dev/sqh-storage-domain'
 import SessionProjectionCache from '../src/index.ts'
 import { checkpointRow, projectionCacheDomainSpec } from '../src/spec.ts'
 
 // Declarations must match the shipped title unit's exactly (the repo-wide
 // compile face sees both).
-declare module '@liusiqi-dev/dsh-session-projection/types' {
+declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionStateMap {
     title: string | null
   }
@@ -45,7 +45,7 @@ declare module '@liusiqi-dev/dsh-session-projection/types' {
   }
 }
 
-declare module '@liusiqi-dev/dsh-session/types' {
+declare module '@liusiqi-dev/sqh-session/types' {
   interface SessionEventMap {
     'fixtures-test/set-title': { title: string }
   }

@@ -2,10 +2,10 @@
  * Types shared by job producers, the registry, and its consumers. The
  * client-safe projection vocabulary lives in `./view.ts`; the service
  * implementation lives in `./index.ts`.
- * @module @liusiqi-dev/dsh-jobs/types
+ * @module @liusiqi-dev/sqh-jobs/types
  */
 
-import type { SessionId } from '@liusiqi-dev/dsh-session'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
 import type { JobId } from './brand.ts'
 import type { JobChannel, JobChunk, JobKind, JobView } from './view.ts'
 

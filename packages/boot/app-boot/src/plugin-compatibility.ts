@@ -10,7 +10,7 @@ import semver from 'semver'
  * Two are listed while the packages are being renamed; the bare scope is too wide
  * because vendored libraries share it. Drop the old entry once the rename lands.
  */
-const FIRST_PARTY_PREFIXES = ['@liusiqi-dev/sqh-', '@liusiqi-dev/dsh-'] as const
+const FIRST_PARTY_PREFIXES = ['@liusiqi-dev/sqh-'] as const
 
 /** Incompatible dsh peers and the exact plugin/runtime exemption decision. */
 export interface PluginCompatibility {
@@ -57,7 +57,7 @@ export function getDshRuntimeVersion(): string {
 }
 
 /**
- * Check every @liusiqi-dev/sqode or @liusiqi-dev/dsh-* peer against the runtime.
+ * Check every @liusiqi-dev/sqode or @liusiqi-dev/sqh-* peer against the runtime.
  * Prereleases participate in ranges. workspace:^, workspace:~, and workspace:*
  * refer to the current runtime; other invalid ranges are incompatible.
  * @param manifest - parsed plugin package.json; inherited fields are ignored.

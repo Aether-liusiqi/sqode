@@ -1,7 +1,7 @@
 import { describe, expect, expectTypeOf, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { bindScopeParent, carrierKeyOf, createScope, isScopeCarrier, scopeChainOf, scopeOf, scopeParentOf, scopeTarget } from '@liusiqi-dev/dsh-scope'
-import type { Scope, Scoped } from '@liusiqi-dev/dsh-scope'
+import { bindScopeParent, carrierKeyOf, createScope, isScopeCarrier, scopeChainOf, scopeOf, scopeParentOf, scopeTarget } from '@liusiqi-dev/sqh-scope'
+import type { Scope, Scoped } from '@liusiqi-dev/sqh-scope'
 
 declare module '@liusiqi-dev/cordis' {
   interface Events {

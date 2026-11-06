@@ -3,7 +3,7 @@ description: "Automatic conversation condensation for deployments choosing, tuni
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-compaction-basic
+# @liusiqi-dev/sqh-compaction-basic
 
 English | [中文](README.zh.md)
 
@@ -36,17 +36,17 @@ With the default settings you get four behaviors: automatic condensation as the 
 Mount session storage, token measurement, the optional pruner, this backend, and optionally the on-demand command:
 
 ```yaml
-- name: '@liusiqi-dev/dsh-session'
-- name: '@liusiqi-dev/dsh-token-meter'
-- name: '@liusiqi-dev/dsh-compaction-tool-result-pruner'
-- name: '@liusiqi-dev/dsh-compaction-basic'
-- name: '@liusiqi-dev/dsh-command-compact'
+- name: '@liusiqi-dev/sqh-session'
+- name: '@liusiqi-dev/sqh-token-meter'
+- name: '@liusiqi-dev/sqh-compaction-tool-result-pruner'
+- name: '@liusiqi-dev/sqh-compaction-basic'
+- name: '@liusiqi-dev/sqh-command-compact'
 ```
 
 You can verify success by watching the conversation continue past the point where it would otherwise overflow, and by running `/compact` for an immediate condensation. If the composition lacks an LLM, session storage, or token measurement, the plugin fails to load. One backend can serve models with different context sizes; give each route its own threshold and retention with a per-model override:
 
 ```yaml
-- name: '@liusiqi-dev/dsh-compaction-basic'
+- name: '@liusiqi-dev/sqh-compaction-basic'
   config:
     thresholdRatio: 0.8
     retainRatio: 0.16

@@ -1,13 +1,13 @@
 /**
  * Continuation integration markers and host adapters outside the public
  * Service Definition and model-facing Agent messaging contract.
- * @module @liusiqi-dev/dsh-subagent/internal
+ * @module @liusiqi-dev/sqh-subagent/internal
  */
 
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type { ContentBlock, MessageId, MessageSource } from '@liusiqi-dev/dsh-llm'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
-import type { ToolDefinition } from '@liusiqi-dev/dsh-tools'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type { ContentBlock, MessageId, MessageSource } from '@liusiqi-dev/sqh-llm'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
+import type { ToolDefinition } from '@liusiqi-dev/sqh-tools'
 import type SubagentRuntime from './index.ts'
 import type { SubagentDelivery } from './inbox.ts'
 

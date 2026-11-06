@@ -8,8 +8,8 @@
  * select one by name.
  *
  * This package owns the Service Definition role of the capability seam. Service Providers
- * (`@liusiqi-dev/dsh-subagent-spawn-in-process`, `-fork`, `-acp`) and the model-facing
- * consumer (`@liusiqi-dev/dsh-tool-subagent`) are separate packages.
+ * (`@liusiqi-dev/sqh-subagent-spawn-in-process`, `-fork`, `-acp`) and the model-facing
+ * consumer (`@liusiqi-dev/sqh-tool-subagent`) are separate packages.
  *
  * Public operations express caller intent: `start` returns one published owned
  * one-shot run, `startContinuable` establishes a durable continuable child, and
@@ -26,21 +26,21 @@
  * serialization and hostile-input validation belong at real process, worker,
  * persistence, and model boundaries.
  *
- * @module @liusiqi-dev/dsh-subagent
+ * @module @liusiqi-dev/sqh-subagent
  */
 import type { Volatile } from '@liusiqi-dev/cordis'
 
 import { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import type {} from '@liusiqi-dev/dsh-attachment'
-import { scopeTarget } from '@liusiqi-dev/dsh-scope'
-import type { Scoped } from '@liusiqi-dev/dsh-scope'
-import { assertObjectJsonSchema } from '@liusiqi-dev/dsh-tools'
-import type { ContentBlock, MessageId, MessageSource } from '@liusiqi-dev/dsh-llm'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
-import { canonicalClientTimeZone } from '@liusiqi-dev/dsh-util-time'
-import { Remote, RemoteError, TypertRemoteService } from '@liusiqi-dev/dsh-typert-protocol'
+import type {} from '@liusiqi-dev/sqh-attachment'
+import { scopeTarget } from '@liusiqi-dev/sqh-scope'
+import type { Scoped } from '@liusiqi-dev/sqh-scope'
+import { assertObjectJsonSchema } from '@liusiqi-dev/sqh-tools'
+import type { ContentBlock, MessageId, MessageSource } from '@liusiqi-dev/sqh-llm'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
+import { canonicalClientTimeZone } from '@liusiqi-dev/sqh-util-time'
+import { Remote, RemoteError, TypertRemoteService } from '@liusiqi-dev/sqh-typert-protocol'
 import {
   rejectPrompt, validateControlRequest,
 } from './control.ts'

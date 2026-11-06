@@ -1,7 +1,7 @@
 /** Host configuration for the account settings client. */
 import type { Context, Volatile } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-host-webserver'
-import type {} from '@liusiqi-dev/dsh-settings'
+import type {} from '@liusiqi-dev/sqh-host-webserver'
+import type {} from '@liusiqi-dev/sqh-settings'
 import { type ContactConfig, ContactConfigFields, CONTACT_CONFIG_GLOBAL } from './contact-config.ts'
 import z from '@liusiqi-dev/schemastery'
 import { OnboardingSettingsFields, type OnboardingStep, type OnboardingPurpose, type OnboardingProcess } from './onboarding-settings.ts'

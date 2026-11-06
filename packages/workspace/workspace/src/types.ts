@@ -2,12 +2,12 @@
  * Public type vocabulary of the workspace entity: the `WorkspaceId` brand and
  * the `Workspace` consumer interface. Types only — the `WorkspaceId` factory
  * lives in `index.ts` (this file carries no runtime code).
- * @module @liusiqi-dev/dsh-workspace/src/types
+ * @module @liusiqi-dev/sqh-workspace/src/types
  */
 
-import type { Branded } from '@liusiqi-dev/dsh-brand'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type {} from '@liusiqi-dev/dsh-typert-protocol'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type {} from '@liusiqi-dev/sqh-typert-protocol'
 
 /**
  * Identifies one workspace record. A generated uuid, never the path: path
@@ -15,7 +15,7 @@ import type {} from '@liusiqi-dev/dsh-typert-protocol'
  */
 export type WorkspaceId = Branded<'WorkspaceId'>
 
-declare module '@liusiqi-dev/dsh-typert-protocol' {
+declare module '@liusiqi-dev/sqh-typert-protocol' {
   interface RemoteErrorDetailsMap {
     /** No registration carries that Workspace identity. */
     'workspace/not-found': { readonly workspaceId: WorkspaceId }

@@ -1,12 +1,12 @@
 /** TestClient without a DOM: the api roster boots and connects; mount is refused; flush degrades to a microtask flush. */
-import type { ClientTransportHooks } from '@liusiqi-dev/dsh-client-connection/client'
-import { RemoteMock } from '@liusiqi-dev/dsh-remote-mock'
+import type { ClientTransportHooks } from '@liusiqi-dev/sqh-client-connection/client'
+import { RemoteMock } from '@liusiqi-dev/sqh-remote-mock'
 import { describe, expect, it, onTestFinished, vi } from 'vitest'
 import { TestClient, remoteDefaultResponses, webApp } from '../src/assembly/index.ts'
 
 /** The Gateway client and what it injects: the Typert registry and the Connection. */
-const API_ROSTER = webApp.closure(['@liusiqi-dev/dsh-api-gateway'])
-const TYPERT_ONLY = webApp.pick(['@liusiqi-dev/dsh-typert-registry'])
+const API_ROSTER = webApp.closure(['@liusiqi-dev/sqh-api-gateway'])
+const TYPERT_ONLY = webApp.pick(['@liusiqi-dev/sqh-typert-registry'])
 const globals = globalThis as { __SQH_TRANSPORT__?: ClientTransportHooks }
 
 describe('TestClient (node environment)', () => {
@@ -40,7 +40,7 @@ describe('TestClient (node environment)', () => {
 
   it('rethrows a row that fails to apply and lets the next client boot', async () => {
     const failing = { apply(): void { throw new Error('apply boom') } }
-    await expect(TestClient.start({ roster: TYPERT_ONLY, provide: { '@liusiqi-dev/dsh-typert-registry': failing } }, RemoteMock.create()))
+    await expect(TestClient.start({ roster: TYPERT_ONLY, provide: { '@liusiqi-dev/sqh-typert-registry': failing } }, RemoteMock.create()))
       .rejects.toThrow(/apply boom|typert-registry/)
     const mock = RemoteMock.create().load(remoteDefaultResponses)
     const client = await TestClient.start({ roster: API_ROSTER }, mock)
@@ -49,9 +49,9 @@ describe('TestClient (node environment)', () => {
   })
 
   it('refuses a provide entry for the api-remotes row, whose services are the proxies', async () => {
-    const roster = webApp.closure(['@liusiqi-dev/dsh-api-remotes'])
-    await expect(TestClient.start({ roster, provide: { '@liusiqi-dev/dsh-api-remotes': { apply() {} } } }, RemoteMock.create()))
-      .rejects.toThrow('@liusiqi-dev/dsh-api-remotes cannot be provided; its remote.<ns> services are the tier\'s proxies')
+    const roster = webApp.closure(['@liusiqi-dev/sqh-api-remotes'])
+    await expect(TestClient.start({ roster, provide: { '@liusiqi-dev/sqh-api-remotes': { apply() {} } } }, RemoteMock.create()))
+      .rejects.toThrow('@liusiqi-dev/sqh-api-remotes cannot be provided; its remote.<ns> services are the tier\'s proxies')
   })
 
   it('reports unmatched requests alongside a failed teardown instead of hiding them', async () => {

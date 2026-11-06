@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { runNativeCommand } from '@liusiqi-dev/dsh-native-command'
+import { runNativeCommand } from '@liusiqi-dev/sqh-native-command'
 
 const node = process.execPath
 

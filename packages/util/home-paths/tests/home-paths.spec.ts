@@ -12,7 +12,7 @@ import {
   dshHomePath,
   expandHomePath,
   resolveDshHome,
-} from '@liusiqi-dev/dsh-home-paths'
+} from '@liusiqi-dev/sqh-home-paths'
 
 afterEach(() => {
   vi.unstubAllEnvs()

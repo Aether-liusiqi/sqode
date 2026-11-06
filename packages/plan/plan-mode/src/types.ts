@@ -5,10 +5,10 @@
  * host consumers and `./client` for client aggregates — with zero content
  * duplication.
  *
- * @module @liusiqi-dev/dsh-plan-mode/types
+ * @module @liusiqi-dev/sqh-plan-mode/types
  */
 
-import type { CommandId } from '@liusiqi-dev/dsh-commands/brand'
+import type { CommandId } from '@liusiqi-dev/sqh-commands/brand'
 
 /**
  * The plan projection's wire value. `active` is the logged state in force
@@ -35,7 +35,7 @@ export interface PlanUnitState {
   activeAtLastHeader: boolean | null
 }
 
-declare module '@liusiqi-dev/dsh-session-projection/types' {
+declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionStateMap {
     /** Host plan-mode fold state. */
     plan: PlanUnitState

@@ -2,10 +2,10 @@
 
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { FsTargetKey, FsVersion } from '@liusiqi-dev/dsh-fs'
-import type { FsObservation, FsTarget, FsWriteIntent } from '@liusiqi-dev/dsh-fs'
-import * as FsPolicy from '@liusiqi-dev/dsh-fs-observation-policy'
-import type { FsObservationActor } from '@liusiqi-dev/dsh-fs-observation-policy'
+import { FsTargetKey, FsVersion } from '@liusiqi-dev/sqh-fs'
+import type { FsObservation, FsTarget, FsWriteIntent } from '@liusiqi-dev/sqh-fs'
+import * as FsPolicy from '@liusiqi-dev/sqh-fs-observation-policy'
+import type { FsObservationActor } from '@liusiqi-dev/sqh-fs-observation-policy'
 
 function target(path: string): FsTarget {
   return { targetKey: FsTargetKey(path), displayPath: path }

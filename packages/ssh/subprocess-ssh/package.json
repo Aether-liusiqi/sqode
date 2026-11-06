@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-subprocess-ssh",
+  "name": "@liusiqi-dev/sqh-subprocess-ssh",
   "description": "Subprocess and terminal provider over the shared POSIX SSH helper",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,9 +28,9 @@
   "license": "MIT",
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-ssh": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess-local": "workspace:*"
+    "@liusiqi-dev/sqh-ssh": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess-local": "workspace:*"
   },
   "dependencies": {
     "@liusiqi-dev/schemastery": "workspace:~",
@@ -38,8 +38,8 @@
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-ssh": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess-local": "workspace:*"
+    "@liusiqi-dev/sqh-ssh": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess-local": "workspace:*"
   }
 }

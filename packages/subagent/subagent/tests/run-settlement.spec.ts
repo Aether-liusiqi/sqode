@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { SessionId } from '@liusiqi-dev/dsh-session'
+import { SessionId } from '@liusiqi-dev/sqh-session'
 import {
   settleRun,
   settleRunResult,

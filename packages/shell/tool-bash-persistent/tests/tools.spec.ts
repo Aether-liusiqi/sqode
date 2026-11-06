@@ -1,10 +1,10 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import { SESSION_FORMAT_VERSION, Session, SessionId } from '@liusiqi-dev/dsh-session'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import TerminalSessionService from '@liusiqi-dev/dsh-terminal'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import { SESSION_FORMAT_VERSION, Session, SessionId } from '@liusiqi-dev/sqh-session'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import TerminalSessionService from '@liusiqi-dev/sqh-terminal'
 import type {
   TerminalBackend,
   TerminalBackendSession,
@@ -14,11 +14,11 @@ import type {
   TerminalSessionStatus,
   TerminalSignal,
   TerminalWaitReason,
-} from '@liusiqi-dev/dsh-terminal'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
-import * as ToolBashPersistent from '@liusiqi-dev/dsh-tool-bash-persistent'
-import { unsupportedInbox } from '@liusiqi-dev/dsh-agent-loop-testkit'
+} from '@liusiqi-dev/sqh-terminal'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
+import * as ToolBashPersistent from '@liusiqi-dev/sqh-tool-bash-persistent'
+import { unsupportedInbox } from '@liusiqi-dev/sqh-agent-loop-testkit'
 
 const contexts: Context[] = []
 let callNumber = 0

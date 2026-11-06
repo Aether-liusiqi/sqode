@@ -3,7 +3,7 @@ import { randomBytes } from 'node:crypto'
 import { closeSync, mkdtempSync, openSync, rmdirSync, unlinkSync, writeSync } from 'node:fs'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
-import type { CollectedOutput } from '@liusiqi-dev/dsh-subprocess'
+import type { CollectedOutput } from '@liusiqi-dev/sqh-subprocess'
 
 /**
  * Receives one spill failure so the owner can log it through its own logger.

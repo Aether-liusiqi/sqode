@@ -11,7 +11,7 @@
  * stop-on-throw) or touch the agent loop. Composed by a backend in its
  * constructor.
  *
- * @module @liusiqi-dev/dsh-session-telemetry/coordinator
+ * @module @liusiqi-dev/sqh-session-telemetry/coordinator
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
@@ -22,8 +22,8 @@ import {
   type SessionEvent,
   type SessionSeq as SessionSeqType,
   type SessionSeqCursor,
-} from '@liusiqi-dev/dsh-session'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
+} from '@liusiqi-dev/sqh-session'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
 import type { SessionTelemetrySink, SessionTelemetryRecord, SessionTelemetrySeverity } from './index.ts'
 
 /** Whether capture follows live events or reads the canonical log only when requested. */

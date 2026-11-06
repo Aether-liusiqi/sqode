@@ -7,12 +7,12 @@
  * be done — so it can name the remaining work instead of repeating "context is
  * nearly full".
  *
- * @module @liusiqi-dev/dsh-compaction-basic/notice
+ * @module @liusiqi-dev/sqh-compaction-basic/notice
  */
 
 import { noticeThresholdTokens } from './config.ts'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   // Registered here because this module owns the kind, the same way the base
   // compaction package registers its checkpoint source.
   interface MessageSourceMap {

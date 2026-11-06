@@ -1,14 +1,14 @@
 /**
  * Session-visible workspace instruction state and dynamic reconciliation.
  *
- * @module @liusiqi-dev/dsh-agent-instructions/state
+ * @module @liusiqi-dev/sqh-agent-instructions/state
  */
 
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { Message } from '@liusiqi-dev/dsh-llm'
-import type { Session, UserMessage } from '@liusiqi-dev/dsh-session'
-import type { FileSystem, FsVersion } from '@liusiqi-dev/dsh-fs'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { Message } from '@liusiqi-dev/sqh-llm'
+import type { Session, UserMessage } from '@liusiqi-dev/sqh-session'
+import type { FileSystem, FsVersion } from '@liusiqi-dev/sqh-fs'
 import type { ResolvedConfig } from './config.ts'
 import { instructionContentSha1, trimmedInstructionDigest } from './digest.ts'
 import {
@@ -45,7 +45,7 @@ export interface AgentInstructionSource {
   changes: AgentInstructionChange[]
 }
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'agent-instructions': AgentInstructionSource
   }

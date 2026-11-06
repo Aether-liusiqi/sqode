@@ -2,14 +2,14 @@
  * Wire types of the generated `job` Remote namespace: the per-session roster
  * stream, the per-job observation stream, and the human kill. Client-safe: no
  * Host imports.
- * @module @liusiqi-dev/dsh-api-job-controller/types
+ * @module @liusiqi-dev/sqh-api-job-controller/types
  */
 
-import type { JobId } from '@liusiqi-dev/dsh-jobs/brand'
-import type { JobChunk, JobView } from '@liusiqi-dev/dsh-jobs/view'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { JobId } from '@liusiqi-dev/sqh-jobs/brand'
+import type { JobChunk, JobView } from '@liusiqi-dev/sqh-jobs/view'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 
-export type { JobChunk, JobView } from '@liusiqi-dev/dsh-jobs/view'
+export type { JobChunk, JobView } from '@liusiqi-dev/sqh-jobs/view'
 
 /** Target of one `job.list` stream: the session whose visible jobs the stream mirrors. */
 export interface JobListRequest {
@@ -38,7 +38,7 @@ export interface JobKillValue {
   readonly outcome: 'requested' | 'already-finished'
 }
 
-declare module '@liusiqi-dev/dsh-typert-protocol' {
+declare module '@liusiqi-dev/sqh-typert-protocol' {
   interface RemoteErrorDetailsMap {
     /** The session's job list no longer carries a killable row under that id. */
     'job/not-found': { readonly sessionId: SessionId; readonly jobId: JobId }

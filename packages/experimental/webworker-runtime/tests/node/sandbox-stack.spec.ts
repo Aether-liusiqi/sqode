@@ -1,15 +1,15 @@
 /** The unchanged sandbox-local → bash-sandbox → subprocess stack over the Worker Node layer. */
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { SandboxBashExecutor } from '@liusiqi-dev/dsh-bash-sandbox'
-import LocalSandboxProvider from '@liusiqi-dev/dsh-sandbox-local'
-import { SandboxPolicyService } from '@liusiqi-dev/dsh-sandbox-policy'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import LocalSubprocessRuntime from '@liusiqi-dev/dsh-subprocess-local'
+import { SandboxBashExecutor } from '@liusiqi-dev/sqh-bash-sandbox'
+import LocalSandboxProvider from '@liusiqi-dev/sqh-sandbox-local'
+import { SandboxPolicyService } from '@liusiqi-dev/sqh-sandbox-policy'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import LocalSubprocessRuntime from '@liusiqi-dev/sqh-subprocess-local'
 import { MemoryVfs } from '../../src/storage/memory.ts'
 import { setActiveVfs } from '../../src/storage/active.ts'
 import { processAlive, signalProcess } from '../../src/node/process-table.ts'
-import type { ShellExecSpec, ShellExecution, ShellRunResult } from '@liusiqi-dev/dsh-shell'
+import type { ShellExecSpec, ShellExecution, ShellRunResult } from '@liusiqi-dev/sqh-shell'
 
 /** Historical foreground shorthand over the unified execute() seam. */
 async function run(x: { execute(spec: ShellExecSpec): Promise<ShellExecution> }, spec: ShellExecSpec): Promise<ShellRunResult> {

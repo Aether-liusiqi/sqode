@@ -6,11 +6,11 @@ import { tmpdir } from 'node:os'
 import { createServer as createTcpServer, connect, Socket } from 'node:net'
 import { join } from 'node:path'
 import { createServer, IncomingMessage, ServerResponse } from 'node:http'
-import WebServer from '@liusiqi-dev/dsh-host-webserver'
-import AuthorizationService from '@liusiqi-dev/dsh-authorization'
-import type { AccountClientMetadata } from '@liusiqi-dev/dsh-deepseek-account'
-import { LocalCredentialProvider } from '@liusiqi-dev/dsh-credentials-local'
-import { credentialKey, credentialRef } from '@liusiqi-dev/dsh-credentials'
+import WebServer from '@liusiqi-dev/sqh-host-webserver'
+import AuthorizationService from '@liusiqi-dev/sqh-authorization'
+import type { AccountClientMetadata } from '@liusiqi-dev/sqh-deepseek-account'
+import { LocalCredentialProvider } from '@liusiqi-dev/sqh-credentials-local'
+import { credentialKey, credentialRef } from '@liusiqi-dev/sqh-credentials'
 import { Config, PlatformAccount } from '../src/index.ts'
 import { browserUrl, platformHeaders, platformOrigin, loginOrigin } from '../src/protocol.ts'
 
@@ -1095,7 +1095,7 @@ it('returns no credentials when signed out or disposed', async () => {
   const f = await fixture()
   expect(await f.account.resolveToken('https://api.deepseek.com')).toBeUndefined()
   expect(await f.account.getPlatformSession()).toBeNull()
-  await f.account.cancelSignIn('missing' as import('@liusiqi-dev/dsh-deepseek-account').SignInAttemptId)
+  await f.account.cancelSignIn('missing' as import('@liusiqi-dev/sqh-deepseek-account').SignInAttemptId)
   await f.dispose()
   expect(await f.account.getProfile(clientMetadata())).toBeNull()
   expect(await f.account.getPlatformSession()).toBeNull()

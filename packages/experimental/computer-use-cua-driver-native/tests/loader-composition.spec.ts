@@ -8,16 +8,16 @@ import { afterEach, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import Include from '@liusiqi-dev/cordis-plugin-include'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
-import ComputerUseRegistry from '@liusiqi-dev/dsh-computer-use'
-import LocalAttachmentStore from '@liusiqi-dev/dsh-attachment-local'
-import LlmRuntime, { LlmAdapter, ToolCallId, createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { GenerateOptions, LlmResolvedModelInfo, StreamChunk } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import AgentLoop from '@liusiqi-dev/sqh-agent-loop'
+import ComputerUseRegistry from '@liusiqi-dev/sqh-computer-use'
+import LocalAttachmentStore from '@liusiqi-dev/sqh-attachment-local'
+import LlmRuntime, { LlmAdapter, ToolCallId, createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { GenerateOptions, LlmResolvedModelInfo, StreamChunk } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
 import * as NativeProvider from '../src/index.ts'
 import { resetFixture, screenshotBase64 } from './fixtures/cua-driver.ts'
 
@@ -60,20 +60,20 @@ it('loads from cordis.yml and logs the native screenshot before the next model r
   root = await mkdtemp(join(tmpdir(), 'dsh-native-composition-'))
   const configPath = join(root, 'cordis.yml')
   const modules = new Map<string, unknown>([
-    ['@liusiqi-dev/dsh-llm', LlmRuntime],
-    ['@liusiqi-dev/dsh-session', SessionStore],
-    ['@liusiqi-dev/dsh-session-projection', SessionProjectionRegistry],
-    ['@liusiqi-dev/dsh-system-prompt', SystemPrompt],
-    ['@liusiqi-dev/dsh-tools', ToolRuntime],
-    ['@liusiqi-dev/dsh-agent', AgentRegistry],
-    ['@liusiqi-dev/dsh-agent-loop', AgentLoop],
-    ['@liusiqi-dev/dsh-attachment-local', LocalAttachmentStore],
-    ['@liusiqi-dev/dsh-computer-use', ComputerUseRegistry],
-    ['@liusiqi-dev/dsh-experimental-computer-use-cua-driver-native', NativeProvider],
+    ['@liusiqi-dev/sqh-llm', LlmRuntime],
+    ['@liusiqi-dev/sqh-session', SessionStore],
+    ['@liusiqi-dev/sqh-session-projection', SessionProjectionRegistry],
+    ['@liusiqi-dev/sqh-system-prompt', SystemPrompt],
+    ['@liusiqi-dev/sqh-tools', ToolRuntime],
+    ['@liusiqi-dev/sqh-agent', AgentRegistry],
+    ['@liusiqi-dev/sqh-agent-loop', AgentLoop],
+    ['@liusiqi-dev/sqh-attachment-local', LocalAttachmentStore],
+    ['@liusiqi-dev/sqh-computer-use', ComputerUseRegistry],
+    ['@liusiqi-dev/sqh-experimental-computer-use-cua-driver-native', NativeProvider],
   ])
   await writeFile(configPath, [...modules.keys()].flatMap(name => [
     `- name: '${name}'`,
-    ...name === '@liusiqi-dev/dsh-attachment-local' ? ['  config:', `    dshHome: ${JSON.stringify(root)}`] : [],
+    ...name === '@liusiqi-dev/sqh-attachment-local' ? ['  config:', `    dshHome: ${JSON.stringify(root)}`] : [],
   ]).join('\n') + '\n')
 
   const context = ctx = new Context()

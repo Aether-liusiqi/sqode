@@ -1,11 +1,11 @@
 // @vitest-environment jsdom
 
-import type { GlobalStandardProps } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { GlobalStandardProps } from '@liusiqi-dev/sqh-client-ui-slots'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, render, waitFor } from '@testing-library/react'
-import { AttachmentId } from '@liusiqi-dev/dsh-attachment'
-import { EMPTY_CHAT_SNAPSHOT, type MessageImagesProps } from '@liusiqi-dev/dsh-client-ui-chat/client'
-import { EMPTY_CONVERSATION_SNAPSHOT } from '@liusiqi-dev/dsh-client-ui-conversation/client'
+import { AttachmentId } from '@liusiqi-dev/sqh-attachment'
+import { EMPTY_CHAT_SNAPSHOT, type MessageImagesProps } from '@liusiqi-dev/sqh-client-ui-chat/client'
+import { EMPTY_CONVERSATION_SNAPSHOT } from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import { ImageGallery, MessageImage } from '../src/MessageImage.tsx'
 import type { MessageImageLabels } from '../src/MessageImage.tsx'
 import { MessageImages } from '../src/client/MessageImages.tsx'

@@ -1,28 +1,28 @@
 # Keyless replay counterpart to fs-diff-bound.cordis.yml. The ACP and
 # persistence rows keep the recorded flash model and raw JSONL harvest.
 - id: llm-deepseek
-  name: '@liusiqi-dev/dsh-llm-deepseek-api-key'
+  name: '@liusiqi-dev/sqh-llm-deepseek-api-key'
   disabled: true
 
 - id: agent-default-model
-  name: '@liusiqi-dev/dsh-agent-default-model'
+  name: '@liusiqi-dev/sqh-agent-default-model'
   config:
     provider: deepseek-official
     model: deepseek-v4-flash
 
 - id: session-persistence-jsonl
-  name: '@liusiqi-dev/dsh-session-persistence-jsonl'
+  name: '@liusiqi-dev/sqh-session-persistence-jsonl'
   config:
     root: !!js dshHomePath('sessions')
     compression: none
 
 - id: agent-instructions
-  name: '@liusiqi-dev/dsh-agent-instructions'
+  name: '@liusiqi-dev/sqh-agent-instructions'
   config:
     maxBytes: 65536
 
 - id: system-prompt
-  name: '@liusiqi-dev/dsh-system-prompt'
+  name: '@liusiqi-dev/sqh-system-prompt'
   config:
     personaPrefix: |
       You are a coding assistant powered by the {{model}} model. Your working directory is {{cwd}}. Your bash tool runs under a file sandbox — a `[sandbox: file access denied …]` result is policy, not a command bug.
@@ -30,14 +30,14 @@
       Verify your work by running the code or tests. Keep answers brief and factual.
 
 - id: fs-sandbox
-  name: '@liusiqi-dev/dsh-fs-sandbox'
+  name: '@liusiqi-dev/sqh-fs-sandbox'
   config:
     cwd: !!js process.cwd()
     diffBasisMaxBytes: 64
 
 - insert:
     - id: llm-replay
-      name: '@liusiqi-dev/dsh-llm-replay'
+      name: '@liusiqi-dev/sqh-llm-replay'
       config:
         providers:
           - id: deepseek-official

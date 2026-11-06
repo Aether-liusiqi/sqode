@@ -8,7 +8,7 @@ import {
   parseSnapshotManifest,
   type Scenario,
   type SnapshotSuiteOptions,
-} from '@liusiqi-dev/dsh-session-snapshot'
+} from '@liusiqi-dev/sqh-session-snapshot'
 
 const corpusDir = fileURLToPath(new URL('./', import.meta.url))
 

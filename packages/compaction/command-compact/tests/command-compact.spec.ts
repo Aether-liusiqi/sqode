@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import CommandRuntime, { type CommandResult } from '@liusiqi-dev/dsh-commands'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import CommandRuntime, { type CommandResult } from '@liusiqi-dev/sqh-commands'
 import {
   CompactionId,
   CompactionEngine,
@@ -11,9 +11,9 @@ import {
   type CompactionResult,
   type CompactionTrigger,
   type ManualCompactAgentContext,
-} from '@liusiqi-dev/dsh-compaction'
-import { Session, SessionId, SessionSeq } from '@liusiqi-dev/dsh-session'
-import * as commandCompact from '@liusiqi-dev/dsh-command-compact'
+} from '@liusiqi-dev/sqh-compaction'
+import { Session, SessionId, SessionSeq } from '@liusiqi-dev/sqh-session'
+import * as commandCompact from '@liusiqi-dev/sqh-command-compact'
 
 const COMPACTION_ID = CompactionId('command-compact-test')
 
@@ -153,7 +153,7 @@ function expectLastLifecycle(
   return runEvent.data.commandId
 }
 
-describe('@liusiqi-dev/dsh-command-compact registration', () => {
+describe('@liusiqi-dev/sqh-command-compact registration', () => {
   it('registers one argument-free command with Loader-safe exports and disposes it', async () => {
     const test = await harness()
     expect(commandCompact.name).toBe('command-compact')
@@ -162,7 +162,7 @@ describe('@liusiqi-dev/dsh-command-compact registration', () => {
     const loader = Object.create(Loader.prototype) as Loader
     expect(loader.unwrapExports(commandCompact)).toBe(commandCompact)
     expect(test.ctx.commands.list(test.agent)).toContainEqual({
-      definitionId: '@liusiqi-dev/dsh-command-compact',
+      definitionId: '@liusiqi-dev/sqh-command-compact',
       name: 'compact',
       description: 'Compact older conversation history',
     })

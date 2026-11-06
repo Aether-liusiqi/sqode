@@ -1,8 +1,8 @@
 /** AgentHandle disposal must release blocking browser work before waiting for idle. */
 
 import { Context } from '@liusiqi-dev/cordis'
-import { mountAgentLoopTestDependencies, mountAgentLoopTestHarness } from '@liusiqi-dev/dsh-agent-loop-testkit'
-import { SessionId } from '@liusiqi-dev/dsh-session'
+import { mountAgentLoopTestDependencies, mountAgentLoopTestHarness } from '@liusiqi-dev/sqh-agent-loop-testkit'
+import { SessionId } from '@liusiqi-dev/sqh-session'
 import { expect, it, vi } from 'vitest'
 import { SessionResources } from '../src/index.ts'
 

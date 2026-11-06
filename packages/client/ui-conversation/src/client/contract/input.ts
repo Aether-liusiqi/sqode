@@ -7,9 +7,9 @@
  * here is the submit plane (phase, claim, attempt) alone.
  */
 import type { Context } from '@liusiqi-dev/cordis'
-import type { InboxState } from '@liusiqi-dev/dsh-agent/types'
-import type { ObservableSnapshot, SnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { Branded } from '@liusiqi-dev/dsh-brand'
+import type { InboxState } from '@liusiqi-dev/sqh-agent/types'
+import type { ObservableSnapshot, SnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
 import type { ArbitrateKey, ArbitrateOutcome, Occurrence, ReferenceInsert, TokenSpan } from './draft-editor.ts'
 import type { InputSubmitMode, MessageSubmission } from './composer-submission.ts'
 

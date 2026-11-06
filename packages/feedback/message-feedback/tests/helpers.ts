@@ -2,15 +2,15 @@ import { mkdtemp, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { Context } from '@liusiqi-dev/cordis'
-import { createAssistantMessage, createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { MessageId } from '@liusiqi-dev/dsh-llm/brand'
+import { createAssistantMessage, createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { MessageId } from '@liusiqi-dev/sqh-llm/brand'
 import SessionStore, { SessionLogOffset,
   SESSION_FORMAT_VERSION,
   Session,
   SessionId,
   type SessionEvent,
   type SessionHeader,
-} from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-session'
 import SessionPersistence, {
   SessionAlreadyExistsError,
   SessionHandleClosedError,
@@ -20,7 +20,7 @@ import SessionPersistence, {
   type SessionAccess,
   type SessionHandle,
   type SessionPersistenceSnapshot,
-} from '@liusiqi-dev/dsh-session-persistence'
+} from '@liusiqi-dev/sqh-session-persistence'
 import MessageFeedbackService from '../src/index.ts'
 
 export interface MessageFixture {

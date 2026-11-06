@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, expectTypeOf, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import type { Fiber } from '@liusiqi-dev/cordis'
-import LlmRuntime, { createUserMessage, ToolCallId, EMPTY_RESPONSE_CODE, LlmAdapter, LlmError, expandAssistantStream, resolveRetryPolicy  } from '@liusiqi-dev/dsh-llm'
+import LlmRuntime, { createUserMessage, ToolCallId, EMPTY_RESPONSE_CODE, LlmAdapter, LlmError, expandAssistantStream, resolveRetryPolicy  } from '@liusiqi-dev/sqh-llm'
 import type {
   AlwaysRetryPolicyConfig,
   BackoffConfig,
@@ -10,16 +10,16 @@ import type {
   ResolvedRetryPolicy,
   RetryPolicyConfig,
   StreamChunk,
-} from '@liusiqi-dev/dsh-llm'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import type { SessionEvent, SessionEventMap } from '@liusiqi-dev/dsh-session'
-import type { LlmRetryEventData } from '@liusiqi-dev/dsh-llm-retry/types'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime, { defineContentToolFixture } from '@liusiqi-dev/dsh-tools'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import type { Agent, RequestErrorAction } from '@liusiqi-dev/dsh-agent'
-import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
+} from '@liusiqi-dev/sqh-llm'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import type { SessionEvent, SessionEventMap } from '@liusiqi-dev/sqh-session'
+import type { LlmRetryEventData } from '@liusiqi-dev/sqh-llm-retry/types'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime, { defineContentToolFixture } from '@liusiqi-dev/sqh-tools'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import type { Agent, RequestErrorAction } from '@liusiqi-dev/sqh-agent'
+import AgentLoop from '@liusiqi-dev/sqh-agent-loop'
 import * as retry from '../src/index.ts'
 
 type ScriptEntry = Error | Iterable<StreamChunk> | AsyncIterable<StreamChunk>

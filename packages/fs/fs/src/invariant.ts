@@ -1,10 +1,10 @@
-/** Package-owned filesystem event-data invariants. @module @liusiqi-dev/dsh-fs/invariant */
+/** Package-owned filesystem event-data invariants. @module @liusiqi-dev/sqh-fs/invariant */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
+import type { InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
 import type { FsObservation, FsTarget } from './types.ts'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-fs'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-fs'
 
 /** Cordis companion plugin name. */
 export const name = 'fs-invariant'

@@ -44,7 +44,7 @@ export default defineConfig([
     dts: false,
     clean: false,
     codeSplitting: false,
-    deps: { alwaysBundle: ['@liusiqi-dev/dsh-atomic-write'] },
+    deps: { alwaysBundle: ['@liusiqi-dev/sqh-atomic-write'] },
   },
   {
     entry: ['lib/types/main.js'],

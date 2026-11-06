@@ -10,8 +10,8 @@
  */
 
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import type { SettingsNamespaceView } from '@liusiqi-dev/dsh-api-remotes/client'
-import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import type { SettingsNamespaceView } from '@liusiqi-dev/sqh-api-remotes/client'
+import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/sqh-client-store'
 
 /** The full `settings.describe` answer the mirror serves. */
 export interface SettingsDescribeView {

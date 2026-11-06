@@ -7,23 +7,23 @@ import { afterEach, describe, expect, it, onTestFailed, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import Include from '@liusiqi-dev/cordis-plugin-include'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import { SESSION_FORMAT_VERSION, Session, SessionId } from '@liusiqi-dev/dsh-session'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import TerminalSessionService from '@liusiqi-dev/dsh-terminal'
-import type { TerminalWaitReason } from '@liusiqi-dev/dsh-terminal'
-import * as TerminalBash from '@liusiqi-dev/dsh-terminal-bash'
-import SandboxProvider from '@liusiqi-dev/dsh-sandbox'
-import type { ConfinedArgv, SandboxPolicy } from '@liusiqi-dev/dsh-sandbox'
-import SandboxPolicyService from '@liusiqi-dev/dsh-sandbox-policy'
-import LocalSubprocessService from '@liusiqi-dev/dsh-subprocess-local'
-import { resolvePwshPath } from '@liusiqi-dev/dsh-pwsh-local/src/resolve.ts'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRegistry from '@liusiqi-dev/dsh-tools'
-import * as ToolPwshPersistent from '@liusiqi-dev/dsh-tool-pwsh-persistent'
-import { unsupportedInbox } from '@liusiqi-dev/dsh-agent-loop-testkit'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import { SESSION_FORMAT_VERSION, Session, SessionId } from '@liusiqi-dev/sqh-session'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import TerminalSessionService from '@liusiqi-dev/sqh-terminal'
+import type { TerminalWaitReason } from '@liusiqi-dev/sqh-terminal'
+import * as TerminalBash from '@liusiqi-dev/sqh-terminal-bash'
+import SandboxProvider from '@liusiqi-dev/sqh-sandbox'
+import type { ConfinedArgv, SandboxPolicy } from '@liusiqi-dev/sqh-sandbox'
+import SandboxPolicyService from '@liusiqi-dev/sqh-sandbox-policy'
+import LocalSubprocessService from '@liusiqi-dev/sqh-subprocess-local'
+import { resolvePwshPath } from '@liusiqi-dev/sqh-pwsh-local/src/resolve.ts'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRegistry from '@liusiqi-dev/sqh-tools'
+import * as ToolPwshPersistent from '@liusiqi-dev/sqh-tool-pwsh-persistent'
+import { unsupportedInbox } from '@liusiqi-dev/sqh-agent-loop-testkit'
 import { ReadinessTimeline, TIMELINE_HEADER } from './readiness-timeline.ts'
 
 const pwshPath = resolvePwshPath()
@@ -108,18 +108,18 @@ describe.skipIf(!hasPwsh)('persistent pwsh through a real cordis.yml Loader comp
     root = await realpath(await mkdtemp(join(tmpdir(), 'dsh-persistent-pwsh-loader-')))
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
-      "- name: '@liusiqi-dev/dsh-agent'",
-      "- name: '@liusiqi-dev/dsh-system-prompt'",
-      "- name: '@liusiqi-dev/dsh-tools'",
-      "- name: '@liusiqi-dev/dsh-terminal'",
-      "- name: '@liusiqi-dev/dsh-test-sandbox'",
-      "- name: '@liusiqi-dev/dsh-session-projection'",
-      "- name: '@liusiqi-dev/dsh-sandbox-policy'",
+      "- name: '@liusiqi-dev/sqh-agent'",
+      "- name: '@liusiqi-dev/sqh-system-prompt'",
+      "- name: '@liusiqi-dev/sqh-tools'",
+      "- name: '@liusiqi-dev/sqh-terminal'",
+      "- name: '@liusiqi-dev/sqh-test-sandbox'",
+      "- name: '@liusiqi-dev/sqh-session-projection'",
+      "- name: '@liusiqi-dev/sqh-sandbox-policy'",
       '  config:',
       '    mode: danger-full-access',
       `    workspaceRoot: ${JSON.stringify(root)}`,
-      "- name: '@liusiqi-dev/dsh-subprocess-local'",
-      "- name: '@liusiqi-dev/dsh-terminal-bash'",
+      "- name: '@liusiqi-dev/sqh-subprocess-local'",
+      "- name: '@liusiqi-dev/sqh-terminal-bash'",
       '  config:',
       '    shellDialect: pwsh',
       '    pollIntervalMs: 10',
@@ -142,7 +142,7 @@ describe.skipIf(!hasPwsh)('persistent pwsh through a real cordis.yml Loader comp
       // would not).
       '    timeoutMs: 300000',
       '    disposeGraceMs: 500',
-      "- name: '@liusiqi-dev/dsh-tool-pwsh-persistent'",
+      "- name: '@liusiqi-dev/sqh-tool-pwsh-persistent'",
       '  config:',
       '    timeoutMs: 300000',
       '',
@@ -153,16 +153,16 @@ describe.skipIf(!hasPwsh)('persistent pwsh through a real cordis.yml Loader comp
     await context.plugin(Loader)
     context.loader.builtins.include = Include
     const modules = new Map<string, unknown>([
-      ['@liusiqi-dev/dsh-agent', AgentRegistry],
-      ['@liusiqi-dev/dsh-system-prompt', SystemPrompt],
-      ['@liusiqi-dev/dsh-tools', ToolRegistry],
-      ['@liusiqi-dev/dsh-terminal', TerminalSessionService],
-      ['@liusiqi-dev/dsh-test-sandbox', PassthroughSandbox],
-      ['@liusiqi-dev/dsh-session-projection', SessionProjectionRegistry],
-      ['@liusiqi-dev/dsh-sandbox-policy', SandboxPolicyService],
-      ['@liusiqi-dev/dsh-subprocess-local', LocalSubprocessService],
-      ['@liusiqi-dev/dsh-terminal-bash', TerminalBash],
-      ['@liusiqi-dev/dsh-tool-pwsh-persistent', ToolPwshPersistent],
+      ['@liusiqi-dev/sqh-agent', AgentRegistry],
+      ['@liusiqi-dev/sqh-system-prompt', SystemPrompt],
+      ['@liusiqi-dev/sqh-tools', ToolRegistry],
+      ['@liusiqi-dev/sqh-terminal', TerminalSessionService],
+      ['@liusiqi-dev/sqh-test-sandbox', PassthroughSandbox],
+      ['@liusiqi-dev/sqh-session-projection', SessionProjectionRegistry],
+      ['@liusiqi-dev/sqh-sandbox-policy', SandboxPolicyService],
+      ['@liusiqi-dev/sqh-subprocess-local', LocalSubprocessService],
+      ['@liusiqi-dev/sqh-terminal-bash', TerminalBash],
+      ['@liusiqi-dev/sqh-tool-pwsh-persistent', ToolPwshPersistent],
     ])
     context.loader.internal = {
       version: 'v2',

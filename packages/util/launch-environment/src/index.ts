@@ -3,7 +3,7 @@
  * supplied each value. Harness consumers resolve through it instead of a flattened
  * `process.env`; launchers may still materialize accepted values for config
  * expressions and third-party libraries.
- * @module @liusiqi-dev/dsh-launch-environment
+ * @module @liusiqi-dev/sqh-launch-environment
  */
 
 import type { Context } from '@liusiqi-dev/cordis'

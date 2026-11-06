@@ -1,17 +1,17 @@
 /**
  * Computer use through the in-process Cua Driver native SDK and its own tools.
- * @module @liusiqi-dev/dsh-experimental-computer-use-cua-driver-native
+ * @module @liusiqi-dev/sqh-experimental-computer-use-cua-driver-native
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
 import Schema from '@liusiqi-dev/schemastery'
-import { ComputerUseProviderName } from '@liusiqi-dev/dsh-computer-use/brand'
-import { createMcpToolDefinition } from '@liusiqi-dev/dsh-mcp-client'
+import { ComputerUseProviderName } from '@liusiqi-dev/sqh-computer-use/brand'
+import { createMcpToolDefinition } from '@liusiqi-dev/sqh-mcp-client'
 import { z } from 'zod'
 import type { CuaDriver as NativeDriver } from '@trycua/cua-driver'
-import type {} from '@liusiqi-dev/dsh-computer-use'
-import type {} from '@liusiqi-dev/dsh-system-prompt'
-import type {} from '@liusiqi-dev/dsh-tools'
+import type {} from '@liusiqi-dev/sqh-computer-use'
+import type {} from '@liusiqi-dev/sqh-system-prompt'
+import type {} from '@liusiqi-dev/sqh-tools'
 
 /** Cordis plugin identity for the native Cua Driver provider. */
 export const name = 'experimental-computer-use-cua-driver-native'

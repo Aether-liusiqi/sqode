@@ -102,7 +102,7 @@ const loader = loaderModule.getOrInitializeCascadedLoader()
 const methods: readonly Method[] = ['esm-resolve', 'esm-meta-resolve', 'esm-import', 'cjs-resolve', 'cjs-require', 'cjs-paths', 'metadata']
 const layouts: readonly Layout[] = ['single-flat', 'single-pnpm', 'pnpm-monorepo']
 // These are real request spellings; each fixture supplies its own package implementations.
-const names = ['@liusiqi-dev/dsh-tools', 'react'] as const
+const names = ['@liusiqi-dev/sqh-tools', 'react'] as const
 const copyBits: readonly [Source, number][] = [
   ['local', 1], ['parent', 2], ['profile', 4], ['private', 8], ['workspace', 16],
 ]

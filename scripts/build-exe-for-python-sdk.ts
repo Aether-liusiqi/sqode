@@ -59,11 +59,11 @@ const ASSET_GLOBS = [
   'node_modules/**/*.yaml',
   'node_modules/**/*.yml',
   // web-app builds this path dynamically, so pkg cannot discover the static frontend.
-  'node_modules/@liusiqi-dev/dsh-web-frontend/dist/**/*',
+  'node_modules/@liusiqi-dev/sqh-web-frontend/dist/**/*',
   // skill-badge resolves both Markdown and image resources through import.meta.url.
-  'node_modules/@liusiqi-dev/dsh-skill-badge/assets/**/*',
+  'node_modules/@liusiqi-dev/sqh-skill-badge/assets/**/*',
   // The diagnosis provider extracts its PowerShell script for an external interpreter.
-  'node_modules/@liusiqi-dev/dsh-sandbox-windows-acl/assets/**/*',
+  'node_modules/@liusiqi-dev/sqh-sandbox-windows-acl/assets/**/*',
 ]
 
 const PLATFORMS = ['linux', 'macos', 'win'] as const

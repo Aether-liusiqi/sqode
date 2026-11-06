@@ -3,11 +3,11 @@
  * contract and rejects every violation by name. Meta arrives as schema-checked
  * JSON data, never evaluated script text. Model-written JavaScript executes
  * inside the confined PTC process.
- * @module @liusiqi-dev/dsh-workflow-ptc/meta
+ * @module @liusiqi-dev/sqh-workflow-ptc/meta
  */
 
-import { WorkflowError } from '@liusiqi-dev/dsh-workflow'
-import type { WorkflowMeta, WorkflowPhase } from '@liusiqi-dev/dsh-workflow'
+import { WorkflowError } from '@liusiqi-dev/sqh-workflow'
+import type { WorkflowMeta, WorkflowPhase } from '@liusiqi-dev/sqh-workflow'
 
 /** Collect shape violations for a meta value (plain JSON data by the seam contract). */
 function validateMetaShape(meta: unknown): { meta?: WorkflowMeta; violations: string[] } {

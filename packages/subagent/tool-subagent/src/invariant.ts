@@ -1,14 +1,14 @@
 /**
- * Package-owned invariant companion for `@liusiqi-dev/dsh-tool-subagent`.
- * @module @liusiqi-dev/dsh-tool-subagent/invariant
+ * Package-owned invariant companion for `@liusiqi-dev/sqh-tool-subagent`.
+ * @module @liusiqi-dev/sqh-tool-subagent/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@liusiqi-dev/cordis'
-import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
+import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
 import { subagentModelSelectionPolicy } from './model-selection-state.ts'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-tool-subagent'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-tool-subagent'
 
 /** Cordis companion plugin name. */
 export const name = 'tool-subagent-invariant'

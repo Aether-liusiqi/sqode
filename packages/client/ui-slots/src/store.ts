@@ -14,4 +14,4 @@ export type {
   StoreHandle,
   StoreInstance,
   StoreSpec,
-} from '@liusiqi-dev/dsh-client-store'
+} from '@liusiqi-dev/sqh-client-store'

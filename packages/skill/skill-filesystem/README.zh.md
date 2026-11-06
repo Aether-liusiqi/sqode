@@ -3,7 +3,7 @@ description: "本地文件系统 skill 提供方，供编写本地 skill 或配�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-skill-filesystem
+# @liusiqi-dev/sqh-skill-filesystem
 
 [English](README.md) | 中文
 
@@ -60,8 +60,8 @@ skill 可以是被扫描根目录顶层的目录 bundle `<name>/SKILL.md`，也�
 与 skill 注册表一起加载该插件；它需要 `ctx.skills`。
 
 ```yaml
-- name: '@liusiqi-dev/dsh-skill'
-- name: '@liusiqi-dev/dsh-skill-filesystem'
+- name: '@liusiqi-dev/sqh-skill'
+- name: '@liusiqi-dev/sqh-skill-filesystem'
 ```
 
 | 字段 | 默认值 | 含义 |

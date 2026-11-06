@@ -4,21 +4,21 @@ import { existsSync, readFileSync } from 'node:fs'
 import { readFile, rm } from 'node:fs/promises'
 import { join } from 'node:path'
 import { pathToFileURL } from 'node:url'
-import { withFileLock, writeFileAtomic } from '@liusiqi-dev/dsh-atomic-write'
+import { withFileLock, writeFileAtomic } from '@liusiqi-dev/sqh-atomic-write'
 import { Context } from '@liusiqi-dev/cordis'
 import type { EntryOptions } from '@liusiqi-dev/cordis-plugin-loader'
 import type { PatchOptions } from '@liusiqi-dev/cordis-plugin-include'
 import z from '@liusiqi-dev/schemastery'
-import { TypertRemoteService, Remote } from '@liusiqi-dev/dsh-typert-protocol'
-import { pluginEntryId, readPluginInventory } from '@liusiqi-dev/dsh-host-plugin-inventory'
+import { TypertRemoteService, Remote } from '@liusiqi-dev/sqh-typert-protocol'
+import { pluginEntryId, readPluginInventory } from '@liusiqi-dev/sqh-host-plugin-inventory'
 import {
   readPluginMeta, readProfileManifest, resolveBundleDir, loadOverlayPatches, composeEntries,
   reconcileProfilePatches, readProfilePatches, OPTIONAL_BUNDLES, bundlePatchPaths,
   evaluatePluginCompatibility, readProfileCompatibility, readProfileVersionExemptions,
   setProfileVersionExemption, PROFILE_COMPATIBILITY_FILENAME,
-} from '@liusiqi-dev/dsh-app-boot'
-import type {} from '@liusiqi-dev/dsh-hmr'
-import type { ProfileContext, ProfileManifest } from '@liusiqi-dev/dsh-app-boot'
+} from '@liusiqi-dev/sqh-app-boot'
+import type {} from '@liusiqi-dev/sqh-hmr'
+import type { ProfileContext, ProfileManifest } from '@liusiqi-dev/sqh-app-boot'
 import { bundleManifest, readProfileRegistry, registryArguments, runProfilePnpm, saveManifest, viewProfilePackage } from './operations.ts'
 import { classifyInstallFailure } from './install-failure.ts'
 import { InvalidInstallSpecError, parseInstallSpec, type ParsedInstallSpec } from './install-spec.ts'
@@ -64,15 +64,15 @@ export interface Config {
 const REGISTRY_URL = /^https?:\/\/\S+$/
 
 const protectedModules = new Set([
-  '@liusiqi-dev/dsh-plugin-manager', '@liusiqi-dev/cordis-plugin-loader',
-  '@liusiqi-dev/cordis-plugin-include', '@liusiqi-dev/dsh-api-gateway',
-  '@liusiqi-dev/dsh-host-webserver', '@liusiqi-dev/dsh-client-modules',
-  '@liusiqi-dev/dsh-client-ui-settings-plugin-inventory', '@liusiqi-dev/dsh-client-ui-plugin-manager',
-  '@liusiqi-dev/dsh-host-plugin-inventory', '@liusiqi-dev/dsh-typert-registry',
-  '@liusiqi-dev/dsh-api-remotes',
-  '@liusiqi-dev/cordis-plugin-timer', '@liusiqi-dev/dsh-client-connection',
-  '@liusiqi-dev/dsh-host-frontend-static', '@liusiqi-dev/dsh-tools',
-  '@liusiqi-dev/dsh-hmr',
+  '@liusiqi-dev/sqh-plugin-manager', '@liusiqi-dev/cordis-plugin-loader',
+  '@liusiqi-dev/cordis-plugin-include', '@liusiqi-dev/sqh-api-gateway',
+  '@liusiqi-dev/sqh-host-webserver', '@liusiqi-dev/sqh-client-modules',
+  '@liusiqi-dev/sqh-client-ui-settings-plugin-inventory', '@liusiqi-dev/sqh-client-ui-plugin-manager',
+  '@liusiqi-dev/sqh-host-plugin-inventory', '@liusiqi-dev/sqh-typert-registry',
+  '@liusiqi-dev/sqh-api-remotes',
+  '@liusiqi-dev/cordis-plugin-timer', '@liusiqi-dev/sqh-client-connection',
+  '@liusiqi-dev/sqh-host-frontend-static', '@liusiqi-dev/sqh-tools',
+  '@liusiqi-dev/sqh-hmr',
 ])
 
 /** The profile files an installation writes and a failed or cancelled one restores. */

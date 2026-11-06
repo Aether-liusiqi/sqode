@@ -1,8 +1,8 @@
 /** Live/persisted logical-corpus resolution for session-query. */
 
 import type { Context, Fiber } from '@liusiqi-dev/cordis'
-import type { Session, SessionEvent, SessionHeader, SessionId , SessionLogOffset } from '@liusiqi-dev/dsh-session'
-import type SessionPersistence from '@liusiqi-dev/dsh-session-persistence'
+import type { Session, SessionEvent, SessionHeader, SessionId , SessionLogOffset } from '@liusiqi-dev/sqh-session'
+import type SessionPersistence from '@liusiqi-dev/sqh-session-persistence'
 import type { SessionRecord } from './types.ts'
 import { SessionQueryError } from './config.ts'
 import { readColdSessionLog, type ColdSessionLog } from './cold-read.ts'

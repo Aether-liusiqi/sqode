@@ -1,7 +1,7 @@
 /** Slash-menu props for the Conversation-owned input overlay. */
-import type {} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import type { InputTriggerCrumb, PickAction } from '../types.ts'
-import type { SnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import type { SnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import type { MenuState } from '../core/contract.ts'
 
 /** Injected business face of the MenuView overlay entry (copy rides the standard locale seat, not this face). */

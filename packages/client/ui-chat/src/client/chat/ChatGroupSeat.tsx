@@ -5,8 +5,8 @@ import {
   IconChevronUpOutlineRegular, IconCodeOutlineRegular, IconEditOutlineRegular, IconGlobeOutlineRegular,
   IconPlanOutlineRegular, IconQuestionOutlineRegular, IconSearchOutlineRegular, IconSparkleRegular,
   IconThinkOutlineRegular, TextShimmer,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { GroupKey, NodeReference } from '@liusiqi-dev/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { GroupKey, NodeReference } from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import type { ProcessActivity } from '../contract/process-groups.ts'
 import type { ChatStoreState } from '../contract/store.ts'
 import type { ChatViewSlotProps } from '../contract/slots.ts'

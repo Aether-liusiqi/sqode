@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { SessionFormatEventCollector, type SessionFormatEvent } from '@liusiqi-dev/dsh-session-format'
-import { sessionFormatCatalog } from '@liusiqi-dev/dsh-session-format-catalog'
+import { SessionFormatEventCollector, type SessionFormatEvent } from '@liusiqi-dev/sqh-session-format'
+import { sessionFormatCatalog } from '@liusiqi-dev/sqh-session-format-catalog'
 import { releasedV4SessionFormatCodec, restoreReleasedV4Artifact } from '../src/index.ts'
 
 const header = { version: 4, id: 'native-syntax', createdAt: 1, delegationDepth: 0, isSeeded: false }

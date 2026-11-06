@@ -2,8 +2,8 @@
 
 import type { Context } from '@liusiqi-dev/cordis'
 import type { SessionConfigOption, SessionConfigValueId } from '@agentclientprotocol/sdk'
-import { installModelSelection, type ModelSelection, type ModelSelectionRef } from '@liusiqi-dev/dsh-agent'
-import { ReasoningEffortId, type LlmCallConfig, type LlmRuntime } from '@liusiqi-dev/dsh-llm'
+import { installModelSelection, type ModelSelection, type ModelSelectionRef } from '@liusiqi-dev/sqh-agent'
+import { ReasoningEffortId, type LlmCallConfig, type LlmRuntime } from '@liusiqi-dev/sqh-llm'
 
 const MODEL_CONFIG_ID = 'model'
 const REASONING_CONFIG_ID = 'reasoning_effort'

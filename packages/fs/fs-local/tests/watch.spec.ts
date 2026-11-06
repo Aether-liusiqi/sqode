@@ -1,6 +1,6 @@
 /** Watch initialization and asynchronous release at the Chokidar adapter. */
 import { Context } from '@liusiqi-dev/cordis'
-import { FsTargetKey, FsVersion } from '@liusiqi-dev/dsh-fs'
+import { FsTargetKey, FsVersion } from '@liusiqi-dev/sqh-fs'
 import { dirname, join, resolve } from 'node:path'
 import * as chokidar from 'chokidar'
 import { afterEach, describe, expect, it, onTestFinished, vi } from 'vitest'

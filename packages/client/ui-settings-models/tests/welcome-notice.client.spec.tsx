@@ -1,12 +1,12 @@
 // @vitest-environment jsdom
-import type { GlobalStandardProps } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { GlobalStandardProps } from '@liusiqi-dev/sqh-client-ui-slots'
 import { act, cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { bindSnapshotSelector, RemoteError } from '@liusiqi-dev/dsh-client-test-runtime'
+import { bindSnapshotSelector, RemoteError } from '@liusiqi-dev/sqh-client-test-runtime'
 import { Context } from '@liusiqi-dev/cordis'
-import { SettingsSchemaService } from '@liusiqi-dev/dsh-client-ui-settings/src/client/schema.ts'
-import { SettingsDescribeMirror } from '@liusiqi-dev/dsh-client-ui-settings/src/client/settings-mirror.ts'
-import { ConfigFormController } from '@liusiqi-dev/dsh-client-ui-settings/src/client/config-form.ts'
+import { SettingsSchemaService } from '@liusiqi-dev/sqh-client-ui-settings/src/client/schema.ts'
+import { SettingsDescribeMirror } from '@liusiqi-dev/sqh-client-ui-settings/src/client/settings-mirror.ts'
+import { ConfigFormController } from '@liusiqi-dev/sqh-client-ui-settings/src/client/config-form.ts'
 
 // Every fixture carries the resource hook the resources plugin merges into GlobalStandardProps.
 const useResource = (() => ({ status: 'none' as const, value: undefined, failure: undefined, reload: () => {} })) as GlobalStandardProps['useResource']

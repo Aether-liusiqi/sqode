@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-message-feedback",
+  "name": "@liusiqi-dev/sqh-message-feedback",
   "description": "Canonical Session-log ratings and notes for finalized assistant messages",
   "version": "1.0.0",
   "publishConfig": {
@@ -44,13 +44,13 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@liusiqi-dev/dsh-brand": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-persistence": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/sqh-brand": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-persistence": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-command-feedback": "workspace:*"
+    "@liusiqi-dev/sqh-command-feedback": "workspace:*"
   },
   "dependencies": {
     "@liusiqi-dev/schemastery": "workspace:~",
@@ -59,13 +59,13 @@
   "devDependencies": {
     "@liusiqi-dev/cordis-plugin-include": "workspace:~",
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
-    "@liusiqi-dev/dsh-brand": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-persistence": "workspace:*",
-    "@liusiqi-dev/dsh-session-persistence-jsonl": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/sqh-brand": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-persistence": "workspace:*",
+    "@liusiqi-dev/sqh-session-persistence-jsonl": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-command-feedback": "workspace:*"
+    "@liusiqi-dev/sqh-command-feedback": "workspace:*"
   }
 }

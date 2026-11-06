@@ -1,6 +1,6 @@
 /** Live DOM ownership for docked and floating sidebar pages. */
-import type { LayoutState, PaneId, TabId } from '@liusiqi-dev/dsh-client-ui-dockkit'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { LayoutState, PaneId, TabId } from '@liusiqi-dev/sqh-client-ui-dockkit'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import type { TabOccurrence } from './tab-domain.ts'
 
 /** A page captured from the currently mounted Session and its current occurrence. */

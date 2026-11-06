@@ -1,8 +1,8 @@
 /** Preset roster, the new-task default and the read-only composition viewer for the settings section. */
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-api-remotes/client'
-import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { AgentPresetRow } from '@liusiqi-dev/dsh-agent-preset-registry/types'
+import type {} from '@liusiqi-dev/sqh-api-remotes/client'
+import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { AgentPresetRow } from '@liusiqi-dev/sqh-agent-preset-registry/types'
 import { writeDefaultPreset } from './settings-store.ts'
 
 /** The read-only composition viewer over one preset. */

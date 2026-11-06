@@ -10,12 +10,12 @@ import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { Context } from '@liusiqi-dev/cordis'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime, { TOOL_ABORTED_BEFORE_DISPATCH } from '@liusiqi-dev/dsh-tools'
-import { LocalFileSystem } from '@liusiqi-dev/dsh-fs-local'
-import * as FsPolicy from '@liusiqi-dev/dsh-fs-observation-policy'
-import * as ToolFs from '@liusiqi-dev/dsh-tool-fs'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime, { TOOL_ABORTED_BEFORE_DISPATCH } from '@liusiqi-dev/sqh-tools'
+import { LocalFileSystem } from '@liusiqi-dev/sqh-fs-local'
+import * as FsPolicy from '@liusiqi-dev/sqh-fs-observation-policy'
+import * as ToolFs from '@liusiqi-dev/sqh-tool-fs'
 
 const testToolSignal = new AbortController().signal
 

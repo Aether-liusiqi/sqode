@@ -7,8 +7,8 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import Include from '@liusiqi-dev/cordis-plugin-include'
-import * as SkillRegistry from '@liusiqi-dev/dsh-skill'
-import * as SandboxLocal from '@liusiqi-dev/dsh-sandbox-local'
+import * as SkillRegistry from '@liusiqi-dev/sqh-skill'
+import * as SandboxLocal from '@liusiqi-dev/sqh-sandbox-local'
 import { expect, it } from 'vitest'
 import { ACL_DIAGNOSIS_SKILL } from '../src/acl-skill.ts'
 
@@ -31,8 +31,8 @@ it.skipIf(process.platform !== 'win32')('loads and unloads the ACL skill through
       resolveSync: unexpectedLoaderOperation,
       load: unexpectedLoaderOperation,
       async import(specifier: string) {
-        if (specifier === '@liusiqi-dev/dsh-skill') return SkillRegistry
-        if (specifier === '@liusiqi-dev/dsh-sandbox-local') return SandboxLocal
+        if (specifier === '@liusiqi-dev/sqh-skill') return SkillRegistry
+        if (specifier === '@liusiqi-dev/sqh-sandbox-local') return SandboxLocal
         throw new Error(`Unexpected Loader import: ${specifier}`)
       },
     }
@@ -52,7 +52,7 @@ it.skipIf(process.platform !== 'win32')('loads and unloads the ACL skill through
     expect(await ctx.skills.list()).toEqual([])
     expect(existsSync(resources)).toBe(false)
     await ctx.loader.create({
-      name: '@liusiqi-dev/dsh-sandbox-local',
+      name: '@liusiqi-dev/sqh-sandbox-local',
       config: { runnerCommand: ['operator-runner'], runnerFailureSignatures: ['operator runner unavailable'] },
     })
     await ctx.loader.await()

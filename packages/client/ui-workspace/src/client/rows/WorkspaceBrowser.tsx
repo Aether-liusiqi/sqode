@@ -22,14 +22,14 @@ import {
   IconFlatListOutlineRegular, IconFolderCloseRegular, IconProjectAddOutlineRegular,
   IconQueueOutlineRegular, IconSearchOutlineRegular, IconSlidersTwoOutlineRegular,
   IconWorkspaceTreeOutlineRegular, Menu, Modal, Toast, Tooltip,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
 import type {
   SessionListState, SessionSearchResultItem,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { WorkspaceId, WorkspaceView } from '@liusiqi-dev/dsh-api-workspace-controller/client'
-import { workspaceDisplayTitle } from '@liusiqi-dev/dsh-api-workspace-controller/default-workspace'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { PropsRenderSlots } from '@liusiqi-dev/dsh-client-ui-slots'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { WorkspaceId, WorkspaceView } from '@liusiqi-dev/sqh-api-workspace-controller/client'
+import { workspaceDisplayTitle } from '@liusiqi-dev/sqh-api-workspace-controller/default-workspace'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { PropsRenderSlots } from '@liusiqi-dev/sqh-client-ui-slots'
 import type { WorkspaceBrowserProps } from '../contract/slots.ts'
 import type { ArchivedFilter, GroupNode, SessionNode, SessionOrderBy, SessionRowState } from '../tree.ts'
 import {
@@ -224,7 +224,7 @@ type SessionTreeProps = Pick<
   | 'sidebar.session.row.leading'
   | 'sidebar.session.row.hover'
 > & {
-  shortcuts: readonly import('@liusiqi-dev/dsh-client-shortcuts/client').ShortcutCatalogEntry[]
+  shortcuts: readonly import('@liusiqi-dev/sqh-client-shortcuts/client').ShortcutCatalogEntry[]
   /** Always-mounted Session list snapshot. */
   list: SessionListState
   /** Host account home for POSIX hover-path abbreviation. */

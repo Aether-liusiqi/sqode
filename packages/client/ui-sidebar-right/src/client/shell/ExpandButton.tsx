@@ -13,12 +13,12 @@
  * The glyph is the left sidebar's collapse icon mirrored: the same affordance,
  * on the other edge.
  */
-import type { ShortcutCatalogEntry } from '@liusiqi-dev/dsh-client-shortcuts/client'
-import type { InjectFace, HostObservable } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { ShortcutCatalogEntry } from '@liusiqi-dev/sqh-client-shortcuts/client'
+import type { InjectFace, HostObservable } from '@liusiqi-dev/sqh-client-ui-slots'
 import type { ReactNode } from 'react'
-import { Button, IconPanelLeftOutlineRegular, Tooltip } from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { PropsLocale, PropsRuntime, PropsStore } from '@liusiqi-dev/dsh-client-ui-slots'
-import type {} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+import { Button, IconPanelLeftOutlineRegular, Tooltip } from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { PropsLocale, PropsRuntime, PropsStore } from '@liusiqi-dev/sqh-client-ui-slots'
+import type {} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import type { createSidebarRightStore } from '../stores.ts'
 import css from './ExpandButton.module.css'
 

@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { credentialKey } from '@liusiqi-dev/dsh-credentials'
-import InvariantRegistry from '@liusiqi-dev/dsh-invariants'
-import AuthorizationService from '@liusiqi-dev/dsh-authorization'
+import { credentialKey } from '@liusiqi-dev/sqh-credentials'
+import InvariantRegistry from '@liusiqi-dev/sqh-invariants'
+import AuthorizationService from '@liusiqi-dev/sqh-authorization'
 import * as AuthorizationInvariant from '../src/invariant.ts'
 import { MemoryCredentials } from './memory.ts'
 
@@ -81,7 +81,7 @@ describe('authorization invariant companion', () => {
     await ctx.plugin(AuthorizationInvariant)
 
     expect(() => {
-      ctx.invariants.register('@liusiqi-dev/dsh-authorization', () => {})
+      ctx.invariants.register('@liusiqi-dev/sqh-authorization', () => {})
     }).toThrow(/already registered/)
   })
 })

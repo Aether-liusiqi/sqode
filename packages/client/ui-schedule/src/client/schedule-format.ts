@@ -1,7 +1,7 @@
 /** Browser-safe formatting shared by Session and Host reminder catalogs. */
-import type { Translate } from '@liusiqi-dev/dsh-client-ui-slots'
-import type { ScheduleRecord } from '@liusiqi-dev/dsh-schedule/client'
-import { assertNever } from '@liusiqi-dev/dsh-util-values'
+import type { Translate } from '@liusiqi-dev/sqh-client-ui-slots'
+import type { ScheduleRecord } from '@liusiqi-dev/sqh-schedule/client'
+import { assertNever } from '@liusiqi-dev/sqh-util-values'
 import type { CronDescriptionKey } from './task-cron.ts'
 import { cronPreview, parseCronExpression } from './task-cron.ts'
 

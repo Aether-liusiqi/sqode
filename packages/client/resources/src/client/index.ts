@@ -4,8 +4,8 @@
  */
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
 // Type-only service merge for ctx.slots.
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type { RootStandardSourceContribution } from '@liusiqi-dev/dsh-client-ui-slots'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type { RootStandardSourceContribution } from '@liusiqi-dev/sqh-client-ui-slots'
 import { ResourceRegistry } from './resources.ts'
 
 export type {
@@ -17,7 +17,7 @@ export type {
   ResourceStatus,
   UseResource,
 } from './contract.ts'
-export type { ResourceProtocolMap } from '@liusiqi-dev/dsh-client-ui-slots'
+export type { ResourceProtocolMap } from '@liusiqi-dev/sqh-client-ui-slots'
 
 /** Required browser services. */
 export const inject = ['slots']

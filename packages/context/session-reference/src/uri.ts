@@ -1,7 +1,7 @@
 /** Canonical session URI and inline mention encoding. */
 
-import { brandString } from '@liusiqi-dev/dsh-brand'
-import type { SessionId as SessionIdType } from '@liusiqi-dev/dsh-session'
+import { brandString } from '@liusiqi-dev/sqh-brand'
+import type { SessionId as SessionIdType } from '@liusiqi-dev/sqh-session'
 import { SessionReferenceError } from './config.ts'
 import type { SessionReferenceInput } from './types.ts'
 

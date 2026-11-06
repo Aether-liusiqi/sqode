@@ -6,21 +6,21 @@
  * 404, missing descendant → errored stream).
  */
 
-import { SESSION_FORMAT_VERSION, SessionSeq } from '@liusiqi-dev/dsh-session'
+import { SESSION_FORMAT_VERSION, SessionSeq } from '@liusiqi-dev/sqh-session'
 import { randomBytes } from 'node:crypto'
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import { unzipSync, strFromU8 } from 'fflate'
-import type { FileAttachmentRef, ImageAttachmentRef } from '@liusiqi-dev/dsh-attachment'
-import type { SessionEvent, SessionHeader, SessionId, ToolResultMessage, UserMessage } from '@liusiqi-dev/dsh-session'
-import type { SessionLineageNode } from '@liusiqi-dev/dsh-session-query'
-import { SessionPersistenceNotFoundError } from '@liusiqi-dev/dsh-session-persistence'
-import type { SessionAccess, SessionHandle } from '@liusiqi-dev/dsh-session-persistence'
-import { HostConnectionService } from '@liusiqi-dev/dsh-client-connection'
-import type { BrowserAuth } from '@liusiqi-dev/dsh-client-connection/src/browser-auth.ts'
+import type { FileAttachmentRef, ImageAttachmentRef } from '@liusiqi-dev/sqh-attachment'
+import type { SessionEvent, SessionHeader, SessionId, ToolResultMessage, UserMessage } from '@liusiqi-dev/sqh-session'
+import type { SessionLineageNode } from '@liusiqi-dev/sqh-session-query'
+import { SessionPersistenceNotFoundError } from '@liusiqi-dev/sqh-session-persistence'
+import type { SessionAccess, SessionHandle } from '@liusiqi-dev/sqh-session-persistence'
+import { HostConnectionService } from '@liusiqi-dev/sqh-client-connection'
+import type { BrowserAuth } from '@liusiqi-dev/sqh-client-connection/src/browser-auth.ts'
 import * as SessionLogExport from '../src/index.ts'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface ContentBlockMap {
     'plugin:vendor': { type: 'plugin:vendor'; data: { content: readonly unknown[] }; content: readonly unknown[] }
   }

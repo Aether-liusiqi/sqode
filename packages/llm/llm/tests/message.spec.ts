@@ -10,7 +10,7 @@ import {
   createUserMessage,
   freezeMessage,
   MessageId,
-} from '@liusiqi-dev/dsh-llm'
+} from '@liusiqi-dev/sqh-llm'
 
 describe('message construction', () => {
   it('detaches and freezes developer tool names without copying their definitions', () => {

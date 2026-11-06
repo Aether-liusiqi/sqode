@@ -1,7 +1,7 @@
 /** Provider activation remains lazy and rejects relative deployment paths. */
 import { Context } from '@liusiqi-dev/cordis'
-import LocalSubprocess from '@liusiqi-dev/dsh-subprocess-local'
-import SpeechToText from '@liusiqi-dev/dsh-experimental-speech-to-text'
+import LocalSubprocess from '@liusiqi-dev/sqh-subprocess-local'
+import SpeechToText from '@liusiqi-dev/sqh-experimental-speech-to-text'
 import { afterEach, expect, it, vi } from 'vitest'
 import * as Provider from '../src/index.ts'
 import { SenseVoiceWorker } from '../src/recognizer.ts'

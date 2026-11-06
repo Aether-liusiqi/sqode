@@ -1,6 +1,6 @@
 import {
   createSnapshotStore, type SnapshotStore,
-} from '@liusiqi-dev/dsh-client-store'
+} from '@liusiqi-dev/sqh-client-store'
 
 /**
  * Create the browser-wide default for expanded JSON strings.

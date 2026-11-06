@@ -7,7 +7,7 @@
  */
 
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import { resolveSlotLabel, type HostObservable } from '@liusiqi-dev/dsh-client-ui-slots'
+import { resolveSlotLabel, type HostObservable } from '@liusiqi-dev/sqh-client-ui-slots'
 import type {} from './slot-contract.ts'
 
 /** One official plugin as the page lists it: its registration id and its title in the active locale. */

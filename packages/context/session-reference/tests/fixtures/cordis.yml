@@ -1,17 +1,17 @@
-- name: '@liusiqi-dev/dsh-session'
-- name: '@liusiqi-dev/dsh-system-prompt'
-- name: '@liusiqi-dev/dsh-tools'
-- name: '@liusiqi-dev/dsh-fs-local'
-- name: '@liusiqi-dev/dsh-tool-fs'
-- name: '@liusiqi-dev/dsh-session-query-sqlite'
+- name: '@liusiqi-dev/sqh-session'
+- name: '@liusiqi-dev/sqh-system-prompt'
+- name: '@liusiqi-dev/sqh-tools'
+- name: '@liusiqi-dev/sqh-fs-local'
+- name: '@liusiqi-dev/sqh-tool-fs'
+- name: '@liusiqi-dev/sqh-session-query-sqlite'
   config:
     path: ':memory:'
     openAt: never
-- name: '@liusiqi-dev/dsh-session-reference'
+- name: '@liusiqi-dev/sqh-session-reference'
   config:
     maxReferenceBytes: 360
 - name: './source-session.ts'
-- name: '@liusiqi-dev/dsh-spill-local'
+- name: '@liusiqi-dev/sqh-spill-local'
   config:
     root: '{{spillRoot}}'
     cleanupPeriodDays: 0

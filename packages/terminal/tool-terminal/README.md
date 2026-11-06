@@ -3,7 +3,7 @@ description: "Six model-facing persistent terminal tools with owner isolation, b
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-tool-terminal
+# @liusiqi-dev/sqh-tool-terminal
 
 English | [中文](README.zh.md)
 
@@ -41,12 +41,12 @@ Enable these tools when the composition mounts a terminal backend and the model 
 ### Composition
 
 ```yaml
-- name: '@liusiqi-dev/dsh-terminal'
-- name: '@liusiqi-dev/dsh-terminal-bash'
-- name: '@liusiqi-dev/dsh-tool-terminal'
+- name: '@liusiqi-dev/sqh-terminal'
+- name: '@liusiqi-dev/sqh-terminal-bash'
+- name: '@liusiqi-dev/sqh-tool-terminal'
 ```
 
-The tools need `ctx.terminals` — a backend must be mounted — and the system-prompt service for the guidance section. Background sends additionally require the jobs service and its model-facing controller (`@liusiqi-dev/dsh-tool-jobs`).
+The tools need `ctx.terminals` — a backend must be mounted — and the system-prompt service for the guidance section. Background sends additionally require the jobs service and its model-facing controller (`@liusiqi-dev/sqh-tool-jobs`).
 
 ### Configuration
 
@@ -171,7 +171,7 @@ Append-only; new results follow the reusable request prefix.
 These limits define the model-facing surface that is absent. They are current package constraints, not a task backlog.
 
 - **No TUI or key-sequence surface** — named key sequences, full-screen TUI interaction, BEL, resize, and auto-start are not exposed in any schema.
-- **Background mode requires the jobs surface** — `run_in_background` needs both `@liusiqi-dev/dsh-jobs` and its model-facing controller (`@liusiqi-dev/dsh-tool-jobs`); without them the argument is rejected.
+- **Background mode requires the jobs surface** — `run_in_background` needs both `@liusiqi-dev/sqh-jobs` and its model-facing controller (`@liusiqi-dev/sqh-tool-jobs`); without them the argument is rejected.
 
 <a id="dev-note"></a>
 ### Dev Note

@@ -1,7 +1,7 @@
 /** Minimal native thinking metadata; durable Harness blocks own all response text. */
 
-import { LlmError } from '@liusiqi-dev/dsh-llm'
-import type { Message, ReplayEnvelope } from '@liusiqi-dev/dsh-llm'
+import { LlmError } from '@liusiqi-dev/sqh-llm'
+import type { Message, ReplayEnvelope } from '@liusiqi-dev/sqh-llm'
 
 /** Index-aligned metadata retained alongside each emitted Harness block. */
 export interface ReplayBlock {

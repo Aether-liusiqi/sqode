@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-experimental-webworker-packer",
+  "name": "@liusiqi-dev/sqh-experimental-webworker-packer",
   "description": "Build-time packer for the browser runtime's base VFS image and ordered data-overlay archives",
   "version": "1.0.0",
   "publishConfig": {
@@ -34,11 +34,11 @@
   "license": "MIT",
   "dependencies": {
     "@liusiqi-dev/cordis-plugin-include": "workspace:~",
-    "@liusiqi-dev/dsh-experimental-webworker-runtime": "workspace:*",
-    "@liusiqi-dev/dsh-home-paths": "workspace:*",
-    "@liusiqi-dev/dsh-session-format": "workspace:*",
-    "@liusiqi-dev/dsh-session-format-catalog": "workspace:*",
-    "@liusiqi-dev/dsh-session-format-v3-to-v4": "workspace:*",
+    "@liusiqi-dev/sqh-experimental-webworker-runtime": "workspace:*",
+    "@liusiqi-dev/sqh-home-paths": "workspace:*",
+    "@liusiqi-dev/sqh-session-format": "workspace:*",
+    "@liusiqi-dev/sqh-session-format-catalog": "workspace:*",
+    "@liusiqi-dev/sqh-session-format-v3-to-v4": "workspace:*",
     "js-yaml": "^4.2.0",
     "picomatch": "^4.0.4"
   },

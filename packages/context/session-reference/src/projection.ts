@@ -1,11 +1,11 @@
 /** Current-surface projection and byte-bounded rendering. */
 
-import { isCompactCheckpointSource } from '@liusiqi-dev/dsh-compaction'
-import type { SessionSurfaceSnapshot } from '@liusiqi-dev/dsh-session-query'
-import { TextRetainer } from '@liusiqi-dev/dsh-output-retention'
-import { assertNever } from '@liusiqi-dev/dsh-util-values'
-import { SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { OptionalSessionSeq, SessionId } from '@liusiqi-dev/dsh-session'
+import { isCompactCheckpointSource } from '@liusiqi-dev/sqh-compaction'
+import type { SessionSurfaceSnapshot } from '@liusiqi-dev/sqh-session-query'
+import { TextRetainer } from '@liusiqi-dev/sqh-output-retention'
+import { assertNever } from '@liusiqi-dev/sqh-util-values'
+import { SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { OptionalSessionSeq, SessionId } from '@liusiqi-dev/sqh-session'
 import { stringifyTagSafeJson } from './serialization.ts'
 import type { ReferencedConversationItem } from './types.ts'
 

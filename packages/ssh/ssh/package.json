@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-ssh",
+  "name": "@liusiqi-dev/sqh-ssh",
   "description": "Shared OpenSSH connection and versioned POSIX remote helper",
   "version": "1.0.0",
   "publishConfig": {
@@ -46,16 +46,16 @@
   "license": "MIT",
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-fs": "workspace:*",
-    "@liusiqi-dev/dsh-fs-local": "workspace:*",
-    "@liusiqi-dev/dsh-fs-sandbox": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess-local": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox-local": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox-policy": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*",
-    "@liusiqi-dev/dsh-brand": "workspace:*"
+    "@liusiqi-dev/sqh-fs": "workspace:*",
+    "@liusiqi-dev/sqh-fs-local": "workspace:*",
+    "@liusiqi-dev/sqh-fs-sandbox": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess-local": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox-local": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox-policy": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection": "workspace:*",
+    "@liusiqi-dev/sqh-brand": "workspace:*"
   },
   "dependencies": {
     "@liusiqi-dev/schemastery": "workspace:~",
@@ -63,21 +63,21 @@
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-fs": "workspace:*",
-    "@liusiqi-dev/dsh-fs-local": "workspace:*",
-    "@liusiqi-dev/dsh-fs-sandbox": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess-local": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox-local": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox-policy": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*",
-    "@liusiqi-dev/dsh-ptc-runtime-node": "workspace:*",
-    "@liusiqi-dev/dsh-fs-ssh": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess-ssh": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox-ssh": "workspace:*",
-    "@liusiqi-dev/dsh-lsp": "workspace:*",
-    "@liusiqi-dev/dsh-lsp-stdio": "workspace:*",
-    "@liusiqi-dev/dsh-brand": "workspace:*"
+    "@liusiqi-dev/sqh-fs": "workspace:*",
+    "@liusiqi-dev/sqh-fs-local": "workspace:*",
+    "@liusiqi-dev/sqh-fs-sandbox": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess-local": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox-local": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox-policy": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection": "workspace:*",
+    "@liusiqi-dev/sqh-ptc-runtime-node": "workspace:*",
+    "@liusiqi-dev/sqh-fs-ssh": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess-ssh": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox-ssh": "workspace:*",
+    "@liusiqi-dev/sqh-lsp": "workspace:*",
+    "@liusiqi-dev/sqh-lsp-stdio": "workspace:*",
+    "@liusiqi-dev/sqh-brand": "workspace:*"
   }
 }

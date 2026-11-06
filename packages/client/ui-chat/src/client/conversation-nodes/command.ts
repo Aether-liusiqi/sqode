@@ -1,11 +1,11 @@
 import type { Context } from '@liusiqi-dev/cordis'
 import type {
   CommandNode, CompactionSummaryNode, ConversationMatch, ConversationNodeContext, ConversationNodeDefinition,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type { CompactionCheckpointSource } from '@liusiqi-dev/dsh-compaction/checkpoint'
-import type {} from '@liusiqi-dev/dsh-compaction/types'
-import type {} from '@liusiqi-dev/dsh-commands/types'
-import { isReplacementSurfaceEvent } from '@liusiqi-dev/dsh-session/surface'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type { CompactionCheckpointSource } from '@liusiqi-dev/sqh-compaction/checkpoint'
+import type {} from '@liusiqi-dev/sqh-compaction/types'
+import type {} from '@liusiqi-dev/sqh-commands/types'
+import { isReplacementSurfaceEvent } from '@liusiqi-dev/sqh-session/surface'
 import type { ManualCompactionChatData } from '../contract/chat-nodes.ts'
 import { chatNode } from './common.ts'
 

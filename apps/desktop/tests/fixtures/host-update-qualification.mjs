@@ -13,10 +13,10 @@ const root = process.argv[2]
 assert.ok(root)
 const project = join(root, 'project')
 const require = createRequire(join(project, 'package.json'))
-const { LlmAdapter, createUserMessage } = await import(pathToFileURL(require.resolve('@liusiqi-dev/dsh-llm')).href)
+const { LlmAdapter, createUserMessage } = await import(pathToFileURL(require.resolve('@liusiqi-dev/sqh-llm')).href)
 const observed = []
 const { runProfile } = await import(pathToFileURL(require.resolve('@liusiqi-dev/sqode/profile-boot')).href)
-const { loadLayeredEnv, loadProfileDirectory } = await import(pathToFileURL(require.resolve('@liusiqi-dev/dsh-app-boot')).href)
+const { loadLayeredEnv, loadProfileDirectory } = await import(pathToFileURL(require.resolve('@liusiqi-dev/sqh-app-boot')).href)
 const installAnchor = require.resolve('@liusiqi-dev/sqode/package.json')
 const running = await runProfile({ environment: loadLayeredEnv('sqode'), profile: 'desktop',
   resolvedProfile: { profile: loadProfileDirectory('dsh', project, installAnchor), installAnchor },

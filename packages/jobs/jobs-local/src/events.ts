@@ -1,14 +1,14 @@
 /**
  * Event routing for the local registry: subscriptions file by filter, and
  * every commit dispatches once to each matching listener with containment.
- * @module @liusiqi-dev/dsh-jobs-local/events
+ * @module @liusiqi-dev/sqh-jobs-local/events
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { AnonymousEntries, ScopedLayers, scopeOf } from '@liusiqi-dev/dsh-scope'
-import type { ScopeLayer } from '@liusiqi-dev/dsh-scope'
-import type { JobEvent, JobEventFilter, JobEventListener } from '@liusiqi-dev/dsh-jobs'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { AnonymousEntries, ScopedLayers, scopeOf } from '@liusiqi-dev/sqh-scope'
+import type { ScopeLayer } from '@liusiqi-dev/sqh-scope'
+import type { JobEvent, JobEventFilter, JobEventListener } from '@liusiqi-dev/sqh-jobs'
 
 /** One registered listener and the filter it declared. */
 interface Subscription {

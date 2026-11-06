@@ -3,7 +3,7 @@ description: "Frozen released-v0 Session header, event, and packed-row decoder w
 kind: "package-library"
 ---
 
-# @liusiqi-dev/dsh-session-format-v0-to-v1
+# @liusiqi-dev/sqh-session-format-v0-to-v1
 
 English | [中文](README.zh.md)
 

@@ -11,9 +11,9 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import Include from '@liusiqi-dev/cordis-plugin-include'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import LocalSubprocessRuntime from '@liusiqi-dev/dsh-subprocess-local'
-import * as WorkspaceChangesPlugin from '@liusiqi-dev/dsh-workspace-changes'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import LocalSubprocessRuntime from '@liusiqi-dev/sqh-subprocess-local'
+import * as WorkspaceChangesPlugin from '@liusiqi-dev/sqh-workspace-changes'
 import { changes, endTurn, git, startTurn, toolCall } from './support.ts'
 
 let root: string | undefined
@@ -31,9 +31,9 @@ describe('real Loader composition', () => {
     root = await mkdtemp(join(tmpdir(), 'dsh-workspace-changes-loader-'))
     const cwd = join(root, 'ws')
     await writeFile(join(root, 'cordis.yml'), [
-      "- name: '@liusiqi-dev/dsh-session'",
-      "- name: '@liusiqi-dev/dsh-subprocess-local'",
-      "- name: '@liusiqi-dev/dsh-workspace-changes'",
+      "- name: '@liusiqi-dev/sqh-session'",
+      "- name: '@liusiqi-dev/sqh-subprocess-local'",
+      "- name: '@liusiqi-dev/sqh-workspace-changes'",
       '',
     ].join('\n'))
     context = new Context()
@@ -41,9 +41,9 @@ describe('real Loader composition', () => {
     await context.plugin(Loader)
     context.loader.builtins.include = Include
     const modules = new Map<string, unknown>([
-      ['@liusiqi-dev/dsh-session', SessionStore],
-      ['@liusiqi-dev/dsh-subprocess-local', LocalSubprocessRuntime],
-      ['@liusiqi-dev/dsh-workspace-changes', WorkspaceChangesPlugin],
+      ['@liusiqi-dev/sqh-session', SessionStore],
+      ['@liusiqi-dev/sqh-subprocess-local', LocalSubprocessRuntime],
+      ['@liusiqi-dev/sqh-workspace-changes', WorkspaceChangesPlugin],
     ])
     context.loader.internal = {
       version: 'v2',

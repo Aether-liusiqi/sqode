@@ -9,10 +9,10 @@
  * listeners onto it.
  */
 import type { Context } from '@liusiqi-dev/cordis'
-import type { InboxState } from '@liusiqi-dev/dsh-agent/types'
+import type { InboxState } from '@liusiqi-dev/sqh-agent/types'
 import {
   createSnapshotStore, type ObservableSnapshot, type SnapshotStore,
-} from '@liusiqi-dev/dsh-client-store'
+} from '@liusiqi-dev/sqh-client-store'
 import type { LexicalEditor } from 'lexical'
 import type {
   CommandClaim, ConsumeTokenRequest, DraftAttachmentId,

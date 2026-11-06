@@ -1,9 +1,9 @@
 /** One-shot cold session read through the handle-based persistence seam. */
 
-import { interruptedTurnClosers } from '@liusiqi-dev/dsh-session'
-import type { SessionEvent, SessionHeader, SessionId, SessionLogOffset, SessionSeedEventState } from '@liusiqi-dev/dsh-session'
-import type SessionPersistence from '@liusiqi-dev/dsh-session-persistence'
-import type { SessionHandleReadResult } from '@liusiqi-dev/dsh-session-persistence'
+import { interruptedTurnClosers } from '@liusiqi-dev/sqh-session'
+import type { SessionEvent, SessionHeader, SessionId, SessionLogOffset, SessionSeedEventState } from '@liusiqi-dev/sqh-session'
+import type SessionPersistence from '@liusiqi-dev/sqh-session-persistence'
+import type { SessionHandleReadResult } from '@liusiqi-dev/sqh-session-persistence'
 
 /** A stored session log balanced for read-only viewing. */
 export interface ColdSessionLog {

@@ -8,10 +8,10 @@ import { act, render } from '@testing-library/react'
 import type { ReactNode } from 'react'
 import {
   StaleAuthorizationError, type SlotEntryDef, type SlotSpec, type StoredEntry,
-} from '@liusiqi-dev/dsh-client-ui-slots'
+} from '@liusiqi-dev/sqh-client-ui-slots'
 import type {
   RenderOpts, SlotRendererHost, SlotScopeAdapter, StandardSourceBinding,
-} from '@liusiqi-dev/dsh-client-ui-renderer/client'
+} from '@liusiqi-dev/sqh-client-ui-renderer/client'
 import { createSlotRenderer } from '../src/client/scoped-slots.tsx'
 
 type RenderSlotFn = (key: string, owner: object, opts?: RenderOpts) => ReactNode

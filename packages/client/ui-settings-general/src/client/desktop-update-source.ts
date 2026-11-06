@@ -1,5 +1,5 @@
 /** Client-owned observation of the optional Desktop preload. */
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import type { DesktopUpdateBridge, DesktopUpdateView } from '../types.ts'
 
 /** Owns one preload subscription across both sidebar locations. */

@@ -5,38 +5,38 @@ const CLIENT_FACE_INCLUDE: readonly string[] = []
 
 /** Packages exempted from automatic Client/Host treatment despite declaring `dsh.client`. */
 const CLIENT_FACE_EXCLUDE: readonly string[] = [
-  '@liusiqi-dev/dsh-api-session-controller',
-  '@liusiqi-dev/dsh-api-workspace-controller',
+  '@liusiqi-dev/sqh-api-session-controller',
+  '@liusiqi-dev/sqh-api-workspace-controller',
 ]
 
 /** Host-only packages whose peer relays are deliberately flattened. */
 const HOST_DEPENDENCY_PACKAGES: readonly string[] = [
-  '@liusiqi-dev/dsh-llm',
-  '@liusiqi-dev/dsh-session',
+  '@liusiqi-dev/sqh-llm',
+  '@liusiqi-dev/sqh-session',
 ]
 
 /** Development-only package relationships not represented by source imports. */
 const CONFIGURATION_ONLY_DEV_DEPENDENCIES = {
-  '@liusiqi-dev/dsh-client-locale': ['@liusiqi-dev/dsh-api-remotes'],
-  '@liusiqi-dev/dsh-client-ui-conversation': [
-    '@liusiqi-dev/dsh-api-remotes',
-    '@liusiqi-dev/dsh-client-ui-workspace',
+  '@liusiqi-dev/sqh-client-locale': ['@liusiqi-dev/sqh-api-remotes'],
+  '@liusiqi-dev/sqh-client-ui-conversation': [
+    '@liusiqi-dev/sqh-api-remotes',
+    '@liusiqi-dev/sqh-client-ui-workspace',
   ],
-  '@liusiqi-dev/dsh-client-ui-model-selection': ['@liusiqi-dev/dsh-client-ui-input-trigger'],
-  '@liusiqi-dev/dsh-client-ui-sidebar': ['@liusiqi-dev/dsh-client-ui-workspace'],
-  '@liusiqi-dev/dsh-client-ui-subagent': ['@liusiqi-dev/dsh-client-ui-input-trigger'],
-  '@liusiqi-dev/dsh-client-ui-theme': ['@liusiqi-dev/dsh-api-remotes'],
-  '@liusiqi-dev/dsh-client-ui-tool': ['@liusiqi-dev/dsh-api-remotes'],
+  '@liusiqi-dev/sqh-client-ui-model-selection': ['@liusiqi-dev/sqh-client-ui-input-trigger'],
+  '@liusiqi-dev/sqh-client-ui-sidebar': ['@liusiqi-dev/sqh-client-ui-workspace'],
+  '@liusiqi-dev/sqh-client-ui-subagent': ['@liusiqi-dev/sqh-client-ui-input-trigger'],
+  '@liusiqi-dev/sqh-client-ui-theme': ['@liusiqi-dev/sqh-api-remotes'],
+  '@liusiqi-dev/sqh-client-ui-tool': ['@liusiqi-dev/sqh-api-remotes'],
 } as const satisfies Readonly<Record<string, readonly string[]>>
 
 /** Workspace packages whose complete runtime surface is safe across duplicate installations. */
 const DUPLICATE_SAFE_PACKAGES: readonly string[] = [
-  '@liusiqi-dev/dsh-brand',
-  '@liusiqi-dev/dsh-lazy-require',
-  '@liusiqi-dev/dsh-typert-protocol',
-  '@liusiqi-dev/dsh-util-code-language',
-  '@liusiqi-dev/dsh-util-crypto',
-  '@liusiqi-dev/dsh-util-values',
+  '@liusiqi-dev/sqh-brand',
+  '@liusiqi-dev/sqh-lazy-require',
+  '@liusiqi-dev/sqh-typert-protocol',
+  '@liusiqi-dev/sqh-util-code-language',
+  '@liusiqi-dev/sqh-util-crypto',
+  '@liusiqi-dev/sqh-util-values',
 ]
 
 /**
@@ -46,21 +46,21 @@ const DUPLICATE_SAFE_PACKAGES: readonly string[] = [
  * prominent heading in the pull request description.
  */
 const SAFE_HOST_DEPENDENCY_EXPORTS = {
-  '@liusiqi-dev/dsh-credentials': ['credentialKey'],
-  '@liusiqi-dev/dsh-deque': ['Deque'],
-  '@liusiqi-dev/dsh-llm': ['callConfigEquals'],
-  '@liusiqi-dev/dsh-session-format': ['sessionFormatLogFilename'],
-  '@liusiqi-dev/dsh-timeout': ['MAX_TIMER_DELAY_MS'],
+  '@liusiqi-dev/sqh-credentials': ['credentialKey'],
+  '@liusiqi-dev/sqh-deque': ['Deque'],
+  '@liusiqi-dev/sqh-llm': ['callConfigEquals'],
+  '@liusiqi-dev/sqh-session-format': ['sessionFormatLogFilename'],
+  '@liusiqi-dev/sqh-timeout': ['MAX_TIMER_DELAY_MS'],
   '@liusiqi-dev/schemastery': ['default'],
 } as const satisfies HostDependencyExports
 
 /** Runtime exports that require every consumer to resolve the provider's shared peer instance. */
 const PEER_REQUIRED_HOST_EXPORTS = {
-  '@liusiqi-dev/dsh-client-connection': ['OperatorPeer'],
-  '@liusiqi-dev/dsh-subprocess': ['SubprocessExecutableNotFoundError'],
-  '@liusiqi-dev/dsh-scope': ['carrierKeyOf', 'createScope', 'scopeOf', 'scopeTarget'],
-  '@liusiqi-dev/dsh-session': ['SESSION_FORMAT_VERSION'],
-  '@liusiqi-dev/dsh-session-persistence': ['SessionPersistenceNotFoundError'],
+  '@liusiqi-dev/sqh-client-connection': ['OperatorPeer'],
+  '@liusiqi-dev/sqh-subprocess': ['SubprocessExecutableNotFoundError'],
+  '@liusiqi-dev/sqh-scope': ['carrierKeyOf', 'createScope', 'scopeOf', 'scopeTarget'],
+  '@liusiqi-dev/sqh-session': ['SESSION_FORMAT_VERSION'],
+  '@liusiqi-dev/sqh-session-persistence': ['SessionPersistenceNotFoundError'],
 } as const satisfies HostDependencyExports
 
 /** Exact import specifier to reviewed runtime exports. */

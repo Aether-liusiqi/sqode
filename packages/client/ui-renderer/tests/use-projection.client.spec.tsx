@@ -12,12 +12,12 @@ import { describe, expect, it } from 'vitest'
 import { act, render } from '@testing-library/react'
 import { Context } from '@liusiqi-dev/cordis'
 import { useSyncExternalStore } from 'react'
-import type { SessionReference } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { SessionProviderComponent, StoredEntry } from '@liusiqi-dev/dsh-client-ui-slots'
-import type {} from '@liusiqi-dev/dsh-client-ui-session/client'
+import type { SessionReference } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { SessionProviderComponent, StoredEntry } from '@liusiqi-dev/sqh-client-ui-slots'
+import type {} from '@liusiqi-dev/sqh-client-ui-session/client'
 import type {
   ScopedStandardSourceBinding, SlotRendererHost, SlotScopeAdapter, StandardSourceBinding,
-} from '@liusiqi-dev/dsh-client-ui-renderer/client'
+} from '@liusiqi-dev/sqh-client-ui-renderer/client'
 import { createSlotRenderer } from '../src/client/scoped-slots.tsx'
 
 type SessionBinding = ScopedStandardSourceBinding

@@ -18,10 +18,10 @@ import { fileURLToPath } from 'node:url'
 import type { Browser, Page, Route, WebSocketRoute } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
-import { ToolCallId, expandAssistantStream } from '@liusiqi-dev/dsh-llm'
-import type { Session, SessionEvent, SessionId } from '@liusiqi-dev/dsh-session'
-import type { SessionListValue } from '@liusiqi-dev/dsh-api-session-controller/types'
-import type { RemoteResult } from '@liusiqi-dev/dsh-typert-protocol'
+import { ToolCallId, expandAssistantStream } from '@liusiqi-dev/sqh-llm'
+import type { Session, SessionEvent, SessionId } from '@liusiqi-dev/sqh-session'
+import type { SessionListValue } from '@liusiqi-dev/sqh-api-session-controller/types'
+import type { RemoteResult } from '@liusiqi-dev/sqh-typert-protocol'
 import {
   acknowledgeReloadConnectionLoss, assertFixtureInventory, captureExpandedTurnProcessAria, captureStableAria,
   compareOrRefreshGolden, fixtureUserPrompts,

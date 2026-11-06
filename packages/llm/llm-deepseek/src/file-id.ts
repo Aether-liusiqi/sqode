@@ -1,6 +1,6 @@
 /** DeepSeek Files API identifiers. @module dsh-llm-deepseek/file-id */
 
-import type { Branded } from '@liusiqi-dev/dsh-brand'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
 
 /** Opaque identifier returned by the DeepSeek Files API. */
 export type DeepSeekFileId = Branded<'DeepSeekFileId'>

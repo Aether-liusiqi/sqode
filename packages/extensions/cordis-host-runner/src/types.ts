@@ -1,11 +1,11 @@
 /**
  * Client-safe wire vocabulary of the dynamic Cordis plugin runner.
- * @module @liusiqi-dev/dsh-cordis-host-runner/types
+ * @module @liusiqi-dev/sqh-cordis-host-runner/types
  */
 
-import type { Branded } from '@liusiqi-dev/dsh-brand'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
 
 /** Stable identity of one dynamic plugin instance. */
 export type CordisDynamicPluginId = Branded<'CordisDynamicPluginId'>

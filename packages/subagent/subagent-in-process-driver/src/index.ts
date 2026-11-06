@@ -8,17 +8,17 @@
  * composes and drives them directly, so this driver owns exactly one turn with
  * one result.
  *
- * @module @liusiqi-dev/dsh-subagent-in-process-driver
+ * @module @liusiqi-dev/sqh-subagent-in-process-driver
  */
 
 import { randomUUID } from 'node:crypto'
 import type { Context } from '@liusiqi-dev/cordis'
-import { brandString } from '@liusiqi-dev/dsh-brand'
-import { foldConsumedWork } from '@liusiqi-dev/dsh-agent'
-import type { Agent, AgentHandle } from '@liusiqi-dev/dsh-agent'
-import { SessionLogOffset } from '@liusiqi-dev/dsh-session'
-import type { SessionEvent, SessionId, SessionLogOffset as SessionLogOffsetType, TurnEndReason } from '@liusiqi-dev/dsh-session'
-import { createUserMessage, type ContentBlock } from '@liusiqi-dev/dsh-llm'
+import { brandString } from '@liusiqi-dev/sqh-brand'
+import { foldConsumedWork } from '@liusiqi-dev/sqh-agent'
+import type { Agent, AgentHandle } from '@liusiqi-dev/sqh-agent'
+import { SessionLogOffset } from '@liusiqi-dev/sqh-session'
+import type { SessionEvent, SessionId, SessionLogOffset as SessionLogOffsetType, TurnEndReason } from '@liusiqi-dev/sqh-session'
+import { createUserMessage, type ContentBlock } from '@liusiqi-dev/sqh-llm'
 import {
   appendDelegatedPolicyOverrides,
   applyChildComposition,
@@ -28,14 +28,14 @@ import {
   finalAssistantOutput,
   resolveChildAgentOptions,
   resolveChildDepth,
-} from '@liusiqi-dev/dsh-subagent'
+} from '@liusiqi-dev/sqh-subagent'
 import type {
   ResolvedSubagentStartRequest,
   SubagentDescriptorData,
   SubagentResult,
   SubagentRun,
   SubagentStopReason,
-} from '@liusiqi-dev/dsh-subagent'
+} from '@liusiqi-dev/sqh-subagent'
 import {
   attachStructuredRuntime,
   type StructuredAttachment,

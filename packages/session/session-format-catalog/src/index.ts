@@ -3,4 +3,4 @@
 export { sessionFormatCatalog } from './generated.ts'
 export { createSessionFormatCatalogWithChildren } from './children.ts'
 export { historicalSessionFormatCatalog } from './historical.ts'
-export { SessionFormatUnsupportedMigrationError } from '@liusiqi-dev/dsh-session-format'
+export { SessionFormatUnsupportedMigrationError } from '@liusiqi-dev/sqh-session-format'

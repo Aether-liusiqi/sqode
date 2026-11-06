@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { SessionFormatEventCollector } from '@liusiqi-dev/dsh-session-format'
-import type { SessionFormatEvent, SessionFormatJsonObject, SessionFormatJsonValue } from '@liusiqi-dev/dsh-session-format'
+import { SessionFormatEventCollector } from '@liusiqi-dev/sqh-session-format'
+import type { SessionFormatEvent, SessionFormatJsonObject, SessionFormatJsonValue } from '@liusiqi-dev/sqh-session-format'
 import { v3Catalog as sessionFormatCatalog } from './catalog.ts'
 import { restoreReleasedV3Artifact, sessionFormatV2ToV3 } from '../src/index.ts'
 

@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-otel",
+  "name": "@liusiqi-dev/sqh-otel",
   "description": "Cordis service for independent ordinary-event and byte-bounded Session-log OTLP channels",
   "version": "1.0.0",
   "publishConfig": {
@@ -38,10 +38,10 @@
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-session": "workspace:*"
+    "@liusiqi-dev/sqh-session": "workspace:*"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-session": "workspace:*"
+    "@liusiqi-dev/sqh-session": "workspace:*"
   }
 }

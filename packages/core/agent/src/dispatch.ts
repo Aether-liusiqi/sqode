@@ -3,13 +3,13 @@
  * {@link agentEvents} couples the agent subject to its scope carrier, so the
  * scope key and the payload's `agent` cannot diverge; repeat dispatchers (the
  * loop driver) build it once in the agent's constructor and reuse it.
- * @module @liusiqi-dev/dsh-agent/dispatch
+ * @module @liusiqi-dev/sqh-agent/dispatch
  */
 
 import type { Context, Events } from '@liusiqi-dev/cordis'
-import { scopeTarget } from '@liusiqi-dev/dsh-scope'
-import type { Scoped } from '@liusiqi-dev/dsh-scope'
-import type { AssembleContext } from '@liusiqi-dev/dsh-system-prompt'
+import { scopeTarget } from '@liusiqi-dev/sqh-scope'
+import type { Scoped } from '@liusiqi-dev/sqh-scope'
+import type { AssembleContext } from '@liusiqi-dev/sqh-system-prompt'
 import type { Agent } from './types.ts'
 
 /** Extract the parameter tuple from an event handler type (its `this` is not part of the tuple). */

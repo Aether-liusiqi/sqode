@@ -9,12 +9,12 @@ import type {
   SessionSnapshot,
   SessionSummary,
   UseProjection,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type {} from '@liusiqi-dev/dsh-api-remotes/client'
-import { notifySubscribers } from '@liusiqi-dev/dsh-client-store'
-import { WeakMapWithValues } from '@liusiqi-dev/dsh-util-values'
-import { standardHookPropName } from '@liusiqi-dev/dsh-client-ui-slots'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type {} from '@liusiqi-dev/sqh-api-remotes/client'
+import { notifySubscribers } from '@liusiqi-dev/sqh-client-store'
+import { WeakMapWithValues } from '@liusiqi-dev/sqh-util-values'
+import { standardHookPropName } from '@liusiqi-dev/sqh-client-ui-slots'
 import type {
   HostObservable,
   KeyedStandardSource,
@@ -24,9 +24,9 @@ import type {
   SlotScopeAdapter,
   SnapshotSelectorHook,
   StandardSourceBinding,
-} from '@liusiqi-dev/dsh-client-ui-slots'
+} from '@liusiqi-dev/sqh-client-ui-slots'
 // Type-only service merge for ctx.slots.
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
 import { renderSessionArea } from './session-provider.tsx'
 
 /** Selector hook over the Session Controller list and current selection. */
@@ -148,7 +148,7 @@ class PendingInteractionDomain<T extends SessionPendingInteractionBase> {
   }
 }
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface SlotScopeTargetMap {
     session: SessionReference
   }
@@ -179,7 +179,7 @@ declare module '@liusiqi-dev/dsh-client-ui-slots' {
   }
 }
 
-declare module '@liusiqi-dev/dsh-api-session-controller/client' {
+declare module '@liusiqi-dev/sqh-api-session-controller/client' {
   interface SessionReferenceSourceMap {
     mainView: unknown
   }

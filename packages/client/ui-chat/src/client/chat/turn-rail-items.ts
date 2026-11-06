@@ -6,8 +6,8 @@
  * richer previews for the turns it holds.
  */
 
-import type {} from '@liusiqi-dev/dsh-session-turn-outline/client'
-import { SessionSeq } from '@liusiqi-dev/dsh-session/types'
+import type {} from '@liusiqi-dev/sqh-session-turn-outline/client'
+import { SessionSeq } from '@liusiqi-dev/sqh-session/types'
 import type { TurnNavigationItem } from '../contract/snapshot.ts'
 
 /** One rail mark: a loaded Turn scrolls to its row; an unloaded one pages history through its seq first. */

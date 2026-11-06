@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-permission-presets",
+  "name": "@liusiqi-dev/sqh-permission-presets",
   "description": "User-facing permission presets (ctx.permissionPresets) for the Siqi Harness: one product-level Permissions select bundling the sandbox-mode and approval-policy knobs, written through to their own session events",
   "version": "1.0.0",
   "publishConfig": {
@@ -53,15 +53,15 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@liusiqi-dev/dsh-shell": "workspace:*",
-    "@liusiqi-dev/dsh-commands": "workspace:*",
-    "@liusiqi-dev/dsh-invariants": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox-policy": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
-    "@liusiqi-dev/dsh-user-approval": "workspace:*",
+    "@liusiqi-dev/sqh-shell": "workspace:*",
+    "@liusiqi-dev/sqh-commands": "workspace:*",
+    "@liusiqi-dev/sqh-invariants": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox-policy": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/sqh-user-approval": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "dependencies": {
@@ -69,16 +69,16 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-shell": "workspace:*",
-    "@liusiqi-dev/dsh-commands": "workspace:*",
-    "@liusiqi-dev/dsh-invariants": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox-policy": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
-    "@liusiqi-dev/dsh-user-approval": "workspace:*",
+    "@liusiqi-dev/sqh-shell": "workspace:*",
+    "@liusiqi-dev/sqh-commands": "workspace:*",
+    "@liusiqi-dev/sqh-invariants": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox-policy": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/sqh-user-approval": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-settings": "workspace:*"
+    "@liusiqi-dev/sqh-settings": "workspace:*"
   }
 }

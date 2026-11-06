@@ -1,6 +1,6 @@
 /** Deployment configuration for the managed local SenseVoice recognizer. */
 import z from '@liusiqi-dev/schemastery'
-import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
+import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/sqh-timeout'
 
 /** Local runtime, inference, and retention settings. */
 export interface Config {

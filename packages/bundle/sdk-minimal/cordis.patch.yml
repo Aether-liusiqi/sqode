@@ -4,32 +4,32 @@
 
 - insert:
     - id: sdk-app-startup
-      name: '@liusiqi-dev/dsh-sdk-app'
+      name: '@liusiqi-dev/sqh-sdk-app'
       disabled: false
       config:
         profile: sdk-minimal
 
     - id: sdk-jsonrpc-server
-      name: '@liusiqi-dev/dsh-sdk-jsonrpc-server'
+      name: '@liusiqi-dev/sqh-sdk-jsonrpc-server'
       disabled: false
       inject: [sdkAppStartup, loader]
       config:
         maxTokensAsSuccess: false
 
     - id: deepseek-llm-api-extensions
-      name: '@liusiqi-dev/dsh-deepseek-llm-api-extensions'
+      name: '@liusiqi-dev/sqh-deepseek-llm-api-extensions'
       disabled: false
 
     - id: session-log-deepseek
-      name: '@liusiqi-dev/dsh-session-log-deepseek'
+      name: '@liusiqi-dev/sqh-session-log-deepseek'
       disabled: false
 
     - id: plugin-package-inventory-deepseek
-      name: '@liusiqi-dev/dsh-plugin-package-inventory-deepseek'
+      name: '@liusiqi-dev/sqh-plugin-package-inventory-deepseek'
       disabled: false
 
     - id: llm-deepseek
-      name: '@liusiqi-dev/dsh-llm-deepseek-api-key'
+      name: '@liusiqi-dev/sqh-llm-deepseek-api-key'
       disabled: false
       config:
         apiKeyEnv: DEEPSEEK_API_KEY
@@ -37,38 +37,38 @@
         streamIdleTimeoutMs: 172800000
 
     - id: sandbox
-      name: '@liusiqi-dev/dsh-sandbox-local'
+      name: '@liusiqi-dev/sqh-sandbox-local'
       disabled: false
 
     # Shared projection registry: sandbox-policy and terminal-bash fold
     # sandbox-mode state through its units and require it as a hard injection.
     - id: session-projection
-      name: '@liusiqi-dev/dsh-session-projection'
+      name: '@liusiqi-dev/sqh-session-projection'
       disabled: false
 
     - id: sandbox-policy
-      name: '@liusiqi-dev/dsh-sandbox-policy'
+      name: '@liusiqi-dev/sqh-sandbox-policy'
       disabled: false
       config:
         mode: danger-full-access
         workspaceRoot: !!js process.cwd()
 
     - id: subprocess
-      name: '@liusiqi-dev/dsh-subprocess-local'
+      name: '@liusiqi-dev/sqh-subprocess-local'
       disabled: false
 
     - id: pty
-      name: '@liusiqi-dev/dsh-terminal'
+      name: '@liusiqi-dev/sqh-terminal'
       disabled: false
 
     - id: terminal-bash
-      name: '@liusiqi-dev/dsh-terminal-bash'
+      name: '@liusiqi-dev/sqh-terminal-bash'
       disabled: !!js process.platform === 'win32'
       config:
         timeoutMs: 300000
 
     - id: terminal-pwsh
-      name: '@liusiqi-dev/dsh-terminal-bash'
+      name: '@liusiqi-dev/sqh-terminal-bash'
       disabled: !!js process.platform !== 'win32'
       config:
         shellDialect: pwsh
@@ -81,15 +81,15 @@
       disabled: false
 
     - id: llm
-      name: '@liusiqi-dev/dsh-llm'
+      name: '@liusiqi-dev/sqh-llm'
       disabled: false
 
     - id: session
-      name: '@liusiqi-dev/dsh-session'
+      name: '@liusiqi-dev/sqh-session'
       disabled: false
 
     - id: session-title
-      name: '@liusiqi-dev/dsh-session-title'
+      name: '@liusiqi-dev/sqh-session-title'
       disabled: false
       config:
         fallbackMaxWords: 5
@@ -97,7 +97,7 @@
         maxTitleBytes: 80
 
     - id: system-prompt
-      name: '@liusiqi-dev/dsh-system-prompt'
+      name: '@liusiqi-dev/sqh-system-prompt'
       disabled: false
       config:
         includeHarnessIdentity: false
@@ -105,53 +105,53 @@
         personaPrefix: !!js process.env.SQODE_SYSTEM_PROMPT ?? 'You are a helpful software engineer assistant.'
 
     - id: tools
-      name: '@liusiqi-dev/dsh-tools'
+      name: '@liusiqi-dev/sqh-tools'
       disabled: false
 
     - id: mcp-resources
-      name: '@liusiqi-dev/dsh-mcp-resources'
+      name: '@liusiqi-dev/sqh-mcp-resources'
       disabled: false
 
     - id: agent
-      name: '@liusiqi-dev/dsh-agent'
+      name: '@liusiqi-dev/sqh-agent'
       disabled: false
 
     - id: llm-retry
-      name: '@liusiqi-dev/dsh-llm-retry'
+      name: '@liusiqi-dev/sqh-llm-retry'
       disabled: false
 
     - id: jobs
-      name: '@liusiqi-dev/dsh-jobs-local'
+      name: '@liusiqi-dev/sqh-jobs-local'
       disabled: false
 
     - id: invariants
-      name: '@liusiqi-dev/dsh-invariants'
+      name: '@liusiqi-dev/sqh-invariants'
       disabled: false
 
     - id: session-invariant
-      name: '@liusiqi-dev/dsh-session/invariant'
+      name: '@liusiqi-dev/sqh-session/invariant'
       disabled: false
 
     - id: agent-invariant
-      name: '@liusiqi-dev/dsh-agent/invariant'
+      name: '@liusiqi-dev/sqh-agent/invariant'
       disabled: false
 
     - id: scope-invariant
-      name: '@liusiqi-dev/dsh-scope/invariant'
+      name: '@liusiqi-dev/sqh-scope/invariant'
       disabled: false
 
     - id: agent-loop-invariant
-      name: '@liusiqi-dev/dsh-agent-loop/invariant'
+      name: '@liusiqi-dev/sqh-agent-loop/invariant'
       disabled: false
 
     - id: agent-loop
-      name: '@liusiqi-dev/dsh-agent-loop'
+      name: '@liusiqi-dev/sqh-agent-loop'
       disabled: false
       config:
         agents: []
 
     - id: persistent-bash
-      name: '@liusiqi-dev/dsh-tool-bash-persistent'
+      name: '@liusiqi-dev/sqh-tool-bash-persistent'
       disabled: !!js process.platform === 'win32'
       config:
         timeoutMs: 300000
@@ -165,7 +165,7 @@
           * Please run long lived commands in the background, e.g. 'sleep 10 &' or start a server in the background.
 
     - id: persistent-pwsh
-      name: '@liusiqi-dev/dsh-tool-pwsh-persistent'
+      name: '@liusiqi-dev/sqh-tool-pwsh-persistent'
       disabled: !!js process.platform !== 'win32'
       config:
         timeoutMs: 300000
@@ -179,7 +179,7 @@
           * Please run long lived commands in the background, e.g. 'Start-Job' or start a server with Start-Process.
 
     - id: sessions
-      name: '@liusiqi-dev/dsh-session-persistence-jsonl'
+      name: '@liusiqi-dev/sqh-session-persistence-jsonl'
       disabled: false
       config:
         root: !!js dshHomePath('sessions')

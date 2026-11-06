@@ -1,4 +1,4 @@
-/** Durable attachment vocabulary. @module @liusiqi-dev/dsh-attachment/types */
+/** Durable attachment vocabulary. @module @liusiqi-dev/sqh-attachment/types */
 
 import type { AttachmentId, ImageVariantId } from './brand.ts'
 

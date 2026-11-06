@@ -3,7 +3,7 @@ description: "The credential seam for users and maintainers resolving, describin
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-credentials
+# @liusiqi-dev/sqh-credentials
 
 English | [中文](README.zh.md)
 
@@ -36,7 +36,7 @@ Use a credential store whenever configuration must stay free of secret values: s
 Load the local store package with a document path:
 
 ```yaml
-- name: '@liusiqi-dev/dsh-credentials-local'
+- name: '@liusiqi-dev/sqh-credentials-local'
   config:
     path: /absolute/path/to/.credentials.yaml
 ```
@@ -47,7 +47,7 @@ The local store README owns the full configuration surface; the generated [confi
 
 ```ts
 import type { Context } from '@liusiqi-dev/cordis'
-import { credentialRef } from '@liusiqi-dev/dsh-credentials'
+import { credentialRef } from '@liusiqi-dev/sqh-credentials'
 
 declare const ctx: Context
 
@@ -66,7 +66,7 @@ A plugin addresses each record by `<scope>/<id>` — its own registered name plu
 
 ```ts
 import type { Context } from '@liusiqi-dev/cordis'
-import { credentialKey } from '@liusiqi-dev/dsh-credentials'
+import { credentialKey } from '@liusiqi-dev/sqh-credentials'
 
 declare const ctx: Context
 

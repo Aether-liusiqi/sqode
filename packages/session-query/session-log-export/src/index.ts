@@ -1,12 +1,12 @@
 /** Session-log download command and Host-owned streaming route. */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { CommandDefinitionId } from '@liusiqi-dev/dsh-commands/brand'
+import type { CommandDefinitionId } from '@liusiqi-dev/sqh-commands/brand'
 import Schema from '@liusiqi-dev/schemastery'
-import { brandString } from '@liusiqi-dev/dsh-brand'
-import type {} from '@liusiqi-dev/dsh-attachment'
-import type { CommandResult } from '@liusiqi-dev/dsh-commands'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import { brandString } from '@liusiqi-dev/sqh-brand'
+import type {} from '@liusiqi-dev/sqh-attachment'
+import type { CommandResult } from '@liusiqi-dev/sqh-commands'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import {
   DEFAULT_SESSION_LOG_COMPRESSION_LEVEL,
   flushLiveSessionLog,
@@ -77,7 +77,7 @@ const REQUESTED: CommandResult = {
  */
 export function apply(ctx: Context, config: Config = {}): void {
   ctx.effect(() => ctx.commands.register({
-    definitionId: brandString<CommandDefinitionId>('@liusiqi-dev/dsh-session-log-export'),
+    definitionId: brandString<CommandDefinitionId>('@liusiqi-dev/sqh-session-log-export'),
     name: 'export',
     description: 'Download this Session log as a ZIP archive',
     handler: invocation => Promise.resolve(invocation.rawInput.trim() === ''

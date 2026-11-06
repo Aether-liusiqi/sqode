@@ -3,7 +3,7 @@ description: "The SDK wire protocol for client and server implementers: the newl
 kind: "package-library"
 ---
 
-# @liusiqi-dev/dsh-sdk-protocol
+# @liusiqi-dev/sqh-sdk-protocol
 
 English | [中文](README.zh.md)
 

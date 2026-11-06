@@ -1,4 +1,4 @@
-import OTel from '@liusiqi-dev/dsh-otel'
+import OTel from '@liusiqi-dev/sqh-otel'
 /**
  * OTel backend unit tier: wire assertions against a scripted `node:http`
  * mock collector through the SDK's REAL pipeline (BatchLogRecordProcessor →
@@ -14,13 +14,13 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { gunzipSync } from 'node:zlib'
 import { Context } from '@liusiqi-dev/cordis'
-import { getOrCreateAnonymousUserId } from '@liusiqi-dev/dsh-anonymous-user-id'
+import { getOrCreateAnonymousUserId } from '@liusiqi-dev/sqh-anonymous-user-id'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
-import { recordFeedback } from '@liusiqi-dev/dsh-command-feedback'
-import { createAssistantMessage } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { SESSION_FORMAT_VERSION, Session, SessionId, SessionLogOffset, SessionSeq } from '@liusiqi-dev/dsh-session'
-import MessageFeedbackService from '@liusiqi-dev/dsh-message-feedback'
-import JsonlPersistence from '@liusiqi-dev/dsh-session-persistence-jsonl'
+import { recordFeedback } from '@liusiqi-dev/sqh-command-feedback'
+import { createAssistantMessage } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { SESSION_FORMAT_VERSION, Session, SessionId, SessionLogOffset, SessionSeq } from '@liusiqi-dev/sqh-session'
+import MessageFeedbackService from '@liusiqi-dev/sqh-message-feedback'
+import JsonlPersistence from '@liusiqi-dev/sqh-session-persistence-jsonl'
 import OpenTelemetrySessionBackend, { Config, DEFAULT_TELEMETRY_MODE, SessionTelemetryMode } from '../src/index.ts'
 
 interface Capture {
@@ -171,8 +171,8 @@ describe('OpenTelemetrySessionBackend wire', () => {
     expect(resource).toContainEqual({ key: 'user.id', value: { stringValue: getOrCreateAnonymousUserId() } })
 
     const records = allRecords(captures)
-    const ledger = records.filter(r => r.scope === '@liusiqi-dev/dsh-session-telemetry-otel')
-    const ops = records.filter(r => r.scope === '@liusiqi-dev/dsh-session-telemetry-otel/ops')
+    const ledger = records.filter(r => r.scope === '@liusiqi-dev/sqh-session-telemetry-otel')
+    const ops = records.filter(r => r.scope === '@liusiqi-dev/sqh-session-telemetry-otel/ops')
 
     const start = ledger.find(r => r.record.attributes?.some(a => a.key === 'event.type' && a.value.stringValue === 'turn/start'))
     expect(start).toBeDefined()

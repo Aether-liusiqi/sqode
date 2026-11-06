@@ -125,7 +125,7 @@ jobs:
       # rather than a scenario error 27 seconds later.
       - name: Install Playwright browsers
         run: |
-          pnpm --filter @liusiqi-dev/dsh-web-frontend exec playwright install --with-deps chromium webkit
+          pnpm --filter @liusiqi-dev/sqh-web-frontend exec playwright install --with-deps chromium webkit
           test -d "$HOME/.cache/ms-playwright" || { echo 'playwright browsers are missing' >&2; exit 1; }
           ls -1 "$HOME/.cache/ms-playwright"
 

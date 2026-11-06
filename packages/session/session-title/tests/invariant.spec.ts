@@ -2,13 +2,13 @@
 // — the durable relationship every appended session/title event must keep.
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import * as SessionTitleInvariantCompanion from '@liusiqi-dev/dsh-session-title/invariant'
-import InvariantRegistry, { InvariantError } from '@liusiqi-dev/dsh-invariants'
-import SessionStore, { SessionId, SessionSeq } from '@liusiqi-dev/dsh-session'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
+import * as SessionTitleInvariantCompanion from '@liusiqi-dev/sqh-session-title/invariant'
+import InvariantRegistry, { InvariantError } from '@liusiqi-dev/sqh-invariants'
+import SessionStore, { SessionId, SessionSeq } from '@liusiqi-dev/sqh-session'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }
@@ -45,13 +45,13 @@ describe('session-title source invariant', () => {
       session.append('session/title', { title: 'auto', messageSeqs: [], source: { kind: 'fallback' } })
     }).toThrow(expect.objectContaining<Partial<InvariantError>>({
       code: 'INVARIANT',
-      packageName: '@liusiqi-dev/dsh-session-title',
+      packageName: '@liusiqi-dev/sqh-session-title',
     }))
     expect(() => {
       session.append('session/title', { title: 'named', messageSeqs: [source.seq], source: { kind: 'user' } })
     }).toThrow(expect.objectContaining<Partial<InvariantError>>({
       code: 'INVARIANT',
-      packageName: '@liusiqi-dev/dsh-session-title',
+      packageName: '@liusiqi-dev/sqh-session-title',
     }))
     expect(session.seq).toBe(1)
   })

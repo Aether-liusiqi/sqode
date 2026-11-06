@@ -4,7 +4,7 @@
  *
  * `tsconfig.base.json` is the resolution facade for the whole repository, and
  * two of its aliases used one key per *group* rather than per package:
- * `@liusiqi-dev/dsh-*` listed 49 candidate globs and `@liusiqi-dev/dsh-*\/invariant`
+ * `@liusiqi-dev/sqh-*` listed 49 candidate globs and `@liusiqi-dev/sqh-*\/invariant`
  * listed 45. TypeScript and tsx try those candidates in order, so a specifier
  * whose package sits late in the list pays for every earlier miss. Under tsx's
  * ESM hook each miss is an `ERR_MODULE_NOT_FOUND` that Node decorates with a
@@ -29,7 +29,7 @@ const BEGIN = '      // BEGIN generated package aliases — pnpm run gen-tsconfi
 const END = '      // END generated package aliases'
 
 /** Package-name prefix the expanded aliases cover. */
-const PREFIX = '@liusiqi-dev/dsh-'
+const PREFIX = '@liusiqi-dev/sqh-'
 
 /**
  * The same prefix as a regular-expression fragment.
@@ -43,7 +43,7 @@ const PREFIX_PATTERN = PREFIX.replaceAll('/', '\\/')
 
 /** One workspace package the generated region maps. */
 interface PackageAlias {
-  /** Bare specifier, e.g. `@liusiqi-dev/dsh-session`. */
+  /** Bare specifier, e.g. `@liusiqi-dev/sqh-session`. */
   readonly specifier: string
   /** Repository-relative source directory, e.g. `./packages/session/session/src`. */
   readonly source: string
@@ -78,7 +78,7 @@ interface WorkspacePackage {
 
 /**
  * Walk `packages/<group>/<directory>` once, in a stable order.
- * @returns Every directory whose manifest names a `@liusiqi-dev/dsh-` package and that carries `src`.
+ * @returns Every directory whose manifest names a `@liusiqi-dev/sqh-` package and that carries `src`.
  */
 function workspacePackages(): WorkspacePackage[] {
   const packages = join(ROOT, 'packages')
@@ -139,7 +139,7 @@ export function collectPackageAliases(): PackageAlias[] {
  * alias can — but they still have to be mapped by something, because deleting
  * the group wildcards removed the fallback that used to catch them.
  *
- * @returns Declared names of every `@liusiqi-dev/dsh-` package carrying a `src` directory.
+ * @returns Declared names of every `@liusiqi-dev/sqh-` package carrying a `src` directory.
  */
 export function collectPackageNames(): string[] {
   return workspacePackages()

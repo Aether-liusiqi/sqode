@@ -1,5 +1,5 @@
 /**
- * Integration tests: the REAL `@liusiqi-dev/dsh-pwsh-local` executor plus the
+ * Integration tests: the REAL `@liusiqi-dev/sqh-pwsh-local` executor plus the
  * `pwsh` tool, exercised through `ctx.tools.execute()` with a real PowerShell
  * process. These verify the world — actual commands run, stdout/stderr come
  * back, exit codes render, timeouts abort, background jobs settle through the
@@ -15,15 +15,15 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { spawnSync } from 'node:child_process'
 import { Context } from '@liusiqi-dev/cordis'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime, { TOOL_ABORTED } from '@liusiqi-dev/dsh-tools'
-import LocalJobRegistry from '@liusiqi-dev/dsh-jobs-local'
-import * as ToolJobs from '@liusiqi-dev/dsh-tool-jobs'
-import LocalSubprocessRuntime from '@liusiqi-dev/dsh-subprocess-local'
-import { PwshLocalExecutor, resolvePwshPath } from '@liusiqi-dev/dsh-pwsh-local'
-import * as ToolPwsh from '@liusiqi-dev/dsh-tool-pwsh'
-import * as BashEnvPlugin from '@liusiqi-dev/dsh-shell-env'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime, { TOOL_ABORTED } from '@liusiqi-dev/sqh-tools'
+import LocalJobRegistry from '@liusiqi-dev/sqh-jobs-local'
+import * as ToolJobs from '@liusiqi-dev/sqh-tool-jobs'
+import LocalSubprocessRuntime from '@liusiqi-dev/sqh-subprocess-local'
+import { PwshLocalExecutor, resolvePwshPath } from '@liusiqi-dev/sqh-pwsh-local'
+import * as ToolPwsh from '@liusiqi-dev/sqh-tool-pwsh'
+import * as BashEnvPlugin from '@liusiqi-dev/sqh-shell-env'
 
 const testToolSignal = new AbortController().signal
 

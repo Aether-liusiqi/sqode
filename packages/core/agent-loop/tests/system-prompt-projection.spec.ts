@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { createSystemMessage, createUserMessage } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { SessionId, SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { Session, SurfaceIntent } from '@liusiqi-dev/dsh-session'
+import { createSystemMessage, createUserMessage } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { SessionId, SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { Session, SurfaceIntent } from '@liusiqi-dev/sqh-session'
 import { SystemPromptProjection } from '../src/runtime-context.ts'
 import type { SystemPromptCommit, SystemPromptDecisionInput } from '../src/runtime-context.ts'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
-    'test-compaction': { kind: 'test-compaction' } & import('@liusiqi-dev/dsh-llm').ContextFormed
+    'test-compaction': { kind: 'test-compaction' } & import('@liusiqi-dev/sqh-llm').ContextFormed
   }
 }
 

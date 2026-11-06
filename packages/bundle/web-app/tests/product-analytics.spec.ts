@@ -1,13 +1,13 @@
-import OTel from '@liusiqi-dev/dsh-otel'
+import OTel from '@liusiqi-dev/sqh-otel'
 /** Desktop-only collector policy and bounded shutdown against an unresponsive receiver. */
 import { createServer } from 'node:http'
 import { once } from 'node:events'
 import { fileURLToPath } from 'node:url'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
-import { loadOverlayPatches } from '@liusiqi-dev/dsh-app-boot'
-import * as Telemetry from '@liusiqi-dev/dsh-host-product-telemetry-otel'
-import Analytics from '@liusiqi-dev/dsh-client-product-analytics'
+import { loadOverlayPatches } from '@liusiqi-dev/sqh-app-boot'
+import * as Telemetry from '@liusiqi-dev/sqh-host-product-telemetry-otel'
+import Analytics from '@liusiqi-dev/sqh-client-product-analytics'
 import { afterEach, expect, it, onTestFinished, vi } from 'vitest'
 
 afterEach(() => { vi.unstubAllEnvs() })

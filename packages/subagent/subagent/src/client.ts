@@ -1,7 +1,7 @@
 /**
  * Browser-safe subagent projection and control vocabulary.
  *
- * @module @liusiqi-dev/dsh-subagent/client
+ * @module @liusiqi-dev/sqh-subagent/client
  */
 
 export type * from './control-types.ts'

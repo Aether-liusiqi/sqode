@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-native-command",
+  "name": "@liusiqi-dev/sqh-native-command",
   "description": "Host-native command and path-opening utilities with shell-free execution, cancellation, desktop detection, and WSL handoff",
   "version": "1.0.0",
   "publishConfig": {

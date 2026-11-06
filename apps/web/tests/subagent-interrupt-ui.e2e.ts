@@ -18,9 +18,9 @@ import { fileURLToPath } from 'node:url'
 import type { Browser, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
-import type { SessionEvent, SessionId } from '@liusiqi-dev/dsh-session'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type { SubagentPromptRequestId } from '@liusiqi-dev/dsh-subagent'
+import type { SessionEvent, SessionId } from '@liusiqi-dev/sqh-session'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type { SubagentPromptRequestId } from '@liusiqi-dev/sqh-subagent'
 import {
   acknowledgeReloadConnectionLoss, assertFixtureInventory, captureStableAria, compareOrRefreshGolden,
   launchWebScaffold, readPersistedEvents, watchConsole, webSnapshotMode, type WebScaffold,

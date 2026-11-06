@@ -3,7 +3,7 @@ description: "面向用户与维护者的首消息 LLM（大语言模型）会�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-session-title-first-prompt-llm
+# @liusiqi-dev/sqh-session-title-first-prompt-llm
 
 [English](README.md) | 中文
 

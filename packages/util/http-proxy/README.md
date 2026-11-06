@@ -3,7 +3,7 @@ description: "Outbound HTTP proxy support for the harness: how one policy resolv
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-http-proxy
+# @liusiqi-dev/sqh-http-proxy
 
 English | [中文](README.zh.md)
 

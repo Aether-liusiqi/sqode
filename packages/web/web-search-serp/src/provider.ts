@@ -6,10 +6,10 @@
  * turn a handful of searches into a burst, and a page that is a challenge or a
  * changed layout raises an error naming that cause instead of returning an
  * empty list that reads as "no results exist".
- * @module @liusiqi-dev/dsh-web-search-serp/provider
+ * @module @liusiqi-dev/sqh-web-search-serp/provider
  */
-import { WebError } from '@liusiqi-dev/dsh-web'
-import type { WebSearchProvider, WebSearchRequest, WebSearchResult } from '@liusiqi-dev/dsh-web'
+import { WebError } from '@liusiqi-dev/sqh-web'
+import type { WebSearchProvider, WebSearchRequest, WebSearchResult } from '@liusiqi-dev/sqh-web'
 
 import { looksBlocked, parseSerp } from './parse.ts'
 import type { SerpHit } from './parse.ts'

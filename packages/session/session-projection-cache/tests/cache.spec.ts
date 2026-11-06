@@ -22,22 +22,22 @@ import SessionStore, {
   SessionId,
   SessionLogOffset,
   SessionSeq,
-} from '@liusiqi-dev/dsh-session'
-import type { SessionEvent, SessionHeader } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import type { ProjectionDefinition } from '@liusiqi-dev/dsh-session-projection'
-import Storage from '@liusiqi-dev/dsh-storage'
+} from '@liusiqi-dev/sqh-session'
+import type { SessionEvent, SessionHeader } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import type { ProjectionDefinition } from '@liusiqi-dev/sqh-session-projection'
+import Storage from '@liusiqi-dev/sqh-storage'
 import {
   apply as storageJsonApply, Config as storageJsonConfig, inject as storageJsonInject, name as storageJsonName,
-} from '@liusiqi-dev/dsh-storage-json'
+} from '@liusiqi-dev/sqh-storage-json'
 import {
   apply as storageDomainApply, Config as storageDomainConfig, inject as storageDomainInject, name as storageDomainName,
-} from '@liusiqi-dev/dsh-storage-domain'
+} from '@liusiqi-dev/sqh-storage-domain'
 import SessionProjectionCache from '../src/index.ts'
 import { checkpointRecord, projectionCacheDomainSpec } from '../src/spec.ts'
 import type { CheckpointRecord } from '../src/spec.ts'
 
-declare module '@liusiqi-dev/dsh-session-projection/types' {
+declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionStateMap {
     'cache-test/marks': MarksState
     'cache-test/secondary-marks': MarksState
@@ -55,7 +55,7 @@ declare module '@liusiqi-dev/dsh-session-projection/types' {
   }
 }
 
-declare module '@liusiqi-dev/dsh-session/types' {
+declare module '@liusiqi-dev/sqh-session/types' {
   interface SessionEventMap {
     'cache-test/mark': { marks: string[] }
   }

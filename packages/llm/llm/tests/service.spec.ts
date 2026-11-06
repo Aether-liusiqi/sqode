@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { AttachmentId } from '@liusiqi-dev/dsh-attachment'
+import { AttachmentId } from '@liusiqi-dev/sqh-attachment'
 import LlmRuntime, {
   errorChain,
   GenerateOptions,
@@ -16,7 +16,7 @@ import LlmRuntime, {
   createMessage,
   createDeveloperMessage,
   createUserMessage,
-} from '@liusiqi-dev/dsh-llm'
+} from '@liusiqi-dev/sqh-llm'
 import type {
   LlmModelContext,
   LlmModelInfo,
@@ -24,10 +24,10 @@ import type {
   LlmProviderInfo,
   LlmResolvedModelInfo,
   SystemPromptUpdate,
-} from '@liusiqi-dev/dsh-llm'
+} from '@liusiqi-dev/sqh-llm'
 
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-declare module '@liusiqi-dev/dsh-llm' {
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }
@@ -1431,7 +1431,7 @@ describe('LlmRuntime', () => {
   })
 
   it('LlmError extends the shared HarnessError base', async () => {
-    const { HarnessError, isHarnessError } = await import('@liusiqi-dev/dsh-llm')
+    const { HarnessError, isHarnessError } = await import('@liusiqi-dev/sqh-llm')
     const cause = new Error('root cause')
     const err = new LlmError('boom', 'AUTH', { cause })
     expect(err).toBeInstanceOf(HarnessError)
@@ -1441,7 +1441,7 @@ describe('LlmRuntime', () => {
   })
 
   it('HarnessError carries a code, names itself by subclass, and chains cause', async () => {
-    const { HarnessError, isHarnessError } = await import('@liusiqi-dev/dsh-llm')
+    const { HarnessError, isHarnessError } = await import('@liusiqi-dev/sqh-llm')
     const root = new Error('root cause')
     const err = new HarnessError('wrapper', 'UNKNOWN', { cause: root })
     expect(err).toBeInstanceOf(Error)

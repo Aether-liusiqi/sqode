@@ -1,7 +1,7 @@
 /**
  * Keyless snapshot coverage for the TypeScript SDK path: each scenario spawns
  * the real `dsh --profile sdk` runtime through
- * `@liusiqi-dev/dsh-sdk-client`, drives one turn over stdio JSON-RPC,
+ * `@liusiqi-dev/sqh-sdk-client`, drives one turn over stdio JSON-RPC,
  * and pins the SDK `RunResult`, the complete notification stream, and the
  * persisted session logs. Replay serves recorded model
  * responses via `llm-replay` (`cordis.snapshot.yml`); `SQODE_SNAPSHOT=record`
@@ -53,15 +53,15 @@ import {
   type NormalizeContext,
   type SnapshotManifest,
   type WorkspaceSnapshotEntry,
-} from '@liusiqi-dev/dsh-session-snapshot'
+} from '@liusiqi-dev/sqh-session-snapshot'
 import {
   DeepSeekHarness,
   type HarnessNotification,
   type NotificationSubscription,
   type RunResult,
   type SdkPromptContentBlock,
-} from '@liusiqi-dev/dsh-sdk-client'
-import { SESSION_FORMAT_VERSION } from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-sdk-client'
+import { SESSION_FORMAT_VERSION } from '@liusiqi-dev/sqh-session'
 
 const corpusRoot = fileURLToPath(new URL('../', import.meta.url))
 
@@ -88,11 +88,11 @@ const RUNTIME_WORKSPACE_ENTRIES = [
   '.snapshot-patches',
 ] as const
 const dshSdkDiagnosticChildPatch = fileURLToPath(new URL(
-  './subagent-dsh-sdk-diagnostic/child.cordis.yml',
+  './subagent-sdk-diagnostic/child.cordis.yml',
   import.meta.url,
 ))
 const dshSdkChildConfig = fileURLToPath(new URL(
-  '../../packages/subagent/subagent-dsh-sdk/tests/fixtures/loader/child.patch.yml',
+  '../../packages/subagent/subagent-sdk/tests/fixtures/loader/child.patch.yml',
   import.meta.url,
 ))
 
@@ -143,7 +143,7 @@ const SDK_ASSERTIONS: Readonly<Record<string, SdkAssertions>> = {
   'subagent-continuable': {
     environment: { SQODE_SNAPSHOT_HUMAN_STEER: '1' },
   },
-  'subagent-dsh-sdk-diagnostic': {
+  'subagent-sdk-diagnostic': {
     environment: { SQODE_TEST_CHILD_PATCH: dshSdkDiagnosticChildPatch },
   },
   'persistent-tools': {
@@ -156,7 +156,7 @@ const SDK_ASSERTIONS: Readonly<Record<string, SdkAssertions>> = {
       excludes: ['workspace-write'],
     },
   },
-  'subagent-dsh-sdk-dynamic-route': {
+  'subagent-sdk-dynamic-route': {
     environment: { SQODE_TEST_PARENT_PROVIDER: 'deepseek-official' },
     dshSdkChild: {
       config: dshSdkChildConfig,

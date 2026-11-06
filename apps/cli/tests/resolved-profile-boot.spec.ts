@@ -4,17 +4,17 @@ import { createRequire } from 'node:module'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { Context } from '@liusiqi-dev/cordis'
-import { createLaunchEnvironmentSnapshot } from '@liusiqi-dev/dsh-launch-environment'
+import { createLaunchEnvironmentSnapshot } from '@liusiqi-dev/sqh-launch-environment'
 import {
   boot, composeEntries, createRuntimeResolution,
   PluginPackages, type Profile,
-} from '@liusiqi-dev/dsh-app-boot'
-import { installProxyFromEnvironment } from '@liusiqi-dev/dsh-http-proxy'
+} from '@liusiqi-dev/sqh-app-boot'
+import { installProxyFromEnvironment } from '@liusiqi-dev/sqh-http-proxy'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { runProfile } from '../src/profile-boot.ts'
 
-vi.mock('@liusiqi-dev/dsh-app-boot', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@liusiqi-dev/dsh-app-boot')>()
+vi.mock('@liusiqi-dev/sqh-app-boot', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@liusiqi-dev/sqh-app-boot')>()
   return {
     ...actual,
     boot: vi.fn(),
@@ -22,7 +22,7 @@ vi.mock('@liusiqi-dev/dsh-app-boot', async (importOriginal) => {
     installFailLoud: vi.fn(),
   }
 })
-vi.mock('@liusiqi-dev/dsh-http-proxy', () => ({ installProxyFromEnvironment: vi.fn() }))
+vi.mock('@liusiqi-dev/sqh-http-proxy', () => ({ installProxyFromEnvironment: vi.fn() }))
 
 const homes: string[] = []
 afterEach(() => {

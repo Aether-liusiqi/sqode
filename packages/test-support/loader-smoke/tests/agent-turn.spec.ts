@@ -1,5 +1,5 @@
 import type { Context } from '@liusiqi-dev/cordis'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
 import { describe, expect, it, vi } from 'vitest'
 import { runFixtureTurn } from '../src/agent-turn.ts'
 

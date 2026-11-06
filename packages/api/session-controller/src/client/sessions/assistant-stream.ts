@@ -4,9 +4,9 @@ import type {
   SessionAssistantStreamBaseline,
   SessionAssistantStreamFrame,
 } from '../../types.ts'
-import { expandAssistantStream } from '@liusiqi-dev/dsh-llm/assistant-stream'
-import type { AssistantStreamRecord } from '@liusiqi-dev/dsh-llm/assistant-stream'
-import type { LlmAttemptId } from '@liusiqi-dev/dsh-llm/brand'
+import { expandAssistantStream } from '@liusiqi-dev/sqh-llm/assistant-stream'
+import type { AssistantStreamRecord } from '@liusiqi-dev/sqh-llm/assistant-stream'
+import type { LlmAttemptId } from '@liusiqi-dev/sqh-llm/brand'
 import type {
   SessionAssistantSettlementEntry,
   SessionEventLikeEntry,

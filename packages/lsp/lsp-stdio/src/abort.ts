@@ -1,9 +1,9 @@
 /**
  * Shared cancellation helpers for the local LSP provider's host-I/O, queue, and protocol phases.
- * @module @liusiqi-dev/dsh-lsp-stdio/abort
+ * @module @liusiqi-dev/sqh-lsp-stdio/abort
  */
 
-import { timeoutOf } from '@liusiqi-dev/dsh-timeout'
+import { timeoutOf } from '@liusiqi-dev/sqh-timeout'
 
 /**
  * Build an abort Error carrying the signal's reason and preserving timeout classification.

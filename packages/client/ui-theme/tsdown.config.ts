@@ -1,7 +1,7 @@
 import { clientBundle } from '../tsdown.client.ts'
 
 export default clientBundle(
-  '@liusiqi-dev/dsh-client-ui-theme',
+  '@liusiqi-dev/sqh-client-ui-theme',
   ['lib/types/index.js'],
   {
     lib: {

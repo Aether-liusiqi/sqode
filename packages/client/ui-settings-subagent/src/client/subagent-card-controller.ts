@@ -1,6 +1,6 @@
 /** Shared presentation and actions for the two Host-owned Subagent settings sections. */
 
-import type { SettingsFormShell } from '@liusiqi-dev/dsh-client-ui-primitives'
+import type { SettingsFormShell } from '@liusiqi-dev/sqh-client-ui-primitives'
 import type { SubagentLimitsCardFace, SubagentLimitsCardState } from './subagent-limits-card-controller.ts'
 import type {
   SubagentModelSelectionCardFace, SubagentModelSelectionCardState,

@@ -1,6 +1,6 @@
 /** Keyed group publication and incremental validation of rendering positions. */
-import { createSnapshotStore, type ObservableSnapshot, type SnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import { assertNever } from '@liusiqi-dev/dsh-util-values'
+import { createSnapshotStore, type ObservableSnapshot, type SnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import { assertNever } from '@liusiqi-dev/sqh-util-values'
 import type { ConversationViewNode } from '../contract/conversation.ts'
 import type {
   ConversationGroupedView, GroupKey, GroupSnapshot, GroupUpdate, NodeKey, NodeReference, RenderEntry,

@@ -1,6 +1,6 @@
 /** Protocol-independent model capabilities and reasoning choices. */
-import { ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
-import type { LlmModelInfo, LlmResolvedModelInfo } from '@liusiqi-dev/dsh-llm'
+import { ReasoningEffortId } from '@liusiqi-dev/sqh-llm'
+import type { LlmModelInfo, LlmResolvedModelInfo } from '@liusiqi-dev/sqh-llm'
 import type { DeepSeekCatalogModel, DeepSeekConnectionOptions } from './types.ts'
 
 const OFF_REASONING_EFFORT = ReasoningEffortId('off')

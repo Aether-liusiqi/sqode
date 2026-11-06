@@ -3,24 +3,24 @@
  * QueueDock rendering and operations: authoritative rows, inline editing,
  * collapse state, removal, QueueDock Steer, failure notices, and live retirement.
  */
-import type { GlobalStandardProps } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { GlobalStandardProps } from '@liusiqi-dev/sqh-client-ui-slots'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, render, waitFor } from '@testing-library/react'
 import { useSyncExternalStore } from 'react'
 import type {
   SessionListState, SessionSnapshot, UseProjection,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { InboxState } from '@liusiqi-dev/dsh-agent/types'
-import type { UserMessage } from '@liusiqi-dev/dsh-llm/types'
-import type { MessageId } from '@liusiqi-dev/dsh-llm/brand'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { SnapshotSelectorHook } from '@liusiqi-dev/dsh-client-ui-slots'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { InboxState } from '@liusiqi-dev/sqh-agent/types'
+import type { UserMessage } from '@liusiqi-dev/sqh-llm/types'
+import type { MessageId } from '@liusiqi-dev/sqh-llm/brand'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { SnapshotSelectorHook } from '@liusiqi-dev/sqh-client-ui-slots'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import {
   bindSnapshotSelector, conversationSnapshot, makeTranslate,
-} from '@liusiqi-dev/dsh-client-test-runtime'
-import type { SessionStatusSnapshot } from '@liusiqi-dev/dsh-client-ui-session/client'
-import { zh as commonZh } from '@liusiqi-dev/dsh-client-locale/src/locales/zh.ts'
+} from '@liusiqi-dev/sqh-client-test-runtime'
+import type { SessionStatusSnapshot } from '@liusiqi-dev/sqh-client-ui-session/client'
+import { zh as commonZh } from '@liusiqi-dev/sqh-client-locale/src/locales/zh.ts'
 import type { InputState } from '../src/client/contract/input.ts'
 import { zh } from '../src/client/locales.ts'
 import { QueueDock, queueDockEntry, type QueueDockInjected, type QueueDockProps } from '../src/client/queue/QueueDock.tsx'

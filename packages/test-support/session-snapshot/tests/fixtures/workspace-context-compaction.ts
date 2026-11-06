@@ -1,8 +1,8 @@
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-agent'
-import { CompactionId, compactCheckpointSource } from '@liusiqi-dev/dsh-compaction'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type {} from '@liusiqi-dev/dsh-tools'
+import type {} from '@liusiqi-dev/sqh-agent'
+import { CompactionId, compactCheckpointSource } from '@liusiqi-dev/sqh-compaction'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type {} from '@liusiqi-dev/sqh-tools'
 
 export const name = 'workspace-context-compaction'
 

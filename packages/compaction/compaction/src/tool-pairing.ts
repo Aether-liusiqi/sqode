@@ -2,10 +2,10 @@
  * Tool-pairing balance over a session surface. Compaction changes surface
  * positions, so safe cuts are derived from tool-call/result content in current
  * surface order rather than step markers.
- * @module @liusiqi-dev/dsh-compaction/tool-pairing
+ * @module @liusiqi-dev/sqh-compaction/tool-pairing
  */
 
-import type { Session, SessionEvent, SessionSeq } from '@liusiqi-dev/dsh-session'
+import type { Session, SessionEvent, SessionSeq } from '@liusiqi-dev/sqh-session'
 
 /** Incremental balance state for one session surface generation. */
 interface BalanceCache {

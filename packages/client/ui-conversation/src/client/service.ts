@@ -9,23 +9,23 @@
  */
 import { Service } from '@liusiqi-dev/cordis'
 import type { Context } from '@liusiqi-dev/cordis'
-import { randomUUID } from '@liusiqi-dev/dsh-util-crypto'
+import { randomUUID } from '@liusiqi-dev/sqh-util-crypto'
 // Type-only imports: a plugin-to-plugin value import is a bundle purity
 // error, so scope resolution goes through the sessions service (scopeOf
 // method) instead of the standalone helper.
 import type {
   ISessions, PendingSubmissionRetirement, SessionFace,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
-import type {} from '@liusiqi-dev/dsh-client-file-upload/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { ImageMediaType } from '@liusiqi-dev/dsh-attachment'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { SnapshotStore } from '@liusiqi-dev/dsh-client-store'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
+import type {} from '@liusiqi-dev/sqh-client-file-upload/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { ImageMediaType } from '@liusiqi-dev/sqh-attachment'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { SnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import type {
   ComposerAttachment, ComposerFileAttachment, ComposerImageAttachment, DraftFileUpload,
 } from './contract/slots.ts'
-import type { QueueAction } from '@liusiqi-dev/dsh-api-session-controller/types'
-import type { MessageId } from '@liusiqi-dev/dsh-llm/brand'
+import type { QueueAction } from '@liusiqi-dev/sqh-api-session-controller/types'
+import type { MessageId } from '@liusiqi-dev/sqh-llm/brand'
 import type { ComposerBlocks } from './contract/composer-blocks.ts'
 import type {
   DraftAttachmentId, DraftAttachmentSerializationResult, SessionInputResolver, SubmitAttachment, SubmitOutcome,

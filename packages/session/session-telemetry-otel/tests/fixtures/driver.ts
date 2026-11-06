@@ -10,9 +10,9 @@ import { writeFile } from 'node:fs/promises'
 import { createServer } from 'node:http'
 import { once } from 'node:events'
 import { gunzipSync } from 'node:zlib'
-import { resolveConfigPath } from '@liusiqi-dev/dsh-app-boot'
-import { recordFeedback } from '@liusiqi-dev/dsh-command-feedback'
-import { runFixtureTurn } from '@liusiqi-dev/dsh-loader-smoke'
+import { resolveConfigPath } from '@liusiqi-dev/sqh-app-boot'
+import { recordFeedback } from '@liusiqi-dev/sqh-command-feedback'
+import { runFixtureTurn } from '@liusiqi-dev/sqh-loader-smoke'
 import { bootProductionProfile } from '../../../../test-support/loader-smoke/tests/fixtures/production-profile.ts'
 
 const configPath = process.argv[2]

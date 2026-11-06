@@ -3,7 +3,7 @@ description: "Persistent terminal sessions for deployments and consumers choosin
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-terminal
+# @liusiqi-dev/sqh-terminal
 
 English | [中文](README.zh.md)
 
@@ -25,7 +25,7 @@ English | [中文](README.zh.md)
 <a id="use-this-package"></a>
 ## Use this package
 
-Mount `@liusiqi-dev/dsh-terminal` whenever a composition needs terminal sessions whose state survives across tool calls. The service alone does nothing useful: pair it with a backend such as `@liusiqi-dev/dsh-terminal-bash` and a tool package such as `@liusiqi-dev/dsh-tool-terminal`, and load all three in one composition.
+Mount `@liusiqi-dev/sqh-terminal` whenever a composition needs terminal sessions whose state survives across tool calls. The service alone does nothing useful: pair it with a backend such as `@liusiqi-dev/sqh-terminal-bash` and a tool package such as `@liusiqi-dev/sqh-tool-terminal`, and load all three in one composition.
 
 ### When to choose it
 
@@ -36,9 +36,9 @@ Choose persistent terminals for work whose state lives in the terminal rather th
 Load the session service together with a backend and a tool package:
 
 ```yaml
-- name: '@liusiqi-dev/dsh-terminal'
-- name: '@liusiqi-dev/dsh-terminal-bash'
-- name: '@liusiqi-dev/dsh-tool-terminal'
+- name: '@liusiqi-dev/sqh-terminal'
+- name: '@liusiqi-dev/sqh-terminal-bash'
+- name: '@liusiqi-dev/sqh-tool-terminal'
 ```
 
 A backend provides one stable type — the shipped shell backend provides `shell` — and the tools open sessions by that type. The shell backend additionally requires the sandbox, sandbox-policy, and subprocess providers; see its [README](../terminal-bash/README.md) for the full composition.
@@ -115,7 +115,7 @@ Read these pages when the package-level contract is not enough. They move from t
 
 #### What the model sees
 
-Nothing directly. This package registers no prompt or tool; `@liusiqi-dev/dsh-tool-terminal` owns visible schemas and result text.
+Nothing directly. This package registers no prompt or tool; `@liusiqi-dev/sqh-tool-terminal` owns visible schemas and result text.
 
 #### Token effect
 
@@ -123,7 +123,7 @@ None directly. Live session state stays process-local until a consumer returns a
 
 #### KV Cache effect
 
-No direct invalidation; `@liusiqi-dev/dsh-tool-terminal` owns request-prefix changes.
+No direct invalidation; `@liusiqi-dev/sqh-tool-terminal` owns request-prefix changes.
 
 ## Known Limitations and Deferred Work
 

@@ -1,18 +1,18 @@
 /**
  * Package-owned relational invariants for the session event log. Load this
- * companion beside `@liusiqi-dev/dsh-invariants` to enable the checks.
+ * companion beside `@liusiqi-dev/sqh-invariants` to enable the checks.
  *
- * @module @liusiqi-dev/dsh-session/invariant
+ * @module @liusiqi-dev/sqh-session/invariant
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
-import type { Session, SessionEvent, SessionSeqCursor } from '@liusiqi-dev/dsh-session'
-import { assertNever } from '@liusiqi-dev/dsh-util-values'
+import type { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
+import type { Session, SessionEvent, SessionSeqCursor } from '@liusiqi-dev/sqh-session'
+import { assertNever } from '@liusiqi-dev/sqh-util-values'
 import { TOOL_NOT_STARTED } from './repair.ts'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-session'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-session'
 
 /** Cordis companion plugin name. */
 export const name = 'session-invariant'

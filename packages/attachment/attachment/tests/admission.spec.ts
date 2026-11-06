@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from 'vitest'
-import AttachmentStore, { admitEncodedFile, admitEncodedImages } from '@liusiqi-dev/dsh-attachment'
+import AttachmentStore, { admitEncodedFile, admitEncodedImages } from '@liusiqi-dev/sqh-attachment'
 import type {
   FileAttachmentRef, ImageAttachmentRef, SaveImageAttachment,
-} from '@liusiqi-dev/dsh-attachment/types'
+} from '@liusiqi-dev/sqh-attachment/types'
 
 const PNG = 'AAAA' // canonical base64, 3 bytes
 const FILE_REF: FileAttachmentRef = {

@@ -1,7 +1,7 @@
 /**
  * Shared filesystem path helpers for Siqi Harness user data.
  *
- * @module @liusiqi-dev/dsh-home-paths
+ * @module @liusiqi-dev/sqh-home-paths
  */
 
 import { opendir, realpath } from 'node:fs/promises'

@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-agent-preset",
+  "name": "@liusiqi-dev/sqh-agent-preset",
   "description": "Declare an Agent capability composition in Cordis YAML",
   "version": "1.0.0",
   "publishConfig": {
@@ -30,7 +30,7 @@
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
-    "@liusiqi-dev/dsh-agent-preset-registry": "workspace:*"
+    "@liusiqi-dev/sqh-agent-preset-registry": "workspace:*"
   },
   "dependencies": {
     "@liusiqi-dev/schemastery": "workspace:~"
@@ -39,10 +39,10 @@
     "@liusiqi-dev/cordis": "workspace:~",
     "@liusiqi-dev/cordis-plugin-include": "workspace:~",
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
-    "@liusiqi-dev/dsh-agent-preset-registry": "workspace:*",
-    "@liusiqi-dev/dsh-compaction-tool-result-pruner": "workspace:*",
-    "@liusiqi-dev/dsh-skill": "workspace:*",
-    "@liusiqi-dev/dsh-skill-filesystem": "workspace:*",
+    "@liusiqi-dev/sqh-agent-preset-registry": "workspace:*",
+    "@liusiqi-dev/sqh-compaction-tool-result-pruner": "workspace:*",
+    "@liusiqi-dev/sqh-skill": "workspace:*",
+    "@liusiqi-dev/sqh-skill-filesystem": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
     "@types/js-yaml": "^4.0.9",
     "js-yaml": "^4.2.0"

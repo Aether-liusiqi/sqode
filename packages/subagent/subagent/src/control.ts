@@ -2,12 +2,12 @@
  * Browser-facing subagent prompt and interrupt request validation plus the
  * stable prompt failure codes returned by the Remote surface.
  *
- * @module @liusiqi-dev/dsh-subagent
+ * @module @liusiqi-dev/sqh-subagent
  */
 
-import { AttachmentError } from '@liusiqi-dev/dsh-attachment'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
+import { AttachmentError } from '@liusiqi-dev/sqh-attachment'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
 import { z } from 'zod'
 import { SubagentError } from './error.ts'
 

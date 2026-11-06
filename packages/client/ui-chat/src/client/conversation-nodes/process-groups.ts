@@ -1,9 +1,9 @@
 /** Chat-owned segmentation and incremental summaries over materialized Node inputs. */
-import { brandString } from '@liusiqi-dev/dsh-brand'
+import { brandString } from '@liusiqi-dev/sqh-brand'
 import type {
   ConversationGroupDefinition, ConversationGroupInput, GroupKey, GroupSnapshot,
   GroupUpdate, NodeKey, NodeReference, RenderEntry,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import type { ChatConversationViewNode, ChatNode } from '../contract/chat-nodes.ts'
 import type { ProcessActivitySummary, ProcessGroupData } from '../contract/process-groups.ts'
 import { hasAssistantReplyContent } from '../contract/assistant-content.ts'

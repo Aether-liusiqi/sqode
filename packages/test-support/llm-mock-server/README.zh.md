@@ -3,7 +3,7 @@ description: "用于在无提供方密钥的情况下测试 LLM（大语言模�
 kind: "package-library"
 ---
 
-# @liusiqi-dev/dsh-llm-mock-server
+# @liusiqi-dev/sqh-llm-mock-server
 
 [English](README.md) | 中文
 

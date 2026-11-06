@@ -1,17 +1,17 @@
 import { queryObjects } from 'node:v8'
-import { RemoteError, typertOwnedValue } from '@liusiqi-dev/dsh-typert-protocol'
+import { RemoteError, typertOwnedValue } from '@liusiqi-dev/sqh-typert-protocol'
 import { Context, Service } from '@liusiqi-dev/cordis'
 import type { Fiber } from '@liusiqi-dev/cordis'
 import { describe, expect, expectTypeOf, it, vi } from 'vitest'
 import { z } from 'zod'
-import { RemoteMock } from '@liusiqi-dev/dsh-remote-mock'
+import { RemoteMock } from '@liusiqi-dev/sqh-remote-mock'
 import {
   apply as applyConnection,
   type ClientTransportHooks,
   type ConnectionGeneration,
   type ConnectionGenerationSource,
   type ConnectionHandle,
-} from '@liusiqi-dev/dsh-client-connection/client'
+} from '@liusiqi-dev/sqh-client-connection/client'
 import type {
   InvocationDescriptor,
   RemoteResult,
@@ -22,8 +22,8 @@ import type {
   TypertLookup,
   TypertRemoteScopeApi,
   TypertRemoteNamespace,
-} from '@liusiqi-dev/dsh-typert-protocol'
-import TypertRegistry from '@liusiqi-dev/dsh-typert-registry'
+} from '@liusiqi-dev/sqh-typert-protocol'
+import TypertRegistry from '@liusiqi-dev/sqh-typert-registry'
 import type { ClientRemote } from '../src/client/index.ts'
 import { apply, inject, isRemoteFailure, RemoteStream } from '../src/client/index.ts'
 import {
@@ -77,7 +77,7 @@ declare module '@liusiqi-dev/cordis' {
   }
 }
 
-declare module '@liusiqi-dev/dsh-typert-protocol' {
+declare module '@liusiqi-dev/sqh-typert-protocol' {
   interface TypertRemoteEventSelection extends
     Record<'fixture/changed' | 'fixture/idle' | 'fixture/approval', true> {}
 

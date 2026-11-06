@@ -1,11 +1,11 @@
 import { fileURLToPath } from 'node:url'
-import { agentEvents, type Agent } from '@liusiqi-dev/dsh-agent'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import { boot, loadOverlayPatches } from '@liusiqi-dev/dsh-app-boot'
-import { SessionId } from '@liusiqi-dev/dsh-session'
-import type {} from '@liusiqi-dev/dsh-skill'
-import type {} from '@liusiqi-dev/dsh-tools'
-import { unsupportedInbox } from '@liusiqi-dev/dsh-agent-loop-testkit'
+import { agentEvents, type Agent } from '@liusiqi-dev/sqh-agent'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import { boot, loadOverlayPatches } from '@liusiqi-dev/sqh-app-boot'
+import { SessionId } from '@liusiqi-dev/sqh-session'
+import type {} from '@liusiqi-dev/sqh-skill'
+import type {} from '@liusiqi-dev/sqh-tools'
+import { unsupportedInbox } from '@liusiqi-dev/sqh-agent-loop-testkit'
 
 const overlayPath = process.argv[2]
 if (overlayPath === undefined) throw new Error('dsh-badge snapshot requires an overlay path')

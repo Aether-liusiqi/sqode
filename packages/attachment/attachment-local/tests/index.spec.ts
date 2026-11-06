@@ -1,5 +1,5 @@
 import { Context } from '@liusiqi-dev/cordis'
-import { AttachmentId } from '@liusiqi-dev/dsh-attachment'
+import { AttachmentId } from '@liusiqi-dev/sqh-attachment'
 import { existsSync } from 'node:fs'
 import { mkdtemp, readFile, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'

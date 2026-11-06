@@ -3,17 +3,17 @@
  * Post-execute policies settle before retention; canonical program values
  * remain intact. Missing recovery storage or image pricing keeps the original
  * content and reports the reason through the logger.
- * @module @liusiqi-dev/dsh-spill-policy
+ * @module @liusiqi-dev/sqh-spill-policy
  */
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { createUserMessage, resolveImageAttachmentAccess } from '@liusiqi-dev/dsh-llm'
-import type { ContentBlock, ImageBlock, LlmImageRequestPrice, ToolCallId } from '@liusiqi-dev/dsh-llm'
-import { estimateContent } from '@liusiqi-dev/dsh-token-meter/estimate'
-import type { SpillRef } from '@liusiqi-dev/dsh-spill'
-import type { PostToolDecision, ToolExecution } from '@liusiqi-dev/dsh-tools'
-import type {} from '@liusiqi-dev/dsh-attachment'
-import type {} from '@liusiqi-dev/dsh-fs'
+import { createUserMessage, resolveImageAttachmentAccess } from '@liusiqi-dev/sqh-llm'
+import type { ContentBlock, ImageBlock, LlmImageRequestPrice, ToolCallId } from '@liusiqi-dev/sqh-llm'
+import { estimateContent } from '@liusiqi-dev/sqh-token-meter/estimate'
+import type { SpillRef } from '@liusiqi-dev/sqh-spill'
+import type { PostToolDecision, ToolExecution } from '@liusiqi-dev/sqh-tools'
+import type {} from '@liusiqi-dev/sqh-attachment'
+import type {} from '@liusiqi-dev/sqh-fs'
 import type { SpillPolicyExec } from './types.ts'
 import { formatSpillNotice } from './notice.ts'
 import { retainContent } from './retention.ts'

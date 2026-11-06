@@ -11,16 +11,16 @@
 
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import LlmRuntime from '@liusiqi-dev/dsh-llm'
-import { createUserMessage, LlmAdapter } from '@liusiqi-dev/dsh-llm'
-import type { GenerateOptions, StreamChunk } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
-import AgentRegistry, { type Agent } from '@liusiqi-dev/dsh-agent'
+import LlmRuntime from '@liusiqi-dev/sqh-llm'
+import { createUserMessage, LlmAdapter } from '@liusiqi-dev/sqh-llm'
+import type { GenerateOptions, StreamChunk } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
+import AgentRegistry, { type Agent } from '@liusiqi-dev/sqh-agent'
 
-import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
+import AgentLoop from '@liusiqi-dev/sqh-agent-loop'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
 import fc from 'fast-check'
 
 /** A never-exhausting adapter: every model call returns the same short reply. */

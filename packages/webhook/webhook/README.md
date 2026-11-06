@@ -3,7 +3,7 @@ description: "Webhook rule runtime for maintainers registering trusted external-
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-webhook
+# @liusiqi-dev/sqh-webhook
 
 English | [中文](README.zh.md)
 

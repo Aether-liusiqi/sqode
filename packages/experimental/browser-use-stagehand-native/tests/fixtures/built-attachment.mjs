@@ -1,9 +1,9 @@
 /** Plain-Node smoke of the published provider and its independently configured attachment Worker. */
 import { Context } from '@liusiqi-dev/cordis'
-import { mountAgentLoopTestDependencies, mountAgentLoopTestHarness } from '@liusiqi-dev/dsh-agent-loop-testkit'
-import BrowserUseRegistry from '@liusiqi-dev/dsh-browser-use'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import { SessionId } from '@liusiqi-dev/dsh-session'
+import { mountAgentLoopTestDependencies, mountAgentLoopTestHarness } from '@liusiqi-dev/sqh-agent-loop-testkit'
+import BrowserUseRegistry from '@liusiqi-dev/sqh-browser-use'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import { SessionId } from '@liusiqi-dev/sqh-session'
 import * as Provider from '../../lib/index.js'
 
 const [endpoint, url] = process.argv.slice(2)

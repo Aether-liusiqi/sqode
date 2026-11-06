@@ -5,33 +5,33 @@
 /:
   en: 2c603fb20d2332f0
   zh: 2efd7f2811fe18bb
-/liusiqi-dev-dsh-experimental-speech-to-text-sensevoice:
-  en: cbf857daa55ab960
-  zh: 2df4bf8d6ec2a75b
-/liusiqi-dev-dsh-experimental-speech-to-text-sensevoice/summary:
+/liusiqi-dev-sqh-experimental-speech-to-text-sensevoice:
+  en: df62c1bd8ce1b030
+  zh: a1ca37e836d136c7
+/liusiqi-dev-sqh-experimental-speech-to-text-sensevoice/summary:
   en: 3d96e31f42eec217
   zh: 9738184df0d5c781
-/liusiqi-dev-dsh-experimental-speech-to-text-sensevoice/table-of-contents:
+/liusiqi-dev-sqh-experimental-speech-to-text-sensevoice/table-of-contents:
   en: d152484eb41ac6b4
   zh: 364c80ee00a374ff
-/liusiqi-dev-dsh-experimental-speech-to-text-sensevoice/use-this-package:
+/liusiqi-dev-sqh-experimental-speech-to-text-sensevoice/use-this-package:
   en: 89158811630a1db8
   zh: bff6f6e769dd07e4
-/liusiqi-dev-dsh-experimental-speech-to-text-sensevoice/understand-the-implementation:
+/liusiqi-dev-sqh-experimental-speech-to-text-sensevoice/understand-the-implementation:
   en: bb96ebc59b8ed6a5
   zh: e59452eb0ddd9fe6
-/liusiqi-dev-dsh-experimental-speech-to-text-sensevoice/further-exploration:
+/liusiqi-dev-sqh-experimental-speech-to-text-sensevoice/further-exploration:
   en: 5c64426add9d79d6
   zh: 4e06aa2ead8d2ccd
-/liusiqi-dev-dsh-experimental-speech-to-text-sensevoice/model-experience:
+/liusiqi-dev-sqh-experimental-speech-to-text-sensevoice/model-experience:
   en: 3c5a85f8b7129ce8
   zh: d5f491ca88d9a810
-/liusiqi-dev-dsh-experimental-speech-to-text-sensevoice/model-experience/kv-cache-effect:
+/liusiqi-dev-sqh-experimental-speech-to-text-sensevoice/model-experience/kv-cache-effect:
   en: b5ec79db2e1d0dbc
   zh: e5aff567ae5ee6fc
-/liusiqi-dev-dsh-experimental-speech-to-text-sensevoice/known-limitations-and-deferred-work:
+/liusiqi-dev-sqh-experimental-speech-to-text-sensevoice/known-limitations-and-deferred-work:
   en: c9a41fba4d25fe72
   zh: 9453cca1d6806549
-/liusiqi-dev-dsh-experimental-speech-to-text-sensevoice/known-limitations-and-deferred-work/dev-note:
+/liusiqi-dev-sqh-experimental-speech-to-text-sensevoice/known-limitations-and-deferred-work/dev-note:
   en: 0225ba087c5266f3
   zh: 4e706f1b2b984e63

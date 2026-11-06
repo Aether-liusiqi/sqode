@@ -1,8 +1,8 @@
 import { Context } from '@liusiqi-dev/cordis'
 import { afterEach, describe, expect, it } from 'vitest'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import UserQuestionService from '@liusiqi-dev/dsh-user-questions'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import UserQuestionService from '@liusiqi-dev/sqh-user-questions'
 import { apply } from '../src/index.ts'
 
 let ctx: Context | undefined

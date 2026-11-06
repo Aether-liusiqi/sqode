@@ -16,12 +16,12 @@ import SessionStore, {
   SessionId,
   SessionLogOffset,
   SessionSeq,
-} from '@liusiqi-dev/dsh-session'
-import type { SessionEvent, SessionHeader } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import type { ProjectionDefinition } from '@liusiqi-dev/dsh-session-projection'
+} from '@liusiqi-dev/sqh-session'
+import type { SessionEvent, SessionHeader } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import type { ProjectionDefinition } from '@liusiqi-dev/sqh-session-projection'
 
-declare module '@liusiqi-dev/dsh-session-projection/types' {
+declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionStateMap {
     'test/marks': MarksState
     'test/count': number
@@ -35,7 +35,7 @@ declare module '@liusiqi-dev/dsh-session-projection/types' {
   }
 }
 
-declare module '@liusiqi-dev/dsh-session/types' {
+declare module '@liusiqi-dev/sqh-session/types' {
   interface SessionEventMap {
     'test/mark': { marks: string[] }
   }

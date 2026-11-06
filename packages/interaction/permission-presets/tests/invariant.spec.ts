@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { Context, Service } from '@liusiqi-dev/cordis'
-import SessionStore, { SessionSeq, type Session, type SessionEvent } from '@liusiqi-dev/dsh-session'
-import * as PermissionInvariant from '@liusiqi-dev/dsh-permission-presets/invariant'
-import InvariantRegistry from '@liusiqi-dev/dsh-invariants'
+import SessionStore, { SessionSeq, type Session, type SessionEvent } from '@liusiqi-dev/sqh-session'
+import * as PermissionInvariant from '@liusiqi-dev/sqh-permission-presets/invariant'
+import InvariantRegistry from '@liusiqi-dev/sqh-invariants'
 
 class PermissionProbe extends Service {
   readonly names = ['safe', 'trusted']

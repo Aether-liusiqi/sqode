@@ -6,8 +6,8 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import Include from '@liusiqi-dev/cordis-plugin-include'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import CommandRuntime from '@liusiqi-dev/dsh-commands'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import CommandRuntime from '@liusiqi-dev/sqh-commands'
 import {
   CompactionId,
   CompactionEngine,
@@ -15,9 +15,9 @@ import {
   type CompactionResult,
   type CompactionTrigger,
   type ManualCompactAgentContext,
-} from '@liusiqi-dev/dsh-compaction'
-import * as commandCompact from '@liusiqi-dev/dsh-command-compact'
-import { Session, SessionId, SessionSeq } from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-compaction'
+import * as commandCompact from '@liusiqi-dev/sqh-command-compact'
+import { Session, SessionId, SessionSeq } from '@liusiqi-dev/sqh-session'
 
 const COMPACTION_ID = CompactionId('loader-command-compact-test')
 
@@ -84,9 +84,9 @@ describe('command-compact real Loader composition', () => {
     root = await mkdtemp(join(tmpdir(), 'dsh-command-compact-loader-'))
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
-      "- name: '@liusiqi-dev/dsh-commands'",
+      "- name: '@liusiqi-dev/sqh-commands'",
       "- name: '@test/compact-backend'",
-      "- name: '@liusiqi-dev/dsh-command-compact'",
+      "- name: '@liusiqi-dev/sqh-command-compact'",
       '',
     ].join('\n'))
 
@@ -95,9 +95,9 @@ describe('command-compact real Loader composition', () => {
     await context.plugin(Loader)
     context.loader.builtins.include = Include
     const modules = new Map<string, unknown>([
-      ['@liusiqi-dev/dsh-commands', CommandRuntime],
+      ['@liusiqi-dev/sqh-commands', CommandRuntime],
       ['@test/compact-backend', LoaderCompactionEngine],
-      ['@liusiqi-dev/dsh-command-compact', commandCompact],
+      ['@liusiqi-dev/sqh-command-compact', commandCompact],
     ])
     context.loader.internal = {
       version: 'v2',
@@ -120,7 +120,7 @@ describe('command-compact real Loader composition', () => {
       reserveTurnAdmission: () => () => undefined,
     } as unknown as Agent
     expect(context.commands.list(agent)).toContainEqual({
-      definitionId: '@liusiqi-dev/dsh-command-compact',
+      definitionId: '@liusiqi-dev/sqh-command-compact',
       name: 'compact',
       description: 'Compact older conversation history',
     })

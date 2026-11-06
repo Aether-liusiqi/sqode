@@ -3,7 +3,7 @@
 import { EventEmitter } from 'node:events'
 import { Context } from '@liusiqi-dev/cordis'
 import { afterEach, describe, expect, it } from 'vitest'
-import { internals, provideCmdline } from '@liusiqi-dev/dsh-cmdline'
+import { internals, provideCmdline } from '@liusiqi-dev/sqh-cmdline'
 import { apply, type Config, SDK_APP_STARTUP_SERVICE } from '../src/index.ts'
 
 /** Controllable stdin for one startup invocation. */

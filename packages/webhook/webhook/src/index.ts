@@ -1,8 +1,8 @@
 /** Fire-and-forget webhook rule registry and Workspace-backed Session runtime. */
 
 import { Context, Service } from '@liusiqi-dev/cordis'
-import { errorChain } from '@liusiqi-dev/dsh-llm'
-import { deepFreeze, snapshotJsonValue } from '@liusiqi-dev/dsh-util-values'
+import { errorChain } from '@liusiqi-dev/sqh-llm'
+import { deepFreeze, snapshotJsonValue } from '@liusiqi-dev/sqh-util-values'
 import type { WebhookRuleId } from './brand.ts'
 import { createWebhookSession } from './session.ts'
 import type { VerifiedWebhookDelivery, WebhookRule, WebhookSessionRequest } from './types.ts'

@@ -65,8 +65,8 @@ export const PAGE_ASSETS: readonly string[] = [
  * `worker-host.ts`.
  */
 export const IMAGE_ENTRY_SEEDS: readonly string[] = [
-  '@liusiqi-dev/dsh-app-boot',
-  '@liusiqi-dev/dsh-cmdline',
+  '@liusiqi-dev/sqh-app-boot',
+  '@liusiqi-dev/sqh-cmdline',
   '@liusiqi-dev/cordis',
   '@liusiqi-dev/cordis-plugin-include',
   'js-yaml',

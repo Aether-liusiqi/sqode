@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-remote-mock",
+  "name": "@liusiqi-dev/sqh-remote-mock",
   "description": "Endpoint-named mock for Typert Remote traffic: unary answers and stream scripts per <namespace>/<method>, live stream control, a log, and the Connection carrier face whole-client specs install",
   "version": "1.0.0",
   "publishConfig": {
@@ -27,13 +27,13 @@
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*"
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-api-settings-controller": "workspace:*",
-    "@liusiqi-dev/dsh-client-connection": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/sqh-api-settings-controller": "workspace:*",
+    "@liusiqi-dev/sqh-client-connection": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*",
     "typescript": "^6.0.3"
   },
   "files": [

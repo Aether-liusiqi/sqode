@@ -5,7 +5,7 @@
  * phase force-stops any ranges the service still owns. It has no config: every
  * disposition and limit arrives on the spec, so deployment-varying choices
  * stay with the caller's config (the bash executor's, the LSP host's, …).
- * @module @liusiqi-dev/dsh-subprocess-local
+ * @module @liusiqi-dev/sqh-subprocess-local
  */
 
 import { constants } from 'node:fs'
@@ -16,15 +16,15 @@ import type { Duplex } from 'node:stream'
 import { Context } from '@liusiqi-dev/cordis'
 import type * as NodePty from 'node-pty'
 import type { IPtyForkOptions } from 'node-pty'
-import { createLazyRequire } from '@liusiqi-dev/dsh-lazy-require'
-import { SubprocessRuntime, SubprocessExecutableNotFoundError } from '@liusiqi-dev/dsh-subprocess'
+import { createLazyRequire } from '@liusiqi-dev/sqh-lazy-require'
+import { SubprocessRuntime, SubprocessExecutableNotFoundError } from '@liusiqi-dev/sqh-subprocess'
 import type {
   SubprocessHandle,
   SubprocessSpawnSpec,
   SubprocessTerminalHandle,
   SubprocessTerminalEnvironment,
   SubprocessTerminalSpawnSpec,
-} from '@liusiqi-dev/dsh-subprocess'
+} from '@liusiqi-dev/sqh-subprocess'
 import {
   bindManagedProcess,
   childEnv,

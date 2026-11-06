@@ -11,26 +11,26 @@
  *
  * @module dsh-permission-presets
  */
-import type {} from '@liusiqi-dev/dsh-settings'
+import type {} from '@liusiqi-dev/sqh-settings'
 
 import type { Volatile } from '@liusiqi-dev/cordis'
 
 import { Context } from '@liusiqi-dev/cordis'
-import { CommandDefinitionId } from '@liusiqi-dev/dsh-commands/brand'
+import { CommandDefinitionId } from '@liusiqi-dev/sqh-commands/brand'
 import z from '@liusiqi-dev/schemastery'
 import { z as zod } from 'zod'
-import { Remote, TypertRemoteService } from '@liusiqi-dev/dsh-typert-protocol'
-import type { Session, SessionEvent } from '@liusiqi-dev/dsh-session'
-import type { SandboxMode } from '@liusiqi-dev/dsh-sandbox'
-import { SANDBOX_MODES, setSandboxMode } from '@liusiqi-dev/dsh-sandbox-policy'
+import { Remote, TypertRemoteService } from '@liusiqi-dev/sqh-typert-protocol'
+import type { Session, SessionEvent } from '@liusiqi-dev/sqh-session'
+import type { SandboxMode } from '@liusiqi-dev/sqh-sandbox'
+import { SANDBOX_MODES, setSandboxMode } from '@liusiqi-dev/sqh-sandbox-policy'
 // Side-effect type import: declaration-merges `ctx.shell` (the capability fact
 // `sandboxMode` this service reads), without a value dependency on the seam.
-import type {} from '@liusiqi-dev/dsh-shell'
-import type { ApprovalPolicy } from '@liusiqi-dev/dsh-user-approval'
-import { APPROVAL_POLICIES, setApprovalPolicy } from '@liusiqi-dev/dsh-user-approval'
+import type {} from '@liusiqi-dev/sqh-shell'
+import type { ApprovalPolicy } from '@liusiqi-dev/sqh-user-approval'
+import { APPROVAL_POLICIES, setApprovalPolicy } from '@liusiqi-dev/sqh-user-approval'
 // Type-only: resolves the required projection service and optional settings/command children.
-import type {} from '@liusiqi-dev/dsh-session-projection'
-import type {} from '@liusiqi-dev/dsh-commands'
+import type {} from '@liusiqi-dev/sqh-session-projection'
+import type {} from '@liusiqi-dev/sqh-commands'
 import type { PermissionCatalog, PermissionSelection, PresetOption } from './types.ts'
 
 export type * from './types.ts'
@@ -41,14 +41,14 @@ declare module '@liusiqi-dev/cordis' {
   }
 }
 
-declare module '@liusiqi-dev/dsh-session-projection/types' {
+declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionStateMap {
     /** Latest logged permission overrides and constructor-seed status. */
     permissions: PermissionProjectionState
   }
 }
 
-declare module '@liusiqi-dev/dsh-session/types' {
+declare module '@liusiqi-dev/sqh-session/types' {
   interface SessionEventMap {
     /**
      * Records the selected preset as durable, log-only user intent. The knob
@@ -254,7 +254,7 @@ export class PermissionPresetService extends TypertRemoteService {
     // activates only when a command registry is composed.
     ctx.inject(['commands'], (commandCtx) => {
       commandCtx.commands.register({
-        definitionId: CommandDefinitionId('@liusiqi-dev/dsh-permission-presets'),
+        definitionId: CommandDefinitionId('@liusiqi-dev/sqh-permission-presets'),
         name: 'permission',
         description: 'Switch the permission preset (sandbox mode + approval policy)',
         input: { hint: '<preset>' },

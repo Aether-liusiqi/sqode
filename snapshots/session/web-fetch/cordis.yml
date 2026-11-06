@@ -6,13 +6,13 @@
       name: './web-fetch-fixture-server.mjs'
 
 - id: web
-  name: '@liusiqi-dev/dsh-web'
+  name: '@liusiqi-dev/sqh-web'
 
 - id: web-fetch-http
-  name: '@liusiqi-dev/dsh-web-fetch-http'
+  name: '@liusiqi-dev/sqh-web-fetch-http'
   disabled: true
 
 - id: tool-web
-  name: '@liusiqi-dev/dsh-tool-web'
+  name: '@liusiqi-dev/sqh-tool-web'
   config:
     search: false

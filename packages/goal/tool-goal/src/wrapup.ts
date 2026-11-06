@@ -1,6 +1,6 @@
 /** Model-visible wrap-up instruction for a terminal autonomous goal update. */
 
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
 
 const GROUNDING =
   'Report only what earlier rounds and tool results in this session actually establish; '

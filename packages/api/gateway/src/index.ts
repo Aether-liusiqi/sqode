@@ -2,7 +2,7 @@
  * Live Typert Remote dispatch over Cordis Services and registered providers.
  * Unary transport and response envelopes belong to Connection; live Remote
  * streams use the Gateway-owned WebSocket mux.
- * @module @liusiqi-dev/dsh-api-gateway
+ * @module @liusiqi-dev/sqh-api-gateway
  */
 
 import { randomUUID } from 'node:crypto'
@@ -11,11 +11,11 @@ import {
   OperatorPeer,
   type ConnectionRpcAttachment,
   type ConnectionRpcHandler,
-} from '@liusiqi-dev/dsh-client-connection'
-import { Deque } from '@liusiqi-dev/dsh-deque'
-import type { WebUpgradeRoute } from '@liusiqi-dev/dsh-host-webserver'
-import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
-import type {} from '@liusiqi-dev/dsh-cmdline'
+} from '@liusiqi-dev/sqh-client-connection'
+import { Deque } from '@liusiqi-dev/sqh-deque'
+import type { WebUpgradeRoute } from '@liusiqi-dev/sqh-host-webserver'
+import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/sqh-timeout'
+import type {} from '@liusiqi-dev/sqh-cmdline'
 import z from '@liusiqi-dev/schemastery'
 export type { TypertGatewayFaultDetails } from './remote-error-codes.ts'
 import {
@@ -29,7 +29,7 @@ import {
   type RemoteInvocation,
   type TypertCodec,
   type TypertGatewayBinding,
-} from '@liusiqi-dev/dsh-typert-protocol'
+} from '@liusiqi-dev/sqh-typert-protocol'
 import type {
   InvokeRemoteRequest,
   TypertGateway,

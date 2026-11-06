@@ -1,7 +1,7 @@
 /** Delegation-limit fields inside the shared Subagent settings card. */
 
-import type { PropsLocale } from '@liusiqi-dev/dsh-client-ui-slots'
-import { SettingsValueField } from '@liusiqi-dev/dsh-client-ui-primitives'
+import type { PropsLocale } from '@liusiqi-dev/sqh-client-ui-slots'
+import { SettingsValueField } from '@liusiqi-dev/sqh-client-ui-primitives'
 import type { SubagentLimitsCardFace, SubagentLimitsCardState } from './subagent-limits-card-controller.ts'
 import css from './SubagentLimitsFields.module.css'
 

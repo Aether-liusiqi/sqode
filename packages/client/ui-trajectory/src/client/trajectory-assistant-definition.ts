@@ -3,10 +3,10 @@ import type {
   AssistantBlock, AssistantMessageNode, ConversationLocation,
   ConversationMatch, ConversationNodeContext, ConversationNodeDefinition,
   PartialAssistant, RequestView,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type { StreamChunk } from '@liusiqi-dev/dsh-llm'
-import { assistantStreamFirstTokenTime } from '@liusiqi-dev/dsh-llm/assistant-stream'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session/types'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type { StreamChunk } from '@liusiqi-dev/sqh-llm'
+import { assistantStreamFirstTokenTime } from '@liusiqi-dev/sqh-llm/assistant-stream'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session/types'
 import { trajectoryNode } from './trajectory-definition-common.ts'
 import {
   displayFailure, emptyAssistantBlock, isTokenDelta, toAssistantBlock, toAssistantBlocks,

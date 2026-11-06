@@ -7,13 +7,13 @@
  * ordering. Each provider owns its storage runtime; this suite pins the
  * equivalent observable behavior the seam requires.
  *
- * @module @liusiqi-dev/dsh-session-persistence/tests/live-write-contract
+ * @module @liusiqi-dev/sqh-session-persistence/tests/live-write-contract
  */
 
 import { describe, expect, it, vi } from 'vitest'
 import type { Context } from '@liusiqi-dev/cordis'
-import { SessionId } from '@liusiqi-dev/dsh-session'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
+import { SessionId } from '@liusiqi-dev/sqh-session'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
 import type { SessionPersistence } from '../src/index.ts'
 
 /** One mounted backend under a session store, plus same-storage remount support. */

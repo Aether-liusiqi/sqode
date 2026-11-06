@@ -5,12 +5,12 @@
  * `updatedAt` stamping and invalid-account pruning happen exactly once.
  * Not re-exported from the package entrypoint — consumers see only the
  * `Workspace` interface.
- * @module @liusiqi-dev/dsh-workspace/src/entity
+ * @module @liusiqi-dev/sqh-workspace/src/entity
  */
 
 import { stat } from 'node:fs/promises'
-import type { SessionHeader, SessionId } from '@liusiqi-dev/dsh-session'
-import type { KvTable } from '@liusiqi-dev/dsh-storage-domain'
+import type { SessionHeader, SessionId } from '@liusiqi-dev/sqh-session'
+import type { KvTable } from '@liusiqi-dev/sqh-storage-domain'
 import type { WorkspaceRecord } from './spec.ts'
 import type { Workspace, WorkspaceId } from './types.ts'
 import { realpathNormalize } from './paths.ts'

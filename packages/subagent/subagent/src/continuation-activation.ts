@@ -6,7 +6,7 @@
  * every mutable residency decision to this registry, so delivery and teardown
  * share one child lock and one Activation map.
  *
- * @module @liusiqi-dev/dsh-subagent/continuation-activation
+ * @module @liusiqi-dev/sqh-subagent/continuation-activation
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
@@ -15,16 +15,16 @@ import type {
   AgentHandle,
   AgentOptions,
   CreateAgentOptions,
-} from '@liusiqi-dev/dsh-agent'
-import { errorChain } from '@liusiqi-dev/dsh-llm'
-import type { MessageId } from '@liusiqi-dev/dsh-llm'
+} from '@liusiqi-dev/sqh-agent'
+import { errorChain } from '@liusiqi-dev/sqh-llm'
+import type { MessageId } from '@liusiqi-dev/sqh-llm'
 import type {
   SessionEvent,
   SessionId,
   SessionLogOffset as SessionLogOffsetType,
   UserMessage,
-} from '@liusiqi-dev/dsh-session'
-import type { ToolRestriction } from '@liusiqi-dev/dsh-tools'
+} from '@liusiqi-dev/sqh-session'
+import type { ToolRestriction } from '@liusiqi-dev/sqh-tools'
 import {
   appendDelegatedPolicyOverrides,
   applyChildComposition,

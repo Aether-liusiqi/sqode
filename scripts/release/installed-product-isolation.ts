@@ -56,7 +56,7 @@ export function verifyInstalledProductIsolation(directory: string, optionalBundl
 }
 
 function rejectExperimental(name: string, chain: readonly string[]): void {
-  if (name.startsWith('@liusiqi-dev/dsh-experimental-')) {
+  if (name.startsWith('@liusiqi-dev/sqh-experimental-')) {
     throw new Error(`default product includes an experimental package: ${chain.join(' -> ')}`)
   }
 }

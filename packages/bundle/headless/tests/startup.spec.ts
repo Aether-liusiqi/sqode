@@ -11,7 +11,7 @@ import { pathToFileURL } from 'node:url'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import Include from '@liusiqi-dev/cordis-plugin-include'
-import { internals as cmdlineInternals, provideCmdline } from '@liusiqi-dev/dsh-cmdline'
+import { internals as cmdlineInternals, provideCmdline } from '@liusiqi-dev/sqh-cmdline'
 import { afterEach, describe, expect, it } from 'vitest'
 import {
   apply,

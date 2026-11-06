@@ -1,16 +1,16 @@
-import { imageOffloadProjection } from '@liusiqi-dev/dsh-compaction-image-offload/projection'
+import { imageOffloadProjection } from '@liusiqi-dev/sqh-compaction-image-offload/projection'
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import {
   LlmRuntime, LlmAdapter, createMessage, createToolResultMessage, createUserMessage, projectFilesToText, ToolCallId,
-} from '@liusiqi-dev/dsh-llm'
-import type { GenerateOptions, LlmImageRequestPricing, Message, StreamChunk, TokenUsage, UserMessage } from '@liusiqi-dev/dsh-llm'
-import { AttachmentId } from '@liusiqi-dev/dsh-attachment'
-import type { FileAttachmentRef, ImageAttachmentRef } from '@liusiqi-dev/dsh-attachment'
-import { Session, SessionId, canonicalHeader } from '@liusiqi-dev/dsh-session'
-import type { EpochHeader } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import TokenMeter from '@liusiqi-dev/dsh-token-meter'
+} from '@liusiqi-dev/sqh-llm'
+import type { GenerateOptions, LlmImageRequestPricing, Message, StreamChunk, TokenUsage, UserMessage } from '@liusiqi-dev/sqh-llm'
+import { AttachmentId } from '@liusiqi-dev/sqh-attachment'
+import type { FileAttachmentRef, ImageAttachmentRef } from '@liusiqi-dev/sqh-attachment'
+import { Session, SessionId, canonicalHeader } from '@liusiqi-dev/sqh-session'
+import type { EpochHeader } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import TokenMeter from '@liusiqi-dev/sqh-token-meter'
 import { estimateContent, estimateMessage } from '../src/estimate.ts'
 
 /** Adapter double declaring fixed per-occurrence image prices for one route. */

@@ -1,21 +1,21 @@
 import { Context } from '@liusiqi-dev/cordis'
 import { afterEach, describe, expect, it, onTestFinished, vi } from 'vitest'
-import { SessionSeq } from '@liusiqi-dev/dsh-session/types'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import { createAssistantMessage, LlmAttemptId } from '@liusiqi-dev/dsh-llm'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import { SessionSeq } from '@liusiqi-dev/sqh-session/types'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import { createAssistantMessage, LlmAttemptId } from '@liusiqi-dev/sqh-llm'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import {
   createScope, MutableSessionEventSource,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
 import type {
   ISessions, SessionBinding, SessionEventLike, SessionFace, SessionListState, SessionSnapshot,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
 import {
   ConversationEventRegistry, ConversationNodeAssembler, ConversationViewRegistry, UiConversation,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import type {
   ConversationNodeDefinition, ConversationViewDefinition, ConversationViewNode,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 
 const SESSION_ID = 'resident' as SessionId
 

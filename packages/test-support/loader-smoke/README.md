@@ -3,7 +3,7 @@ description: "Shared subprocess and direct-agent harness for keyless example smo
 kind: "package-library"
 ---
 
-# @liusiqi-dev/dsh-loader-smoke
+# @liusiqi-dev/sqh-loader-smoke
 
 English | [中文](README.zh.md)
 

@@ -10,11 +10,11 @@
  */
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { SlotRegistry } from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import { apply as settingsApply, inject as settingsInject } from '@liusiqi-dev/dsh-client-ui-settings/client'
-import { TestRemote } from '@liusiqi-dev/dsh-client-test-runtime'
-import { apply, inject } from '@liusiqi-dev/dsh-client-locale/client'
-import type { LocaleRuntime } from '@liusiqi-dev/dsh-client-locale/client'
+import { SlotRegistry } from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import { apply as settingsApply, inject as settingsInject } from '@liusiqi-dev/sqh-client-ui-settings/client'
+import { TestRemote } from '@liusiqi-dev/sqh-client-test-runtime'
+import { apply, inject } from '@liusiqi-dev/sqh-client-locale/client'
+import type { LocaleRuntime } from '@liusiqi-dev/sqh-client-locale/client'
 import { LOCALE_SETTINGS_NAMESPACE, LocaleSettingsSchema } from '../src/locale-settings.ts'
 
 /** Boot the plugin over a stub Host settings document. */

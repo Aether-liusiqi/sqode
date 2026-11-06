@@ -98,7 +98,7 @@ await fiber.dispose()
 
 ## Hot replacement (HMR)
 
-With `@liusiqi-dev/dsh-hmr` loaded from `cordis.yml`, editing a plugin source file triggers:
+With `@liusiqi-dev/sqh-hmr` loaded from `cordis.yml`, editing a plugin source file triggers:
 
 1. Unload the old plugin and clean up its registrations.
 2. Load the new code.

@@ -8,11 +8,11 @@
  * background host spawned the child). Only viable when
  * the operator sits at the host's screen; remote deployments compose the
  * browse backend instead.
- * @module @liusiqi-dev/dsh-host-directory-picker-native
+ * @module @liusiqi-dev/sqh-host-directory-picker-native
  */
 
-import { DirectoryPicker } from '@liusiqi-dev/dsh-host-directory-picker'
-import type { DirectoryPickerCapability } from '@liusiqi-dev/dsh-host-directory-picker'
+import { DirectoryPicker } from '@liusiqi-dev/sqh-host-directory-picker'
+import type { DirectoryPickerCapability } from '@liusiqi-dev/sqh-host-directory-picker'
 import { pickNativeDirectory } from './native-picker.ts'
 
 export type { DirectoryPickerInternals, DirectoryPickerRunner } from './native-picker.ts'

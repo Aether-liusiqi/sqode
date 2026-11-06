@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { decodeSeqRanges, encodeSeqRanges, SessionSeq } from '@liusiqi-dev/dsh-session'
+import { decodeSeqRanges, encodeSeqRanges, SessionSeq } from '@liusiqi-dev/sqh-session'
 
 const seqs = (values: readonly number[]) => values.map(SessionSeq)
 

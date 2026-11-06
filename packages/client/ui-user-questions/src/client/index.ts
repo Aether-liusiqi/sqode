@@ -11,20 +11,20 @@
  * the generic question flow. Both use the same carrier and composer seat.
  */
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import type { InboxWireState } from '@liusiqi-dev/dsh-agent/types'
-import type {} from '@liusiqi-dev/dsh-api-remotes/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type {} from '@liusiqi-dev/dsh-client-ui-chat/client'
-import type { ComposerChainProps } from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type { PendingInteractionPublisher } from '@liusiqi-dev/dsh-client-ui-session/client'
-import type { TypertClientEventListener } from '@liusiqi-dev/dsh-typert-protocol'
-import type { AskUserQuestionItem, PendingUserQuestion, UserQuestionProjectionView } from '@liusiqi-dev/dsh-user-questions/types'
+import type { InboxWireState } from '@liusiqi-dev/sqh-agent/types'
+import type {} from '@liusiqi-dev/sqh-api-remotes/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type {} from '@liusiqi-dev/sqh-client-ui-chat/client'
+import type { ComposerChainProps } from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type { PendingInteractionPublisher } from '@liusiqi-dev/sqh-client-ui-session/client'
+import type { TypertClientEventListener } from '@liusiqi-dev/sqh-typert-protocol'
+import type { AskUserQuestionItem, PendingUserQuestion, UserQuestionProjectionView } from '@liusiqi-dev/sqh-user-questions/types'
 // Type-only: pulls the locale plugin's Context merge (ctx.locale).
-import type {} from '@liusiqi-dev/dsh-client-locale/client'
-import type { UserQuestionPanels, UserQuestionRecord } from '@liusiqi-dev/dsh-client-ui-tool/client'
-import type { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import { brandString } from '@liusiqi-dev/dsh-brand'
+import type {} from '@liusiqi-dev/sqh-client-locale/client'
+import type { UserQuestionPanels, UserQuestionRecord } from '@liusiqi-dev/sqh-client-ui-tool/client'
+import type { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import { brandString } from '@liusiqi-dev/sqh-brand'
 import { createWaterfallRequest, PendingQuestion, type QuestionRpcChannel } from './contract/slots.ts'
 import { createQuestionDraftStore } from './draft-store.ts'
 import { QuestionComposer } from './QuestionComposer.tsx'
@@ -37,7 +37,7 @@ export type {
 } from './contract/slots.ts'
 export type { QuestionKey } from './locales.ts'
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** The question composer's copy. */
     question: QuestionKey

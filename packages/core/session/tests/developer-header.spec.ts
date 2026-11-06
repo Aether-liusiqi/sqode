@@ -1,10 +1,10 @@
 /** Tool additions bind to one historical request header across Session lifecycle paths. */
 import { describe, expect, it } from 'vitest'
-import { createDeveloperMessage } from '@liusiqi-dev/dsh-llm'
-import type { ToolSchema } from '@liusiqi-dev/dsh-llm'
-import { Session, SessionId, SessionLogOffset, SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
-import { buildForkSeed } from '@liusiqi-dev/dsh-session/fork'
+import { createDeveloperMessage } from '@liusiqi-dev/sqh-llm'
+import type { ToolSchema } from '@liusiqi-dev/sqh-llm'
+import { Session, SessionId, SessionLogOffset, SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
+import { buildForkSeed } from '@liusiqi-dev/sqh-session/fork'
 import { foldSurface } from '../src/surface.ts'
 
 const first: ToolSchema = { name: 'search', description: 'First', parameters: { type: 'object' } }

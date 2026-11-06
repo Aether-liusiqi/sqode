@@ -5,15 +5,15 @@
 
 import { Context } from '@liusiqi-dev/cordis'
 import { z } from 'zod'
-import { DirectoryPickerError } from '@liusiqi-dev/dsh-host-directory-picker'
+import { DirectoryPickerError } from '@liusiqi-dev/sqh-host-directory-picker'
 import type {
   DirectoryPickerCapabilities, DirectoryPickerErrorCode,
-} from '@liusiqi-dev/dsh-host-directory-picker'
+} from '@liusiqi-dev/sqh-host-directory-picker'
 // The seam owns the listing declaration; the generator requires the reference
 // site to name that package rather than this package's re-export of it.
-import type { DirectoryListing } from '@liusiqi-dev/dsh-host-directory-picker/types'
-import { Remote, RemoteError, TypertRemoteService } from '@liusiqi-dev/dsh-typert-protocol'
-import type { RemoteErrorCode } from '@liusiqi-dev/dsh-typert-protocol'
+import type { DirectoryListing } from '@liusiqi-dev/sqh-host-directory-picker/types'
+import { Remote, RemoteError, TypertRemoteService } from '@liusiqi-dev/sqh-typert-protocol'
+import type { RemoteErrorCode } from '@liusiqi-dev/sqh-typert-protocol'
 
 const createDirectoryRequestSchema = z.object({
   path: z.string(),

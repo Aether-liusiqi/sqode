@@ -3,7 +3,7 @@ description: "面向选择、组合或排查 get_goal、create_goal 与 update_g
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-tool-goal
+# @liusiqi-dev/sqh-tool-goal
 
 [English](README.md) | 中文
 
@@ -43,7 +43,7 @@ kind: "package-reference"
 
 ```yaml
 - id: tool-goal
-  name: '@liusiqi-dev/dsh-tool-goal'
+  name: '@liusiqi-dev/sqh-tool-goal'
   config:
     blockedAfterConsecutiveRounds: 3
 ```

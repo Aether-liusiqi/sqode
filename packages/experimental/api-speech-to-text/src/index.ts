@@ -1,11 +1,11 @@
 /** Authenticated, cancellation-aware Client access to the speech capability. */
 import { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { Remote, RemoteError, TypertRemoteService } from '@liusiqi-dev/dsh-typert-protocol'
-import type {} from '@liusiqi-dev/dsh-experimental-speech-to-text'
-import type { SpeechPreparationOptions, SpeechProviderId, SpeechSelectionPatch, Transcript } from '@liusiqi-dev/dsh-experimental-speech-to-text/types'
+import { Remote, RemoteError, TypertRemoteService } from '@liusiqi-dev/sqh-typert-protocol'
+import type {} from '@liusiqi-dev/sqh-experimental-speech-to-text'
+import type { SpeechPreparationOptions, SpeechProviderId, SpeechSelectionPatch, Transcript } from '@liusiqi-dev/sqh-experimental-speech-to-text/types'
 import type { SpeechCatalog, TranscriptionRequest } from './types.ts'
-import { validateWave } from '@liusiqi-dev/dsh-experimental-speech-to-text/wave'
+import { validateWave } from '@liusiqi-dev/sqh-experimental-speech-to-text/wave'
 
 export type * from './types.ts'
 

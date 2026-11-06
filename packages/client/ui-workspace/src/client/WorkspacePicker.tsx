@@ -12,12 +12,12 @@ import type { ReactNode, RefObject } from 'react'
 import { useCallback, useEffect, useState } from 'react'
 import {
   Button, IconFolderCloseRegular, IconPlusOutlineRegular, Menu, Modal, type MenuEntry,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
 import type {
   WorkspaceId, WorkspaceSnapshot, WorkspaceView,
-} from '@liusiqi-dev/dsh-api-workspace-controller/client'
-import { workspaceDisplayTitle } from '@liusiqi-dev/dsh-api-workspace-controller/default-workspace'
-import type { SnapshotSelectorHook } from '@liusiqi-dev/dsh-client-ui-slots'
+} from '@liusiqi-dev/sqh-api-workspace-controller/client'
+import { workspaceDisplayTitle } from '@liusiqi-dev/sqh-api-workspace-controller/default-workspace'
+import type { SnapshotSelectorHook } from '@liusiqi-dev/sqh-client-ui-slots'
 import type { DirectoryFlowOwnerProps, WorkspacePickerProps } from './contract/slots.ts'
 import css from './WorkspacePicker.module.css'
 

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { LlmAttemptId, createAssistantMessage } from '@liusiqi-dev/dsh-llm'
-import { SessionSeq, type SessionEvent } from '@liusiqi-dev/dsh-session'
+import { LlmAttemptId, createAssistantMessage } from '@liusiqi-dev/sqh-llm'
+import { SessionSeq, type SessionEvent } from '@liusiqi-dev/sqh-session'
 import type {
   SessionAssistantStreamBaseline,
   SessionAssistantStreamFrame,

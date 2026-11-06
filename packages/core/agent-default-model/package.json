@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-agent-default-model",
+  "name": "@liusiqi-dev/sqh-agent-default-model",
   "description": "Default model selection shared by Agent entry points",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,17 +28,17 @@
   "license": "MIT",
   "dependencies": {
     "@liusiqi-dev/schemastery": "workspace:~",
-    "@liusiqi-dev/dsh-config-editor": "workspace:*"
+    "@liusiqi-dev/sqh-config-editor": "workspace:*"
   },
   "peerDependencies": {
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-settings": "workspace:*"
+    "@liusiqi-dev/sqh-settings": "workspace:*"
   }
 }

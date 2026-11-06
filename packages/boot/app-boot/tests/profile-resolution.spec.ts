@@ -134,7 +134,7 @@ function thrownError(callback: () => unknown): Error & {
   throw new Error('expected callback to throw')
 }
 
-function fixture(name = '@liusiqi-dev/dsh-core'): {
+function fixture(name = '@liusiqi-dev/sqh-core'): {
   root: string
   installAnchor: string
   installed: string
@@ -229,7 +229,7 @@ describe('runtime resolution', { concurrent: false }, () => {
   it('computes an immutable runtime resolution without writing profile packages', async () => {
     const f = fixture()
     const resolution = await resolutionOf(f)
-    expect(resolution.entries.find(entry => entry.name === '@liusiqi-dev/dsh-core')).toMatchObject({
+    expect(resolution.entries.find(entry => entry.name === '@liusiqi-dev/sqh-core')).toMatchObject({
       packageDir: f.installed,
       version: '1.0.0',
       declarer: f.installAnchor,
@@ -249,7 +249,7 @@ describe('runtime resolution', { concurrent: false }, () => {
     expect(installationOnly.localPackageNames).toEqual([])
     const registration = installRuntimeInterception(installationOnly)
     registrations.push(registration)
-    expect(createRequire(join(installationOnly.profilesDir, 'entry.cjs'))('@liusiqi-dev/dsh-core'))
+    expect(createRequire(join(installationOnly.profilesDir, 'entry.cjs'))('@liusiqi-dev/sqh-core'))
       .toEqual({ marker: 1 })
   })
 
@@ -355,15 +355,15 @@ describe('runtime resolution', { concurrent: false }, () => {
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
     const require = createRequire(join(f.profile.dir, 'entry.cjs'))
-    expect(require('@liusiqi-dev/dsh-core')).toEqual({ marker: 1 })
-    expect(require.resolve('@liusiqi-dev/dsh-core')).toBe(join(f.installed, 'index.cjs'))
+    expect(require('@liusiqi-dev/sqh-core')).toEqual({ marker: 1 })
+    expect(require.resolve('@liusiqi-dev/sqh-core')).toBe(join(f.installed, 'index.cjs'))
     const parent = pathToFileURL(join(f.profile.dir, 'entry.mjs')).href
-    expect(resolveFrom('@liusiqi-dev/dsh-core', parent)).toBe(pathToFileURL(join(f.installed, 'index.js')).href)
-    expect(resolveFrom('@liusiqi-dev/dsh-core', parent, { type: 'javascript' }))
+    expect(resolveFrom('@liusiqi-dev/sqh-core', parent)).toBe(pathToFileURL(join(f.installed, 'index.js')).href)
+    expect(resolveFrom('@liusiqi-dev/sqh-core', parent, { type: 'javascript' }))
       .toBe(pathToFileURL(join(f.installed, 'index.js')).href)
-    expect(resolveFrom('@liusiqi-dev/dsh-core', parent)).toBe(pathToFileURL(join(f.installed, 'index.js')).href)
-    expect(import.meta.resolve('@liusiqi-dev/dsh-core', parent)).toBe(pathToFileURL(join(f.installed, 'index.js')).href)
-    expect(await importFrom('@liusiqi-dev/dsh-core', parent)).toMatchObject({ marker: 1 })
+    expect(resolveFrom('@liusiqi-dev/sqh-core', parent)).toBe(pathToFileURL(join(f.installed, 'index.js')).href)
+    expect(import.meta.resolve('@liusiqi-dev/sqh-core', parent)).toBe(pathToFileURL(join(f.installed, 'index.js')).href)
+    expect(await importFrom('@liusiqi-dev/sqh-core', parent)).toMatchObject({ marker: 1 })
   })
 
   it('routes a scoped CommonJS package through its containing node_modules directory', async () => {
@@ -393,7 +393,7 @@ describe('runtime resolution', { concurrent: false }, () => {
     const profileDir = join(f.root, 'application-profile')
     file(join(profileDir, 'package.json'), JSON.stringify({ name: 'application-profile', private: true }))
     // The first ancestor node_modules above the profile directory is the interception layer.
-    pkg(join(f.root, 'node_modules', '@liusiqi-dev/dsh-core'), '@liusiqi-dev/dsh-core', 2)
+    pkg(join(f.root, 'node_modules', '@liusiqi-dev/sqh-core'), '@liusiqi-dev/sqh-core', 2)
     const profile = {
       ...f.profile,
       dir: profileDir,
@@ -407,39 +407,39 @@ describe('runtime resolution', { concurrent: false }, () => {
     const registration = installRuntimeInterception(resolution)
     registrations.push(registration)
     const require = createRequire(join(profileDir, 'entry.cjs'))
-    expect(require('@liusiqi-dev/dsh-core')).toEqual({ marker: 1 })
-    expect(require.resolve('@liusiqi-dev/dsh-core', { paths: [profileDir] }))
-      .toBe(join(f.root, 'node_modules', '@liusiqi-dev/dsh-core', 'index.cjs'))
+    expect(require('@liusiqi-dev/sqh-core')).toEqual({ marker: 1 })
+    expect(require.resolve('@liusiqi-dev/sqh-core', { paths: [profileDir] }))
+      .toBe(join(f.root, 'node_modules', '@liusiqi-dev/sqh-core', 'index.cjs'))
     const parent = pathToFileURL(join(profileDir, 'entry.mjs')).href
-    expect(resolveFrom('@liusiqi-dev/dsh-core', parent)).toBe(pathToFileURL(join(f.installed, 'index.js')).href)
-    expect(await importFrom('@liusiqi-dev/dsh-core', parent)).toMatchObject({ marker: 1 })
-    expect(registration.packageDir('@liusiqi-dev/dsh-core', parent)).toBe(f.installed)
-    expect(createRequire(join(f.root, 'outside.cjs'))('@liusiqi-dev/dsh-core')).toEqual({ marker: 2 })
+    expect(resolveFrom('@liusiqi-dev/sqh-core', parent)).toBe(pathToFileURL(join(f.installed, 'index.js')).href)
+    expect(await importFrom('@liusiqi-dev/sqh-core', parent)).toMatchObject({ marker: 1 })
+    expect(registration.packageDir('@liusiqi-dev/sqh-core', parent)).toBe(f.installed)
+    expect(createRequire(join(f.root, 'outside.cjs'))('@liusiqi-dev/sqh-core')).toEqual({ marker: 2 })
   })
 
   it('does not reuse a default route for explicit CommonJS paths', async () => {
     const f = fixture()
     const alternative = join(f.root, 'alternative')
-    const alternativePackage = join(alternative, 'node_modules', '@liusiqi-dev/dsh-core')
-    pkg(alternativePackage, '@liusiqi-dev/dsh-core', 2)
+    const alternativePackage = join(alternative, 'node_modules', '@liusiqi-dev/sqh-core')
+    pkg(alternativePackage, '@liusiqi-dev/sqh-core', 2)
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
     const require = createRequire(join(f.profile.dir, 'entry.cjs'))
-    expect(require.resolve('@liusiqi-dev/dsh-core')).toBe(join(f.installed, 'index.cjs'))
-    expect(require.resolve('@liusiqi-dev/dsh-core', { paths: [alternative] })).toBe(join(alternativePackage, 'index.cjs'))
-    expect(thrownError(() => require.resolve('@liusiqi-dev/dsh-core', { paths: [f.profile.dir] })))
+    expect(require.resolve('@liusiqi-dev/sqh-core')).toBe(join(f.installed, 'index.cjs'))
+    expect(require.resolve('@liusiqi-dev/sqh-core', { paths: [alternative] })).toBe(join(alternativePackage, 'index.cjs'))
+    expect(thrownError(() => require.resolve('@liusiqi-dev/sqh-core', { paths: [f.profile.dir] })))
       .toMatchObject({ code: 'MODULE_NOT_FOUND' })
-    expect(thrownError(() => require.resolve('@liusiqi-dev/dsh-core', {
+    expect(thrownError(() => require.resolve('@liusiqi-dev/sqh-core', {
       paths: [join(f.root, 'missing'), f.profile.dir],
     }))).toMatchObject({ code: 'MODULE_NOT_FOUND' })
     const relative = join(f.profile.dir, 'relative.cjs')
     file(relative, '')
     expect(require.resolve('./relative.cjs', { paths: [f.profile.dir] })).toBe(relative)
     const invalid = join(f.root, 'invalid')
-    file(join(invalid, 'node_modules', '@liusiqi-dev/dsh-core', 'package.json'), '{')
-    expect(() => { require.resolve('@liusiqi-dev/dsh-core', { paths: [invalid, f.profile.dir] }) })
+    file(join(invalid, 'node_modules', '@liusiqi-dev/sqh-core', 'package.json'), '{')
+    expect(() => { require.resolve('@liusiqi-dev/sqh-core', { paths: [invalid, f.profile.dir] }) })
       .toThrow(/Invalid package config/u)
-    expect(require.resolve('@liusiqi-dev/dsh-core')).toBe(join(f.installed, 'index.cjs'))
+    expect(require.resolve('@liusiqi-dev/sqh-core')).toBe(join(f.installed, 'index.cjs'))
   })
 
   it('keeps earlier explicit CommonJS paths ahead of a profile-local failure', async () => {
@@ -449,33 +449,33 @@ describe('runtime resolution', { concurrent: false }, () => {
       profile: f.profile,
       home: f.root,
     })
-    const local = join(f.profile.dir, 'node_modules', '@liusiqi-dev/dsh-core')
+    const local = join(f.profile.dir, 'node_modules', '@liusiqi-dev/sqh-core')
     file(join(local, 'package.json'), JSON.stringify({
-      name: '@liusiqi-dev/dsh-core', version: '2.0.0', exports: './missing.cjs',
+      name: '@liusiqi-dev/sqh-core', version: '2.0.0', exports: './missing.cjs',
     }))
     const alternative = join(f.root, 'alternative')
-    const selected = join(alternative, 'node_modules', '@liusiqi-dev/dsh-core', 'index.cjs')
-    pkg(dirname(selected), '@liusiqi-dev/dsh-core', 3)
+    const selected = join(alternative, 'node_modules', '@liusiqi-dev/sqh-core', 'index.cjs')
+    pkg(dirname(selected), '@liusiqi-dev/sqh-core', 3)
     const require = createRequire(join(f.profile.dir, 'entry.cjs'))
     const paths = [alternative, f.profile.dir]
-    expect(require.resolve('@liusiqi-dev/dsh-core', { paths })).toBe(selected)
+    expect(require.resolve('@liusiqi-dev/sqh-core', { paths })).toBe(selected)
 
     const registration = installRuntimeInterception(resolution)
     registrations.push(registration)
-    expect(require.resolve('@liusiqi-dev/dsh-core', { paths })).toBe(selected)
+    expect(require.resolve('@liusiqi-dev/sqh-core', { paths })).toBe(selected)
   })
 
   it('preserves a missing legacy main error before an explicit profile path', async () => {
     const f = fixture()
     const invalid = join(f.root, 'invalid')
-    const selected = join(invalid, 'node_modules', '@liusiqi-dev/dsh-core')
-    file(join(selected, 'package.json'), JSON.stringify({ name: '@liusiqi-dev/dsh-core', main: './missing.cjs' }))
+    const selected = join(invalid, 'node_modules', '@liusiqi-dev/sqh-core')
+    file(join(selected, 'package.json'), JSON.stringify({ name: '@liusiqi-dev/sqh-core', main: './missing.cjs' }))
     const require = createRequire(join(f.profile.dir, 'entry.cjs'))
     const paths = [invalid, f.profile.dir]
-    const nativeError = thrownError(() => require.resolve('@liusiqi-dev/dsh-core', { paths }))
+    const nativeError = thrownError(() => require.resolve('@liusiqi-dev/sqh-core', { paths }))
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
-    const runtimeError = thrownError(() => require.resolve('@liusiqi-dev/dsh-core', { paths }))
+    const runtimeError = thrownError(() => require.resolve('@liusiqi-dev/sqh-core', { paths }))
 
     expect(runtimeError).toMatchObject({
       code: nativeError.code,
@@ -509,18 +509,18 @@ describe('runtime resolution', { concurrent: false }, () => {
 
   it('preserves a missing legacy main error for explicit paths when a runtime entry is unavailable', async () => {
     const f = fixture()
-    const selected = join(f.root, 'node_modules', '@liusiqi-dev/dsh-core')
-    file(join(selected, 'package.json'), JSON.stringify({ name: '@liusiqi-dev/dsh-core', main: './missing.cjs' }))
+    const selected = join(f.root, 'node_modules', '@liusiqi-dev/sqh-core')
+    file(join(selected, 'package.json'), JSON.stringify({ name: '@liusiqi-dev/sqh-core', main: './missing.cjs' }))
     const alternative = join(f.root, 'alternative')
-    pkg(join(alternative, 'node_modules', '@liusiqi-dev/dsh-core'), '@liusiqi-dev/dsh-core', 2)
+    pkg(join(alternative, 'node_modules', '@liusiqi-dev/sqh-core'), '@liusiqi-dev/sqh-core', 2)
     const resolution = await resolutionOf(f)
     rmSync(f.installed, { recursive: true })
     const require = createRequire(join(f.profile.dir, 'entry.cjs'))
     const paths = [f.profile.dir, alternative]
-    const nativeError = thrownError(() => require.resolve('@liusiqi-dev/dsh-core', { paths }))
+    const nativeError = thrownError(() => require.resolve('@liusiqi-dev/sqh-core', { paths }))
     const registration = installRuntimeInterception(resolution)
     registrations.push(registration)
-    const runtimeError = thrownError(() => require.resolve('@liusiqi-dev/dsh-core', { paths }))
+    const runtimeError = thrownError(() => require.resolve('@liusiqi-dev/sqh-core', { paths }))
 
     expect(runtimeError).toMatchObject({
       code: nativeError.code,
@@ -535,10 +535,10 @@ describe('runtime resolution', { concurrent: false }, () => {
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
       name: 'dsh-profile-web',
       private: true,
-      dependencies: { '@liusiqi-dev/dsh-core': '*', 'linked-local': '*' },
+      dependencies: { '@liusiqi-dev/sqh-core': '*', 'linked-local': '*' },
     }))
-    const localResolution = join(f.profile.dir, 'node_modules', '@liusiqi-dev/dsh-core')
-    pkg(localResolution, '@liusiqi-dev/dsh-core', 2)
+    const localResolution = join(f.profile.dir, 'node_modules', '@liusiqi-dev/sqh-core')
+    pkg(localResolution, '@liusiqi-dev/sqh-core', 2)
     const linkedLocal = join(f.root, 'linked-local')
     pkg(linkedLocal, 'linked-local', 3)
     symlinkSync(
@@ -547,16 +547,16 @@ describe('runtime resolution', { concurrent: false }, () => {
       process.platform === 'win32' ? 'junction' : 'dir',
     )
     const resolution = await resolutionOf(f)
-    expect(resolution.localPackageNames).toEqual(['@liusiqi-dev/dsh-core', 'linked-local'])
+    expect(resolution.localPackageNames).toEqual(['@liusiqi-dev/sqh-core', 'linked-local'])
     const registration = installRuntimeInterception(resolution)
     registrations.push(registration)
     const require = createRequire(join(f.profile.dir, 'entry.cjs'))
-    expect(require('@liusiqi-dev/dsh-core')).toEqual({ marker: 2 })
-    expect(require.resolve('@liusiqi-dev/dsh-core', { paths: [f.profile.dir] }))
+    expect(require('@liusiqi-dev/sqh-core')).toEqual({ marker: 2 })
+    expect(require.resolve('@liusiqi-dev/sqh-core', { paths: [f.profile.dir] }))
       .toBe(join(localResolution, 'index.cjs'))
     const parent = pathToFileURL(join(f.profile.dir, 'entry.mjs')).href
-    expect(resolveFrom('@liusiqi-dev/dsh-core', parent)).toBe(
-      pathToFileURL(join(f.profile.dir, 'node_modules', '@liusiqi-dev/dsh-core', 'index.js')).href,
+    expect(resolveFrom('@liusiqi-dev/sqh-core', parent)).toBe(
+      pathToFileURL(join(f.profile.dir, 'node_modules', '@liusiqi-dev/sqh-core', 'index.js')).href,
     )
   })
 
@@ -567,7 +567,7 @@ describe('runtime resolution', { concurrent: false }, () => {
       version: '0.0.0',
       type: 'module',
       exports: { import: './index.js', require: './index.cjs' },
-      dependencies: { '@liusiqi-dev/dsh-core': '*', 'real-name': '*' },
+      dependencies: { '@liusiqi-dev/sqh-core': '*', 'real-name': '*' },
     }))
     const installedRealName = join(dirname(f.installAnchor), 'node_modules', 'real-name')
     pkg(installedRealName, 'real-name', 7)
@@ -592,9 +592,9 @@ describe('runtime resolution', { concurrent: false }, () => {
     )
     const invalidScope = join(f.profile.dir, 'node_modules', 'invalid-scope')
     file(join(invalidScope, 'package.json'), '{')
-    expect(() => createRequire(join(invalidScope, 'inside.cjs')).resolve('@liusiqi-dev/dsh-core'))
+    expect(() => createRequire(join(invalidScope, 'inside.cjs')).resolve('@liusiqi-dev/sqh-core'))
       .toThrow(/Invalid package config/u)
-    expect(() => resolveFrom('@liusiqi-dev/dsh-core', pathToFileURL(join(invalidScope, 'inside.mjs')).href))
+    expect(() => resolveFrom('@liusiqi-dev/sqh-core', pathToFileURL(join(invalidScope, 'inside.mjs')).href))
       .toThrow(/Invalid package config/u)
 
     const registration = installRuntimeInterception(resolution)
@@ -604,9 +604,9 @@ describe('runtime resolution', { concurrent: false }, () => {
     expect(resolveFrom('real-name', pathToFileURL(join(alias, 'inside-runtime.mjs')).href)).toBe(
       pathToFileURL(join(alias, 'index.js')).href,
     )
-    expect(() => createRequire(join(invalidScope, 'inside.cjs')).resolve('@liusiqi-dev/dsh-core'))
+    expect(() => createRequire(join(invalidScope, 'inside.cjs')).resolve('@liusiqi-dev/sqh-core'))
       .toThrow(/Invalid package config/u)
-    expect(() => resolveFrom('@liusiqi-dev/dsh-core', pathToFileURL(join(invalidScope, 'inside.mjs')).href))
+    expect(() => resolveFrom('@liusiqi-dev/sqh-core', pathToFileURL(join(invalidScope, 'inside.mjs')).href))
       .toThrow(/Invalid package config/u)
   })
 
@@ -615,7 +615,7 @@ describe('runtime resolution', { concurrent: false }, () => {
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
       name: 'dsh-profile-web',
       private: true,
-      imports: { '#@liusiqi-dev/dsh-core': '@liusiqi-dev/dsh-core' },
+      imports: { '#@liusiqi-dev/sqh-core': '@liusiqi-dev/sqh-core' },
     }))
     const resolution = await createRuntimeResolution({
       installAnchor: f.installAnchor,
@@ -625,14 +625,14 @@ describe('runtime resolution', { concurrent: false }, () => {
     const nested = join(f.profile.dir, 'nested')
     const require = createRequire(join(nested, 'entry.cjs'))
     const nativeParent = pathToFileURL(join(nested, 'entry-native.mjs')).href
-    expect(() => require.resolve('#@liusiqi-dev/dsh-core')).toThrow(/Cannot find module/u)
-    expect(() => resolveFrom('#@liusiqi-dev/dsh-core', nativeParent)).toThrow(/Cannot find package/u)
+    expect(() => require.resolve('#@liusiqi-dev/sqh-core')).toThrow(/Cannot find module/u)
+    expect(() => resolveFrom('#@liusiqi-dev/sqh-core', nativeParent)).toThrow(/Cannot find package/u)
 
     const registration = installRuntimeInterception(resolution)
     registrations.push(registration)
     const runtimeParent = pathToFileURL(join(nested, 'entry-runtime.mjs')).href
-    expect(require.resolve('#@liusiqi-dev/dsh-core')).toBe(join(f.installed, 'index.cjs'))
-    expect(resolveFrom('#@liusiqi-dev/dsh-core', runtimeParent)).toBe(pathToFileURL(join(f.installed, 'index.js')).href)
+    expect(require.resolve('#@liusiqi-dev/sqh-core')).toBe(join(f.installed, 'index.cjs'))
+    expect(resolveFrom('#@liusiqi-dev/sqh-core', runtimeParent)).toBe(pathToFileURL(join(f.installed, 'index.js')).href)
   })
 
   it('imports package aliases through the resolution and reports the original importer', async () => {
@@ -640,7 +640,7 @@ describe('runtime resolution', { concurrent: false }, () => {
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
       name: 'dsh-profile-web',
       private: true,
-      imports: { '#library': '@liusiqi-dev/dsh-core', '#missing': '@liusiqi-dev/dsh-core/missing' },
+      imports: { '#library': '@liusiqi-dev/sqh-core', '#missing': '@liusiqi-dev/sqh-core/missing' },
     }))
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
@@ -713,16 +713,16 @@ describe('runtime resolution', { concurrent: false }, () => {
   it('does not inherit package imports across node_modules', async () => {
     const f = fixture()
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
-      name: 'dsh-profile-web', private: true, imports: { '#@liusiqi-dev/dsh-core': '@liusiqi-dev/dsh-core' },
+      name: 'dsh-profile-web', private: true, imports: { '#@liusiqi-dev/sqh-core': '@liusiqi-dev/sqh-core' },
     }))
     const nested = join(f.profile.dir, 'node_modules', 'manifestless', 'entry.cjs')
     file(nested, '')
     const require = createRequire(nested)
-    const nativeMessage = thrownMessage(() => require.resolve('#@liusiqi-dev/dsh-core'))
+    const nativeMessage = thrownMessage(() => require.resolve('#@liusiqi-dev/sqh-core'))
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
 
-    expect(thrownMessage(() => require.resolve('#@liusiqi-dev/dsh-core'))).toBe(nativeMessage)
+    expect(thrownMessage(() => require.resolve('#@liusiqi-dev/sqh-core'))).toBe(nativeMessage)
   })
 
   it('falls through a missing local CommonJS subpath to the resolution', async () => {
@@ -730,27 +730,27 @@ describe('runtime resolution', { concurrent: false }, () => {
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
       name: 'dsh-profile-web',
       private: true,
-      dependencies: { '@liusiqi-dev/dsh-core': '*' },
+      dependencies: { '@liusiqi-dev/sqh-core': '*' },
     }))
     file(join(f.installed, 'package.json'), JSON.stringify({
-      name: '@liusiqi-dev/dsh-core', version: '1.0.0', type: 'module', main: './index.cjs',
+      name: '@liusiqi-dev/sqh-core', version: '1.0.0', type: 'module', main: './index.cjs',
     }))
     file(join(f.installed, 'only-install.cjs'), 'module.exports = { marker: 8 }\n')
     file(join(f.installed, 'legacy-install.cjs'), 'module.exports = { marker: 9 }\n')
-    const local = join(f.profile.dir, 'node_modules', '@liusiqi-dev/dsh-core')
+    const local = join(f.profile.dir, 'node_modules', '@liusiqi-dev/sqh-core')
     file(join(local, 'package.json'), JSON.stringify({
-      name: '@liusiqi-dev/dsh-core', version: '2.0.0', type: 'module', main: './index.cjs',
+      name: '@liusiqi-dev/sqh-core', version: '2.0.0', type: 'module', main: './index.cjs',
     }))
     file(join(local, 'index.cjs'), 'module.exports = { marker: 2 }\n')
     const resolution = await resolutionOf(f)
-    expect(resolution.localPackageNames).toEqual(['@liusiqi-dev/dsh-core'])
+    expect(resolution.localPackageNames).toEqual(['@liusiqi-dev/sqh-core'])
     const registration = installRuntimeInterception(resolution)
     registrations.push(registration)
 
-    expect(createRequire(join(f.profile.dir, 'entry.cjs')).resolve('@liusiqi-dev/dsh-core/only-install.cjs'))
+    expect(createRequire(join(f.profile.dir, 'entry.cjs')).resolve('@liusiqi-dev/sqh-core/only-install.cjs'))
       .toBe(join(f.installed, 'only-install.cjs'))
     rmSync(join(local, 'package.json'))
-    expect(createRequire(join(f.profile.dir, 'entry.cjs')).resolve('@liusiqi-dev/dsh-core/legacy-install.cjs'))
+    expect(createRequire(join(f.profile.dir, 'entry.cjs')).resolve('@liusiqi-dev/sqh-core/legacy-install.cjs'))
       .toBe(join(f.installed, 'legacy-install.cjs'))
   })
 
@@ -759,16 +759,16 @@ describe('runtime resolution', { concurrent: false }, () => {
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
       name: 'dsh-profile-web',
       private: true,
-      dependencies: { '@liusiqi-dev/dsh-core': '*' },
+      dependencies: { '@liusiqi-dev/sqh-core': '*' },
     }))
     file(join(f.installed, 'package.json'), JSON.stringify({
-      name: '@liusiqi-dev/dsh-core', version: '1.0.0', type: 'module', exports: null,
+      name: '@liusiqi-dev/sqh-core', version: '1.0.0', type: 'module', exports: null,
     }))
     const installedSubpath = join(f.installed, 'only-install.cjs')
     file(installedSubpath, 'module.exports = { marker: 8 }\n')
-    const local = join(f.profile.dir, 'node_modules', '@liusiqi-dev/dsh-core')
+    const local = join(f.profile.dir, 'node_modules', '@liusiqi-dev/sqh-core')
     file(join(local, 'package.json'), JSON.stringify({
-      name: '@liusiqi-dev/dsh-core', version: '2.0.0', type: 'module', exports: null,
+      name: '@liusiqi-dev/sqh-core', version: '2.0.0', type: 'module', exports: null,
     }))
     const resolution = await createRuntimeResolution({
       installAnchor: f.installAnchor,
@@ -776,17 +776,17 @@ describe('runtime resolution', { concurrent: false }, () => {
       home: f.root,
     })
     const require = createRequire(join(local, 'entry.cjs'))
-    expect(() => require.resolve('@liusiqi-dev/dsh-core/only-install.cjs')).toThrow(/Cannot find module/u)
+    expect(() => require.resolve('@liusiqi-dev/sqh-core/only-install.cjs')).toThrow(/Cannot find module/u)
 
     const registration = installRuntimeInterception(resolution)
     registrations.push(registration)
-    expect(require.resolve('@liusiqi-dev/dsh-core/only-install.cjs')).toBe(installedSubpath)
+    expect(require.resolve('@liusiqi-dev/sqh-core/only-install.cjs')).toBe(installedSubpath)
   })
 
   it('stops a local CommonJS probe before the resolution fallback position', async () => {
     const f = fixture()
     file(join(f.installed, 'package.json'), JSON.stringify({
-      name: '@liusiqi-dev/dsh-core', version: '1.0.0', type: 'module', main: './index.cjs',
+      name: '@liusiqi-dev/sqh-core', version: '1.0.0', type: 'module', main: './index.cjs',
     }))
     const installedSubpath = join(f.installed, 'only-install.cjs')
     file(installedSubpath, 'module.exports = { marker: 8 }\n')
@@ -795,21 +795,21 @@ describe('runtime resolution', { concurrent: false }, () => {
       profile: f.profile,
       home: f.root,
     })
-    file(join(f.profile.dir, 'node_modules', '@liusiqi-dev/dsh-core', 'package.json'), JSON.stringify({
-      name: '@liusiqi-dev/dsh-core', version: '2.0.0', main: './index.cjs',
+    file(join(f.profile.dir, 'node_modules', '@liusiqi-dev/sqh-core', 'package.json'), JSON.stringify({
+      name: '@liusiqi-dev/sqh-core', version: '2.0.0', main: './index.cjs',
     }))
-    file(join(f.profile.dir, 'node_modules', '@liusiqi-dev/dsh-core', 'index.cjs'), 'module.exports = {}\n')
-    file(join(f.root, 'node_modules', '@liusiqi-dev/dsh-core', 'package.json'), JSON.stringify({
-      name: '@liusiqi-dev/dsh-core', version: '3.0.0', exports: './index.cjs',
+    file(join(f.profile.dir, 'node_modules', '@liusiqi-dev/sqh-core', 'index.cjs'), 'module.exports = {}\n')
+    file(join(f.root, 'node_modules', '@liusiqi-dev/sqh-core', 'package.json'), JSON.stringify({
+      name: '@liusiqi-dev/sqh-core', version: '3.0.0', exports: './index.cjs',
     }))
-    file(join(f.root, 'node_modules', '@liusiqi-dev/dsh-core', 'index.cjs'), 'module.exports = {}\n')
+    file(join(f.root, 'node_modules', '@liusiqi-dev/sqh-core', 'index.cjs'), 'module.exports = {}\n')
     const require = createRequire(join(f.profile.dir, 'entry.cjs'))
-    expect(thrownError(() => require.resolve('@liusiqi-dev/dsh-core/only-install.cjs')))
+    expect(thrownError(() => require.resolve('@liusiqi-dev/sqh-core/only-install.cjs')))
       .toMatchObject({ code: 'ERR_PACKAGE_PATH_NOT_EXPORTED' })
 
     const registration = installRuntimeInterception(resolution)
     registrations.push(registration)
-    expect(require.resolve('@liusiqi-dev/dsh-core/only-install.cjs')).toBe(installedSubpath)
+    expect(require.resolve('@liusiqi-dev/sqh-core/only-install.cjs')).toBe(installedSubpath)
   })
 
   it('observes a profile-local package installed after an earlier miss', async () => {
@@ -866,59 +866,59 @@ describe('runtime resolution', { concurrent: false }, () => {
 
   it('keeps a legacy CommonJS package without a manifest ahead of the resolution', async () => {
     const f = fixture()
-    file(join(f.profile.dir, 'node_modules', '@liusiqi-dev/dsh-core', 'index.js'), 'module.exports = { marker: 2 }\n')
+    file(join(f.profile.dir, 'node_modules', '@liusiqi-dev/sqh-core', 'index.js'), 'module.exports = { marker: 2 }\n')
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
-    expect(createRequire(join(f.profile.dir, 'entry.cjs'))('@liusiqi-dev/dsh-core')).toEqual({ marker: 2 })
+    expect(createRequire(join(f.profile.dir, 'entry.cjs'))('@liusiqi-dev/sqh-core')).toEqual({ marker: 2 })
   })
 
   it('keeps a manifestless local CommonJS subpath ahead of the resolution', async () => {
     const f = fixture()
-    const localSubpath = join(f.profile.dir, 'node_modules', '@liusiqi-dev/dsh-core', 'sub.cjs')
+    const localSubpath = join(f.profile.dir, 'node_modules', '@liusiqi-dev/sqh-core', 'sub.cjs')
     file(localSubpath, 'module.exports = { marker: 2 }\n')
     const require = createRequire(join(f.profile.dir, 'entry.cjs'))
-    expect(require.resolve('@liusiqi-dev/dsh-core/sub.cjs')).toBe(localSubpath)
+    expect(require.resolve('@liusiqi-dev/sqh-core/sub.cjs')).toBe(localSubpath)
 
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
-    expect(require.resolve('@liusiqi-dev/dsh-core/sub.cjs')).toBe(localSubpath)
+    expect(require.resolve('@liusiqi-dev/sqh-core/sub.cjs')).toBe(localSubpath)
   })
 
   it('keeps a local extensionless CommonJS package ahead of the resolution', async () => {
     const f = fixture()
-    const local = join(f.profile.dir, 'node_modules', '@liusiqi-dev/dsh-core')
+    const local = join(f.profile.dir, 'node_modules', '@liusiqi-dev/sqh-core')
     file(local, 'module.exports = { marker: 2 }\n')
     const require = createRequire(join(f.profile.dir, 'entry.cjs'))
-    expect(require.resolve('@liusiqi-dev/dsh-core')).toBe(local)
+    expect(require.resolve('@liusiqi-dev/sqh-core')).toBe(local)
 
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
-    expect(require.resolve('@liusiqi-dev/dsh-core')).toBe(local)
+    expect(require.resolve('@liusiqi-dev/sqh-core')).toBe(local)
   })
 
   it('keeps a local legacy main outside its package directory ahead of the resolution', async () => {
     const f = fixture()
-    const local = join(f.profile.dir, 'node_modules', '@liusiqi-dev/dsh-core')
+    const local = join(f.profile.dir, 'node_modules', '@liusiqi-dev/sqh-core')
     const outside = join(f.profile.dir, 'node_modules', '@liusiqi-dev', 'outside.cjs')
-    file(join(local, 'package.json'), JSON.stringify({ name: '@liusiqi-dev/dsh-core', main: '../outside.cjs' }))
+    file(join(local, 'package.json'), JSON.stringify({ name: '@liusiqi-dev/sqh-core', main: '../outside.cjs' }))
     file(outside, 'module.exports = { marker: 2 }\n')
     const require = createRequire(join(f.profile.dir, 'entry.cjs'))
-    expect(require.resolve('@liusiqi-dev/dsh-core')).toBe(outside)
+    expect(require.resolve('@liusiqi-dev/sqh-core')).toBe(outside)
 
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
-    expect(require.resolve('@liusiqi-dev/dsh-core')).toBe(outside)
+    expect(require.resolve('@liusiqi-dev/sqh-core')).toBe(outside)
   })
 
   it('keeps a missing local legacy main error ahead of the resolution', async () => {
     const f = fixture()
-    const local = join(f.profile.dir, 'node_modules', '@liusiqi-dev/dsh-core')
-    file(join(local, 'package.json'), JSON.stringify({ name: '@liusiqi-dev/dsh-core', main: './missing.cjs' }))
+    const local = join(f.profile.dir, 'node_modules', '@liusiqi-dev/sqh-core')
+    file(join(local, 'package.json'), JSON.stringify({ name: '@liusiqi-dev/sqh-core', main: './missing.cjs' }))
     const require = createRequire(join(f.profile.dir, 'entry.cjs'))
-    const nativeError = thrownError(() => require.resolve('@liusiqi-dev/dsh-core'))
+    const nativeError = thrownError(() => require.resolve('@liusiqi-dev/sqh-core'))
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
-    const runtimeError = thrownError(() => require.resolve('@liusiqi-dev/dsh-core'))
+    const runtimeError = thrownError(() => require.resolve('@liusiqi-dev/sqh-core'))
 
     expect(runtimeError).toMatchObject({
       code: nativeError.code,
@@ -930,23 +930,23 @@ describe('runtime resolution', { concurrent: false }, () => {
 
   it('keeps a profile-local CommonJS package file ahead of the resolution', async () => {
     const f = fixture()
-    file(join(f.profile.dir, 'node_modules', '@liusiqi-dev/dsh-core.js'), 'module.exports = { marker: 2 }\n')
+    file(join(f.profile.dir, 'node_modules', '@liusiqi-dev/sqh-core.js'), 'module.exports = { marker: 2 }\n')
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
-    expect(createRequire(join(f.profile.dir, 'entry.cjs'))('@liusiqi-dev/dsh-core')).toEqual({ marker: 2 })
-    expect(resolveFrom('@liusiqi-dev/dsh-core', pathToFileURL(join(f.profile.dir, 'entry.mjs')).href)).toBe(
+    expect(createRequire(join(f.profile.dir, 'entry.cjs'))('@liusiqi-dev/sqh-core')).toEqual({ marker: 2 })
+    expect(resolveFrom('@liusiqi-dev/sqh-core', pathToFileURL(join(f.profile.dir, 'entry.mjs')).href)).toBe(
       pathToFileURL(join(f.installed, 'index.js')).href,
     )
   })
 
   it('preserves the ESM and CommonJS behavior of an empty local package directory', async () => {
     const f = fixture()
-    mkdirSync(join(f.profile.dir, 'node_modules', '@liusiqi-dev/dsh-core'), { recursive: true })
+    mkdirSync(join(f.profile.dir, 'node_modules', '@liusiqi-dev/sqh-core'), { recursive: true })
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
-    expect(createRequire(join(f.profile.dir, 'entry.cjs'))('@liusiqi-dev/dsh-core')).toEqual({ marker: 1 })
+    expect(createRequire(join(f.profile.dir, 'entry.cjs'))('@liusiqi-dev/sqh-core')).toEqual({ marker: 1 })
     expect(() => resolveFrom(
-      '@liusiqi-dev/dsh-core', pathToFileURL(join(f.profile.dir, 'entry.mjs')).href,
+      '@liusiqi-dev/sqh-core', pathToFileURL(join(f.profile.dir, 'entry.mjs')).href,
     )).toThrow(/Cannot find/u)
   })
 
@@ -986,12 +986,12 @@ describe('runtime resolution', { concurrent: false }, () => {
 
   it('keeps the resolution ahead of packages above the shared fallback position', async () => {
     const f = fixture()
-    pkg(join(f.root, 'node_modules', '@liusiqi-dev/dsh-core'), '@liusiqi-dev/dsh-core', 2)
+    pkg(join(f.root, 'node_modules', '@liusiqi-dev/sqh-core'), '@liusiqi-dev/sqh-core', 2)
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
     const require = createRequire(join(f.profile.dir, 'entry.cjs'))
-    expect(require('@liusiqi-dev/dsh-core')).toEqual({ marker: 1 })
-    expect(await importFrom('@liusiqi-dev/dsh-core', pathToFileURL(join(f.profile.dir, 'entry.mjs')).href))
+    expect(require('@liusiqi-dev/sqh-core')).toEqual({ marker: 1 })
+    expect(await importFrom('@liusiqi-dev/sqh-core', pathToFileURL(join(f.profile.dir, 'entry.mjs')).href))
       .toMatchObject({ marker: 1 })
   })
 
@@ -1005,13 +1005,13 @@ describe('runtime resolution', { concurrent: false }, () => {
       patchPath: join(profileDir, 'cordis.patch.yml'),
     }
     file(join(profileDir, 'package.json'), JSON.stringify({ name: 'dsh-profile-web', private: true }))
-    file(join(profileDir, 'node_modules', '@liusiqi-dev/dsh-core', 'package.json'), JSON.stringify({
-      name: '@liusiqi-dev/dsh-core', version: '2.0.0',
+    file(join(profileDir, 'node_modules', '@liusiqi-dev/sqh-core', 'package.json'), JSON.stringify({
+      name: '@liusiqi-dev/sqh-core', version: '2.0.0',
     }))
     file(join(f.installed, 'package.json'), JSON.stringify({
-      name: '@liusiqi-dev/dsh-core', version: '1.0.0', type: 'module', main: './index.cjs',
+      name: '@liusiqi-dev/sqh-core', version: '1.0.0', type: 'module', main: './index.cjs',
     }))
-    const ancestorSubpath = join(home, 'node_modules', '@liusiqi-dev/dsh-core', 'sub.cjs')
+    const ancestorSubpath = join(home, 'node_modules', '@liusiqi-dev/sqh-core', 'sub.cjs')
     file(ancestorSubpath, 'module.exports = { marker: 3 }\n')
     const resolution = await createRuntimeResolution({
       installAnchor: f.installAnchor,
@@ -1019,27 +1019,27 @@ describe('runtime resolution', { concurrent: false }, () => {
       home,
     })
     const require = createRequire(join(profileDir, 'entry.cjs'))
-    expect(() => require.resolve('@liusiqi-dev/dsh-core')).toThrow(/Cannot find module/u)
-    expect(require.resolve('@liusiqi-dev/dsh-core/sub.cjs')).toBe(ancestorSubpath)
+    expect(() => require.resolve('@liusiqi-dev/sqh-core')).toThrow(/Cannot find module/u)
+    expect(require.resolve('@liusiqi-dev/sqh-core/sub.cjs')).toBe(ancestorSubpath)
 
     const registration = installRuntimeInterception(resolution)
     registrations.push(registration)
-    expect(require.resolve('@liusiqi-dev/dsh-core')).toBe(join(f.installed, 'index.cjs'))
-    expect(require.resolve('@liusiqi-dev/dsh-core/sub.cjs')).toBe(ancestorSubpath)
+    expect(require.resolve('@liusiqi-dev/sqh-core')).toBe(join(f.installed, 'index.cjs'))
+    expect(require.resolve('@liusiqi-dev/sqh-core/sub.cjs')).toBe(ancestorSubpath)
   })
 
   it('uses later explicit CommonJS paths when the profile has no matching package', async () => {
     const f = fixture()
     file(join(f.installed, 'package.json'), JSON.stringify({
-      name: '@liusiqi-dev/dsh-core', version: '1.0.0', type: 'module', main: './index.cjs',
+      name: '@liusiqi-dev/sqh-core', version: '1.0.0', type: 'module', main: './index.cjs',
     }))
     const alternative = join(f.root, 'alternative')
-    const alternativeSubpath = join(alternative, 'node_modules', '@liusiqi-dev/dsh-core', 'sub.cjs')
+    const alternativeSubpath = join(alternative, 'node_modules', '@liusiqi-dev/sqh-core', 'sub.cjs')
     file(alternativeSubpath, 'module.exports = { marker: 4 }\n')
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
 
-    expect(createRequire(join(f.profile.dir, 'entry.cjs')).resolve('@liusiqi-dev/dsh-core/sub.cjs', {
+    expect(createRequire(join(f.profile.dir, 'entry.cjs')).resolve('@liusiqi-dev/sqh-core/sub.cjs', {
       paths: [f.profile.dir, alternative],
     })).toBe(alternativeSubpath)
   })
@@ -1047,15 +1047,15 @@ describe('runtime resolution', { concurrent: false }, () => {
   it('occupies the interception layer package directory for a resolution hit and continues above it on a CommonJS subpath miss', async () => {
     const f = fixture()
     file(join(f.installed, 'package.json'), JSON.stringify({
-      name: '@liusiqi-dev/dsh-core', version: '1.0.0', main: './index.cjs',
+      name: '@liusiqi-dev/sqh-core', version: '1.0.0', main: './index.cjs',
     }))
     // Ordinary profile lookup replaces the shared copy with the runtime entry; explicit paths still read the shared copy.
-    const shared = join(f.root, 'profiles', 'node_modules', '@liusiqi-dev/dsh-core')
-    file(join(shared, 'package.json'), JSON.stringify({ name: '@liusiqi-dev/dsh-core', version: '9.0.0' }))
+    const shared = join(f.root, 'profiles', 'node_modules', '@liusiqi-dev/sqh-core')
+    file(join(shared, 'package.json'), JSON.stringify({ name: '@liusiqi-dev/sqh-core', version: '9.0.0' }))
     file(join(shared, 'sub.cjs'), 'module.exports = { marker: 9 }\n')
     file(join(shared, 'sub.js'), 'module.exports = { marker: 9 }\n')
-    const home = join(f.root, 'node_modules', '@liusiqi-dev/dsh-core')
-    file(join(home, 'package.json'), JSON.stringify({ name: '@liusiqi-dev/dsh-core', version: '3.0.0' }))
+    const home = join(f.root, 'node_modules', '@liusiqi-dev/sqh-core')
+    file(join(home, 'package.json'), JSON.stringify({ name: '@liusiqi-dev/sqh-core', version: '3.0.0' }))
     file(join(home, 'sub.cjs'), 'module.exports = { marker: 3 }\n')
     // A name without an entry sees the physical directory at the same layer.
     pkg(join(f.root, 'profiles', 'node_modules', 'left-pad'), 'left-pad', 9)
@@ -1063,20 +1063,20 @@ describe('runtime resolution', { concurrent: false }, () => {
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
     const require = createRequire(join(f.profile.dir, 'entry.cjs'))
-    expect(require.resolve('@liusiqi-dev/dsh-core')).toBe(join(f.installed, 'index.cjs'))
-    expect(require.resolve('@liusiqi-dev/dsh-core/sub.cjs')).toBe(join(home, 'sub.cjs'))
-    expect(require('@liusiqi-dev/dsh-core/sub.cjs')).toEqual({ marker: 3 })
-    expect(require.resolve('@liusiqi-dev/dsh-core/sub.cjs', { paths: [f.profile.dir] })).toBe(join(shared, 'sub.cjs'))
+    expect(require.resolve('@liusiqi-dev/sqh-core')).toBe(join(f.installed, 'index.cjs'))
+    expect(require.resolve('@liusiqi-dev/sqh-core/sub.cjs')).toBe(join(home, 'sub.cjs'))
+    expect(require('@liusiqi-dev/sqh-core/sub.cjs')).toEqual({ marker: 3 })
+    expect(require.resolve('@liusiqi-dev/sqh-core/sub.cjs', { paths: [f.profile.dir] })).toBe(join(shared, 'sub.cjs'))
     expect(require('left-pad')).toEqual({ marker: 9 })
     // ESM resolves the subpath inside the selected package and never consults another copy.
     const parent = pathToFileURL(join(f.profile.dir, 'entry.mjs')).href
-    expect(resolveFrom('@liusiqi-dev/dsh-core', parent)).toBe(pathToFileURL(join(f.installed, 'index.cjs')).href)
-    await expect(importFrom('@liusiqi-dev/dsh-core/sub.js', parent)).rejects.toMatchObject({ code: 'ERR_MODULE_NOT_FOUND' })
+    expect(resolveFrom('@liusiqi-dev/sqh-core', parent)).toBe(pathToFileURL(join(f.installed, 'index.cjs')).href)
+    await expect(importFrom('@liusiqi-dev/sqh-core/sub.js', parent)).rejects.toMatchObject({ code: 'ERR_MODULE_NOT_FOUND' })
     expect(await importFrom('left-pad', parent)).toMatchObject({ marker: 9 })
   })
 
   it.each(['profile', 'plugin'] as const)('uses the installation SQH package from a %s while a stale shared link remains', async (importer) => {
-    const name = '@liusiqi-dev/dsh-core'
+    const name = '@liusiqi-dev/sqh-core'
     const f = fixture(name)
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
       name: 'dsh-profile-web', private: true, dependencies: { [name]: '*' },
@@ -1114,27 +1114,27 @@ describe('runtime resolution', { concurrent: false }, () => {
   it('treats a profile symlink into .dsh-module-fallback as an ordinary local package', async () => {
     const f = fixture()
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
-      name: 'dsh-profile-web', private: true, dependencies: { '@liusiqi-dev/dsh-core': '*' },
+      name: 'dsh-profile-web', private: true, dependencies: { '@liusiqi-dev/sqh-core': '*' },
     }))
     const target = join(f.root, 'old-dsh', 'node_modules', '@liusiqi-dev', 'dsh-core')
-    pkg(target, '@liusiqi-dev/dsh-core', 9)
-    const owned = join(f.profile.dir, '.dsh-module-fallback', 'node_modules', '@liusiqi-dev/dsh-core')
-    const projected = join(f.profile.dir, 'node_modules', '@liusiqi-dev/dsh-core')
+    pkg(target, '@liusiqi-dev/sqh-core', 9)
+    const owned = join(f.profile.dir, '.dsh-module-fallback', 'node_modules', '@liusiqi-dev/sqh-core')
+    const projected = join(f.profile.dir, 'node_modules', '@liusiqi-dev/sqh-core')
     mkdirSync(dirname(owned), { recursive: true })
     mkdirSync(dirname(projected), { recursive: true })
     symlinkSync(target, owned, process.platform === 'win32' ? 'junction' : 'dir')
     symlinkSync(owned, projected, process.platform === 'win32' ? 'junction' : 'dir')
     const resolution = await resolutionOf(f)
-    expect(resolution.localPackageNames).toEqual(['@liusiqi-dev/dsh-core'])
+    expect(resolution.localPackageNames).toEqual(['@liusiqi-dev/sqh-core'])
     const registration = installRuntimeInterception(resolution)
     registrations.push(registration)
     const require = createRequire(join(f.profile.dir, 'entry.cjs'))
     const parent = pathToFileURL(join(f.profile.dir, 'entry.mjs')).href
-    expect(require('@liusiqi-dev/dsh-core')).toEqual({ marker: 9 })
-    expect(require.resolve('@liusiqi-dev/dsh-core')).toBe(join(target, 'index.cjs'))
-    expect(resolveFrom('@liusiqi-dev/dsh-core', parent)).toBe(pathToFileURL(join(target, 'index.js')).href)
-    expect(await importFrom('@liusiqi-dev/dsh-core', parent)).toMatchObject({ marker: 9 })
-    expect(registration.packageDir('@liusiqi-dev/dsh-core', parent)).toBe(projected)
+    expect(require('@liusiqi-dev/sqh-core')).toEqual({ marker: 9 })
+    expect(require.resolve('@liusiqi-dev/sqh-core')).toBe(join(target, 'index.cjs'))
+    expect(resolveFrom('@liusiqi-dev/sqh-core', parent)).toBe(pathToFileURL(join(target, 'index.js')).href)
+    expect(await importFrom('@liusiqi-dev/sqh-core', parent)).toMatchObject({ marker: 9 })
+    expect(registration.packageDir('@liusiqi-dev/sqh-core', parent)).toBe(projected)
     expect(realpathSync(projected)).toBe(target)
   })
 
@@ -1257,7 +1257,7 @@ describe('runtime resolution', { concurrent: false }, () => {
 
   it.each(lookupMatrix())('$title', async (matrixCase) => {
     const { importer, kind, layers, form } = matrixCase
-    const name = { installation: '@liusiqi-dev/dsh-core', bundle: 'bridge', unlisted: 'left-pad' }[kind]
+    const name = { installation: '@liusiqi-dev/sqh-core', bundle: 'bridge', unlisted: 'left-pad' }[kind]
     const f = fixture()
     const pluginDir = join(f.profile.dir, 'node_modules', 'my-plugin')
     pkg(pluginDir, 'my-plugin', 0)
@@ -1438,14 +1438,14 @@ describe('runtime resolution', { concurrent: false }, () => {
     parent.paths = internal.Module._nodeModulePaths(f.profile.dir)
     const originalChildren = [...parent.children]
 
-    expect(internal.Module._resolveFilename('@liusiqi-dev/dsh-core', parent, false)).toBe(join(f.installed, 'index.cjs'))
+    expect(internal.Module._resolveFilename('@liusiqi-dev/sqh-core', parent, false)).toBe(join(f.installed, 'index.cjs'))
     expect(parent.children).toEqual(originalChildren)
   })
 
   it('reports routed CommonJS failures with the native require stack', async () => {
     const f = fixture()
     file(join(f.installed, 'package.json'), JSON.stringify({
-      name: '@liusiqi-dev/dsh-core', version: '1.0.0', type: 'module', main: './index.cjs',
+      name: '@liusiqi-dev/sqh-core', version: '1.0.0', type: 'module', main: './index.cjs',
     }))
     const resolution = await createRuntimeResolution({
       installAnchor: f.installAnchor,
@@ -1453,11 +1453,11 @@ describe('runtime resolution', { concurrent: false }, () => {
       home: f.root,
     })
     const nativeRequire = createRequire(join(f.profile.dir, 'entry-native.cjs'))
-    const nativeError = thrownError(() => nativeRequire.resolve('@liusiqi-dev/dsh-core/missing.cjs'))
+    const nativeError = thrownError(() => nativeRequire.resolve('@liusiqi-dev/sqh-core/missing.cjs'))
     const registration = installRuntimeInterception(resolution)
     registrations.push(registration)
     const runtimeRequire = createRequire(join(f.profile.dir, 'entry-runtime.cjs'))
-    const runtimeError = thrownError(() => runtimeRequire.resolve('@liusiqi-dev/dsh-core/missing.cjs'))
+    const runtimeError = thrownError(() => runtimeRequire.resolve('@liusiqi-dev/sqh-core/missing.cjs'))
 
     expect(runtimeError.requireStack).toEqual([
       join(f.profile.dir, 'entry-runtime.cjs'),
@@ -1479,7 +1479,7 @@ describe('runtime resolution', { concurrent: false }, () => {
     registrations.push(registration)
 
     expect(thrownMessage(() => resolveFrom('unavailable-lib', parent))).toBe(nativeMessage)
-    expect(thrownMessage(() => resolveFrom('@liusiqi-dev/dsh-core/private', parent)))
+    expect(thrownMessage(() => resolveFrom('@liusiqi-dev/sqh-core/private', parent)))
       .toContain(` imported from ${fileURLToPath(parent)}`)
   })
 
@@ -1494,11 +1494,11 @@ describe('runtime resolution', { concurrent: false }, () => {
       const missing = thrownError(() => resolveFrom('unavailable-lib', parent))
       expect(missing).toMatchObject({ code: 'ERR_MODULE_NOT_FOUND', message: nativeMessage })
       expect(missing.stack).toContain(nativeMessage)
-      const unexported = thrownError(() => resolveFrom('@liusiqi-dev/dsh-core/private', parent))
+      const unexported = thrownError(() => resolveFrom('@liusiqi-dev/sqh-core/private', parent))
       expect(unexported.code).toBe('ERR_PACKAGE_PATH_NOT_EXPORTED')
       expect(unexported.message).toContain(` imported from ${fileURLToPath(parent)}`)
       expect(unexported.stack).toContain(unexported.message)
-      const imported = importFrom('@liusiqi-dev/dsh-core/private', parent)
+      const imported = importFrom('@liusiqi-dev/sqh-core/private', parent)
       await expect(imported).rejects.toMatchObject({ code: 'ERR_PACKAGE_PATH_NOT_EXPORTED' })
       await expect(imported).rejects.toThrow(` imported from ${fileURLToPath(parent)}`)
     } finally {
@@ -1515,12 +1515,12 @@ describe('runtime resolution', { concurrent: false }, () => {
     })
     file(join(f.installed, 'package.json'), '{')
     const parent = pathToFileURL(join(f.profile.dir, 'entry.mjs')).href
-    expect(() => resolveFrom('@liusiqi-dev/dsh-core', pathToFileURL(f.installAnchor).href))
+    expect(() => resolveFrom('@liusiqi-dev/sqh-core', pathToFileURL(f.installAnchor).href))
       .toThrow(/Invalid package config/u)
     const registration = installRuntimeInterception(resolution)
     registrations.push(registration)
 
-    expect(() => resolveFrom('@liusiqi-dev/dsh-core', parent)).toThrow(/Invalid package config/u)
+    expect(() => resolveFrom('@liusiqi-dev/sqh-core', parent)).toThrow(/Invalid package config/u)
   })
 
   it('does not fall back after Node selects a broken profile-local package', async () => {
@@ -1541,28 +1541,28 @@ describe('runtime resolution', { concurrent: false }, () => {
   it('does not fall back after the resolution selects a missing exports target', async () => {
     const f = fixture()
     file(join(f.installed, 'package.json'), JSON.stringify({
-      name: '@liusiqi-dev/dsh-core', version: '1.0.0', type: 'module', exports: './missing.cjs',
+      name: '@liusiqi-dev/sqh-core', version: '1.0.0', type: 'module', exports: './missing.cjs',
     }))
-    pkg(join(f.root, 'node_modules', '@liusiqi-dev/dsh-core'), '@liusiqi-dev/dsh-core', 2)
+    pkg(join(f.root, 'node_modules', '@liusiqi-dev/sqh-core'), '@liusiqi-dev/sqh-core', 2)
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
 
-    expect(() => createRequire(join(f.profile.dir, 'entry.cjs')).resolve('@liusiqi-dev/dsh-core'))
+    expect(() => createRequire(join(f.profile.dir, 'entry.cjs')).resolve('@liusiqi-dev/sqh-core'))
       .toThrow(/Cannot find module/u)
   })
 
   it('does not fall back after the resolution selects a missing legacy main', async () => {
     const f = fixture()
     file(join(f.installed, 'package.json'), JSON.stringify({
-      name: '@liusiqi-dev/dsh-core', version: '1.0.0', type: 'module', main: './missing.cjs',
+      name: '@liusiqi-dev/sqh-core', version: '1.0.0', type: 'module', main: './missing.cjs',
     }))
     unlinkSync(join(f.installed, 'index.cjs'))
     unlinkSync(join(f.installed, 'index.js'))
-    pkg(join(f.root, 'node_modules', '@liusiqi-dev/dsh-core'), '@liusiqi-dev/dsh-core', 2)
+    pkg(join(f.root, 'node_modules', '@liusiqi-dev/sqh-core'), '@liusiqi-dev/sqh-core', 2)
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
 
-    expect(() => createRequire(join(f.profile.dir, 'entry.cjs')).resolve('@liusiqi-dev/dsh-core'))
+    expect(() => createRequire(join(f.profile.dir, 'entry.cjs')).resolve('@liusiqi-dev/sqh-core'))
       .toThrow(/valid "main" entry/u)
   })
 
@@ -1591,7 +1591,7 @@ describe('runtime resolution', { concurrent: false }, () => {
   it('rejects changing an existing package mapping without publishing it', async () => {
     const f = fixture()
     const second = join(f.root, 'second')
-    pkg(second, '@liusiqi-dev/dsh-core', 2)
+    pkg(second, '@liusiqi-dev/sqh-core', 2)
     const first = await resolutionOf(f)
     const registration = installRuntimeInterception(first)
     registrations.push(registration)
@@ -1599,13 +1599,13 @@ describe('runtime resolution', { concurrent: false }, () => {
     symlinkSync(f.installed, alias, process.platform === 'win32' ? 'junction' : 'dir')
     registration.replace({
       ...first,
-      entries: first.entries.map(entry => entry.name === '@liusiqi-dev/dsh-core'
+      entries: first.entries.map(entry => entry.name === '@liusiqi-dev/sqh-core'
         ? { ...entry, packageDir: alias }
         : entry),
     })
     const changed = {
       ...first,
-      entries: first.entries.map(entry => entry.name === '@liusiqi-dev/dsh-core'
+      entries: first.entries.map(entry => entry.name === '@liusiqi-dev/sqh-core'
         ? { ...entry, packageDir: second, version: '2.0.0', declarer: join(second, 'package.json') }
         : entry),
     }
@@ -1613,16 +1613,16 @@ describe('runtime resolution', { concurrent: false }, () => {
     expect(() => {
       registration.replace({
         ...first,
-        entries: first.entries.map(entry => entry.name === '@liusiqi-dev/dsh-core'
+        entries: first.entries.map(entry => entry.name === '@liusiqi-dev/sqh-core'
           ? { ...entry, version: '9.0.0' }
           : entry),
       })
     }).toThrow(/requires a process restart/u)
     expect(() => {
-      registration.replace({ ...first, localPackageNames: ['@liusiqi-dev/dsh-core'] })
+      registration.replace({ ...first, localPackageNames: ['@liusiqi-dev/sqh-core'] })
     }).toThrow(/requires a process restart/u)
     expect(() => {
-      registration.replace({ ...first, entries: first.entries.filter(entry => entry.name !== '@liusiqi-dev/dsh-core') })
+      registration.replace({ ...first, entries: first.entries.filter(entry => entry.name !== '@liusiqi-dev/sqh-core') })
     }).toThrow(/requires a process restart/u)
     expect(() => {
       registration.replace({ ...first, profilesDir: join(f.root, 'other-profiles') })
@@ -1639,7 +1639,7 @@ describe('runtime resolution', { concurrent: false }, () => {
       registration.replace({ ...withLocal, linkedRoots: [{ ...linked, realPath: join(f.root, 'work', 'b') }] })
     }).toThrow(/relinking "linked-plugin" requires a process restart/u)
     expect(registration.packageDir(
-      '@liusiqi-dev/dsh-core', pathToFileURL(join(f.profile.dir, 'entry.mjs')).href,
+      '@liusiqi-dev/sqh-core', pathToFileURL(join(f.profile.dir, 'entry.mjs')).href,
     )).toBe(f.installed)
   })
 
@@ -1663,7 +1663,7 @@ describe('runtime resolution', { concurrent: false }, () => {
     expect(registration.packageDir('#internal', profileParent)).toBeUndefined()
     expect(registration.packageDir('@scope', profileParent)).toBeUndefined()
     expect(registration.packageDir('node:fs', profileParent)).toBeUndefined()
-    expect(registration.packageDir('@liusiqi-dev/dsh-core/private', profileParent)).toBe(f.installed)
+    expect(registration.packageDir('@liusiqi-dev/sqh-core/private', profileParent)).toBe(f.installed)
     expect(registration.packageDir('outside-lib', outsideParent)).toBe(outsidePackage)
     expect(registration.packageDir('outside-lib', outsideParent)).toBe(outsidePackage)
     expect(registration.packageDir('@scope/outside', outsideParent)).toBe(scopedPackage)
@@ -1686,14 +1686,14 @@ describe('runtime resolution', { concurrent: false }, () => {
       home: f.root,
     })).rejects.toThrow()
     expect(registration.packageDir(
-      '@liusiqi-dev/dsh-core', pathToFileURL(join(f.profile.dir, 'entry.mjs')).href,
+      '@liusiqi-dev/sqh-core', pathToFileURL(join(f.profile.dir, 'entry.mjs')).href,
     )).toBe(f.installed)
   })
 
   it('publishes and restores the resolution inherited by owned Workers', async () => {
     const f = fixture()
     const resolution = await resolutionOf(f)
-    const key = '@liusiqi-dev/dsh-app-boot/profile-resolution'
+    const key = '@liusiqi-dev/sqh-app-boot/profile-resolution'
     const previous = getEnvironmentData(key)
     const dispose = registerWorkerResolution(resolution)
     try {
@@ -1853,7 +1853,7 @@ describe('runtime resolution', { concurrent: false }, () => {
   )
 
   /** A plugin repository linked into the profile, with the manifest a plugin developer keeps for type checking. */
-  function linkedPluginFixture(peerDependencies: Record<string, string> | undefined = { '@liusiqi-dev/dsh-core': '*' }): {
+  function linkedPluginFixture(peerDependencies: Record<string, string> | undefined = { '@liusiqi-dev/sqh-core': '*' }): {
     f: ReturnType<typeof fixture>
     linkedRoot: string
     helper: string
@@ -1861,8 +1861,8 @@ describe('runtime resolution', { concurrent: false }, () => {
   } {
     const f = fixture()
     const installDir = dirname(f.installAnchor)
-    pkg(installDir, '@liusiqi-dev/sqode', 0, { '@liusiqi-dev/dsh-core': '*', '@liusiqi-dev/dsh-util': '*' })
-    pkg(join(installDir, 'node_modules', '@liusiqi-dev', 'dsh-util'), '@liusiqi-dev/dsh-util', 2)
+    pkg(installDir, '@liusiqi-dev/sqode', 0, { '@liusiqi-dev/sqh-core': '*', '@liusiqi-dev/sqh-util': '*' })
+    pkg(join(installDir, 'node_modules', '@liusiqi-dev', 'dsh-util'), '@liusiqi-dev/sqh-util', 2)
     const linkedRoot = join(f.root, 'work', 'my-plugin')
     const writeManifest = (peers: Record<string, string> | undefined): void => {
       file(join(linkedRoot, 'package.json'), JSON.stringify({
@@ -1870,10 +1870,10 @@ describe('runtime resolution', { concurrent: false }, () => {
         version: '30.0.0',
         type: 'module',
         exports: { import: './index.js', require: './index.cjs' },
-        imports: { '#core': '@liusiqi-dev/dsh-core' },
-        dependencies: { 'zod': '*', '@liusiqi-dev/dsh-util': '*', 'helper': '*' },
+        imports: { '#core': '@liusiqi-dev/sqh-core' },
+        dependencies: { 'zod': '*', '@liusiqi-dev/sqh-util': '*', 'helper': '*' },
         ...(peers === undefined ? {} : { peerDependencies: peers }),
-        devDependencies: { '@liusiqi-dev/dsh-core': '*' },
+        devDependencies: { '@liusiqi-dev/sqh-core': '*' },
       }))
     }
     writeManifest(peerDependencies)
@@ -1881,13 +1881,13 @@ describe('runtime resolution', { concurrent: false }, () => {
     file(join(linkedRoot, 'index.cjs'), 'module.exports = { marker: 30 }\n')
     // The devDependency copy a type checker needs, the plugin's own third-party version, and a dsh package
     // declared as a plain dependency.
-    pkg(join(linkedRoot, 'node_modules', '@liusiqi-dev', 'dsh-core'), '@liusiqi-dev/dsh-core', 21)
+    pkg(join(linkedRoot, 'node_modules', '@liusiqi-dev', 'dsh-core'), '@liusiqi-dev/sqh-core', 21)
     pkg(join(linkedRoot, 'node_modules', 'zod'), 'zod', 22)
-    pkg(join(linkedRoot, 'node_modules', '@liusiqi-dev', 'dsh-util'), '@liusiqi-dev/dsh-util', 23)
+    pkg(join(linkedRoot, 'node_modules', '@liusiqi-dev', 'dsh-util'), '@liusiqi-dev/sqh-util', 23)
     pkg(join(f.root, 'work', 'node_modules', 'left-pad'), 'left-pad', 24)
     // A transitive dependency in pnpm's isolated layout, with a sibling of its own.
     const helper = join(linkedRoot, 'node_modules', '.pnpm', 'helper@1.0.0', 'node_modules', 'helper')
-    pkg(helper, 'helper', 25, { sibling: '*' }, { '@liusiqi-dev/dsh-core': '*' })
+    pkg(helper, 'helper', 25, { sibling: '*' }, { '@liusiqi-dev/sqh-core': '*' })
     pkg(join(dirname(helper), 'sibling'), 'sibling', 26)
     const linkType = process.platform === 'win32' ? 'junction' : 'dir'
     symlinkSync(helper, join(linkedRoot, 'node_modules', 'helper'), linkType)
@@ -1901,7 +1901,7 @@ describe('runtime resolution', { concurrent: false }, () => {
   }
 
   describe('linked root generations', () => {
-    const peer = '@liusiqi-dev/dsh-core'
+    const peer = '@liusiqi-dev/sqh-core'
 
     function unsavedFixture(): ReturnType<typeof linkedPluginFixture> {
       const result = linkedPluginFixture()
@@ -2209,8 +2209,8 @@ describe('runtime resolution', { concurrent: false }, () => {
       const { f, linkedRoot } = linkedPluginFixture()
       const intermediate = join(linkedRoot, directory)
       const queries = [
-        ['@liusiqi-dev/dsh-core', 41],
-        ['@liusiqi-dev/dsh-util', 42],
+        ['@liusiqi-dev/sqh-core', 41],
+        ['@liusiqi-dev/sqh-util', 42],
         ['left-pad', 43],
       ] as const
       for (const [name, marker] of queries) pkg(join(intermediate, 'node_modules', name), name, marker)
@@ -2305,7 +2305,7 @@ describe('runtime resolution', { concurrent: false }, () => {
 
   it.each(['host', 'dependency', 'workspace-logical', 'workspace-real'] as const)(
     'keeps %s importers native inside a wide linked root', async (importer) => {
-      const name = '@liusiqi-dev/dsh-core'
+      const name = '@liusiqi-dev/sqh-core'
       const f = fixture(name)
       const installDir = dirname(f.installAnchor)
       pkg(installDir, '@liusiqi-dev/sqode', 0, {
@@ -2396,13 +2396,13 @@ describe('runtime resolution', { concurrent: false }, () => {
       expect(registration.packageDir(name, from.parent), name).toBe(dir)
     }
     // The peer comes from the running installation; its devDependency copy is never read.
-    await expectResolution('@liusiqi-dev/dsh-core', f.installed, 1)
+    await expectResolution('@liusiqi-dev/sqh-core', f.installed, 1)
     // A cache-busting query on the importer, as hot module replacement re-imports it, changes nothing.
-    expect(resolveFrom('@liusiqi-dev/dsh-core', `${parent}?t=1`)).toBe(pathToFileURL(join(f.installed, 'index.js')).href)
+    expect(resolveFrom('@liusiqi-dev/sqh-core', `${parent}?t=1`)).toBe(pathToFileURL(join(f.installed, 'index.js')).href)
     expect(resolveFrom('zod', `${parent}?t=1`)).toBe(pathToFileURL(join(linkedRoot, 'node_modules', 'zod', 'index.js')).href)
     // Plain dependencies keep the plugin's own copies, including a dsh package declared as one.
     await expectResolution('zod', join(linkedRoot, 'node_modules', 'zod'), 22)
-    await expectResolution('@liusiqi-dev/dsh-util', join(linkedRoot, 'node_modules', '@liusiqi-dev', 'dsh-util'), 23)
+    await expectResolution('@liusiqi-dev/sqh-util', join(linkedRoot, 'node_modules', '@liusiqi-dev', 'dsh-util'), 23)
     // An undeclared name without an entry follows the real ancestor chain.
     await expectResolution('left-pad', join(f.root, 'work', 'node_modules', 'left-pad'), 24)
     // Package imports and self-references keep their Node semantics inside the linked package.
@@ -2413,7 +2413,7 @@ describe('runtime resolution', { concurrent: false }, () => {
     // A transitive dependency sees its own local layer first and the linked package's peers at the layer above.
     const helperImporter = { require: createRequire(join(helper, 'entry.cjs')), parent: pathToFileURL(join(helper, 'entry.mjs')).href }
     await expectResolution('sibling', join(dirname(helper), 'sibling'), 26, helperImporter)
-    await expectResolution('@liusiqi-dev/dsh-core', f.installed, 1, helperImporter)
+    await expectResolution('@liusiqi-dev/sqh-core', f.installed, 1, helperImporter)
     // The profile still reaches the linked plugin through Node's own symlink handling.
     const profileRequire = createRequire(join(f.profile.dir, 'entry.cjs'))
     expect(profileRequire.resolve('my-plugin')).toBe(join(linkedRoot, 'index.cjs'))
@@ -2423,23 +2423,23 @@ describe('runtime resolution', { concurrent: false }, () => {
 
   it('continues above a linked plugin after a CommonJS subpath miss in an occupied peer', async () => {
     const { f, linkedRoot } = linkedPluginFixture()
-    file(join(f.installed, 'package.json'), JSON.stringify({ name: '@liusiqi-dev/dsh-core', version: '1.0.0', main: './index.cjs' }))
+    file(join(f.installed, 'package.json'), JSON.stringify({ name: '@liusiqi-dev/sqh-core', version: '1.0.0', main: './index.cjs' }))
     const above = join(f.root, 'work', 'node_modules', '@liusiqi-dev', 'dsh-core')
-    file(join(above, 'package.json'), JSON.stringify({ name: '@liusiqi-dev/dsh-core', version: '3.0.0' }))
+    file(join(above, 'package.json'), JSON.stringify({ name: '@liusiqi-dev/sqh-core', version: '3.0.0' }))
     file(join(above, 'sub.cjs'), 'module.exports = { marker: 3 }\n')
     file(join(linkedRoot, 'node_modules', '@liusiqi-dev', 'dsh-core', 'sub.cjs'), 'module.exports = { marker: 21 }\n')
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
     const require = createRequire(join(linkedRoot, 'entry.cjs'))
-    expect(require.resolve('@liusiqi-dev/dsh-core')).toBe(join(f.installed, 'index.cjs'))
+    expect(require.resolve('@liusiqi-dev/sqh-core')).toBe(join(f.installed, 'index.cjs'))
     // The occupied name never falls back to the devDependency copy at the same layer.
-    expect(require.resolve('@liusiqi-dev/dsh-core/sub.cjs')).toBe(join(above, 'sub.cjs'))
-    expect(require('@liusiqi-dev/dsh-core/sub.cjs')).toEqual({ marker: 3 })
+    expect(require.resolve('@liusiqi-dev/sqh-core/sub.cjs')).toBe(join(above, 'sub.cjs'))
+    expect(require('@liusiqi-dev/sqh-core/sub.cjs')).toEqual({ marker: 3 })
   })
 
   it('preserves the native require stack for a missing linked legacy subpath', async () => {
     const { f, linkedRoot } = linkedPluginFixture()
-    const name = '@liusiqi-dev/dsh-core'
+    const name = '@liusiqi-dev/sqh-core'
     file(join(f.installed, 'package.json'), JSON.stringify({
       name, version: '1.0.0', type: 'module', main: './index.cjs',
     }))
@@ -2471,32 +2471,32 @@ describe('runtime resolution', { concurrent: false }, () => {
     const devCopy = join(linkedRoot, 'node_modules', '@liusiqi-dev', 'dsh-core')
     const require = createRequire(join(linkedRoot, 'entry.cjs'))
     const parent = pathToFileURL(join(linkedRoot, 'entry.mjs')).href
-    expect(require.resolve('@liusiqi-dev/dsh-core')).toBe(join(devCopy, 'index.cjs'))
-    expect(resolveFrom('@liusiqi-dev/dsh-core', parent)).toBe(pathToFileURL(join(devCopy, 'index.js')).href)
-    expect(registration.packageDir('@liusiqi-dev/dsh-core', parent)).toBe(devCopy)
+    expect(require.resolve('@liusiqi-dev/sqh-core')).toBe(join(devCopy, 'index.cjs'))
+    expect(resolveFrom('@liusiqi-dev/sqh-core', parent)).toBe(pathToFileURL(join(devCopy, 'index.js')).href)
+    expect(registration.packageDir('@liusiqi-dev/sqh-core', parent)).toBe(devCopy)
 
-    writeManifest({ '@liusiqi-dev/dsh-core': '*' })
+    writeManifest({ '@liusiqi-dev/sqh-core': '*' })
     // No memo holds for a linked importer, and the occupied name delegates from the entry's declaring manifest,
     // a parent Node has never resolved this request from.
-    expect(require.resolve('@liusiqi-dev/dsh-core')).toBe(join(f.installed, 'index.cjs'))
-    expect(registration.packageDir('@liusiqi-dev/dsh-core', parent)).toBe(f.installed)
-    expect(resolveFrom('@liusiqi-dev/dsh-core', parent)).toBe(pathToFileURL(join(f.installed, 'index.js')).href)
-    expect(await importFrom('@liusiqi-dev/dsh-core', parent)).toMatchObject({ marker: 1 })
+    expect(require.resolve('@liusiqi-dev/sqh-core')).toBe(join(f.installed, 'index.cjs'))
+    expect(registration.packageDir('@liusiqi-dev/sqh-core', parent)).toBe(f.installed)
+    expect(resolveFrom('@liusiqi-dev/sqh-core', parent)).toBe(pathToFileURL(join(f.installed, 'index.js')).href)
+    expect(await importFrom('@liusiqi-dev/sqh-core', parent)).toMatchObject({ marker: 1 })
 
     writeManifest({})
-    expect(require.resolve('@liusiqi-dev/dsh-core')).toBe(join(devCopy, 'index.cjs'))
-    expect(resolveFrom('@liusiqi-dev/dsh-core', parent)).toBe(pathToFileURL(join(devCopy, 'index.js')).href)
-    expect(registration.packageDir('@liusiqi-dev/dsh-core', parent)).toBe(devCopy)
+    expect(require.resolve('@liusiqi-dev/sqh-core')).toBe(join(devCopy, 'index.cjs'))
+    expect(resolveFrom('@liusiqi-dev/sqh-core', parent)).toBe(pathToFileURL(join(devCopy, 'index.js')).href)
+    expect(registration.packageDir('@liusiqi-dev/sqh-core', parent)).toBe(devCopy)
     writeManifest(undefined)
-    expect(require.resolve('@liusiqi-dev/dsh-core')).toBe(join(devCopy, 'index.cjs'))
+    expect(require.resolve('@liusiqi-dev/sqh-core')).toBe(join(devCopy, 'index.cjs'))
     // Without a manifest the linked package occupies nothing.
     rmSync(join(linkedRoot, 'package.json'))
-    expect(require.resolve('@liusiqi-dev/dsh-core')).toBe(join(devCopy, 'index.cjs'))
+    expect(require.resolve('@liusiqi-dev/sqh-core')).toBe(join(devCopy, 'index.cjs'))
   })
 
   it('reads ancestor peer declarations at every linked resolution', async () => {
     const { f, linkedRoot } = linkedPluginFixture({})
-    const name = '@liusiqi-dev/dsh-core'
+    const name = '@liusiqi-dev/sqh-core'
     rmSync(join(linkedRoot, 'node_modules', name), { recursive: true })
     const ancestor = dirname(linkedRoot)
     const ancestorCopy = join(ancestor, 'node_modules', name)
@@ -2530,9 +2530,9 @@ describe('runtime resolution', { concurrent: false }, () => {
     const registration = installRuntimeInterception(await resolutionOf(f))
     registrations.push(registration)
     const require = createRequire(join(f.profile.dir, 'entry.cjs'))
-    expect(require.resolve('@liusiqi-dev/dsh-core')).toBe(join(f.installed, 'index.cjs'))
+    expect(require.resolve('@liusiqi-dev/sqh-core')).toBe(join(f.installed, 'index.cjs'))
     registration.dispose()
     registrations.pop()
-    expect(() => { require.resolve('@liusiqi-dev/dsh-core') }).toThrow(/Cannot find module/u)
+    expect(() => { require.resolve('@liusiqi-dev/sqh-core') }).toThrow(/Cannot find module/u)
   })
 })

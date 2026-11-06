@@ -1,6 +1,6 @@
 /**
  * Model-visible labeling shared by web tools.
- * @module @liusiqi-dev/dsh-tool-web/trust
+ * @module @liusiqi-dev/sqh-tool-web/trust
  */
 
 /** Prefix that keeps provider-controlled text visibly outside agent instructions. */

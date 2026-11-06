@@ -2,30 +2,30 @@
 # a separate SDK child runtime. Both runtimes persist their request headers.
 
 - id: llm-deepseek
-  name: '@liusiqi-dev/dsh-llm-deepseek-api-key'
+  name: '@liusiqi-dev/sqh-llm-deepseek-api-key'
   disabled: true
 
 - id: tool-subagent
-  name: '@liusiqi-dev/dsh-tool-subagent'
+  name: '@liusiqi-dev/sqh-tool-subagent'
   disabled: true
 
 - id: sdk-jsonrpc-server
-  name: '@liusiqi-dev/dsh-sdk-jsonrpc-server'
+  name: '@liusiqi-dev/sqh-sdk-jsonrpc-server'
   disabled: true
 
 - id: session-persistence-jsonl
-  name: '@liusiqi-dev/dsh-session-persistence-jsonl'
+  name: '@liusiqi-dev/sqh-session-persistence-jsonl'
   config:
     root: !!js dshHomePath('sessions')
     compression: none
 
 - insert:
     - id: mock-llm
-      name: '../../../packages/subagent/subagent-dsh-sdk/tests/fixtures/loader/mock-delegating-llm.ts'
+      name: '../../../packages/subagent/subagent-sdk/tests/fixtures/loader/mock-delegating-llm.ts'
       disabled: !!js process.env.SQODE_SNAPSHOT !== 'record'
 
-    - id: subagent-dsh-sdk
-      name: '@liusiqi-dev/dsh-subagent-dsh-sdk'
+    - id: subagent-sdk
+      name: '@liusiqi-dev/sqh-subagent-sdk'
       config:
         profile: sdk
         patches: !!js JSON.parse(process.env.SQODE_TEST_CHILD_PATCHES ?? '[]')
@@ -36,15 +36,15 @@
           SQODE_TELEMETRY_DISABLED: '1'
 
     - id: subagent-model-selection-settings
-      name: '@liusiqi-dev/dsh-tool-subagent/model-selection-settings'
+      name: '@liusiqi-dev/sqh-tool-subagent/model-selection-settings'
       config:
         enabled: true
         allowedModels:
           - provider: mock
             model: mock-routed
 
-    - id: tool-subagent-dsh-sdk
-      name: '../../../packages/subagent/subagent-dsh-sdk/tests/fixtures/loader/scoped-tool-subagent.ts'
+    - id: tool-subagent-sdk
+      name: '../../../packages/subagent/subagent-sdk/tests/fixtures/loader/scoped-tool-subagent.ts'
       config:
         provider: dsh-sdk
         toolName: subagent
@@ -54,7 +54,7 @@
         maxDepth: 'provider-managed'
 
     - id: sdk-jsonrpc-server-dynamic-live
-      name: '@liusiqi-dev/dsh-sdk-jsonrpc-server'
+      name: '@liusiqi-dev/sqh-sdk-jsonrpc-server'
       inject: [sdkAppStartup, loader]
       disabled: !!js process.env.SQODE_SNAPSHOT !== 'record'
       config:

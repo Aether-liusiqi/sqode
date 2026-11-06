@@ -23,12 +23,12 @@
  * })
  * ```
  *
- * @module @liusiqi-dev/dsh-authorization
+ * @module @liusiqi-dev/sqh-authorization
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'
-import type { CredentialKey, CredentialRecord } from '@liusiqi-dev/dsh-credentials'
-import { HarnessError } from '@liusiqi-dev/dsh-llm'
+import type { CredentialKey, CredentialRecord } from '@liusiqi-dev/sqh-credentials'
+import { HarnessError } from '@liusiqi-dev/sqh-llm'
 
 import type {
   AuthorizationEntry, AuthorizationMethod, AuthorizationNotice, AuthorizationOutcome, AuthorizationPrompt,

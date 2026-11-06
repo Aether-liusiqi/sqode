@@ -1,15 +1,15 @@
 /** Registers the sidebar shell and global panel navigation. */
-import type {} from '@liusiqi-dev/dsh-client-product-analytics/client'
+import type {} from '@liusiqi-dev/sqh-client-product-analytics/client'
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import { resolveSlotLabel } from '@liusiqi-dev/dsh-client-ui-slots'
-import type { MainPanelId } from '@liusiqi-dev/dsh-client-ui-layout/client'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import { resolveSlotLabel } from '@liusiqi-dev/sqh-client-ui-slots'
+import type { MainPanelId } from '@liusiqi-dev/sqh-client-ui-layout/client'
 // Type-only: pulls the locale plugin's Context merge (ctx.locale).
-import type {} from '@liusiqi-dev/dsh-client-locale/client'
+import type {} from '@liusiqi-dev/sqh-client-locale/client'
 // Type-only: pulls the SlotRegistry service merge (ctx.slots).
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
 // Type-only: pulls the Session root standard-props merge.
-import type {} from '@liusiqi-dev/dsh-client-ui-session/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-session/client'
 import type { SidebarPanelMetadata, SidebarRootInjected } from './contract/slots.ts'
 import { HeaderLeadingControls } from './HeaderLeadingControls.tsx'
 import { SidebarRoot } from './SidebarRoot.tsx'
@@ -22,7 +22,7 @@ export type {
 } from './contract/slots.ts'
 export type { SidebarKey } from './locales.ts'
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** Sidebar controls and global panel copy. */
     sidebar: SidebarKey

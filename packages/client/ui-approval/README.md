@@ -2,7 +2,7 @@
 description: "Browser approval UI that answers Host permission requests through the scoped interaction path."
 kind: "package-reference"
 ---
-# @liusiqi-dev/dsh-client-ui-approval
+# @liusiqi-dev/sqh-client-ui-approval
 
 English | [中文](README.zh.md)
 

@@ -1,18 +1,18 @@
 /**
  * Replay-safe, model-free tool-result pruning service.
  *
- * @module @liusiqi-dev/dsh-compaction-tool-result-pruner
+ * @module @liusiqi-dev/sqh-compaction-tool-result-pruner
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { freezeMessage } from '@liusiqi-dev/dsh-llm'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import type { Session, SessionEvent, SessionSeq, ToolResultMessage } from '@liusiqi-dev/dsh-session'
+import { freezeMessage } from '@liusiqi-dev/sqh-llm'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import type { Session, SessionEvent, SessionSeq, ToolResultMessage } from '@liusiqi-dev/sqh-session'
 // Type-only: the `compaction/*` SessionEventMap merges (the shadow-price event).
-import type {} from '@liusiqi-dev/dsh-compaction'
+import type {} from '@liusiqi-dev/sqh-compaction'
 // Type-only: the `ctx.tokenMeter` Context merge for the declared injection.
-import type {} from '@liusiqi-dev/dsh-token-meter'
+import type {} from '@liusiqi-dev/sqh-token-meter'
 import { codePointLength, DEFAULTS, PRUNE_MARKER, resolveConfig } from './config.ts'
 import type {
   PrunedEntry,

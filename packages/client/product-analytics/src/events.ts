@@ -1,6 +1,6 @@
 /** Desktop analytics fields selected by product event owners. */
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { MessageId } from '@liusiqi-dev/dsh-llm/brand'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { MessageId } from '@liusiqi-dev/sqh-llm/brand'
 
 /** Event names and their selected product attributes. */
 export interface ProductEventMap {

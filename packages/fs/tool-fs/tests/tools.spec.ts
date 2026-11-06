@@ -5,16 +5,16 @@
 
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { PtcRuntime } from '@liusiqi-dev/dsh-ptc-runtime'
-import { createScope, type Scope } from '@liusiqi-dev/dsh-scope'
+import { PtcRuntime } from '@liusiqi-dev/sqh-ptc-runtime'
+import { createScope, type Scope } from '@liusiqi-dev/sqh-scope'
 import { mkdirSync, mkdtempSync, rmSync, symlinkSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join, sep } from 'node:path'
-import { turnBoundaryProjectionDefinition } from '@liusiqi-dev/dsh-agent-loop'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import SystemPrompt, { renderPrompt } from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime, { type ToolResult } from '@liusiqi-dev/dsh-tools'
-import { FileSystem, FsError, FsTargetKey, FsVersion } from '@liusiqi-dev/dsh-fs'
+import { turnBoundaryProjectionDefinition } from '@liusiqi-dev/sqh-agent-loop'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import SystemPrompt, { renderPrompt } from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime, { type ToolResult } from '@liusiqi-dev/sqh-tools'
+import { FileSystem, FsError, FsTargetKey, FsVersion } from '@liusiqi-dev/sqh-fs'
 import type {
   FsDirEntry,
   FsEditOutcome,
@@ -24,18 +24,18 @@ import type {
   FsTarget,
   FsWriteIntent,
   FsWriteOutcome,
-} from '@liusiqi-dev/dsh-fs'
-import * as FsPolicy from '@liusiqi-dev/dsh-fs-observation-policy'
-import * as ToolFs from '@liusiqi-dev/dsh-tool-fs'
+} from '@liusiqi-dev/sqh-fs'
+import * as FsPolicy from '@liusiqi-dev/sqh-fs-observation-policy'
+import * as ToolFs from '@liusiqi-dev/sqh-tool-fs'
 import { STREAM_MIN_SIZE } from '../src/read.ts'
 import { formatReadOutput } from '../src/read-render.ts'
 import type { FileReadOutcome } from '../src/read-render.ts'
 import { sessionCwd } from '../src/session-cwd.ts'
-import ApprovalService from '@liusiqi-dev/dsh-user-approval'
-import type { SandboxExecutionPolicy, SandboxMode } from '@liusiqi-dev/dsh-sandbox'
-import SandboxPolicyService from '@liusiqi-dev/dsh-sandbox-policy'
-import { SessionId, SessionLogOffset, SessionSeq } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
+import ApprovalService from '@liusiqi-dev/sqh-user-approval'
+import type { SandboxExecutionPolicy, SandboxMode } from '@liusiqi-dev/sqh-sandbox'
+import SandboxPolicyService from '@liusiqi-dev/sqh-sandbox-policy'
+import { SessionId, SessionLogOffset, SessionSeq } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
 
 const testToolSignal = new AbortController().signal
 
@@ -1061,7 +1061,7 @@ function withPersona(...sections: string[]): string {
 
 /** Schema assembly only: these cases never execute user code. */
 class GuidancePtcRuntime extends PtcRuntime {
-  resolve(request: import('@liusiqi-dev/dsh-ptc-runtime').PtcRunRequest): import('@liusiqi-dev/dsh-ptc-runtime').PtcRunSpec { return { ...request, cwd: request.cwd ?? process.cwd(), timeoutMs: request.timeoutMs ?? 120_000 } }
+  resolve(request: import('@liusiqi-dev/sqh-ptc-runtime').PtcRunRequest): import('@liusiqi-dev/sqh-ptc-runtime').PtcRunSpec { return { ...request, cwd: request.cwd ?? process.cwd(), timeoutMs: request.timeoutMs ?? 120_000 } }
 
   readonly language = 'typescript'
   readonly isolation = 'fake'

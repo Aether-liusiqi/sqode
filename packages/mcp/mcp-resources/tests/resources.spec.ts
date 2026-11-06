@@ -1,12 +1,12 @@
 import { setImmediate as nextEventLoopTurn } from 'node:timers/promises'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import SystemPrompt, { renderPrompt } from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime, { defineTool, type Config as ToolConfig } from '@liusiqi-dev/dsh-tools'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { bindScopeParent, createScope, type Scope } from '@liusiqi-dev/dsh-scope'
-import { PtcRuntime, type PtcRunRequest, type PtcRunResult, type PtcRunSpec } from '@liusiqi-dev/dsh-ptc-runtime'
+import SystemPrompt, { renderPrompt } from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime, { defineTool, type Config as ToolConfig } from '@liusiqi-dev/sqh-tools'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { bindScopeParent, createScope, type Scope } from '@liusiqi-dev/sqh-scope'
+import { PtcRuntime, type PtcRunRequest, type PtcRunResult, type PtcRunSpec } from '@liusiqi-dev/sqh-ptc-runtime'
 import McpResources, { type McpResourceProvider } from '../src/index.ts'
 
 const resourceToolNames = ['list_mcp_resources', 'list_mcp_resource_templates', 'read_mcp_resource']

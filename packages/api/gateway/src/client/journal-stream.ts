@@ -1,6 +1,6 @@
 /** Cursor, page, and live-tail coordination over a reconnecting Remote stream. */
 
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
 import { RemoteStreamCarrierError } from './stream-client.ts'
 import type {
   RemoteStream,

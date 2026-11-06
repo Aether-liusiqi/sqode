@@ -22,7 +22,7 @@
  * that do not use a `./typert` artifact (hand-written wire schemas,
  * tests, non-loader compositions).
  *
- * @module @liusiqi-dev/dsh-typert-loader
+ * @module @liusiqi-dev/sqh-typert-loader
  */
 
 import { readFileSync } from 'node:fs'
@@ -32,9 +32,9 @@ import { pathToFileURL } from 'node:url'
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
 import type {} from '@liusiqi-dev/cordis-plugin-loader'
-import type {} from '@liusiqi-dev/dsh-app-boot'
-import type {} from '@liusiqi-dev/dsh-typert-registry'
-import type { TypertContribution } from '@liusiqi-dev/dsh-typert-registry/types'
+import type {} from '@liusiqi-dev/sqh-app-boot'
+import type {} from '@liusiqi-dev/sqh-typert-registry'
+import type { TypertContribution } from '@liusiqi-dev/sqh-typert-registry/types'
 
 /** The package.json exports key naming a package's host-face typert artifact. */
 export const TYPERT_HOST_EXPORT = './typert'

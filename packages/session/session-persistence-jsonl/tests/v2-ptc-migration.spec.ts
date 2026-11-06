@@ -1,9 +1,9 @@
 /** Real JSONL publication and provider-neutral message preservation across the V2 PTC rename. */
 
 import { Context } from '@liusiqi-dev/cordis'
-import { SESSION_FORMAT_VERSION, Session, SessionId } from '@liusiqi-dev/dsh-session'
-import type { SessionFormatEvent } from '@liusiqi-dev/dsh-session-format'
-import JsonlSessionPersistence from '@liusiqi-dev/dsh-session-persistence-jsonl'
+import { SESSION_FORMAT_VERSION, Session, SessionId } from '@liusiqi-dev/sqh-session'
+import type { SessionFormatEvent } from '@liusiqi-dev/sqh-session-format'
+import JsonlSessionPersistence from '@liusiqi-dev/sqh-session-persistence-jsonl'
 import { createHash } from 'node:crypto'
 import { mkdir, mkdtemp, readFile, readdir, rm, stat, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'

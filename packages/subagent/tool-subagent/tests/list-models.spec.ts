@@ -4,17 +4,17 @@ import LlmRuntime, {
   ToolCallId,
   LlmAdapter,
   ReasoningEffortId,
-} from '@liusiqi-dev/dsh-llm'
+} from '@liusiqi-dev/sqh-llm'
 import type {
   GenerateOptions,
   LlmModelInfo,
   LlmResolvedModelInfo,
   StreamChunk,
-} from '@liusiqi-dev/dsh-llm'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import SubagentRuntime from '@liusiqi-dev/dsh-subagent'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
+} from '@liusiqi-dev/sqh-llm'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import SubagentRuntime from '@liusiqi-dev/sqh-subagent'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
 import * as tool from '../src/index.ts'
 import { registerListSubagentModels } from '../src/list-models.ts'
 import { testToolSignal, text } from './harness.ts'

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import InvariantRegistry from '@liusiqi-dev/dsh-invariants'
-import type { DomainChanged } from '@liusiqi-dev/dsh-storage-domain'
+import InvariantRegistry from '@liusiqi-dev/sqh-invariants'
+import type { DomainChanged } from '@liusiqi-dev/sqh-storage-domain'
 import * as WorkspaceInvariant from '../src/invariant.ts'
 import { WorkspaceId } from '../src/index.ts'
 

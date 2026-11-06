@@ -6,9 +6,9 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import Include from '@liusiqi-dev/cordis-plugin-include'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import TokenMeter from '@liusiqi-dev/dsh-token-meter'
-import ToolResultPruner from '@liusiqi-dev/dsh-compaction-tool-result-pruner'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import TokenMeter from '@liusiqi-dev/sqh-token-meter'
+import ToolResultPruner from '@liusiqi-dev/sqh-compaction-tool-result-pruner'
 
 let root: string | undefined
 let context: Context | undefined
@@ -25,9 +25,9 @@ describe('compaction-tool-result-pruner real Loader composition', () => {
     root = await mkdtemp(join(tmpdir(), 'dsh-compact-tool-result-prune-loader-'))
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
-      "- name: '@liusiqi-dev/dsh-session-projection'",
-      "- name: '@liusiqi-dev/dsh-token-meter'",
-      "- name: '@liusiqi-dev/dsh-compaction-tool-result-pruner'",
+      "- name: '@liusiqi-dev/sqh-session-projection'",
+      "- name: '@liusiqi-dev/sqh-token-meter'",
+      "- name: '@liusiqi-dev/sqh-compaction-tool-result-pruner'",
       '  config:',
       '    thresholdChars: 100',
       '    headChars: 20',
@@ -42,9 +42,9 @@ describe('compaction-tool-result-pruner real Loader composition', () => {
     context.loader.internal = {
       version: 'v2',
       async import(specifier: string) {
-        if (specifier === '@liusiqi-dev/dsh-session-projection') return SessionProjectionRegistry
-        if (specifier === '@liusiqi-dev/dsh-token-meter') return TokenMeter
-        if (specifier === '@liusiqi-dev/dsh-compaction-tool-result-pruner') return ToolResultPruner
+        if (specifier === '@liusiqi-dev/sqh-session-projection') return SessionProjectionRegistry
+        if (specifier === '@liusiqi-dev/sqh-token-meter') return TokenMeter
+        if (specifier === '@liusiqi-dev/sqh-compaction-tool-result-pruner') return ToolResultPruner
         throw new Error(`unexpected Loader import: ${specifier}`)
       },
     } as unknown as NonNullable<typeof context.loader.internal>

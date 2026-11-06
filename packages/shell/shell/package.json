@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-shell",
+  "name": "@liusiqi-dev/sqh-shell",
   "description": "Abstract bash executor seam (ctx.shell) for the Siqi Harness",
   "version": "1.0.0",
   "publishConfig": {
@@ -27,13 +27,13 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@liusiqi-dev/dsh-subprocess": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-subprocess": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   }
 }

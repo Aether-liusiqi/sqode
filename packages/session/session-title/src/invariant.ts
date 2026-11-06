@@ -1,15 +1,15 @@
 /**
- * Package-owned invariant companion for `@liusiqi-dev/dsh-session-title`.
- * @module @liusiqi-dev/dsh-session-title/invariant
+ * Package-owned invariant companion for `@liusiqi-dev/sqh-session-title`.
+ * @module @liusiqi-dev/sqh-session-title/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@liusiqi-dev/cordis'
-import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
-import { SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { Session, SessionEvent } from '@liusiqi-dev/dsh-session'
+import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
+import { SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { Session, SessionEvent } from '@liusiqi-dev/sqh-session'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-session-title'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-session-title'
 
 /** Cordis companion plugin name. */
 export const name = 'session-title-invariant'

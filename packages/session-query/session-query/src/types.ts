@@ -2,7 +2,7 @@
  * Public records for exact reads and relationship traces over the
  * live-preferred logical session corpus.
  *
- * @module @liusiqi-dev/dsh-session-query/types
+ * @module @liusiqi-dev/sqh-session-query/types
  */
 
 import type {
@@ -14,8 +14,8 @@ import type {
   SessionSeq,
   OptionalSessionSeq,
   SurfaceEvent,
-} from '@liusiqi-dev/dsh-session'
-import type { SessionTitleSnapshot } from '@liusiqi-dev/dsh-session-title'
+} from '@liusiqi-dev/sqh-session'
+import type { SessionTitleSnapshot } from '@liusiqi-dev/sqh-session-title'
 import type { SessionSearchCursor } from './cursor.ts'
 
 export type { SessionSearchCursor } from './cursor.ts'

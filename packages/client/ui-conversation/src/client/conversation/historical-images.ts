@@ -1,10 +1,10 @@
 /** Session-scoped durable image URL cache shared by Conversation targets. */
 import type { Context } from '@liusiqi-dev/cordis'
-import type { ImageAttachmentRef } from '@liusiqi-dev/dsh-attachment'
-import type { ISessions, SessionBinding } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import { bytesToBase64 } from '@liusiqi-dev/dsh-util-crypto'
-import { WeakMapWithValues } from '@liusiqi-dev/dsh-util-values'
+import type { ImageAttachmentRef } from '@liusiqi-dev/sqh-attachment'
+import type { ISessions, SessionBinding } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import { bytesToBase64 } from '@liusiqi-dev/sqh-util-crypto'
+import { WeakMapWithValues } from '@liusiqi-dev/sqh-util-values'
 
 interface ImageUrlEntry {
   readonly binding: SessionBinding

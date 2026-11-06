@@ -3,7 +3,7 @@ description: "Historical Cordis cards and controls for process-local runner defi
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-ui-cordis
+# @liusiqi-dev/sqh-client-ui-cordis
 
 English | [中文](README.zh.md)
 

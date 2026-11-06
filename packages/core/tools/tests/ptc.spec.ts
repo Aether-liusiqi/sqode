@@ -1,24 +1,24 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { createUserMessage, ToolCallId  } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-import type { ToolSchema } from '@liusiqi-dev/dsh-llm'
-import { createScope } from '@liusiqi-dev/dsh-scope'
-import type { Scope } from '@liusiqi-dev/dsh-scope'
-import SystemPrompt, { renderPrompt } from '@liusiqi-dev/dsh-system-prompt'
-import { PtcRuntime } from '@liusiqi-dev/dsh-ptc-runtime'
-import type { PtcRunRequest, PtcRunResult } from '@liusiqi-dev/dsh-ptc-runtime'
-import ToolRuntime, { CodeRunFailedError, RUN_CODE_NAME, TOOL_ABORTED_BEFORE_DISPATCH, defineContentToolFixture, defineTool } from '@liusiqi-dev/dsh-tools'
-import type { Config, JsonSchemaNode, PostToolDecision, ToolExecutionResult } from '@liusiqi-dev/dsh-tools'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { Session, SessionId } from '@liusiqi-dev/dsh-session'
-import ApprovalService, { type ApprovalOutcome, type ApprovalRequest } from '@liusiqi-dev/dsh-user-approval'
-import type { SessionEventMap } from '@liusiqi-dev/dsh-session'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
-import SandboxPolicy from '@liusiqi-dev/dsh-sandbox-policy'
-import SessionProjections from '@liusiqi-dev/dsh-session-projection'
+import { createUserMessage, ToolCallId  } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+import type { ToolSchema } from '@liusiqi-dev/sqh-llm'
+import { createScope } from '@liusiqi-dev/sqh-scope'
+import type { Scope } from '@liusiqi-dev/sqh-scope'
+import SystemPrompt, { renderPrompt } from '@liusiqi-dev/sqh-system-prompt'
+import { PtcRuntime } from '@liusiqi-dev/sqh-ptc-runtime'
+import type { PtcRunRequest, PtcRunResult } from '@liusiqi-dev/sqh-ptc-runtime'
+import ToolRuntime, { CodeRunFailedError, RUN_CODE_NAME, TOOL_ABORTED_BEFORE_DISPATCH, defineContentToolFixture, defineTool } from '@liusiqi-dev/sqh-tools'
+import type { Config, JsonSchemaNode, PostToolDecision, ToolExecutionResult } from '@liusiqi-dev/sqh-tools'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { Session, SessionId } from '@liusiqi-dev/sqh-session'
+import ApprovalService, { type ApprovalOutcome, type ApprovalRequest } from '@liusiqi-dev/sqh-user-approval'
+import type { SessionEventMap } from '@liusiqi-dev/sqh-session'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
+import SandboxPolicy from '@liusiqi-dev/sqh-sandbox-policy'
+import SessionProjections from '@liusiqi-dev/sqh-session-projection'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'order-probe': { kind: 'order-probe' } & ContextFormed
     'test': { kind: 'test' } & ContextFormed
@@ -37,7 +37,7 @@ const testToolSignal = new AbortController().signal
 
 /** A scriptable in-repo PtcRuntime: each test sets `behavior` to drive the bindings however it needs. */
 class FakeRuntime extends PtcRuntime {
-  resolve(request: import('@liusiqi-dev/dsh-ptc-runtime').PtcRunRequest): import('@liusiqi-dev/dsh-ptc-runtime').PtcRunSpec { return { ...request, cwd: request.cwd ?? process.cwd(), timeoutMs: request.timeoutMs ?? 120_000 } }
+  resolve(request: import('@liusiqi-dev/sqh-ptc-runtime').PtcRunRequest): import('@liusiqi-dev/sqh-ptc-runtime').PtcRunSpec { return { ...request, cwd: request.cwd ?? process.cwd(), timeoutMs: request.timeoutMs ?? 120_000 } }
 
   readonly language: string
   readonly isolation = 'fake'
@@ -2005,7 +2005,7 @@ describe('per-agent presentation', () => {
   })
 
   it('inherits a STANDING preset scope\'s mode down the chain, agents beside it unaffected', async () => {
-    const { bindScopeParent } = await import('@liusiqi-dev/dsh-scope')
+    const { bindScopeParent } = await import('@liusiqi-dev/sqh-scope')
     const { ctx, systemPrompt } = await setup({ mode: 'native' })
     const calls = registerEcho(ctx)
     // The preset's standing scope declares once; the agent only PARENTS to it

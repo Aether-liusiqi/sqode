@@ -14,11 +14,11 @@
 
 - insert:
     - id: tool-plugin-manager
-      name: '@liusiqi-dev/dsh-plugin-manager/tools'
+      name: '@liusiqi-dev/sqh-plugin-manager/tools'
       disabled: true
 
     - id: plugin-manager
-      name: '@liusiqi-dev/dsh-plugin-manager'
+      name: '@liusiqi-dev/sqh-plugin-manager'
       disabled: !!js "!ctx.get('profileContext')"
 
     - id: timer
@@ -27,21 +27,21 @@
 
     # Profile configuration reloads by default; module roots are opt-in.
     - id: hmr
-      name: '@liusiqi-dev/dsh-hmr'
+      name: '@liusiqi-dev/sqh-hmr'
       disabled: !!js "!ctx.get('profileContext')"
       config:
         root: []
 
     - id: llm
-      name: '@liusiqi-dev/dsh-llm'
+      name: '@liusiqi-dev/sqh-llm'
       disabled: false
 
     - id: deepseek-llm-api-extensions
-      name: '@liusiqi-dev/dsh-deepseek-llm-api-extensions'
+      name: '@liusiqi-dev/sqh-deepseek-llm-api-extensions'
       disabled: false
 
     - id: session
-      name: '@liusiqi-dev/dsh-session'
+      name: '@liusiqi-dev/sqh-session'
       disabled: false
 
     # Off by design in this distribution. The upstream plugin contributes a
@@ -51,23 +51,23 @@
     # here so no provider ever receives that field; ordinary requests, tool
     # calls and persistence are unaffected.
     - id: session-log-deepseek
-      name: '@liusiqi-dev/dsh-session-log-deepseek'
+      name: '@liusiqi-dev/sqh-session-log-deepseek'
       disabled: true
 
     - id: typert
-      name: '@liusiqi-dev/dsh-typert-registry'
+      name: '@liusiqi-dev/sqh-typert-registry'
       disabled: false
 
     - id: typert-loader
-      name: '@liusiqi-dev/dsh-typert-loader'
+      name: '@liusiqi-dev/sqh-typert-loader'
       disabled: false
 
     - id: typert-gateway
-      name: '@liusiqi-dev/dsh-api-gateway'
+      name: '@liusiqi-dev/sqh-api-gateway'
       disabled: false
 
     - id: session-title
-      name: '@liusiqi-dev/dsh-session-title'
+      name: '@liusiqi-dev/sqh-session-title'
       disabled: false
       config:
         fallbackMaxWords: 5
@@ -75,7 +75,7 @@
         maxTitleBytes: 80
 
     - id: session-title-llm
-      name: '@liusiqi-dev/dsh-session-title-first-prompt-llm'
+      name: '@liusiqi-dev/sqh-session-title-first-prompt-llm'
       disabled: false
       config:
         targetWords: 5
@@ -85,43 +85,43 @@
         timeoutMs: 60000
 
     - id: user-questions
-      name: '@liusiqi-dev/dsh-user-questions'
+      name: '@liusiqi-dev/sqh-user-questions'
       disabled: false
 
     - id: agent
-      name: '@liusiqi-dev/dsh-agent'
+      name: '@liusiqi-dev/sqh-agent'
       disabled: false
 
     - id: plugin-package-inventory-deepseek
-      name: '@liusiqi-dev/dsh-plugin-package-inventory-deepseek'
+      name: '@liusiqi-dev/sqh-plugin-package-inventory-deepseek'
       disabled: false
 
     # The transport-independent default for Agents created by entry points.
     # Settings may supply a saved selection; consumers read it at creation time.
     - id: agent-default-model
-      name: '@liusiqi-dev/dsh-agent-default-model'
+      name: '@liusiqi-dev/sqh-agent-default-model'
       disabled: false
       config:
         provider: deepseek-official
         model: deepseek-flash
 
     - id: jobs
-      name: '@liusiqi-dev/dsh-jobs-local'
+      name: '@liusiqi-dev/sqh-jobs-local'
       disabled: false
 
     - id: llm-retry
-      name: '@liusiqi-dev/dsh-llm-retry'
+      name: '@liusiqi-dev/sqh-llm-retry'
       disabled: false
 
     # Live Config forms persist through the active profile patch.
 
     # Live configuration forms persist through the launcher's profile.
     - id: config-editor
-      name: '@liusiqi-dev/dsh-config-editor'
+      name: '@liusiqi-dev/sqh-config-editor'
       disabled: !!js "!ctx.get('profileContext')"
 
     - id: settings
-      name: '@liusiqi-dev/dsh-settings'
+      name: '@liusiqi-dev/sqh-settings'
       disabled: !!js "!ctx.get('profileContext')"
 
     # Credential sources: inherited environment over the managed
@@ -129,17 +129,17 @@
     # Adapters resolve references per request; the Models page writes only the
     # managed document, which is never materialized into the process environment.
     - id: authorization
-      name: '@liusiqi-dev/dsh-authorization'
+      name: '@liusiqi-dev/sqh-authorization'
       disabled: false
 
     - id: deepseek-account
-      name: '@liusiqi-dev/dsh-deepseek-account-platform'
+      name: '@liusiqi-dev/sqh-deepseek-account-platform'
       disabled: false
       config:
         desktopPlatform: !!js "ctx.get('profileContext')?.name === 'desktop' && ['darwin', 'win32'].includes(process.platform) ? process.platform : null"
 
     - id: credentials
-      name: '@liusiqi-dev/dsh-credentials-local'
+      name: '@liusiqi-dev/sqh-credentials-local'
       disabled: false
 
     # The pi-ai multi-provider twin, mounted dormant: zero routes (and no extra
@@ -150,7 +150,7 @@
     # adapters exist is composition; which providers run is the user's settings
     # document.
     - id: llm-pi-ai
-      name: '@liusiqi-dev/dsh-llm-pi-ai'
+      name: '@liusiqi-dev/sqh-llm-pi-ai'
       disabled: false
       # Preset third-party routes. Each one is ordinary OpenAI-compatible
       # Chat Completions; the route stays dormant until its key resolves.
@@ -272,7 +272,7 @@
                 maxTokens: 262144
 
     - id: session-persistence-jsonl
-      name: '@liusiqi-dev/dsh-session-persistence-jsonl'
+      name: '@liusiqi-dev/sqh-session-persistence-jsonl'
       disabled: false
       config:
         root: !!js dshHomePath('sessions')
@@ -281,7 +281,7 @@
     # keep content-addressed references that this shared backend resolves for
     # provider requests and authorized history reads.
     - id: attachment-local
-      name: '@liusiqi-dev/dsh-attachment-local'
+      name: '@liusiqi-dev/sqh-attachment-local'
       disabled: false
 
     # Full-text session search is opt-in. `openAt: never` keeps
@@ -293,7 +293,7 @@
     # `first-search` or `startup` in a later patch layer (profile
     # cordis.patch.yml or a --patch overlay), typically with a durable `path`.
     - id: session-query-sqlite
-      name: '@liusiqi-dev/dsh-session-query-sqlite'
+      name: '@liusiqi-dev/sqh-session-query-sqlite'
       disabled: false
       config:
         path: ':memory:'
@@ -303,7 +303,7 @@
     # through its registered units, so the `list_agents` surface below fails
     # loud without it; web layers reuse this same mount for list rows.
     - id: session-projection
-      name: '@liusiqi-dev/dsh-session-projection'
+      name: '@liusiqi-dev/sqh-session-projection'
       disabled: false
 
     # Durable KV storage: the storage hub, the json backend, and the
@@ -311,17 +311,17 @@
     # projection cache below; workspace in web layers)
     # routes through this stack, so it belongs to the shared base.
     - id: storage
-      name: '@liusiqi-dev/dsh-storage'
+      name: '@liusiqi-dev/sqh-storage'
       disabled: false
 
     - id: storage-json
-      name: '@liusiqi-dev/dsh-storage-json'
+      name: '@liusiqi-dev/sqh-storage-json'
       disabled: false
       config:
         root: !!js dshHomePath('storages')
 
     - id: storage-domain
-      name: '@liusiqi-dev/dsh-storage-domain'
+      name: '@liusiqi-dev/sqh-storage-domain'
       disabled: false
       config:
         backend: json
@@ -331,14 +331,14 @@
     # checkpoint document per session), serving the session listing's
     # projection column.
     - id: session-projection-cache
-      name: '@liusiqi-dev/dsh-session-projection-cache'
+      name: '@liusiqi-dev/sqh-session-projection-cache'
       disabled: false
       config:
         writeEveryEvents: 200
         writeIntervalMs: 5000
 
     - id: otel
-      name: '@liusiqi-dev/dsh-otel'
+      name: '@liusiqi-dev/sqh-otel'
       disabled: false
 
     # OTel releases a Session-log prefix only after explicit user feedback,
@@ -358,7 +358,7 @@
     # vendor's OTel collector. Feedback and session records stay local, in the
     # per-home session store, and can be exported with the /export command.
     - id: session-telemetry-otel
-      name: '@liusiqi-dev/dsh-session-telemetry-otel'
+      name: '@liusiqi-dev/sqh-session-telemetry-otel'
       disabled: true
       config:
         mode: !!js process.env.SQODE_TELEMETRY_MODE || 'FEEDBACK_ONLY'
@@ -375,41 +375,41 @@
           exportTimeoutMillis: 1500
 
     - id: subprocess
-      name: '@liusiqi-dev/dsh-subprocess-local'
+      name: '@liusiqi-dev/sqh-subprocess-local'
       disabled: false
 
     # Every shipped CLI mode starts with the same file-effect boundary.
     # The environment remains an explicit deployment override; otherwise fresh
     # sessions pin workspace-write + ask through the permission service below.
     - id: sandbox
-      name: '@liusiqi-dev/dsh-sandbox-local'
+      name: '@liusiqi-dev/sqh-sandbox-local'
       disabled: false
 
     - id: sandbox-policy
-      name: '@liusiqi-dev/dsh-sandbox-policy'
+      name: '@liusiqi-dev/sqh-sandbox-policy'
       disabled: false
       config:
         mode: !!js process.env.SQODE_PERMISSION_MODE ?? 'workspace-write'
         workspaceRoot: !!js process.cwd()
 
     - id: bash-sandbox
-      name: '@liusiqi-dev/dsh-bash-sandbox'
+      name: '@liusiqi-dev/sqh-bash-sandbox'
       disabled: !!js process.platform === 'win32'
       config:
         timeoutMs: 60000
 
     - id: pwsh-sandbox
-      name: '@liusiqi-dev/dsh-pwsh-sandbox'
+      name: '@liusiqi-dev/sqh-pwsh-sandbox'
       disabled: !!js process.platform !== 'win32'
 
     - id: approval
-      name: '@liusiqi-dev/dsh-user-approval'
+      name: '@liusiqi-dev/sqh-user-approval'
       disabled: false
       config:
         policy: !!js "(process.env.SQODE_PERMISSION_MODE ?? 'workspace-write') === 'danger-full-access' ? 'never' : 'ask'"
 
     - id: permission
-      name: '@liusiqi-dev/dsh-permission-presets'
+      name: '@liusiqi-dev/sqh-permission-presets'
       disabled: false
       config:
         presets:
@@ -424,79 +424,79 @@
             approval: never
 
     - id: shell-env
-      name: '@liusiqi-dev/dsh-shell-env'
+      name: '@liusiqi-dev/sqh-shell-env'
       disabled: false
 
     - id: tool-bash
-      name: '@liusiqi-dev/dsh-tool-bash'
+      name: '@liusiqi-dev/sqh-tool-bash'
       disabled: !!js process.platform === 'win32'
 
     - id: tool-pwsh
-      name: '@liusiqi-dev/dsh-tool-pwsh'
+      name: '@liusiqi-dev/sqh-tool-pwsh'
       disabled: !!js process.platform !== 'win32'
 
     - id: tool-jobs
-      name: '@liusiqi-dev/dsh-tool-jobs'
+      name: '@liusiqi-dev/sqh-tool-jobs'
       disabled: false
 
     - id: fs-observation-policy
-      name: '@liusiqi-dev/dsh-fs-observation-policy'
+      name: '@liusiqi-dev/sqh-fs-observation-policy'
       disabled: false
 
     - id: tool-fs
-      name: '@liusiqi-dev/dsh-tool-fs'
+      name: '@liusiqi-dev/sqh-tool-fs'
       disabled: false
 
     - id: tool-fs-search
-      name: '@liusiqi-dev/dsh-tool-fs-search'
+      name: '@liusiqi-dev/sqh-tool-fs-search'
       disabled: false
       config:
         sampleOverCapGlobResults: false
 
     - id: agent-instructions
-      name: '@liusiqi-dev/dsh-agent-instructions'
+      name: '@liusiqi-dev/sqh-agent-instructions'
       disabled: false
       config:
         maxBytes: 65536
 
     - id: skill
-      name: '@liusiqi-dev/dsh-skill'
+      name: '@liusiqi-dev/sqh-skill'
       disabled: false
 
     - id: skill-filesystem
-      name: '@liusiqi-dev/dsh-skill-filesystem'
+      name: '@liusiqi-dev/sqh-skill-filesystem'
       disabled: false
 
     - id: skill-badge
-      name: '@liusiqi-dev/dsh-skill-badge'
+      name: '@liusiqi-dev/sqh-skill-badge'
       disabled: true
 
     - id: tool-skill
-      name: '@liusiqi-dev/dsh-tool-skill'
+      name: '@liusiqi-dev/sqh-tool-skill'
       disabled: false
 
     - id: commands
-      name: '@liusiqi-dev/dsh-commands'
+      name: '@liusiqi-dev/sqh-commands'
       disabled: false
 
     - id: command-feedback
-      name: '@liusiqi-dev/dsh-command-feedback'
+      name: '@liusiqi-dev/sqh-command-feedback'
       disabled: false
 
     - id: goal
-      name: '@liusiqi-dev/dsh-goal'
+      name: '@liusiqi-dev/sqh-goal'
       disabled: false
 
     - id: goal-round-driver
-      name: '@liusiqi-dev/dsh-goal-round-driver'
+      name: '@liusiqi-dev/sqh-goal-round-driver'
       disabled: false
 
     - id: command-goal
-      name: '@liusiqi-dev/dsh-command-goal'
+      name: '@liusiqi-dev/sqh-command-goal'
       disabled: false
 
     - id: plan-mode
-      name: '@liusiqi-dev/dsh-plan-mode'
+      name: '@liusiqi-dev/sqh-plan-mode'
       disabled: false
       config:
         section: |
@@ -513,31 +513,31 @@
               When ready, call exit_plan_mode with the complete plan markdown, starting with a # title. Make exit_plan_mode the only and final tool call in that assistant response: it presents the plan for approval, and implementation begins only in a later step after approval. Do not paste the final plan as a plain reply or ask "should I proceed?" through prose or ask_user_question. If review rejects it, incorporate the feedback and present again. If the review channel is unavailable or aborted, stay in plan mode and ask the user to switch modes manually; do not proceed with implementation.
 
     - id: token-meter
-      name: '@liusiqi-dev/dsh-token-meter'
+      name: '@liusiqi-dev/sqh-token-meter'
       disabled: false
 
     - id: compaction-basic
-      name: '@liusiqi-dev/dsh-compaction-basic'
+      name: '@liusiqi-dev/sqh-compaction-basic'
       disabled: false
 
     # Human `/compact`: one useful reduction below the automatic threshold. Backend
     # independent, so it follows whichever compaction service this leaf mounts.
     - id: command-compact
-      name: '@liusiqi-dev/dsh-command-compact'
+      name: '@liusiqi-dev/sqh-command-compact'
       disabled: false
 
     - id: subagent
-      name: '@liusiqi-dev/dsh-subagent'
+      name: '@liusiqi-dev/sqh-subagent'
       disabled: false
 
     - id: subagent-spawn-in-process
-      name: '@liusiqi-dev/dsh-subagent-spawn-in-process'
+      name: '@liusiqi-dev/sqh-subagent-spawn-in-process'
       disabled: false
       config:
         providerName: spawn
 
     - id: subagent-fork-in-process
-      name: '@liusiqi-dev/dsh-subagent-fork-in-process'
+      name: '@liusiqi-dev/sqh-subagent-fork-in-process'
       disabled: false
       config:
         providerName: fork
@@ -545,15 +545,15 @@
     # Continuable background children are selected per delegation tool. The
     # separately loaded follow-up tool registers the one global `send_message`.
     - id: tool-subagent-control
-      name: '@liusiqi-dev/dsh-tool-subagent-control'
+      name: '@liusiqi-dev/sqh-tool-subagent-control'
       disabled: false
 
     - id: tool-subagent-list-agents
-      name: '@liusiqi-dev/dsh-tool-subagent-control/list-agents'
+      name: '@liusiqi-dev/sqh-tool-subagent-control/list-agents'
       disabled: false
 
     - id: tool-subagent
-      name: '@liusiqi-dev/dsh-tool-subagent'
+      name: '@liusiqi-dev/sqh-tool-subagent'
       disabled: false
       config:
         provider: spawn
@@ -567,7 +567,7 @@
     # See .agents/notes/implemented/feature/2026-08-18-model-selected-subagent-routes.md
     # and .agents/notes/implemented/architecture/2026-08-10-fork-children-stay-one-shot.md.
     - id: tool-subagent-fork
-      name: '@liusiqi-dev/dsh-tool-subagent'
+      name: '@liusiqi-dev/sqh-tool-subagent'
       disabled: false
       config:
         provider: fork
@@ -575,42 +575,42 @@
         backgroundMode: one-shot
 
     - id: ptc-runtime
-      name: '@liusiqi-dev/dsh-ptc-runtime-node'
+      name: '@liusiqi-dev/sqh-ptc-runtime-node'
       disabled: false
 
     - id: workflow-ptc
-      name: '@liusiqi-dev/dsh-workflow-ptc'
+      name: '@liusiqi-dev/sqh-workflow-ptc'
       disabled: false
       config:
         provider: spawn
 
     - id: tool-workflow
-      name: '@liusiqi-dev/dsh-tool-workflow'
+      name: '@liusiqi-dev/sqh-tool-workflow'
       disabled: false
 
     - id: timeout-policy
-      name: '@liusiqi-dev/dsh-tool-call-timeout-policy'
+      name: '@liusiqi-dev/sqh-tool-call-timeout-policy'
       disabled: false
 
     - id: spill-local
-      name: '@liusiqi-dev/dsh-spill-local'
+      name: '@liusiqi-dev/sqh-spill-local'
       disabled: false
 
     - id: spill-policy
-      name: '@liusiqi-dev/dsh-spill-policy'
+      name: '@liusiqi-dev/sqh-spill-policy'
       disabled: false
       config:
         maxInlineTokens: 12500
 
     # Durability checkpoints before each model request and top-level dispatch.
     - id: session-checkpoint-policy
-      name: '@liusiqi-dev/dsh-session-checkpoint-policy'
+      name: '@liusiqi-dev/sqh-session-checkpoint-policy'
       disabled: false
 
     # Compacts oversized tool results before the broader conversation compactor
     # runs, preserving the model-visible result within the configured budget.
     - id: tool-result-pruner
-      name: '@liusiqi-dev/dsh-compaction-tool-result-pruner'
+      name: '@liusiqi-dev/sqh-compaction-tool-result-pruner'
       disabled: false
       config:
         thresholdChars: 8192
@@ -620,11 +620,11 @@
     # When an image-capable route rejects a request as over its image budget,
     # replace the oldest images with placeholders on the surface and retry.
     - id: image-offload
-      name: '@liusiqi-dev/dsh-compaction-image-offload'
+      name: '@liusiqi-dev/sqh-compaction-image-offload'
       disabled: false
 
     - id: tool-todo
-      name: '@liusiqi-dev/dsh-tool-todo'
+      name: '@liusiqi-dev/sqh-tool-todo'
       disabled: false
       config:
         allowParallelInProgress: true
@@ -632,7 +632,7 @@
     # Persisted same-session goals reach the model and the slash menu here; the
     # domain, driver, and `/goal` command are above.
     - id: tool-goal
-      name: '@liusiqi-dev/dsh-tool-goal'
+      name: '@liusiqi-dev/sqh-tool-goal'
       disabled: false
 
     # Fresh-agent Ralph iteration over a build-time-fixed script. Off by
@@ -643,7 +643,7 @@
     #   - id: tool-ralph
     #     disabled: false
     - id: tool-ralph
-      name: '@liusiqi-dev/dsh-tool-ralph'
+      name: '@liusiqi-dev/sqh-tool-ralph'
       disabled: true
       config:
         subagentProvider: spawn
@@ -651,7 +651,7 @@
 
     # Consecutive-repeat reminders on the tool chain.
     - id: repeat-tool-reminder
-      name: '@liusiqi-dev/dsh-repeat-tool-reminder'
+      name: '@liusiqi-dev/sqh-repeat-tool-reminder'
       disabled: false
       config:
         thresholds: [3, 5, 8]
@@ -669,7 +669,7 @@
     # shipped DeepSeek route gets 60s while the provider-neutral tool default
     # remains 30s.
     - id: web
-      name: '@liusiqi-dev/dsh-web'
+      name: '@liusiqi-dev/sqh-web'
       disabled: false
       config:
         searchProvider: serp-bing
@@ -680,7 +680,7 @@
     # challenge page is reported as such. Keys are not required; an API-backed
     # route (web-search-http) can be selected instead for higher rate limits.
     - id: web-search-serp
-      name: '@liusiqi-dev/dsh-web-search-serp'
+      name: '@liusiqi-dev/sqh-web-search-serp'
       disabled: false
 
     # Plain keyword search: Google Custom Search first, Bing Web Search when the
@@ -690,28 +690,28 @@
     # GOOGLE_SEARCH_API_KEY + GOOGLE_SEARCH_CX and BING_SEARCH_API_KEY, or from
     # the Web search settings section.
     - id: web-search-http
-      name: '@liusiqi-dev/dsh-web-search-http'
+      name: '@liusiqi-dev/sqh-web-search-http'
       disabled: false
 
     - id: web-search-deepseek
-      name: '@liusiqi-dev/dsh-web-search-deepseek'
+      name: '@liusiqi-dev/sqh-web-search-deepseek'
       disabled: false
       config:
         apiKeyEnv: DEEPSEEK_API_KEY
 
     - id: web-fetch-http
-      name: '@liusiqi-dev/dsh-web-fetch-http'
+      name: '@liusiqi-dev/sqh-web-fetch-http'
       disabled: false
 
     - id: tool-web
-      name: '@liusiqi-dev/dsh-tool-web'
+      name: '@liusiqi-dev/sqh-tool-web'
       disabled: false
       config:
         fetch: true
         searchTimeoutMs: 60000
 
     - id: mcp-resources
-      name: '@liusiqi-dev/dsh-mcp-resources'
+      name: '@liusiqi-dev/sqh-mcp-resources'
       disabled: false
 
     # ── rows every mode mounts, whose values each overlay may state ──────────────
@@ -719,13 +719,13 @@
     # The tool registry. Presentation mode is a deployment choice; omitting it here
     # keeps the schema default (native).
     - id: tools
-      name: '@liusiqi-dev/dsh-tools'
+      name: '@liusiqi-dev/sqh-tools'
       disabled: false
 
     # The deployment persona is a deployment choice; plan-mode and tool plugins own
     # their own prompt sections.
     - id: system-prompt
-      name: '@liusiqi-dev/dsh-system-prompt'
+      name: '@liusiqi-dev/sqh-system-prompt'
       disabled: false
       config:
         personaPrefix: ''
@@ -733,7 +733,7 @@
     # Agents created at startup. The base stays empty; raw overlays may create
     # agents, while Web creates sessions on client request.
     - id: agent-loop
-      name: '@liusiqi-dev/dsh-agent-loop'
+      name: '@liusiqi-dev/sqh-agent-loop'
       disabled: false
       config:
         agents: []
@@ -741,7 +741,7 @@
     # The sandboxed filesystem provider. `cwd` defaults to `process.cwd()`; an
     # overlay can pin another workspace.
     - id: fs-sandbox
-      name: '@liusiqi-dev/dsh-fs-sandbox'
+      name: '@liusiqi-dev/sqh-fs-sandbox'
       disabled: false
 
     # The native DeepSeek adapter. No key or endpoint is inlined: both resolve per
@@ -749,9 +749,9 @@
     # key coming from the credential store below. Thinking defaults are a deployment
     # choice.
     - id: llm-deepseek
-      name: '@liusiqi-dev/dsh-llm-deepseek-api-key'
+      name: '@liusiqi-dev/sqh-llm-deepseek-api-key'
       disabled: false
 
     - id: llm-deepseek-account
-      name: '@liusiqi-dev/dsh-llm-deepseek-account'
+      name: '@liusiqi-dev/sqh-llm-deepseek-account'
       disabled: false

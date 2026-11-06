@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest'
-import type { SessionFormatEvent } from '@liusiqi-dev/dsh-session-format'
+import type { SessionFormatEvent } from '@liusiqi-dev/sqh-session-format'
 import { createSessionFormatCatalogWithChildren, historicalSessionFormatCatalog, sessionFormatCatalog } from '../src/index.ts'
 import { currentSessionMessageProjections } from '../src/message-projections.ts'
-import { MESSAGE_PROJECTION_EVENT_TYPES } from '@liusiqi-dev/dsh-session/src/known-event-types.ts'
+import { MESSAGE_PROJECTION_EVENT_TYPES } from '@liusiqi-dev/sqh-session/src/known-event-types.ts'
 import { validateInstalledCurrentSessionArtifact } from '../src/current.ts'
-import { SESSION_FORMAT_VERSION, Session, SessionId } from '@liusiqi-dev/dsh-session'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
+import { SESSION_FORMAT_VERSION, Session, SessionId } from '@liusiqi-dev/sqh-session'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
 
 function deepFreeze<T>(value: T): T {
   if (value !== null && typeof value === 'object') {

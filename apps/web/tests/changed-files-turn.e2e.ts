@@ -6,9 +6,9 @@ import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { chromium, type Browser, type Page } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFinished } from 'vitest'
-import type {} from '@liusiqi-dev/dsh-workspace-changes'
-import type { ChangesSummary } from '@liusiqi-dev/dsh-client-ui-deliverables/src/changes.ts'
-import { deriveReplayScript, parseSessionLog } from '@liusiqi-dev/dsh-llm-replay'
+import type {} from '@liusiqi-dev/sqh-workspace-changes'
+import type { ChangesSummary } from '@liusiqi-dev/sqh-client-ui-deliverables/src/changes.ts'
+import { deriveReplayScript, parseSessionLog } from '@liusiqi-dev/sqh-llm-replay'
 import {
   assertFinalWorkspaceSnapshot, captureExpandedTurnProcessAria, compareOrRefreshGolden,
   fixtureUserPrompts, launchWebScaffold, recordFixture, watchConsole,

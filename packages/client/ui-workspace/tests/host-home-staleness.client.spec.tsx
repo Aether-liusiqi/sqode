@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
 /**
  * Host home reaches the browsing region through the assembled renderer, which
  * memoizes a root entry's inject result for the whole registration — so a home
@@ -9,11 +9,11 @@ import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
  */
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, screen } from '@testing-library/react'
-import type { WorkspaceId } from '@liusiqi-dev/dsh-api-workspace-controller/client'
-import type { PropsRenderSlots } from '@liusiqi-dev/dsh-client-ui-slots'
-import { SlotTestRuntime, usePinnedBrowserLanguages } from '@liusiqi-dev/dsh-client-test-runtime'
-import { LocaleRuntime } from '@liusiqi-dev/dsh-client-locale/client'
-import { apply, inject } from '@liusiqi-dev/dsh-client-ui-workspace/client'
+import type { WorkspaceId } from '@liusiqi-dev/sqh-api-workspace-controller/client'
+import type { PropsRenderSlots } from '@liusiqi-dev/sqh-client-ui-slots'
+import { SlotTestRuntime, usePinnedBrowserLanguages } from '@liusiqi-dev/sqh-client-test-runtime'
+import { LocaleRuntime } from '@liusiqi-dev/sqh-client-locale/client'
+import { apply, inject } from '@liusiqi-dev/sqh-client-ui-workspace/client'
 
 usePinnedBrowserLanguages('zh-CN')
 

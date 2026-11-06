@@ -3,7 +3,7 @@ description: "Whole-log conversation counts and wall times for clients and maint
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-session-stats
+# @liusiqi-dev/sqh-session-stats
 
 English | [中文](README.zh.md)
 
@@ -30,9 +30,9 @@ Mount the plugin beside the session store and the projection registry when clien
 ### Composition
 
 ```yaml
-- name: '@liusiqi-dev/dsh-session'
-- name: '@liusiqi-dev/dsh-session-projection'
-- name: '@liusiqi-dev/dsh-session-stats'
+- name: '@liusiqi-dev/sqh-session'
+- name: '@liusiqi-dev/sqh-session-projection'
+- name: '@liusiqi-dev/sqh-session-stats'
 ```
 
 ### What the figures mean

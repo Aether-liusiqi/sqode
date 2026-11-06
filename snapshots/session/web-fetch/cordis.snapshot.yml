@@ -1,12 +1,12 @@
 # Keyless replay counterpart: deterministic HTTP remains real; only the model
 # adapter is replaced by replay.
 - id: llm-deepseek
-  name: '@liusiqi-dev/dsh-llm-deepseek-api-key'
+  name: '@liusiqi-dev/sqh-llm-deepseek-api-key'
   disabled: true
 
 - insert:
     - id: llm-replay
-      name: '@liusiqi-dev/dsh-llm-replay'
+      name: '@liusiqi-dev/sqh-llm-replay'
       config:
         providers:
           - id: deepseek-official
@@ -19,13 +19,13 @@
       name: './web-fetch-fixture-server.mjs'
 
 - id: web
-  name: '@liusiqi-dev/dsh-web'
+  name: '@liusiqi-dev/sqh-web'
 
 - id: web-fetch-http
-  name: '@liusiqi-dev/dsh-web-fetch-http'
+  name: '@liusiqi-dev/sqh-web-fetch-http'
   disabled: true
 
 - id: tool-web
-  name: '@liusiqi-dev/dsh-tool-web'
+  name: '@liusiqi-dev/sqh-tool-web'
   config:
     search: false

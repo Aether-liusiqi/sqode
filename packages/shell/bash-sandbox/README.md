@@ -3,7 +3,7 @@ description: "The sandbox-consuming Bash executor for deployments and maintainer
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-bash-sandbox
+# @liusiqi-dev/sqh-bash-sandbox
 
 English | [中文](README.zh.md)
 
@@ -45,14 +45,14 @@ The executor takes no sandbox configuration of its own: the default mode and wor
 
 ```yaml
 - id: sandbox
-  name: '@liusiqi-dev/dsh-sandbox-local'
+  name: '@liusiqi-dev/sqh-sandbox-local'
 - id: sandbox-policy
-  name: '@liusiqi-dev/dsh-sandbox-policy'
+  name: '@liusiqi-dev/sqh-sandbox-policy'
   config:
     mode: read-only
     workspaceRoot: !!js process.cwd() # fallback for calls without a session cwd
 - id: bash
-  name: '@liusiqi-dev/dsh-bash-sandbox'
+  name: '@liusiqi-dev/sqh-bash-sandbox'
 ```
 
 ### Denials are result facts

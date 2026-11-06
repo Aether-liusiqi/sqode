@@ -4,11 +4,11 @@
  * own context is current, because stream (re)opens run on caller stacks — a
  * React event, a carrier retry — whose dynamic context has not declared
  * `remote.job`.
- * @module @liusiqi-dev/dsh-api-job-controller/client
+ * @module @liusiqi-dev/sqh-api-job-controller/client
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-api-job-controller/remote'
+import type {} from '@liusiqi-dev/sqh-api-job-controller/remote'
 import { ClientJobsModel } from './model.ts'
 import { ClientJobs } from './service.ts'
 

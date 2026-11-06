@@ -8,17 +8,17 @@
  * image-reading tool is useful only when the exact calling route can inspect
  * its result, so unknown capability refuses instead of relying on an adapter
  * failure after filesystem and attachment work.
- * @module @liusiqi-dev/dsh-tool-fs/src/read-image
+ * @module @liusiqi-dev/sqh-tool-fs/src/read-image
  */
 
 import { basename, extname } from 'node:path'
 import type { Context } from '@liusiqi-dev/cordis'
-import { AttachmentError, AttachmentId } from '@liusiqi-dev/dsh-attachment'
-import type { AttachmentStore, ImageAttachmentRef, ImageMediaType } from '@liusiqi-dev/dsh-attachment'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
-import type { GenericCallView, ToolExecution } from '@liusiqi-dev/dsh-tools'
-import type {} from '@liusiqi-dev/dsh-fs'
+import { AttachmentError, AttachmentId } from '@liusiqi-dev/sqh-attachment'
+import type { AttachmentStore, ImageAttachmentRef, ImageMediaType } from '@liusiqi-dev/sqh-attachment'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
+import type { GenericCallView, ToolExecution } from '@liusiqi-dev/sqh-tools'
+import type {} from '@liusiqi-dev/sqh-fs'
 import { resolveRegularReadTarget } from './read-target.ts'
 
 /** Extensions `read_image` accepts; magic-byte validation at the attachment service stays authoritative. */

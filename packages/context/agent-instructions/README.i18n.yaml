@@ -5,96 +5,96 @@
 /:
   en: 3e005f834284c249
   zh: d51d06d0ea2c30ca
-/liusiqi-dev-dsh-agent-instructions:
-  en: 4db90008211b0e94
-  zh: 2557da4f3caca3cb
-/liusiqi-dev-dsh-agent-instructions/summary:
+/liusiqi-dev-sqh-agent-instructions:
+  en: fdfdb5fa33aa4154
+  zh: 39b738843aae9929
+/liusiqi-dev-sqh-agent-instructions/summary:
   en: 9d849b3c7bc5e3b7
   zh: aee26ccc12e73fe3
-/liusiqi-dev-dsh-agent-instructions/table-of-contents:
+/liusiqi-dev-sqh-agent-instructions/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
-/liusiqi-dev-dsh-agent-instructions/use-this-package:
+/liusiqi-dev-sqh-agent-instructions/use-this-package:
   en: d8c9258bcc5c9b32
   zh: 1bbeb9c58828d83c
-/liusiqi-dev-dsh-agent-instructions/use-this-package/what-the-agent-gets:
+/liusiqi-dev-sqh-agent-instructions/use-this-package/what-the-agent-gets:
   en: 3c743a336a5810d8
   zh: 7b2b8d157433f8f6
-/liusiqi-dev-dsh-agent-instructions/use-this-package/configuration:
+/liusiqi-dev-sqh-agent-instructions/use-this-package/configuration:
   en: 2737c618f330dbae
   zh: 7dd3d1199f389487
-/liusiqi-dev-dsh-agent-instructions/use-this-package/observing-the-budget:
+/liusiqi-dev-sqh-agent-instructions/use-this-package/observing-the-budget:
   en: 9797082b1e69b72c
   zh: d26c00b1b90fe4ea
-/liusiqi-dev-dsh-agent-instructions/understand-the-implementation:
+/liusiqi-dev-sqh-agent-instructions/understand-the-implementation:
   en: 724df7ff6d1d9fea
   zh: 91fb1013eb9178ec
-/liusiqi-dev-dsh-agent-instructions/understand-the-implementation/design-concept:
+/liusiqi-dev-sqh-agent-instructions/understand-the-implementation/design-concept:
   en: 4708b51bf8fe86f7
   zh: 869fc4b1f78383ee
-/liusiqi-dev-dsh-agent-instructions/understand-the-implementation/source-map:
+/liusiqi-dev-sqh-agent-instructions/understand-the-implementation/source-map:
   en: 737fdf08415bc08d
   zh: 625d53b1418ab6bb
-/liusiqi-dev-dsh-agent-instructions/understand-the-implementation/main-flow:
+/liusiqi-dev-sqh-agent-instructions/understand-the-implementation/main-flow:
   en: d881b9055f823929
   zh: 87b25f0bf8e204e9
-/liusiqi-dev-dsh-agent-instructions/understand-the-implementation/invariants:
+/liusiqi-dev-sqh-agent-instructions/understand-the-implementation/invariants:
   en: 7f6e9b5356da91fd
   zh: 7b99f255d23d982e
-/liusiqi-dev-dsh-agent-instructions/further-exploration:
+/liusiqi-dev-sqh-agent-instructions/further-exploration:
   en: b3e57c263575fa5f
   zh: b67efbda908ac82c
-/liusiqi-dev-dsh-agent-instructions/model-experience:
+/liusiqi-dev-sqh-agent-instructions/model-experience:
   en: 215e7ba838619b7b
   zh: a311da3843709f90
-/liusiqi-dev-dsh-agent-instructions/model-experience/baseline-context:
+/liusiqi-dev-sqh-agent-instructions/model-experience/baseline-context:
   en: 41690f63ce8a7e6a
   zh: 6cff922d5afef38f
-/liusiqi-dev-dsh-agent-instructions/model-experience/baseline-context/what-the-model-sees:
+/liusiqi-dev-sqh-agent-instructions/model-experience/baseline-context/what-the-model-sees:
   en: 41ad1efcf640edf2
   zh: 3d06e265788fc2b7
-/liusiqi-dev-dsh-agent-instructions/model-experience/baseline-context/what-the-model-sees/baseline-instruction-template:
+/liusiqi-dev-sqh-agent-instructions/model-experience/baseline-context/what-the-model-sees/baseline-instruction-template:
   en: 0ced1c177da6d120
   zh: 6c61efb987e227fe
-/liusiqi-dev-dsh-agent-instructions/model-experience/baseline-context/token-effect:
+/liusiqi-dev-sqh-agent-instructions/model-experience/baseline-context/token-effect:
   en: e7c0cc34065a1113
   zh: a973ba9fac7a918d
-/liusiqi-dev-dsh-agent-instructions/model-experience/baseline-context/kv-cache-effect:
+/liusiqi-dev-sqh-agent-instructions/model-experience/baseline-context/kv-cache-effect:
   en: c611902b9f369d86
   zh: d7da1dbe6c1ac7f1
-/liusiqi-dev-dsh-agent-instructions/model-experience/newly-discovered-scope-context:
+/liusiqi-dev-sqh-agent-instructions/model-experience/newly-discovered-scope-context:
   en: bbf8f11dbb279b78
   zh: eb537ade3fa1e573
-/liusiqi-dev-dsh-agent-instructions/model-experience/newly-discovered-scope-context/what-the-model-sees:
+/liusiqi-dev-sqh-agent-instructions/model-experience/newly-discovered-scope-context/what-the-model-sees:
   en: 99226255009f8432
   zh: 3b1661ca1a98ae4a
-/liusiqi-dev-dsh-agent-instructions/model-experience/newly-discovered-scope-context/what-the-model-sees/additional-instruction-template:
+/liusiqi-dev-sqh-agent-instructions/model-experience/newly-discovered-scope-context/what-the-model-sees/additional-instruction-template:
   en: 50655306b787c8c6
   zh: bcdc631a35f9de91
-/liusiqi-dev-dsh-agent-instructions/model-experience/newly-discovered-scope-context/token-effect:
+/liusiqi-dev-sqh-agent-instructions/model-experience/newly-discovered-scope-context/token-effect:
   en: 793319101bb39edf
   zh: f05af12ab9574a4d
-/liusiqi-dev-dsh-agent-instructions/model-experience/newly-discovered-scope-context/kv-cache-effect:
+/liusiqi-dev-sqh-agent-instructions/model-experience/newly-discovered-scope-context/kv-cache-effect:
   en: 2fbf2175168e8244
   zh: f681f89596f500f5
-/liusiqi-dev-dsh-agent-instructions/model-experience/changed-or-removed-instruction-context:
+/liusiqi-dev-sqh-agent-instructions/model-experience/changed-or-removed-instruction-context:
   en: b668990682ea0069
   zh: 6468918ca6b31a45
-/liusiqi-dev-dsh-agent-instructions/model-experience/changed-or-removed-instruction-context/what-the-model-sees:
+/liusiqi-dev-sqh-agent-instructions/model-experience/changed-or-removed-instruction-context/what-the-model-sees:
   en: 16afe8870b4de832
   zh: f0cdf8ea51ec148a
-/liusiqi-dev-dsh-agent-instructions/model-experience/changed-or-removed-instruction-context/what-the-model-sees/removal-notice:
+/liusiqi-dev-sqh-agent-instructions/model-experience/changed-or-removed-instruction-context/what-the-model-sees/removal-notice:
   en: c78113708e7d7665
   zh: b10dcce1569febae
-/liusiqi-dev-dsh-agent-instructions/model-experience/changed-or-removed-instruction-context/token-effect:
+/liusiqi-dev-sqh-agent-instructions/model-experience/changed-or-removed-instruction-context/token-effect:
   en: 436f2fb373e7822d
   zh: 0a3173b4398530bd
-/liusiqi-dev-dsh-agent-instructions/model-experience/changed-or-removed-instruction-context/kv-cache-effect:
+/liusiqi-dev-sqh-agent-instructions/model-experience/changed-or-removed-instruction-context/kv-cache-effect:
   en: 2fbf2175168e8244
   zh: f681f89596f500f5
-/liusiqi-dev-dsh-agent-instructions/known-limitations-and-deferred-work:
+/liusiqi-dev-sqh-agent-instructions/known-limitations-and-deferred-work:
   en: 979d9c7e007a3ec4
   zh: 1bebca78051f13bd
-/liusiqi-dev-dsh-agent-instructions/known-limitations-and-deferred-work/dev-note:
+/liusiqi-dev-sqh-agent-instructions/known-limitations-and-deferred-work/dev-note:
   en: e67f633dc6fe7773
   zh: 3bb0c20c93f16f98

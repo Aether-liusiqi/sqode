@@ -16,12 +16,12 @@
  * aborted on that commit. The slot framework binds the navigation sources for
  * each record's `useTabInfo` reader.
  */
-import type { Branded } from '@liusiqi-dev/dsh-brand'
-import { randomUUID } from '@liusiqi-dev/dsh-util-crypto'
-import type { LayoutState, PaneId, TabId, TabRecord } from '@liusiqi-dev/dsh-client-ui-dockkit'
-import { findTabPane } from '@liusiqi-dev/dsh-client-ui-dockkit'
-import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
+import { randomUUID } from '@liusiqi-dev/sqh-util-crypto'
+import type { LayoutState, PaneId, TabId, TabRecord } from '@liusiqi-dev/sqh-client-ui-dockkit'
+import { findTabPane } from '@liusiqi-dev/sqh-client-ui-dockkit'
+import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import type { SidebarRightNavigationParams } from './contract/params.ts'
 import type { SidebarRightTabActions, SidebarRightTabCommands, SidebarRightTabNavigation, SidebarRightTabPlacement } from './contract/slots.ts'
 import type { SidebarRightOpenResourceOptions, SidebarRightOpenTabOptions, SidebarRightPlacement } from './service.ts'

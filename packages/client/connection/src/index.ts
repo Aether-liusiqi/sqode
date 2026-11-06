@@ -2,10 +2,10 @@
 import type { Context } from '@liusiqi-dev/cordis'
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import z from '@liusiqi-dev/schemastery'
-import type {} from '@liusiqi-dev/dsh-attachment'
-import type {} from '@liusiqi-dev/dsh-credentials'
+import type {} from '@liusiqi-dev/sqh-attachment'
+import type {} from '@liusiqi-dev/sqh-credentials'
 // Activates the webServer Context merge used below.
-import type { WebRoute } from '@liusiqi-dev/dsh-host-webserver'
+import type { WebRoute } from '@liusiqi-dev/sqh-host-webserver'
 import { API_PATH } from './api-path.ts'
 import { bridge, DEFAULT_MAX_REQUEST_BODY_BYTES } from './http-bridge.ts'
 import { assertTrustedAuthority } from './api-request-trust.ts'
@@ -36,7 +36,7 @@ export type {
   RpcMessage,
   ServerResponse,
 } from './rpc.ts'
-export type { PeerId, PeerScope, RemoteInvocation } from '@liusiqi-dev/dsh-typert-protocol'
+export type { PeerId, PeerScope, RemoteInvocation } from '@liusiqi-dev/sqh-typert-protocol'
 export { RpcId, transportError } from './rpc.ts'
 export { OperatorPeer } from './operator-peer.ts'
 export {

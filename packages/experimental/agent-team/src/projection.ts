@@ -1,10 +1,10 @@
 /** Team state projected incrementally from committed Session events, with a durable-only client view. */
 
 import { z } from 'zod'
-import { brandString } from '@liusiqi-dev/dsh-brand'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import type { SessionEvent, SessionEventMap, SessionId } from '@liusiqi-dev/dsh-session'
-import type { ProjectionDefinition } from '@liusiqi-dev/dsh-session-projection'
+import { brandString } from '@liusiqi-dev/sqh-brand'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import type { SessionEvent, SessionEventMap, SessionId } from '@liusiqi-dev/sqh-session'
+import type { ProjectionDefinition } from '@liusiqi-dev/sqh-session-projection'
 import type {
   TeamId,
   TeamMemberProjection,
@@ -158,7 +158,7 @@ export interface TeamProjectionState extends TeamState {
   readonly failure?: string
 }
 
-declare module '@liusiqi-dev/dsh-session-projection/types' {
+declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionStateMap {
     agentTeam: TeamProjectionState
   }

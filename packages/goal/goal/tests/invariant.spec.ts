@@ -1,13 +1,13 @@
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import {
   GoalId,
   type GoalSnapshotChangeMeta,
-} from '@liusiqi-dev/dsh-goal'
-import * as GoalInvariantCompanion from '@liusiqi-dev/dsh-goal/invariant'
-import InvariantRegistry, { InvariantError } from '@liusiqi-dev/dsh-invariants'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-goal'
+import * as GoalInvariantCompanion from '@liusiqi-dev/sqh-goal/invariant'
+import InvariantRegistry, { InvariantError } from '@liusiqi-dev/sqh-invariants'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
 
 const change: GoalSnapshotChangeMeta = {
   kind: 'goal/change',
@@ -54,7 +54,7 @@ describe('goal stream invariants', () => {
       session.append('goal/change', { ...change, extra: true } as never)
     }).toThrow(expect.objectContaining<Partial<InvariantError>>({
       code: 'INVARIANT',
-      packageName: '@liusiqi-dev/dsh-goal',
+      packageName: '@liusiqi-dev/sqh-goal',
     }))
     expect(session.seq).toBe(0)
     expect(() => {

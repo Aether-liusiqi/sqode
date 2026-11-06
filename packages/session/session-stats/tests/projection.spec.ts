@@ -12,14 +12,14 @@
 
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { createMessage, ToolCallId } from '@liusiqi-dev/dsh-llm'
-import type { StreamChunk, TokenUsage } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import type { Session, SessionEvent } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import * as SessionStatsPlugin from '@liusiqi-dev/dsh-session-stats'
-import { sessionStatsProjectionDefinition } from '@liusiqi-dev/dsh-session-stats/src/projection.ts'
-import type { SessionStatsProjection } from '@liusiqi-dev/dsh-session-stats/types'
+import { createMessage, ToolCallId } from '@liusiqi-dev/sqh-llm'
+import type { StreamChunk, TokenUsage } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import type { Session, SessionEvent } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import * as SessionStatsPlugin from '@liusiqi-dev/sqh-session-stats'
+import { sessionStatsProjectionDefinition } from '@liusiqi-dev/sqh-session-stats/src/projection.ts'
+import type { SessionStatsProjection } from '@liusiqi-dev/sqh-session-stats/types'
 
 async function harness(withStatsPlugin: boolean): Promise<{ ctx: Context; session: Session }> {
   const ctx = new Context()

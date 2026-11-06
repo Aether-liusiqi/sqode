@@ -5,8 +5,8 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import Include from '@liusiqi-dev/cordis-plugin-include'
-import SkillRegistry from '@liusiqi-dev/dsh-skill'
-import * as SkillOffice from '@liusiqi-dev/dsh-skill-office'
+import SkillRegistry from '@liusiqi-dev/sqh-skill'
+import * as SkillOffice from '@liusiqi-dev/sqh-skill-office'
 import { isSea } from 'node:sea'
 import { describe, expect, it, vi } from 'vitest'
 import { execa } from 'execa'
@@ -49,8 +49,8 @@ describe('bundled Office skills', () => {
       await cp(assets, external, { recursive: true })
       const configPath = join(root, 'cordis.yml')
       await writeFile(configPath, [
-        "- name: '@liusiqi-dev/dsh-skill'",
-        "- name: '@liusiqi-dev/dsh-skill-office'",
+        "- name: '@liusiqi-dev/sqh-skill'",
+        "- name: '@liusiqi-dev/sqh-skill-office'",
         '  config:',
         `    assetRoot: ${JSON.stringify(external)}`,
         '',
@@ -59,8 +59,8 @@ describe('bundled Office skills', () => {
       await ctx.plugin(Loader)
       ctx.loader.builtins.include = Include
       const modules = new Map<string, unknown>([
-        ['@liusiqi-dev/dsh-skill', SkillRegistry],
-        ['@liusiqi-dev/dsh-skill-office', SkillOffice],
+        ['@liusiqi-dev/sqh-skill', SkillRegistry],
+        ['@liusiqi-dev/sqh-skill-office', SkillOffice],
       ])
       ctx.loader.internal = {
         version: 'v2',

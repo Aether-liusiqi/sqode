@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-session-projection-cache",
+  "name": "@liusiqi-dev/sqh-session-projection-cache",
   "description": "Persisted projection cache (ctx.sessionProjectionCache): durable per-session checkpoint records on the session_projcache storage domain (per-record layout), throttled write-behind, and the cached listing read",
   "version": "1.0.0",
   "publishConfig": {
@@ -27,22 +27,22 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@liusiqi-dev/dsh-util-values": "workspace:*",
+    "@liusiqi-dev/sqh-util-values": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
     "zod": "^4.4.3"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*",
-    "@liusiqi-dev/dsh-storage-domain": "workspace:*"
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection": "workspace:*",
+    "@liusiqi-dev/sqh-storage-domain": "workspace:*"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*",
-    "@liusiqi-dev/dsh-storage": "workspace:*",
-    "@liusiqi-dev/dsh-storage-domain": "workspace:*",
-    "@liusiqi-dev/dsh-storage-json": "workspace:*"
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection": "workspace:*",
+    "@liusiqi-dev/sqh-storage": "workspace:*",
+    "@liusiqi-dev/sqh-storage-domain": "workspace:*",
+    "@liusiqi-dev/sqh-storage-json": "workspace:*"
   }
 }

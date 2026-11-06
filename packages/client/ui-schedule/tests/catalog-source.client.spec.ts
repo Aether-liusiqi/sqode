@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
-import type { RemoteResult } from '@liusiqi-dev/dsh-api-remotes/client'
-import { RemoteError } from '@liusiqi-dev/dsh-client-test-runtime'
-import type { ScheduleDeleteResult, ScheduleId, ScheduleRecord } from '@liusiqi-dev/dsh-schedule/client'
+import type { RemoteResult } from '@liusiqi-dev/sqh-api-remotes/client'
+import { RemoteError } from '@liusiqi-dev/sqh-client-test-runtime'
+import type { ScheduleDeleteResult, ScheduleId, ScheduleRecord } from '@liusiqi-dev/sqh-schedule/client'
 import { createCatalogSource } from '../src/client/catalog-source.ts'
 
 const id = 'reminder' as ScheduleId

@@ -2,15 +2,15 @@
  * Client-safe recursive catalog rows and browser continuation requests,
  * receipts, and failures.
  *
- * @module @liusiqi-dev/dsh-subagent/control-types
+ * @module @liusiqi-dev/sqh-subagent/control-types
  */
 
-import type { PromptContentPart } from '@liusiqi-dev/dsh-attachment/types'
-import type { Branded } from '@liusiqi-dev/dsh-brand'
-import type { MessageId } from '@liusiqi-dev/dsh-llm/brand'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { PromptContentPart } from '@liusiqi-dev/sqh-attachment/types'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
+import type { MessageId } from '@liusiqi-dev/sqh-llm/brand'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 // Type-only: the Workspace registry's archive-admission family map this runtime merges `subagent` into.
-import type {} from '@liusiqi-dev/dsh-workspace/types'
+import type {} from '@liusiqi-dev/sqh-workspace/types'
 
 /**
  * Client-minted identity of one browser prompt, persisted on the exact accepted
@@ -115,14 +115,14 @@ export interface SubagentInterruptReceipt {
  * Failure details the control surface answers with. Prompts and interrupts
  * share these failures with the Client Remote result.
  */
-declare module '@liusiqi-dev/dsh-workspace/types' {
+declare module '@liusiqi-dev/sqh-workspace/types' {
   interface SessionActivityKindMap {
     /** A subagent session delegated from this session (at any depth) is inside a turn. */
     subagent: true
   }
 }
 
-declare module '@liusiqi-dev/dsh-typert-protocol' {
+declare module '@liusiqi-dev/sqh-typert-protocol' {
   interface RemoteErrorDetailsMap {
     /** A browser-supplied zone is neither UTC nor a canonical IANA name. */
     'subagent/invalid-time-zone': { readonly value: string }

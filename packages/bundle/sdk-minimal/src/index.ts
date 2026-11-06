@@ -1,9 +1,9 @@
 /**
- * @liusiqi-dev/dsh-sdk-minimal — the standalone minimal SDK profile bundle.
+ * @liusiqi-dev/sqh-sdk-minimal — the standalone minimal SDK profile bundle.
  * The package's substance is `cordis.patch.yml`, declared by the
  * `dsh.bundle.patch` manifest field and resolved by the profile composer;
  * this module carries no runtime interface.
- * @module @liusiqi-dev/dsh-sdk-minimal
+ * @module @liusiqi-dev/sqh-sdk-minimal
  */
 
 export {}

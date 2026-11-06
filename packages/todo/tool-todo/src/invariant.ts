@@ -1,10 +1,10 @@
-/** Package-owned durable todo-snapshot invariants. @module @liusiqi-dev/dsh-tool-todo/invariant */
+/** Package-owned durable todo-snapshot invariants. @module @liusiqi-dev/sqh-tool-todo/invariant */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Session, SessionEvent } from '@liusiqi-dev/dsh-session'
-import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
+import type { Session, SessionEvent } from '@liusiqi-dev/sqh-session'
+import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-tool-todo'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-tool-todo'
 const TODO_STATUSES = new Set(['pending', 'in_progress', 'completed'])
 
 /** Cordis companion plugin name. */

@@ -1,7 +1,7 @@
 /** React-free contracts between the slot host and an installed renderer. */
 import type { Context } from '@liusiqi-dev/cordis'
 import type { ReactNode } from 'react'
-import type { ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
+import type { ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
 import type {
   SessionAreaProps, SlotEntryDef, SlotScope, SlotSpec, StoredEntry, StoredFactory, Translate,
 } from './index.ts'

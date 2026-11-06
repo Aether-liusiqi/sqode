@@ -8,16 +8,16 @@
  * presenter, which projects ctx.theme snapshots onto document.body.
  */
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-client-locale/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-session/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-theme/client'
-import type { HostObservable, SnapshotSelectorHook } from '@liusiqi-dev/dsh-client-ui-slots'
+import type {} from '@liusiqi-dev/sqh-client-locale/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-session/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-theme/client'
+import type { HostObservable, SnapshotSelectorHook } from '@liusiqi-dev/sqh-client-ui-slots'
 import type { PanelInfo } from './service.ts'
 import { AppFrame } from './AppFrame.tsx'
 import { createLayoutStore } from './stores.ts'
 import { LayoutController } from './service.ts'
-import type { ShortcutCommandId } from '@liusiqi-dev/dsh-client-shortcuts/client'
+import type { ShortcutCommandId } from '@liusiqi-dev/sqh-client-shortcuts/client'
 import { en, zh } from './shortcut-locales.ts'
 import { ThemePresenter } from './theme-presenter.ts'
 
@@ -39,7 +39,7 @@ declare module '@liusiqi-dev/cordis' {
   }
 }
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** Layout keyboard command labels. */
     'shortcuts.layout': keyof typeof zh

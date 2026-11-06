@@ -4,15 +4,15 @@
  */
 
 import { describe, expect, onTestFinished, vi } from 'vitest'
-import type { SessionId } from '@liusiqi-dev/dsh-api-remotes/client'
-import type { SubagentAddress } from '@liusiqi-dev/dsh-subagent/client'
-import { SessionSeq } from '@liusiqi-dev/dsh-session/types'
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
-import { ok, type RemoteMock } from '@liusiqi-dev/dsh-remote-mock'
+import type { SessionId } from '@liusiqi-dev/sqh-api-remotes/client'
+import type { SubagentAddress } from '@liusiqi-dev/sqh-subagent/client'
+import { SessionSeq } from '@liusiqi-dev/sqh-session/types'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
+import { ok, type RemoteMock } from '@liusiqi-dev/sqh-remote-mock'
 import {
   createClientTest, type ClientTestFixtures, webApp,
-} from '@liusiqi-dev/dsh-client-test-runtime/src/assembly/index.ts'
-import type {} from '@liusiqi-dev/dsh-session-title/client'
+} from '@liusiqi-dev/sqh-client-test-runtime/src/assembly/index.ts'
+import type {} from '@liusiqi-dev/sqh-session-title/client'
 import { SessionManager } from '../src/client/sessions/manager.ts'
 import type { SessionRemotes } from '../src/client/sessions/remotes.ts'
 import { entries, plainTurn } from './event-script.client.ts'
@@ -21,7 +21,7 @@ import { FOLLOW, err, followScript, sessionWorld } from './remote/session.client
 const S1 = 'fk-m1' as SessionId
 const S2 = 'fk-m2' as SessionId
 /** Gateway Client cone used by the subagent-catalog and connected-generation cases. */
-const API_ROSTER = webApp.closure(['@liusiqi-dev/dsh-api-gateway'])
+const API_ROSTER = webApp.closure(['@liusiqi-dev/sqh-api-gateway'])
 const it = createClientTest({ roster: API_ROSTER })
 
 type SummaryOver = Partial<{

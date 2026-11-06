@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import type { PtcJsonValue } from '@liusiqi-dev/dsh-ptc-runtime'
+import type { PtcJsonValue } from '@liusiqi-dev/sqh-ptc-runtime'
 import { jsonStringBytesUpTo, jsonValueBytesUpTo, truncateJsonStringBytes } from '../src/output-json.ts'
 
 describe('truncateJsonStringBytes', () => {

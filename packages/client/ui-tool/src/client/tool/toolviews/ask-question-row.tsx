@@ -1,12 +1,12 @@
 import { useCallback } from 'react'
-import { IconQuestionOutlineRegular } from '@liusiqi-dev/dsh-client-ui-primitives'
+import { IconQuestionOutlineRegular } from '@liusiqi-dev/sqh-client-ui-primitives'
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-agent/types'
-import type { InjectFace, PropsLocale } from '@liusiqi-dev/dsh-client-ui-slots'
+import type {} from '@liusiqi-dev/sqh-agent/types'
+import type { InjectFace, PropsLocale } from '@liusiqi-dev/sqh-client-ui-slots'
 // Also merges the userQuestions key into SessionProjectionMap for useProjection.
 import type {
   AskUserQuestionAnswerItem, AskUserQuestionItem, AskUserQuestionOption,
-} from '@liusiqi-dev/dsh-user-questions/types'
+} from '@liusiqi-dev/sqh-user-questions/types'
 import type { ToolCallViewProps, UserQuestionRecord } from '../../contract/slots.ts'
 import type { AskQuestionCardModel } from '../models/ask-question-card-model.ts'
 import { singleResultText } from '../models/raw-tool-call.ts'

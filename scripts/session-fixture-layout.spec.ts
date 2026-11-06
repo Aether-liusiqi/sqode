@@ -1,9 +1,9 @@
 import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { createAssistantMessage } from '@liusiqi-dev/dsh-llm'
-import { SESSION_FORMAT_VERSION, SessionSeq, type SessionEvent } from '@liusiqi-dev/dsh-session'
-import { parseSessionLog, prepareSessionSnapshotFixtureForComparison } from '@liusiqi-dev/dsh-llm-replay'
-import { scrubSessionSnapshot } from '@liusiqi-dev/dsh-session-snapshot'
+import { createAssistantMessage } from '@liusiqi-dev/sqh-llm'
+import { SESSION_FORMAT_VERSION, SessionSeq, type SessionEvent } from '@liusiqi-dev/sqh-session'
+import { parseSessionLog, prepareSessionSnapshotFixtureForComparison } from '@liusiqi-dev/sqh-llm-replay'
+import { scrubSessionSnapshot } from '@liusiqi-dev/sqh-session-snapshot'
 import {
   canonicalSessionFixture,
   inspectSessionFixtureLayouts,

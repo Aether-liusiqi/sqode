@@ -8,16 +8,16 @@ import { join } from 'node:path'
 import type { Browser, Locator, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import { abbreviateHomePath } from '@liusiqi-dev/dsh-util-workspace-path'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import { abbreviateHomePath } from '@liusiqi-dev/sqh-util-workspace-path'
 import {
   SESSION_FORMAT_VERSION,
   Session,
   SessionId,
   SessionSeq,
-} from '@liusiqi-dev/dsh-session'
-import type {} from '@liusiqi-dev/dsh-session-reference/types'
-import type {} from '@liusiqi-dev/dsh-session-title'
+} from '@liusiqi-dev/sqh-session'
+import type {} from '@liusiqi-dev/sqh-session-reference/types'
+import type {} from '@liusiqi-dev/sqh-session-title'
 import {
   assertFixtureInventory,
   captureStableAria,

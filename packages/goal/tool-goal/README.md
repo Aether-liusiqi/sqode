@@ -3,7 +3,7 @@ description: "The model-facing goal tools for users and maintainers choosing, co
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-tool-goal
+# @liusiqi-dev/sqh-tool-goal
 
 English | [中文](README.zh.md)
 
@@ -43,7 +43,7 @@ Call `get_goal` before `update_goal` and copy the exact `goal_id` and `revision`
 
 ```yaml
 - id: tool-goal
-  name: '@liusiqi-dev/dsh-tool-goal'
+  name: '@liusiqi-dev/sqh-tool-goal'
   config:
     blockedAfterConsecutiveRounds: 3
 ```

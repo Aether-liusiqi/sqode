@@ -4,12 +4,12 @@
  * archived with its work. Installed by the registry's constructor, so it
  * answers for every Agent the registry publishes.
  *
- * @module @liusiqi-dev/dsh-agent
+ * @module @liusiqi-dev/sqh-agent
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
-import type { SessionActivity } from '@liusiqi-dev/dsh-workspace'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
+import type { SessionActivity } from '@liusiqi-dev/sqh-workspace'
 import type { Agent } from './types.ts'
 
 /**

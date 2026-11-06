@@ -9,7 +9,7 @@
 ```ts
 import { readFile } from 'node:fs/promises'
 import type { Context } from '@liusiqi-dev/cordis'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
 
 export const name = 'my-tool'
 export const inject = ['tools']

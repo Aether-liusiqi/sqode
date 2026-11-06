@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-client-store",
+  "name": "@liusiqi-dev/sqh-client-store",
   "description": "React-free observable and snapshot-store contracts with the shared Zustand/Immer engine",
   "version": "1.0.0",
   "publishConfig": {

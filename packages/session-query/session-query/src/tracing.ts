@@ -1,13 +1,13 @@
 /** One-shot session-lineage and event-relationship tracing helpers. */
 
-import { currentSessionMessageProjections } from '@liusiqi-dev/dsh-session-format-catalog/message-projections'
-import { foldSurface, isSurfaceEvent, snapshotSessionEvent } from '@liusiqi-dev/dsh-session'
+import { currentSessionMessageProjections } from '@liusiqi-dev/sqh-session-format-catalog/message-projections'
+import { foldSurface, isSurfaceEvent, snapshotSessionEvent } from '@liusiqi-dev/sqh-session'
 import type {
   SessionEvent,
   SessionId,
   SessionSeq,
   SurfaceEvent,
-} from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-session'
 import { SessionQueryError } from './config.ts'
 import type {
   SessionEventRecord,

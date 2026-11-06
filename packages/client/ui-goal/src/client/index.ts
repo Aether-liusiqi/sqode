@@ -9,24 +9,24 @@
  * This plugin does not create goals; deployments may expose /goal separately.
  */
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { HostObservable } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { HostObservable } from '@liusiqi-dev/sqh-client-ui-slots'
 // Type-only: pulls the generated Remote API and ctx.remote merge through the Client assembly boundary.
-import type {} from '@liusiqi-dev/dsh-api-remotes/client'
+import type {} from '@liusiqi-dev/sqh-api-remotes/client'
 // Type-only: pulls the Session Controller service used for projected goal state.
-import type {} from '@liusiqi-dev/dsh-api-session-controller/client'
+import type {} from '@liusiqi-dev/sqh-api-session-controller/client'
 // Type-only: pulls the Chat node slot and its keyed data map.
-import type {} from '@liusiqi-dev/dsh-client-ui-chat/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-chat/client'
 // Type-only: pulls the Conversation service and input-dock slot.
-import type {} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 // Type-only: pulls the locale plugin's Context merge (ctx.locale).
-import type {} from '@liusiqi-dev/dsh-client-locale/client'
+import type {} from '@liusiqi-dev/sqh-client-locale/client'
 // Type-only: pulls the renderer-owned slots service.
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
 // Type-only: pulls the Session standard useProjection seat.
-import type {} from '@liusiqi-dev/dsh-client-ui-session/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-session/client'
 // Type-only: the `goal` SessionProjectionMap key merge (single source, the domain's pure outlet).
-import type { GoalProjection, GoalRef } from '@liusiqi-dev/dsh-goal/client'
+import type { GoalProjection, GoalRef } from '@liusiqi-dev/sqh-goal/client'
 import type { GoalActionResult, GoalBarInjected } from './slots.ts'
 import { createGoalActivationSource } from './activation-source.ts'
 import { GoalDock } from './GoalBar.tsx'
@@ -40,14 +40,14 @@ export type {
 } from './slots.ts'
 export type { GoalKey } from './locales.ts'
 
-declare module '@liusiqi-dev/dsh-api-session-controller/client' {
+declare module '@liusiqi-dev/sqh-api-session-controller/client' {
   interface SessionReferenceSourceMap {
     /** A live goal read waiting for initial history and its RPC result. */
     goalActivation: unknown
   }
 }
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** The goal strip's copy. */
     goal: GoalKey

@@ -11,9 +11,9 @@
  */
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, render, waitFor } from '@testing-library/react'
-import { RemoteError } from '@liusiqi-dev/dsh-client-test-runtime'
-import type { TabId } from '@liusiqi-dev/dsh-client-ui-dockkit'
-import type { OwnerOf } from '@liusiqi-dev/dsh-client-ui-slots'
+import { RemoteError } from '@liusiqi-dev/sqh-client-test-runtime'
+import type { TabId } from '@liusiqi-dev/sqh-client-ui-dockkit'
+import type { OwnerOf } from '@liusiqi-dev/sqh-client-ui-slots'
 import { TextPreview } from '../src/client/TextPreview.tsx'
 import type { TextPreviewProps } from '../src/client/TextPreview.tsx'
 import { CodeBody } from '../src/client/code/CodeBody.tsx'

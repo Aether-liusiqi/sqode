@@ -3,7 +3,7 @@
  * `ctx.subagents` that runs each child as a fresh child {@link Agent} on the same cordis
  * context (its own session, own system prompt, zero parent context). The cheapest transport,
  * reusing the agent factory's quiescent teardown.
- * @module @liusiqi-dev/dsh-subagent-spawn-in-process
+ * @module @liusiqi-dev/sqh-subagent-spawn-in-process
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
@@ -13,8 +13,8 @@ import type {
   ResolvedSubagentStartRequest,
   SubagentCapabilities,
   SubagentProvider,
-} from '@liusiqi-dev/dsh-subagent'
-import { startInProcessRun } from '@liusiqi-dev/dsh-subagent-in-process-driver'
+} from '@liusiqi-dev/sqh-subagent'
+import { startInProcessRun } from '@liusiqi-dev/sqh-subagent-in-process-driver'
 
 export const name = 'subagent-spawn-in-process'
 // `tools` is deliberately not injected: the child factory already provides it during setup,

@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-client-connection",
+  "name": "@liusiqi-dev/sqh-client-connection",
   "description": "Authenticated RPC transport and generation lifecycle",
   "version": "1.0.0",
   "publishConfig": {
@@ -34,7 +34,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@liusiqi-dev/dsh-credentials": "workspace:*",
+    "@liusiqi-dev/sqh-credentials": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
     "zod": "^4.4.3"
   },
@@ -45,16 +45,16 @@
   ],
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-scope": "workspace:*"
+    "@liusiqi-dev/sqh-scope": "workspace:*"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-attachment": "workspace:*",
-    "@liusiqi-dev/dsh-brand": "workspace:*",
-    "@liusiqi-dev/dsh-host-webserver": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-scope": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*"
+    "@liusiqi-dev/sqh-attachment": "workspace:*",
+    "@liusiqi-dev/sqh-brand": "workspace:*",
+    "@liusiqi-dev/sqh-host-webserver": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-scope": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*"
   }
 }

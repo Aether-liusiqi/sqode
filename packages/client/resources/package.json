@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-client-resources",
+  "name": "@liusiqi-dev/sqh-client-resources",
   "description": "Unified client resource model: protocol-registered providers turn URL addresses into live values, consumed through the useResource global standard hook",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,7 +28,7 @@
   "dsh": {
     "client": {
       "inject": [
-        "@liusiqi-dev/dsh-client-ui-renderer"
+        "@liusiqi-dev/sqh-client-ui-renderer"
       ],
       "platform": "web"
     }
@@ -43,11 +43,11 @@
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-client-store": "workspace:*",
-    "@liusiqi-dev/dsh-client-test-runtime": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-renderer": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-slots": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*"
+    "@liusiqi-dev/sqh-client-store": "workspace:*",
+    "@liusiqi-dev/sqh-client-test-runtime": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-renderer": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-slots": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*"
   },
   "files": [
     "lib/index.js",

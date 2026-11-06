@@ -1,17 +1,17 @@
 /**
  * Default model selection for an Agent without a session-specific selection.
  *
- * @module @liusiqi-dev/dsh-agent-default-model
+ * @module @liusiqi-dev/sqh-agent-default-model
  */
-import type {} from '@liusiqi-dev/dsh-settings'
+import type {} from '@liusiqi-dev/sqh-settings'
 
 import type { Volatile } from '@liusiqi-dev/cordis'
 
 import { Context, Service } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import type { ModelSelection } from '@liusiqi-dev/dsh-agent'
-import { ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
-import type {} from '@liusiqi-dev/dsh-config-editor'
+import type { ModelSelection } from '@liusiqi-dev/sqh-agent'
+import { ReasoningEffortId } from '@liusiqi-dev/sqh-llm'
+import type {} from '@liusiqi-dev/sqh-config-editor'
 
 declare module '@liusiqi-dev/cordis' {
   interface Context {

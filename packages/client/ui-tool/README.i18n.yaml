@@ -5,48 +5,48 @@
 /:
   en: d5ef8fa5a5ebfbc2
   zh: 9870b3f207a248cc
-/liusiqi-dev-dsh-client-ui-tool:
-  en: 5f3086de8d1c4ec9
-  zh: 9e40fe6444b05cd2
-/liusiqi-dev-dsh-client-ui-tool/summary:
+/liusiqi-dev-sqh-client-ui-tool:
+  en: 36f220aa57967505
+  zh: 55b085795c38648b
+/liusiqi-dev-sqh-client-ui-tool/summary:
   en: e7ef510d1764f9b2
   zh: 236bc66607211f0f
-/liusiqi-dev-dsh-client-ui-tool/table-of-contents:
+/liusiqi-dev-sqh-client-ui-tool/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
-/liusiqi-dev-dsh-client-ui-tool/use-this-package:
+/liusiqi-dev-sqh-client-ui-tool/use-this-package:
   en: be2bc859e0d64fe5
   zh: d51a35fb36675dd3
-/liusiqi-dev-dsh-client-ui-tool/use-this-package/registering-a-business-tool-view:
+/liusiqi-dev-sqh-client-ui-tool/use-this-package/registering-a-business-tool-view:
   en: 5332d87e76037f07
   zh: db5d06e7e46b8429
-/liusiqi-dev-dsh-client-ui-tool/use-this-package/built-in-views:
+/liusiqi-dev-sqh-client-ui-tool/use-this-package/built-in-views:
   en: 5bdd3af9df9b2b7c
   zh: ff3517e71a2be98a
-/liusiqi-dev-dsh-client-ui-tool/understand-the-implementation:
+/liusiqi-dev-sqh-client-ui-tool/understand-the-implementation:
   en: 00bc7b0c84edc603
   zh: 1cfcf5b435248a91
-/liusiqi-dev-dsh-client-ui-tool/understand-the-implementation/rendering-contract:
+/liusiqi-dev-sqh-client-ui-tool/understand-the-implementation/rendering-contract:
   en: 2959b10b01e08a7b
   zh: 7084ca22650cbb5b
-/liusiqi-dev-dsh-client-ui-tool/understand-the-implementation/cards:
-  en: 3373395e9a4072b5
-  zh: b194b2640c1f84a2
-/liusiqi-dev-dsh-client-ui-tool/understand-the-implementation/declared-optional-capabilities:
+/liusiqi-dev-sqh-client-ui-tool/understand-the-implementation/cards:
+  en: be9473f303e00a9b
+  zh: 1fd6813e75341445
+/liusiqi-dev-sqh-client-ui-tool/understand-the-implementation/declared-optional-capabilities:
   en: c1926deb4e5f3734
   zh: c5845f465b94a459
-/liusiqi-dev-dsh-client-ui-tool/further-exploration:
+/liusiqi-dev-sqh-client-ui-tool/further-exploration:
   en: b37600769951cbca
   zh: 816589549d21d176
-/liusiqi-dev-dsh-client-ui-tool/model-experience:
+/liusiqi-dev-sqh-client-ui-tool/model-experience:
   en: 1e5e72dd269855d5
   zh: 81a4756d460e3af9
-/liusiqi-dev-dsh-client-ui-tool/model-experience/kv-cache-effect:
+/liusiqi-dev-sqh-client-ui-tool/model-experience/kv-cache-effect:
   en: ca75c51c89c2c9b0
   zh: de54f3467ef3b9be
-/liusiqi-dev-dsh-client-ui-tool/known-limitations-and-deferred-work:
+/liusiqi-dev-sqh-client-ui-tool/known-limitations-and-deferred-work:
   en: 7475317a656f1d11
   zh: 787f10cc0f2c586e
-/liusiqi-dev-dsh-client-ui-tool/known-limitations-and-deferred-work/dev-note:
+/liusiqi-dev-sqh-client-ui-tool/known-limitations-and-deferred-work/dev-note:
   en: 0fdeab2e4db0261f
   zh: 156d2b2952cf112e

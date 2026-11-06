@@ -13,20 +13,20 @@ import {
   normalizeSessionSnapshot,
   normalizeSessionSnapshots,
   type NormalizeContext,
-} from '@liusiqi-dev/dsh-session-snapshot'
-import { LOADER_SMOKE_TEST_TIMEOUT_MS, runLoaderSmoke } from '@liusiqi-dev/dsh-loader-smoke'
-import { createMessage, createUserMessage } from '@liusiqi-dev/dsh-llm'
+} from '@liusiqi-dev/sqh-session-snapshot'
+import { LOADER_SMOKE_TEST_TIMEOUT_MS, runLoaderSmoke } from '@liusiqi-dev/sqh-loader-smoke'
+import { createMessage, createUserMessage } from '@liusiqi-dev/sqh-llm'
 import {
   SESSION_FORMAT_VERSION,
   SessionId,
   SessionSeq,
   type SessionEvent,
   type SessionHeader,
-} from '@liusiqi-dev/dsh-session'
-import JsonlSessionPersistence from '@liusiqi-dev/dsh-session-persistence-jsonl'
+} from '@liusiqi-dev/sqh-session'
+import JsonlSessionPersistence from '@liusiqi-dev/sqh-session-persistence-jsonl'
 import { logPath } from '../../../../../../packages/session/session-persistence-jsonl/src/format.ts'
-import { renderAgentInstructions } from '@liusiqi-dev/dsh-agent-instructions'
-import { resolveConfig, workspaceBaselineIdentity } from '@liusiqi-dev/dsh-agent-instructions/src/config.ts'
+import { renderAgentInstructions } from '@liusiqi-dev/sqh-agent-instructions'
+import { resolveConfig, workspaceBaselineIdentity } from '@liusiqi-dev/sqh-agent-instructions/src/config.ts'
 import { describe, expect, it } from 'vitest'
 
 const fixtureDir = join(dirname(fileURLToPath(import.meta.url)), 'expected/workspace-context-resume/offline-edit')

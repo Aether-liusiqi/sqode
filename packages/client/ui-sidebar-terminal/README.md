@@ -3,7 +3,7 @@ description: "Open, recover and control interactive shell tabs in the Web right 
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-ui-sidebar-terminal
+# @liusiqi-dev/sqh-client-ui-sidebar-terminal
 
 English | [中文](README.zh.md)
 

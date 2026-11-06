@@ -5,69 +5,69 @@
 /:
   en: 04735af7a998f2ae
   zh: ab6bf3d0f098877a
-/liusiqi-dev-dsh-subprocess:
-  en: 2c0176fabaef3f66
-  zh: d1e0704cff0a0f57
-/liusiqi-dev-dsh-subprocess/summary:
+/liusiqi-dev-sqh-subprocess:
+  en: 5cce8c0f61d416dc
+  zh: cc4fe44060d73682
+/liusiqi-dev-sqh-subprocess/summary:
   en: ffc08b686414842c
   zh: 96e5adbc9ad6737c
-/liusiqi-dev-dsh-subprocess/table-of-contents:
+/liusiqi-dev-sqh-subprocess/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
-/liusiqi-dev-dsh-subprocess/use-this-package:
+/liusiqi-dev-sqh-subprocess/use-this-package:
   en: a43391b5840a4c58
   zh: a0a9c3fa577d92c0
-/liusiqi-dev-dsh-subprocess/use-this-package/mounting-the-service:
+/liusiqi-dev-sqh-subprocess/use-this-package/mounting-the-service:
   en: 82be7c63ab95994f
   zh: 8810e7c489b444df
-/liusiqi-dev-dsh-subprocess/use-this-package/starting-a-managed-process:
+/liusiqi-dev-sqh-subprocess/use-this-package/starting-a-managed-process:
   en: 891cb74d5d35095c
   zh: 296cb1890116fb05
-/liusiqi-dev-dsh-subprocess/use-this-package/choosing-how-output-is-delivered:
+/liusiqi-dev-sqh-subprocess/use-this-package/choosing-how-output-is-delivered:
   en: c02fe7246326c164
   zh: 1d31096e31e1feee
-/liusiqi-dev-dsh-subprocess/use-this-package/using-a-control-pipe:
-  en: 0effa81c42ed8ce9
-  zh: ba3aa278fc488ddc
-/liusiqi-dev-dsh-subprocess/use-this-package/managing-process-lifetime:
+/liusiqi-dev-sqh-subprocess/use-this-package/using-a-control-pipe:
+  en: a485e4fe648dce96
+  zh: a1c25851df4632bc
+/liusiqi-dev-sqh-subprocess/use-this-package/managing-process-lifetime:
   en: 83d662d278184411
   zh: 2c4e7fbe76823fa8
-/liusiqi-dev-dsh-subprocess/use-this-package/running-a-terminal-session:
+/liusiqi-dev-sqh-subprocess/use-this-package/running-a-terminal-session:
   en: e3631497344c2ebd
   zh: c4ebc7b08f0a316e
-/liusiqi-dev-dsh-subprocess/use-this-package/environment-every-child-starts-from:
+/liusiqi-dev-sqh-subprocess/use-this-package/environment-every-child-starts-from:
   en: db03cab9aefcc769
   zh: c5a51d5dc505752f
-/liusiqi-dev-dsh-subprocess/use-this-package/what-can-go-wrong:
+/liusiqi-dev-sqh-subprocess/use-this-package/what-can-go-wrong:
   en: 51f2f43087a1ed18
   zh: 6d2ebb099b707df3
-/liusiqi-dev-dsh-subprocess/understand-the-implementation:
+/liusiqi-dev-sqh-subprocess/understand-the-implementation:
   en: 25cd344c959cfd9e
   zh: 045880776ab82d1e
-/liusiqi-dev-dsh-subprocess/understand-the-implementation/design-concept:
+/liusiqi-dev-sqh-subprocess/understand-the-implementation/design-concept:
   en: 07201ec2256c25f6
   zh: 046109cfa92194f3
-/liusiqi-dev-dsh-subprocess/understand-the-implementation/source-map:
+/liusiqi-dev-sqh-subprocess/understand-the-implementation/source-map:
   en: c6737a3f6bea02a7
   zh: 96e86294e7f9757a
-/liusiqi-dev-dsh-subprocess/understand-the-implementation/data-model-and-flow:
+/liusiqi-dev-sqh-subprocess/understand-the-implementation/data-model-and-flow:
   en: 9998dc0a990fbcf1
   zh: ba179617f60cb9bc
-/liusiqi-dev-dsh-subprocess/understand-the-implementation/lifecycle-and-invariants:
+/liusiqi-dev-sqh-subprocess/understand-the-implementation/lifecycle-and-invariants:
   en: a132325eea7cadb4
   zh: 434cbbc61ff9cd0e
-/liusiqi-dev-dsh-subprocess/further-exploration:
+/liusiqi-dev-sqh-subprocess/further-exploration:
   en: a9982372521d1b12
   zh: 37cf83fdbb1e6d62
-/liusiqi-dev-dsh-subprocess/model-experience:
+/liusiqi-dev-sqh-subprocess/model-experience:
   en: 36d8f1820f81de29
   zh: da18a4123bdd28b7
-/liusiqi-dev-dsh-subprocess/model-experience/kv-cache-effect:
+/liusiqi-dev-sqh-subprocess/model-experience/kv-cache-effect:
   en: e290ccc9b3c92c08
   zh: d75d48f485447a74
-/liusiqi-dev-dsh-subprocess/known-limitations-and-deferred-work:
+/liusiqi-dev-sqh-subprocess/known-limitations-and-deferred-work:
   en: 0b1c46aec1ba628d
   zh: cf2a0db9d0682155
-/liusiqi-dev-dsh-subprocess/known-limitations-and-deferred-work/dev-note:
+/liusiqi-dev-sqh-subprocess/known-limitations-and-deferred-work/dev-note:
   en: 56709c22873429b5
   zh: c0e86c62982a3e29

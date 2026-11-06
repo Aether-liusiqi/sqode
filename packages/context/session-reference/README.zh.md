@@ -3,7 +3,7 @@ description: "跨会话快照引用与持久的不受信任模型上下文，供
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-session-reference
+# @liusiqi-dev/sqh-session-reference
 
 [English](README.md) | 中文
 

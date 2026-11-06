@@ -9,7 +9,7 @@
 import { expect } from 'vitest'
 import { FiberState, Inject, RegistryService, ValidationError } from '@liusiqi-dev/cordis'
 import type { Context, Plugin } from '@liusiqi-dev/cordis'
-import InvariantRegistry from '@liusiqi-dev/dsh-invariants'
+import InvariantRegistry from '@liusiqi-dev/sqh-invariants'
 
 declare global {
   interface ImportMeta {

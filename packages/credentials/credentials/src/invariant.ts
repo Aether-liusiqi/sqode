@@ -1,12 +1,12 @@
 /**
- * Package-owned invariant companion for `@liusiqi-dev/dsh-credentials`.
- * @module @liusiqi-dev/dsh-credentials/invariant
+ * Package-owned invariant companion for `@liusiqi-dev/sqh-credentials`.
+ * @module @liusiqi-dev/sqh-credentials/invariant
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
+import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-credentials'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-credentials'
 
 /** Cordis companion plugin name. */
 export const name = 'credentials-invariant'

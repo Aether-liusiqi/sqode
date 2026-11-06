@@ -1,15 +1,15 @@
 import { describe, expect, expectTypeOf, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import type { Events } from '@liusiqi-dev/cordis'
-import { bindScopeParent, createScope } from '@liusiqi-dev/dsh-scope'
-import type { Scope } from '@liusiqi-dev/dsh-scope'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
-import type { PreToolDecision, ToolDefinition, ToolExecution, ToolExecutionInput, ToolExecutionToken } from '@liusiqi-dev/dsh-tools'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
+import { bindScopeParent, createScope } from '@liusiqi-dev/sqh-scope'
+import type { Scope } from '@liusiqi-dev/sqh-scope'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
+import type { PreToolDecision, ToolDefinition, ToolExecution, ToolExecutionInput, ToolExecutionToken } from '@liusiqi-dev/sqh-tools'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
 
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
 
 const testToolSignal = new AbortController().signal
 

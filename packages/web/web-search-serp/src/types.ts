@@ -1,6 +1,6 @@
 /**
  * Options and records for the result-page provider.
- * @module @liusiqi-dev/dsh-web-search-serp/types
+ * @module @liusiqi-dev/sqh-web-search-serp/types
  */
 
 /** One search attempt, as recorded for troubleshooting. */

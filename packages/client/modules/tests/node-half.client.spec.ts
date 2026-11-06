@@ -10,13 +10,13 @@ import { pathToFileURL } from 'node:url'
 import { runInNewContext } from 'node:vm'
 import { Context, FiberState, type Fiber } from '@liusiqi-dev/cordis'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { renderIndexInjections, type WebServer, type WebRoute } from '@liusiqi-dev/dsh-host-webserver'
+import { renderIndexInjections, type WebServer, type WebRoute } from '@liusiqi-dev/sqh-host-webserver'
 import * as modulesClient from '../src/client/index.ts'
 import { ClientModuleRegistry, bootInjections, orderByModuleGraph } from '../src/index.ts'
 import type { ClientModuleLoaderTarget, WebBootEntry, WebBootGraph } from '../src/client/index.ts'
 
-const MODULES_ID = '@liusiqi-dev/dsh-client-modules'
-const UI_RENDERER_ID = '@liusiqi-dev/dsh-client-ui-renderer'
+const MODULES_ID = '@liusiqi-dev/sqh-client-modules'
+const UI_RENDERER_ID = '@liusiqi-dev/sqh-client-ui-renderer'
 
 // Graph rows and batch descriptors carry app-directory-relative references;
 // a host request reaches the backend route once the document's directory

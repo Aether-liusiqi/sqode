@@ -2,13 +2,13 @@
 
 import { Buffer } from 'node:buffer'
 import type { IDisposable, Terminal as HeadlessTerminalType } from '@xterm/headless'
-import { createLazyRequire } from '@liusiqi-dev/dsh-lazy-require'
+import { createLazyRequire } from '@liusiqi-dev/sqh-lazy-require'
 import type {
   SubprocessOutcome,
   SubprocessTerminalForeground,
   SubprocessTerminalHandle,
-} from '@liusiqi-dev/dsh-subprocess'
-import { TerminalError } from '@liusiqi-dev/dsh-terminal'
+} from '@liusiqi-dev/sqh-subprocess'
+import { TerminalError } from '@liusiqi-dev/sqh-terminal'
 import type {
   TerminalBackendSession,
   TerminalReadRequest,
@@ -21,7 +21,7 @@ import type {
   TerminalSignal,
   TerminalSignalResult,
   TerminalWaitReason,
-} from '@liusiqi-dev/dsh-terminal'
+} from '@liusiqi-dev/sqh-terminal'
 import type { ResolvedConfig } from './config.ts'
 import { CONTROLLED_PROMPT, TerminalSanitizer } from './sanitize.ts'
 

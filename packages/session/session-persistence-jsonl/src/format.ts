@@ -13,23 +13,23 @@ import {
   SESSION_FORMAT_VERSION,
   KNOWN_SESSION_EVENT_TYPES,
   SessionLogOffset,
-} from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-session'
 import type {
   SessionEvent,
   SessionHeader,
   SessionId,
   SessionLogOffset as SessionLogOffsetType,
-} from '@liusiqi-dev/dsh-session'
-import { parseSessionFormatLogFilename, sessionFormatLogFilename, SessionFormatUnsupportedMigrationError } from '@liusiqi-dev/dsh-session-format'
-import type { SessionFormatEvent } from '@liusiqi-dev/dsh-session-format'
-import type { SessionFormatRecovery, SessionFormatRestore } from '@liusiqi-dev/dsh-session-format'
-import { sessionFormatCatalog } from '@liusiqi-dev/dsh-session-format-catalog'
-import { assertV4RowAdmission, assertReleasedV4Relationships } from '@liusiqi-dev/dsh-session-format-v3-to-v4'
+} from '@liusiqi-dev/sqh-session'
+import { parseSessionFormatLogFilename, sessionFormatLogFilename, SessionFormatUnsupportedMigrationError } from '@liusiqi-dev/sqh-session-format'
+import type { SessionFormatEvent } from '@liusiqi-dev/sqh-session-format'
+import type { SessionFormatRecovery, SessionFormatRestore } from '@liusiqi-dev/sqh-session-format'
+import { sessionFormatCatalog } from '@liusiqi-dev/sqh-session-format-catalog'
+import { assertV4RowAdmission, assertReleasedV4Relationships } from '@liusiqi-dev/sqh-session-format-v3-to-v4'
 import {
   SessionFormatUnsupportedError,
   sessionFormatVersionRefusal,
   type SessionStorageMetadata,
-} from '@liusiqi-dev/dsh-session-persistence'
+} from '@liusiqi-dev/sqh-session-persistence'
 
 /** Physical encoding selected for JSONL session artifacts. */
 export type JsonlCompression = 'zstd' | 'none'

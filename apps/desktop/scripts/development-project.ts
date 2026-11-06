@@ -134,9 +134,9 @@ export function prepareDevelopmentProject(options: DevelopmentProjectOptions): s
     throw new Error('desktop development: workspace dependency links are missing; run pnpm install')
   }
   const hostManifest = readManifest(join(options.hostDir, 'package.json'))
-  if (hostManifest.name !== '@liusiqi-dev/dsh-desktop-host' || hostManifest.version !== options.release.version) {
+  if (hostManifest.name !== '@liusiqi-dev/sqh-desktop-host' || hostManifest.version !== options.release.version) {
     throw new Error(
-      `desktop development: apps/desktop-host must be @liusiqi-dev/dsh-desktop-host@${options.release.version}, found `
+      `desktop development: apps/desktop-host must be @liusiqi-dev/sqh-desktop-host@${options.release.version}, found `
       + `${String(hostManifest.name)}@${String(hostManifest.version)}`,
     )
   }
@@ -158,7 +158,7 @@ export function prepareDevelopmentProject(options: DevelopmentProjectOptions): s
   const hostLink = join(destinationModules, '@liusiqi-dev', 'dsh-desktop-host')
   removeOwnedPath(hostLink)
   linkDirectory(options.hostDir, hostLink)
-  const sharedPackages = [...new Set([...names, '@liusiqi-dev/sqode', '@liusiqi-dev/dsh-desktop-host'])].flatMap((name) => {
+  const sharedPackages = [...new Set([...names, '@liusiqi-dev/sqode', '@liusiqi-dev/sqh-desktop-host'])].flatMap((name) => {
     const manifest = readManifest(join(destinationModules, name, 'package.json'))
     return typeof manifest.version === 'string' ? [{ name, version: manifest.version, path: `node_modules/${name}` }] : []
   })

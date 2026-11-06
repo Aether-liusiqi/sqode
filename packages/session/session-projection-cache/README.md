@@ -3,7 +3,7 @@ description: "The persisted session-projection cache for deployments and maintai
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-session-projection-cache
+# @liusiqi-dev/sqh-session-projection-cache
 
 English | [中文](README.zh.md)
 
@@ -39,7 +39,7 @@ The cache opens its domain through the storage stack, so base mounts `storage`, 
 
 ```yaml
 - id: session-projection-cache
-  name: '@liusiqi-dev/dsh-session-projection-cache'
+  name: '@liusiqi-dev/sqh-session-projection-cache'
   config:
     writeEveryEvents: 200
     writeIntervalMs: 5000

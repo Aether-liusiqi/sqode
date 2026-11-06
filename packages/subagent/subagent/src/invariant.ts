@@ -1,10 +1,10 @@
-/** Package-owned subagent registry and lifecycle invariants. @module @liusiqi-dev/dsh-subagent/invariant */
+/** Package-owned subagent registry and lifecycle invariants. @module @liusiqi-dev/sqh-subagent/invariant */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
+import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
 import type { SubagentProvider, SubagentRunEndInfo, SubagentRunInfo } from './types.ts'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-subagent'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-subagent'
 
 /** Cordis companion plugin name. */
 export const name = 'subagent-invariant'

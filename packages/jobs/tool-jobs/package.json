@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-tool-jobs",
+  "name": "@liusiqi-dev/sqh-tool-jobs",
   "description": "Model-facing background job control tools (job_output, job_list, job_kill) over the ctx.jobs registry",
   "version": "1.0.0",
   "publishConfig": {
@@ -30,23 +30,23 @@
     "@liusiqi-dev/schemastery": "workspace:~"
   },
   "peerDependencies": {
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-output-retention": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
-    "@liusiqi-dev/dsh-jobs": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*",
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-output-retention": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*",
+    "@liusiqi-dev/sqh-jobs": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-output-retention": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
-    "@liusiqi-dev/dsh-jobs": "workspace:*",
-    "@liusiqi-dev/dsh-jobs-local": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*",
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-output-retention": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*",
+    "@liusiqi-dev/sqh-jobs": "workspace:*",
+    "@liusiqi-dev/sqh-jobs-local": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   }
 }

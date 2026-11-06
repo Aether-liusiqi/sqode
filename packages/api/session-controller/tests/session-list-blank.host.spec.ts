@@ -9,14 +9,14 @@
 
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import SessionStore from '@liusiqi-dev/dsh-session'
-import type { Session } from '@liusiqi-dev/dsh-session'
-import { CommandId } from '@liusiqi-dev/dsh-commands/brand'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import SessionStore from '@liusiqi-dev/sqh-session'
+import type { Session } from '@liusiqi-dev/sqh-session'
+import { CommandId } from '@liusiqi-dev/sqh-commands/brand'
 // Side-effect type imports: the configuration-event SessionEventMap merges.
-import type {} from '@liusiqi-dev/dsh-permission-presets'
-import type {} from '@liusiqi-dev/dsh-sandbox-policy'
+import type {} from '@liusiqi-dev/sqh-permission-presets'
+import type {} from '@liusiqi-dev/sqh-sandbox-policy'
 import { createSessionTestRemote, type TestSessionRemote } from './test-remote.ts'
 
 async function harness(): Promise<{ ctx: Context; remote: TestSessionRemote; attach: (session: Session) => Promise<void> }> {

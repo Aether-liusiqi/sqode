@@ -336,7 +336,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
   commandId: CommandId
   kind: 'success' | 'error'
   text?: string
-  sourceEventSeq?: import('@liusiqi-dev/dsh-session/types').SessionSeq
+  sourceEventSeq?: import('@liusiqi-dev/sqh-session/types').SessionSeq
 }
 ```
 
@@ -857,11 +857,11 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 /** Records that the configured endpoint accepted one delivery through `throughSeq`. */
 'session-log-deepseek/delivery-accepted': {
   /** Session identity the accepted delivery carried; inherited fork markers retain the parent's id. */
-  sessionId: import('@liusiqi-dev/dsh-session/types').SessionId
+  sessionId: import('@liusiqi-dev/sqh-session/types').SessionId
   /** Accepted Session format generation; absence identifies version 0. */
   sessionFormatVersion?: number
   /** Last canonical event included in the accepted request. */
-  throughSeq: import('@liusiqi-dev/dsh-session/types').SessionSeq
+  throughSeq: import('@liusiqi-dev/sqh-session/types').SessionSeq
 }
 ```
 
@@ -5029,7 +5029,7 @@ SHA-256: `43e311235aa537df1bacdd92d144df8a952337a76e9ac892cdf670f1a797bad8`
 
 SHA-256: `3cfc3a56502da1f8c6153c2c56657bab4b749056968634dd0991d325ec1c919f`
 
-来源：[`packages/core/tools/src/index.ts:707`](../packages/core/tools/src/index.ts)
+来源：[`packages/core/tools/src/index.ts:703`](../packages/core/tools/src/index.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|

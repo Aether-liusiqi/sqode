@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { Context, Service } from '@liusiqi-dev/cordis'
-import { AttachmentId, AttachmentStore, ImageVariantId } from '@liusiqi-dev/dsh-attachment'
+import { AttachmentId, AttachmentStore, ImageVariantId } from '@liusiqi-dev/sqh-attachment'
 import type {
   ImageAttachmentLimits,
   ImageAttachmentRef,
@@ -8,11 +8,11 @@ import type {
   RequestImageAttachment,
   SaveImageAttachment,
   StoredImageAttachment,
-} from '@liusiqi-dev/dsh-attachment'
-import LlmRuntime, { createToolResultMessage, createUserMessage, CONTEXT_WINDOW_EXCEEDED_CODE, LlmError, ReasoningEffortId, userAgent } from '@liusiqi-dev/dsh-llm'
-import * as LlmPiAi from '@liusiqi-dev/dsh-llm-pi-ai'
-import { PiAiAdapter } from '@liusiqi-dev/dsh-llm-pi-ai'
-import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
+} from '@liusiqi-dev/sqh-attachment'
+import LlmRuntime, { createToolResultMessage, createUserMessage, CONTEXT_WINDOW_EXCEEDED_CODE, LlmError, ReasoningEffortId, userAgent } from '@liusiqi-dev/sqh-llm'
+import * as LlmPiAi from '@liusiqi-dev/sqh-llm-pi-ai'
+import { PiAiAdapter } from '@liusiqi-dev/sqh-llm-pi-ai'
+import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/sqh-timeout'
 import { getBuiltinModels } from '@earendil-works/pi-ai/providers/all'
 import { DEFAULT_MAX_REQUEST_IMAGE_BYTES, resolveProfiles } from '../src/config.ts'
 import { memoryAuth } from './auth-double.ts'

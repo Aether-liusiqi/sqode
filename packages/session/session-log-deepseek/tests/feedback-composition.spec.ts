@@ -6,14 +6,14 @@ import { afterEach, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import Include from '@liusiqi-dev/cordis-plugin-include'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import JsonlSessionPersistence from '@liusiqi-dev/dsh-session-persistence-jsonl'
-import MessageFeedback from '@liusiqi-dev/dsh-message-feedback'
-import { recordFeedback } from '@liusiqi-dev/dsh-command-feedback'
-import LlmRuntime, { createAssistantMessage, createUserMessage } from '@liusiqi-dev/dsh-llm'
-import * as LlmDeepSeek from '@liusiqi-dev/dsh-llm-deepseek-api-key'
-import DeepSeekLlmApiExtensions from '@liusiqi-dev/dsh-deepseek-llm-api-extensions'
-import { startMockLlmServer, type MockLlmServer, type MockLlmServerOptions } from '@liusiqi-dev/dsh-llm-mock-server'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import JsonlSessionPersistence from '@liusiqi-dev/sqh-session-persistence-jsonl'
+import MessageFeedback from '@liusiqi-dev/sqh-message-feedback'
+import { recordFeedback } from '@liusiqi-dev/sqh-command-feedback'
+import LlmRuntime, { createAssistantMessage, createUserMessage } from '@liusiqi-dev/sqh-llm'
+import * as LlmDeepSeek from '@liusiqi-dev/sqh-llm-deepseek-api-key'
+import DeepSeekLlmApiExtensions from '@liusiqi-dev/sqh-deepseek-llm-api-extensions'
+import { startMockLlmServer, type MockLlmServer, type MockLlmServerOptions } from '@liusiqi-dev/sqh-llm-mock-server'
 import * as SessionLogDeepSeek from '../src/index.ts'
 import type { DeepSeekSessionLogExtension } from '../src/types.ts'
 
@@ -40,24 +40,24 @@ async function boot(
   vi.stubEnv('DEEPSEEK_API_KEY', 'feedback-test-key')
   server = await startMockLlmServer(mock)
   const modules = new Map<string, unknown>([
-    ['@liusiqi-dev/dsh-session', SessionStore],
-    ['@liusiqi-dev/dsh-session-persistence-jsonl', JsonlSessionPersistence],
-    ['@liusiqi-dev/dsh-message-feedback', MessageFeedback],
-    ['@liusiqi-dev/dsh-llm', LlmRuntime],
-    ['@liusiqi-dev/dsh-llm-deepseek-api-key', LlmDeepSeek],
-    ['@liusiqi-dev/dsh-deepseek-llm-api-extensions', DeepSeekLlmApiExtensions],
-    ['@liusiqi-dev/dsh-session-log-deepseek', SessionLogDeepSeek],
+    ['@liusiqi-dev/sqh-session', SessionStore],
+    ['@liusiqi-dev/sqh-session-persistence-jsonl', JsonlSessionPersistence],
+    ['@liusiqi-dev/sqh-message-feedback', MessageFeedback],
+    ['@liusiqi-dev/sqh-llm', LlmRuntime],
+    ['@liusiqi-dev/sqh-llm-deepseek-api-key', LlmDeepSeek],
+    ['@liusiqi-dev/sqh-deepseek-llm-api-extensions', DeepSeekLlmApiExtensions],
+    ['@liusiqi-dev/sqh-session-log-deepseek', SessionLogDeepSeek],
   ])
   const config = join(root, 'cordis.yml')
   await writeFile(config, JSON.stringify([...modules.keys()].map(name => ({
     name,
-    ...name === '@liusiqi-dev/dsh-session-persistence-jsonl'
+    ...name === '@liusiqi-dev/sqh-session-persistence-jsonl'
       ? { config: { root: join(root!, 'sessions'), compression: 'none' } }
-      : name === '@liusiqi-dev/dsh-message-feedback'
+      : name === '@liusiqi-dev/sqh-message-feedback'
         ? { config: { maxNoteBytes: 1024 } }
-        : name === '@liusiqi-dev/dsh-llm-deepseek-api-key'
+        : name === '@liusiqi-dev/sqh-llm-deepseek-api-key'
           ? { config: { baseURL: server!.baseURL } }
-          : name === '@liusiqi-dev/dsh-session-log-deepseek'
+          : name === '@liusiqi-dev/sqh-session-log-deepseek'
             ? { config: sessionLog }
             : {},
   }))))
@@ -182,7 +182,7 @@ it('changes API log upload on the next request without replacing the plugin fibe
   const { ctx, server } = await boot({ enabled: true }, { sequence: ['success'], repeatLast: true })
   const session = ctx.sessions.create(SessionId('live-upload-setting'))
   session.append('user/message', createUserMessage({ content: [{ type: 'text', text: 'Hello' }], source: { kind: 'user' } }), { surfaceOp: 'append' })
-  const entry = [...ctx.loader.entries()].find(entry => entry.options.name === '@liusiqi-dev/dsh-session-log-deepseek')!
+  const entry = [...ctx.loader.entries()].find(entry => entry.options.name === '@liusiqi-dev/sqh-session-log-deepseek')!
   const fiber = entry.fiber
   const request = async () => {
     const chunks = []

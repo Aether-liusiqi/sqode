@@ -8,11 +8,11 @@
 import clsx from 'clsx'
 import {
   IconDarkOutlineMedium, IconFollowsystemOutlineMedium, IconLightOutlineMedium,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { PropsLocale, PropsRuntime, PropsStore } from '@liusiqi-dev/dsh-client-ui-slots'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { PropsLocale, PropsRuntime, PropsStore } from '@liusiqi-dev/sqh-client-ui-slots'
 import type { ThemePreference } from '../theme-settings.ts'
 import type { ThemeKey } from './locales.ts'
-import type {} from '@liusiqi-dev/dsh-client-ui-settings/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-settings/client'
 import type { createAppearanceRowStore } from './settings-store.ts'
 import css from './AppearanceRow.module.css'
 

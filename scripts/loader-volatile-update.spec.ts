@@ -10,8 +10,8 @@ import Include from '@liusiqi-dev/cordis-plugin-include'
 import Timer from '@liusiqi-dev/cordis-plugin-timer'
 import z from '@liusiqi-dev/schemastery'
 import { Config } from './volatile-config.fixture.ts'
-import Hmr from '@liusiqi-dev/dsh-hmr'
-import { boot, reconcileProfilePatches } from '@liusiqi-dev/dsh-app-boot'
+import Hmr from '@liusiqi-dev/sqh-hmr'
+import { boot, reconcileProfilePatches } from '@liusiqi-dev/sqh-app-boot'
 
 function context() {
   const ctx = new Context()

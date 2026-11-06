@@ -25,13 +25,13 @@ import { Zip, ZipDeflate } from 'fflate'
 import type { Context } from '@liusiqi-dev/cordis'
 import type {
   AttachmentStore, FileAttachmentRef, ImageAttachmentRef,
-} from '@liusiqi-dev/dsh-attachment'
-import type { SessionLineageNode, SessionQueryEngine } from '@liusiqi-dev/dsh-session-query'
-import { SESSION_FORMAT_VERSION } from '@liusiqi-dev/dsh-session'
-import { sessionFormatLogFilename } from '@liusiqi-dev/dsh-session-format'
-import type { SessionEvent, SessionHeader, SessionId, SessionStore } from '@liusiqi-dev/dsh-session'
-import type { SessionHandle, SessionPersistence } from '@liusiqi-dev/dsh-session-persistence'
-import { SessionPersistenceNotFoundError } from '@liusiqi-dev/dsh-session-persistence'
+} from '@liusiqi-dev/sqh-attachment'
+import type { SessionLineageNode, SessionQueryEngine } from '@liusiqi-dev/sqh-session-query'
+import { SESSION_FORMAT_VERSION } from '@liusiqi-dev/sqh-session'
+import { sessionFormatLogFilename } from '@liusiqi-dev/sqh-session-format'
+import type { SessionEvent, SessionHeader, SessionId, SessionStore } from '@liusiqi-dev/sqh-session'
+import type { SessionHandle, SessionPersistence } from '@liusiqi-dev/sqh-session-persistence'
+import { SessionPersistenceNotFoundError } from '@liusiqi-dev/sqh-session-persistence'
 
 /** Valid fflate DEFLATE levels accepted by session-log export. */
 export type SessionLogCompressionLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9

@@ -1,6 +1,6 @@
 /** Immutable system-only interpretation of the loaded Session surface. */
-import type { SessionEvent } from '@liusiqi-dev/dsh-session/types'
-import { isSurfaceEvent } from '@liusiqi-dev/dsh-session/surface'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session/types'
+import { isSurfaceEvent } from '@liusiqi-dev/sqh-session/surface'
 import type { SystemPromptNode } from './request-inspection.ts'
 
 interface PositionedSystem {

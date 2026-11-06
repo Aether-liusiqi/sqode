@@ -3,7 +3,7 @@ description: "OpenSSH connection configuration and remote helper lifecycle for d
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-ssh
+# @liusiqi-dev/sqh-ssh
 
 English | [中文](README.zh.md)
 

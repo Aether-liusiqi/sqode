@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { makeTranslate } from '@liusiqi-dev/dsh-client-test-runtime'
-import type { ScheduleId, ScheduleRecord } from '@liusiqi-dev/dsh-schedule/client'
+import { makeTranslate } from '@liusiqi-dev/sqh-client-test-runtime'
+import type { ScheduleId, ScheduleRecord } from '@liusiqi-dev/sqh-schedule/client'
 import {
   FALLBACK_ZONES, formatScheduleAbsolute, formatScheduleNextRun, formatWeekdays, recordTimeZone,
   zoneChoices, zoneLabel, zoneName,

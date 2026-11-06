@@ -5,8 +5,8 @@
  */
 import {
   createSnapshotStore, type SnapshotStore,
-} from '@liusiqi-dev/dsh-client-store'
-import type { ConfigForm } from '@liusiqi-dev/dsh-client-ui-settings/client'
+} from '@liusiqi-dev/sqh-client-store'
+import type { ConfigForm } from '@liusiqi-dev/sqh-client-ui-settings/client'
 import type {
   BusyEnterBehavior, ComposerSubmitGesture, InputSubmitMode,
 } from '../contract/composer-submission.ts'

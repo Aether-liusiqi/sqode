@@ -10,14 +10,14 @@
  */
 import './file-actions.ts'
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-api-remotes/client'
-import type {} from '@liusiqi-dev/dsh-client-connection/client'
-import type { ChatFileMentions } from '@liusiqi-dev/dsh-client-ui-chat/client'
-import type {} from '@liusiqi-dev/dsh-client-locale/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-sidebar-right/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-settings/client'
+import type {} from '@liusiqi-dev/sqh-api-remotes/client'
+import type {} from '@liusiqi-dev/sqh-client-connection/client'
+import type { ChatFileMentions } from '@liusiqi-dev/sqh-client-ui-chat/client'
+import type {} from '@liusiqi-dev/sqh-client-locale/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-sidebar-right/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-settings/client'
 import { changesReviewAddress } from '../changes.ts'
 import { ChangesDiffStore } from './changes-diff.ts'
 import { ChangesSummaryStore } from './changes-summary.ts'
@@ -32,7 +32,7 @@ import {
   deliverablesDefinition, presentedForClosing, producedFileMentions, selectProducedFiles,
 } from './turn-deliverables.ts'
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** Changed-files card, review tab, delivery card, and file-mention copy. */
     'deliverables': DeliverablesKey
@@ -62,7 +62,7 @@ export function apply(ctx: ClientContext): void {
     'conversation.chat.turnTail',
     () => ctx.slots.register({
       name: 'conversation.chat.turnTail',
-      id: '@liusiqi-dev/dsh-client-ui-deliverables',
+      id: '@liusiqi-dev/sqh-client-ui-deliverables',
       locale: NS,
       children: { 'deliverables.file.actions': { kind: 'list', scope: 'session' } },
       inject: (): DeliverablesInjected => ({

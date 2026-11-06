@@ -1,11 +1,11 @@
-/** Package-owned scoped-dispatch invariants. @module @liusiqi-dev/dsh-scope/invariant */
+/** Package-owned scoped-dispatch invariants. @module @liusiqi-dev/sqh-scope/invariant */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
-import { carrierKeyOf, isScopeCarrier } from '@liusiqi-dev/dsh-scope'
+import type { InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
+import { carrierKeyOf, isScopeCarrier } from '@liusiqi-dev/sqh-scope'
 import { scopedSubjectResolverFor } from './scoped-events.generated.ts'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-scope'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-scope'
 
 /** Cordis companion plugin name. */
 export const name = 'scope-invariant'

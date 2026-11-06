@@ -4,7 +4,7 @@
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
 
 /** Fixture plugin name. */
 export const name = 'subagent-inheritance-agent'

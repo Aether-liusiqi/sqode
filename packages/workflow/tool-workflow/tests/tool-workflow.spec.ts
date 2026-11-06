@@ -1,27 +1,27 @@
 import { describe, expect, it, onTestFinished, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime, { TOOL_ABORTED_BEFORE_DISPATCH } from '@liusiqi-dev/dsh-tools'
-import type { ToolExecutionResult, ToolExecutionToken } from '@liusiqi-dev/dsh-tools'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { unsupportedInbox } from '@liusiqi-dev/dsh-agent-loop-testkit'
-import { WorkflowRunId, WorkflowEngine } from '@liusiqi-dev/dsh-workflow'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime, { TOOL_ABORTED_BEFORE_DISPATCH } from '@liusiqi-dev/sqh-tools'
+import type { ToolExecutionResult, ToolExecutionToken } from '@liusiqi-dev/sqh-tools'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { unsupportedInbox } from '@liusiqi-dev/sqh-agent-loop-testkit'
+import { WorkflowRunId, WorkflowEngine } from '@liusiqi-dev/sqh-workflow'
 import type {
   WorkflowAgentEndInfo, WorkflowAgentInfo, WorkflowResult, WorkflowRun,
   WorkflowRunId as WorkflowRunIdType, WorkflowStartRequest,
-} from '@liusiqi-dev/dsh-workflow'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import type { JobId } from '@liusiqi-dev/dsh-jobs'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import LocalJobRegistry from '@liusiqi-dev/dsh-jobs-local'
-import * as ToolTasks from '@liusiqi-dev/dsh-tool-jobs'
-import SubagentRuntime from '@liusiqi-dev/dsh-subagent'
-import PtcWorkflowEngine from '@liusiqi-dev/dsh-workflow-ptc'
+} from '@liusiqi-dev/sqh-workflow'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import type { JobId } from '@liusiqi-dev/sqh-jobs'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import LocalJobRegistry from '@liusiqi-dev/sqh-jobs-local'
+import * as ToolTasks from '@liusiqi-dev/sqh-tool-jobs'
+import SubagentRuntime from '@liusiqi-dev/sqh-subagent'
+import PtcWorkflowEngine from '@liusiqi-dev/sqh-workflow-ptc'
 import { mountWorkflowRuntime } from '../../workflow-ptc/tests/setup.ts'
 import * as toolWorkflow from '../src/index.ts'
-import { Session, SessionId } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
+import { Session, SessionId } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
 
 const testToolSignal = new AbortController().signal
 
@@ -592,7 +592,7 @@ describe('dsh-tool-workflow', () => {
       const result = await execute(ctx, { script: SCRIPT, meta: META, run_in_background: true }, { agent: parent })
       expect(result.isError).toBe(true)
       expect((result.content[0] as { text: string }).text)
-        .toContain('background jobs unavailable: load @liusiqi-dev/dsh-jobs and @liusiqi-dev/dsh-tool-jobs')
+        .toContain('background jobs unavailable: load @liusiqi-dev/sqh-jobs and @liusiqi-dev/sqh-tool-jobs')
     })
 
     it('a disabled composition hides the parameter and rejects the call', async () => {

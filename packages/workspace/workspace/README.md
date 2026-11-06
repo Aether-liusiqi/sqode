@@ -3,7 +3,7 @@ description: "Workspace entity registry (ctx.workspaceRegistry) for hosts choosi
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-workspace
+# @liusiqi-dev/sqh-workspace
 
 English | [中文](README.zh.md)
 
@@ -36,14 +36,14 @@ Use it when the product shows a persistent workspace surface — a sidebar, sess
 The package needs a session store, a session persistence backend, and the storage rows that keep its records. A minimal composition:
 
 ```yaml
-- name: '@liusiqi-dev/dsh-session'
-- name: '@liusiqi-dev/dsh-session-persistence-jsonl'
-- name: '@liusiqi-dev/dsh-storage'
-- name: '@liusiqi-dev/dsh-storage-json'
-- name: '@liusiqi-dev/dsh-storage-domain'
+- name: '@liusiqi-dev/sqh-session'
+- name: '@liusiqi-dev/sqh-session-persistence-jsonl'
+- name: '@liusiqi-dev/sqh-storage'
+- name: '@liusiqi-dev/sqh-storage-json'
+- name: '@liusiqi-dev/sqh-storage-domain'
   config:
     backend: json
-- name: '@liusiqi-dev/dsh-workspace'
+- name: '@liusiqi-dev/sqh-workspace'
 ```
 
 With these rows mounted, creating a project shows up in the list immediately and survives a restart; the first start also groups existing sessions by the directory they ran in. If a required peer is missing, the workspace feature stays unavailable until it is mounted.

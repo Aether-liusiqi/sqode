@@ -1,15 +1,15 @@
 import { describe, expect, it, onTestFinished, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import AgentRegistry, { agentEvents, type Agent } from '@liusiqi-dev/dsh-agent'
+import AgentRegistry, { agentEvents, type Agent } from '@liusiqi-dev/sqh-agent'
 import UserQuestionService, {
   TIMED_WAIT_PARAMETER,
   UserQuestionError,
   type AskUserQuestionAnswer,
   type AskUserQuestionRequest,
-} from '@liusiqi-dev/dsh-user-questions'
-import { createToolResultMessage, createUserMessage, ToolCallId, type ToolSchema, type UserMessage } from '@liusiqi-dev/dsh-llm'
-import { Session, SessionId, TOOL_OUTCOME_UNKNOWN } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
+} from '@liusiqi-dev/sqh-user-questions'
+import { createToolResultMessage, createUserMessage, ToolCallId, type ToolSchema, type UserMessage } from '@liusiqi-dev/sqh-llm'
+import { Session, SessionId, TOOL_OUTCOME_UNKNOWN } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
 
 interface QuestionAnswerer {
   ask(request: AskUserQuestionRequest): Promise<AskUserQuestionAnswer>

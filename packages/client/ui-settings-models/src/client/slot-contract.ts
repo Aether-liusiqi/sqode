@@ -17,10 +17,10 @@
  * the declaration. The types therefore live with their declarer.
  */
 
-import type {} from '@liusiqi-dev/dsh-client-ui-slots'
+import type {} from '@liusiqi-dev/sqh-client-ui-slots'
 import type { ProviderDirectoryEntry } from './store.ts'
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface SlotMap {
     /**
      * One provider card's adapter extension area, dispatched with

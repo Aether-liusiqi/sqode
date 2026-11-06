@@ -1,12 +1,12 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import type { Agent, AgentCancelCause, AgentStatus, CancelOptions } from '@liusiqi-dev/dsh-agent'
-import { unsupportedInbox } from '@liusiqi-dev/dsh-agent-loop-testkit'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import type { Session } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import type { SessionActivity } from '@liusiqi-dev/dsh-workspace'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import type { Agent, AgentCancelCause, AgentStatus, CancelOptions } from '@liusiqi-dev/sqh-agent'
+import { unsupportedInbox } from '@liusiqi-dev/sqh-agent-loop-testkit'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import type { Session } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import type { SessionActivity } from '@liusiqi-dev/sqh-workspace'
 import SubagentRuntime, { SUBAGENT_DESCRIPTOR_VERSION } from '../src/index.ts'
 import { TestSessionQuery } from './test-session-query.ts'
 
@@ -175,7 +175,7 @@ describe('Subagent archive admission: lifetime', () => {
 })
 
 // The runtime knows only its own family; this suite merges a trailing one to observe ordering.
-declare module '@liusiqi-dev/dsh-workspace/types' {
+declare module '@liusiqi-dev/sqh-workspace/types' {
   interface SessionActivityKindMap {
     probe: true
   }

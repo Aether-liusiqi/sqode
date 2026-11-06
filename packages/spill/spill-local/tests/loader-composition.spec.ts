@@ -12,7 +12,7 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import Include from '@liusiqi-dev/cordis-plugin-include'
-import LocalSpillStore, { sessionDir } from '@liusiqi-dev/dsh-spill-local'
+import LocalSpillStore, { sessionDir } from '@liusiqi-dev/sqh-spill-local'
 
 const DAY_MS = 24 * 60 * 60 * 1000
 
@@ -43,7 +43,7 @@ describe('spill-local real Loader composition through cordis.yml', () => {
 
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
-      "- name: '@liusiqi-dev/dsh-spill-local'",
+      "- name: '@liusiqi-dev/sqh-spill-local'",
       '  config:',
       `    root: ${JSON.stringify(root)}`,
       '    cleanupPeriodDays: 30',
@@ -57,7 +57,7 @@ describe('spill-local real Loader composition through cordis.yml', () => {
     context.loader.internal = {
       version: 'v2',
       async import(specifier: string) {
-        if (specifier !== '@liusiqi-dev/dsh-spill-local') throw new Error(`unexpected Loader import: ${specifier}`)
+        if (specifier !== '@liusiqi-dev/sqh-spill-local') throw new Error(`unexpected Loader import: ${specifier}`)
         return LocalSpillStore
       },
     } as unknown as NonNullable<typeof context.loader.internal>

@@ -1,13 +1,13 @@
 /**
  * Browser-safe failure vocabulary of the configuration surfaces this package
  * serves. The redacted views themselves live with their seam in
- * `@liusiqi-dev/dsh-settings/types`, whose Cordis event declarations already
+ * `@liusiqi-dev/sqh-settings/types`, whose Cordis event declarations already
  * register that file for the Client compilation face.
  *
- * @module @liusiqi-dev/dsh-api-settings-controller/types
+ * @module @liusiqi-dev/sqh-api-settings-controller/types
  */
 
-declare module '@liusiqi-dev/dsh-typert-protocol' {
+declare module '@liusiqi-dev/sqh-typert-protocol' {
   interface RemoteErrorDetailsMap {
     /**
      * Every seam refusal that is not a stale write: an unregistered or malformed

@@ -2,7 +2,7 @@
 import { afterEach, expect, it, vi } from 'vitest'
 import { fireEvent } from '@testing-library/dom'
 import { Context } from '@liusiqi-dev/cordis'
-import { LocaleRuntime } from '@liusiqi-dev/dsh-client-locale/client'
+import { LocaleRuntime } from '@liusiqi-dev/sqh-client-locale/client'
 import { installKeyboard } from '../src/client/dom.ts'
 import ShortcutsService from '../src/client/index.ts'
 import { ShortcutRegistry } from '../src/client/registry.ts'

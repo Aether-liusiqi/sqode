@@ -17,18 +17,18 @@
  * reads session state once at each operation boundary; executors and providers
  * remain session-free.
  *
- * @module @liusiqi-dev/dsh-sandbox-policy
+ * @module @liusiqi-dev/sqh-sandbox-policy
  */
 
 import { isAbsolute } from 'node:path'
 import { Context, Service } from '@liusiqi-dev/cordis'
 import { z as zod } from 'zod'
 import z from '@liusiqi-dev/schemastery'
-import type {} from '@liusiqi-dev/dsh-agent'
-import type { SandboxExecutionPolicy, SandboxMode } from '@liusiqi-dev/dsh-sandbox'
-import type { Session } from '@liusiqi-dev/dsh-session'
-import type {} from '@liusiqi-dev/dsh-session-projection'
-import type {} from '@liusiqi-dev/dsh-system-prompt'
+import type {} from '@liusiqi-dev/sqh-agent'
+import type { SandboxExecutionPolicy, SandboxMode } from '@liusiqi-dev/sqh-sandbox'
+import type { Session } from '@liusiqi-dev/sqh-session'
+import type {} from '@liusiqi-dev/sqh-session-projection'
+import type {} from '@liusiqi-dev/sqh-system-prompt'
 
 export { SANDBOX_MODES, setSandboxMode } from './session-mode.ts'
 
@@ -94,7 +94,7 @@ const sandboxModeStateSchema = zod.union([
 ]).nullable()
 
 type SandboxModeState = zod.infer<typeof sandboxModeStateSchema>
-declare module '@liusiqi-dev/dsh-session-projection/types' {
+declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionStateMap {
     /** Last logged sandbox-mode override, or null before one (deployment default applies at resolve time). */
     sandboxMode: SandboxModeState

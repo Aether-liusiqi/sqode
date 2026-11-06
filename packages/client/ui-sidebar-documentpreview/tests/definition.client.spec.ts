@@ -9,8 +9,8 @@
  */
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { sessionFileAddress } from '@liusiqi-dev/dsh-util-workspace-path'
-import { SidebarRightTabRegistry } from '@liusiqi-dev/dsh-client-ui-sidebar-right/src/client/tab-registry.ts'
+import { sessionFileAddress } from '@liusiqi-dev/sqh-util-workspace-path'
+import { SidebarRightTabRegistry } from '@liusiqi-dev/sqh-client-ui-sidebar-right/src/client/tab-registry.ts'
 import { TEXTPREVIEW_ID, TEXTPREVIEW_KIND, basenameOf, textDefinition } from '../src/client/definition.ts'
 
 describe('basenameOf', () => {

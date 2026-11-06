@@ -1,15 +1,15 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import type { Agent, AgentStatus } from '@liusiqi-dev/dsh-agent'
-import CommandRuntime from '@liusiqi-dev/dsh-commands'
-import GoalService from '@liusiqi-dev/dsh-goal'
-import type { GoalRef } from '@liusiqi-dev/dsh-goal'
-import SessionStore, { Session, SessionId, type SessionEvent } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import * as commandGoal from '@liusiqi-dev/dsh-command-goal'
-import { createInboxStub } from '@liusiqi-dev/dsh-agent-loop-testkit'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import type { Agent, AgentStatus } from '@liusiqi-dev/sqh-agent'
+import CommandRuntime from '@liusiqi-dev/sqh-commands'
+import GoalService from '@liusiqi-dev/sqh-goal'
+import type { GoalRef } from '@liusiqi-dev/sqh-goal'
+import SessionStore, { Session, SessionId, type SessionEvent } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import * as commandGoal from '@liusiqi-dev/sqh-command-goal'
+import { createInboxStub } from '@liusiqi-dev/sqh-agent-loop-testkit'
 
 interface Harness {
   readonly ctx: Context
@@ -88,7 +88,7 @@ function ref(goal: NonNullable<ReturnType<GoalService['get']>>): GoalRef {
   return { id: goal.id, revision: goal.revision }
 }
 
-describe('@liusiqi-dev/dsh-command-goal registration', () => {
+describe('@liusiqi-dev/sqh-command-goal registration', () => {
   it('registers one global command with Loader-safe exports and disposes it', async () => {
     const test = await harness()
     expect(commandGoal.name).toBe('command-goal')
@@ -98,7 +98,7 @@ describe('@liusiqi-dev/dsh-command-goal registration', () => {
     expect(loader.unwrapExports(commandGoal)).toBe(commandGoal)
 
     expect(test.ctx.commands.list(test.agent)).toContainEqual({
-      definitionId: '@liusiqi-dev/dsh-command-goal',
+      definitionId: '@liusiqi-dev/sqh-command-goal',
       name: 'goal',
       description: 'Set or view the goal for a long-running task',
       input: { hint: '[<objective>|clear|edit <objective>|pause|resume]', attachments: true },

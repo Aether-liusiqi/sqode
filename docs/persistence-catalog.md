@@ -334,7 +334,7 @@ Source: [`packages/core/session/src/types.ts:352`](../packages/core/session/src/
   commandId: CommandId
   kind: 'success' | 'error'
   text?: string
-  sourceEventSeq?: import('@liusiqi-dev/dsh-session/types').SessionSeq
+  sourceEventSeq?: import('@liusiqi-dev/sqh-session/types').SessionSeq
 }
 ```
 
@@ -855,11 +855,11 @@ Source: [`packages/session/session-title-llm/src/index.ts:52`](../packages/sessi
 /** Records that the configured endpoint accepted one delivery through `throughSeq`. */
 'session-log-deepseek/delivery-accepted': {
   /** Session identity the accepted delivery carried; inherited fork markers retain the parent's id. */
-  sessionId: import('@liusiqi-dev/dsh-session/types').SessionId
+  sessionId: import('@liusiqi-dev/sqh-session/types').SessionId
   /** Accepted Session format generation; absence identifies version 0. */
   sessionFormatVersion?: number
   /** Last canonical event included in the accepted request. */
-  throughSeq: import('@liusiqi-dev/dsh-session/types').SessionSeq
+  throughSeq: import('@liusiqi-dev/sqh-session/types').SessionSeq
 }
 ```
 
@@ -5027,7 +5027,7 @@ Sources: [`packages/llm/llm/src/types.ts:127`](../packages/llm/llm/src/types.ts)
 
 SHA-256: `3cfc3a56502da1f8c6153c2c56657bab4b749056968634dd0991d325ec1c919f`
 
-Sources: [`packages/core/tools/src/index.ts:707`](../packages/core/tools/src/index.ts)
+Sources: [`packages/core/tools/src/index.ts:703`](../packages/core/tools/src/index.ts)
 
 | Property | Presence | Type |
 |---|---|---|

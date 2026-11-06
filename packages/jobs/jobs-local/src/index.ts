@@ -7,20 +7,20 @@
  * Registrations outlive producer and controller fibers. Agent or service
  * disposal cancels live work and awaits compliant producers; a throwing
  * teardown cancel force-fails only the record and reports a possible orphan.
- * @module @liusiqi-dev/dsh-jobs-local
+ * @module @liusiqi-dev/sqh-jobs-local
  */
 
 import { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { ScopedLayers, scopeOf } from '@liusiqi-dev/dsh-scope'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
-import { deadline, timeoutOf } from '@liusiqi-dev/dsh-timeout'
-import { JobRegistry, JobId } from '@liusiqi-dev/dsh-jobs'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { ScopedLayers, scopeOf } from '@liusiqi-dev/sqh-scope'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
+import { deadline, timeoutOf } from '@liusiqi-dev/sqh-timeout'
+import { JobRegistry, JobId } from '@liusiqi-dev/sqh-jobs'
 import type {
   JobAppendOptions, JobEvent, JobEvents, JobHandle, JobKind, JobOutcome, JobOutputRead, JobOutputSource,
   JobRead, JobSettleCause, JobSpec, JobStatus, JobView,
-} from '@liusiqi-dev/dsh-jobs'
+} from '@liusiqi-dev/sqh-jobs'
 import { JobEventHub, JobLayer } from './events.ts'
 import { startPump } from './pump.ts'
 import type { PumpHandle } from './pump.ts'
@@ -122,7 +122,7 @@ function isTerminal(status: JobStatus): boolean {
 
 /**
  * The in-memory `jobs` registry. See the Service Definition contract in
- * `@liusiqi-dev/dsh-jobs` for the ownership, isolation, and lifecycle
+ * `@liusiqi-dev/sqh-jobs` for the ownership, isolation, and lifecycle
  * semantics this implementation honors.
  */
 export class LocalJobRegistry extends JobRegistry {
@@ -206,7 +206,7 @@ export class LocalJobRegistry extends JobRegistry {
   start(spec: JobSpec): JobId {
     const owner = this.resolveOwner(spec.owner)
     if (!this.servesOwner(owner)) {
-      throw new Error('background jobs unavailable: no job controller serves this agent (load @liusiqi-dev/dsh-tool-jobs in its composition)')
+      throw new Error('background jobs unavailable: no job controller serves this agent (load @liusiqi-dev/sqh-tool-jobs in its composition)')
     }
     if (spec.kind.length === 0) throw new Error('invalid job kind: expected a non-empty string')
     if (spec.label.length === 0) throw new Error('invalid job label: expected a non-empty string')
@@ -358,7 +358,7 @@ export class LocalJobRegistry extends JobRegistry {
     if (session === undefined) return undefined
     const agents = this.selfCtx.get('agents')
     if (agents === undefined) {
-      throw new Error('background job ownership requires the agent registry (load @liusiqi-dev/dsh-agent)')
+      throw new Error('background job ownership requires the agent registry (load @liusiqi-dev/sqh-agent)')
     }
     const owner = agents.get(session)
     if (owner === undefined) {

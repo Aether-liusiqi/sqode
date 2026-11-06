@@ -4,18 +4,18 @@
  * authenticates with the account token when the account service allows the search endpoint;
  * every other search reuses `DEEPSEEK_API_KEY`. The provider does not reuse `DEEPSEEK_BASE_URL`;
  * auxiliary search has its own endpoint configuration.
- * @module @liusiqi-dev/dsh-web-search-deepseek
+ * @module @liusiqi-dev/sqh-web-search-deepseek
  */
 import type { Volatile } from '@liusiqi-dev/cordis'
 
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import type {} from '@liusiqi-dev/dsh-agent'
-import { credentialRef } from '@liusiqi-dev/dsh-credentials'
-import type {} from '@liusiqi-dev/dsh-deepseek-account'
-import { launchEnvironmentOf } from '@liusiqi-dev/dsh-launch-environment'
-import type {} from '@liusiqi-dev/dsh-session'
-import type {} from '@liusiqi-dev/dsh-web'
+import type {} from '@liusiqi-dev/sqh-agent'
+import { credentialRef } from '@liusiqi-dev/sqh-credentials'
+import type {} from '@liusiqi-dev/sqh-deepseek-account'
+import { launchEnvironmentOf } from '@liusiqi-dev/sqh-launch-environment'
+import type {} from '@liusiqi-dev/sqh-session'
+import type {} from '@liusiqi-dev/sqh-web'
 import {
   DeepSeekSearchProvider,
   DEEPSEEK_DEFAULT_API_VERSION,

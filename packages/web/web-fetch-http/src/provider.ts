@@ -1,16 +1,16 @@
 /**
  * Safe HTTP(S) retrieval for `ctx.web`: validates and pins public IP destinations, follows
  * only same-origin redirects, enforces time and size limits, classifies and decodes text,
- * and leaves presentation to `@liusiqi-dev/dsh-tool-web`. Requests carry no browser cookies
+ * and leaves presentation to `@liusiqi-dev/sqh-tool-web`. Requests carry no browser cookies
  * or ambient credentials.
- * @module @liusiqi-dev/dsh-web-fetch-http/provider
+ * @module @liusiqi-dev/sqh-web-fetch-http/provider
  */
 
-import { WebError } from '@liusiqi-dev/dsh-web'
-import type { WebFetchBody, WebFetchProvider, WebFetchRequest, WebFetchResult } from '@liusiqi-dev/dsh-web'
-import { deadline, timeoutOf } from '@liusiqi-dev/dsh-timeout'
+import { WebError } from '@liusiqi-dev/sqh-web'
+import type { WebFetchBody, WebFetchProvider, WebFetchRequest, WebFetchResult } from '@liusiqi-dev/sqh-web'
+import { deadline, timeoutOf } from '@liusiqi-dev/sqh-timeout'
 import type { Response } from 'undici'
-import { proxyRouteFor } from '@liusiqi-dev/dsh-http-proxy'
+import { proxyRouteFor } from '@liusiqi-dev/sqh-http-proxy'
 import { isNonPublicIpLiteral, publicHttpNetwork } from './network.ts'
 import type { PublicAddress } from './network.ts'
 import { classifyContentType, decoderForCharset, isSameOrigin, parseCharset, validateFetchUrl } from './policy.ts'

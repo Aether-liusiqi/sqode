@@ -3,13 +3,13 @@
  * failure toasts. One form serves two targets: the Session itself (a bare `/feedback`)
  * and one assistant message (Like or Dislike). The overlay view renders from
  * the store and raises the acknowledgement after a successful submission.
- * @module @liusiqi-dev/dsh-client-ui-message-feedback/client/dialog
+ * @module @liusiqi-dev/sqh-client-ui-message-feedback/client/dialog
  */
 
-import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { MessageId } from '@liusiqi-dev/dsh-api-remotes/client'
-import type { FeedbackCategory, FeedbackRecord } from '@liusiqi-dev/dsh-command-feedback/types'
-import type { MessageFeedbackRating } from '@liusiqi-dev/dsh-message-feedback/types'
+import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { MessageId } from '@liusiqi-dev/sqh-api-remotes/client'
+import type { FeedbackCategory, FeedbackRecord } from '@liusiqi-dev/sqh-command-feedback/types'
+import type { MessageFeedbackRating } from '@liusiqi-dev/sqh-message-feedback/types'
 import type { MessageFeedbackActionResult } from './controller.ts'
 
 /** What one open dialog submits to. */

@@ -3,7 +3,7 @@ description: "动态 Cordis 包的浏览器半说明，供选择、组合或排�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-cordis-client-runner
+# @liusiqi-dev/sqh-cordis-client-runner
 
 [English](README.md) | 中文
 

@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-llm-replay",
+  "name": "@liusiqi-dev/sqh-llm-replay",
   "description": "Replay LLM plugin: short-circuits llm/stream with model chunks reconstructed from a recorded session JSONL (keyless snapshot tests)",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,25 +28,25 @@
   "license": "MIT",
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-compaction": "workspace:*",
-    "@liusiqi-dev/dsh-deepseek-llm-api-extensions": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*"
+    "@liusiqi-dev/sqh-compaction": "workspace:*",
+    "@liusiqi-dev/sqh-deepseek-llm-api-extensions": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*"
   },
   "peerDependenciesMeta": {
-    "@liusiqi-dev/dsh-deepseek-llm-api-extensions": {
+    "@liusiqi-dev/sqh-deepseek-llm-api-extensions": {
       "optional": true
     }
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-compaction": "workspace:*",
-    "@liusiqi-dev/dsh-deepseek-llm-api-extensions": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*"
+    "@liusiqi-dev/sqh-compaction": "workspace:*",
+    "@liusiqi-dev/sqh-deepseek-llm-api-extensions": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*"
   },
   "dependencies": {
-    "@liusiqi-dev/dsh-session-format-catalog": "workspace:*",
-    "@liusiqi-dev/dsh-util-values": "workspace:*"
+    "@liusiqi-dev/sqh-session-format-catalog": "workspace:*",
+    "@liusiqi-dev/sqh-util-values": "workspace:*"
   }
 }

@@ -6,12 +6,12 @@
 
 import { memo, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { IconDatabaseOutlineRegular, IconGaugeOutlineRegular } from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { UseProjection } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { InjectFace, SnapshotSelectorHook } from '@liusiqi-dev/dsh-client-ui-slots'
+import { IconDatabaseOutlineRegular, IconGaugeOutlineRegular } from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { UseProjection } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { InjectFace, SnapshotSelectorHook } from '@liusiqi-dev/sqh-client-ui-slots'
 // Type-only: merges the sessionStats key into SessionProjectionMap for useProjection.
-import type {} from '@liusiqi-dev/dsh-session-stats/client'
-import type { TokenUsageProjection } from '@liusiqi-dev/dsh-token-meter/client'
+import type {} from '@liusiqi-dev/sqh-session-stats/client'
+import type { TokenUsageProjection } from '@liusiqi-dev/sqh-token-meter/client'
 import type { ChatViewSlotProps, PerformanceUsageInjected } from '../contract/slots.ts'
 import type { ChatSnapshot } from '../contract/snapshot.ts'
 import { formatTokensPerSecond } from './message-chrome.ts'

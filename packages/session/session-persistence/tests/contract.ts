@@ -8,13 +8,13 @@
  * vocabulary, freshness, and torn-tail repair. Backend-specific behavior
  * (file layout, encodings, artifact export) stays in each backend's own spec.
  *
- * @module @liusiqi-dev/dsh-session-persistence/tests/contract
+ * @module @liusiqi-dev/sqh-session-persistence/tests/contract
  */
 
 import { describe, expect, it } from 'vitest'
-import { SessionSeq, SESSION_FORMAT_VERSION, SessionId } from '@liusiqi-dev/dsh-session'
-import type { SessionEvent, SessionHeader } from '@liusiqi-dev/dsh-session'
-import { MessageId, freezeMessage } from '@liusiqi-dev/dsh-llm'
+import { SessionSeq, SESSION_FORMAT_VERSION, SessionId } from '@liusiqi-dev/sqh-session'
+import type { SessionEvent, SessionHeader } from '@liusiqi-dev/sqh-session'
+import { MessageId, freezeMessage } from '@liusiqi-dev/sqh-llm'
 import {
   SessionAlreadyExistsError,
   SessionAlreadyOwnedError,

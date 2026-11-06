@@ -2,13 +2,13 @@
  * Perplexity-backed `WebSearchProvider` plugin. It contributes to the
  * `ctx.web` registry without owning the service.
  *
- * @module @liusiqi-dev/dsh-web-search-perplexity
+ * @module @liusiqi-dev/sqh-web-search-perplexity
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { launchEnvironmentOf } from '@liusiqi-dev/dsh-launch-environment'
+import { launchEnvironmentOf } from '@liusiqi-dev/sqh-launch-environment'
 import z from '@liusiqi-dev/schemastery'
-import type {} from '@liusiqi-dev/dsh-web'
+import type {} from '@liusiqi-dev/sqh-web'
 import { PerplexitySearchProvider, PERPLEXITY_DEFAULT_BASE_URL, PERPLEXITY_DEFAULT_MAX_TOKENS, PERPLEXITY_DEFAULT_MODEL } from './provider.ts'
 
 export {

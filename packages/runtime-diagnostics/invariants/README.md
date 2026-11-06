@@ -3,7 +3,7 @@ description: "Runtime invariant checks for live compositions: the registry servi
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-invariants
+# @liusiqi-dev/sqh-invariants
 
 English | [中文](README.zh.md)
 
@@ -36,11 +36,11 @@ Use the registry for compositions that want live diagnostics. [`dsh-sdk-minimal`
 The registry is enabled by default and checks every registered package unless filters say otherwise. Use `enabled` as a global switch, `package_allowlist` to admit only named packages, and `package_blocklist` to exclude packages after allowlist matching — a blocklist match overrides an allowlist match. Patterns are case-sensitive JavaScript regular-expression sources (unanchored unless they supply `^` and `$`), and an invalid, blank, or duplicate entry fails service startup instead of being skipped.
 
 ```yaml
-- name: '@liusiqi-dev/dsh-invariants'
+- name: '@liusiqi-dev/sqh-invariants'
   config:
     enabled: true
     package_allowlist:
-      - '^@liusiqi-dev/dsh-'
+      - '^@liusiqi-dev/sqh-'
 ```
 
 | Field | Default | Meaning |
@@ -76,8 +76,8 @@ A companion is a normal plugin you mount beside the registry. It declares any se
 
 ```ts
 import type { Context } from '@liusiqi-dev/cordis'
-import InvariantRegistry from '@liusiqi-dev/dsh-invariants'
-import * as SessionInvariant from '@liusiqi-dev/dsh-session/invariant'
+import InvariantRegistry from '@liusiqi-dev/sqh-invariants'
+import * as SessionInvariant from '@liusiqi-dev/sqh-session/invariant'
 
 declare const ctx: Context
 

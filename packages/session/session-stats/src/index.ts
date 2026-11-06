@@ -6,7 +6,7 @@
  * compaction cannot change. The plugin owns only the fold; delivery is the
  * seam's.
  *
- * @module @liusiqi-dev/dsh-session-stats
+ * @module @liusiqi-dev/sqh-session-stats
  */
 
 import type { Context } from '@liusiqi-dev/cordis'

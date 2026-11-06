@@ -3,7 +3,7 @@ description: "Inspect and edit live plugin configuration through Config-derived 
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-settings
+# @liusiqi-dev/sqh-settings
 
 English | [中文](README.zh.md)
 
@@ -27,7 +27,7 @@ Mount this plugin with Loader and [config-editor](../../boot/config-editor/READM
 
 ```yaml
 - id: settings
-  name: '@liusiqi-dev/dsh-settings'
+  name: '@liusiqi-dev/sqh-settings'
 ```
 
 This plugin has no configuration fields. Forms expose only volatile fields from active, uniquely addressed profile entries. Ordinary configuration remains editable through Cordis configuration files.

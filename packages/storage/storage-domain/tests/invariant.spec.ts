@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import { z } from 'zod'
-import Storage from '@liusiqi-dev/dsh-storage'
-import InvariantRegistry, { InvariantError } from '@liusiqi-dev/dsh-invariants'
-import * as DomainInvariantCompanion from '@liusiqi-dev/dsh-storage-domain/invariant'
+import Storage from '@liusiqi-dev/sqh-storage'
+import InvariantRegistry, { InvariantError } from '@liusiqi-dev/sqh-invariants'
+import * as DomainInvariantCompanion from '@liusiqi-dev/sqh-storage-domain/invariant'
 import { DomainFacility, defineDomain, domainTable } from '../src/index.ts'
 import type { DomainChanged } from '../src/events.ts'
 import { MemoryStorageBackend } from './helpers/memory-backend.ts'
@@ -31,7 +31,7 @@ async function setup() {
 
 const invariantViolation: unknown = expect.objectContaining<Partial<InvariantError>>({
   code: 'INVARIANT',
-  packageName: '@liusiqi-dev/dsh-storage-domain',
+  packageName: '@liusiqi-dev/sqh-storage-domain',
 })
 
 describe('domain change-event invariants', () => {

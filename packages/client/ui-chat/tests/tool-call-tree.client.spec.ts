@@ -1,4 +1,4 @@
-import type { SessionEvent } from '@liusiqi-dev/dsh-session/types'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session/types'
 import { describe, expect, it } from 'vitest'
 import type { StartedToolCall, ToolCallBlock } from '../src/client/contract/snapshot.ts'
 import {

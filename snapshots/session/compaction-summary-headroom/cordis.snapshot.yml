@@ -2,17 +2,17 @@
 # request output reservation lowers the proactive trigger to 5,582 tokens.
 
 - id: llm-deepseek
-  name: '@liusiqi-dev/dsh-llm-deepseek-api-key'
+  name: '@liusiqi-dev/sqh-llm-deepseek-api-key'
   disabled: true
 
 - id: session-persistence-jsonl
-  name: '@liusiqi-dev/dsh-session-persistence-jsonl'
+  name: '@liusiqi-dev/sqh-session-persistence-jsonl'
   config:
     root: !!js dshHomePath('sessions')
     compression: none
 
 - id: compaction-basic
-  name: '@liusiqi-dev/dsh-compaction-basic'
+  name: '@liusiqi-dev/sqh-compaction-basic'
   config:
     thresholdRatio: 0.8
     headroomTokens: 1800
@@ -20,7 +20,7 @@
 
 - insert:
     - id: llm-replay
-      name: '@liusiqi-dev/dsh-llm-replay'
+      name: '@liusiqi-dev/sqh-llm-replay'
       config:
         providers:
           - id: deepseek-official

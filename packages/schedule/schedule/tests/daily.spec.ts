@@ -6,8 +6,8 @@ import {
   ScheduleId, ScheduleInputError, ScheduleLogError, scheduleView,
 } from '../src/domain.ts'
 import type { DailyInput, DailyScheduleRecord } from '../src/types.ts'
-import { SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
+import { SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
 
 function daily(now: string, time = '23:00:00', timeZone = 'Asia/Shanghai'): DailyScheduleRecord {
   return createDailyScheduleRecord(

@@ -1,5 +1,5 @@
-import { SessionFormatError, isSessionFormatJsonObject } from '@liusiqi-dev/dsh-session-format'
-import type { SessionFormatJsonValue } from '@liusiqi-dev/dsh-session-format'
+import { SessionFormatError, isSessionFormatJsonObject } from '@liusiqi-dev/sqh-session-format'
+import type { SessionFormatJsonValue } from '@liusiqi-dev/sqh-session-format'
 
 /**
  * Require one plain JSON object.

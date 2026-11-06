@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest'
-import type { SessionListState, SessionSummary } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { WorkspaceId, WorkspaceView } from '@liusiqi-dev/dsh-api-workspace-controller/client'
+import type { SessionListState, SessionSummary } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { WorkspaceId, WorkspaceView } from '@liusiqi-dev/sqh-api-workspace-controller/client'
 import type {
   SessionPendingInteraction, SessionStatus, SessionStatusSnapshot,
-} from '@liusiqi-dev/dsh-client-ui-session/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { SessionProjectionSnapshot } from '@liusiqi-dev/dsh-api-session-controller/client'
+} from '@liusiqi-dev/sqh-client-ui-session/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { SessionProjectionSnapshot } from '@liusiqi-dev/sqh-api-session-controller/client'
 import {
   type ArchivedFilter,
   deriveFlat, deriveGroups, deriveSearchResults, orderByRecency, owningGroupKey, owningParentFolder,

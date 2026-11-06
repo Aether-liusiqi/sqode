@@ -2,15 +2,15 @@
  * Tests for the spill Service Definition: a minimal concrete subclass registers as
  * `ctx.spillStore`, a second load throws (duplicate service), and disposal
  * releases the service. The storage behavior is the implementation's concern
- * (`@liusiqi-dev/dsh-spill-local`); here we only pin the seam contract.
+ * (`@liusiqi-dev/sqh-spill-local`); here we only pin the seam contract.
  */
 
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import { SessionId } from '@liusiqi-dev/dsh-session'
-import { SpillLocator, SpillStore } from '@liusiqi-dev/dsh-spill'
-import type { SaveTextSpill, SpillRef } from '@liusiqi-dev/dsh-spill'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import { SessionId } from '@liusiqi-dev/sqh-session'
+import { SpillLocator, SpillStore } from '@liusiqi-dev/sqh-spill'
+import type { SaveTextSpill, SpillRef } from '@liusiqi-dev/sqh-spill'
 
 /** Minimal concrete backend: records the last request, returns a fixed ref. */
 class StubStore extends SpillStore {

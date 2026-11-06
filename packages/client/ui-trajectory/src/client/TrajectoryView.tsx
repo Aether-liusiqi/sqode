@@ -4,10 +4,10 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type {
   AssistantBlock, AssistantMessageNode, ConvViewProps, MessageImageLoader, RenderMessageImages,
   ToolCallBlock,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type { InjectFace, PropsLocale, PropsRenderSlots } from '@liusiqi-dev/dsh-client-ui-slots'
-import type { SnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { JsonTreeProps } from '@liusiqi-dev/dsh-client-ui-primitives'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type { InjectFace, PropsLocale, PropsRenderSlots } from '@liusiqi-dev/sqh-client-ui-slots'
+import type { SnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { JsonTreeProps } from '@liusiqi-dev/sqh-client-ui-primitives'
 import {
   TrajectoryTable,
   type TrajectoryRequestNumber,

@@ -7,7 +7,7 @@ import Lsp, {
   type LspProvider,
   type LspProviderQuery,
   type LspQueryResult,
-} from '@liusiqi-dev/dsh-lsp'
+} from '@liusiqi-dev/sqh-lsp'
 
 /** A scripted provider that records the queries it receives. */
 function makeProvider(

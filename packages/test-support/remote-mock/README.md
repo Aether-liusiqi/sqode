@@ -3,7 +3,7 @@ description: "Endpoint-named mock for Typert Remote traffic: a table of unary an
 kind: "package-library"
 ---
 
-# @liusiqi-dev/dsh-remote-mock
+# @liusiqi-dev/sqh-remote-mock
 
 English | [中文](README.zh.md)
 

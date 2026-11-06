@@ -1,4 +1,4 @@
-import type { ConversationNodeContext } from '@liusiqi-dev/dsh-client-ui-conversation/client'
+import type { ConversationNodeContext } from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import type {
   TrajectoryContribution, TrajectoryConversationViewNode,
 } from './trajectory-contract.ts'

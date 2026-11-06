@@ -1,6 +1,6 @@
-import type { Inbox, InboxTarget } from '@liusiqi-dev/dsh-agent'
-import type { MessageId } from '@liusiqi-dev/dsh-llm'
-import type { UserMessage } from '@liusiqi-dev/dsh-session'
+import type { Inbox, InboxTarget } from '@liusiqi-dev/sqh-agent'
+import type { MessageId } from '@liusiqi-dev/sqh-llm'
+import type { UserMessage } from '@liusiqi-dev/sqh-session'
 
 /**
  * Create a mutable in-memory Inbox stub for tests that exercise only the public

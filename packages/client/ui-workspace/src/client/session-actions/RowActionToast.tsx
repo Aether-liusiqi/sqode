@@ -2,8 +2,8 @@
  * The `shell.overlay` entry for Workspace and Session notices.
  * One notice is visible at a time; a parent rerender does not extend its hold.
  */
-import { IconWarningOutlineRegular, Toast } from '@liusiqi-dev/dsh-client-ui-primitives'
-import { assertNever } from '@liusiqi-dev/dsh-util-values'
+import { IconWarningOutlineRegular, Toast } from '@liusiqi-dev/sqh-client-ui-primitives'
+import { assertNever } from '@liusiqi-dev/sqh-util-values'
 import type { RowToastProps, RowToastState } from '../contract/slots.ts'
 
 /**

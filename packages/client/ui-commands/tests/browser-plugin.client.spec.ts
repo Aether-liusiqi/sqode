@@ -8,13 +8,13 @@
  */
 import { Context } from '@liusiqi-dev/cordis'
 import { describe, expect, it, onTestFinished } from 'vitest'
-import { TestSessions } from '@liusiqi-dev/dsh-client-test-runtime'
-import { SlotRegistry } from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { InputTriggerSource } from '@liusiqi-dev/dsh-client-ui-input-trigger/client'
+import { TestSessions } from '@liusiqi-dev/sqh-client-test-runtime'
+import { SlotRegistry } from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { InputTriggerSource } from '@liusiqi-dev/sqh-client-ui-input-trigger/client'
 import type { CommandUiContract } from '../src/client/contract.ts'
 import type { PopupSelectInjected } from '../src/client/PopupSelectView.tsx'
-import { LocaleRuntime } from '@liusiqi-dev/dsh-client-locale/client'
+import { LocaleRuntime } from '@liusiqi-dev/sqh-client-locale/client'
 import { apply, CommandUiRuntime, inject } from '../src/client/index.ts'
 
 const sid = (k: string): SessionId => k as SessionId

@@ -34,12 +34,12 @@
  * forwards the seats' reports; callers use the service's navigation methods.
  */
 import { sidebarTargetFromElement, type SidebarRightTarget } from './focus.ts'
-import { randomUUID } from '@liusiqi-dev/dsh-util-crypto'
-import { createSnapshotStore, type ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
-import type { FloatRect, PaneId, TabId, TabRecord } from '@liusiqi-dev/dsh-client-ui-dockkit'
-import { activeDockPaneId, canSplit, findContentTab, dockPaneIds, findTabPane, getPane } from '@liusiqi-dev/dsh-client-ui-dockkit'
-import type { BoundActions } from '@liusiqi-dev/dsh-client-ui-slots'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import { randomUUID } from '@liusiqi-dev/sqh-util-crypto'
+import { createSnapshotStore, type ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
+import type { FloatRect, PaneId, TabId, TabRecord } from '@liusiqi-dev/sqh-client-ui-dockkit'
+import { activeDockPaneId, canSplit, findContentTab, dockPaneIds, findTabPane, getPane } from '@liusiqi-dev/sqh-client-ui-dockkit'
+import type { BoundActions } from '@liusiqi-dev/sqh-client-ui-slots'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import type { SidebarRightNavigationParams, SidebarRightResourceParams, SidebarRightTabParamsFor } from './contract/params.ts'
 import { pageAddress } from './contract/seed.ts'
 import type { SidebarRightTabClaim, SidebarRightTabRegistry } from './tab-registry.ts'

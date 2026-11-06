@@ -5,7 +5,7 @@ import { installRuntimeInterception } from './resolver.ts'
 import type { RuntimeResolution } from '../profile.ts'
 
 const registration = getEnvironmentData(
-  '@liusiqi-dev/dsh-app-boot/profile-resolution',
+  '@liusiqi-dev/sqh-app-boot/profile-resolution',
 ) as {
   resolution: RuntimeResolution
 } | undefined

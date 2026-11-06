@@ -9,15 +9,15 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import Include from '@liusiqi-dev/cordis-plugin-include'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import { Session, SessionId } from '@liusiqi-dev/dsh-session'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import * as ToolTodo from '@liusiqi-dev/dsh-tool-todo'
-import { unsupportedInbox } from '@liusiqi-dev/dsh-agent-loop-testkit'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import { Session, SessionId } from '@liusiqi-dev/sqh-session'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import * as ToolTodo from '@liusiqi-dev/sqh-tool-todo'
+import { unsupportedInbox } from '@liusiqi-dev/sqh-agent-loop-testkit'
 
 let root: string | undefined
 let context: Context | undefined
@@ -57,11 +57,11 @@ async function boot(configLines: readonly string[]): Promise<Context> {
   root = await mkdtemp(join(tmpdir(), 'dsh-todo-loader-'))
   const configPath = join(root, 'cordis.yml')
   await writeFile(configPath, [
-    "- name: '@liusiqi-dev/dsh-agent'",
-    "- name: '@liusiqi-dev/dsh-system-prompt'",
-    "- name: '@liusiqi-dev/dsh-tools'",
-    "- name: '@liusiqi-dev/dsh-session-projection'",
-    "- name: '@liusiqi-dev/dsh-tool-todo'",
+    "- name: '@liusiqi-dev/sqh-agent'",
+    "- name: '@liusiqi-dev/sqh-system-prompt'",
+    "- name: '@liusiqi-dev/sqh-tools'",
+    "- name: '@liusiqi-dev/sqh-session-projection'",
+    "- name: '@liusiqi-dev/sqh-tool-todo'",
     ...configLines.length > 0 ? ['  config:', ...configLines] : [],
     '',
   ].join('\n'))
@@ -72,11 +72,11 @@ async function boot(configLines: readonly string[]): Promise<Context> {
   await ctx.plugin(Loader)
   ctx.loader.builtins.include = Include
   const modules = new Map<string, unknown>([
-    ['@liusiqi-dev/dsh-agent', AgentRegistry],
-    ['@liusiqi-dev/dsh-system-prompt', SystemPrompt],
-    ['@liusiqi-dev/dsh-tools', ToolRuntime],
-    ['@liusiqi-dev/dsh-session-projection', SessionProjectionRegistry],
-    ['@liusiqi-dev/dsh-tool-todo', ToolTodo],
+    ['@liusiqi-dev/sqh-agent', AgentRegistry],
+    ['@liusiqi-dev/sqh-system-prompt', SystemPrompt],
+    ['@liusiqi-dev/sqh-tools', ToolRuntime],
+    ['@liusiqi-dev/sqh-session-projection', SessionProjectionRegistry],
+    ['@liusiqi-dev/sqh-tool-todo', ToolTodo],
   ])
   ctx.loader.internal = {
     version: 'v2',

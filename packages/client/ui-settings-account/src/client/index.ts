@@ -1,15 +1,15 @@
 /** Desktop account settings registration and reconnecting Remote subscription. */
-import type {} from '@liusiqi-dev/dsh-client-product-analytics/client'
-import type { TranscriptViewMode } from '@liusiqi-dev/dsh-client-ui-chat/client'
+import type {} from '@liusiqi-dev/sqh-client-product-analytics/client'
+import type { TranscriptViewMode } from '@liusiqi-dev/sqh-client-ui-chat/client'
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-client-locale/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-settings/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-theme/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-chat/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-layout/client'
-import type {} from '@liusiqi-dev/dsh-api-remotes/client'
-import type { AccountView, AccountDetails } from '@liusiqi-dev/dsh-deepseek-account/types'
+import type {} from '@liusiqi-dev/sqh-client-locale/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-settings/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-theme/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-chat/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-layout/client'
+import type {} from '@liusiqi-dev/sqh-api-remotes/client'
+import type { AccountView, AccountDetails } from '@liusiqi-dev/sqh-deepseek-account/types'
 import type { OnboardingChange } from './onboarding-contract.ts'
 import type { PlatformBridge } from './PlatformOverlay.tsx'
 import { ContactConfig, CONTACT_CONFIG_GLOBAL } from '../contact-config.ts'
@@ -33,7 +33,7 @@ export type { AccountMenuProps } from './AccountMenu.tsx'
 export type { AccountSnapshot } from './AccountSection.tsx'
 export type { AccountKey } from './locales.ts'
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface LocaleNamespaceMap { 'settings.account': AccountKey }
 }
 

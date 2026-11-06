@@ -3,7 +3,7 @@ description: "Session-telemetry capture seam for deployments and backend authors
 kind: "package-library"
 ---
 
-# @liusiqi-dev/dsh-session-telemetry
+# @liusiqi-dev/sqh-session-telemetry
 
 English | [中文](README.zh.md)
 

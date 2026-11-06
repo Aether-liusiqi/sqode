@@ -15,8 +15,8 @@ import {
   sandboxDenialMarker,
   sandboxPermissionsDescription,
   validateEscalationArgs,
-} from '@liusiqi-dev/dsh-sandbox'
-import type { EscalationApprover, EscalationOutcome } from '@liusiqi-dev/dsh-sandbox'
+} from '@liusiqi-dev/sqh-sandbox'
+import type { EscalationApprover, EscalationOutcome } from '@liusiqi-dev/sqh-sandbox'
 
 describe('the strictly-wider ladder', () => {
   it('read-only escalates to either wider mode; workspace-write only to full access', () => {

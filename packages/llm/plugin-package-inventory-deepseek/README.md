@@ -3,7 +3,7 @@ description: "Active Loader package inventory metadata for deployments sending o
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-plugin-package-inventory-deepseek
+# @liusiqi-dev/sqh-plugin-package-inventory-deepseek
 
 English | [中文](README.zh.md)
 

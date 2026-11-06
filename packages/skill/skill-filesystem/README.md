@@ -3,7 +3,7 @@ description: "The local filesystem skill provider for users and maintainers auth
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-skill-filesystem
+# @liusiqi-dev/sqh-skill-filesystem
 
 English | [中文](README.zh.md)
 
@@ -60,8 +60,8 @@ The project root is the nearest ancestor containing `.git`; without one, the cur
 Load the plugin alongside the skill registry; it requires `ctx.skills`.
 
 ```yaml
-- name: '@liusiqi-dev/dsh-skill'
-- name: '@liusiqi-dev/dsh-skill-filesystem'
+- name: '@liusiqi-dev/sqh-skill'
+- name: '@liusiqi-dev/sqh-skill-filesystem'
 ```
 
 | Field | Default | Meaning |

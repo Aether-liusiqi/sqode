@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
 import { AssistantOutputFold, finalAssistantOutput } from '../src/assistant-output.ts'
 
 function message(content: ContentBlock[]): SessionEvent {

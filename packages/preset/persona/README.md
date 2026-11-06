@@ -3,7 +3,7 @@ description: "The composable persona row presets mount to give one agent its own
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-persona
+# @liusiqi-dev/sqh-persona
 
 English | [中文](README.zh.md)
 
@@ -30,7 +30,7 @@ Mount this row inside a preset composition to give that preset's sessions their 
 ### Configuration
 
 ```yaml
-- name: '@liusiqi-dev/dsh-persona'
+- name: '@liusiqi-dev/sqh-persona'
   config:
     prefix: You are a terse systems engineer who answers in short commands.
 ```

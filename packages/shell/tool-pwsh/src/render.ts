@@ -7,12 +7,12 @@
  * infrastructure failures (spawn errors, aborts) surface as isError
  * results.
  *
- * @module @liusiqi-dev/dsh-tool-pwsh/render
+ * @module @liusiqi-dev/sqh-tool-pwsh/render
  */
 
-import type { ShellSandboxInfo, CollectedOutput } from '@liusiqi-dev/dsh-shell'
-import type { SandboxMode } from '@liusiqi-dev/dsh-sandbox'
-import { escalationHintMarker, sandboxDenialMarker } from '@liusiqi-dev/dsh-sandbox'
+import type { ShellSandboxInfo, CollectedOutput } from '@liusiqi-dev/sqh-shell'
+import type { SandboxMode } from '@liusiqi-dev/sqh-sandbox'
+import { escalationHintMarker, sandboxDenialMarker } from '@liusiqi-dev/sqh-sandbox'
 
 /* jscpd:ignore-start -- deliberate twin of dsh-tool-bash/render.ts (Agent Note). */
 

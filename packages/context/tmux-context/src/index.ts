@@ -15,18 +15,18 @@
  * absent `ctx.shell`, or a failed query is a no-op, never an error: an executor
  * rejection is contained and logged as a warning so the turn continues.
  *
- * @module @liusiqi-dev/dsh-tmux-context
+ * @module @liusiqi-dev/sqh-tmux-context
  */
 
 import type { Context, LoggerService } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
 import { z as zod } from 'zod'
-import type { PreStepDecision } from '@liusiqi-dev/dsh-agent'
-import type {} from '@liusiqi-dev/dsh-session-projection'
-import type { ShellExecutor, ShellRunResult } from '@liusiqi-dev/dsh-shell'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-declare module '@liusiqi-dev/dsh-llm' {
+import type { PreStepDecision } from '@liusiqi-dev/sqh-agent'
+import type {} from '@liusiqi-dev/sqh-session-projection'
+import type { ShellExecutor, ShellRunResult } from '@liusiqi-dev/sqh-shell'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     /** Location attribution; readers preserve the content without this producer.
      * Its projection uses the kind to avoid repeated injection.
@@ -216,7 +216,7 @@ type TmuxContextState = zod.infer<typeof tmuxContextStateSchema>
  * @param config - durable refresh scheduling configuration.
  * @throws when the refresh interval is invalid.
  */
-declare module '@liusiqi-dev/dsh-session-projection/types' {
+declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionStateMap {
     /** The stable state block of this plugin's latest durable injection, or null. */
     tmuxContext: TmuxContextState

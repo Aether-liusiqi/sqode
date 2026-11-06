@@ -19,15 +19,15 @@ if (isSea()) {
 const selectorName = 'SQODE_SUBPROCESS_RUNNER'
 const selection = process.env[selectorName]
 const aclRunner = process.platform === 'win32'
-  ? fileURLToPath(import.meta.resolve('@liusiqi-dev/dsh-sandbox-windows-acl/runner'))
+  ? fileURLToPath(import.meta.resolve('@liusiqi-dev/sqh-sandbox-windows-acl/runner'))
   : undefined
 
 if (aclRunner !== undefined && process.argv[2] === aclRunner) {
   process.argv.splice(1, 1)
-  await import('@liusiqi-dev/dsh-sandbox-windows-acl/runner')
+  await import('@liusiqi-dev/sqh-sandbox-windows-acl/runner')
 } else if (process.env.SQODE_PTC_RUNTIME_NODE === '1') {
   Reflect.deleteProperty(process.env, 'SQODE_PTC_RUNTIME_NODE')
-  await import('@liusiqi-dev/dsh-ptc-runtime-node/process')
+  await import('@liusiqi-dev/sqh-ptc-runtime-node/process')
 } else if (selection === undefined) {
   if (isSea()) {
     // Carrier default stays separate so process/home environment and profile patches can override it.
@@ -38,6 +38,6 @@ if (aclRunner !== undefined && process.argv[2] === aclRunner) {
   await runCli()
 } else {
   Reflect.deleteProperty(process.env, selectorName)
-  const { runSelectedSubprocessRunner } = await import('@liusiqi-dev/dsh-subprocess-local/runner')
+  const { runSelectedSubprocessRunner } = await import('@liusiqi-dev/sqh-subprocess-local/runner')
   await runSelectedSubprocessRunner(selection)
 }

@@ -2,11 +2,11 @@
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import ComputerUseRegistry from '@liusiqi-dev/dsh-computer-use'
-import { ComputerUseProviderName } from '@liusiqi-dev/dsh-computer-use/brand'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
+import ComputerUseRegistry from '@liusiqi-dev/sqh-computer-use'
+import { ComputerUseProviderName } from '@liusiqi-dev/sqh-computer-use/brand'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
 import * as NativeProvider from '../src/index.ts'
 import { catalog, fixture, resetFixture } from './fixtures/cua-driver.ts'
 

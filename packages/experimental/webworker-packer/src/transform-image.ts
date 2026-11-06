@@ -7,9 +7,9 @@
  * the contract version it was lowered against. Bodies emitted against a
  * different wrapper contract are refused at mount time rather than
  * half-working at run time.
- * @module @liusiqi-dev/dsh-experimental-webworker-packer/src/transform-image
+ * @module @liusiqi-dev/sqh-experimental-webworker-packer/src/transform-image
  */
-import { LOWERING_VERSION } from '@liusiqi-dev/dsh-experimental-webworker-runtime'
+import { LOWERING_VERSION } from '@liusiqi-dev/sqh-experimental-webworker-runtime'
 
 /** Image entries, keyed by their path relative to the virtual root. */
 export type ImageFiles = Record<string, Uint8Array>

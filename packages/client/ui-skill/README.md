@@ -3,7 +3,7 @@ description: "Web skill references and the dedicated skill tool row for the dsh 
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-ui-skill
+# @liusiqi-dev/sqh-client-ui-skill
 
 English | [中文](README.zh.md)
 

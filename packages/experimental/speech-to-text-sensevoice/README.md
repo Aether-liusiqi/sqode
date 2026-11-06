@@ -3,7 +3,7 @@ description: "Prepare and operate a local CPU SenseVoice worker on demand."
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-experimental-speech-to-text-sensevoice
+# @liusiqi-dev/sqh-experimental-speech-to-text-sensevoice
 
 English | [中文](README.zh.md)
 

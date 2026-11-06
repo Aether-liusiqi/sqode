@@ -5,11 +5,11 @@
  * observed-state policy stay in consumer and policy plugins; `editText`
  * remains here so version check, literal match, and rewrite share one critical
  * section.
- * @module @liusiqi-dev/dsh-fs
+ * @module @liusiqi-dev/sqh-fs
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'
-import type { SandboxExecutionPolicy, SandboxMode } from '@liusiqi-dev/dsh-sandbox'
+import type { SandboxExecutionPolicy, SandboxMode } from '@liusiqi-dev/sqh-sandbox'
 import { FsError } from './types.ts'
 import type {
   FsDirEntry,
@@ -109,7 +109,7 @@ export abstract class FileSystem extends Service {
    * `undefined` when it does not confine at all — the capability fact the tool
    * layer reads to advertise the escalation fields honestly (mirrors
    * `ShellExecutor.sandboxMode`). The base class and the bare local backend
-   * report `undefined`; a sandboxing backend (`@liusiqi-dev/dsh-fs-sandbox`)
+   * report `undefined`; a sandboxing backend (`@liusiqi-dev/sqh-fs-sandbox`)
    * overrides it with the deployment default. A session override may make the
    * effective mode narrower or wider, so strict escalation widening is checked
    * per call rather than encoded in this default-relative fact.

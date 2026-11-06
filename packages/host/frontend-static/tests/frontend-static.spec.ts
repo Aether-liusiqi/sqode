@@ -14,9 +14,9 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import Include from '@liusiqi-dev/cordis-plugin-include'
-import * as Connection from '@liusiqi-dev/dsh-client-connection'
-import LocalCredentials from '@liusiqi-dev/dsh-credentials-local'
-import HttpServer from '@liusiqi-dev/dsh-host-webserver'
+import * as Connection from '@liusiqi-dev/sqh-client-connection'
+import LocalCredentials from '@liusiqi-dev/sqh-credentials-local'
+import HttpServer from '@liusiqi-dev/sqh-host-webserver'
 import * as FrontendStatic from '../src/index.ts'
 
 let root: string | undefined
@@ -42,17 +42,17 @@ async function loadComposition(): Promise<Context> {
   await mkdir(join(dist, 'empty'))
   const configPath = join(root, 'cordis.yml')
   await writeFile(configPath, [
-    "- name: '@liusiqi-dev/dsh-credentials-local'",
+    "- name: '@liusiqi-dev/sqh-credentials-local'",
     '  config:',
     `    path: '${join(root, '.credentials.yaml')}'`,
     '    watch: false',
-    "- name: '@liusiqi-dev/dsh-host-webserver'",
+    "- name: '@liusiqi-dev/sqh-host-webserver'",
     '  config:',
     "    host: '127.0.0.1'",
     '    port: 0',
-    "- name: '@liusiqi-dev/dsh-client-connection'",
+    "- name: '@liusiqi-dev/sqh-client-connection'",
     '- id: frontend',
-    "  name: '@liusiqi-dev/dsh-host-frontend-static'",
+    "  name: '@liusiqi-dev/sqh-host-frontend-static'",
     '  config:',
     `    distIndex: '${distIndex}'`,
     '',
@@ -63,10 +63,10 @@ async function loadComposition(): Promise<Context> {
   await context.plugin(Loader)
   context.loader.builtins.include = Include
   const modules = new Map<string, unknown>([
-    ['@liusiqi-dev/dsh-credentials-local', LocalCredentials],
-    ['@liusiqi-dev/dsh-host-webserver', HttpServer],
-    ['@liusiqi-dev/dsh-client-connection', Connection],
-    ['@liusiqi-dev/dsh-host-frontend-static', FrontendStatic],
+    ['@liusiqi-dev/sqh-credentials-local', LocalCredentials],
+    ['@liusiqi-dev/sqh-host-webserver', HttpServer],
+    ['@liusiqi-dev/sqh-client-connection', Connection],
+    ['@liusiqi-dev/sqh-host-frontend-static', FrontendStatic],
   ])
   context.loader.internal = {
     version: 'v2',

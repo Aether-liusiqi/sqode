@@ -4,9 +4,9 @@ import { basename, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { chromium, type Browser, type Page } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
-import { SessionId } from '@liusiqi-dev/dsh-session'
-import { createLaunchEnvironmentSnapshot } from '@liusiqi-dev/dsh-launch-environment'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
+import { SessionId } from '@liusiqi-dev/sqh-session'
+import { createLaunchEnvironmentSnapshot } from '@liusiqi-dev/sqh-launch-environment'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
 import {
   captureStableAria, compareOrRefreshGolden, launchWebScaffold, readPersistedEvents,
   seedSession, watchConsole, webSnapshotMode, type WebScaffold,

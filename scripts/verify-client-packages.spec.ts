@@ -30,7 +30,7 @@ function declaration(
   fields: Partial<Omit<ClientDeclaration, 'name' | 'manifest'>> = {},
 ): ClientDeclaration {
   return {
-    name: short.startsWith('@') ? short : '@liusiqi-dev/dsh-client-' + short,
+    name: short.startsWith('@') ? short : '@liusiqi-dev/sqh-client-' + short,
     manifest: 'packages/client/' + short.replace(/^.*\//, '') + '/package.json',
     dynamic: true,
     external: [],
@@ -96,34 +96,34 @@ describe('source package uses', () => {
 
   it('counts type imports, module augmentations, dynamic imports, and JSX', () => {
     const uses = collectSourcePackageUses('feature.tsx', [
-      "import type { A } from '@liusiqi-dev/dsh-a/subpath'",
-      "declare module '@liusiqi-dev/dsh-client-ui-slots' {}",
-      "const load = () => import('@liusiqi-dev/dsh-b/remote')",
+      "import type { A } from '@liusiqi-dev/sqh-a/subpath'",
+      "declare module '@liusiqi-dev/sqh-client-ui-slots' {}",
+      "const load = () => import('@liusiqi-dev/sqh-b/remote')",
       'export const view = <div />',
       "export type { Local } from './local.ts'",
     ].join('\n'))
 
     expect([...uses].sort()).toEqual([
-      '@liusiqi-dev/dsh-a',
-      '@liusiqi-dev/dsh-b',
-      '@liusiqi-dev/dsh-client-ui-slots',
+      '@liusiqi-dev/sqh-a',
+      '@liusiqi-dev/sqh-b',
+      '@liusiqi-dev/sqh-client-ui-slots',
       'react',
     ])
     expect([...collectRuntimeSourcePackageUses('feature.tsx', [
-      "import type { A } from '@liusiqi-dev/dsh-a/subpath'",
-      "declare module '@liusiqi-dev/dsh-client-ui-slots' {}",
-      "const load = () => import('@liusiqi-dev/dsh-b')",
+      "import type { A } from '@liusiqi-dev/sqh-a/subpath'",
+      "declare module '@liusiqi-dev/sqh-client-ui-slots' {}",
+      "const load = () => import('@liusiqi-dev/sqh-b')",
       'export const view = <div />',
     ].join('\n'))].sort()).toEqual([
-      '@liusiqi-dev/dsh-b',
+      '@liusiqi-dev/sqh-b',
       'react',
     ])
     expect([...collectRuntimeSourceSpecifiers('feature.tsx', [
-      "import type { A } from '@liusiqi-dev/dsh-a/subpath'",
-      "const load = () => import('@liusiqi-dev/dsh-b/remote')",
+      "import type { A } from '@liusiqi-dev/sqh-a/subpath'",
+      "const load = () => import('@liusiqi-dev/sqh-b/remote')",
       'export const view = <div />',
     ].join('\n'))].sort()).toEqual([
-      '@liusiqi-dev/dsh-b/remote',
+      '@liusiqi-dev/sqh-b/remote',
       'react',
     ])
     expect([...collectLocalSourceSpecifiers('feature.ts', [
@@ -132,7 +132,7 @@ describe('source package uses', () => {
       "const load = () => import('./lazy.ts')",
       "const legacy = require('./legacy.ts')",
       "declare module './augmentation.ts' {}",
-      "import '@liusiqi-dev/dsh-a'",
+      "import '@liusiqi-dev/sqh-a'",
     ].join('\n'))].sort()).toEqual([
       './lazy.ts',
       './legacy.ts',
@@ -179,7 +179,7 @@ describe('package modes', () => {
       parserPreloadIds: [],
     }))).toEqual([
       'packages/client/web/src/platform.ts: parser-preloaded external '
-      + '"@liusiqi-dev/dsh-client-bootstrap/client" has no matching PARSER_PRELOAD_IDS row in '
+      + '"@liusiqi-dev/sqh-client-bootstrap/client" has no matching PARSER_PRELOAD_IDS row in '
       + 'packages/client/modules/src/index.ts',
     ])
   })
@@ -188,57 +188,57 @@ describe('package modes', () => {
 describe('module requests', () => {
   it('rejects runtime requests from one client feature package to another dynamic row', () => {
     const ui = declaration('ui', {
-      external: ['@liusiqi-dev/dsh-client-slots/client'],
+      external: ['@liusiqi-dev/sqh-client-slots/client'],
       runtimeSourceUses: {
-        '@liusiqi-dev/dsh-client-slots': ['packages/client/ui/src/client/index.ts'],
+        '@liusiqi-dev/sqh-client-slots': ['packages/client/ui/src/client/index.ts'],
       },
     })
     const slots = declaration('slots')
     expect(collectClientPackageViolations(facts([], { declarations: [ui, slots] }))).toEqual([
       ui.manifest + ': client feature package requests runtime external '
-      + '"@liusiqi-dev/dsh-client-slots/client"; import shared types only or call an injected Cordis service',
+      + '"@liusiqi-dev/sqh-client-slots/client"; import shared types only or call an injected Cordis service',
     ])
   })
 
   it('rejects stale externals and accepts a runtime import outside client feature packages', () => {
     const gateway = {
-      ...declaration('@liusiqi-dev/dsh-api-gateway'), manifest: 'packages/api/gateway/package.json',
+      ...declaration('@liusiqi-dev/sqh-api-gateway'), manifest: 'packages/api/gateway/package.json',
     }
-    const stale = { ...declaration('@liusiqi-dev/dsh-api-stale', {
-      external: ['@liusiqi-dev/dsh-api-gateway/client'],
+    const stale = { ...declaration('@liusiqi-dev/sqh-api-stale', {
+      external: ['@liusiqi-dev/sqh-api-gateway/client'],
     }), manifest: 'packages/api/stale/package.json' }
-    const live = { ...declaration('@liusiqi-dev/dsh-api-live', {
-      external: ['@liusiqi-dev/dsh-api-gateway/client'],
+    const live = { ...declaration('@liusiqi-dev/sqh-api-live', {
+      external: ['@liusiqi-dev/sqh-api-gateway/client'],
       runtimeSourceUses: {
-        '@liusiqi-dev/dsh-api-gateway': ['packages/api/live/src/client/index.ts'],
+        '@liusiqi-dev/sqh-api-gateway': ['packages/api/live/src/client/index.ts'],
       },
       runtimeSourceSpecifiers: {
-        '@liusiqi-dev/dsh-api-gateway/client': ['packages/api/live/src/client/index.ts'],
+        '@liusiqi-dev/sqh-api-gateway/client': ['packages/api/live/src/client/index.ts'],
       },
     }), manifest: 'packages/api/live/package.json' }
     expect(collectClientPackageViolations(facts([], {
       declarations: [gateway, stale, live],
     }))).toEqual([
-      stale.manifest + ': dsh.client.external "@liusiqi-dev/dsh-api-gateway/client"'
+      stale.manifest + ': dsh.client.external "@liusiqi-dev/sqh-api-gateway/client"'
       + ' has no runtime import or re-export in production source; remove the stale declaration',
     ])
   })
 
   it('requires the exact external subpath to be imported at runtime', () => {
     const gateway = {
-      ...declaration('@liusiqi-dev/dsh-api-gateway'), manifest: 'packages/api/gateway/package.json',
+      ...declaration('@liusiqi-dev/sqh-api-gateway'), manifest: 'packages/api/gateway/package.json',
     }
-    const subject = { ...declaration('@liusiqi-dev/dsh-api-session-controller', {
-      external: ['@liusiqi-dev/dsh-api-gateway/client'],
+    const subject = { ...declaration('@liusiqi-dev/sqh-api-session-controller', {
+      external: ['@liusiqi-dev/sqh-api-gateway/client'],
       runtimeSourceUses: {
-        '@liusiqi-dev/dsh-api-gateway': ['packages/api/session-controller/src/client/index.ts'],
+        '@liusiqi-dev/sqh-api-gateway': ['packages/api/session-controller/src/client/index.ts'],
       },
       runtimeSourceSpecifiers: {
-        '@liusiqi-dev/dsh-api-gateway/remote': ['packages/api/session-controller/src/client/index.ts'],
+        '@liusiqi-dev/sqh-api-gateway/remote': ['packages/api/session-controller/src/client/index.ts'],
       },
     }), manifest: 'packages/api/session-controller/package.json' }
     expect(collectClientPackageViolations(facts([], { declarations: [gateway, subject] }))).toEqual([
-      subject.manifest + ': dsh.client.external "@liusiqi-dev/dsh-api-gateway/client"'
+      subject.manifest + ': dsh.client.external "@liusiqi-dev/sqh-api-gateway/client"'
       + ' has no runtime import or re-export in production source; remove the stale declaration',
     ])
   })
@@ -255,8 +255,8 @@ describe('module requests', () => {
 
   it('rejects duplicates, empty values, self-requests, and missing suppliers', () => {
     const ui = declaration('ui', {
-      external: ['', '@liusiqi-dev/dsh-client-ui', '@liusiqi-dev/dsh-missing', '@liusiqi-dev/dsh-missing'],
-      inject: ['', '@liusiqi-dev/dsh-a', '@liusiqi-dev/dsh-a'],
+      external: ['', '@liusiqi-dev/sqh-client-ui', '@liusiqi-dev/sqh-missing', '@liusiqi-dev/sqh-missing'],
+      inject: ['', '@liusiqi-dev/sqh-a', '@liusiqi-dev/sqh-a'],
     })
     const found = collectClientPackageViolations(facts([], { declarations: [ui] }))
     expect(found).toHaveLength(6)
@@ -267,17 +267,17 @@ describe('module requests', () => {
   })
 
   it('rejects synchronous module-request cycles but ignores inject cycles', () => {
-    const a = { ...declaration('@liusiqi-dev/dsh-api-a', {
-      external: ['@liusiqi-dev/dsh-api-b'],
-      inject: ['@liusiqi-dev/dsh-api-b'],
-      runtimeSourceUses: { '@liusiqi-dev/dsh-api-b': ['packages/api/a/src/client.ts'] },
-      runtimeSourceSpecifiers: { '@liusiqi-dev/dsh-api-b': ['packages/api/a/src/client.ts'] },
+    const a = { ...declaration('@liusiqi-dev/sqh-api-a', {
+      external: ['@liusiqi-dev/sqh-api-b'],
+      inject: ['@liusiqi-dev/sqh-api-b'],
+      runtimeSourceUses: { '@liusiqi-dev/sqh-api-b': ['packages/api/a/src/client.ts'] },
+      runtimeSourceSpecifiers: { '@liusiqi-dev/sqh-api-b': ['packages/api/a/src/client.ts'] },
     }), manifest: 'packages/api/a/package.json' }
-    const b = { ...declaration('@liusiqi-dev/dsh-api-b', {
-      external: ['@liusiqi-dev/dsh-api-a'],
-      inject: ['@liusiqi-dev/dsh-api-a'],
-      runtimeSourceUses: { '@liusiqi-dev/dsh-api-a': ['packages/client/b/src/client.ts'] },
-      runtimeSourceSpecifiers: { '@liusiqi-dev/dsh-api-a': ['packages/client/b/src/client.ts'] },
+    const b = { ...declaration('@liusiqi-dev/sqh-api-b', {
+      external: ['@liusiqi-dev/sqh-api-a'],
+      inject: ['@liusiqi-dev/sqh-api-a'],
+      runtimeSourceUses: { '@liusiqi-dev/sqh-api-a': ['packages/client/b/src/client.ts'] },
+      runtimeSourceSpecifiers: { '@liusiqi-dev/sqh-api-a': ['packages/client/b/src/client.ts'] },
     }), manifest: 'packages/api/b/package.json' }
     const found = collectClientPackageViolations(facts([], { declarations: [a, b] }))
     expect(found).toHaveLength(1)
@@ -312,18 +312,18 @@ describe('manifest declarations', () => {
     const root = mkdtempSync(join(tmpdir(), 'client-packages-fix-'))
     roots.push(root)
     const subject = pkg('feature', {
-      external: ['', 'react', '@liusiqi-dev/dsh-client-feature', '@liusiqi-dev/dsh-missing'],
-      inject: ['', '@liusiqi-dev/dsh-agent', '@liusiqi-dev/dsh-agent'],
+      external: ['', 'react', '@liusiqi-dev/sqh-client-feature', '@liusiqi-dev/sqh-missing'],
+      inject: ['', '@liusiqi-dev/sqh-agent', '@liusiqi-dev/sqh-agent'],
       sourceUses: {
-        '@liusiqi-dev/dsh-agent': ['packages/client/feature/src/index.ts'],
-        '@liusiqi-dev/dsh-client-ui-slots': ['packages/client/feature/src/view.tsx'],
+        '@liusiqi-dev/sqh-agent': ['packages/client/feature/src/index.ts'],
+        '@liusiqi-dev/sqh-client-ui-slots': ['packages/client/feature/src/view.tsx'],
       },
       dependencies: {
         [CORDIS]: 'workspace:^',
-        '@liusiqi-dev/dsh-agent': 'workspace:*',
+        '@liusiqi-dev/sqh-agent': 'workspace:*',
       },
       peerDependencies: {
-        '@liusiqi-dev/dsh-client-ui-slots': 'workspace:^',
+        '@liusiqi-dev/sqh-client-ui-slots': 'workspace:^',
         '@liusiqi-dev/cordis-plugin-loader': 'workspace:^',
       },
       devDependencies: {},
@@ -353,8 +353,8 @@ describe('manifest declarations', () => {
       devDependencies: Record<string, string>
     }
     expect(fixed.dsh.client).toMatchObject({
-      external: ['@liusiqi-dev/dsh-missing'],
-      inject: ['@liusiqi-dev/dsh-agent'],
+      external: ['@liusiqi-dev/sqh-missing'],
+      inject: ['@liusiqi-dev/sqh-agent'],
     })
     expect(fixed.dependencies).toEqual(subject.dependencies)
     expect(fixed.peerDependencies).toEqual(subject.peerDependencies)

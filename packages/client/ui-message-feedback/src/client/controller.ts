@@ -4,17 +4,17 @@
  * version this controller last observed, and a `version-conflict` reply carries
  * the authoritative item, so a lost race reconciles from the reply itself
  * instead of refetching the whole Session.
- * @module @liusiqi-dev/dsh-client-ui-message-feedback/client/controller
+ * @module @liusiqi-dev/sqh-client-ui-message-feedback/client/controller
  */
 
-import type { HostObservable } from '@liusiqi-dev/dsh-client-ui-slots'
-import type { ClientRemote, MessageId } from '@liusiqi-dev/dsh-api-remotes/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { FeedbackRecord } from '@liusiqi-dev/dsh-command-feedback/types'
+import type { HostObservable } from '@liusiqi-dev/sqh-client-ui-slots'
+import type { ClientRemote, MessageId } from '@liusiqi-dev/sqh-api-remotes/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { FeedbackRecord } from '@liusiqi-dev/sqh-command-feedback/types'
 import type {
   MessageFeedbackItem,
   MessageFeedbackRating,
-} from '@liusiqi-dev/dsh-message-feedback/types'
+} from '@liusiqi-dev/sqh-message-feedback/types'
 
 /** Load state of the one list read that seeds every per-message control. */
 export type MessageFeedbackStatus = 'cold' | 'loading' | 'ready' | 'error'

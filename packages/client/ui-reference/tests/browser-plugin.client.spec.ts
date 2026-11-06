@@ -5,15 +5,15 @@
  */
 import { Context, Service } from '@liusiqi-dev/cordis'
 import { afterEach, beforeEach, describe, expect, it, onTestFinished, vi } from 'vitest'
-import { LocaleRuntime } from '@liusiqi-dev/dsh-client-locale/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import { RemoteError, TestSessions } from '@liusiqi-dev/dsh-client-test-runtime'
-import type { SessionFixture } from '@liusiqi-dev/dsh-client-test-runtime'
+import { LocaleRuntime } from '@liusiqi-dev/sqh-client-locale/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import { RemoteError, TestSessions } from '@liusiqi-dev/sqh-client-test-runtime'
+import type { SessionFixture } from '@liusiqi-dev/sqh-client-test-runtime'
 import type {
   CandidateRequest, ClientSessionContext, InputTriggerCandidate, InputTriggerSource,
-} from '@liusiqi-dev/dsh-client-ui-input-trigger/client'
-import type { FileReferenceCandidate } from '@liusiqi-dev/dsh-file-reference/types'
-import type { SessionReferenceMentionCandidate } from '@liusiqi-dev/dsh-session-reference/types'
+} from '@liusiqi-dev/sqh-client-ui-input-trigger/client'
+import type { FileReferenceCandidate } from '@liusiqi-dev/sqh-file-reference/types'
+import type { SessionReferenceMentionCandidate } from '@liusiqi-dev/sqh-session-reference/types'
 import { apply, inject } from '../src/client/index.ts'
 import { apply as nodeApply } from '../src/index.ts'
 

@@ -2,7 +2,7 @@
 // Host configuration injection stays with each plugin's validated Config and browser global.
 /* jscpd:ignore-start */
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-host-webserver'
+import type {} from '@liusiqi-dev/sqh-host-webserver'
 import type { Config } from './config.ts'
 
 export { Config } from './config.ts'

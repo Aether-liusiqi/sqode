@@ -3,7 +3,7 @@ description: "The local PowerShell executor for deployments and maintainers choo
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-pwsh-local
+# @liusiqi-dev/sqh-pwsh-local
 
 English | [中文](README.zh.md)
 
@@ -37,7 +37,7 @@ Load the executor with the budgets you want; every field has a default, so the s
 
 ```yaml
 - id: bash
-  name: '@liusiqi-dev/dsh-pwsh-local'
+  name: '@liusiqi-dev/sqh-pwsh-local'
   config:
     cwd: C:\path\to\workspace
     timeoutMs: 120000

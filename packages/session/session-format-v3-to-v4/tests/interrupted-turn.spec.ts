@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
-import { SessionFormatEventCollector, type SessionFormatEvent, type SessionFormatJsonObject } from '@liusiqi-dev/dsh-session-format'
-import { createSessionFormatCatalogWithChildren, sessionFormatCatalog } from '@liusiqi-dev/dsh-session-format-catalog'
-import { Session, SessionId, SessionLogOffset, type SessionEvent, type SessionHeader } from '@liusiqi-dev/dsh-session'
-import { imageOffloadProjection } from '@liusiqi-dev/dsh-compaction-image-offload/projection'
+import { SessionFormatEventCollector, type SessionFormatEvent, type SessionFormatJsonObject } from '@liusiqi-dev/sqh-session-format'
+import { createSessionFormatCatalogWithChildren, sessionFormatCatalog } from '@liusiqi-dev/sqh-session-format-catalog'
+import { Session, SessionId, SessionLogOffset, type SessionEvent, type SessionHeader } from '@liusiqi-dev/sqh-session'
+import { imageOffloadProjection } from '@liusiqi-dev/sqh-compaction-image-offload/projection'
 import { createSessionFormatV3ToV4 } from '../src/index.ts'
 import { remapV3References } from '../src/references.ts'
 

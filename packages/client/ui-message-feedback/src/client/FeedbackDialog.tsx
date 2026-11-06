@@ -4,14 +4,14 @@
  * The Modal and the Toast both portal to `document.body`; the overlay slot
  * only supplies the per-session controller and the composer card the toast
  * centers over.
- * @module @liusiqi-dev/dsh-client-ui-message-feedback/client/FeedbackDialog
+ * @module @liusiqi-dev/sqh-client-ui-message-feedback/client/FeedbackDialog
  */
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import {
   Button, IconWarningOutlineRegular, Modal, Toast,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { FeedbackCategory } from '@liusiqi-dev/dsh-command-feedback/types'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { FeedbackCategory } from '@liusiqi-dev/sqh-command-feedback/types'
 import type { FeedbackDialogProps } from './slots.ts'
 import css from './FeedbackDialog.module.css'
 

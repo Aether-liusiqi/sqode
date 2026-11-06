@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-cordis-client-runner",
+  "name": "@liusiqi-dev/sqh-cordis-client-runner",
   "description": "Browser half of dynamic dual-half plugin packages: event subscription, closure evaluation, guard facade, and loader entries",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,10 +28,10 @@
   "dsh": {
     "client": {
       "inject": [
-        "@liusiqi-dev/dsh-client-ui-renderer",
-        "@liusiqi-dev/dsh-api-remotes",
-        "@liusiqi-dev/dsh-client-modules",
-        "@liusiqi-dev/dsh-client-ui-theme"
+        "@liusiqi-dev/sqh-client-ui-renderer",
+        "@liusiqi-dev/sqh-api-remotes",
+        "@liusiqi-dev/sqh-client-modules",
+        "@liusiqi-dev/sqh-client-ui-theme"
       ],
       "platform": "web"
     }
@@ -46,14 +46,14 @@
   },
   "devDependencies": {
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
-    "@liusiqi-dev/dsh-api-remotes": "workspace:*",
-    "@liusiqi-dev/dsh-client-modules": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-renderer": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-theme": "workspace:*",
+    "@liusiqi-dev/sqh-api-remotes": "workspace:*",
+    "@liusiqi-dev/sqh-client-modules": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-renderer": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-theme": "workspace:*",
     "@types/react": "~18.3.1",
     "@liusiqi-dev/cordis": "workspace:~",
     "react": "^18.2.0",
-    "@liusiqi-dev/dsh-util-values": "workspace:*"
+    "@liusiqi-dev/sqh-util-values": "workspace:*"
   },
   "files": [
     "lib/index.js",

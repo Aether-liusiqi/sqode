@@ -4,12 +4,12 @@
  * guards from that state, and the provider performs the atomic freshness/no-clobber check. Without
  * this plugin, tools retain the bare provider's unconditional mutation behavior. See the package
  * README for composition rules.
- * @module @liusiqi-dev/dsh-fs-observation-policy
+ * @module @liusiqi-dev/sqh-fs-observation-policy
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { FsError } from '@liusiqi-dev/dsh-fs'
-import type { FsObservation, FsTarget, FsVersion, FsWriteIntent } from '@liusiqi-dev/dsh-fs'
+import { FsError } from '@liusiqi-dev/sqh-fs'
+import type { FsObservation, FsTarget, FsVersion, FsWriteIntent } from '@liusiqi-dev/sqh-fs'
 import type { FsObservationActor } from './types.ts'
 
 export type { FsObservationActor } from './types.ts'

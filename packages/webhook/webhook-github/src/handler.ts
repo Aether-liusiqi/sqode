@@ -3,14 +3,14 @@
 import type { Context } from '@liusiqi-dev/cordis'
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import { Webhooks } from '@octokit/webhooks'
-import type { CredentialRef } from '@liusiqi-dev/dsh-credentials'
-import { snapshotJsonValue } from '@liusiqi-dev/dsh-util-values'
+import type { CredentialRef } from '@liusiqi-dev/sqh-credentials'
+import { snapshotJsonValue } from '@liusiqi-dev/sqh-util-values'
 import {
   WebhookDeliveryId,
   WebhookSourceId,
   type VerifiedWebhookDelivery,
-} from '@liusiqi-dev/dsh-webhook'
-import type { WebRoute } from '@liusiqi-dev/dsh-host-webserver'
+} from '@liusiqi-dev/sqh-webhook'
+import type { WebRoute } from '@liusiqi-dev/sqh-host-webserver'
 import { readBoundedUtf8Body, WebhookHttpError } from './body.ts'
 import type { GitHubJsonObject } from './types.ts'
 

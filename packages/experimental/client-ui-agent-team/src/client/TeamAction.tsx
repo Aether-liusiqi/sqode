@@ -1,19 +1,19 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import type {
   TeamMemberProjection,
   TeamTaskView as TeamTask,
-} from '@liusiqi-dev/dsh-experimental-agent-team/client'
-import type {} from '@liusiqi-dev/dsh-api-session-controller/client'
+} from '@liusiqi-dev/sqh-experimental-agent-team/client'
+import type {} from '@liusiqi-dev/sqh-api-session-controller/client'
 import {
   IconChevronDownOutlineRegular,
   IconUserOutlineRegular, IconUsersOutlineRegular, StateDot, Tag, Tooltip,
   useAnchoredPosition, useDismissOnOutsidePointer, type StateDotState,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
-import type { TranslateNS } from '@liusiqi-dev/dsh-client-ui-slots'
-import type {} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { PropsLocale, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
+import type { TranslateNS } from '@liusiqi-dev/sqh-client-ui-slots'
+import type {} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import { NS, type TeamKey } from './locales.ts'
 import css from './TeamAction.module.css'
 

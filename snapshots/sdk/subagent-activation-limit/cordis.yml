@@ -1,5 +1,5 @@
 - id: subagent
-  name: '@liusiqi-dev/dsh-subagent'
+  name: '@liusiqi-dev/sqh-subagent'
   config:
     maxActiveSubagents: 8
 

@@ -3,7 +3,7 @@ description: "dsh Web 客户端插件页上的网页搜索设置页：检索所�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-ui-settings-web-search
+# @liusiqi-dev/sqh-client-ui-settings-web-search
 
 [English](README.md) | 中文
 

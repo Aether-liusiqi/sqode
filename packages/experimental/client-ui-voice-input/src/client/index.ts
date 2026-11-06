@@ -1,6 +1,6 @@
 /** Browser entry for the optional speech Remote contribution and composer control. */
 import type { Context } from '@liusiqi-dev/cordis'
-import speechRemote from '@liusiqi-dev/dsh-experimental-api-speech-to-text/remote'
+import speechRemote from '@liusiqi-dev/sqh-experimental-api-speech-to-text/remote'
 import { mountVoiceInput } from './mount.ts'
 
 export { inject } from './mount.ts'

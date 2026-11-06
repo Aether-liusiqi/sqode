@@ -5,14 +5,14 @@
  * restated: a browser consumer reads the very declaration the backend answers.
  */
 
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { SessionActivity, WorkspaceId } from '@liusiqi-dev/dsh-workspace/types'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { SessionActivity, WorkspaceId } from '@liusiqi-dev/sqh-workspace/types'
 
-export type { WorkspaceId } from '@liusiqi-dev/dsh-workspace/types'
+export type { WorkspaceId } from '@liusiqi-dev/sqh-workspace/types'
 export type {
   SessionActivity, SessionActivityItem, SessionActivityKind, SessionActivityKindMap,
-} from '@liusiqi-dev/dsh-workspace/types'
-export type { DirectoryEntry, DirectoryListing } from '@liusiqi-dev/dsh-host-directory-picker/types'
+} from '@liusiqi-dev/sqh-workspace/types'
+export type { DirectoryEntry, DirectoryListing } from '@liusiqi-dev/sqh-host-directory-picker/types'
 
 /** One durable Workspace projected for browser consumers. */
 export interface WorkspaceView {
@@ -29,7 +29,7 @@ export interface WorkspaceView {
   readonly updatedAt: string
 }
 
-declare module '@liusiqi-dev/dsh-typert-protocol' {
+declare module '@liusiqi-dev/sqh-typert-protocol' {
   interface RemoteErrorDetailsMap {
     /** The requested directory cannot back a Workspace. */
     'workspace/invalid-path': { readonly path: string }

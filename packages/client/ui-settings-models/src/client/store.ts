@@ -10,10 +10,10 @@
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
 import type {
   CredentialInfo, LlmConfigurableProvider, LlmProviderInfo, SettingsNamespaceView,
-} from '@liusiqi-dev/dsh-api-remotes/client'
-import type { SnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { SettingsDescribeFace } from '@liusiqi-dev/dsh-client-ui-settings/client'
+} from '@liusiqi-dev/sqh-api-remotes/client'
+import type { SnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { SettingsDescribeFace } from '@liusiqi-dev/sqh-client-ui-settings/client'
 import type { SettingsSchemaOperations } from './schema-operations.ts'
 
 /**

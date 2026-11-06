@@ -1,13 +1,13 @@
-/** Package-owned goal-round prompt invariants. @module @liusiqi-dev/dsh-goal-round-driver/invariant */
+/** Package-owned goal-round prompt invariants. @module @liusiqi-dev/sqh-goal-round-driver/invariant */
 
 import { isDeepStrictEqual } from 'node:util'
 import type { Context } from '@liusiqi-dev/cordis'
-import { foldGoal, type FoldedGoal, type GoalMessageSource, type GoalView } from '@liusiqi-dev/dsh-goal'
-import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
-import type { Session, SessionEvent } from '@liusiqi-dev/dsh-session'
+import { foldGoal, type FoldedGoal, type GoalMessageSource, type GoalView } from '@liusiqi-dev/sqh-goal'
+import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
+import type { Session, SessionEvent } from '@liusiqi-dev/sqh-session'
 import { renderGoalRoundPrompt } from './prompt.ts'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-goal-round-driver'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-goal-round-driver'
 
 /** Cordis companion plugin name. */
 export const name = 'goal-round-driver-invariant'

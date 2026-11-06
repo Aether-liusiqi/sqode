@@ -1,8 +1,8 @@
 /** Public Agent Teams identities, durable records, and service request values. */
 
-import type { Branded } from '@liusiqi-dev/dsh-brand'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm/types'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm/types'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 
 /** Identifies the implicit team rooted at one top-level Session. */
 export type TeamId = Branded<'TeamId'>
@@ -117,7 +117,7 @@ export interface TeamProjection {
   readonly failure?: string
 }
 
-declare module '@liusiqi-dev/dsh-session-projection/types' {
+declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionMap {
     /** Durable roster and non-deleted task board of the Team rooted at the projected Session. */
     agentTeam: TeamProjection
@@ -142,7 +142,7 @@ export interface TeamMessageSource {
   readonly senderName: string
 }
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'team-message': TeamMessageSource
   }
@@ -226,7 +226,7 @@ export interface TeamWaitResult {
   readonly timedOut: boolean
 }
 
-declare module '@liusiqi-dev/dsh-session/types' {
+declare module '@liusiqi-dev/sqh-session/types' {
   interface SessionEventMap {
     /** Whole teammate lifecycle value, stored only in the Team Lead Session. */
     'team/member': { version: 2; teamId: TeamId; member: TeamMemberSnapshot }

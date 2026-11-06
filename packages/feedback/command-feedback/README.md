@@ -3,7 +3,7 @@ description: "Session feedback: the `/feedback` command, the `sessionFeedback` H
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-command-feedback
+# @liusiqi-dev/sqh-command-feedback
 
 English | [中文](README.zh.md)
 
@@ -61,11 +61,11 @@ Feedback does not have to come from the slash command or the dialog: any UI, hoo
 
 ```yaml
 - id: session
-  name: '@liusiqi-dev/dsh-session'
+  name: '@liusiqi-dev/sqh-session'
 - id: commands
-  name: '@liusiqi-dev/dsh-commands'
+  name: '@liusiqi-dev/sqh-commands'
 - id: command-feedback
-  name: '@liusiqi-dev/dsh-command-feedback'
+  name: '@liusiqi-dev/sqh-command-feedback'
 ```
 
 The Web client ships the command. Headless mode, ACP automation, and JSON-RPC provide no slash commands, so `/feedback` is unavailable there.

@@ -29,16 +29,16 @@
  */
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef } from 'react'
 import type { CSSProperties, ReactNode, RefObject } from 'react'
-import type { ShortcutCatalogEntry } from '@liusiqi-dev/dsh-client-shortcuts/client'
-import { IconPanelLeftOutlineRegular, Tooltip } from '@liusiqi-dev/dsh-client-ui-primitives'
+import type { ShortcutCatalogEntry } from '@liusiqi-dev/sqh-client-shortcuts/client'
+import { IconPanelLeftOutlineRegular, Tooltip } from '@liusiqi-dev/sqh-client-ui-primitives'
 import type {
   HostObservable, InjectFace, PropsLocale, PropsRenderSlots, PropsRuntime, PropsStore,
-} from '@liusiqi-dev/dsh-client-ui-slots'
+} from '@liusiqi-dev/sqh-client-ui-slots'
 import type {} from '../contract/slots.ts'
-import type { DockIntents, DockMode, FloatRect, TabId, TabRecord, TabRenderer } from '@liusiqi-dev/dsh-client-ui-dockkit'
-import { canSplit, dockPaneIds, DockLayout, findPaneContentTab } from '@liusiqi-dev/dsh-client-ui-dockkit'
-import type { HalvesFit, LayoutState, PaneId } from '@liusiqi-dev/dsh-client-ui-dockkit'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { DockIntents, DockMode, FloatRect, TabId, TabRecord, TabRenderer } from '@liusiqi-dev/sqh-client-ui-dockkit'
+import { canSplit, dockPaneIds, DockLayout, findPaneContentTab } from '@liusiqi-dev/sqh-client-ui-dockkit'
+import type { HalvesFit, LayoutState, PaneId } from '@liusiqi-dev/sqh-client-ui-dockkit'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import { GUIDE_KIND, pageAddress } from '../contract/seed.ts'
 import { dockLabels } from '../labels.ts'
 import type { SidebarRightOpenTabOptions } from '../service.ts'

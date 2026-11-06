@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { ShellExecutor } from '@liusiqi-dev/dsh-shell'
-import type { ShellExecRequest, ShellExecSpec, ShellExecution, ShellProcessRead } from '@liusiqi-dev/dsh-shell'
+import { ShellExecutor } from '@liusiqi-dev/sqh-shell'
+import type { ShellExecRequest, ShellExecSpec, ShellExecution, ShellProcessRead } from '@liusiqi-dev/sqh-shell'
 
 /** Empty offset readers for fakes that never produce output. */
 const silentReader = { readFrom: (fromByte: number) => ({ text: '', nextOffset: fromByte, lossy: false }) }

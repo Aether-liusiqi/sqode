@@ -2,12 +2,12 @@
  * Types for the TypeScript SDK client: launch options, notification shapes,
  * and owned activity results.
  *
- * @module @liusiqi-dev/dsh-sdk-client/types
+ * @module @liusiqi-dev/sqh-sdk-client/types
  */
 
-import type { ContentBlock, ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
-import type { SdkPromptContentBlock } from '@liusiqi-dev/dsh-sdk-protocol'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
+import type { ContentBlock, ReasoningEffortId } from '@liusiqi-dev/sqh-llm'
+import type { SdkPromptContentBlock } from '@liusiqi-dev/sqh-sdk-protocol'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
 
 /** One server-to-client notification as received off the wire. */
 export interface HarnessNotification {
@@ -36,7 +36,7 @@ export interface HarnessClientOptions {
    * The complete child environment, read when {@link HarnessClient.start}
    * spawns. `undefined` reads the parent env at that time; passing an object
    * reads that object at spawn and replaces the parent environment entirely, so callers own
-   * credential policy (see `scrubbedParentEnv` in `@liusiqi-dev/dsh-subprocess`
+   * credential policy (see `scrubbedParentEnv` in `@liusiqi-dev/sqh-subprocess`
    * for the shared scrub-then-merge base).
    */
   env?: NodeJS.ProcessEnv

@@ -3,10 +3,10 @@
  * intent and must remain turn-enclosed and invoked/result paired. Mid-turn hook
  * points satisfy that boundary; SessionStart records injected context instead
  * and does not append `hook/*` outside a turn.
- * @module @liusiqi-dev/dsh-hook-protocol/events
+ * @module @liusiqi-dev/sqh-hook-protocol/events
  */
 
-import type { Session } from '@liusiqi-dev/dsh-session'
+import type { Session } from '@liusiqi-dev/sqh-session'
 import type { HookDialect, HookOutput } from './types.ts'
 
 /** What identifies a hook invocation across its invoked/result pair. */

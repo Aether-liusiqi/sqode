@@ -1,15 +1,15 @@
 /**
  * Instruction-file discovery and bounded, abort-aware provider reads.
  *
- * @module @liusiqi-dev/dsh-agent-instructions/files
+ * @module @liusiqi-dev/sqh-agent-instructions/files
  */
 
 import { createReadStream } from 'node:fs'
 import { stat } from 'node:fs/promises'
 import { dirname, isAbsolute, join, relative, resolve } from 'node:path'
-import type { FileSystem, FsInfo, FsTarget, FsVersion } from '@liusiqi-dev/dsh-fs'
-import { dshHomeDisplay } from '@liusiqi-dev/dsh-home-paths'
-import { assertNever } from '@liusiqi-dev/dsh-util-values'
+import type { FileSystem, FsInfo, FsTarget, FsVersion } from '@liusiqi-dev/sqh-fs'
+import { dshHomeDisplay } from '@liusiqi-dev/sqh-home-paths'
+import { assertNever } from '@liusiqi-dev/sqh-util-values'
 import { resolveConfig, resolveDiscoveryConfig, type ResolvedConfig } from './config.ts'
 import { trimmedInstructionDigest } from './digest.ts'
 import {

@@ -2,7 +2,7 @@
 
 import type {
   AssistantMessageNode,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 
 /** One assistant step's derivable latency facts; null marks an unrecorded part. */
 export interface StepReading {

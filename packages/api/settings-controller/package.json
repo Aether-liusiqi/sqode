@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-api-settings-controller",
+  "name": "@liusiqi-dev/sqh-api-settings-controller",
   "description": "Remote owner for the configuration surfaces over the settings-domain seams",
   "version": "1.0.0",
   "publishConfig": {
@@ -49,20 +49,20 @@
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-agent-preset-registry": "workspace:*",
-    "@liusiqi-dev/dsh-credentials": "workspace:*",
-    "@liusiqi-dev/dsh-native-command": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-settings": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*"
+    "@liusiqi-dev/sqh-agent-preset-registry": "workspace:*",
+    "@liusiqi-dev/sqh-credentials": "workspace:*",
+    "@liusiqi-dev/sqh-native-command": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-settings": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-agent-preset-registry": "workspace:*",
-    "@liusiqi-dev/dsh-credentials": "workspace:*",
-    "@liusiqi-dev/dsh-native-command": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-settings": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*"
+    "@liusiqi-dev/sqh-agent-preset-registry": "workspace:*",
+    "@liusiqi-dev/sqh-credentials": "workspace:*",
+    "@liusiqi-dev/sqh-native-command": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-settings": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*"
   }
 }

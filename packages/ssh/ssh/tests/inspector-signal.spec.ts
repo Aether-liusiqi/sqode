@@ -4,7 +4,7 @@ import { once } from 'node:events'
 import { mkdtemp, realpath, rm } from 'node:fs/promises'
 import { createInterface } from 'node:readline'
 import { Context } from '@liusiqi-dev/cordis'
-import { LocalSandboxProvider } from '@liusiqi-dev/dsh-sandbox-local'
+import { LocalSandboxProvider } from '@liusiqi-dev/sqh-sandbox-local'
 import { describe, expect, it } from 'vitest'
 
 // This fixture has no credentials, application state, or descendants. Port zero

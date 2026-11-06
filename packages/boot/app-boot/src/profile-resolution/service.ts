@@ -4,7 +4,7 @@ import { existsSync, readFileSync } from 'node:fs'
 import { createRequire } from 'node:module'
 import { join } from 'node:path'
 import { Service, type Context } from '@liusiqi-dev/cordis'
-import type { PluginLocalizedMeta } from '@liusiqi-dev/dsh-package-manifest'
+import type { PluginLocalizedMeta } from '@liusiqi-dev/sqh-package-manifest'
 import {
   barePackageName,
   installRuntimeInterception,

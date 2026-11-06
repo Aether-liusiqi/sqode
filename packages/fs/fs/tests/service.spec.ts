@@ -7,7 +7,7 @@
 
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { FileSystem, FsError, FsTargetKey, FsVersion } from '@liusiqi-dev/dsh-fs'
+import { FileSystem, FsError, FsTargetKey, FsVersion } from '@liusiqi-dev/sqh-fs'
 import type {
   FsDirEntry,
   FsEditOutcome,
@@ -17,7 +17,7 @@ import type {
   FsTarget,
   FsWriteIntent,
   FsWriteOutcome,
-} from '@liusiqi-dev/dsh-fs'
+} from '@liusiqi-dev/sqh-fs'
 
 /** A minimal in-memory fake implementing the provider primitives. */
 class FakeFileSystem extends FileSystem {

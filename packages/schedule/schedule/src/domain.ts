@@ -1,11 +1,11 @@
 /**
  * Strict Schedule decoding, replay, time validation, and framing.
- * @module @liusiqi-dev/dsh-schedule
+ * @module @liusiqi-dev/sqh-schedule
  */
 
 import { Temporal } from '@js-temporal/polyfill'
-import { SessionLogOffset } from '@liusiqi-dev/dsh-session'
-import type { SessionEvent, SessionLogOffset as SessionLogOffsetType } from '@liusiqi-dev/dsh-session'
+import { SessionLogOffset } from '@liusiqi-dev/sqh-session'
+import type { SessionEvent, SessionLogOffset as SessionLogOffsetType } from '@liusiqi-dev/sqh-session'
 import type {
   AfterScheduleRecord,
   AtInput,

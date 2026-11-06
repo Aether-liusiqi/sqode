@@ -1,11 +1,11 @@
 /** Scoped tool that declares filesystem deliveries in their owning Session. */
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { FsError } from '@liusiqi-dev/dsh-fs'
-import { defineTool, type ToolExecution } from '@liusiqi-dev/dsh-tools'
-import type {} from '@liusiqi-dev/dsh-agent'
-import type {} from '@liusiqi-dev/dsh-session-projection'
-import type { Session } from '@liusiqi-dev/dsh-session'
+import { FsError } from '@liusiqi-dev/sqh-fs'
+import { defineTool, type ToolExecution } from '@liusiqi-dev/sqh-tools'
+import type {} from '@liusiqi-dev/sqh-agent'
+import type {} from '@liusiqi-dev/sqh-session-projection'
+import type { Session } from '@liusiqi-dev/sqh-session'
 import type { PresentedFile } from './types.ts'
 
 /** Stable Loader identity. */

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import type { Context } from '@liusiqi-dev/cordis'
-import type { GenerateOptions } from '@liusiqi-dev/dsh-llm'
-import type {} from '@liusiqi-dev/dsh-system-prompt'
+import type { GenerateOptions } from '@liusiqi-dev/sqh-llm'
+import type {} from '@liusiqi-dev/sqh-system-prompt'
 import { apply as registerDynamicTools } from './dynamic-tool-updates.ts'
 
 export const name = 'snapshot-dynamic-tool-prompt-updates'

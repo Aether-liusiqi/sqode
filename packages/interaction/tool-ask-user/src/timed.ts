@@ -3,11 +3,11 @@
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { defineTool, type ToolExecution } from '@liusiqi-dev/dsh-tools'
-import { TIMED_WAIT_PARAMETER } from '@liusiqi-dev/dsh-user-questions'
+import { defineTool, type ToolExecution } from '@liusiqi-dev/sqh-tools'
+import { TIMED_WAIT_PARAMETER } from '@liusiqi-dev/sqh-user-questions'
 import type {
   AskUserQuestionAnswer, AskUserQuestionRequestEvent,
-} from '@liusiqi-dev/dsh-user-questions/types'
+} from '@liusiqi-dev/sqh-user-questions/types'
 
 function validateTimeout(timeout: number): number {
   if (timeout !== -1 && (!Number.isInteger(timeout) || timeout < 1 || timeout > 2_147_483)) {

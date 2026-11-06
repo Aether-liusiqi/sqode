@@ -3,7 +3,7 @@ description: "Official Siqi Harness brand occupants for the sidebar, active only
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-ui-brand-official
+# @liusiqi-dev/sqh-client-ui-brand-official
 
 English | [中文](README.zh.md)
 

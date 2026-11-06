@@ -1,5 +1,5 @@
 /**
- * @liusiqi-dev/dsh-web-app — the browser-surface bundle's runtime glue plugin
+ * @liusiqi-dev/sqh-web-app — the browser-surface bundle's runtime glue plugin
  * plus the bundle patch (`cordis.patch.yml`, declared by the `dsh.bundle.patch`
  * manifest field). The plugin owns the browser-surface glue: it resolves
  * the built frontend dist (workspace knowledge of this bundle, never user
@@ -8,7 +8,7 @@
  * variable, the process-token URL line, and the default-browser handoff. The
  * model and shell retain the clean URL. App command-line values arrive through
  * the `webStartup` service expressions in the bundle patch.
- * @module @liusiqi-dev/dsh-web-app
+ * @module @liusiqi-dev/sqh-web-app
  */
 
 import { spawn, type ChildProcess } from 'node:child_process'
@@ -18,14 +18,14 @@ import { networkInterfaces } from 'node:os'
 import { fileURLToPath } from 'node:url'
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { addHarnessSourceSection, auditStartupEntries } from '@liusiqi-dev/dsh-app-boot'
-import type {} from '@liusiqi-dev/dsh-client-connection'
-import * as FrontendStatic from '@liusiqi-dev/dsh-host-frontend-static'
-import { launchedThroughSsh, launchEnvironmentOf } from '@liusiqi-dev/dsh-launch-environment'
-import { scrubbedParentEnv } from '@liusiqi-dev/dsh-subprocess'
+import { addHarnessSourceSection, auditStartupEntries } from '@liusiqi-dev/sqh-app-boot'
+import type {} from '@liusiqi-dev/sqh-client-connection'
+import * as FrontendStatic from '@liusiqi-dev/sqh-host-frontend-static'
+import { launchedThroughSsh, launchEnvironmentOf } from '@liusiqi-dev/sqh-launch-environment'
+import { scrubbedParentEnv } from '@liusiqi-dev/sqh-subprocess'
 import type {} from '@liusiqi-dev/cordis-plugin-loader'
-import type {} from '@liusiqi-dev/dsh-host-webserver'
-import type {} from '@liusiqi-dev/dsh-shell-env'
+import type {} from '@liusiqi-dev/sqh-host-webserver'
+import type {} from '@liusiqi-dev/sqh-shell-env'
 
 /** Stable Cordis plugin name. */
 export const name = 'web-app'
@@ -162,10 +162,10 @@ function localWebUrl(ctx: Context): string {
 function resolveDistIndex(): string {
   const require = createRequire(import.meta.url)
   try {
-    return join(dirname(require.resolve('@liusiqi-dev/dsh-web-frontend/package.json')), 'dist', 'index.html')
+    return join(dirname(require.resolve('@liusiqi-dev/sqh-web-frontend/package.json')), 'dist', 'index.html')
   } catch {
     /* v8 ignore next 2 -- reachable only when the frontend package is absent from the checkout */
-    throw new Error('web-app: @liusiqi-dev/dsh-web-frontend is not resolvable from this composition')
+    throw new Error('web-app: @liusiqi-dev/sqh-web-frontend is not resolvable from this composition')
   }
 }
 

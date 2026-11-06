@@ -4,14 +4,14 @@ import { mkdir, mkdtemp, realpath, rm, symlink, writeFile } from 'node:fs/promis
 import { tmpdir } from 'node:os'
 import { basename, join, relative } from 'node:path'
 import { Context } from '@liusiqi-dev/cordis'
-import Storage from '@liusiqi-dev/dsh-storage'
-import type { StorageBackend } from '@liusiqi-dev/dsh-storage'
-import { DomainFacility } from '@liusiqi-dev/dsh-storage-domain'
-import type { DomainChanged } from '@liusiqi-dev/dsh-storage-domain'
-import SessionStore, { SESSION_FORMAT_VERSION, SessionId } from '@liusiqi-dev/dsh-session'
-import type { SessionHeader } from '@liusiqi-dev/dsh-session'
-import { SessionPersistenceRevision } from '@liusiqi-dev/dsh-session-persistence'
-import type { SessionPersistenceSnapshot } from '@liusiqi-dev/dsh-session-persistence'
+import Storage from '@liusiqi-dev/sqh-storage'
+import type { StorageBackend } from '@liusiqi-dev/sqh-storage'
+import { DomainFacility } from '@liusiqi-dev/sqh-storage-domain'
+import type { DomainChanged } from '@liusiqi-dev/sqh-storage-domain'
+import SessionStore, { SESSION_FORMAT_VERSION, SessionId } from '@liusiqi-dev/sqh-session'
+import type { SessionHeader } from '@liusiqi-dev/sqh-session'
+import { SessionPersistenceRevision } from '@liusiqi-dev/sqh-session-persistence'
+import type { SessionPersistenceSnapshot } from '@liusiqi-dev/sqh-session-persistence'
 import { MemoryMediaPool, MemoryStorageBackend } from '../../../storage/storage-domain/tests/helpers/memory-backend.ts'
 import WorkspaceRegistry, {
   WorkspaceId,
@@ -1405,7 +1405,7 @@ describe('first-use Workspace preparation', () => {
 })
 
 // The registry knows no family: the providers merge theirs, and this suite merges its own.
-declare module '@liusiqi-dev/dsh-workspace/types' {
+declare module '@liusiqi-dev/sqh-workspace/types' {
   interface SessionActivityKindMap {
     probe: true
     'probe-items': true

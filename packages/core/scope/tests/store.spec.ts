@@ -8,7 +8,7 @@ import {
   type Scope,
   type ScopeKey,
   type ScopeLayer,
-} from '@liusiqi-dev/dsh-scope'
+} from '@liusiqi-dev/sqh-scope'
 
 class TestLayer implements ScopeLayer {
   readonly named: NamedEntries<number>

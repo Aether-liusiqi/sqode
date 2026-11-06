@@ -1,19 +1,19 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
-import { createUserMessage, ToolCallId, LlmAdapter } from '@liusiqi-dev/dsh-llm'
-import type { GenerateOptions, StreamChunk } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-import { Session, SessionId, type SessionEvent } from '@liusiqi-dev/dsh-session'
-import AgentRegistry, { agentEvents, type Agent } from '@liusiqi-dev/dsh-agent'
-import { defineContentToolFixture } from '@liusiqi-dev/dsh-tools'
-import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import { unsupportedInbox, mountAgentLoopTestDependencies } from '@liusiqi-dev/dsh-agent-loop-testkit'
-import * as timeContext from '@liusiqi-dev/dsh-time-context'
-import type { Config } from '@liusiqi-dev/dsh-time-context'
+import { createUserMessage, ToolCallId, LlmAdapter } from '@liusiqi-dev/sqh-llm'
+import type { GenerateOptions, StreamChunk } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+import { Session, SessionId, type SessionEvent } from '@liusiqi-dev/sqh-session'
+import AgentRegistry, { agentEvents, type Agent } from '@liusiqi-dev/sqh-agent'
+import { defineContentToolFixture } from '@liusiqi-dev/sqh-tools'
+import AgentLoop from '@liusiqi-dev/sqh-agent-loop'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import { unsupportedInbox, mountAgentLoopTestDependencies } from '@liusiqi-dev/sqh-agent-loop-testkit'
+import * as timeContext from '@liusiqi-dev/sqh-time-context'
+import type { Config } from '@liusiqi-dev/sqh-time-context'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'compaction-basic': { kind: 'compaction-basic' } & ContextFormed
     'time-context-test': { kind: 'time-context-test' } & ContextFormed

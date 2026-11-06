@@ -3,7 +3,7 @@ description: "面向 Linux、macOS 或 Windows 上选择、配置或排查进程
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-sandbox-local
+# @liusiqi-dev/sqh-sandbox-local
 
 [English](README.md) | 中文
 
@@ -37,7 +37,7 @@ kind: "package-reference"
 
 ```yaml
 - id: sandbox
-  name: '@liusiqi-dev/dsh-sandbox-local'
+  name: '@liusiqi-dev/sqh-sandbox-local'
 ```
 
 | 字段 | 默认值 | 含义 |

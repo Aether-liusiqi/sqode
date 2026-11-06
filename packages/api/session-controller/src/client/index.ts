@@ -1,10 +1,10 @@
 /** Client Session object layer, Agent scopes, and Remote lifecycle wiring. */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-agent/types'
-import type { ConnectionHandle } from '@liusiqi-dev/dsh-client-connection/client'
-import type {} from '@liusiqi-dev/dsh-client-file-upload/client'
-import { typertOwnedValue } from '@liusiqi-dev/dsh-typert-protocol'
+import type {} from '@liusiqi-dev/sqh-agent/types'
+import type { ConnectionHandle } from '@liusiqi-dev/sqh-client-connection/client'
+import type {} from '@liusiqi-dev/sqh-client-file-upload/client'
+import { typertOwnedValue } from '@liusiqi-dev/sqh-typert-protocol'
 import { createSessionControlStream } from './transport.ts'
 import { ClientSessions } from './sessions/service.ts'
 import type { SessionRemotes } from './sessions/remotes.ts'

@@ -2,19 +2,19 @@
 import assert from 'node:assert/strict'
 import { Recording } from '../src/client/audio.ts'
 import { Context, Service } from '@liusiqi-dev/cordis'
-import { LocaleRuntime } from '@liusiqi-dev/dsh-client-locale/client'
-import { SlotRegistry } from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type { SpeechProviderId } from '@liusiqi-dev/dsh-experimental-speech-to-text/types'
-import { RemoteError, type TypertRemoteContribution } from '@liusiqi-dev/dsh-typert-protocol'
+import { LocaleRuntime } from '@liusiqi-dev/sqh-client-locale/client'
+import { SlotRegistry } from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type { SpeechProviderId } from '@liusiqi-dev/sqh-experimental-speech-to-text/types'
+import { RemoteError, type TypertRemoteContribution } from '@liusiqi-dev/sqh-typert-protocol'
 import { expect, it, vi } from 'vitest'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import { mountVoiceInput, inject } from '../src/client/mount.ts'
 import { apply as hostApply } from '../src/index.ts'
 import { VoiceInput, type VoiceInputInjected } from '../src/client/VoiceInput.tsx'
 import { captureFixture } from './audio-fixture.client.ts'
 
 const REMOTE: TypertRemoteContribution = {
-  package: '@liusiqi-dev/dsh-experimental-api-speech-to-text',
+  package: '@liusiqi-dev/sqh-experimental-api-speech-to-text',
   descriptors: [],
 }
 
@@ -73,7 +73,7 @@ it('withdraws its Remote, localized slot and microphone captures on disposal', a
     const actions = entry!.inject!()
     assertVoiceActions(actions)
     actions.openSettings()
-    expect(b.openBundle).toHaveBeenCalledWith('@liusiqi-dev/dsh-experimental-voice-input-bundle')
+    expect(b.openBundle).toHaveBeenCalledWith('@liusiqi-dev/sqh-experimental-voice-input-bundle')
     const finished = actions.createRecording()
     assert(finished instanceof Recording)
     await finished.dispose()

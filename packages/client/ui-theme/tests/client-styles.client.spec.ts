@@ -4,7 +4,7 @@ import { Context } from '@liusiqi-dev/cordis'
 import { afterEach, describe, expect, it } from 'vitest'
 import { installThemeStyles } from '../src/client/styles.ts'
 
-const PLUGIN_ID = '@liusiqi-dev/dsh-client-ui-theme'
+const PLUGIN_ID = '@liusiqi-dev/sqh-client-ui-theme'
 
 afterEach(() => {
   document.head.querySelectorAll(`style[data-plugin="${PLUGIN_ID}"]`).forEach((node) => { node.remove() })

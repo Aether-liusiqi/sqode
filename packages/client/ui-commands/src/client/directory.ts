@@ -5,11 +5,11 @@
  * / epoch-guard behavior of the original global cache; the session-key axis
  * is the only extra dimension.
  */
-import type { CommandDescriptor } from '@liusiqi-dev/dsh-commands/types'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { CommandDescriptor } from '@liusiqi-dev/sqh-commands/types'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import { resolveCommand } from './resolution.ts'
 
-export type { CommandDescriptor } from '@liusiqi-dev/dsh-commands/types'
+export type { CommandDescriptor } from '@liusiqi-dev/sqh-commands/types'
 
 /**
  * cold = never pulled; pending = pull in flight with nothing servable;

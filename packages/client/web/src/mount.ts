@@ -1,10 +1,10 @@
 /**
  * Application mount through a dependency fiber, so replacing `uiRenderer`
  * remounts the application. Shared by `AppWebEntry` and the test carrier.
- * @module @liusiqi-dev/dsh-client-web/src/mount
+ * @module @liusiqi-dev/sqh-client-web/src/mount
  */
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
 
 /**
  * Mount the UI renderer into `container` through a dependency fiber on

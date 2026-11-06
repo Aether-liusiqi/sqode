@@ -1,22 +1,22 @@
 /**
  * Stagehand browser tools with one native browser runtime per live Session.
- * @module @liusiqi-dev/dsh-experimental-browser-use-stagehand-native
+ * @module @liusiqi-dev/sqh-experimental-browser-use-stagehand-native
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
 import Schema from '@liusiqi-dev/schemastery'
-import { BrowserUseProviderName } from '@liusiqi-dev/dsh-browser-use/brand'
-import { SessionResources } from '@liusiqi-dev/dsh-experimental-browser-use-runtime'
-import { createMcpToolDefinition } from '@liusiqi-dev/dsh-mcp-client'
+import { BrowserUseProviderName } from '@liusiqi-dev/sqh-browser-use/brand'
+import { SessionResources } from '@liusiqi-dev/sqh-experimental-browser-use-runtime'
+import { createMcpToolDefinition } from '@liusiqi-dev/sqh-mcp-client'
 import { z } from 'zod'
 import { browserInputs, stagehandModelSchema, StagehandDrainError } from './native.ts'
 import type { BrowserMethod, NativeBrowserRuntime, StagehandModelConfig } from './native.ts'
 import { openBrowserWorker } from './worker-client.ts'
 import { launchChromium } from './launch.ts'
-import type {} from '@liusiqi-dev/dsh-agent'
-import type {} from '@liusiqi-dev/dsh-browser-use'
-import type {} from '@liusiqi-dev/dsh-system-prompt'
-import type {} from '@liusiqi-dev/dsh-tools'
+import type {} from '@liusiqi-dev/sqh-agent'
+import type {} from '@liusiqi-dev/sqh-browser-use'
+import type {} from '@liusiqi-dev/sqh-system-prompt'
+import type {} from '@liusiqi-dev/sqh-tools'
 
 /** Cordis identity for the native Stagehand provider. */
 export const name = 'experimental-browser-use-stagehand-native'

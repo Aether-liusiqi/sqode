@@ -1,9 +1,9 @@
 /** API-key authentication and discovery for the official DeepSeek route. */
 import type { Context } from '@liusiqi-dev/cordis'
-import { assertUsableApiKey, LlmError } from '@liusiqi-dev/dsh-llm'
+import { assertUsableApiKey, LlmError } from '@liusiqi-dev/sqh-llm'
 import type {} from '@liusiqi-dev/cordis-plugin-loader'
-import { launchEnvironmentOf } from '@liusiqi-dev/dsh-launch-environment'
-import { registerDeepSeekProvider, catalogModelInfo } from '@liusiqi-dev/dsh-llm-deepseek'
+import { launchEnvironmentOf } from '@liusiqi-dev/sqh-launch-environment'
+import { registerDeepSeekProvider, catalogModelInfo } from '@liusiqi-dev/sqh-llm-deepseek'
 import { Config, plainOptions, resolveAdapterOptions } from './config.ts'
 import type { ResolvedDeepSeekOptions } from './config.ts'
 

@@ -7,9 +7,9 @@
 
 import { describe, expect, it } from 'vitest'
 import fc from 'fast-check'
-import { isJsonValue } from '@liusiqi-dev/dsh-util-values'
-import { parameterSchemaSpecToJsonSchema, validateArgs } from '@liusiqi-dev/dsh-tools'
-import type { ParameterPropertySpec, ParameterSchemaSpec, ValueSchemaSpec } from '@liusiqi-dev/dsh-tools'
+import { isJsonValue } from '@liusiqi-dev/sqh-util-values'
+import { parameterSchemaSpecToJsonSchema, validateArgs } from '@liusiqi-dev/sqh-tools'
+import type { ParameterPropertySpec, ParameterSchemaSpec, ValueSchemaSpec } from '@liusiqi-dev/sqh-tools'
 
 /** Remove parameter-only requiredness before nesting a schema as an array item. */
 function asValueSchema(prop: ParameterPropertySpec): ValueSchemaSpec {

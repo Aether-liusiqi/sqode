@@ -1,16 +1,16 @@
 // @vitest-environment jsdom
 /** Desktop account operations and ordinary-browser isolation in the shipped client composition. */
 import { afterEach, beforeEach, expect, vi } from 'vitest'
-import { ok } from '@liusiqi-dev/dsh-remote-mock'
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
-import { createClientTest, type TestClient, webApp } from '@liusiqi-dev/dsh-client-test-runtime/src/assembly/index.ts'
+import { ok } from '@liusiqi-dev/sqh-remote-mock'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
+import { createClientTest, type TestClient, webApp } from '@liusiqi-dev/sqh-client-test-runtime/src/assembly/index.ts'
 import type {
   AccountBonusBatch, AccountBonusOrderId, AccountDetails, AccountUserId, AccountView, SignInAttemptId,
-} from '@liusiqi-dev/dsh-deepseek-account/types'
-import type { QuotaNoticeOwnerProps } from '@liusiqi-dev/dsh-client-ui-chat/client'
-import type { ThemeRuntime } from '@liusiqi-dev/dsh-client-ui-theme/client'
-import { resolveSlotLabel } from '@liusiqi-dev/dsh-client-ui-slots'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
+} from '@liusiqi-dev/sqh-deepseek-account/types'
+import type { QuotaNoticeOwnerProps } from '@liusiqi-dev/sqh-client-ui-chat/client'
+import type { ThemeRuntime } from '@liusiqi-dev/sqh-client-ui-theme/client'
+import { resolveSlotLabel } from '@liusiqi-dev/sqh-client-ui-slots'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
 import { Config as OnboardingConfig } from '../src/index.ts'
 import { ChatSettingsSchema as ChatConfig } from '../../ui-chat/src/chat-settings.ts'
 import { DeveloperToolsSettingsSchema as SettingsConfig } from '../../ui-settings/src/developer-tools-settings.ts'
@@ -23,7 +23,7 @@ import { AccountQuotaNotice } from '../src/client/AccountQuotaNotice.tsx'
 import type { AccountQuotaNoticeInjected } from '../src/client/AccountQuotaNotice.tsx'
 
 const it = createClientTest({ roster: webApp })
-const SELF = '@liusiqi-dev/dsh-client-ui-settings-account'
+const SELF = '@liusiqi-dev/sqh-client-ui-settings-account'
 const view: AccountView = {
   status: 'signed-out', attempt: null,
   links: { usageUrl: 'https://platform.deepseek.com/usage', topUpUrl: 'https://platform.deepseek.com/top_up' },

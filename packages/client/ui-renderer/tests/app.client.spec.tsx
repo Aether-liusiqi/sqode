@@ -2,7 +2,7 @@
 import { afterEach, describe, expect, it } from 'vitest'
 import { cleanup, render } from '@testing-library/react'
 import { Context } from '@liusiqi-dev/cordis'
-import { SlotTestRuntime } from '@liusiqi-dev/dsh-client-test-runtime'
+import { SlotTestRuntime } from '@liusiqi-dev/sqh-client-test-runtime'
 import { buildRenderApp } from '../src/client/app.tsx'
 
 let runtime: SlotTestRuntime | undefined

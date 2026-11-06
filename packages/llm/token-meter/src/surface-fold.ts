@@ -11,12 +11,12 @@
  * Nodes also carry durable attachment occurrences and their structural prices,
  * so `measure()` can price the request representation sent to the model.
  *
- * @module @liusiqi-dev/dsh-token-meter/surface-fold
+ * @module @liusiqi-dev/sqh-token-meter/surface-fold
  */
 
-import { deriveEventMessage } from '@liusiqi-dev/dsh-session'
-import type { SessionSeq, SurfaceEvent } from '@liusiqi-dev/dsh-session'
-import type { ContentBlock, ImageBlock, Message } from '@liusiqi-dev/dsh-llm'
+import { deriveEventMessage } from '@liusiqi-dev/sqh-session'
+import type { SessionSeq, SurfaceEvent } from '@liusiqi-dev/sqh-session'
+import type { ContentBlock, ImageBlock, Message } from '@liusiqi-dev/sqh-llm'
 import { estimateMessage, estimateStructuralBlock } from './estimate.ts'
 
 type FileAttachmentRef = Extract<ContentBlock, { type: 'file' }>['attachment']

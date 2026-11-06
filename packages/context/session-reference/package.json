@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-session-reference",
+  "name": "@liusiqi-dev/sqh-session-reference",
   "description": "Cross-session snapshot references and durable untrusted model context (ctx.sessionReferenceResolver)",
   "version": "1.0.0",
   "publishConfig": {
@@ -44,32 +44,32 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@liusiqi-dev/dsh-brand": "workspace:*",
-    "@liusiqi-dev/dsh-util-values": "workspace:*",
+    "@liusiqi-dev/sqh-brand": "workspace:*",
+    "@liusiqi-dev/sqh-util-values": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
     "zod": "^4.4.3"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-compaction": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-output-retention": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection-cache": "workspace:*",
-    "@liusiqi-dev/dsh-session-query": "workspace:*",
-    "@liusiqi-dev/dsh-session-title": "workspace:*",
-    "@liusiqi-dev/dsh-spill": "workspace:*",
-    "@liusiqi-dev/dsh-subagent": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*"
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-compaction": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-output-retention": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection-cache": "workspace:*",
+    "@liusiqi-dev/sqh-session-query": "workspace:*",
+    "@liusiqi-dev/sqh-session-title": "workspace:*",
+    "@liusiqi-dev/sqh-spill": "workspace:*",
+    "@liusiqi-dev/sqh-subagent": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*"
   },
   "peerDependenciesMeta": {
-    "@liusiqi-dev/dsh-spill": {
+    "@liusiqi-dev/sqh-spill": {
       "optional": true
     },
-    "@liusiqi-dev/dsh-session-projection-cache": {
+    "@liusiqi-dev/sqh-session-projection-cache": {
       "optional": true
     }
   },
@@ -77,23 +77,23 @@
     "@liusiqi-dev/cordis": "workspace:~",
     "@liusiqi-dev/cordis-plugin-include": "workspace:~",
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-compaction": "workspace:*",
-    "@liusiqi-dev/dsh-fs-local": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-output-retention": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection-cache": "workspace:*",
-    "@liusiqi-dev/dsh-session-query": "workspace:*",
-    "@liusiqi-dev/dsh-session-query-sqlite": "workspace:*",
-    "@liusiqi-dev/dsh-session-title": "workspace:*",
-    "@liusiqi-dev/dsh-spill": "workspace:*",
-    "@liusiqi-dev/dsh-subagent": "workspace:*",
-    "@liusiqi-dev/dsh-spill-local": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
-    "@liusiqi-dev/dsh-tool-fs": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*"
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-compaction": "workspace:*",
+    "@liusiqi-dev/sqh-fs-local": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-output-retention": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection-cache": "workspace:*",
+    "@liusiqi-dev/sqh-session-query": "workspace:*",
+    "@liusiqi-dev/sqh-session-query-sqlite": "workspace:*",
+    "@liusiqi-dev/sqh-session-title": "workspace:*",
+    "@liusiqi-dev/sqh-spill": "workspace:*",
+    "@liusiqi-dev/sqh-subagent": "workspace:*",
+    "@liusiqi-dev/sqh-spill-local": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*",
+    "@liusiqi-dev/sqh-tool-fs": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*"
   }
 }

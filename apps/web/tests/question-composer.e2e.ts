@@ -13,9 +13,9 @@ import { join } from 'node:path'
 import type { Browser, Locator, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import { TIMED_WAIT_PARAMETER } from '@liusiqi-dev/dsh-user-questions'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import { TIMED_WAIT_PARAMETER } from '@liusiqi-dev/sqh-user-questions'
 import {
   assertFixtureInventory, captureStableAria, compareOrRefreshGolden, fixtureUserPrompts,
   launchWebScaffold, recordFixture, seedSession, watchConsole, webSnapshotMode, type WebScaffold,

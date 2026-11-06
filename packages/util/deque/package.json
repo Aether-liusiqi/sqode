@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-deque",
+  "name": "@liusiqi-dev/sqh-deque",
   "description": "Zero-dependency circular deque with amortized constant-time end operations and bounded vacant storage",
   "version": "1.0.0",
   "publishConfig": {

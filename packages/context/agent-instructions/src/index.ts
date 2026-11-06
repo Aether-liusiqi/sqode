@@ -6,16 +6,16 @@
  * Plugin lifecycle reads use the optional `ctx.fs` provider, so providerless products
  * mount it as a no-op.
  *
- * @module @liusiqi-dev/dsh-agent-instructions
+ * @module @liusiqi-dev/sqh-agent-instructions
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
 import { isDeepStrictEqual } from 'node:util'
-import type { Agent, PreStepDecision } from '@liusiqi-dev/dsh-agent'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { Session, UserMessage } from '@liusiqi-dev/dsh-session'
-import type {} from '@liusiqi-dev/dsh-session-projection'
-import type { ToolExecution, ToolExecutionResult, ToolExecutionToken } from '@liusiqi-dev/dsh-tools'
+import type { Agent, PreStepDecision } from '@liusiqi-dev/sqh-agent'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { Session, UserMessage } from '@liusiqi-dev/sqh-session'
+import type {} from '@liusiqi-dev/sqh-session-projection'
+import type { ToolExecution, ToolExecutionResult, ToolExecutionToken } from '@liusiqi-dev/sqh-tools'
 import { Config, resolveConfig, workspaceBaselineIdentity, type ResolvedConfig } from './config.ts'
 import { findProjectRoot, loadBaselineInstructionSet } from './files.ts'
 import {

@@ -1,12 +1,12 @@
-/** Content-block structure helpers. @module @liusiqi-dev/dsh-llm/content */
+/** Content-block structure helpers. @module @liusiqi-dev/sqh-llm/content */
 
 import type { ContentBlock, ImageBlock, LlmImageRequestBudget, ToolSchema, ToolUpdate, ToolHistory } from './types.ts'
 import type { RequestMessage } from './types.ts'
 import type { Message } from './message.ts'
 import type {
   AttachmentStore, FileAttachmentRef, ImageAttachmentRef, ImageMediaType, RequestImageAttachment,
-} from '@liusiqi-dev/dsh-attachment'
-import { assertNever } from '@liusiqi-dev/dsh-util-values'
+} from '@liusiqi-dev/sqh-attachment'
+import { assertNever } from '@liusiqi-dev/sqh-util-values'
 
 /** Execution-world path that model tools can use to read one normalized attachment. */
 export interface ImageAttachmentAccess {

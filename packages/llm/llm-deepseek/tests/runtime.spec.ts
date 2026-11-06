@@ -1,12 +1,12 @@
-import * as Protocol from '@liusiqi-dev/dsh-llm-deepseek'
+import * as Protocol from '@liusiqi-dev/sqh-llm-deepseek'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { mkdtempSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { Context } from '@liusiqi-dev/cordis'
-import { AttachmentId, ImageVariantId } from '@liusiqi-dev/dsh-attachment'
-import type { AttachmentStore, ImageAttachmentRef, RequestImageAttachment } from '@liusiqi-dev/dsh-attachment'
-import { createLaunchEnvironmentSnapshot } from '@liusiqi-dev/dsh-launch-environment'
+import { AttachmentId, ImageVariantId } from '@liusiqi-dev/sqh-attachment'
+import type { AttachmentStore, ImageAttachmentRef, RequestImageAttachment } from '@liusiqi-dev/sqh-attachment'
+import { createLaunchEnvironmentSnapshot } from '@liusiqi-dev/sqh-launch-environment'
 import LlmRuntime, { ToolCallId, createUserMessage,
   CONTEXT_WINDOW_EXCEEDED_CODE,
   createToolResultMessage,
@@ -16,15 +16,15 @@ import LlmRuntime, { ToolCallId, createUserMessage,
   QUOTA_EXCEEDED_CODE,
   ReasoningEffortId,
   userAgent,
-} from '@liusiqi-dev/dsh-llm'
-import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
-import { getOrCreateAnonymousUserId, type AnonymousUserId } from '@liusiqi-dev/dsh-anonymous-user-id'
-import { SessionId } from '@liusiqi-dev/dsh-session'
-import DeepSeekLlmApiExtensionRegistry from '@liusiqi-dev/dsh-deepseek-llm-api-extensions'
-import type { PreparedDeepSeekLlmApiExtensions } from '@liusiqi-dev/dsh-deepseek-llm-api-extensions'
-import * as LlmDeepSeek from '@liusiqi-dev/dsh-llm-deepseek-api-key'
-import { DeepSeekAdapter, resolveAdapterOptions } from '@liusiqi-dev/dsh-llm-deepseek'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
+} from '@liusiqi-dev/sqh-llm'
+import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/sqh-timeout'
+import { getOrCreateAnonymousUserId, type AnonymousUserId } from '@liusiqi-dev/sqh-anonymous-user-id'
+import { SessionId } from '@liusiqi-dev/sqh-session'
+import DeepSeekLlmApiExtensionRegistry from '@liusiqi-dev/sqh-deepseek-llm-api-extensions'
+import type { PreparedDeepSeekLlmApiExtensions } from '@liusiqi-dev/sqh-deepseek-llm-api-extensions'
+import * as LlmDeepSeek from '@liusiqi-dev/sqh-llm-deepseek-api-key'
+import { DeepSeekAdapter, resolveAdapterOptions } from '@liusiqi-dev/sqh-llm-deepseek'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
 import { providerError } from '../src/transport.ts'
 import { resolveRequestImageTarget } from '../src/request-pricing.ts'
 import { assemble } from './assemble.ts'
@@ -32,7 +32,7 @@ import { closeMockServers, mockServer, textEvents } from './mock-server.ts'
 import type { Behavior } from './mock-server.ts'
 import { requestImageStore } from './helpers.ts'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }

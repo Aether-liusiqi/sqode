@@ -5,54 +5,54 @@
 /:
   en: c9eac4288ae5293a
   zh: fb718ad3c2da3e49
-/liusiqi-dev-dsh-lsp-stdio:
-  en: 88df5d45d4d0b602
-  zh: 85ae0df8f8cfd566
-/liusiqi-dev-dsh-lsp-stdio/summary:
+/liusiqi-dev-sqh-lsp-stdio:
+  en: 3c13f82f497d2589
+  zh: c72b05326410ddc8
+/liusiqi-dev-sqh-lsp-stdio/summary:
   en: 9bb3631289433c95
   zh: 4b30c9a4aa5186b8
-/liusiqi-dev-dsh-lsp-stdio/table-of-contents:
+/liusiqi-dev-sqh-lsp-stdio/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
-/liusiqi-dev-dsh-lsp-stdio/use-this-package:
+/liusiqi-dev-sqh-lsp-stdio/use-this-package:
   en: c632954ac645e57e
   zh: 646525beedbdb97c
-/liusiqi-dev-dsh-lsp-stdio/use-this-package/minimal-configuration:
+/liusiqi-dev-sqh-lsp-stdio/use-this-package/minimal-configuration:
   en: 4ab720a0579e7b32
   zh: 9956df5b76118c74
-/liusiqi-dev-dsh-lsp-stdio/use-this-package/what-a-query-does:
+/liusiqi-dev-sqh-lsp-stdio/use-this-package/what-a-query-does:
   en: 41363baf8fdba020
   zh: d1a6193b1aa813ba
-/liusiqi-dev-dsh-lsp-stdio/use-this-package/observable-success-and-failures:
+/liusiqi-dev-sqh-lsp-stdio/use-this-package/observable-success-and-failures:
   en: 57f3a82c014af107
   zh: 770fc617c1ab0eab
-/liusiqi-dev-dsh-lsp-stdio/use-this-package/security-boundary:
+/liusiqi-dev-sqh-lsp-stdio/use-this-package/security-boundary:
   en: f1f7fef771bcaa6d
   zh: f11dcf771a6fecfc
-/liusiqi-dev-dsh-lsp-stdio/understand-the-implementation:
+/liusiqi-dev-sqh-lsp-stdio/understand-the-implementation:
   en: 8a5efa64f5b12f88
   zh: 451548c05c045c22
-/liusiqi-dev-dsh-lsp-stdio/understand-the-implementation/design-philosophy:
+/liusiqi-dev-sqh-lsp-stdio/understand-the-implementation/design-philosophy:
   en: 7e5e63f993a287f2
   zh: a5a01b22551e5d46
-/liusiqi-dev-dsh-lsp-stdio/understand-the-implementation/source-map:
+/liusiqi-dev-sqh-lsp-stdio/understand-the-implementation/source-map:
   en: c1eb566e6aa64d09
   zh: 6fa10484e329e570
-/liusiqi-dev-dsh-lsp-stdio/understand-the-implementation/protocol-behavior:
+/liusiqi-dev-sqh-lsp-stdio/understand-the-implementation/protocol-behavior:
   en: 0f9bac88ad9448b8
   zh: f5d3a2e61a596003
-/liusiqi-dev-dsh-lsp-stdio/further-exploration:
+/liusiqi-dev-sqh-lsp-stdio/further-exploration:
   en: 2b280b85054f6b9f
   zh: 6e609d42db7da87c
-/liusiqi-dev-dsh-lsp-stdio/model-experience:
+/liusiqi-dev-sqh-lsp-stdio/model-experience:
   en: b366d0dfbfeb2d91
   zh: 72a7a8d957b13eb4
-/liusiqi-dev-dsh-lsp-stdio/model-experience/kv-cache-effect:
+/liusiqi-dev-sqh-lsp-stdio/model-experience/kv-cache-effect:
   en: 64354484a5367fbc
   zh: aec3e5c7933389b6
-/liusiqi-dev-dsh-lsp-stdio/known-limitations-and-deferred-work:
+/liusiqi-dev-sqh-lsp-stdio/known-limitations-and-deferred-work:
   en: dc4fc5797b3b2d38
   zh: f04e4159ce280218
-/liusiqi-dev-dsh-lsp-stdio/known-limitations-and-deferred-work/dev-note:
+/liusiqi-dev-sqh-lsp-stdio/known-limitations-and-deferred-work/dev-note:
   en: e67f633dc6fe7773
   zh: 3bb0c20c93f16f98

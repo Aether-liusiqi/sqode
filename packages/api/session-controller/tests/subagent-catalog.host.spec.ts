@@ -1,11 +1,11 @@
 import { Context } from '@liusiqi-dev/cordis'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import SessionStore, { SESSION_FORMAT_VERSION, SessionLogOffset, SessionSeq, SessionId } from '@liusiqi-dev/dsh-session'
-import type { SessionEvent, SessionHeader } from '@liusiqi-dev/dsh-session'
-import { SessionQueryError } from '@liusiqi-dev/dsh-session-query'
-import type { SessionObservation } from '@liusiqi-dev/dsh-session-query'
-import SubagentRuntime from '@liusiqi-dev/dsh-subagent'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import SessionStore, { SESSION_FORMAT_VERSION, SessionLogOffset, SessionSeq, SessionId } from '@liusiqi-dev/sqh-session'
+import type { SessionEvent, SessionHeader } from '@liusiqi-dev/sqh-session'
+import { SessionQueryError } from '@liusiqi-dev/sqh-session-query'
+import type { SessionObservation } from '@liusiqi-dev/sqh-session-query'
+import SubagentRuntime from '@liusiqi-dev/sqh-subagent'
 import { describe, expect, it, vi } from 'vitest'
 import {
   createSessionTestController,

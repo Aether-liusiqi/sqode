@@ -1,6 +1,6 @@
 /**
  * Zero-dependency circular deque for queues that retain entries across asynchronous work.
- * @module @liusiqi-dev/dsh-deque
+ * @module @liusiqi-dev/sqh-deque
  */
 
 const MIN_CAPACITY = 16

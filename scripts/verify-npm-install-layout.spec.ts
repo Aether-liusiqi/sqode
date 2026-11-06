@@ -15,25 +15,25 @@ function validLayout(): NpmPackageLock {
       'node_modules/@liusiqi-dev/cordis': { version: '4.0.1' },
       'node_modules/@liusiqi-dev/sqode': {
         version: '0.2.0',
-        dependencies: { '@liusiqi-dev/dsh-child': '^0.2.0' },
+        dependencies: { '@liusiqi-dev/sqh-child': '^0.2.0' },
         peerDependencies: { '@liusiqi-dev/cordis': '^4.0.1' },
       },
-      'node_modules/@liusiqi-dev/dsh-child': {
+      'node_modules/@liusiqi-dev/sqh-child': {
         version: '0.2.0',
-        dependencies: { '@liusiqi-dev/dsh-leaf': '^0.2.0' },
+        dependencies: { '@liusiqi-dev/sqh-leaf': '^0.2.0' },
       },
-      'node_modules/@liusiqi-dev/dsh-leaf': { version: '0.2.0' },
+      'node_modules/@liusiqi-dev/sqh-leaf': { version: '0.2.0' },
       'node_modules/dsh-previous': {
         name: '@liusiqi-dev/sqode',
         version: '0.1.0',
-        dependencies: { '@liusiqi-dev/dsh-child': '^0.1.0' },
+        dependencies: { '@liusiqi-dev/sqh-child': '^0.1.0' },
         peerDependencies: { '@liusiqi-dev/cordis': '^4.0.1' },
       },
-      'node_modules/dsh-previous/node_modules/@liusiqi-dev/dsh-child': {
+      'node_modules/dsh-previous/node_modules/@liusiqi-dev/sqh-child': {
         version: '0.1.0',
-        dependencies: { '@liusiqi-dev/dsh-leaf': '^0.1.0' },
+        dependencies: { '@liusiqi-dev/sqh-leaf': '^0.1.0' },
       },
-      'node_modules/dsh-previous/node_modules/@liusiqi-dev/dsh-leaf': { version: '0.1.0' },
+      'node_modules/dsh-previous/node_modules/@liusiqi-dev/sqh-leaf': { version: '0.1.0' },
     },
   }
 }
@@ -44,11 +44,11 @@ describe('npm install layout verifier', () => {
       ['@liusiqi-dev/sqode', new Map([['0.1.1-rc.2', {
         name: '@liusiqi-dev/sqode',
         version: '0.1.1-rc.2',
-        dependencies: { '@liusiqi-dev/dsh-child': '^0.1.1-rc.2' },
+        dependencies: { '@liusiqi-dev/sqh-child': '^0.1.1-rc.2' },
         peerDependencies: { '@liusiqi-dev/cordis': '^4.0.1' },
       }]])],
-      ['@liusiqi-dev/dsh-child', new Map([['0.1.1-rc.2', {
-        name: '@liusiqi-dev/dsh-child',
+      ['@liusiqi-dev/sqh-child', new Map([['0.1.1-rc.2', {
+        name: '@liusiqi-dev/sqh-child',
         version: '0.1.1-rc.2',
       }]])],
       ['@liusiqi-dev/cordis', new Map([['4.0.1', {
@@ -62,12 +62,12 @@ describe('npm install layout verifier', () => {
     expect([...dual.get('@liusiqi-dev/sqode')?.keys() ?? []]).toEqual(['0.1.0', '0.2.0'])
     expect(dual.get('@liusiqi-dev/sqode')?.get('0.1.0')).toMatchObject({
       version: '0.1.0',
-      dependencies: { '@liusiqi-dev/dsh-child': '^0.1.0' },
+      dependencies: { '@liusiqi-dev/sqh-child': '^0.1.0' },
       peerDependencies: { '@liusiqi-dev/cordis': '^4.0.1' },
     })
     expect(dual.get('@liusiqi-dev/sqode')?.get('0.2.0')).toMatchObject({
       version: '0.2.0',
-      dependencies: { '@liusiqi-dev/dsh-child': '^0.2.0' },
+      dependencies: { '@liusiqi-dev/sqh-child': '^0.2.0' },
     })
     expect(dual.get('@liusiqi-dev/cordis')).toBe(index.get('@liusiqi-dev/cordis'))
   })
@@ -95,11 +95,11 @@ describe('npm install layout verifier', () => {
   it('rejects an internal edge that crosses release versions', () => {
     const layout = validLayout()
     const packages = { ...layout.packages }
-    Reflect.deleteProperty(packages, 'node_modules/dsh-previous/node_modules/@liusiqi-dev/dsh-leaf')
+    Reflect.deleteProperty(packages, 'node_modules/dsh-previous/node_modules/@liusiqi-dev/sqh-leaf')
 
     expect(() => assertDualDshInstallLayout({ ...layout, packages })).toThrow(
-      'node_modules/dsh-previous/node_modules/@liusiqi-dev/dsh-child: dependencies '
-      + '@liusiqi-dev/dsh-leaf resolves to node_modules/@liusiqi-dev/dsh-leaf@0.2.0, expected 0.1.0',
+      'node_modules/dsh-previous/node_modules/@liusiqi-dev/sqh-child: dependencies '
+      + '@liusiqi-dev/sqh-leaf resolves to node_modules/@liusiqi-dev/sqh-leaf@0.2.0, expected 0.1.0',
     )
   })
 

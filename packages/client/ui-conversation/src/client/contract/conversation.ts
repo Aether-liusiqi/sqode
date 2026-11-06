@@ -1,5 +1,5 @@
-import type { SessionEventLike } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session/types'
+import type { SessionEventLike } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session/types'
 import type {
   ConversationGroupData, ConversationGroupedView, ConversationGroupInput,
 } from './groups.ts'

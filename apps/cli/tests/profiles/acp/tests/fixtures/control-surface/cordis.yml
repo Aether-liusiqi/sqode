@@ -1,17 +1,17 @@
 # Keyless generic ACP v1 control-surface patch over `dsh --profile acp`.
 
 - id: llm-deepseek
-  name: '@liusiqi-dev/dsh-llm-deepseek-api-key'
+  name: '@liusiqi-dev/sqh-llm-deepseek-api-key'
   disabled: true
 
 - id: acp
-  name: '@liusiqi-dev/dsh-acp'
+  name: '@liusiqi-dev/sqh-acp'
   config:
     provider: control-fixture
     model: alpha
 
 - id: session-persistence-jsonl
-  name: '@liusiqi-dev/dsh-session-persistence-jsonl'
+  name: '@liusiqi-dev/sqh-session-persistence-jsonl'
   config:
     root: !!js process.env.SQODE_CONFORMANCE_PERSISTENCE_ROOT
     compression: none

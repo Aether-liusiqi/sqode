@@ -30,9 +30,9 @@ export function writePackage(modules: string, name: string, fields: Record<strin
  * @returns Sealed runtime metadata.
  */
 export function runtimeFixture(root: string, version = '1.0.0', nodeVersion = '24.17.0'): DesktopRuntimeDescriptor {
-  const names = ['@liusiqi-dev/sqode', '@liusiqi-dev/dsh-desktop-host', '@liusiqi-dev/dsh-base', '@liusiqi-dev/dsh-web-app', '@liusiqi-dev/cordis']
+  const names = ['@liusiqi-dev/sqode', '@liusiqi-dev/sqh-desktop-host', '@liusiqi-dev/sqh-base', '@liusiqi-dev/sqh-web-app', '@liusiqi-dev/cordis']
   for (const name of names) {
-    const bundle = name === '@liusiqi-dev/dsh-base' || name === '@liusiqi-dev/dsh-web-app'
+    const bundle = name === '@liusiqi-dev/sqh-base' || name === '@liusiqi-dev/sqh-web-app'
     const path = writePackage(join(root, 'node_modules'), name, {
       version,
       ...(name === '@liusiqi-dev/sqode' ? { dependencies: Object.fromEntries(names.slice(1).map(dependency => [dependency, version])) } : {}),
@@ -41,7 +41,7 @@ export function runtimeFixture(root: string, version = '1.0.0', nodeVersion = '2
     if (bundle) writeFileSync(join(path, 'bundle.yml'), '[]\n')
   }
   for (const file of DESKTOP_HOST_RUNTIME_FILES) {
-    const path = join(root, 'node_modules', '@liusiqi-dev/dsh-desktop-host', file)
+    const path = join(root, 'node_modules', '@liusiqi-dev/sqh-desktop-host', file)
     mkdirSync(join(path, '..'), { recursive: true })
     writeFileSync(path, '')
   }

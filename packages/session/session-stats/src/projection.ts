@@ -20,12 +20,12 @@
  * time stays uncounted in every time figure — matching the window, which
  * renders it as an untimed interrupted node.
  *
- * @module @liusiqi-dev/dsh-session-stats/projection
+ * @module @liusiqi-dev/sqh-session-stats/projection
  */
 
 import { z } from 'zod'
-import { assistantStreamFirstTokenTime } from '@liusiqi-dev/dsh-llm'
-import type { ProjectionDefinition } from '@liusiqi-dev/dsh-session-projection'
+import { assistantStreamFirstTokenTime } from '@liusiqi-dev/sqh-llm'
+import type { ProjectionDefinition } from '@liusiqi-dev/sqh-session-projection'
 
 
 /** Accumulated whole-log figures (the view is exactly these totals). */
@@ -63,7 +63,7 @@ interface SessionStatsState extends SessionStatsTotals {
   pendingCalls: Record<string, number>
 }
 
-declare module '@liusiqi-dev/dsh-session-projection/types' {
+declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionStateMap {
     sessionStats: SessionStatsState
   }

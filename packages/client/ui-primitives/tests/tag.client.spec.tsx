@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
-import { Tag } from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { TagTone } from '@liusiqi-dev/dsh-client-ui-primitives'
+import { Tag } from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { TagTone } from '@liusiqi-dev/sqh-client-ui-primitives'
 
 afterEach(cleanup)
 

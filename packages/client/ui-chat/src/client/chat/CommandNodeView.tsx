@@ -1,5 +1,5 @@
 import { memo, useMemo } from 'react'
-import type { PropsRenderSlots } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { PropsRenderSlots } from '@liusiqi-dev/sqh-client-ui-slots'
 import type {
   ChatNodeViewProps, CommandRowOwnerProps,
 } from '../contract/slots.ts'

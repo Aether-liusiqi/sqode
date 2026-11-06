@@ -1,15 +1,15 @@
 /**
  * Command definition identities and execution ids for discovery and lifecycle pairing.
  *
- * The `Branded<B>` primitive lives in `@liusiqi-dev/dsh-brand`; this module
+ * The `Branded<B>` primitive lives in `@liusiqi-dev/sqh-brand`; this module
  * is a pure type/constructor outlet (no cordis imports, no module
  * augmentation) so wire and client programs can name the brand without
  * loading the host plugin's Context merges — the `dsh-llm/brand` shape.
  *
- * @module @liusiqi-dev/dsh-commands/brand
+ * @module @liusiqi-dev/sqh-commands/brand
  */
 
-import type { Branded } from '@liusiqi-dev/dsh-brand'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
 
 /** Stable, plugin-owned identity of a command definition, independent of its name and copy. */
 export type CommandDefinitionId = Branded<'CommandDefinitionId'>

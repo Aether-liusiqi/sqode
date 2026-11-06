@@ -16,8 +16,8 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import type { ReactNode } from 'react'
-import type { LlmDiscoveredModel } from '@liusiqi-dev/dsh-api-remotes/client'
-import { Button, IconPlusOutlineRegular, Modal } from '@liusiqi-dev/dsh-client-ui-primitives'
+import type { LlmDiscoveredModel } from '@liusiqi-dev/sqh-api-remotes/client'
+import { Button, IconPlusOutlineRegular, Modal } from '@liusiqi-dev/sqh-client-ui-primitives'
 import { formatCapacity, parseCapacity } from './DeepSeekModelsEditor.tsx'
 import type { ModelsOperations } from './operations.ts'
 import type { DeepSeekModelDraft } from './DeepSeekModelsEditor.tsx'

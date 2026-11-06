@@ -1,17 +1,17 @@
 /** Controller and UI-domain fixture shapes for the client test runtime. */
 import type {
   ISession, SessionEventLikeEntry, SessionSnapshot, SessionSummary,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { WorkspaceSnapshot } from '@liusiqi-dev/dsh-api-workspace-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { WorkspaceSnapshot } from '@liusiqi-dev/sqh-api-workspace-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import {
   EMPTY_CONVERSATION_SNAPSHOT,
   type ConversationSnapshot,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import {
   EMPTY_CHAT_SNAPSHOT,
   type ChatSnapshot,
-} from '@liusiqi-dev/dsh-client-ui-chat/client'
+} from '@liusiqi-dev/sqh-client-ui-chat/client'
 
 /**
  * Fixture overrides for the session behavior face: any subset of the

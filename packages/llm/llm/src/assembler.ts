@@ -3,11 +3,11 @@
  * algorithm used by the agent loop to build an assistant message from a chunk
  * stream while logging the raw chunks for replay fidelity.
  *
- * @module @liusiqi-dev/dsh-llm/assembler
+ * @module @liusiqi-dev/sqh-llm/assembler
  */
 
-import { brandString } from '@liusiqi-dev/dsh-brand'
-import { assertNever } from '@liusiqi-dev/dsh-util-values'
+import { brandString } from '@liusiqi-dev/sqh-brand'
+import { assertNever } from '@liusiqi-dev/sqh-util-values'
 import type { ToolCallId } from './brand.ts'
 import { createAssistantMessage } from './message.ts'
 import type { AssistantMessage, ModelMessageSource } from './message.ts'

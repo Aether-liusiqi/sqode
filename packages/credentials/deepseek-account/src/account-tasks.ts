@@ -1,7 +1,7 @@
 /** Account sign-out policy over the latest logged request route. */
 import type { Context } from '@liusiqi-dev/cordis'
-import { LlmError } from '@liusiqi-dev/dsh-llm'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
+import { LlmError } from '@liusiqi-dev/sqh-llm'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
 import type {} from './index.ts'
 
 /**

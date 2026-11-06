@@ -3,11 +3,11 @@
  * the one-shot background path uses Jobs; continuable children have no Task,
  * no per-message result, and no Task cancellation.
  *
- * @module @liusiqi-dev/dsh-subagent/run-settlement
+ * @module @liusiqi-dev/sqh-subagent/run-settlement
  */
 
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import type { JobOutcome } from '@liusiqi-dev/dsh-jobs'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import type { JobOutcome } from '@liusiqi-dev/sqh-jobs'
 import type { SubagentResult, SubagentRun } from './types.ts'
 
 /** Flatten a child's final output blocks to the task's final text. */

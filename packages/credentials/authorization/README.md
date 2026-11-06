@@ -3,7 +3,7 @@ description: "The authorization flow registry for users and maintainers who obta
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-authorization
+# @liusiqi-dev/sqh-authorization
 
 English | [中文](README.zh.md)
 
@@ -37,8 +37,8 @@ Your plugin declares one flow per credential it holds, keyed by the `<scope>/<id
 
 ```ts
 import type { Context } from '@liusiqi-dev/cordis'
-import type { AuthorizationSession } from '@liusiqi-dev/dsh-authorization'
-import { credentialKey } from '@liusiqi-dev/dsh-credentials'
+import type { AuthorizationSession } from '@liusiqi-dev/sqh-authorization'
+import { credentialKey } from '@liusiqi-dev/sqh-credentials'
 
 declare const ctx: Context
 declare const exchangeCode: (code: string, signal: AbortSignal) => Promise<{ token: string }>

@@ -2,14 +2,14 @@
  * Model-facing full-file write. It obtains an optional intent from the single policy slot, calls
  * `ctx.fs.writeText` without a stat, then records the resulting version; no policy means an
  * unconditional atomic create-or-overwrite.
- * @module @liusiqi-dev/dsh-tool-fs/src/write
+ * @module @liusiqi-dev/sqh-tool-fs/src/write
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
-import type { DiffCallView, DiffResultView, ToolResult } from '@liusiqi-dev/dsh-tools'
-import type { FsWriteOutcome } from '@liusiqi-dev/dsh-fs'
-import type {} from '@liusiqi-dev/dsh-fs'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
+import type { DiffCallView, DiffResultView, ToolResult } from '@liusiqi-dev/sqh-tools'
+import type { FsWriteOutcome } from '@liusiqi-dev/sqh-fs'
+import type {} from '@liusiqi-dev/sqh-fs'
 import { computeHunkDiffs, diffsFromMeta } from './diff.ts'
 import { remediateFsError } from './error.ts'
 import { sessionResolveOptions } from './session-cwd.ts'

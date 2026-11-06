@@ -41,7 +41,7 @@ const appOverlayFiles = new Set([
 const metadataFields = ['id', 'name', 'group', 'inject', 'intercept', 'isolate'] as const
 
 /** The adaptive directory-picker chooser package (mounts a backend row at boot). */
-const CHOOSER_PACKAGE = '@liusiqi-dev/dsh-host-directory-picker-auto'
+const CHOOSER_PACKAGE = '@liusiqi-dev/sqh-host-directory-picker-auto'
 
 /**
  * The packages the chooser mounts by runtime string (mirror of its exported
@@ -51,10 +51,10 @@ const CHOOSER_PACKAGE = '@liusiqi-dev/dsh-host-directory-picker-auto'
  * until a macOS boot.
  */
 const CHOOSER_BACKEND_PACKAGES = [
-  '@liusiqi-dev/dsh-host-directory-picker-native',
-  '@liusiqi-dev/dsh-host-directory-picker-browse',
-  '@liusiqi-dev/dsh-client-ui-directory-picker-browse',
-  '@liusiqi-dev/dsh-client-ui-directory-picker-native',
+  '@liusiqi-dev/sqh-host-directory-picker-native',
+  '@liusiqi-dev/sqh-host-directory-picker-browse',
+  '@liusiqi-dev/sqh-client-ui-directory-picker-browse',
+  '@liusiqi-dev/sqh-client-ui-directory-picker-native',
 ]
 const errors: string[] = []
 const pluginReferences: PluginReference[] = []

@@ -1,16 +1,16 @@
 /** Session-owned MCP browser processes and provider catalog activation. @module */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
 import Schema from '@liusiqi-dev/schemastery'
-import { BrowserUseProviderName } from '@liusiqi-dev/dsh-browser-use/brand'
-import * as McpClient from '@liusiqi-dev/dsh-mcp-client'
-import { createScope } from '@liusiqi-dev/dsh-scope'
-import type { Scope } from '@liusiqi-dev/dsh-scope'
+import { BrowserUseProviderName } from '@liusiqi-dev/sqh-browser-use/brand'
+import * as McpClient from '@liusiqi-dev/sqh-mcp-client'
+import { createScope } from '@liusiqi-dev/sqh-scope'
+import type { Scope } from '@liusiqi-dev/sqh-scope'
 import { SessionResources } from './index.ts'
-import type {} from '@liusiqi-dev/dsh-browser-use'
-import type {} from '@liusiqi-dev/dsh-tools'
-import type {} from '@liusiqi-dev/dsh-system-prompt'
+import type {} from '@liusiqi-dev/sqh-browser-use'
+import type {} from '@liusiqi-dev/sqh-tools'
+import type {} from '@liusiqi-dev/sqh-system-prompt'
 
 /** Browser launch settings shared by the MCP integrations. */
 export interface BrowserMcpLaunchConfig {

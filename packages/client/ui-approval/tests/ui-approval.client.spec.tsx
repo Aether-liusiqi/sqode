@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 import { Context } from '@liusiqi-dev/cordis'
-import { createScope, scopeOf } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import { createScope, scopeOf } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { ApprovalPanel } from '../src/client/ApprovalPanel.tsx'

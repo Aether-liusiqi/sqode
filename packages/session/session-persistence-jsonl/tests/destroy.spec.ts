@@ -11,9 +11,9 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { SESSION_FORMAT_VERSION, SessionId } from '@liusiqi-dev/dsh-session'
-import type { SessionHeader } from '@liusiqi-dev/dsh-session'
-import type { SessionPersistence } from '@liusiqi-dev/dsh-session-persistence'
+import { SESSION_FORMAT_VERSION, SessionId } from '@liusiqi-dev/sqh-session'
+import type { SessionHeader } from '@liusiqi-dev/sqh-session'
+import type { SessionPersistence } from '@liusiqi-dev/sqh-session-persistence'
 import JsonlSessionPersistence from '../src/index.ts'
 
 const roots: string[] = []

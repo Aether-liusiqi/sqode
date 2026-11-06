@@ -3,22 +3,22 @@
 import { Readable } from 'node:stream'
 import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { brandString } from '@liusiqi-dev/dsh-brand'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
+import { brandString } from '@liusiqi-dev/sqh-brand'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
 import type {
   Agent,
   AgentHandle,
   AssistantStreamFrame,
   CreateAgentOptions,
   ResumeAgentOptions,
-} from '@liusiqi-dev/dsh-agent'
-import AgentDefaultModelConfig from '@liusiqi-dev/dsh-agent-default-model'
-import { LlmAttemptId, ToolCallId, createAssistantMessage, createToolResultMessage, type MessageId, type StreamChunk } from '@liusiqi-dev/dsh-llm'
-import SessionStore from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import type { Session, SessionId, UserMessage } from '@liusiqi-dev/dsh-session'
-import { SessionQueryError } from '@liusiqi-dev/dsh-session-query'
-import { createInboxStub } from '@liusiqi-dev/dsh-agent-loop-testkit'
+} from '@liusiqi-dev/sqh-agent'
+import AgentDefaultModelConfig from '@liusiqi-dev/sqh-agent-default-model'
+import { LlmAttemptId, ToolCallId, createAssistantMessage, createToolResultMessage, type MessageId, type StreamChunk } from '@liusiqi-dev/sqh-llm'
+import SessionStore from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import type { Session, SessionId, UserMessage } from '@liusiqi-dev/sqh-session'
+import { SessionQueryError } from '@liusiqi-dev/sqh-session-query'
+import { createInboxStub } from '@liusiqi-dev/sqh-agent-loop-testkit'
 import { apply, Config } from '../src/index.ts'
 import { internals } from '../src/runner-internals.ts'
 

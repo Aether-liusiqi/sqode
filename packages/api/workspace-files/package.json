@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-api-workspace-files",
+  "name": "@liusiqi-dev/sqh-api-workspace-files",
   "description": "Workspace file service and Client resource provider: bounded reads, directory listing, and live metadata over the workspaceFiles Remote namespace",
   "version": "1.0.0",
   "publishConfig": {
@@ -40,8 +40,8 @@
   "dsh": {
     "client": {
       "inject": [
-        "@liusiqi-dev/dsh-api-gateway",
-        "@liusiqi-dev/dsh-client-resources"
+        "@liusiqi-dev/sqh-api-gateway",
+        "@liusiqi-dev/sqh-client-resources"
       ],
       "platform": "web"
     }
@@ -52,8 +52,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@liusiqi-dev/dsh-deque": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/sqh-deque": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
     "zod": "^4.4.3"
   },
@@ -62,16 +62,16 @@
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-api-gateway": "workspace:*",
-    "@liusiqi-dev/dsh-client-connection": "workspace:*",
-    "@liusiqi-dev/dsh-client-resources": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-slots": "workspace:*",
-    "@liusiqi-dev/dsh-fs": "workspace:*",
-    "@liusiqi-dev/dsh-remote-mock": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox-policy": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-persistence": "workspace:*",
-    "@liusiqi-dev/dsh-util-workspace-path": "workspace:*"
+    "@liusiqi-dev/sqh-api-gateway": "workspace:*",
+    "@liusiqi-dev/sqh-client-connection": "workspace:*",
+    "@liusiqi-dev/sqh-client-resources": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-slots": "workspace:*",
+    "@liusiqi-dev/sqh-fs": "workspace:*",
+    "@liusiqi-dev/sqh-remote-mock": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox-policy": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-persistence": "workspace:*",
+    "@liusiqi-dev/sqh-util-workspace-path": "workspace:*"
   },
   "files": [
     "lib/index.js",

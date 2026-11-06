@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { parseHookOutput } from '@liusiqi-dev/dsh-hook-protocol'
+import { parseHookOutput } from '@liusiqi-dev/sqh-hook-protocol'
 
 describe('parseHookOutput — exit code semantics', () => {
   it('exit 0 with no stdout is a neutral success', () => {

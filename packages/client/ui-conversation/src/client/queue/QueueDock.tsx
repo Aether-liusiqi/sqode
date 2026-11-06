@@ -1,16 +1,16 @@
 import type { Context } from '@liusiqi-dev/cordis'
 import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react'
-import type { FileAttachmentRef, ImageAttachmentRef } from '@liusiqi-dev/dsh-attachment'
-import type { PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { FileAttachmentRef, ImageAttachmentRef } from '@liusiqi-dev/sqh-attachment'
+import type { PropsLocale, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import {
   IconCheckOutlineRegular, IconChevronDownOutlineRegular, IconChevronUpOutlineRegular, IconCloseOutlineRegular,
   FileTypeIcon, fileSizeText, IconEditOutlineRegular, IconQueueOutlineRegular, IconSendOutlineRegular,
   IconTrashOutlineRegular, projectUserText, Tooltip,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { InboxState } from '@liusiqi-dev/dsh-agent/types'
-import type { QueueAction } from '@liusiqi-dev/dsh-api-session-controller/types'
-import type { MessageId } from '@liusiqi-dev/dsh-llm/brand'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { InboxState } from '@liusiqi-dev/sqh-agent/types'
+import type { QueueAction } from '@liusiqi-dev/sqh-api-session-controller/types'
+import type { MessageId } from '@liusiqi-dev/sqh-llm/brand'
 import { NS } from '../locales.ts'
 import css from './QueueDock.module.css'
 

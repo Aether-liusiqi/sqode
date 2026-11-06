@@ -1,21 +1,21 @@
 /**
  * Tool operation orchestration over session-query service capabilities.
  *
- * @module @liusiqi-dev/dsh-tool-session-query/operations
+ * @module @liusiqi-dev/sqh-tool-session-query/operations
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { HarnessError } from '@liusiqi-dev/dsh-llm'
-import { SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
+import { HarnessError } from '@liusiqi-dev/sqh-llm'
+import { SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
 import {
   SessionQueryError,
   type SessionEventSearchPage,
   type SessionEventSurface,
   type SessionRecord,
   type SessionSearchCursor,
-} from '@liusiqi-dev/dsh-session-query'
-import type { ToolRunContext } from '@liusiqi-dev/dsh-tools'
+} from '@liusiqi-dev/sqh-session-query'
+import type { ToolRunContext } from '@liusiqi-dev/sqh-tools'
 import { toolInput } from './input.ts'
 import { presentation } from './presentation.ts'
 import { serviceBoundary } from './service-boundary.ts'

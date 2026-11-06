@@ -1,14 +1,14 @@
 /**
  * Package-owned request-reconstruction invariant for loop-built LLM calls.
- * @module @liusiqi-dev/dsh-agent-loop/invariant
+ * @module @liusiqi-dev/sqh-agent-loop/invariant
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { isAgentLoopRequest, type GenerateOptions } from '@liusiqi-dev/dsh-llm'
-import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
-import { foldRequestHeader } from '@liusiqi-dev/dsh-session'
+import { isAgentLoopRequest, type GenerateOptions } from '@liusiqi-dev/sqh-llm'
+import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
+import { foldRequestHeader } from '@liusiqi-dev/sqh-session'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-agent-loop'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-agent-loop'
 
 /** Cordis companion plugin name. */
 export const name = 'agent-loop-invariant'

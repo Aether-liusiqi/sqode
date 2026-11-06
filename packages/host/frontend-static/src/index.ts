@@ -1,5 +1,5 @@
 /**
- * @liusiqi-dev/dsh-host-frontend-static — SPA dist server over the webserver
+ * @liusiqi-dev/sqh-host-frontend-static — SPA dist server over the webserver
  * fallback seat: serves the built frontend directory with explicit index
  * entry points. A readable index renders at the dist root and configured index
  * path; missing paths return 404, traversal outside the dist root is 403,
@@ -9,7 +9,7 @@
  * Non-index assets stay public. The dist location is workspace knowledge of
  * the composing application, so `distIndex` is typically supplied through a
  * `!!js` expression, never hardcoded by a deployment.
- * @module @liusiqi-dev/dsh-host-frontend-static
+ * @module @liusiqi-dev/sqh-host-frontend-static
  */
 
 import type { ServerResponse } from 'node:http'
@@ -17,8 +17,8 @@ import { readFile } from 'node:fs/promises'
 import { dirname, extname, join, normalize, resolve, sep } from 'node:path'
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import type {} from '@liusiqi-dev/dsh-client-connection'
-import type {} from '@liusiqi-dev/dsh-host-webserver'
+import type {} from '@liusiqi-dev/sqh-client-connection'
+import type {} from '@liusiqi-dev/sqh-host-webserver'
 
 /** Stable Cordis plugin name. */
 export const name = 'frontend-static'

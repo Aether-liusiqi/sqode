@@ -3,7 +3,7 @@ description: "在权威 Session 日志中保存已完成 assistant 消息的评�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-message-feedback
+# @liusiqi-dev/sqh-message-feedback
 
 [English](README.md) | 中文
 

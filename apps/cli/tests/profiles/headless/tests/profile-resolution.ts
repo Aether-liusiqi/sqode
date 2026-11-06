@@ -5,7 +5,7 @@ import { mkdir, mkdtemp, readFile, readdir, readlink, rm, symlink, unlink, write
 import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
-import { resolveExampleLaunch, type ExampleMode } from '@liusiqi-dev/dsh-loader-smoke'
+import { resolveExampleLaunch, type ExampleMode } from '@liusiqi-dev/sqh-loader-smoke'
 import { execa } from 'execa'
 import { expect, it } from 'vitest'
 
@@ -114,11 +114,11 @@ export function testProfileResolution(mode: ExampleMode): void {
       const ancestorLeaf = join(home, 'node_modules', externalLeafName)
       await writePackage(pluginDir, {
         name: pluginName, version: '1.0.0', exports, dependencies: { [externalName]: '*' },
-        peerDependencies: { '@liusiqi-dev/dsh-tools': '*' }, devDependencies: { '@liusiqi-dev/dsh-tools': '*' },
+        peerDependencies: { '@liusiqi-dev/sqh-tools': '*' }, devDependencies: { '@liusiqi-dev/sqh-tools': '*' },
       }, {
         'index.mjs': [
           `export { external } from '${externalName}'`,
-          "import Tools from '@liusiqi-dev/dsh-tools'",
+          "import Tools from '@liusiqi-dev/sqh-tools'",
           'export { Tools as PluginTools }',
           'export function apply() {}',
         ].join('\n'),
@@ -138,20 +138,20 @@ export function testProfileResolution(mode: ExampleMode): void {
       }
       const staleTools = join(root, 'stale-tools')
       const staleToolsLink = join(sharedModules, '@liusiqi-dev', 'dsh-tools')
-      await writePackage(staleTools, { name: '@liusiqi-dev/dsh-tools', version: '0.0.0', exports }, {
+      await writePackage(staleTools, { name: '@liusiqi-dev/sqh-tools', version: '0.0.0', exports }, {
         'index.mjs': "export default class Tools {}\nexport const TOOL_RUNTIME_SCHEDULER = Symbol()\nthrow new Error('STALE_SQH_TOOLS')",
         'index.cjs': "throw new Error('STALE_SQH_TOOLS')",
       })
       const sourceDir = join(sourcePackageDir, 'src')
-      const toolsCjsExpression = mode === 'lib' ? "require.resolve('@liusiqi-dev/dsh-tools')" : 'null'
+      const toolsCjsExpression = mode === 'lib' ? "require.resolve('@liusiqi-dev/sqh-tools')" : 'null'
       await mkdir(sourceDir, { recursive: true })
       // The ESM-only source hook does not map CommonJS exports to source, so its CJS probe uses a fixture-owned peer.
       await writePackage(sourcePackageDir, {
-        name: 'source-package', version: '1.0.0', peerDependencies: { '@liusiqi-dev/dsh-tools': '*', [leafName]: '*' },
+        name: 'source-package', version: '1.0.0', peerDependencies: { '@liusiqi-dev/sqh-tools': '*', [leafName]: '*' },
       }, {
         'src/query.mjs': [
           "import { createRequire } from 'node:module'",
-          "import Tools from '@liusiqi-dev/dsh-tools'",
+          "import Tools from '@liusiqi-dev/sqh-tools'",
           'export { Tools as SourceTools }',
           'const require = createRequire(import.meta.url)',
           `export const sourceToolsCjs = ${toolsCjsExpression}`,
@@ -178,12 +178,12 @@ export function testProfileResolution(mode: ExampleMode): void {
       // The probe imports from the profile, where the bundle's transitive dependencies need fallback.
       await writePackage(profileDir, {
         name: 'resolution-profile', private: true, dependencies: { [bundleName]: '*', [pluginName]: '*' },
-        dsh: { profile: { bundles: ['@liusiqi-dev/dsh-base', '@liusiqi-dev/dsh-headless', bundleName] } },
+        dsh: { profile: { bundles: ['@liusiqi-dev/sqh-base', '@liusiqi-dev/sqh-headless', bundleName] } },
       }, {
         'probe.mjs': [
           "import { createRequire } from 'node:module'",
           "import { getEnvironmentData } from 'node:worker_threads'",
-          "import Tools, { TOOL_RUNTIME_SCHEDULER } from '@liusiqi-dev/dsh-tools'",
+          "import Tools, { TOOL_RUNTIME_SCHEDULER } from '@liusiqi-dev/sqh-tools'",
           `import { leaf } from '${leafName}'`,
           `import { leaf as bridgeLeaf } from '${bridgeName}'`,
           `import { external } from '${externalName}'`,
@@ -198,7 +198,7 @@ export function testProfileResolution(mode: ExampleMode): void {
           '  ctx.effect(() => ready.onReady(() => {',
           `    const cjs = require('${leafName}').leaf`,
           `    const externalCjs = require('${externalName}').external`,
-          "    const entries = getEnvironmentData('@liusiqi-dev/dsh-app-boot/profile-resolution').resolution.entries",
+          "    const entries = getEnvironmentData('@liusiqi-dev/sqh-app-boot/profile-resolution').resolution.entries",
           '    const evidence = {',
           '      execArgv: process.execArgv, esm: leaf, cjs,',
           '      sameEsmLeaf: leaf === bridgeLeaf,',

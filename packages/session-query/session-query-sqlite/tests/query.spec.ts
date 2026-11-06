@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { SessionId } from '@liusiqi-dev/dsh-session'
-import { SessionSearchCursor, type SessionQueryErrorCode } from '@liusiqi-dev/dsh-session-query'
+import { SessionId } from '@liusiqi-dev/sqh-session'
+import { SessionSearchCursor, type SessionQueryErrorCode } from '@liusiqi-dev/sqh-session-query'
 import {
   buildEventWhere,
   buildSessionWhere,

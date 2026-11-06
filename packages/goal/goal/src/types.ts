@@ -7,11 +7,11 @@
  * aggregates — with zero content duplication. Host-coupled domain
  * vocabulary (message sources, events, fold shapes) lives in ./domain.ts.
  *
- * @module @liusiqi-dev/dsh-goal/types
+ * @module @liusiqi-dev/sqh-goal/types
  */
 
-import type { Branded } from '@liusiqi-dev/dsh-brand'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 
 /** Identifies one goal across its durable revisions. */
 export type GoalId = Branded<'GoalId'>
@@ -125,7 +125,7 @@ export interface GoalProjectionState {
   readonly failure: string | null
 }
 
-declare module '@liusiqi-dev/dsh-session-projection/types' {
+declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionStateMap {
     goal: GoalProjectionState
   }

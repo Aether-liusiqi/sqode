@@ -1,10 +1,10 @@
 import type { Context } from '@liusiqi-dev/cordis'
 import type {
   ConversationMatch, ConversationNodeContext, ConversationNodeDefinition, TurnLocation,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type {} from '@liusiqi-dev/dsh-llm-retry/types'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session/types'
-import { deriveTurnTokenUsage } from '@liusiqi-dev/dsh-token-meter/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type {} from '@liusiqi-dev/sqh-llm-retry/types'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session/types'
+import { deriveTurnTokenUsage } from '@liusiqi-dev/sqh-token-meter/client'
 import type {
   AssistantChatData, FinalAssistantChatData, TurnTailChatData,
 } from '../contract/chat-nodes.ts'
@@ -17,7 +17,7 @@ declare module '../contract/chat-nodes.ts' {
   }
 }
 
-declare module '@liusiqi-dev/dsh-client-ui-conversation/client' {
+declare module '@liusiqi-dev/sqh-client-ui-conversation/client' {
   interface ConversationTurnDataMap {
     /** Closing Assistant and footer facts derived for this completed Turn. */
     'turn-tail': TurnTailChatData

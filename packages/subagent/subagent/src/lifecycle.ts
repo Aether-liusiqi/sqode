@@ -11,16 +11,16 @@
  * between this module and one in-package caller, not something a plugin may
  * depend on.
  *
- * @module @liusiqi-dev/dsh-subagent/lifecycle
+ * @module @liusiqi-dev/sqh-subagent/lifecycle
  */
 
 import { randomUUID } from 'node:crypto'
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import { foldConsumedWork } from '@liusiqi-dev/dsh-agent'
-import { SessionLogOffset } from '@liusiqi-dev/dsh-session'
-import type { SessionEvent, SessionId, SessionLogOffset as SessionLogOffsetType } from '@liusiqi-dev/dsh-session'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import { foldConsumedWork } from '@liusiqi-dev/sqh-agent'
+import { SessionLogOffset } from '@liusiqi-dev/sqh-session'
+import type { SessionEvent, SessionId, SessionLogOffset as SessionLogOffsetType } from '@liusiqi-dev/sqh-session'
 import { finalAssistantOutput } from './assistant-output.ts'
 import { SubagentRunId } from './types.ts'
 import type { SubagentResult, SubagentRun, SubagentRunEndInfo, SubagentRunInfo } from './types.ts'

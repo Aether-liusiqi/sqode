@@ -1,16 +1,16 @@
-/** Package-owned compaction log-stream invariants. @module @liusiqi-dev/dsh-compaction/invariant */
+/** Package-owned compaction log-stream invariants. @module @liusiqi-dev/sqh-compaction/invariant */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { isReplacementSurfaceEvent, SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { Session, SessionEvent } from '@liusiqi-dev/dsh-session'
-import { SurfaceManager } from '@liusiqi-dev/dsh-session/surface'
-import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
+import { isReplacementSurfaceEvent, SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { Session, SessionEvent } from '@liusiqi-dev/sqh-session'
+import { SurfaceManager } from '@liusiqi-dev/sqh-session/surface'
+import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
 import type { CompactionId } from './brand.ts'
 import { isCompactCheckpointSource } from './checkpoint.ts'
 import type { CompactionCheckpointSource } from './checkpoint.ts'
 import type {} from './types.ts'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-compaction'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-compaction'
 
 /** Cordis companion plugin name. */
 export const name = 'compaction-invariant'

@@ -1,6 +1,6 @@
 /**
  * Exclusive named registration for the computer-use capability.
- * @module @liusiqi-dev/dsh-computer-use
+ * @module @liusiqi-dev/sqh-computer-use
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'

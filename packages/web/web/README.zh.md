@@ -3,7 +3,7 @@ description: "web 访问服务（ctx.web）：部署方与插件作者如何通�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-web
+# @liusiqi-dev/sqh-web
 
 [English](README.md) | 中文
 
@@ -36,9 +36,9 @@ kind: "package-reference"
 加载服务并让唯一挂载的后端自动选择，或用 `searchProvider`／`fetchProvider` 固定提供方 id。环境变量 `$SQODE_WEB_SEARCH_PROVIDER` 与 `$SQODE_WEB_FETCH_PROVIDER` 提供相同字段，不是另一条优先级链。
 
 ```yaml
-- name: '@liusiqi-dev/dsh-web'
-- name: '@liusiqi-dev/dsh-web-search-exa'
-- name: '@liusiqi-dev/dsh-web-fetch-http'
+- name: '@liusiqi-dev/sqh-web'
+- name: '@liusiqi-dev/sqh-web-search-exa'
+- name: '@liusiqi-dev/sqh-web-fetch-http'
 ```
 
 | 字段 | 默认值 | 含义 |

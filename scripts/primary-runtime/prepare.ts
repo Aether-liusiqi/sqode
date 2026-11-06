@@ -163,14 +163,14 @@ export async function preparePrimaryRuntime(options: PreparePrimaryRuntimeOption
     rmSync(staging, { recursive: true, force: true })
   }
   const require = createRequire(import.meta.url)
-  await prepareOfficeSkillAssets(join(dirname(require.resolve('@liusiqi-dev/dsh-skill-office/package.json')), 'assets'),
+  await prepareOfficeSkillAssets(join(dirname(require.resolve('@liusiqi-dev/sqh-skill-office/package.json')), 'assets'),
     join(paths.runtime, 'office-skills'))
 
   // The preset-authoring skills are read by the filesystem loader, which watches the
   // roots it discovers. A directory inside app.asar cannot be watched, so leaving them
   // in the package made the watcher fail and the whole catalog disappear. They ship as
   // real files beside the office assets, the same way those already do.
-  await cp(join(dirname(require.resolve('@liusiqi-dev/dsh-agent-preset/package.json')), 'skills'),
+  await cp(join(dirname(require.resolve('@liusiqi-dev/sqh-agent-preset/package.json')), 'skills'),
     join(paths.runtime, 'preset-skills'), { recursive: true })
 }
 

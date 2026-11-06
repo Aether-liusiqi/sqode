@@ -1,12 +1,12 @@
 /** Fold of `ask_user_question` tool events into the answerable question set, and its Session projection. */
 import { z } from 'zod'
-import { SessionLogOffset, TOOL_OUTCOME_UNKNOWN } from '@liusiqi-dev/dsh-session'
-import type { SessionEvent, SessionLogOffset as SessionLogOffsetType } from '@liusiqi-dev/dsh-session'
-import type { ProjectionDefinition } from '@liusiqi-dev/dsh-session-projection'
-import type {} from '@liusiqi-dev/dsh-agent/types'
-import type {} from '@liusiqi-dev/dsh-tools/types'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import type { ContentBlock, ToolSchema } from '@liusiqi-dev/dsh-llm'
+import { SessionLogOffset, TOOL_OUTCOME_UNKNOWN } from '@liusiqi-dev/sqh-session'
+import type { SessionEvent, SessionLogOffset as SessionLogOffsetType } from '@liusiqi-dev/sqh-session'
+import type { ProjectionDefinition } from '@liusiqi-dev/sqh-session-projection'
+import type {} from '@liusiqi-dev/sqh-agent/types'
+import type {} from '@liusiqi-dev/sqh-tools/types'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import type { ContentBlock, ToolSchema } from '@liusiqi-dev/sqh-llm'
 import type { AskUserQuestionAnswerItem, AskUserQuestionItem, AskUserQuestionOption, PendingUserQuestion, SettledUserQuestion, UserQuestionProjectionView } from './types.ts'
 
 /**
@@ -330,7 +330,7 @@ export const userQuestionProjectionDefinition = {
   stateVersion: 2,
 } satisfies ProjectionDefinition<'userQuestions', UserQuestionProjectionState>
 
-declare module '@liusiqi-dev/dsh-session-projection/types' {
+declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionStateMap {
     userQuestions: UserQuestionProjectionState
   }

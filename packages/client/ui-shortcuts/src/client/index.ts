@@ -1,17 +1,17 @@
 /** Shortcut reference plugin; commands and entry points share one declared store. */
 import type { Context } from '@liusiqi-dev/cordis'
-import type { ShortcutCommandId } from '@liusiqi-dev/dsh-client-shortcuts/client'
-import { closeTopModal } from '@liusiqi-dev/dsh-client-ui-primitives'
-import type {} from '@liusiqi-dev/dsh-client-locale/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-layout/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-settings/client'
+import type { ShortcutCommandId } from '@liusiqi-dev/sqh-client-shortcuts/client'
+import { closeTopModal } from '@liusiqi-dev/sqh-client-ui-primitives'
+import type {} from '@liusiqi-dev/sqh-client-locale/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-layout/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-settings/client'
 import { createShortcutsStore } from './store.ts'
 import { ShortcutReference, ShortcutsRow } from './Reference.tsx'
 import { en, zh } from './locales.ts'
 import { fixedCommands } from './fixed.ts'
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** Shortcut reference and settings entry copy. */
     shortcuts: keyof typeof zh

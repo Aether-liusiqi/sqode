@@ -1,6 +1,6 @@
 import { Context } from '@liusiqi-dev/cordis'
-import { brandString } from '@liusiqi-dev/dsh-brand'
-import { SessionSeq, type SessionEvent } from '@liusiqi-dev/dsh-session/types'
+import { brandString } from '@liusiqi-dev/sqh-brand'
+import { SessionSeq, type SessionEvent } from '@liusiqi-dev/sqh-session/types'
 import { describe, expect, it, onTestFinished, vi } from 'vitest'
 import type {
   ConversationTimelineSnapshot, ConversationViewBuilder, ConversationViewDefinition, ConversationViewNode,
@@ -12,7 +12,7 @@ import { ConversationNodeAssembler } from '../src/client/conversation/assembler.
 import { ConversationGroupRegistry } from '../src/client/conversation/group-registry.ts'
 import { ConversationViewRegistry } from '../src/client/conversation/view-registry.ts'
 
-declare module '@liusiqi-dev/dsh-client-ui-conversation/client' {
+declare module '@liusiqi-dev/sqh-client-ui-conversation/client' {
   interface ConversationGroupDataMap {
     'group-test': number
   }

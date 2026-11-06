@@ -1,24 +1,24 @@
 # Keyless replay counterpart of system-prompt-in-history/cordis.yml: the
 # replay route declares the same in-history capability.
 - id: llm-deepseek
-  name: '@liusiqi-dev/dsh-llm-deepseek-api-key'
+  name: '@liusiqi-dev/sqh-llm-deepseek-api-key'
   disabled: true
 
 - id: agent-default-model
-  name: '@liusiqi-dev/dsh-agent-default-model'
+  name: '@liusiqi-dev/sqh-agent-default-model'
   config:
     provider: deepseek-official
     model: deepseek-flash
 
 - id: session-persistence-jsonl
-  name: '@liusiqi-dev/dsh-session-persistence-jsonl'
+  name: '@liusiqi-dev/sqh-session-persistence-jsonl'
   config:
     root: !!js dshHomePath('sessions')
     compression: none
 
 - insert:
     - id: llm-replay
-      name: '@liusiqi-dev/dsh-llm-replay'
+      name: '@liusiqi-dev/sqh-llm-replay'
       config:
         providers:
           - id: deepseek-official

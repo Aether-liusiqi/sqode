@@ -1,6 +1,6 @@
-/** Attachment identifier brand. @module @liusiqi-dev/dsh-attachment/brand */
+/** Attachment identifier brand. @module @liusiqi-dev/sqh-attachment/brand */
 
-import type { Branded } from '@liusiqi-dev/dsh-brand'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
 
 /** Opaque content-addressed identifier for one immutable attachment object. */
 export type AttachmentId = Branded<'AttachmentId'>

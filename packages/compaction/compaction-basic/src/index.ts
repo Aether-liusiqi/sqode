@@ -1,22 +1,22 @@
 /**
  * Basic replay-aware compaction backend.
  *
- * @module @liusiqi-dev/dsh-compaction-basic
+ * @module @liusiqi-dev/sqh-compaction-basic
  */
 
 import { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { CompactionEngine, ManualCompactionError } from '@liusiqi-dev/dsh-compaction'
-import type { CompactionResult, CompactionTrigger } from '@liusiqi-dev/dsh-compaction'
-import type { Session, SessionSeq } from '@liusiqi-dev/dsh-session'
-import { BlockAssembler, CONTEXT_WINDOW_EXCEEDED_CODE, createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { GenerateOptions, LlmCallConfig } from '@liusiqi-dev/dsh-llm'
+import { CompactionEngine, ManualCompactionError } from '@liusiqi-dev/sqh-compaction'
+import type { CompactionResult, CompactionTrigger } from '@liusiqi-dev/sqh-compaction'
+import type { Session, SessionSeq } from '@liusiqi-dev/sqh-session'
+import { BlockAssembler, CONTEXT_WINDOW_EXCEEDED_CODE, createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { GenerateOptions, LlmCallConfig } from '@liusiqi-dev/sqh-llm'
 import { composeNotice, dueForNotice, latestUserRequest, noticeUserMessage } from './notice.ts'
-import { assertNever } from '@liusiqi-dev/dsh-util-values'
-import type { Agent, PreStepDecision } from '@liusiqi-dev/dsh-agent'
-import type { CommandId } from '@liusiqi-dev/dsh-commands/brand'
+import { assertNever } from '@liusiqi-dev/sqh-util-values'
+import type { Agent, PreStepDecision } from '@liusiqi-dev/sqh-agent'
+import type { CommandId } from '@liusiqi-dev/sqh-commands/brand'
 // Type-only: makes the optional sibling service available to `ctx.get()`.
-import type {} from '@liusiqi-dev/dsh-compaction-tool-result-pruner'
+import type {} from '@liusiqi-dev/sqh-compaction-tool-result-pruner'
 import {
   resolveCompactSpec,
   resolveConfig,
@@ -93,7 +93,7 @@ const SUMMARY_PROMPT_MARGIN = 20_000
 /**
  * Characters one token carries when pricing tool schemas.
  *
- * Same value as `@liusiqi-dev/dsh-tools` exports, repeated because this package does
+ * Same value as `@liusiqi-dev/sqh-tools` exports, repeated because this package does
  * not depend on it: importing across that boundary would need a package dependency
  * and a built reference, which is how TS6305 appeared last time. If one moves, both
  * move — the two numbers price the same window.

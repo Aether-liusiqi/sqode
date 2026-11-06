@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-session-persistence-jsonl",
+  "name": "@liusiqi-dev/sqh-session-persistence-jsonl",
   "description": "JSONL durable session persistence backend for the Siqi Harness",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,23 +28,23 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-persistence": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-persistence": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "dependencies": {
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-session-format": "workspace:*",
-    "@liusiqi-dev/dsh-session-format-catalog": "workspace:*",
-    "@liusiqi-dev/dsh-session-format-v3-to-v4": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-session-format": "workspace:*",
+    "@liusiqi-dev/sqh-session-format-catalog": "workspace:*",
+    "@liusiqi-dev/sqh-session-format-v3-to-v4": "workspace:*",
     "@liusiqi-dev/node-addon-system": "workspace:~",
     "@liusiqi-dev/schemastery": "workspace:~",
     "koffi": "3.1.1"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-format-v0-to-v1": "workspace:*",
-    "@liusiqi-dev/dsh-session-persistence": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-format-v0-to-v1": "workspace:*",
+    "@liusiqi-dev/sqh-session-persistence": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   }
 }

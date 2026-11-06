@@ -5,12 +5,12 @@
  * Under the `ask` approval policy a reviewer denial asks the user; under
  * `never` it is final.
  *
- * @module @liusiqi-dev/dsh-experimental-auto-review
+ * @module @liusiqi-dev/sqh-experimental-auto-review
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type {} from '@liusiqi-dev/dsh-agent-instructions'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type {} from '@liusiqi-dev/sqh-agent-instructions'
 import {
   BlockAssembler,
   type ContentBlock,
@@ -19,17 +19,17 @@ import {
   type StreamChunk,
   type ToolCallId,
   type ToolSchema,
-} from '@liusiqi-dev/dsh-llm'
-import { deepFreeze } from '@liusiqi-dev/dsh-util-values'
-import { AUTO_PRESET } from '@liusiqi-dev/dsh-permission-presets'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
-import type {} from '@liusiqi-dev/dsh-subagent'
-import type {} from '@liusiqi-dev/dsh-user-approval'
+} from '@liusiqi-dev/sqh-llm'
+import { deepFreeze } from '@liusiqi-dev/sqh-util-values'
+import { AUTO_PRESET } from '@liusiqi-dev/sqh-permission-presets'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
+import type {} from '@liusiqi-dev/sqh-subagent'
+import type {} from '@liusiqi-dev/sqh-user-approval'
 import {
   RUN_CODE_NAME,
   type PreToolDecision,
   type ToolExecution,
-} from '@liusiqi-dev/dsh-tools'
+} from '@liusiqi-dev/sqh-tools'
 
 /** Structured error name persisted for every final reviewer denial. */
 const AUTO_REVIEW_DENIED_ERROR_NAME = 'AutoReviewDeniedError'

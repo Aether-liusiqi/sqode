@@ -1,17 +1,17 @@
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import { Context } from '@liusiqi-dev/cordis'
 import { describe, expect, it, onTestFinished, vi } from 'vitest'
 import type {
   SessionListState, SessionReference, SessionSummary,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { WorkspaceId, WorkspaceSnapshot, WorkspaceView } from '@liusiqi-dev/dsh-api-workspace-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import { SlotRegistry } from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type { StoredEntry } from '@liusiqi-dev/dsh-client-ui-slots'
-import { RemoteError, TestRemote } from '@liusiqi-dev/dsh-client-test-runtime'
-import { LocaleRuntime } from '@liusiqi-dev/dsh-client-locale/client'
-import { apply, inject } from '@liusiqi-dev/dsh-client-ui-workspace/client'
-import type { WorkspaceBrowserInjected, WorkspacePickerInjected } from '@liusiqi-dev/dsh-client-ui-workspace/client'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { WorkspaceId, WorkspaceSnapshot, WorkspaceView } from '@liusiqi-dev/sqh-api-workspace-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import { SlotRegistry } from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type { StoredEntry } from '@liusiqi-dev/sqh-client-ui-slots'
+import { RemoteError, TestRemote } from '@liusiqi-dev/sqh-client-test-runtime'
+import { LocaleRuntime } from '@liusiqi-dev/sqh-client-locale/client'
+import { apply, inject } from '@liusiqi-dev/sqh-client-ui-workspace/client'
+import type { WorkspaceBrowserInjected, WorkspacePickerInjected } from '@liusiqi-dev/sqh-client-ui-workspace/client'
 import {
   type ArchiveSessionInjected, type ForkSessionInjected, menuOpenStateFactory, type PinSessionInjected,
   type RenameSessionInjected, type RowToastInjected, type SessionArchiveConfirmInjected, type SessionRenameDialogInjected,

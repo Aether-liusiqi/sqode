@@ -13,29 +13,29 @@ import {
   loadProfile,
   PluginPackages,
   type Profile,
-} from '@liusiqi-dev/dsh-app-boot'
-import { provideCmdline } from '@liusiqi-dev/dsh-cmdline'
-import { SessionId, SessionLogOffset } from '@liusiqi-dev/dsh-session'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
+} from '@liusiqi-dev/sqh-app-boot'
+import { provideCmdline } from '@liusiqi-dev/sqh-cmdline'
+import { SessionId, SessionLogOffset } from '@liusiqi-dev/sqh-session'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
 import type { PatchOptions } from '@liusiqi-dev/cordis-plugin-include'
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest'
 import { dump, load } from 'js-yaml'
 import { entryListSchema } from '@liusiqi-dev/cordis-plugin-include'
-import { bundlePatchPaths, composeEntries } from '@liusiqi-dev/dsh-app-boot'
+import { bundlePatchPaths, composeEntries } from '@liusiqi-dev/sqh-app-boot'
 /** Profile entry ids whose volatile fields these scenarios edit through Settings. */
 const SETTINGS_NAMESPACE = 'agent-preset-registry'
 const SUBAGENT_MODEL_SELECTION_SETTINGS_NAMESPACE = 'subagent-model-selection-settings'
-import { applyChildComposition, childSessionMeta } from '@liusiqi-dev/dsh-subagent'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import type {} from '@liusiqi-dev/dsh-compaction-basic'
-import type {} from '@liusiqi-dev/dsh-skill'
-import type {} from '@liusiqi-dev/dsh-tools'
+import { applyChildComposition, childSessionMeta } from '@liusiqi-dev/sqh-subagent'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import type {} from '@liusiqi-dev/sqh-compaction-basic'
+import type {} from '@liusiqi-dev/sqh-skill'
+import type {} from '@liusiqi-dev/sqh-tools'
 // Type-only: resolves `ctx.get('sessionProjections')` and `ctx.get('tokenMeter')`.
-import type {} from '@liusiqi-dev/dsh-session-projection'
-import type {} from '@liusiqi-dev/dsh-token-meter'
+import type {} from '@liusiqi-dev/sqh-session-projection'
+import type {} from '@liusiqi-dev/sqh-token-meter'
 
 const REPO_ROOT = fileURLToPath(new URL('../../..', import.meta.url))
-const { boot } = createRequire(import.meta.url)(join(REPO_ROOT, 'packages/boot/app-boot/lib/index.js')) as typeof import('@liusiqi-dev/dsh-app-boot')
+const { boot } = createRequire(import.meta.url)(join(REPO_ROOT, 'packages/boot/app-boot/lib/index.js')) as typeof import('@liusiqi-dev/sqh-app-boot')
 /** The shipped Web surface: the dsh-base and dsh-web-app bundle patches over an empty profile. */
 const BASE_PATCH = join(REPO_ROOT, 'packages/bundle/base/cordis.patch.yml')
 const WEB_BUNDLE = join(REPO_ROOT, 'packages/bundle/web-app')
@@ -113,8 +113,8 @@ async function bootWeb(
     // supplies `directoryPicker` without one.
     { id: 'directory-picker', disabled: true },
     { insert: [
-      { id: 'directory-picker-browse', name: '@liusiqi-dev/dsh-host-directory-picker-browse' },
-      { id: 'ui-directory-picker-browse', name: '@liusiqi-dev/dsh-client-ui-directory-picker-browse' },
+      { id: 'directory-picker-browse', name: '@liusiqi-dev/sqh-host-directory-picker-browse' },
+      { id: 'ui-directory-picker-browse', name: '@liusiqi-dev/sqh-client-ui-directory-picker-browse' },
     ] },
     { id: 'agent-preset-registry', config: { default: 'standard' } },
     ...extra,
@@ -122,7 +122,7 @@ async function bootWeb(
   const home = profileHome
   const profileDir = join(home, 'profiles', 'spec')
   await mkdir(profileDir, { recursive: true })
-  if (profileBundles === undefined) initProfile(profileDir, ['@liusiqi-dev/dsh-base', '@liusiqi-dev/dsh-web-app'])
+  if (profileBundles === undefined) initProfile(profileDir, ['@liusiqi-dev/sqh-base', '@liusiqi-dev/sqh-web-app'])
   // Product Bundles are installed into the Profile, not the dsh app. Model
   // pnpm's package link for only the selected products; their own production
   // dependencies resolve from the linked workspace packages, while shared
@@ -168,7 +168,7 @@ async function bootWeb(
   return await boot('dsh-test', rootConfig, [...bundlePatches, ...overrides], async (bootCtx) => {
     bootCtx.provide('profileContext', { name: 'spec', dir: profileDir, patchPath: profile.patchPath,
       installAnchor: INSTALL_ANCHOR, home, cwd: home,
-      startedBundles: profileBundles ?? ['@liusiqi-dev/dsh-base', '@liusiqi-dev/dsh-web-app'],
+      startedBundles: profileBundles ?? ['@liusiqi-dev/sqh-base', '@liusiqi-dev/sqh-web-app'],
       overlays: [], telemetryDisabledEnv: '1' })
     await bootCtx.plugin(PluginPackages, { resolution })
     bootCtx.provide('connection', {
@@ -545,7 +545,7 @@ describe('product Bundle and user-preset intersection', () => {
   async function bootProducts(installed: readonly Product[]): Promise<Context> {
     const root = await mkdtemp(join(tmpdir(), 'dsh-product-presets-'))
     const definitions: import('@liusiqi-dev/cordis-plugin-loader').EntryOptions[] = []
-    const standardConfig = composeEntries([webPatches('test')]).find(row => row.id === 'preset-standard')!.config as import('@liusiqi-dev/dsh-agent-preset-registry').PresetDefinition
+    const standardConfig = composeEntries([webPatches('test')]).find(row => row.id === 'preset-standard')!.config as import('@liusiqi-dev/sqh-agent-preset-registry').PresetDefinition
     const standard = dump(standardConfig.plugins, { schema: entryListSchema })
     for (const id of presetIds) {
       let composition = standard
@@ -555,19 +555,19 @@ describe('product Bundle and user-preset intersection', () => {
       if (id === 'products-claude' || id === 'products-both') {
         composition = enablePresetTool(composition, 'tool-subagent-claude-code')
       }
-      definitions.push({ id: `preset-${id}`, name: '@liusiqi-dev/dsh-agent-preset', config: { id, plugins: load(composition, { schema: entryListSchema }) } })
+      definitions.push({ id: `preset-${id}`, name: '@liusiqi-dev/sqh-agent-preset', config: { id, plugins: load(composition, { schema: entryListSchema }) } })
     }
     const packageDir = (product: Product): string => (
       product === 'codex' ? CODEX_PACKAGE_DIR : CLAUDE_CODE_PACKAGE_DIR
     )
     const packageName = (product: Product): string => (
       product === 'codex'
-        ? '@liusiqi-dev/dsh-subagent-codex'
-        : '@liusiqi-dev/dsh-subagent-claude-code'
+        ? '@liusiqi-dev/sqh-subagent-codex'
+        : '@liusiqi-dev/sqh-subagent-claude-code'
     )
     return await bootWeb(root, [{ insert: definitions }], installed.map(packageDir), [
-      '@liusiqi-dev/dsh-base',
-      '@liusiqi-dev/dsh-web-app',
+      '@liusiqi-dev/sqh-base',
+      '@liusiqi-dev/sqh-web-app',
       ...installed.map(packageName),
     ])
   }
@@ -634,13 +634,13 @@ describe('a user preset declared from the shipped cordis rows', () => {
 
   it('mounts beside the shipped `cordis` preset and reads the shared Host inspect providers', async () => {
     // The Host inspect providers are one process-global set registered by the
-    // host composition (`@liusiqi-dev/dsh-tool-cordis/host`); each preset's
+    // host composition (`@liusiqi-dev/sqh-tool-cordis/host`); each preset's
     // `tool-cordis` row only registers the tools. Before that split the copy
     // failed to mount: its row re-registered provider "Service".
     const root = await mkdtemp(join(tmpdir(), 'dsh-copied-preset-'))
-    const cordis = composeEntries([webPatches('test')]).find(row => row.id === 'preset-cordis')!.config as import('@liusiqi-dev/dsh-agent-preset-registry').PresetDefinition
+    const cordis = composeEntries([webPatches('test')]).find(row => row.id === 'preset-cordis')!.config as import('@liusiqi-dev/sqh-agent-preset-registry').PresetDefinition
     const copyCtx = await bootWeb(root, [{ insert: [{
-      id: 'preset-cordis-copy', name: '@liusiqi-dev/dsh-agent-preset',
+      id: 'preset-cordis-copy', name: '@liusiqi-dev/sqh-agent-preset',
       config: { ...cordis, id: 'cordis-copy', name: 'Cordis copy' },
     }] }])
     try {
@@ -706,7 +706,7 @@ describe('a user preset declared from the shipped cordis rows', () => {
           expect(page.isError, resultText(page)).toBe(false)
           return (JSON.parse(resultText(page)) as ConfigPage).data
         }
-        const toolsRows = await listConfigs({ name: '@liusiqi-dev/dsh-tools' }, 'copied-preset-inspect-configs')
+        const toolsRows = await listConfigs({ name: '@liusiqi-dev/sqh-tools' }, 'copied-preset-inspect-configs')
         const toolsRow = toolsRows.entries[0]
         expect(toolsRow).toMatchObject({ patchId: 'tools', status: 'schema' })
         expect(toolsRows).toMatchObject({ total: 1, nextOffset: null })

@@ -1,9 +1,9 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { SessionId } from '@liusiqi-dev/dsh-session'
-import { JobId, JobRegistry } from '@liusiqi-dev/dsh-jobs'
-import type { JobEvents, JobOutputRead, JobRead, JobSpec, JobStatus, JobView } from '@liusiqi-dev/dsh-jobs'
-import type { SessionActivity } from '@liusiqi-dev/dsh-workspace'
+import { SessionId } from '@liusiqi-dev/sqh-session'
+import { JobId, JobRegistry } from '@liusiqi-dev/sqh-jobs'
+import type { JobEvents, JobOutputRead, JobRead, JobSpec, JobStatus, JobView } from '@liusiqi-dev/sqh-jobs'
+import type { SessionActivity } from '@liusiqi-dev/sqh-workspace'
 
 interface Row {
   readonly id: string

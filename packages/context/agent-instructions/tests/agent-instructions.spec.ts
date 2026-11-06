@@ -4,14 +4,14 @@ import { tmpdir } from 'node:os'
 import { afterAll, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
-import * as AgentInstructions from '@liusiqi-dev/dsh-agent-instructions'
-import LlmRuntime, { createUserMessage, ToolCallId, type Message, type MessageSource, type StreamChunk } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { SessionId, SessionSeq, type SessionEvent, type SurfaceIntent, type UserMessage } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import AgentRegistry, { agentEvents, type Agent } from '@liusiqi-dev/dsh-agent'
-import AgentLoop, { turnBoundaryProjectionDefinition } from '@liusiqi-dev/dsh-agent-loop'
-import { FileSystem, FsTargetKey, FsVersion } from '@liusiqi-dev/dsh-fs'
+import * as AgentInstructions from '@liusiqi-dev/sqh-agent-instructions'
+import LlmRuntime, { createUserMessage, ToolCallId, type Message, type MessageSource, type StreamChunk } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { SessionId, SessionSeq, type SessionEvent, type SurfaceIntent, type UserMessage } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import AgentRegistry, { agentEvents, type Agent } from '@liusiqi-dev/sqh-agent'
+import AgentLoop, { turnBoundaryProjectionDefinition } from '@liusiqi-dev/sqh-agent-loop'
+import { FileSystem, FsTargetKey, FsVersion } from '@liusiqi-dev/sqh-fs'
 import type {
   FsDirEntry,
   FsEditOutcome,
@@ -21,20 +21,20 @@ import type {
   FsTarget,
   FsWriteIntent,
   FsWriteOutcome,
-} from '@liusiqi-dev/dsh-fs'
-import LocalFileSystem from '@liusiqi-dev/dsh-fs-local'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime, { defineContentToolFixture } from '@liusiqi-dev/dsh-tools'
+} from '@liusiqi-dev/sqh-fs'
+import LocalFileSystem from '@liusiqi-dev/sqh-fs-local'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime, { defineContentToolFixture } from '@liusiqi-dev/sqh-tools'
 import type {
   ToolExecution,
   ToolExecutionToken,
-} from '@liusiqi-dev/dsh-tools'
-import * as ToolFs from '@liusiqi-dev/dsh-tool-fs'
+} from '@liusiqi-dev/sqh-tools'
+import * as ToolFs from '@liusiqi-dev/sqh-tool-fs'
 import {
   discoverBaselineInstructionFiles,
   loadBaselineInstructions,
   renderAgentInstructions,
-} from '@liusiqi-dev/dsh-agent-instructions'
+} from '@liusiqi-dev/sqh-agent-instructions'
 import {
   applyInstructionVersionUpdates,
   baselineInstructionState,
@@ -47,9 +47,9 @@ import { MockAdapter, textResponse, toolCallResponse } from '../../../core/agent
 import {
   mountAgentLoopTestDependencies,
   mountAgentLoopTestHarness,
-} from '@liusiqi-dev/dsh-agent-loop-testkit'
+} from '@liusiqi-dev/sqh-agent-loop-testkit'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'downstream': { kind: 'downstream' } & ContextFormed
     'other': { kind: 'other' } & ContextFormed
@@ -684,7 +684,7 @@ describe('workspace context instruction discovery', () => {
       vi.stubEnv('SQODE_HOME', '')
       vi.resetModules()
       vi.doMock('node:os', () => ({ homedir: () => home }))
-      const isolated = await import('@liusiqi-dev/dsh-agent-instructions')
+      const isolated = await import('@liusiqi-dev/sqh-agent-instructions')
       const files = await isolated.discoverBaselineInstructionFiles({ cwd: root })
 
       expect(files.map(file => file.displayPath)).toEqual(['~/.sqode/AGENTS.md'])
@@ -705,7 +705,7 @@ describe('workspace context instruction discovery', () => {
 
       vi.resetModules()
       vi.doMock('node:os', () => ({ homedir: () => home }))
-      const isolated = await import('@liusiqi-dev/dsh-agent-instructions')
+      const isolated = await import('@liusiqi-dev/sqh-agent-instructions')
       const files = await isolated.discoverBaselineInstructionFiles({ cwd: root, dshHome: '~/.sqode' })
 
       expect(files).toEqual([{ absolutePath: join(home, '.dsh/AGENTS.md'), displayPath: '~/.sqode/AGENTS.md' }])
@@ -2541,7 +2541,7 @@ describe('workspace context request injection', () => {
           },
         }
       })
-      const isolated = await import('@liusiqi-dev/dsh-agent-instructions')
+      const isolated = await import('@liusiqi-dev/sqh-agent-instructions')
       await isolated.loadBaselineInstructions({ cwd: root, dshHome: home, maxBytes: 65536 })
       observedStats.clear()
       await isolated.loadBaselineInstructions({ cwd: root, dshHome: home, maxBytes: 65536 })
@@ -2574,7 +2574,7 @@ describe('workspace context request injection', () => {
           },
         }
       })
-      const isolated = await import('@liusiqi-dev/dsh-agent-instructions')
+      const isolated = await import('@liusiqi-dev/sqh-agent-instructions')
 
       const rendered = await isolated.loadBaselineInstructions({ cwd: root, dshHome: home, maxBytes: 65536 })
 
@@ -2611,7 +2611,7 @@ describe('workspace context request injection', () => {
           },
         }
       })
-      const isolated = await import('@liusiqi-dev/dsh-agent-instructions')
+      const isolated = await import('@liusiqi-dev/sqh-agent-instructions')
 
       await expect(isolated.loadBaselineInstructions({ cwd, dshHome: home, maxBytes: 65536 }))
         .rejects.toBe(failure)

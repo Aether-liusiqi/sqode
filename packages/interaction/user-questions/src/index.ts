@@ -1,20 +1,20 @@
 /**
  * Service Definition for the user-questions capability seam (`ctx.userQuestions`): a UI-backed service for
  * pausing an agent tool call until the human answers a question. The model-
- * facing tool lives in `@liusiqi-dev/dsh-tool-ask-user`; UI packages compose
+ * facing tool lives in `@liusiqi-dev/sqh-tool-ask-user`; UI packages compose
  * answerers on the Agent-scoped Cordis waterfall.
  *
- * @module @liusiqi-dev/dsh-user-questions
+ * @module @liusiqi-dev/sqh-user-questions
  */
 
 import { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-agent'
-import { createUserMessage, HarnessError, type MessageId, type ToolCallId, type UserMessage } from '@liusiqi-dev/dsh-llm'
-import type { Session } from '@liusiqi-dev/dsh-session'
-import { scopeTarget } from '@liusiqi-dev/dsh-scope'
-import { Remote, TypertRemoteService } from '@liusiqi-dev/dsh-typert-protocol'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type {} from '@liusiqi-dev/dsh-session-projection'
+import type {} from '@liusiqi-dev/sqh-agent'
+import { createUserMessage, HarnessError, type MessageId, type ToolCallId, type UserMessage } from '@liusiqi-dev/sqh-llm'
+import type { Session } from '@liusiqi-dev/sqh-session'
+import { scopeTarget } from '@liusiqi-dev/sqh-scope'
+import { Remote, TypertRemoteService } from '@liusiqi-dev/sqh-typert-protocol'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type {} from '@liusiqi-dev/sqh-session-projection'
 import z from '@liusiqi-dev/schemastery'
 import { userQuestionProjectionDefinition } from './projection.ts'
 import { TimedQuestionWait } from './timed-wait.ts'

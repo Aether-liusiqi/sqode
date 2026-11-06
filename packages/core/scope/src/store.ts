@@ -1,7 +1,7 @@
 /**
  * Shared insertion-ordered storage and effect ownership for scope-aware registries.
  *
- * @module @liusiqi-dev/dsh-scope
+ * @module @liusiqi-dev/sqh-scope
  */
 
 import type { Context } from '@liusiqi-dev/cordis'

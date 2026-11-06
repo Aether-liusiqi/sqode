@@ -1,10 +1,10 @@
 /** Reviewed synthetic tool history shared by continuation and child-catalog measurements. */
 
-import { AssistantStreamAccumulator } from '@liusiqi-dev/dsh-llm/assistant-stream'
-import { MessageId, ToolCallId } from '@liusiqi-dev/dsh-llm'
-import type { ContentBlock, StreamChunk } from '@liusiqi-dev/dsh-llm'
-import { Session, SessionId } from '@liusiqi-dev/dsh-session'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
+import { AssistantStreamAccumulator } from '@liusiqi-dev/sqh-llm/assistant-stream'
+import { MessageId, ToolCallId } from '@liusiqi-dev/sqh-llm'
+import type { ContentBlock, StreamChunk } from '@liusiqi-dev/sqh-llm'
+import { Session, SessionId } from '@liusiqi-dev/sqh-session'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
 
 /** Workload dimensions, independent of environment and recorded user material. */
 export const WORKLOAD = {

@@ -5,7 +5,7 @@
  * the two ends from drifting, not from parsing.
  */
 
-import type { WebBootGraph } from '@liusiqi-dev/dsh-client-modules'
+import type { WebBootGraph } from '@liusiqi-dev/sqh-client-modules'
 
 /** One SSE frame: the settled graph on connection or change, or one rebuilt bundle notice. */
 export type PluginsEventFrame =

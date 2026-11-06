@@ -6,9 +6,9 @@ import { Context, FiberState, Service, resolveConfig } from '@liusiqi-dev/cordis
 import { entryListSchema, type PatchOptions } from '@liusiqi-dev/cordis-plugin-include'
 import yaml from 'js-yaml'
 import type { Entry, EntryOptions } from '@liusiqi-dev/cordis-plugin-loader'
-import type {} from '@liusiqi-dev/dsh-hmr'
-import { composeEntries, loadProfileDirectory, readProfilePatches, reconcileProfilePatches } from '@liusiqi-dev/dsh-app-boot'
-import { withFileLock, writeFileAtomic } from '@liusiqi-dev/dsh-atomic-write'
+import type {} from '@liusiqi-dev/sqh-hmr'
+import { composeEntries, loadProfileDirectory, readProfilePatches, reconcileProfilePatches } from '@liusiqi-dev/sqh-app-boot'
+import { withFileLock, writeFileAtomic } from '@liusiqi-dev/sqh-atomic-write'
 import { isMap, isSeq, parseDocument, Scalar, visit } from 'yaml'
 
 declare module '@liusiqi-dev/cordis' {

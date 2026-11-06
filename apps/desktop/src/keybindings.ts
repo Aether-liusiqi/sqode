@@ -1,9 +1,9 @@
 /** Device-local shortcut preferences in Electron userData; writes share one serialized coordinator. */
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
-import { writeFileAtomic } from '@liusiqi-dev/dsh-atomic-write'
-import { ShortcutPersistence } from '@liusiqi-dev/dsh-client-shortcuts/protocol'
-import type { ShortcutConfigSnapshot, ShortcutPlatform } from '@liusiqi-dev/dsh-client-shortcuts/protocol'
+import { writeFileAtomic } from '@liusiqi-dev/sqh-atomic-write'
+import { ShortcutPersistence } from '@liusiqi-dev/sqh-client-shortcuts/protocol'
+import type { ShortcutConfigSnapshot, ShortcutPlatform } from '@liusiqi-dev/sqh-client-shortcuts/protocol'
 
 /**
  * Open the device configuration with atomic replacement.

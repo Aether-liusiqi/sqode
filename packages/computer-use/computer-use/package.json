@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-computer-use",
+  "name": "@liusiqi-dev/sqh-computer-use",
   "description": "Exclusive named computer-use provider registration",
   "version": "1.0.0",
   "publishConfig": {
@@ -33,10 +33,10 @@
   "license": "MIT",
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-brand": "workspace:*"
+    "@liusiqi-dev/sqh-brand": "workspace:*"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-brand": "workspace:*"
+    "@liusiqi-dev/sqh-brand": "workspace:*"
   }
 }

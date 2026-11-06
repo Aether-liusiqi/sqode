@@ -1,8 +1,8 @@
 /** Office conversion reads and settlements bound to the renderer's declared store. */
-import type { BoundActions } from '@liusiqi-dev/dsh-client-store'
-import type { TabId } from '@liusiqi-dev/dsh-client-ui-dockkit'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { RemoteFailure } from '@liusiqi-dev/dsh-api-remotes/client'
+import type { BoundActions } from '@liusiqi-dev/sqh-client-store'
+import type { TabId } from '@liusiqi-dev/sqh-client-ui-dockkit'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { RemoteFailure } from '@liusiqi-dev/sqh-api-remotes/client'
 import type { SessionFile } from '../rpc.ts'
 import type { ReadOfficeDocument } from './cache.ts'
 import type { OfficeStore } from './store.ts'

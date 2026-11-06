@@ -1,15 +1,15 @@
 /** Test-only direct Remote face over the Session Controller's internal controllers. */
 import type { SessionControllerInternals } from '../src/index.ts'
 
-import { SessionLogOffset } from '@liusiqi-dev/dsh-session'
+import { SessionLogOffset } from '@liusiqi-dev/sqh-session'
 import type { Context } from '@liusiqi-dev/cordis'
-import type { ModelSelection as AgentModelSelection } from '@liusiqi-dev/dsh-agent'
+import type { ModelSelection as AgentModelSelection } from '@liusiqi-dev/sqh-agent'
 import type {
   AdmittedPromptContentPart,
   AttachmentAdmissionPart,
   ImageAttachmentLimits,
-} from '@liusiqi-dev/dsh-attachment'
-import type { SessionEvent, SessionHeader, SessionId } from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-attachment'
+import type { SessionEvent, SessionHeader, SessionId } from '@liusiqi-dev/sqh-session'
 import type { SessionProjectionsValue } from '../src/types.ts'
 import {
   SessionPersistenceNotFoundError,
@@ -22,15 +22,15 @@ import {
   type SessionPersistenceOpenOptions,
   type SessionPersistenceSnapshot,
   type SessionPersistenceStatOptions,
-} from '@liusiqi-dev/dsh-session-persistence'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import SessionQueryEngine from '@liusiqi-dev/dsh-session-query'
+} from '@liusiqi-dev/sqh-session-persistence'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import SessionQueryEngine from '@liusiqi-dev/sqh-session-query'
 import { vi } from 'vitest'
 import {
   RemoteError,
   remoteErrorOf,
   type RemoteResult,
-} from '@liusiqi-dev/dsh-typert-protocol'
+} from '@liusiqi-dev/sqh-typert-protocol'
 import SessionController from '../src/index.ts'
 import type {
   ModelCatalog,

@@ -1,12 +1,12 @@
 /**
  * Configuration normalization for workspace instruction discovery and rendering.
  *
- * @module @liusiqi-dev/dsh-agent-instructions/config
+ * @module @liusiqi-dev/sqh-agent-instructions/config
  */
 
 import { relative } from 'node:path'
 import z from '@liusiqi-dev/schemastery'
-import { resolveDshHome } from '@liusiqi-dev/dsh-home-paths'
+import { resolveDshHome } from '@liusiqi-dev/sqh-home-paths'
 
 const DEFAULT_PROJECT_ROOT_MARKERS = ['.git'] as const
 const DEFAULT_INSTRUCTION_FILE_CANDIDATES = ['AGENTS.md', 'CLAUDE.md'] as const

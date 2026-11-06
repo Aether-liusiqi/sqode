@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import InvariantService, { InvariantError } from '@liusiqi-dev/dsh-invariants'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
+import InvariantService, { InvariantError } from '@liusiqi-dev/sqh-invariants'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
 import * as TeamInvariant from '../src/invariant.ts'
 import { teamProjectionDefinition } from '../src/projection.ts'
 import { TeamId, TeamTaskId } from '../src/types.ts'
@@ -42,7 +42,7 @@ describe('Agent Teams stream invariant', () => {
       })
     }).toThrow(expect.objectContaining<Partial<InvariantError>>({
       code: 'INVARIANT',
-      packageName: '@liusiqi-dev/dsh-experimental-agent-team',
+      packageName: '@liusiqi-dev/sqh-experimental-agent-team',
     }))
     expect(invalid.snapshotEvents()).toEqual([])
   })
@@ -67,7 +67,7 @@ describe('Agent Teams stream invariant', () => {
       })
     }).toThrow(expect.objectContaining<Partial<InvariantError>>({
       code: 'INVARIANT',
-      packageName: '@liusiqi-dev/dsh-experimental-agent-team',
+      packageName: '@liusiqi-dev/sqh-experimental-agent-team',
     }))
     expect(session.snapshotEvents()).toEqual([])
   })

@@ -2,16 +2,16 @@
  * Backend-shared storage validation: the version gate, the fail-closed event
  * vocabulary, append-batch materialization, and contiguity — one place so
  * every backend refuses the same inputs identically.
- * @module @liusiqi-dev/dsh-session-persistence/storage-contract
+ * @module @liusiqi-dev/sqh-session-persistence/storage-contract
  */
 
 import {
   adoptSessionEvent,
   KNOWN_SESSION_EVENT_TYPES,
   SESSION_FORMAT_VERSION,
-} from '@liusiqi-dev/dsh-session'
-import { snapshotJsonValue } from '@liusiqi-dev/dsh-util-values'
-import type { SessionEvent, SessionHeader, SessionId } from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-session'
+import { snapshotJsonValue } from '@liusiqi-dev/sqh-util-values'
+import type { SessionEvent, SessionHeader, SessionId } from '@liusiqi-dev/sqh-session'
 import {
   SessionFormatUnsupportedError,
   SessionPersistenceCorruptionError,

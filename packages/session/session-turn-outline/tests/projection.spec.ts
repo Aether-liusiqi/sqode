@@ -11,16 +11,16 @@
 
 import { describe, expect, expectTypeOf, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { createAssistantMessage, createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { SessionId, SessionLogOffset, SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { Session, SessionEvent } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import * as SessionTurnOutlinePlugin from '@liusiqi-dev/dsh-session-turn-outline'
-import { turnOutlineProjectionDefinition } from '@liusiqi-dev/dsh-session-turn-outline/src/projection.ts'
-import type { TurnOutlineEntry, TurnOutlineState } from '@liusiqi-dev/dsh-session-turn-outline/types'
+import { createAssistantMessage, createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { SessionId, SessionLogOffset, SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { Session, SessionEvent } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import * as SessionTurnOutlinePlugin from '@liusiqi-dev/sqh-session-turn-outline'
+import { turnOutlineProjectionDefinition } from '@liusiqi-dev/sqh-session-turn-outline/src/projection.ts'
+import type { TurnOutlineEntry, TurnOutlineState } from '@liusiqi-dev/sqh-session-turn-outline/types'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'test-injector': { kind: 'test-injector' } & ContextFormed
   }

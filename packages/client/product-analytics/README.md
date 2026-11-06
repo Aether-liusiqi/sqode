@@ -3,7 +3,7 @@ description: "Configure Desktop product analytics, identity fields, and event ti
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-product-analytics
+# @liusiqi-dev/sqh-client-product-analytics
 
 English | [中文](README.zh.md)
 

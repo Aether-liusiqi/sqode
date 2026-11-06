@@ -3,13 +3,13 @@ import { Context } from '@liusiqi-dev/cordis'
 import SessionStore, {
   Session,
   SessionId,
-} from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import type { SandboxMode } from '@liusiqi-dev/dsh-sandbox'
-import type { ApprovalPolicy } from '@liusiqi-dev/dsh-user-approval'
+} from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import type { SandboxMode } from '@liusiqi-dev/sqh-sandbox'
+import type { ApprovalPolicy } from '@liusiqi-dev/sqh-user-approval'
 import PermissionPresetService, {
   AUTO_PRESET, CUSTOM_PRESET,
-} from '@liusiqi-dev/dsh-permission-presets'
+} from '@liusiqi-dev/sqh-permission-presets'
 import { liveConfig } from '../../../settings/settings/tests/live-config.ts'
 
 const configurations = new WeakMap<Context, Awaited<ReturnType<typeof liveConfig>>>()

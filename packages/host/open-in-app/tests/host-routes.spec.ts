@@ -18,11 +18,11 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import Include from '@liusiqi-dev/cordis-plugin-include'
-import WebServer from '@liusiqi-dev/dsh-host-webserver'
-import type { NativeCommandRunner } from '@liusiqi-dev/dsh-native-command'
+import WebServer from '@liusiqi-dev/sqh-host-webserver'
+import type { NativeCommandRunner } from '@liusiqi-dev/sqh-native-command'
 import {
   createLaunchEnvironmentSnapshot, SQODE_LAUNCH_ENVIRONMENT_KEY, type LaunchEnvironmentLayerInput,
-} from '@liusiqi-dev/dsh-launch-environment'
+} from '@liusiqi-dev/sqh-launch-environment'
 import * as OpenInApp from '../src/index.ts'
 import { internals } from '../src/internals.ts'
 import type { OpenInAppLauncher } from '../src/resolver.ts'
@@ -53,11 +53,11 @@ async function boot(layers: readonly LaunchEnvironmentLayerInput[] = []): Promis
   root = await mkdtemp(join(tmpdir(), 'dsh-open-in-app-loader-'))
   const configPath = join(root, 'cordis.yml')
   await writeFile(configPath, [
-    "- name: '@liusiqi-dev/dsh-host-webserver'",
+    "- name: '@liusiqi-dev/sqh-host-webserver'",
     '  config:',
     "    host: '127.0.0.1'",
     '    port: 0',
-    "- name: '@liusiqi-dev/dsh-host-open-in-app'",
+    "- name: '@liusiqi-dev/sqh-host-open-in-app'",
     '  config:',
     '    probeTimeoutMs: 5000',
     '    iconTimeoutMs: 5000',
@@ -77,8 +77,8 @@ async function boot(layers: readonly LaunchEnvironmentLayerInput[] = []): Promis
   await context.plugin(Loader)
   context.loader.builtins.include = Include
   const modules = new Map<string, unknown>([
-    ['@liusiqi-dev/dsh-host-webserver', WebServer],
-    ['@liusiqi-dev/dsh-host-open-in-app', OpenInApp],
+    ['@liusiqi-dev/sqh-host-webserver', WebServer],
+    ['@liusiqi-dev/sqh-host-open-in-app', OpenInApp],
   ])
   context.loader.internal = {
     version: 'v2',
@@ -482,7 +482,7 @@ describe('open-in-app host routes (real Loader composition)', () => {
     const base = await boot()
     expect((await fetch(`${base}/open-in-app/apps`)).status).toBe(200)
     const entry = [...(context as Context).loader.entries()]
-      .find(candidate => candidate.options.name === '@liusiqi-dev/dsh-host-open-in-app')
+      .find(candidate => candidate.options.name === '@liusiqi-dev/sqh-host-open-in-app')
     await entry?.fiber?.dispose()
     // The webserver survives; the routes are gone (its 404 fallback answers).
     expect((await fetch(`${base}/open-in-app/apps`)).status).toBe(404)

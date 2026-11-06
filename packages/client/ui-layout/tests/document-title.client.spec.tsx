@@ -1,10 +1,10 @@
 // @vitest-environment jsdom
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { act, cleanup, render } from '@testing-library/react'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import { bindSnapshotSelector } from '@liusiqi-dev/dsh-client-test-runtime'
-import type { SessionListState } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import { bindSnapshotSelector } from '@liusiqi-dev/sqh-client-test-runtime'
+import type { SessionListState } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import { DocumentTitle } from '../src/client/DocumentTitle.tsx'
 import type { MainPanelId, PanelInfo } from '../src/client/service.ts'
 

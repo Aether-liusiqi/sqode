@@ -1,25 +1,25 @@
-import { MessageId } from '@liusiqi-dev/dsh-llm/brand'
+import { MessageId } from '@liusiqi-dev/sqh-llm/brand'
 // @vitest-environment jsdom
 /** Chat inject factories exercised over independently mounted Conversation and Chat plugins. */
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import { describe, expect, it, vi } from 'vitest'
-import { AttachmentId } from '@liusiqi-dev/dsh-attachment'
-import type { ISession, SessionReference } from '@liusiqi-dev/dsh-api-session-controller/client'
-import { LocaleRuntime } from '@liusiqi-dev/dsh-client-locale/client'
+import { AttachmentId } from '@liusiqi-dev/sqh-attachment'
+import type { ISession, SessionReference } from '@liusiqi-dev/sqh-api-session-controller/client'
+import { LocaleRuntime } from '@liusiqi-dev/sqh-client-locale/client'
 import {
   SlotTestRuntime, stubConfigForm, usePinnedBrowserLanguages,
-} from '@liusiqi-dev/dsh-client-test-runtime'
-import type { SessionBehaviorOverrides } from '@liusiqi-dev/dsh-client-test-runtime'
-import type { ClientRemote } from '@liusiqi-dev/dsh-api-remotes/client'
+} from '@liusiqi-dev/sqh-client-test-runtime'
+import type { SessionBehaviorOverrides } from '@liusiqi-dev/sqh-client-test-runtime'
+import type { ClientRemote } from '@liusiqi-dev/sqh-api-remotes/client'
 import {
   apply as applyConversation, inject as injectConversation,
   type GroupKey,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import {
   apply as applyChat, inject as injectChat, type ChatViewInjected,
-} from '@liusiqi-dev/dsh-client-ui-chat/client'
-import { SessionSeq, type SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { WorkspaceId } from '@liusiqi-dev/dsh-workspace/types'
+} from '@liusiqi-dev/sqh-client-ui-chat/client'
+import { SessionSeq, type SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { WorkspaceId } from '@liusiqi-dev/sqh-workspace/types'
 import { createChatStore } from '../src/client/stores.ts'
 import { CHAT_SETTINGS_NAMESPACE, type ChatSettings } from '../src/chat-settings.ts'
 import type { LinkOpeningRowInjected } from '../src/client/settings/LinkOpeningRow.tsx'

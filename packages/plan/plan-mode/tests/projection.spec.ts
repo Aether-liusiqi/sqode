@@ -2,16 +2,16 @@
 
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import SessionStore from '@liusiqi-dev/dsh-session'
-import type { Session } from '@liusiqi-dev/dsh-session'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import UserQuestionService from '@liusiqi-dev/dsh-user-questions'
-import { CommandId } from '@liusiqi-dev/dsh-commands/brand'
-import PlanModeController from '@liusiqi-dev/dsh-plan-mode'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import SessionStore from '@liusiqi-dev/sqh-session'
+import type { Session } from '@liusiqi-dev/sqh-session'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import UserQuestionService from '@liusiqi-dev/sqh-user-questions'
+import { CommandId } from '@liusiqi-dev/sqh-commands/brand'
+import PlanModeController from '@liusiqi-dev/sqh-plan-mode'
 
 interface Bench {
   ctx: Context

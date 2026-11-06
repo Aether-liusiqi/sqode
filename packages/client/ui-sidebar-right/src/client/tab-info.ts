@@ -1,9 +1,9 @@
 /** Slot-owned tab information derived from framework-bound store and navigation hooks. */
-import type { ShortcutCatalogEntry } from '@liusiqi-dev/dsh-client-shortcuts/client'
+import type { ShortcutCatalogEntry } from '@liusiqi-dev/sqh-client-shortcuts/client'
 import { useMemo } from 'react'
-import { findTabPane } from '@liusiqi-dev/dsh-client-ui-dockkit'
-import type { TabId } from '@liusiqi-dev/dsh-client-ui-dockkit'
-import type { KeyedSnapshotSelectorHook, PropsStore, SlotHookFactory } from '@liusiqi-dev/dsh-client-ui-slots'
+import { findTabPane } from '@liusiqi-dev/sqh-client-ui-dockkit'
+import type { TabId } from '@liusiqi-dev/sqh-client-ui-dockkit'
+import type { KeyedSnapshotSelectorHook, PropsStore, SlotHookFactory } from '@liusiqi-dev/sqh-client-ui-slots'
 import type { SidebarRightTabActions, SidebarRightTabNavigation, UseSidebarRightTabInfo } from './contract/slots.ts'
 import type { createSidebarRightStore } from './stores.ts'
 

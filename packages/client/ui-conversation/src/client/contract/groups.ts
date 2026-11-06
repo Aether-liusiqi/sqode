@@ -1,6 +1,6 @@
 /** Definition-owned grouping over a target's already materialized Nodes. */
-import type { Branded } from '@liusiqi-dev/dsh-brand'
-import type { ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
+import type { ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
 import type { ConversationTimelineSnapshot, ConversationViewNode } from './conversation.ts'
 
 /** Existing Node identity, without allocating another execution Node. */

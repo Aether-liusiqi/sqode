@@ -3,7 +3,7 @@ description: "Cross-session snapshot references and durable untrusted model cont
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-session-reference
+# @liusiqi-dev/sqh-session-reference
 
 English | [中文](README.zh.md)
 

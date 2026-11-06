@@ -1,7 +1,7 @@
 /**
  * Content identity for workspace instruction duplicate suppression.
  *
- * @module @liusiqi-dev/dsh-agent-instructions/digest
+ * @module @liusiqi-dev/sqh-agent-instructions/digest
  */
 
 import { createHash } from 'node:crypto'

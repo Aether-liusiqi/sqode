@@ -3,7 +3,7 @@
 import { readFile } from 'node:fs/promises'
 import { Context } from '@liusiqi-dev/cordis'
 import { afterEach, describe, expect, it } from 'vitest'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
 import { apply, inject } from '../src/index.ts'
 
 let ctx: Context | undefined

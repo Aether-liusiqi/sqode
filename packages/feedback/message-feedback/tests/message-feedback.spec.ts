@@ -1,9 +1,9 @@
 import { randomUUID } from 'node:crypto'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import type { MessageId } from '@liusiqi-dev/dsh-llm/brand'
-import { Session, SessionId, SessionLogOffset, SessionSeq, type SessionEvent } from '@liusiqi-dev/dsh-session'
-import { remoteMethods } from '@liusiqi-dev/dsh-typert-protocol'
+import type { MessageId } from '@liusiqi-dev/sqh-llm/brand'
+import { Session, SessionId, SessionLogOffset, SessionSeq, type SessionEvent } from '@liusiqi-dev/sqh-session'
+import { remoteMethods } from '@liusiqi-dev/sqh-typert-protocol'
 import MessageFeedbackService from '../src/index.ts'
 import type {
   MessageFeedbackItem,

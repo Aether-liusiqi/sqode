@@ -1,10 +1,10 @@
 /** Session Controller adapter for Agent-scoped file-reference discovery. */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type {} from '@liusiqi-dev/dsh-file-reference'
-import type { FileReferenceCandidate } from '@liusiqi-dev/dsh-file-reference/types'
-import { Remote, TypertRemoteService } from '@liusiqi-dev/dsh-typert-protocol'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type {} from '@liusiqi-dev/sqh-file-reference'
+import type { FileReferenceCandidate } from '@liusiqi-dev/sqh-file-reference/types'
+import { Remote, TypertRemoteService } from '@liusiqi-dev/sqh-typert-protocol'
 
 declare module '@liusiqi-dev/cordis' {
   interface Context {

@@ -6,12 +6,12 @@
  * `SANDBOX_UNAVAILABLE`, while background processes carry `runnerFailed`;
  * other provider rejections retain stage-neutral local-executor semantics. The
  * tool owns approval and passes a complete per-call policy.
- * @module @liusiqi-dev/dsh-bash-sandbox
+ * @module @liusiqi-dev/sqh-bash-sandbox
  */
 
 import { Context } from '@liusiqi-dev/cordis'
-import type { ShellExecRequest, ShellExecSpec, ShellExecution, ShellProcess, ShellRunResult } from '@liusiqi-dev/dsh-shell'
-import { SandboxUnavailableError } from '@liusiqi-dev/dsh-sandbox'
+import type { ShellExecRequest, ShellExecSpec, ShellExecution, ShellProcess, ShellRunResult } from '@liusiqi-dev/sqh-shell'
+import { SandboxUnavailableError } from '@liusiqi-dev/sqh-sandbox'
 import type {
   ConfinedArgv,
   ConfinedSandboxMode,
@@ -20,16 +20,16 @@ import type {
   SandboxExecutionPolicy,
   SandboxMode,
   SandboxPolicy,
-} from '@liusiqi-dev/dsh-sandbox'
-import type {} from '@liusiqi-dev/dsh-sandbox-policy'
-import { LocalBashExecutor } from '@liusiqi-dev/dsh-bash-local'
-import type { Config as LocalConfig } from '@liusiqi-dev/dsh-bash-local'
+} from '@liusiqi-dev/sqh-sandbox'
+import type {} from '@liusiqi-dev/sqh-sandbox-policy'
+import { LocalBashExecutor } from '@liusiqi-dev/sqh-bash-local'
+import type { Config as LocalConfig } from '@liusiqi-dev/sqh-bash-local'
 import { classifyDenial, classifyRunnerFailure, isRunnerSpawnFailure, matchesSignature } from './helpers.ts'
 
 /**
  * Plugin config: the local executor's knobs, verbatim. The sandbox policy —
  * the default mode and fallback `workspace-write` root — is NOT here: it lives
- * on `ctx.sandboxPolicy` (`@liusiqi-dev/dsh-sandbox-policy`), which resolves
+ * on `ctx.sandboxPolicy` (`@liusiqi-dev/sqh-sandbox-policy`), which resolves
  * each calling session's mode and cwd for every enforcing capability. The runner
  * choice is likewise the `ctx.sandbox` provider's config, not this executor's.
  */

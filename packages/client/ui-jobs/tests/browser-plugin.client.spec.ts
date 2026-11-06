@@ -3,14 +3,14 @@
  * registrations against the real SlotRegistry (with fiber teardown proving
  * removal — HMR safety), and the inert node entry.
  */
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import { Context } from '@liusiqi-dev/cordis'
-import { JobId } from '@liusiqi-dev/dsh-jobs/brand'
-import { SessionId } from '@liusiqi-dev/dsh-session/types'
+import { JobId } from '@liusiqi-dev/sqh-jobs/brand'
+import { SessionId } from '@liusiqi-dev/sqh-session/types'
 import { describe, expect, it } from 'vitest'
-import { SlotRegistry } from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import { stubConfigForm } from '@liusiqi-dev/dsh-client-test-runtime'
-import { apply as applyLocale, inject as localeInject } from '@liusiqi-dev/dsh-client-locale/client'
+import { SlotRegistry } from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import { stubConfigForm } from '@liusiqi-dev/sqh-client-test-runtime'
+import { apply as applyLocale, inject as localeInject } from '@liusiqi-dev/sqh-client-locale/client'
 import { apply, inject } from '../src/client/index.ts'
 import type { JobListInjected } from '../src/client/JobListAction.tsx'
 import { apply as applyNode } from '../src/index.ts'

@@ -1,9 +1,9 @@
 /** Built-in Client inspect providers over live Client-owned services. */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
-import type { SlotRegistry } from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-theme/client'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
+import type { SlotRegistry } from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-theme/client'
 import { queryEventApi, queryServiceApi } from './api-catalog.ts'
 import type { ClientCordisInspectProviderRegistration } from './inspect-registry.ts'
 import { CLIENT_SLOT_API } from './slot-catalog.ts'

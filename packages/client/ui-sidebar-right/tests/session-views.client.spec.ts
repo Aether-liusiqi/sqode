@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 import { afterEach, expect, it, vi } from 'vitest'
-import { SlotTestRuntime } from '@liusiqi-dev/dsh-client-test-runtime'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { TabId } from '@liusiqi-dev/dsh-client-ui-dockkit'
+import { SlotTestRuntime } from '@liusiqi-dev/sqh-client-test-runtime'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { TabId } from '@liusiqi-dev/sqh-client-ui-dockkit'
 import { SidebarSessionView } from '../src/client/session-view.ts'
 import { SidebarSessionViews } from '../src/client/session-views.ts'
 

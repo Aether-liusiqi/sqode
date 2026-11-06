@@ -6,8 +6,8 @@
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-system-prompt'
-import type {} from '@liusiqi-dev/dsh-workspace-changes/types'
+import type {} from '@liusiqi-dev/sqh-system-prompt'
+import type {} from '@liusiqi-dev/sqh-workspace-changes/types'
 import { registerPresentOpen } from './present-open.ts'
 
 /** Services required for file-reference guidance, change summaries, and authenticated native opens. */

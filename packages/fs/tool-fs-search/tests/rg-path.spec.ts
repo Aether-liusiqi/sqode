@@ -8,9 +8,9 @@
 
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import type { ToolExecution } from '@liusiqi-dev/dsh-tools'
-import { resolveRgPath, runRipgrep } from '@liusiqi-dev/dsh-tool-fs-search'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import type { ToolExecution } from '@liusiqi-dev/sqh-tools'
+import { resolveRgPath, runRipgrep } from '@liusiqi-dev/sqh-tool-fs-search'
 
 // Any access to the mocked module's surface throws — the shape a missing
 // platform package produces at module evaluation.

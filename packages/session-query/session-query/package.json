@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-session-query",
+  "name": "@liusiqi-dev/sqh-session-query",
   "description": "Combined session query service contract with concrete reads, traces, and filters",
   "version": "1.0.0",
   "publishConfig": {
@@ -27,39 +27,39 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@liusiqi-dev/dsh-brand": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-title": "workspace:*",
-    "@liusiqi-dev/dsh-tool-todo": "workspace:*",
-    "@liusiqi-dev/dsh-session-persistence": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection-cache": "workspace:*",
+    "@liusiqi-dev/sqh-brand": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-title": "workspace:*",
+    "@liusiqi-dev/sqh-tool-todo": "workspace:*",
+    "@liusiqi-dev/sqh-session-persistence": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection-cache": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "peerDependenciesMeta": {
-    "@liusiqi-dev/dsh-session-persistence": {
+    "@liusiqi-dev/sqh-session-persistence": {
       "optional": true
     },
-    "@liusiqi-dev/dsh-session-projection": {
+    "@liusiqi-dev/sqh-session-projection": {
       "optional": true
     },
-    "@liusiqi-dev/dsh-session-projection-cache": {
+    "@liusiqi-dev/sqh-session-projection-cache": {
       "optional": true
     }
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-brand": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-title": "workspace:*",
-    "@liusiqi-dev/dsh-tool-todo": "workspace:*",
-    "@liusiqi-dev/dsh-session-persistence": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection-cache": "workspace:*",
+    "@liusiqi-dev/sqh-brand": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-title": "workspace:*",
+    "@liusiqi-dev/sqh-tool-todo": "workspace:*",
+    "@liusiqi-dev/sqh-session-persistence": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection-cache": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "dependencies": {
-    "@liusiqi-dev/dsh-session-format-catalog": "workspace:*"
+    "@liusiqi-dev/sqh-session-format-catalog": "workspace:*"
   }
 }

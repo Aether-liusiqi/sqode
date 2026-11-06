@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { extractMarkdownPlainText } from '@liusiqi-dev/dsh-client-ui-primitives'
+import { extractMarkdownPlainText } from '@liusiqi-dev/sqh-client-ui-primitives'
 
 const MARKDOWN = [
   '# Release notes',

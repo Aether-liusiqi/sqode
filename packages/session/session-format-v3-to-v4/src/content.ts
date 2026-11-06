@@ -1,7 +1,7 @@
 /** V3 content tags and request-tool fields admitted before V4 interpretation. */
 
-import { SessionFormatError, SessionFormatUnsupportedMigrationError, isSessionFormatJsonObject } from '@liusiqi-dev/dsh-session-format'
-import type { SessionFormatEvent, SessionFormatJsonObject, SessionFormatJsonValue } from '@liusiqi-dev/dsh-session-format'
+import { SessionFormatError, SessionFormatUnsupportedMigrationError, isSessionFormatJsonObject } from '@liusiqi-dev/sqh-session-format'
+import type { SessionFormatEvent, SessionFormatJsonObject, SessionFormatJsonValue } from '@liusiqi-dev/sqh-session-format'
 import { mapEventMessages } from './sources.ts'
 
 const V3_BLOCK_TYPES = new Set(['text', 'reasoning', 'image', 'file', 'tool-call', 'tool-result'])

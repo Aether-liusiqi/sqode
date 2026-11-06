@@ -6,10 +6,10 @@
  * session and a workspace path while a tab carries a `dsh-resource://file/`
  * session address, so this module also owns that translation.
  */
-import type { RemoteResult } from '@liusiqi-dev/dsh-api-remotes/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { WorkspaceFileBytes, WorkspaceFileRange, WorkspaceFileText } from '@liusiqi-dev/dsh-api-workspace-files/types'
-import { parseFileAddress } from '@liusiqi-dev/dsh-util-workspace-path'
+import type { RemoteResult } from '@liusiqi-dev/sqh-api-remotes/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { WorkspaceFileBytes, WorkspaceFileRange, WorkspaceFileText } from '@liusiqi-dev/sqh-api-workspace-files/types'
+import { parseFileAddress } from '@liusiqi-dev/sqh-util-workspace-path'
 
 /** The slice of the Client Remote this package calls. */
 export interface WorkspaceFilesReadRemote {

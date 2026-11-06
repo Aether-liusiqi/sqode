@@ -1,15 +1,15 @@
 /**
  * Durable agent session-event vocabulary shared with type-only consumers.
  *
- * @module @liusiqi-dev/dsh-agent/types
+ * @module @liusiqi-dev/sqh-agent/types
  */
 
-import type { UserMessage } from '@liusiqi-dev/dsh-llm/types'
+import type { UserMessage } from '@liusiqi-dev/sqh-llm/types'
 // Type-only: the Workspace registry's archive-admission family map this registry merges `turn` into.
-import type {} from '@liusiqi-dev/dsh-workspace/types'
-import type { OptionalSessionSeq, SessionId, SessionSeq } from '@liusiqi-dev/dsh-session/types'
-import type { TypertContext, TypertLookup } from '@liusiqi-dev/dsh-typert-protocol'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
+import type {} from '@liusiqi-dev/sqh-workspace/types'
+import type { OptionalSessionSeq, SessionId, SessionSeq } from '@liusiqi-dev/sqh-session/types'
+import type { TypertContext, TypertLookup } from '@liusiqi-dev/sqh-typert-protocol'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
 
 /** Public live-agent handle; the runtime face augments its live capabilities. */
 export interface Agent {
@@ -17,14 +17,14 @@ export interface Agent {
   readonly id: SessionId
 }
 
-declare module '@liusiqi-dev/dsh-workspace/types' {
+declare module '@liusiqi-dev/sqh-workspace/types' {
   interface SessionActivityKindMap {
     /** The session's own Agent is inside a turn, including one waiting for an approval or an answer. */
     turn: true
   }
 }
 
-declare module '@liusiqi-dev/dsh-typert-protocol' {
+declare module '@liusiqi-dev/sqh-typert-protocol' {
   interface TypertLookupMap {
     agent: TypertLookup<Agent, SessionId>
   }
@@ -55,7 +55,7 @@ export interface InboxWireState {
   readonly 'next-step': readonly JsonValue[]
 }
 
-declare module '@liusiqi-dev/dsh-session-projection/types' {
+declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionStateMap {
     /** Pending agent input reconstructed from durable inbox splices. */
     inbox: InboxState
@@ -86,7 +86,7 @@ export interface TurnBoundaryProjection {
   readonly lastTurn: number
 }
 
-declare module '@liusiqi-dev/dsh-session/types' {
+declare module '@liusiqi-dev/sqh-session/types' {
   interface SessionEventMap {
     /**
      * One normalized mutation of an agent's durable pending-message lists.

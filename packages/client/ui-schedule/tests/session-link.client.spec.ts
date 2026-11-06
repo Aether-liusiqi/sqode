@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import type { SessionListState } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { WorkspaceSnapshot } from '@liusiqi-dev/dsh-api-workspace-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { SessionListState } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { WorkspaceSnapshot } from '@liusiqi-dev/sqh-api-workspace-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import { sessionLinkState } from '../src/client/session-link.ts'
 
 const id = 'session-original' as SessionId

@@ -1,6 +1,6 @@
 /** Serialized preference transactions; storage owners publish only accepted writes or read diagnostics. */
-import { randomUUID } from '@liusiqi-dev/dsh-util-crypto'
-import type { Branded } from '@liusiqi-dev/dsh-brand'
+import { randomUUID } from '@liusiqi-dev/sqh-util-crypto'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
 import { editShortcutDocument, effectiveShortcuts, parseShortcutDocument } from './configuration.ts'
 import type { BindingIssue, ShortcutDefinition, ShortcutDocument, ShortcutEdit } from './configuration.ts'
 import type { ShortcutCommandId, ShortcutPlatform, ShortcutRuntime } from './binding.ts'

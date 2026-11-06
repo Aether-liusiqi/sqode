@@ -1,6 +1,6 @@
 /**
  * Workspace-level discovery and model-driven Typert generation.
- * @module @liusiqi-dev/dsh-typert-generator/workspace
+ * @module @liusiqi-dev/sqh-typert-generator/workspace
  */
 
 import { readFileSync } from 'node:fs'

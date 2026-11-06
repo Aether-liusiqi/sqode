@@ -10,9 +10,9 @@ import {
   type ReplayEnvelope,
   type StreamChunk,
   type TokenUsage,
-} from '@liusiqi-dev/dsh-llm'
-import type { AssistantStreamFrame } from '@liusiqi-dev/dsh-agent'
-import type { SessionEventMap, SessionId, SessionSeq } from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-llm'
+import type { AssistantStreamFrame } from '@liusiqi-dev/sqh-agent'
+import type { SessionEventMap, SessionId, SessionSeq } from '@liusiqi-dev/sqh-session'
 
 /** Folds one model attempt into one compact stream plus ordered transient frames. */
 export class AssistantStreamAttempt {

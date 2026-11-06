@@ -23,7 +23,7 @@ describe('experimental Schedule bundle', () => {
   const manifest = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf8')) as Manifest
 
   it('publishes as an experimental bundle with plugin-manager display metadata', () => {
-    expect(manifest.name).toBe('@liusiqi-dev/dsh-experimental-schedule-bundle')
+    expect(manifest.name).toBe('@liusiqi-dev/sqh-experimental-schedule-bundle')
     expect(manifest.private).toBeUndefined()
     expect(manifest.publishConfig?.access).toBe('public')
     expect(manifest.icon).toBe('./icon.svg')
@@ -32,16 +32,16 @@ describe('experimental Schedule bundle', () => {
     expect(manifest.exports?.['./cordis.patch.yml']).toBe('./cordis.patch.yml')
     // Each inserted row names a package the bundle depends on, so the rows resolve from the bundle.
     expect(Object.keys(manifest.dependencies ?? {}).sort()).toEqual([
-      '@liusiqi-dev/dsh-client-ui-schedule', '@liusiqi-dev/dsh-schedule', '@liusiqi-dev/dsh-time-context',
+      '@liusiqi-dev/sqh-client-ui-schedule', '@liusiqi-dev/sqh-schedule', '@liusiqi-dev/sqh-time-context',
     ])
   })
 
   it('inserts the three Schedule rows switched on', () => {
     const parsed = yaml.load(readFileSync(resolve(root, './cordis.patch.yml'), 'utf8'), { schema: entryListSchema })
     expect(parsed).toEqual([{ insert: [
-      { id: 'time-context', name: '@liusiqi-dev/dsh-time-context' },
-      { id: 'schedule', name: '@liusiqi-dev/dsh-schedule' },
-      { id: 'ui-schedule', name: '@liusiqi-dev/dsh-client-ui-schedule' },
+      { id: 'time-context', name: '@liusiqi-dev/sqh-time-context' },
+      { id: 'schedule', name: '@liusiqi-dev/sqh-schedule' },
+      { id: 'ui-schedule', name: '@liusiqi-dev/sqh-client-ui-schedule' },
     ] }])
   })
 })

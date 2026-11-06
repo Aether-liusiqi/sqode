@@ -1,11 +1,11 @@
 import { Context } from '@liusiqi-dev/cordis'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import type { Agent, AgentHandle, CreateAgentOptions } from '@liusiqi-dev/dsh-agent'
-import type {} from '@liusiqi-dev/dsh-agent-preset-registry'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
-import type { Workspace, WorkspaceId } from '@liusiqi-dev/dsh-workspace'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import type { Agent, AgentHandle, CreateAgentOptions } from '@liusiqi-dev/sqh-agent'
+import type {} from '@liusiqi-dev/sqh-agent-preset-registry'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
+import type { Workspace, WorkspaceId } from '@liusiqi-dev/sqh-workspace'
 import { describe, expect, it, vi } from 'vitest'
 import {
   ApiSessionAgentController,

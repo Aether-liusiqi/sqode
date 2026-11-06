@@ -3,7 +3,7 @@ description: "The model-facing bash tool for users and maintainers choosing, con
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-tool-bash
+# @liusiqi-dev/sqh-tool-bash
 
 English | [中文](README.zh.md)
 
@@ -32,13 +32,13 @@ Load this plugin in any composition where the agent should run bash commands: it
 The common path is an executor provider, the environment registry, and this tool; add the job runtime when the agent may run commands in the background.
 
 ```yaml
-- name: '@liusiqi-dev/dsh-bash-local'
-- name: '@liusiqi-dev/dsh-shell-env'
-- name: '@liusiqi-dev/dsh-tool-bash'
+- name: '@liusiqi-dev/sqh-bash-local'
+- name: '@liusiqi-dev/sqh-shell-env'
+- name: '@liusiqi-dev/sqh-tool-bash'
 
 # Optional: background jobs
-- name: '@liusiqi-dev/dsh-jobs-local'
-- name: '@liusiqi-dev/dsh-tool-jobs'
+- name: '@liusiqi-dev/sqh-jobs-local'
+- name: '@liusiqi-dev/sqh-tool-jobs'
 ```
 
 The config fields govern the background surface.
@@ -69,7 +69,7 @@ When the mounted executor confines commands (for example `dsh-bash-sandbox`), a 
 
 ### What can go wrong
 
-A composition with no executor provider never activates the tool. Background calls without the job runtime fail with `background jobs unavailable: load @liusiqi-dev/dsh-jobs and @liusiqi-dev/dsh-tool-jobs`, and `sandbox_permissions` without a sandboxing executor fails with `sandbox_permissions is not available in this composition (no sandboxing executor to escalate)`. `enableRunInBackground: false` removes the parameter and rejects a forced background call at execution time.
+A composition with no executor provider never activates the tool. Background calls without the job runtime fail with `background jobs unavailable: load @liusiqi-dev/sqh-jobs and @liusiqi-dev/sqh-tool-jobs`, and `sandbox_permissions` without a sandboxing executor fails with `sandbox_permissions is not available in this composition (no sandboxing executor to escalate)`. `enableRunInBackground: false` removes the parameter and rejects a forced background call at execution time.
 
 -----
 
@@ -193,7 +193,7 @@ Append-only; newly visible content follows the reusable request prefix and does 
 
 #### What the model sees
 
-Validation and policy failures are normalized as `Error: <message>`. This package's stable messages are `invalid command: expected a non-empty string`, `invalid description: expected a non-empty string`, `invalid timeoutMs: expected a positive number, got <value>`, the escalation pairing failures, `run_in_background is disabled for this deployment (enableRunInBackground: false)`, `background jobs unavailable: load @liusiqi-dev/dsh-jobs and @liusiqi-dev/dsh-tool-jobs`, `sandbox_permissions is not available in this composition (no sandboxing executor to escalate)`, the approval availability/rejection/cancellation variants, and `tool call aborted`.
+Validation and policy failures are normalized as `Error: <message>`. This package's stable messages are `invalid command: expected a non-empty string`, `invalid description: expected a non-empty string`, `invalid timeoutMs: expected a positive number, got <value>`, the escalation pairing failures, `run_in_background is disabled for this deployment (enableRunInBackground: false)`, `background jobs unavailable: load @liusiqi-dev/sqh-jobs and @liusiqi-dev/sqh-tool-jobs`, `sandbox_permissions is not available in this composition (no sandboxing executor to escalate)`, the approval availability/rejection/cancellation variants, and `tool call aborted`.
 
 #### Token effect
 

@@ -3,7 +3,7 @@ description: "Loader integration for generated Typert artifacts: how mounted pac
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-typert-loader
+# @liusiqi-dev/sqh-typert-loader
 
 English | [中文](README.zh.md)
 
@@ -32,8 +32,8 @@ Mount this plugin in a Host Loader composition that loads packages publishing ge
 Load the registry and the loader; the loader defaults to discovering every Loader entry:
 
 ```yaml
-- name: '@liusiqi-dev/dsh-typert-registry'
-- name: '@liusiqi-dev/dsh-typert-loader'
+- name: '@liusiqi-dev/sqh-typert-registry'
+- name: '@liusiqi-dev/sqh-typert-loader'
 ```
 
 | Field | Default | Meaning |

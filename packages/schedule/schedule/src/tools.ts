@@ -1,13 +1,13 @@
 /**
  * Agent-scoped consumers of the shared Host Schedule management service.
- * @module @liusiqi-dev/dsh-schedule
+ * @module @liusiqi-dev/sqh-schedule
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
-import type { GenericCallView } from '@liusiqi-dev/dsh-tools'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
+import type { GenericCallView } from '@liusiqi-dev/sqh-tools'
 import { MAX_TITLE_LENGTH, MIN_EVERY_INTERVAL_SECONDS, REQUIRED_TITLE_MESSAGE, ScheduleId, ScheduleInputError, scheduleView } from './domain.ts'
 import type {} from './index.ts'
 import type {

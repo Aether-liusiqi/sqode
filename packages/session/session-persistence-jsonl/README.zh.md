@@ -3,7 +3,7 @@ description: "面向部署方与维护者的随产品交付 JSONL 会话持久�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-session-persistence-jsonl
+# @liusiqi-dev/sqh-session-persistence-jsonl
 
 [English](README.md) | 中文
 
@@ -34,8 +34,8 @@ kind: "package-reference"
 ### 最小配置
 
 ```yaml
-- name: '@liusiqi-dev/dsh-session'
-- name: '@liusiqi-dev/dsh-session-persistence-jsonl'
+- name: '@liusiqi-dev/sqh-session'
+- name: '@liusiqi-dev/sqh-session-persistence-jsonl'
   config:
     root: /absolute/path/to/session-logs
 ```

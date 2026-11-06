@@ -18,7 +18,7 @@
  * profile directory. Pnpm-managed entries in the profile's `node_modules`
  * resolve first. The runtime resolution supplies packages carried by the
  * installation and selected bundles to Node's ESM and CommonJS resolvers.
- * @module @liusiqi-dev/dsh-app-boot/profile
+ * @module @liusiqi-dev/sqh-app-boot/profile
  */
 
 import { createRequire } from 'node:module'
@@ -26,8 +26,8 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, readlinkSync, realpat
 import { basename, dirname, join, relative, resolve, sep } from 'node:path'
 import type { EntryOptions } from '@liusiqi-dev/cordis-plugin-loader'
 import { applyEntryPatches, type PatchOptions } from '@liusiqi-dev/cordis-plugin-include'
-import { resolveDshHome } from '@liusiqi-dev/dsh-home-paths'
-import type { SqhBundleManifest, SqhPackageManifest } from '@liusiqi-dev/dsh-package-manifest'
+import { resolveDshHome } from '@liusiqi-dev/sqh-home-paths'
+import type { SqhBundleManifest, SqhPackageManifest } from '@liusiqi-dev/sqh-package-manifest'
 import { evaluatePluginCompatibility, pluginCompatibilityWarning } from './plugin-compatibility.ts'
 import { readProfileVersionExemptions } from './profile-compatibility.ts'
 import { loadOverlayPatches } from './index.ts'
@@ -178,29 +178,29 @@ export function resolveProfileDir(name: string, home: string = resolveDshHome())
 /** The shipped profile templates auto-initialized on first use, by name. */
 export const PROFILE_TEMPLATES: Record<string, ProfileTemplate> = {
   acp: {
-    bundles: ['@liusiqi-dev/dsh-base', '@liusiqi-dev/dsh-acp-app'],
+    bundles: ['@liusiqi-dev/sqh-base', '@liusiqi-dev/sqh-acp-app'],
   },
   web: {
-    bundles: ['@liusiqi-dev/dsh-base', '@liusiqi-dev/dsh-web-app'],
+    bundles: ['@liusiqi-dev/sqh-base', '@liusiqi-dev/sqh-web-app'],
   },
   headless: {
-    bundles: ['@liusiqi-dev/dsh-base', '@liusiqi-dev/dsh-headless'],
+    bundles: ['@liusiqi-dev/sqh-base', '@liusiqi-dev/sqh-headless'],
   },
   sdk: {
-    bundles: ['@liusiqi-dev/dsh-base', '@liusiqi-dev/dsh-sdk-app'],
+    bundles: ['@liusiqi-dev/sqh-base', '@liusiqi-dev/sqh-sdk-app'],
   },
   'sdk-minimal': {
-    bundles: ['@liusiqi-dev/dsh-sdk-minimal'],
+    bundles: ['@liusiqi-dev/sqh-sdk-minimal'],
   },
 }
 
 /** Installation-owned bundle tuples normalized to the shipped template. */
 const INSTALLATION_OWNED_PROFILE_TUPLES: Record<string, readonly string[]> = {
-  headless: ['@liusiqi-dev/dsh-base', '@liusiqi-dev/dsh-web-app', '@liusiqi-dev/dsh-headless'],
+  headless: ['@liusiqi-dev/sqh-base', '@liusiqi-dev/sqh-web-app', '@liusiqi-dev/sqh-headless'],
 }
 
 /** The bundle list a `dsh plugin` init uses for a name with no shipped template. */
-export const DEFAULT_PROFILE_BUNDLES: readonly string[] = ['@liusiqi-dev/dsh-base']
+export const DEFAULT_PROFILE_BUNDLES: readonly string[] = ['@liusiqi-dev/sqh-base']
 
 /**
  * The bundles the dsh installation ships for a person to switch on: each a
@@ -211,10 +211,10 @@ export const DEFAULT_PROFILE_BUNDLES: readonly string[] = ['@liusiqi-dev/dsh-bas
  * [admission](../../../../.agents/notes/implemented/architecture/2026-09-21-experimental-capabilities-as-optional-bundles.md)).
  */
 export const OPTIONAL_BUNDLES: readonly string[] = [
-  '@liusiqi-dev/dsh-experimental-agent-team-profile',
-  '@liusiqi-dev/dsh-experimental-voice-input-bundle',
-  '@liusiqi-dev/dsh-experimental-auto-review',
-  '@liusiqi-dev/dsh-experimental-schedule-bundle',
+  '@liusiqi-dev/sqh-experimental-agent-team-profile',
+  '@liusiqi-dev/sqh-experimental-voice-input-bundle',
+  '@liusiqi-dev/sqh-experimental-auto-review',
+  '@liusiqi-dev/sqh-experimental-schedule-bundle',
 ]
 
 const PROFILE_PATCH_TEMPLATE = `# Your patch layer for this dsh profile, applied after every bundle layer:
@@ -618,7 +618,7 @@ function packageDirFromAnchor(anchor: string, packageName: string): string | und
 /**
  * Resolve one bundle package's directory: installation anchor first, then the
  * profile directory. The installation-first order is the contract that
- * `@liusiqi-dev/dsh-base` (and every other in-box bundle) always comes from
+ * `@liusiqi-dev/sqh-base` (and every other in-box bundle) always comes from
  * the same installation as the running dsh, never from a profile-local copy.
  * Resolution does not require the package to export `./package.json`.
  * @param binName - the diagnostic prefix on the thrown error.

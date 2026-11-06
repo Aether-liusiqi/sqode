@@ -7,22 +7,22 @@
 
 import { describe, expect, it, vi, onTestFinished } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import AgentRegistry, { agentEvents } from '@liusiqi-dev/dsh-agent'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import AttachmentStore from '@liusiqi-dev/dsh-attachment'
-import LlmRuntime, { LlmAdapter, ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
+import AgentRegistry, { agentEvents } from '@liusiqi-dev/sqh-agent'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import AttachmentStore from '@liusiqi-dev/sqh-attachment'
+import LlmRuntime, { LlmAdapter, ReasoningEffortId } from '@liusiqi-dev/sqh-llm'
 import type {
   GenerateOptions, LlmCallConfig, LlmCallConfigAdapterDefaults, LlmModelInfo,
   LlmModelReasoningInfo, LlmProviderInfo, LlmResolvedModelInfo, StreamChunk,
   UserMessage,
-} from '@liusiqi-dev/dsh-llm'
-import SessionStore from '@liusiqi-dev/dsh-session'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-llm'
+import SessionStore from '@liusiqi-dev/sqh-session'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
 import type { SessionPromptRequest, SessionRequestId } from '../src/types.ts'
 import { ApiSessionAgentController } from '../src/agent.ts'
 import { buildModelCatalog, hasProviderApiKey } from '../src/catalog.ts'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
 import { createSessionTestController, createSessionTestRemote } from './test-remote.ts'
 
 function request<P>(payload: P): P {

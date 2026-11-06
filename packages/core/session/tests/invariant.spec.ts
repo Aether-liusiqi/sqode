@@ -1,13 +1,13 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { createScope, scopeTarget } from '@liusiqi-dev/dsh-scope'
-import { createDeveloperMessage, createSystemMessage, createUserMessage, ToolCallId, createMessage, createToolResultMessage, freezeMessage } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { SessionId, SessionSeq, TOOL_NOT_STARTED } from '@liusiqi-dev/dsh-session'
-import * as SessionInvariant from '@liusiqi-dev/dsh-session/invariant'
-import InvariantRegistry, { InvariantError } from '@liusiqi-dev/dsh-invariants'
+import { createScope, scopeTarget } from '@liusiqi-dev/sqh-scope'
+import { createDeveloperMessage, createSystemMessage, createUserMessage, ToolCallId, createMessage, createToolResultMessage, freezeMessage } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { SessionId, SessionSeq, TOOL_NOT_STARTED } from '@liusiqi-dev/sqh-session'
+import * as SessionInvariant from '@liusiqi-dev/sqh-session/invariant'
+import InvariantRegistry, { InvariantError } from '@liusiqi-dev/sqh-invariants'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }

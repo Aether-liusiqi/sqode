@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
-import type { SettingsNamespaceView } from '@liusiqi-dev/dsh-api-remotes/client'
-import { RemoteError } from '@liusiqi-dev/dsh-client-test-runtime'
+import type { SettingsNamespaceView } from '@liusiqi-dev/sqh-api-remotes/client'
+import { RemoteError } from '@liusiqi-dev/sqh-client-test-runtime'
 import { SettingsDescribeMirror, type SettingsDescribeView } from '../src/client/settings-mirror.ts'
 
 /** What a Remote call answers with: no carrier envelope, and a typed failure. */

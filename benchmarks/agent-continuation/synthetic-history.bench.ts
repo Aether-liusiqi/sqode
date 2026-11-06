@@ -1,8 +1,8 @@
 /** Current-generation benchmark seeds retain the system head across continuation. */
 import { expect, it } from 'vitest'
-import { createSystemMessage } from '@liusiqi-dev/dsh-llm'
-import { parseSessionLog } from '@liusiqi-dev/dsh-llm-replay'
-import { Session, SessionId, SESSION_FORMAT_VERSION } from '@liusiqi-dev/dsh-session'
+import { createSystemMessage } from '@liusiqi-dev/sqh-llm'
+import { parseSessionLog } from '@liusiqi-dev/sqh-llm-replay'
+import { Session, SessionId, SESSION_FORMAT_VERSION } from '@liusiqi-dev/sqh-session'
 import { syntheticHistory as browserHistory } from '../long-session-browser/synthetic-history.ts'
 import { syntheticHistory } from './workload.ts'
 

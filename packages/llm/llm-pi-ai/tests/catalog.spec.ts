@@ -1,12 +1,12 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import LlmRuntime, { createUserMessage, ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
-import type { StreamChunk } from '@liusiqi-dev/dsh-llm'
+import LlmRuntime, { createUserMessage, ReasoningEffortId } from '@liusiqi-dev/sqh-llm'
+import type { StreamChunk } from '@liusiqi-dev/sqh-llm'
 import { liveConfig } from '../../../settings/settings/tests/live-config.ts'
 const configurations = new WeakMap<Context, Awaited<ReturnType<typeof liveConfig>>>()
-import * as LlmPiAi from '@liusiqi-dev/dsh-llm-pi-ai'
-import { PiAiAdapter } from '@liusiqi-dev/dsh-llm-pi-ai'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
+import * as LlmPiAi from '@liusiqi-dev/sqh-llm-pi-ai'
+import { PiAiAdapter } from '@liusiqi-dev/sqh-llm-pi-ai'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
 import { getBuiltinModels } from '@earendil-works/pi-ai/providers/all'
 import { AssistantMessageEventStream } from '@earendil-works/pi-ai/utils/event-stream'
 import { normalizeContext } from '@earendil-works/pi-ai/utils/transcript'
@@ -18,7 +18,7 @@ import { assemble } from './assemble.ts'
 import { memoryAuth } from './auth-double.ts'
 import { closeMockServers, mockServer, textEvents } from './mock-server.ts'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }

@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-client-shortcuts",
+  "name": "@liusiqi-dev/sqh-client-shortcuts",
   "description": "Application keyboard command registry and physical-key routing",
   "version": "1.0.0",
   "publishConfig": {
@@ -32,7 +32,7 @@
   "dsh": {
     "client": {
       "inject": [
-        "@liusiqi-dev/dsh-client-locale"
+        "@liusiqi-dev/sqh-client-locale"
       ],
       "platform": "web"
     }
@@ -47,12 +47,12 @@
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-client-locale": "workspace:*",
-    "@liusiqi-dev/dsh-client-store": "workspace:*",
-    "@liusiqi-dev/dsh-client-ui-primitives": "workspace:*",
-    "@liusiqi-dev/dsh-brand": "workspace:*",
-    "@liusiqi-dev/dsh-client-test-runtime": "workspace:*",
-    "@liusiqi-dev/dsh-host-webserver": "workspace:*"
+    "@liusiqi-dev/sqh-client-locale": "workspace:*",
+    "@liusiqi-dev/sqh-client-store": "workspace:*",
+    "@liusiqi-dev/sqh-client-ui-primitives": "workspace:*",
+    "@liusiqi-dev/sqh-brand": "workspace:*",
+    "@liusiqi-dev/sqh-client-test-runtime": "workspace:*",
+    "@liusiqi-dev/sqh-host-webserver": "workspace:*"
   },
   "files": [
     "lib/index.js",
@@ -61,8 +61,8 @@
     "lib/types/**/*.d.ts"
   ],
   "dependencies": {
-    "@liusiqi-dev/dsh-util-crypto": "workspace:*",
-    "@liusiqi-dev/dsh-util-values": "workspace:*",
+    "@liusiqi-dev/sqh-util-crypto": "workspace:*",
+    "@liusiqi-dev/sqh-util-values": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~"
   }
 }

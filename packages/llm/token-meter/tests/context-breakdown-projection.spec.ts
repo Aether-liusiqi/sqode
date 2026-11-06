@@ -3,15 +3,15 @@
 
 import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { createMessage, createSystemMessage, createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { ContentBlock, ToolSchema } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { SessionLogOffset, SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { Session, SessionEvent, SessionSeq as SessionSeqType } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import TokenMeter from '@liusiqi-dev/dsh-token-meter'
-import type { ContextBreakdownProjection } from '@liusiqi-dev/dsh-token-meter/client'
-import { CompactionId } from '@liusiqi-dev/dsh-compaction'
+import { createMessage, createSystemMessage, createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { ContentBlock, ToolSchema } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { SessionLogOffset, SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { Session, SessionEvent, SessionSeq as SessionSeqType } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import TokenMeter from '@liusiqi-dev/sqh-token-meter'
+import type { ContextBreakdownProjection } from '@liusiqi-dev/sqh-token-meter/client'
+import { CompactionId } from '@liusiqi-dev/sqh-compaction'
 import { contextBreakdownProjectionDefinition } from '../src/breakdown-projection.ts'
 import {
   estimateContent,
@@ -20,7 +20,7 @@ import {
   estimateToolsTokens,
 } from '../src/estimate.ts'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }

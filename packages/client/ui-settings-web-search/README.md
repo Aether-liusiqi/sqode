@@ -3,7 +3,7 @@ description: "The web-search provider's settings page on the dsh web client's Pl
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-ui-settings-web-search
+# @liusiqi-dev/sqh-client-ui-settings-web-search
 
 English | [中文](README.zh.md)
 

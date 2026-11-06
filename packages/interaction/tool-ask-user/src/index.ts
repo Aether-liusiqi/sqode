@@ -3,14 +3,14 @@
  * The tool pauses until a UI provider returns a human answer, then feeds that
  * answer back into the agent loop as an ordinary tool result.
  *
- * @module @liusiqi-dev/dsh-tool-ask-user
+ * @module @liusiqi-dev/sqh-tool-ask-user
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
 import z from '@liusiqi-dev/schemastery'
 import { registerTimedAskUser } from './timed.ts'
-import '@liusiqi-dev/dsh-user-questions'
+import '@liusiqi-dev/sqh-user-questions'
 
 /** Cordis row selecting the tool schema and its default foreground wait. */
 export interface Config {

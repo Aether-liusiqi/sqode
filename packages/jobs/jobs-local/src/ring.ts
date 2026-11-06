@@ -2,10 +2,10 @@
  * The bounded output ring behind one job: chunks at absolute byte offsets,
  * head eviction that never moves an assigned offset, and non-consuming reads
  * from any offset.
- * @module @liusiqi-dev/dsh-jobs-local/ring
+ * @module @liusiqi-dev/sqh-jobs-local/ring
  */
 
-import type { JobAppendOptions, JobChannel, JobOutputRead } from '@liusiqi-dev/dsh-jobs'
+import type { JobAppendOptions, JobChannel, JobOutputRead } from '@liusiqi-dev/sqh-jobs'
 
 /** One retained ring entry; `bytes` caches the chunk's UTF-8 length. */
 interface RingChunk {

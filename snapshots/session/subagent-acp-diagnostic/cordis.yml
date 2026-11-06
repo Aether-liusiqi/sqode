@@ -5,7 +5,7 @@
     - id: acp-diagnostic-release-on-job-output
       name: './release-on-job-output.mjs'
     - id: subagent-acp-diagnostic
-      name: '@liusiqi-dev/dsh-subagent-acp'
+      name: '@liusiqi-dev/sqh-subagent-acp'
       config:
         providerName: acp-diagnostic
         command: !!js process.execPath
@@ -17,7 +17,7 @@
           MOCK_TOOL_KIND: execute
           MOCK_PROMPT_HOLD: .sqode/acp-diagnostic-prompt-hold
     - id: tool-subagent-acp-diagnostic
-      name: '@liusiqi-dev/dsh-tool-subagent'
+      name: '@liusiqi-dev/sqh-tool-subagent'
       config:
         provider: acp-diagnostic
         toolName: subagent_acp

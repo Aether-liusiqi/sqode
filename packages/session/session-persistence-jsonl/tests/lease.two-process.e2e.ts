@@ -14,9 +14,9 @@ import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { SessionId, SessionSeq } from '@liusiqi-dev/dsh-session'
-import { SessionAlreadyOwnedError } from '@liusiqi-dev/dsh-session-persistence'
-import JsonlSessionPersistence from '@liusiqi-dev/dsh-session-persistence-jsonl'
+import { SessionId, SessionSeq } from '@liusiqi-dev/sqh-session'
+import { SessionAlreadyOwnedError } from '@liusiqi-dev/sqh-session-persistence'
+import JsonlSessionPersistence from '@liusiqi-dev/sqh-session-persistence-jsonl'
 
 const SESSION = 'two-process-lease'
 

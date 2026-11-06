@@ -17,7 +17,7 @@ import {
   loadOptionalPatches,
   PROFILE_PATCH_FILENAME,
   reconcileProfilePatches,
-} from '@liusiqi-dev/dsh-app-boot'
+} from '@liusiqi-dev/sqh-app-boot'
 
 const NAME = 'dsh-test-bin'
 

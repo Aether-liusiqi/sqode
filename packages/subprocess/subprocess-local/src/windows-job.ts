@@ -5,11 +5,11 @@ import { spawn } from 'node:child_process'
 import { closeSync, openSync } from 'node:fs'
 import { devNull } from 'node:os'
 import type { Readable, Writable } from 'node:stream'
-import type { SubprocessOutcome, SubprocessSpawnSpec } from '@liusiqi-dev/dsh-subprocess'
+import type { SubprocessOutcome, SubprocessSpawnSpec } from '@liusiqi-dev/sqh-subprocess'
 import {
   loadWin32ProcessBindings,
   probeCurrentTokenJobSupport,
-} from '@liusiqi-dev/dsh-win32-process'
+} from '@liusiqi-dev/sqh-win32-process'
 import type { BoundProcessOwner, ManagedProcessLaunch } from './managed-owner.ts'
 import {
   type SerializedRunnerError,

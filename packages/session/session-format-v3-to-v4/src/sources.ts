@@ -1,7 +1,7 @@
 /** Released V3 plugin-source conversion and declared message traversal. */
 
-import { SessionFormatError, isSessionFormatJsonObject } from '@liusiqi-dev/dsh-session-format'
-import type { SessionFormatEvent, SessionFormatJsonObject, SessionFormatJsonValue } from '@liusiqi-dev/dsh-session-format'
+import { SessionFormatError, isSessionFormatJsonObject } from '@liusiqi-dev/sqh-session-format'
+import type { SessionFormatEvent, SessionFormatJsonObject, SessionFormatJsonValue } from '@liusiqi-dev/sqh-session-format'
 
 /**
  * Visit only messages carried by first-party event payloads.
@@ -41,7 +41,7 @@ const RENAMED_PRODUCERS: Readonly<Record<string, string>> = Object.freeze({
   'tools-code-mode': 'ptc-mode',
   'tools-ptc': 'ptc-mode',
   'dsh-compaction-basic': 'compact-basic',
-  '@liusiqi-dev/dsh-system-prompt': 'runtime-context',
+  '@liusiqi-dev/sqh-system-prompt': 'runtime-context',
 })
 
 /** First-party V3 plugin identities that intentionally keep their current kind. */

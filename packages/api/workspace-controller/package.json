@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-api-workspace-controller",
+  "name": "@liusiqi-dev/sqh-api-workspace-controller",
   "description": "Workspace Remote commands and reconnect-safe state transport",
   "version": "1.0.0",
   "publishConfig": {
@@ -44,11 +44,11 @@
   "dsh": {
     "client": {
       "external": [
-        "@liusiqi-dev/dsh-api-gateway/client"
+        "@liusiqi-dev/sqh-api-gateway/client"
       ],
       "inject": [
-        "@liusiqi-dev/dsh-api-gateway",
-        "@liusiqi-dev/dsh-client-connection"
+        "@liusiqi-dev/sqh-api-gateway",
+        "@liusiqi-dev/sqh-client-connection"
       ],
       "platform": "web"
     }
@@ -69,32 +69,32 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@liusiqi-dev/dsh-deque": "workspace:*",
-    "@liusiqi-dev/dsh-native-command": "workspace:*",
+    "@liusiqi-dev/sqh-deque": "workspace:*",
+    "@liusiqi-dev/sqh-native-command": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
     "zod": "^4.4.3"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-api-gateway": "workspace:*",
-    "@liusiqi-dev/dsh-client-connection": "workspace:*",
-    "@liusiqi-dev/dsh-host-directory-picker": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-storage-domain": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
-    "@liusiqi-dev/dsh-workspace": "workspace:*"
+    "@liusiqi-dev/sqh-api-gateway": "workspace:*",
+    "@liusiqi-dev/sqh-client-connection": "workspace:*",
+    "@liusiqi-dev/sqh-host-directory-picker": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-storage-domain": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/sqh-workspace": "workspace:*"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-api-gateway": "workspace:*",
-    "@liusiqi-dev/dsh-client-connection": "workspace:*",
-    "@liusiqi-dev/dsh-client-store": "workspace:*",
-    "@liusiqi-dev/dsh-client-test-runtime": "workspace:*",
-    "@liusiqi-dev/dsh-host-directory-picker": "workspace:*",
-    "@liusiqi-dev/dsh-remote-mock": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-storage-domain": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
-    "@liusiqi-dev/dsh-workspace": "workspace:*"
+    "@liusiqi-dev/sqh-api-gateway": "workspace:*",
+    "@liusiqi-dev/sqh-client-connection": "workspace:*",
+    "@liusiqi-dev/sqh-client-store": "workspace:*",
+    "@liusiqi-dev/sqh-client-test-runtime": "workspace:*",
+    "@liusiqi-dev/sqh-host-directory-picker": "workspace:*",
+    "@liusiqi-dev/sqh-remote-mock": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-storage-domain": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/sqh-workspace": "workspace:*"
   }
 }

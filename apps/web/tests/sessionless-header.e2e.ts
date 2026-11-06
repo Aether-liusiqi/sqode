@@ -3,7 +3,7 @@ import { chromium, type Browser } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import { launchWebScaffold, watchConsole, type WebScaffold } from './scaffold.ts'
 import { newEnglishPage, saveFailureShot } from './support.ts'
-import { initialShortcutConfig } from '@liusiqi-dev/dsh-client-shortcuts/protocol'
+import { initialShortcutConfig } from '@liusiqi-dev/sqh-client-shortcuts/protocol'
 
 let scaffold: WebScaffold
 let browser: Browser

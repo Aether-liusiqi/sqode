@@ -2,7 +2,7 @@
 import { duplexPair } from 'node:stream'
 import { once } from 'node:events'
 import { Context } from '@liusiqi-dev/cordis'
-import type { SubprocessTerminalSpawnSpec } from '@liusiqi-dev/dsh-subprocess'
+import type { SubprocessTerminalSpawnSpec } from '@liusiqi-dev/sqh-subprocess'
 import { describe, expect, it, onTestFinished, vi } from 'vitest'
 import { z } from 'zod'
 import { SshSubprocessRuntime } from '../src/index.ts'

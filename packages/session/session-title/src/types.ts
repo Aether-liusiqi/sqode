@@ -5,13 +5,13 @@
  * `./types` for host consumers and `./client/types` for client aggregates —
  * with zero content duplication.
  *
- * @module @liusiqi-dev/dsh-session-title/types
+ * @module @liusiqi-dev/sqh-session-title/types
  */
 
 export {}
 
-import type { Branded } from '@liusiqi-dev/dsh-brand'
-import type { OptionalSessionSeq, SessionSeq } from '@liusiqi-dev/dsh-session/types'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
+import type { OptionalSessionSeq, SessionSeq } from '@liusiqi-dev/sqh-session/types'
 
 /** Identifies one session-title provider registration. */
 export type SessionTitleProviderId = Branded<'SessionTitleProviderId'>
@@ -76,7 +76,7 @@ export interface TitleInputState {
   readonly lastSeq: OptionalSessionSeq
 }
 
-declare module '@liusiqi-dev/dsh-session-projection/types' {
+declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionStateMap {
     /** Latest logged title text, or null. */
     title: string | null

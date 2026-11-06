@@ -1,9 +1,9 @@
 /** A window hold accepts each physical acknowledgement and releases pending consumers. */
 import { afterEach, expect, it, vi } from 'vitest'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import { RemoteStream, type ClientRemote } from '@liusiqi-dev/dsh-api-gateway/client'
-import { streamMethod } from '@liusiqi-dev/dsh-remote-mock'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import { RemoteStream, type ClientRemote } from '@liusiqi-dev/sqh-api-gateway/client'
+import { streamMethod } from '@liusiqi-dev/sqh-remote-mock'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import type { TerminalRemote } from '../src/client/model.ts'
 import { TerminalWindowHold } from '../src/client/retention.ts'
 import type { TerminalRetentionFrame, WebTerminalId } from '../src/types.ts'

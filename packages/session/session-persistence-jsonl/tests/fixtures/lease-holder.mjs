@@ -6,8 +6,8 @@
  */
 
 import { Context } from '@liusiqi-dev/cordis'
-import { SESSION_FORMAT_VERSION } from '@liusiqi-dev/dsh-session'
-import JsonlSessionPersistence from '@liusiqi-dev/dsh-session-persistence-jsonl'
+import { SESSION_FORMAT_VERSION } from '@liusiqi-dev/sqh-session'
+import JsonlSessionPersistence from '@liusiqi-dev/sqh-session-persistence-jsonl'
 
 const [root, sessionId] = process.argv.slice(2)
 const ctx = new Context()

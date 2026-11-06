@@ -4,17 +4,17 @@
  * surface events; a separate replacement `user/message` carries the summary.
  * Backend packages own configuration and retention policy; see
  * `.agents/notes/implemented/feature/2026-06-18-compaction-capability-seam.md`.
- * @module @liusiqi-dev/dsh-compaction/types
+ * @module @liusiqi-dev/sqh-compaction/types
  */
 
-import type { ContentBlock, TokenUsage } from '@liusiqi-dev/dsh-llm'
-import type { CommandId } from '@liusiqi-dev/dsh-commands/brand'
-import type { SessionSeq } from '@liusiqi-dev/dsh-session/types'
+import type { ContentBlock, TokenUsage } from '@liusiqi-dev/sqh-llm'
+import type { CommandId } from '@liusiqi-dev/sqh-commands/brand'
+import type { SessionSeq } from '@liusiqi-dev/sqh-session/types'
 import type { CompactionId } from './brand.ts'
 
 export type { CompactionId }
 
-declare module '@liusiqi-dev/dsh-session/types' {
+declare module '@liusiqi-dev/sqh-session/types' {
   interface SessionEventMap {
     /**
      * Marks the start of a compaction — log-only, holds the lock until

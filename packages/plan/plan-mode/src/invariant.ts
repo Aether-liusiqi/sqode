@@ -1,10 +1,10 @@
-/** Package-owned durable plan-mode invariants. @module @liusiqi-dev/dsh-plan-mode/invariant */
+/** Package-owned durable plan-mode invariants. @module @liusiqi-dev/sqh-plan-mode/invariant */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Session, SessionEvent } from '@liusiqi-dev/dsh-session'
-import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
+import type { Session, SessionEvent } from '@liusiqi-dev/sqh-session'
+import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-plan-mode'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-plan-mode'
 
 /** Cordis companion plugin name. */
 export const name = 'plan-mode-invariant'

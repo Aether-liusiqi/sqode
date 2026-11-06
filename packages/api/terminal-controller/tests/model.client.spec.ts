@@ -1,12 +1,12 @@
 /** Browser view ownership across slow RPCs, remounts and transport generations. */
 import { setImmediate } from 'node:timers/promises'
 import { afterEach, expect, it, vi } from 'vitest'
-import { RemoteStream, RemoteStreamCarrierError, type ClientRemote, type RemoteStreamOptions } from '@liusiqi-dev/dsh-api-gateway/client'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import { RemoteError, type RemoteResult } from '@liusiqi-dev/dsh-typert-protocol'
-import { streamMethod } from '@liusiqi-dev/dsh-remote-mock'
-import type {} from '@liusiqi-dev/dsh-api-terminal-controller/remote'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import { RemoteStream, RemoteStreamCarrierError, type ClientRemote, type RemoteStreamOptions } from '@liusiqi-dev/sqh-api-gateway/client'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import { RemoteError, type RemoteResult } from '@liusiqi-dev/sqh-typert-protocol'
+import { streamMethod } from '@liusiqi-dev/sqh-remote-mock'
+import type {} from '@liusiqi-dev/sqh-api-terminal-controller/remote'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import { TerminalView, type TerminalRemote } from '../src/client/model.ts'
 import type { TerminalEnvironment, TerminalFrame, WebTerminalId, WebTerminalInfo } from '../src/types.ts'
 

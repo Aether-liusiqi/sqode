@@ -1,20 +1,20 @@
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import { toolSessionEvents } from './tool-fixtures.client.ts'
 // @vitest-environment jsdom
 /** Tool assembly acceptance through the real ui-conversation host. */
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, fireEvent, waitFor } from '@testing-library/react'
-import { LocaleRuntime } from '@liusiqi-dev/dsh-client-locale/client'
-import type { ISession } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { WorkspaceId } from '@liusiqi-dev/dsh-workspace/types'
-import type { TodoItem } from '@liusiqi-dev/dsh-client-ui-conversation/client'
+import { LocaleRuntime } from '@liusiqi-dev/sqh-client-locale/client'
+import type { ISession } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { WorkspaceId } from '@liusiqi-dev/sqh-workspace/types'
+import type { TodoItem } from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import {
   apply as applyChat, inject as injectChat, type ToolResultNode,
-} from '@liusiqi-dev/dsh-client-ui-chat/client'
-import type { PropsRenderSlots } from '@liusiqi-dev/dsh-client-ui-slots'
-import { SlotTestRuntime, usePinnedBrowserLanguages, stubConfigForm } from '@liusiqi-dev/dsh-client-test-runtime'
-import { apply as applyConversation, inject as injectConversation } from '@liusiqi-dev/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/sqh-client-ui-chat/client'
+import type { PropsRenderSlots } from '@liusiqi-dev/sqh-client-ui-slots'
+import { SlotTestRuntime, usePinnedBrowserLanguages, stubConfigForm } from '@liusiqi-dev/sqh-client-test-runtime'
+import { apply as applyConversation, inject as injectConversation } from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import { apply as applyTool, inject as injectTool } from '../src/client/apply.ts'
 
 // The service reads its initial locale from the browser; these specs assert

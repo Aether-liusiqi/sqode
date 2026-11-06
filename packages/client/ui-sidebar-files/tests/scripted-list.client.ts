@@ -1,9 +1,9 @@
 /** Deferred directory reads paired with independently controlled watch streams. */
 import { vi } from 'vitest'
 import type { Mock } from 'vitest'
-import type { RemoteResult } from '@liusiqi-dev/dsh-api-remotes/client'
-import { RemoteError } from '@liusiqi-dev/dsh-client-test-runtime'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { RemoteResult } from '@liusiqi-dev/sqh-api-remotes/client'
+import { RemoteError } from '@liusiqi-dev/sqh-client-test-runtime'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import type { ListWorkspaceDirectory, WatchWorkspaceDirectory } from '../src/client/face.ts'
 import type { DirLevel } from '../src/client/store.ts'
 import { DirectoryWatches } from './scripted-watch.client.ts'

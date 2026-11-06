@@ -5,25 +5,25 @@
  * mapping; shared execution and parsing live in `dsh-hook-protocol`.
  * `updatedInput` is logged and warned but not honored. Bespoke behavior should
  * use typed native plugins on the same extension points.
- * @module @liusiqi-dev/dsh-hooks-claude-code
+ * @module @liusiqi-dev/sqh-hooks-claude-code
  */
 
 import { readFileSync } from 'node:fs'
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import type { Agent, PreStepDecision, TurnBoundaryProjection } from '@liusiqi-dev/dsh-agent'
-import type {} from '@liusiqi-dev/dsh-session-projection'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-declare module '@liusiqi-dev/dsh-llm' {
+import type { Agent, PreStepDecision, TurnBoundaryProjection } from '@liusiqi-dev/sqh-agent'
+import type {} from '@liusiqi-dev/sqh-session-projection'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'hooks-claude-code': { kind: 'hooks-claude-code' } & ContextFormed
   }
 }
 
-import type { ContentBlock, MessageSource } from '@liusiqi-dev/dsh-llm'
-import type { UserMessage } from '@liusiqi-dev/dsh-session'
-import type { PostToolDecision, PreToolDecision, ToolExecution, ToolExecutionResult } from '@liusiqi-dev/dsh-tools'
+import type { ContentBlock, MessageSource } from '@liusiqi-dev/sqh-llm'
+import type { UserMessage } from '@liusiqi-dev/sqh-session'
+import type { PostToolDecision, PreToolDecision, ToolExecution, ToolExecutionResult } from '@liusiqi-dev/sqh-tools'
 import {
   appendHookInvoked,
   appendHookResult,
@@ -36,10 +36,10 @@ import {
   type HookOutput,
   type MatcherGroup,
   type MergedHookOutcome,
-} from '@liusiqi-dev/dsh-hook-protocol'
+} from '@liusiqi-dev/sqh-hook-protocol'
 // Pulls in the declaration-merged subagent events and the identity pairing their
 // start/end edges.
-import type { SubagentRunId } from '@liusiqi-dev/dsh-subagent'
+import type { SubagentRunId } from '@liusiqi-dev/sqh-subagent'
 import { parseClaudeCodeConfig, type ClaudeCodeHookConfig } from './config.ts'
 
 export const name = 'hooks-claude-code'

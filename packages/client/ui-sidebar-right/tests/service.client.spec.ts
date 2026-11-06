@@ -10,9 +10,9 @@
  */
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { LayoutState, PaneId, TabId } from '@liusiqi-dev/dsh-client-ui-dockkit'
-import { dockPaneIds, findTabPane, getPane } from '@liusiqi-dev/dsh-client-ui-dockkit'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { LayoutState, PaneId, TabId } from '@liusiqi-dev/sqh-client-ui-dockkit'
+import { dockPaneIds, findTabPane, getPane } from '@liusiqi-dev/sqh-client-ui-dockkit'
 import { createSidebarRightController } from '../src/client/service.ts'
 import { SidebarRightTabRegistry } from '../src/client/tab-registry.ts'
 import { createSidebarRightStore } from '../src/client/stores.ts'

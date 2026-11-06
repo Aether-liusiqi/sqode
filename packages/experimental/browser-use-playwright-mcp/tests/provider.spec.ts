@@ -1,11 +1,11 @@
 import { existsSync } from 'node:fs'
 import { Context } from '@liusiqi-dev/cordis'
 import { afterEach, expect, it, vi } from 'vitest'
-import { mountSessionMcp } from '@liusiqi-dev/dsh-experimental-browser-use-runtime/mcp'
+import { mountSessionMcp } from '@liusiqi-dev/sqh-experimental-browser-use-runtime/mcp'
 import * as Provider from '../src/index.ts'
 
-vi.mock('@liusiqi-dev/dsh-experimental-browser-use-runtime/mcp', async importOriginal => ({
-  ...await importOriginal<typeof import('@liusiqi-dev/dsh-experimental-browser-use-runtime/mcp')>(),
+vi.mock('@liusiqi-dev/sqh-experimental-browser-use-runtime/mcp', async importOriginal => ({
+  ...await importOriginal<typeof import('@liusiqi-dev/sqh-experimental-browser-use-runtime/mcp')>(),
   mountSessionMcp: vi.fn(),
 }))
 afterEach(() => {

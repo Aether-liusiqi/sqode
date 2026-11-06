@@ -2,13 +2,13 @@
  * Exa-backed `WebSearchProvider` plugin. It contributes to the `ctx.web`
  * registry without owning the service.
  *
- * @module @liusiqi-dev/dsh-web-search-exa
+ * @module @liusiqi-dev/sqh-web-search-exa
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { launchEnvironmentOf } from '@liusiqi-dev/dsh-launch-environment'
+import { launchEnvironmentOf } from '@liusiqi-dev/sqh-launch-environment'
 import z from '@liusiqi-dev/schemastery'
-import type {} from '@liusiqi-dev/dsh-web'
+import type {} from '@liusiqi-dev/sqh-web'
 import {
   ExaSearchProvider,
   EXA_DEFAULT_BASE_URL,

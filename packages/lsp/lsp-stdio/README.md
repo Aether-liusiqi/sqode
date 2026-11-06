@@ -3,7 +3,7 @@ description: "The stdio language-server provider for ctx.lsp: configured server 
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-lsp-stdio
+# @liusiqi-dev/sqh-lsp-stdio
 
 English | [中文](README.zh.md)
 
@@ -32,10 +32,10 @@ Mount this provider when a deployment has local language servers — for example
 The `servers` record maps each stable provider id to one server command. The provider resolves every executable at load after credential scrubbing, so a bad entry prevents every provider from registering; processes launch lazily on the first matching query.
 
 ```yaml
-- name: '@liusiqi-dev/dsh-fs-local'
-- name: '@liusiqi-dev/dsh-subprocess-local'
-- name: '@liusiqi-dev/dsh-lsp'
-- name: '@liusiqi-dev/dsh-lsp-stdio'
+- name: '@liusiqi-dev/sqh-fs-local'
+- name: '@liusiqi-dev/sqh-subprocess-local'
+- name: '@liusiqi-dev/sqh-lsp'
+- name: '@liusiqi-dev/sqh-lsp-stdio'
   config:
     servers:
       typescript:
@@ -43,7 +43,7 @@ The `servers` record maps each stable provider id to one server command. The pro
         args: ['--stdio']
         extensionToLanguage:
           '.ts': typescript
-- name: '@liusiqi-dev/dsh-tool-lsp'
+- name: '@liusiqi-dev/sqh-tool-lsp'
 ```
 
 | Field | Default | Meaning |

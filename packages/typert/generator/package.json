@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-typert-generator",
+  "name": "@liusiqi-dev/sqh-typert-generator",
   "description": "TypeScript project analyzer and model-driven Typert artifact generator",
   "version": "1.0.0",
   "publishConfig": {
@@ -39,8 +39,8 @@
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-tool-cordis": "workspace:*",
-    "@liusiqi-dev/dsh-typert-registry": "workspace:*",
+    "@liusiqi-dev/sqh-tool-cordis": "workspace:*",
+    "@liusiqi-dev/sqh-typert-registry": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~",
     "zod": "^4.4.3"
   }

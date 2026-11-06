@@ -1,9 +1,9 @@
 /** Direct Messages transport with one cancellable lifecycle per model request. */
 
-import { attributionHeaders, LlmAdapter, LlmError } from '@liusiqi-dev/dsh-llm'
-import type { GenerateOptions, ImageAttachmentAccessResolver, PreparedAdapterCall, StreamChunk } from '@liusiqi-dev/dsh-llm'
-import type { DeepSeekLlmApiJson } from '@liusiqi-dev/dsh-deepseek-llm-api-extensions'
-import { idleWatchdog, timeoutOf } from '@liusiqi-dev/dsh-timeout'
+import { attributionHeaders, LlmAdapter, LlmError } from '@liusiqi-dev/sqh-llm'
+import type { GenerateOptions, ImageAttachmentAccessResolver, PreparedAdapterCall, StreamChunk } from '@liusiqi-dev/sqh-llm'
+import type { DeepSeekLlmApiJson } from '@liusiqi-dev/sqh-deepseek-llm-api-extensions'
+import { idleWatchdog, timeoutOf } from '@liusiqi-dev/sqh-timeout'
 import { modelInfo } from './model-info.ts'
 import type { DeepSeekAdapterOptions, DeepSeekConnectionOptions as Connection } from './types.ts'
 import { DeepSeekFileStore } from './file-store.ts'

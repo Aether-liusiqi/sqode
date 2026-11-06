@@ -10,7 +10,7 @@
 
 ```ts
 import type { Context } from '@liusiqi-dev/cordis'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
 
 export const name = 'greet-tool'
 export const inject = ['tools']

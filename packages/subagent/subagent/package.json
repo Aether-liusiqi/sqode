@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-subagent",
+  "name": "@liusiqi-dev/sqh-subagent",
   "description": "Abstract subagent seam (ctx.subagents): named-provider registry for delegating to child agents",
   "version": "1.0.0",
   "publishConfig": {
@@ -53,95 +53,95 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@liusiqi-dev/dsh-brand": "workspace:*",
-    "@liusiqi-dev/dsh-chunked-list": "workspace:*",
-    "@liusiqi-dev/dsh-util-values": "workspace:*",
+    "@liusiqi-dev/sqh-brand": "workspace:*",
+    "@liusiqi-dev/sqh-chunked-list": "workspace:*",
+    "@liusiqi-dev/sqh-util-values": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
     "zod": "^4.4.3"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-agent-preset-registry": "workspace:*",
-    "@liusiqi-dev/dsh-attachment": "workspace:*",
-    "@liusiqi-dev/dsh-invariants": "workspace:*",
-    "@liusiqi-dev/dsh-jobs": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox-policy": "workspace:*",
-    "@liusiqi-dev/dsh-scope": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-persistence": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*",
-    "@liusiqi-dev/dsh-session-query": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
-    "@liusiqi-dev/dsh-user-approval": "workspace:*",
-    "@liusiqi-dev/dsh-util-time": "workspace:*",
-    "@liusiqi-dev/dsh-permission-presets": "workspace:*",
-    "@liusiqi-dev/dsh-workspace": "workspace:*"
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-agent-preset-registry": "workspace:*",
+    "@liusiqi-dev/sqh-attachment": "workspace:*",
+    "@liusiqi-dev/sqh-invariants": "workspace:*",
+    "@liusiqi-dev/sqh-jobs": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox-policy": "workspace:*",
+    "@liusiqi-dev/sqh-scope": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-persistence": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection": "workspace:*",
+    "@liusiqi-dev/sqh-session-query": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/sqh-user-approval": "workspace:*",
+    "@liusiqi-dev/sqh-util-time": "workspace:*",
+    "@liusiqi-dev/sqh-permission-presets": "workspace:*",
+    "@liusiqi-dev/sqh-workspace": "workspace:*"
   },
   "peerDependenciesMeta": {
-    "@liusiqi-dev/dsh-agent-preset-registry": {
+    "@liusiqi-dev/sqh-agent-preset-registry": {
       "optional": true
     },
-    "@liusiqi-dev/dsh-permission-presets": {
+    "@liusiqi-dev/sqh-permission-presets": {
       "optional": true
     },
-    "@liusiqi-dev/dsh-sandbox": {
+    "@liusiqi-dev/sqh-sandbox": {
       "optional": true
     },
-    "@liusiqi-dev/dsh-sandbox-policy": {
+    "@liusiqi-dev/sqh-sandbox-policy": {
       "optional": true
     },
-    "@liusiqi-dev/dsh-session-persistence": {
+    "@liusiqi-dev/sqh-session-persistence": {
       "optional": true
     },
-    "@liusiqi-dev/dsh-session-projection": {
+    "@liusiqi-dev/sqh-session-projection": {
       "optional": true
     },
-    "@liusiqi-dev/dsh-session-query": {
+    "@liusiqi-dev/sqh-session-query": {
       "optional": true
     },
-    "@liusiqi-dev/dsh-workspace": {
+    "@liusiqi-dev/sqh-workspace": {
       "optional": true
     },
-    "@liusiqi-dev/dsh-jobs": {
+    "@liusiqi-dev/sqh-jobs": {
       "optional": true
     },
-    "@liusiqi-dev/dsh-user-approval": {
+    "@liusiqi-dev/sqh-user-approval": {
       "optional": true
     },
-    "@liusiqi-dev/dsh-settings": {
+    "@liusiqi-dev/sqh-settings": {
       "optional": true
     }
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-agent": "workspace:*",
-    "@liusiqi-dev/dsh-agent-preset-registry": "workspace:*",
-    "@liusiqi-dev/dsh-attachment": "workspace:*",
-    "@liusiqi-dev/dsh-invariants": "workspace:*",
-    "@liusiqi-dev/dsh-jobs": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox": "workspace:*",
-    "@liusiqi-dev/dsh-sandbox-policy": "workspace:*",
-    "@liusiqi-dev/dsh-schedule": "workspace:*",
-    "@liusiqi-dev/dsh-scope": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-persistence": "workspace:*",
-    "@liusiqi-dev/dsh-session-projection": "workspace:*",
-    "@liusiqi-dev/dsh-session-query": "workspace:*",
-    "@liusiqi-dev/dsh-storage": "workspace:*",
-    "@liusiqi-dev/dsh-storage-domain": "workspace:*",
-    "@liusiqi-dev/dsh-storage-json": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*",
-    "@liusiqi-dev/dsh-user-approval": "workspace:*",
-    "@liusiqi-dev/dsh-util-time": "workspace:*",
-    "@liusiqi-dev/dsh-permission-presets": "workspace:*",
-    "@liusiqi-dev/dsh-workspace": "workspace:*"
+    "@liusiqi-dev/sqh-agent": "workspace:*",
+    "@liusiqi-dev/sqh-agent-preset-registry": "workspace:*",
+    "@liusiqi-dev/sqh-attachment": "workspace:*",
+    "@liusiqi-dev/sqh-invariants": "workspace:*",
+    "@liusiqi-dev/sqh-jobs": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox": "workspace:*",
+    "@liusiqi-dev/sqh-sandbox-policy": "workspace:*",
+    "@liusiqi-dev/sqh-schedule": "workspace:*",
+    "@liusiqi-dev/sqh-scope": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-persistence": "workspace:*",
+    "@liusiqi-dev/sqh-session-projection": "workspace:*",
+    "@liusiqi-dev/sqh-session-query": "workspace:*",
+    "@liusiqi-dev/sqh-storage": "workspace:*",
+    "@liusiqi-dev/sqh-storage-domain": "workspace:*",
+    "@liusiqi-dev/sqh-storage-json": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*",
+    "@liusiqi-dev/sqh-user-approval": "workspace:*",
+    "@liusiqi-dev/sqh-util-time": "workspace:*",
+    "@liusiqi-dev/sqh-permission-presets": "workspace:*",
+    "@liusiqi-dev/sqh-workspace": "workspace:*"
   }
 }

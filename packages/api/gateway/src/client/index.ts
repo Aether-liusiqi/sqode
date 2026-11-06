@@ -5,12 +5,12 @@
  */
 
 import { Service } from '@liusiqi-dev/cordis'
-import { RemoteError, isRemoteUplinkItem, remoteErrorOf } from '@liusiqi-dev/dsh-typert-protocol'
+import { RemoteError, isRemoteUplinkItem, remoteErrorOf } from '@liusiqi-dev/sqh-typert-protocol'
 export type { TypertGatewayFaultDetails } from '../remote-error-codes.ts'
 import type { Context } from '@liusiqi-dev/cordis'
 import type {
   ConnectionHandle,
-} from '@liusiqi-dev/dsh-client-connection/client'
+} from '@liusiqi-dev/sqh-client-connection/client'
 import type {
   InvocationDescriptor,
   TypertClientEventListener,
@@ -22,7 +22,7 @@ import type {
   TypertDisposer,
   TypertRemoteContribution,
   TypertRemoteEvent,
-} from '@liusiqi-dev/dsh-typert-protocol'
+} from '@liusiqi-dev/sqh-typert-protocol'
 import {
   ClientUplinkQueue,
   RemoteStreamCarrierError,

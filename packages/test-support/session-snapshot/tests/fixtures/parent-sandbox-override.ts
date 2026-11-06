@@ -1,6 +1,6 @@
 import type { Context } from '@liusiqi-dev/cordis'
-import { setSandboxMode } from '@liusiqi-dev/dsh-sandbox-policy'
-import type {} from '@liusiqi-dev/dsh-agent'
+import { setSandboxMode } from '@liusiqi-dev/sqh-sandbox-policy'
+import type {} from '@liusiqi-dev/sqh-agent'
 
 export const name = 'parent-sandbox-override'
 

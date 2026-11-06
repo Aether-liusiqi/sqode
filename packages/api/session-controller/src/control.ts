@@ -1,11 +1,11 @@
 /** Live Session projection state with reconnect baselines. */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { Deque } from '@liusiqi-dev/dsh-deque'
+import { Deque } from '@liusiqi-dev/sqh-deque'
 import type {
   Session, SessionId,
-} from '@liusiqi-dev/dsh-session'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
+} from '@liusiqi-dev/sqh-session'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
 import type {
   SessionControlBaseline,
   SessionControlFrame,

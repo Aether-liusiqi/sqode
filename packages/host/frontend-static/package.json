@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-host-frontend-static",
+  "name": "@liusiqi-dev/sqh-host-frontend-static",
   "description": "SPA dist server for the Web shell: owns the webserver fallback seat, serving explicit index entries and static assets with traversal rejection and 404 misses",
   "version": "1.0.0",
   "publishConfig": {
@@ -27,8 +27,8 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@liusiqi-dev/dsh-host-webserver": "workspace:*",
-    "@liusiqi-dev/dsh-client-connection": "workspace:*",
+    "@liusiqi-dev/sqh-host-webserver": "workspace:*",
+    "@liusiqi-dev/sqh-client-connection": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "dependencies": {
@@ -36,9 +36,9 @@
   },
   "devDependencies": {
     "@liusiqi-dev/cordis-plugin-loader": "workspace:~",
-    "@liusiqi-dev/dsh-client-connection": "workspace:*",
-    "@liusiqi-dev/dsh-credentials-local": "workspace:*",
-    "@liusiqi-dev/dsh-host-webserver": "workspace:*",
+    "@liusiqi-dev/sqh-client-connection": "workspace:*",
+    "@liusiqi-dev/sqh-credentials-local": "workspace:*",
+    "@liusiqi-dev/sqh-host-webserver": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   }
 }

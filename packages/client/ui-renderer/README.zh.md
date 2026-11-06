@@ -3,7 +3,7 @@ description: "浏览器 UI 渲染器：普通 Slot 与可复用 Component Factor
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-ui-renderer
+# @liusiqi-dev/sqh-client-ui-renderer
 
 [English](README.md) | 中文
 

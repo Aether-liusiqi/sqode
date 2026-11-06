@@ -1,11 +1,11 @@
 /** Code preview metadata and body registered through the public document extension points. */
 import type { Context } from '@liusiqi-dev/cordis'
-import { CODE_HIGHLIGHT_EXTENSIONS } from '@liusiqi-dev/dsh-client-ui-primitives'
+import { CODE_HIGHLIGHT_EXTENSIONS } from '@liusiqi-dev/sqh-client-ui-primitives'
 import type {} from '../index.ts'
 import { CodeBody } from './CodeBody.tsx'
 import { en, zh } from './locales.ts'
 
-const ID = '@liusiqi-dev/dsh-client-ui-sidebar-documentpreview/code'
+const ID = '@liusiqi-dev/sqh-client-ui-sidebar-documentpreview/code'
 const NS = 'sidebarCodePreview'
 
 /** @param ctx - owning plugin context. Register localized metadata and the matching keyed document body. */

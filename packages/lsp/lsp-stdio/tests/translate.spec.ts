@@ -6,8 +6,8 @@ import {
   requestMethod,
   supportsOperation,
   supportsTransientOpen,
-} from '@liusiqi-dev/dsh-lsp-stdio'
-import type { WireServerCapabilities } from '@liusiqi-dev/dsh-lsp-stdio/src/protocol.ts'
+} from '@liusiqi-dev/sqh-lsp-stdio'
+import type { WireServerCapabilities } from '@liusiqi-dev/sqh-lsp-stdio/src/protocol.ts'
 
 const RANGE = { start: { line: 1, character: 2 }, end: { line: 1, character: 5 } }
 

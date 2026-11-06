@@ -1,7 +1,7 @@
 /** Validate declared workspace paths and address their native-open actions. */
-import type { PresentedFile } from '@liusiqi-dev/dsh-tool-present/types'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { ToolCallId } from '@liusiqi-dev/dsh-llm/brand'
+import type { PresentedFile } from '@liusiqi-dev/sqh-tool-present/types'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { ToolCallId } from '@liusiqi-dev/sqh-llm/brand'
 
 /** Authenticated POST route for opening a workspace file on the Host desktop. */
 export const PRESENT_OPEN_PATH = '/api/present.open'

@@ -1,19 +1,19 @@
 // @vitest-environment jsdom
 import { cleanup, render, within } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
-import type { SessionLiveEventEntry } from '@liusiqi-dev/dsh-api-session-controller/client'
+import type { SessionLiveEventEntry } from '@liusiqi-dev/sqh-api-session-controller/client'
 import type {
   ConversationNodeDefinition, ConversationViewDefinition,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import { ConversationNodeAssembler } from '@liusiqi-dev/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import { ConversationNodeAssembler } from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import type {
   ChatConversationViewNode, ChatSnapshot,
-} from '@liusiqi-dev/dsh-client-ui-chat/client'
-import { makeTranslate } from '@liusiqi-dev/dsh-client-test-runtime'
-import { zh as commonZh } from '@liusiqi-dev/dsh-client-locale/src/locales/zh.ts'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session/types'
-import { commandDefinition } from '@liusiqi-dev/dsh-client-ui-chat/src/client/conversation-nodes/command.ts'
-import { chatViewDefinition } from '@liusiqi-dev/dsh-client-ui-chat/src/client/conversation-nodes/chat-snapshot-builder.ts'
+} from '@liusiqi-dev/sqh-client-ui-chat/client'
+import { makeTranslate } from '@liusiqi-dev/sqh-client-test-runtime'
+import { zh as commonZh } from '@liusiqi-dev/sqh-client-locale/src/locales/zh.ts'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session/types'
+import { commandDefinition } from '@liusiqi-dev/sqh-client-ui-chat/src/client/conversation-nodes/command.ts'
+import { chatViewDefinition } from '@liusiqi-dev/sqh-client-ui-chat/src/client/conversation-nodes/chat-snapshot-builder.ts'
 import { GoalCommandInputView } from '../src/client/GoalCommandInputView.tsx'
 import {
   goalCommandInputDefinition, goalCommandText,

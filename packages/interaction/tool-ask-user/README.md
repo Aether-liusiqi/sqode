@@ -3,7 +3,7 @@ description: "The model-facing ask_user_question tool over the user-questions se
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-tool-ask-user
+# @liusiqi-dev/sqh-tool-ask-user
 
 English | [中文](README.zh.md)
 
@@ -31,7 +31,7 @@ Shipped presets use blocking mode. To enable timed mode, set `mode: timed` on th
 
 ```yaml
 - id: tool-ask-user
-  name: '@liusiqi-dev/dsh-tool-ask-user'
+  name: '@liusiqi-dev/sqh-tool-ask-user'
   config:
     mode: timed
     timeout: 120

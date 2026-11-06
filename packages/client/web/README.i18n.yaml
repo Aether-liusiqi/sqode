@@ -5,57 +5,57 @@
 /:
   en: bd6e5fc50f07893f
   zh: 0ee146674eb01770
-/liusiqi-dev-dsh-client-web:
-  en: ee1918cd989ec856
-  zh: 912bbda36bfd9d09
-/liusiqi-dev-dsh-client-web/summary:
+/liusiqi-dev-sqh-client-web:
+  en: 548f433e16a0cf9b
+  zh: fa266bda65dc22dd
+/liusiqi-dev-sqh-client-web/summary:
   en: 646bd0a246789400
   zh: d875dc0d37f46338
-/liusiqi-dev-dsh-client-web/table-of-contents:
+/liusiqi-dev-sqh-client-web/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
-/liusiqi-dev-dsh-client-web/use-this-package:
+/liusiqi-dev-sqh-client-web/use-this-package:
   en: eebbf05206f343a3
   zh: 0b27952937cca0a6
-/liusiqi-dev-dsh-client-web/use-this-package/what-boot-looks-like:
+/liusiqi-dev-sqh-client-web/use-this-package/what-boot-looks-like:
   en: f3b01aa878764e5c
   zh: f02eab65d441bfe0
-/liusiqi-dev-dsh-client-web/use-this-package/the-boot-page:
+/liusiqi-dev-sqh-client-web/use-this-package/the-boot-page:
   en: add354591107b80d
   zh: 41136254a00d785e
-/liusiqi-dev-dsh-client-web/use-this-package/the-shared-module-table:
+/liusiqi-dev-sqh-client-web/use-this-package/the-shared-module-table:
   en: 8380cd70b861a3a8
   zh: 5a331deb7ad8fca1
-/liusiqi-dev-dsh-client-web/use-this-package/configuration:
+/liusiqi-dev-sqh-client-web/use-this-package/configuration:
   en: 942959cb40ee31a1
   zh: 9c86ac2cf6a13976
-/liusiqi-dev-dsh-client-web/understand-the-implementation:
+/liusiqi-dev-sqh-client-web/understand-the-implementation:
   en: 9556ca6438410146
   zh: 8a60572cb4caa04a
-/liusiqi-dev-dsh-client-web/understand-the-implementation/design-concept:
+/liusiqi-dev-sqh-client-web/understand-the-implementation/design-concept:
   en: e18ec3ae51dcdc3f
   zh: e454da2038979aec
-/liusiqi-dev-dsh-client-web/understand-the-implementation/two-stage-boot:
+/liusiqi-dev-sqh-client-web/understand-the-implementation/two-stage-boot:
   en: fb3cab79c1505627
   zh: 875897afe593aeb3
-/liusiqi-dev-dsh-client-web/understand-the-implementation/boot-page-mechanics:
+/liusiqi-dev-sqh-client-web/understand-the-implementation/boot-page-mechanics:
   en: 83f9195138da9a82
   zh: 135d7da735fb870a
-/liusiqi-dev-dsh-client-web/understand-the-implementation/source-map:
+/liusiqi-dev-sqh-client-web/understand-the-implementation/source-map:
   en: 1fe37d3730368e32
   zh: 74c2d6980ce82e21
-/liusiqi-dev-dsh-client-web/further-exploration:
+/liusiqi-dev-sqh-client-web/further-exploration:
   en: f2da70a33bba9086
   zh: a775f6fe309150ea
-/liusiqi-dev-dsh-client-web/model-experience:
+/liusiqi-dev-sqh-client-web/model-experience:
   en: ec17334dcce181f3
   zh: bc8bc6e25ecbf9e8
-/liusiqi-dev-dsh-client-web/model-experience/kv-cache-effect:
+/liusiqi-dev-sqh-client-web/model-experience/kv-cache-effect:
   en: ca75c51c89c2c9b0
   zh: de54f3467ef3b9be
-/liusiqi-dev-dsh-client-web/known-limitations-and-deferred-work:
+/liusiqi-dev-sqh-client-web/known-limitations-and-deferred-work:
   en: f498ba05d4ea96d5
   zh: c3e57dd8ca9b5bda
-/liusiqi-dev-dsh-client-web/known-limitations-and-deferred-work/dev-note:
+/liusiqi-dev-sqh-client-web/known-limitations-and-deferred-work/dev-note:
   en: 80ab3d00f7aac4de
   zh: 3c08f30322413856

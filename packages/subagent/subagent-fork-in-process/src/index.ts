@@ -4,21 +4,21 @@
  * parent's session log — so the child inherits the parent's conversation context instead of
  * starting fresh. The seed ends at the last `turn/end`: the current tool-call turn is
  * unbalanced and cannot be replayed as a valid child session.
- * @module @liusiqi-dev/dsh-subagent-fork-in-process
+ * @module @liusiqi-dev/sqh-subagent-fork-in-process
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
 import type {
   ContinuableCreateRequest,
   ContinuableCreateSpec,
   ResolvedSubagentStartRequest,
   SubagentCapabilities,
   SubagentProvider,
-} from '@liusiqi-dev/dsh-subagent'
-import { startInProcessRun } from '@liusiqi-dev/dsh-subagent-in-process-driver'
+} from '@liusiqi-dev/sqh-subagent'
+import { startInProcessRun } from '@liusiqi-dev/sqh-subagent-in-process-driver'
 
 export const name = 'subagent-fork-in-process'
 // `tools` is deliberately NOT injected — same rationale as subagent-spawn-in-process: the

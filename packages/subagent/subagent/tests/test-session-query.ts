@@ -1,6 +1,6 @@
 /** Minimal concrete Session query for tests that exercise only corpus and point reads. */
 
-import SessionQueryEngine from '@liusiqi-dev/dsh-session-query'
+import SessionQueryEngine from '@liusiqi-dev/sqh-session-query'
 
 /** Session query implementation whose search faces are intentionally unavailable. */
 export class TestSessionQuery extends SessionQueryEngine {

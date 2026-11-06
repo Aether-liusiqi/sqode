@@ -1,6 +1,6 @@
 /**
- * Package-owned invariant companion for `@liusiqi-dev/dsh-client-ui-renderer`.
- * @module @liusiqi-dev/dsh-client-ui-renderer/invariant
+ * Package-owned invariant companion for `@liusiqi-dev/sqh-client-ui-renderer`.
+ * @module @liusiqi-dev/sqh-client-ui-renderer/invariant
  */
 
 /* jscpd:ignore-start */
@@ -8,10 +8,10 @@
  * `keyof SlotMap & string` is the declaration-merge key pattern: SlotMap is
  * empty in this compilation unit but consumers merge concrete keys into it. */
 import type { Context } from '@liusiqi-dev/cordis'
-import type { SlotMap } from '@liusiqi-dev/dsh-client-ui-slots'
-import type { InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
+import type { SlotMap } from '@liusiqi-dev/sqh-client-ui-slots'
+import type { InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-client-ui-renderer'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-client-ui-renderer'
 
 /** Cordis companion plugin name. */
 export const name = 'client-ui-renderer-invariant'

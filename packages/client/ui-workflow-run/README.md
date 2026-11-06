@@ -3,7 +3,7 @@ description: "Durable workflow-run Conversation Node for the dsh web client: rec
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-ui-workflow-run
+# @liusiqi-dev/sqh-client-ui-workflow-run
 
 English | [中文](README.zh.md)
 

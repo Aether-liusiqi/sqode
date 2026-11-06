@@ -3,7 +3,7 @@ description: "The shipped JSONL session-persistence backend for deployments and 
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-session-persistence-jsonl
+# @liusiqi-dev/sqh-session-persistence-jsonl
 
 English | [中文](README.zh.md)
 
@@ -34,8 +34,8 @@ Choose this backend when consumers benefit from one artifact per session — nav
 ### Minimal configuration
 
 ```yaml
-- name: '@liusiqi-dev/dsh-session'
-- name: '@liusiqi-dev/dsh-session-persistence-jsonl'
+- name: '@liusiqi-dev/sqh-session'
+- name: '@liusiqi-dev/sqh-session-persistence-jsonl'
   config:
     root: /absolute/path/to/session-logs
 ```

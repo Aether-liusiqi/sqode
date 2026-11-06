@@ -1,20 +1,20 @@
-import { BlockAssembler, expandAssistantStream } from '@liusiqi-dev/dsh-llm'
-import { deepEqualJson } from '@liusiqi-dev/dsh-util-values'
+import { BlockAssembler, expandAssistantStream } from '@liusiqi-dev/sqh-llm'
+import { deepEqualJson } from '@liusiqi-dev/sqh-util-values'
 import {
   SessionFormatError,
   SessionFormatUnsupportedMigrationError,
   sessionFormatCount,
   snapshotSessionFormatJson,
-} from '@liusiqi-dev/dsh-session-format'
+} from '@liusiqi-dev/sqh-session-format'
 import type {
   SessionFormatArtifact,
   SessionFormatEvent,
   SessionFormatJsonValue,
-} from '@liusiqi-dev/dsh-session-format'
+} from '@liusiqi-dev/sqh-session-format'
 import {
   assertReleasedPayloadSemantics,
   assertReleasedSurfaceMetadata,
-} from '@liusiqi-dev/dsh-session-format-v0-to-v1'
+} from '@liusiqi-dev/sqh-session-format-v0-to-v1'
 import { RELEASED_V2_EVENT_DISPOSITIONS, RELEASED_V2_EVENT_TYPES } from '../dispositions.ts'
 import {
   assertReleasedV2Keys,

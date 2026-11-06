@@ -3,7 +3,7 @@ description: "Domain data form (ctx.storageDomain) for hosts and maintainers cho
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-storage-domain
+# @liusiqi-dev/sqh-storage-domain
 
 English | [中文](README.zh.md)
 

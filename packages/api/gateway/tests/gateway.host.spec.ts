@@ -3,14 +3,14 @@ import type { AddressInfo } from 'node:net'
 import { describe, expect, it } from 'vitest'
 import { Context, Service, symbols } from '@liusiqi-dev/cordis'
 import { z } from 'zod'
-import { apply as applyConnection, inject as connectionInject } from '@liusiqi-dev/dsh-client-connection'
+import { apply as applyConnection, inject as connectionInject } from '@liusiqi-dev/sqh-client-connection'
 import type {
   ConnectionRpcHandler,
   HostConnectionHandle,
   PeerId,
   PeerScope,
-} from '@liusiqi-dev/dsh-client-connection'
-import type { WebServer, WebRoute } from '@liusiqi-dev/dsh-host-webserver'
+} from '@liusiqi-dev/sqh-client-connection'
+import type { WebServer, WebRoute } from '@liusiqi-dev/sqh-host-webserver'
 import {
   bindTypertRemote,
   Remote,
@@ -20,9 +20,9 @@ import {
   type TypertContext,
   type TypertLookup,
   type TypertLookupProvider,
-} from '@liusiqi-dev/dsh-typert-protocol'
-import TypertRegistry, { type TypertContribution } from '@liusiqi-dev/dsh-typert-registry'
-import TypertGatewayService, { TypertGatewayError } from '@liusiqi-dev/dsh-api-gateway'
+} from '@liusiqi-dev/sqh-typert-protocol'
+import TypertRegistry, { type TypertContribution } from '@liusiqi-dev/sqh-typert-registry'
+import TypertGatewayService, { TypertGatewayError } from '@liusiqi-dev/sqh-api-gateway'
 import { provideBrowserCredentials } from './browser-credentials.ts'
 
 interface FixtureAgent {
@@ -33,7 +33,7 @@ interface MarkedContext extends Context {
   readonly fixtureScope?: string
 }
 
-declare module '@liusiqi-dev/dsh-typert-protocol' {
+declare module '@liusiqi-dev/sqh-typert-protocol' {
   interface TypertLookupMap {
     gatewayFixture: TypertLookup<FixtureAgent, string>
     gatewayFixtureAlias: TypertLookup<FixtureAgent, string>

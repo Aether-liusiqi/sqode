@@ -1,15 +1,15 @@
 import { describe, expect, expectTypeOf, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { AssistantStreamAccumulator, createAssistantMessage, createUserMessage, createSystemMessage, ToolCallId, createMessage } from '@liusiqi-dev/dsh-llm'
-import type { ContentBlock, Message, TokenUsage } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { Session, SessionId, SessionSeq, canonicalHeader } from '@liusiqi-dev/dsh-session'
-import type { EpochHeader, SessionEvent, SessionSeq as SessionSeqType } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import TokenMeter from '@liusiqi-dev/dsh-token-meter'
-import type { TokenMeasurement, TokenMeterConfig } from '@liusiqi-dev/dsh-token-meter'
+import { AssistantStreamAccumulator, createAssistantMessage, createUserMessage, createSystemMessage, ToolCallId, createMessage } from '@liusiqi-dev/sqh-llm'
+import type { ContentBlock, Message, TokenUsage } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { Session, SessionId, SessionSeq, canonicalHeader } from '@liusiqi-dev/sqh-session'
+import type { EpochHeader, SessionEvent, SessionSeq as SessionSeqType } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import TokenMeter from '@liusiqi-dev/sqh-token-meter'
+import type { TokenMeasurement, TokenMeterConfig } from '@liusiqi-dev/sqh-token-meter'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }

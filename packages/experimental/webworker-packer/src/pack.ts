@@ -10,7 +10,7 @@
  * This module holds no repository knowledge: paths, globs, and the composition come
  * in as parameters, so the same library packs a different tree by being called
  * differently. Locating those inputs is the CLI's job.
- * @module @liusiqi-dev/dsh-experimental-webworker-packer/src/pack
+ * @module @liusiqi-dev/sqh-experimental-webworker-packer/src/pack
  */
 import { existsSync, readFileSync, readdirSync, realpathSync } from 'node:fs'
 import { dirname, join, relative } from 'node:path'
@@ -21,14 +21,14 @@ import {
   DEFAULT_ROOT, IMAGE_CONFIG_PATH, IMAGE_EMPTY_DIRECTORIES, IMAGE_MANIFEST_PATH,
   IMAGE_OVERLAY_DIRECTORIES,
   MODULE_PROXIES, MODULE_PROXY_PREFIXES, REPLACED_EXTERNAL_PACKAGES,
-} from '@liusiqi-dev/dsh-experimental-webworker-runtime'
+} from '@liusiqi-dev/sqh-experimental-webworker-runtime'
 import picomatch from 'picomatch'
 import yaml from 'js-yaml'
 import { entryListSchema } from '@liusiqi-dev/cordis-plugin-include'
 import { WRAPPER_CONTRACT, type ImageFiles, type TransformOutcome } from './transform-image.ts'
 import { EXCLUDE, EXCLUDE_WORKSPACE, IMAGE_ENTRY_SEEDS, PAGE_ASSETS } from './rules.ts'
 
-export { DEFAULT_ROOT } from '@liusiqi-dev/dsh-experimental-webworker-runtime'
+export { DEFAULT_ROOT } from '@liusiqi-dev/sqh-experimental-webworker-runtime'
 
 /** Image path of the manifest; the layout contract's name, re-exported for callers. */
 export const MANIFEST_PATH: string = IMAGE_MANIFEST_PATH

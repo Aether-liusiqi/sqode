@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { relativeTime } from '@liusiqi-dev/dsh-client-ui-primitives'
+import { relativeTime } from '@liusiqi-dev/sqh-client-ui-primitives'
 
 const MIN = 60_000
 const HOUR = 3_600_000

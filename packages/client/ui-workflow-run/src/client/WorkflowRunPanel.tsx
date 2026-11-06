@@ -5,12 +5,12 @@ import {
 import {
   DisclosureRow, IconChevronRightOutlineRegular, StateDot,
   type DisclosureRowProps, type StateDotState,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
-import type { SessionListState, SessionTarget } from '@liusiqi-dev/dsh-api-session-controller/client'
-import { shallowEqual } from '@liusiqi-dev/dsh-client-store'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { SessionStatusSnapshot } from '@liusiqi-dev/dsh-client-ui-session/client'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { PropsLocale, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
+import type { SessionListState, SessionTarget } from '@liusiqi-dev/sqh-api-session-controller/client'
+import { shallowEqual } from '@liusiqi-dev/sqh-client-store'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { SessionStatusSnapshot } from '@liusiqi-dev/sqh-client-ui-session/client'
 import type { WorkflowRunKey } from './locales.ts'
 import type {
   WorkflowRunMemberData, WorkflowRunPhaseData, WorkflowRunStatus,

@@ -1,6 +1,6 @@
 /**
  * Browser-safe Workspace path and display helpers.
- * @module @liusiqi-dev/dsh-util-workspace-path
+ * @module @liusiqi-dev/sqh-util-workspace-path
  */
 import { sessionFileAddress } from './file-address.ts'
 

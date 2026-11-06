@@ -3,11 +3,11 @@
  * the plan that annotates one with the rows the test provides itself. `webApp`
  * and `bundleRoster` (`./bundle-roster.ts`) read rosters from the bundle patch
  * files; a spec may also build one inline with {@link ClientRoster.of}.
- * @module @liusiqi-dev/dsh-client-test-runtime/src/assembly/roster
+ * @module @liusiqi-dev/sqh-client-test-runtime/src/assembly/roster
  */
 import type { Context } from '@liusiqi-dev/cordis'
-import type { WebBootEntry, WebBootGraph } from '@liusiqi-dev/dsh-client-modules/client'
-import { PLATFORM_MODULES } from '@liusiqi-dev/dsh-client-web/src/platform.ts'
+import type { WebBootEntry, WebBootGraph } from '@liusiqi-dev/sqh-client-modules/client'
+import { PLATFORM_MODULES } from '@liusiqi-dev/sqh-client-web/src/platform.ts'
 
 /** One browser plugin row as `dsh.client` declares it, keyed by package name. */
 export interface ClientRosterRow {

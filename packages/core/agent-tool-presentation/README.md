@@ -3,7 +3,7 @@ description: "The agent-plane presentation selector for users and maintainers ch
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-agent-tool-presentation
+# @liusiqi-dev/sqh-agent-tool-presentation
 
 English | [中文](README.zh.md)
 
@@ -30,7 +30,7 @@ Add this row to an agent preset to fix how every agent joined to that preset see
 ### Add the row to a preset
 
 ```yaml
-- name: '@liusiqi-dev/dsh-agent-tool-presentation'
+- name: '@liusiqi-dev/sqh-agent-tool-presentation'
   config:
     mode: ptc
 ```

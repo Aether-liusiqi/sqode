@@ -3,7 +3,7 @@ description: "Browser-worker VFS image packaging for maintainers building or deb
 kind: "package-library"
 ---
 
-# `@liusiqi-dev/dsh-experimental-webworker-packer`
+# `@liusiqi-dev/sqh-experimental-webworker-packer`
 
 English | [中文](README.zh.md)
 

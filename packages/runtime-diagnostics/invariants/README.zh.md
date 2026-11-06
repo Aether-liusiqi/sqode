@@ -3,7 +3,7 @@ description: "用于实时组合的运行时不变量检查：运行包自有检
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-invariants
+# @liusiqi-dev/sqh-invariants
 
 [English](README.md) | 中文
 
@@ -36,11 +36,11 @@ kind: "package-reference"
 注册表默认启用，并在没有过滤器的情况下检查每个已注册的包。用 `enabled` 作全局开关，用 `package_allowlist` 只接纳指定包，用 `package_blocklist` 在 allowlist 匹配之后排除包——blocklist 匹配优先于 allowlist 匹配。模式是区分大小写的 JavaScript 正则表达式源（除非自带 `^` 与 `$`，否则不锚定）；无效、空白或重复的条目会使服务启动失败，而不是被跳过。
 
 ```yaml
-- name: '@liusiqi-dev/dsh-invariants'
+- name: '@liusiqi-dev/sqh-invariants'
   config:
     enabled: true
     package_allowlist:
-      - '^@liusiqi-dev/dsh-'
+      - '^@liusiqi-dev/sqh-'
 ```
 
 | 字段 | 默认值 | 含义 |
@@ -76,8 +76,8 @@ kind: "package-reference"
 
 ```ts
 import type { Context } from '@liusiqi-dev/cordis'
-import InvariantRegistry from '@liusiqi-dev/dsh-invariants'
-import * as SessionInvariant from '@liusiqi-dev/dsh-session/invariant'
+import InvariantRegistry from '@liusiqi-dev/sqh-invariants'
+import * as SessionInvariant from '@liusiqi-dev/sqh-session/invariant'
 
 declare const ctx: Context
 

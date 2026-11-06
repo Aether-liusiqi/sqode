@@ -1,6 +1,6 @@
 /** Pure image-card derivation from raw result content and metadata. @module */
-import type { AttachmentId, ImageAttachmentRef, ImageMediaType } from '@liusiqi-dev/dsh-attachment'
-import { abbreviateHomePath, relativizeToCwd } from '@liusiqi-dev/dsh-util-workspace-path'
+import type { AttachmentId, ImageAttachmentRef, ImageMediaType } from '@liusiqi-dev/sqh-attachment'
+import { abbreviateHomePath, relativizeToCwd } from '@liusiqi-dev/sqh-util-workspace-path'
 import type { ToolCallBlock } from './tool-call-model.ts'
 import { parsedToolCall } from './raw-tool-call.ts'
 

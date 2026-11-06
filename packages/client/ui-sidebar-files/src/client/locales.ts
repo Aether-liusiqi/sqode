@@ -9,9 +9,9 @@
  * `TranslateNS<'sidebarFiles'>` or `PropsLocale<'sidebarFiles'>` needs only this
  * file, whichever entry a program loads first.
  */
-import type {} from '@liusiqi-dev/dsh-client-ui-slots'
+import type {} from '@liusiqi-dev/sqh-client-ui-slots'
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** File-tree type name, guide entry, row states, and failure lines. */
     sidebarFiles: SidebarFilesKey

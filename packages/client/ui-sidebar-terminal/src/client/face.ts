@@ -1,8 +1,8 @@
 /** Injected terminal commands and keyed observable state. */
-import type { WebTerminalId } from '@liusiqi-dev/dsh-api-terminal-controller/types'
-import type { TerminalView, TerminalViewState } from '@liusiqi-dev/dsh-api-terminal-controller/client'
-import type { HostObservable } from '@liusiqi-dev/dsh-client-ui-slots'
-import type { ThemeSnapshot } from '@liusiqi-dev/dsh-client-ui-theme/client'
+import type { WebTerminalId } from '@liusiqi-dev/sqh-api-terminal-controller/types'
+import type { TerminalView, TerminalViewState } from '@liusiqi-dev/sqh-api-terminal-controller/client'
+import type { HostObservable } from '@liusiqi-dev/sqh-client-ui-slots'
+import type { ThemeSnapshot } from '@liusiqi-dev/sqh-client-ui-theme/client'
 
 /** The terminal's React-free model is resolved by sidebar occurrence. */
 export interface TerminalInjected {
@@ -17,7 +17,7 @@ export interface TerminalBodyInjected extends TerminalInjected {
   readonly hooks: { readonly theme: HostObservable<ThemeSnapshot> }
 }
 
-declare module '@liusiqi-dev/dsh-client-ui-sidebar-right/client' {
+declare module '@liusiqi-dev/sqh-client-ui-sidebar-right/client' {
   interface SidebarRightTabParamsMap {
     /** An existing Host terminal selected from the Session terminal list. */
     terminal: { terminalId: WebTerminalId } | { shellPath: string }

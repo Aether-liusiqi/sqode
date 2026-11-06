@@ -6,16 +6,16 @@
  * classification, the model-friendly terminal environment, and the model-facing
  * stdout/stderr merge for background reads. Execution policy belongs in
  * `tools/pre-execute` or a sandboxing executor.
- * @module @liusiqi-dev/dsh-bash-local
+ * @module @liusiqi-dev/sqh-bash-local
  */
 
 import type { Volatile } from '@liusiqi-dev/cordis'
 import { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { ShellExecutor } from '@liusiqi-dev/dsh-shell'
-import type { ShellExecRequest, ShellExecSpec, ShellExecution, ShellProcess, ShellProcessRead, ShellRunResult, CollectedOutput } from '@liusiqi-dev/dsh-shell'
-import type { SubprocessCollect, SubprocessHandle, SubprocessOutputReader, SubprocessSpawnSpec } from '@liusiqi-dev/dsh-subprocess'
-import { clampTimeout, deadline, MAX_TIMER_DELAY_MS, timeoutOf } from '@liusiqi-dev/dsh-timeout'
+import { ShellExecutor } from '@liusiqi-dev/sqh-shell'
+import type { ShellExecRequest, ShellExecSpec, ShellExecution, ShellProcess, ShellProcessRead, ShellRunResult, CollectedOutput } from '@liusiqi-dev/sqh-shell'
+import type { SubprocessCollect, SubprocessHandle, SubprocessOutputReader, SubprocessSpawnSpec } from '@liusiqi-dev/sqh-subprocess'
+import { clampTimeout, deadline, MAX_TIMER_DELAY_MS, timeoutOf } from '@liusiqi-dev/sqh-timeout'
 
 /**
  * Model-friendly environment overrides: disable colors, pagers, and

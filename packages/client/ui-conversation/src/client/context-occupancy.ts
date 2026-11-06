@@ -1,4 +1,4 @@
-import type { ContextPressureProjection } from '@liusiqi-dev/dsh-token-meter/client'
+import type { ContextPressureProjection } from '@liusiqi-dev/sqh-token-meter/client'
 
 /** Context usage rendered by conversation and Chat status surfaces. */
 export interface ContextOccupancy {

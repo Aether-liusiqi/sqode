@@ -5,7 +5,7 @@
  * the same markup a person's browser would receive, and every organic result is
  * an `li.b_algo` block carrying its own title, link and extractive snippet. The
  * snippet is the page's text, which is what makes a citation checkable.
- * @module @liusiqi-dev/dsh-web-search-serp/parse
+ * @module @liusiqi-dev/sqh-web-search-serp/parse
  */
 import { load } from 'cheerio'
 

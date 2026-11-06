@@ -1,9 +1,9 @@
 /** Mount the SDK delegation tool in each fixture Agent's scope. */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import * as ToolSubagent from '@liusiqi-dev/dsh-tool-subagent'
-import type { Config } from '@liusiqi-dev/dsh-tool-subagent'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import * as ToolSubagent from '@liusiqi-dev/sqh-tool-subagent'
+import type { Config } from '@liusiqi-dev/sqh-tool-subagent'
 
 export const name = 'scoped-tool-subagent'
 export const inject = ['agents', 'subagentModelSelection']

@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-session-format-v0-to-v1",
+  "name": "@liusiqi-dev/sqh-session-format-v0-to-v1",
   "description": "Frozen released-v0 Session codec and identity migration to v1",
   "version": "1.0.0",
   "publishConfig": {
@@ -39,14 +39,14 @@
     }
   },
   "dependencies": {
-    "@liusiqi-dev/dsh-session-format": "workspace:*",
-    "@liusiqi-dev/dsh-util-values": "workspace:*"
+    "@liusiqi-dev/sqh-session-format": "workspace:*",
+    "@liusiqi-dev/sqh-util-values": "workspace:*"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-session": "workspace:*"
+    "@liusiqi-dev/sqh-session": "workspace:*"
   }
 }

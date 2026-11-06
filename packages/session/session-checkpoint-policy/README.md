@@ -3,7 +3,7 @@ description: "Semantic session durability checkpoints for users and maintainers 
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-session-checkpoint-policy
+# @liusiqi-dev/sqh-session-checkpoint-policy
 
 English | [中文](README.zh.md)
 
@@ -37,10 +37,10 @@ No configuration fields exist; the plugin is a single load beside one persistenc
 
 ```yaml
 - id: session-persistence
-  name: '@liusiqi-dev/dsh-session-persistence-jsonl'
+  name: '@liusiqi-dev/sqh-session-persistence-jsonl'
 
 - id: session-checkpoints
-  name: '@liusiqi-dev/dsh-session-checkpoint-policy'
+  name: '@liusiqi-dev/sqh-session-checkpoint-policy'
 ```
 
 ### What becomes durable

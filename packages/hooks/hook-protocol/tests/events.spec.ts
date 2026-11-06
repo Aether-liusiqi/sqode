@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { Session, SessionId } from '@liusiqi-dev/dsh-session'
-import { appendHookInvoked, appendHookResult, summarizeStderr, type HookOutput } from '@liusiqi-dev/dsh-hook-protocol'
+import { Session, SessionId } from '@liusiqi-dev/sqh-session'
+import { appendHookInvoked, appendHookResult, summarizeStderr, type HookOutput } from '@liusiqi-dev/sqh-hook-protocol'
 
 /** A {@link HookOutput} with the required stream fields defaulted. */
 function output(over: Partial<HookOutput> = {}): HookOutput {

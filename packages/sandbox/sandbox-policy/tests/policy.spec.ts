@@ -9,11 +9,11 @@ import { tmpdir } from 'node:os'
 import { join, resolve, sep } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { SESSION_FORMAT_VERSION, Session, SessionId } from '@liusiqi-dev/dsh-session'
-import SandboxPolicyService, { SANDBOX_MODES, setSandboxMode } from '@liusiqi-dev/dsh-sandbox-policy'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import SystemPrompt, { renderContextSnapshot, renderPrompt } from '@liusiqi-dev/dsh-system-prompt'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { SESSION_FORMAT_VERSION, Session, SessionId } from '@liusiqi-dev/sqh-session'
+import SandboxPolicyService, { SANDBOX_MODES, setSandboxMode } from '@liusiqi-dev/sqh-sandbox-policy'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import SystemPrompt, { renderContextSnapshot, renderPrompt } from '@liusiqi-dev/sqh-system-prompt'
 
 async function mounted(config: { mode?: 'read-only' | 'workspace-write' | 'danger-full-access'; workspaceRoot?: string } = {}) {
   const ctx = new Context()

@@ -1,9 +1,9 @@
 /** Messages file-reference admission, bounded recovery and request-wide inline fallback. */
-import type { AnonymousUserId } from '@liusiqi-dev/dsh-anonymous-user-id'
+import type { AnonymousUserId } from '@liusiqi-dev/sqh-anonymous-user-id'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { AttachmentId, ImageVariantId } from '@liusiqi-dev/dsh-attachment'
-import type { ImageAttachmentRef, RequestImageAttachment } from '@liusiqi-dev/dsh-attachment'
-import { createAssistantMessage, createToolResultMessage, LlmError, ToolCallId } from '@liusiqi-dev/dsh-llm'
+import { AttachmentId, ImageVariantId } from '@liusiqi-dev/sqh-attachment'
+import type { ImageAttachmentRef, RequestImageAttachment } from '@liusiqi-dev/sqh-attachment'
+import { createAssistantMessage, createToolResultMessage, LlmError, ToolCallId } from '@liusiqi-dev/sqh-llm'
 import { DeepSeekFileId } from '../src/file-id.ts'
 import { DeepSeekFileStore } from '../src/file-store.ts'
 import { resolveAdapterOptions } from '../src/config.ts'

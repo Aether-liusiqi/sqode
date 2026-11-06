@@ -1,11 +1,11 @@
 /**
  * Activation-local admission around one continuable subagent's Agent inbox.
  *
- * @module @liusiqi-dev/dsh-subagent/inbox
+ * @module @liusiqi-dev/sqh-subagent/inbox
  */
 
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type { UserMessage } from '@liusiqi-dev/dsh-session'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type { UserMessage } from '@liusiqi-dev/sqh-session'
 import type { SubagentPromptRequest } from './control-types.ts'
 import { SubagentError } from './error.ts'
 

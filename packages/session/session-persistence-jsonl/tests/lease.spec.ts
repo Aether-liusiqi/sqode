@@ -17,14 +17,14 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { SESSION_FORMAT_VERSION, SessionId, SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { SessionHeader } from '@liusiqi-dev/dsh-session'
+import { SESSION_FORMAT_VERSION, SessionId, SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { SessionHeader } from '@liusiqi-dev/sqh-session'
 import {
   SessionAlreadyExistsError,
   SessionAlreadyOwnedError,
   SessionPersistenceNotFoundError,
-} from '@liusiqi-dev/dsh-session-persistence'
-import type { SessionPersistence } from '@liusiqi-dev/dsh-session-persistence'
+} from '@liusiqi-dev/sqh-session-persistence'
+import type { SessionPersistence } from '@liusiqi-dev/sqh-session-persistence'
 import JsonlSessionPersistence from '../src/index.ts'
 import { LEASE_FILENAME, SessionWriteLease } from '../src/lease.ts'
 import type { JsonlSessionHandle } from '../src/storage.ts'

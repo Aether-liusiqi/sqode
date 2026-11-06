@@ -2,7 +2,7 @@
 
 import { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { Remote, TypertRemoteService } from '@liusiqi-dev/dsh-typert-protocol'
+import { Remote, TypertRemoteService } from '@liusiqi-dev/sqh-typert-protocol'
 import { WorkspaceCommands } from './commands.ts'
 import { DirectoryPickerController } from './directory-picker.ts'
 import { WorkspaceFeed, workspaceView } from './feed.ts'

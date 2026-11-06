@@ -5,63 +5,63 @@
 /:
   en: 50e574eada34df78
   zh: 2cd08d40d11d0059
-/liusiqi-dev-dsh-command-compact:
-  en: ad83010d1300e59d
-  zh: cb609f29fa82ce0a
-/liusiqi-dev-dsh-command-compact/summary:
+/liusiqi-dev-sqh-command-compact:
+  en: 74ae17dc15444ed2
+  zh: 7a55b66d861de1e4
+/liusiqi-dev-sqh-command-compact/summary:
   en: 5b2c62d3505485bb
   zh: a4d71e8106312e8e
-/liusiqi-dev-dsh-command-compact/table-of-contents:
+/liusiqi-dev-sqh-command-compact/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
-/liusiqi-dev-dsh-command-compact/use-this-package:
+/liusiqi-dev-sqh-command-compact/use-this-package:
   en: ee457d37a1769e9d
   zh: 60bf7402563034a4
-/liusiqi-dev-dsh-command-compact/use-this-package/using-the-command:
+/liusiqi-dev-sqh-command-compact/use-this-package/using-the-command:
   en: f04f6a29f4170376
   zh: 16f838e848eadeb2
-/liusiqi-dev-dsh-command-compact/use-this-package/what-you-see:
+/liusiqi-dev-sqh-command-compact/use-this-package/what-you-see:
   en: ee0cd9f39afcad64
   zh: ba8e5feb9f72cae7
-/liusiqi-dev-dsh-command-compact/use-this-package/composing-the-command:
+/liusiqi-dev-sqh-command-compact/use-this-package/composing-the-command:
   en: 7f1922f277c46d93
   zh: 531edb1176829c6a
-/liusiqi-dev-dsh-command-compact/use-this-package/what-happens-to-the-conversation:
+/liusiqi-dev-sqh-command-compact/use-this-package/what-happens-to-the-conversation:
   en: 97bb54fca90ac8b9
   zh: a7e59ba0678f7359
-/liusiqi-dev-dsh-command-compact/understand-the-implementation:
+/liusiqi-dev-sqh-command-compact/understand-the-implementation:
   en: 55197024cba97312
   zh: ff3a096d2d46cd05
-/liusiqi-dev-dsh-command-compact/understand-the-implementation/design-philosophy:
+/liusiqi-dev-sqh-command-compact/understand-the-implementation/design-philosophy:
   en: 1877e628fa664a42
   zh: 8e438bf9d0dccba9
-/liusiqi-dev-dsh-command-compact/understand-the-implementation/lifecycle-and-correlation:
+/liusiqi-dev-sqh-command-compact/understand-the-implementation/lifecycle-and-correlation:
   en: 498a645054ff192f
   zh: f993a288e1408355
-/liusiqi-dev-dsh-command-compact/understand-the-implementation/source-map:
+/liusiqi-dev-sqh-command-compact/understand-the-implementation/source-map:
   en: 84b40f60d465fd94
   zh: aac534b232817c05
-/liusiqi-dev-dsh-command-compact/further-exploration:
+/liusiqi-dev-sqh-command-compact/further-exploration:
   en: 2d8e82f68867898e
   zh: bb18a352091adf85
-/liusiqi-dev-dsh-command-compact/model-experience:
+/liusiqi-dev-sqh-command-compact/model-experience:
   en: 215e7ba838619b7b
   zh: a311da3843709f90
-/liusiqi-dev-dsh-command-compact/model-experience/human-compact-control:
+/liusiqi-dev-sqh-command-compact/model-experience/human-compact-control:
   en: 0233c5bd155d0c78
   zh: a0c2d5cefd9c3503
-/liusiqi-dev-dsh-command-compact/model-experience/human-compact-control/what-the-model-sees:
+/liusiqi-dev-sqh-command-compact/model-experience/human-compact-control/what-the-model-sees:
   en: bfe6aa41237c0194
   zh: f1b577b15b5988c3
-/liusiqi-dev-dsh-command-compact/model-experience/human-compact-control/token-effect:
+/liusiqi-dev-sqh-command-compact/model-experience/human-compact-control/token-effect:
   en: f18e2c4147b62a08
   zh: 00409233f610a4fe
-/liusiqi-dev-dsh-command-compact/model-experience/human-compact-control/kv-cache-effect:
+/liusiqi-dev-sqh-command-compact/model-experience/human-compact-control/kv-cache-effect:
   en: 41db62c6b45d9361
   zh: 2a1b13410fb2e96d
-/liusiqi-dev-dsh-command-compact/known-limitations-and-deferred-work:
+/liusiqi-dev-sqh-command-compact/known-limitations-and-deferred-work:
   en: beeea87558d2f6ea
   zh: 9d6115543013aa61
-/liusiqi-dev-dsh-command-compact/known-limitations-and-deferred-work/dev-note:
+/liusiqi-dev-sqh-command-compact/known-limitations-and-deferred-work/dev-note:
   en: 8cdea65425c059ef
   zh: 2afb257d7a61aa16

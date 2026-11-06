@@ -4,9 +4,9 @@ import { mkdtemp, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import type { Context } from '@liusiqi-dev/cordis'
-import { ToolCallId, createAssistantMessage, createToolResultMessage } from '@liusiqi-dev/dsh-llm'
-import type { Session } from '@liusiqi-dev/dsh-session'
-import type {} from '@liusiqi-dev/dsh-tools'
+import { ToolCallId, createAssistantMessage, createToolResultMessage } from '@liusiqi-dev/sqh-llm'
+import type { Session } from '@liusiqi-dev/sqh-session'
+import type {} from '@liusiqi-dev/sqh-tools'
 import type { WorkspaceChangesSummary } from '../src/types.ts'
 
 let callNumber = 0

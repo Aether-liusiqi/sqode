@@ -4,8 +4,8 @@
  * `sidebar.right.pane.tab.title`; without it the chip would show the bare name.
  */
 import type { ReactNode } from 'react'
-import type { PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
-import { FileTypeIcon, classifyFileType } from '@liusiqi-dev/dsh-client-ui-primitives'
+import type { PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
+import { FileTypeIcon, classifyFileType } from '@liusiqi-dev/sqh-client-ui-primitives'
 import css from './TextPreview.module.css'
 
 /**

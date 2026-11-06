@@ -3,7 +3,7 @@ description: "Browser UI renderer: React bindings for ordinary Slots and reusabl
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-ui-renderer
+# @liusiqi-dev/sqh-client-ui-renderer
 
 English | [中文](README.zh.md)
 

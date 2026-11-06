@@ -1,22 +1,22 @@
 /**
  * Dynamic Cordis Plugin service: immutable package definitions, one active run
  * per Plugin, human-approved Client activation, and Host/Client invocation.
- * @module @liusiqi-dev/dsh-cordis-host-runner
+ * @module @liusiqi-dev/sqh-cordis-host-runner
  */
 
 import { Context } from '@liusiqi-dev/cordis'
 import type { Fiber } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-declare module '@liusiqi-dev/dsh-llm' {
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'cordis-host-runner': { kind: 'cordis-host-runner' }
   }
 }
 
-import { TypertRemoteService, Remote } from '@liusiqi-dev/dsh-typert-protocol'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
+import { TypertRemoteService, Remote } from '@liusiqi-dev/sqh-typert-protocol'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
 import { isPlugin, normalizeHandler } from './guard.ts'
 import { CordisInspectRegistryService } from './inspect-registry.ts'
 import { missingServices, startHostHalf } from './lifecycle.ts'

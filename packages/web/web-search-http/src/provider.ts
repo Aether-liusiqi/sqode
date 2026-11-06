@@ -4,10 +4,10 @@
  * The primary engine answers; the fallback runs only when the primary result is
  * too thin to be useful. Both are keyword engines, so latency stays at index
  * speed and citations carry the page's own text.
- * @module @liusiqi-dev/dsh-web-search-http/provider
+ * @module @liusiqi-dev/sqh-web-search-http/provider
  */
-import { WebError } from '@liusiqi-dev/dsh-web'
-import type { WebSearchProvider, WebSearchRequest, WebSearchResult } from '@liusiqi-dev/dsh-web'
+import { WebError } from '@liusiqi-dev/sqh-web'
+import type { WebSearchProvider, WebSearchRequest, WebSearchResult } from '@liusiqi-dev/sqh-web'
 
 import { runEngine } from './engines.ts'
 import type { HttpSearchOptions, SearchHit } from './types.ts'

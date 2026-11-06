@@ -6,12 +6,12 @@
  */
 import { describe, expect, it, onTestFinished, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import type { RemoteFailure, RemoteResult } from '@liusiqi-dev/dsh-typert-protocol'
-import { RemoteError } from '@liusiqi-dev/dsh-client-test-runtime'
+import type { RemoteFailure, RemoteResult } from '@liusiqi-dev/sqh-typert-protocol'
+import { RemoteError } from '@liusiqi-dev/sqh-client-test-runtime'
 import { protocolOf, RESOURCE_SCHEME, ResourceRegistry } from '../src/client/resources.ts'
 import type { ResourceOpenContext, ResourceProvider } from '../src/client/contract.ts'
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface ResourceProtocolMap {
     feed: string
     counter: number

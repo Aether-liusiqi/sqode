@@ -1,7 +1,7 @@
 /** Tool documentation containing literal template syntax for recorded PTC replay. */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
 
 export const name = 'literal-sdk'
 export const inject = ['tools']

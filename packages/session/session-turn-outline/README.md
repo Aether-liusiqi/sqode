@@ -3,7 +3,7 @@ description: "Whole-log turn outline for clients and maintainers composing or de
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-session-turn-outline
+# @liusiqi-dev/sqh-session-turn-outline
 
 English | [中文](README.zh.md)
 
@@ -30,9 +30,9 @@ Mount the plugin beside the session store and the projection registry when clien
 ### Composition
 
 ```yaml
-- name: '@liusiqi-dev/dsh-session'
-- name: '@liusiqi-dev/dsh-session-projection'
-- name: '@liusiqi-dev/dsh-session-turn-outline'
+- name: '@liusiqi-dev/sqh-session'
+- name: '@liusiqi-dev/sqh-session-projection'
+- name: '@liusiqi-dev/sqh-session-turn-outline'
 ```
 
 ### What an entry means

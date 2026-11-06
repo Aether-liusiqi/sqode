@@ -1,8 +1,8 @@
 /** Host timing updates share delivery FIFO and publish only durable task writes. */
 import type { Context } from '@liusiqi-dev/cordis'
-import type { KvTable } from '@liusiqi-dev/dsh-storage-domain'
-import { SessionId } from '@liusiqi-dev/dsh-session'
-import { MessageId } from '@liusiqi-dev/dsh-llm/brand'
+import type { KvTable } from '@liusiqi-dev/sqh-storage-domain'
+import { SessionId } from '@liusiqi-dev/sqh-session'
+import { MessageId } from '@liusiqi-dev/sqh-llm/brand'
 import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 import { createDailyScheduleRecord, createEveryScheduleRecord, ScheduleId } from '../src/domain.ts'
 import { scheduleDomain, type ScheduleTask } from '../src/storage.ts'

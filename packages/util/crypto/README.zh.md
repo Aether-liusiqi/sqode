@@ -32,7 +32,7 @@ kind: "package-library"
 ## API
 
 ```ts
-import { bytesToBase64, randomUUID, type Uuid } from '@liusiqi-dev/dsh-util-crypto'
+import { bytesToBase64, randomUUID, type Uuid } from '@liusiqi-dev/sqh-util-crypto'
 ```
 
 | 导出 | 角色 |

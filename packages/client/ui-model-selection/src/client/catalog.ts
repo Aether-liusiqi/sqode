@@ -1,8 +1,8 @@
 /** One Host-generation model catalog shared by every Session selector. */
 
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import type { ModelCatalog, ModelSelection, ModelProviderGroup } from '@liusiqi-dev/dsh-api-remotes/client'
-import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import type { ModelCatalog, ModelSelection, ModelProviderGroup } from '@liusiqi-dev/sqh-api-remotes/client'
+import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/sqh-client-store'
 
 /** Observable lifecycle of the shared model catalog. */
 export interface ModelCatalogState {

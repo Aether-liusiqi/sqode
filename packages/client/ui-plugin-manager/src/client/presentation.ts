@@ -1,7 +1,7 @@
 /** Display labels and toast sentences for global plugin management. */
 
-import type { IncompatiblePlugin, ManagementError, Registry } from '@liusiqi-dev/dsh-api-remotes/client'
-import type { PropsLocale } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { IncompatiblePlugin, ManagementError, Registry } from '@liusiqi-dev/sqh-api-remotes/client'
+import type { PropsLocale } from '@liusiqi-dev/sqh-client-ui-slots'
 import type { PluginManagerLocaleKey } from './locales.ts'
 import type { FailedAction, ManagerNotice, PackageRow, PackageView, PluginManagerFace } from './manager-store.ts'
 
@@ -120,7 +120,7 @@ export function packageText(
     title: pkg.meta?.title === undefined ? pkg.name : resolveText(pkg.meta.title),
     description: pkg.meta?.description === undefined ? undefined : resolveText(pkg.meta.description) || undefined,
     // Two prefixes while the packages are renamed; drop the old one with that commit.
-    beta: ['@liusiqi-dev/sqh-experimental-', '@liusiqi-dev/dsh-experimental-']
+    beta: ['@liusiqi-dev/sqh-experimental-']
       .some(prefix => pkg.name.startsWith(prefix)),
   }
 }

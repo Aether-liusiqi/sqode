@@ -9,7 +9,7 @@ import { performance } from 'node:perf_hooks'
 import type { Browser, CDPSession, Locator, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
-import type { StreamChunk } from '@liusiqi-dev/dsh-llm'
+import type { StreamChunk } from '@liusiqi-dev/sqh-llm'
 import {
   ToolCallId,
   createAssistantMessage,
@@ -17,16 +17,16 @@ import {
   createToolResultMessage,
   createUserMessage,
   expandAssistantStream,
-} from '@liusiqi-dev/dsh-llm'
-import type { ReplayEntry, ReplayOverrideDoc } from '@liusiqi-dev/dsh-llm-replay'
-import type { SessionEvent, SessionSeq } from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-llm'
+import type { ReplayEntry, ReplayOverrideDoc } from '@liusiqi-dev/sqh-llm-replay'
+import type { SessionEvent, SessionSeq } from '@liusiqi-dev/sqh-session'
 import {
   SESSION_FORMAT_VERSION,
   Session,
   SessionId,
-} from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-session'
 // Carries the session/title event declaration into the fixture builder.
-import type {} from '@liusiqi-dev/dsh-session-title'
+import type {} from '@liusiqi-dev/sqh-session-title'
 import {
   launchWebScaffold,
   seedSession,

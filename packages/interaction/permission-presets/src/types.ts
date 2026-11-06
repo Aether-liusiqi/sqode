@@ -6,7 +6,7 @@
  * browser half-entry's re-export) for client aggregates — with zero content
  * duplication.
  *
- * @module @liusiqi-dev/dsh-permission-presets/types
+ * @module @liusiqi-dev/sqh-permission-presets/types
  */
 
 /** Presentation for an available preset or the derived `custom` current value. */
@@ -49,7 +49,7 @@ declare module '@liusiqi-dev/cordis' {
   }
 }
 
-declare module '@liusiqi-dev/dsh-session-projection/types' {
+declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionMap {
     /**
      * The session's current permission, folded from the three whole-value

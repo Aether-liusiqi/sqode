@@ -1,7 +1,7 @@
 /** Client-safe configuration form views and change notifications. */
 
-import type { Branded } from '@liusiqi-dev/dsh-brand'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
 
 /** Nominal id of one profile plugin entry. */
 export type SettingsNamespace = Branded<'SettingsNamespace'>

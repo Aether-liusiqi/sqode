@@ -2,11 +2,11 @@
 
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { TeamTaskId } from '@liusiqi-dev/dsh-experimental-agent-team'
-import type { TeamMemberView } from '@liusiqi-dev/dsh-experimental-agent-team'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
-import type { InferValue, ValueSchemaSpec } from '@liusiqi-dev/dsh-tools'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { TeamTaskId } from '@liusiqi-dev/sqh-experimental-agent-team'
+import type { TeamMemberView } from '@liusiqi-dev/sqh-experimental-agent-team'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
+import type { InferValue, ValueSchemaSpec } from '@liusiqi-dev/sqh-tools'
 
 /** Cordis plugin name. */
 export const name = 'tool-agent-team'

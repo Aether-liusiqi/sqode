@@ -1,10 +1,10 @@
 /** Shared Chat-slice and Session-event fixtures for Tool row tests. */
-import type { SessionLiveEventEntry } from '@liusiqi-dev/dsh-api-session-controller/client'
-import { SessionSeq } from '@liusiqi-dev/dsh-session/types'
-import { isJsonValue, type JsonValue } from '@liusiqi-dev/dsh-util-values'
+import type { SessionLiveEventEntry } from '@liusiqi-dev/sqh-api-session-controller/client'
+import { SessionSeq } from '@liusiqi-dev/sqh-session/types'
+import { isJsonValue, type JsonValue } from '@liusiqi-dev/sqh-util-values'
 import type {
   ChatConversationViewNode, ChatSnapshot, ConversationNode, StartedToolCall, ToolResultNode,
-} from '@liusiqi-dev/dsh-client-ui-chat/client'
+} from '@liusiqi-dev/sqh-client-ui-chat/client'
 
 function jsonFixture(value: unknown): JsonValue {
   if (!isJsonValue(value)) throw new Error('tool event fixture must be lossless JSON')

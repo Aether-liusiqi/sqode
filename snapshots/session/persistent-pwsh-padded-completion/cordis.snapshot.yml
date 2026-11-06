@@ -1,11 +1,11 @@
 # Keyless replay for padded persistent PowerShell completion frames.
 - id: llm-deepseek
-  name: '@liusiqi-dev/dsh-llm-deepseek-api-key'
+  name: '@liusiqi-dev/sqh-llm-deepseek-api-key'
   disabled: true
 
 - insert:
     - id: llm-replay
-      name: '@liusiqi-dev/dsh-llm-replay'
+      name: '@liusiqi-dev/sqh-llm-replay'
       config:
         providers:
           - id: deepseek-official
@@ -15,78 +15,78 @@
 
 - insert:
     - id: terminal
-      name: '@liusiqi-dev/dsh-terminal'
+      name: '@liusiqi-dev/sqh-terminal'
 
 - id: sandbox-policy
-  name: '@liusiqi-dev/dsh-sandbox-policy'
+  name: '@liusiqi-dev/sqh-sandbox-policy'
   config:
     mode: danger-full-access
     workspaceRoot: !!js process.cwd()
 
 - id: subprocess
-  name: '@liusiqi-dev/dsh-subprocess-local'
+  name: '@liusiqi-dev/sqh-subprocess-local'
 
 - insert:
     - id: padded-pwsh-backend
       name: './pwsh-snapshot-backend.mjs'
 
 - id: agent-default-model
-  name: '@liusiqi-dev/dsh-agent-default-model'
+  name: '@liusiqi-dev/sqh-agent-default-model'
   config:
     provider: deepseek-official
     model: deepseek-v4-pro
 
 - id: session-persistence-jsonl
-  name: '@liusiqi-dev/dsh-session-persistence-jsonl'
+  name: '@liusiqi-dev/sqh-session-persistence-jsonl'
   config:
     root: !!js dshHomePath('sessions')
     compression: none
 
 - id: agent-instructions
-  name: '@liusiqi-dev/dsh-agent-instructions'
+  name: '@liusiqi-dev/sqh-agent-instructions'
   disabled: true
 
 - id: system-prompt
-  name: '@liusiqi-dev/dsh-system-prompt'
+  name: '@liusiqi-dev/sqh-system-prompt'
   config:
     personaPrefix: You are a concise snapshot agent working in {{cwd}}.
 
 - id: tool-jobs
-  name: '@liusiqi-dev/dsh-tool-jobs'
+  name: '@liusiqi-dev/sqh-tool-jobs'
   disabled: true
 
 - id: goal
-  name: '@liusiqi-dev/dsh-goal'
+  name: '@liusiqi-dev/sqh-goal'
   disabled: true
 
 - id: goal-round-driver
-  name: '@liusiqi-dev/dsh-goal-round-driver'
+  name: '@liusiqi-dev/sqh-goal-round-driver'
   disabled: true
 
 - id: command-goal
-  name: '@liusiqi-dev/dsh-command-goal'
+  name: '@liusiqi-dev/sqh-command-goal'
   disabled: true
 
 - id: tool-goal
-  name: '@liusiqi-dev/dsh-tool-goal'
+  name: '@liusiqi-dev/sqh-tool-goal'
   disabled: true
 
 - id: skill
-  name: '@liusiqi-dev/dsh-skill'
+  name: '@liusiqi-dev/sqh-skill'
   disabled: true
 
 - id: skill-filesystem
-  name: '@liusiqi-dev/dsh-skill-filesystem'
+  name: '@liusiqi-dev/sqh-skill-filesystem'
   disabled: true
 
 - id: tool-skill
-  name: '@liusiqi-dev/dsh-tool-skill'
+  name: '@liusiqi-dev/sqh-tool-skill'
   disabled: true
 
 - id: tool-bash
-  name: '@liusiqi-dev/dsh-tool-bash'
+  name: '@liusiqi-dev/sqh-tool-bash'
   disabled: true
 
 - insert:
     - id: tool-pwsh-persistent
-      name: '@liusiqi-dev/dsh-tool-pwsh-persistent'
+      name: '@liusiqi-dev/sqh-tool-pwsh-persistent'

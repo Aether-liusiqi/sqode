@@ -7,17 +7,17 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context, FiberState } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import Include from '@liusiqi-dev/cordis-plugin-include'
-import ComputerUse from '@liusiqi-dev/dsh-computer-use'
-import { ComputerUseProviderName } from '@liusiqi-dev/dsh-computer-use/brand'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
-import LlmRuntime, { LlmAdapter, ToolCallId, createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { GenerateOptions, LlmResolvedModelInfo, StreamChunk } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import LocalAttachmentStore from '@liusiqi-dev/dsh-attachment-local'
+import ComputerUse from '@liusiqi-dev/sqh-computer-use'
+import { ComputerUseProviderName } from '@liusiqi-dev/sqh-computer-use/brand'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
+import LlmRuntime, { LlmAdapter, ToolCallId, createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { GenerateOptions, LlmResolvedModelInfo, StreamChunk } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import AgentLoop from '@liusiqi-dev/sqh-agent-loop'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import LocalAttachmentStore from '@liusiqi-dev/sqh-attachment-local'
 import * as Provider from '../src/index.ts'
 
 const TOOL = 'mcp__cua-driver-mcp__screenshot'
@@ -60,31 +60,31 @@ async function load(mode?: string): Promise<{ ctx: Context; root: string; model:
   roots.push(root)
   const model = new ScreenshotModel()
   const modules = new Map<string, unknown>([
-    ['@liusiqi-dev/dsh-computer-use', ComputerUse],
-    ['@liusiqi-dev/dsh-system-prompt', SystemPrompt],
-    ['@liusiqi-dev/dsh-tools', ToolRuntime],
-    ['@liusiqi-dev/dsh-llm', LlmRuntime],
-    ['@liusiqi-dev/dsh-session', SessionStore],
-    ['@liusiqi-dev/dsh-agent', AgentRegistry],
-    ['@liusiqi-dev/dsh-agent-loop', AgentLoop],
-    ['@liusiqi-dev/dsh-session-projection', SessionProjectionRegistry],
-    ['@liusiqi-dev/dsh-attachment-local', LocalAttachmentStore],
+    ['@liusiqi-dev/sqh-computer-use', ComputerUse],
+    ['@liusiqi-dev/sqh-system-prompt', SystemPrompt],
+    ['@liusiqi-dev/sqh-tools', ToolRuntime],
+    ['@liusiqi-dev/sqh-llm', LlmRuntime],
+    ['@liusiqi-dev/sqh-session', SessionStore],
+    ['@liusiqi-dev/sqh-agent', AgentRegistry],
+    ['@liusiqi-dev/sqh-agent-loop', AgentLoop],
+    ['@liusiqi-dev/sqh-session-projection', SessionProjectionRegistry],
+    ['@liusiqi-dev/sqh-attachment-local', LocalAttachmentStore],
     ['@fixture/model', { inject: ['llm'], apply(ctx: Context) { ctx.effect(() => ctx.llm.registerAdapter(['fixture'], model)) } }],
-    ['@liusiqi-dev/dsh-experimental-computer-use-cua-driver-mcp', Provider],
+    ['@liusiqi-dev/sqh-experimental-computer-use-cua-driver-mcp', Provider],
   ])
   const configPath = join(root, 'cordis.yml')
   await writeFile(configPath, JSON.stringify([...modules.keys()].map(name => ({
-    id: name === '@liusiqi-dev/dsh-experimental-computer-use-cua-driver-mcp' ? 'computer-use-driver' : undefined,
+    id: name === '@liusiqi-dev/sqh-experimental-computer-use-cua-driver-mcp' ? 'computer-use-driver' : undefined,
     name,
-    config: name === '@liusiqi-dev/dsh-experimental-computer-use-cua-driver-mcp'
+    config: name === '@liusiqi-dev/sqh-experimental-computer-use-cua-driver-mcp'
       ? {
         command: process.execPath,
         args: [fixture, root, ...(mode === undefined ? [] : [mode])],
         reconnect: { initialDelayMs: 20, maxDelayMs: 40, maxAttempts: 2 },
       }
-      : name === '@liusiqi-dev/dsh-attachment-local'
+      : name === '@liusiqi-dev/sqh-attachment-local'
         ? { dshHome: root }
-        : name === '@liusiqi-dev/dsh-agent-loop' ? { agents: [] } : {},
+        : name === '@liusiqi-dev/sqh-agent-loop' ? { agents: [] } : {},
   }))))
   const ctx = new Context()
   contexts.push(ctx)

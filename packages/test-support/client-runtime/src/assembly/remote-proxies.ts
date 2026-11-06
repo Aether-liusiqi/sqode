@@ -10,16 +10,16 @@
  * throw (`gateway/internal`, or `gateway/cancelled` once the caller's signal
  * aborted), so product code that never awaits a rejection sees none; stream
  * items and failures pass through as the stream yields them.
- * @module @liusiqi-dev/dsh-client-test-runtime/src/assembly/remote-proxies
+ * @module @liusiqi-dev/sqh-client-test-runtime/src/assembly/remote-proxies
  */
 import type { Context } from '@liusiqi-dev/cordis'
-import { cancelledFailure, carrierFailure } from '@liusiqi-dev/dsh-api-gateway/client'
-import type { ConnectionHandle } from '@liusiqi-dev/dsh-client-connection/client'
-import type { RemoteMock } from '@liusiqi-dev/dsh-remote-mock'
+import { cancelledFailure, carrierFailure } from '@liusiqi-dev/sqh-api-gateway/client'
+import type { ConnectionHandle } from '@liusiqi-dev/sqh-client-connection/client'
+import type { RemoteMock } from '@liusiqi-dev/sqh-remote-mock'
 import type { ClientPluginModule } from './roster.ts'
 
 /** The assembly row the proxies stand in for; its generated clients exist only in built `lib/`. */
-export const REMOTES_PACKAGE = '@liusiqi-dev/dsh-api-remotes'
+export const REMOTES_PACKAGE = '@liusiqi-dev/sqh-api-remotes'
 
 const PREFIX = 'remote.'
 

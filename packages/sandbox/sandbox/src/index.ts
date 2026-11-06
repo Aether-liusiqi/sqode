@@ -2,12 +2,12 @@
  * Service Definition for the same-world process-confinement capability seam: wrap exact subprocess argv under a
  * host-path file policy. Containers, microVMs, and remote execution replace the
  * surrounding capability seam instead; this service shares the host kernel and filesystem.
- * @module @liusiqi-dev/dsh-sandbox
+ * @module @liusiqi-dev/sqh-sandbox
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'
-import { HarnessError } from '@liusiqi-dev/dsh-llm'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
+import { HarnessError } from '@liusiqi-dev/sqh-llm'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
 
 export {
   ESCALATION_TARGETS,

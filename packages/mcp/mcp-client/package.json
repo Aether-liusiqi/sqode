@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-mcp-client",
+  "name": "@liusiqi-dev/sqh-mcp-client",
   "description": "MCP client bridge: connects to MCP servers and registers their tools on ctx.tools",
   "version": "1.0.0",
   "publishConfig": {
@@ -27,44 +27,44 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@liusiqi-dev/dsh-attachment": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-scope": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess": "workspace:*",
-    "@liusiqi-dev/dsh-timeout": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*",
+    "@liusiqi-dev/sqh-attachment": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-scope": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess": "workspace:*",
+    "@liusiqi-dev/sqh-timeout": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-mcp-resources": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*"
+    "@liusiqi-dev/sqh-mcp-resources": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*"
   },
   "dependencies": {
     "@liusiqi-dev/schemastery": "workspace:~",
     "@modelcontextprotocol/client": "2.0.0",
-    "@liusiqi-dev/dsh-util-values": "workspace:*"
+    "@liusiqi-dev/sqh-util-values": "workspace:*"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-attachment": "workspace:*",
-    "@liusiqi-dev/dsh-attachment-local": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-scope": "workspace:*",
-    "@liusiqi-dev/dsh-subprocess": "workspace:*",
-    "@liusiqi-dev/dsh-timeout": "workspace:*",
-    "@liusiqi-dev/dsh-tools": "workspace:*",
+    "@liusiqi-dev/sqh-attachment": "workspace:*",
+    "@liusiqi-dev/sqh-attachment-local": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-scope": "workspace:*",
+    "@liusiqi-dev/sqh-subprocess": "workspace:*",
+    "@liusiqi-dev/sqh-timeout": "workspace:*",
+    "@liusiqi-dev/sqh-tools": "workspace:*",
     "@modelcontextprotocol/server-everything": "^2026.7.4",
     "@modelcontextprotocol/server-filesystem": "^2026.7.4",
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-http-proxy": "workspace:*",
+    "@liusiqi-dev/sqh-http-proxy": "workspace:*",
     "@modelcontextprotocol/server": "2.0.0",
     "@modelcontextprotocol/node": "2.0.0",
     "zod": "^4.4.3",
-    "@liusiqi-dev/dsh-mcp-resources": "workspace:*",
-    "@liusiqi-dev/dsh-system-prompt": "workspace:*"
+    "@liusiqi-dev/sqh-mcp-resources": "workspace:*",
+    "@liusiqi-dev/sqh-system-prompt": "workspace:*"
   },
   "peerDependenciesMeta": {
-    "@liusiqi-dev/dsh-mcp-resources": {
+    "@liusiqi-dev/sqh-mcp-resources": {
       "optional": true
     },
-    "@liusiqi-dev/dsh-system-prompt": {
+    "@liusiqi-dev/sqh-system-prompt": {
       "optional": true
     }
   }

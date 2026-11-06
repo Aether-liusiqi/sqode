@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-sandbox",
+  "name": "@liusiqi-dev/sqh-sandbox",
   "description": "Abstract process-sandbox seam (ctx.sandbox) for the Siqi Harness: same-world confinement vocabulary and the SandboxProvider contract",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,15 +28,15 @@
   "license": "MIT",
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*"
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*"
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*"
   },
   "dependencies": {
-    "@liusiqi-dev/dsh-util-values": "workspace:*"
+    "@liusiqi-dev/sqh-util-values": "workspace:*"
   }
 }

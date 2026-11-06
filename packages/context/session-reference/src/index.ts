@@ -2,24 +2,24 @@
  * Cross-session snapshot preparation. Hosts adapt mentions into structured
  * references; this service owns exact reads, projection, budgets, and durable context.
  *
- * @module @liusiqi-dev/dsh-session-reference
+ * @module @liusiqi-dev/sqh-session-reference
  */
 
 import { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import type { Agent, PreStepDecision } from '@liusiqi-dev/dsh-agent'
-import { Remote, TypertRemoteService } from '@liusiqi-dev/dsh-typert-protocol'
-import { createUserMessage, freezeMessage, LlmError } from '@liusiqi-dev/dsh-llm'
-import type { ContentBlock, LlmResolvedModelInfo, UserMessage } from '@liusiqi-dev/dsh-llm'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
+import type { Agent, PreStepDecision } from '@liusiqi-dev/sqh-agent'
+import { Remote, TypertRemoteService } from '@liusiqi-dev/sqh-typert-protocol'
+import { createUserMessage, freezeMessage, LlmError } from '@liusiqi-dev/sqh-llm'
+import type { ContentBlock, LlmResolvedModelInfo, UserMessage } from '@liusiqi-dev/sqh-llm'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
 // Type-only: the `title` projection key plus the live registry and durable
 // cache Context merges — the two projection faces discovery labels from.
-import type { ProjectionSnapshot } from '@liusiqi-dev/dsh-session-projection'
-import type {} from '@liusiqi-dev/dsh-session-projection-cache'
-import type {} from '@liusiqi-dev/dsh-session-title'
-import type {} from '@liusiqi-dev/dsh-subagent'
-import type {} from '@liusiqi-dev/dsh-system-prompt'
-import type { SessionRecord, SessionSurfaceSnapshot } from '@liusiqi-dev/dsh-session-query'
+import type { ProjectionSnapshot } from '@liusiqi-dev/sqh-session-projection'
+import type {} from '@liusiqi-dev/sqh-session-projection-cache'
+import type {} from '@liusiqi-dev/sqh-session-title'
+import type {} from '@liusiqi-dev/sqh-subagent'
+import type {} from '@liusiqi-dev/sqh-system-prompt'
+import type { SessionRecord, SessionSurfaceSnapshot } from '@liusiqi-dev/sqh-session-query'
 import { prepareReferenceOmission, REFERENCE_WARNING } from './spill.ts'
 import {
   DEFAULT_CANDIDATE_LIMIT,

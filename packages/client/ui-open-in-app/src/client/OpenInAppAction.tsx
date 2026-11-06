@@ -1,8 +1,8 @@
-import type { ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
-import type { InjectFace, PropsLocale } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
+import type { InjectFace, PropsLocale } from '@liusiqi-dev/sqh-client-ui-slots'
 import { APP_LABEL_KEY } from './applications.ts'
 import type { OpenInAppLaunchState } from './controller.ts'
-import type { ShortcutCatalogEntry } from '@liusiqi-dev/dsh-client-shortcuts/client'
+import type { ShortcutCatalogEntry } from '@liusiqi-dev/sqh-client-shortcuts/client'
 import { NS } from './locales.ts'
 import { OpenTargetButton } from './OpenTargetButton.tsx'
 

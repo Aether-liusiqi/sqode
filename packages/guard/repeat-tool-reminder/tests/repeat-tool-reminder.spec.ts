@@ -1,17 +1,17 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { createUserMessage, ToolCallId  } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-import { SessionId, type SessionEvent } from '@liusiqi-dev/dsh-session'
-import { defineContentToolFixture } from '@liusiqi-dev/dsh-tools'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
-import { mountAgentLoopTestDependencies } from '@liusiqi-dev/dsh-agent-loop-testkit'
-import * as RepeatToolGuard from '@liusiqi-dev/dsh-repeat-tool-reminder'
-import type { Config } from '@liusiqi-dev/dsh-repeat-tool-reminder'
+import { createUserMessage, ToolCallId  } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+import { SessionId, type SessionEvent } from '@liusiqi-dev/sqh-session'
+import { defineContentToolFixture } from '@liusiqi-dev/sqh-tools'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import AgentLoop from '@liusiqi-dev/sqh-agent-loop'
+import { mountAgentLoopTestDependencies } from '@liusiqi-dev/sqh-agent-loop-testkit'
+import * as RepeatToolGuard from '@liusiqi-dev/sqh-repeat-tool-reminder'
+import type { Config } from '@liusiqi-dev/sqh-repeat-tool-reminder'
 import { MockAdapter, textResponse, toolCallResponse } from '../../../core/agent-loop/tests/mock-adapter.ts'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }

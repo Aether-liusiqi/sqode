@@ -11,13 +11,13 @@
  *
  * Reconstruction reads the `agentPreset` Session projection, never the header
  * alone.
- * @module @liusiqi-dev/dsh-agent-preset-registry/session
+ * @module @liusiqi-dev/sqh-agent-preset-registry/session
  */
 
-import type { ProjectionDefinition } from '@liusiqi-dev/dsh-session-projection'
+import type { ProjectionDefinition } from '@liusiqi-dev/sqh-session-projection'
 import { z } from 'zod'
 
-declare module '@liusiqi-dev/dsh-session/types' {
+declare module '@liusiqi-dev/sqh-session/types' {
   interface SessionEventMap {
     /**
      * The session's agent preset was chosen after creation, while the session

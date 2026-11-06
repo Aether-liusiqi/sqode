@@ -1,13 +1,13 @@
 /**
  * Model-visible messages owned by continuable-subagent orchestration.
  *
- * @module @liusiqi-dev/dsh-subagent/continuation-messages
+ * @module @liusiqi-dev/sqh-subagent/continuation-messages
  */
 
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { boundContextSummary, createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { boundContextSummary, createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
 import type { ActivationTerminal } from './lifecycle.ts'
 import type { SubagentResult } from './types.ts'
 
@@ -37,7 +37,7 @@ export interface SubagentSettledMessageSource {
   readonly senderSessionId: SessionId
 }
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'agent-message': AgentMessageSource
     'subagent-settled': SubagentSettledMessageSource

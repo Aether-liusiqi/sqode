@@ -3,7 +3,7 @@ description: "面向用户与维护者的授权 flow 注册表：获取配置无
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-authorization
+# @liusiqi-dev/sqh-authorization
 
 [English](README.md) | 中文
 
@@ -37,8 +37,8 @@ kind: "package-reference"
 
 ```ts
 import type { Context } from '@liusiqi-dev/cordis'
-import type { AuthorizationSession } from '@liusiqi-dev/dsh-authorization'
-import { credentialKey } from '@liusiqi-dev/dsh-credentials'
+import type { AuthorizationSession } from '@liusiqi-dev/sqh-authorization'
+import { credentialKey } from '@liusiqi-dev/sqh-credentials'
 
 declare const ctx: Context
 declare const exchangeCode: (code: string, signal: AbortSignal) => Promise<{ token: string }>

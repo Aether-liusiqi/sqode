@@ -5,33 +5,33 @@
 /:
   en: 7cd394124c35afae
   zh: 087929192244cb41
-/liusiqi-dev-dsh-client-shortcuts:
-  en: f35038e3424b2139
-  zh: 6041d22ef50973d1
-/liusiqi-dev-dsh-client-shortcuts/summary:
+/liusiqi-dev-sqh-client-shortcuts:
+  en: 1276c7f13670542a
+  zh: be0a0ed0bafa1cb9
+/liusiqi-dev-sqh-client-shortcuts/summary:
   en: 24e6f7d87be069fd
   zh: ab228fd8c4f8c43e
-/liusiqi-dev-dsh-client-shortcuts/table-of-contents:
+/liusiqi-dev-sqh-client-shortcuts/table-of-contents:
   en: d152484eb41ac6b4
   zh: 0cd57b7b8d8c9b59
-/liusiqi-dev-dsh-client-shortcuts/use-this-package:
+/liusiqi-dev-sqh-client-shortcuts/use-this-package:
   en: 8df3db7ca8cc6110
   zh: e872f6333ead59c4
-/liusiqi-dev-dsh-client-shortcuts/understand-the-implementation:
+/liusiqi-dev-sqh-client-shortcuts/understand-the-implementation:
   en: adfd258f490cacb1
   zh: 44c080babc54c6a9
-/liusiqi-dev-dsh-client-shortcuts/further-exploration:
+/liusiqi-dev-sqh-client-shortcuts/further-exploration:
   en: 8fe02ef5221e434d
   zh: 3aabfcfeb6d49a0e
-/liusiqi-dev-dsh-client-shortcuts/model-experience:
+/liusiqi-dev-sqh-client-shortcuts/model-experience:
   en: 3120df665299c634
   zh: e2dc75ed76d271bc
-/liusiqi-dev-dsh-client-shortcuts/model-experience/kv-cache-effect:
+/liusiqi-dev-sqh-client-shortcuts/model-experience/kv-cache-effect:
   en: ca75c51c89c2c9b0
   zh: a0e9f8d52b4b62ee
-/liusiqi-dev-dsh-client-shortcuts/known-limitations-and-deferred-work:
+/liusiqi-dev-sqh-client-shortcuts/known-limitations-and-deferred-work:
   en: 323e99bf933b4c6c
   zh: 0a7ecdb2dcdb1288
-/liusiqi-dev-dsh-client-shortcuts/known-limitations-and-deferred-work/dev-note:
+/liusiqi-dev-sqh-client-shortcuts/known-limitations-and-deferred-work/dev-note:
   en: 09894c06f9d76ac0
   zh: d166e1338ae660e4

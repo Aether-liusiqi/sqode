@@ -7,11 +7,11 @@ import type {
   SessionReference,
   SessionRetainInfo,
   SessionSnapshot,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
-import { MutableSessionEventSource } from '@liusiqi-dev/dsh-api-session-controller/client'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { HostObservable, RootStandardSourceContribution } from '@liusiqi-dev/dsh-client-ui-slots'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
+import { MutableSessionEventSource } from '@liusiqi-dev/sqh-api-session-controller/client'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { HostObservable, RootStandardSourceContribution } from '@liusiqi-dev/sqh-client-ui-slots'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import {
   apply,

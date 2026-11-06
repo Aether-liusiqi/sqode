@@ -1,12 +1,12 @@
 /**
- * Package-owned invariant companion for `@liusiqi-dev/dsh-client-hmr`.
- * @module @liusiqi-dev/dsh-client-hmr/invariant
+ * Package-owned invariant companion for `@liusiqi-dev/sqh-client-hmr`.
+ * @module @liusiqi-dev/sqh-client-hmr/invariant
  */
 
 import type { Context, Fiber } from '@liusiqi-dev/cordis'
-import type { InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
+import type { InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-client-hmr'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-client-hmr'
 
 /** Cordis companion plugin name. */
 export const name = 'client-hmr-invariant'

@@ -7,11 +7,11 @@
  * fatal close, and exposes managed-range termination through the handle so the
  * instance owns teardown; platform mechanics live in the subprocess
  * Service Provider.
- * @module @liusiqi-dev/dsh-lsp-stdio/connection
+ * @module @liusiqi-dev/sqh-lsp-stdio/connection
  */
 
 import type { Writable } from 'node:stream'
-import type { SubprocessHandle, SubprocessSpawnSpec } from '@liusiqi-dev/dsh-subprocess'
+import type { SubprocessHandle, SubprocessSpawnSpec } from '@liusiqi-dev/sqh-subprocess'
 import { encodeMessage, MessageDecoder } from './framing.ts'
 
 /** How to launch the server and answer its config requests. */

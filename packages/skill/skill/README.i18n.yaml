@@ -5,60 +5,60 @@
 /:
   en: ab82ac4bcc012854
   zh: 3e2a2326e66f4bc3
-/liusiqi-dev-dsh-skill:
-  en: b1ddb9f146b0e079
-  zh: ffb5e7cfc6c8a70d
-/liusiqi-dev-dsh-skill/summary:
+/liusiqi-dev-sqh-skill:
+  en: ea9e04a248ad2644
+  zh: e7b9b785626d8871
+/liusiqi-dev-sqh-skill/summary:
   en: dac8069f518e183c
   zh: 2e4f2983030f9270
-/liusiqi-dev-dsh-skill/table-of-contents:
+/liusiqi-dev-sqh-skill/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
-/liusiqi-dev-dsh-skill/use-this-package:
+/liusiqi-dev-sqh-skill/use-this-package:
   en: cb13ae81a3e0ae68
   zh: e709d66f4b6b4dd5
-/liusiqi-dev-dsh-skill/use-this-package/when-to-choose-it:
+/liusiqi-dev-sqh-skill/use-this-package/when-to-choose-it:
   en: ce05cda6706f18b7
   zh: 3262ebdaf645cb9a
-/liusiqi-dev-dsh-skill/use-this-package/mount-and-configure:
+/liusiqi-dev-sqh-skill/use-this-package/mount-and-configure:
   en: b8f130e081d14307
   zh: d227ad3298b20238
-/liusiqi-dev-dsh-skill/use-this-package/what-the-registry-gives-you:
+/liusiqi-dev-sqh-skill/use-this-package/what-the-registry-gives-you:
   en: 0cb7936c76a84e45
   zh: a1fb8572481af54c
-/liusiqi-dev-dsh-skill/use-this-package/observable-success-and-failures:
+/liusiqi-dev-sqh-skill/use-this-package/observable-success-and-failures:
   en: b7331b6a9c0d5bb2
   zh: 3ea0785c3a8c7330
-/liusiqi-dev-dsh-skill/understand-the-implementation:
+/liusiqi-dev-sqh-skill/understand-the-implementation:
   en: 89be1dad151abb04
   zh: 9a1915c4d55bb9d2
-/liusiqi-dev-dsh-skill/understand-the-implementation/design-concept:
+/liusiqi-dev-sqh-skill/understand-the-implementation/design-concept:
   en: c0fb1850f00f24b1
   zh: 226883ab5635435d
-/liusiqi-dev-dsh-skill/understand-the-implementation/source-map:
+/liusiqi-dev-sqh-skill/understand-the-implementation/source-map:
   en: 6cfbcb24c960a60c
   zh: 5db5bd40e76b492a
-/liusiqi-dev-dsh-skill/understand-the-implementation/catalog-collection:
+/liusiqi-dev-sqh-skill/understand-the-implementation/catalog-collection:
   en: 58a9b57dc504b69f
   zh: 8fe8011247bc3f2b
-/liusiqi-dev-dsh-skill/understand-the-implementation/loading-and-staleness:
+/liusiqi-dev-sqh-skill/understand-the-implementation/loading-and-staleness:
   en: e855d39692737103
   zh: 396aa887a78989ec
-/liusiqi-dev-dsh-skill/understand-the-implementation/invalidation:
+/liusiqi-dev-sqh-skill/understand-the-implementation/invalidation:
   en: d73258316127f5b5
   zh: ddc6690f88922782
-/liusiqi-dev-dsh-skill/further-exploration:
+/liusiqi-dev-sqh-skill/further-exploration:
   en: 3380abc631c2bc2f
   zh: 00eec8eb8fb425d1
-/liusiqi-dev-dsh-skill/model-experience:
+/liusiqi-dev-sqh-skill/model-experience:
   en: 84f7d6e986f88425
   zh: 0fdc2326d8efb13e
-/liusiqi-dev-dsh-skill/model-experience/kv-cache-effect:
+/liusiqi-dev-sqh-skill/model-experience/kv-cache-effect:
   en: 628a45ff9f6b0e74
   zh: fda70b0eed2df1d7
-/liusiqi-dev-dsh-skill/known-limitations-and-deferred-work:
+/liusiqi-dev-sqh-skill/known-limitations-and-deferred-work:
   en: c5456e001203fd7a
   zh: 3cc6fa50700eec13
-/liusiqi-dev-dsh-skill/known-limitations-and-deferred-work/dev-note:
+/liusiqi-dev-sqh-skill/known-limitations-and-deferred-work/dev-note:
   en: 259ce6914314397d
   zh: d500b1f988a83999

@@ -7,11 +7,11 @@
  * select the accumulated assistant text. Selection is independent of the
  * run's stop reason.
  *
- * @module @liusiqi-dev/dsh-subagent/assistant-output
+ * @module @liusiqi-dev/sqh-subagent/assistant-output
  */
 
-import { joinAssistantStreamText, type ContentBlock } from '@liusiqi-dev/dsh-llm'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
+import { joinAssistantStreamText, type ContentBlock } from '@liusiqi-dev/sqh-llm'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
 
 /**
  * Incremental fold of the selection rule, for backends that observe a child's

@@ -8,10 +8,10 @@ import { join } from 'node:path'
 import type { Browser, Page, WebSocketRoute } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed, type MockInstance } from 'vitest'
-import { parseSessionLog } from '@liusiqi-dev/dsh-llm-replay'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
-import { expandAssistantStream } from '@liusiqi-dev/dsh-llm'
-import { parseRemoteStreamServerMessage } from '@liusiqi-dev/dsh-api-gateway/stream-protocol'
+import { parseSessionLog } from '@liusiqi-dev/sqh-llm-replay'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
+import { expandAssistantStream } from '@liusiqi-dev/sqh-llm'
+import { parseRemoteStreamServerMessage } from '@liusiqi-dev/sqh-api-gateway/stream-protocol'
 import {
   acknowledgeReloadConnectionLoss, assertFixtureInventory, captureExpandedTurnProcessAria, captureStableAria,
   compareOrRefreshGolden, fixtureUserPrompts,

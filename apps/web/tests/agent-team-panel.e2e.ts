@@ -8,8 +8,8 @@ import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed, onTestFinished, vi } from 'vitest'
 import * as yaml from 'js-yaml'
 import { entryListSchema } from '@liusiqi-dev/cordis-plugin-include'
-import type {} from '@liusiqi-dev/dsh-experimental-agent-team'
-import { createMessage, createUserMessage } from '@liusiqi-dev/dsh-llm'
+import type {} from '@liusiqi-dev/sqh-experimental-agent-team'
+import { createMessage, createUserMessage } from '@liusiqi-dev/sqh-llm'
 import {
   assertFixtureInventory, captureStableAria, compareOrRefreshGolden,
   launchWebScaffold, watchConsole, webSnapshotMode, type WebScaffold,

@@ -1,10 +1,10 @@
-/** Client-safe question, answer, and event types. @module @liusiqi-dev/dsh-user-questions/types */
+/** Client-safe question, answer, and event types. @module @liusiqi-dev/sqh-user-questions/types */
 
-import type { Scoped } from '@liusiqi-dev/dsh-scope'
-import type { Agent } from '@liusiqi-dev/dsh-agent/types'
-import type { ToolCallId } from '@liusiqi-dev/dsh-llm/brand'
-import type {} from '@liusiqi-dev/dsh-session/types'
-import type {} from '@liusiqi-dev/dsh-session-projection/types'
+import type { Scoped } from '@liusiqi-dev/sqh-scope'
+import type { Agent } from '@liusiqi-dev/sqh-agent/types'
+import type { ToolCallId } from '@liusiqi-dev/sqh-llm/brand'
+import type {} from '@liusiqi-dev/sqh-session/types'
+import type {} from '@liusiqi-dev/sqh-session-projection/types'
 
 /** One selectable answer offered to the user. */
 export interface AskUserQuestionOption {
@@ -104,7 +104,7 @@ export interface UserQuestionProjectionView {
   readonly settled: readonly SettledUserQuestion[]
 }
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     /**
      * Late reply to a continued `ask_user_question` call, steered into the
@@ -118,7 +118,7 @@ declare module '@liusiqi-dev/dsh-llm' {
   }
 }
 
-declare module '@liusiqi-dev/dsh-session-projection/types' {
+declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionMap {
     /** Timed questions that remain answerable in this Session, and the ones a late reply settled. */
     userQuestions: UserQuestionProjectionView
@@ -150,7 +150,7 @@ declare module '@liusiqi-dev/cordis' {
     /**
      * Ask composed answerers for structured user input. Return an answer to
      * claim the request or call `next()` to delegate. Scope-filtered dispatch
-     * (`@liusiqi-dev/dsh-scope`): agent-scoped listeners receive only that agent.
+     * (`@liusiqi-dev/sqh-scope`): agent-scoped listeners receive only that agent.
      * @param request - pending user-question request.
      * @mode waterfall
      */

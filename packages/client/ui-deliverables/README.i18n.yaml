@@ -5,54 +5,54 @@
 /:
   en: 91a4da87e2e078ed
   zh: 8d489c6cdf208c4d
-/liusiqi-dev-dsh-client-ui-deliverables:
-  en: 987557e25a952155
-  zh: dc76cff33e851454
-/liusiqi-dev-dsh-client-ui-deliverables/summary:
+/liusiqi-dev-sqh-client-ui-deliverables:
+  en: 916485a8205dcdf9
+  zh: 8a46987a172b0dcb
+/liusiqi-dev-sqh-client-ui-deliverables/summary:
   en: a17b97d16803f911
   zh: ad80cf4bcb5a8018
-/liusiqi-dev-dsh-client-ui-deliverables/table-of-contents:
+/liusiqi-dev-sqh-client-ui-deliverables/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
-/liusiqi-dev-dsh-client-ui-deliverables/use-this-package:
+/liusiqi-dev-sqh-client-ui-deliverables/use-this-package:
   en: 4a2fcdcf13276fef
   zh: 8bde03bbbf15840c
-/liusiqi-dev-dsh-client-ui-deliverables/use-this-package/explicit-deliveries:
+/liusiqi-dev-sqh-client-ui-deliverables/use-this-package/explicit-deliveries:
   en: 0ee4bbe45bb5e473
   zh: 9c99d829b25f59ba
-/liusiqi-dev-dsh-client-ui-deliverables/use-this-package/the-changed-files-card:
+/liusiqi-dev-sqh-client-ui-deliverables/use-this-package/the-changed-files-card:
   en: 4b279e2bddddc083
   zh: a3135393299c935b
-/liusiqi-dev-dsh-client-ui-deliverables/use-this-package/the-review-tab:
+/liusiqi-dev-sqh-client-ui-deliverables/use-this-package/the-review-tab:
   en: 231547659321f3a8
   zh: bc5935cdd46ada56
-/liusiqi-dev-dsh-client-ui-deliverables/use-this-package/inline-code-links:
+/liusiqi-dev-sqh-client-ui-deliverables/use-this-package/inline-code-links:
   en: e36ccef8bf908ea4
   zh: 30e11327a55e5dfa
-/liusiqi-dev-dsh-client-ui-deliverables/understand-the-implementation:
+/liusiqi-dev-sqh-client-ui-deliverables/understand-the-implementation:
   en: 9c48cf102ec5109e
   zh: 73cabaafdb3ded3f
-/liusiqi-dev-dsh-client-ui-deliverables/further-exploration:
+/liusiqi-dev-sqh-client-ui-deliverables/further-exploration:
   en: 3922638061ea262b
   zh: 1c776b249e84dc4f
-/liusiqi-dev-dsh-client-ui-deliverables/model-experience:
+/liusiqi-dev-sqh-client-ui-deliverables/model-experience:
   en: 215e7ba838619b7b
   zh: a311da3843709f90
-/liusiqi-dev-dsh-client-ui-deliverables/model-experience/clickable-file-reference-guidance:
+/liusiqi-dev-sqh-client-ui-deliverables/model-experience/clickable-file-reference-guidance:
   en: eb244aa21a4e5210
   zh: e3450addfa19cea5
-/liusiqi-dev-dsh-client-ui-deliverables/model-experience/clickable-file-reference-guidance/what-the-model-sees:
+/liusiqi-dev-sqh-client-ui-deliverables/model-experience/clickable-file-reference-guidance/what-the-model-sees:
   en: 78339e353ae47a53
   zh: 582efa623a5dfd72
-/liusiqi-dev-dsh-client-ui-deliverables/model-experience/clickable-file-reference-guidance/token-effect:
+/liusiqi-dev-sqh-client-ui-deliverables/model-experience/clickable-file-reference-guidance/token-effect:
   en: 66bd094b37a29c22
   zh: e657d66ac6f95a22
-/liusiqi-dev-dsh-client-ui-deliverables/model-experience/clickable-file-reference-guidance/kv-cache-effect:
+/liusiqi-dev-sqh-client-ui-deliverables/model-experience/clickable-file-reference-guidance/kv-cache-effect:
   en: 52626a05acc8b320
   zh: 6a8e62b0d47d5297
-/liusiqi-dev-dsh-client-ui-deliverables/known-limitations-and-deferred-work:
+/liusiqi-dev-sqh-client-ui-deliverables/known-limitations-and-deferred-work:
   en: 3b59e3b776c52ba4
   zh: ceee2728a0e7779b
-/liusiqi-dev-dsh-client-ui-deliverables/known-limitations-and-deferred-work/dev-note:
+/liusiqi-dev-sqh-client-ui-deliverables/known-limitations-and-deferred-work/dev-note:
   en: a55f817f597aa646
   zh: aba9a91ecde566ab

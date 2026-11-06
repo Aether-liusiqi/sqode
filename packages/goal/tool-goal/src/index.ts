@@ -1,23 +1,23 @@
 /**
  * Model-facing `get_goal`, `create_goal`, and `update_goal` tools over the
  * persisted same-session goal domain.
- * @module @liusiqi-dev/dsh-tool-goal
+ * @module @liusiqi-dev/sqh-tool-goal
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { GoalId } from '@liusiqi-dev/dsh-goal'
-import type { GoalRef, GoalView } from '@liusiqi-dev/dsh-goal'
-import { boundContextSummary, createUserMessage, HarnessError } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-declare module '@liusiqi-dev/dsh-llm' {
+import { GoalId } from '@liusiqi-dev/sqh-goal'
+import type { GoalRef, GoalView } from '@liusiqi-dev/sqh-goal'
+import { boundContextSummary, createUserMessage, HarnessError } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'tool-goal': { kind: 'tool-goal' } & ContextFormed
   }
 }
 
-import { defineTool } from '@liusiqi-dev/dsh-tools'
-import type { GenericCallView } from '@liusiqi-dev/dsh-tools'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
+import type { GenericCallView } from '@liusiqi-dev/sqh-tools'
 import {
   completionAuthority,
   goalToolExecution,

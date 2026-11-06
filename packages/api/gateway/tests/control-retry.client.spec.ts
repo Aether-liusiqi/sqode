@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
-import type { ConnectionHandle } from '@liusiqi-dev/dsh-api-remotes/client'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
+import type { ConnectionHandle } from '@liusiqi-dev/sqh-api-remotes/client'
 import {
   RemoteStreamCarrierError,
   RemoteStream,

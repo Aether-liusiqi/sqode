@@ -3,7 +3,7 @@ description: "通过 Stagehand 原生浏览器操作与显式配置的模型推�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-experimental-browser-use-stagehand-native
+# @liusiqi-dev/sqh-experimental-browser-use-stagehand-native
 
 [English](README.md) | 中文
 
@@ -30,8 +30,8 @@ kind: "package-reference"
 ### 最小配置
 
 ```yaml
-- name: '@liusiqi-dev/dsh-browser-use'
-- name: '@liusiqi-dev/dsh-experimental-browser-use-stagehand-native'
+- name: '@liusiqi-dev/sqh-browser-use'
+- name: '@liusiqi-dev/sqh-experimental-browser-use-stagehand-native'
   config:
     mode: launch
     headless: true

@@ -12,9 +12,9 @@ import { mkdir, mkdtemp, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { Context } from '@liusiqi-dev/cordis'
-import { LocalFileSystem } from '@liusiqi-dev/dsh-fs-local'
-import { SessionId } from '@liusiqi-dev/dsh-session/types'
-import { remoteErrorOf } from '@liusiqi-dev/dsh-typert-protocol'
+import { LocalFileSystem } from '@liusiqi-dev/sqh-fs-local'
+import { SessionId } from '@liusiqi-dev/sqh-session/types'
+import { remoteErrorOf } from '@liusiqi-dev/sqh-typert-protocol'
 import { WorkspaceFiles, type Config, type WorkspaceFileScope } from '../src/index.ts'
 
 /** Build the header-derived scope that direct service calls receive after Typert lookup. */

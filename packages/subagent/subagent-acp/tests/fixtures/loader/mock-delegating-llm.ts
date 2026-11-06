@@ -1,6 +1,6 @@
 import type { Context } from '@liusiqi-dev/cordis'
-import type { GenerateOptions, StreamChunk } from '@liusiqi-dev/dsh-llm'
-import { ToolCallId, LlmAdapter } from '@liusiqi-dev/dsh-llm'
+import type { GenerateOptions, StreamChunk } from '@liusiqi-dev/sqh-llm'
+import { ToolCallId, LlmAdapter } from '@liusiqi-dev/sqh-llm'
 
 /**
  * Test adapter for the `mock-delegate` model: the first request calls the

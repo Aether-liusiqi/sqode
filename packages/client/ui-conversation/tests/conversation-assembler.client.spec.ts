@@ -1,19 +1,19 @@
 import { describe, expect, it, vi } from 'vitest'
 import type {
   SessionEventLike, SessionEventLikeEntry, SessionLiveEventEntry,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
-import { LlmAttemptId, ToolCallId } from '@liusiqi-dev/dsh-llm/brand'
-import type { StreamChunk } from '@liusiqi-dev/dsh-llm'
-import { SessionSeq } from '@liusiqi-dev/dsh-session/types'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session/types'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
+import { LlmAttemptId, ToolCallId } from '@liusiqi-dev/sqh-llm/brand'
+import type { StreamChunk } from '@liusiqi-dev/sqh-llm'
+import { SessionSeq } from '@liusiqi-dev/sqh-session/types'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session/types'
 import {
   ConversationLocationIndex,
   ConversationNodeAssembler as RuntimeConversationNodeAssembler,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import type {
   ConversationMatch, ConversationNodeContext,
   ConversationNodeDefinition, ConversationViewDefinition, ConversationViewNode,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 
 interface ScopeProbeStepData {
   readonly value: number
@@ -23,7 +23,7 @@ interface ScopeProbeTurnData {
   readonly valueSeenFromStep: number
 }
 
-declare module '@liusiqi-dev/dsh-client-ui-conversation/client' {
+declare module '@liusiqi-dev/sqh-client-ui-conversation/client' {
   interface ConversationStepDataMap {
     'scope-probe': ScopeProbeStepData
   }

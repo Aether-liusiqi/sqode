@@ -5,13 +5,13 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import type { Context } from '@liusiqi-dev/cordis'
 import type {
   ISessions, SessionListState, SessionReference, SessionSnapshot,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { ResourceProvider } from '@liusiqi-dev/dsh-client-resources/client'
-import { sessionSnapshot } from '@liusiqi-dev/dsh-client-test-runtime'
-import type { ConversationViewsProps } from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type { SidebarRightTabDefinition } from '@liusiqi-dev/dsh-client-ui-sidebar-right/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { SubagentAddress } from '@liusiqi-dev/dsh-subagent/client'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { ResourceProvider } from '@liusiqi-dev/sqh-client-resources/client'
+import { sessionSnapshot } from '@liusiqi-dev/sqh-client-test-runtime'
+import type { ConversationViewsProps } from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type { SidebarRightTabDefinition } from '@liusiqi-dev/sqh-client-ui-sidebar-right/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { SubagentAddress } from '@liusiqi-dev/sqh-subagent/client'
 import {
   ConversationSlotPanel, FixedChatConversationView, parseSubagentChatAddress,
   registerSidebarChat, subagentChatAddress, SUBAGENT_CHAT_ID, type SidebarChatTabProps,

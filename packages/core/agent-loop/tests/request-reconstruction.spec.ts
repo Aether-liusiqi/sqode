@@ -7,19 +7,19 @@
 
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import LlmRuntime, { createUserMessage, LlmError, ReasoningEffortId  } from '@liusiqi-dev/dsh-llm'
-import type { GenerateOptions, LlmModelReasoningInfo, LlmResolvedModelInfo, StreamChunk } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { Session, SessionId, foldRequestHeader } from '@liusiqi-dev/dsh-session'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime, { defineContentToolFixture } from '@liusiqi-dev/dsh-tools'
-import AgentRegistry, { type Agent } from '@liusiqi-dev/dsh-agent'
+import LlmRuntime, { createUserMessage, LlmError, ReasoningEffortId  } from '@liusiqi-dev/sqh-llm'
+import type { GenerateOptions, LlmModelReasoningInfo, LlmResolvedModelInfo, StreamChunk } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { Session, SessionId, foldRequestHeader } from '@liusiqi-dev/sqh-session'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime, { defineContentToolFixture } from '@liusiqi-dev/sqh-tools'
+import AgentRegistry, { type Agent } from '@liusiqi-dev/sqh-agent'
 
-import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
+import AgentLoop from '@liusiqi-dev/sqh-agent-loop'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
 import { MockAdapter, textResponse, toolCallResponse } from './mock-adapter.ts'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'outer-wrapper': { kind: 'outer-wrapper' } & ContextFormed
     'test': { kind: 'test' } & ContextFormed
@@ -939,7 +939,7 @@ describe('request/context capacity records', () => {
   })
 
   it('declares only what a narrow window can carry, and everything a wide one can', async () => {
-    const { defineTool } = await import('@liusiqi-dev/dsh-tools')
+    const { defineTool } = await import('@liusiqi-dev/sqh-tools')
     const adapter = capacityAdapter({ narrow: 64_000, wide: 256_000 }, [textResponse('a'), textResponse('b')])
     const ctx = await harness(adapter)
     // Presence, not size, is what this case measures.
@@ -967,7 +967,7 @@ describe('request/context capacity records', () => {
   })
 
   it('declares a tool the session loaded, even on a narrow route', async () => {
-    const { defineTool } = await import('@liusiqi-dev/dsh-tools')
+    const { defineTool } = await import('@liusiqi-dev/sqh-tools')
     const adapter = capacityAdapter({ narrow: 64_000 }, [textResponse('a')])
     const ctx = await harness(adapter)
     ctx.tools.register(defineTool({
@@ -989,7 +989,7 @@ describe('request/context capacity records', () => {
   })
 
   it('bounds the declared catalog by schema size on a narrow route', async () => {
-    const { defineTool } = await import('@liusiqi-dev/dsh-tools')
+    const { defineTool } = await import('@liusiqi-dev/sqh-tools')
     // 64,000 tokens at a 5% share and 4 characters per token leaves 12,800
     // characters for declarations. Two 8,000-character schemas cannot both fit,
     // and this fixture registers no core tools, so the whole budget is spendable.
@@ -1021,7 +1021,7 @@ describe('request/context capacity records', () => {
   })
 
   it('squeezes the oldest load out of the budget, and a repeat mention brings it back', async () => {
-    const { defineTool } = await import('@liusiqi-dev/dsh-tools')
+    const { defineTool } = await import('@liusiqi-dev/sqh-tools')
     // 64,000 tokens at a 5% share and 4 characters per token is 12,800 characters.
     // Three 5,000-character schemas fit two at a time, so the newest load pushes the
     // oldest one out — silently, because the declaration is a request detail.

@@ -10,7 +10,7 @@ import {
   type SessionHeader,
   type SessionSeq as SessionSeqType,
   type SessionSeqCursor,
-} from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-session'
 
 describe('Session log positions', () => {
   it('admits non-negative safe integers into distinct sequence roles', () => {

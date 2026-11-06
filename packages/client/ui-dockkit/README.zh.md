@@ -3,7 +3,7 @@ description: "dsh Web 客户端的停靠布局套件：带可逆操作的标签�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-ui-dockkit
+# @liusiqi-dev/sqh-client-ui-dockkit
 
 [English](README.md) | 中文
 

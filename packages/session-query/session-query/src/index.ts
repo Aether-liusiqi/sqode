@@ -1,10 +1,10 @@
 /**
  * Service Definition for combined session-history reads, traces, filters, and full-text search.
  *
- * @module @liusiqi-dev/dsh-session-query
+ * @module @liusiqi-dev/sqh-session-query
  */
 
-import { currentSessionMessageProjections } from '@liusiqi-dev/dsh-session-format-catalog/message-projections'
+import { currentSessionMessageProjections } from '@liusiqi-dev/sqh-session-format-catalog/message-projections'
 import { Context, Service } from '@liusiqi-dev/cordis'
 import {
   Session,
@@ -12,9 +12,9 @@ import {
   snapshotSessionEvent,
   type SessionId,
   type SessionSeq as SessionSeqType,
-} from '@liusiqi-dev/dsh-session'
-import { foldSessionTitle } from '@liusiqi-dev/dsh-session-title'
-import type { SessionTitleSnapshot } from '@liusiqi-dev/dsh-session-title'
+} from '@liusiqi-dev/sqh-session'
+import { foldSessionTitle } from '@liusiqi-dev/sqh-session-title'
+import type { SessionTitleSnapshot } from '@liusiqi-dev/sqh-session-title'
 import type {
   SessionEventResultFilter,
   SessionEventSearchPage,

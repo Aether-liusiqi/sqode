@@ -1,12 +1,12 @@
 /** Host registration for the browser theme preference and pre-plugin palette. */
-import type {} from '@liusiqi-dev/dsh-settings'
+import type {} from '@liusiqi-dev/sqh-settings'
 
 import type { Volatile } from '@liusiqi-dev/cordis'
 import type { ThemePreference } from './theme-settings.ts'
 import z from '@liusiqi-dev/schemastery'
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-host-webserver'
+import type {} from '@liusiqi-dev/sqh-host-webserver'
 import { bootThemeInjections } from './boot-theme.ts'
 import {
   DEFAULT_FONT_SIZE, DEFAULT_PREFERENCE, FONT_SIZE_MIN, FONT_SIZE_MAX, THEME_PREFERENCES,

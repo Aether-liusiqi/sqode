@@ -1,10 +1,10 @@
-/** Package-owned agent lifecycle invariants. @module @liusiqi-dev/dsh-agent/invariant */
+/** Package-owned agent lifecycle invariants. @module @liusiqi-dev/sqh-agent/invariant */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
-import type { Agent, AgentStatus } from '@liusiqi-dev/dsh-agent'
+import type { InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
+import type { Agent, AgentStatus } from '@liusiqi-dev/sqh-agent'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-agent'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-agent'
 
 /** Cordis companion plugin name. */
 export const name = 'agent-invariant'

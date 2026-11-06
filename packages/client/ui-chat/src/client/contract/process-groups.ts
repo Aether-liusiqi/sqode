@@ -18,7 +18,7 @@ export interface ProcessGroupData {
   readonly summary: ProcessActivitySummary
 }
 
-declare module '@liusiqi-dev/dsh-client-ui-conversation/client' {
+declare module '@liusiqi-dev/sqh-client-ui-conversation/client' {
   interface ConversationGroupDataMap {
     chat: ProcessGroupData
   }

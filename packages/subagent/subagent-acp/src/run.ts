@@ -2,7 +2,7 @@
  * Fresh-process ACP subagent client. Drives one child session and owns cancellation and
  * quiescent disposal.
  *
- * @module @liusiqi-dev/dsh-subagent-acp/run
+ * @module @liusiqi-dev/sqh-subagent-acp/run
  */
 
 import { randomUUID } from 'node:crypto'
@@ -16,12 +16,12 @@ import {
   type StopReason,
   type ToolKind,
 } from '@agentclientprotocol/sdk'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import { brandString } from '@liusiqi-dev/dsh-brand'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
-import { AssistantOutputFold, settleRunResult, subprocessRunHandle } from '@liusiqi-dev/dsh-subagent'
-import type { SubagentResult, SubagentRun, SubagentStartRequest, SubagentStopReason } from '@liusiqi-dev/dsh-subagent'
-import type { SubprocessHandle, SubprocessOutcome, SubprocessSpawnSpec } from '@liusiqi-dev/dsh-subprocess'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import { brandString } from '@liusiqi-dev/sqh-brand'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
+import { AssistantOutputFold, settleRunResult, subprocessRunHandle } from '@liusiqi-dev/sqh-subagent'
+import type { SubagentResult, SubagentRun, SubagentStartRequest, SubagentStopReason } from '@liusiqi-dev/sqh-subagent'
+import type { SubprocessHandle, SubprocessOutcome, SubprocessSpawnSpec } from '@liusiqi-dev/sqh-subprocess'
 
 /** Fixed response to child permission requests: reject by default, or select the first allow option. */
 export type PermissionPolicy = 'allow' | 'reject'

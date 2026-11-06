@@ -1,13 +1,13 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import { carrierKeyOf, createScope } from '@liusiqi-dev/dsh-scope'
-import type { Scope } from '@liusiqi-dev/dsh-scope'
-import SessionStore, { Session, SessionId } from '@liusiqi-dev/dsh-session'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ApprovalService, { ApprovalOutcome, ApprovalRequest, setApprovalPolicy } from '@liusiqi-dev/dsh-user-approval'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import { carrierKeyOf, createScope } from '@liusiqi-dev/sqh-scope'
+import type { Scope } from '@liusiqi-dev/sqh-scope'
+import SessionStore, { Session, SessionId } from '@liusiqi-dev/sqh-session'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ApprovalService, { ApprovalOutcome, ApprovalRequest, setApprovalPolicy } from '@liusiqi-dev/sqh-user-approval'
 
 /**
  * A minimal Agent stand-in — the service only reaches `agent.session.append`

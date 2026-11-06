@@ -1,7 +1,7 @@
 /** Saved delivery queries use task storage, never Session history or Agent activation. */
 import type { Context } from '@liusiqi-dev/cordis'
-import { SessionId } from '@liusiqi-dev/dsh-session'
-import { MessageId } from '@liusiqi-dev/dsh-llm/brand'
+import { SessionId } from '@liusiqi-dev/sqh-session'
+import { MessageId } from '@liusiqi-dev/sqh-llm/brand'
 import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 import { ScheduleId, ScheduleInputError, createAfterScheduleRecord } from '../src/domain.ts'
 import { scheduleDomain, type ScheduleTask } from '../src/storage.ts'

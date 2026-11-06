@@ -1,7 +1,7 @@
 /** Plan text and resource identities derived from logged native or PTC calls. */
-import type { ToolCallId } from '@liusiqi-dev/dsh-llm/brand'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { SessionAddress } from '@liusiqi-dev/dsh-api-session-controller/types'
+import type { ToolCallId } from '@liusiqi-dev/sqh-llm/brand'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { SessionAddress } from '@liusiqi-dev/sqh-api-session-controller/types'
 
 /** Complete Markdown and the heading displayed by a plan preview. */
 export interface PlanDocument {

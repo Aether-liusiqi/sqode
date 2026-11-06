@@ -5,33 +5,33 @@
 /:
   en: 91ac9c71d17a231a
   zh: c0f89c3d36b51581
-/liusiqi-dev-dsh-client-ui-settings-subagent:
-  en: e6627e663abcd7c8
-  zh: 8b7e78284c10b6cb
-/liusiqi-dev-dsh-client-ui-settings-subagent/summary:
+/liusiqi-dev-sqh-client-ui-settings-subagent:
+  en: f0a794ae4c4fcf81
+  zh: 616d549666a77cac
+/liusiqi-dev-sqh-client-ui-settings-subagent/summary:
   en: 4b6bf8db1752b902
   zh: b8ac25ba6bdb96fb
-/liusiqi-dev-dsh-client-ui-settings-subagent/table-of-contents:
+/liusiqi-dev-sqh-client-ui-settings-subagent/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
-/liusiqi-dev-dsh-client-ui-settings-subagent/use-this-package:
+/liusiqi-dev-sqh-client-ui-settings-subagent/use-this-package:
   en: 09ac65efa3352ef4
   zh: 0a6f9e74e304ef1f
-/liusiqi-dev-dsh-client-ui-settings-subagent/understand-the-implementation:
+/liusiqi-dev-sqh-client-ui-settings-subagent/understand-the-implementation:
   en: 5124ebc1880ba9fa
   zh: 89c2eb2d483962a7
-/liusiqi-dev-dsh-client-ui-settings-subagent/further-exploration:
+/liusiqi-dev-sqh-client-ui-settings-subagent/further-exploration:
   en: 9b43ebcd30efbdea
   zh: e6ec50d755fb5e24
-/liusiqi-dev-dsh-client-ui-settings-subagent/model-experience:
+/liusiqi-dev-sqh-client-ui-settings-subagent/model-experience:
   en: 6b7c6f82ab6c8435
   zh: 4517689c899abcbe
-/liusiqi-dev-dsh-client-ui-settings-subagent/model-experience/kv-cache-effect:
+/liusiqi-dev-sqh-client-ui-settings-subagent/model-experience/kv-cache-effect:
   en: ca75c51c89c2c9b0
   zh: 6e1c9a8fdde89577
-/liusiqi-dev-dsh-client-ui-settings-subagent/known-limitations-and-deferred-work:
+/liusiqi-dev-sqh-client-ui-settings-subagent/known-limitations-and-deferred-work:
   en: ea92269b6c36cbcc
   zh: ec43fdf5c47a4906
-/liusiqi-dev-dsh-client-ui-settings-subagent/known-limitations-and-deferred-work/dev-note:
+/liusiqi-dev-sqh-client-ui-settings-subagent/known-limitations-and-deferred-work/dev-note:
   en: e67f633dc6fe7773
   zh: e88aeb617ffb74ea

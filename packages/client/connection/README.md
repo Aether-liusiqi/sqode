@@ -3,7 +3,7 @@ description: "Browser-host wire layer for the web GUI: Remote RPC, event-stream 
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-connection
+# @liusiqi-dev/sqh-client-connection
 
 English | [中文](README.zh.md)
 

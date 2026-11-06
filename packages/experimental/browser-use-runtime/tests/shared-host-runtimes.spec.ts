@@ -22,7 +22,7 @@ interface Manifest {
 const manifestPath = fileURLToPath(new URL('../package.json', import.meta.url))
 
 /** Host runtimes whose module-local state must not be duplicated. */
-const SHARED_HOST_RUNTIMES = ['@liusiqi-dev/dsh-mcp-client', '@liusiqi-dev/dsh-scope'] as const
+const SHARED_HOST_RUNTIMES = ['@liusiqi-dev/sqh-mcp-client', '@liusiqi-dev/sqh-scope'] as const
 
 describe('profile installs share the installation host runtime instances', () => {
   it('declares every identity-bearing host runtime as a peer, never a dependency', async () => {

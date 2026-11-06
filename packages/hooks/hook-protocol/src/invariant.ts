@@ -1,11 +1,11 @@
-/** Package-owned hook invocation/result stream invariants. @module @liusiqi-dev/dsh-hook-protocol/invariant */
+/** Package-owned hook invocation/result stream invariants. @module @liusiqi-dev/sqh-hook-protocol/invariant */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Session, SessionEvent } from '@liusiqi-dev/dsh-session'
-import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
+import type { Session, SessionEvent } from '@liusiqi-dev/sqh-session'
+import type { InvariantFailure, InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
 import type {} from './types.ts'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-hook-protocol'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-hook-protocol'
 
 /** Cordis companion plugin name. */
 export const name = 'hook-protocol-invariant'

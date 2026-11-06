@@ -3,21 +3,21 @@ import { mkdir, rm, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
 import { Context } from '@liusiqi-dev/cordis'
-import { createUserMessage, ToolCallId, type Message } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed, MessageSource } from '@liusiqi-dev/dsh-llm'
-import { createScope, type Scope } from '@liusiqi-dev/dsh-scope'
+import { createUserMessage, ToolCallId, type Message } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed, MessageSource } from '@liusiqi-dev/sqh-llm'
+import { createScope, type Scope } from '@liusiqi-dev/sqh-scope'
 import {
   SESSION_FORMAT_VERSION, Session, SessionId, type SessionEvent, type UserMessage,
-} from '@liusiqi-dev/dsh-session'
-import SystemPrompt, { renderPrompt } from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime, { defineContentToolFixture } from '@liusiqi-dev/dsh-tools'
-import AgentRegistry, { agentEvents, type Agent, type PreStepDecision } from '@liusiqi-dev/dsh-agent'
-import SkillRegistry from '@liusiqi-dev/dsh-skill'
-import * as SkillFileSystem from '@liusiqi-dev/dsh-skill-filesystem'
-import * as toolSkill from '@liusiqi-dev/dsh-tool-skill'
-import { unsupportedInbox } from '@liusiqi-dev/dsh-agent-loop-testkit'
+} from '@liusiqi-dev/sqh-session'
+import SystemPrompt, { renderPrompt } from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime, { defineContentToolFixture } from '@liusiqi-dev/sqh-tools'
+import AgentRegistry, { agentEvents, type Agent, type PreStepDecision } from '@liusiqi-dev/sqh-agent'
+import SkillRegistry from '@liusiqi-dev/sqh-skill'
+import * as SkillFileSystem from '@liusiqi-dev/sqh-skill-filesystem'
+import * as toolSkill from '@liusiqi-dev/sqh-tool-skill'
+import { unsupportedInbox } from '@liusiqi-dev/sqh-agent-loop-testkit'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'dsh-tool-skill': { kind: 'dsh-tool-skill' } & ContextFormed
     'later-contribution': { kind: 'later-contribution' } & ContextFormed

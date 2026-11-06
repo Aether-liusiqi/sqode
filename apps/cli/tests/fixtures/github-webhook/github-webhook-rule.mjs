@@ -1,5 +1,5 @@
 import z from '@liusiqi-dev/schemastery'
-import { WebhookRuleId } from '@liusiqi-dev/dsh-webhook'
+import { WebhookRuleId } from '@liusiqi-dev/sqh-webhook'
 
 export const name = 'github-webhook-real-e2e-rule'
 export const inject = ['webhookRuntime']

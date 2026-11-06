@@ -1,13 +1,13 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type KeyboardEvent } from 'react'
-import type { JobsSnapshot, JobView, ObservedJob } from '@liusiqi-dev/dsh-api-job-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { JobsSnapshot, JobView, ObservedJob } from '@liusiqi-dev/sqh-api-job-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import {
   IconChevronDownOutlineRegular, IconStopFillRegular, StateDot, TerminalBlock, useDismissOnOutsidePointer,
   type StateDotState, type TerminalBlockLabels,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { InjectFace, PropsLocale, PropsRuntime, TranslateNS } from '@liusiqi-dev/dsh-client-ui-slots'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { InjectFace, PropsLocale, PropsRuntime, TranslateNS } from '@liusiqi-dev/sqh-client-ui-slots'
 import { NS } from './locales.ts'
-import type {} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import css from './JobListAction.module.css'
 
 /** Registration-side business face for the job list. */

@@ -1,6 +1,6 @@
 /** The `shell.overlay` entry that renders the account feature's shared native Platform page. */
-import type {} from '@liusiqi-dev/dsh-client-ui-layout/client'
-import type { HostObservable, InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
+import type {} from '@liusiqi-dev/sqh-client-ui-layout/client'
+import type { HostObservable, InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
 import type { PlatformPageClaim } from './platform-pages.ts'
 import { PlatformOverlay, type PlatformBridge } from './PlatformOverlay.tsx'
 

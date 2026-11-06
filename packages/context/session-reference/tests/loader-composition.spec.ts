@@ -8,18 +8,18 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
 import Include from '@liusiqi-dev/cordis-plugin-include'
-import { agentEvents, type Agent } from '@liusiqi-dev/dsh-agent'
-import { createUserMessage, ToolCallId } from '@liusiqi-dev/dsh-llm'
-import * as systemPromptPlugin from '@liusiqi-dev/dsh-system-prompt'
-import * as toolsPlugin from '@liusiqi-dev/dsh-tools'
-import * as fsPlugin from '@liusiqi-dev/dsh-fs-local'
-import * as toolFsPlugin from '@liusiqi-dev/dsh-tool-fs'
-import * as sessionPlugin from '@liusiqi-dev/dsh-session'
-import { Session, SessionId } from '@liusiqi-dev/dsh-session'
-import * as queryPlugin from '@liusiqi-dev/dsh-session-query-sqlite'
-import * as referencePlugin from '@liusiqi-dev/dsh-session-reference'
-import * as spillPlugin from '@liusiqi-dev/dsh-spill-local'
-import { sessionDir } from '@liusiqi-dev/dsh-spill-local'
+import { agentEvents, type Agent } from '@liusiqi-dev/sqh-agent'
+import { createUserMessage, ToolCallId } from '@liusiqi-dev/sqh-llm'
+import * as systemPromptPlugin from '@liusiqi-dev/sqh-system-prompt'
+import * as toolsPlugin from '@liusiqi-dev/sqh-tools'
+import * as fsPlugin from '@liusiqi-dev/sqh-fs-local'
+import * as toolFsPlugin from '@liusiqi-dev/sqh-tool-fs'
+import * as sessionPlugin from '@liusiqi-dev/sqh-session'
+import { Session, SessionId } from '@liusiqi-dev/sqh-session'
+import * as queryPlugin from '@liusiqi-dev/sqh-session-query-sqlite'
+import * as referencePlugin from '@liusiqi-dev/sqh-session-reference'
+import * as spillPlugin from '@liusiqi-dev/sqh-spill-local'
+import { sessionDir } from '@liusiqi-dev/sqh-spill-local'
 import * as sourcePlugin from './fixtures/source-session.ts'
 
 let context: Context | undefined
@@ -44,14 +44,14 @@ describe('session-reference real Loader composition', () => {
     await ctx.plugin(Loader)
     ctx.loader.builtins.include = Include
     const modules = new Map<string, unknown>([
-      ['@liusiqi-dev/dsh-session', sessionPlugin],
-      ['@liusiqi-dev/dsh-system-prompt', systemPromptPlugin],
-      ['@liusiqi-dev/dsh-tools', toolsPlugin],
-      ['@liusiqi-dev/dsh-fs-local', fsPlugin],
-      ['@liusiqi-dev/dsh-tool-fs', toolFsPlugin],
-      ['@liusiqi-dev/dsh-session-query-sqlite', queryPlugin],
-      ['@liusiqi-dev/dsh-session-reference', referencePlugin],
-      ['@liusiqi-dev/dsh-spill-local', spillPlugin],
+      ['@liusiqi-dev/sqh-session', sessionPlugin],
+      ['@liusiqi-dev/sqh-system-prompt', systemPromptPlugin],
+      ['@liusiqi-dev/sqh-tools', toolsPlugin],
+      ['@liusiqi-dev/sqh-fs-local', fsPlugin],
+      ['@liusiqi-dev/sqh-tool-fs', toolFsPlugin],
+      ['@liusiqi-dev/sqh-session-query-sqlite', queryPlugin],
+      ['@liusiqi-dev/sqh-session-reference', referencePlugin],
+      ['@liusiqi-dev/sqh-spill-local', spillPlugin],
       ['./source-session.ts', sourcePlugin],
     ])
     ctx.loader.internal = {

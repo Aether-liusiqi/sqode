@@ -3,10 +3,10 @@ import { chmod, mkdir, readdir, readFile, realpath, writeFile } from 'node:fs/pr
 import { join } from 'node:path'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import LocalSubprocessRuntime from '@liusiqi-dev/dsh-subprocess-local'
+import LocalSubprocessRuntime from '@liusiqi-dev/sqh-subprocess-local'
 import { GitRunner, blobText, diffTrees, ignoredPaths, locateGitWorkspace, snapshotTree, treeBlob } from '../src/git.ts'
 import { TurnRecorder } from '../src/recorder.ts'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
 import { git, scratchDir, startTurn, toolCall } from './support.ts'
 
 /** An object directory factory under a scratch root. */

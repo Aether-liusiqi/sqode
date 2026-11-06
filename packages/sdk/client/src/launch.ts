@@ -1,6 +1,6 @@
 /**
  * Resolve the public SDK launch configuration to one dsh subprocess.
- * @module @liusiqi-dev/dsh-sdk-client/launch
+ * @module @liusiqi-dev/sqh-sdk-client/launch
  */
 
 import { existsSync, readFileSync } from 'node:fs'

@@ -6,7 +6,7 @@
  * committed semantic updates, cancellation, and one-shot permission decisions;
  * presentation and human-interaction features stay with the harness's UI modules.
  *
- * @module @liusiqi-dev/dsh-acp
+ * @module @liusiqi-dev/sqh-acp
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
@@ -16,8 +16,8 @@ import { realpath } from 'node:fs/promises'
 import { isAbsolute, resolve } from 'node:path'
 import { Readable, Writable } from 'node:stream'
 import Schema from '@liusiqi-dev/schemastery'
-import { brandString } from '@liusiqi-dev/dsh-brand'
-import { errorChain } from '@liusiqi-dev/dsh-llm'
+import { brandString } from '@liusiqi-dev/sqh-brand'
+import { errorChain } from '@liusiqi-dev/sqh-llm'
 import {
   agent as createAcpAgentApp,
   methods,
@@ -45,11 +45,11 @@ import {
   type SessionNotification,
   type Stream,
 } from '@agentclientprotocol/sdk'
-import type { ModelSelection } from '@liusiqi-dev/dsh-agent'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
-import type {} from '@liusiqi-dev/dsh-session-persistence'
+import type { ModelSelection } from '@liusiqi-dev/sqh-agent'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
+import type {} from '@liusiqi-dev/sqh-session-persistence'
 // Side-effect type import: declaration-merges the approval waterfall answered below.
-import type {} from '@liusiqi-dev/dsh-user-approval'
+import type {} from '@liusiqi-dev/sqh-user-approval'
 import { supportsAcpImagePrompts } from './content.ts'
 import { AcpMcpConfigError } from './mcp.ts'
 import { AcpModelConfigError } from './model-control.ts'
@@ -200,7 +200,7 @@ export function apply(ctx: Context, config: AcpConfig): void {
       // No preset composition: the ACP bundle keeps the model-facing rows in
       // the host plane, so this agent reads them from the global layer. A
       // deployment that configures a roster has to join one here first
-      // (@liusiqi-dev/dsh-agent-preset-registry README, "Composing a child agent").
+      // (@liusiqi-dev/sqh-agent-preset-registry README, "Composing a child agent").
       let record: AcpSession
       try {
         record = await AcpSession.create(ctx, {

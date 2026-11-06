@@ -1,8 +1,8 @@
 import { Context } from '@liusiqi-dev/cordis'
-import { JobId, JobRegistry } from '@liusiqi-dev/dsh-jobs'
-import type { JobStatus, JobView } from '@liusiqi-dev/dsh-jobs'
-import { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { SessionActivity } from '@liusiqi-dev/dsh-workspace'
+import { JobId, JobRegistry } from '@liusiqi-dev/sqh-jobs'
+import type { JobStatus, JobView } from '@liusiqi-dev/sqh-jobs'
+import { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { SessionActivity } from '@liusiqi-dev/sqh-workspace'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { installDesktopQuitInspection } from '../src/quit-inspection.ts'
 

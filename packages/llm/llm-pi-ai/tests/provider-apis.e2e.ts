@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises'
 import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { AttachmentId, AttachmentStore, ImageVariantId } from '@liusiqi-dev/dsh-attachment'
+import { AttachmentId, AttachmentStore, ImageVariantId } from '@liusiqi-dev/sqh-attachment'
 import type {
   ImageAttachmentLimits,
   ImageAttachmentRef,
@@ -9,10 +9,10 @@ import type {
   RequestImageAttachment,
   SaveImageAttachment,
   StoredImageAttachment,
-} from '@liusiqi-dev/dsh-attachment'
-import LlmRuntime, { createToolResultMessage, createUserMessage, ToolCallId } from '@liusiqi-dev/dsh-llm'
-import type { Message, ToolSchema } from '@liusiqi-dev/dsh-llm'
-import * as LlmPiAi from '@liusiqi-dev/dsh-llm-pi-ai'
+} from '@liusiqi-dev/sqh-attachment'
+import LlmRuntime, { createToolResultMessage, createUserMessage, ToolCallId } from '@liusiqi-dev/sqh-llm'
+import type { Message, ToolSchema } from '@liusiqi-dev/sqh-llm'
+import * as LlmPiAi from '@liusiqi-dev/sqh-llm-pi-ai'
 import type { PiAiReplayResponse } from '../src/replay.ts'
 import { assemble, type AssembledResult } from './assemble.ts'
 

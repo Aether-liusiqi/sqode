@@ -7,16 +7,16 @@
  * imports no provider.
  *
  * Namespace plugin (named exports, no default export).
- * @module @liusiqi-dev/dsh-tool-lsp
+ * @module @liusiqi-dev/sqh-tool-lsp
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
-import { LspError } from '@liusiqi-dev/dsh-lsp'
-import type {} from '@liusiqi-dev/dsh-lsp'
-import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/dsh-timeout'
-import { assertNever } from '@liusiqi-dev/dsh-util-values'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
+import { LspError } from '@liusiqi-dev/sqh-lsp'
+import type {} from '@liusiqi-dev/sqh-lsp'
+import { MAX_TIMER_DELAY_MS } from '@liusiqi-dev/sqh-timeout'
+import { assertNever } from '@liusiqi-dev/sqh-util-values'
 import {
   DEFAULT_MAX_LOCATIONS,
   DEFAULT_MAX_RESULT_CHARS,

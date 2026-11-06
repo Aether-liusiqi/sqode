@@ -5,117 +5,117 @@
 /:
   en: c6db6e2344a91be8
   zh: 4febc8331d506a22
-/liusiqi-dev-dsh-tool-subagent:
-  en: 985bc4607ca78263
-  zh: 7f91d350cf962245
-/liusiqi-dev-dsh-tool-subagent/summary:
+/liusiqi-dev-sqh-tool-subagent:
+  en: ab753c6db78a8fee
+  zh: f3ac9361acb51920
+/liusiqi-dev-sqh-tool-subagent/summary:
   en: 04da983479776bfa
   zh: 17b955b0390dc448
-/liusiqi-dev-dsh-tool-subagent/table-of-contents:
+/liusiqi-dev-sqh-tool-subagent/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
-/liusiqi-dev-dsh-tool-subagent/use-this-package:
+/liusiqi-dev-sqh-tool-subagent/use-this-package:
   en: 3248a28bba2ef809
   zh: 807cc32c49fcb0cb
-/liusiqi-dev-dsh-tool-subagent/use-this-package/minimal-configuration:
+/liusiqi-dev-sqh-tool-subagent/use-this-package/minimal-configuration:
   en: a8809e00166c7f2f
   zh: 261432232638c445
-/liusiqi-dev-dsh-tool-subagent/use-this-package/foreground-and-background-modes:
+/liusiqi-dev-sqh-tool-subagent/use-this-package/foreground-and-background-modes:
   en: 8e7319bc2887ae5c
   zh: 87d5abdfbe7562df
-/liusiqi-dev-dsh-tool-subagent/use-this-package/selecting-a-child-llm:
+/liusiqi-dev-sqh-tool-subagent/use-this-package/selecting-a-child-llm:
   en: a7cf6ed25dee15d0
   zh: 4392e5bd71943ada
-/liusiqi-dev-dsh-tool-subagent/understand-the-implementation:
+/liusiqi-dev-sqh-tool-subagent/understand-the-implementation:
   en: 6ce5f749256a7e6c
   zh: a4f2adb04a70d9cf
-/liusiqi-dev-dsh-tool-subagent/understand-the-implementation/design-concept:
+/liusiqi-dev-sqh-tool-subagent/understand-the-implementation/design-concept:
   en: 5ceacfed4ea0c648
   zh: 005284534923d854
-/liusiqi-dev-dsh-tool-subagent/understand-the-implementation/foreground-settlement:
+/liusiqi-dev-sqh-tool-subagent/understand-the-implementation/foreground-settlement:
   en: ccb36af6884ec89f
   zh: 41e9aa6d3cd75a41
-/liusiqi-dev-dsh-tool-subagent/understand-the-implementation/background-routes:
+/liusiqi-dev-sqh-tool-subagent/understand-the-implementation/background-routes:
   en: dfd6306019a63bea
   zh: 5055b66e19885e8d
-/liusiqi-dev-dsh-tool-subagent/understand-the-implementation/context-sensitive-wording:
+/liusiqi-dev-sqh-tool-subagent/understand-the-implementation/context-sensitive-wording:
   en: 1733728ac5aa6bb0
   zh: 341ffc6e21a289af
-/liusiqi-dev-dsh-tool-subagent/understand-the-implementation/source-map:
+/liusiqi-dev-sqh-tool-subagent/understand-the-implementation/source-map:
   en: 1f52c5f5c7caf04a
   zh: dba288fd0cf51e5d
-/liusiqi-dev-dsh-tool-subagent/further-exploration:
+/liusiqi-dev-sqh-tool-subagent/further-exploration:
   en: bfe8b6bc5af43b98
   zh: dbc040e7c9ad6838
-/liusiqi-dev-dsh-tool-subagent/model-experience:
+/liusiqi-dev-sqh-tool-subagent/model-experience:
   en: 215e7ba838619b7b
   zh: a311da3843709f90
-/liusiqi-dev-dsh-tool-subagent/model-experience/tool-schema:
+/liusiqi-dev-sqh-tool-subagent/model-experience/tool-schema:
   en: e4c7376d4f29dbd5
   zh: 6b7a9eaf69c9ea53
-/liusiqi-dev-dsh-tool-subagent/model-experience/tool-schema/what-the-model-sees:
+/liusiqi-dev-sqh-tool-subagent/model-experience/tool-schema/what-the-model-sees:
   en: 5d88050d9496b928
   zh: 1278b3b7da4335db
-/liusiqi-dev-dsh-tool-subagent/model-experience/tool-schema/token-effect:
+/liusiqi-dev-sqh-tool-subagent/model-experience/tool-schema/token-effect:
   en: 1aa53b7a4c24cc25
   zh: bebd5c5ce6443259
-/liusiqi-dev-dsh-tool-subagent/model-experience/tool-schema/kv-cache-effect:
+/liusiqi-dev-sqh-tool-subagent/model-experience/tool-schema/kv-cache-effect:
   en: 46f736c6c389052a
   zh: a7765541030e9104
-/liusiqi-dev-dsh-tool-subagent/model-experience/model-selection-and-discovery:
+/liusiqi-dev-sqh-tool-subagent/model-experience/model-selection-and-discovery:
   en: a4ca31b9cbacda6b
   zh: 91ac3e0784a14697
-/liusiqi-dev-dsh-tool-subagent/model-experience/model-selection-and-discovery/what-the-model-sees:
+/liusiqi-dev-sqh-tool-subagent/model-experience/model-selection-and-discovery/what-the-model-sees:
   en: 1c9dd328eaf96683
   zh: 3be88d3b00f51cfa
-/liusiqi-dev-dsh-tool-subagent/model-experience/model-selection-and-discovery/token-effect:
+/liusiqi-dev-sqh-tool-subagent/model-experience/model-selection-and-discovery/token-effect:
   en: 8137e72f630f0190
   zh: 73b1d9374b6cbccd
-/liusiqi-dev-dsh-tool-subagent/model-experience/model-selection-and-discovery/kv-cache-effect:
+/liusiqi-dev-sqh-tool-subagent/model-experience/model-selection-and-discovery/kv-cache-effect:
   en: 7dc47a34d5574fbd
   zh: bd7bd2a4da2f8ae2
-/liusiqi-dev-dsh-tool-subagent/model-experience/system-prompt:
+/liusiqi-dev-sqh-tool-subagent/model-experience/system-prompt:
   en: cf78b9dd5596495f
   zh: bd44560f8c2435e8
-/liusiqi-dev-dsh-tool-subagent/model-experience/system-prompt/what-the-model-sees:
+/liusiqi-dev-sqh-tool-subagent/model-experience/system-prompt/what-the-model-sees:
   en: 875f8a89292dde21
   zh: 670f911b0a149690
-/liusiqi-dev-dsh-tool-subagent/model-experience/system-prompt/what-the-model-sees/tool-guidance-section:
+/liusiqi-dev-sqh-tool-subagent/model-experience/system-prompt/what-the-model-sees/tool-guidance-section:
   en: 82b3cd08b3961c98
   zh: bdc2a34bcea16cac
-/liusiqi-dev-dsh-tool-subagent/model-experience/system-prompt/token-effect:
+/liusiqi-dev-sqh-tool-subagent/model-experience/system-prompt/token-effect:
   en: ed03868e8f551001
   zh: 53c10b979a48cf9b
-/liusiqi-dev-dsh-tool-subagent/model-experience/system-prompt/kv-cache-effect:
+/liusiqi-dev-sqh-tool-subagent/model-experience/system-prompt/kv-cache-effect:
   en: 5f2491d0ee8f440c
   zh: 14c06b9fe7096e09
-/liusiqi-dev-dsh-tool-subagent/model-experience/foreground-result:
+/liusiqi-dev-sqh-tool-subagent/model-experience/foreground-result:
   en: d83f1f25a3719c54
   zh: 445ca808e28dc936
-/liusiqi-dev-dsh-tool-subagent/model-experience/foreground-result/what-the-model-sees:
+/liusiqi-dev-sqh-tool-subagent/model-experience/foreground-result/what-the-model-sees:
   en: 7e5d19839fa69495
   zh: 0e7ff0d92571ec60
-/liusiqi-dev-dsh-tool-subagent/model-experience/foreground-result/token-effect:
+/liusiqi-dev-sqh-tool-subagent/model-experience/foreground-result/token-effect:
   en: 995810727b29f85f
   zh: 4ede7b437091d6ee
-/liusiqi-dev-dsh-tool-subagent/model-experience/foreground-result/kv-cache-effect:
+/liusiqi-dev-sqh-tool-subagent/model-experience/foreground-result/kv-cache-effect:
   en: f5d5f97a153f7c70
   zh: 3d6bc05b9eadfbc2
-/liusiqi-dev-dsh-tool-subagent/model-experience/background-result:
+/liusiqi-dev-sqh-tool-subagent/model-experience/background-result:
   en: 3f23f9211197b0b9
   zh: 8cff3c78249b66ff
-/liusiqi-dev-dsh-tool-subagent/model-experience/background-result/what-the-model-sees:
+/liusiqi-dev-sqh-tool-subagent/model-experience/background-result/what-the-model-sees:
   en: d2ba2d8a3e88478d
   zh: dee910d1d271f75c
-/liusiqi-dev-dsh-tool-subagent/model-experience/background-result/token-effect:
+/liusiqi-dev-sqh-tool-subagent/model-experience/background-result/token-effect:
   en: 3c67cdb1cbf53647
   zh: bfed5f2945a79c9d
-/liusiqi-dev-dsh-tool-subagent/model-experience/background-result/kv-cache-effect:
+/liusiqi-dev-sqh-tool-subagent/model-experience/background-result/kv-cache-effect:
   en: f5d5f97a153f7c70
   zh: 3d6bc05b9eadfbc2
-/liusiqi-dev-dsh-tool-subagent/known-limitations-and-deferred-work:
+/liusiqi-dev-sqh-tool-subagent/known-limitations-and-deferred-work:
   en: 3af3d5b7057d81af
   zh: 88cad8e559935757
-/liusiqi-dev-dsh-tool-subagent/known-limitations-and-deferred-work/dev-note:
+/liusiqi-dev-sqh-tool-subagent/known-limitations-and-deferred-work/dev-note:
   en: e67f633dc6fe7773
   zh: 3bb0c20c93f16f98

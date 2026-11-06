@@ -5,15 +5,15 @@
  * explicit act of widening what features may do to the sessions domain.
  */
 import type { Context } from '@liusiqi-dev/cordis'
-import type { SubagentAddress } from '@liusiqi-dev/dsh-subagent/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { WorkspaceId } from '@liusiqi-dev/dsh-workspace/types'
-import type { RemoteResult } from '@liusiqi-dev/dsh-typert-protocol'
+import type { SubagentAddress } from '@liusiqi-dev/sqh-subagent/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { WorkspaceId } from '@liusiqi-dev/sqh-workspace/types'
+import type { RemoteResult } from '@liusiqi-dev/sqh-typert-protocol'
 import type { AgentContext } from '../scope.ts'
 import type { SessionSearchResultItem } from '../sessions/manager.ts'
 import type { SessionBinding, SessionListState } from '../sessions/service.ts'
 import type { SessionFace } from './session.ts'
-import type { ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
+import type { ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
 import type { SessionReferenceSource } from '../index.ts'
 
 export type { AgentContext } from '../scope.ts'

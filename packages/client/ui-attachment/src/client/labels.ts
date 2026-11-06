@@ -1,8 +1,8 @@
-import type { TranslateNS } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { TranslateNS } from '@liusiqi-dev/sqh-client-ui-slots'
 import type { AttachmentRailLabels } from '../AttachmentRail.tsx'
 import type { DropOverlayLabels } from '../DropOverlay.tsx'
 import type { FileCardLabels } from '../FileCard.tsx'
-import type { ImageLightboxLabels } from '@liusiqi-dev/dsh-client-ui-primitives'
+import type { ImageLightboxLabels } from '@liusiqi-dev/sqh-client-ui-primitives'
 import type { MessageImageLabels } from '../MessageImage.tsx'
 
 /**

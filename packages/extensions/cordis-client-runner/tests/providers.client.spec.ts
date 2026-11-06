@@ -1,7 +1,7 @@
 import { Context } from '@liusiqi-dev/cordis'
 import { describe, expect, it } from 'vitest'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
-import { SlotRegistry } from '@liusiqi-dev/dsh-client-ui-renderer/client'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
+import { SlotRegistry } from '@liusiqi-dev/sqh-client-ui-renderer/client'
 import { clientInspectProviders } from '../src/client/providers.ts'
 
 const Component = () => null

@@ -2,7 +2,7 @@
  * Host half of open-in-app: three routes on the composition's `webServer`
  * serving the resolved application catalog, per-application icons, and the
  * launch endpoint the browser split button
- * (`@liusiqi-dev/dsh-client-ui-open-in-app`) posts to.
+ * (`@liusiqi-dev/sqh-client-ui-open-in-app`) posts to.
  *
  * Security has one home, here. Every route asks the composition's
  * `connection` service for a rejection first (`requestRejection`): its
@@ -24,9 +24,9 @@ import type { IncomingMessage, ServerResponse } from 'node:http'
 import { isAbsolute } from 'node:path'
 import { stat } from 'node:fs/promises'
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-host-webserver'
-import type {} from '@liusiqi-dev/dsh-subprocess'
-import { launchedThroughSsh, launchEnvironmentOf } from '@liusiqi-dev/dsh-launch-environment'
+import type {} from '@liusiqi-dev/sqh-host-webserver'
+import type {} from '@liusiqi-dev/sqh-subprocess'
+import { launchedThroughSsh, launchEnvironmentOf } from '@liusiqi-dev/sqh-launch-environment'
 import z from '@liusiqi-dev/schemastery'
 import { OPEN_IN_APP_CATALOG, type OpenInAppApp } from './catalog.ts'
 import {

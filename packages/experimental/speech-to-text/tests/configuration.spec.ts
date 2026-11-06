@@ -3,9 +3,9 @@ import { mkdirSync, mkdtempSync, readFileSync, realpathSync, rmSync, writeFileSy
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { expect, it } from 'vitest'
-import { boot, initProfile, readProfilePatches, type ProfileContext } from '@liusiqi-dev/dsh-app-boot'
-import ConfigEditor from '@liusiqi-dev/dsh-config-editor'
-import Settings from '@liusiqi-dev/dsh-settings'
+import { boot, initProfile, readProfilePatches, type ProfileContext } from '@liusiqi-dev/sqh-app-boot'
+import ConfigEditor from '@liusiqi-dev/sqh-config-editor'
+import Settings from '@liusiqi-dev/sqh-settings'
 import SpeechToText from '../src/index.ts'
 import type { SpeechProviderId } from '../src/types.ts'
 

@@ -22,13 +22,13 @@
 import { posix, win32 } from 'node:path'
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import type {} from '@liusiqi-dev/dsh-fs'
-import type { FsDirEntry, FsInfo, FsPathInfo, FsTarget } from '@liusiqi-dev/dsh-fs'
-import type {} from '@liusiqi-dev/dsh-sandbox-policy'
-import type {} from '@liusiqi-dev/dsh-session'
-import type {} from '@liusiqi-dev/dsh-session-persistence'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import { Remote, RemoteError, TypertRemoteService, type TypertLookup } from '@liusiqi-dev/dsh-typert-protocol'
+import type {} from '@liusiqi-dev/sqh-fs'
+import type { FsDirEntry, FsInfo, FsPathInfo, FsTarget } from '@liusiqi-dev/sqh-fs'
+import type {} from '@liusiqi-dev/sqh-sandbox-policy'
+import type {} from '@liusiqi-dev/sqh-session'
+import type {} from '@liusiqi-dev/sqh-session-persistence'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import { Remote, RemoteError, TypertRemoteService, type TypertLookup } from '@liusiqi-dev/sqh-typert-protocol'
 import { WorkspaceChangeFeed } from './changes.ts'
 import type {
   WorkspaceByteRange,
@@ -59,7 +59,7 @@ export interface WorkspaceFileScope {
   readonly workspaceRoot: string
 }
 
-declare module '@liusiqi-dev/dsh-typert-protocol' {
+declare module '@liusiqi-dev/sqh-typert-protocol' {
   interface TypertLookupMap {
     /** Resolve a Session id to its workspace root without loading its event body or activating an Agent. */
     workspaceFileScope: TypertLookup<WorkspaceFileScope, SessionId>
@@ -203,8 +203,8 @@ export class WorkspaceFiles extends TypertRemoteService {
       scope.typert.lookups.register('workspaceFileScope', {
         parameter: 'workspaceFileScope',
         wire: 'workspaceFileScopeId',
-        hostTypeSymbol: '@liusiqi-dev/dsh-api-workspace-files#WorkspaceFileScope',
-        wireTypeSymbol: '@liusiqi-dev/dsh-session/types#SessionId',
+        hostTypeSymbol: '@liusiqi-dev/sqh-api-workspace-files#WorkspaceFileScope',
+        wireTypeSymbol: '@liusiqi-dev/sqh-session/types#SessionId',
         resolve: async (sessionId) => {
           const live = scope.sessions.get(sessionId)?.header
           const stored = live === undefined

@@ -5,42 +5,42 @@
 /:
   en: e85ec1ccd1b80d98
   zh: 1272b2ae6abeabdc
-/liusiqi-dev-dsh-client-ui-commands:
-  en: eb3528b16b82425e
-  zh: c6aaf70918eca857
-/liusiqi-dev-dsh-client-ui-commands/summary:
+/liusiqi-dev-sqh-client-ui-commands:
+  en: f8685627062ae98e
+  zh: a5cc5cee4c96a87e
+/liusiqi-dev-sqh-client-ui-commands/summary:
   en: 770b1f492ac735e7
   zh: 5602493729149219
-/liusiqi-dev-dsh-client-ui-commands/table-of-contents:
+/liusiqi-dev-sqh-client-ui-commands/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
-/liusiqi-dev-dsh-client-ui-commands/use-this-package:
+/liusiqi-dev-sqh-client-ui-commands/use-this-package:
   en: 01adce72791579fa
   zh: 70eb55a1529038e7
-/liusiqi-dev-dsh-client-ui-commands/use-this-package/kinds-and-decorations:
+/liusiqi-dev-sqh-client-ui-commands/use-this-package/kinds-and-decorations:
   en: 57679a20574d8b3f
   zh: 98d5e5a7781e6de1
-/liusiqi-dev-dsh-client-ui-commands/use-this-package/built-in-row-faces:
+/liusiqi-dev-sqh-client-ui-commands/use-this-package/built-in-row-faces:
   en: e96156be95ea87e3
   zh: f5350db26483ec9f
-/liusiqi-dev-dsh-client-ui-commands/use-this-package/attachment-carrying-submissions:
+/liusiqi-dev-sqh-client-ui-commands/use-this-package/attachment-carrying-submissions:
   en: 4feecdbec0c3f39e
   zh: 618944ecade8a3a2
-/liusiqi-dev-dsh-client-ui-commands/understand-the-implementation:
+/liusiqi-dev-sqh-client-ui-commands/understand-the-implementation:
   en: 3aeeba6c91c3ef19
   zh: d3afb3df6d15e17b
-/liusiqi-dev-dsh-client-ui-commands/further-exploration:
+/liusiqi-dev-sqh-client-ui-commands/further-exploration:
   en: 409c04f534d23de7
   zh: 165022d7a0a554eb
-/liusiqi-dev-dsh-client-ui-commands/model-experience:
+/liusiqi-dev-sqh-client-ui-commands/model-experience:
   en: 3ec197644f2fe6ce
   zh: a06a6fe8909b064f
-/liusiqi-dev-dsh-client-ui-commands/model-experience/kv-cache-effect:
+/liusiqi-dev-sqh-client-ui-commands/model-experience/kv-cache-effect:
   en: 08efc268737977ca
   zh: 7772a59064ea4039
-/liusiqi-dev-dsh-client-ui-commands/known-limitations-and-deferred-work:
+/liusiqi-dev-sqh-client-ui-commands/known-limitations-and-deferred-work:
   en: cfce26d6a603cb7d
   zh: 8332a8d1ad44abcf
-/liusiqi-dev-dsh-client-ui-commands/known-limitations-and-deferred-work/dev-note:
+/liusiqi-dev-sqh-client-ui-commands/known-limitations-and-deferred-work/dev-note:
   en: 2f5e19244ac6c305
   zh: e43b52ae5b4af798

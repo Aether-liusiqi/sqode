@@ -6,7 +6,7 @@
  * user roots, parses YAML frontmatter, and loads bodies through `ctx.fs` when a
  * filesystem service is present.
  *
- * @module @liusiqi-dev/dsh-skill-filesystem
+ * @module @liusiqi-dev/sqh-skill-filesystem
  */
 
 import { access, lstat, readdir, readFile, realpath, stat } from 'node:fs/promises'
@@ -18,8 +18,8 @@ import chokidar from 'chokidar'
 import z from '@liusiqi-dev/schemastery'
 import type Schema from '@liusiqi-dev/schemastery'
 import { parse as parseYaml } from 'yaml'
-import type { FileSystem, FsDirEntry, FsTarget } from '@liusiqi-dev/dsh-fs'
-import { canonicalizeWatchPath, resolveDshHome } from '@liusiqi-dev/dsh-home-paths'
+import type { FileSystem, FsDirEntry, FsTarget } from '@liusiqi-dev/sqh-fs'
+import { canonicalizeWatchPath, resolveDshHome } from '@liusiqi-dev/sqh-home-paths'
 import {
   BUNDLED_SKILL_RANK,
   isSkillName,
@@ -31,7 +31,7 @@ import {
   type SkillProviderControl,
   type SkillProviderObservation,
   type SkillSource,
-} from '@liusiqi-dev/dsh-skill'
+} from '@liusiqi-dev/sqh-skill'
 
 const PROJECT_SQH_RANK = 100
 const PROJECT_AGENTS_RANK = 200

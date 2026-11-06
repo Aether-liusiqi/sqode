@@ -6,9 +6,9 @@ import type { Context } from '@liusiqi-dev/cordis'
 import { entryListSchema } from '@liusiqi-dev/cordis-plugin-include'
 import type { EntryOptions } from '@liusiqi-dev/cordis-plugin-loader'
 import Timer from '@liusiqi-dev/cordis-plugin-timer'
-import { initProfile, mountRootInclude, readProfilePatches, type ProfileContext } from '@liusiqi-dev/dsh-app-boot'
-import Hmr from '@liusiqi-dev/dsh-hmr'
-import ConfigEditor from '@liusiqi-dev/dsh-config-editor'
+import { initProfile, mountRootInclude, readProfilePatches, type ProfileContext } from '@liusiqi-dev/sqh-app-boot'
+import Hmr from '@liusiqi-dev/sqh-hmr'
+import ConfigEditor from '@liusiqi-dev/sqh-config-editor'
 import Settings from '../src/index.ts'
 
 /** Attach the profile runtime to an initialized Loader with a source-module importer. */
@@ -20,7 +20,7 @@ export async function profileComposition(ctx: Context, home: string, baseFile: s
   await writeFile(join(home, 'package.json'), '{"name":"test-installation"}\n')
   await writeFile(join(bundle, 'package.json'), JSON.stringify({ name: 'test-profile-bundle', version: '1.0.0', dsh: { bundle: { patch: 'cordis.patch.yml' } } }))
   const rows = yaml.load(await readFile(baseFile, 'utf8'), { schema: entryListSchema }) as EntryOptions[]
-  for (const row of rows) row.id ??= row.name.replace('@liusiqi-dev/dsh-', '')
+  for (const row of rows) row.id ??= row.name.replace('@liusiqi-dev/sqh-', '')
   await writeFile(join(bundle, 'cordis.patch.yml'), yaml.dump([{ insert: rows }], { schema: entryListSchema }))
   await writeFile(join(dir, 'cordis.yml'), '[]\n')
   const profile: ProfileContext = {

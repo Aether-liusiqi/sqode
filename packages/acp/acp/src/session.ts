@@ -10,9 +10,9 @@ import {
   type SessionNotification,
   type StopReason,
 } from '@agentclientprotocol/sdk'
-import type { Agent, AgentHandle, AgentOptions, ModelSelection } from '@liusiqi-dev/dsh-agent'
-import { createUserMessage, errorChain, type UserMessage } from '@liusiqi-dev/dsh-llm'
-import { type Session, type SessionEvent, type SessionId, type TurnEndReason } from '@liusiqi-dev/dsh-session'
+import type { Agent, AgentHandle, AgentOptions, ModelSelection } from '@liusiqi-dev/sqh-agent'
+import { createUserMessage, errorChain, type UserMessage } from '@liusiqi-dev/sqh-llm'
+import { type Session, type SessionEvent, type SessionId, type TurnEndReason } from '@liusiqi-dev/sqh-session'
 import { AcpContentError, admitAcpPrompt } from './content.ts'
 import { turnEndToStopReason } from './codec.ts'
 import { mountAcpMcpServers } from './mcp.ts'

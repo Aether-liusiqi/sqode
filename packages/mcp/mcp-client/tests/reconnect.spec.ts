@@ -6,11 +6,11 @@
  */
 import { describe, expect, it, vi, beforeEach } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
-import McpResources from '@liusiqi-dev/dsh-mcp-resources'
-import { ToolCallId } from '@liusiqi-dev/dsh-llm'
-import type { Config } from '@liusiqi-dev/dsh-mcp-client'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
+import McpResources from '@liusiqi-dev/sqh-mcp-resources'
+import { ToolCallId } from '@liusiqi-dev/sqh-llm'
+import type { Config } from '@liusiqi-dev/sqh-mcp-client'
 
 // ---- Mock MCP SDK ----
 
@@ -55,8 +55,8 @@ vi.mock('@modelcontextprotocol/client/stdio', () => ({
 
 // vi.mock is hoisted above static imports, so the modules under test see the
 // mocked SDK even through a static import.
-import { apply } from '@liusiqi-dev/dsh-mcp-client/src/index.ts'
-import { RECONNECT_DEFAULTS, resolveReconnectPolicy, startConnection } from '@liusiqi-dev/dsh-mcp-client/src/connection.ts'
+import { apply } from '@liusiqi-dev/sqh-mcp-client/src/index.ts'
+import { RECONNECT_DEFAULTS, resolveReconnectPolicy, startConnection } from '@liusiqi-dev/sqh-mcp-client/src/connection.ts'
 
 // ---- Helpers ----
 

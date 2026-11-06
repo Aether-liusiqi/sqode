@@ -6,8 +6,8 @@ import { sanitizeInstallInput } from './sanitize-install-input.ts'
  * after each action and after every `plugin-manager/changed` event, so a
  * change made on another surface shows here without a manual refresh.
  */
-import type {} from '@liusiqi-dev/dsh-client-product-analytics/client'
-import { randomUUID } from '@liusiqi-dev/dsh-util-crypto'
+import type {} from '@liusiqi-dev/sqh-client-product-analytics/client'
+import { randomUUID } from '@liusiqi-dev/sqh-util-crypto'
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
 import type {
   BundleInfo,
@@ -25,12 +25,12 @@ import type {
   PluginSpecInspection,
   ReadOnlyReason,
   Registry,
-} from '@liusiqi-dev/dsh-api-remotes/client'
-import { normalizeRegistry, NPMMIRROR_REGISTRY, OFFICIAL_NPM_REGISTRY, REGISTRY_URL } from '@liusiqi-dev/dsh-plugin-manager/registry'
-import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { HostObservable } from '@liusiqi-dev/dsh-client-ui-slots'
-import type { LocalizedText, PluginLocalizedMeta } from '@liusiqi-dev/dsh-package-manifest'
-import type { SettingsDescribeFace, ConfigForms } from '@liusiqi-dev/dsh-client-ui-settings/client'
+} from '@liusiqi-dev/sqh-api-remotes/client'
+import { normalizeRegistry, NPMMIRROR_REGISTRY, OFFICIAL_NPM_REGISTRY, REGISTRY_URL } from '@liusiqi-dev/sqh-plugin-manager/registry'
+import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { HostObservable } from '@liusiqi-dev/sqh-client-ui-slots'
+import type { LocalizedText, PluginLocalizedMeta } from '@liusiqi-dev/sqh-package-manifest'
+import type { SettingsDescribeFace, ConfigForms } from '@liusiqi-dev/sqh-client-ui-settings/client'
 import type { ConfigLedger } from './config-ledger.ts'
 import { shortName } from './presentation.ts'
 

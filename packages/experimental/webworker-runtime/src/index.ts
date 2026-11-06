@@ -1,6 +1,6 @@
 /**
  * Browser-only host runtime: the harness Cordis tree inside a dedicated Web Worker.
- * @module @liusiqi-dev/dsh-experimental-webworker-runtime
+ * @module @liusiqi-dev/sqh-experimental-webworker-runtime
  */
 export {
   createAlsRuntime,

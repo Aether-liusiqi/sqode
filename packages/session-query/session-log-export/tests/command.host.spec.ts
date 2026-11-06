@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import type { CommandDefinition, CommandInvocation } from '@liusiqi-dev/dsh-commands'
+import type { CommandDefinition, CommandInvocation } from '@liusiqi-dev/sqh-commands'
 import * as SessionLogDownload from '../src/index.ts'
 
 describe('/export Web download command', () => {

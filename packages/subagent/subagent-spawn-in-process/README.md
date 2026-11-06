@@ -3,7 +3,7 @@ description: "In-process spawn subagent backend for users and maintainers choosi
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-subagent-spawn-in-process
+# @liusiqi-dev/sqh-subagent-spawn-in-process
 
 English | [中文](README.zh.md)
 
@@ -36,9 +36,9 @@ Choose the spawn backend when the child needs no parent conversation and running
 Load the subagent service and this backend, then configure one delegation tool per target. This is the smallest composition that exposes a `subagent` tool backed by spawn:
 
 ```yaml
-- name: '@liusiqi-dev/dsh-subagent'
-- name: '@liusiqi-dev/dsh-subagent-spawn-in-process'
-- name: '@liusiqi-dev/dsh-tool-subagent'
+- name: '@liusiqi-dev/sqh-subagent'
+- name: '@liusiqi-dev/sqh-subagent-spawn-in-process'
+- name: '@liusiqi-dev/sqh-tool-subagent'
   config:
     provider: spawn
 ```

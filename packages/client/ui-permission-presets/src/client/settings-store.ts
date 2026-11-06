@@ -6,12 +6,12 @@
  */
 
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import type { SettingsNamespaceView } from '@liusiqi-dev/dsh-api-remotes/client'
+import type { SettingsNamespaceView } from '@liusiqi-dev/sqh-api-remotes/client'
 import {
   createSnapshotStore, type SnapshotStore,
-} from '@liusiqi-dev/dsh-client-store'
-import type { SettingsDescribeFace } from '@liusiqi-dev/dsh-client-ui-settings/client'
-import type { PermissionCatalog } from '@liusiqi-dev/dsh-permission-presets/client'
+} from '@liusiqi-dev/sqh-client-store'
+import type { SettingsDescribeFace } from '@liusiqi-dev/sqh-client-ui-settings/client'
+import type { PermissionCatalog } from '@liusiqi-dev/sqh-permission-presets/client'
 import type { PermissionCatalogDirectory } from './catalog.ts'
 import { displayPermissionPreset } from './presentation.ts'
 

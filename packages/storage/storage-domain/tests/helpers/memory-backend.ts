@@ -15,8 +15,8 @@
  * @module
  */
 
-import { StorageError } from '@liusiqi-dev/dsh-storage'
-import type { KvFacet, KvUnit, KvUnitDescriptor, StorageBackend } from '@liusiqi-dev/dsh-storage'
+import { StorageError } from '@liusiqi-dev/sqh-storage'
+import type { KvFacet, KvUnit, KvUnitDescriptor, StorageBackend } from '@liusiqi-dev/sqh-storage'
 
 /** One unit's medium: tables of records plus the global slot (`null` = never written). */
 export interface MemoryMedium {

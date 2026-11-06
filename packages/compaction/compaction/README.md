@@ -3,7 +3,7 @@ description: "Shared compaction contract for backend implementers and deployers:
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-compaction
+# @liusiqi-dev/sqh-compaction
 
 English | [中文](README.zh.md)
 
@@ -40,8 +40,8 @@ When condensation runs, the selected older span of the conversation is replaced 
 Mount the shipped backend to register the condensation service, and add `dsh-command-compact` for the on-demand command:
 
 ```yaml
-- name: '@liusiqi-dev/dsh-compaction-basic'
-- name: '@liusiqi-dev/dsh-command-compact'
+- name: '@liusiqi-dev/sqh-compaction-basic'
+- name: '@liusiqi-dev/sqh-command-compact'
 ```
 
 With these two rows the feature is on: the conversation condenses automatically as it grows, and `/compact` condenses immediately on request and reports how many history items were replaced. If no backend is mounted, nothing condenses and `/compact` fails; the full dependency chain for the shipped backend is in its own README.

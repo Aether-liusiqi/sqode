@@ -1,20 +1,20 @@
 /**
  * Driver-owned durable agent inbox projection and command facade.
  *
- * @module @liusiqi-dev/dsh-agent-loop/inbox
+ * @module @liusiqi-dev/sqh-agent-loop/inbox
  */
 
-import type { MessageId } from '@liusiqi-dev/dsh-llm'
-import type { ProjectionDefinition } from '@liusiqi-dev/dsh-session-projection'
-import type SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import type { Session, SessionEventMap, UserMessage } from '@liusiqi-dev/dsh-session'
+import type { MessageId } from '@liusiqi-dev/sqh-llm'
+import type { ProjectionDefinition } from '@liusiqi-dev/sqh-session-projection'
+import type SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import type { Session, SessionEventMap, UserMessage } from '@liusiqi-dev/sqh-session'
 import type {
   AgentEventDispatch,
   Inbox as InboxContract,
   InboxState,
   InboxTarget,
   InboxWireState,
-} from '@liusiqi-dev/dsh-agent'
+} from '@liusiqi-dev/sqh-agent'
 import { z } from 'zod'
 
 /** Wire validation for pending agent input reconstructed from durable inbox splices. */

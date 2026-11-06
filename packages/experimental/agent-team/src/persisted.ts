@@ -1,7 +1,7 @@
 /** Short-lived read-handle access to persisted Team member Sessions. */
 
-import type { SessionEvent, SessionHeader, SessionId , SessionLogOffset } from '@liusiqi-dev/dsh-session'
-import type { SessionPersistence } from '@liusiqi-dev/dsh-session-persistence'
+import type { SessionEvent, SessionHeader, SessionId , SessionLogOffset } from '@liusiqi-dev/sqh-session'
+import type { SessionPersistence } from '@liusiqi-dev/sqh-session-persistence'
 
 /** One persisted Session's detached header and complete committed event log. */
 export interface PersistedSessionView {

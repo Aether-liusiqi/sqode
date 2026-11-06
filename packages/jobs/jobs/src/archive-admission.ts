@@ -5,12 +5,12 @@
  * implementation through the seam's constructor, so it holds for each of
  * them through the abstract `list` and `kill` alone.
  *
- * @module @liusiqi-dev/dsh-jobs
+ * @module @liusiqi-dev/sqh-jobs
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
-import type { SessionActivity } from '@liusiqi-dev/dsh-workspace'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
+import type { SessionActivity } from '@liusiqi-dev/sqh-workspace'
 import type { JobRegistry } from './index.ts'
 import type { JobView } from './view.ts'
 

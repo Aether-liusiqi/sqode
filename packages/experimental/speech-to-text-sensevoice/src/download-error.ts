@@ -1,6 +1,6 @@
 /** Download failures retain their cause locally and expose only safe, structured diagnostics to clients. */
-import type { SpeechDownloadFailure } from '@liusiqi-dev/dsh-experimental-speech-to-text/types'
-import { TimeoutReason } from '@liusiqi-dev/dsh-timeout'
+import type { SpeechDownloadFailure } from '@liusiqi-dev/sqh-experimental-speech-to-text/types'
+import { TimeoutReason } from '@liusiqi-dev/sqh-timeout'
 
 type FailureKind = Pick<SpeechDownloadFailure, 'reason' | 'code'>
 

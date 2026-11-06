@@ -1,9 +1,9 @@
 import { createServer, type IncomingMessage, type Server, type ServerResponse } from 'node:http'
 import type { AddressInfo } from 'node:net'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { installProxyFromEnvironment } from '@liusiqi-dev/dsh-http-proxy'
-import { HttpFetchProvider } from '@liusiqi-dev/dsh-web-fetch-http'
-import type { HttpFetchLimits } from '@liusiqi-dev/dsh-web-fetch-http'
+import { installProxyFromEnvironment } from '@liusiqi-dev/sqh-http-proxy'
+import { HttpFetchProvider } from '@liusiqi-dev/sqh-web-fetch-http'
+import type { HttpFetchLimits } from '@liusiqi-dev/sqh-web-fetch-http'
 import { isNonPublicIpLiteral, publicHttpNetwork } from '../src/network.ts'
 
 const limits: HttpFetchLimits = {

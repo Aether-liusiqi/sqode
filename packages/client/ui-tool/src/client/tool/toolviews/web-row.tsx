@@ -1,6 +1,6 @@
 import type { Context } from '@liusiqi-dev/cordis'
-import { IconBrowseOutlineRegular, IconGlobeOutlineRegular } from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { PropsLocale } from '@liusiqi-dev/dsh-client-ui-slots'
+import { IconBrowseOutlineRegular, IconGlobeOutlineRegular } from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { PropsLocale } from '@liusiqi-dev/sqh-client-ui-slots'
 import type { ToolCallViewProps } from '../../contract/slots.ts'
 import { webCardModel, webFetchHref } from '../models/web-card-model.ts'
 import { toolRowModel } from '../models/tool-call-model.ts'

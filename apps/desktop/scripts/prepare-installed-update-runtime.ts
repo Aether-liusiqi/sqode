@@ -7,7 +7,7 @@ import { cp, mkdir, readFile, writeFile } from 'node:fs/promises'
  * Two are listed while the packages are being renamed; drop the old one with
  * the commit that renames them.
  */
-const FIRST_PARTY_PREFIXES = ['@liusiqi-dev/sqh-', '@liusiqi-dev/dsh-'] as const
+const FIRST_PARTY_PREFIXES = ['@liusiqi-dev/sqh-'] as const
 import { join } from 'node:path'
 import { runtimePath, verifyDesktopRuntime, writeDesktopRuntime } from '../src/runtime-tree.ts'
 import { readInstalledUpdateRun } from './installed-update-qualification.ts'

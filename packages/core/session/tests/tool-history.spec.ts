@@ -1,9 +1,9 @@
 /** Capability-independent tool history folded from committed headers and developer messages. */
 import { describe, expect, it } from 'vitest'
-import { createDeveloperMessage, projectToolUpdates } from '@liusiqi-dev/dsh-llm'
-import type { ContentBlock, ToolSchema } from '@liusiqi-dev/dsh-llm'
-import { Session, SessionId, SessionLogOffset, SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
+import { createDeveloperMessage, projectToolUpdates } from '@liusiqi-dev/sqh-llm'
+import type { ContentBlock, ToolSchema } from '@liusiqi-dev/sqh-llm'
+import { Session, SessionId, SessionLogOffset, SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
 import { ToolHistoryProjection } from '../src/tool-history.ts'
 
 const search: ToolSchema = { name: 'search', description: 'Search', parameters: {} }

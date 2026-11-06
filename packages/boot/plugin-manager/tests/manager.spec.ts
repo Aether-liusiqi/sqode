@@ -14,9 +14,9 @@ import {
   boot, composeEntries, initProfile, loadProfileDirectory, readProfilePatches, readProfileManifest,
   reconcileProfilePatches, OPTIONAL_BUNDLES, PluginPackages, readPluginMeta, getDshRuntimeVersion,
   type ProfileContext, type RuntimeResolution,
-} from '@liusiqi-dev/dsh-app-boot'
+} from '@liusiqi-dev/sqh-app-boot'
 import PluginManager, { type Config, type PluginChange, type PluginInstallLogChunk, type PluginInstallProgress, type PluginInstallRequestId } from '../src/index.ts'
-import Hmr from '@liusiqi-dev/dsh-hmr'
+import Hmr from '@liusiqi-dev/sqh-hmr'
 import Timer from '@liusiqi-dev/cordis-plugin-timer'
 import type { PatchOptions } from '@liusiqi-dev/cordis-plugin-include'
 import { Group } from '@liusiqi-dev/cordis-plugin-loader'
@@ -686,9 +686,9 @@ it('refuses management bundle disablement and permits repeated bundle selections
 })
 
 it.each([
-  '@liusiqi-dev/dsh-host-plugin-inventory',
-  '@liusiqi-dev/dsh-typert-registry',
-  '@liusiqi-dev/dsh-api-remotes',
+  '@liusiqi-dev/sqh-host-plugin-inventory',
+  '@liusiqi-dev/sqh-typert-registry',
+  '@liusiqi-dev/sqh-api-remotes',
 ])('protects the management dependency %s and its containing bundle', async (name) => {
   const { ctx, manager, bundle, profile, dir } = await fixture('startup')
   bundle('extra', [{ id: 'dependency', name, disabled: true }])

@@ -5,11 +5,11 @@
  * output and error material from the settled result node. A supported terminal
  * call gets its expanded body from `terminalCardModel` instead.
  */
-import type { ToolCallBlock, ToolResultNode } from '@liusiqi-dev/dsh-client-ui-chat/client'
-import type { LocaleKeysOf } from '@liusiqi-dev/dsh-client-ui-slots'
-import { abbreviateHomePath, relativizeToCwd } from '@liusiqi-dev/dsh-util-workspace-path'
+import type { ToolCallBlock, ToolResultNode } from '@liusiqi-dev/sqh-client-ui-chat/client'
+import type { LocaleKeysOf } from '@liusiqi-dev/sqh-client-ui-slots'
+import { abbreviateHomePath, relativizeToCwd } from '@liusiqi-dev/sqh-util-workspace-path'
 
-export type { ToolCallBlock } from '@liusiqi-dev/dsh-client-ui-chat/client'
+export type { ToolCallBlock } from '@liusiqi-dev/sqh-client-ui-chat/client'
 
 /** Tool-call row variants selected by the generic atomic renderer. */
 export type ToolRowVariant = 'search' | 'read' | 'bash' | 'write' | 'edit' | 'code' | 'others'

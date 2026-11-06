@@ -9,18 +9,18 @@
  */
 import { Context } from '@liusiqi-dev/cordis'
 import { describe, expect, it, onTestFinished, vi } from 'vitest'
-import { SlotRegistry } from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import { LocaleRuntime } from '@liusiqi-dev/dsh-client-locale/client'
-import { TestRemote } from '@liusiqi-dev/dsh-client-test-runtime'
-import { remoteDefaultResponses } from '@liusiqi-dev/dsh-client-test-runtime/src/assembly/remote-default-responses.ts'
-import { RemoteMock } from '@liusiqi-dev/dsh-remote-mock'
-import { apply as settingsApply, inject as settingsInject } from '@liusiqi-dev/dsh-client-ui-settings/client'
-import type { CommandDecoration, PopupSelectSpec } from '@liusiqi-dev/dsh-client-ui-commands/client'
-import { PopupSelectController } from '@liusiqi-dev/dsh-client-ui-commands/client'
+import { SlotRegistry } from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import { LocaleRuntime } from '@liusiqi-dev/sqh-client-locale/client'
+import { TestRemote } from '@liusiqi-dev/sqh-client-test-runtime'
+import { remoteDefaultResponses } from '@liusiqi-dev/sqh-client-test-runtime/src/assembly/remote-default-responses.ts'
+import { RemoteMock } from '@liusiqi-dev/sqh-remote-mock'
+import { apply as settingsApply, inject as settingsInject } from '@liusiqi-dev/sqh-client-ui-settings/client'
+import type { CommandDecoration, PopupSelectSpec } from '@liusiqi-dev/sqh-client-ui-commands/client'
+import { PopupSelectController } from '@liusiqi-dev/sqh-client-ui-commands/client'
 import type {
   PermissionCatalog, PermissionSelection,
-} from '@liusiqi-dev/dsh-permission-presets/client'
+} from '@liusiqi-dev/sqh-permission-presets/client'
 import {
   PermissionRow, type PermissionRowInjected,
 } from '../src/client/PermissionRow.tsx'

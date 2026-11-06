@@ -5,8 +5,8 @@
  */
 import clsx from 'clsx'
 import type { ReactNode } from 'react'
-import { ReferenceIconRegular } from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { ReferenceIconKind } from '@liusiqi-dev/dsh-client-ui-primitives'
+import { ReferenceIconRegular } from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { ReferenceIconKind } from '@liusiqi-dev/sqh-client-ui-primitives'
 import css from './ReferenceChip.module.css'
 import referenceCss from './composer-editor.module.css'
 

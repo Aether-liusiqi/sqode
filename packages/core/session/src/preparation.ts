@@ -1,6 +1,6 @@
 /**
  * Ownership of one unpublished Session before registry publication.
- * @module @liusiqi-dev/dsh-session/preparation
+ * @module @liusiqi-dev/sqh-session/preparation
  */
 
 import type { Session } from './index.ts'

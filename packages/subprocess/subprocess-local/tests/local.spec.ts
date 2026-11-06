@@ -6,24 +6,24 @@ import { basename, dirname, join, relative, resolve } from 'node:path'
 import { mkdtempSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { Context } from '@liusiqi-dev/cordis'
-import LocalSubprocessRuntime from '@liusiqi-dev/dsh-subprocess-local'
-import type { SubprocessSpawnSpec, SubprocessTerminalHandle, SubprocessTerminalSpawnSpec } from '@liusiqi-dev/dsh-subprocess'
+import LocalSubprocessRuntime from '@liusiqi-dev/sqh-subprocess-local'
+import type { SubprocessSpawnSpec, SubprocessTerminalHandle, SubprocessTerminalSpawnSpec } from '@liusiqi-dev/sqh-subprocess'
 import { childEnv } from '../src/spawn.ts'
 import { signalLinuxDirectProcess } from '../src/linux-scope.ts'
 
 function mockWin32ForIsolatedRuntime(): void {
-  vi.doMock('@liusiqi-dev/dsh-win32-process', () => ({
+  vi.doMock('@liusiqi-dev/sqh-win32-process', () => ({
     loadWin32ProcessBindings: vi.fn(),
     probeCurrentTokenJobSupport: vi.fn(),
   }))
 }
 
 function unmockWin32ForIsolatedRuntime(): void {
-  vi.doUnmock('@liusiqi-dev/dsh-win32-process')
+  vi.doUnmock('@liusiqi-dev/sqh-win32-process')
 }
 
 function mockNodePtyForIsolatedRuntime(spawn: unknown): void {
-  vi.doMock('@liusiqi-dev/dsh-lazy-require', () => ({
+  vi.doMock('@liusiqi-dev/sqh-lazy-require', () => ({
     createLazyRequire: (specifier: string) => () => {
       if (specifier === 'node-pty') return { spawn }
       throw new Error(`unexpected lazy dependency ${specifier}`)
@@ -32,7 +32,7 @@ function mockNodePtyForIsolatedRuntime(spawn: unknown): void {
 }
 
 function unmockLazyRequireForIsolatedRuntime(): void {
-  vi.doUnmock('@liusiqi-dev/dsh-lazy-require')
+  vi.doUnmock('@liusiqi-dev/sqh-lazy-require')
 }
 
 function spec(command: string, overrides: Partial<SubprocessSpawnSpec> = {}): SubprocessSpawnSpec {

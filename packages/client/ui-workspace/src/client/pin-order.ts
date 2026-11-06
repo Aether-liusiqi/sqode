@@ -3,9 +3,9 @@
  * derived from the same Host snapshots the browser orders by, so the
  * UiWorkspace service can complete the write without the browser in the loop.
  */
-import type { SessionListState } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { WorkspaceView } from '@liusiqi-dev/dsh-api-workspace-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { SessionListState } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { WorkspaceView } from '@liusiqi-dev/sqh-api-workspace-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import { FLAT_SESSION_ORDER_KEY } from './stores.ts'
 import { owningGroupKey, sessionMemberIds, type SessionRowState, UNGROUPED_KEY } from './tree.ts'
 

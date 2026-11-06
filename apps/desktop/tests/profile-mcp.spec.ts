@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { expect, it } from 'vitest'
-import { composeEntries, loadProfileDirectory } from '@liusiqi-dev/dsh-app-boot'
+import { composeEntries, loadProfileDirectory } from '@liusiqi-dev/sqh-app-boot'
 import { createPluginProfile } from '../src/project-manager.ts'
 
 it('retains one shared resource consumer in the Desktop Web profile', () => {
@@ -21,11 +21,11 @@ it('retains one shared resource consumer in the Desktop Web profile', () => {
       profile.patches,
     ], message => warnings.push(message))
 
-    expect(rows.filter(row => row.name === '@liusiqi-dev/dsh-mcp-resources')).toEqual([
-      { id: 'mcp-resources', name: '@liusiqi-dev/dsh-mcp-resources' },
+    expect(rows.filter(row => row.name === '@liusiqi-dev/sqh-mcp-resources')).toEqual([
+      { id: 'mcp-resources', name: '@liusiqi-dev/sqh-mcp-resources' },
     ])
-    expect(rows.filter(row => row.name === '@liusiqi-dev/dsh-mcp-client')).toEqual([])
-    expect(rows.find(row => row.id === 'webserver')).toMatchObject({ name: '@liusiqi-dev/dsh-host-webserver' })
+    expect(rows.filter(row => row.name === '@liusiqi-dev/sqh-mcp-client')).toEqual([])
+    expect(rows.find(row => row.id === 'webserver')).toMatchObject({ name: '@liusiqi-dev/sqh-host-webserver' })
     expect(rows.find(row => row.id === 'webserver')?.disabled).not.toBe(true)
     expect(warnings).toEqual([])
   } finally {

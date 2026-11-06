@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-experimental-api-speech-to-text",
+  "name": "@liusiqi-dev/sqh-experimental-api-speech-to-text",
   "description": "Authenticated experimental speech transcription for browser clients",
   "version": "1.0.0",
   "publishConfig": {
@@ -49,12 +49,12 @@
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-experimental-speech-to-text": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*"
+    "@liusiqi-dev/sqh-experimental-speech-to-text": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-experimental-speech-to-text": "workspace:*",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*"
+    "@liusiqi-dev/sqh-experimental-speech-to-text": "workspace:*",
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*"
   }
 }

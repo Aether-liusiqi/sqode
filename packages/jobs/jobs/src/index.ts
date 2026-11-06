@@ -5,12 +5,12 @@
  * and that any number of observers read at absolute byte offsets — and the
  * event stream announcing every commit, while producers retain their
  * execution resources. The process-local registry lives in
- * `@liusiqi-dev/dsh-jobs-local`.
- * @module @liusiqi-dev/dsh-jobs
+ * `@liusiqi-dev/sqh-jobs-local`.
+ * @module @liusiqi-dev/sqh-jobs
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
 import { installJobArchiveAdmission } from './archive-admission.ts'
 import type { JobEvents, JobId, JobOutputRead, JobRead, JobSpec, JobView } from './types.ts'
 
@@ -88,7 +88,7 @@ export abstract class JobRegistry extends Service {
     // would register a ctx.jobs with no method implementations and fail far
     // from the misconfiguration. Fail loud at load instead.
     if (new.target === JobRegistry) {
-      throw new Error('@liusiqi-dev/dsh-jobs is the abstract job registry seam; load an implementation such as @liusiqi-dev/dsh-jobs-local instead')
+      throw new Error('@liusiqi-dev/sqh-jobs is the abstract job registry seam; load an implementation such as @liusiqi-dev/sqh-jobs-local instead')
     }
     super(ctx, 'jobs')
     // Archive admission: the Workspace registry asks what still runs for a

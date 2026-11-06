@@ -2,7 +2,7 @@
 
 import { FiberState } from '@liusiqi-dev/cordis'
 import type { Context, Plugin, RegistryService } from '@liusiqi-dev/cordis'
-import type { ClientModuleLoader, ClientModuleLoaderTarget } from '@liusiqi-dev/dsh-client-modules/client'
+import type { ClientModuleLoader, ClientModuleLoaderTarget } from '@liusiqi-dev/sqh-client-modules/client'
 import { chromium } from 'playwright'
 import { expect, it } from 'vitest'
 import { withDefaultWeb } from '../../cli/tests/profiles/web/tests/default-web-process.ts'
@@ -44,7 +44,7 @@ function experimentalClientReferences(roster: Awaited<ReturnType<typeof readClie
     ...roster.entries.map(entry => entry.name),
     ...roster.plugins.flatMap(plugin => [plugin.owner ?? '', ...plugin.modules]),
     ...roster.modules,
-  ].filter(name => name.startsWith('@liusiqi-dev/dsh-experimental-'))
+  ].filter(name => name.startsWith('@liusiqi-dev/sqh-experimental-'))
 }
 
 it('activates the actual default Client registry without experimental packages', async (test) => {
@@ -90,10 +90,10 @@ it('activates the actual default Client registry without experimental packages',
       expect(roster.entries.map(entry => entry.name).sort()).toEqual(host.client.entries.map(entry => entry.id).sort())
       expect(roster.entries.every(entry => entry.state === FiberState.ACTIVE)).toBe(true)
       expect(roster.plugins.length).toBeGreaterThan(roster.entries.length)
-      expect(roster.plugins.some(plugin => plugin.modules.includes('@liusiqi-dev/dsh-client-ui-layout'))).toBe(true)
+      expect(roster.plugins.some(plugin => plugin.modules.includes('@liusiqi-dev/sqh-client-ui-layout'))).toBe(true)
       expect(experimentalClientReferences(roster)).toEqual([])
       const contaminatedHost = await request('mount-experimental-entry')
-      const experimentalName = '@liusiqi-dev/dsh-experimental-client-ui-agent-team'
+      const experimentalName = '@liusiqi-dev/sqh-experimental-client-ui-agent-team'
       expect(contaminatedHost.client.entries.map(entry => entry.id)).toContain(experimentalName)
       await page.reload()
       await expect.poll(async () => {

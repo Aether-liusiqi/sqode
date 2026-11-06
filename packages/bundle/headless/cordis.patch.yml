@@ -19,12 +19,12 @@
 
 - insert:
     - id: headless-startup
-      name: '@liusiqi-dev/dsh-headless/startup'
+      name: '@liusiqi-dev/sqh-headless/startup'
       disabled: false
 
     # Reads its task and run options from the ordinary headlessStartup provider.
     - id: headless-runner
-      name: '@liusiqi-dev/dsh-headless'
+      name: '@liusiqi-dev/sqh-headless'
       disabled: false
       inject: [headlessStartup]
       config:

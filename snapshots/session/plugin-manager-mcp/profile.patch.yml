@@ -1,6 +1,6 @@
 - insert:
     - id: demo
-      name: '@liusiqi-dev/dsh-mcp-client'
+      name: '@liusiqi-dev/sqh-mcp-client'
       disabled: true
       config:
         serverName: demo

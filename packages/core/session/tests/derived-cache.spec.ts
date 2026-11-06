@@ -1,5 +1,5 @@
-import { createUserMessage, createMessage } from '@liusiqi-dev/dsh-llm'
-import type { MessageSource } from '@liusiqi-dev/dsh-llm'
+import { createUserMessage, createMessage } from '@liusiqi-dev/sqh-llm'
+import type { MessageSource } from '@liusiqi-dev/sqh-llm'
 /**
  * Derived-message cache contract against a scratch oracle: project new nodes
  * once, rebuild on surface replacements, return fresh arrays over shared
@@ -7,7 +7,7 @@ import type { MessageSource } from '@liusiqi-dev/dsh-llm'
  */
 
 import { describe, expect, it } from 'vitest'
-import { Session, SessionId } from '@liusiqi-dev/dsh-session'
+import { Session, SessionId } from '@liusiqi-dev/sqh-session'
 
 type CheckpointSource = Extract<MessageSource, { readonly kind: 'compact-checkpoint' }>
 

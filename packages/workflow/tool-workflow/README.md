@@ -3,7 +3,7 @@ description: "The model-facing workflow tool: run a JavaScript orchestration scr
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-tool-workflow
+# @liusiqi-dev/sqh-tool-workflow
 
 English | [中文](README.zh.md)
 

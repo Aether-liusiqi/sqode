@@ -4,7 +4,7 @@
  * discipline), so `./client` projects the same single-source content
  * `./types` serves to host consumers — zero duplication.
  *
- * @module @liusiqi-dev/dsh-session-title/client
+ * @module @liusiqi-dev/sqh-session-title/client
  */
 
 export type * from './types.ts'

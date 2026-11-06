@@ -1,18 +1,18 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import AgentRegistry, { installModelSelection, type Agent, type ModelSelectionRef } from '@liusiqi-dev/dsh-agent'
-import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
-import LlmRuntime, { createUserMessage, LlmError, type GenerateOptions } from '@liusiqi-dev/dsh-llm'
-import { toPiContext } from '@liusiqi-dev/dsh-llm-pi-ai/src/context.ts'
-import SessionStore, { Session, SessionId } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime, { defineContentToolFixture } from '@liusiqi-dev/dsh-tools'
+import AgentRegistry, { installModelSelection, type Agent, type ModelSelectionRef } from '@liusiqi-dev/sqh-agent'
+import AgentLoop from '@liusiqi-dev/sqh-agent-loop'
+import LlmRuntime, { createUserMessage, LlmError, type GenerateOptions } from '@liusiqi-dev/sqh-llm'
+import { toPiContext } from '@liusiqi-dev/sqh-llm-pi-ai/src/context.ts'
+import SessionStore, { Session, SessionId } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime, { defineContentToolFixture } from '@liusiqi-dev/sqh-tools'
 import { MockAdapter, textResponse } from './mock-adapter.ts'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
-    'test-compaction': { kind: 'test-compaction' } & import('@liusiqi-dev/dsh-llm').ContextFormed
+    'test-compaction': { kind: 'test-compaction' } & import('@liusiqi-dev/sqh-llm').ContextFormed
   }
 }
 

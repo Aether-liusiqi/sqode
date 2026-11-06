@@ -2,17 +2,17 @@
 
 import { hostname } from 'node:os'
 import { resolve } from 'node:path'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type {} from '@liusiqi-dev/dsh-fs'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type {} from '@liusiqi-dev/sqh-fs'
 import { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { errorChain, ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
-import type {} from '@liusiqi-dev/dsh-client-file-upload'
-import { canOpenNativePath, nativeFileManager, nativeFileApplications, openNativeFileApplication, openNativeAssociatedPath, revealNativePath } from '@liusiqi-dev/dsh-native-command'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
-import type { SessionInspection } from '@liusiqi-dev/dsh-session-persistence'
-import { SessionQueryError, type SessionObservation } from '@liusiqi-dev/dsh-session-query'
-import { Remote, RemoteError, TypertRemoteService } from '@liusiqi-dev/dsh-typert-protocol'
+import { errorChain, ReasoningEffortId } from '@liusiqi-dev/sqh-llm'
+import type {} from '@liusiqi-dev/sqh-client-file-upload'
+import { canOpenNativePath, nativeFileManager, nativeFileApplications, openNativeFileApplication, openNativeAssociatedPath, revealNativePath } from '@liusiqi-dev/sqh-native-command'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
+import type { SessionInspection } from '@liusiqi-dev/sqh-session-persistence'
+import { SessionQueryError, type SessionObservation } from '@liusiqi-dev/sqh-session-query'
+import { Remote, RemoteError, TypertRemoteService } from '@liusiqi-dev/sqh-typert-protocol'
 import {
   ApiSessionAgentController,
   inspectApiSession,

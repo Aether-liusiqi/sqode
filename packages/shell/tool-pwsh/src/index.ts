@@ -1,7 +1,7 @@
 /**
  * Model-facing PowerShell Consumer of the `ctx.shell` capability seam. Intended for
  * Windows compositions where a PowerShell executor (e.g.
- * `@liusiqi-dev/dsh-pwsh-local`) backs `ctx.shell`; the tool contract is
+ * `@liusiqi-dev/sqh-pwsh-local`) backs `ctx.shell`; the tool contract is
  * PowerShell-dialect: native `C:\...` paths and `$env:NAME` variables.
  *
  * Behavior mirrors `dsh-tool-bash` call-for-call: foreground and
@@ -15,32 +15,32 @@
  * `ctx.approval`), and the bash marker/truncation rendering story. UI
  * presentation mirrors the bash tool's too: a completed foreground call is
  * a terminal card with the parsed exit-status pill, using the shared
- * exit-status parse from `@liusiqi-dev/dsh-shell`.
+ * exit-status parse from `@liusiqi-dev/sqh-shell`.
  *
- * @module @liusiqi-dev/dsh-tool-pwsh
+ * @module @liusiqi-dev/sqh-tool-pwsh
  */
 
 import { isAbsolute, resolve as resolvePath } from 'node:path'
 import { FiberState } from '@liusiqi-dev/cordis'
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { defineTool, TOOL_ABORTED } from '@liusiqi-dev/dsh-tools'
-import type { GenericCallView, TerminalCallView, ToolDefinition, ToolExecution, ToolResult, ToolResultView } from '@liusiqi-dev/dsh-tools'
-import { HarnessError } from '@liusiqi-dev/dsh-llm'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type { JobId, JobRegistry, JobView } from '@liusiqi-dev/dsh-jobs'
-import type {} from '@liusiqi-dev/dsh-shell-env'
-import type {} from '@liusiqi-dev/dsh-user-approval'
-import type { SandboxExecutionPolicy, SandboxMode } from '@liusiqi-dev/dsh-sandbox'
-import { ESCALATION_TARGETS, approveEscalation, sandboxPermissionsDescription, validateEscalationArgs } from '@liusiqi-dev/dsh-sandbox'
-import type { SandboxPolicyService } from '@liusiqi-dev/dsh-sandbox-policy'
-import type { ShellExecRequest, ShellExecSpec, ShellExecution, ShellRunResult } from '@liusiqi-dev/dsh-shell'
-import { parseExitStatus } from '@liusiqi-dev/dsh-shell'
+import { defineTool, TOOL_ABORTED } from '@liusiqi-dev/sqh-tools'
+import type { GenericCallView, TerminalCallView, ToolDefinition, ToolExecution, ToolResult, ToolResultView } from '@liusiqi-dev/sqh-tools'
+import { HarnessError } from '@liusiqi-dev/sqh-llm'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type { JobId, JobRegistry, JobView } from '@liusiqi-dev/sqh-jobs'
+import type {} from '@liusiqi-dev/sqh-shell-env'
+import type {} from '@liusiqi-dev/sqh-user-approval'
+import type { SandboxExecutionPolicy, SandboxMode } from '@liusiqi-dev/sqh-sandbox'
+import { ESCALATION_TARGETS, approveEscalation, sandboxPermissionsDescription, validateEscalationArgs } from '@liusiqi-dev/sqh-sandbox'
+import type { SandboxPolicyService } from '@liusiqi-dev/sqh-sandbox-policy'
+import type { ShellExecRequest, ShellExecSpec, ShellExecution, ShellRunResult } from '@liusiqi-dev/sqh-shell'
+import { parseExitStatus } from '@liusiqi-dev/sqh-shell'
 import { processJob, processOutcome, processSources, ringDelta } from './background.ts'
 import { renderPwshJobRead, renderPwshPromoted, renderPwshResult } from './render.ts'
 import type { RenderablePwshResult } from './render.ts'
 
-declare module '@liusiqi-dev/dsh-jobs' {
+declare module '@liusiqi-dev/sqh-jobs' {
   interface JobKindMap {
     pwsh: 'pwsh'
   }
@@ -519,7 +519,7 @@ export function apply(ctx: Context, config: Config = {}): void {
             throw new Error('run_in_background is disabled for this deployment (enableRunInBackground: false)')
           }
           if (jobs === undefined) {
-            throw new Error('background jobs unavailable: load @liusiqi-dev/dsh-jobs and @liusiqi-dev/dsh-tool-jobs')
+            throw new Error('background jobs unavailable: load @liusiqi-dev/sqh-jobs and @liusiqi-dev/sqh-tool-jobs')
           }
           // The caller owns cancellation until ctx.jobs commits detached ownership.
           if (exec.signal.aborted) throw toolAborted()

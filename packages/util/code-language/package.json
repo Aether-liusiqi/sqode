@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-util-code-language",
+  "name": "@liusiqi-dev/sqh-util-code-language",
   "description": "Single file-extension to syntax-highlighting language table shared by Client code surfaces and the Host read card",
   "version": "1.0.0",
   "publishConfig": {

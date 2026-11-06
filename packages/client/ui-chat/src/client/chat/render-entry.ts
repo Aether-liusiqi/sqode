@@ -1,6 +1,6 @@
 /** Stable React identities for the two grouping reference kinds. */
-import type { RenderEntry } from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import { assertNever } from '@liusiqi-dev/dsh-util-values'
+import type { RenderEntry } from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import { assertNever } from '@liusiqi-dev/sqh-util-values'
 
 /**
  * Identify a rendering position independently of presentation mode.

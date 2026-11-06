@@ -1,4 +1,4 @@
-import { brandNumber, brandString, type Branded, type BrandedNumber } from '@liusiqi-dev/dsh-brand'
+import { brandNumber, brandString, type Branded, type BrandedNumber } from '@liusiqi-dev/sqh-brand'
 import type {
   AssistantMessage,
   DeveloperMessage,
@@ -13,8 +13,8 @@ import type {
   ToolResultMessage,
   ToolSchema,
   UserMessage,
-} from '@liusiqi-dev/dsh-llm'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
+} from '@liusiqi-dev/sqh-llm'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
 
 /** Identifies one session in the store (and its persistence artifacts). */
 export type SessionId = Branded<'SessionId'>
@@ -526,7 +526,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
   })
 }[T]
 
-declare module '@liusiqi-dev/dsh-typert-protocol' {
+declare module '@liusiqi-dev/sqh-typert-protocol' {
   interface RemoteErrorDetailsMap {
     /** The named Session does not exist; produced by every layer that resolves a SessionId. */
     'session/not-found': { readonly sessionId: SessionId }

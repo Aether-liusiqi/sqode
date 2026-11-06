@@ -1,19 +1,19 @@
 /**
  * Model-facing `str_replace_editor` over the Harness filesystem seam.
- * @module @liusiqi-dev/dsh-tool-str-replace-editor
+ * @module @liusiqi-dev/sqh-tool-str-replace-editor
  */
 
 import { isAbsolute } from 'node:path'
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { FsError } from '@liusiqi-dev/dsh-fs'
-import type { FsInfo, FsTarget, FsWriteIntent } from '@liusiqi-dev/dsh-fs'
-import { truncateWithoutSplittingSurrogatePair } from '@liusiqi-dev/dsh-output-retention'
-import { sandboxDenialMarker } from '@liusiqi-dev/dsh-sandbox'
-import type { SandboxExecutionPolicy } from '@liusiqi-dev/dsh-sandbox'
-import type { SandboxPolicyService } from '@liusiqi-dev/dsh-sandbox-policy'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
-import type { ToolCallView, ToolRunContext } from '@liusiqi-dev/dsh-tools'
+import { FsError } from '@liusiqi-dev/sqh-fs'
+import type { FsInfo, FsTarget, FsWriteIntent } from '@liusiqi-dev/sqh-fs'
+import { truncateWithoutSplittingSurrogatePair } from '@liusiqi-dev/sqh-output-retention'
+import { sandboxDenialMarker } from '@liusiqi-dev/sqh-sandbox'
+import type { SandboxExecutionPolicy } from '@liusiqi-dev/sqh-sandbox'
+import type { SandboxPolicyService } from '@liusiqi-dev/sqh-sandbox-policy'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
+import type { ToolCallView, ToolRunContext } from '@liusiqi-dev/sqh-tools'
 
 const TRUNCATED_MESSAGE = '<response clipped><NOTE>To save on context only part of this file has been shown to you. You should retry this tool after you have searched inside the file with `grep -n` in order to find the line numbers of what you are looking for.</NOTE>'
 

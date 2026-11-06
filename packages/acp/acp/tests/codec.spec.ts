@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import type { TurnEndReason } from '@liusiqi-dev/dsh-session'
+import type { TurnEndReason } from '@liusiqi-dev/sqh-session'
 import { turnEndToStopReason } from '../src/codec.ts'
 
 describe('ACP codec', () => {

@@ -1,5 +1,5 @@
 /** Deterministic MCP screenshot result for real-profile retention replay. */
-import { createMcpToolDefinition } from '@liusiqi-dev/dsh-mcp-client'
+import { createMcpToolDefinition } from '@liusiqi-dev/sqh-mcp-client'
 
 export const inject = ['tools', 'attachments']
 

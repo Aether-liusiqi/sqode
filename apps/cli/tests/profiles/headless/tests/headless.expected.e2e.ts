@@ -11,12 +11,12 @@ import {
   normalizeStdout,
   scrubModelRequestBulk,
   type NormalizeContext,
-} from '@liusiqi-dev/dsh-session-snapshot'
-import { LOADER_SMOKE_TEST_TIMEOUT_MS, runLoaderSmoke } from '@liusiqi-dev/dsh-loader-smoke'
+} from '@liusiqi-dev/sqh-session-snapshot'
+import { LOADER_SMOKE_TEST_TIMEOUT_MS, runLoaderSmoke } from '@liusiqi-dev/sqh-loader-smoke'
 import {
   decompressZstdFrame,
   scanZstdFrames,
-} from '@liusiqi-dev/dsh-session-persistence-jsonl/src/zstd.ts'
+} from '@liusiqi-dev/sqh-session-persistence-jsonl/src/zstd.ts'
 import { describe, expect, it } from 'vitest'
 
 const goldensDir = fileURLToPath(new URL('./expected/', import.meta.url))

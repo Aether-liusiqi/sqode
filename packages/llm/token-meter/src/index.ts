@@ -1,30 +1,30 @@
 /**
  * Single replay-aware token-meter service for request and surface pressure.
  *
- * @module @liusiqi-dev/dsh-token-meter
+ * @module @liusiqi-dev/sqh-token-meter
  */
 
 import { Context, Service } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-compaction-image-offload/projection'
+import type {} from '@liusiqi-dev/sqh-compaction-image-offload/projection'
 import z from '@liusiqi-dev/schemastery'
-import { assembleAssistantStream } from '@liusiqi-dev/dsh-llm'
-import type { LlmImageRequestPricing, LlmRuntime, Message, TokenUsage } from '@liusiqi-dev/dsh-llm'
-import { deepFreeze } from '@liusiqi-dev/dsh-util-values'
+import { assembleAssistantStream } from '@liusiqi-dev/sqh-llm'
+import type { LlmImageRequestPricing, LlmRuntime, Message, TokenUsage } from '@liusiqi-dev/sqh-llm'
+import { deepFreeze } from '@liusiqi-dev/sqh-util-values'
 import type {
   EpochHeader,
   Session,
   SessionEvent,
   SessionLogOffset as SessionLogOffsetType,
-} from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-session'
 import {
   canonicalHeader,
   headerEquals,
   isSurfaceEvent,
   SessionLogOffset,
   SessionSeq,
-} from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-session'
 // Type-only: activates the `ctx.sessionProjections` Context declaration.
-import type {} from '@liusiqi-dev/dsh-session-projection'
+import type {} from '@liusiqi-dev/sqh-session-projection'
 import type {
   TokenMeasurement,
   TokenMeasurementBaseline,

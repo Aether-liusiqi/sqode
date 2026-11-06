@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-chunked-list",
+  "name": "@liusiqi-dev/sqh-chunked-list",
   "description": "Persistent append-only chunked lists with bounded copying and JSON checkpoint validation",
   "version": "1.0.0",
   "publishConfig": {

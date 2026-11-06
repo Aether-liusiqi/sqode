@@ -4,7 +4,7 @@ import { join } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { execa } from 'execa'
 import { describe, expect, it } from 'vitest'
-import { resolveExampleLaunch } from '@liusiqi-dev/dsh-loader-smoke'
+import { resolveExampleLaunch } from '@liusiqi-dev/sqh-loader-smoke'
 
 const dshBinScript = fileURLToPath(new URL('../src/bin.ts', import.meta.url))
 const tsconfigPath = fileURLToPath(new URL('../../../tsconfig.json', import.meta.url))
@@ -28,14 +28,14 @@ describe('dsh run with Agent Teams enabled', () => {
         name: 'dsh-profile-headless',
         private: true,
         dependencies: {
-          '@liusiqi-dev/dsh-experimental-agent-team-profile': 'workspace:^',
+          '@liusiqi-dev/sqh-experimental-agent-team-profile': 'workspace:^',
         },
         dsh: {
           profile: {
             bundles: [
-              '@liusiqi-dev/dsh-base',
-              '@liusiqi-dev/dsh-headless',
-              '@liusiqi-dev/dsh-experimental-agent-team-profile',
+              '@liusiqi-dev/sqh-base',
+              '@liusiqi-dev/sqh-headless',
+              '@liusiqi-dev/sqh-experimental-agent-team-profile',
             ],
           },
         },

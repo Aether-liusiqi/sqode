@@ -3,7 +3,7 @@ description: "Browser half of dynamic Cordis packages for users and maintainers 
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-cordis-client-runner
+# @liusiqi-dev/sqh-cordis-client-runner
 
 English | [中文](README.zh.md)
 

@@ -6,12 +6,12 @@ import { mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { pathToFileURL } from 'node:url'
-import LlmRuntime, { createUserMessage, LlmAdapter  } from '@liusiqi-dev/dsh-llm'
-import type { GenerateOptions, StreamChunk } from '@liusiqi-dev/dsh-llm'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import SessionTitleService from '@liusiqi-dev/dsh-session-title'
-import * as providerPlugin from '@liusiqi-dev/dsh-session-title-first-prompt-llm'
+import LlmRuntime, { createUserMessage, LlmAdapter  } from '@liusiqi-dev/sqh-llm'
+import type { GenerateOptions, StreamChunk } from '@liusiqi-dev/sqh-llm'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import SessionTitleService from '@liusiqi-dev/sqh-session-title'
+import * as providerPlugin from '@liusiqi-dev/sqh-session-title-first-prompt-llm'
 
 let root: string | undefined
 let context: Context | undefined
@@ -37,15 +37,15 @@ async function loadComposition(): Promise<Context> {
   root = await mkdtemp(join(tmpdir(), 'dsh-title-loader-'))
   const configPath = join(root, 'cordis.yml')
   await writeFile(configPath, [
-    "- name: '@liusiqi-dev/dsh-llm'",
-    "- name: '@liusiqi-dev/dsh-session'",
-    "- name: '@liusiqi-dev/dsh-session-projection'",
-    "- name: '@liusiqi-dev/dsh-session-title'",
+    "- name: '@liusiqi-dev/sqh-llm'",
+    "- name: '@liusiqi-dev/sqh-session'",
+    "- name: '@liusiqi-dev/sqh-session-projection'",
+    "- name: '@liusiqi-dev/sqh-session-title'",
     '  config:',
     '    fallbackMaxWords: 5',
     '    fallbackMaxBytes: 40',
     '    maxTitleBytes: 80',
-    "- name: '@liusiqi-dev/dsh-session-title-first-prompt-llm'",
+    "- name: '@liusiqi-dev/sqh-session-title-first-prompt-llm'",
     '  config:',
     '    targetWords: 5',
     '    targetCjkCharacters: 10',
@@ -62,11 +62,11 @@ async function loadComposition(): Promise<Context> {
   await context.plugin(Loader)
   context.loader.builtins.include = Include
   const modules = new Map<string, unknown>([
-    ['@liusiqi-dev/dsh-llm', LlmRuntime],
-    ['@liusiqi-dev/dsh-session', SessionStore],
-    ['@liusiqi-dev/dsh-session-projection', SessionProjectionRegistry],
-    ['@liusiqi-dev/dsh-session-title', SessionTitleService],
-    ['@liusiqi-dev/dsh-session-title-first-prompt-llm', providerPlugin],
+    ['@liusiqi-dev/sqh-llm', LlmRuntime],
+    ['@liusiqi-dev/sqh-session', SessionStore],
+    ['@liusiqi-dev/sqh-session-projection', SessionProjectionRegistry],
+    ['@liusiqi-dev/sqh-session-title', SessionTitleService],
+    ['@liusiqi-dev/sqh-session-title-first-prompt-llm', providerPlugin],
   ])
   context.loader.internal = {
     version: 'v2',

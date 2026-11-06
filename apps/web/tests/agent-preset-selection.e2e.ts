@@ -17,9 +17,9 @@ import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
 import {
   SESSION_FORMAT_VERSION, SessionId as sessionId, type SessionEvent, type SessionHeader, type SessionId,
-} from '@liusiqi-dev/dsh-session'
-import { snapshotSubagentDescriptor } from '@liusiqi-dev/dsh-subagent'
-import { createSystemMessage, createUserMessage } from '@liusiqi-dev/dsh-llm'
+} from '@liusiqi-dev/sqh-session'
+import { snapshotSubagentDescriptor } from '@liusiqi-dev/sqh-subagent'
+import { createSystemMessage, createUserMessage } from '@liusiqi-dev/sqh-llm'
 import {
   captureStableAria, compareOrRefreshGolden, launchWebScaffold, seedSession, watchConsole,
   webSnapshotMode, type WebScaffold,

@@ -1,12 +1,12 @@
 /**
  * Shared path resolution and regular-file validation for model-facing read tools.
- * @module @liusiqi-dev/dsh-tool-fs/src/read-target
+ * @module @liusiqi-dev/sqh-tool-fs/src/read-target
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { FsError } from '@liusiqi-dev/dsh-fs'
-import type { FsInfo, FsTarget } from '@liusiqi-dev/dsh-fs'
-import type { ToolExecution } from '@liusiqi-dev/dsh-tools'
+import { FsError } from '@liusiqi-dev/sqh-fs'
+import type { FsInfo, FsTarget } from '@liusiqi-dev/sqh-fs'
+import type { ToolExecution } from '@liusiqi-dev/sqh-tools'
 import { sessionResolveOptions } from './session-cwd.ts'
 
 /**

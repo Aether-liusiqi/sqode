@@ -5,13 +5,13 @@ import { homedir } from 'node:os'
 import { join } from 'node:path'
 import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { LocalSandboxProvider } from '@liusiqi-dev/dsh-sandbox-local'
-import { SandboxPolicyService } from '@liusiqi-dev/dsh-sandbox-policy'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import { seatbeltProfileArgs } from '@liusiqi-dev/dsh-sandbox-local/src/profiles.ts'
-import { SandboxBashExecutor } from '@liusiqi-dev/dsh-bash-sandbox'
-import LocalSubprocessRuntime from '@liusiqi-dev/dsh-subprocess-local'
-import type { ShellExecSpec, ShellExecution, ShellRunResult } from '@liusiqi-dev/dsh-shell'
+import { LocalSandboxProvider } from '@liusiqi-dev/sqh-sandbox-local'
+import { SandboxPolicyService } from '@liusiqi-dev/sqh-sandbox-policy'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import { seatbeltProfileArgs } from '@liusiqi-dev/sqh-sandbox-local/src/profiles.ts'
+import { SandboxBashExecutor } from '@liusiqi-dev/sqh-bash-sandbox'
+import LocalSubprocessRuntime from '@liusiqi-dev/sqh-subprocess-local'
+import type { ShellExecSpec, ShellExecution, ShellRunResult } from '@liusiqi-dev/sqh-shell'
 
 /** Historical foreground shorthand over the unified execute() seam. */
 async function run(x: { execute(spec: ShellExecSpec): Promise<ShellExecution> }, spec: ShellExecSpec): Promise<ShellRunResult> {
@@ -28,7 +28,7 @@ function start(x: { execute(spec: ShellExecSpec): Promise<ShellExecution> }, spe
  * Keyless macOS integration of the real provider and executor through public run/start paths.
  * Linux rungs are forced off so Seatbelt is selected. The tests check world effects and stamped
  * facts, including EPERM classification through the wrap-carried dialect; backend-only
- * confinement is covered by `@liusiqi-dev/dsh-sandbox-local`. Skips off macOS or when
+ * confinement is covered by `@liusiqi-dev/sqh-sandbox-local`. Skips off macOS or when
  * `sandbox-exec` rejects the profile.
  */
 

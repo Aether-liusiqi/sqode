@@ -5,14 +5,14 @@
  * falling back to a second index (Bing) when the first answers too thinly. The
  * result carries the page's own title and snippet, so a citation can be checked
  * against the page rather than against a model's summary.
- * @module @liusiqi-dev/dsh-web-search-http
+ * @module @liusiqi-dev/sqh-web-search-http
  */
 import type { Volatile } from '@liusiqi-dev/cordis'
 
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { launchEnvironmentOf } from '@liusiqi-dev/dsh-launch-environment'
-import type {} from '@liusiqi-dev/dsh-web'
+import { launchEnvironmentOf } from '@liusiqi-dev/sqh-launch-environment'
+import type {} from '@liusiqi-dev/sqh-web'
 
 import { HttpSearchProvider } from './provider.ts'
 import type { HttpSearchOptions, SearchEngine } from './types.ts'

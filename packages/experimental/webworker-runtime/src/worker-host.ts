@@ -19,12 +19,12 @@
  * image, so entry mounting, the activation audit, and its diagnostics are the
  * same code the Node deployment runs. The Worker supplies module loading,
  * profile locations, and the command line.
- * @module @liusiqi-dev/dsh-experimental-webworker-runtime/src/worker-host
+ * @module @liusiqi-dev/sqh-experimental-webworker-runtime/src/worker-host
  */
 import { setActiveModuleLoader, WorkerModuleLoader, type StaticModuleFactory } from './module-system/module-loader.ts'
-import type { ProfileContext } from '@liusiqi-dev/dsh-app-boot'
-import type { TypertGateway } from '@liusiqi-dev/dsh-api-gateway'
-import type { HostConnectionHandle } from '@liusiqi-dev/dsh-client-connection'
+import type { ProfileContext } from '@liusiqi-dev/sqh-app-boot'
+import type { TypertGateway } from '@liusiqi-dev/sqh-api-gateway'
+import type { HostConnectionHandle } from '@liusiqi-dev/sqh-client-connection'
 import type { AlsCausality } from './polyfill/async-context/als-runtime.ts'
 import { dirname, join } from './module-system/posix-path.ts'
 import { installProcessGlobal } from './node/globals/process.ts'
@@ -221,7 +221,7 @@ export function createWorkerHost(options: WorkerHostOptions): WorkerHost {
       modules = loader
 
       const require = loader.requireFrom(dirname(configPath))
-      const appBoot = require('@liusiqi-dev/dsh-app-boot') as {
+      const appBoot = require('@liusiqi-dev/sqh-app-boot') as {
         boot(
           binName: string,
           configPath: string,
@@ -229,7 +229,7 @@ export function createWorkerHost(options: WorkerHostOptions): WorkerHost {
           prepare: (ctx: HostContext) => void,
         ): Promise<HostContext>
       }
-      const cmdline = require('@liusiqi-dev/dsh-cmdline') as {
+      const cmdline = require('@liusiqi-dev/sqh-cmdline') as {
         provideCmdline(ctx: unknown, host: {
           args: readonly string[]
           exit: (code: number) => void
@@ -429,7 +429,7 @@ function bootPatches(
   if (!vfs.existsSync(profile.patchPath)) {
     vfs.seed(profile.patchPath, yaml.dump([{ insert: rows }], { schema: include.entryListSchema }))
   }
-  const appBoot = loader.load(loader.resolve('@liusiqi-dev/dsh-app-boot', root)) as {
+  const appBoot = loader.load(loader.resolve('@liusiqi-dev/sqh-app-boot', root)) as {
     readProfilePatches(binName: string, profile: ProfileContext): unknown[]
   }
   return { patches: appBoot.readProfilePatches('dsh-webworker', profile), profile }

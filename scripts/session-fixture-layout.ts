@@ -8,13 +8,13 @@ import {
   decodeSeqRanges,
   SessionLogOffset,
   type SessionEvent,
-} from '@liusiqi-dev/dsh-session'
-import type { SessionLogOffset as SessionLogOffsetType } from '@liusiqi-dev/dsh-session'
-import { sessionFormatCatalog } from '@liusiqi-dev/dsh-session-format-catalog'
-import { SessionFormatEventCollector, type SessionFormatArtifactDecoder, type SessionFormatCodec } from '@liusiqi-dev/dsh-session-format'
-import { releasedV0SessionFormatCodec, releasedV1SessionFormatCodec } from '@liusiqi-dev/dsh-session-format-v0-to-v1'
-import { releasedV2SessionFormatCodec } from '@liusiqi-dev/dsh-session-format-v1-to-v2'
-import { releasedV3SessionFormatCodec } from '@liusiqi-dev/dsh-session-format-v2-to-v3'
+} from '@liusiqi-dev/sqh-session'
+import type { SessionLogOffset as SessionLogOffsetType } from '@liusiqi-dev/sqh-session'
+import { sessionFormatCatalog } from '@liusiqi-dev/sqh-session-format-catalog'
+import { SessionFormatEventCollector, type SessionFormatArtifactDecoder, type SessionFormatCodec } from '@liusiqi-dev/sqh-session-format'
+import { releasedV0SessionFormatCodec, releasedV1SessionFormatCodec } from '@liusiqi-dev/sqh-session-format-v0-to-v1'
+import { releasedV2SessionFormatCodec } from '@liusiqi-dev/sqh-session-format-v1-to-v2'
+import { releasedV3SessionFormatCodec } from '@liusiqi-dev/sqh-session-format-v2-to-v3'
 
 const historicalCodecs: readonly SessionFormatCodec[] = [
   releasedV0SessionFormatCodec, releasedV1SessionFormatCodec, releasedV2SessionFormatCodec,

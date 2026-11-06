@@ -4,14 +4,14 @@
  * `job.follow` stream per observed job — so overlapping viewers share a
  * stream, rosters resume whole after a reconnect, and observations resume
  * from the model's cursor, plus the human kill passthrough over `job.kill`.
- * @module @liusiqi-dev/dsh-api-job-controller/client/service
+ * @module @liusiqi-dev/sqh-api-job-controller/client/service
  */
 
 import { Service, type Context } from '@liusiqi-dev/cordis'
-import { RemoteStreamCarrierError, type ClientRemote } from '@liusiqi-dev/dsh-api-gateway/client'
-import type { RemoteResult } from '@liusiqi-dev/dsh-typert-protocol'
-import type { JobId } from '@liusiqi-dev/dsh-jobs/brand'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import { RemoteStreamCarrierError, type ClientRemote } from '@liusiqi-dev/sqh-api-gateway/client'
+import type { RemoteResult } from '@liusiqi-dev/sqh-typert-protocol'
+import type { JobId } from '@liusiqi-dev/sqh-jobs/brand'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import type { JobKillRequest, JobKillValue, JobFollowFrame, JobFollowRequest, JobListFrame, JobListRequest } from '../types.ts'
 import type { ClientJobsModel, JobsSource } from './model.ts'
 

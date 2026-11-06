@@ -3,28 +3,28 @@
 # so the strict read_image gate accepts the route and the tool result carries
 # the durable image block.
 - id: llm-deepseek
-  name: '@liusiqi-dev/dsh-llm-deepseek-api-key'
+  name: '@liusiqi-dev/sqh-llm-deepseek-api-key'
   disabled: true
 
 - id: acp
-  name: '@liusiqi-dev/dsh-acp'
+  name: '@liusiqi-dev/sqh-acp'
   config:
     provider: deepseek-official
     model: deepseek-v4-flash-vision-exp
 
 - id: session-persistence-jsonl
-  name: '@liusiqi-dev/dsh-session-persistence-jsonl'
+  name: '@liusiqi-dev/sqh-session-persistence-jsonl'
   config:
     root: !!js process.env.SQODE_SNAPSHOT_SESSIONS_ROOT ?? './.sessions'
     compression: none
 
 - id: agent-instructions
-  name: '@liusiqi-dev/dsh-agent-instructions'
+  name: '@liusiqi-dev/sqh-agent-instructions'
   config:
     maxBytes: 65536
 
 - id: system-prompt
-  name: '@liusiqi-dev/dsh-system-prompt'
+  name: '@liusiqi-dev/sqh-system-prompt'
   config:
     personaPrefix: |
       You are a coding assistant powered by the {{model}} model. Your working directory is {{cwd}}. Your bash tool runs under a file sandbox — a `[sandbox: file access denied …]` result is policy, not a command bug.
@@ -33,7 +33,7 @@
 
 - insert:
     - id: llm-replay
-      name: '@liusiqi-dev/dsh-llm-replay'
+      name: '@liusiqi-dev/sqh-llm-replay'
       config:
         providers:
           - id: deepseek-official
@@ -52,14 +52,14 @@
                 imageRequestTokens: 384
 
 - id: attachment-local
-  name: '@liusiqi-dev/dsh-attachment-local'
+  name: '@liusiqi-dev/sqh-attachment-local'
 
 # Tight automatic compaction budget sized to the route-priced visual tokens of
 # the scenario's inline images: the text-only history stays under the
 # threshold, so a triggered compaction proves the routed model's image pricing
 # drove the pressure decision.
 - id: compaction-basic
-  name: '@liusiqi-dev/dsh-compaction-basic'
+  name: '@liusiqi-dev/sqh-compaction-basic'
   config:
     headroomTokens: 0
     maxTokens: 8192

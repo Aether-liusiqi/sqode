@@ -5,18 +5,18 @@ import { mkdir, mkdtemp, open, rm } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import { execa } from 'execa'
 import type { EntryOptions } from '@liusiqi-dev/cordis-plugin-loader'
-import { withFileLock, writeFileAtomic } from '@liusiqi-dev/dsh-atomic-write'
+import { withFileLock, writeFileAtomic } from '@liusiqi-dev/sqh-atomic-write'
 import {
   DEFAULT_PROFILE_BUNDLES, bundlePatchPaths, initProfile, PROFILE_TEMPLATES, readProfileManifest,
   resolveBundleDir, resolveProfileDir, loadOverlayPatches, composeEntries, readProfileVersionExemptions,
   evaluatePluginCompatibility, pluginCompatibilityWarning, type ProfileManifest,
-} from '@liusiqi-dev/dsh-app-boot'
-import { scrubbedParentEnv } from '@liusiqi-dev/dsh-subprocess'
+} from '@liusiqi-dev/sqh-app-boot'
+import { scrubbedParentEnv } from '@liusiqi-dev/sqh-subprocess'
 import { parseInstallSpec } from './install-spec.ts'
 import { awaitTreeGone, leadsOwnGroup, treeAlive, type RunTree } from './run-tree.ts'
 import { incompatiblePlugin } from './failure.ts'
 import type { IncompatiblePlugin, PackageResult, Registry } from './types.ts'
-export { setProfileVersionExemption, readProfileVersionExemptions } from '@liusiqi-dev/dsh-app-boot'
+export { setProfileVersionExemption, readProfileVersionExemptions } from '@liusiqi-dev/sqh-app-boot'
 
 /** Profile and invocation locations supplied by the launcher. */
 export interface PackageOperationContext {

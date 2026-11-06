@@ -1,28 +1,28 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
-import AgentRegistry, { agentEvents } from '@liusiqi-dev/dsh-agent'
-import type { Agent, AgentStatus, Inbox } from '@liusiqi-dev/dsh-agent'
-import { turnBoundaryProjectionDefinition } from '@liusiqi-dev/dsh-agent-loop'
-import GoalService, { GoalId } from '@liusiqi-dev/dsh-goal'
-import type { GoalRef } from '@liusiqi-dev/dsh-goal'
-import { createUserMessage, ToolCallId } from '@liusiqi-dev/dsh-llm'
-import type { MessageSource } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
+import AgentRegistry, { agentEvents } from '@liusiqi-dev/sqh-agent'
+import type { Agent, AgentStatus, Inbox } from '@liusiqi-dev/sqh-agent'
+import { turnBoundaryProjectionDefinition } from '@liusiqi-dev/sqh-agent-loop'
+import GoalService, { GoalId } from '@liusiqi-dev/sqh-goal'
+import type { GoalRef } from '@liusiqi-dev/sqh-goal'
+import { createUserMessage, ToolCallId } from '@liusiqi-dev/sqh-llm'
+import type { MessageSource } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
 import SessionStore, {
   SESSION_FORMAT_VERSION,
   Session,
   SessionId,
   SessionLogOffset,
-} from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
-import type { ToolExecutionResult } from '@liusiqi-dev/dsh-tools'
-import * as toolGoal from '@liusiqi-dev/dsh-tool-goal'
-import { createInboxStub } from '@liusiqi-dev/dsh-agent-loop-testkit'
+} from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
+import type { ToolExecutionResult } from '@liusiqi-dev/sqh-tools'
+import * as toolGoal from '@liusiqi-dev/sqh-tool-goal'
+import { createInboxStub } from '@liusiqi-dev/sqh-agent-loop-testkit'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }

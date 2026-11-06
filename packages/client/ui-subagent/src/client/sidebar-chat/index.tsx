@@ -2,20 +2,20 @@
 import type { Context } from '@liusiqi-dev/cordis'
 import type {
   ISessions, SessionReference,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { ResourceProvider } from '@liusiqi-dev/dsh-client-resources/client'
-import type { ConversationViewsProps } from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type { SidebarRightTabDefinition } from '@liusiqi-dev/dsh-client-ui-sidebar-right/client'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { ResourceProvider } from '@liusiqi-dev/sqh-client-resources/client'
+import type { ConversationViewsProps } from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type { SidebarRightTabDefinition } from '@liusiqi-dev/sqh-client-ui-sidebar-right/client'
 import type {
   PropsRenderFactories, PropsRenderSlots, PropsRuntime, TranslateNS,
-} from '@liusiqi-dev/dsh-client-ui-slots'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { SubagentAddress } from '@liusiqi-dev/dsh-subagent/client'
+} from '@liusiqi-dev/sqh-client-ui-slots'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { SubagentAddress } from '@liusiqi-dev/sqh-subagent/client'
 import type { NS } from '../locales.ts'
 import css from './SidebarChat.module.css'
 
 /** Stable implementation identity for the Sidebar tab body. */
-export const SUBAGENT_CHAT_ID = '@liusiqi-dev/dsh-client-ui-subagent'
+export const SUBAGENT_CHAT_ID = '@liusiqi-dev/sqh-client-ui-subagent'
 
 /** Resource-address prefix for an embedded Session chat. */
 export const SUBAGENT_CHAT_ADDRESS = 'dsh-resource://subagentchat/session/'
@@ -26,13 +26,13 @@ export interface SubagentChatResource {
   readonly reference: SessionReference
 }
 
-declare module '@liusiqi-dev/dsh-api-session-controller/client' {
+declare module '@liusiqi-dev/sqh-api-session-controller/client' {
   interface SessionReferenceSourceMap {
     sidebarChat: unknown
   }
 }
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface ResourceProtocolMap {
     subagentchat: SubagentChatResource
   }

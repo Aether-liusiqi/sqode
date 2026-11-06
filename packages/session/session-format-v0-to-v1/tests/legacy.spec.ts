@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { SessionFormatUnsupportedMigrationError } from '@liusiqi-dev/dsh-session-format'
+import { SessionFormatUnsupportedMigrationError } from '@liusiqi-dev/sqh-session-format'
 import {
   sessionFormatV0ToV1,
 } from '../src/index.ts'

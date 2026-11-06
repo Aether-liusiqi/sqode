@@ -1,4 +1,4 @@
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
 import { describe, expect, it } from 'vitest'
 
 import {

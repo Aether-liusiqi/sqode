@@ -1,15 +1,15 @@
 /** Shared live/prepared observations for Session page and lifecycle consumers. */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { SessionLogOffset, SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { Session, SessionEvent, SessionHeader, SessionId , SessionLogOffset as SessionLogOffsetType , SessionSeqCursor } from '@liusiqi-dev/dsh-session'
-import type SessionPersistence from '@liusiqi-dev/dsh-session-persistence'
+import { SessionLogOffset, SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { Session, SessionEvent, SessionHeader, SessionId , SessionLogOffset as SessionLogOffsetType , SessionSeqCursor } from '@liusiqi-dev/sqh-session'
+import type SessionPersistence from '@liusiqi-dev/sqh-session-persistence'
 import type {
   SessionPersistenceRevision,
   SessionPersistenceSnapshot,
-} from '@liusiqi-dev/dsh-session-persistence'
-import type { ProjectionSnapshot } from '@liusiqi-dev/dsh-session-projection'
-import type {} from '@liusiqi-dev/dsh-session-projection-cache'
+} from '@liusiqi-dev/sqh-session-persistence'
+import type { ProjectionSnapshot } from '@liusiqi-dev/sqh-session-projection'
+import type {} from '@liusiqi-dev/sqh-session-projection-cache'
 import { SESSION_QUERY_DEFAULT_PREPARED_SESSION_CACHE_SIZE, SessionQueryError } from './config.ts'
 import { readColdSessionLog, type ColdSessionLog } from './cold-read.ts'
 

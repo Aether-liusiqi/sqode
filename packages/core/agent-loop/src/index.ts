@@ -2,7 +2,7 @@
  * Concrete agent-loop plugin: creates scoped ReactLoopAgents, publishes them
  * through the agent/session registries, and owns their ordered teardown.
  *
- * @module @liusiqi-dev/dsh-agent-loop
+ * @module @liusiqi-dev/sqh-agent-loop
  */
 import type { Volatile } from '@liusiqi-dev/cosmokit'
 
@@ -10,7 +10,7 @@ import { Context, FiberState, Service } from '@liusiqi-dev/cordis'
 import { randomUUID } from 'node:crypto'
 import z from '@liusiqi-dev/schemastery'
 import { z as zod } from 'zod'
-import { brandString } from '@liusiqi-dev/dsh-brand'
+import { brandString } from '@liusiqi-dev/sqh-brand'
 import type {
   Agent,
   AgentFactory,
@@ -21,16 +21,16 @@ import type {
   ResumeAgentOptions,
   SessionStartSource,
   TurnBoundaryProjection,
-} from '@liusiqi-dev/dsh-agent'
-import { errorChain, ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
-import { interruptedTurnClosers, SessionLogOffset, SessionPreparation, SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { Session, SessionEvent, SessionHeader, SessionId } from '@liusiqi-dev/dsh-session'
-import type {} from '@liusiqi-dev/dsh-system-prompt'
-import { loadedToolName, promoteLoadedTool } from '@liusiqi-dev/dsh-tools'
-import type {} from '@liusiqi-dev/dsh-session-projection'
-import type { ProjectionDefinition } from '@liusiqi-dev/dsh-session-projection'
-import { SessionPersistenceNotFoundError } from '@liusiqi-dev/dsh-session-persistence'
-import type { SessionHandle, SessionPersistence } from '@liusiqi-dev/dsh-session-persistence'
+} from '@liusiqi-dev/sqh-agent'
+import { errorChain, ReasoningEffortId } from '@liusiqi-dev/sqh-llm'
+import { interruptedTurnClosers, SessionLogOffset, SessionPreparation, SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { Session, SessionEvent, SessionHeader, SessionId } from '@liusiqi-dev/sqh-session'
+import type {} from '@liusiqi-dev/sqh-system-prompt'
+import { loadedToolName, promoteLoadedTool } from '@liusiqi-dev/sqh-tools'
+import type {} from '@liusiqi-dev/sqh-session-projection'
+import type { ProjectionDefinition } from '@liusiqi-dev/sqh-session-projection'
+import { SessionPersistenceNotFoundError } from '@liusiqi-dev/sqh-session-persistence'
+import type { SessionHandle, SessionPersistence } from '@liusiqi-dev/sqh-session-persistence'
 import { ReactLoopAgent } from './agent.ts'
 import { inboxProjectionDefinition } from './inbox.ts'
 import { DEFAULT_MAX_PARALLEL_TOOL_CALLS } from './constants.ts'

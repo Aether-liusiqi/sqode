@@ -5,7 +5,7 @@
  * or command substitution, and no pre-tool approval or rewrite path; only
  * blocking decisions are honored. Shared execution and parsing live in
  * `dsh-hook-protocol`.
- * @module @liusiqi-dev/dsh-hooks-codex
+ * @module @liusiqi-dev/sqh-hooks-codex
  */
 
 // Each dialect bridge keeps its complete dependency list visible at the entry
@@ -14,19 +14,19 @@
 import { readFileSync } from 'node:fs'
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import type { Agent, PreStepDecision } from '@liusiqi-dev/dsh-agent'
-import type {} from '@liusiqi-dev/dsh-session-projection'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-declare module '@liusiqi-dev/dsh-llm' {
+import type { Agent, PreStepDecision } from '@liusiqi-dev/sqh-agent'
+import type {} from '@liusiqi-dev/sqh-session-projection'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'hooks-codex': { kind: 'hooks-codex' } & ContextFormed
   }
 }
 
-import type { ContentBlock, MessageSource } from '@liusiqi-dev/dsh-llm'
-import type { UserMessage } from '@liusiqi-dev/dsh-session'
-import type { PostToolDecision, PreToolDecision, ToolExecution, ToolExecutionResult } from '@liusiqi-dev/dsh-tools'
+import type { ContentBlock, MessageSource } from '@liusiqi-dev/sqh-llm'
+import type { UserMessage } from '@liusiqi-dev/sqh-session'
+import type { PostToolDecision, PreToolDecision, ToolExecution, ToolExecutionResult } from '@liusiqi-dev/sqh-tools'
 import {
   appendHookInvoked,
   appendHookResult,
@@ -39,7 +39,7 @@ import {
   type HookOutput,
   type MatcherGroup,
   type MergedHookOutcome,
-} from '@liusiqi-dev/dsh-hook-protocol'
+} from '@liusiqi-dev/sqh-hook-protocol'
 import { parseCodexConfig, type CodexHookConfig } from './config.ts'
 /* jscpd:ignore-end */
 

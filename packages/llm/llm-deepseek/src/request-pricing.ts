@@ -9,10 +9,10 @@
  * @module dsh-llm-deepseek/request-pricing
  */
 
-import { offloadedImageText, requestImageHandleText, textOnlyImageText } from '@liusiqi-dev/dsh-llm'
-import type { ImageAttachmentAccessResolver, ImageBlock, LlmImageRequestPrice, LlmImageRequestPricing } from '@liusiqi-dev/dsh-llm'
-import { longEdgeDimensions, requestImageDimensions } from '@liusiqi-dev/dsh-attachment'
-import type { ImageAttachmentRef, ImageRequestTarget } from '@liusiqi-dev/dsh-attachment'
+import { offloadedImageText, requestImageHandleText, textOnlyImageText } from '@liusiqi-dev/sqh-llm'
+import type { ImageAttachmentAccessResolver, ImageBlock, LlmImageRequestPrice, LlmImageRequestPricing } from '@liusiqi-dev/sqh-llm'
+import { longEdgeDimensions, requestImageDimensions } from '@liusiqi-dev/sqh-attachment'
+import type { ImageAttachmentRef, ImageRequestTarget } from '@liusiqi-dev/sqh-attachment'
 import { deepSeekImageTokens, deepSeekRequestImageDimensions } from './image-tokens.ts'
 import type { DeepSeekCatalogModel, DeepSeekConnectionOptions } from './types.ts'
 

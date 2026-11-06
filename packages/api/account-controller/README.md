@@ -3,7 +3,7 @@ description: "Account screens use authenticated Remote commands and a snapshot s
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-api-account-controller
+# @liusiqi-dev/sqh-api-account-controller
 
 English | [中文](README.zh.md)
 

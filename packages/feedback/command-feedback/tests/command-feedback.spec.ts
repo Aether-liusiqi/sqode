@@ -1,21 +1,21 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import type { Agent, AgentStatus } from '@liusiqi-dev/dsh-agent'
-import CommandRuntime from '@liusiqi-dev/dsh-commands'
-import SessionStore, { foldSurface, Session, SessionId } from '@liusiqi-dev/dsh-session'
-import * as commandFeedback from '@liusiqi-dev/dsh-command-feedback'
-import type { FeedbackRecord } from '@liusiqi-dev/dsh-command-feedback/types'
-import { remoteMethods } from '@liusiqi-dev/dsh-typert-protocol'
-import { unsupportedInbox } from '@liusiqi-dev/dsh-agent-loop-testkit'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import type { Agent, AgentStatus } from '@liusiqi-dev/sqh-agent'
+import CommandRuntime from '@liusiqi-dev/sqh-commands'
+import SessionStore, { foldSurface, Session, SessionId } from '@liusiqi-dev/sqh-session'
+import * as commandFeedback from '@liusiqi-dev/sqh-command-feedback'
+import type { FeedbackRecord } from '@liusiqi-dev/sqh-command-feedback/types'
+import { remoteMethods } from '@liusiqi-dev/sqh-typert-protocol'
+import { unsupportedInbox } from '@liusiqi-dev/sqh-agent-loop-testkit'
 
 const { USER_ID, getOrCreateAnonymousUserId } = vi.hoisted(() => {
   const USER_ID = '01234567-89ab-4cde-8f01-23456789abcd'
   return { USER_ID, getOrCreateAnonymousUserId: vi.fn(() => USER_ID) }
 })
 
-vi.mock('@liusiqi-dev/dsh-anonymous-user-id', () => ({
+vi.mock('@liusiqi-dev/sqh-anonymous-user-id', () => ({
   getOrCreateAnonymousUserId,
 }))
 
@@ -85,7 +85,7 @@ function feedbackTexts(session: Session): (string | undefined)[] {
   return feedbackRecords(session).map(record => record.text)
 }
 
-describe('@liusiqi-dev/dsh-command-feedback registration', () => {
+describe('@liusiqi-dev/sqh-command-feedback registration', () => {
   it('registers one global command with Loader-safe exports and disposes it', async () => {
     const test = await harness()
     expect(commandFeedback.name).toBe('command-feedback')
@@ -95,7 +95,7 @@ describe('@liusiqi-dev/dsh-command-feedback registration', () => {
     expect(loader.unwrapExports(commandFeedback)).toBe(commandFeedback)
 
     expect(test.ctx.commands.list(test.agent)).toContainEqual({
-      definitionId: '@liusiqi-dev/dsh-command-feedback',
+      definitionId: '@liusiqi-dev/sqh-command-feedback',
       name: 'feedback',
       description: 'Record feedback about this session',
       input: { hint: '<text>' },

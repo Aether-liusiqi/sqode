@@ -1,6 +1,6 @@
 /** Localized plan-owned failures and unmodified external diagnostics. */
-import type { RemoteFailure } from '@liusiqi-dev/dsh-typert-protocol'
-import type { TranslateNS } from '@liusiqi-dev/dsh-client-locale/client'
+import type { RemoteFailure } from '@liusiqi-dev/sqh-typert-protocol'
+import type { TranslateNS } from '@liusiqi-dev/sqh-client-locale/client'
 
 /**
  * Explain a failed plan read in the current locale.

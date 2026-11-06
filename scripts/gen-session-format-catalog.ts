@@ -101,7 +101,7 @@ export function collectSessionFormatMigrations(
     const from = safeVersion(metadata['from'], `${rel} from`)
     const to = safeVersion(metadata['to'], `${rel} to`)
     if (to !== from + 1) throw new Error(`gen-session-format-catalog: ${rel} must declare adjacent v${from}->v${from + 1}`)
-    const expectedPackageName = `@liusiqi-dev/dsh-session-format-v${from}-to-v${to}`
+    const expectedPackageName = `@liusiqi-dev/sqh-session-format-v${from}-to-v${to}`
     if (packageName !== expectedPackageName) {
       throw new Error(`gen-session-format-catalog: ${rel} name must be ${expectedPackageName}`)
     }
@@ -134,11 +134,11 @@ export function collectSessionFormatMigrations(
     throw new Error(`gen-session-format-catalog: migration inventory does not end exactly at current v${currentVersion}`)
   }
   const catalog = readJson(resolve(scanRoot, 'packages/session/session-format-catalog/package.json'))
-  if (catalog.dependencies?.['@liusiqi-dev/dsh-session'] !== undefined
-    || catalog.peerDependencies?.['@liusiqi-dev/dsh-session'] === undefined
-    || catalog.devDependencies?.['@liusiqi-dev/dsh-session'] === undefined) {
+  if (catalog.dependencies?.['@liusiqi-dev/sqh-session'] !== undefined
+    || catalog.peerDependencies?.['@liusiqi-dev/sqh-session'] === undefined
+    || catalog.devDependencies?.['@liusiqi-dev/sqh-session'] === undefined) {
     throw new Error(
-      'gen-session-format-catalog: catalog must share @liusiqi-dev/dsh-session through peer + dev dependencies',
+      'gen-session-format-catalog: catalog must share @liusiqi-dev/sqh-session through peer + dev dependencies',
     )
   }
   for (const [index, declaration] of declarations.entries()) {
@@ -201,9 +201,9 @@ export function renderSessionFormatCatalog(
     ' * The direct imports make historical readability independent of mounted plugins.',
     ' */',
     '',
-    "import { KNOWN_SESSION_EVENT_TYPES } from '@liusiqi-dev/dsh-session'",
-    "import { createSessionFormatCatalog } from '@liusiqi-dev/dsh-session-format'",
-    "import type { SessionFormatCatalogOptions } from '@liusiqi-dev/dsh-session-format'",
+    "import { KNOWN_SESSION_EVENT_TYPES } from '@liusiqi-dev/sqh-session'",
+    "import { createSessionFormatCatalog } from '@liusiqi-dev/sqh-session-format'",
+    "import type { SessionFormatCatalogOptions } from '@liusiqi-dev/sqh-session-format'",
     "import { validateInstalledCurrentSessionArtifact, validateInstalledCurrentSessionHeader } from './current.ts'",
     ...imports,
     '',

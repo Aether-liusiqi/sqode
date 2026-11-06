@@ -3,7 +3,7 @@ description: "面向 Web GUI 的工作区文件服务：有界文件读取、按
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-api-workspace-files
+# @liusiqi-dev/sqh-api-workspace-files
 
 [English](README.md) | 中文
 

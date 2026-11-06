@@ -3,7 +3,7 @@ description: "Typert Remote 流量的端点具名 mock：一元应答与流脚�
 kind: "package-library"
 ---
 
-# @liusiqi-dev/dsh-remote-mock
+# @liusiqi-dev/sqh-remote-mock
 
 [English](README.md) | 中文
 

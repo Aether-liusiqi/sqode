@@ -2,13 +2,13 @@
  * The workspace domain declaration: record schema and the `defineDomain` spec
  * the registry opens. The zod schema validates the shipped format at the
  * durability boundary and is the direct source of a future RPC wire projection.
- * @module @liusiqi-dev/dsh-workspace/src/spec
+ * @module @liusiqi-dev/sqh-workspace/src/spec
  */
 
 import { z } from 'zod'
-import { brandString } from '@liusiqi-dev/dsh-brand'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
-import { defineDomain, domainTable } from '@liusiqi-dev/dsh-storage-domain'
+import { brandString } from '@liusiqi-dev/sqh-brand'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
+import { defineDomain, domainTable } from '@liusiqi-dev/sqh-storage-domain'
 import type { WorkspaceId } from './types.ts'
 
 /** Workspace id schema at the durable boundary; branding has no runtime representation. */

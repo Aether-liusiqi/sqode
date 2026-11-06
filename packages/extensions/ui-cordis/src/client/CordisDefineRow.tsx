@@ -3,9 +3,9 @@
 import { useId, useState } from 'react'
 import {
   CodeBlock, DisclosureRow, IconCodeOutlineRegular, IconInspectOutlineRegular,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { InjectFace, PropsLocale } from '@liusiqi-dev/dsh-client-ui-slots'
-import type { ToolCallViewProps } from '@liusiqi-dev/dsh-client-ui-tool/client'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { InjectFace, PropsLocale } from '@liusiqi-dev/sqh-client-ui-slots'
+import type { ToolCallViewProps } from '@liusiqi-dev/sqh-client-ui-tool/client'
 import { cordisDefineCard, type CordisToolState } from './card-model.ts'
 import type { CordisCardFace } from './slots.ts'
 import { cordisVisibleStatus, type CordisVisibleStatus } from './status.ts'

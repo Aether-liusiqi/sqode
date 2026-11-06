@@ -1,10 +1,10 @@
 /**
  * The per-session storage handle: one open channel onto a stored session's
  * append-only event log, returned by `SessionPersistence.create`/`open`.
- * @module @liusiqi-dev/dsh-session-persistence/handle
+ * @module @liusiqi-dev/sqh-session-persistence/handle
  */
 
-import type { SessionEvent, SessionHeader, SessionId, SessionLogOffset, SessionSeedEventState } from '@liusiqi-dev/dsh-session'
+import type { SessionEvent, SessionHeader, SessionId, SessionLogOffset, SessionSeedEventState } from '@liusiqi-dev/sqh-session'
 
 /**
  * Log access granted by an open. `write` is read-write: the session's single

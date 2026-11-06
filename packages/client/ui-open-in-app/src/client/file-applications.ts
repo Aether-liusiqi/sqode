@@ -1,7 +1,7 @@
 /** File association reads shared by mounted controls using the same reader and target. */
 import { useCallback, useSyncExternalStore } from 'react'
-import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { SessionWorkspacePathApplication } from '@liusiqi-dev/dsh-api-session-controller/types'
+import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { SessionWorkspacePathApplication } from '@liusiqi-dev/sqh-api-session-controller/types'
 
 type Query = (target: string, signal: AbortSignal) => Promise<readonly SessionWorkspacePathApplication[] | null>
 interface Result {

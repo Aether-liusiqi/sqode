@@ -7,18 +7,18 @@
  * listeners on each Session context and owns the default-sink choreography: every session is a
  * real host entity, so the sink is one unconditional prompt path.
  */
-import type {} from '@liusiqi-dev/dsh-client-product-analytics/client'
-import type { ModelSelectionProjection } from '@liusiqi-dev/dsh-api-session-controller/types'
-import type { PlanProjection } from '@liusiqi-dev/dsh-plan-mode/types'
-import type { GoalProjection } from '@liusiqi-dev/dsh-goal/types'
+import type {} from '@liusiqi-dev/sqh-client-product-analytics/client'
+import type { ModelSelectionProjection } from '@liusiqi-dev/sqh-api-session-controller/types'
+import type { PlanProjection } from '@liusiqi-dev/sqh-plan-mode/types'
+import type { GoalProjection } from '@liusiqi-dev/sqh-goal/types'
 import type { Context } from '@liusiqi-dev/cordis'
 import type {
   ISessions, SessionBinding, SessionFace,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { TranslateNS } from '@liusiqi-dev/dsh-client-locale/client'
-import type { InboxState } from '@liusiqi-dev/dsh-agent/types'
-import type { ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { TranslateNS } from '@liusiqi-dev/sqh-client-locale/client'
+import type { InboxState } from '@liusiqi-dev/sqh-agent/types'
+import type { ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
 import type {
   DraftAttachmentId, DraftAttachmentSerializationResult, InputTriggerController,
   SessionInputResolver, SessionInput, SubmitOutcome,

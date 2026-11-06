@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 
 import type { ProcessGroupData } from '../src/client/contract/process-groups.ts'
-import type { InboxState } from '@liusiqi-dev/dsh-agent/types'
-import type { GlobalStandardProps } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { InboxState } from '@liusiqi-dev/sqh-agent/types'
+import type { GlobalStandardProps } from '@liusiqi-dev/sqh-client-ui-slots'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { useEffect } from 'react'
@@ -12,23 +12,23 @@ import type {
   LegacyConversationSlice, ModelRetryNode, StartedToolCall, SteeringMessageNode,
   ToolCallBlock, ToolResultNode, TurnErrorNode, TurnMaxTokensNode, UseChatNodeTurnData,
   TranscriptViewMode, UserMessageNode,
-} from '@liusiqi-dev/dsh-client-ui-chat/client'
+} from '@liusiqi-dev/sqh-client-ui-chat/client'
 import type {
   SessionListState, SessionSnapshot,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
 import type {
   ConversationGroupedView,
   ConversationSnapshot, ConversationViewSnapshotStore, GroupKey, GroupSnapshot, NodeKey, TurnLocation,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type { WorkspaceSnapshot } from '@liusiqi-dev/dsh-api-workspace-controller/client'
-import { SessionSeq, type SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { SessionStatusSnapshot } from '@liusiqi-dev/dsh-client-ui-session/client'
-import type { KeyedSnapshotSelectorHook, SnapshotSelectorHook } from '@liusiqi-dev/dsh-client-ui-slots'
-import { bindSnapshotSelector, makeTranslate } from '@liusiqi-dev/dsh-client-test-runtime'
-import { createSnapshotStore, type ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
-import { EMPTY_CONVERSATION_SNAPSHOT } from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import { en as commonEn } from '@liusiqi-dev/dsh-client-locale/src/locales/en.ts'
-import { zh as commonZh } from '@liusiqi-dev/dsh-client-locale/src/locales/zh.ts'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type { WorkspaceSnapshot } from '@liusiqi-dev/sqh-api-workspace-controller/client'
+import { SessionSeq, type SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { SessionStatusSnapshot } from '@liusiqi-dev/sqh-client-ui-session/client'
+import type { KeyedSnapshotSelectorHook, SnapshotSelectorHook } from '@liusiqi-dev/sqh-client-ui-slots'
+import { bindSnapshotSelector, makeTranslate } from '@liusiqi-dev/sqh-client-test-runtime'
+import { createSnapshotStore, type ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
+import { EMPTY_CONVERSATION_SNAPSHOT } from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import { en as commonEn } from '@liusiqi-dev/sqh-client-locale/src/locales/en.ts'
+import { zh as commonZh } from '@liusiqi-dev/sqh-client-locale/src/locales/zh.ts'
 import { createChatStore } from '../src/client/stores.ts'
 import { derivePresentationPolicy } from '../src/client/presentation-policy.ts'
 import { ChatView } from '../src/client/chat/ChatView.tsx'

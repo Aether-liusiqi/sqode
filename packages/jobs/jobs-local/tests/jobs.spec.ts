@@ -1,18 +1,18 @@
 import { describe, expect, expectTypeOf, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import { Session, SessionId } from '@liusiqi-dev/dsh-session'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { bindScopeParent, createScope, scopeOf } from '@liusiqi-dev/dsh-scope'
-import type { ScopeKey } from '@liusiqi-dev/dsh-scope'
-import { JobId } from '@liusiqi-dev/dsh-jobs'
+import { Session, SessionId } from '@liusiqi-dev/sqh-session'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { bindScopeParent, createScope, scopeOf } from '@liusiqi-dev/sqh-scope'
+import type { ScopeKey } from '@liusiqi-dev/sqh-scope'
+import { JobId } from '@liusiqi-dev/sqh-jobs'
 import type {
   JobEvent, JobEventFilter, JobHandle, JobHooks, JobKind, JobOutcome, JobOutputSource, JobSpec, JobView,
-} from '@liusiqi-dev/dsh-jobs'
-import LocalJobRegistry, { type Config as JobsConfig } from '@liusiqi-dev/dsh-jobs-local'
-import { unsupportedInbox } from '@liusiqi-dev/dsh-agent-loop-testkit'
+} from '@liusiqi-dev/sqh-jobs'
+import LocalJobRegistry, { type Config as JobsConfig } from '@liusiqi-dev/sqh-jobs-local'
+import { unsupportedInbox } from '@liusiqi-dev/sqh-agent-loop-testkit'
 
-declare module '@liusiqi-dev/dsh-jobs' {
+declare module '@liusiqi-dev/sqh-jobs' {
   interface JobKindMap {
     workflow: 'workflow'
   }
@@ -167,7 +167,7 @@ describe('LocalJobRegistry.start', () => {
     const ctx = new Context()
     await ctx.plugin(LocalJobRegistry)
     expect(() => ctx.jobs.start(producer().spec))
-      .toThrow('background jobs unavailable: no job controller serves this agent (load @liusiqi-dev/dsh-tool-jobs in its composition)')
+      .toThrow('background jobs unavailable: no job controller serves this agent (load @liusiqi-dev/sqh-tool-jobs in its composition)')
   })
 
   it('refuses an owner whose own composition attaches no controller', async () => {

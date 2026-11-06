@@ -1,4 +1,4 @@
-import * as Protocol from '@liusiqi-dev/dsh-llm-deepseek'
+import * as Protocol from '@liusiqi-dev/sqh-llm-deepseek'
 import { readFileSync } from 'node:fs'
 import { mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
@@ -7,11 +7,11 @@ import { randomBytes } from 'node:crypto'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import LlmRuntime, { createToolResultMessage, createUserMessage, ToolCallId, ReasoningEffortId, createMessage, createSystemMessage } from '@liusiqi-dev/dsh-llm'
-import type { Message, ToolSchema } from '@liusiqi-dev/dsh-llm'
-import AttachmentStore, { AttachmentId, ImageVariantId } from '@liusiqi-dev/dsh-attachment'
-import LocalAttachments from '@liusiqi-dev/dsh-attachment-local'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import LlmRuntime, { createToolResultMessage, createUserMessage, ToolCallId, ReasoningEffortId, createMessage, createSystemMessage } from '@liusiqi-dev/sqh-llm'
+import type { Message, ToolSchema } from '@liusiqi-dev/sqh-llm'
+import AttachmentStore, { AttachmentId, ImageVariantId } from '@liusiqi-dev/sqh-attachment'
+import LocalAttachments from '@liusiqi-dev/sqh-attachment-local'
 import type {
   ImageAttachmentLimits,
   ImageAttachmentRef,
@@ -19,14 +19,14 @@ import type {
   RequestImageAttachment,
   SaveImageAttachment,
   StoredImageAttachment,
-} from '@liusiqi-dev/dsh-attachment'
-import { LocalCredentialProvider } from '@liusiqi-dev/dsh-credentials-local'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
-import DeepSeekLlmApiExtensionRegistry from '@liusiqi-dev/dsh-deepseek-llm-api-extensions'
-import * as PluginPackageInventoryDeepSeek from '@liusiqi-dev/dsh-plugin-package-inventory-deepseek'
-import * as SessionLogDeepSeek from '@liusiqi-dev/dsh-session-log-deepseek'
-import * as LlmDeepSeek from '@liusiqi-dev/dsh-llm-deepseek-api-key'
-import type { Options as Config } from '@liusiqi-dev/dsh-llm-deepseek'
+} from '@liusiqi-dev/sqh-attachment'
+import { LocalCredentialProvider } from '@liusiqi-dev/sqh-credentials-local'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
+import DeepSeekLlmApiExtensionRegistry from '@liusiqi-dev/sqh-deepseek-llm-api-extensions'
+import * as PluginPackageInventoryDeepSeek from '@liusiqi-dev/sqh-plugin-package-inventory-deepseek'
+import * as SessionLogDeepSeek from '@liusiqi-dev/sqh-session-log-deepseek'
+import * as LlmDeepSeek from '@liusiqi-dev/sqh-llm-deepseek-api-key'
+import type { Options as Config } from '@liusiqi-dev/sqh-llm-deepseek'
 import type { WireRequest } from '../src/wire-types.ts'
 import { assemble, type AssembledResult } from './assemble.ts'
 

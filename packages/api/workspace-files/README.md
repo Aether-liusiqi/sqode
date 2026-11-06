@@ -3,7 +3,7 @@ description: "Workspace file service for the web GUI: bounded reads and target-s
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-api-workspace-files
+# @liusiqi-dev/sqh-api-workspace-files
 
 English | [中文](README.zh.md)
 

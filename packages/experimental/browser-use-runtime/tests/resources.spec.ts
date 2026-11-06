@@ -1,8 +1,8 @@
 import { Context } from '@liusiqi-dev/cordis'
-import AgentRegistry from '@liusiqi-dev/dsh-agent'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { unsupportedInbox } from '@liusiqi-dev/dsh-agent-loop-testkit'
-import { Session, SessionId } from '@liusiqi-dev/dsh-session'
+import AgentRegistry from '@liusiqi-dev/sqh-agent'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { unsupportedInbox } from '@liusiqi-dev/sqh-agent-loop-testkit'
+import { Session, SessionId } from '@liusiqi-dev/sqh-session'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { SessionResources } from '../src/index.ts'
 

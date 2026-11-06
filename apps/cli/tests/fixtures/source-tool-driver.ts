@@ -3,10 +3,10 @@
 import { randomUUID } from 'node:crypto'
 import type { Context } from '@liusiqi-dev/cordis'
 import type {} from '@liusiqi-dev/cordis-plugin-loader'
-import type {} from '@liusiqi-dev/dsh-agent'
-import type {} from '@liusiqi-dev/dsh-cmdline'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import { SessionId, type SessionEvent } from '@liusiqi-dev/dsh-session'
+import type {} from '@liusiqi-dev/sqh-agent'
+import type {} from '@liusiqi-dev/sqh-cmdline'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import { SessionId, type SessionEvent } from '@liusiqi-dev/sqh-session'
 
 /** Observations from one isolated Agent's run through the shipped headless profile. */
 export interface SourceToolEvidence {

@@ -1,4 +1,4 @@
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
 /**
  * The `session-telemetry/record` waterfall contract: pass-through when no listener is
  * mounted, listener stacking and replacement, ops-record coverage, the
@@ -7,7 +7,7 @@ import { createUserMessage } from '@liusiqi-dev/dsh-llm'
 
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import SessionStore, { SessionId } from '@liusiqi-dev/dsh-session'
+import SessionStore, { SessionId } from '@liusiqi-dev/sqh-session'
 import {
   SessionTelemetryCoordinator,
   type SessionTelemetrySink,

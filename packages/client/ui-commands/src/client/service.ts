@@ -16,18 +16,18 @@ import { Service } from '@liusiqi-dev/cordis'
 import type { Context } from '@liusiqi-dev/cordis'
 // Type-only: pulls the ctx.remote merge and the forwarded-event key face
 // (`commands/change` rides the allowlist) into this program.
-import type {} from '@liusiqi-dev/dsh-api-remotes/client'
-import type { CommandResult } from '@liusiqi-dev/dsh-commands/types'
+import type {} from '@liusiqi-dev/sqh-api-remotes/client'
+import type { CommandResult } from '@liusiqi-dev/sqh-commands/types'
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import type { ISessions, SessionBinding } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import { WeakMapWithValues } from '@liusiqi-dev/dsh-util-values'
-import type { TranslateNS } from '@liusiqi-dev/dsh-client-locale/client'
-import { rankByName } from '@liusiqi-dev/dsh-client-ui-primitives'
+import type { ISessions, SessionBinding } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import { WeakMapWithValues } from '@liusiqi-dev/sqh-util-values'
+import type { TranslateNS } from '@liusiqi-dev/sqh-client-locale/client'
+import { rankByName } from '@liusiqi-dev/sqh-client-ui-primitives'
 import type {
   CandidateRequest, ClientSessionContext, CommandClaim, PickOutcome, InputTriggerCandidate, InputTriggerPick,
   SubmitAttachment, SubmitEnvelope, SubmitOutcome,
-} from '@liusiqi-dev/dsh-client-ui-input-trigger/client'
+} from '@liusiqi-dev/sqh-client-ui-input-trigger/client'
 import type { CommandContribution, CommandDecoration, CommandUiContract } from './contract.ts'
 import type { CommandDescriptor } from './directory.ts'
 import { CommandDirectory } from './directory.ts'
@@ -36,7 +36,7 @@ import { builtinRowFace, sectionRows } from './presentation.ts'
 import { claimToken } from './resolution.ts'
 import type { TokenSegment } from './popup.ts'
 
-declare module '@liusiqi-dev/dsh-api-session-controller/client' {
+declare module '@liusiqi-dev/sqh-api-session-controller/client' {
   interface SessionReferenceSourceMap {
     /** A command-catalog fetch waiting for initial history and its RPC result. */
     commandCatalog: unknown

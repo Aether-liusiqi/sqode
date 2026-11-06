@@ -1,8 +1,8 @@
 import {
   type AssistantLiveChunkEvent, type SessionEventLike, type SessionEventLikeEntry,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
-import { notifySubscribers } from '@liusiqi-dev/dsh-client-store'
-import type { SessionEvent } from '@liusiqi-dev/dsh-session/types'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
+import { notifySubscribers } from '@liusiqi-dev/sqh-client-store'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session/types'
 import type {
   ConversationLocation, ConversationLocationData,
   ConversationLocationDataSource, ConversationLocationDataStore, ConversationStepDataMap,

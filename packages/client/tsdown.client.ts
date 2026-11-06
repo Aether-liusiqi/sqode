@@ -61,7 +61,7 @@ function styleInjectionModule(
  * Everything else under @liusiqi-dev/* is either a module-table entry
  * (external) or a leak the purity gate rejects.
  */
-export const INLINE_SAFE = /^(?:@liusiqi-dev\/dsh-(?:file-reference|session|llm|tools|brand|deque|output-retention|typert-protocol|util-crypto|util-values|util-workspace-path)(?:\/|$)|@liusiqi-dev\/dsh-token-meter\/client$|@liusiqi-dev\/dsh-native-command\/types$|@liusiqi-dev\/dsh-host-open-in-app\/shared$|@liusiqi-dev\/dsh-plugin-manager\/registry$|@liusiqi-dev\/dsh-agent-preset-registry\/display$|@liusiqi-dev\/dsh-api-workspace-controller\/default-workspace$|@liusiqi-dev\/dsh-spill-policy\/notice$)/
+export const INLINE_SAFE = /^(?:@liusiqi-dev\/sqh-(?:file-reference|session|llm|tools|brand|deque|output-retention|typert-protocol|util-crypto|util-values|util-workspace-path)(?:\/|$)|@liusiqi-dev\/sqh-token-meter\/client$|@liusiqi-dev\/sqh-native-command\/types$|@liusiqi-dev\/sqh-host-open-in-app\/shared$|@liusiqi-dev\/sqh-plugin-manager\/registry$|@liusiqi-dev\/sqh-agent-preset-registry\/display$|@liusiqi-dev\/sqh-api-workspace-controller\/default-workspace$|@liusiqi-dev\/sqh-spill-policy\/notice$)/
 
 /**
  * Vendored framework libraries: rescoped into @deepseek-ai, so the gate below
@@ -72,7 +72,7 @@ export const INLINE_SAFE = /^(?:@liusiqi-dev\/dsh-(?:file-reference|session|llm|
 const VENDORED_LIBRARY = /^@liusiqi-dev\/(cosmokit|schemastery)(\/|$)/
 
 /** Generated descriptor/codec contribution with no shared runtime identity. */
-const GENERATED_REMOTE = /^@liusiqi-dev\/dsh-[a-z0-9]+(?:-[a-z0-9]+)*\/remote$/
+const GENERATED_REMOTE = /^@liusiqi-dev\/sqh-[a-z0-9]+(?:-[a-z0-9]+)*\/remote$/
 
 /**
  * Workspace mode replaces an empty config array with the root defaults. A
@@ -632,7 +632,7 @@ function clientInputIsolation(id: string): {
   sourcePath: (source: string, mapPath: string) => string
 } {
   // Two prefixes while the packages are renamed; drop the old one with that commit.
-  const experimental = ['@liusiqi-dev/sqh-experimental-', '@liusiqi-dev/dsh-experimental-']
+  const experimental = ['@liusiqi-dev/sqh-experimental-']
     .some(prefix => id.startsWith(prefix))
   const inputs = new BundleInputIsolation(REPOSITORY_ROOT, `client bundle isolation (${id})`)
   return {

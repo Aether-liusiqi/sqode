@@ -4,16 +4,16 @@
  * creation, flatten post-publication failures, and dispose to whole-range
  * quiescence.
  *
- * @module @liusiqi-dev/dsh-subagent-codex/run
+ * @module @liusiqi-dev/sqh-subagent-codex/run
  */
 
 import { randomUUID } from 'node:crypto'
 import { readFileSync, writeFileSync } from 'node:fs'
 import { createRequire } from 'node:module'
 import { dirname, resolve } from 'node:path'
-import { brandString } from '@liusiqi-dev/dsh-brand'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
+import { brandString } from '@liusiqi-dev/sqh-brand'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
 import {
   settleRunResult,
   subprocessRunHandle,
@@ -21,12 +21,12 @@ import {
   type SubagentRun,
   type SubagentStartRequest,
   type SubagentStopReason,
-} from '@liusiqi-dev/dsh-subagent'
+} from '@liusiqi-dev/sqh-subagent'
 import type {
   SubprocessHandle,
   SubprocessOutcome,
   SubprocessSpawnSpec,
-} from '@liusiqi-dev/dsh-subprocess'
+} from '@liusiqi-dev/sqh-subprocess'
 import {
   CodexAppServerWire,
   type CodexWireFailureFacts,

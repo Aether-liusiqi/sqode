@@ -3,7 +3,7 @@ description: "DeepSeek account authentication and model discovery."
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-llm-deepseek-account
+# @liusiqi-dev/sqh-llm-deepseek-account
 
 English | [中文](README.zh.md)
 
@@ -29,7 +29,7 @@ Only `deepseekAccount.resolveToken(baseURL)` supplies the token; the account ser
 
 ```yaml
 - id: llm-deepseek-account
-  name: '@liusiqi-dev/dsh-llm-deepseek-account'
+  name: '@liusiqi-dev/sqh-llm-deepseek-account'
   config:
     reasoningEffort: high
 ```

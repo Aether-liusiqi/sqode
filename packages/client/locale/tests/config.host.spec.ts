@@ -5,7 +5,7 @@ import { liveConfig, omitsGeneratedPage } from '../../../settings/settings/tests
 import { plainConfig } from '../../../settings/settings/src/schema.ts'
 import {
   Config, apply,
-} from '@liusiqi-dev/dsh-client-locale'
+} from '@liusiqi-dev/sqh-client-locale'
 
 
 describe('locale host', () => {

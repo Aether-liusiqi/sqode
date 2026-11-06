@@ -1,5 +1,5 @@
 import { Context } from '@liusiqi-dev/cordis'
-import { DeepSeekAccount, type AccountView, type PlatformSession } from '@liusiqi-dev/dsh-deepseek-account'
+import { DeepSeekAccount, type AccountView, type PlatformSession } from '@liusiqi-dev/sqh-deepseek-account'
 import { expect, it } from 'vitest'
 import { installPlatformSessionPublisher } from '../src/platform-session.ts'
 

@@ -1,6 +1,6 @@
-/** JSON string-prefix accounting for the outer-output ledger. @module @liusiqi-dev/dsh-ptc-runtime-node/output-json */
+/** JSON string-prefix accounting for the outer-output ledger. @module @liusiqi-dev/sqh-ptc-runtime-node/output-json */
 
-import type { PtcJsonValue } from '@liusiqi-dev/dsh-ptc-runtime'
+import type { PtcJsonValue } from '@liusiqi-dev/sqh-ptc-runtime'
 
 type IntrinsicCallable = (this: unknown, ...args: unknown[]) => unknown
 

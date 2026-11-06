@@ -2,20 +2,20 @@
  * The sandbox-escalation API shared by the `write` and `edit` tools: the
  * per-call policy resolution, the advertised escalation fields, and the denial-marker
  * mapping — all delegating the vocabulary and the fail-closed approval
- * sequence to `@liusiqi-dev/dsh-sandbox` (the same pieces `@liusiqi-dev/dsh-tool-bash`
+ * sequence to `@liusiqi-dev/sqh-sandbox` (the same pieces `@liusiqi-dev/sqh-tool-bash`
  * uses), so bash and fs escalate identically. Built ONCE per plugin from
  * `ctx.fs.sandboxMode` (the capability fact — is a confining backend mounted?)
  * and shared by both mutating tools.
  *
- * @module @liusiqi-dev/dsh-tool-fs/sandbox
+ * @module @liusiqi-dev/sqh-tool-fs/sandbox
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { ToolExecution } from '@liusiqi-dev/dsh-tools'
-import type { SandboxExecutionPolicy, SandboxMode } from '@liusiqi-dev/dsh-sandbox'
-import { ESCALATION_TARGETS, approveEscalation, escalationHintMarker, sandboxDenialMarker, sandboxPermissionsDescription, validateEscalationArgs } from '@liusiqi-dev/dsh-sandbox'
-import type { SandboxPolicyService } from '@liusiqi-dev/dsh-sandbox-policy'
-import { FsError } from '@liusiqi-dev/dsh-fs'
+import type { ToolExecution } from '@liusiqi-dev/sqh-tools'
+import type { SandboxExecutionPolicy, SandboxMode } from '@liusiqi-dev/sqh-sandbox'
+import { ESCALATION_TARGETS, approveEscalation, escalationHintMarker, sandboxDenialMarker, sandboxPermissionsDescription, validateEscalationArgs } from '@liusiqi-dev/sqh-sandbox'
+import type { SandboxPolicyService } from '@liusiqi-dev/sqh-sandbox-policy'
+import { FsError } from '@liusiqi-dev/sqh-fs'
 
 /** The two escalation arguments a mutating tool may carry (advertised only under a confining backend). */
 export interface FsEscalationArgs {

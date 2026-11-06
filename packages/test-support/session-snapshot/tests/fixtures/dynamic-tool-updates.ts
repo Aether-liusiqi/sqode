@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import type { Context } from '@liusiqi-dev/cordis'
-import { projectToolUpdates } from '@liusiqi-dev/dsh-llm'
-import { defineContentToolFixture } from '@liusiqi-dev/dsh-tools'
+import { projectToolUpdates } from '@liusiqi-dev/sqh-llm'
+import { defineContentToolFixture } from '@liusiqi-dev/sqh-tools'
 
 export const name = 'snapshot-dynamic-tool-updates'
 export const inject = ['tools']

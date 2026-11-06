@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import type { ImageAttachmentRef } from '@liusiqi-dev/dsh-attachment'
-import { IconLoadingOutlineRegular, IconRefreshOutlineRegular } from '@liusiqi-dev/dsh-client-ui-primitives'
-import { ImageLightbox } from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { ImageLightboxLabels } from '@liusiqi-dev/dsh-client-ui-primitives'
+import type { ImageAttachmentRef } from '@liusiqi-dev/sqh-attachment'
+import { IconLoadingOutlineRegular, IconRefreshOutlineRegular } from '@liusiqi-dev/sqh-client-ui-primitives'
+import { ImageLightbox } from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { ImageLightboxLabels } from '@liusiqi-dev/sqh-client-ui-primitives'
 import css from './MessageImage.module.css'
 
 /** Loads a session-authorized durable image URL and may expose a cached URL synchronously. */

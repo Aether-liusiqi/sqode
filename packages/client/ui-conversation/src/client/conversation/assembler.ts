@@ -1,7 +1,7 @@
 import type {
   SessionAssistantSettlementEntry, SessionEventLikeEntry, SessionTransientEventEntry,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { LlmAttemptId } from '@liusiqi-dev/dsh-llm/brand'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { LlmAttemptId } from '@liusiqi-dev/sqh-llm/brand'
 import type {
   ConversationContextReader, ConversationLocationData, ConversationMatch,
   ConversationNodeContext, ConversationNodeDefinition, ConversationPreviousContext,

@@ -8,10 +8,10 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader, { type ModuleLoaderV2 } from '@liusiqi-dev/cordis-plugin-loader'
 import Include from '@liusiqi-dev/cordis-plugin-include'
-import LlmRuntime, { createMessage, createUserMessage, userAgent } from '@liusiqi-dev/dsh-llm'
-import LocalCredentialProvider from '@liusiqi-dev/dsh-credentials-local'
+import LlmRuntime, { createMessage, createUserMessage, userAgent } from '@liusiqi-dev/sqh-llm'
+import LocalCredentialProvider from '@liusiqi-dev/sqh-credentials-local'
 import { profileComposition } from '../../../settings/settings/tests/profile-composition.ts'
-import * as LlmPiAi from '@liusiqi-dev/dsh-llm-pi-ai'
+import * as LlmPiAi from '@liusiqi-dev/sqh-llm-pi-ai'
 import { assemble } from './assemble.ts'
 import { closeMockServers, mockServer, textEvents } from './mock-server.ts'
 
@@ -46,12 +46,12 @@ async function loadComposition(): Promise<{ ctx: Context; settingsPath: string }
     '- id: llm',
     "  name: 'test-llm-service'",
     '- id: credentials',
-    "  name: '@liusiqi-dev/dsh-credentials-local'",
+    "  name: '@liusiqi-dev/sqh-credentials-local'",
     '  config:',
     `    path: ${JSON.stringify(join(root, '.credentials.yaml'))}`,
     '    debounceMs: 10',
     '- id: llm-pi-ai',
-    "  name: '@liusiqi-dev/dsh-llm-pi-ai'",
+    "  name: '@liusiqi-dev/sqh-llm-pi-ai'",
     '',
   ].join('\n'))
 
@@ -62,8 +62,8 @@ async function loadComposition(): Promise<{ ctx: Context; settingsPath: string }
   ctx.loader.builtins.include = Include
   const modules = new Map<string, unknown>([
     ['test-llm-service', LlmRuntime],
-    ['@liusiqi-dev/dsh-credentials-local', LocalCredentialProvider],
-    ['@liusiqi-dev/dsh-llm-pi-ai', LlmPiAi],
+    ['@liusiqi-dev/sqh-credentials-local', LocalCredentialProvider],
+    ['@liusiqi-dev/sqh-llm-pi-ai', LlmPiAi],
   ])
   const internal: ModuleLoaderV2 = {
     version: 'v2',

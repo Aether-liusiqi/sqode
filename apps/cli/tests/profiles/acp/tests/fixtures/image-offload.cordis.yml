@@ -2,7 +2,7 @@
 # local provider endpoint is supplied by the snapshot test; the real attachment
 # store and ACP bridge carry two uploaded images into one model request.
 - id: llm-deepseek
-  name: '@liusiqi-dev/dsh-llm-deepseek-api-key'
+  name: '@liusiqi-dev/sqh-llm-deepseek-api-key'
   config:
     apiKeyEnv: SQODE_SNAPSHOT_API_KEY
     baseURL: !!js process.env.SQODE_SNAPSHOT_BASE_URL
@@ -16,24 +16,24 @@
         inputModalities: [text, image]
 
 - id: acp
-  name: '@liusiqi-dev/dsh-acp'
+  name: '@liusiqi-dev/sqh-acp'
   config:
     provider: deepseek-official
     model: deepseek-v4-flash-vision-exp
 
 - id: session-persistence-jsonl
-  name: '@liusiqi-dev/dsh-session-persistence-jsonl'
+  name: '@liusiqi-dev/sqh-session-persistence-jsonl'
   config:
     root: !!js process.env.SQODE_SNAPSHOT_SESSIONS_ROOT ?? './.sessions'
     compression: none
 
 - id: agent-instructions
-  name: '@liusiqi-dev/dsh-agent-instructions'
+  name: '@liusiqi-dev/sqh-agent-instructions'
   config:
     maxBytes: 65536
 
 - id: system-prompt
-  name: '@liusiqi-dev/dsh-system-prompt'
+  name: '@liusiqi-dev/sqh-system-prompt'
   config:
     personaPrefix: |
       You are a coding assistant powered by the {{model}} model. Your working directory is {{cwd}}.
@@ -41,4 +41,4 @@
       Keep answers brief and factual.
 
 - id: attachment-local
-  name: '@liusiqi-dev/dsh-attachment-local'
+  name: '@liusiqi-dev/sqh-attachment-local'

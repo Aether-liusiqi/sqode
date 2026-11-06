@@ -14,10 +14,10 @@ import type { Context } from '@liusiqi-dev/cordis'
 import type {
   ApprovalRequestId, CordisDynamicPluginId, DynamicCordisInvokeResult,
   DynamicCordisInventoryRow,
-} from '@liusiqi-dev/dsh-api-remotes/client'
-import type { ClientModuleSystem } from '@liusiqi-dev/dsh-client-modules/client'
-import type { SlotRegistry } from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
+} from '@liusiqi-dev/sqh-api-remotes/client'
+import type { ClientModuleSystem } from '@liusiqi-dev/sqh-client-modules/client'
+import type { SlotRegistry } from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
 // The Client Remote assembly is the one place the two planes meet: it mounts the
 // `dynamicCordisRunner` namespace and re-exports its payload vocabulary, so this
 // package names what it sends without importing a Host package.
@@ -55,7 +55,7 @@ export { ClientTimerService } from './timer.ts'
 export type {
   ApprovalRequestId, CordisDynamicPackageId, CordisDynamicPluginId, CordisDynamicPluginRunId,
   DynamicCordisPackage,
-} from '@liusiqi-dev/dsh-api-remotes/client'
+} from '@liusiqi-dev/sqh-api-remotes/client'
 
 
 /**

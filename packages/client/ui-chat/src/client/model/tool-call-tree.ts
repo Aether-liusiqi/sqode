@@ -1,8 +1,8 @@
-import type { SessionEvent } from '@liusiqi-dev/dsh-session/types'
-import type {} from '@liusiqi-dev/dsh-tools/types'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session/types'
+import type {} from '@liusiqi-dev/sqh-tools/types'
 import type {
   ConversationNode, RunningToolCall, ToolCallBlock, ToolResultNode,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 
 interface ProjectedBlock {
   source: ToolCallBlock

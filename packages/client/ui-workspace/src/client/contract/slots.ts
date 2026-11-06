@@ -40,17 +40,17 @@
  */
 import type {
   HostObservable, InjectFace, PropsHooks, PropsLocale, PropsRenderSlots, PropsRuntime, PropsStore, SlotHookFactory,
-} from '@liusiqi-dev/dsh-client-ui-slots'
+} from '@liusiqi-dev/sqh-client-ui-slots'
 // Type-only: pull the owner SlotMap merges into programs that resolve the
 // runtime shares below.
-import type {} from '@liusiqi-dev/dsh-client-ui-sidebar/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-layout/client'
-import type { SessionSearchResultItem } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { RemoteHostFacts } from '@liusiqi-dev/dsh-api-remotes/client'
-import type { SessionActivity, WorkspaceId, WorkspaceView } from '@liusiqi-dev/dsh-api-workspace-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { ShortcutCatalogEntry } from '@liusiqi-dev/dsh-client-shortcuts/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-sidebar/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-layout/client'
+import type { SessionSearchResultItem } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { RemoteHostFacts } from '@liusiqi-dev/sqh-api-remotes/client'
+import type { SessionActivity, WorkspaceId, WorkspaceView } from '@liusiqi-dev/sqh-api-workspace-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { ShortcutCatalogEntry } from '@liusiqi-dev/sqh-client-shortcuts/client'
 import type { WorkspaceShortcutState } from '../shortcuts.ts'
 import type { createWorkspaceViewStore } from '../stores.ts'
 
@@ -117,7 +117,7 @@ export interface SessionRowScheduleOwnerProps {
   readonly sessionId: SessionId
 }
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface SlotMap {
     /** Directory-flow hole under the conversation empty-state picker (declared by the WorkspacePicker entry). */
     'conversation.hero.workspace.directoryFlow': { kind: 'single'; scope: 'root'; owner: DirectoryFlowOwnerProps }

@@ -6,20 +6,20 @@
  * React over jsdom per the client testing discipline; the machine is real.
  */
 import './control-row-dom.ts'
-import type { GlobalStandardProps } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { GlobalStandardProps } from '@liusiqi-dev/sqh-client-ui-slots'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, render } from '@testing-library/react'
 import type { Context } from '@liusiqi-dev/cordis'
-import type { SessionSnapshot } from '@liusiqi-dev/dsh-api-session-controller/client'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
+import type { SessionSnapshot } from '@liusiqi-dev/sqh-api-session-controller/client'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import {
   bindSnapshotSelector, conversationSnapshot, sessionSnapshot,
-} from '@liusiqi-dev/dsh-client-test-runtime'
-import type { SessionStatusSnapshot } from '@liusiqi-dev/dsh-client-ui-session/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+} from '@liusiqi-dev/sqh-client-test-runtime'
+import type { SessionStatusSnapshot } from '@liusiqi-dev/sqh-client-ui-session/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import type { SubmitAttachment, SubmitOutcome } from '../src/client/contract/input.ts'
-import { makeTranslate } from '@liusiqi-dev/dsh-client-test-runtime'
-import { zh as commonZh } from '@liusiqi-dev/dsh-client-locale/src/locales/zh.ts'
+import { makeTranslate } from '@liusiqi-dev/sqh-client-test-runtime'
+import { zh as commonZh } from '@liusiqi-dev/sqh-client-locale/src/locales/zh.ts'
 import type { DraftAttachmentId } from '../src/client/contract/input.ts'
 import { SessionInputShell } from '../src/client/input/facade.ts'
 import { InputBar } from '../src/client/skeleton/InputBar.tsx'

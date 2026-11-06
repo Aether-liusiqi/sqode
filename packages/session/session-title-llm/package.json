@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-session-title-llm",
+  "name": "@liusiqi-dev/sqh-session-title-llm",
   "description": "Shared LLM generation policy for Siqi Harness session-title providers",
   "version": "1.0.0",
   "publishConfig": {
@@ -28,20 +28,20 @@
   "license": "MIT",
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-title": "workspace:*",
-    "@liusiqi-dev/dsh-timeout": "workspace:*"
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-title": "workspace:*",
+    "@liusiqi-dev/sqh-timeout": "workspace:*"
   },
   "dependencies": {
-    "@liusiqi-dev/dsh-util-values": "workspace:*",
+    "@liusiqi-dev/sqh-util-values": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~"
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
-    "@liusiqi-dev/dsh-session": "workspace:*",
-    "@liusiqi-dev/dsh-session-title": "workspace:*",
-    "@liusiqi-dev/dsh-timeout": "workspace:*"
+    "@liusiqi-dev/sqh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-session": "workspace:*",
+    "@liusiqi-dev/sqh-session-title": "workspace:*",
+    "@liusiqi-dev/sqh-timeout": "workspace:*"
   }
 }

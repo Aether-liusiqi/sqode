@@ -16,25 +16,25 @@
  * created later through the host Settings API.
  */
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import type { SessionFace } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-api-remotes/client'
-import type { PermissionCatalog, PermissionSelection } from '@liusiqi-dev/dsh-permission-presets/client'
+import type { SessionFace } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-api-remotes/client'
+import type { PermissionCatalog, PermissionSelection } from '@liusiqi-dev/sqh-permission-presets/client'
 // Direct dependency: catalog settlements are fenced by the actual connection
 // generation rather than by a parallel domain counter.
-import type {} from '@liusiqi-dev/dsh-client-connection/client'
+import type {} from '@liusiqi-dev/sqh-client-connection/client'
 // Type-only: pulls the locale plugin's Context merge (ctx.locale).
-import type {} from '@liusiqi-dev/dsh-client-locale/client'
+import type {} from '@liusiqi-dev/sqh-client-locale/client'
 // Type-only: the settings slot types (this package registers a General row).
-import type {} from '@liusiqi-dev/dsh-client-ui-settings/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-renderer/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-session/client'
-import type {} from '@liusiqi-dev/dsh-client-ui-conversation/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-settings/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-session/client'
+import type {} from '@liusiqi-dev/sqh-client-ui-conversation/client'
 // Type-only: pulls the ctx.remote merge and the forwarded-event key face
 // (the settings invalidation rides the allowlist) into this program.
-import type {} from '@liusiqi-dev/dsh-api-remotes/client'
-import type { CommandUiContract, SelectOption } from '@liusiqi-dev/dsh-client-ui-commands/client'
-import type { ClientSessionContext } from '@liusiqi-dev/dsh-client-ui-input-trigger/client'
-import type { TranslateNS } from '@liusiqi-dev/dsh-client-ui-slots'
+import type {} from '@liusiqi-dev/sqh-api-remotes/client'
+import type { CommandUiContract, SelectOption } from '@liusiqi-dev/sqh-client-ui-commands/client'
+import type { ClientSessionContext } from '@liusiqi-dev/sqh-client-ui-input-trigger/client'
+import type { TranslateNS } from '@liusiqi-dev/sqh-client-ui-slots'
 import { PermissionCatalogDirectory } from './catalog.ts'
 import { PermissionSelect } from './PermissionSelect.tsx'
 import type { PermissionSelectInjected } from './PermissionSelect.tsx'
@@ -62,7 +62,7 @@ export const inject = [
   'configForms', 'settingsSchema',
 ]
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** Current-session permission picker and confirmation copy. */
     'permission.access': keyof typeof accessEn

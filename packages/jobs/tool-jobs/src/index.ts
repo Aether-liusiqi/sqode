@@ -5,23 +5,23 @@
  * collected to the owning agent: injected into a busy owner's next step, or
  * opening a turn on an idle one under the default `wakeup` delivery, unbounded
  * unless `maxConsecutiveWakes` caps it per owner.
- * @module @liusiqi-dev/dsh-tool-jobs
+ * @module @liusiqi-dev/sqh-tool-jobs
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { boundContextSummary, createUserMessage, type ContentBlock } from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-import { TextRetainer } from '@liusiqi-dev/dsh-output-retention'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
-import type { GenericCallView, ToolDefinition, ToolExecution } from '@liusiqi-dev/dsh-tools'
-import { JobId } from '@liusiqi-dev/dsh-jobs'
-import type { JobView, JobRead } from '@liusiqi-dev/dsh-jobs'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type {} from '@liusiqi-dev/dsh-agent'
+import { boundContextSummary, createUserMessage, type ContentBlock } from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+import { TextRetainer } from '@liusiqi-dev/sqh-output-retention'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
+import type { GenericCallView, ToolDefinition, ToolExecution } from '@liusiqi-dev/sqh-tools'
+import { JobId } from '@liusiqi-dev/sqh-jobs'
+import type { JobView, JobRead } from '@liusiqi-dev/sqh-jobs'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type {} from '@liusiqi-dev/sqh-agent'
 import { publicJob, renderModelDelta, statusLine } from './render.ts'
 import type { PublicJobSnapshot } from './render.ts'
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'tool-jobs': { kind: 'tool-jobs' } & ContextFormed
   }

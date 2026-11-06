@@ -1,8 +1,8 @@
 /** File-provider metadata reads, target subscriptions, failures, and cancellation. */
-import { RemoteError } from '@liusiqi-dev/dsh-client-test-runtime'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { RemoteFailure, RemoteResult } from '@liusiqi-dev/dsh-typert-protocol'
-import { absoluteFileAddress, sessionFileAddress } from '@liusiqi-dev/dsh-util-workspace-path'
+import { RemoteError } from '@liusiqi-dev/sqh-client-test-runtime'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { RemoteFailure, RemoteResult } from '@liusiqi-dev/sqh-typert-protocol'
+import { absoluteFileAddress, sessionFileAddress } from '@liusiqi-dev/sqh-util-workspace-path'
 import type { WorkspaceFileStat } from '../src/types.ts'
 import { describe, expect, it, onTestFinished } from 'vitest'
 import { ChangeFeed } from '../src/client/change-feed.ts'

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { AttachmentId, ImageVariantId } from '@liusiqi-dev/dsh-attachment'
-import type { AttachmentStore, ImageMediaType } from '@liusiqi-dev/dsh-attachment'
+import { AttachmentId, ImageVariantId } from '@liusiqi-dev/sqh-attachment'
+import type { AttachmentStore, ImageMediaType } from '@liusiqi-dev/sqh-attachment'
 import {
   ToolCallId,
   contentHasFile,

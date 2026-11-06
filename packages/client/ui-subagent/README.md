@@ -3,7 +3,7 @@ description: "Subagent conversation catalog, continuation routing UI, and '@' re
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-client-ui-subagent
+# @liusiqi-dev/sqh-client-ui-subagent
 
 English | [中文](README.zh.md)
 

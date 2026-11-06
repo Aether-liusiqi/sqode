@@ -1,6 +1,6 @@
 /**
  * Path canonicalization for workspace identity.
- * @module @liusiqi-dev/dsh-workspace/src/paths
+ * @module @liusiqi-dev/sqh-workspace/src/paths
  */
 
 import { realpath } from 'node:fs/promises'

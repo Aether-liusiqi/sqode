@@ -1,8 +1,8 @@
 import { describe, expect, expectTypeOf, it } from 'vitest'
 import { Context, Service, symbols } from '@liusiqi-dev/cordis'
-import { Session, SessionId } from '@liusiqi-dev/dsh-session'
-import AgentRegistry, { agentEvents } from '@liusiqi-dev/dsh-agent'
-import TypertRegistry from '@liusiqi-dev/dsh-typert-registry'
+import { Session, SessionId } from '@liusiqi-dev/sqh-session'
+import AgentRegistry, { agentEvents } from '@liusiqi-dev/sqh-agent'
+import TypertRegistry from '@liusiqi-dev/sqh-typert-registry'
 
 import type {
   Agent,
@@ -11,7 +11,7 @@ import type {
   AgentStatus,
   CreateAgentOptions,
   ResumeAgentOptions,
-} from '@liusiqi-dev/dsh-agent'
+} from '@liusiqi-dev/sqh-agent'
 
 function stubAgent(rawId: string, overrides: Partial<Agent> = {}): Agent {
   const id = SessionId(rawId)
@@ -51,8 +51,8 @@ describe('AgentRegistry', () => {
     expect(lookup).toMatchObject({
       parameter: 'agent',
       wire: 'agentId',
-      hostTypeSymbol: '@liusiqi-dev/dsh-agent#Agent',
-      wireTypeSymbol: '@liusiqi-dev/dsh-session/types#SessionId',
+      hostTypeSymbol: '@liusiqi-dev/sqh-agent#Agent',
+      wireTypeSymbol: '@liusiqi-dev/sqh-session/types#SessionId',
     })
     expect(lookup?.resolve(agent.id)).toBe(agent)
     const context = ctx.typert.contexts.getHost('agent')

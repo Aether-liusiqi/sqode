@@ -1,7 +1,7 @@
 /** Metadata inventory of saved and adopted layouts without mounting their content. */
-import { createSnapshotStore, type ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { TabId, TabRecord } from '@liusiqi-dev/dsh-client-ui-dockkit'
+import { createSnapshotStore, type ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { TabId, TabRecord } from '@liusiqi-dev/sqh-client-ui-dockkit'
 import { readSidebarLayout, sidebarPersistence } from './persistence.ts'
 
 /** One open occurrence; resource recovery belongs to its kind's provider. */

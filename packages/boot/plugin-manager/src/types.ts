@@ -1,9 +1,9 @@
 /** Public plugin management records shared with clients. */
-import type { Branded } from '@liusiqi-dev/dsh-brand'
-import type { PluginLocalizedMeta } from '@liusiqi-dev/dsh-package-manifest'
-import type { PluginInventoryEntry } from '@liusiqi-dev/dsh-host-plugin-inventory/types'
-export type { PluginEntryId } from '@liusiqi-dev/dsh-host-plugin-inventory/types'
-import type { PluginEntryId } from '@liusiqi-dev/dsh-host-plugin-inventory/types'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
+import type { PluginLocalizedMeta } from '@liusiqi-dev/sqh-package-manifest'
+import type { PluginInventoryEntry } from '@liusiqi-dev/sqh-host-plugin-inventory/types'
+export type { PluginEntryId } from '@liusiqi-dev/sqh-host-plugin-inventory/types'
+import type { PluginEntryId } from '@liusiqi-dev/sqh-host-plugin-inventory/types'
 
 /** Reasons a profile control cannot modify its target. */
 export type ReadOnlyReason = 'management-required' | 'unaddressable'

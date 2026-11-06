@@ -1,6 +1,6 @@
 /** Shared branded-identifier construction without assigning protocol ownership. */
 
-import type { Branded } from '@liusiqi-dev/dsh-brand'
+import type { Branded } from '@liusiqi-dev/sqh-brand'
 
 /** String branded with one Inspector identity role. */
 export type InspectorId<Role extends string> = Branded<Role>

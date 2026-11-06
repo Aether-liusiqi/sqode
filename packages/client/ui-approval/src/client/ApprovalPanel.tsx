@@ -1,6 +1,6 @@
 /** Composer takeover for one pending approval waterfall. */
 import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react'
-import { Button, StateDot } from '@liusiqi-dev/dsh-client-ui-primitives'
+import { Button, StateDot } from '@liusiqi-dev/sqh-client-ui-primitives'
 import type { ApprovalComposerProps, PendingApproval } from './contract/slots.ts'
 import css from './ApprovalPanel.module.css'
 

@@ -1,10 +1,10 @@
 /** Authorized source identity and cancellation survive Host rendering. */
 import { Context } from '@liusiqi-dev/cordis'
-import { SessionId } from '@liusiqi-dev/dsh-session/types'
-import type { WorkspaceFiles } from '@liusiqi-dev/dsh-api-workspace-files'
-import type { FileSystem, FsInfo, FsTarget } from '@liusiqi-dev/dsh-fs'
+import { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { WorkspaceFiles } from '@liusiqi-dev/sqh-api-workspace-files'
+import type { FileSystem, FsInfo, FsTarget } from '@liusiqi-dev/sqh-fs'
 import { OfficeToPdfError, OfficeToPdfKey, type OfficeToPdfResult } from '../src/index.ts'
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
 import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 import OfficeToPdf from '../src/index.ts'
 

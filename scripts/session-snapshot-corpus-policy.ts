@@ -1,7 +1,7 @@
 /** Retained V3 replay inputs, current-writer fixtures, and bounded older migration coverage. */
 
-import { SESSION_FORMAT_VERSION } from '@liusiqi-dev/dsh-session'
-import type { SnapshotSessionFormatManifest } from '@liusiqi-dev/dsh-session-snapshot'
+import { SESSION_FORMAT_VERSION } from '@liusiqi-dev/sqh-session'
+import type { SnapshotSessionFormatManifest } from '@liusiqi-dev/sqh-session-snapshot'
 
 /** One owning scenario's selected parent and child generations. */
 export interface SnapshotCorpusScenarioGenerations {

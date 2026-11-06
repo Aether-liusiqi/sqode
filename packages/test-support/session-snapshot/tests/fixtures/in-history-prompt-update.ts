@@ -1,6 +1,6 @@
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-system-prompt'
-import type {} from '@liusiqi-dev/dsh-tools'
+import type {} from '@liusiqi-dev/sqh-system-prompt'
+import type {} from '@liusiqi-dev/sqh-tools'
 
 export const name = 'in-history-prompt-update'
 export const inject = ['systemPrompt']

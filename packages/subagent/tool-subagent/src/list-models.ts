@@ -1,9 +1,9 @@
 /** Model-facing discovery of LLM routes available to child Agents. */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type LlmRuntime from '@liusiqi-dev/dsh-llm'
-import type { LlmProviderInfo } from '@liusiqi-dev/dsh-llm'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
+import type LlmRuntime from '@liusiqi-dev/sqh-llm'
+import type { LlmProviderInfo } from '@liusiqi-dev/sqh-llm'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
 import type { ModelSelectionPolicy } from './model-selection.ts'
 
 interface ListSubagentModelsRequest {

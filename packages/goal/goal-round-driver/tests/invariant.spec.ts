@@ -1,15 +1,15 @@
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import {
   GoalId,
   type GoalSnapshotChangeMeta,
   type GoalView,
-} from '@liusiqi-dev/dsh-goal'
-import * as GoalSessionInvariant from '@liusiqi-dev/dsh-goal-round-driver/invariant'
-import { renderGoalRoundPrompt } from '@liusiqi-dev/dsh-goal-round-driver'
-import InvariantRegistry, { InvariantError } from '@liusiqi-dev/dsh-invariants'
-import SessionStore, { SessionId, type Session } from '@liusiqi-dev/dsh-session'
+} from '@liusiqi-dev/sqh-goal'
+import * as GoalSessionInvariant from '@liusiqi-dev/sqh-goal-round-driver/invariant'
+import { renderGoalRoundPrompt } from '@liusiqi-dev/sqh-goal-round-driver'
+import InvariantRegistry, { InvariantError } from '@liusiqi-dev/sqh-invariants'
+import SessionStore, { SessionId, type Session } from '@liusiqi-dev/sqh-session'
 
 const change: GoalSnapshotChangeMeta = {
   kind: 'goal/change',
@@ -95,7 +95,7 @@ describe('goal-round-driver prompt invariants', () => {
       appendRound(session, 2, [{ type: 'text', text: 'counterfeit continuation' }])
     }).toThrow(expect.objectContaining<Partial<InvariantError>>({
       code: 'INVARIANT',
-      packageName: '@liusiqi-dev/dsh-goal-round-driver',
+      packageName: '@liusiqi-dev/sqh-goal-round-driver',
     }))
   })
 
@@ -110,7 +110,7 @@ describe('goal-round-driver prompt invariants', () => {
         source,
       }), { surfaceOp: 'append' })
     }).toThrow(expect.objectContaining<Partial<InvariantError>>({
-      packageName: '@liusiqi-dev/dsh-goal-round-driver',
+      packageName: '@liusiqi-dev/sqh-goal-round-driver',
     }))
   })
 
@@ -122,7 +122,7 @@ describe('goal-round-driver prompt invariants', () => {
 
     await expect(ctx.plugin(GoalSessionInvariant)).rejects.toMatchObject({
       code: 'INVARIANT',
-      packageName: '@liusiqi-dev/dsh-goal-round-driver',
+      packageName: '@liusiqi-dev/sqh-goal-round-driver',
     })
   })
 })

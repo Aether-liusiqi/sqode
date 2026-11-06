@@ -5,11 +5,11 @@
  * (validation, descriptor projection) derive from it. Record schemas are zod
  * (`z.infer` keeps types un-duplicated and the same schemas later project to
  * RPC wire schemas); plugin `Config` stays schemastery.
- * @module @liusiqi-dev/dsh-storage-domain/src/spec
+ * @module @liusiqi-dev/sqh-storage-domain/src/spec
  */
 
 import type { ZodType } from 'zod'
-import { UNIT_NAME_RE, type KvUnitDescriptor } from '@liusiqi-dev/dsh-storage'
+import { UNIT_NAME_RE, type KvUnitDescriptor } from '@liusiqi-dev/sqh-storage'
 
 /** Global singleton declaration: schema plus the value used before the first write. */
 export interface DomainGlobalSpec<G> {

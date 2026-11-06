@@ -9,12 +9,12 @@
  * rows' title projection).
  */
 import { describe, expect } from 'vitest'
-import type { SessionId } from '@liusiqi-dev/dsh-api-remotes/client'
-import { SessionSeq } from '@liusiqi-dev/dsh-session/types'
-import { ok, type RemoteMock } from '@liusiqi-dev/dsh-remote-mock'
+import type { SessionId } from '@liusiqi-dev/sqh-api-remotes/client'
+import { SessionSeq } from '@liusiqi-dev/sqh-session/types'
+import { ok, type RemoteMock } from '@liusiqi-dev/sqh-remote-mock'
 import {
   createClientTest, type ClientTestFixtures, webApp,
-} from '@liusiqi-dev/dsh-client-test-runtime/src/assembly/index.ts'
+} from '@liusiqi-dev/sqh-client-test-runtime/src/assembly/index.ts'
 import { ProjectionValueStore } from '../src/client/sessions/projection-store.ts'
 import { SessionManager } from '../src/client/sessions/manager.ts'
 import type { SessionRemotes } from '../src/client/sessions/remotes.ts'
@@ -24,7 +24,7 @@ import { FOLLOW, followScript, sessionWorld } from './remote/session.client.ts'
 
 // Test-domain keys merged into the projection map (the Service Definition package's
 // pure-type outlet), the same way domain host plugins merge theirs.
-declare module '@liusiqi-dev/dsh-session-projection/types' {
+declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionMap {
     'test/marks': { marks: string[] }
   }
@@ -32,7 +32,7 @@ declare module '@liusiqi-dev/dsh-session-projection/types' {
 
 const SID = 'fk-s1' as SessionId
 /** A Session talks through the Gateway client; its dependency cone is the Typert registry and the Connection. */
-const API_ROSTER = webApp.closure(['@liusiqi-dev/dsh-api-gateway'])
+const API_ROSTER = webApp.closure(['@liusiqi-dev/sqh-api-gateway'])
 const it = createClientTest({ roster: API_ROSTER })
 /** The first client boot pays the cold module transform of the api cone. */
 const COLD_BOOT_TIMEOUT_MS = 60_000

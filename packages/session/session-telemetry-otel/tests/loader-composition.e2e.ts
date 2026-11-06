@@ -4,12 +4,12 @@
  * only the redacted authorized prefix; the canonical log keeps every event.
  */
 
-import type { SessionEvent } from '@liusiqi-dev/dsh-session'
+import type { SessionEvent } from '@liusiqi-dev/sqh-session'
 import { readFile, readdir } from 'node:fs/promises'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
-import { LOADER_SMOKE_TEST_TIMEOUT_MS, runLoaderSmoke } from '@liusiqi-dev/dsh-loader-smoke'
+import { LOADER_SMOKE_TEST_TIMEOUT_MS, runLoaderSmoke } from '@liusiqi-dev/sqh-loader-smoke'
 
 const driver = fileURLToPath(new URL(
   './fixtures/driver.ts',

@@ -3,7 +3,7 @@ description: "preset 挂载的可组装人设行，让单个 agent 拥有自己�
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-persona
+# @liusiqi-dev/sqh-persona
 
 [English](README.md) | 中文
 
@@ -30,7 +30,7 @@ kind: "package-reference"
 ### 配置
 
 ```yaml
-- name: '@liusiqi-dev/dsh-persona'
+- name: '@liusiqi-dev/sqh-persona'
   config:
     prefix: You are a terse systems engineer who answers in short commands.
 ```

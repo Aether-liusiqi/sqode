@@ -4,21 +4,21 @@
  * compaction calls, then binds fresh live sessions to parent/child scripts by
  * first-call order. Throw and hang cases require an explicit override because
  * a session log cannot reconstruct them alone.
- * @module @liusiqi-dev/dsh-llm-replay
+ * @module @liusiqi-dev/sqh-llm-replay
  */
 
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { delimiter as pathDelimiter } from 'node:path'
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-compaction'
-import type {} from '@liusiqi-dev/dsh-deepseek-llm-api-extensions'
-import { SESSION_FORMAT_VERSION, SessionLogOffset, type SessionEvent } from '@liusiqi-dev/dsh-session'
-import type { SessionLogOffset as SessionLogOffsetType } from '@liusiqi-dev/dsh-session'
+import type {} from '@liusiqi-dev/sqh-compaction'
+import type {} from '@liusiqi-dev/sqh-deepseek-llm-api-extensions'
+import { SESSION_FORMAT_VERSION, SessionLogOffset, type SessionEvent } from '@liusiqi-dev/sqh-session'
+import type { SessionLogOffset as SessionLogOffsetType } from '@liusiqi-dev/sqh-session'
 import {
   createSessionFormatCatalogWithChildren,
   SessionFormatUnsupportedMigrationError,
   sessionFormatCatalog,
-} from '@liusiqi-dev/dsh-session-format-catalog'
+} from '@liusiqi-dev/sqh-session-format-catalog'
 import type {
   ContentBlock,
   GenerateOptions,
@@ -33,9 +33,9 @@ import type {
   SystemPromptUpdate,
   TokenUsage,
   ToolUpdate,
-} from '@liusiqi-dev/dsh-llm'
-import { LlmAdapter, LlmError, ReasoningEffortId, expandAssistantStream, offloadedImageText, requestImageHandleText, resolveRetryPolicy } from '@liusiqi-dev/dsh-llm'
-import { assertNever } from '@liusiqi-dev/dsh-util-values'
+} from '@liusiqi-dev/sqh-llm'
+import { LlmAdapter, LlmError, ReasoningEffortId, expandAssistantStream, offloadedImageText, requestImageHandleText, resolveRetryPolicy } from '@liusiqi-dev/sqh-llm'
+import { assertNever } from '@liusiqi-dev/sqh-util-values'
 
 const PACKED_CHUNK_ROW_TYPES = new Set(['text-chunks', 'reasoning-chunks', 'tool-call-chunks'])
 

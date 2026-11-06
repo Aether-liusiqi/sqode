@@ -1,14 +1,14 @@
 /** Per-Session target-neutral Conversation assembly. */
 import { Service, type Context } from '@liusiqi-dev/cordis'
-import type { ImageAttachmentRef } from '@liusiqi-dev/dsh-attachment'
+import type { ImageAttachmentRef } from '@liusiqi-dev/sqh-attachment'
 import type {
   ISessions, SessionBinding, SessionEventSource, SessionEventWindow,
-} from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { SessionEvent, SessionId } from '@liusiqi-dev/dsh-session/types'
-import { WeakMapWithValues } from '@liusiqi-dev/dsh-util-values'
+} from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { SessionEvent, SessionId } from '@liusiqi-dev/sqh-session/types'
+import { WeakMapWithValues } from '@liusiqi-dev/sqh-util-values'
 import {
   createSnapshotStore, type ObservableSnapshot, type SnapshotStore,
-} from '@liusiqi-dev/dsh-client-store'
+} from '@liusiqi-dev/sqh-client-store'
 import type {
   ConversationPublication, ConversationViewSnapshotMap,
   ConversationViewSnapshotStore,

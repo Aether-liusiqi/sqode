@@ -5,14 +5,14 @@ import type {} from '../index.ts'
 import type { DocumentPreviewDefinition } from '../document/registry.ts'
 import type { PdfBodyInjected } from './pdf.tsx'
 import { LazyPdfBody } from './LazyPdfBody.tsx'
-import type { BoundActions } from '@liusiqi-dev/dsh-client-store'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { BoundActions } from '@liusiqi-dev/sqh-client-store'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import { createPdfStore, type PdfStore } from './store.ts'
 import { ZoomViewport, zoomSurfaceClass } from '../zoom/ZoomViewport.tsx'
 import { en, zh } from './locales.ts'
 
 /** PDF metadata and keyed body share this package-local implementation identity. */
-export const PDF_BODY_ID = '@liusiqi-dev/dsh-client-ui-sidebar-documentpreview/pdf'
+export const PDF_BODY_ID = '@liusiqi-dev/sqh-client-ui-sidebar-documentpreview/pdf'
 
 /**
  * Describe the builtin PDF renderer independently from its keyed body slot.

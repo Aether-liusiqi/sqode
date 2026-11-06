@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-fs-observation-policy",
+  "name": "@liusiqi-dev/sqh-fs-observation-policy",
   "description": "File-context policy plugin for the Siqi Harness — observed-state, read-before-edit, and version-guarded write/edit added over the ctx.fs provider seam through the fs/* event gate (no service API)",
   "version": "1.0.0",
   "publishConfig": {
@@ -27,12 +27,12 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@liusiqi-dev/dsh-fs": "workspace:*",
+    "@liusiqi-dev/sqh-fs": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   },
   "devDependencies": {
-    "@liusiqi-dev/dsh-fs": "workspace:*",
-    "@liusiqi-dev/dsh-llm": "workspace:*",
+    "@liusiqi-dev/sqh-fs": "workspace:*",
+    "@liusiqi-dev/sqh-llm": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
   }
 }

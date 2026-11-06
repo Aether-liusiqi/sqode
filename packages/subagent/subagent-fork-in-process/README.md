@@ -3,7 +3,7 @@ description: "In-process fork subagent backend for users and maintainers choosin
 kind: "package-reference"
 ---
 
-# @liusiqi-dev/dsh-subagent-fork-in-process
+# @liusiqi-dev/sqh-subagent-fork-in-process
 
 English | [中文](README.zh.md)
 
@@ -40,9 +40,9 @@ The seed ends at the parent's last completed turn. A parent's current tool-calli
 Load the subagent service and this backend, then configure a delegation tool. This composition exposes a `subagent` tool backed by fork:
 
 ```yaml
-- name: '@liusiqi-dev/dsh-subagent'
-- name: '@liusiqi-dev/dsh-subagent-fork-in-process'
-- name: '@liusiqi-dev/dsh-tool-subagent'
+- name: '@liusiqi-dev/sqh-subagent'
+- name: '@liusiqi-dev/sqh-subagent-fork-in-process'
+- name: '@liusiqi-dev/sqh-tool-subagent'
   config:
     provider: fork
 ```

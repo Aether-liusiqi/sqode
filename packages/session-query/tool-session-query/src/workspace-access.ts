@@ -1,23 +1,23 @@
 /**
  * Caller identity, workspace authorization, and visible lineage projection.
  *
- * @module @liusiqi-dev/dsh-tool-session-query/workspace-access
+ * @module @liusiqi-dev/sqh-tool-session-query/workspace-access
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { brandString } from '@liusiqi-dev/dsh-brand'
-import { HarnessError } from '@liusiqi-dev/dsh-llm'
+import { brandString } from '@liusiqi-dev/sqh-brand'
+import { HarnessError } from '@liusiqi-dev/sqh-llm'
 import {
   type SessionHeader,
   type SessionId as SessionIdValue,
-} from '@liusiqi-dev/dsh-session'
-import type { TurnBoundaryProjection } from '@liusiqi-dev/dsh-agent'
+} from '@liusiqi-dev/sqh-session'
+import type { TurnBoundaryProjection } from '@liusiqi-dev/sqh-agent'
 import type {
   SessionLineageNode,
   SessionRecord,
-} from '@liusiqi-dev/dsh-session-query'
-import type { ToolRunContext } from '@liusiqi-dev/dsh-tools'
-import type {} from '@liusiqi-dev/dsh-session-projection'
+} from '@liusiqi-dev/sqh-session-query'
+import type { ToolRunContext } from '@liusiqi-dev/sqh-tools'
+import type {} from '@liusiqi-dev/sqh-session-projection'
 import { serviceBoundary } from './service-boundary.ts'
 
 interface Caller {

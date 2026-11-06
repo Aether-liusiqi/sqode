@@ -19,15 +19,15 @@ import type {
 } from '@anthropic-ai/claude-agent-sdk'
 import { Context } from '@liusiqi-dev/cordis'
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import SubagentRuntime from '@liusiqi-dev/dsh-subagent'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import SubagentRuntime from '@liusiqi-dev/sqh-subagent'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
 import type {
   SubprocessHandle,
   SubprocessOutcome,
   SubprocessSpawnSpec,
-} from '@liusiqi-dev/dsh-subprocess'
-import LocalSubprocessRuntime from '@liusiqi-dev/dsh-subprocess-local'
+} from '@liusiqi-dev/sqh-subprocess'
+import LocalSubprocessRuntime from '@liusiqi-dev/sqh-subprocess-local'
 import * as claudeCode from '../src/index.ts'
 import type { ClaudeCodePermissionMode } from '../src/run.ts'
 import {

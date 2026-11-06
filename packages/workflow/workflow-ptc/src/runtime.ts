@@ -2,22 +2,22 @@
  * Workflow VM hooks, child callbacks, ordinary concurrency limits and result serialization.
  * PTC owns process confinement and cancellation. Fatal hook and provider failures propagate
  * through combinators; ordinary child failures and stage errors become per-item nulls.
- * @module @liusiqi-dev/dsh-workflow-ptc/runtime
+ * @module @liusiqi-dev/sqh-workflow-ptc/runtime
  */
 
 import * as vm from 'node:vm'
-import { brandString } from '@liusiqi-dev/dsh-brand'
-import type { ContentBlock } from '@liusiqi-dev/dsh-llm'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
-import { assertObjectJsonSchema, JsonSchemaError } from '@liusiqi-dev/dsh-tools'
-import type { ObjectJsonSchema } from '@liusiqi-dev/dsh-tools'
-import { isFatalWorkflowError, WorkflowError } from '@liusiqi-dev/dsh-workflow'
+import { brandString } from '@liusiqi-dev/sqh-brand'
+import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
+import { assertObjectJsonSchema, JsonSchemaError } from '@liusiqi-dev/sqh-tools'
+import type { ObjectJsonSchema } from '@liusiqi-dev/sqh-tools'
+import { isFatalWorkflowError, WorkflowError } from '@liusiqi-dev/sqh-workflow'
 import type {
   WorkflowAgentEndInfo,
   WorkflowAgentInfo,
   WorkflowMeta,
   WorkflowResult,
-} from '@liusiqi-dev/dsh-workflow'
+} from '@liusiqi-dev/sqh-workflow'
 import { materializeFromRealm, MaterializeError, renderThrown } from './realm.ts'
 import type { ChildHandle, ChildPort, WorkerLimits } from './types.ts'
 

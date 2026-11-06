@@ -3,7 +3,7 @@ description: "面向以子进程方式启动 Siqi Harness 运行时、并通过 
 kind: "package-library"
 ---
 
-# @liusiqi-dev/dsh-sdk-client
+# @liusiqi-dev/sqh-sdk-client
 
 [English](README.md) | 中文
 
@@ -30,8 +30,8 @@ kind: "package-library"
 ### 用 DeepSeekHarness 运行 agent 轮次
 
 ```ts
-import { DeepSeekHarness } from '@liusiqi-dev/dsh-sdk-client'
-import { ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
+import { DeepSeekHarness } from '@liusiqi-dev/sqh-sdk-client'
+import { ReasoningEffortId } from '@liusiqi-dev/sqh-llm'
 
 await using harness = new DeepSeekHarness({
   profile: 'sdk',
@@ -98,7 +98,7 @@ console.log(result.finalResponse)
 - [SDK 协议格式](../protocol/README.zh.md)——本客户端使用的 JSON-RPC 方法与载荷结构。
 - [JSON-RPC 服务插件](../server/README.zh.md)——服务本客户端的运行时插件。
 - [Python SDK](../../../python/README.zh.md) — 共享同一运行时对端与协议的设计孪生。
-- [SDK subagent 后端](../../subagent/subagent-dsh-sdk/README.zh.md) — harness 内部消费本客户端的例子。
+- [SDK subagent 后端](../../subagent/subagent-sdk/README.zh.md) — harness 内部消费本客户端的例子。
 - [SDK 应用组合包](../../bundle/sdk-app/README.zh.md) — 本客户端启动的 `dsh --profile sdk` 运行时应用。
 
 -----

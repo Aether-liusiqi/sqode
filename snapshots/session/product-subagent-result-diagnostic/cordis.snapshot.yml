@@ -2,7 +2,7 @@
 # provider/tool and replace only the external model adapter.
 - insert:
     - id: llm-replay
-      name: '@liusiqi-dev/dsh-llm-replay'
+      name: '@liusiqi-dev/sqh-llm-replay'
       config:
         providers:
           - id: deepseek-official
@@ -13,7 +13,7 @@
     - id: subagent-result-diagnostic
       name: '../../../packages/test-support/session-snapshot/tests/fixtures/subagent-result-diagnostic.ts'
     - id: tool-subagent-codex
-      name: '@liusiqi-dev/dsh-tool-subagent'
+      name: '@liusiqi-dev/sqh-tool-subagent'
       config:
         provider: snapshot-diagnostic
         toolName: subagent_codex
@@ -21,5 +21,5 @@
         maxDepth: provider-managed
 
 - id: llm-deepseek
-  name: '@liusiqi-dev/dsh-llm-deepseek-api-key'
+  name: '@liusiqi-dev/sqh-llm-deepseek-api-key'
   disabled: true

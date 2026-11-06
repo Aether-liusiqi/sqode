@@ -3,7 +3,7 @@ description: "SDK stdio application profile for users and maintainers launching 
 kind: "package-bundle"
 ---
 
-# `@liusiqi-dev/dsh-sdk-app`
+# `@liusiqi-dev/sqh-sdk-app`
 
 English | [中文](README.zh.md)
 

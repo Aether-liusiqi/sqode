@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@liusiqi-dev/dsh-client-modules`.
- * @module @liusiqi-dev/dsh-client-modules/invariant
+ * Package-owned invariant companion for `@liusiqi-dev/sqh-client-modules`.
+ * @module @liusiqi-dev/sqh-client-modules/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@liusiqi-dev/cordis'
-import type { InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
+import type { InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-client-modules'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-client-modules'
 
 /** Cordis companion plugin name. */
 export const name = 'client-modules-invariant'

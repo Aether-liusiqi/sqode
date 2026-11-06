@@ -1,7 +1,7 @@
 /**
  * Same-session goal domain: event-sourced state, compare-and-set mutations,
  * and process-local continuation activation.
- * @module @liusiqi-dev/dsh-goal
+ * @module @liusiqi-dev/sqh-goal
  */
 
 import { randomUUID } from 'node:crypto'
@@ -9,13 +9,13 @@ import { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
 import { z as zod } from 'zod'
 import type { ZodType } from 'zod'
-import { agentEvents } from '@liusiqi-dev/dsh-agent'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { SessionSeq } from '@liusiqi-dev/dsh-session'
-import type { Session, SessionEvent, SessionLogOffset } from '@liusiqi-dev/dsh-session'
-import { TypertRemoteService, Remote } from '@liusiqi-dev/dsh-typert-protocol'
-import type {} from '@liusiqi-dev/dsh-session-projection'
-import type { ProjectionDefinition } from '@liusiqi-dev/dsh-session-projection'
+import { agentEvents } from '@liusiqi-dev/sqh-agent'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { SessionSeq } from '@liusiqi-dev/sqh-session'
+import type { Session, SessionEvent, SessionLogOffset } from '@liusiqi-dev/sqh-session'
+import { TypertRemoteService, Remote } from '@liusiqi-dev/sqh-typert-protocol'
+import type {} from '@liusiqi-dev/sqh-session-projection'
+import type { ProjectionDefinition } from '@liusiqi-dev/sqh-session-projection'
 import {
   applyGoalEvent,
   goalChangeRef,

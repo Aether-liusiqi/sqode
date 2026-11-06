@@ -1,5 +1,5 @@
 {
-  "name": "@liusiqi-dev/dsh-typert-registry",
+  "name": "@liusiqi-dev/sqh-typert-registry",
   "description": "Runtime registry for generated package reflection and Zod schemas",
   "version": "1.0.0",
   "publishConfig": {
@@ -55,6 +55,6 @@
   },
   "devDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
-    "@liusiqi-dev/dsh-typert-protocol": "workspace:*"
+    "@liusiqi-dev/sqh-typert-protocol": "workspace:*"
   }
 }

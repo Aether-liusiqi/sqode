@@ -4,24 +4,24 @@
 import { memo, useCallback, useMemo, useRef, useState, type ComponentProps } from 'react'
 import type {
   NodeKey, RenderEntry, RenderMessageImages,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import type { InboxState } from '@liusiqi-dev/dsh-agent/types'
-import type { PendingSubmission } from '@liusiqi-dev/dsh-api-session-controller/client'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import type { InboxState } from '@liusiqi-dev/sqh-agent/types'
+import type { PendingSubmission } from '@liusiqi-dev/sqh-api-session-controller/client'
 import {
   Button, IconChevronDownOutlineRegular, MarkdownDelegateProvider, Modal,
-} from '@liusiqi-dev/dsh-client-ui-primitives'
+} from '@liusiqi-dev/sqh-client-ui-primitives'
 import type { ChatViewSlotProps, OpenFileOptions } from '../contract/slots.ts'
 import type { ChatSnapshot } from '../contract/snapshot.ts'
 import { PendingSteeringBubble, PendingSubmissionBubble } from './MessageItem.tsx'
 import { ChatNodeSeat } from './ChatNodeSeat.tsx'
 import { ChatGroupSeat } from './ChatGroupSeat.tsx'
 import { chatRenderKey } from './render-entry.ts'
-import { assertNever } from '@liusiqi-dev/dsh-util-values'
+import { assertNever } from '@liusiqi-dev/sqh-util-values'
 import { TurnNavigator } from './TurnNavigator.tsx'
 import { RunningStatus } from './RunningStatus.tsx'
 import { mergeTurnRailItems } from './turn-rail-items.ts'
 import { useChatScroll } from './use-chat-scroll.ts'
-import { fileMediaUrl, resolveWorkspacePath } from '@liusiqi-dev/dsh-util-workspace-path'
+import { fileMediaUrl, resolveWorkspacePath } from '@liusiqi-dev/sqh-util-workspace-path'
 import css from './ChatView.module.css'
 
 /** Host/OS refusal text for the file-open dialog; empty throws keep a locale fallback. */

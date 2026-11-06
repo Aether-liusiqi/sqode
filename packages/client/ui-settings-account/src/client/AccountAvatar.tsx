@@ -1,6 +1,6 @@
 /** Shared account picture with an icon fallback for missing or unavailable images. */
 import { useState } from 'react'
-import { IconUserOutlineMedium } from '@liusiqi-dev/dsh-client-ui-primitives'
+import { IconUserOutlineMedium } from '@liusiqi-dev/sqh-client-ui-primitives'
 import css from './AccountAvatar.module.css'
 
 /**

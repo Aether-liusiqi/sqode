@@ -4,7 +4,7 @@
  * URL, optional title, optional `publishedDate`, and (when highlights are
  * requested) a `highlights[]` array of salient sentences.
  *
- * @module @liusiqi-dev/dsh-web-search-exa/types
+ * @module @liusiqi-dev/sqh-web-search-exa/types
  */
 
 /** Request body sent to Exa's search endpoint. */

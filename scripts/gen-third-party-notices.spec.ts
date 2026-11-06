@@ -62,7 +62,7 @@ describe('tierExternalDeps', () => {
     }
     for (const dependency of [
       { name: 'unrelated-library', license: 'MPL-2.0' },
-      { name: '@liusiqi-dev/dsh-libreoffice-kit', license: 'MPL-2.0' },
+      { name: '@liusiqi-dev/sqh-libreoffice-kit', license: 'MPL-2.0' },
       { name: '@deepseek-ai/libreoffice-kit-unreviewed', license: 'MPL-2.0' },
       { name: '@deepseek-ai/libreoffice-kit', license: 'GPL-3.0-only' },
       { name: '@deepseek-ai/libreoffice-kit', license: 'UNKNOWN' },
@@ -107,12 +107,12 @@ describe('tierExternalDeps', () => {
     const { manifests, names } = workspace({
       // Root tooling and test infrastructure never ship, whichever section declares them.
       'package.json': { dependencies: { 'root-runtime-looking': '^1' }, devDependencies: { 'lint-tool': '^1' } },
-      'packages/test-support/loader-smoke/package.json': { name: '@liusiqi-dev/dsh-loader-smoke', dependencies: { 'smoke-helper': '^1' } },
-      'packages/test-support/client-runtime/package.json': { name: '@liusiqi-dev/dsh-client-test-runtime', dependencies: { 'test-lib': '^1' } },
+      'packages/test-support/loader-smoke/package.json': { name: '@liusiqi-dev/sqh-loader-smoke', dependencies: { 'smoke-helper': '^1' } },
+      'packages/test-support/client-runtime/package.json': { name: '@liusiqi-dev/sqh-client-test-runtime', dependencies: { 'test-lib': '^1' } },
       'website/package.json': { devDependencies: { 'site-tool': '^1' } },
       // A plugin package's runtime dependency ships even when no app mounts it by default.
-      'packages/mcp/mcp-client/package.json': { name: '@liusiqi-dev/dsh-mcp-client', dependencies: { 'protocol-sdk': '^1' }, devDependencies: { 'protocol-fixture-server': '^1' } },
-      'apps/cli/package.json': { name: '@liusiqi-dev/dsh-cli', dependencies: { 'cli-lib': '^1', '@liusiqi-dev/dsh-mcp-client': 'workspace:^' } },
+      'packages/mcp/mcp-client/package.json': { name: '@liusiqi-dev/sqh-mcp-client', dependencies: { 'protocol-sdk': '^1' }, devDependencies: { 'protocol-fixture-server': '^1' } },
+      'apps/cli/package.json': { name: '@liusiqi-dev/sqh-cli', dependencies: { 'cli-lib': '^1', '@liusiqi-dev/sqh-mcp-client': 'workspace:^' } },
     })
 
     expect(tierExternalDeps(manifests, names)).toEqual(new Map([
@@ -131,12 +131,12 @@ describe('tierExternalDeps', () => {
   it('keeps a package runtime when any shipping area declares it, and excludes workspace links', () => {
     const { manifests, names } = workspace({
       'package.json': { devDependencies: { shared: '^1' } },
-      'packages/interaction/tui/package.json': { name: '@liusiqi-dev/dsh-tui', dependencies: { shared: '^1', '@liusiqi-dev/dsh-cli': 'workspace:^' } },
-      'apps/cli/package.json': { name: '@liusiqi-dev/dsh-cli' },
+      'packages/interaction/tui/package.json': { name: '@liusiqi-dev/sqh-tui', dependencies: { shared: '^1', '@liusiqi-dev/sqh-cli': 'workspace:^' } },
+      'apps/cli/package.json': { name: '@liusiqi-dev/sqh-cli' },
     })
 
     expect(tierExternalDeps(manifests, names).get('shared')).toBe(true)
-    expect(tierExternalDeps(manifests, names).has('@liusiqi-dev/dsh-cli')).toBe(false)
+    expect(tierExternalDeps(manifests, names).has('@liusiqi-dev/sqh-cli')).toBe(false)
   })
 })
 

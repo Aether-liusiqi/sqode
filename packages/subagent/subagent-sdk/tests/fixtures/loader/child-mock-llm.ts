@@ -1,8 +1,8 @@
 import type { Context } from '@liusiqi-dev/cordis'
 import { existsSync, writeFileSync } from 'node:fs'
 import { setTimeout } from 'node:timers/promises'
-import type { GenerateOptions, LlmResolvedModelInfo, StreamChunk } from '@liusiqi-dev/dsh-llm'
-import { LlmAdapter, ReasoningEffortId } from '@liusiqi-dev/dsh-llm'
+import type { GenerateOptions, LlmResolvedModelInfo, StreamChunk } from '@liusiqi-dev/sqh-llm'
+import { LlmAdapter, ReasoningEffortId } from '@liusiqi-dev/sqh-llm'
 
 /**
  * Scripted model for the CHILD runtime: validates either the routed success

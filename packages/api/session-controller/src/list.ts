@@ -1,13 +1,13 @@
 /** Cold-safe Session list and search projection. */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-agent-preset-registry'
-import type { ImageAttachmentLimits } from '@liusiqi-dev/dsh-attachment'
-import type { Session, SessionEvent, SessionHeader, SessionId } from '@liusiqi-dev/dsh-session'
-import type { ProjectionSnapshot } from '@liusiqi-dev/dsh-session-projection'
-import type {} from '@liusiqi-dev/dsh-session-projection-cache'
-import { SessionQueryError, type SessionSearchCursor } from '@liusiqi-dev/dsh-session-query'
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
+import type {} from '@liusiqi-dev/sqh-agent-preset-registry'
+import type { ImageAttachmentLimits } from '@liusiqi-dev/sqh-attachment'
+import type { Session, SessionEvent, SessionHeader, SessionId } from '@liusiqi-dev/sqh-session'
+import type { ProjectionSnapshot } from '@liusiqi-dev/sqh-session-projection'
+import type {} from '@liusiqi-dev/sqh-session-projection-cache'
+import { SessionQueryError, type SessionSearchCursor } from '@liusiqi-dev/sqh-session-query'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
 import { z } from 'zod'
 import {
   SESSION_SEARCH_RESULT_LIMIT,
@@ -171,7 +171,7 @@ export class ApiSessionList {
     if (provider === undefined) {
       throw new RemoteError(
         'gateway/internal',
-        'session search is unavailable: this deployment does not mount @liusiqi-dev/dsh-session-query',
+        'session search is unavailable: this deployment does not mount @liusiqi-dev/sqh-session-query',
         {},
       )
     }

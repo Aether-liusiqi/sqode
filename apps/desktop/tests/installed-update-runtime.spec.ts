@@ -33,7 +33,7 @@ describe('installed-update runtime preparation', () => {
         const metadata = JSON.parse(await readFile(join(runtime, 'node_modules/@liusiqi-dev/sqode/package.json'), 'utf8')) as {
           dependencies: Record<string, string>
         }
-        expect(metadata.dependencies['@liusiqi-dev/dsh-desktop-host']).toBe(version)
+        expect(metadata.dependencies['@liusiqi-dev/sqh-desktop-host']).toBe(version)
         expect(metadata.dependencies['@liusiqi-dev/cordis']).toBe(source.version)
       }
       expect(await readFile(join(original, 'desktop-runtime.json'))).toEqual(before)

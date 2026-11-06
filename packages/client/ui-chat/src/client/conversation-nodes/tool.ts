@@ -2,9 +2,9 @@ import type { Context } from '@liusiqi-dev/cordis'
 import type {
   ConversationMatch, ConversationNodeContext, ConversationNodeDefinition, RunningToolCall, StartedToolCall,
   ToolCallBlock, ToolResultNode,
-} from '@liusiqi-dev/dsh-client-ui-conversation/client'
-import { isAppendSurfaceEvent } from '@liusiqi-dev/dsh-session/surface'
-import type {} from '@liusiqi-dev/dsh-tools/types'
+} from '@liusiqi-dev/sqh-client-ui-conversation/client'
+import { isAppendSurfaceEvent } from '@liusiqi-dev/sqh-session/surface'
+import type {} from '@liusiqi-dev/sqh-tools/types'
 import type { ChatNode, ToolChatData } from '../contract/chat-nodes.ts'
 import { CHAT_SYNTHETIC_SEQ_OFFSETS, chatNode, contextLocation } from './common.ts'
 

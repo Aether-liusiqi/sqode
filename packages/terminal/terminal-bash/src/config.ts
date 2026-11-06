@@ -1,7 +1,7 @@
 /** Validated configuration for the local PTY backend. */
 
 import z from '@liusiqi-dev/schemastery'
-import { resolvePwshPath } from '@liusiqi-dev/dsh-pwsh-local'
+import { resolvePwshPath } from '@liusiqi-dev/sqh-pwsh-local'
 
 /** One supported interactive shell dialect. */
 export type ShellDialect = 'bash' | 'pwsh'

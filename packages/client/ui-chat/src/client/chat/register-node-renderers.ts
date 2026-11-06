@@ -1,5 +1,5 @@
 import type { Context } from '@liusiqi-dev/cordis'
-import type { ObservableSnapshot } from '@liusiqi-dev/dsh-client-store'
+import type { ObservableSnapshot } from '@liusiqi-dev/sqh-client-store'
 import type { PerformanceUsageMode } from '../../chat-settings.ts'
 import type { ChatPresentationPolicy } from '../presentation-policy.ts'
 import { NS } from '../locale.ts'

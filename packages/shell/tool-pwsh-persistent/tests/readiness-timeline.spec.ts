@@ -1,8 +1,8 @@
 import { Readable } from 'node:stream'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import type { SubprocessOutcome, SubprocessTerminalForeground, SubprocessTerminalHandle } from '@liusiqi-dev/dsh-subprocess'
-import type { TerminalSendOperation, TerminalSendResult } from '@liusiqi-dev/dsh-terminal'
-import { CONTROLLED_PROMPT, TerminalSanitizer } from '@liusiqi-dev/dsh-terminal-bash/src/sanitize.ts'
+import type { SubprocessOutcome, SubprocessTerminalForeground, SubprocessTerminalHandle } from '@liusiqi-dev/sqh-subprocess'
+import type { TerminalSendOperation, TerminalSendResult } from '@liusiqi-dev/sqh-terminal'
+import { CONTROLLED_PROMPT, TerminalSanitizer } from '@liusiqi-dev/sqh-terminal-bash/src/sanitize.ts'
 import { ReadinessTimeline, TIMELINE_HEADER, replayPromptEvidence } from './readiness-timeline.ts'
 
 const MARKER = '\x1b]133;D;0\x07'

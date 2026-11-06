@@ -4,19 +4,19 @@
  * `ctx.settings`, owned by the class below; and `credentials`, mounted from
  * here as its own plugin.
  *
- * @module @liusiqi-dev/dsh-api-settings-controller
+ * @module @liusiqi-dev/sqh-api-settings-controller
  */
 
 import { Context } from '@liusiqi-dev/cordis'
 import {
   openNativeTextFile,
-} from '@liusiqi-dev/dsh-native-command'
-import type { SettingsDescriptor, SettingsPathOp, SettingsForms } from '@liusiqi-dev/dsh-settings'
+} from '@liusiqi-dev/sqh-native-command'
+import type { SettingsDescriptor, SettingsPathOp, SettingsForms } from '@liusiqi-dev/sqh-settings'
 import type {
   SettingsDescribeValue, SettingsNamespaceView, SettingsPathOpView,
-} from '@liusiqi-dev/dsh-settings/types'
-import { Remote, RemoteError, TypertRemoteService } from '@liusiqi-dev/dsh-typert-protocol'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
+} from '@liusiqi-dev/sqh-settings/types'
+import { Remote, RemoteError, TypertRemoteService } from '@liusiqi-dev/sqh-typert-protocol'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
 import { z } from 'zod'
 import { CredentialsController } from './credentials.ts'
 import type { SettingsDocumentOpenValue } from './types.ts'
@@ -218,7 +218,7 @@ export class SettingsController extends TypertRemoteService {
     if (settings === undefined) {
       throw new RemoteError(
         'gateway/internal',
-        'settings service is absent: mount @liusiqi-dev/dsh-settings with @liusiqi-dev/dsh-config-editor in the profile composition',
+        'settings service is absent: mount @liusiqi-dev/sqh-settings with @liusiqi-dev/sqh-config-editor in the profile composition',
         {},
       )
     }

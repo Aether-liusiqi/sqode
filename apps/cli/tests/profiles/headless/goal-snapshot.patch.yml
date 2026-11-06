@@ -23,7 +23,7 @@
 
 - insert:
     - id: llm-replay
-      name: '@liusiqi-dev/dsh-llm-replay'
+      name: '@liusiqi-dev/sqh-llm-replay'
 
 - id: session-log-deepseek
   config:

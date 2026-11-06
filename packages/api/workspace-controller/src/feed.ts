@@ -1,14 +1,14 @@
 /** Reconnect-safe Workspace baseline and increment producer. */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { Deque } from '@liusiqi-dev/dsh-deque'
-import type { DomainChanged } from '@liusiqi-dev/dsh-storage-domain'
-import type { Workspace, WorkspaceRecord } from '@liusiqi-dev/dsh-workspace'
+import { Deque } from '@liusiqi-dev/sqh-deque'
+import type { DomainChanged } from '@liusiqi-dev/sqh-storage-domain'
+import type { Workspace, WorkspaceRecord } from '@liusiqi-dev/sqh-workspace'
 import {
   workspaceDomainState,
   workspaceRecord,
   WorkspaceId,
-} from '@liusiqi-dev/dsh-workspace'
+} from '@liusiqi-dev/sqh-workspace'
 import type {
   WorkspaceBaseline,
   WorkspaceFollowFrame,

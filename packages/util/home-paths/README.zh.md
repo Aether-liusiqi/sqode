@@ -3,13 +3,13 @@ description: "Siqi Harness 主目录与用户数据路径的共享解析，供�
 kind: "package-library"
 ---
 
-# @liusiqi-dev/dsh-home-paths
+# @liusiqi-dev/sqh-home-paths
 
 [English](README.md) | 中文
 
 ## 概述
 
-`@liusiqi-dev/dsh-home-paths` 让包作者能够解析统一的 Siqi Harness 数据根目录，并由它派生子路径。显式路径优先于 `$SQODE_HOME`，后者优先于 `~/.sqode`；空白环境变量会被忽略。其公开辅助函数可以在不暴露机器绝对路径的情况下显示根目录，仅展开单独或当前用户的波浪号形式，并规范化最终路径段尚不存在的监听目标。请把它作为库依赖直接使用，不要通过 `cordis.yml` 加载。
+`@liusiqi-dev/sqh-home-paths` 让包作者能够解析统一的 Siqi Harness 数据根目录，并由它派生子路径。显式路径优先于 `$SQODE_HOME`，后者优先于 `~/.sqode`；空白环境变量会被忽略。其公开辅助函数可以在不暴露机器绝对路径的情况下显示根目录，仅展开单独或当前用户的波浪号形式，并规范化最终路径段尚不存在的监听目标。请把它作为库依赖直接使用，不要通过 `cordis.yml` 加载。
 
 ## 目录
 
@@ -29,7 +29,7 @@ kind: "package-library"
 ### 解析主目录
 
 ```ts
-import { resolveDshHome, dshHomePath, dshCachePath } from '@liusiqi-dev/dsh-home-paths'
+import { resolveDshHome, dshHomePath, dshCachePath } from '@liusiqi-dev/sqh-home-paths'
 
 const home = resolveDshHome()                // configured path, else $SQODE_HOME, else ~/.sqode
 const settings = dshHomePath('settings')     // join one child onto the resolved home

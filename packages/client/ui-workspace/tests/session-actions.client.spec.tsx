@@ -10,15 +10,15 @@
  */
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
-import type { SessionListState, SessionSummary } from '@liusiqi-dev/dsh-api-session-controller/client'
-import type { WorkspaceId, WorkspaceSnapshot } from '@liusiqi-dev/dsh-api-workspace-controller/client'
-import type { SessionStatusSnapshot } from '@liusiqi-dev/dsh-client-ui-session/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
-import { createSnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { GlobalStandardProps, PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
-import { bindSnapshotSelector, makeTranslate } from '@liusiqi-dev/dsh-client-test-runtime'
-import { en as commonEn } from '@liusiqi-dev/dsh-client-locale/src/locales/en.ts'
-import { zh as commonZh } from '@liusiqi-dev/dsh-client-locale/src/locales/zh.ts'
+import type { SessionListState, SessionSummary } from '@liusiqi-dev/sqh-api-session-controller/client'
+import type { WorkspaceId, WorkspaceSnapshot } from '@liusiqi-dev/sqh-api-workspace-controller/client'
+import type { SessionStatusSnapshot } from '@liusiqi-dev/sqh-client-ui-session/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { GlobalStandardProps, PropsLocale, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
+import { bindSnapshotSelector, makeTranslate } from '@liusiqi-dev/sqh-client-test-runtime'
+import { en as commonEn } from '@liusiqi-dev/sqh-client-locale/src/locales/en.ts'
+import { zh as commonZh } from '@liusiqi-dev/sqh-client-locale/src/locales/zh.ts'
 import type {
   MenuOpenState, RowToast, RowToastState, SessionArchiveConfirmInjected, SessionArchiveConfirmRequest,
   SessionDeleteConfirmRequest, SessionRenameDialogInjected, SessionRenameTarget,
@@ -34,7 +34,7 @@ import { RowActionToast } from '../src/client/session-actions/RowActionToast.tsx
 import { createWorkspaceViewStore } from '../src/client/stores.ts'
 import { en, zh } from '../src/client/locales.ts'
 import { ShortcutRegistry } from '../../shortcuts/src/client/registry.ts'
-import type { ShortcutCommandId } from '@liusiqi-dev/dsh-client-shortcuts/client'
+import type { ShortcutCommandId } from '@liusiqi-dev/sqh-client-shortcuts/client'
 
 afterEach(cleanup)
 
@@ -483,7 +483,7 @@ describe('SessionArchiveConfirmDialog', () => {
 
 // A provider outside this package may merge its own family into the kind map;
 // the dialog must describe it without knowing its copy.
-declare module '@liusiqi-dev/dsh-workspace/types' {
+declare module '@liusiqi-dev/sqh-workspace/types' {
   interface SessionActivityKindMap {
     probe: true
   }

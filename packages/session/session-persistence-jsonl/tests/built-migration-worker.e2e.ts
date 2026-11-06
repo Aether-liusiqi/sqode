@@ -2,7 +2,7 @@ import { existsSync } from 'node:fs'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { execa } from 'execa'
-import { SESSION_FORMAT_VERSION } from '@liusiqi-dev/dsh-session'
+import { SESSION_FORMAT_VERSION } from '@liusiqi-dev/sqh-session'
 import { describe, expect, it } from 'vitest'
 
 const packageRoot = fileURLToPath(new URL('..', import.meta.url))
@@ -17,8 +17,8 @@ describe.skipIf(!built)('built migration verifier (plain node)', () => {
       import { join } from 'node:path'
       import { Worker } from 'node:worker_threads'
       import { Context } from '@liusiqi-dev/cordis'
-      import { SESSION_FORMAT_VERSION } from '@liusiqi-dev/dsh-session'
-      import JsonlSessionPersistence from '@liusiqi-dev/dsh-session-persistence-jsonl'
+      import { SESSION_FORMAT_VERSION } from '@liusiqi-dev/sqh-session'
+      import JsonlSessionPersistence from '@liusiqi-dev/sqh-session-persistence-jsonl'
 
       const root = await mkdtemp(join(tmpdir(), 'dsh-built-migration-'))
       const id = 'built-migration-worker'

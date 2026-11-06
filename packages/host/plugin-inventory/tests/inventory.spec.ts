@@ -4,10 +4,10 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { Context, FiberState, type Plugin } from '@liusiqi-dev/cordis'
-import { PluginPackages, readPluginMeta, type RuntimeResolution } from '@liusiqi-dev/dsh-app-boot'
+import { PluginPackages, readPluginMeta, type RuntimeResolution } from '@liusiqi-dev/sqh-app-boot'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
-import { remoteMethods } from '@liusiqi-dev/dsh-typert-protocol'
-import type { AgentPresetRegistry } from '@liusiqi-dev/dsh-agent-preset-registry'
+import { remoteMethods } from '@liusiqi-dev/sqh-typert-protocol'
+import type { AgentPresetRegistry } from '@liusiqi-dev/sqh-agent-preset-registry'
 import PluginInventoryGateway from '../src/index.ts'
 
 const contexts: Context[] = []

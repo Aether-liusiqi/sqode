@@ -1,22 +1,22 @@
-import { imageOffloadProjection } from '@liusiqi-dev/dsh-compaction-image-offload/projection'
+import { imageOffloadProjection } from '@liusiqi-dev/sqh-compaction-image-offload/projection'
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import AgentLoop from '@liusiqi-dev/dsh-agent-loop'
-import { mountAgentLoopTestDependencies } from '@liusiqi-dev/dsh-agent-loop-testkit'
-import InvariantRegistry from '@liusiqi-dev/dsh-invariants'
-import { CommandId } from '@liusiqi-dev/dsh-commands/brand'
-import * as SessionInvariant from '@liusiqi-dev/dsh-session/invariant'
-import * as AgentInvariant from '@liusiqi-dev/dsh-agent/invariant'
-import * as AgentLoopInvariant from '@liusiqi-dev/dsh-agent-loop/invariant'
-import * as CompactionInvariant from '@liusiqi-dev/dsh-compaction/invariant'
-import { BasicCompactionEngine } from '@liusiqi-dev/dsh-compaction-basic'
-import { CompactionId, isCompactCheckpointSource, ManualCompactionError } from '@liusiqi-dev/dsh-compaction'
-import type { CompactionResult } from '@liusiqi-dev/dsh-compaction'
+import AgentLoop from '@liusiqi-dev/sqh-agent-loop'
+import { mountAgentLoopTestDependencies } from '@liusiqi-dev/sqh-agent-loop-testkit'
+import InvariantRegistry from '@liusiqi-dev/sqh-invariants'
+import { CommandId } from '@liusiqi-dev/sqh-commands/brand'
+import * as SessionInvariant from '@liusiqi-dev/sqh-session/invariant'
+import * as AgentInvariant from '@liusiqi-dev/sqh-agent/invariant'
+import * as AgentLoopInvariant from '@liusiqi-dev/sqh-agent-loop/invariant'
+import * as CompactionInvariant from '@liusiqi-dev/sqh-compaction/invariant'
+import { BasicCompactionEngine } from '@liusiqi-dev/sqh-compaction-basic'
+import { CompactionId, isCompactCheckpointSource, ManualCompactionError } from '@liusiqi-dev/sqh-compaction'
+import type { CompactionResult } from '@liusiqi-dev/sqh-compaction'
 import {
   createAssistantMessage,
   createUserMessage,
   LlmAdapter,
-} from '@liusiqi-dev/dsh-llm'
+} from '@liusiqi-dev/sqh-llm'
 import type {
   ContentBlock,
   LlmResolvedModelInfo,
@@ -24,19 +24,19 @@ import type {
   RequestMessage,
   StreamChunk,
   TokenUsage,
-} from '@liusiqi-dev/dsh-llm'
-import SessionStore, { buildForkSeed, Session, SessionId, type SessionEvent } from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
-import LlmRuntime from '@liusiqi-dev/dsh-llm'
-import type { ContextFormed } from '@liusiqi-dev/dsh-llm'
-import TokenMeter from '@liusiqi-dev/dsh-token-meter'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
+} from '@liusiqi-dev/sqh-llm'
+import SessionStore, { buildForkSeed, Session, SessionId, type SessionEvent } from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
+import LlmRuntime from '@liusiqi-dev/sqh-llm'
+import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
+import TokenMeter from '@liusiqi-dev/sqh-token-meter'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
 import type {
   SummarizationInput,
   SummaryResult,
-} from '@liusiqi-dev/dsh-compaction-basic/src/summarizer.ts'
+} from '@liusiqi-dev/sqh-compaction-basic/src/summarizer.ts'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'listener': { kind: 'listener' } & ContextFormed
     'rival': { kind: 'rival' } & ContextFormed

@@ -1,6 +1,6 @@
 import { Context } from '@liusiqi-dev/cordis'
-import LocalSubprocessRuntime from '@liusiqi-dev/dsh-subprocess-local'
-import { LocalBashExecutor } from '@liusiqi-dev/dsh-bash-local'
+import LocalSubprocessRuntime from '@liusiqi-dev/sqh-subprocess-local'
+import { LocalBashExecutor } from '@liusiqi-dev/sqh-bash-local'
 import { mkdtemp, readFile, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'

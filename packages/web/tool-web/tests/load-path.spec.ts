@@ -8,10 +8,10 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
 import Loader from '@liusiqi-dev/cordis-plugin-loader'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
-import WebRuntime from '@liusiqi-dev/dsh-web'
-import * as toolWeb from '@liusiqi-dev/dsh-tool-web'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
+import WebRuntime from '@liusiqi-dev/sqh-web'
+import * as toolWeb from '@liusiqi-dev/sqh-tool-web'
 
 describe('dsh-tool-web real-load-path guard', () => {
   it('has no default export and keeps name/inject/Config through unwrapExports', () => {

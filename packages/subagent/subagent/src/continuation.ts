@@ -10,19 +10,19 @@
  * execution. No continuable path creates a Task or an intermediate
  * result-bearing wrapper.
  *
- * @module @liusiqi-dev/dsh-subagent
+ * @module @liusiqi-dev/sqh-subagent
  */
 
 import { randomUUID } from 'node:crypto'
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import { brandString } from '@liusiqi-dev/dsh-brand'
-import { ReasoningEffortId, contentHasImage, createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { ContentBlock, MessageId, MessageSource } from '@liusiqi-dev/dsh-llm'
-import { SessionLogOffset } from '@liusiqi-dev/dsh-session'
-import type { SessionId } from '@liusiqi-dev/dsh-session'
-import type { SessionPersistence } from '@liusiqi-dev/dsh-session-persistence'
-import type { SessionObservation, SessionQueryEngine } from '@liusiqi-dev/dsh-session-query'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import { brandString } from '@liusiqi-dev/sqh-brand'
+import { ReasoningEffortId, contentHasImage, createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { ContentBlock, MessageId, MessageSource } from '@liusiqi-dev/sqh-llm'
+import { SessionLogOffset } from '@liusiqi-dev/sqh-session'
+import type { SessionId } from '@liusiqi-dev/sqh-session'
+import type { SessionPersistence } from '@liusiqi-dev/sqh-session-persistence'
+import type { SessionObservation, SessionQueryEngine } from '@liusiqi-dev/sqh-session-query'
 import {
   childSessionMeta,
   captureDelegatedPolicyOverrides,
@@ -541,7 +541,7 @@ export class SubagentContinuationManager {
     const query = this.ctx.get('sessionQuery')
     if (query === undefined) {
       throw new SubagentError(
-        'continuable subagents require session query (load @liusiqi-dev/dsh-session-query)',
+        'continuable subagents require session query (load @liusiqi-dev/sqh-session-query)',
         'CONTINUATION_UNAVAILABLE',
       )
     }

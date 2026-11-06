@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 import { describe, expect, it, vi } from 'vitest'
-import { AttachmentId } from '@liusiqi-dev/dsh-attachment'
-import type { SessionFace } from '@liusiqi-dev/dsh-api-session-controller/client'
-import { RemoteError, SlotTestRuntime } from '@liusiqi-dev/dsh-client-test-runtime'
+import { AttachmentId } from '@liusiqi-dev/sqh-attachment'
+import type { SessionFace } from '@liusiqi-dev/sqh-api-session-controller/client'
+import { RemoteError, SlotTestRuntime } from '@liusiqi-dev/sqh-client-test-runtime'
 import { HistoricalImageCache } from '../src/client/conversation/historical-images.ts'
 
 describe('HistoricalImageCache', () => {

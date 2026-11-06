@@ -1,12 +1,12 @@
 /**
  * Three shared tools adapt model arguments to scoped resource operations.
  *
- * @module @liusiqi-dev/dsh-mcp-resources
+ * @module @liusiqi-dev/sqh-mcp-resources
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import { defineTool, type ToolExecution } from '@liusiqi-dev/dsh-tools'
-import type { JsonValue } from '@liusiqi-dev/dsh-util-values'
+import { defineTool, type ToolExecution } from '@liusiqi-dev/sqh-tools'
+import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
 import type { McpResourceRequest } from './index.ts'
 import { renderResourceResult } from './render.ts'
 

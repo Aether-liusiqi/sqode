@@ -1,4 +1,4 @@
-import { CredentialProvider } from '@liusiqi-dev/dsh-credentials'
+import { CredentialProvider } from '@liusiqi-dev/sqh-credentials'
 import type {
   CredentialInfo,
   CredentialKey,
@@ -7,7 +7,7 @@ import type {
   CredentialRecordInfo,
   CredentialRef,
   ResolvedCredential,
-} from '@liusiqi-dev/dsh-credentials'
+} from '@liusiqi-dev/sqh-credentials'
 
 /**
  * In-memory credentials provider for the authorization suite. Only the record

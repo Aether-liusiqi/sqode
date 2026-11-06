@@ -1,13 +1,13 @@
 // Sessions remain resident after creation so their open Remote sources keep running off-screen.
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { InboxState, InboxTarget } from '@liusiqi-dev/dsh-agent/types'
-import { randomUUID } from '@liusiqi-dev/dsh-util-crypto'
-import type { AttachmentIdType, FileAttachmentRef, ImageAttachmentRef } from '@liusiqi-dev/dsh-attachment'
-import type { SubagentAddress } from '@liusiqi-dev/dsh-subagent/client'
-import type { MessageId } from '@liusiqi-dev/dsh-llm/brand'
-import type { UserMessage } from '@liusiqi-dev/dsh-llm/types'
-import { SessionLogOffset, SessionSeq, type SessionId } from '@liusiqi-dev/dsh-session/types'
+import type { InboxState, InboxTarget } from '@liusiqi-dev/sqh-agent/types'
+import { randomUUID } from '@liusiqi-dev/sqh-util-crypto'
+import type { AttachmentIdType, FileAttachmentRef, ImageAttachmentRef } from '@liusiqi-dev/sqh-attachment'
+import type { SubagentAddress } from '@liusiqi-dev/sqh-subagent/client'
+import type { MessageId } from '@liusiqi-dev/sqh-llm/brand'
+import type { UserMessage } from '@liusiqi-dev/sqh-llm/types'
+import { SessionLogOffset, SessionSeq, type SessionId } from '@liusiqi-dev/sqh-session/types'
 import { SessionEventStream } from '../transport.ts'
 import type { SessionJournalChange } from '../transport.ts'
 import type {
@@ -29,9 +29,9 @@ import type {
   SessionEventLike, SessionEventLikeEntry, SessionLiveEventEntry,
 } from '../contract/events.ts'
 import { Notifier } from './notifier.ts'
-import { isRemoteFailure } from '@liusiqi-dev/dsh-api-gateway/client'
-import { RemoteError } from '@liusiqi-dev/dsh-typert-protocol'
-import type { RemoteFailure, RemoteResult } from '@liusiqi-dev/dsh-typert-protocol'
+import { isRemoteFailure } from '@liusiqi-dev/sqh-api-gateway/client'
+import { RemoteError } from '@liusiqi-dev/sqh-typert-protocol'
+import type { RemoteFailure, RemoteResult } from '@liusiqi-dev/sqh-typert-protocol'
 import type { SessionRemotes } from './remotes.ts'
 import { ProjectionValueStore } from './projection-store.ts'
 import type { ProjectionsBaseline } from './projection-store.ts'

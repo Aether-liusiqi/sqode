@@ -14,25 +14,25 @@ import type {
   InboxTarget,
   PreStepDecision,
   RequestErrorAction,
-} from '@liusiqi-dev/dsh-agent'
-import { agentEvents, assembleContextFor } from '@liusiqi-dev/dsh-agent'
-import { declarationBudgetChars } from '@liusiqi-dev/dsh-tools'
-import type { GenerateOptions, LlmCallConfig, Message, PreparedLlmCall } from '@liusiqi-dev/dsh-llm'
+} from '@liusiqi-dev/sqh-agent'
+import { agentEvents, assembleContextFor } from '@liusiqi-dev/sqh-agent'
+import { declarationBudgetChars } from '@liusiqi-dev/sqh-tools'
+import type { GenerateOptions, LlmCallConfig, Message, PreparedLlmCall } from '@liusiqi-dev/sqh-llm'
 import {
   LlmError,
   createAssistantMessage,
   createDeveloperMessage,
   errorChain,
   markAgentLoopRequest,
-} from '@liusiqi-dev/dsh-llm'
-import { assertNever, deepFreeze } from '@liusiqi-dev/dsh-util-values'
-import type { Scope } from '@liusiqi-dev/dsh-scope'
-import { createScope } from '@liusiqi-dev/dsh-scope'
-import type { EpochHeader, RequestContext, Session, SessionId, SessionSeq, TurnEndReason, UserMessage } from '@liusiqi-dev/dsh-session'
-import { canonicalHeader, headerEquals, ToolCallRecovery } from '@liusiqi-dev/dsh-session'
-import { joinContextSections, renderContextSections, renderPrompt } from '@liusiqi-dev/dsh-system-prompt'
-import type { PromptAssembly } from '@liusiqi-dev/dsh-system-prompt'
-import type {} from '@liusiqi-dev/dsh-session-projection'
+} from '@liusiqi-dev/sqh-llm'
+import { assertNever, deepFreeze } from '@liusiqi-dev/sqh-util-values'
+import type { Scope } from '@liusiqi-dev/sqh-scope'
+import { createScope } from '@liusiqi-dev/sqh-scope'
+import type { EpochHeader, RequestContext, Session, SessionId, SessionSeq, TurnEndReason, UserMessage } from '@liusiqi-dev/sqh-session'
+import { canonicalHeader, headerEquals, ToolCallRecovery } from '@liusiqi-dev/sqh-session'
+import { joinContextSections, renderContextSections, renderPrompt } from '@liusiqi-dev/sqh-system-prompt'
+import type { PromptAssembly } from '@liusiqi-dev/sqh-system-prompt'
+import type {} from '@liusiqi-dev/sqh-session-projection'
 import type { Context } from '@liusiqi-dev/cordis'
 import { ReactLoopInbox } from './inbox.ts'
 import { RuntimeContextProjection } from './runtime-context.ts'

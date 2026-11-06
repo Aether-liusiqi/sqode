@@ -2,18 +2,18 @@
  * Whole-client test carrier: boots an {@link AssemblyPlan} through the
  * production `bootClient` over an in-process module table, with a
  * `RemoteMock` bound to that client's Connection plugin instance.
- * @module @liusiqi-dev/dsh-client-test-runtime/src/assembly/test-client
+ * @module @liusiqi-dev/sqh-client-test-runtime/src/assembly/test-client
  */
 import { Context, type Plugin } from '@liusiqi-dev/cordis'
 import type { Entry } from '@liusiqi-dev/cordis-plugin-loader'
-import { tearDownEntryFiber } from '@liusiqi-dev/dsh-client-modules/client'
+import { tearDownEntryFiber } from '@liusiqi-dev/sqh-client-modules/client'
 import {
   installConnection,
   type ConnectionHandle,
-} from '@liusiqi-dev/dsh-client-connection/client'
-import { bootClient } from '@liusiqi-dev/dsh-client-web/src/boot-client.ts'
-import { mountClient } from '@liusiqi-dev/dsh-client-web/src/mount.ts'
-import type { RemoteMock } from '@liusiqi-dev/dsh-remote-mock'
+} from '@liusiqi-dev/sqh-client-connection/client'
+import { bootClient } from '@liusiqi-dev/sqh-client-web/src/boot-client.ts'
+import { mountClient } from '@liusiqi-dev/sqh-client-web/src/mount.ts'
+import type { RemoteMock } from '@liusiqi-dev/sqh-remote-mock'
 import { act } from '@testing-library/react'
 import { createInProcessModules, loadPluginModules } from './modules.ts'
 import { assertPlan, graphFromRoster, type AssemblyPlan } from './roster.ts'
@@ -60,7 +60,7 @@ class SharedJsdomShims {
 
 const sharedJsdomShims = new SharedJsdomShims()
 
-const CONNECTION_PACKAGE = '@liusiqi-dev/dsh-client-connection'
+const CONNECTION_PACKAGE = '@liusiqi-dev/sqh-client-connection'
 
 /** Default readiness budget; the mock answers `$events` immediately, so a miss means a boot-time fixture is absent. */
 const DEFAULT_CONNECT_TIMEOUT_MS = 5_000
@@ -177,7 +177,7 @@ export class TestClient {
    * `installConnection`, while this path supplies the mock carrier, uses
    * default recovery timings, and captures the current page hostname once for
    * later reloads. A caller-provided Connection row remains unchanged and owns
-   * its readiness behavior. The `@liusiqi-dev/dsh-api-remotes` row is
+   * its readiness behavior. The `@liusiqi-dev/sqh-api-remotes` row is
    * dropped from the roster: its generated Remote clients exist only in built
    * `lib/`, and the `remote.<ns>` services the roster injects (plus the
    * namespaces the mock has rules for at this point) are provided as

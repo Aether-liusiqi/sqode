@@ -1,9 +1,9 @@
 /** Staged editor for the Host-owned subagent model allowlist. */
 
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
-import type { ModelProviderGroup } from '@liusiqi-dev/dsh-api-remotes/client'
-import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/dsh-client-store'
-import type { SettingsFormScope, SettingsFormShell } from '@liusiqi-dev/dsh-client-ui-primitives'
+import type { ModelProviderGroup } from '@liusiqi-dev/sqh-api-remotes/client'
+import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import type { SettingsFormScope, SettingsFormShell } from '@liusiqi-dev/sqh-client-ui-primitives'
 
 /** Namespace of the Host-owned subagent model-selection preference. */
 export const SUBAGENT_MODEL_SELECTION_NS = 'subagent-model-selection-settings'

@@ -65,7 +65,7 @@ ctx.slots.inject('plugins.detail.badge', () => ctx.slots.register({
     ".": { "types": "./lib/types/index.d.ts", "default": "./lib/index.js" },
     "./client": { "types": "./lib/types/client/index.d.ts", "default": "./lib/client.js" }
   },
-  "dsh": { "client": { "platform": "web", "inject": ["@liusiqi-dev/dsh-client-ui-settings"] } }
+  "dsh": { "client": { "platform": "web", "inject": ["@liusiqi-dev/sqh-client-ui-settings"] } }
 }
 ```
 

@@ -1,8 +1,8 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import type { Agent } from '@liusiqi-dev/dsh-agent'
-import type {} from '@liusiqi-dev/dsh-agent-instructions'
-import { compactCheckpointSource, CompactionId } from '@liusiqi-dev/dsh-compaction'
+import type { Agent } from '@liusiqi-dev/sqh-agent'
+import type {} from '@liusiqi-dev/sqh-agent-instructions'
+import { compactCheckpointSource, CompactionId } from '@liusiqi-dev/sqh-compaction'
 import LlmRuntime, {
   createMessage,
   createSystemMessage,
@@ -14,35 +14,35 @@ import LlmRuntime, {
   type GenerateOptions,
   type StreamChunk,
   type ToolSchema,
-} from '@liusiqi-dev/dsh-llm'
+} from '@liusiqi-dev/sqh-llm'
 import PermissionPresetService, {
   AUTO_PRESET,
   type Config as PermissionConfig,
-} from '@liusiqi-dev/dsh-permission-presets'
+} from '@liusiqi-dev/sqh-permission-presets'
 import SessionStore, {
   SessionId,
   SessionLogOffset,
   type Session,
-} from '@liusiqi-dev/dsh-session'
-import SessionProjectionRegistry from '@liusiqi-dev/dsh-session-projection'
+} from '@liusiqi-dev/sqh-session'
+import SessionProjectionRegistry from '@liusiqi-dev/sqh-session-projection'
 import SubagentRuntime, {
   NO_START_CAPABILITIES,
   resolveChildCwd,
   snapshotSubagentDescriptor,
   type ResolvedSubagentStartRequest,
-} from '@liusiqi-dev/dsh-subagent'
-import type {} from '@liusiqi-dev/dsh-shell'
-import SystemPrompt from '@liusiqi-dev/dsh-system-prompt'
-import * as ToolSubagent from '@liusiqi-dev/dsh-tool-subagent'
+} from '@liusiqi-dev/sqh-subagent'
+import type {} from '@liusiqi-dev/sqh-shell'
+import SystemPrompt from '@liusiqi-dev/sqh-system-prompt'
+import * as ToolSubagent from '@liusiqi-dev/sqh-tool-subagent'
 import ToolRuntime, {
   defineContentToolFixture,
   RUN_CODE_NAME,
   TOOL_ABORTED_BEFORE_DISPATCH,
   type PreToolDecision,
   type ToolExecutionToken,
-} from '@liusiqi-dev/dsh-tools'
-import ApprovalService, { setApprovalPolicy, type ApprovalOutcome } from '@liusiqi-dev/dsh-user-approval'
-import * as AutoReview from '@liusiqi-dev/dsh-experimental-auto-review'
+} from '@liusiqi-dev/sqh-tools'
+import ApprovalService, { setApprovalPolicy, type ApprovalOutcome } from '@liusiqi-dev/sqh-user-approval'
+import * as AutoReview from '@liusiqi-dev/sqh-experimental-auto-review'
 
 const EXPECTED_REVIEW_POLICY = `REVIEW_POLICY
 You are the final authorization reviewer for exactly one pending tool call. Your decision replaces human approval for this call. If you allow it, the call executes immediately with full host access and no later confirmation.

@@ -1,9 +1,9 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, render, screen, within } from '@testing-library/react'
-import { makeTranslate } from '@liusiqi-dev/dsh-client-test-runtime'
-import type { JobsSnapshot, JobView, ObservedJob } from '@liusiqi-dev/dsh-api-job-controller/client'
-import type { SessionId } from '@liusiqi-dev/dsh-session/types'
+import { makeTranslate } from '@liusiqi-dev/sqh-client-test-runtime'
+import type { JobsSnapshot, JobView, ObservedJob } from '@liusiqi-dev/sqh-api-job-controller/client'
+import type { SessionId } from '@liusiqi-dev/sqh-session/types'
 import { JobListAction, type JobListActionProps } from '../src/client/JobListAction.tsx'
 import { zh } from '../src/client/locales.ts'
 

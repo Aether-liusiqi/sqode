@@ -4,7 +4,7 @@ import { cp, lstat, mkdir, mkdtemp, readFile, rename, rm, stat } from 'node:fs/p
 import { dirname, isAbsolute, join } from 'node:path'
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { defineTool } from '@liusiqi-dev/dsh-tools'
+import { defineTool } from '@liusiqi-dev/sqh-tools'
 
 /** Cordis plugin identity. */
 export const name = 'tool-workspace-dependencies'

@@ -4,8 +4,8 @@
  * reviews in one session keep their own choices; the bucket ends with the
  * tab record's signal.
  */
-import { defineStore, type EngineStoreHandle } from '@liusiqi-dev/dsh-client-store'
-import type { TabId } from '@liusiqi-dev/dsh-client-ui-dockkit'
+import { defineStore, type EngineStoreHandle } from '@liusiqi-dev/sqh-client-store'
+import type { TabId } from '@liusiqi-dev/sqh-client-ui-dockkit'
 
 /** One review tab's choices. */
 export interface ReviewTabState {

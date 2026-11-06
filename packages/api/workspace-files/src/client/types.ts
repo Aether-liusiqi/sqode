@@ -4,10 +4,10 @@
  */
 // Bring the base `ResourceProtocolMap` declaration into this program so the
 // augmentation below merges into it instead of declaring a second interface.
-import type {} from '@liusiqi-dev/dsh-client-resources/client'
+import type {} from '@liusiqi-dev/sqh-client-resources/client'
 import type { WorkspaceFileStat } from '../types.ts'
 
-declare module '@liusiqi-dev/dsh-client-ui-slots' {
+declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface ResourceProtocolMap {
     /**
      * One workspace file's metadata, addressed as
@@ -23,7 +23,7 @@ export interface WorkspaceFileParams {
   readonly line?: number
 }
 
-declare module '@liusiqi-dev/dsh-typert-protocol' {
+declare module '@liusiqi-dev/sqh-typert-protocol' {
   interface RemoteErrorDetailsMap {
     /**
      * The address is not a `dsh-resource://file/` address in a scope the

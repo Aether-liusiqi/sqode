@@ -5,10 +5,10 @@
 import assert from 'node:assert/strict'
 import { describe, expect, it, vi, beforeEach } from 'vitest'
 import { Context } from '@liusiqi-dev/cordis'
-import SystemPrompt, { renderPrompt } from '@liusiqi-dev/dsh-system-prompt'
-import ToolRuntime from '@liusiqi-dev/dsh-tools'
-import { createScope } from '@liusiqi-dev/dsh-scope'
-import type { Config } from '@liusiqi-dev/dsh-mcp-client'
+import SystemPrompt, { renderPrompt } from '@liusiqi-dev/sqh-system-prompt'
+import ToolRuntime from '@liusiqi-dev/sqh-tools'
+import { createScope } from '@liusiqi-dev/sqh-scope'
+import type { Config } from '@liusiqi-dev/sqh-mcp-client'
 
 // ---- Mock MCP SDK ----
 
@@ -48,7 +48,7 @@ vi.mock('@modelcontextprotocol/client/stdio', () => ({
 
 // vi.mock is hoisted above static imports, so the module under test sees the
 // mocked SDK even through a static import.
-import { apply, name, inject, Config as ConfigSchema } from '@liusiqi-dev/dsh-mcp-client/src/index.ts'
+import { apply, name, inject, Config as ConfigSchema } from '@liusiqi-dev/sqh-mcp-client/src/index.ts'
 
 // ---- Helpers ----
 

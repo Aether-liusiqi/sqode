@@ -1,16 +1,16 @@
 /** Streaming system-prompt promotion followed by canonical V3 envelope conversion. */
 
 import { createHash } from 'node:crypto'
-import { SessionFormatError, SessionFormatUnsupportedMigrationError, defineSessionFormatMigration, sessionFormatCount } from '@liusiqi-dev/dsh-session-format'
-import type { SessionFormatEvent, SessionFormatEventRun, SessionFormatJsonObject, SessionFormatJsonValue, SessionFormatMigrationContext, SessionFormatMigrationStage, SessionFormatMigrationStageInput } from '@liusiqi-dev/dsh-session-format'
-import { assertReleasedV2Header } from '@liusiqi-dev/dsh-session-format-v1-to-v2'
+import { SessionFormatError, SessionFormatUnsupportedMigrationError, defineSessionFormatMigration, sessionFormatCount } from '@liusiqi-dev/sqh-session-format'
+import type { SessionFormatEvent, SessionFormatEventRun, SessionFormatJsonObject, SessionFormatJsonValue, SessionFormatMigrationContext, SessionFormatMigrationStage, SessionFormatMigrationStageInput } from '@liusiqi-dev/sqh-session-format'
+import { assertReleasedV2Header } from '@liusiqi-dev/sqh-session-format-v1-to-v2'
 import { assertEvent, canonicalizeTransformedEvent, record, SURFACE_TYPES } from './payload.ts'
 import { remapEvent } from './references.ts'
 import { assertReleasedV3Header } from './validation.ts'
 
 /** Promote system prompts, remap audited references, and canonicalize envelopes and PTC vocabulary. */
 export const sessionFormatV2ToV3 = defineSessionFormatMigration({
-  name: '@liusiqi-dev/dsh-session-format-v2-to-v3',
+  name: '@liusiqi-dev/sqh-session-format-v2-to-v3',
   fromVersion: 2,
   toVersion: 3,
   migrateHeader(header) {
@@ -123,7 +123,7 @@ class ReleasedV2ToV3Stage implements SessionFormatMigrationStage {
         ...this.step,
         message: {
           id,
-          role: 'system', source: { kind: 'plugin', plugin: '@liusiqi-dev/dsh-system-prompt' },
+          role: 'system', source: { kind: 'plugin', plugin: '@liusiqi-dev/sqh-system-prompt' },
           content: prompt === '' ? [] : [{ type: 'text', text: prompt }],
         },
       },

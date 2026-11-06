@@ -24,11 +24,11 @@ import type { DesktopRelease } from './release.ts'
 import { readDesktopRuntime } from './runtime-tree.ts'
 import {
   initProfile, PROFILE_TEMPLATES, removeLinkProjections, sanitizeProfile, type ProfileTemplate,
-} from '@liusiqi-dev/dsh-app-boot'
+} from '@liusiqi-dev/sqh-app-boot'
 
-const PROJECT_NAME = '@liusiqi-dev/dsh-desktop-runtime'
+const PROJECT_NAME = '@liusiqi-dev/sqh-desktop-runtime'
 const SQODE_PACKAGE = '@liusiqi-dev/sqode'
-const CORE_BUILD_PACKAGE = '@liusiqi-dev/dsh-subprocess-local'
+const CORE_BUILD_PACKAGE = '@liusiqi-dev/sqh-subprocess-local'
 const WEB_PROFILE = PROFILE_TEMPLATES.web as ProfileTemplate
 const WORKSPACE_SETTINGS = 'nodeLinker: hoisted\nautoInstallPeers: false\n'
 function writeJson(path: string, value: unknown): void {

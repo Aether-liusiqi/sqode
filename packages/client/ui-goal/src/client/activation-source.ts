@@ -1,10 +1,10 @@
 /** Goal activation observable that orders Remote reads and live activation events. */
 
-import type { RemoteResult } from '@liusiqi-dev/dsh-api-remotes/client'
-import type { HostObservable } from '@liusiqi-dev/dsh-client-ui-slots'
+import type { RemoteResult } from '@liusiqi-dev/sqh-api-remotes/client'
+import type { HostObservable } from '@liusiqi-dev/sqh-client-ui-slots'
 import type {
   GoalActivationChanged, GoalProjection, GoalRef, GoalView,
-} from '@liusiqi-dev/dsh-goal/client'
+} from '@liusiqi-dev/sqh-goal/client'
 import type { GoalActivationSnapshot } from './slots.ts'
 
 /** Live inputs for one Session's goal activation source. */

@@ -8,9 +8,9 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { verifyDefaultProductIsolation } from './verify-default-product-isolation.ts'
 
 const roots: string[] = []
-const experimental = '@liusiqi-dev/dsh-experimental-prototype'
-const core = '@liusiqi-dev/dsh-core'
-const base = '@liusiqi-dev/dsh-base'
+const experimental = '@liusiqi-dev/sqh-experimental-prototype'
+const core = '@liusiqi-dev/sqh-core'
+const base = '@liusiqi-dev/sqh-base'
 const profile = 'packages/boot/app-boot/src/profile.ts'
 const preset = 'packages/bundle/web-app/presets/standard.patch.yml'
 const patch = 'packages/bundle/base/cordis.patch.yml'
@@ -31,16 +31,16 @@ function fixture(): string {
   roots.push(root)
   write(root, 'apps/cli/package.json', { name: '@liusiqi-dev/sqode', dependencies: { [core]: 'workspace:^' } })
   write(root, 'apps/cli/src/bin.ts', 'export {}\n')
-  write(root, 'apps/web/package.json', { name: '@liusiqi-dev/dsh-web-frontend' })
+  write(root, 'apps/web/package.json', { name: '@liusiqi-dev/sqh-web-frontend' })
   write(root, 'apps/web/index.html', '<script type="module" src="/src/main.ts"></script>')
   write(root, 'apps/web/src/main.ts', 'export {}\n')
-  write(root, 'python/sdk-runtime/package.json', { name: '@liusiqi-dev/dsh-python-runtime' })
+  write(root, 'python/sdk-runtime/package.json', { name: '@liusiqi-dev/sqh-python-runtime' })
   write(root, 'packages/core/core/package.json', { name: core })
   write(root, 'packages/core/core/src/index.ts', 'export {}\n')
   write(root, 'packages/bundle/base/package.json', { name: base, dsh: { bundle: { patch: './cordis.patch.yml' } } })
   write(root, patch, [{ insert: [{ name: core }] }])
-  write(root, preset, [{ insert: [{ name: '@liusiqi-dev/dsh-agent-preset', config: { id: 'standard', plugins: [{ name: core }] } }] }])
-  write(root, 'packages/preset/agent-preset/package.json', { name: '@liusiqi-dev/dsh-agent-preset' })
+  write(root, preset, [{ insert: [{ name: '@liusiqi-dev/sqh-agent-preset', config: { id: 'standard', plugins: [{ name: core }] } }] }])
+  write(root, 'packages/preset/agent-preset/package.json', { name: '@liusiqi-dev/sqh-agent-preset' })
   write(root, profile, `export const PROFILE_TEMPLATES = { web: { bundles: ['${base}'] } }\n`
     + `export const DEFAULT_PROFILE_BUNDLES = ['${base}']\n`)
   write(root, 'packages/experimental/prototype/package.json', { name: experimental })
@@ -93,7 +93,7 @@ describe('default product isolation', () => {
 
   it('ships an optional bundle switched off: its graph is outside the product, its name stays out of imports and defaults', () => {
     const root = fixture()
-    const layer = '@liusiqi-dev/dsh-experimental-layer'
+    const layer = '@liusiqi-dev/sqh-experimental-layer'
     write(root, 'packages/experimental/layer/package.json', {
       name: layer, icon: './icon.svg', exports: { './locale/*.json': './locale/*.json' },
       dependencies: { [experimental]: 'workspace:^' }, dsh: { bundle: { patch: './cordis.patch.yml' } },
@@ -156,12 +156,12 @@ describe('default product isolation', () => {
 
   it('rejects experimental names absent from the inventory and paths with another package name', () => {
     const root = fixture()
-    manifest(root, 'apps/cli/package.json', { dependencies: { '@liusiqi-dev/dsh-experimental-missing': '*' } })
+    manifest(root, 'apps/cli/package.json', { dependencies: { '@liusiqi-dev/sqh-experimental-missing': '*' } })
     manifest(root, 'packages/experimental/prototype/package.json', { name: '@fixture/innocent' })
     manifest(root, 'python/sdk-runtime/package.json', { dependencies: { '@fixture/innocent': '*' } })
 
     const failures = verifyDefaultProductIsolation(root).failures.join('\n')
-    expect(failures).toContain('@liusiqi-dev/dsh-experimental-missing')
+    expect(failures).toContain('@liusiqi-dev/sqh-experimental-missing')
     expect(failures).toContain('@fixture/innocent')
   })
 
@@ -357,7 +357,7 @@ describe('default product isolation', () => {
 
   it('checks group contents after an id-only patch changes the composed Web tree', () => {
     const root = fixture()
-    const web = '@liusiqi-dev/dsh-web-app'
+    const web = '@liusiqi-dev/sqh-web-app'
     write(root, 'packages/bundle/web-app/package.json', { name: web, dsh: { bundle: { patch: './cordis.patch.yml' } } })
     write(root, patch, [{ insert: [{ id: 'feature-group', group: true, config: [{ name: core }] }] }])
     write(root, 'packages/bundle/web-app/cordis.patch.yml', [

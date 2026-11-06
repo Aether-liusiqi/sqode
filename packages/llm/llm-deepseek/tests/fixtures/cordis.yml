@@ -1,17 +1,17 @@
-- name: '@liusiqi-dev/dsh-llm'
-- name: '@liusiqi-dev/dsh-session'
-- name: '@liusiqi-dev/dsh-session-projection'
-- name: '@liusiqi-dev/dsh-system-prompt'
-- name: '@liusiqi-dev/dsh-tools'
-- name: '@liusiqi-dev/dsh-agent'
-- name: '@liusiqi-dev/dsh-agent-loop'
+- name: '@liusiqi-dev/sqh-llm'
+- name: '@liusiqi-dev/sqh-session'
+- name: '@liusiqi-dev/sqh-session-projection'
+- name: '@liusiqi-dev/sqh-system-prompt'
+- name: '@liusiqi-dev/sqh-tools'
+- name: '@liusiqi-dev/sqh-agent'
+- name: '@liusiqi-dev/sqh-agent-loop'
   config:
     agents: []
-- name: '@liusiqi-dev/dsh-credentials-local'
+- name: '@liusiqi-dev/sqh-credentials-local'
   config:
     path: {{credentials}}
     watch: false
-- name: '@liusiqi-dev/dsh-llm-deepseek-api-key'
+- name: '@liusiqi-dev/sqh-llm-deepseek-api-key'
   config:
     apiKeyEnv: DEEPSEEK_API_KEY
     baseURL: {{endpoint}}
@@ -19,6 +19,6 @@
     reasoningEffort: high
     maxTokens: 256000
     streamIdleTimeoutMs: 300000
-- name: '@liusiqi-dev/dsh-llm-deepseek-account'
+- name: '@liusiqi-dev/sqh-llm-deepseek-account'
   config:
     baseURL: {{endpoint}}

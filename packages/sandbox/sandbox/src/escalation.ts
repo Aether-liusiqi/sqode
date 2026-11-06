@@ -1,6 +1,6 @@
 /**
  * The escalation vocabulary and choreography shared by every sandbox-enforcing
- * tool family (`@liusiqi-dev/dsh-tool-bash`, `@liusiqi-dev/dsh-tool-fs`): the
+ * tool family (`@liusiqi-dev/sqh-tool-bash`, `@liusiqi-dev/sqh-tool-fs`): the
  * strictly-wider ladder, the argument-pairing validation, the model-facing
  * denial/hint markers, and {@link approveEscalation} — the ordered fail-closed
  * sequence that resolves a `sandbox_permissions` request through a
@@ -16,7 +16,7 @@
  * @module dsh-sandbox/escalation
  */
 
-import { assertNever } from '@liusiqi-dev/dsh-util-values'
+import { assertNever } from '@liusiqi-dev/sqh-util-values'
 import type { SandboxMode } from './index.ts'
 
 /**

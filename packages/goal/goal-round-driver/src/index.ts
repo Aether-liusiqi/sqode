@@ -1,16 +1,16 @@
 /**
  * Same-session goal-round driver over public agent, session, and goal services.
- * @module @liusiqi-dev/dsh-goal-round-driver
+ * @module @liusiqi-dev/sqh-goal-round-driver
  */
 
 import { isDeepStrictEqual } from 'node:util'
 import { FiberState } from '@liusiqi-dev/cordis'
 import type { Context } from '@liusiqi-dev/cordis'
-import type { Agent, PreStepDecision } from '@liusiqi-dev/dsh-agent'
-import type { GoalMessageSource, GoalRef, GoalView } from '@liusiqi-dev/dsh-goal'
-import { createUserMessage } from '@liusiqi-dev/dsh-llm'
-import type { ContentBlock, MessageId, MessageSource } from '@liusiqi-dev/dsh-llm'
-import type { Session, SessionEvent, UserMessage } from '@liusiqi-dev/dsh-session'
+import type { Agent, PreStepDecision } from '@liusiqi-dev/sqh-agent'
+import type { GoalMessageSource, GoalRef, GoalView } from '@liusiqi-dev/sqh-goal'
+import { createUserMessage } from '@liusiqi-dev/sqh-llm'
+import type { ContentBlock, MessageId, MessageSource } from '@liusiqi-dev/sqh-llm'
+import type { Session, SessionEvent, UserMessage } from '@liusiqi-dev/sqh-session'
 import { renderGoalRoundPrompt } from './prompt.ts'
 
 export { renderGoalRoundPrompt } from './prompt.ts'

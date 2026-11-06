@@ -3,7 +3,7 @@ description: "Pure adjacent Session format planning, lossless JSON value checks,
 kind: "package-library"
 ---
 
-# @liusiqi-dev/dsh-session-format
+# @liusiqi-dev/sqh-session-format
 
 English | [中文](README.zh.md)
 

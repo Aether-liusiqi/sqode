@@ -1,7 +1,7 @@
 /** Shared modal for voice activation and unavailable recognition. */
-import { Button, Modal } from '@liusiqi-dev/dsh-client-ui-primitives'
-import type { PropsLocale, PropsRuntime } from '@liusiqi-dev/dsh-client-ui-slots'
-import type {} from '@liusiqi-dev/dsh-client-ui-plugin-manager/client'
+import { Button, Modal } from '@liusiqi-dev/sqh-client-ui-primitives'
+import type { PropsLocale, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
+import type {} from '@liusiqi-dev/sqh-client-ui-plugin-manager/client'
 import type { NS } from './locales.ts'
 
 type VoiceSetupDialogProps = PropsLocale<typeof NS>

@@ -14,10 +14,10 @@
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import type { Context } from '@liusiqi-dev/cordis'
-import { createToolResultMessage, type ToolCallBlock } from '@liusiqi-dev/dsh-llm'
-import type { Session, SessionSeq, UserMessage } from '@liusiqi-dev/dsh-session'
-import { TOOL_ABORTED_BEFORE_DISPATCH, TOOL_RUNTIME_SCHEDULER, type ToolExecutionInput, type ToolExecutionMode, type ToolExecutionResult, type ToolRunContext } from '@liusiqi-dev/dsh-tools'
-import { assertNever } from '@liusiqi-dev/dsh-util-values'
+import { createToolResultMessage, type ToolCallBlock } from '@liusiqi-dev/sqh-llm'
+import type { Session, SessionSeq, UserMessage } from '@liusiqi-dev/sqh-session'
+import { TOOL_ABORTED_BEFORE_DISPATCH, TOOL_RUNTIME_SCHEDULER, type ToolExecutionInput, type ToolExecutionMode, type ToolExecutionResult, type ToolRunContext } from '@liusiqi-dev/sqh-tools'
+import { assertNever } from '@liusiqi-dev/sqh-util-values'
 
 /** One tool call after argument parsing, ready to schedule. */
 interface PlannedCall {

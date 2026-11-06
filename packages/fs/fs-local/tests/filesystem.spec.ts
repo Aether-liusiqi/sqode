@@ -13,9 +13,9 @@ import { tmpdir } from 'node:os'
 import { join, parse, relative } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { Context } from '@liusiqi-dev/cordis'
-import { LocalFileSystem } from '@liusiqi-dev/dsh-fs-local'
-import { FsVersion } from '@liusiqi-dev/dsh-fs'
-import type { FsTarget } from '@liusiqi-dev/dsh-fs'
+import { LocalFileSystem } from '@liusiqi-dev/sqh-fs-local'
+import { FsVersion } from '@liusiqi-dev/sqh-fs'
+import type { FsTarget } from '@liusiqi-dev/sqh-fs'
 
 let dir: string
 let ctx: Context

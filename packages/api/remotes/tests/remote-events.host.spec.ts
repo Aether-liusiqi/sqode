@@ -4,8 +4,8 @@ import type {
   RemoteEventHostInfo,
   TypertRemoteEventInvocation,
   TypertRemoteEventSource,
-} from '@liusiqi-dev/dsh-api-gateway'
-import { scopeTarget } from '@liusiqi-dev/dsh-scope'
+} from '@liusiqi-dev/sqh-api-gateway'
+import { scopeTarget } from '@liusiqi-dev/sqh-scope'
 import { describe, expect, it } from 'vitest'
 import { apply, inject } from '../src/index.ts'
 

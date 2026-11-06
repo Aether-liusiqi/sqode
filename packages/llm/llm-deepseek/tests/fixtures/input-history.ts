@@ -1,12 +1,12 @@
 /** Replay persisted user input carrying assistant-only content through Messages. */
 import assert from 'node:assert/strict'
 import type { Context } from '@liusiqi-dev/cordis'
-import type {} from '@liusiqi-dev/dsh-agent'
-import { createUserMessage, ToolCallId } from '@liusiqi-dev/dsh-llm'
+import type {} from '@liusiqi-dev/sqh-agent'
+import { createUserMessage, ToolCallId } from '@liusiqi-dev/sqh-llm'
 import { resolveAdapterOptions } from '../../src/config.ts'
 import { serialize } from '../../src/serialize.ts'
 
-declare module '@liusiqi-dev/dsh-llm' {
+declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     'plugin:messages-input-history-snapshot': { kind: 'plugin:messages-input-history-snapshot' }
   }

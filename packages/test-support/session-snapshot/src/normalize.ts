@@ -3,13 +3,13 @@
  * timestamps, goal lifecycle clocks, and hook duration while preserving semantic payload values.
  * The prompt-text and tool-schema scrubbers stay composable so one scenario per header class can
  * pin prompt and tool-schema sidecars.
- * @module @liusiqi-dev/dsh-session-snapshot/normalize
+ * @module @liusiqi-dev/sqh-session-snapshot/normalize
  */
 
 import {
   decodeSeqRanges,
-} from '@liusiqi-dev/dsh-session'
-import { prepareSessionSnapshotFixtureForComparison } from '@liusiqi-dev/dsh-llm-replay'
+} from '@liusiqi-dev/sqh-session'
+import { prepareSessionSnapshotFixtureForComparison } from '@liusiqi-dev/sqh-llm-replay'
 import { redactSessionSnapshotIds } from './identity.ts'
 import { sessionHeaderVersion } from './session-files.ts'
 

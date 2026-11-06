@@ -1,14 +1,14 @@
 /**
- * Package-owned invariant companion for `@liusiqi-dev/dsh-workspace`.
- * @module @liusiqi-dev/dsh-workspace/invariant
+ * Package-owned invariant companion for `@liusiqi-dev/sqh-workspace`.
+ * @module @liusiqi-dev/sqh-workspace/invariant
  */
 
 import type { Context } from '@liusiqi-dev/cordis'
-import type { InvariantInstaller } from '@liusiqi-dev/dsh-invariants'
-import type { DomainChanged } from '@liusiqi-dev/dsh-storage-domain'
-import { WorkspaceId } from '@liusiqi-dev/dsh-workspace'
+import type { InvariantInstaller } from '@liusiqi-dev/sqh-invariants'
+import type { DomainChanged } from '@liusiqi-dev/sqh-storage-domain'
+import { WorkspaceId } from '@liusiqi-dev/sqh-workspace'
 
-const PACKAGE_NAME = '@liusiqi-dev/dsh-workspace'
+const PACKAGE_NAME = '@liusiqi-dev/sqh-workspace'
 
 /** Cordis companion plugin name. */
 export const name = 'workspace-invariant'

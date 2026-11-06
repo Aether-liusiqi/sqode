@@ -11,11 +11,11 @@
 
 - insert:
     - id: acp-app-startup
-      name: '@liusiqi-dev/dsh-acp-app'
+      name: '@liusiqi-dev/sqh-acp-app'
       disabled: false
 
     - id: acp
-      name: '@liusiqi-dev/dsh-acp'
+      name: '@liusiqi-dev/sqh-acp'
       disabled: false
       inject: [acpAppStartup]
       config:

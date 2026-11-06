@@ -6,8 +6,8 @@ import { Context } from '@liusiqi-dev/cordis'
 import { describe, expect, it } from 'vitest'
 import type { AddressInfo } from 'node:net'
 import type { IncomingMessage, ServerResponse } from 'node:http'
-import type { AttachmentStore } from '@liusiqi-dev/dsh-attachment'
-import type { IndexInjection, WebServer, WebRoute, WebUpgradeRoute } from '@liusiqi-dev/dsh-host-webserver'
+import type { AttachmentStore } from '@liusiqi-dev/sqh-attachment'
+import type { IndexInjection, WebServer, WebRoute, WebUpgradeRoute } from '@liusiqi-dev/sqh-host-webserver'
 import {
   API_PATH,
   RpcId,
