@@ -560,7 +560,7 @@ Host registry 允许不同 scope 为同一 tool name 提供不同定义；Sessio
 
 ## 验证命令
 
-修改本决定时使用 `dsh-pre-push-checks` 按最终 diff 选择命令；所需证据包括：
+修改本决定时使用 `sqh-pre-push-checks` 按最终 diff 选择命令；所需证据包括：
 
 - Session Controller history/transport 聚焦测试；
 - ui-chat 与 ui-trajectory Tool Definition 测试；

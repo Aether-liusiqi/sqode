@@ -43,7 +43,7 @@ afterEach(() => {
 
 describe('release families', () => {
   it('publishes all current experimental packages', () => {
-    const members = releaseFamily('dsh').members(resolve(import.meta.dirname, '../..'))
+    const members = releaseFamily('sqh').members(resolve(import.meta.dirname, '../..'))
 
     expect(members
       .filter(member => member.directory.startsWith('packages/experimental/'))
@@ -78,7 +78,7 @@ describe('release families', () => {
     write(join(root, 'apps/public/package.json'), '{"name":"@liusiqi-dev/sqh-public","version":"0.0.1"}\n')
     write(join(root, 'apps/private/package.json'), '{"name":"@liusiqi-dev/sqh-private","version":"0.0.1","private":true}\n')
 
-    expect(releaseFamily('dsh').members(root).map(entry => entry.name)).toEqual(['@liusiqi-dev/sqh-public'])
+    expect(releaseFamily('sqh').members(root).map(entry => entry.name)).toEqual(['@liusiqi-dev/sqh-public'])
   })
 
   it('publishes unlisted experimental packages while retaining private exclusions', () => {
@@ -95,7 +95,7 @@ describe('release families', () => {
       private: true,
     }))
 
-    expect(releaseFamily('dsh').members(root).map(entry => entry.name)).toEqual([
+    expect(releaseFamily('sqh').members(root).map(entry => entry.name)).toEqual([
       '@liusiqi-dev/sqh-experimental-prototype',
     ])
   })
@@ -108,13 +108,13 @@ describe('release families', () => {
     write(join(root, 'packages/experimental/prototype/package.json'), '{"version":"0.0.1","private":true}\n')
     write(join(root, 'packages/core/unselected/package.json'), '{"version":"0.0.1"}\n')
 
-    const dsh = releaseFamily('dsh')
+    const dsh = releaseFamily('sqh')
     const published = member('packages/core/published', '@liusiqi-dev/sqh-published')
     const { planned } = planShared(dsh, root, [published], '0.0.2')
 
     expect(planned.map(entry => ({ path: entry.manifestPath, tag: entry.tag }))).toEqual([
       { path: 'package.json', tag: undefined },
-      { path: 'packages/core/published/package.json', tag: 'dsh-v0.0.2' },
+      { path: 'packages/core/published/package.json', tag: 'sqode-v0.0.2' },
       { path: 'apps/desktop/package.json', tag: undefined },
       { path: 'packages/experimental/prototype/package.json', tag: undefined },
     ])
@@ -127,22 +127,22 @@ describe('release families', () => {
       roots.push(root)
       write(join(root, 'package.json'), '{"version":"0.0.1"}\n')
 
-      const dsh = releaseFamily('dsh')
+      const dsh = releaseFamily('sqh')
       const published = member('packages/core/published', '@liusiqi-dev/sqh-published')
       const plan = planShared(dsh, root, [published], version)
 
       expect(plan.version).toBe(version)
-      expect(plan.planned[1]?.tag).toBe(`dsh-v${version}`)
+      expect(plan.planned[1]?.tag).toBe(`sqode-v${version}`)
     },
   )
 
   it('names one tag for the whole dsh family and one per vendored package', () => {
-    const dsh = releaseFamily('dsh')
+    const dsh = releaseFamily('sqh')
     const vendor = releaseFamily('vendor')
     const cli = member('apps/cli', '@liusiqi-dev/sqode')
     const cordis = { ...member('vendor/cordis', '@liusiqi-dev/cordis'), version: '4.0.1' }
 
-    expect(dsh.tagFor(cli)).toBe('dsh-v0.0.1')
+    expect(dsh.tagFor(cli)).toBe('sqode-v0.0.1')
     expect(vendor.tagFor(cordis)).toBe('vendor-cordis-v4.0.1')
     // The prefix is constructed, not recovered from a tag: a version with a
     // hyphen would defeat any suffix-stripping.
@@ -151,7 +151,7 @@ describe('release families', () => {
   })
 
   it('assigns alpha and canary dist-tags only to dsh releases', () => {
-    const dsh = releaseFamily('dsh')
+    const dsh = releaseFamily('sqh')
     const vendor = releaseFamily('vendor')
 
     expect(dsh.distTagForVersion('0.0.2-alpha.1')).toBe('alpha')
@@ -163,7 +163,7 @@ describe('release families', () => {
   })
 
   it('rejects a family whose members disagree on the shared version', () => {
-    const dsh = releaseFamily('dsh')
+    const dsh = releaseFamily('sqh')
     const members = [member('apps/cli', '@liusiqi-dev/sqode'), { ...member('apps/web', '@liusiqi-dev/sqh-web-frontend'), version: '0.0.2' }]
 
     expect(() => { dsh.verifyVersions(members) }).toThrow(/must share one version/)
@@ -182,7 +182,7 @@ describe('release families', () => {
   })
 
   it('requires a current official client build only for dsh artifacts', () => {
-    const dsh = releaseFamily('dsh')
+    const dsh = releaseFamily('sqh')
     const vendor = releaseFamily('vendor')
     const officialEnvironment = officialClientBuildEnvironment(resolve(import.meta.dirname, '../..'))
     vi.stubEnv('SQODE_CLIENT_COMMIT_HASH', officialEnvironment.SQODE_CLIENT_COMMIT_HASH)
@@ -201,7 +201,7 @@ describe('release families', () => {
   })
 
   it('publishes a dependency before its consumer, and orders ties by name', () => {
-    const dsh = releaseFamily('dsh')
+    const dsh = releaseFamily('sqh')
     const members = [
       member('packages/a/consumer', '@liusiqi-dev/sqh-consumer', { dependencies: { '@liusiqi-dev/sqh-library': 'workspace:^' } }),
       member('packages/a/library', '@liusiqi-dev/sqh-library'),
@@ -216,7 +216,7 @@ describe('release families', () => {
   })
 
   it('reports a runtime dependency cycle instead of emitting an arbitrary order', () => {
-    const dsh = releaseFamily('dsh')
+    const dsh = releaseFamily('sqh')
     const members = [
       member('packages/a/left', '@liusiqi-dev/sqh-left', { dependencies: { '@liusiqi-dev/sqh-right': 'workspace:^' } }),
       member('packages/a/right', '@liusiqi-dev/sqh-right', { dependencies: { '@liusiqi-dev/sqh-left': 'workspace:^' } }),
@@ -226,7 +226,7 @@ describe('release families', () => {
   })
 
   it('publishes a peer before its consumer', () => {
-    const dsh = releaseFamily('dsh')
+    const dsh = releaseFamily('sqh')
     const members = [
       member('packages/a/consumer', '@liusiqi-dev/sqh-consumer', { peerDependencies: { '@liusiqi-dev/sqh-zebra': 'workspace:^' } }),
       member('packages/a/zebra', '@liusiqi-dev/sqh-zebra'),
@@ -240,7 +240,7 @@ describe('release families', () => {
   })
 
   it('orders around a peer cycle rather than refusing to publish, and reports the edge it dropped', () => {
-    const dsh = releaseFamily('dsh')
+    const dsh = releaseFamily('sqh')
     const members = [
       member('packages/a/left', '@liusiqi-dev/sqh-left', { peerDependencies: { '@liusiqi-dev/sqh-right': 'workspace:^' } }),
       member('packages/a/right', '@liusiqi-dev/sqh-right', { peerDependencies: { '@liusiqi-dev/sqh-left': 'workspace:^' } }),
@@ -260,7 +260,7 @@ describe('release families', () => {
   })
 
   it('honours an install edge even when a peer cycle surrounds it', () => {
-    const dsh = releaseFamily('dsh')
+    const dsh = releaseFamily('sqh')
     const members = [
       member('packages/a/base', '@liusiqi-dev/sqh-base', { peerDependencies: { '@liusiqi-dev/sqh-consumer': 'workspace:^' } }),
       member('packages/a/consumer', '@liusiqi-dev/sqh-consumer', {
@@ -282,7 +282,7 @@ describe('release families', () => {
   })
 
   it('refuses an order that would publish a consumer before a dependency it installs', () => {
-    const dsh = releaseFamily('dsh')
+    const dsh = releaseFamily('sqh')
     const members = [
       member('packages/a/alpha', '@liusiqi-dev/sqh-alpha', { peerDependencies: { '@liusiqi-dev/sqh-bravo': 'workspace:^' } }),
       member('packages/a/bravo', '@liusiqi-dev/sqh-bravo', { peerDependencies: { '@liusiqi-dev/sqh-charlie': 'workspace:^' } }),
@@ -297,7 +297,7 @@ describe('release families', () => {
   })
 
   it('ignores devDependencies when ordering', () => {
-    const dsh = releaseFamily('dsh')
+    const dsh = releaseFamily('sqh')
     const members = [
       member('packages/a/alpha', '@liusiqi-dev/sqh-alpha', { devDependencies: { '@liusiqi-dev/sqh-zebra': 'workspace:^' } }),
       member('packages/a/zebra', '@liusiqi-dev/sqh-zebra'),
@@ -312,7 +312,7 @@ describe('release families', () => {
   })
 
   it('applies the harness payload policy to dsh and keeps upstream payloads for vendored packages', () => {
-    const dsh = releaseFamily('dsh')
+    const dsh = releaseFamily('sqh')
     const vendor = releaseFamily('vendor')
     const harness = member('packages/a/library', '@liusiqi-dev/sqh-library')
     const vendored = member('vendor/cordis', '@liusiqi-dev/cordis')
@@ -324,7 +324,7 @@ describe('release families', () => {
   })
 
   it('drives the installed entry only for the family that publishes one', () => {
-    expect(releaseFamily('dsh').installedEntry).toEqual({ packageName: '@liusiqi-dev/sqode', binPath: 'lib/bin.js' })
+    expect(releaseFamily('sqh').installedEntry).toEqual({ packageName: '@liusiqi-dev/sqode', binPath: 'lib/bin.js' })
     expect(releaseFamily('vendor').installedEntry).toBeUndefined()
   })
 

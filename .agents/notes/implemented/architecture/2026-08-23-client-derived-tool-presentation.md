@@ -560,7 +560,7 @@ This change does not promise to preserve differences expressed only through a Ho
 
 ## Verification Commands
 
-Changes to this decision use `dsh-pre-push-checks` to select commands for the final diff. Required evidence includes:
+Changes to this decision use `sqh-pre-push-checks` to select commands for the final diff. Required evidence includes:
 
 - focused Session Controller history/transport tests;
 - ui-chat and ui-trajectory Tool Definition tests;

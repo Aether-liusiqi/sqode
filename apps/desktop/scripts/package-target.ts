@@ -534,7 +534,7 @@ export async function packageTarget(
     })
   }
   await execute(['run', 'build:official'], buildEnv, REPOSITORY_ROOT)
-  await execute(['run', 'release:pack', '--family', 'dsh', '--out', buildPaths.packedSqh, ...packArguments], buildEnv, REPOSITORY_ROOT)
+  await execute(['run', 'release:pack', '--family', 'sqh', '--out', buildPaths.packedSqh, ...packArguments], buildEnv, REPOSITORY_ROOT)
   await execute([
     '--dir',
     'apps/desktop-host',

@@ -28,7 +28,7 @@ afterEach(() => {
 })
 
 function fixture(): { root: string; pages: DocsPage[] } {
-  const root = mkdtempSync(join(tmpdir(), 'dsh-doc-site-'))
+  const root = mkdtempSync(join(tmpdir(), 'sqh-doc-site-'))
   roots.push(root)
   mkdirSync(join(root, 'docs'), { recursive: true })
   mkdirSync(join(root, 'packages'), { recursive: true })
@@ -76,7 +76,7 @@ describe('documentation site build', () => {
     { mode: 'SPA', mpa: false, expectedMpa: undefined },
     { mode: 'MPA', mpa: true, expectedMpa: 'true' },
   ])('$mode build removes stale output before writing', async ({ mpa, expectedMpa }) => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-doc-build-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-doc-build-'))
     roots.push(root)
     const outDir = join(root, '.dist')
     const stale = join(outDir, 'stale.md')
@@ -91,8 +91,8 @@ describe('documentation site build', () => {
   })
 
   it('refuses to remove the site root or an outside directory', () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-doc-build-root-'))
-    const outside = mkdtempSync(join(tmpdir(), 'dsh-doc-build-outside-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-doc-build-root-'))
+    const outside = mkdtempSync(join(tmpdir(), 'sqh-doc-build-outside-'))
     roots.push(root, outside)
     writeFileSync(join(root, 'keep'), 'root\n')
     writeFileSync(join(outside, 'keep'), 'outside\n')
@@ -108,8 +108,8 @@ describe('documentation site build', () => {
   })
 
   it('unlinks a link-shaped output without removing its target', () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-doc-build-link-root-'))
-    const outside = mkdtempSync(join(tmpdir(), 'dsh-doc-build-link-target-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-doc-build-link-root-'))
+    const outside = mkdtempSync(join(tmpdir(), 'sqh-doc-build-link-target-'))
     roots.push(root, outside)
     const outDir = join(root, '.dist')
     const keep = join(outside, 'keep')
@@ -123,8 +123,8 @@ describe('documentation site build', () => {
   })
 
   it('refuses output whose nearest existing parent resolves outside the site root', () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-doc-build-parent-link-root-'))
-    const outside = mkdtempSync(join(tmpdir(), 'dsh-doc-build-parent-link-target-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-doc-build-parent-link-root-'))
+    const outside = mkdtempSync(join(tmpdir(), 'sqh-doc-build-parent-link-target-'))
     roots.push(root, outside)
     const linkedParent = join(root, 'linked')
     const outDir = join(linkedParent, 'missing', '.dist')
@@ -154,7 +154,7 @@ describe('publishableImage', () => {
     // Publication copies the bytes onto the site, so a reference reaching a
     // build-machine file must not be treated as an image the repository owns.
     const { root } = fixture()
-    const outside = mkdtempSync(join(tmpdir(), 'dsh-doc-site-outside-'))
+    const outside = mkdtempSync(join(tmpdir(), 'sqh-doc-site-outside-'))
     roots.push(outside)
     writeFileSync(join(outside, 'secret.png'), 'not really a png\n')
     symlinkSync(join(outside, 'secret.png'), join(root, 'packages/linked.png'))
@@ -662,7 +662,7 @@ describe('rawMarkdownPageContent', () => {
 
 describe('emitRawMarkdownPages', () => {
   function mirrorDir(): string {
-    const out = mkdtempSync(join(tmpdir(), 'dsh-doc-mirror-'))
+    const out = mkdtempSync(join(tmpdir(), 'sqh-doc-mirror-'))
     roots.push(out)
     return out
   }
@@ -760,7 +760,7 @@ describe('raw Markdown projection of the published manifest', () => {
   // Coverage instrumentation on a loaded CI runner stretches the full-manifest
   // emission and the 181-file link walk past vitest's 5s default.
   beforeAll(() => {
-    mirror = mkdtempSync(join(tmpdir(), 'dsh-doc-mirror-real-'))
+    mirror = mkdtempSync(join(tmpdir(), 'sqh-doc-mirror-real-'))
     emitRawMarkdownPages(mirror, { pages: docsPages, repoRoot: repositoryRoot, repositoryRef: 'master' })
   }, 60_000)
 

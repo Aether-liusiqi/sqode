@@ -320,7 +320,7 @@ export abstract class ReleaseFamily {
 
 /** Release packages and apps: one shared version across the whole family. */
 class SqhFamily extends ReleaseFamily {
-  readonly id = 'dsh'
+  readonly id = 'sqh'
   readonly patterns = [
     'packages/*/*/package.json',
     'apps/*/package.json',
