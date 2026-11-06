@@ -43,7 +43,7 @@ node --import tsx apps/desktop/scripts/publish-installed-update.ts publish-feed 
 1. 先在本地检查两个版本。每次单独授权上传后，给 `upload-binaries` 加上 `--execute`，在交互终端输入 `UPLOAD <version> <run-id>`。上传安装包和 blockmap 绝不发布 feed。已存在且匹配的二进制仅回读、不覆盖；字节不符立即停止。
 2. 保持固定 feed 不存在。安装版本 1 并通过安装后的快捷方式启动，确认显示版本和日志中的 `workspace-ready`。授权任何 feed 写入前，先完成演练指南中的 404 场景。保持版本 1 运行。
 3. 给版本 1 的 `publish-feed` 加上 `--execute`，输入 `PUBLISH <version> <run-id>` 授权发布。其二进制必须已存在并通过公网回读。初始 feed 必须不存在，或包含完全一致的版本 1 字节。完整回读 feed 后，在仍运行的版本 1 应用内完成同版本场景；保留证据，另行授权后才发布版本 2。
-4. 使用下述命令及其准确确认授权版本 2 发布。提供原安装应用的 `dsh-update-qualification/<run-id>/journals` 目录。要求启动证据及符合预期的旧 feed。操作者独立核对安装路径及版本 1 仍在运行。
+4. 使用下述命令及其准确确认授权版本 2 发布。提供原安装应用的 `sqh-update-qualification/<run-id>/journals` 目录。要求启动证据及符合预期的旧 feed。操作者独立核对安装路径及版本 1 仍在运行。
 
 ```powershell
 node --import tsx apps/desktop/scripts/publish-installed-update.ts publish-feed "<run.json>" "<version-2>" "<version-2-verification/result.json>" --journals "<journal-directory>" --execute

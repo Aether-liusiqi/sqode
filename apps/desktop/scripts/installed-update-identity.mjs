@@ -16,7 +16,7 @@ export function configureInstalledUpdateIdentity(app, run, metadata, environment
     || !run.versions.includes(metadata.version)) {
     throw new Error('installed update: qualification package identity does not match its bootstrap')
   }
-  const root = join(app.getPath('appData'), 'dsh-update-qualification', run.id)
+  const root = join(app.getPath('appData'), 'sqh-update-qualification', run.id)
   const paths = { root, userData: join(root, 'user-data'), harnessHome: join(root, 'dsh-home'), journals: join(root, 'journals') }
   for (const directory of [paths.userData, paths.harnessHome, paths.journals]) mkdirSync(directory, { recursive: true })
   app.setPath('userData', paths.userData)

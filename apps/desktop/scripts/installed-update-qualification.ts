@@ -250,7 +250,7 @@ function inspectJournalRuns(runs: readonly JournalRun[], versions: readonly [str
  */
 export async function collectInstalledUpdateJournals(manifest: string, directory: string): Promise<string> {
   const run = await readInstalledUpdateRun(manifest)
-  if (!resolve(directory).replaceAll('\\', '/').endsWith(`/dsh-update-qualification/${run.id}/journals`)) {
+  if (!resolve(directory).replaceAll('\\', '/').endsWith(`/sqh-update-qualification/${run.id}/journals`)) {
     throw new Error('installed update: matching installed-app journal directory is required')
   }
   const snapshots = await readJournalRuns(directory, run.versions)

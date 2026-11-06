@@ -1,9 +1,9 @@
 <#
 .SYNOPSIS
-    Diagnose the DSH sandbox ACL failures on Windows and repair them in one run.
+    Diagnose the SQH sandbox ACL failures on Windows and repair them in one run.
 
 .DESCRIPTION
-    A denial inside the DSH sandbox is worth diagnosing only when it contradicts
+    A denial inside the SQH sandbox is worth diagnosing only when it contradicts
     what the active mode promises: writes inside the workspace, or reads that the
     signed-in user should plainly have. One invocation reads each requested path
     and every ancestor, then repairs what it can in the same run:
@@ -276,7 +276,7 @@ function Get-RepairRefusal {
 
 # A caller that cannot provision a directory also cannot confine a child anywhere
 # under it, so one approved run examines that subtree for explicit package allow
-# ACEs instead of leaving them for a second call. Directories only: DSH grants and
+# ACEs instead of leaving them for a second call. Directories only: SQH grants and
 # traverses directories, and no reparse point or managed application tree is entered.
 function Get-SubtreePackageSources {
   param([string]$Root, [int]$Limit)
@@ -564,7 +564,7 @@ try {
     }
 
     # The precondition is judged on the requested path itself. Ancestors above the
-    # tree DSH grants are not part of that grant, so their ownership and rights would
+    # tree SQH grants are not part of that grant, so their ownership and rights would
     # otherwise mark every healthy path as a precondition failure.
     if ($null -eq $targetFacts) { throw "The requested path disappeared before its ACL could be inspected: $full" }
     $unreadable = -not $targetFacts.Readable
@@ -634,7 +634,7 @@ try {
       }
     }
 
-    # Missing WRITE_DAC or WRITE_OWNER on a directory in the chain is what stops DSH
+    # Missing WRITE_DAC or WRITE_OWNER on a directory in the chain is what stops SQH
     # from provisioning the workspace grant. One approved run repairs every such
     # directory, including the authorized root itself.
     $grantTargets = @($inspectOrder | Where-Object {

@@ -34,7 +34,7 @@ function Read-Host {
 }
 if ($Case -in @('existing', 'foreign', 'restore', 'restore-failure', 'restore-declined', 'status')) {
     $global:dshNetworkRules = @([pscustomobject]@{ Name = $spec.ruleName; Direction = 'Outbound'; Action = 'Block';
-        Program = $spec.executable; Enabled = 'True'; Description = "dsh-update-qualification:$($spec.runId):$($spec.sha512Hex)" })
+        Program = $spec.executable; Enabled = 'True'; Description = "sqh-update-qualification:$($spec.runId):$($spec.sha512Hex)" })
     if ($Case -eq 'foreign') { $global:dshNetworkRules[0].Program = 'C:\not-the-test-application.exe' }
 }
 $action = if ($Case -like 'restore*') { 'Restore' } elseif ($Case -eq 'status') { 'Status' } else { 'Block' }

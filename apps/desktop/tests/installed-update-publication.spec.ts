@@ -67,7 +67,7 @@ async function fixture(body: (context: {
       await writeFile(join(check, 'inputs.json'), JSON.stringify({ manifestSha512: await installedUpdateFileHash(manifest), distribution }))
       receipts.push(receipt)
     }
-    const journals = join(parent, 'dsh-update-qualification', run.id, 'journals')
+    const journals = join(parent, 'sqh-update-qualification', run.id, 'journals')
     await mkdir(journals, { recursive: true })
     const time = new Date(Date.now() - 60_000).toISOString()
     await writeFile(join(journals, '1-00000000-0000-0000-0000-000000000000.jsonl'), ['started', 'workspace-ready']

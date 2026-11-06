@@ -47,7 +47,7 @@ console.log(JSON.stringify({ paths: app.paths, home: process.env.SQODE_HOME, jou
         expect(stderr).toBe('')
         results.push(JSON.parse(stdout))
       }
-      const root = join(directory, 'application-data/dsh-update-qualification', run.id)
+      const root = join(directory, 'application-data/sqh-update-qualification', run.id)
       expect(results).toEqual([0, 1].map(() => ({ paths: { userData: join(root, 'user-data'), sessionData: join(root, 'user-data') },
         home: join(root, 'dsh-home'), journals: join(root, 'journals') })))
       expect((await readdir(root)).sort()).toEqual(['dsh-home', 'journals', 'user-data'])
