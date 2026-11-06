@@ -31,6 +31,16 @@ const END = '      // END generated package aliases'
 /** Package-name prefix the expanded aliases cover. */
 const PREFIX = '@liusiqi-dev/dsh-'
 
+/**
+ * The same prefix as a regular-expression fragment.
+ *
+ * Derived rather than written twice: the separator has to be escaped inside a
+ * pattern, and the previous hand-written copy drifted from `PREFIX` in exactly that
+ * character — the constant moved to the new prefix while the pattern still only
+ * recognised the old one, so every aliased package read as unmapped.
+ */
+const PREFIX_PATTERN = PREFIX.replaceAll('/', '\\/')
+
 /** One workspace package the generated region maps. */
 interface PackageAlias {
   /** Bare specifier, e.g. `@liusiqi-dev/dsh-session`. */
@@ -144,7 +154,7 @@ export function collectPackageNames(): string[] {
  */
 export function mappedSpecifiers(text: string): Set<string> {
   const keys = new Set<string>()
-  for (const match of text.matchAll(/^\s*"(@liusiqi-dev\/dsh-[^"/]+)":/gm)) {
+  for (const match of text.matchAll(new RegExp(`^\\s*"(${PREFIX_PATTERN}[^"/]+)":`, 'gm'))) {
     const key = match[1]
     if (key !== undefined) keys.add(key)
   }

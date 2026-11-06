@@ -1,6 +1,13 @@
 /** Copy a verified runtime into isolated, version-bound qualification resources without signing. */
 import { createHash } from 'node:crypto'
 import { cp, mkdir, readFile, writeFile } from 'node:fs/promises'
+
+/**
+ * npm sub-prefixes that identify this repository's own packages.
+ * Two are listed while the packages are being renamed; drop the old one with
+ * the commit that renames them.
+ */
+const FIRST_PARTY_PREFIXES = ['@liusiqi-dev/sqh-', '@liusiqi-dev/dsh-'] as const
 import { join } from 'node:path'
 import { runtimePath, verifyDesktopRuntime, writeDesktopRuntime } from '../src/runtime-tree.ts'
 import { readInstalledUpdateRun } from './installed-update-qualification.ts'
@@ -33,7 +40,8 @@ export async function prepareInstalledUpdateRuntime(manifest: string, sourceRoot
     await writeFile(join(receipt, 'source.json'), `${JSON.stringify({ sourceHash, version: run.source.version })}\n`,
       { flag: 'wx', mode: 0o600, flush: true })
     const releaseNames = new Set(source.sharedPackages.filter(entry => entry.version === run.source.version
-      && (entry.name === '@liusiqi-dev/sqode' || entry.name.startsWith('@liusiqi-dev/dsh-'))).map(entry => entry.name))
+      && (entry.name === '@liusiqi-dev/sqode' || FIRST_PARTY_PREFIXES.some(prefix => entry.name.startsWith(prefix))))
+      .map(entry => entry.name))
     for (const version of run.versions) {
       const directory = join(run.root, version)
       await mkdir(directory)

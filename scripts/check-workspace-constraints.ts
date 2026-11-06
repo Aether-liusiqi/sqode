@@ -62,6 +62,14 @@ const experimentalPackageDirectory = /^packages\/experimental\/[^/]+$/
  * commit that renames the packages.
  */
 const experimentalPackageNamePrefixes = ['@liusiqi-dev/sqh-experimental-', '@liusiqi-dev/dsh-experimental-'] as const
+
+/**
+ * npm sub-prefixes that identify this repository's own packages.
+ *
+ * Two are listed while the packages are being renamed; drop the old entry with the
+ * commit that renames them.
+ */
+const FIRST_PARTY_PREFIXES = ['@liusiqi-dev/sqh-', '@liusiqi-dev/dsh-'] as const
 /** Ordinary directories whose packages this repository publishes: one release member each. */
 const standardReleaseMemberDirectory = /^(?:packages\/(?!experimental\/)[^/]+\/[^/]+|apps\/(?!desktop(?:-host)?$)[^/]+|vendor\/[^/]+)$/
 /** Installable application assembled by electron-builder rather than published to npm. */
@@ -343,7 +351,7 @@ export function checkExperimentalManifest(
   if (!experimentalPackageDirectory.test(dir)) return []
   const label = manifest.name ?? dir
   const errors: string[] = []
-  if (experimentalPackageNamePrefixes.some(prefix => manifest.name?.startsWith(prefix) === true) !== true) {
+  if (!experimentalPackageNamePrefixes.some(prefix => manifest.name?.startsWith(prefix) === true)) {
     errors.push(`${label}: experimental package name must start with one of ${JSON.stringify(experimentalPackageNamePrefixes)}`)
   }
   if (isPublicExperimentalPackageDirectory(dir, privateDirectories)) {
@@ -377,7 +385,8 @@ function isReleaseMemberDirectory(dir: string): boolean {
  */
 export function checkDshFamilyVersion(manifest: PackageManifest, expected: string | undefined): string | undefined {
   const name = manifest.name
-  if (name !== '@liusiqi-dev/sqode' && name?.startsWith('@liusiqi-dev/dsh-') !== true) return undefined
+  // Both prefixes while the packages are renamed; drop the old one with that commit.
+  if (name !== '@liusiqi-dev/sqode' && !FIRST_PARTY_PREFIXES.some(prefix => name?.startsWith(prefix) === true)) return undefined
   if (manifest.version !== expected) {
     return `${name}: package.json version must match root version ${expected ?? '(missing)'}`
   }
@@ -468,7 +477,7 @@ export function checkWorkspaceManifest({ dir, manifest }: WorkspaceManifest): st
     }
   }
 
-  if (dir.startsWith('packages/') && manifest.name?.startsWith('@liusiqi-dev/dsh-')) {
+  if (dir.startsWith('packages/') && FIRST_PARTY_PREFIXES.some(prefix => manifest.name?.startsWith(prefix) === true)) {
     const peer = manifest.peerDependencies?.['@liusiqi-dev/cordis']
     const dev = manifest.devDependencies?.['@liusiqi-dev/cordis']
 
@@ -602,7 +611,7 @@ export function checkWorkspaceProtocol(manifests: readonly WorkspaceManifest[]):
     for (const section of dependencySections) {
       for (const [name, range] of Object.entries(manifest[section] ?? {})) {
         if (!members.has(name)) continue
-        const expected = name === '@liusiqi-dev/sqode' || name.startsWith('@liusiqi-dev/dsh-')
+        const expected = name === '@liusiqi-dev/sqode' || FIRST_PARTY_PREFIXES.some(prefix => name.startsWith(prefix))
           ? 'workspace:*'
           : vendors.has(name) ? 'workspace:~' : undefined
         if (expected !== undefined ? range === expected : range.startsWith('workspace:')) continue
