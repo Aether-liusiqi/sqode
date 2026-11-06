@@ -1,4 +1,4 @@
-/** Evaluate plugin dsh peer requirements without importing plugin code. */
+/** Evaluate plugin sqh peer requirements without importing plugin code. */
 
 import fs from 'node:fs'
 import { fileURLToPath } from 'node:url'
@@ -12,12 +12,12 @@ import semver from 'semver'
  */
 const FIRST_PARTY_PREFIXES = ['@liusiqi-dev/sqh-'] as const
 
-/** Incompatible dsh peers and the exact plugin/runtime exemption decision. */
+/** Incompatible sqh peers and the exact plugin/runtime exemption decision. */
 export interface PluginCompatibility {
   name: string
   version: string
   runtimeVersion: string
-  /** Only peer requirements not satisfied by the running dsh version. */
+  /** Only peer requirements not satisfied by the running sqh version. */
   peers: Record<string, string>
   exempted: boolean
 }
@@ -62,7 +62,7 @@ export function getDshRuntimeVersion(): string {
  * refer to the current runtime; other invalid ranges are incompatible.
  * @param manifest - parsed plugin package.json; inherited fields are ignored.
  * @param exemptions - exact plugin name@version keys mapped to exact runtime versions.
- * @param runtimeVersion - running dsh version, defaulting to this app-boot package.
+ * @param runtimeVersion - running sqh version, defaulting to this app-boot package.
  * @returns incompatible peers and exemption status, or undefined when none are incompatible.
  * @throws for malformed manifest peer fields, invalid runtime versions, or missing identity on a mismatch.
  */

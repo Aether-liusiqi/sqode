@@ -129,7 +129,7 @@ async function inventoryRuntimeForVerification(root: string): Promise<DesktopRun
 /**
  * Seal the final runtime tree after materialization and native signing.
  * @param root - Runtime output directory.
- * @param release - Matching shell, dsh, Host, and executable versions.
+ * @param release - Matching shell, sqh, Host, and executable versions.
  * @param sharedNames - Release-owned packages supplied to plugins.
  * @param target - Platform and architecture selected by runtime preparation.
  * @returns Descriptor written beside the production packages.

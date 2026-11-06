@@ -11,7 +11,7 @@ export interface DesktopPaths {
 
 /**
  * Resolve every Electron-owned path without changing the shared data roots.
- * @param dshHome - Harness home shared with npm-installed dsh.
+ * @param dshHome - Harness home shared with npm-installed sqh.
  * @returns immutable desktop path set.
  */
 export function resolveDesktopPaths(dshHome: string = resolveDshHome()): DesktopPaths {

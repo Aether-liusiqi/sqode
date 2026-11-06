@@ -13,7 +13,7 @@ import type { DesktopRuntimeDescriptor } from '../src/runtime-tree.ts'
 
 /**
  * Check Host startup, its matching frontend, external plugins and real Office-to-PDF conversion.
- * @param root - Materialized dsh resources.
+ * @param root - Materialized sqh resources.
  * @param node - Prepared target Electron executable.
  * @param runtime - Verified resource descriptor.
  * @param environment - Credential-scrubbed build environment and private native cache.

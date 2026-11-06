@@ -1,4 +1,4 @@
-/** Build one release target with matching Electron and dsh architecture. */
+/** Build one release target with matching Electron and sqh architecture. */
 
 import { spawn } from 'node:child_process'
 import { createHash } from 'node:crypto'
@@ -200,7 +200,7 @@ interface DesktopPackageInvocation {
   readonly check: boolean
   /** Skip the packaged-runtime smoke pass; a release build never passes this. */
   readonly skipSmoke: boolean
-  /** Reuse the prepared runtime and dsh trees when their inputs are unchanged. */
+  /** Reuse the prepared runtime and sqh trees when their inputs are unchanged. */
   readonly reusePrepared: boolean
   /** Build identifier to publish under, when this build does not publish the product version. */
   readonly requestedBuildVersion: string | undefined
@@ -268,7 +268,7 @@ export function parseDesktopPackageInvocation(
 const PREPARED_STAMP = 'prepared.json'
 
 /**
- * Digest of everything that decides the prepared runtime and dsh trees: the commit
+ * Digest of everything that decides the prepared runtime and sqh trees: the commit
  * being built plus the lockfile that fixes their dependency graph. Any source change
  * moves the commit, so the trees are rebuilt rather than reused.
  * @returns lowercase hex digest.
@@ -305,7 +305,7 @@ export function preparedInputsDigest(): string {
  * qualifies — the stamp is written only after both preparations succeed.
  * @param root - build target directory holding the stamp.
  * @param runtime - prepared runtime directory.
- * @param dsh - prepared dsh directory.
+ * @param sqh - prepared sqh directory.
  * @param digest - digest of the current inputs.
  * @returns whether both trees can be kept as they are.
  */

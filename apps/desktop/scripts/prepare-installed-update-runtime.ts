@@ -24,7 +24,7 @@ interface PackageMetadata {
 /**
  * Clone one verified source tree into two synthetic release versions, retaining source bytes unchanged.
  * @param manifest The existing test run manifest; both version directories must be absent.
- * @param sourceRoot Fresh prepared dsh runtime, never the user's installed application.
+ * @param sourceRoot Fresh prepared sqh runtime, never the user's installed application.
  * @returns Completion record with descriptor hashes; this is not signed or boot-tested artifact evidence.
  */
 export async function prepareInstalledUpdateRuntime(manifest: string, sourceRoot: string): Promise<object> {

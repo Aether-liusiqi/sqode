@@ -19,7 +19,7 @@ function unpackPattern(path) {
 /**
  * Install source-relative PE patterns in the configuration consumed by electron-builder.
  * @param {import('app-builder-lib').BeforePackContext} context Active builder configuration and cleanup owner.
- * @param {string} sourceRoot Verified prepared dsh directory; its files remain unchanged.
+ * @param {string} sourceRoot Verified prepared sqh directory; its files remain unchanged.
  * @returns {Promise<string[]>} PE paths relative to the original prepared directory.
  */
 export async function prepareWindowsAsarUnpack(context, sourceRoot) {
@@ -49,7 +49,7 @@ export async function prepareWindowsAsarUnpack(context, sourceRoot) {
 
 /**
  * Reject inline, absent, linked, or changed PE files in the assembled application.
- * @param {string} sourceRoot Original signed and sealed dsh directory.
+ * @param {string} sourceRoot Original signed and sealed sqh directory.
  * @param {string} resourcesDir Assembled application resources directory.
  * @param {string[]} files PE paths returned by prepareWindowsAsarUnpack.
  * @returns {Promise<void>} Resolves after every PE has an unpacked ASAR entry and identical bytes.

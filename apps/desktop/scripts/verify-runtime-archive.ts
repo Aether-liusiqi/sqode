@@ -6,7 +6,7 @@ import { readAsar, type Node } from 'app-builder-lib/out/asar/asar.js'
 import type { DesktopRuntimeDescriptor, DesktopRuntimeFile } from '../src/runtime-tree.ts'
 
 /**
- * Compare the complete archived dsh tree with the sealed preparation inventory.
+ * Compare the complete archived sqh tree with the sealed preparation inventory.
  * @param archivePath - Application ASAR file beside its unpacked directory.
  * @param expected - Verified preparation descriptor, including its complete file inventory.
  * @returns Resolves when bytes, file membership and meaningful executable permissions match.

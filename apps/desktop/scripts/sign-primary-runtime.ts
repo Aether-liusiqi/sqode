@@ -56,7 +56,7 @@ async function main(): Promise<void> {
   const thumbprint = new X509Certificate(await readFile(certificateFile)).fingerprint.replaceAll(':', '')
   const record = (event: object): void => { recordPackagingEvent(runDirectory, event) }
   try {
-    await withWindowsSigningStage({ stage: process.argv.includes('--dsh') ? 'dsh-runtime' : 'primary-runtime', record }, async () => {
+    await withWindowsSigningStage({ stage: process.argv.includes('--sqh') ? 'sqh-runtime' : 'primary-runtime', record }, async () => {
       const paths = resolveDesktopTargetBuildPaths()
       const sign = createWindowsTokenSigner({ certificateFile, signTool: process.env.SQODE_DESKTOP_WINDOWS_SIGNTOOL,
         keyContainer: process.env.SQODE_DESKTOP_WINDOWS_KEY_CONTAINER, tokenPin: process.env.SQODE_DESKTOP_WINDOWS_TOKEN_PIN })
@@ -73,7 +73,7 @@ async function main(): Promise<void> {
         cache: { restore: cachedSign.restore, concurrency: signatureCacheConcurrency } }
       record({ type: 'signature-cache-open', root: cachedSign.summary().root, identity })
       try {
-        if (process.argv.includes('--dsh')) {
+        if (process.argv.includes('--sqh')) {
           const version = JSON.parse(await readFile(join(paths.sqh, 'package.json'), 'utf8')).version as string
           await signWindowsDesktopRuntime(paths.sqh, version, { ...options,
             smoke: descriptor => smokePreparedRuntime(paths.sqh, join(paths.electron, 'electron.exe'), paths.runtime, descriptor),

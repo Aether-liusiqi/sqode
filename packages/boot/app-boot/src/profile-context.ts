@@ -31,7 +31,7 @@ export interface ProfileContext {
 
 declare module '@liusiqi-dev/cordis' {
   interface Context {
-    /** Present only in a profile launched by dsh. */
+    /** Present only in a profile launched by sqh. */
     profileContext: ProfileContext
   }
 }

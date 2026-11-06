@@ -36,7 +36,7 @@ import { selectOfficeEngine } from '../../../scripts/libreoffice-packages.mjs'
 const APP_ROOT = resolve(import.meta.dirname, '..')
 const BUILD_PATHS = resolveDesktopTargetBuildPaths()
 const SQODE_OUTPUT_ROOT = BUILD_PATHS.sqh
-const BUILD_ROOT = mkdtempSync(join(tmpdir(), 'dsh-desktop-runtime-'))
+const BUILD_ROOT = mkdtempSync(join(tmpdir(), 'sqh-desktop-runtime-'))
 /**
  * Persistent pnpm store for this install step.
  *
@@ -46,7 +46,7 @@ const BUILD_ROOT = mkdtempSync(join(tmpdir(), 'dsh-desktop-runtime-'))
  * tarballs content-addressed on disk between runs; `SQODE_DESKTOP_PNPM_STORE`
  * lets a build point it at a faster disk.
  */
-const STORE_ROOT = process.env.SQODE_DESKTOP_PNPM_STORE ?? join(tmpdir(), 'dsh-desktop-pnpm-store')
+const STORE_ROOT = process.env.SQODE_DESKTOP_PNPM_STORE ?? join(tmpdir(), 'sqh-desktop-pnpm-store')
 const RUNTIME_ROOT = BUILD_PATHS.runtime
 const PNPM_BUILD_STATE = BUILD_PATHS.sqhPnpm
 const PACKAGE_SET_ROOT = BUILD_PATHS.packageSet
@@ -169,7 +169,7 @@ async function main(): Promise<void> {
       throw new Error(`desktop runtime: missing required LibreOffice engine ${officeEngine}`)
     }
     if (process.platform === 'darwin') {
-      await packagingStep(process.env.SQODE_DESKTOP_PACKAGING_RUN_DIR, 'sign:dsh-native', () => signMacOSRuntime(SQODE_OUTPUT_ROOT, resolveDesktopAppId(process.env), resolveMacOSSigningEnvironment(process.env), target.arch, join(BUILD_PATHS.root, 'signature-cache')))
+      await packagingStep(process.env.SQODE_DESKTOP_PACKAGING_RUN_DIR, 'sign:sqh-native', () => signMacOSRuntime(SQODE_OUTPUT_ROOT, resolveDesktopAppId(process.env), resolveMacOSSigningEnvironment(process.env), target.arch, join(BUILD_PATHS.root, 'signature-cache')))
       await packagingStep(process.env.SQODE_DESKTOP_PACKAGING_RUN_DIR, 'sign:primary-native', () => signMacOSRuntime(join(RUNTIME_ROOT, 'primary-runtime'), resolveDesktopAppId(process.env), resolveMacOSSigningEnvironment(process.env), target.arch, join(BUILD_PATHS.root, 'signature-cache')))
     }
     await packagingStep(process.env.SQODE_DESKTOP_PACKAGING_RUN_DIR, 'runtime:manifests', () => prepareRuntimeManifests(SQODE_OUTPUT_ROOT))

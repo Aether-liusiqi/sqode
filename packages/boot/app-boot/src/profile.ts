@@ -1,20 +1,20 @@
 /**
  * Profile discovery, initialization, and patch-layer composition for the
- * `dsh --profile` launcher family.
+ * `sqh --profile` launcher family.
  *
  * A profile is a directory under `$SQODE_HOME/profiles/<name>` holding a
  * `package.json` (out-of-tree plugin dependencies plus the profile manifest
- * `dsh.profile` with its ordered `bundles` list) and a `cordis.patch.yml`
+ * `sqh.profile` with its ordered `bundles` list) and a `cordis.patch.yml`
  * (the user's own patch layer, applied after every bundle layer). Bundles are
  * npm packages whose manifest declares
- * `"dsh": { "bundle": { "patch": "./cordis.patch.yml" } }` (one file, or an
+ * `"sqh": { "bundle": { "patch": "./cordis.patch.yml" } }` (one file, or an
  * ordered list of files); the tree is composed by applying each bundle's patch
- * lists in `dsh.profile.bundles` order over an empty entry list, then the
+ * lists in `sqh.profile.bundles` order over an empty entry list, then the
  * profile's own patches, then any launcher layers (`--patch` files and
  * flag-derived patches).
  *
  * Module resolution is two-anchor by construction: a bundle name resolves
- * first from the dsh installation (the launcher's own package), then from the
+ * first from the sqh installation (the launcher's own package), then from the
  * profile directory. Pnpm-managed entries in the profile's `node_modules`
  * resolve first. The runtime resolution supplies packages carried by the
  * installation and selected bundles to Node's ESM and CommonJS resolvers.
@@ -51,7 +51,7 @@ export type ProfileManifest = Partial<SqhPackageManifest>
 /**
  * The patch files a bundle declares, as written: one file for a string
  * `patch`, the listed files in order for an array.
- * @param bundle - the bundle's `dsh.bundle` declaration, as read from package.json.
+ * @param bundle - the bundle's `sqh.bundle` declaration, as read from package.json.
  * @returns the package-relative patch file paths in application order.
  * @throws {Error} when `patch` is neither a string nor a list of strings.
  */
@@ -66,7 +66,7 @@ export function bundlePatchFiles(bundle: SqhBundleManifest): string[] {
 /**
  * Resolve a bundle declaration to its ordered absolute patch files.
  * @param packageDir - absolute directory of the bundle package.
- * @param bundle - the bundle's `dsh.bundle` declaration, as read from package.json.
+ * @param bundle - the bundle's `sqh.bundle` declaration, as read from package.json.
  * @returns the absolute patch file paths in application order.
  * @throws {Error} when `patch` is neither a string nor a list of strings.
  */
@@ -76,7 +76,7 @@ export function bundlePatchPaths(packageDir: string, bundle: SqhBundleManifest):
 
 /** One resolved bundle layer of a profile. */
 export interface ProfileLayer {
-  /** The bundle's package name, as listed in `dsh.profile.bundles`. */
+  /** The bundle's package name, as listed in `sqh.profile.bundles`. */
   packageName: string
   /** Absolute directory of the resolved bundle package. */
   packageDir: string
@@ -92,19 +92,19 @@ export interface Profile {
   name: string
   /** Absolute profile directory. */
   dir: string
-  /** Bundle layers in `dsh.profile.bundles` order. */
+  /** Bundle layers in `sqh.profile.bundles` order. */
   layers: ProfileLayer[]
   /** Absolute path of the profile's own patch file. */
   patchPath: string
   /** The profile's own patches; empty when the file is absent. */
   patches: PatchOptions[]
-  /** Selected bundles that contributed no layer, in `dsh.profile.bundles` order, with why. */
+  /** Selected bundles that contributed no layer, in `sqh.profile.bundles` order, with why. */
   skippedBundles: SkippedBundle[]
 }
 
 /** A selected bundle the profile could not load, or whose own SQH peers the profile does not exempt. */
 export interface SkippedBundle {
-  /** The bundle's package name from `dsh.profile.bundles`. */
+  /** The bundle's package name from `sqh.profile.bundles`. */
   packageName: string
   /** The resolution, manifest, compatibility, or patch-loading failure. */
   reason: string
@@ -162,7 +162,7 @@ export interface RuntimeResolution {
 
 /**
  * Resolve a profile's directory under the Harness home.
- * @param name - the profile name (`dsh --profile <name>`).
+ * @param name - the profile name (`sqh --profile <name>`).
  * @param home - the Harness home; defaults to {@link resolveDshHome}.
  * @returns the absolute profile directory (which may not exist yet).
  */
@@ -199,12 +199,12 @@ const INSTALLATION_OWNED_PROFILE_TUPLES: Record<string, readonly string[]> = {
   headless: ['@liusiqi-dev/sqh-base', '@liusiqi-dev/sqh-web-app', '@liusiqi-dev/sqh-headless'],
 }
 
-/** The bundle list a `dsh plugin` init uses for a name with no shipped template. */
+/** The bundle list a `sqh plugin` init uses for a name with no shipped template. */
 export const DEFAULT_PROFILE_BUNDLES: readonly string[] = ['@liusiqi-dev/sqh-base']
 
 /**
- * The bundles the dsh installation ships for a person to switch on: each a
- * runtime dependency of the installation that declares `dsh.bundle.patch`,
+ * The bundles the sqh installation ships for a person to switch on: each a
+ * runtime dependency of the installation that declares `sqh.bundle.patch`,
  * an `icon`, and `./locale/*.json` display metadata, selected by no shipped
  * template, and offered switched off by the plugin manager
  * ([rationale](../../../../.agents/notes/implemented/process/2026-09-15-shipped-optional-bundles.md),
@@ -239,7 +239,7 @@ autoInstallPeers: false
  * pnpm settings out-of-tree plugins need. Existing files are never touched,
  * so re-running is a no-op on an initialized profile.
  * @param dir - the profile directory from {@link resolveProfileDir}.
- * @param bundles - the initial `dsh.profile.bundles` layer list.
+ * @param bundles - the initial `sqh.profile.bundles` layer list.
  */
 export function initProfile(
   dir: string,
@@ -262,7 +262,7 @@ export function initProfile(
   if (!existsSync(workspacePath)) writeFileSync(workspacePath, PROFILE_PNPM_WORKSPACE)
 }
 
-/** Directory where the link backend of the dsh 0.1.5 releases projected bundle-carried packages into a profile. */
+/** Directory where the link backend of the sqh 0.1.5 releases projected bundle-carried packages into a profile. */
 const LINK_PROJECTION_DIR = '.sqh-module-fallback'
 
 /**
@@ -386,8 +386,8 @@ function collectInstallationScopePackages(
   // map itself (first resolution wins, matching Node's own nearest-wins).
   const queue: { anchor: string; manifest: ProfileManifest }[] = [{ anchor: canonicalAnchor, manifest: appManifest }]
   for (let next = queue.shift(); next !== undefined; next = queue.shift()) {
-    // Peer dependencies participate: Service Definition packages (dsh-subprocess,
-    // dsh-compaction, ...) are peers of their implementations, never plain
+    // Peer dependencies participate: Service Definition packages (sqh-subprocess,
+    // sqh-compaction, ...) are peers of their implementations, never plain
     // dependencies, yet out-of-tree plugins import them directly.
     /* v8 ignore next -- a real app manifest always declares dependencies */
     for (const dep of profileDependencyNames(next.manifest)) {
@@ -415,7 +415,7 @@ function collectInstallationScopePackages(
 
 /** Inputs for {@link createRuntimeResolution}. */
 export interface RuntimeResolutionOptions {
-  /** Absolute package.json path of the running dsh installation. */
+  /** Absolute package.json path of the running sqh installation. */
   installAnchor: string
   /** Loaded profile whose selected bundles may carry profile-local plugins. */
   profile?: Profile
@@ -619,11 +619,11 @@ function packageDirFromAnchor(anchor: string, packageName: string): string | und
  * Resolve one bundle package's directory: installation anchor first, then the
  * profile directory. The installation-first order is the contract that
  * `@liusiqi-dev/sqh-base` (and every other in-box bundle) always comes from
- * the same installation as the running dsh, never from a profile-local copy.
+ * the same installation as the running sqh, never from a profile-local copy.
  * Resolution does not require the package to export `./package.json`.
  * @param binName - the diagnostic prefix on the thrown error.
- * @param packageName - the bundle's package name from `dsh.profile.bundles`.
- * @param installAnchor - absolute path of a file inside the dsh app package (its package.json).
+ * @param packageName - the bundle's package name from `sqh.profile.bundles`.
+ * @param installAnchor - absolute path of a file inside the sqh app package (its package.json).
  * @param profileDir - the profile directory (second anchor).
  * @returns the bundle package's absolute directory.
  */
@@ -644,11 +644,11 @@ export function resolveBundleDir(
  * Load an already initialized profile directory without resolving it through
  * the shared Harness home. This is used by application-owned profiles whose
  * package project and lifecycle belong to that application.
- * Unreadable bundles, and bundles whose own dsh peers the profile does not exempt, are skipped
+ * Unreadable bundles, and bundles whose own sqh peers the profile does not exempt, are skipped
  * without changing the manifest and listed in `skippedBundles`; nothing is printed.
  * @param binName - the diagnostic prefix on thrown errors.
  * @param dir - absolute profile package directory.
- * @param installAnchor - absolute path of the owning dsh app's package.json.
+ * @param installAnchor - absolute path of the owning sqh app's package.json.
  * @param options - `userLayer: false` skips reading `cordis.patch.yml`.
  * @returns the successfully loaded bundle layers and optional user patch layer.
  */
@@ -689,12 +689,12 @@ export function loadProfileDirectory(
 }
 
 /**
- * Load a profile: resolve every `dsh.profile.bundles` entry to its patch
+ * Load a profile: resolve every `sqh.profile.bundles` entry to its patch
  * layer and parse the profile's own patch file. Unreadable or incompatible bundles
  * are skipped and listed in `skippedBundles`; profile manifest and user patch errors still throw.
  * @param binName - the diagnostic prefix on thrown errors.
  * @param name - the profile name.
- * @param installAnchor - absolute path of the dsh app's package.json (first resolution anchor).
+ * @param installAnchor - absolute path of the sqh app's package.json (first resolution anchor).
  * @param home - the Harness home; defaults to {@link resolveDshHome}.
  * @param options - `userLayer: false` skips reading `cordis.patch.yml`, so a
  * bundles-only consumer (`--dump-default-config`, a recovery diagnostic)
