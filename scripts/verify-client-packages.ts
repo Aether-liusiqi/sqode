@@ -230,7 +230,8 @@ export function fixClientPackageManifests(root: string, facts: ClientPackageFact
   const baseline = new Set([...facts.platformModules, ...facts.preloadedExternals])
   for (const declaration of facts.declarations.filter(entry => entry.dynamic)) {
     const target = document(declaration.manifest)
-    const dsh = isRecord(target.manifest.dsh) ? target.manifest.dsh : undefined
+    const field = target.manifest.sqh ?? target.manifest.dsh
+    const dsh = isRecord(field) ? field : undefined
     const client = isRecord(dsh?.client) ? dsh.client : undefined
     if (client === undefined) continue
     target.changed = normalizeClientArray(client, 'inject', () => false) || target.changed
@@ -442,6 +443,7 @@ function formatCycle(
 
 interface Manifest {
   name?: unknown
+  sqh?: unknown
   dsh?: unknown
   dependencies?: Record<string, string>
   peerDependencies?: Record<string, string>
@@ -455,7 +457,8 @@ function readDeclaration(
 ): ClientDeclaration | undefined {
   const manifest = JSON.parse(readFileSync(resolve(root, manifestPath), 'utf8')) as Manifest
   if (typeof manifest.name !== 'string') return undefined
-  const dsh = isRecord(manifest.dsh) ? manifest.dsh : undefined
+  const declaration = manifest.sqh ?? manifest.dsh
+  const dsh = isRecord(declaration) ? declaration : undefined
   const rawClient = dsh?.client
   if (rawClient === undefined) {
     return {

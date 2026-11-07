@@ -135,9 +135,10 @@ export function discoverPluginDirs(root = repoRoot): string[] {
   const dirs: string[] = []
   for (const manifestPath of globSync('packages/*/*/package.json', { cwd: root }).sort()) {
     const manifest = JSON.parse(readFileSync(join(root, manifestPath), 'utf8')) as {
+      sqh?: { client?: { platform?: unknown } }
       dsh?: { client?: { platform?: unknown } }
     }
-    if (manifest.dsh?.client?.platform === 'web') dirs.push(dirname(manifestPath).split(sep).join('/'))
+    if ((manifest.sqh ?? manifest.dsh)?.client?.platform === 'web') dirs.push(dirname(manifestPath).split(sep).join('/'))
   }
   return dirs
 }
@@ -161,9 +162,10 @@ export function discoverLibraryDirs(root = repoRoot): string[] {
     if (dir.startsWith(TEST_INFRASTRUCTURE_PREFIX)) continue
     if (!readFileSync(join(root, configPath), 'utf8').includes('tsdown.client.ts')) continue
     const manifest = JSON.parse(readFileSync(join(root, dir, 'package.json'), 'utf8')) as {
+      sqh?: { client?: unknown }
       dsh?: { client?: unknown }
     }
-    if (manifest.dsh?.client === undefined) dirs.push(dir)
+    if ((manifest.sqh ?? manifest.dsh)?.client === undefined) dirs.push(dir)
   }
   return dirs
 }

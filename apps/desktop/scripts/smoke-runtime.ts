@@ -7,6 +7,7 @@ import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
 import { fileURLToPath } from 'node:url'
 import { readPrimaryRuntime, workspaceDependencyPaths } from '../../../packages/skill/tool-workspace-dependencies/src/index.ts'
+import { readSqhField, withSqhField } from '../../../packages/boot/app-boot/src/profile.ts'
 import { DesktopHostProcess } from '../src/host-process.ts'
 import { createPluginProfile } from '../src/project-manager.ts'
 import type { DesktopRuntimeDescriptor } from '../src/runtime-tree.ts'
@@ -93,11 +94,16 @@ export function apply(ctx) {
     writeFileSync(join(plugin, 'bundle.yml'), '- insert:\n    - id: desktop-runtime-smoke-plugin\n      name: desktop-runtime-smoke-plugin\n      inject: [webServer, officeToPdf, skills]\n')
     const manifest = JSON.parse(readFileSync(join(profile, 'package.json'), 'utf8')) as {
       dependencies: Record<string, string>
-      dsh: { profile: { bundles: string[] } }
+      sqh?: { profile: { bundles: string[] } }
+      dsh?: { profile: { bundles: string[] } }
     }
     manifest.dependencies[pluginName] = '1.0.0'
-    manifest.dsh.profile.bundles.push(pluginName)
-    writeFileSync(join(profile, 'package.json'), JSON.stringify(manifest))
+    const declarations = readSqhField(manifest)
+    const bundles = [...declarations?.profile?.bundles ?? [], pluginName]
+    writeFileSync(join(profile, 'package.json'), JSON.stringify(withSqhField(manifest, {
+      ...declarations,
+      profile: { ...declarations?.profile, bundles },
+    })))
     writeFileSync(join(profile, 'cordis.patch.yml'), '- id: webserver\n  config:\n    host: 127.0.0.1\n    port: 0\n')
     const ready = await Promise.race([host.start(), new Promise<never>((_, reject) => {
       timer = setTimeout(() => { reject(new Error('desktop runtime: Host readiness exceeded 120 seconds')) }, 120_000)

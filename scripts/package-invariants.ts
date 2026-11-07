@@ -14,6 +14,7 @@ const OMITTED_COMPANION_REASON = /No (?:(?:runtime )?invariant )?companion is pu
 
 interface PackageManifest {
   name?: string
+  sqh?: unknown
   dsh?: unknown
   exports?: Record<string, { types?: string; default?: string } | string | null | undefined>
   files?: string[]
@@ -131,7 +132,7 @@ function checkManifest(
   const developmentOnlyInvariant = usesFlattenedPackageDependencies(
     owner.manifestPath,
     owner.packageName,
-    manifest.dsh,
+    manifest.sqh ?? manifest.dsh,
   )
   const expectedRange = 'workspace:*'
   const peerRange = manifest.peerDependencies?.['@liusiqi-dev/sqh-invariants']
