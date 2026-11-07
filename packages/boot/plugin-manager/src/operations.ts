@@ -15,7 +15,7 @@ import { scrubbedParentEnv } from '@liusiqi-dev/sqh-subprocess'
 import { parseInstallSpec } from './install-spec.ts'
 import { awaitTreeGone, leadsOwnGroup, treeAlive, type RunTree } from './run-tree.ts'
 import { incompatiblePlugin } from './failure.ts'
-import { readSqhField } from '@liusiqi-dev/sqh-app-boot'
+import { readSqhField, withSqhField } from '@liusiqi-dev/sqh-app-boot'
 import type { IncompatiblePlugin, PackageResult, Registry } from './types.ts'
 export { setProfileVersionExemption, readProfileVersionExemptions } from '@liusiqi-dev/sqh-app-boot'
 
@@ -110,8 +110,11 @@ async function reconcile(before: ProfileManifest, dir: string, anchor: string, o
     }
   }
   if (JSON.stringify(previous) === JSON.stringify(bundles)) return
-  after.dsh = { ...after.dsh, profile: { ...after.dsh?.profile, bundles } }
-  await saveManifest(dir, after)
+  const current = readSqhField(after)
+  await saveManifest(dir, withSqhField(after, {
+    ...current,
+    profile: { ...current?.profile, bundles },
+  }))
 }
 
 /**

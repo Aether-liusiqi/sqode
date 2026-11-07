@@ -18,7 +18,7 @@ import {
   setProfileVersionExemption, PROFILE_COMPATIBILITY_FILENAME,
 } from '@liusiqi-dev/sqh-app-boot'
 import type {} from '@liusiqi-dev/sqh-hmr'
-import { readSqhField } from '@liusiqi-dev/sqh-app-boot'
+import { readSqhField, withSqhField } from '@liusiqi-dev/sqh-app-boot'
 import type { ProfileContext, ProfileManifest } from '@liusiqi-dev/sqh-app-boot'
 import { bundleManifest, readProfileRegistry, registryArguments, runProfilePnpm, saveManifest, viewProfilePackage } from './operations.ts'
 import { classifyInstallFailure } from './install-failure.ts'
@@ -734,8 +734,11 @@ export class PluginManager extends TypertRemoteService {
     }
     const bundles = enabled ? [...previous, ...previous.includes(name) ? [] : [name]] : previous.filter(item => item !== name)
     if (JSON.stringify(previous) === JSON.stringify(bundles)) return
-    manifest.dsh = { ...manifest.dsh, profile: { ...manifest.dsh?.profile, bundles } }
-    await saveManifest(this.profile.dir, manifest)
+    const current = readSqhField(manifest)
+    await saveManifest(this.profile.dir, withSqhField(manifest, {
+      ...current,
+      profile: { ...current?.profile, bundles },
+    }))
     if (enabled) this.protectsManager(name)
   }
 

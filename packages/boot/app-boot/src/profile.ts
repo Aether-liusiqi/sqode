@@ -49,7 +49,12 @@ export interface ProfileTemplate {
 export type ProfileManifest = Partial<SqhPackageManifest>
 
 /**
- * Read a manifest's declarations, preferring the current key.
+ * Read a manifest's declarations, preferring the legacy key while migrating.
+ *
+ * The order is deliberate and temporary. Every manifest in the wild, and almost
+ * every fixture in this repository, writes `dsh`; reading that first means a writer
+ * that mirrors both keys can never be shadowed by a stale copy of the other one.
+ * Flip this back to `sqh ?? dsh` at cutover, after writing `dsh` has stopped.
  *
  * Lives here rather than in the manifest package on purpose: that package is
  * type-only, and giving it runtime exports once changed the module graph enough to
@@ -58,7 +63,7 @@ export type ProfileManifest = Partial<SqhPackageManifest>
  * @returns the declaration block, or `undefined` when neither key is present.
  */
 export function readSqhField(manifest: ProfileManifest | undefined): SqhManifest | undefined {
-  return manifest?.sqh ?? manifest?.dsh
+  return manifest?.dsh ?? manifest?.sqh
 }
 
 /**
@@ -280,6 +285,7 @@ export function initProfile(
       name: `dsh-profile-${basename(dir)}`,
       private: true,
       dependencies: {},
+      sqh: { profile: { bundles: [...bundles] } },
       dsh: { profile: { bundles: [...bundles] } },
     }
     writeFileSync(manifestPath, JSON.stringify(manifest, undefined, 2) + '\n')
@@ -611,16 +617,11 @@ function normalizeShippedProfile(name: string, dir: string, manifest: ProfileMan
   if (template === undefined || bundles === undefined) return manifest
   const isRetiredTuple = installationOwned !== undefined && sameBundles(bundles, installationOwned)
   if (!isRetiredTuple) return manifest
-  const normalized: ProfileManifest = {
-    ...manifest,
-    dsh: {
-      ...manifest.dsh,
-      profile: {
-        ...readSqhField(manifest)?.profile,
-        bundles: [...template.bundles],
-      },
-    },
-  }
+  const current = readSqhField(manifest)
+  const normalized: ProfileManifest = withSqhField(manifest, {
+    ...current,
+    profile: { ...current?.profile, bundles: [...template.bundles] },
+  })
   writeProfileManifest(dir, normalized)
   return normalized
 }

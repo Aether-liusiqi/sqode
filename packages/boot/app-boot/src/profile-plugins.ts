@@ -2,7 +2,7 @@
 
 import { join } from 'node:path'
 import {
-  readProfileManifest, readSqhField, resolveBundleDir, writeProfileManifest,
+  readProfileManifest, readSqhField, resolveBundleDir, withSqhField, writeProfileManifest,
   type ProfileManifest,
 } from './profile.ts'
 
@@ -89,7 +89,11 @@ export function readProfilePlugins(location: ProfilePluginLocation): ProfilePlug
 export function writeProfileBundles(
   profileDir: string, manifest: ProfileManifest, bundles: readonly string[],
 ): ProfileManifest {
-  const updated = { ...manifest, dsh: { ...manifest.dsh, profile: { ...manifest.dsh?.profile, bundles: [...bundles] } } }
+  const current = readSqhField(manifest)
+  const updated = withSqhField(manifest, {
+    ...current,
+    profile: { ...current?.profile, bundles: [...bundles] },
+  })
   writeProfileManifest(profileDir, updated)
   return updated
 }
