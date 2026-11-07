@@ -28,8 +28,8 @@ export interface SqhPackageManifest {
    * The same declarations under the retired key.
    *
    * Readers accept both while manifests written by earlier versions still exist;
-   * writers emit `sqh` and keep this in step until no supported version reads it.
-   * @deprecated read through the accessor in `app-boot`, not this field.
+   * writers mirror both until no supported version reads this one. Read it through
+   * `readSqhField` in `app-boot` rather than touching the field directly.
    */
   dsh?: SqhManifest
 }

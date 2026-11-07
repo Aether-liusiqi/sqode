@@ -607,7 +607,7 @@ function sameBundles(left: readonly string[], right: readonly string[]): boolean
 function normalizeShippedProfile(name: string, dir: string, manifest: ProfileManifest): ProfileManifest {
   const installationOwned = INSTALLATION_OWNED_PROFILE_TUPLES[name]
   const template = PROFILE_TEMPLATES[name]
-  const bundles = manifest.dsh?.profile?.bundles
+  const bundles = readSqhField(manifest)?.profile?.bundles
   if (template === undefined || bundles === undefined) return manifest
   const isRetiredTuple = installationOwned !== undefined && sameBundles(bundles, installationOwned)
   if (!isRetiredTuple) return manifest
@@ -616,7 +616,7 @@ function normalizeShippedProfile(name: string, dir: string, manifest: ProfileMan
     dsh: {
       ...manifest.dsh,
       profile: {
-        ...manifest.dsh?.profile,
+        ...readSqhField(manifest)?.profile,
         bundles: [...template.bundles],
       },
     },
@@ -687,7 +687,7 @@ export function loadProfileDirectory(
   options: { userLayer?: boolean } = {},
 ): Profile {
   const manifest = readProfileManifest(binName, dir)
-  const bundles = manifest.dsh?.profile?.bundles ?? []
+  const bundles = readSqhField(manifest)?.profile?.bundles ?? []
   const layers: ProfileLayer[] = []
   const skippedBundles: SkippedBundle[] = []
   const exemptions = bundles.length === 0 ? {} : readProfileVersionExemptions(dir)
@@ -695,7 +695,7 @@ export function loadProfileDirectory(
     try {
       const packageDir = resolveBundleDir(binName, packageName, installAnchor, dir)
       const bundleManifest = readProfileManifest(binName, packageDir)
-      const bundle = bundleManifest.dsh?.bundle
+      const bundle = readSqhField(bundleManifest)?.bundle
       if (bundle === undefined) {
         throw new Error(`${binName}: profile bundle ${JSON.stringify(packageName)} declares no dsh.bundle in its package.json`)
       }

@@ -1,7 +1,10 @@
 /** Installed profile dependencies and their bundle activation after package-manager operations. */
 
 import { join } from 'node:path'
-import { readProfileManifest, resolveBundleDir, writeProfileManifest, type ProfileManifest } from './profile.ts'
+import {
+  readProfileManifest, readSqhField, resolveBundleDir, writeProfileManifest,
+  type ProfileManifest,
+} from './profile.ts'
 
 /** Profile directory and installation used by the shared bundle resolver. */
 export interface ProfilePluginLocation {
@@ -63,13 +66,13 @@ function bundleManifest(location: ProfilePluginLocation, name: string): ProfileM
  */
 export function readProfilePlugins(location: ProfilePluginLocation): ProfilePluginInventory {
   const manifest = readProfileManifest(location.binName, location.profileDir)
-  const bundles = manifest.dsh?.profile?.bundles ?? []
+  const bundles = readSqhField(manifest)?.profile?.bundles ?? []
   const dependencies = Object.entries(manifest.dependencies ?? {}).map(([name, spec]) => {
     const installed = optionalManifest(location.binName, join(location.profileDir, 'node_modules', name))
     return {
       name,
       version: typeof installed?.version === 'string' ? installed.version : spec,
-      bundle: bundleManifest(location, name)?.dsh?.bundle?.patch !== undefined,
+      bundle: readSqhField(bundleManifest(location, name))?.bundle?.patch !== undefined,
       enabled: bundles.includes(name),
     }
   })
@@ -109,7 +112,7 @@ export function reconcileProfilePlugins(options: ProfilePluginLocation & {
   const disabled = new Set(options.preserveDisabled
     ? options.before.dependencies.filter(dependency => dependency.bundle && !dependency.enabled).map(dependency => dependency.name)
     : [])
-  const previous = after.manifest.dsh?.profile?.bundles ?? []
+  const previous = readSqhField(after.manifest)?.profile?.bundles ?? []
   const bundles = previous.filter(name => !(beforeNames.has(name) || afterNames.has(name)) || bundleNames.has(name))
   for (const dependency of after.dependencies) {
     if (dependency.bundle && !disabled.has(dependency.name) && !bundles.includes(dependency.name)) bundles.push(dependency.name)

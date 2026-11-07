@@ -15,6 +15,7 @@ import { scrubbedParentEnv } from '@liusiqi-dev/sqh-subprocess'
 import { parseInstallSpec } from './install-spec.ts'
 import { awaitTreeGone, leadsOwnGroup, treeAlive, type RunTree } from './run-tree.ts'
 import { incompatiblePlugin } from './failure.ts'
+import { readSqhField } from '@liusiqi-dev/sqh-app-boot'
 import type { IncompatiblePlugin, PackageResult, Registry } from './types.ts'
 export { setProfileVersionExemption, readProfileVersionExemptions } from '@liusiqi-dev/sqh-app-boot'
 
@@ -74,7 +75,7 @@ export function anchorPathSpec(argument: string, cwd: string): string {
 export function bundleManifest(name: string, dir: string, anchor: string): ProfileManifest | undefined {
   const packageDir = resolveBundleDir('dsh', name, anchor, dir)
   const manifest = readProfileManifest('dsh', packageDir)
-  return manifest.dsh?.bundle?.patch === undefined ? undefined : manifest
+  return readSqhField(manifest)?.bundle?.patch === undefined ? undefined : manifest
 }
 
 /** Atomically save a profile manifest while retaining unrelated fields.
@@ -90,7 +91,7 @@ async function reconcile(before: ProfileManifest, dir: string, anchor: string, o
   const after = readProfileManifest('dsh', dir)
   const dependencies = Object.keys(after.dependencies ?? {})
   const beforeDeps = new Set(Object.keys(before.dependencies ?? {}))
-  const previous = after.dsh?.profile?.bundles ?? []
+  const previous = readSqhField(after)?.profile?.bundles ?? []
   const bundles = previous.filter((name) => {
     if (!beforeDeps.has(name) && !dependencies.includes(name)) return true
     return dependencies.includes(name) && bundleManifest(name, dir, anchor) !== undefined
@@ -98,11 +99,12 @@ async function reconcile(before: ProfileManifest, dir: string, anchor: string, o
   for (const name of dependencies) {
     if (beforeDeps.has(name)) continue
     const metadata = bundleManifest(name, dir, anchor)
-    if (metadata?.dsh?.bundle === undefined) {
+    const declaration = readSqhField(metadata)?.bundle
+    if (declaration === undefined) {
       options.onOutput?.(`dsh: warning: ${name} declares no dsh.bundle — installed as a plain dependency, not a profile layer\n`, 'stderr')
       continue
     }
-    for (const file of bundlePatchPaths(resolveBundleDir('dsh', name, anchor, dir), metadata.dsh.bundle)) loadOverlayPatches('dsh', file)
+    for (const file of bundlePatchPaths(resolveBundleDir('dsh', name, anchor, dir), declaration)) loadOverlayPatches('dsh', file)
     if (!bundles.includes(name)) {
       bundles.push(name)
     }
@@ -247,7 +249,7 @@ function directDependencies(manifest: ProfileManifest): Record<string, string> {
 
 /** Inspect only plugin rows contributed by the changed bundle, not its dependency closure. */
 function bundleComponentManifests(manifest: ProfileManifest, dir: string, anchor: string): ProfileManifest[] {
-  const bundle = manifest.dsh?.bundle
+  const bundle = readSqhField(manifest)?.bundle
   if (bundle === undefined) return []
   const patches = bundlePatchPaths(dir, bundle).flatMap(file => loadOverlayPatches('dsh', file))
   const names = new Set<string>()

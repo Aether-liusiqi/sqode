@@ -18,6 +18,7 @@ import {
   setProfileVersionExemption, PROFILE_COMPATIBILITY_FILENAME,
 } from '@liusiqi-dev/sqh-app-boot'
 import type {} from '@liusiqi-dev/sqh-hmr'
+import { readSqhField } from '@liusiqi-dev/sqh-app-boot'
 import type { ProfileContext, ProfileManifest } from '@liusiqi-dev/sqh-app-boot'
 import { bundleManifest, readProfileRegistry, registryArguments, runProfilePnpm, saveManifest, viewProfilePackage } from './operations.ts'
 import { classifyInstallFailure } from './install-failure.ts'
@@ -125,9 +126,9 @@ interface InstallationManifest {
 
 /** What a package manifest says about the package: identity, one-liner, and whether it is a bundle. */
 function inspectionOf(kind: 'registry' | 'path', manifest: object, registry: Registry): Extract<PluginSpecInspection, { status: 'accepted' }> {
-  const dsh = (manifest as { dsh?: unknown }).dsh
-  const declared = typeof dsh === 'object' && dsh !== null ? dsh as { bundle?: unknown } : undefined
-  const bundle = declared !== undefined && typeof declared.bundle === 'object' && declared.bundle !== null
+  // The accessor already types the declaration; the old shape guards for an
+  // `unknown` cast that no longer exists.
+  const bundle = readSqhField(manifest)?.bundle !== undefined
   const name = stringField(manifest, 'name')
   const version = stringField(manifest, 'version')
   const description = stringField(manifest, 'description')
@@ -280,7 +281,7 @@ export class PluginManager extends TypertRemoteService {
   listBundles(): Promise<BundleInfo[]> {
     const manifest = readProfileManifest('dsh', this.profile.dir)
     const exemptions = readProfileVersionExemptions(this.profile.dir)
-    const selected = manifest.dsh?.profile?.bundles ?? []
+    const selected = readSqhField(manifest)?.profile?.bundles ?? []
     const dependencies = Object.keys(manifest.dependencies ?? {})
     const installation = JSON.parse(readFileSync(this.profile.installAnchor, 'utf8')) as InstallationManifest
     const names = [...new Set([...selected, ...dependencies, ...Object.keys(installation.dependencies ?? {})])]
@@ -350,7 +351,9 @@ export class PluginManager extends TypertRemoteService {
     const manifest = readProfileManifest('dsh', this.profile.dir)
     const installation = JSON.parse(readFileSync(this.profile.installAnchor, 'utf8')) as InstallationManifest
     const known = new Set([
-      ...manifest.dsh?.profile?.bundles ?? [], ...Object.keys(manifest.dependencies ?? {}), ...Object.keys(installation.dependencies ?? {}),
+      ...readSqhField(manifest)?.profile?.bundles ?? [],
+      ...Object.keys(manifest.dependencies ?? {}),
+      ...Object.keys(installation.dependencies ?? {}),
     ])
     const plan = registryPlan(options?.registry, await this.registries())
     const registry = plan[0] as Registry
@@ -542,10 +545,12 @@ export class PluginManager extends TypertRemoteService {
         name = target
         const dir = resolveBundleDir('dsh', name, this.profile.installAnchor, this.profile.dir)
         const manifest = bundleManifest(name, this.profile.dir, this.profile.installAnchor)
-        if (manifest?.dsh?.bundle === undefined) throw new ManagementFailure('not-bundle')
+        if (manifest === undefined) throw new ManagementFailure('not-bundle')
+        const declaration = readSqhField(manifest)?.bundle
+        if (declaration === undefined) throw new ManagementFailure('not-bundle')
         const compatibility = evaluatePluginCompatibility(manifest, readProfileVersionExemptions(this.profile.dir))
         if (compatibility !== undefined && !compatibility.exempted) throw new ManagementFailure('incompatible-version', [incompatiblePlugin(compatibility)])
-        for (const file of bundlePatchPaths(dir, manifest.dsh.bundle)) loadOverlayPatches('dsh', file)
+        for (const file of bundlePatchPaths(dir, declaration)) loadOverlayPatches('dsh', file)
       } catch (error) {
         // pnpm has exited by now, so the files it rewrote go back as they were.
         await this.restoreFiles(files)
@@ -627,7 +632,7 @@ export class PluginManager extends TypertRemoteService {
 
   /** The rows a bundle's patch inserts and the existing rows it changes; an unreadable patch throws. */
   private declaredRows(name: string, info: ProfileManifest): Pick<BundleInfo, 'rows' | 'overrides'> {
-    const bundle = info.dsh?.bundle
+    const bundle = readSqhField(info)?.bundle
     /* v8 ignore next -- bundleManifest answers only manifests that declare a patch */
     if (bundle === undefined) return { rows: [], overrides: [] }
     const dir = resolveBundleDir('dsh', name, this.profile.installAnchor, this.profile.dir)
@@ -714,7 +719,7 @@ export class PluginManager extends TypertRemoteService {
 
   private async selectBundle(name: string, enabled: boolean): Promise<void> {
     const manifest = readProfileManifest('dsh', this.profile.dir)
-    const previous = manifest.dsh?.profile?.bundles ?? []
+    const previous = readSqhField(manifest)?.profile?.bundles ?? []
     if (enabled || !previous.includes(name)) {
       const metadata = bundleManifest(name, this.profile.dir, this.profile.installAnchor)
       if (metadata === undefined) throw new ManagementFailure('not-bundle')
@@ -736,9 +741,11 @@ export class PluginManager extends TypertRemoteService {
 
   private bundleRows(name: string): EntryOptions[] {
     const info = bundleManifest(name, this.profile.dir, this.profile.installAnchor)
-    if (info?.dsh?.bundle === undefined) return []
+    if (readSqhField(info)?.bundle === undefined) return []
     const dir = resolveBundleDir('dsh', name, this.profile.installAnchor, this.profile.dir)
-    return flatten(composeEntries([bundlePatchPaths(dir, info.dsh.bundle).flatMap(file => loadOverlayPatches('dsh', file))]))
+    const decl = readSqhField(info)?.bundle
+    if (decl === undefined) return []
+    return flatten(composeEntries([bundlePatchPaths(dir, decl).flatMap(file => loadOverlayPatches('dsh', file))]))
   }
 
   private protectsManager(name: string): boolean {
