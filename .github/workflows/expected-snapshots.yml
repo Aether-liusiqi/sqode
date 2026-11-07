@@ -1,0 +1,107 @@
+name: Expected-output snapshots
+
+# `apps/cli/tests/**/*.expected.e2e.ts` (18 suites) were not covered by any CI job:
+# the default vitest config only includes `*.spec.{ts,tsx}`, and no workflow called
+# `pnpm run test:expected`. They are keyless — they boot the CLI from built artifacts
+# and compare assembled output against committed expectations — so they belong in a
+# pull-request gate, not in the real-API e2e workflow that needs a provider secret.
+#
+# Two modes:
+#   default               verify: `pnpm run test:expected`, fail on drift
+#   workflow_dispatch     optionally set `refresh=true` to regenerate expectations
+#                         with `SQODE_SNAPSHOT=refresh` and upload the resulting
+#                         patch as an artifact. Nothing is pushed or committed; a
+#                         human reviews the patch before applying it.
+#
+# Why this workflow exists right now: the manifest migration writes both `sqh` and
+# `dsh` keys, so any expectation that compares a whole manifest needs a mirrored
+# key. This job is where that drift is enumerated, because these suites need a full
+# build and a PTY and are not practical to run on a development workstation.
+
+on:
+  workflow_dispatch:
+    inputs:
+      refresh:
+        description: 'Regenerate expectations and upload a patch instead of verifying'
+        type: boolean
+        default: false
+  push:
+    branches: [main, master]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  SQODE_TELEMETRY_DISABLED: '1'
+
+jobs:
+  expected:
+    runs-on: >-
+      ${{ vars.SQODE_CI_FAILOVER_LINUX == 'blacksmith'
+          && 'blacksmith-4vcpu-ubuntu-2404' || 'ubuntu-latest' }}
+    name: expected-output snapshots
+    # Each suite can boot several CLI subprocess trees. 30 minutes bounds retries
+    # without being the 45-minute real-API budget.
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install (immutable)
+        run: pnpm install --frozen-lockfile
+
+      # The expected suites boot example bins in `lib` mode, which resolves plugins
+      # through real package exports. The same build the real-API workflow uses.
+      - name: Build (lib for the example bins)
+        run: pnpm run build:official
+
+      - name: Prepare Office runtime
+        run: pnpm run prepare:primary-runtime --target linux-x64 --output .cache/expected-office
+
+      - name: Verify expected outputs
+        if: ${{ inputs.refresh != true }}
+        env:
+          SQODE_PRIMARY_RUNTIME: ${{ github.workspace }}/.cache/expected-office/primary-runtime
+          SQODE_EXAMPLE_MODE: lib
+        run: pnpm run test:expected
+
+      - name: Regenerate expected outputs
+        if: ${{ inputs.refresh == true }}
+        env:
+          SQODE_PRIMARY_RUNTIME: ${{ github.workspace }}/.cache/expected-office/primary-runtime
+          SQODE_EXAMPLE_MODE: lib
+        run: pnpm run test:expected:refresh
+
+      - name: Collect refreshed patch
+        if: ${{ inputs.refresh == true }}
+        run: |
+          set -euo pipefail
+          mkdir -p .artifacts
+          git diff --binary -- 'apps/cli/tests/**/*.expected*' > .artifacts/expected-refresh.patch || true
+          git status --porcelain > .artifacts/changed-files.txt
+          if [ ! -s .artifacts/expected-refresh.patch ]; then
+            echo "No expectation drift: the committed snapshots are already current."
+          else
+            echo "Expectation drift detected; review the uploaded patch."
+            wc -l .artifacts/expected-refresh.patch
+          fi
+
+      - name: Upload refreshed patch
+        if: ${{ inputs.refresh == true }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: expected-refresh-${{ github.run_id }}
+          path: .artifacts/
+          if-no-files-found: warn
+          retention-days: 14
