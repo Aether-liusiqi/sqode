@@ -48,27 +48,27 @@ function manifest(url: string): PackageManifest {
 
 /**
  * Resolve and version-check a dsh executable from package manifests.
- * @param dshManifestUrl - resolved URL of the dsh package manifest.
+ * @param sqhManifestUrl - resolved URL of the dsh package manifest.
  * @param clientManifestUrl - resolved URL of the SDK client manifest.
  * @returns the absolute dsh executable path.
  */
-export function resolveDshBinFromManifests(dshManifestUrl: string, clientManifestUrl: string): string {
-  const dshManifest = manifest(dshManifestUrl)
+export function resolveDshBinFromManifests(sqhManifestUrl: string, clientManifestUrl: string): string {
+  const sqhManifest = manifest(sqhManifestUrl)
   const clientManifest = manifest(clientManifestUrl)
-  if (typeof dshManifest.version !== 'string' || dshManifest.version !== clientManifest.version) {
-    throw new Error(`dsh SDK client ${String(clientManifest.version)} requires the same dsh version, got ${String(dshManifest.version)}`)
+  if (typeof sqhManifest.version !== 'string' || sqhManifest.version !== clientManifest.version) {
+    throw new Error(`dsh SDK client ${String(clientManifest.version)} requires the same dsh version, got ${String(sqhManifest.version)}`)
   }
   // The package's command was renamed from dsh to sqode, and an object bin now
   // carries the new key only. Reading the old key alone threw "declares no dsh
   // executable" for every SDK replay, which read like a packaging fault rather
   // than a rename that this resolver had not followed.
-  const bin = typeof dshManifest.bin === 'object' && dshManifest.bin !== null
-    ? (dshManifest.bin as Record<string, unknown>).sqode
-      ?? (dshManifest.bin as Record<string, unknown>).dsh
-      ?? Object.values(dshManifest.bin as Record<string, unknown>).find((value): value is string => typeof value === 'string')
-    : dshManifest.bin
+  const bin = typeof sqhManifest.bin === 'object' && sqhManifest.bin !== null
+    ? (sqhManifest.bin as Record<string, unknown>).sqode
+      ?? (sqhManifest.bin as Record<string, unknown>).dsh
+      ?? Object.values(sqhManifest.bin as Record<string, unknown>).find((value): value is string => typeof value === 'string')
+    : sqhManifest.bin
   if (typeof bin !== 'string' || bin === '') throw new Error('@liusiqi-dev/sqode declares no dsh executable')
-  return resolve(dirname(fileURLToPath(dshManifestUrl)), bin)
+  return resolve(dirname(fileURLToPath(sqhManifestUrl)), bin)
 }
 
 /**
@@ -84,20 +84,20 @@ export function installedDshBin(): string {
 
 /**
  * Resolve the Node launch for one same-version dsh package.
- * @param dshManifestUrl - resolved URL of the dsh package manifest.
+ * @param sqhManifestUrl - resolved URL of the dsh package manifest.
  * @param clientManifestUrl - resolved URL of the SDK client manifest.
  * @param sourceLoaderUrl - optional absolute tsx loader URL for deterministic tests.
  * @returns built output, or the source entry plus its compatibility patch and tsx environment.
  */
 export function resolveDshNodeLaunchFromManifests(
-  dshManifestUrl: string,
+  sqhManifestUrl: string,
   clientManifestUrl: string,
   sourceLoaderUrl?: string,
 ): SqhNodeLaunch {
-  const bin = resolveDshBinFromManifests(dshManifestUrl, clientManifestUrl)
+  const bin = resolveDshBinFromManifests(sqhManifestUrl, clientManifestUrl)
   if (existsSync(bin)) return { nodeArgs: [bin], patches: [], environment: {} }
 
-  const packageDir = dirname(fileURLToPath(dshManifestUrl))
+  const packageDir = dirname(fileURLToPath(sqhManifestUrl))
   const sourceBin = resolve(packageDir, 'src/bin.ts')
   const sourcePatch = resolve(packageDir, 'src/sdk-source.cordis.patch.yml')
   const sourceTsconfig = resolve(packageDir, 'tsconfig.json')
@@ -136,21 +136,21 @@ export function resolveDshLaunch(
   callerCwd: string = process.cwd(),
 ): RuntimeProcessOptions {
   const profile = options.profile ?? 'sdk'
-  const dshLaunch = options.dshBin === undefined
+  const sqhLaunch = options.sqhBin === undefined
     ? installedDshNodeLaunch()
-    : { nodeArgs: [resolve(callerCwd, options.dshBin)], patches: [], environment: {} }
+    : { nodeArgs: [resolve(callerCwd, options.sqhBin)], patches: [], environment: {} }
   const patches = [
-    ...dshLaunch.patches,
+    ...sqhLaunch.patches,
     ...(options.patches ?? []).map(path => resolve(callerCwd, path)),
   ]
   const sqhHome = options.sqhHome === undefined ? undefined : resolve(callerCwd, options.sqhHome)
   return {
     command: process.execPath,
-    args: [...dshLaunch.nodeArgs, '--profile', profile, ...patches.flatMap(path => ['--patch', path])],
+    args: [...sqhLaunch.nodeArgs, '--profile', profile, ...patches.flatMap(path => ['--patch', path])],
     ...options.processCwd === undefined ? {} : { cwd: resolve(callerCwd, options.processCwd) },
     environment: () => ({
       ...(options.env ?? process.env),
-      ...dshLaunch.environment,
+      ...sqhLaunch.environment,
       ...sqhHome === undefined ? {} : { SQODE_HOME: sqhHome },
     }),
     description: `dsh profile ${JSON.stringify(profile)}`,

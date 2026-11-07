@@ -1276,7 +1276,7 @@ describe('the model-facing bash tool builds its request from named args only (no
         ...request.signal ? { signal: request.signal } : {},
         ...request.stdin !== undefined ? { stdin: request.stdin } : {},
         ...request.env !== undefined ? { env: request.env } : {},
-        ...request.dshEnv !== undefined ? { dshEnv: request.dshEnv } : {},
+        ...request.sqhEnv !== undefined ? { sqhEnv: request.sqhEnv } : {},
         sandboxPolicy: request.sandboxPolicy,
       }
     }
@@ -1328,7 +1328,7 @@ describe('the model-facing bash tool builds its request from named args only (no
       agent,
     })
 
-    expect(bash.requests[0]?.dshEnv).toEqual({
+    expect(bash.requests[0]?.sqhEnv).toEqual({
       SQODE_HOME: recordingDshHome,
       SQODE_SESSION_ID: 'request-fg',
       SQODE_SHELL: '1',
@@ -1354,7 +1354,7 @@ describe('the model-facing bash tool builds its request from named args only (no
     })
 
     expect(bash.requests[0]?.env).toBeUndefined()
-    expect(bash.requests[0]?.dshEnv).toEqual({
+    expect(bash.requests[0]?.sqhEnv).toEqual({
       SQODE_HOME: recordingDshHome,
       SQODE_SESSION_ID: 'request-bg',
       SQODE_SHELL: '1',
@@ -1376,7 +1376,7 @@ describe('the model-facing bash tool builds its request from named args only (no
       })
     }
 
-    expect(bash.requests.map(request => request.dshEnv)).toEqual([
+    expect(bash.requests.map(request => request.sqhEnv)).toEqual([
       {
         SQODE_HOME: recordingDshHome,
         SQODE_SESSION_ID: 'request-parent',

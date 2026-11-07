@@ -70,7 +70,7 @@ class FakeBash extends ShellExecutor {
       ...request.signal ? { signal: request.signal } : {},
       ...request.stdin !== undefined ? { stdin: request.stdin } : {},
       ...request.env !== undefined ? { env: request.env } : {},
-      ...request.dshEnv !== undefined ? { dshEnv: request.dshEnv } : {},
+      ...request.sqhEnv !== undefined ? { sqhEnv: request.sqhEnv } : {},
       sandboxPolicy: request.sandboxPolicy,
     }
   }
@@ -190,7 +190,7 @@ class ConfiningFakeBash extends ShellExecutor {
       onExpiry: request.onExpiry ?? 'kill',
       stdoutMaxBytes: request.stdoutMaxBytes ?? 64_000,
       ...request.signal ? { signal: request.signal } : {},
-      ...request.dshEnv !== undefined ? { dshEnv: request.dshEnv } : {},
+      ...request.sqhEnv !== undefined ? { sqhEnv: request.sqhEnv } : {},
       sandboxPolicy: request.sandboxPolicy,
     }
   }
@@ -419,7 +419,7 @@ describe('execution through the bash seam', () => {
     expect(request?.command).toBe('Write-Output hi')
     expect(request?.workdir).toBe('/sessions/s1')
     expect(request?.timeoutMs).toBe(1234)
-    expect(request?.dshEnv).toEqual({
+    expect(request?.sqhEnv).toEqual({
       SQODE_HOME: sqhHome,
       SQODE_SHELL: '1',
       SQODE_SESSION_ID: 'session-1',
@@ -443,11 +443,11 @@ describe('execution through the bash seam', () => {
     bash.handler = () => runResult('ok\n')
     await call(ctx, 'pwsh', { command: 'Write-Output ok', description: 'ok' })
     expect(bash.requests[0]).not.toHaveProperty('workdir')
-    const dshEnv = bash.requests[0]?.dshEnv
-    expect(dshEnv).toBeDefined()
-    expect(dshEnv?.['SQODE_SHELL']).toBe('1')
-    expect(dshEnv?.['SQODE_HOME']).toEqual(expect.any(String))
-    expect(dshEnv).not.toHaveProperty('SQODE_SESSION_ID')
+    const sqhEnv = bash.requests[0]?.sqhEnv
+    expect(sqhEnv).toBeDefined()
+    expect(sqhEnv?.['SQODE_SHELL']).toBe('1')
+    expect(sqhEnv?.['SQODE_HOME']).toEqual(expect.any(String))
+    expect(sqhEnv).not.toHaveProperty('SQODE_SESSION_ID')
   })
 
   it('forwards exec.signal into the resolved request', async () => {

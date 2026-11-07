@@ -35,7 +35,7 @@ export interface Config {
   /** Provider name on `ctx.subagents` (default `dsh-sdk`). */
   providerName: string
   /** Explicit dsh CLI module, resolved and checked at plugin load; omission uses the SDK dependency. */
-  dshBin?: string
+  sqhBin?: string
   /** Named child profile (default `sdk`). */
   profile: string
   /** Ordered per-launch profile patch files, resolved and checked at plugin load. */
@@ -78,7 +78,7 @@ export interface Config {
 
 export const Config: z<Config> = z.object({
   providerName: z.string().default('dsh-sdk'),
-  dshBin: z.string(),
+  sqhBin: z.string(),
   profile: z.string().default('sdk'),
   patches: z.array(z.string()).default([]),
   sqhHome: z.string().required(),
@@ -93,7 +93,7 @@ export const Config: z<Config> = z.object({
 })
 
 /** The shape after schemastery applied the defaults (`cwd` and `maxTokens` have none). */
-type ResolvedConfig = Required<Omit<Config, 'cwd' | 'maxTokens' | 'dshBin'>> & Pick<Config, 'cwd' | 'maxTokens' | 'dshBin'>
+type ResolvedConfig = Required<Omit<Config, 'cwd' | 'maxTokens' | 'sqhBin'>> & Pick<Config, 'cwd' | 'maxTokens' | 'sqhBin'>
 
 /** Resolve one configured runtime file against the harness launch directory and require a regular file. */
 function resolveConfiguredFile(field: string, value: string): string {
@@ -155,7 +155,7 @@ class SdkSubagentProvider implements SubagentProvider {
     }
     const route = resolveSdkRoute(this.config, request.agentOptions)
     const spec: SdkRunSpec = {
-      ...this.config.dshBin === undefined ? {} : { dshBin: this.config.dshBin },
+      ...this.config.sqhBin === undefined ? {} : { sqhBin: this.config.sqhBin },
       profile: this.config.profile,
       patches: this.config.patches,
       sqhHome: this.config.sqhHome,
@@ -188,7 +188,7 @@ export function apply(ctx: Context, config: Config): void {
   const launchPaths: ResolvedConfig = {
     ...resolved,
     patches: resolved.patches.map((path, index) => resolveConfiguredFile(`patches[${String(index)}]`, path)),
-    ...resolved.dshBin === undefined ? {} : { dshBin: resolveConfiguredFile('dshBin', resolved.dshBin) },
+    ...resolved.sqhBin === undefined ? {} : { sqhBin: resolveConfiguredFile('sqhBin', resolved.sqhBin) },
   }
   // Interpret a relative configured cwd against the harness launch directory
   // ONCE, at load, and fail a misconfigured directory here — not per start.

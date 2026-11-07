@@ -539,28 +539,28 @@ describe.skipIf(!hasPwsh)('PwshLocalExecutor.run', () => {
     await expect(run(bash, bash.resolve({ command: 'Write-Output ok', workdir: '/nonexistent-dsh' }))).rejects.toThrow(/ENOENT/)
   })
 
-  it('resolve() carries stdin/env/dshEnv onto the spec, and run() threads them to the command', async () => {
+  it('resolve() carries stdin/env/sqhEnv onto the spec, and run() threads them to the command', async () => {
     const { bash } = await setup()
     const spec = bash.resolve({
       command: '$s = ([Console]::In.ReadToEnd()).TrimEnd(); Write-Output $s; Write-Output "[$env:SEAM_VAR][$env:SQODE_SEAM_VAR]"',
       stdin: 'piped\n',
       env: { SEAM_VAR: 'env-ok' },
-      dshEnv: { SQODE_SEAM_VAR: 'dsh-ok' },
+      sqhEnv: { SQODE_SEAM_VAR: 'dsh-ok' },
     })
     // resolve() keeps the optional input/environment fields verbatim.
     expect(spec.stdin).toBe('piped\n')
     expect(spec.env).toEqual({ SEAM_VAR: 'env-ok' })
-    expect(spec.dshEnv).toEqual({ SQODE_SEAM_VAR: 'dsh-ok' })
+    expect(spec.sqhEnv).toEqual({ SQODE_SEAM_VAR: 'dsh-ok' })
     const result = await run(bash, spec)
     expect(lf(result.stdout.text)).toBe('piped\n[env-ok][dsh-ok]\n')
   })
 
-  it('resolve() omits stdin/env/dshEnv when the request supplies none', async () => {
+  it('resolve() omits stdin/env/sqhEnv when the request supplies none', async () => {
     const { bash } = await setup()
     const spec = bash.resolve({ command: 'Write-Output ok' })
     expect('stdin' in spec).toBe(false)
     expect('env' in spec).toBe(false)
-    expect('dshEnv' in spec).toBe(false)
+    expect('sqhEnv' in spec).toBe(false)
   })
 })
 
@@ -589,7 +589,7 @@ describe.skipIf(!hasPwsh)('PwshLocalExecutor.start (background process handles)'
       command: '$s = ([Console]::In.ReadToEnd()).TrimEnd(); Write-Output $s; Write-Output "[$env:BG_VAR][$env:SQODE_BG_VAR]"',
       stdin: 'bg-stdin\n',
       env: { BG_VAR: 'bg-env' },
-      dshEnv: { SQODE_BG_VAR: 'bg-dsh-env' },
+      sqhEnv: { SQODE_BG_VAR: 'bg-dsh-env' },
     })))
     await proc.done
     expect(proc.status).toBe('completed')

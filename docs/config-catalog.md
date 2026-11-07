@@ -3253,7 +3253,7 @@ export interface Config {
   /** Provider name on `ctx.subagents` (default `dsh-sdk`). */
   providerName: string
   /** Explicit dsh CLI module, resolved and checked at plugin load; omission uses the SDK dependency. */
-  dshBin?: string
+  sqhBin?: string
   /** Named child profile (default `sdk`). */
   profile: string
   /** Ordered per-launch profile patch files, resolved and checked at plugin load. */

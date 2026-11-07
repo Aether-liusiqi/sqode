@@ -18,7 +18,7 @@ const DEPENDENCY_FIELDS = ['dependencies', 'optionalDependencies', 'peerDependen
 
 /**
  * Resolution work accepted from the dual-release graph, in
- * `dshPackagesPerVersion * checkedDshEdges` units.
+ * `sqhPackagesPerVersion * checkedDshEdges` units.
  *
  * npm's hoisted placement re-checks every internal edge against the incoming
  * edges of its peer target (`canPlacePeers` calls `checkCanPlaceNoCurrent`,
@@ -63,7 +63,7 @@ interface MutableRegistryManifest {
 
 /** Summary of a verified two-release npm layout. */
 export interface SqhInstallLayoutSummary {
-  readonly dshPackagesPerVersion: number
+  readonly sqhPackagesPerVersion: number
   readonly checkedDshEdges: number
 }
 
@@ -92,7 +92,7 @@ function cloneForVersion(manifest: object, version: string): MutableRegistryMani
  */
 export function buildDualDshRegistry(index: RegistryIndex, sourceVersion: string): RegistryIndex {
   const output = new Map(index)
-  let dshPackages = 0
+  let sqhPackages = 0
   for (const [name, versions] of index) {
     if (!isDshPackage(name)) {
       output.set(name, versions)
@@ -100,13 +100,13 @@ export function buildDualDshRegistry(index: RegistryIndex, sourceVersion: string
     }
     const source = versions.get(sourceVersion)
     if (source === undefined) throw new Error(`${name} has no workspace version ${sourceVersion}`)
-    dshPackages++
+    sqhPackages++
     output.set(name, new Map(SYNTHETIC_SQH_VERSIONS.map(version => [
       version,
       cloneForVersion(source, version),
     ])))
   }
-  if (dshPackages === 0) throw new Error('registry contains no SQH packages')
+  if (sqhPackages === 0) throw new Error('registry contains no SQH packages')
   return output
 }
 
@@ -215,7 +215,7 @@ export function assertDualDshInstallLayout(packageLock: NpmPackageLock): SqhInst
   }
 
   if (errors.length > 0) throw new Error(`invalid npm install layout:\n${errors.map(error => `  - ${error}`).join('\n')}`)
-  return { dshPackagesPerVersion: rootNames.size, checkedDshEdges }
+  return { sqhPackagesPerVersion: rootNames.size, checkedDshEdges }
 }
 
 /**
@@ -224,11 +224,11 @@ export function assertDualDshInstallLayout(packageLock: NpmPackageLock): SqhInst
  * @returns The verified resolution work units.
  */
 export function assertResolutionWorkBudget(summary: SqhInstallLayoutSummary): number {
-  const units = summary.dshPackagesPerVersion * summary.checkedDshEdges
+  const units = summary.sqhPackagesPerVersion * summary.checkedDshEdges
   if (units > MAX_RESOLUTION_WORK_UNITS) {
     throw new Error(
       'dual-release graph exceeds the resolution work budget: '
-      + `${String(summary.dshPackagesPerVersion)} package(s) per release x `
+      + `${String(summary.sqhPackagesPerVersion)} package(s) per release x `
       + `${String(summary.checkedDshEdges)} internal edge(s) = ${String(units)} unit(s), `
       + `budget ${String(MAX_RESOLUTION_WORK_UNITS)} unit(s)\n`
       + '  npm re-checks every internal edge against the incoming edges of its peer target, so the resolution\n'
@@ -257,7 +257,7 @@ async function main(): Promise<void> {
   const summary = assertDualDshInstallLayout(result.packageLock)
   const units = assertResolutionWorkBudget(summary)
   console.log(
-    `verify-npm-install-layout: ${String(summary.dshPackagesPerVersion)} SQH package(s) per release and `
+    `verify-npm-install-layout: ${String(summary.sqhPackagesPerVersion)} SQH package(s) per release and `
     + `${String(summary.checkedDshEdges)} internal edge(s) verified in ${(result.durationMs / 1000).toFixed(2)} s; `
     + `${String(units)} of ${String(MAX_RESOLUTION_WORK_UNITS)} budgeted resolution work unit(s); `
     + `both releases share one Cordis installation; ${String(result.unknownPackages.length)} unavailable optional `

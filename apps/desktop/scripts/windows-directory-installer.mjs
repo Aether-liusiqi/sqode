@@ -22,7 +22,7 @@ export function directoryInstallSection(source) {
   result = replaceOnce(result, '!include installer.nsh', `!include installer.nsh
 !macroundef extractUsing7za
 !macro extractUsing7za FILE
-  !insertmacro dshExtractPayload "\${FILE}"
+  !insertmacro sqhExtractPayload "\${FILE}"
 !macroend
 !macroundef uninstallOldVersion
 !macro uninstallOldVersion ROOT_KEY
@@ -36,8 +36,8 @@ export function directoryInstallSection(source) {
   \${EndIf}
 !macroend`)
   result = replaceOnce(result, '!insertmacro setLinkVars', `!insertmacro setLinkVars
-!insertmacro dshStageApplication`)
-  result = replaceOnce(result, '!insertmacro installApplicationFiles', 'Call dshPromoteDirectories\nIfErrors 0 +4\n  SetErrorLevel 2\n  MessageBox MB_OK|MB_ICONEXCLAMATION "$(appCannotBeClosed)" /SD IDOK\n  Quit')
+!insertmacro sqhStageApplication`)
+  result = replaceOnce(result, '!insertmacro installApplicationFiles', 'Call sqhPromoteDirectories\nIfErrors 0 +4\n  SetErrorLevel 2\n  MessageBox MB_OK|MB_ICONEXCLAMATION "$(appCannotBeClosed)" /SD IDOK\n  Quit')
   result = replaceOnce(result, '!ifdef UNINSTALLER_ICON\n  File /oname=uninstallerIcon.ico "${UNINSTALLER_ICON}"\n!endif\n', '')
   // The staging macro uses the upstream installer macro, including its signed uninstaller.
   return result
@@ -49,7 +49,7 @@ export function directoryInstallSection(source) {
  * @returns {string} Helper with cleanup before installer exits.
  */
 export function directoryInstallerExits(source) {
-  return source.replaceAll(/^(\s*)Quit\s*$/gm, '$1!ifndef BUILD_UNINSTALLER\n$1Call dshCleanupDirectories\n$1!endif\n$1Quit')
+  return source.replaceAll(/^(\s*)Quit\s*$/gm, '$1!ifndef BUILD_UNINSTALLER\n$1Call sqhCleanupDirectories\n$1!endif\n$1Quit')
 }
 
 /** Install the build-only NSIS adapter without replacing electron-builder's signed bootstrap path. */

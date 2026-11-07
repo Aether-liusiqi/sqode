@@ -6,7 +6,7 @@ Var dshOldDirectory
 Var dshOldMoved
 Var dshNewMoved
 
-!macro dshExtractPayload FILE
+!macro sqhExtractPayload FILE
   !ifmacrodef customInstallerExtract
     !insertmacro customInstallerExtract "${FILE}"
   !else
@@ -27,7 +27,7 @@ Var dshNewMoved
   ${EndIf}
 !macroend
 
-!macro dshStageApplication
+!macro sqhStageApplication
   StrCpy $dshFinalDirectory $INSTDIR
   System::Call 'ole32::CoCreateGuid(g .r0) i .r1'
   ${If} $1 != 0
@@ -60,10 +60,10 @@ Var dshNewMoved
 !macroend
 
 Function .onGUIEnd
-  Call dshCleanupDirectories
+  Call sqhCleanupDirectories
 FunctionEnd
 
-Function dshCleanupDirectories
+Function sqhCleanupDirectories
   ${If} $dshFinalDirectory != ""
     Call dshRollbackDirectories
   ${EndIf}
@@ -92,7 +92,7 @@ Function dshRollbackDirectories
   StrCpy $INSTDIR $dshFinalDirectory
 FunctionEnd
 
-Function dshPromoteDirectories
+Function sqhPromoteDirectories
   !ifmacrodef InstallerPublishStage
     !insertmacro InstallerPublishStage 2
   !endif

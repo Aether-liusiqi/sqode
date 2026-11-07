@@ -181,13 +181,13 @@ describe('dsh-subagent-sdk provider', () => {
 
   it('resolves relative launch files at load and forwards absolute paths', async () => {
     const ctx = await setup({ FAKE_TEXT: 'explicit dsh child' }, {
-      dshBin: relative(process.cwd(), fakeRuntime),
+      sqhBin: relative(process.cwd(), fakeRuntime),
       patches: [relative(process.cwd(), existingPatch)],
     })
     const run = await ctx.subagents.start('dsh-sdk', request())
     expect(text((await run.result).output)).toBe('explicit dsh child')
     expect(createdHarnessOptions[0]).toMatchObject({
-      dshBin: fakeRuntime,
+      sqhBin: fakeRuntime,
       patches: [existingPatch],
     })
     await run.dispose()
@@ -863,8 +863,8 @@ describe('dsh-subagent-sdk provider', () => {
   })
 
   it.each([
-    { field: 'dshBin', override: { dshBin: './missing-dsh-bin' } },
-    { field: 'dshBin', override: { dshBin: '.' } },
+    { field: 'sqhBin', override: { sqhBin: './missing-dsh-bin' } },
+    { field: 'sqhBin', override: { sqhBin: '.' } },
     { field: 'patches[0]', override: { patches: ['./missing-child-patch.yml'] } },
   ])('rejects an invalid $field at load', async ({ field, override }) => {
     const ctx = new Context()

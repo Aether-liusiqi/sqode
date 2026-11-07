@@ -152,9 +152,9 @@ export function prepareDevelopmentProject(options: DevelopmentProjectOptions): s
     ...mirrorDependencyLinks(options.dependencyDir, destinationModules),
     ...mirrorWorkspaceDependencies([options.cliDir, options.hostDir], destinationModules),
   ]
-  const dshLink = join(destinationModules, '@liusiqi-dev', 'sqode')
-  removeOwnedPath(dshLink)
-  linkDirectory(options.cliDir, dshLink)
+  const sqhLink = join(destinationModules, '@liusiqi-dev', 'sqode')
+  removeOwnedPath(sqhLink)
+  linkDirectory(options.cliDir, sqhLink)
   const hostLink = join(destinationModules, '@liusiqi-dev', 'sqh-desktop-host')
   removeOwnedPath(hostLink)
   linkDirectory(options.hostDir, hostLink)

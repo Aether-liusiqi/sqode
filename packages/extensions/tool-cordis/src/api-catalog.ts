@@ -6991,11 +6991,11 @@ export const TYPE_API: readonly TypeApiEntry[] = [
   },
   {
     name: 'ShellExecRequest',
-    declaration: 'export interface ShellExecRequest {\n    command: string;\n    workdir?: string | undefined;\n    timeoutMs?: number | undefined;\n    onExpiry?: ShellExpiryPolicy | undefined;\n    stdoutMaxBytes?: number | undefined;\n    signal?: AbortSignal | undefined;\n    stdin?: string | undefined;\n    env?: Record<string, string> | undefined;\n    dshEnv?: SqhEnvironment | undefined;\n    sandboxPolicy?: SandboxExecutionPolicy | undefined;\n}',
+    declaration: 'export interface ShellExecRequest {\n    command: string;\n    workdir?: string | undefined;\n    timeoutMs?: number | undefined;\n    onExpiry?: ShellExpiryPolicy | undefined;\n    stdoutMaxBytes?: number | undefined;\n    signal?: AbortSignal | undefined;\n    stdin?: string | undefined;\n    env?: Record<string, string> | undefined;\n    sqhEnv?: SqhEnvironment | undefined;\n    sandboxPolicy?: SandboxExecutionPolicy | undefined;\n}',
   },
   {
     name: 'ShellExecSpec',
-    declaration: 'export interface ShellExecSpec {\n    command: string;\n    workdir: string;\n    timeoutMs: number;\n    onExpiry: ShellExpiryPolicy;\n    stdoutMaxBytes: number;\n    signal?: AbortSignal | undefined;\n    stdin?: string | undefined;\n    env?: Record<string, string> | undefined;\n    dshEnv?: SqhEnvironment | undefined;\n    sandboxPolicy: SandboxExecutionPolicy | undefined;\n}',
+    declaration: 'export interface ShellExecSpec {\n    command: string;\n    workdir: string;\n    timeoutMs: number;\n    onExpiry: ShellExpiryPolicy;\n    stdoutMaxBytes: number;\n    signal?: AbortSignal | undefined;\n    stdin?: string | undefined;\n    env?: Record<string, string> | undefined;\n    sqhEnv?: SqhEnvironment | undefined;\n    sandboxPolicy: SandboxExecutionPolicy | undefined;\n}',
   },
   {
     name: 'ShellExecution',

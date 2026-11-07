@@ -188,10 +188,10 @@ export async function createDesktopUploadPlan(
   const repositoryRoot = options.repositoryRoot ?? REPOSITORY_ROOT
   const appRoot = options.appRoot ?? APP_ROOT
   const artifactsRoot = options.artifactsRoot ?? desktopTargetBuildPaths(targetName).artifacts
-  const dshVersion = await manifestVersion(join(repositoryRoot, 'package.json'), 'dsh package')
+  const sqhVersion = await manifestVersion(join(repositoryRoot, 'package.json'), 'dsh package')
   const desktopVersion = await manifestVersion(join(appRoot, 'package.json'), 'desktop package')
-  if (dshVersion !== desktopVersion) {
-    throw new Error(`desktop upload: desktop version ${desktopVersion} does not match current dsh version ${dshVersion}`)
+  if (sqhVersion !== desktopVersion) {
+    throw new Error(`desktop upload: desktop version ${desktopVersion} does not match current dsh version ${sqhVersion}`)
   }
 
   const update = resolveDesktopUploadConfig(environment, target.platform, target.arch)
@@ -203,10 +203,10 @@ export async function createDesktopUploadPlan(
   const recordedVersion = stringField(buildRecord.version, `${targetName} package completion record.version`)
   let buildVersion: string
   try {
-    buildVersion = validateDesktopBuildVersion(recordedVersion, dshVersion)
+    buildVersion = validateDesktopBuildVersion(recordedVersion, sqhVersion)
   }
   catch (error) {
-    throw new Error(`desktop upload: ${targetName} package completion record holds ${recordedVersion}, which is not a build of dsh ${dshVersion}: ${
+    throw new Error(`desktop upload: ${targetName} package completion record holds ${recordedVersion}, which is not a build of dsh ${sqhVersion}: ${
       error instanceof Error ? error.message : String(error)}`)
   }
   if (buildRecord.schemaVersion !== 1

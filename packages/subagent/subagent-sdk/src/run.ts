@@ -29,7 +29,7 @@ import { scrubbedParentEnv } from '@liusiqi-dev/sqh-subprocess'
 /** Resolved spawn spec for an SDK runtime child process (no defaults — see Config). */
 export interface SdkRunSpec {
   /** Explicit dsh CLI module; omission resolves the SDK client's same-version dependency. */
-  dshBin?: string
+  sqhBin?: string
   /** Named child profile. */
   profile: string
   /** Ordered per-launch profile patch files. */
@@ -237,7 +237,7 @@ export async function startSdkRun(request: SubagentStartRequest, spec: SdkRunSpe
   const id = brandString<SessionId>(randomUUID())
 
   const harness = internals.createHarness({
-    ...spec.dshBin === undefined ? {} : { dshBin: spec.dshBin },
+    ...spec.sqhBin === undefined ? {} : { sqhBin: spec.sqhBin },
     profile: spec.profile,
     patches: spec.patches,
     sqhHome: spec.sqhHome,

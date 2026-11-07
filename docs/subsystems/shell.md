@@ -8,7 +8,7 @@ Source: [`packages/shell/shell/src/types.ts`](../../packages/shell/shell/src/typ
 
 ## Managed shell environment namespace
 
-`SQH_*` variables are Harness-owned child-process facts. The model-facing bash tool collects them through `ctx.shellEnv` and passes them through `ShellExecRequest.dshEnv`; the subprocess service removes inherited `SQH_*` names before merging the current snapshot. The `DshEnvironmentKey`/`DshEnvironment` vocabulary is owned by the [subprocess seam](subprocess.md) and re-exported by `dsh-shell`.
+`SQH_*` variables are Harness-owned child-process facts. The model-facing bash tool collects them through `ctx.shellEnv` and passes them through `ShellExecRequest.sqhEnv`; the subprocess service removes inherited `SQH_*` names before merging the current snapshot. The `DshEnvironmentKey`/`DshEnvironment` vocabulary is owned by the [subprocess seam](subprocess.md) and re-exported by `dsh-shell`.
 
 ## Request vs. spec: the `resolve()` split
 
@@ -48,7 +48,7 @@ interface ShellExecRequest {
   stdin?: string | undefined
   /**
    * Ordinary environment entries for the command, merged after the credential
-   * scrub. Managed facts belong in {@link dshEnv}, which merges after this
+   * scrub. Managed facts belong in {@link sqhEnv}, which merges after this
    * map, so an entry here can never displace one. Set by in-process plugins
    * (the hooks bridges set `CLAUDE_PROJECT_DIR`, `CLAUDE_PLUGIN_ROOT`, …); the
    * model-facing bash tool does not expose it as a parameter.
@@ -61,7 +61,7 @@ interface ShellExecRequest {
    * value from the harness process and a caller {@link env} entry cannot
    * displace a managed one.
    */
-  dshEnv?: DshEnvironment | undefined
+  sqhEnv?: DshEnvironment | undefined
   /** Fully resolved per-call sandbox policy; sandboxing executors default it. */
   sandboxPolicy?: SandboxExecutionPolicy | undefined
 }
@@ -90,13 +90,13 @@ interface ShellExecSpec {
   stdin?: string | undefined
   /**
    * Ordinary environment entries carried through from
-   * {@link ShellExecRequest.env}; {@link dshEnv} still merges after them.
+   * {@link ShellExecRequest.env}; {@link sqhEnv} still merges after them.
    * OPTIONAL on the spec for the same reason as `stdin`: absent means no
    * ordinary extra environment.
    */
   env?: Record<string, string> | undefined
   /** Managed `SQH_*` snapshot (typed to managed keys); merges after {@link env}. */
-  dshEnv?: DshEnvironment | undefined
+  sqhEnv?: DshEnvironment | undefined
   /** Resolved sandbox policy; ignored by executors that do not confine. */
   sandboxPolicy: SandboxExecutionPolicy | undefined
 }

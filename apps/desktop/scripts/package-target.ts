@@ -140,11 +140,11 @@ function writeReleaseRecord(
   artifactsRoot: string,
 ): void {
   const desktopVersion = packageVersion(join(APP_ROOT, 'package.json'), 'desktop package')
-  const dshVersion = packageVersion(join(REPOSITORY_ROOT, 'package.json'), 'dsh package')
-  if (desktopVersion !== dshVersion) {
-    throw new Error(`desktop package: desktop version ${desktopVersion} does not match dsh version ${dshVersion}`)
+  const sqhVersion = packageVersion(join(REPOSITORY_ROOT, 'package.json'), 'dsh package')
+  if (desktopVersion !== sqhVersion) {
+    throw new Error(`desktop package: desktop version ${desktopVersion} does not match dsh version ${sqhVersion}`)
   }
-  const buildVersion = resolveDesktopBuildVersion(environment, dshVersion)
+  const buildVersion = resolveDesktopBuildVersion(environment, sqhVersion)
   const packaged = resolveDesktopBuildCommit(environment)
   const update = resolveDesktopAutoUpdateConfig(environment, target.platform, target.arch)
   const recordPath = join(artifactsRoot, desktopBuildRecordFilename(target.name))

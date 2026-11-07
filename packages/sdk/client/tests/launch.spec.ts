@@ -52,7 +52,7 @@ describe('SDK dsh launch resolution', () => {
   it('makes every filesystem input absolute before spawn and preserves patch order', () => {
     const caller = resolve('/tmp', 'sdk-launch-caller')
     const launch = resolveDshLaunch({
-      dshBin: './bin/dsh',
+      sqhBin: './bin/dsh',
       profile: 'custom-sdk',
       patches: ['./first.yml', '../second.yml'],
       sqhHome: './home',
@@ -131,11 +131,11 @@ describe('SDK dsh launch resolution', () => {
 
   it('reads explicit and inherited environments when the child starts', () => {
     const explicit: NodeJS.ProcessEnv = { MARKER: 'before' }
-    const explicitLaunch = resolveDshLaunch({ dshBin: '/bin/dsh', env: explicit })
+    const explicitLaunch = resolveDshLaunch({ sqhBin: '/bin/dsh', env: explicit })
     explicit.MARKER = 'after'
     expect(explicitLaunch.environment().MARKER).toBe('after')
 
-    const inheritedLaunch = resolveDshLaunch({ dshBin: '/bin/dsh' })
+    const inheritedLaunch = resolveDshLaunch({ sqhBin: '/bin/dsh' })
     process.env.SQODE_SDK_LATE_ENV_TEST = 'late'
     try {
       expect(inheritedLaunch.environment().SQODE_SDK_LATE_ENV_TEST).toBe('late')

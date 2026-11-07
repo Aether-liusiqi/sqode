@@ -488,12 +488,12 @@ export function apply(ctx: Context, config: Config = {}): void {
           ? standingPolicy
           : { ...(standingPolicy as SandboxExecutionPolicy), mode: approvedMode }
         const workdir = resolveWorkdir(args.workdir, exec, standingPolicy?.workspaceRoot)
-        const dshEnv = ctx.shellEnv.collect(exec)
+        const sqhEnv = ctx.shellEnv.collect(exec)
         const request: ShellExecRequest = {
           command: args.command,
           ...workdir !== undefined ? { workdir } : {},
           ...args.timeoutMs !== undefined ? { timeoutMs: args.timeoutMs } : {},
-          dshEnv,
+          sqhEnv,
           ...policy !== undefined ? { sandboxPolicy: policy } : {},
         }
         if (args.run_in_background === true) {

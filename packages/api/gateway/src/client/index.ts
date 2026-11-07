@@ -859,7 +859,7 @@ function rebuiltFailure(error: { code: string; message: string; details: object 
 }
 
 type MarkedConnectionStreamFailure = Error & {
-  readonly dshRemoteStreamFailure?:
+  readonly sqhRemoteStreamFailure?:
     | { readonly kind: 'remote'; readonly code: string; readonly details: object }
     | { readonly kind: 'carrier' }
 }
@@ -870,7 +870,7 @@ async function *normalizeConnectionStream(source: AsyncIterable<unknown>): Async
     yield * source
   } catch (error) {
     if (!(error instanceof Error)) throw error
-    const marker = (error as MarkedConnectionStreamFailure).dshRemoteStreamFailure
+    const marker = (error as MarkedConnectionStreamFailure).sqhRemoteStreamFailure
     if (marker?.kind === 'remote') {
       throw new RemoteError(marker.code as never, error.message, marker.details as never)
     }

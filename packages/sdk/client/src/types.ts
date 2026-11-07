@@ -23,7 +23,7 @@ export type NotificationFilter = (notification: HarnessNotification) => boolean
 /** Launch and timeout options for {@link HarnessClient}. */
 export interface HarnessClientOptions {
   /** Absolute or caller-relative dsh CLI module; omitted resolves this package's same-version dependency. */
-  dshBin?: string
+  sqhBin?: string
   /** Named profile serving the SDK protocol (default `sdk`). */
   profile?: string
   /** Ordered per-launch profile patches; relative paths resolve before spawn. */

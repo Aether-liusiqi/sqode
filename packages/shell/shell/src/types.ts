@@ -85,7 +85,7 @@ export interface ShellExecRequest {
   stdin?: string | undefined
   /**
    * Ordinary environment entries for the command, merged after the credential
-   * scrub. Managed facts belong in {@link dshEnv}, which merges after this
+   * scrub. Managed facts belong in {@link sqhEnv}, which merges after this
    * map, so an entry here can never displace one. Set by in-process plugins
    * (the hooks bridges set `CLAUDE_PROJECT_DIR`, `CLAUDE_PLUGIN_ROOT`, …); the
    * model-facing bash tool does not expose it as a parameter.
@@ -98,7 +98,7 @@ export interface ShellExecRequest {
    * value from the harness process and a caller {@link env} entry cannot
    * displace a managed one.
    */
-  dshEnv?: SqhEnvironment | undefined
+  sqhEnv?: SqhEnvironment | undefined
   /** Fully resolved per-call sandbox policy; sandboxing executors default it. */
   sandboxPolicy?: SandboxExecutionPolicy | undefined
 }
@@ -125,13 +125,13 @@ export interface ShellExecSpec {
   stdin?: string | undefined
   /**
    * Ordinary environment entries carried through from
-   * {@link ShellExecRequest.env}; {@link dshEnv} still merges after them.
+   * {@link ShellExecRequest.env}; {@link sqhEnv} still merges after them.
    * OPTIONAL on the spec for the same reason as `stdin`: absent means no
    * ordinary extra environment.
    */
   env?: Record<string, string> | undefined
   /** Managed `SQH_*` snapshot (typed to managed keys); merges after {@link env}. */
-  dshEnv?: SqhEnvironment | undefined
+  sqhEnv?: SqhEnvironment | undefined
   /** Resolved sandbox policy; ignored by executors that do not confine. */
   sandboxPolicy: SandboxExecutionPolicy | undefined
 }

@@ -28,7 +28,7 @@ const SPAWN_TIMEOUT_MS = 60_000
 // The release version, including a prerelease such as 0.0.1-rc.1: `--version`
 // prints what this manifest carries, so no test may pin it to a literal.
 const cliVersion = (JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')) as { version: string }).version
-const dshBin = join(repoRoot, 'apps/cli/lib/bin.js')
+const sqhBin = join(repoRoot, 'apps/cli/lib/bin.js')
 const invalidProvider = fileURLToPath(new URL('./fixtures/invalid-provider.cordis.yml', import.meta.url))
 const webReadyExitHook = new URL('./fixtures/web-browser-open/register.mjs', import.meta.url).href
 
@@ -41,7 +41,7 @@ async function runBuiltBin(
     Object.entries({ ...process.env, ...env })
       .filter((entry): entry is [string, string] => entry[1] !== undefined),
   )
-  const result = await execa(process.execPath, [dshBin, ...args], {
+  const result = await execa(process.execPath, [sqhBin, ...args], {
     input: '',
     timeout: SPAWN_TIMEOUT_MS,
     killSignal: 'SIGKILL',
@@ -156,7 +156,7 @@ function createProfileLifecycleFixture(): ProfileLifecycleFixture {
 }
 
 function startProfileLifecycle(fixture: ProfileLifecycleFixture, args: readonly string[] = []) {
-  return execa(process.execPath, [dshBin, '--profile', 'lifecycle', ...args], {
+  return execa(process.execPath, [sqhBin, '--profile', 'lifecycle', ...args], {
     cwd: fixture.home,
     input: '',
     timeout: SPAWN_TIMEOUT_MS,
@@ -327,7 +327,7 @@ function createStartupFixture(): StartupFixture {
 }
 
 function startStartupProfile(fixture: StartupFixture, args: readonly string[]) {
-  return execa(process.execPath, [dshBin, '--profile', 'startup', ...args], {
+  return execa(process.execPath, [sqhBin, '--profile', 'startup', ...args], {
     cwd: fixture.home,
     input: '',
     reject: false,
@@ -341,7 +341,7 @@ function startStartupProfile(fixture: StartupFixture, args: readonly string[]) {
   })
 }
 
-describe.skipIf(!existsSync(dshBin))('dsh BUILT bin (node lib/bin.js, no tsx)', () => {
+describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', () => {
   testProfileResolution('lib')
 
   it('requires a profile and rejects removed flags', async () => {
@@ -455,7 +455,7 @@ describe.skipIf(!existsSync(dshBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
     writeFileSync(patch, JSON.stringify([{ insert: [
       { id: 'absolute-plugin', name: pluginPath, config: { marker } },
     ] }]))
-    const child = execa(process.execPath, [dshBin, '--profile', 'sdk', '--patch', patch], {
+    const child = execa(process.execPath, [sqhBin, '--profile', 'sdk', '--patch', patch], {
       cwd: home,
       reject: false,
       timeout: SPAWN_TIMEOUT_MS,
@@ -520,7 +520,7 @@ describe.skipIf(!existsSync(dshBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
       successText: 'ACP BUILT PROFILE OK',
     })
     const home = mkdtempSync(join(tmpdir(), 'dsh-built-acp-'))
-    const child = execa(process.execPath, [dshBin, '--profile', 'acp'], {
+    const child = execa(process.execPath, [sqhBin, '--profile', 'acp'], {
       cwd: home,
       reject: false,
       timeout: SPAWN_TIMEOUT_MS,
@@ -638,7 +638,7 @@ describe.skipIf(!existsSync(dshBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
   it.skipIf(process.platform === 'win32')('runs through an installed-style symlink', async () => {
     const installation = mkdtempSync(join(tmpdir(), 'dsh-bin-link-'))
     const installedBin = join(installation, 'dsh')
-    symlinkSync(dshBin, installedBin)
+    symlinkSync(sqhBin, installedBin)
     try {
       const result = await execa(process.execPath, [installedBin, '--version'], {
         input: '',
@@ -1043,7 +1043,7 @@ describe.skipIf(!existsSync(dshBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
   it('forwards CLI authentication and stdin through pnpm while preserving its exit code', async () => {
     const home = mkdtempSync(join(tmpdir(), 'dsh-plugin-interaction-'))
     try {
-      const child = await execa(process.execPath, [dshBin, 'plugin', '--profile', 'interactive', 'exec', process.execPath, '-e',
+      const child = await execa(process.execPath, [sqhBin, 'plugin', '--profile', 'interactive', 'exec', process.execPath, '-e',
         "const fs = require('node:fs'); const input = fs.readFileSync(0, 'utf8'); const auth = ['NPM_TOKEN','NODE_AUTH_TOKEN','GH_TOKEN','GITHUB_TOKEN'].every(name => process.env[name] === 'fixture-auth'); process.stdout.write(JSON.stringify({ input, auth })); process.exit(42)",
       ], {
         input: 'fixture-input', timeout: SPAWN_TIMEOUT_MS, killSignal: 'SIGKILL', reject: false,
@@ -1067,7 +1067,7 @@ describe.skipIf(!existsSync(dshBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
         dsh: { bundle: { patch: './cordis.patch.yml' } },
       }))
       writeFileSync(join(checkout, 'cordis.patch.yml'), '[]\n')
-      const result = await execa(process.execPath, [dshBin, 'plugin', '--profile', 'anchor', 'add', '.'], {
+      const result = await execa(process.execPath, [sqhBin, 'plugin', '--profile', 'anchor', 'add', '.'], {
         cwd: checkout,
         input: '',
         timeout: SPAWN_TIMEOUT_MS,

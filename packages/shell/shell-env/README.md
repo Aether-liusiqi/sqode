@@ -91,7 +91,7 @@ This section explains the design decisions behind the registry and points at the
 
 ### Collection
 
-`collect(execution)` starts from the built-ins, adds the session id when the execution carries an agent, then merges each registered contributor's resolved values sorted by contributor name. The result is a frozen, key-sorted snapshot passed through `ShellExecRequest.dshEnv`. `list()` enumerates declarations without running resolvers, so it cannot reflect execution-dependent values.
+`collect(execution)` starts from the built-ins, adds the session id when the execution carries an agent, then merges each registered contributor's resolved values sorted by contributor name. The result is a frozen, key-sorted snapshot passed through `ShellExecRequest.sqhEnv`. `list()` enumerates declarations without running resolvers, so it cannot reflect execution-dependent values.
 
 </details>
 

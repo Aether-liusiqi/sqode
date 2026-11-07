@@ -228,14 +228,14 @@ function stubWorker(): {
   })
   const failure = await pending.then(() => undefined, (error: unknown) => error as {
     message: string
-    dshRemoteStreamFailure: unknown
+    sqhRemoteStreamFailure: unknown
   })
   check('a logical Host failure retains its structural marker', {
     message: failure?.message,
-    dshRemoteStreamFailure: failure?.dshRemoteStreamFailure,
+    sqhRemoteStreamFailure: failure?.sqhRemoteStreamFailure,
   }, {
     message: 'fixture Session is absent',
-    dshRemoteStreamFailure: {
+    sqhRemoteStreamFailure: {
       kind: 'remote', code: 'session/not-found', details: { sessionId: 'session-1' },
     },
   })
@@ -266,14 +266,14 @@ function stubWorker(): {
   fail('worker crashed')
   const failure = await pending.then(() => undefined, (error: unknown) => error as {
     message: string
-    dshRemoteStreamFailure: unknown
+    sqhRemoteStreamFailure: unknown
   })
   check('worker failure carries the carrier marker', {
     message: failure?.message,
-    dshRemoteStreamFailure: failure?.dshRemoteStreamFailure,
+    sqhRemoteStreamFailure: failure?.sqhRemoteStreamFailure,
   }, {
     message: 'web-preview tunnel: worker failed: worker crashed',
-    dshRemoteStreamFailure: { kind: 'carrier' },
+    sqhRemoteStreamFailure: { kind: 'carrier' },
   })
 }
 
