@@ -24,6 +24,7 @@ export interface PackageManifest {
   dependencies?: Record<string, string>
   devDependencies?: Record<string, string>
   optionalDependencies?: Record<string, string>
+  sqh?: { bundle?: SqhBundleManifest }
   dsh?: { bundle?: SqhBundleManifest }
 }
 
@@ -107,10 +108,11 @@ function validateClientHalvesDeclared(): string[] {
   return globSync('packages/client/*/package.json', { cwd: root }).flatMap((manifestPath) => {
     const manifest = readManifest(manifestPath) as PackageManifest & {
       exports?: Record<string, unknown>
+      sqh?: { client?: unknown }
       dsh?: { client?: unknown }
     }
     const shipsClient = manifest.exports !== undefined && Object.hasOwn(manifest.exports, './client')
-    const declaresClient = manifest.dsh?.client !== undefined
+    const declaresClient = (manifest.sqh ?? manifest.dsh)?.client !== undefined
     if (shipsClient === declaresClient) return []
     return [shipsClient
       ? `${manifestPath}: exports "./client" but declares no dsh.client, so its browser half is never served`
@@ -142,8 +144,9 @@ function validatePresetPlaneSeparation(): string[] {
   // layer is its host patch followed by one patch file per shipped preset.
   const hostFile = 'packages/bundle/base/cordis.patch.yml'
   const overlayDir = 'packages/bundle/web-app'
-  const overlayManifest = JSON.parse(readFileSync(resolve(root, overlayDir, 'package.json'), 'utf8')) as { dsh: { bundle: SqhBundleManifest } }
-  const overlayFiles = bundlePatchFiles(overlayManifest.dsh.bundle).map(file => `${overlayDir}/${file.replace(/^\.\//, '')}`)
+  const overlayManifest = JSON.parse(readFileSync(resolve(root, overlayDir, 'package.json'), 'utf8')) as { sqh?: { bundle: SqhBundleManifest }; dsh: { bundle: SqhBundleManifest } }
+  const overlayDeclaration = overlayManifest.sqh ?? overlayManifest.dsh
+  const overlayFiles = bundlePatchFiles(overlayDeclaration?.bundle ?? overlayManifest.dsh.bundle).map(file => `${overlayDir}/${file.replace(/^\.\//, '')}`)
   const disabled = new Set<string>()
   const overlayRows = new Set<string>()
   for (const file of overlayFiles) {
@@ -270,7 +273,7 @@ function validateAppResolution(): string[] {
   for (const manifestPath of bundleManifests) {
     const bundleDir = manifestPath.replace(/\/package\.json$/, '')
     const manifest = readManifest(manifestPath)
-    const bundle = manifest.dsh?.bundle
+    const bundle = (manifest.sqh ?? manifest.dsh)?.bundle
     if (bundle === undefined) continue
     const patchFiles = new Set(bundlePatchPaths(resolve(root, bundleDir), bundle)
       .map(file => relative(root, file).replaceAll('\\', '/')))
@@ -376,7 +379,10 @@ function packageTestManifestPath(file: string): string | undefined {
  */
 export function bundleManifestPaths(repoRoot: string = root): string[] {
   return globSync('packages/*/*/package.json', { cwd: repoRoot })
-    .filter(path => readManifest(path, repoRoot).dsh?.bundle?.patch !== undefined)
+    .filter((path) => {
+      const read = readManifest(path, repoRoot)
+      return (read.sqh ?? read.dsh)?.bundle?.patch !== undefined
+    })
     .map(path => path.replaceAll('\\', '/'))
     .sort()
 }
