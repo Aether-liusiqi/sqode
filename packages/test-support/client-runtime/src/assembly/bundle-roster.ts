@@ -28,6 +28,7 @@ export const WEB_PROFILE_BUNDLES: readonly string[] = ['@liusiqi-dev/sqh-base', 
 
 interface PackageManifest {
   name?: unknown
+  sqh?: { bundle?: { patch?: unknown }; client?: unknown }
   dsh?: { bundle?: { patch?: unknown }; client?: unknown }
 }
 
@@ -72,7 +73,7 @@ export function bundleRoster(
     if (manifest.name !== name) {
       throw new Error(`client-test-runtime: ${manifestPath} names ${JSON.stringify(manifest.name)}, expected ${name}`)
     }
-    const declaration = parseDshClient(name, manifest.dsh?.client)
+    const declaration = parseDshClient(name, (manifest.sqh ?? manifest.dsh)?.client)
     if (declaration === undefined || declaration.platform !== 'web') continue
     if (disabled.some(value => value !== undefined && value !== null && typeof value !== 'boolean'
       && !(disabledContext !== undefined && isJsExpr(value)))) {
@@ -86,7 +87,8 @@ export function bundleRoster(
 function readLayer(bundle: string, anchor: string): BundleLayer {
   const manifestPath = locateManifest([anchor], bundle)
   if (manifestPath === undefined) throw new Error(`client-test-runtime: cannot resolve bundle ${bundle} from ${anchor}`)
-  const declared = readManifest(manifestPath).dsh?.bundle?.patch
+  const bundled = readManifest(manifestPath)
+  const declared = (bundled.sqh ?? bundled.dsh)?.bundle?.patch
   const files = typeof declared === 'string' ? [declared] : declared
   if (!Array.isArray(files) || !files.every(file => typeof file === 'string')) {
     throw new Error(`client-test-runtime: bundle ${bundle} declares no dsh.bundle.patch file list in ${manifestPath}`)

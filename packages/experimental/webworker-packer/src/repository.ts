@@ -128,9 +128,10 @@ export function composeProfile(repoRoot: string, profile: string): string {
 export function configTrees(repoRoot: string): ConfigTree[] {
   const packageDir = join(repoRoot, CLI_PACKAGE)
   const manifest = JSON.parse(readFileSync(join(packageDir, 'package.json'), 'utf8')) as {
+    sqh?: { configTrees?: unknown }
     dsh?: { configTrees?: unknown }
   }
-  const declared = manifest.dsh?.configTrees
+  const declared = (manifest.sqh ?? manifest.dsh)?.configTrees
   if (declared === undefined) return []
   if (!Array.isArray(declared)) {
     throw new Error(`vfs image: ${CLI_PACKAGE} dsh.configTrees must be an array`)
