@@ -3,7 +3,7 @@
  *
  * Content is the consumer's business: the `file` resource carries metadata only,
  * and the text arrives here one page of lines at a time. The endpoint takes a
- * session and a workspace path while a tab carries a `dsh-resource://file/`
+ * session and a workspace path while a tab carries a `sqh-resource://file/`
  * session address, so this module also owns that translation.
  */
 import type { RemoteResult } from '@liusiqi-dev/sqh-api-remotes/client'
@@ -54,14 +54,14 @@ export interface SessionFile {
 }
 
 /**
- * The session and path one `dsh-resource://file/…` address names.
+ * The session and path one `sqh-resource://file/…` address names.
  *
  * A `session` address names its own session and a relative or absolute path, so
  * a tab addressed into another session reads from that session. An `absolute`
  * address carries no session and cannot be read here. The registry routes only
  * session-scoped `file` addresses to this type, so an address `parseFileAddress`
  * rejects or that carries no session is a programming error and throws.
- * @param address - a tab's `dsh-resource://file/…` address.
+ * @param address - a tab's `sqh-resource://file/…` address.
  * @returns the session and the path to hand the endpoint.
  */
 export function hostFileOf(address: string): SessionFile {

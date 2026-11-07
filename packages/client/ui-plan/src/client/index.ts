@@ -63,7 +63,7 @@ export function apply(ctx: ClientContext): void {
   ctx.effect(() => ctx.uiConversation.events.register(planDefinition), 'ui-plan: conversation definition')
   ctx.effect(() => ctx.resources.register(planResourceProvider(ctx.remote.session)), 'ui-plan: resources')
   ctx.effect(() => ctx.sidebarRightTabs.register({
-    id: previewId, kind: 'plan', patterns: ['dsh-resource://plan/**', 'dsh-resource://plan-review/**'], priority: 'builtin',
+    id: previewId, kind: 'plan', patterns: ['sqh-resource://plan/**', 'sqh-resource://plan-review/**'], priority: 'builtin',
     canOpen: address => parsePlanAddress(address) !== undefined || isReviewPreviewAddress(address),
     title: () => t('preview.title'),
   }), 'ui-plan: sidebar type')

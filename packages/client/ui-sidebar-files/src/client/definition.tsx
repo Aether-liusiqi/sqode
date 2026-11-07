@@ -3,7 +3,7 @@
  *
  * The type is a page, not a viewer: it claims no address. The guide page offers
  * it as an entry box, and the tree opens files through `tabActions.openResource`
- * for the `dsh-resource://file` viewers to claim.
+ * for the `sqh-resource://file` viewers to claim.
  */
 import type { ShortcutCommandId } from '@liusiqi-dev/sqh-client-shortcuts/client'
 import type { SidebarRightTabDefinition } from '@liusiqi-dev/sqh-client-ui-sidebar-right/client'

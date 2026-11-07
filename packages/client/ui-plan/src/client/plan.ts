@@ -57,7 +57,7 @@ export function planAddress(target: PlanAddress): string {
   const parts = session.kind === 'session'
     ? [session.sessionId, callId]
     : ['subagent', session.parentSessionId, session.childSessionId, session.mode, callId]
-  return `dsh-resource://plan/${parts.map(encodeURIComponent).join('/')}`
+  return `sqh-resource://plan/${parts.map(encodeURIComponent).join('/')}`
 }
 
 /**
@@ -66,7 +66,7 @@ export function planAddress(target: PlanAddress): string {
  * @returns the decoded identity, or undefined for an unsupported address.
  */
 export function parsePlanAddress(address: string): PlanAddress | undefined {
-  const match = /^dsh-resource:\/\/plan\/([^?#]+)$/.exec(address)
+  const match = /^sqh-resource:\/\/plan\/([^?#]+)$/.exec(address)
   if (match === null) return undefined
   try {
     const parts = (match[1] as string).split('/').map(decodeURIComponent)

@@ -67,8 +67,8 @@ describe('submitted plan identity', () => {
       const child = { session: { kind: 'subagent' as const, parentSessionId: target.session.sessionId, childSessionId: 'child / 中文' as SessionId, mode }, callId: plan.callId }
       expect(parsePlanAddress(planAddress(child))).toEqual(child)
     }
-    for (const address of ['file:///plan.md', 'dsh-resource://plan/s/c/extra', 'dsh-resource://plan/s/%XX', 'dsh-resource://plan/s/c?text=x',
-      'dsh-resource://plan//c', 'dsh-resource://plan/subagent/p/c/invalid/call', 'dsh-resource://plan/subagent/p/c/one-shot']) {
+    for (const address of ['file:///plan.md', 'sqh-resource://plan/s/c/extra', 'sqh-resource://plan/s/%XX', 'sqh-resource://plan/s/c?text=x',
+      'sqh-resource://plan//c', 'sqh-resource://plan/subagent/p/c/invalid/call', 'sqh-resource://plan/subagent/p/c/one-shot']) {
       expect(parsePlanAddress(address)).toBeUndefined()
     }
   })

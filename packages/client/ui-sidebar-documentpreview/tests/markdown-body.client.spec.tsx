@@ -23,7 +23,7 @@ function content(pageTexts: readonly string[], eof: boolean): DocumentContent {
 // Unused framework seats belong to the slot integration tests.
 function props(value: DocumentContent, t: MarkdownBodyProps['t'] = makeTranslate(en), absolutePath?: string): MarkdownBodyProps {
   return {
-    resourceAddress: 'dsh-resource://file/session/markdown/notes.md', content: value, wrap: false, t,
+    resourceAddress: 'sqh-resource://file/session/markdown/notes.md', content: value, wrap: false, t,
     useResource: () => ({
       status: absolutePath === undefined ? 'loading' : 'live',
       value: absolutePath === undefined ? undefined : { absolutePath, version: 'v1' },

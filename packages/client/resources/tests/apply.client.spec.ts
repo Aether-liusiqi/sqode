@@ -25,7 +25,7 @@ declare module '@liusiqi-dev/sqh-client-ui-slots' {
   }
 }
 
-const A = 'dsh-resource://feed/one'
+const A = 'sqh-resource://feed/one'
 let runtime: SlotTestRuntime | undefined
 
 afterEach(async () => {

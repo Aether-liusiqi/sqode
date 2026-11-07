@@ -128,12 +128,12 @@ describe('ui-plan browser apply', () => {
       const plan = submittedPlan({ type: 'tool/call', data: { callId: 'child-plan', name: 'exit_plan_mode', arguments: '{"plan":"# Child plan"}' } })!
       opener.openPlan(plan.callId)
       const resources = () => Object.values(store.getSnapshot().bySession[parent]!.layout.tabs).map(tab => tab.contentId)
-      expect(resources()).toContain('dsh-resource://plan/subagent/visible-parent/embedded-child/continuable/child-plan')
+      expect(resources()).toContain('sqh-resource://plan/subagent/visible-parent/embedded-child/continuable/child-plan')
       expect(store.getSnapshot().bySession[child]).toBeUndefined()
       const review = b.slots.entries('conversation.plan-review.actions')[0]!
       const reviewOpener = (review.inject as unknown as (sessionId: SessionId) => PlanReviewOpenInjected)(child)
       reviewOpener.openReview({ id: 'pending', question: 'Approve?', plan: '# Temporary child plan', approve: { label: 'Approve' } }, 'child-question')
-      expect(resources().some(address => address.startsWith('dsh-resource://plan-review/embedded-child/'))).toBe(true)
+      expect(resources().some(address => address.startsWith('sqh-resource://plan-review/embedded-child/'))).toBe(true)
       expect(store.getSnapshot().bySession[child]).toBeUndefined()
     } finally {
       await fiber.dispose()
@@ -206,7 +206,7 @@ describe('ui-plan browser apply', () => {
       const removeFileEntry = b.slots.register({ name: 'conversation.chat.turnTail', id: 'test-file-deliveries' }, () => null)
       expect(b.slots.entries('conversation.chat.turnTail')).toHaveLength(2)
       removeFileEntry()
-      const address = 'dsh-resource://plan/s-plan/call'
+      const address = 'sqh-resource://plan/s-plan/call'
       const type = b.registerType.mock.calls[0]![0]
       expect(type.canOpen!(address)).toBe(true)
       expect(type.canOpen!('file:///plan.md')).toBe(false)
@@ -227,14 +227,14 @@ describe('ui-plan browser apply', () => {
       expect(b.openResource).toHaveBeenLastCalledWith(address)
       b.subagentAddress.mockReturnValue({ parentSessionId: 'parent' as SessionId, childSessionId: SID, mode: 'continuable' })
       injected.openPlan(plan.callId)
-      expect(b.openResource).toHaveBeenLastCalledWith('dsh-resource://plan/subagent/parent/s-plan/continuable/call')
+      expect(b.openResource).toHaveBeenLastCalledWith('sqh-resource://plan/subagent/parent/s-plan/continuable/call')
       reviewInjected.openReview(pending, 'question:1')
-      expect(b.openResource).toHaveBeenLastCalledWith('dsh-resource://plan/subagent/parent/s-plan/continuable/call')
+      expect(b.openResource).toHaveBeenLastCalledWith('sqh-resource://plan/subagent/parent/s-plan/continuable/call')
       const temporary = { id: 'review', question: 'Approve?', plan: '# Temporary\n\nComplete body', approve: { label: 'Approve' } }
       reviewInjected.openReview(temporary, 'question:2')
       const first = b.openResource.mock.calls.at(-1)!
       expect(type.canOpen!(first[0])).toBe(true)
-      expect(first).toEqual([expect.stringMatching(/^dsh-resource:\/\/plan-review\/s-plan\//), {
+      expect(first).toEqual([expect.stringMatching(/^sqh-resource:\/\/plan-review\/s-plan\//), {
         params: { planReview: { title: 'Temporary', markdown: temporary.plan } },
       }])
       reviewInjected.openReview(temporary, 'question:2')

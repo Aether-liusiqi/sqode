@@ -64,16 +64,16 @@ function hookOf<T>(inst: { subscribe: (fn: () => void) => () => void; getSnapsho
 
 describe('review addresses', () => {
   it('round-trips coordinates and titles the tab by the turn', () => {
-    expect(ADDRESS).toBe('dsh-resource://changes-review/session/viewed/5/2')
+    expect(ADDRESS).toBe('sqh-resource://changes-review/session/viewed/5/2')
     expect(parseChangesReviewAddress(ADDRESS)).toEqual(COORDINATES)
     const definition = changesReviewDefinition(makeTranslate(zh))
-    expect(definition).toMatchObject({ kind: 'changes-review', priority: 'builtin', patterns: ['dsh-resource://changes-review/**'] })
+    expect(definition).toMatchObject({ kind: 'changes-review', priority: 'builtin', patterns: ['sqh-resource://changes-review/**'] })
     expect(definition.canOpen?.(ADDRESS)).toBe(true)
     expect(definition.title(ADDRESS)).toBe('第 2 轮改动')
     for (const bad of [
-      'dsh-resource://file/session/viewed/a.ts', 'dsh-resource://changes-review/session/viewed/5',
-      'dsh-resource://changes-review/session//5/2', 'dsh-resource://changes-review/session/viewed/x/2',
-      'dsh-resource://changes-review/session/viewed/5/0', 'dsh-resource://changes-review/session/%E0%A4%A/5/2',
+      'sqh-resource://file/session/viewed/a.ts', 'sqh-resource://changes-review/session/viewed/5',
+      'sqh-resource://changes-review/session//5/2', 'sqh-resource://changes-review/session/viewed/x/2',
+      'sqh-resource://changes-review/session/viewed/5/0', 'sqh-resource://changes-review/session/%E0%A4%A/5/2',
     ]) {
       expect(parseChangesReviewAddress(bad)).toBeUndefined()
       expect(definition.canOpen?.(bad)).toBe(false)
@@ -405,7 +405,7 @@ describe('ReviewTab', () => {
 
   it('refuses an address it did not mint', () => {
     const error = vi.spyOn(console, 'error').mockImplementation(() => undefined)
-    expect(() => mount({ address: 'dsh-resource://file/session/viewed/a.ts' })).toThrow('not a review address')
+    expect(() => mount({ address: 'sqh-resource://file/session/viewed/a.ts' })).toThrow('not a review address')
     error.mockRestore()
   })
 })

@@ -5,7 +5,7 @@ import { sessionFileAddress } from '@liusiqi-dev/sqh-util-workspace-path'
 import { createReadHtmlRelative } from '../src/client/html/read-relative.ts'
 import type { ReadHtmlRelated } from '../src/client/html/read-relative.ts'
 
-const ADDRESS = 'dsh-resource://file/session/html/sub/index.html'
+const ADDRESS = 'sqh-resource://file/session/html/sub/index.html'
 
 describe('HTML relative file reader', () => {
   it('decodes a relative URL once and preserves the returned bytes', async () => {

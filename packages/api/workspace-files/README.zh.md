@@ -76,7 +76,7 @@ kind: "package-reference"
 
 浏览器导出向 `ctx.resources` 注册 `file` 提供方，要求 `resources`、`remote` 和 `remote.workspaceFiles` 在场。bundle 中单个 `workspace-files` 条目供应两面；Client 没有单独配置。组件通过 `useResource<'file'>(address)` 读取 `WorkspaceFileStat { absolutePath, version, bytes? }` 元数据，文本与字节内容另经对应 Remote 读取。任何 UI（包括 Global）访问同一完整地址都共享观察。
 
-`session/<sessionId>/<path>` 地址携带授权 Session，以及相对或绝对路径；前导斜杠保留，例如 `dsh-resource://file/session/s//etc/hosts`。Host 原样接收路径，负责解析与权限检查；Client 不需要 Session `cwd`。`absolute/<path>` 仍可解析，但没有授权 Session，以 `workspace-file/unknown-workspace` 失败，不借用当前或 Tab Session。不支持的地址以 `workspace-file/unsupported-address` 失败。语法由 [workspace-path](../../util/workspace-path/README.zh.md) 定义；Resource 泛型层只认地址和 `signal`。
+`session/<sessionId>/<path>` 地址携带授权 Session，以及相对或绝对路径；前导斜杠保留，例如 `sqh-resource://file/session/s//etc/hosts`。Host 原样接收路径，负责解析与权限检查；Client 不需要 Session `cwd`。`absolute/<path>` 仍可解析，但没有授权 Session，以 `workspace-file/unknown-workspace` 失败，不借用当前或 Tab Session。不支持的地址以 `workspace-file/unsupported-address` 失败。语法由 [workspace-path](../../util/workspace-path/README.zh.md) 定义；Resource 泛型层只认地址和 `signal`。
 
 提供方等到 Host 的 `ready` 帧后才发首次 `stat`，读取期间将变更排队，随后将跟随者绑定到 `stat.absolutePath`。排队与实时变更都按该 Host 返回路径匹配。新版本或消失通知会重新 stat，同时更新路径、版本和字节大小；重复版本被忽略。stat 失败后仍跟随地址，后续目标变化可使其恢复。如果监听在 ready 前结束，包括 `watch-unsupported`，未取消的提供方仍执行一次 stat 并产出结果。帧是 `RemoteResult` 值，编程异常不被捕获。
 
@@ -120,7 +120,7 @@ Typert 生成 `./typert` 与 `./remote` 暴露的 Host 与 Client Remote 产物�
 - [沙箱策略](../../sandbox/sandbox-policy/README.zh.md)——Session 工作区根的来源。
 - [Remote 装配](../../api/remotes/README.zh.md)——Client 包如何触达 `workspaceFiles` 命名空间。
 - [Client 资源](../../client/resources/README.zh.md)——资源模型、`useResource`、pin 与提供者生命周期。
-- [工作区路径辅助](../../util/workspace-path/README.zh.md)——`fileAddressFor` 与 `parseFileAddress`，两端共享的 `dsh-resource://file/…` 地址语法。
+- [工作区路径辅助](../../util/workspace-path/README.zh.md)——`fileAddressFor` 与 `parseFileAddress`，两端共享的 `sqh-resource://file/…` 地址语法。
 - [Sidebar 文本预览](../../client/ui-sidebar-documentpreview/README.zh.md)——经 `file` 提供者跟随文件并读取其页的 tab 类型。
 
 -----

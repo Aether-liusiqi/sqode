@@ -1,7 +1,7 @@
 /**
  * What the `changes-review` tab type IS: the right-Sidebar review of one
  * turn's changed files, showing one file's turn-start and turn-end
- * comparison at a time. It claims the `dsh-resource://changes-review/session/…`
+ * comparison at a time. It claims the `sqh-resource://changes-review/session/…`
  * addresses the changed-files card mints; the Session and the event sequence
  * in the address identify the content, and the turn they carry names the tab.
  * A row opens the tab with the file's index as its navigation parameter.
@@ -39,7 +39,7 @@ export function changesReviewDefinition(t: TranslateNS<typeof NS>): SidebarRight
   return {
     id: CHANGES_REVIEW_ID,
     kind: CHANGES_REVIEW_KIND,
-    patterns: ['dsh-resource://changes-review/**'],
+    patterns: ['sqh-resource://changes-review/**'],
     priority: 'builtin',
     canOpen: address => parseChangesReviewAddress(address) !== undefined,
     title: (address) => {

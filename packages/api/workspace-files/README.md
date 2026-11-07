@@ -76,7 +76,7 @@ Each failure is one `RemoteError` code with typed details, declared in [`src/typ
 
 The browser export registers the `file` provider into `ctx.resources` and requires `resources`, `remote`, and `remote.workspaceFiles`. The bundle's single `workspace-files` row supplies both faces; the Client has no separate configuration. A component reads `WorkspaceFileStat { absolutePath, version, bytes? }` metadata through `useResource<'file'>(address)` and fetches content separately through the text or binary Remote. Any UI, including Global components, shares the observation for the same complete address.
 
-A `session/<sessionId>/<path>` address carries the authorizing Session and a relative or absolute path; leading slashes are preserved, as in `dsh-resource://file/session/s//etc/hosts`. The Host receives the path unchanged and owns resolution and access checks; the Client needs no Session `cwd`. `absolute/<path>` remains parseable but has no authorizing Session and fails with `workspace-file/unknown-workspace`, without borrowing current or Tab Session. Unsupported addresses fail with `workspace-file/unsupported-address`. [Workspace-path](../../util/workspace-path/README.md) owns the grammar; the generic Resource layer knows only the address and `signal`.
+A `session/<sessionId>/<path>` address carries the authorizing Session and a relative or absolute path; leading slashes are preserved, as in `sqh-resource://file/session/s//etc/hosts`. The Host receives the path unchanged and owns resolution and access checks; the Client needs no Session `cwd`. `absolute/<path>` remains parseable but has no authorizing Session and fails with `workspace-file/unknown-workspace`, without borrowing current or Tab Session. Unsupported addresses fail with `workspace-file/unsupported-address`. [Workspace-path](../../util/workspace-path/README.md) owns the grammar; the generic Resource layer knows only the address and `signal`.
 
 The provider waits for the Host's `ready` frame before its first `stat`, queues changes during the read, then binds the follower to `stat.absolutePath`. Both queued and live changes match that Host-returned path. A new version or absence notice re-stats the file, refreshing its path, version, and byte size together; duplicate versions are ignored. A failed stat keeps the address followed so a later target change can recover it. If observation ends before ready, including `watch-unsupported`, an uncancelled provider still performs one stat and yields its result. Frames are `RemoteResult` values, and programming exceptions remain uncaught.
 
@@ -120,7 +120,7 @@ Typert generates the Host and Client Remote artifacts exposed by `./typert` and 
 - [Sandbox policy](../../sandbox/sandbox-policy/README.md) — where the Session's workspace root comes from.
 - [Remote assembly](../../api/remotes/README.md) — how Client packages reach the `workspaceFiles` namespace.
 - [Client resources](../../client/resources/README.md) — the resource model, `useResource`, pins, and provider lifetime.
-- [Workspace path helpers](../../util/workspace-path/README.md) — `fileAddressFor` and `parseFileAddress`, the `dsh-resource://file/…` address grammar both ends share.
+- [Workspace path helpers](../../util/workspace-path/README.md) — `fileAddressFor` and `parseFileAddress`, the `sqh-resource://file/…` address grammar both ends share.
 - [Sidebar text preview](../../client/ui-sidebar-documentpreview/README.md) — the tab type that follows a file through the `file` provider and reads its pages.
 
 -----

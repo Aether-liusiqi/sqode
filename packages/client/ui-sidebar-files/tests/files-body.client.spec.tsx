@@ -152,7 +152,7 @@ describe('FilesBody', () => {
     fireEvent.click(view.container.querySelector(`[data-files-path="${ROOT}/README.md"] > button`)!)
     // Every row sits under the tree's root, so the address is the path relative to it.
     expect(tabActions.openResource).toHaveBeenCalledWith(fileAddressFor(SESSION, ROOT, `${ROOT}/README.md`))
-    expect(tabActions.openResource).toHaveBeenCalledWith('dsh-resource://file/session/s-test/README.md')
+    expect(tabActions.openResource).toHaveBeenCalledWith('sqh-resource://file/session/s-test/README.md')
     const other = view.container.querySelector(`[data-files-path="${ROOT}/pipe"]`)!
     expect(other.querySelector('button')).toBeNull()
     expect(other.querySelector('[aria-disabled="true"]')?.getAttribute('title')).toBe(zh['entry.other'])

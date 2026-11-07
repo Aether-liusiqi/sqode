@@ -18,7 +18,7 @@ import css from './SidebarChat.module.css'
 export const SUBAGENT_CHAT_ID = '@liusiqi-dev/sqh-client-ui-subagent'
 
 /** Resource-address prefix for an embedded Session chat. */
-export const SUBAGENT_CHAT_ADDRESS = 'dsh-resource://subagentchat/session/'
+export const SUBAGENT_CHAT_ADDRESS = 'sqh-resource://subagentchat/session/'
 
 /** Value retained by one live chat resource occurrence. */
 export interface SubagentChatResource {
@@ -68,7 +68,7 @@ export function parseSubagentChatAddress(value: string): SubagentAddress | undef
   } catch (_invalidUrl) {
     return undefined
   }
-  if (url.protocol !== 'dsh-resource:' || url.hostname.toLowerCase() !== 'subagentchat') return undefined
+  if (url.protocol !== 'sqh-resource:' || url.hostname.toLowerCase() !== 'subagentchat') return undefined
   const parts = url.pathname.split('/').filter(Boolean)
   if (parts.length !== 2 || parts[0] !== 'session') return undefined
   const parentSessionId = url.searchParams.get('parent')

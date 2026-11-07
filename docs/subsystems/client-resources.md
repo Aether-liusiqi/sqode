@@ -8,14 +8,14 @@ This page is the developer reference: how to write an address, how to register a
 
 ## Addresses
 
-A resource address is a `dsh-resource://<type>/…` URL. The host names the protocol and must be a key of `ResourceProtocolMap`; the path is the protocol's own, and its owner percent-encodes each segment. A protocol that needs a scope puts it in the path: the `file` protocol's addresses read `dsh-resource://file/session/<sessionId>/<path>`, where path is workspace-relative or absolute with its leading slashes preserved, built with `fileAddressFor(sessionId, cwd, path)` and read back with `parseFileAddress(address)` from [`dsh-util-workspace-path`](../../packages/util/workspace-path/README.md). The model itself reads only the scheme and the host: `protocolOf(address)` returns the lower-cased host of a `dsh-resource://` URL and `undefined` for anything else. Addresses under any other scheme — the Sidebar's `sidebar://guide` — name no resource and read as `none`.
+A resource address is a `sqh-resource://<type>/…` URL. The host names the protocol and must be a key of `ResourceProtocolMap`; the path is the protocol's own, and its owner percent-encodes each segment. A protocol that needs a scope puts it in the path: the `file` protocol's addresses read `sqh-resource://file/session/<sessionId>/<path>`, where path is workspace-relative or absolute with its leading slashes preserved, built with `fileAddressFor(sessionId, cwd, path)` and read back with `parseFileAddress(address)` from [`dsh-util-workspace-path`](../../packages/util/workspace-path/README.md). The model itself reads only the scheme and the host: `protocolOf(address)` returns the lower-cased host of a `sqh-resource://` URL and `undefined` for anything else. Addresses under any other scheme — the Sidebar's `sidebar://guide` — name no resource and read as `none`.
 
 | Address | Protocol key | Reads as |
 |---|---|---|
-| `dsh-resource://file/session/s1/notes/a.md` | `file` | the metadata of `notes/a.md` under session `s1`'s workspace root, when the `file` provider is registered |
-| `dsh-resource://file/absolute/home/me/notes.md` | `file` | parseable but fails with `workspace-file/unknown-workspace`: no authorizing Session, and neither current nor Tab Session is borrowed |
+| `sqh-resource://file/session/s1/notes/a.md` | `file` | the metadata of `notes/a.md` under session `s1`'s workspace root, when the `file` provider is registered |
+| `sqh-resource://file/absolute/home/me/notes.md` | `file` | parseable but fails with `workspace-file/unknown-workspace`: no authorizing Session, and neither current nor Tab Session is borrowed |
 | `Sqode-RESOURCE://File/session/s1/a` | `file` | a distinct record: addresses compare as strings, and `openResource` accepts only the canonical lower-case spelling that `fileAddressFor` emits |
-| `dsh-resource://subagentchat/session/c1?parent=p1&mode=continuable` | `subagentchat` | an addressed subagent Conversation whose value owns a `SessionReference` until the resource closes |
+| `sqh-resource://subagentchat/session/c1?parent=p1&mode=continuable` | `subagentchat` | an addressed subagent Conversation whose value owns a `SessionReference` until the resource closes |
 | `sidebar://guide` | — | `none`: a navigation address |
 | `/home/me/notes.md` | — | `none`: not a URL |
 

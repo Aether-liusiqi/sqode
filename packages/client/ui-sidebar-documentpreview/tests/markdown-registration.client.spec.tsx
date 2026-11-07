@@ -65,7 +65,7 @@ describe('Markdown implementation registration', () => {
     }, ({ renderSlot, SessionProvider }) => (
       <SessionProvider session={reference}>
         {renderSlot('sidebar.right.tab.document', {
-          resourceAddress: 'dsh-resource://file/session/markdown-registration/notes.md',
+          resourceAddress: 'sqh-resource://file/session/markdown-registration/notes.md',
           content: { kind: 'text', text: '# Notes\n\n```ts\nconst value = 1\n```\n\n![diagram](images/a.png)', pages: [], eof: true },
           wrap: false,
           scrollportRef: vi.fn(),

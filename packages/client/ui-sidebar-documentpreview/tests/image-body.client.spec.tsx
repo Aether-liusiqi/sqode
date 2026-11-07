@@ -43,7 +43,7 @@ function props(path = 'asset.png', data: Uint8Array<ArrayBuffer> = new Uint8Arra
     return selector(useSyncExternalStore(subscribe, snapshot))
   }
   return {
-    resourceAddress: `dsh-resource://file/session/image/${path}`,
+    resourceAddress: `sqh-resource://file/session/image/${path}`,
     content: { kind: 'bytes', data },
     wrap: false,
     sessionId: 'image' as SessionId,

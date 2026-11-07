@@ -11,7 +11,7 @@ declare module '@liusiqi-dev/sqh-client-ui-slots' {
   interface ResourceProtocolMap {
     /**
      * One workspace file's metadata, addressed as
-     * `dsh-resource://file/session/<sessionId>/<path>` (absolute or workspace-relative).
+     * `sqh-resource://file/session/<sessionId>/<path>` (absolute or workspace-relative).
      */
     file: WorkspaceFileStat
   }
@@ -26,7 +26,7 @@ export interface WorkspaceFileParams {
 declare module '@liusiqi-dev/sqh-typert-protocol' {
   interface RemoteErrorDetailsMap {
     /**
-     * The address is not a `dsh-resource://file/` address in a scope the
+     * The address is not a `sqh-resource://file/` address in a scope the
      * provider recognizes: `session/<sessionId>/<path>` or
      * `absolute/<absolute path>`. Raised by the Client provider; the Host never
      * emits it.

@@ -16,7 +16,7 @@ declare module '@liusiqi-dev/sqh-client-ui-sidebar-right/client' {
  * @returns the address used to focus or reopen its preview.
  */
 export function reviewPreviewAddress(sessionId: SessionId, requestKey: string): string {
-  return `dsh-resource://plan-review/${encodeURIComponent(sessionId)}/${encodeURIComponent(requestKey)}`
+  return `sqh-resource://plan-review/${encodeURIComponent(sessionId)}/${encodeURIComponent(requestKey)}`
 }
 
 /**
@@ -25,5 +25,5 @@ export function reviewPreviewAddress(sessionId: SessionId, requestKey: string): 
  * @returns whether the address identifies a temporary review preview.
  */
 export function isReviewPreviewAddress(address: string): boolean {
-  return /^dsh-resource:\/\/plan-review\/[^/?#]+\/[^/?#]+$/.test(address)
+  return /^sqh-resource:\/\/plan-review\/[^/?#]+\/[^/?#]+$/.test(address)
 }

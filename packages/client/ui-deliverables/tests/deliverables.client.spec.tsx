@@ -777,7 +777,7 @@ describe('plugin registration', () => {
     expect(entry).toBeDefined()
     expect(ctx.slots.entries('tool.call.toolview')).toHaveLength(1)
     expect(entry?.inject).toBeDefined()
-    expect(registered).toMatchObject({ kind: 'changes-review', patterns: ['dsh-resource://changes-review/**'] })
+    expect(registered).toMatchObject({ kind: 'changes-review', patterns: ['sqh-resource://changes-review/**'] })
     const [tabEntry] = ctx.slots.entries('sidebar.right.pane.tab')
     expect(tabEntry?.options.key).toBe('@liusiqi-dev/sqh-client-ui-deliverables')
 
@@ -824,8 +824,8 @@ describe('plugin registration', () => {
     await face.openChanged(SessionId('child-session'), 5, 0)
     expect(face.hooks.presentedOpen.getSnapshot()['api/changes.open?sessionId=child-session&seq=5&index=0']).toBe('opened')
     face.openChangesReview({ sessionId: SessionId('child-session'), seq: 5, turn: 3 }, 1)
-    expect(openResource).toHaveBeenCalledWith('dsh-resource://changes-review/session/child-session/5/3', { params: { index: 1 } })
-    expect((registered as { title(address: string): string }).title('dsh-resource://changes-review/session/child-session/5/3')).toBe('Review · turn 3')
+    expect(openResource).toHaveBeenCalledWith('sqh-resource://changes-review/session/child-session/5/3', { params: { index: 1 } })
+    expect((registered as { title(address: string): string }).title('sqh-resource://changes-review/session/child-session/5/3')).toBe('Review · turn 3')
     const tabFace = tabEntry!.inject!(SessionId('child-session') as never) as unknown as ReviewInjected
     fetcher.mockResolvedValueOnce(Response.json({ turn: 3, files: [], total: 0, added: 0, deleted: 0 }))
     await tabFace.loadChangesSummary(SessionId('child-session'), 6)

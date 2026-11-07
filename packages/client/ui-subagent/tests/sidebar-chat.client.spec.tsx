@@ -34,7 +34,7 @@ afterEach(() => {
 describe('Sidebar chat address', () => {
   it('round-trips the child identity and direct-parent routing metadata', () => {
     const resource = subagentChatAddress(ADDRESS)
-    expect(resource).toBe('dsh-resource://subagentchat/session/child%231?parent=parent%2Fa&mode=continuable')
+    expect(resource).toBe('sqh-resource://subagentchat/session/child%231?parent=parent%2Fa&mode=continuable')
     expect(parseSubagentChatAddress(resource)).toEqual(ADDRESS)
     expect(parseSubagentChatAddress(subagentChatAddress({ ...ADDRESS, mode: 'one-shot' })))
       .toEqual({ ...ADDRESS, mode: 'one-shot' })
@@ -45,12 +45,12 @@ describe('Sidebar chat address', () => {
   it.each([
     'not an address',
     'https://chat/session/child?parent=parent&mode=continuable',
-    'dsh-resource://other/session/child?parent=parent&mode=continuable',
-    'dsh-resource://subagentchat/other/child?parent=parent&mode=continuable',
-    'dsh-resource://subagentchat/session/child?mode=continuable',
-    'dsh-resource://subagentchat/session/child?parent=&mode=continuable',
-    'dsh-resource://subagentchat/session/child?parent=parent&mode=invalid',
-    'dsh-resource://subagentchat/session/%?parent=parent&mode=continuable',
+    'sqh-resource://other/session/child?parent=parent&mode=continuable',
+    'sqh-resource://subagentchat/other/child?parent=parent&mode=continuable',
+    'sqh-resource://subagentchat/session/child?mode=continuable',
+    'sqh-resource://subagentchat/session/child?parent=&mode=continuable',
+    'sqh-resource://subagentchat/session/child?parent=parent&mode=invalid',
+    'sqh-resource://subagentchat/session/%?parent=parent&mode=continuable',
   ])('rejects %s', (address) => {
     expect(parseSubagentChatAddress(address)).toBeUndefined()
   })
@@ -104,7 +104,7 @@ describe('Sidebar chat registration', () => {
     expect(definition?.id).toBe(SUBAGENT_CHAT_ID)
     expect(definition?.kind).toBe('subagentchat')
     expect(definition?.canOpen?.(subagentChatAddress(ADDRESS))).toBe(true)
-    expect(definition?.canOpen?.('dsh-resource://subagentchat/invalid')).toBe(false)
+    expect(definition?.canOpen?.('sqh-resource://subagentchat/invalid')).toBe(false)
     expect(definition?.title(subagentChatAddress(ADDRESS))).toBe('Worker')
     expect(definition?.title(subagentChatAddress({ ...ADDRESS, childSessionId: 'unknown' as SessionId }))).toBe('unknown')
     expect(definition?.title('invalid')).toBe('Chat')
