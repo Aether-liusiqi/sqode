@@ -89,6 +89,7 @@ ManifestDPIAware true
 
 !macro customUnInstall
   Call un.CleanData
+  DeleteRegKey SHELL_CONTEXT "Software\Classes\sqh-app"
 !macroend
 
 !macro customPageAfterChangeDir
@@ -122,7 +123,7 @@ ManifestDPIAware true
 !macro customInstallerExtract Archive
   !insertmacro InstallerPublishStage 1
   System::Store /NOUNLOAD "S"
-  System::Call /NOUNLOAD '$PLUGINSDIR\window-frame.dll::InstallerExtract(p $HWNDPARENT, w "$PLUGINSDIR\dsh-7za.exe", w "${Archive}", w "$INSTDIR", w "$PLUGINSDIR\extract.log") i.s ?c'
+  System::Call /NOUNLOAD '$PLUGINSDIR\window-frame.dll::InstallerExtract(p $HWNDPARENT, w "$PLUGINSDIR\sqh-7za.exe", w "${Archive}", w "$INSTDIR", w "$PLUGINSDIR\extract.log") i.s ?c'
   System::Store "L"
   Pop $R0
   ; The failure report owns 7-Zip's UTF-8 output; the details view only needs the result code.
@@ -207,6 +208,14 @@ ManifestDPIAware true
   ${EndIf}
   !insertmacro InstallerPublishStage 4
   !insertmacro dshFinishDirectories
+
+  ; The packaged template only registers protocols when it runs its own file
+  ; section, which this installer replaces with a custom extractor. Registering
+  ; here keeps the scheme working without depending on that template detail.
+  WriteRegStr SHELL_CONTEXT "Software\Classes\sqh-app" "" "URL:Sqode Protocol"
+  WriteRegStr SHELL_CONTEXT "Software\Classes\sqh-app" "URL Protocol" ""
+  WriteRegStr SHELL_CONTEXT "Software\Classes\sqh-app\DefaultIcon" "" "$INSTDIR\Sqode.exe,0"
+  WriteRegStr SHELL_CONTEXT "Software\Classes\sqh-app\shell\open\command" "" '"$INSTDIR\Sqode.exe" "%1"'
   ; Standard uninstall-entry metadata read by inventory tools; the upstream template records it only under its private key.
   WriteRegStr SHELL_CONTEXT "${UNINSTALL_REGISTRY_KEY}" InstallLocation "$INSTDIR"
   ${If} $0 == 1
