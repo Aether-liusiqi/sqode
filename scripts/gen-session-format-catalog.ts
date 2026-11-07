@@ -38,6 +38,9 @@ interface RawManifest {
   readonly dependencies?: Readonly<Record<string, unknown>>
   readonly peerDependencies?: Readonly<Record<string, unknown>>
   readonly devDependencies?: Readonly<Record<string, unknown>>
+  readonly sqh?: {
+    readonly sessionFormatMigration?: Readonly<Record<string, unknown>>
+  }
   readonly dsh?: {
     readonly sessionFormatMigration?: Readonly<Record<string, unknown>>
   }
@@ -87,7 +90,7 @@ export function collectSessionFormatMigrations(
   for (const discovered of globSync('packages/session/session-format-v*-to-v*/package.json', { cwd: scanRoot }).sort()) {
     const rel = discovered.replaceAll('\\', '/')
     const manifest = readJson(resolve(scanRoot, rel))
-    const metadata = manifest.dsh?.sessionFormatMigration
+    const metadata = (manifest.sqh ?? manifest.dsh)?.sessionFormatMigration
     if (metadata === undefined) {
       throw new Error(`gen-session-format-catalog: ${rel} lacks dsh.sessionFormatMigration`)
     }

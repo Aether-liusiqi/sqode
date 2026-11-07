@@ -113,6 +113,9 @@ export interface PackageManifest {
   devDependencies?: Record<string, string>
   dependencies?: Record<string, string>
   optionalDependencies?: Record<string, string>
+  sqh?: {
+    bundle?: SqhBundleManifest
+  }
   dsh?: {
     bundle?: SqhBundleManifest
   }
@@ -265,7 +268,7 @@ export function expectedDshPackageFiles(manifest: PackageManifest): readonly str
     const target = exportDefault(manifest, resource)
     if (target?.startsWith('./') && target.endsWith('.json')) localeFiles.add(target.slice(2))
   }
-  const bundle = manifest.dsh?.bundle
+  const bundle = (manifest.sqh ?? manifest.dsh)?.bundle
   const bundleFiles = bundle === undefined ? [] : bundlePatchFiles(bundle).map(file => file.replace(/^\.\//, ''))
   const extras = [
     ...bundleFiles,
