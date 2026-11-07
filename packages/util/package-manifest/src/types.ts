@@ -23,10 +23,25 @@ export interface SqhPackageManifest {
   /** Runtime requirements; SQH compatibility is declarative until a reader enforces it. */
   engines?: SqhEnginesManifest
   /** SQH-specific author declarations. */
+  sqh?: SqhManifest
+  /**
+   * The same declarations under the retired key.
+   *
+   * Readers accept both while manifests written by earlier versions still exist;
+   * writers emit `sqh` and keep this in step until no supported version reads it.
+   * @deprecated read through the accessor in `app-boot`, not this field.
+   */
   dsh?: SqhManifest
 }
 
-/** Public author fields under `package.json.dsh`; a package may declare several roles. */
+/**
+ * Public author fields under `package.json.sqh`; a package may declare several roles.
+ *
+ * Two keys below used to be declared ad hoc at their readers — an `as { dsh?: ... }`
+ * cast in the packer and a local `interface` in the catalog generator. Naming them
+ * here makes this type the single source, so a rename becomes something the compiler
+ * can enforce instead of something a text search has to notice.
+ */
 export interface SqhManifest {
   /** Manifest format version, independent of the npm package and Session format versions. */
   manifestVersion?: 1
@@ -36,6 +51,10 @@ export interface SqhManifest {
   profile?: SqhProfileManifest
   /** Client module loading and build metadata. */
   client?: SqhClientManifest
+  /** Virtual file system trees the packed image mounts; entries are validated at read time. */
+  readonly configTrees?: readonly unknown[]
+  /** Session format migration declarations, validated by the catalog generator. */
+  readonly sessionFormatMigration?: Readonly<Record<string, unknown>>
 }
 
 /** Literal text or translations indexed by lowercase language id, with a required English fallback. */
