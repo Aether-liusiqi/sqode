@@ -27,7 +27,7 @@ import { basename, dirname, join, relative, resolve, sep } from 'node:path'
 import type { EntryOptions } from '@liusiqi-dev/cordis-plugin-loader'
 import { applyEntryPatches, type PatchOptions } from '@liusiqi-dev/cordis-plugin-include'
 import { resolveDshHome } from '@liusiqi-dev/sqh-home-paths'
-import type { SqhBundleManifest, SqhPackageManifest } from '@liusiqi-dev/sqh-package-manifest'
+import type { SqhBundleManifest, SqhManifest, SqhPackageManifest } from '@liusiqi-dev/sqh-package-manifest'
 import { evaluatePluginCompatibility, pluginCompatibilityWarning } from './plugin-compatibility.ts'
 import { readProfileVersionExemptions } from './profile-compatibility.ts'
 import { loadOverlayPatches } from './index.ts'
@@ -47,6 +47,34 @@ export interface ProfileTemplate {
 
 /** Package metadata accepted by the profile reader; local profiles need no published identity. */
 export type ProfileManifest = Partial<SqhPackageManifest>
+
+/**
+ * Read a manifest's declarations, preferring the current key.
+ *
+ * Lives here rather than in the manifest package on purpose: that package is
+ * type-only, and giving it runtime exports once changed the module graph enough to
+ * time out the ESM-resolution test in `profile.spec.ts`.
+ * @param manifest - package or profile manifest, possibly absent or partial.
+ * @returns the declaration block, or `undefined` when neither key is present.
+ */
+export function readSqhField(manifest: ProfileManifest | undefined): SqhManifest | undefined {
+  return manifest?.sqh ?? manifest?.dsh
+}
+
+/**
+ * Replace a manifest's declarations, writing the current key and mirroring the old.
+ *
+ * The mirror keeps a single writer honest while older readers still exist: an
+ * installed copy, a rollback, or a third-party hook keeps seeing the same block.
+ * @param manifest - manifest to update; unrelated fields are preserved.
+ * @param declarations - the new declaration block.
+ * @returns the updated manifest carrying both keys.
+ */
+export function withSqhField(
+  manifest: ProfileManifest, declarations: SqhManifest,
+): ProfileManifest {
+  return { ...manifest, sqh: declarations, dsh: declarations }
+}
 
 /**
  * The patch files a bundle declares, as written: one file for a string

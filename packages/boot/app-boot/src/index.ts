@@ -82,6 +82,7 @@ export {
   type RuntimeResolution,
   type ProfileTemplate,
 } from './profile.ts'
+export { readSqhField, withSqhField } from './profile.ts'
 export {
   PluginPackages,
   type PluginPackage,
