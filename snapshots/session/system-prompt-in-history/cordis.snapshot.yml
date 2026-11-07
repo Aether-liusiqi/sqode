@@ -13,7 +13,7 @@
 - id: session-persistence-jsonl
   name: '@liusiqi-dev/sqh-session-persistence-jsonl'
   config:
-    root: !!js dshHomePath('sessions')
+    root: !!js sqhHomePath('sessions')
     compression: none
 
 - insert:

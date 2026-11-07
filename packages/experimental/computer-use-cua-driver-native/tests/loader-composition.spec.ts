@@ -73,7 +73,7 @@ it('loads from cordis.yml and logs the native screenshot before the next model r
   ])
   await writeFile(configPath, [...modules.keys()].flatMap(name => [
     `- name: '${name}'`,
-    ...name === '@liusiqi-dev/sqh-attachment-local' ? ['  config:', `    dshHome: ${JSON.stringify(root)}`] : [],
+    ...name === '@liusiqi-dev/sqh-attachment-local' ? ['  config:', `    sqhHome: ${JSON.stringify(root)}`] : [],
   ]).join('\n') + '\n')
 
   const context = ctx = new Context()

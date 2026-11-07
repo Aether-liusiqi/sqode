@@ -29,7 +29,7 @@ export interface HarnessClientOptions {
   /** Ordered per-launch profile patches; relative paths resolve before spawn. */
   patches?: string[]
   /** Explicit Harness home for this child; relative paths resolve before spawn. */
-  dshHome?: string
+  sqhHome?: string
   /** Working directory for the dsh process itself. */
   processCwd?: string
   /**

@@ -54,11 +54,11 @@ Contributors must declare every key they return; returning an undeclared or non-
 
 ### Choosing the Harness home
 
-The single config field picks the home directory exposed as `SQODE_HOME`; the default resolution order is the `dshHome` config, then ambient `$SQODE_HOME`, then `~/.sqode`.
+The single config field picks the home directory exposed as `SQODE_HOME`; the default resolution order is the `sqhHome` config, then ambient `$SQODE_HOME`, then `~/.sqode`.
 
 | Field | Default | Meaning |
 |---|---|---|
-| `dshHome` | `$SQODE_HOME`, then `~/.sqode` | Absolute Harness home exposed as `SQODE_HOME` |
+| `sqhHome` | `$SQODE_HOME`, then `~/.sqode` | Absolute Harness home exposed as `SQODE_HOME` |
 
 The generated [configuration catalog](../../../docs/config-catalog.md#deepseek-aidsh-shell-env) is the exhaustive source for every accepted field and its JSDoc.
 

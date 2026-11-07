@@ -49,7 +49,7 @@
       config:
         profile: sdk
         patches: !!js JSON.parse(process.env.SQODE_TEST_CHILD_PATCHES ?? '[]')
-        dshHome: !!js process.env.SQODE_TEST_CHILD_HOME
+        sqhHome: !!js process.env.SQODE_TEST_CHILD_HOME
         provider: mock
         model: mock-routed
         env:

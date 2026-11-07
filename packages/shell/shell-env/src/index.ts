@@ -12,7 +12,7 @@ import { Service, type Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
 import { SQODE_ENV_PREFIX } from '@liusiqi-dev/sqh-shell'
 import type { SqhEnvironment, SqhEnvironmentKey } from '@liusiqi-dev/sqh-shell'
-import { SQODE_HOME_ENV, resolveDshHome } from '@liusiqi-dev/sqh-home-paths'
+import { SQODE_HOME_ENV, resolveSqhHome } from '@liusiqi-dev/sqh-home-paths'
 import type { ToolExecution } from '@liusiqi-dev/sqh-tools'
 // Declares `Context.profileContext`, the launcher-provided profile the built-ins read.
 import type {} from '@liusiqi-dev/sqh-app-boot'
@@ -29,12 +29,12 @@ export const inject: string[] = []
 /** Plugin config (all optional — the built-in facts resolve without defaults). */
 export interface Config {
   /** Siqi Harness home directory exposed as `SQODE_HOME`; defaults to `$SQODE_HOME` or `~/.sqode`. */
-  dshHome?: string
+  sqhHome?: string
 }
 
 /** Runtime configuration schema for the shell-env plugin. */
 export const Config: z<Config> = z.object({
-  dshHome: z.string(),
+  sqhHome: z.string(),
 })
 
 /** Model-visible metadata for one managed `SQH_*` environment variable. */
@@ -93,7 +93,7 @@ const BASH_ENV_KEY_SUFFIX = /^[A-Z][A-Z0-9_]*$/
 export class ShellEnvRegistry extends Service {
   private readonly contributors = new Map<string, BashEnvContributor>()
   private readonly keyOwners = new Map<SqhEnvironmentKey, string>()
-  private readonly dshHome: string
+  private readonly sqhHome: string
 
   /**
    * Create and install the `ctx.shellEnv` service.
@@ -102,7 +102,7 @@ export class ShellEnvRegistry extends Service {
    */
   constructor(ctx: Context, config: Config = {}) {
     super(ctx, 'shellEnv')
-    this.dshHome = resolveDshHome(config.dshHome)
+    this.sqhHome = resolveSqhHome(config.sqhHome)
   }
 
   /**
@@ -155,7 +155,7 @@ export class ShellEnvRegistry extends Service {
    */
   collect(execution: ToolExecution): SqhEnvironment {
     const values: Record<SqhEnvironmentKey, string> = {
-      [SQODE_HOME_ENV]: this.dshHome,
+      [SQODE_HOME_ENV]: this.sqhHome,
       [SQODE_SHELL_KEY]: '1',
     }
     if (execution.agent !== undefined) {

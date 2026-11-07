@@ -4,7 +4,7 @@ import { createHash } from 'node:crypto'
 import { readFile, mkdir } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { withFileLock, writeFileAtomic } from '@liusiqi-dev/sqh-atomic-write'
-import { resolveDshHome } from '@liusiqi-dev/sqh-home-paths'
+import { resolveSqhHome } from '@liusiqi-dev/sqh-home-paths'
 import { ImageVariantId } from '@liusiqi-dev/sqh-attachment'
 import type { AttachmentId, ImageVariantId as ImageVariantIdType } from '@liusiqi-dev/sqh-attachment'
 import { DeepSeekFileId, DeepSeekFileScope } from './file-id.ts'
@@ -116,7 +116,7 @@ export class DeepSeekUploadIndex {
   /**
    * @param path - explicit test path; omission uses `SQODE_HOME/llm-deepseek/files-v3.json`.
    */
-  constructor(path = join(resolveDshHome(), 'llm-deepseek', 'files-v3.json')) {
+  constructor(path = join(resolveSqhHome(), 'llm-deepseek', 'files-v3.json')) {
     this.path = path
   }
 

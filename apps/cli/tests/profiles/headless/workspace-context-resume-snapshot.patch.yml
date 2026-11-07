@@ -11,7 +11,7 @@
 - id: agent-instructions
   config:
     maxBytes: 65536
-    dshHome: !!js process.cwd() + '/.sqode'
+    sqhHome: !!js process.cwd() + '/.sqode'
 
 - id: session-persistence-jsonl
   config:

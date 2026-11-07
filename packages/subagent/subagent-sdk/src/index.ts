@@ -41,7 +41,7 @@ export interface Config {
   /** Ordered per-launch profile patch files, resolved and checked at plugin load. */
   patches: string[]
   /** Absolute isolated Harness home for every nested child process. */
-  dshHome: string
+  sqhHome: string
   /**
    * Working directory override for the child process and its SDK session
    * workspace. Must be non-empty; a relative path resolves against the
@@ -81,7 +81,7 @@ export const Config: z<Config> = z.object({
   dshBin: z.string(),
   profile: z.string().default('sdk'),
   patches: z.array(z.string()).default([]),
-  dshHome: z.string().required(),
+  sqhHome: z.string().required(),
   cwd: z.string(),
   provider: z.string().default('deepseek-official'),
   model: z.string().default('deepseek-v4-flash'),
@@ -158,7 +158,7 @@ class SdkSubagentProvider implements SubagentProvider {
       ...this.config.dshBin === undefined ? {} : { dshBin: this.config.dshBin },
       profile: this.config.profile,
       patches: this.config.patches,
-      dshHome: this.config.dshHome,
+      sqhHome: this.config.sqhHome,
       cwd,
       ...route,
       env: this.config.env,
@@ -184,7 +184,7 @@ export function apply(ctx: Context, config: Config): void {
   if (resolved.maxTokens !== undefined && (!Number.isSafeInteger(resolved.maxTokens) || resolved.maxTokens <= 0)) {
     throw new TypeError('subagent-sdk maxTokens must be a positive safe integer')
   }
-  if (!isAbsolute(resolved.dshHome)) throw new TypeError('subagent-sdk dshHome must be an absolute path')
+  if (!isAbsolute(resolved.sqhHome)) throw new TypeError('subagent-sdk sqhHome must be an absolute path')
   const launchPaths: ResolvedConfig = {
     ...resolved,
     patches: resolved.patches.map((path, index) => resolveConfiguredFile(`patches[${String(index)}]`, path)),

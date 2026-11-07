@@ -35,7 +35,7 @@ export interface SdkRunSpec {
   /** Ordered per-launch profile patch files. */
   patches: string[]
   /** Absolute isolated Harness home for the nested runtime. */
-  dshHome: string
+  sqhHome: string
   /**
    * Absolute working directory for the child process AND the workspace cwd
    * of its SDK session. The provider resolves it before this spec exists:
@@ -240,7 +240,7 @@ export async function startSdkRun(request: SubagentStartRequest, spec: SdkRunSpe
     ...spec.dshBin === undefined ? {} : { dshBin: spec.dshBin },
     profile: spec.profile,
     patches: spec.patches,
-    dshHome: spec.dshHome,
+    sqhHome: spec.sqhHome,
     processCwd: spec.cwd,
     env: { ...scrubbedParentEnv(), ...spec.env },
     shutdownTimeoutMs: spec.shutdownTimeoutMs,

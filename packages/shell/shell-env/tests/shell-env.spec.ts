@@ -42,7 +42,7 @@ function execution(sessionId?: string): ToolExecution {
 describe('ShellEnvRegistry', () => {
   it('collects unconditional shell facts and the current agent session id', () => {
     const ctx = new Context()
-    const registry = new ShellEnvRegistry(ctx, { dshHome: './test-dsh-home' })
+    const registry = new ShellEnvRegistry(ctx, { sqhHome: './test-dsh-home' })
 
     expect(registry.collect(execution())).toEqual({
       SQODE_HOME: resolve('./test-dsh-home'),
@@ -61,7 +61,7 @@ describe('ShellEnvRegistry', () => {
       name: 'web', dir: '/profiles/web', patchPath: '/profiles/web/cordis.patch.yml', installAnchor: '/dsh/package.json',
       cwd: '/work', home: '/home', startedBundles: [], overlays: [], telemetryDisabledEnv: undefined,
     })
-    const registry = new ShellEnvRegistry(ctx, { dshHome: './test-dsh-home' })
+    const registry = new ShellEnvRegistry(ctx, { sqhHome: './test-dsh-home' })
     expect(registry.collect(execution())).toMatchObject({ SQODE_PROFILE: 'web', SQODE_PROFILE_DIR: '/profiles/web' })
     expect(() => registry.register({
       name: 'profile-claimer',
@@ -82,7 +82,7 @@ describe('ShellEnvRegistry', () => {
 
   it('collects declared contributor variables and omits unavailable values', () => {
     const ctx = new Context()
-    const registry = new ShellEnvRegistry(ctx, { dshHome: './test-dsh-home' })
+    const registry = new ShellEnvRegistry(ctx, { sqhHome: './test-dsh-home' })
     registry.register({
       name: 'optional-session-fact',
       variables: {
@@ -117,7 +117,7 @@ describe('ShellEnvRegistry', () => {
 
   it('rejects duplicate variable ownership at registration time', () => {
     const ctx = new Context()
-    const registry = new ShellEnvRegistry(ctx, { dshHome: './test-dsh-home' })
+    const registry = new ShellEnvRegistry(ctx, { sqhHome: './test-dsh-home' })
     registry.register({
       name: 'first',
       variables: { SQODE_SHARED: { description: 'First owner.' } },
@@ -132,7 +132,7 @@ describe('ShellEnvRegistry', () => {
   })
 
   it('rejects duplicate contributor names and malformed declarations', () => {
-    const registry = new ShellEnvRegistry(new Context(), { dshHome: './test-dsh-home' })
+    const registry = new ShellEnvRegistry(new Context(), { sqhHome: './test-dsh-home' })
     registry.register({
       name: 'declared',
       variables: { SQODE_DECLARED: { description: 'Declared fact.' } },
@@ -168,7 +168,7 @@ describe('ShellEnvRegistry', () => {
 
   it('rejects undeclared variables returned by a contributor', () => {
     const ctx = new Context()
-    const registry = new ShellEnvRegistry(ctx, { dshHome: './test-dsh-home' })
+    const registry = new ShellEnvRegistry(ctx, { sqhHome: './test-dsh-home' })
     registry.register({
       name: 'drifted-provider',
       variables: { SQODE_DECLARED: { description: 'Declared fact.' } },
@@ -179,7 +179,7 @@ describe('ShellEnvRegistry', () => {
   })
 
   it('rejects non-string values returned by a contributor', () => {
-    const registry = new ShellEnvRegistry(new Context(), { dshHome: './test-dsh-home' })
+    const registry = new ShellEnvRegistry(new Context(), { sqhHome: './test-dsh-home' })
     registry.register({
       name: 'wrong-value-type',
       variables: { SQODE_STRING: { description: 'String fact.' } },
@@ -191,7 +191,7 @@ describe('ShellEnvRegistry', () => {
 
   it('removes an effect-scoped contributor when its plugin is disposed', async () => {
     const ctx = new Context()
-    const registry = new ShellEnvRegistry(ctx, { dshHome: './test-dsh-home' })
+    const registry = new ShellEnvRegistry(ctx, { sqhHome: './test-dsh-home' })
     const fiber = await ctx.plugin({
       inject: ['shellEnv'],
       apply(inner: Context) {
@@ -209,7 +209,7 @@ describe('ShellEnvRegistry', () => {
   })
 
   it('returns an explicit contributor disposer', () => {
-    const registry = new ShellEnvRegistry(new Context(), { dshHome: './test-dsh-home' })
+    const registry = new ShellEnvRegistry(new Context(), { sqhHome: './test-dsh-home' })
     const dispose = registry.register({
       name: 'explicit-disposal',
       variables: { SQODE_EXPLICIT_DISPOSAL: { description: 'Explicitly disposed fact.' } },

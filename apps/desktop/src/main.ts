@@ -22,7 +22,7 @@ import {
   type IpcMainInvokeEvent,
   type MenuItemConstructorOptions,
 } from 'electron'
-import { resolveDshHome } from '@liusiqi-dev/sqh-home-paths'
+import { resolveSqhHome } from '@liusiqi-dev/sqh-home-paths'
 
 import { resolveDesktopPaths } from './paths.ts'
 import { DesktopProjectManager } from './project-manager.ts'
@@ -811,7 +811,7 @@ async function main(): Promise<void> {
   ipcMain.handle(DESKTOP_IPC.feedbackSave, async (event, report: unknown) => {
     assertProductSender(event)
     const record = parseFeedbackReport(report)
-    const directory = join(resolveDshHome(), 'feedback')
+    const directory = join(resolveSqhHome(), 'feedback')
     await mkdir(directory, { recursive: true })
     const stamp = new Date().toISOString().replace(/[:.]/gu, '-')
     const file = join(directory, `${stamp}.json`)

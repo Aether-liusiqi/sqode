@@ -182,5 +182,5 @@
       name: '@liusiqi-dev/sqh-session-persistence-jsonl'
       disabled: false
       config:
-        root: !!js dshHomePath('sessions')
+        root: !!js sqhHomePath('sessions')
         compression: none

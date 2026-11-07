@@ -17,7 +17,7 @@
 - id: session-persistence-jsonl
   name: '@liusiqi-dev/sqh-session-persistence-jsonl'
   config:
-    root: !!js dshHomePath('sessions')
+    root: !!js sqhHomePath('sessions')
     compression: !!js 'process.env.SQODE_SNAPSHOT === undefined ? ''zstd'' : ''none'''
 
 - insert:

@@ -58,7 +58,7 @@ export async function canonicalizeWatchPath(path: string): Promise<string> {
  * Resolve the default Siqi Harness home using Node's platform path rules.
  * @returns the absolute default harness home path.
  */
-export function defaultDshHome(): string {
+export function defaultSqhHome(): string {
   return join(homedir(), SQODE_HOME_DIR_NAME)
 }
 
@@ -84,9 +84,9 @@ export function expandHomePath(path: string): string {
  * @param env - environment mapping used to read `SQODE_HOME`.
  * @returns the normalized absolute harness home path.
  */
-export function resolveDshHome(configured?: string, env: Record<string, string | undefined> = process.env): string {
+export function resolveSqhHome(configured?: string, env: Record<string, string | undefined> = process.env): string {
   const fromEnv = env[SQODE_HOME_ENV]
-  const selected = configured ?? (fromEnv !== undefined && fromEnv.trim().length > 0 ? fromEnv : defaultDshHome())
+  const selected = configured ?? (fromEnv !== undefined && fromEnv.trim().length > 0 ? fromEnv : defaultSqhHome())
   return resolve(expandHomePath(selected))
 }
 
@@ -95,8 +95,8 @@ export function resolveDshHome(configured?: string, env: Record<string, string |
  * @param segments - path segments appended to the Harness home; an empty list returns the home itself.
  * @returns the normalized absolute joined path.
  */
-export function dshHomePath(...segments: string[]): string {
-  return join(resolveDshHome(), ...segments)
+export function sqhHomePath(...segments: string[]): string {
+  return join(resolveSqhHome(), ...segments)
 }
 
 /**
@@ -105,9 +105,9 @@ export function dshHomePath(...segments: string[]): string {
  * @param segments - additional path segments after the first child, if any.
  * @returns the normalized absolute cache path.
  */
-export function dshCachePath(optionsOrSegment: { dshHome?: string } | string = {}, ...segments: string[]): string {
-  if (typeof optionsOrSegment === 'string') return dshHomePath('cache', optionsOrSegment, ...segments)
-  return join(resolveDshHome(optionsOrSegment.dshHome), 'cache', ...segments)
+export function sqhCachePath(optionsOrSegment: { sqhHome?: string } | string = {}, ...segments: string[]): string {
+  if (typeof optionsOrSegment === 'string') return sqhHomePath('cache', optionsOrSegment, ...segments)
+  return join(resolveSqhHome(optionsOrSegment.sqhHome), 'cache', ...segments)
 }
 
 /**
@@ -115,9 +115,9 @@ export function dshCachePath(optionsOrSegment: { dshHome?: string } | string = {
  *
  * It never returns an absolute machine path: the default home is labelled
  * `~/.sqode`, and any configured home is labelled `$SQODE_HOME`.
- * @param resolvedHome - the absolute path returned by {@link resolveDshHome}.
+ * @param resolvedHome - the absolute path returned by {@link resolveSqhHome}.
  * @returns `~/.sqode` for the default home, otherwise `$SQODE_HOME`.
  */
-export function dshHomeDisplay(resolvedHome: string): string {
-  return resolvedHome === resolve(defaultDshHome()) ? DEFAULT_SQH_HOME_DISPLAY : `$${SQODE_HOME_ENV}`
+export function sqhHomeDisplay(resolvedHome: string): string {
+  return resolvedHome === resolve(defaultSqhHome()) ? DEFAULT_SQH_HOME_DISPLAY : `$${SQODE_HOME_ENV}`
 }

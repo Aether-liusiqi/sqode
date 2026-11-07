@@ -16,7 +16,7 @@
 - id: session-persistence-jsonl
   name: '@liusiqi-dev/sqh-session-persistence-jsonl'
   config:
-    root: !!js dshHomePath('sessions')
+    root: !!js sqhHomePath('sessions')
     compression: none
 
 - insert:
@@ -29,7 +29,7 @@
       config:
         profile: sdk
         patches: !!js JSON.parse(process.env.SQODE_TEST_CHILD_PATCHES ?? '[]')
-        dshHome: !!js process.env.SQODE_TEST_CHILD_HOME
+        sqhHome: !!js process.env.SQODE_TEST_CHILD_HOME
         provider: mock
         model: mock-routed
         env:

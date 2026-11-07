@@ -29,16 +29,16 @@ kind: "package-library"
 ### 解析主目录
 
 ```ts
-import { resolveDshHome, dshHomePath, dshCachePath } from '@liusiqi-dev/sqh-home-paths'
+import { resolveSqhHome, sqhHomePath, sqhCachePath } from '@liusiqi-dev/sqh-home-paths'
 
-const home = resolveDshHome()                // configured path, else $SQODE_HOME, else ~/.sqode
-const settings = dshHomePath('settings')     // join one child onto the resolved home
-const cache = dshCachePath('models')         // $SQODE_HOME/cache/models, default ~/.sqode/cache/models
+const home = resolveSqhHome()                // configured path, else $SQODE_HOME, else ~/.sqode
+const settings = sqhHomePath('settings')     // join one child onto the resolved home
+const cache = sqhCachePath('models')         // $SQODE_HOME/cache/models, default ~/.sqode/cache/models
 ```
 
 显式配置的路径优先级最高，然后是 `$SQODE_HOME`，最后是默认的 `~/.sqode`。空或仅含空白的 `$SQODE_HOME` 视为未设置，因此空白的覆盖值绝不会把主目录解析到当前工作目录。
 
-`dshCachePath(...segments)` 从解析出的主目录下的 `cache` 目录派生路径。不传路径段时返回缓存目录本身。传入首个选项对象 `dshCachePath({ dshHome: home }, ...segments)` 可使用显式配置的主目录，遵循相同的优先级与波浪号展开规则。它返回绝对路径，不会创建目录。
+`sqhCachePath(...segments)` 从解析出的主目录下的 `cache` 目录派生路径。不传路径段时返回缓存目录本身。传入首个选项对象 `sqhCachePath({ sqhHome: home }, ...segments)` 可使用显式配置的主目录，遵循相同的优先级与波浪号展开规则。它返回绝对路径，不会创建目录。
 
 ### 展示主目录
 
@@ -71,7 +71,7 @@ const cache = dshCachePath('models')         // $SQODE_HOME/cache/models, defaul
 
 ### 解析规则
 
-`resolveDshHome` 先读显式覆盖值，然后读 `$SQODE_HOME`，最后回退到操作系统主目录拼接 `.dsh`。选中的值经过波浪号展开并规范化为绝对路径；`dshHomePath` 用 Node 的平台路径规则拼接子路径段。`dshHomeDisplay` 把解析出的路径与默认根目录比较并返回符号标签，因此已配置的主目录绝不泄露其绝对路径。
+`resolveSqhHome` 先读显式覆盖值，然后读 `$SQODE_HOME`，最后回退到操作系统主目录拼接 `.dsh`。选中的值经过波浪号展开并规范化为绝对路径；`sqhHomePath` 用 Node 的平台路径规则拼接子路径段。`sqhHomeDisplay` 把解析出的路径与默认根目录比较并返回符号标签，因此已配置的主目录绝不泄露其绝对路径。
 
 ### 规范化机制
 

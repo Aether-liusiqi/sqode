@@ -129,7 +129,7 @@ process.exitCode = result.status ?? 1;
             models: [{ id: model, contextWindow: 128000, maxTokens: 8192, inputModalities: ['text', 'image'] }],
           } }],
           { id: 'agent-default-model', config: { provider: completions ? 'office-test' : 'deepseek-official', model } },
-          { id: 'attachment-local', config: { dshHome: join(cwd, '.image-store') } },
+          { id: 'attachment-local', config: { sqhHome: join(cwd, '.image-store') } },
           { id: 'session-persistence-jsonl', config: { root: join(cwd, '.sessions'), compression: 'none' } },
         ]))
       },

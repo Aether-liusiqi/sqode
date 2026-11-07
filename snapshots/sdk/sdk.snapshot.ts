@@ -549,8 +549,8 @@ async function runScenario(scenario: CorpusScenario): Promise<{
   cwd: string
 }> {
   const cwd = await mkdtemp(join(tmpdir(), `sdk-snapshot-${scenario.name}-`))
-  const dshHome = join(cwd, '.sqode')
-  const sessionsRoot = join(dshHome, 'sessions')
+  const sqhHome = join(cwd, '.sqode')
+  const sessionsRoot = join(sqhHome, 'sessions')
   const replayFixtures = recording ? [] : await hydrateReplayFixtures(scenario, cwd)
   const fixtureContents = await Promise.all((await fixtureFiles(scenario)).map(file => readFile(file, 'utf8')))
   const primaryFixture = fixtureContents[0]
@@ -606,7 +606,7 @@ async function runScenario(scenario: CorpusScenario): Promise<{
   const harness = new DeepSeekHarness({
     profile: 'sdk',
     patches,
-    dshHome,
+    sqhHome,
     processCwd: cwd,
     env,
     requestTimeoutMs: 110_000,

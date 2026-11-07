@@ -21,19 +21,19 @@ Ambient host state.
 
 it('isolates replay skill discovery from every ambient host root', async () => {
   const ambient = await mkdtemp(join(tmpdir(), 'dsh-web-ambient-skills-'))
-  const dshHome = join(ambient, 'dsh-home')
+  const sqhHome = join(ambient, 'dsh-home')
   const agentsHome = join(ambient, 'agents-home')
   const bundled = join(ambient, 'bundled')
   await Promise.all([
-    writeSkill(join(dshHome, 'skills'), 'ambient-dsh'),
+    writeSkill(join(sqhHome, 'skills'), 'ambient-dsh'),
     writeSkill(join(agentsHome, 'skills'), 'ambient-agents'),
     writeSkill(bundled, 'ambient-bundled'),
   ])
 
-  const originalDshHome = process.env.SQODE_HOME
+  const originalSqhHome = process.env.SQODE_HOME
   const originalAgentsHome = process.env.SQODE_AGENTS_HOME
   const originalBundled = process.env.SQODE_BUNDLED_SKILL_DIR
-  process.env.SQODE_HOME = dshHome
+  process.env.SQODE_HOME = sqhHome
   process.env.SQODE_AGENTS_HOME = agentsHome
   process.env.SQODE_BUNDLED_SKILL_DIR = bundled
   let scaffold: WebScaffold | undefined
@@ -62,8 +62,8 @@ it('isolates replay skill discovery from every ambient host root', async () => {
     try {
       await scaffold?.close()
     } finally {
-      if (originalDshHome === undefined) delete process.env.SQODE_HOME
-      else process.env.SQODE_HOME = originalDshHome
+      if (originalSqhHome === undefined) delete process.env.SQODE_HOME
+      else process.env.SQODE_HOME = originalSqhHome
       if (originalAgentsHome === undefined) delete process.env.SQODE_AGENTS_HOME
       else process.env.SQODE_AGENTS_HOME = originalAgentsHome
       if (originalBundled === undefined) delete process.env.SQODE_BUNDLED_SKILL_DIR

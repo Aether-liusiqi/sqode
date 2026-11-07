@@ -29,16 +29,16 @@ Use these helpers wherever a package must agree with the rest of the harness abo
 ### Resolving the home
 
 ```ts
-import { resolveDshHome, dshHomePath, dshCachePath } from '@liusiqi-dev/sqh-home-paths'
+import { resolveSqhHome, sqhHomePath, sqhCachePath } from '@liusiqi-dev/sqh-home-paths'
 
-const home = resolveDshHome()                // configured path, else $SQODE_HOME, else ~/.sqode
-const settings = dshHomePath('settings')     // join one child onto the resolved home
-const cache = dshCachePath('models')         // $SQODE_HOME/cache/models, default ~/.sqode/cache/models
+const home = resolveSqhHome()                // configured path, else $SQODE_HOME, else ~/.sqode
+const settings = sqhHomePath('settings')     // join one child onto the resolved home
+const cache = sqhCachePath('models')         // $SQODE_HOME/cache/models, default ~/.sqode/cache/models
 ```
 
 An explicit configured path has the highest precedence, then `$SQODE_HOME`, then the default `~/.sqode`. An empty or whitespace-only `$SQODE_HOME` is treated as unset, so a blank override never resolves the home to the current working directory.
 
-`dshCachePath(...segments)` derives paths from the resolved home's `cache` directory. With no segments it returns the cache directory itself. Pass an initial options object, `dshCachePath({ dshHome: home }, ...segments)`, to use an explicit configured home with the same precedence and tilde expansion. It returns an absolute path without creating directories.
+`sqhCachePath(...segments)` derives paths from the resolved home's `cache` directory. With no segments it returns the cache directory itself. Pass an initial options object, `sqhCachePath({ sqhHome: home }, ...segments)`, to use an explicit configured home with the same precedence and tilde expansion. It returns an absolute path without creating directories.
 
 ### Displaying a home
 
@@ -71,7 +71,7 @@ The package is built on one principle: all harness user data lives under one roo
 
 ### Resolution rules
 
-`resolveDshHome` reads the explicit override, then `$SQODE_HOME`, then falls back to the operating-system home joined with `.dsh`. The chosen value is tilde-expanded and normalized to an absolute path; `dshHomePath` joins child segments with Node's platform path rules. `dshHomeDisplay` compares the resolved path against the default root and returns the symbolic label, so a configured home never leaks its absolute path.
+`resolveSqhHome` reads the explicit override, then `$SQODE_HOME`, then falls back to the operating-system home joined with `.dsh`. The chosen value is tilde-expanded and normalized to an absolute path; `sqhHomePath` joins child segments with Node's platform path rules. `sqhHomeDisplay` compares the resolved path against the default root and returns the symbolic label, so a configured home never leaks its absolute path.
 
 ### Canonicalization mechanics
 

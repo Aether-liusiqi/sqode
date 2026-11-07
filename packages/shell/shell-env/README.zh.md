@@ -54,11 +54,11 @@ contributor 必须声明它返回的每个键；返回未声明或非字符串�
 
 ### 选择 Harness 主目录
 
-唯一配置字段决定暴露为 `SQODE_HOME` 的主目录；默认解析顺序为 `dshHome` 配置、环境变量 `$SQODE_HOME`，然后是 `~/.sqode`。
+唯一配置字段决定暴露为 `SQODE_HOME` 的主目录；默认解析顺序为 `sqhHome` 配置、环境变量 `$SQODE_HOME`，然后是 `~/.sqode`。
 
 | 字段 | 默认值 | 含义 |
 |---|---|---|
-| `dshHome` | `$SQODE_HOME`，然后 `~/.sqode` | 暴露为 `SQODE_HOME` 的 Harness 主目录绝对路径 |
+| `sqhHome` | `$SQODE_HOME`，然后 `~/.sqode` | 暴露为 `SQODE_HOME` 的 Harness 主目录绝对路径 |
 
 生成的[配置目录](../../../docs/config-catalog.zh.md#deepseek-aidsh-shell-env)是每个受支持字段及其 JSDoc 的穷尽式真源。
 

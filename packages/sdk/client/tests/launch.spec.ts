@@ -55,7 +55,7 @@ describe('SDK dsh launch resolution', () => {
       dshBin: './bin/dsh',
       profile: 'custom-sdk',
       patches: ['./first.yml', '../second.yml'],
-      dshHome: './home',
+      sqhHome: './home',
       processCwd: './worker',
       env: { PATH: '/bin', SQODE_HOME: '/stale' },
       initializeTimeoutMs: 123,

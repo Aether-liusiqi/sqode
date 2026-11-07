@@ -47,7 +47,7 @@ kind: "package-reference"
 
 ```ts
 export interface Config {
-  dshHome?: string
+  sqhHome?: string
   projectRootMarkers?: string[]
   maxBytes: number
   maxSourceBytes?: number
@@ -63,7 +63,7 @@ export interface Config {
 | `projectRootMarkers` | `['.git']` | 标记项目根目录的目录名 |
 | `instructionFileCandidates` | `['AGENTS.md', 'CLAUDE.md']` | 每个项目目录中加载的基础文件名 |
 | `localInstructionFileCandidates` | `['AGENTS.local.md', 'CLAUDE.local.md']` | 在基础文件之后加载的本地 overlay 文件名 |
-| `dshHome` | `$SQODE_HOME` 或 `~/.sqode` | 存放用户全局 `AGENTS.md` 的目录 |
+| `sqhHome` | `$SQODE_HOME` 或 `~/.sqode` | 存放用户全局 `AGENTS.md` 的目录 |
 
 生成的[配置目录](../../../docs/config-catalog.zh.md#deepseek-aidsh-agent-instructions)是每个受支持字段及其 JSDoc 的穷尽式真源。
 

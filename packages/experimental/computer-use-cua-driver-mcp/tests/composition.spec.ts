@@ -83,7 +83,7 @@ async function load(mode?: string): Promise<{ ctx: Context; root: string; model:
         reconnect: { initialDelayMs: 20, maxDelayMs: 40, maxAttempts: 2 },
       }
       : name === '@liusiqi-dev/sqh-attachment-local'
-        ? { dshHome: root }
+        ? { sqhHome: root }
         : name === '@liusiqi-dev/sqh-agent-loop' ? { agents: [] } : {},
   }))))
   const ctx = new Context()

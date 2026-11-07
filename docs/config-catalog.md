@@ -66,7 +66,7 @@ export interface Config {
 /** User-facing workspace instruction loader configuration. */
 export interface Config {
   /** Harness home containing the fixed user-global `AGENTS.md`; defaults to `$SQODE_HOME` or `~/.sqode`. */
-  dshHome?: string
+  sqhHome?: string
   /** Directory entries that identify the project root while walking upward from the session cwd. */
   projectRootMarkers?: string[]
   /** UTF-8 byte cap for one rendered baseline or dynamic batch; non-positive or non-finite disables loading. */
@@ -354,7 +354,7 @@ export interface Config {
 /** Local attachment backend configuration. */
 export interface Config {
   /** Explicit harness home; omitted follows `SQODE_HOME`, then `~/.sqode`. */
-  dshHome?: string
+  sqhHome?: string
   /** Maximum encoded bytes accepted for one submitted image. Default: 20 MiB. */
   maxImageBytes?: number
   /** Maximum image count accepted in one submitted message. Default: 20. */
@@ -773,7 +773,7 @@ export interface Config {
   /** Credentials document path; defaults to `.credentials.yaml` under the harness home. */
   path?: string
   /** Harness home used when `path` is omitted; defaults to `$SQODE_HOME` or `~/.sqode`. */
-  dshHome?: string
+  sqhHome?: string
   /** Watch the document and hot-publish external edits; defaults to true. */
   watch?: boolean
   /** Watcher write-settle window in milliseconds; defaults to 100. */
@@ -2248,7 +2248,7 @@ export interface PlanModeConfig {
 ## `@liusiqi-dev/sqh-plugin-manager`
 
 - `inject`: `loader` · `profileContext`
-- `source`: [`packages/boot/plugin-manager/src/index.ts:40`](../packages/boot/plugin-manager/src/index.ts)
+- `source`: [`packages/boot/plugin-manager/src/index.ts:41`](../packages/boot/plugin-manager/src/index.ts)
 
 ```ts config-catalog
 /** The pnpm executable, registries, and limits for diagnostics, lookups and connection checks. */
@@ -2827,7 +2827,7 @@ export type Config = SessionTitleLlmConfig
 /** Plugin config (all optional — the built-in facts resolve without defaults). */
 export interface Config {
   /** Siqi Harness home directory exposed as `SQODE_HOME`; defaults to `$SQODE_HOME` or `~/.sqode`. */
-  dshHome?: string
+  sqhHome?: string
 }
 ```
 <!-- END GENERATED config-catalog:@liusiqi-dev/sqh-shell-env -->
@@ -2864,7 +2864,7 @@ export interface Config {
   /** Whether project and user roots are included around custom roots. */
   includeDefaultRoots?: boolean
   /** Siqi Harness config root. Defaults to `$SQODE_HOME` or `~/.sqode`. */
-  dshHome?: string
+  sqhHome?: string
   /** Shared agent config root. Defaults to `$SQODE_AGENTS_HOME` or `~/.agents`. */
   agentsHome?: string
   /** Additional skill roots scanned after project roots and before user roots. */
@@ -3259,7 +3259,7 @@ export interface Config {
   /** Ordered per-launch profile patch files, resolved and checked at plugin load. */
   patches: string[]
   /** Absolute isolated Harness home for every nested child process. */
-  dshHome: string
+  sqhHome: string
   /**
    * Working directory override for the child process and its SDK session
    * workspace. Must be non-empty; a relative path resolves against the

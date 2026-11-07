@@ -6,7 +6,7 @@
     - id: speech-to-text-sensevoice
       name: '@liusiqi-dev/sqh-experimental-speech-to-text-sensevoice'
       config:
-        dataRoot: !!js dshHomePath('speech-to-text', 'sensevoice')
+        dataRoot: !!js sqhHomePath('speech-to-text', 'sensevoice')
     - id: api-speech-to-text
       name: '@liusiqi-dev/sqh-experimental-api-speech-to-text'
     - id: ui-voice-input

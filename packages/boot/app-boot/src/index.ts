@@ -15,7 +15,7 @@ import { Context, type FiberState } from '@liusiqi-dev/cordis'
 import Loader, { type Entry, type EntryOptions } from '@liusiqi-dev/cordis-plugin-loader'
 import Include, { applyEntryPatches, entryListSchema, type PatchOptions } from '@liusiqi-dev/cordis-plugin-include'
 import Group from '@liusiqi-dev/cordis-plugin-group'
-import { dshHomePath, resolveDshHome } from '@liusiqi-dev/sqh-home-paths'
+import { sqhHomePath, resolveSqhHome } from '@liusiqi-dev/sqh-home-paths'
 import { createLaunchEnvironmentSnapshot, type LaunchEnvironmentSnapshot } from '@liusiqi-dev/sqh-launch-environment'
 export { readProfilePatches, resolveTelemetryPatch, type ProfileContext, type ProfilePnpmInvocation } from './profile-context.ts'
 export { sanitizeProfile } from './profile-sanitize.ts'
@@ -40,7 +40,7 @@ export {
 declare module '@liusiqi-dev/cordis' {
   interface Context {
     /** Harness-home path resolver available to Loader `!!js` config expressions. */
-    dshHomePath?: typeof dshHomePath
+    sqhHomePath?: typeof sqhHomePath
   }
 
   interface Events {
@@ -236,7 +236,7 @@ export function loadLayeredEnv(
   binName: string, cwd: string = process.cwd(),
   warn: (line: string) => void = line => void process.stderr.write(line),
 ): LaunchEnvironmentSnapshot {
-  const home = resolveDshHome()
+  const home = resolveSqhHome()
   const inherited = { ...process.env } as Record<string, string>
   // Parse both layers first: a rejection must not leave one file applied.
   const project = readEnvLayer(binName, cwd, warn, home)
@@ -993,7 +993,7 @@ export async function boot(
   let stage = 'host preparation failed'
   try {
     ctx.baseUrl = pathToFileURL(dirname(absoluteConfigPath)).href + '/'
-    ctx.provide('dshHomePath', dshHomePath)
+    ctx.provide('sqhHomePath', sqhHomePath)
     // Fiber.update() discards the restart promise. Observe it before the
     // waterfall returns; activation audits still report the failed fiber.
     ctx.on('internal/update', (_config, _noSave, next: () => unknown) => {

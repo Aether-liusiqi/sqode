@@ -50,15 +50,15 @@ const servers: Server[] = []
 // The backend resolves the harness home's anonymous user id at construction;
 // pin SQODE_HOME to a temp dir so the suite never touches the ambient ~/.sqode.
 let tempHome: string
-let previousDshHome: string | undefined
+let previousSqhHome: string | undefined
 beforeAll(() => {
   tempHome = mkdtempSync(join(tmpdir(), 'dsh-otel-home-'))
-  previousDshHome = process.env.SQODE_HOME
+  previousSqhHome = process.env.SQODE_HOME
   process.env.SQODE_HOME = tempHome
 })
 afterAll(() => {
-  if (previousDshHome === undefined) delete process.env.SQODE_HOME
-  else process.env.SQODE_HOME = previousDshHome
+  if (previousSqhHome === undefined) delete process.env.SQODE_HOME
+  else process.env.SQODE_HOME = previousSqhHome
   rmSync(tempHome, { recursive: true, force: true })
 })
 

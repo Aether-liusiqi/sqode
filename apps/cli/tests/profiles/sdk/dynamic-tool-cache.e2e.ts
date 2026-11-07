@@ -60,7 +60,7 @@ describe.skipIf(!process.env.DEEPSEEK_API_KEY)('SDK native tool updates with rea
       { insert: [{ id: 'sdk-dynamic-tool-cache-fixture', name: fixturePath, config: { evidencePath, callsPath, sampleLabel, updatePrompt } }] },
     ]))
     const harness = new DeepSeekHarness({
-      dshBin, profile: 'sdk', patches: [patch], dshHome: join(root, 'home'),
+      dshBin, profile: 'sdk', patches: [patch], sqhHome: join(root, 'home'),
       cwd: root, processCwd: root, provider: 'deepseek-official', model: 'deepseek-flash',
       env: { ...process.env, SQODE_TELEMETRY_DISABLED: '1', SQODE_PERMISSION_MODE: 'danger-full-access' },
       initializeTimeoutMs: 30_000,

@@ -19,7 +19,7 @@ import z from '@liusiqi-dev/schemastery'
 import type Schema from '@liusiqi-dev/schemastery'
 import { parse as parseYaml } from 'yaml'
 import type { FileSystem, FsDirEntry, FsTarget } from '@liusiqi-dev/sqh-fs'
-import { canonicalizeWatchPath, resolveDshHome } from '@liusiqi-dev/sqh-home-paths'
+import { canonicalizeWatchPath, resolveSqhHome } from '@liusiqi-dev/sqh-home-paths'
 import {
   BUNDLED_SKILL_RANK,
   isSkillName,
@@ -52,7 +52,7 @@ export interface Config {
   /** Whether project and user roots are included around custom roots. */
   includeDefaultRoots?: boolean
   /** Siqi Harness config root. Defaults to `$SQODE_HOME` or `~/.sqode`. */
-  dshHome?: string
+  sqhHome?: string
   /** Shared agent config root. Defaults to `$SQODE_AGENTS_HOME` or `~/.agents`. */
   agentsHome?: string
   /** Additional skill roots scanned after project roots and before user roots. */
@@ -76,7 +76,7 @@ export interface Config {
 export const Config: Schema<Config> = z.object({
   providerName: z.string().min(1).default('filesystem'),
   includeDefaultRoots: z.boolean().default(true),
-  dshHome: z.string(),
+  sqhHome: z.string(),
   agentsHome: z.string(),
   customSkillDirs: z.array(z.string()).default([]),
   watch: z.boolean().default(true),
@@ -150,7 +150,7 @@ export function apply(ctx: Context, config: Config = {}): void {
 export class FileSystemSkillProvider implements SkillProvider {
   readonly name: string
   private readonly includeDefaultRoots: boolean
-  private readonly dshHome: string
+  private readonly sqhHome: string
   private readonly agentsHome: string
   private readonly customSkillDirs: string[]
   private readonly watchManager: SkillWatchManager
@@ -164,7 +164,7 @@ export class FileSystemSkillProvider implements SkillProvider {
   ) {
     this.name = config.providerName ?? 'filesystem'
     this.includeDefaultRoots = config.includeDefaultRoots ?? true
-    this.dshHome = resolveDshHome(config.dshHome)
+    this.sqhHome = resolveSqhHome(config.sqhHome)
     this.agentsHome = resolve(config.agentsHome ?? process.env.SQODE_AGENTS_HOME ?? join(homedir(), '.agents'))
     this.customSkillDirs = (config.customSkillDirs ?? []).map(root => resolve(root))
     this.watchManager = new SkillWatchManager(ctx, control.invalidate, resolveWatchConfig(config))
@@ -254,7 +254,7 @@ export class FileSystemSkillProvider implements SkillProvider {
     roots.push(...this.customSkillDirs.map(path => ({ path, source: 'custom' as const, rank: CUSTOM_RANK })))
     if (this.includeDefaultRoots) {
       roots.push(
-        { path: join(this.dshHome, 'skills'), source: 'user-dsh', rank: USER_SQH_RANK, skipSystem: true },
+        { path: join(this.sqhHome, 'skills'), source: 'user-dsh', rank: USER_SQH_RANK, skipSystem: true },
         { path: join(this.agentsHome, 'skills'), source: 'user-agents', rank: USER_AGENTS_RANK },
       )
     }

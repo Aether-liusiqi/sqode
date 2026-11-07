@@ -7,7 +7,7 @@ import { runProfile } from '@liusiqi-dev/sqode/profile-boot'
 import type {} from '@liusiqi-dev/sqh-client-connection'
 import type {} from '@liusiqi-dev/sqh-host-webserver'
 import type {} from '@liusiqi-dev/sqh-deepseek-account'
-import { resolveDshHome } from '@liusiqi-dev/sqh-home-paths'
+import { resolveSqhHome } from '@liusiqi-dev/sqh-home-paths'
 import * as desktopOffice from './office.ts'
 
 import { installDesktopUpdateTaskControl } from './update-tasks.ts'
@@ -95,7 +95,7 @@ async function main(): Promise<void> {
   await ctx.plugin(desktopOffice, {
     runtimeDir,
     source: process.argv[4] ?? join(runtimeDir, '..', 'runtime', 'primary-runtime'),
-    root: join(resolveDshHome(), 'sqh-runtimes', 'sqh-primary-runtime'),
+    root: join(resolveSqhHome(), 'sqh-runtimes', 'sqh-primary-runtime'),
   })
   installPlatformSessionPublisher(ctx, (session) => {
     if (process.connected) process.send?.({ type: 'platform-session', session })
