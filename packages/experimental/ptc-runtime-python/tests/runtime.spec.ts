@@ -23,7 +23,7 @@ import type { PtcBindingFunction, PtcJsonValue, PtcRunResult } from '@liusiqi-de
  * `stagedDirs` records every staging directory THIS test file creates, so the
  * leak assertions check the exact paths instead of a global tmpdir diff: a
  * parallel vitest worker running the same prefix could create or remove
- * `dsh-ptc-runtime-python-*` directories inside the sampling window, which a
+ * `sqh-ptc-runtime-python-*` directories inside the sampling window, which a
  * readdir diff would misattribute to this test. `boot-write-failure.spec.ts`
  * records the same race and solves it with argv-based identity; recording the
  * mkdtempSync results is the fs-mock equivalent.
@@ -52,7 +52,7 @@ vi.mock('node:fs', async (importOriginal) => {
     },
     mkdtempSync(prefix: string): string {
       const dir = actual.mkdtempSync(prefix)
-      if (basename(prefix).startsWith('dsh-ptc-runtime-python-')) stagedDirs.push(dir)
+      if (basename(prefix).startsWith('sqh-ptc-runtime-python-')) stagedDirs.push(dir)
       return dir
     },
   }
@@ -624,7 +624,7 @@ describe('PythonPtcRuntime — seam descriptors and misuse', () => {
     expect(entry.endsWith('/bootstrap.py')).toBe(true)
     const dir = dirname(entry)
     expect(realpathSync(dirname(dir))).toBe(realpathSync(tmpdir()))
-    expect(basename(dir)).toMatch(/^dsh-ptc-runtime-python-/)
+    expect(basename(dir)).toMatch(/^sqh-ptc-runtime-python-/)
     expect(dir).not.toContain('/packages/')
     // Staging is per RUN and removed at settlement, so by the time `run()`
     // resolved the directory is already gone — nothing survives to be rewritten
