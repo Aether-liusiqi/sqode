@@ -18,7 +18,7 @@
     maxBytes: 65536
     sqhHome: !!js process.cwd() + '/.sqode'
     projectRootMarkers:
-      - .dsh-project
+      - .sqh-project
 
 - id: system-prompt
   name: '@liusiqi-dev/sqh-system-prompt'
