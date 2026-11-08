@@ -6,41 +6,41 @@
   en: eb6e843bc5a11195
   zh: b245e9a3615e01f0
 /agent-note-package-and-update-the-electron-desktop-application/problem:
-  en: 5b532458fb85ca01
-  zh: 565124ff55cafcbb
+  en: 65c5a085160f1ac9
+  zh: e5348b04d67440ec
 /agent-note-package-and-update-the-electron-desktop-application/decision:
-  en: 1fcb143dfd4b5904
-  zh: 73c9a689841609ed
+  en: 4a7a203bb997109e
+  zh: 834535f195a456f7
 /agent-note-package-and-update-the-electron-desktop-application/ownership:
-  en: 50e16f318c5d0e1a
-  zh: 84b2ba8f1a6932b0
+  en: 61de2d1bfcba2376
+  zh: 8c0902d502bb56d5
 /agent-note-package-and-update-the-electron-desktop-application/filesystem-layout:
   en: 4990a8ba137e28f0
   zh: b12f68d30a5d18fa
 /agent-note-package-and-update-the-electron-desktop-application/installation-and-resolution:
-  en: 29def175ab33b7d6
-  zh: 87e55ec28c20c7c1
+  en: 6f918a44ced75e48
+  zh: ee727e5627b0c2f7
 /agent-note-package-and-update-the-electron-desktop-application/updates-and-recovery:
-  en: afef432f4650cce3
-  zh: e84e1c029134f6e9
+  en: 661ecf5837aa46f4
+  zh: 3d950aa598b88afe
 /agent-note-package-and-update-the-electron-desktop-application/security-and-release-policy:
-  en: 362d02eb7d7704dd
-  zh: 2559e2762f76ceec
+  en: e01d41b1f92d582d
+  zh: a05d049f5e6f2317
 /agent-note-package-and-update-the-electron-desktop-application/implementation:
-  en: 037e37f1716a7931
-  zh: e635fd325abc622f
+  en: ac55ea098be98ec5
+  zh: 1337c30e63242d43
 /agent-note-package-and-update-the-electron-desktop-application/alternatives-considered:
-  en: 10b1b0a8afe38def
-  zh: 0a4df988f72b8d11
+  en: 617d6a5a09d0e464
+  zh: e434c8f5b46576f8
 /agent-note-package-and-update-the-electron-desktop-application/consequences:
-  en: 44dc044cfcd6ec17
-  zh: 5e978dec54783b4e
+  en: 97f208404e816733
+  zh: 6c2ebfa67ee1fe93
 /agent-note-package-and-update-the-electron-desktop-application/review-decisions:
-  en: 54c4c2a4bcdfa834
-  zh: c280351bb3bf085f
+  en: ff7128e3625c79f6
+  zh: 6af3cab754eeb328
 /agent-note-package-and-update-the-electron-desktop-application/risks:
-  en: af59c819ae700ee1
-  zh: 6c0b4b80690fc6a2
+  en: 3f0335d47ed3ec7f
+  zh: ac9e4e2f9c959a91
 /agent-note-package-and-update-the-electron-desktop-application/related-proposals:
   en: b6c0cbd39966f1ec
   zh: 5c7a919abec643ba

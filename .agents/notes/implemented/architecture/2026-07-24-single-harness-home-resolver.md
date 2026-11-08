@@ -9,13 +9,13 @@ English | [中文](2026-07-24-single-harness-home-resolver.zh.md)
 The harness had two inconsistent conventions for "where does Siqi Harness user data live":
 
 - `@siqi-ai/dsh-home` resolved `configured ?? $SQH_HOME ?? ~/.dsh`.
-- `@siqi-ai/dsh-home-paths` shipped a **second** `resolveDshHome` with the same precedence plus tilde expansion — a near-duplicate of `dsh-home` that no gate flagged because the two lived in different packages and had already drifted (only one expanded tildes).
+- `@siqi-ai/sqh-home-paths` shipped a **second** `resolveDshHome` with the same precedence plus tilde expansion — a near-duplicate of `sqh-home` that no gate flagged because the two lived in different packages and had already drifted (only one expanded tildes).
 
 Two resolvers for the same cross-cutting fact meant there was no single home policy.
 
 ## Decision
 
-One resolver owns the harness home, in `@siqi-ai/dsh-home-paths`, single-root:
+One resolver owns the harness home, in `@siqi-ai/sqh-home-paths`, single-root:
 
 ```
 explicit configured path  >  $SQH_HOME  >  ~/.dsh
@@ -23,11 +23,11 @@ explicit configured path  >  $SQH_HOME  >  ~/.dsh
 
 An empty or whitespace-only `$SQH_HOME` is treated as unset; otherwise `resolve('')` would silently place the home at the current working directory. The harness keeps all user data under one root; there is no XDG config/data/cache split. `dshHomePath(...segments)` joins deployment-owned children onto that root, and `sqh-app-boot` exposes it to Loader `!!js` config expressions before mounting entries, so shipped compositions derive `sessions` and `storages` without copying the resolver. `dshHomeDisplay()` names a resolved root symbolically for user-facing paths — `~/.dsh` for the default home, `$SQH_HOME` for any configured home — so the user-global `AGENTS.md` label never leaks an absolute machine path. It replaces agent-instructions's bespoke default-vs-`$SQH_HOME` check.
 
-`dshCachePath(...segments)` derives paths below the resolved home's `cache` directory. An initial `{ dshHome }` option preserves a provider's explicit home override. It resolves paths without creating directories; callers own directory creation. `attachment-local` uses this helper for regenerable request-image variants while retaining durable attachment objects in their versioned storage tree, so clearing the cache cannot remove Session attachments. Existing request-image cache entries are left in place and are not read or copied; a cache miss regenerates the variant from its durable attachment.
+`sqhCachePath(...segments)` derives paths below the resolved home's `cache` directory. An initial `{ sqhHome }` option preserves a provider's explicit home override. It resolves paths without creating directories; callers own directory creation. `attachment-local` uses this helper for regenerable request-image variants while retaining durable attachment objects in their versioned storage tree, so clearing the cache cannot remove Session attachments. Existing request-image cache entries are left in place and are not read or copied; a cache miss regenerates the variant from its durable attachment.
 
-`@siqi-ai/dsh-home` is deleted. Home-owning providers and boot packages import `resolveDshHome` from `dsh-home-paths`; composition bundles contain only the resolved configuration rows.
+`@siqi-ai/sqh-home` is deleted. Home-owning providers and boot packages import `resolveDshHome` from `sqh-home-paths`; composition bundles contain only the resolved configuration rows.
 
-`dsh-telemetry` and its separate home policy are absent under the [SDK project toolchain removal](../../archived/simplification/2026-08-11-remove-sdk-project-toolchain.md), leaving this resolver as the sole home policy.
+`sqh-telemetry` and its separate home policy are absent under the [SDK project toolchain removal](../../archived/simplification/2026-08-11-remove-sdk-project-toolchain.md), leaving this resolver as the sole home policy.
 
 ## Alternatives considered
 
@@ -37,4 +37,4 @@ An empty or whitespace-only `$SQH_HOME` is treated as unset; otherwise `resolve(
 
 ## Consequences
 
-- One home fact, one resolver. `dsh-home-paths` is the sole owner; the `util/` group loses the `home` package.
+- One home fact, one resolver. `sqh-home-paths` is the sole owner; the `util/` group loses the `home` package.

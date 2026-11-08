@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-08-26-human-job-kill.md
 /agent-note-human-job-kill-an-unclaimed-terminal-report-instead-of-a-second-cancellation-path:
-  en: d47dedfab1caa170
-  zh: 00bb8cd62ed79d54
+  en: e5271a5fa8a0734f
+  zh: 848fabd5a80bc31b
 /agent-note-human-job-kill-an-unclaimed-terminal-report-instead-of-a-second-cancellation-path/problem:
-  en: 3690502ccc80b5a3
-  zh: cfd3c378e3921864
+  en: 95a9defce10da5a6
+  zh: 944548322cacc48b
 /agent-note-human-job-kill-an-unclaimed-terminal-report-instead-of-a-second-cancellation-path/decision:
-  en: bd8951c0d225ba18
-  zh: 840a1bc0a768bb26
+  en: 6be557668d35aa3b
+  zh: 985b4c557a94ca5d
 /agent-note-human-job-kill-an-unclaimed-terminal-report-instead-of-a-second-cancellation-path/alternatives-considered:
   en: c412f77328b2d3dc
   zh: c0fe32c827fa036e

@@ -6,7 +6,7 @@ Status: implemented
 
 ## 问题
 
-自托管 Linux CI 虚拟机（`vm-backup` 池，32 个 runner 实例共宿一机）的根分区 inode 正在耗尽。issue #3134 的残留（`/tmp/dsh-*`）是来源之一；第二个、更大的来源是 Node.js 模块编译缓存。CI 工具链中的工具显式调用 `module.enableCompileCache()`：pnpm 11.7.0 在入口（`bin/pnpm.mjs` 中的 `module.enableCompileCache?.()`）每次调用都启用缓存，TypeScript 在 `tsc`/`tsserver` 中启用；vitest 转发该 API 但自身不启用。每次这样的调用都把序列化 V8 字节码缓存写到 `os.tmpdir()/node-compile-cache`。在共享虚拟机上即根分区的 `/tmp`：2026-08-28 实测为 **697,389 个 inode、9.2 GB**，其中 34,110 个文件不足 1 小时——缓存每次 CI 运行都在增长且从不清理，即使 `dsh-*` 残留被控制，根分区 3,276,800 个 inode 仍趋向耗尽。
+自托管 Linux CI 虚拟机（`vm-backup` 池，32 个 runner 实例共宿一机）的根分区 inode 正在耗尽。issue #3134 的残留（`/tmp/sqh-*`）是来源之一；第二个、更大的来源是 Node.js 模块编译缓存。CI 工具链中的工具显式调用 `module.enableCompileCache()`：pnpm 11.7.0 在入口（`bin/pnpm.mjs` 中的 `module.enableCompileCache?.()`）每次调用都启用缓存，TypeScript 在 `tsc`/`tsserver` 中启用；vitest 转发该 API 但自身不启用。每次这样的调用都把序列化 V8 字节码缓存写到 `os.tmpdir()/node-compile-cache`。在共享虚拟机上即根分区的 `/tmp`：2026-08-28 实测为 **697,389 个 inode、9.2 GB**，其中 34,110 个文件不足 1 小时——缓存每次 CI 运行都在增长且从不清理，即使 `sqh-*` 残留被控制，根分区 3,276,800 个 inode 仍趋向耗尽。
 
 ## 决策
 
@@ -27,7 +27,7 @@ Status: implemented
 
 `NODE_DISABLE_COMPILE_CACHE=1` 会立即停止根分区增长，但会放弃每次运行的启动加速，而缓存是 Node 正当有用的特性（由 pnpm 和 TypeScript 显式启用）。重定向在保留收益的同时把成本移出受限分区。
 
-### 为什么不把 `node-compile-cache` 纳入 `dsh-*` 清理？
+### 为什么不把 `node-compile-cache` 纳入 `sqh-*` 清理？
 
 CI 清理（残留清理改动中新增）针对测试残留；编译缓存是缓存而非残留。每次运行删掉它会丢弃缓存本要提供的加速。重定向是结构性修复：缓存的增长移到为它准备的卷上。
 

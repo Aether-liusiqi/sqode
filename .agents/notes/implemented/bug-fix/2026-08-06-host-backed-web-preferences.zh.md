@@ -6,7 +6,7 @@ Status: implemented
 
 ## 问题
 
-Web 的 Appearance、Language 和繁忙态 Enter 偏好原本存在浏览器 `localStorage` 中。浏览器存储以 origin 为作用域，因此换一个端口重新打开 `dsh web` 会选中另一个存储分区并丢失选择，即使两个进程使用同一个 SQH home。这些是用户级产品偏好；会话选择、草稿、折叠展开状态和其他瞬态浏览器状态仍保留在页面内。
+Web 的 Appearance、Language 和繁忙态 Enter 偏好原本存在浏览器 `localStorage` 中。浏览器存储以 origin 为作用域，因此换一个端口重新打开 `sqh web` 会选中另一个存储分区并丢失选择，即使两个进程使用同一个 SQH home。这些是用户级产品偏好；会话选择、草稿、折叠展开状态和其他瞬态浏览器状态仍保留在页面内。
 
 第一版主题实现只把 Appearance 移入 Host settings，但会在提供 `ThemeRuntime` 之前等待初始 RPC。缓慢或不可用的 settings 请求因而会挂起组装后的页面。该实现还在读取后才建立订阅，可能错过此窗口内的失效通知；它写入时不携带 namespace revision，并且允许已释放插件所排队的写入到达 Host。
 
@@ -14,7 +14,7 @@ Web 的 Appearance、Language 和繁忙态 Enter 偏好原本存在浏览器 `lo
 
 对应 Host Config schema 声明 volatile 语言、主题和忙碌时 Enter 偏好。ConfigEditor 将显式选择保存到活跃 profile patch。经过认证的 settings API 投影这些 Config 字段，并对 secret 角色字段脱敏。
 
-`dsh-client-ui-settings` 持有一个浏览器全局的 settings describe 镜像，并提供 `ctx.configForms.get(entryId)` 作为该镜像上的逐 namespace selector。镜像在开始后台读取之前安装 `settings/document-updated` 和 `connection/reset` 监听器，因此任何 settings 传输都不会阻塞插件激活，失效通知也不会掉入先读取、后订阅的空档。每个共享条目表单会发布一个供领域服务订阅的快照 store（状态、分节值、revision、可写性、host／内存模式），自身不再增加协议读取或监听器。默认解码器会对照该 namespace 自身的序列化 wire schema（经同包的 `ctx.settingsSchema` 服务还原）校验每个传入分节，因此各领域无需携带手写的 wire 校验器。领域服务把 scope 当作普通的构造函数协作者接收，立即发布各自的暂定默认值：由浏览器派生的 locale、系统主题和 Queue；随后采纳已获接受的 Host 分节，但不将其写回；不带 scope 构造的服务——独立词典或政策 fixture（测试前置数据）——则仅停留在进程本地。共享读取与失效生命周期由后续的 [settings describe 镜像决策](../../archived/architecture/2026-08-17-settings-describe-mirror.md)规定。
+`sqh-client-ui-settings` 持有一个浏览器全局的 settings describe 镜像，并提供 `ctx.configForms.get(entryId)` 作为该镜像上的逐 namespace selector。镜像在开始后台读取之前安装 `settings/document-updated` 和 `connection/reset` 监听器，因此任何 settings 传输都不会阻塞插件激活，失效通知也不会掉入先读取、后订阅的空档。每个共享条目表单会发布一个供领域服务订阅的快照 store（状态、分节值、revision、可写性、host／内存模式），自身不再增加协议读取或监听器。默认解码器会对照该 namespace 自身的序列化 wire schema（经同包的 `ctx.settingsSchema` 服务还原）校验每个传入分节，因此各领域无需携带手写的 wire 校验器。领域服务把 scope 当作普通的构造函数协作者接收，立即发布各自的暂定默认值：由浏览器派生的 locale、系统主题和 Queue；随后采纳已获接受的 Host 分节，但不将其写回；不带 scope 构造的服务——独立词典或政策 fixture（测试前置数据）——则仅停留在进程本地。共享读取与失效生命周期由后续的 [settings describe 镜像决策](../../archived/architecture/2026-08-17-settings-describe-mirror.md)规定。
 
 用户修改立即更新实时偏好，并通过共享条目表单排队提交带修订号检查的修改。提供者为每个条目持有一个写入队列；消费者在卸载时释放订阅。提供者销毁时跳过排队工作、禁止迟到发布，并等待正在执行的操作结束。
 

@@ -10,7 +10,7 @@ Plugin authors need npm identity, runtime requirements, and SQH declarations fro
 
 ## Decision
 
-[`DshPackageManifest`](../../../../packages/util/package-manifest/src/types.ts) describes the package.json fields SQH uses, with required `name` and `version`. Its optional `dsh` member uses `DshManifest` for public composition and author metadata. The type is a selected npm field set, not a complete package.json schema. App-boot adapts it with `Partial` for local profiles, which need no published identity.
+[`DshPackageManifest`](../../../../packages/util/package-manifest/src/types.ts) describes the package.json fields SQH uses, with required `name` and `version`. Its optional `sqh` member uses `DshManifest` for public composition and author metadata. The type is a selected npm field set, not a complete package.json schema. App-boot adapts it with `Partial` for local profiles, which need no published identity.
 
 Runtime requirements live at top-level `engines`: `dsh`, `node`, and `npm` are optional version strings, and other engine names are allowed. `dsh.manifestVersion` identifies declaration format `1`. Format and SQH compatibility declarations are not enforced by current installers or loaders.
 
@@ -24,7 +24,7 @@ Each consumer owns JSON parsing, field validation, default resolution, and adapt
 
 **Put SQH compatibility under `dsh.engines`.** [VS Code](https://code.visualstudio.com/api/references/extension-manifest) places its host requirement in top-level `engines.vscode`. Top-level `engines.dsh` gives authors one location for runtime requirements; SQH still owns enforcement of its custom key.
 
-**Use peer dependencies as the sole host requirement.** Peer dependencies constrain installed npm packages, including the CLI package `@siqi-ai/dsh`. They do not identify the currently running SQH process when plugins live in a separate profile project.
+**Use peer dependencies as the sole host requirement.** Peer dependencies constrain installed npm packages, including the CLI package `@siqi-ai/sqh`. They do not identify the currently running SQH process when plugins live in a separate profile project.
 
 **Parse every domain through one mandatory parser.** Existing readers consume different subsets and own different errors and defaults. Combining them would make a client reader validate unrelated profile declarations. The public types remain independent of filesystem access and parsing policy.
 

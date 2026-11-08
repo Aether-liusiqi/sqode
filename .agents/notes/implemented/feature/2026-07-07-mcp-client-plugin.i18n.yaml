@@ -6,14 +6,14 @@
   en: 7d41e632fd40efe0
   zh: 4c7f6410b74a5bd3
 /agent-note-mcp-client-plugin-connect-to-external-mcp-servers-and-bridge-their-tools/problem:
-  en: 7cef5ed5bc88fba5
-  zh: 795917e3321148ab
+  en: 0177ae402a1c3b83
+  zh: 1f10c32be3b9c7f5
 /agent-note-mcp-client-plugin-connect-to-external-mcp-servers-and-bridge-their-tools/decision:
   en: a15c7c13f167e5ac
   zh: 63bcc2ef60c2f344
 /agent-note-mcp-client-plugin-connect-to-external-mcp-servers-and-bridge-their-tools/decision/package:
-  en: b449a62e8f03a4c2
-  zh: 5ffcbc2c1edc2db8
+  en: ca2594039bad2b20
+  zh: 08d7bd80890f58e0
 /agent-note-mcp-client-plugin-connect-to-external-mcp-servers-and-bridge-their-tools/decision/sdk:
   en: f69bbd1cfca85fa0
   zh: 9b21abc7e3eeb2fd
@@ -21,8 +21,8 @@
   en: 32cd57e8d3ea1ac1
   zh: 7c14401492f22c32
 /agent-note-mcp-client-plugin-connect-to-external-mcp-servers-and-bridge-their-tools/decision/plugin-shape:
-  en: 3d6e4726e5c890a6
-  zh: 888123ed412544a7
+  en: eda5902de67c42e5
+  zh: 0f0798338eaf07f8
 /agent-note-mcp-client-plugin-connect-to-external-mcp-servers-and-bridge-their-tools/decision/configuration:
   en: a244e4d7a8294424
   zh: 4be5ed51345a660e

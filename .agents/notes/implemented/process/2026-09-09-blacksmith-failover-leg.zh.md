@@ -6,7 +6,7 @@ Status: implemented
 
 ## 问题
 
-[故障切换手册](2026-07-26-ci-failover-runbook.zh.md)把降级的企业池流量路由到自有的 `vm-backup` 与 `dsh-win-ci` 池——它们是经过验证但容量有界的备用池。Blacksmith 按需出售类似 GitHub 托管的运行器，其迁移向导提议整体替换仓库的 `runs-on` 标签，这会把持有凭据、基准与 spec 钉死的作业默认放到第三方基础设施上。整体替换不适合作为默认：它会打破 workflow 契约 spec、扭曲基准与性能预算测量，并在没有决策记录的情况下搬动信任边界作业。
+[故障切换手册](2026-07-26-ci-failover-runbook.zh.md)把降级的企业池流量路由到自有的 `vm-backup` 与 `sqh-win-ci` 池——它们是经过验证但容量有界的备用池。Blacksmith 按需出售类似 GitHub 托管的运行器，其迁移向导提议整体替换仓库的 `runs-on` 标签，这会把持有凭据、基准与 spec 钉死的作业默认放到第三方基础设施上。整体替换不适合作为默认：它会打破 workflow 契约 spec、扭曲基准与性能预算测量，并在没有决策记录的情况下搬动信任边界作业。
 
 ## 决策
 

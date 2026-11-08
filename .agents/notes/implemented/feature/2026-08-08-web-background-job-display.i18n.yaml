@@ -6,17 +6,17 @@
   en: 78eff738bc5ed554
   zh: c8a8a83853fa806b
 /agent-note-web-background-job-display/problem:
-  en: 41ddca92193cbbf1
-  zh: ec8f39ad20044d1c
+  en: accc263a26b5e314
+  zh: 483bcb359a9dc89e
 /agent-note-web-background-job-display/decision:
   en: 50058c6557e05f15
   zh: bbf35bb475474cd8
 /agent-note-web-background-job-display/decision/wire-shape:
-  en: 942feee7648eab25
-  zh: f098fa4f52326251
+  en: bd08dfe3d0e4162c
+  zh: 92ac04bf7e228856
 /agent-note-web-background-job-display/decision/the-task-registry-change-feed:
-  en: a7a9416ab3b325dc
-  zh: 448820bad0224785
+  en: 0666d0c3b607efb8
+  zh: 685b1ee779f7b7b7
 /agent-note-web-background-job-display/decision/the-session-controller-carrier:
   en: e9ef574e65e8fb7d
   zh: d1a6e446c48a0921
@@ -24,17 +24,17 @@
   en: 6185994020e639ee
   zh: df9b464f95c0f3e2
 /agent-note-web-background-job-display/decision/the-header-action:
-  en: 54053282c124de14
-  zh: 13f01a97f0e8755d
+  en: dcf7b4f95eb50a0d
+  zh: 76f395cb6d8b2bde
 /agent-note-web-background-job-display/decision/what-this-deliberately-does-not-do:
   en: c9ff2d1fec1459d9
   zh: b28a573ca9fbb1c2
 /agent-note-web-background-job-display/alternatives-considered:
-  en: a648d1748674d866
-  zh: 0f68b82476121c38
+  en: 6c75841cc743b2eb
+  zh: 1bfe20bee0e03858
 /agent-note-web-background-job-display/testing:
   en: f41d5017ea4beabb
   zh: cb216dd1d802ebe2
 /agent-note-web-background-job-display/consequences:
-  en: 399682e55863a304
-  zh: 9e6deb6ab285a3a2
+  en: 4ac27cf5805718f4
+  zh: 5bc64f1d46de98c2

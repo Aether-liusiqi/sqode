@@ -2,18 +2,18 @@
 # section, a hash of its English and Chinese blocks outside code blocks and generated regions.
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-24-web-config-tree-boot-and-transport-layering.md
-/agent-note-dsh-web-config-tree-boot-and-the-web-transport-layering:
-  en: 2d06ffcaaeb373e7
-  zh: 01822cfd7339167f
-/agent-note-dsh-web-config-tree-boot-and-the-web-transport-layering/problem:
-  en: 2bfe217a7953d9c4
-  zh: 550994f37cd04b4b
-/agent-note-dsh-web-config-tree-boot-and-the-web-transport-layering/decision:
-  en: dd1fb1877172b554
-  zh: 9c818ed08c8900d0
-/agent-note-dsh-web-config-tree-boot-and-the-web-transport-layering/consequences:
+/agent-note-sqh-web-config-tree-boot-and-the-web-transport-layering:
+  en: d5339cb93c7514c7
+  zh: 3c1b5da64e97ff35
+/agent-note-sqh-web-config-tree-boot-and-the-web-transport-layering/problem:
+  en: a1de5b8e8f081f67
+  zh: d8c5fa2f3f90047a
+/agent-note-sqh-web-config-tree-boot-and-the-web-transport-layering/decision:
+  en: 7bacc95b0c6cb66e
+  zh: 6c0ac7cdcd8f8dcc
+/agent-note-sqh-web-config-tree-boot-and-the-web-transport-layering/consequences:
   en: 47f8a6beba1f320b
   zh: 5f444699dc52cabf
-/agent-note-dsh-web-config-tree-boot-and-the-web-transport-layering/alternatives-considered:
-  en: bf6fbf972eab0700
-  zh: 0f3449e5e6ace7e2
+/agent-note-sqh-web-config-tree-boot-and-the-web-transport-layering/alternatives-considered:
+  en: e46ab014f41c3f42
+  zh: b943114737a79f81

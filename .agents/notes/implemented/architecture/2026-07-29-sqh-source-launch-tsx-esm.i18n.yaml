@@ -2,18 +2,18 @@
 # section, a hash of its English and Chinese blocks outside code blocks and generated regions.
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-29-sqh-source-launch-tsx-esm.md
-/agent-note-dsh-source-launch-through-the-tsx-esm-hook:
-  en: 21cc22a08d831a7e
-  zh: 9656288b7c4658b5
-/agent-note-dsh-source-launch-through-the-tsx-esm-hook/problem:
-  en: 68385f7e47d3ac1f
-  zh: 285ca290832e2939
-/agent-note-dsh-source-launch-through-the-tsx-esm-hook/decision:
-  en: 399df86305fcf8e5
-  zh: b7c3863c04a75039
-/agent-note-dsh-source-launch-through-the-tsx-esm-hook/alternatives-considered:
+/agent-note-sqh-source-launch-through-the-tsx-esm-hook:
+  en: bfcea71c11764370
+  zh: 829e1a392ca6ee14
+/agent-note-sqh-source-launch-through-the-tsx-esm-hook/problem:
+  en: 32597859a027f6b3
+  zh: c7789f742d6f2812
+/agent-note-sqh-source-launch-through-the-tsx-esm-hook/decision:
+  en: 8c6525cc473a6b7e
+  zh: e83f33ba2af87fa2
+/agent-note-sqh-source-launch-through-the-tsx-esm-hook/alternatives-considered:
   en: c6eec3d899a61df1
   zh: 128edd753d49c0da
-/agent-note-dsh-source-launch-through-the-tsx-esm-hook/consequences:
+/agent-note-sqh-source-launch-through-the-tsx-esm-hook/consequences:
   en: 7c8eb105520ccae3
   zh: 9dc85ecda408de5a

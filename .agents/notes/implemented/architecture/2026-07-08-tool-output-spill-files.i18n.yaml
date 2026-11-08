@@ -6,23 +6,23 @@
   en: 06b99197145a4080
   zh: 698a61dcd2385985
 /agent-note-tool-output-spill-policy/problem:
-  en: 858cbb874e213697
-  zh: 1693b618886ac42d
+  en: 8ee4ee32edd15276
+  zh: 6bb895d91b6877e1
 /agent-note-tool-output-spill-policy/decision:
-  en: 069661a9fc9ad2c8
-  zh: 5004baae42de6c0d
+  en: f48f53c4b8b95d37
+  zh: 0f98365c676c3eb3
 /agent-note-tool-output-spill-policy/decision/spill-seam:
-  en: 1e92bc9a0548def9
-  zh: c99cf6878981ba71
+  en: fe33bc724d960b20
+  zh: a4533d1bd14bafd2
 /agent-note-tool-output-spill-policy/decision/spill-policy:
-  en: 3c49c0246188c513
-  zh: 4b6749c30726903d
+  en: f23277cd24facde8
+  zh: d2ea86571ec36dd1
 /agent-note-tool-output-spill-policy/showcase-web-fetch:
-  en: d5c334b50f458925
-  zh: 7631307b5d9fbc55
+  en: 4206f1c44f330dcd
+  zh: 327ad6589db83d18
 /agent-note-tool-output-spill-policy/relationship-to-retention-and-early-spill:
-  en: fe06d29be4eca815
-  zh: 5eea54964231001f
+  en: faebe4fbaa9b474c
+  zh: 7ce12657dbc57776
 /agent-note-tool-output-spill-policy/non-goals:
   en: f82b5399ecddd8a1
   zh: 9675b58631bb5c90
@@ -30,11 +30,11 @@
   en: 094f8c71672ea726
   zh: 252dbe825d6e34ca
 /agent-note-tool-output-spill-policy/testing:
-  en: c98759345e1aebfa
-  zh: d1faeadb99bd748a
+  en: 6eb8f95c066be26d
+  zh: 17634b82e7f0d487
 /agent-note-tool-output-spill-policy/consequences:
-  en: e023260e52a246d6
-  zh: 2e49237e564a83da
+  en: 6e95c1d41302d356
+  zh: be426b6e3fbb122a
 /agent-note-tool-output-spill-policy/alternatives-considered:
   en: d53fb144141de557
   zh: 1b851eb64c421803

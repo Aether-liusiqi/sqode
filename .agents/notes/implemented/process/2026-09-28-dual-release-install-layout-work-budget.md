@@ -10,7 +10,7 @@ The `Dependency layout` lane packs two incompatible synthetic SQH releases into 
 
 ## Decision
 
-`scripts/verify-npm-install-layout.ts` decides growth with `assertResolutionWorkBudget`, which bounds `dshPackagesPerVersion * checkedDshEdges` against `MAX_RESOLUTION_WORK_UNITS = 875_000`. Both counts come from the summary `assertDualDshInstallLayout` returns, so the budget applies to the graph npm actually produced rather than to a prediction of it. A graph above the budget fails with its own counts, the budget, and the instruction to measure the new resolution cost and raise the constant.
+`scripts/verify-npm-install-layout.ts` decides growth with `assertResolutionWorkBudget`, which bounds `sqhPackagesPerVersion * checkedDshEdges` against `MAX_RESOLUTION_WORK_UNITS = 875_000`. Both counts come from the summary `assertDualDshInstallLayout` returns, so the budget applies to the graph npm actually produced rather than to a prediction of it. A graph above the budget fails with its own counts, the budget, and the instruction to measure the new resolution cost and raise the constant.
 
 The npm child keeps a wall-clock limit, `NPM_HANG_GUARD_MS`, derived as `4 * MAX_RESOLUTION_WORK_UNITS * SECONDS_PER_WORK_UNIT` (910 s). It is a hang guard, not the growth criterion: a runner up to four times slower than the measured host cannot decide the gate's outcome, and deriving it from the budget keeps the two values from drifting apart.
 
@@ -29,7 +29,7 @@ Measured 2026-09-28 on an idle M-series host, against `origin/master` (277 SQH p
 | Registry traffic | 682 requests, 383 KB of packument bodies |
 | Layout assertion and process startup | 4.4 s |
 
-The same graph resolved in 1.12 s with `--legacy-peer-deps`, so peer placement is 152.7 s of the 153.8 s. `canPlacePeers` re-checks each internal edge against the incoming edges of its peer target, which makes the cost grow with placements times edge count; the nested release's copy of `@siqi-ai/dsh-base` alone takes 48.8 s against 1.3 s for the identical package at the root of the same tree. About three quarters of the verified internal edges are peer edges (1874 of 2524), so this work is the assertion, not overhead around it.
+The same graph resolved in 1.12 s with `--legacy-peer-deps`, so peer placement is 152.7 s of the 153.8 s. `canPlacePeers` re-checks each internal edge against the incoming edges of its peer target, which makes the cost grow with placements times edge count; the nested release's copy of `@siqi-ai/sqh-base` alone takes 48.8 s against 1.3 s for the identical package at the root of the same tree. About three quarters of the verified internal edges are peer edges (1874 of 2524), so this work is the assertion, not overhead around it.
 
 Repeated runs of the same graph on one host span 137.8 s to 204.8 s of npm time, a factor of 1.5 with no input change, which is why a wall-clock threshold cannot separate a slow host from a larger graph.
 

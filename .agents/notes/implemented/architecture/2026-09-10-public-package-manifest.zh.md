@@ -10,7 +10,7 @@ Status: implemented
 
 ## 决策
 
-[`DshPackageManifest`](../../../../packages/util/package-manifest/src/types.ts) 描述 SQH 使用的 package.json 字段，其中 `name` 和 `version` 必填。其可选的 `dsh` 成员使用 `DshManifest` 描述公共组合与作者元数据。该类型只选取所需 npm 字段，不是完整的 package.json schema（模式）。App-boot 通过 `Partial` 适配无需发布身份的本地 profile。
+[`DshPackageManifest`](../../../../packages/util/package-manifest/src/types.ts) 描述 SQH 使用的 package.json 字段，其中 `name` 和 `version` 必填。其可选的 `sqh` 成员使用 `DshManifest` 描述公共组合与作者元数据。该类型只选取所需 npm 字段，不是完整的 package.json schema（模式）。App-boot 通过 `Partial` 适配无需发布身份的本地 profile。
 
 运行时要求位于顶层 `engines`：`dsh`、`node` 和 `npm` 均为可选版本字符串，也允许其他 engine 名称。`dsh.manifestVersion` 标识声明格式 `1`。当前安装器和加载器不强制检查格式与 SQH 兼容性声明。
 
@@ -24,7 +24,7 @@ Status: implemented
 
 **将 SQH 兼容性放在 `dsh.engines` 下。** [VS Code](https://code.visualstudio.com/api/references/extension-manifest) 将宿主要求放在顶层 `engines.vscode`。顶层 `engines.dsh` 让作者在同一位置声明运行时要求；自定义键的检查仍由 SQH 负责。
 
-**仅用 peer dependency 声明宿主要求。** Peer dependency 约束已安装的 npm 包，包括 CLI 包 `@siqi-ai/dsh`。插件位于独立 profile 项目时，它们无法标识当前运行的 SQH 进程。
+**仅用 peer dependency 声明宿主要求。** Peer dependency 约束已安装的 npm 包，包括 CLI 包 `@siqi-ai/sqh`。插件位于独立 profile 项目时，它们无法标识当前运行的 SQH 进程。
 
 **通过统一的强制解析器解析所有领域。** 现有读取方消费不同字段子集，并各自拥有错误与默认值。合并它们会让客户端读取方校验无关的 profile 声明。公共类型保持独立于文件系统访问和解析策略。
 

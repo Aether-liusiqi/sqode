@@ -6,7 +6,7 @@ Status: implemented
 
 ## 问题
 
-Python 安装的 `dsh.exe` 控制台命令会在初始化 profile 前间歇性地以 Windows 访问冲突 `0xc0000005` 退出。其冒烟断言遗漏进程状态，只报告空标准流。原生 faulthandler 探测 (run 34030851888) 将故障定位在运行时控制台入口调用的 Python 3.10 `os._execvpe`，而非打包的 Node 可执行文件。直接启动可执行文件的对照通过。
+Python 安装的 `sqh.exe` 控制台命令会在初始化 profile 前间歇性地以 Windows 访问冲突 `0xc0000005` 退出。其冒烟断言遗漏进程状态，只报告空标准流。原生 faulthandler 探测 (run 34030851888) 将故障定位在运行时控制台入口调用的 Python 3.10 `os._execvpe`，而非打包的 Node 可执行文件。直接启动可执行文件的对照通过。
 
 ## 决策
 

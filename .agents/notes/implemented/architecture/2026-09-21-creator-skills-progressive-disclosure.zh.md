@@ -12,7 +12,7 @@ Status: implemented
 
 `SKILL.md` 只保留流程、知识来源顺序和索引表；配方移入 `references/`，可复制的组合包移入 `templates/`，都通过 `skill` 工具已报告的 skill 基目录解析。一个测试保证开头文件在修剪器头部之内，并检查每个被引用的文件存在、每个模板可解析。
 
-知识来源有顺序而不禁止：先通过 `cordis_inspect_query` 检查，再读 `Config.listConfigs` 经 profile 包查找解析出的 `packageDir` 下的包 README，仍有疑问时读构建后的 `lib/` 声明或 checkout 源码。自带包从 dsh 安装目录解析，profile 自行安装的包从 profile 解析，所以 skill 不再从 profile 目录推导包路径。启动器提供 profile 上下文时，shell 注册表把 `SQH_PROFILE` 与 `SQH_PROFILE_DIR` 作为保留内置变量暴露。
+知识来源有顺序而不禁止：先通过 `cordis_inspect_query` 检查，再读 `Config.listConfigs` 经 profile 包查找解析出的 `packageDir` 下的包 README，仍有疑问时读构建后的 `lib/` 声明或 checkout 源码。自带包从 sqh 安装目录解析，profile 自行安装的包从 profile 解析，所以 skill 不再从 profile 目录推导包路径。启动器提供 profile 上下文时，shell 注册表把 `SQH_PROFILE` 与 `SQH_PROFILE_DIR` 作为保留内置变量暴露。
 
 第三个 skill `cordis-composition-reference` 承载 Loader patch 方言和生成的可加载插件包清单，并在 `doc-sync` 中做新鲜度门禁，让流程 skill 不再增长。
 

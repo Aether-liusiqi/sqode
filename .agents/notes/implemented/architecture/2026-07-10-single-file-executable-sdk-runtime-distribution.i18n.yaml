@@ -12,26 +12,26 @@
   en: a15c7c13f167e5ac
   zh: 63bcc2ef60c2f344
 /agent-note-single-file-executable-sdk-runtime-distribution-single-exe/decision/packaging-route-yao-pkg-pkg-s-sea-mode:
-  en: 516788e8b9a84748
-  zh: 050ceceb1b13ef9c
-/agent-note-single-file-executable-sdk-runtime-distribution-single-exe/decision/the-serving-interface-is-a-plugin-inside-the-dsh-application:
-  en: 10ae761d57b7f49c
-  zh: cafec23694f3371e
+  en: 0687a9287d39a3b7
+  zh: 7d8f4e8749670428
+/agent-note-single-file-executable-sdk-runtime-distribution-single-exe/decision/the-serving-interface-is-a-plugin-inside-the-sqh-application:
+  en: e99700943fa68e89
+  zh: 4a09a4a27414ce8a
 /agent-note-single-file-executable-sdk-runtime-distribution-single-exe/decision/plugin-resolution-the-vfs-holds-a-real-package-tree-the-closure-manifest-is-the-deploy-root:
-  en: 41a58b07e533df1e
-  zh: f6164782a6647b79
+  en: 42944985d5ef2fac
+  zh: d17307a3af8f6f91
 /agent-note-single-file-executable-sdk-runtime-distribution-single-exe/decision/build-pipeline-and-artifacts:
   en: d0bb177b5ae6e6be
   zh: 0830bcb4a69b5c74
 /agent-note-single-file-executable-sdk-runtime-distribution-single-exe/decision/python-sdk-distribution-two-carriers-exe-for-production-node-for-development:
-  en: 6df83a66dfbec1b8
-  zh: e6731957376346ae
+  en: 8628673b8107c4a9
+  zh: dbbf21a0c934d1da
 /agent-note-single-file-executable-sdk-runtime-distribution-single-exe/decision/naming-lineage:
   en: 31a5aecb8bf828bb
   zh: 2dffb6fd2e0f8194
 /agent-note-single-file-executable-sdk-runtime-distribution-single-exe/packaged-workflow-and-code-execution:
-  en: 0426f598f3f44e64
-  zh: fc66728e17f3bcfb
+  en: a395febeacab5338
+  zh: 6e51a4cf5b5eb241
 /agent-note-single-file-executable-sdk-runtime-distribution-single-exe/testing:
   en: b3c9820f4dc7c6c8
   zh: 3b5768ef1770bfcb

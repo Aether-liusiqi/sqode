@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-06-21-subagent-capability-seam.md
 /agent-note-subagent-capability-seam:
-  en: 3c051f92759dd9c4
-  zh: fceee1b8289f2779
+  en: 95e3c1b1d455ff84
+  zh: 56907729b15748ea
 /agent-note-subagent-capability-seam/problem:
   en: 5c81597e6dc16c39
   zh: c30c6b5dce12bfae
@@ -18,8 +18,8 @@
   en: a15c7c13f167e5ac
   zh: 63bcc2ef60c2f344
 /agent-note-subagent-capability-seam/decision/the-three-package-boundary:
-  en: 783e4bd85704bee0
-  zh: 16e0e1828233b85f
+  en: bfda719037224f3a
+  zh: 5fd5014c145262b8
 /agent-note-subagent-capability-seam/decision/the-primitive-async-start-subagentrun:
   en: 08250dc4d5faf918
   zh: 1b413cb438af6796
@@ -27,17 +27,17 @@
   en: d2a27fcacc46ca76
   zh: 4e8cca931fcaec2c
 /agent-note-subagent-capability-seam/decision/fork-vs-fresh-are-separate-backends-not-a-flag:
-  en: a8e071639738ea79
-  zh: 3fd7cc7427843efe
+  en: be7d5f35856da4d1
+  zh: 852fdabc5ea0cf58
 /agent-note-subagent-capability-seam/decision/child-isolation-and-the-parent-log:
   en: e970f97f27d11f4a
   zh: 34ece0dfe5ec6185
 /agent-note-subagent-capability-seam/decision/synchronous-collect-first-cut:
-  en: a14200a7abfa532f
-  zh: ee4f8c08deb0ee99
+  en: 49b9190e77d86f1b
+  zh: f0b675c10ffcef47
 /agent-note-subagent-capability-seam/decision/transport-provider-selection-is-config-not-model-facing:
-  en: 3dab95ec93f918df
-  zh: 4c3c7d4e8357bf63
+  en: 575d34cd8b01aa4b
+  zh: c367084522873cfc
 /agent-note-subagent-capability-seam/testing:
   en: 324951447c43d01a
   zh: b04388c4665302d2

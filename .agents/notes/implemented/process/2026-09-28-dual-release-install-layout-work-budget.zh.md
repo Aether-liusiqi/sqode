@@ -10,7 +10,7 @@ Status: implemented
 
 ## Decision
 
-`scripts/verify-npm-install-layout.ts` 用 `assertResolutionWorkBudget` 判定规模增长，它以 `dshPackagesPerVersion * checkedDshEdges` 为工作量单位，与 `MAX_RESOLUTION_WORK_UNITS = 875_000` 比较。两个计数都来自 `assertDualDshInstallLayout` 返回的汇总，因此预算作用于 npm 实际产出的图，而不是对图的预测。超过预算的图会带着自己的计数、预算值，以及「测量新的解析开销并调高该常量」的指示失败。
+`scripts/verify-npm-install-layout.ts` 用 `assertResolutionWorkBudget` 判定规模增长，它以 `sqhPackagesPerVersion * checkedDshEdges` 为工作量单位，与 `MAX_RESOLUTION_WORK_UNITS = 875_000` 比较。两个计数都来自 `assertDualDshInstallLayout` 返回的汇总，因此预算作用于 npm 实际产出的图，而不是对图的预测。超过预算的图会带着自己的计数、预算值，以及「测量新的解析开销并调高该常量」的指示失败。
 
 npm 子进程仍保留墙钟上限 `NPM_HANG_GUARD_MS`，由 `4 * MAX_RESOLUTION_WORK_UNITS * SECONDS_PER_WORK_UNIT` 推导（910 秒）。它是挂起保护，不是增长判据：比实测主机慢四倍以内的 runner 无法决定该门禁的结果，而由预算推导可避免两个数值彼此漂移。
 
@@ -29,7 +29,7 @@ npm 子进程仍保留墙钟上限 `NPM_HANG_GUARD_MS`，由 `4 * MAX_RESOLUTION
 | Registry 流量 | 682 次请求、383 KB packument 响应体 |
 | 布局断言与进程启动 | 4.4 s |
 
-同一个依赖图加上 `--legacy-peer-deps` 后 1.12 s 解析完成，因此 peer 摆放占 153.8 s 中的 152.7 s。`canPlacePeers` 会把每条内部边与其 peer 目标的入边重新核对一遍，这使开销随「摆放次数 × 边数」增长；嵌套发布的 `@siqi-ai/dsh-base` 副本单独耗时 48.8 s，而同一棵树上根位置的同一包只耗时 1.3 s。被校验的内部边约有四分之三是 peer 边（2524 条中的 1874 条），所以这部分工作是断言本身，而不是断言之外的开销。
+同一个依赖图加上 `--legacy-peer-deps` 后 1.12 s 解析完成，因此 peer 摆放占 153.8 s 中的 152.7 s。`canPlacePeers` 会把每条内部边与其 peer 目标的入边重新核对一遍，这使开销随「摆放次数 × 边数」增长；嵌套发布的 `@siqi-ai/sqh-base` 副本单独耗时 48.8 s，而同一棵树上根位置的同一包只耗时 1.3 s。被校验的内部边约有四分之三是 peer 边（2524 条中的 1874 条），所以这部分工作是断言本身，而不是断言之外的开销。
 
 同一台主机上对同一张图的重复运行，npm 耗时在 137.8 s 到 204.8 s 之间波动，输入没有任何变化却有 1.5 倍差距，这正是墙钟阈值无法区分「主机慢」和「图更大」的原因。
 

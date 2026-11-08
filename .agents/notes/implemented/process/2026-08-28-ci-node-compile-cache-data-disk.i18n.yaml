@@ -6,8 +6,8 @@
   en: 52bb1466b8f7f8fe
   zh: fa7c282d3d207e53
 /agent-note-redirect-the-node-compile-cache-to-the-data-volume-runner-temp/problem:
-  en: 3efe58882ca81bf7
-  zh: 14f802e97e26f03d
+  en: 9600e68793d75a36
+  zh: 4544fc3fe0c6449e
 /agent-note-redirect-the-node-compile-cache-to-the-data-volume-runner-temp/decision:
   en: a0abcf166d1d9f5a
   zh: 17cdfbdcff6ba03d
@@ -20,9 +20,9 @@
 /agent-note-redirect-the-node-compile-cache-to-the-data-volume-runner-temp/alternatives-considered/why-not-disable-the-compile-cache-entirely:
   en: cee8de5b45031309
   zh: 6ce10a304e63bdbb
-/agent-note-redirect-the-node-compile-cache-to-the-data-volume-runner-temp/alternatives-considered/why-not-add-node-compile-cache-to-the-dsh-residue-sweep:
-  en: 7e06d9c4df7a9f56
-  zh: f3151fe2671fd91e
+/agent-note-redirect-the-node-compile-cache-to-the-data-volume-runner-temp/alternatives-considered/why-not-add-node-compile-cache-to-the-sqh-residue-sweep:
+  en: 2aa75e2c0ce3198a
+  zh: 24686d4b2ccfdbfd
 /agent-note-redirect-the-node-compile-cache-to-the-data-volume-runner-temp/alternatives-considered/why-not-job-level-env-or-gate-step-env-only:
   en: 4ba6c9a14bafbc80
   zh: 410149f4a3e930e6

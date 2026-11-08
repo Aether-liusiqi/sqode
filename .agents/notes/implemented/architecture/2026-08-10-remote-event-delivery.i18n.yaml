@@ -11,21 +11,21 @@
 /agent-note-remote-event-delivery-ctx-remote-on/decision:
   en: 83f6f48ce1fc517b
   zh: abcfcd1c0eb777ea
-/agent-note-remote-event-delivery-ctx-remote-on/decision/consumer-contract-dsh-typert-protocol:
-  en: 8f30b121dd59a3a3
-  zh: 92a5e0e63936c393
+/agent-note-remote-event-delivery-ctx-remote-on/decision/consumer-contract-sqh-typert-protocol:
+  en: fcbae72eb183910b
+  zh: e310796b7eb9a2a2
 /agent-note-remote-event-delivery-ctx-remote-on/decision/the-allowlist-one-declaration-read-by-both-faces:
-  en: ce8c2e030baf7049
-  zh: bb6beb40228e40ae
+  en: d5362e61699da7bb
+  zh: a7dcc19a1229d451
 /agent-note-remote-event-delivery-ctx-remote-on/decision/wire-protocol-api-gateway-remote-mux:
   en: 5c89d238a469e79f
   zh: d0cf485f0d245e7d
 /agent-note-remote-event-delivery-ctx-remote-on/decision/the-apps-web-browser-e2e-belongs-to-the-host-face:
-  en: 81acd0fe7105c2b0
-  zh: c540bad537ad5ba4
+  en: 31348aa8935ac721
+  zh: 7d16e51be624d7aa
 /agent-note-remote-event-delivery-ctx-remote-on/decision/change-inventory:
-  en: 49fc44d242a87b69
-  zh: 42c4c36296849a88
+  en: 8b0a3a81b3a1e850
+  zh: 35d946bc46b93f74
 /agent-note-remote-event-delivery-ctx-remote-on/alternatives-considered:
   en: b75743ab277c1557
   zh: e8e05f41ce1bc2f3
@@ -33,8 +33,8 @@
   en: 4ec0e1c76da8d3b6
   zh: 23de66f8fc659c15
 /agent-note-remote-event-delivery-ctx-remote-on/consequences:
-  en: c50a0968e3f65df7
-  zh: 786f33cf1e95dae4
+  en: 8d428c2b80505999
+  zh: ef941ef9ff7068ce
 /agent-note-remote-event-delivery-ctx-remote-on/related:
   en: b64e771dafa6c05b
   zh: 4c2f47884f5a2d19

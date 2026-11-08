@@ -37,4 +37,4 @@ Reintroduction conditions: a released Desktop wrote core-package copies into ext
 
 ## Consequences
 
-Bought: production launches no longer write into the profile, there is no temporary enable switch, and Desktop and the CLI apply one rule to copies inside a profile. Paid: core-package copies earlier Desktop builds installed into a profile are removed by hand; dsh copies that third-party plugins bring into the profile as real dependencies run at their own versions.
+Bought: production launches no longer write into the profile, there is no temporary enable switch, and Desktop and the CLI apply one rule to copies inside a profile. Paid: core-package copies earlier Desktop builds installed into a profile are removed by hand; sqh copies that third-party plugins bring into the profile as real dependencies run at their own versions.

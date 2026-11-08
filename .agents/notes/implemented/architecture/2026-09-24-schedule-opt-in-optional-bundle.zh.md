@@ -12,7 +12,7 @@ Schedule 会给每个活跃根 Agent 的请求增加四个工具 schema，并在
 
 `packages/bundle/web-app/cordis.patch.yml` 不含 `time-context`、`schedule` 与 `ui-schedule` 中的任何一行，因此随发行版交付的 Web 组合不提供任何定时能力：没有 `schedule_*` 工具、没有 Session 提醒目录、没有自动化任务页面，也没有逐步时钟读数。
 
-`@siqi-ai/dsh-experimental-schedule-bundle`（`packages/experimental/schedule-bundle/`）在其 `cordis.patch.yml` 中插入这三行并依赖它们的包，与其他可选 bundle 插入各自随附的行相同。`packages/boot/app-boot/src/profile.ts` 的 `OPTIONAL_BUNDLES` 列出该包，`apps/cli` 将其声明为运行时依赖，因此每次安装都随包携带且默认关闭。[实验性能力作为可选 bundle 的决策](2026-09-21-experimental-capabilities-as-optional-bundles.zh.md)负责 `OPTIONAL_BUNDLES` 的约定，以及 Web 插件管理页在“官方”分组中渲染的本地化 `icon` 与 `meta.title` / `meta.description` 元数据。
+`@siqi-ai/sqh-experimental-schedule-bundle`（`packages/experimental/schedule-bundle/`）在其 `cordis.patch.yml` 中插入这三行并依赖它们的包，与其他可选 bundle 插入各自随附的行相同。`packages/boot/app-boot/src/profile.ts` 的 `OPTIONAL_BUNDLES` 列出该包，`apps/cli` 将其声明为运行时依赖，因此每次安装都随包携带且默认关闭。[实验性能力作为可选 bundle 的决策](2026-09-21-experimental-capabilities-as-optional-bundles.zh.md)负责 `OPTIONAL_BUNDLES` 的约定，以及 Web 插件管理页在“官方”分组中渲染的本地化 `icon` 与 `meta.title` / `meta.description` 元数据。
 
 启用该 bundle 会插入 `time-context`（每个步骤的时钟读数，包含采样瞬时、附加到当前开放请求的浏览器时区，以及自前一条模型可见消息以来的经过时长）、`schedule`（持久提醒，以及每个活跃根 Agent 上的 `schedule_create`、`schedule_list`、`schedule_update` 与 `schedule_delete`）与 `ui-schedule`（Session 提醒目录与自动化任务页面）。该 bundle 把 `time-context` 与 `schedule` 一起携带，因为提醒请求给出的是挂钟时间目标：采样瞬时正是让模型把“明天九点”这类请求转换成带偏移量的 `at` 值的依据。持久记录、投递与管理操作由 [Schedule 子系统](../../../../docs/subsystems/schedule.zh.md)负责；该 bundle 向其加入这些行的组合由 [Web bundle](../../../../packages/bundle/web-app/README.zh.md) 负责。禁用该 bundle 会恢复随发行版交付的组合，`schedule` 行不存在期间 Host 不再调度；已存储的任务记录保留在 Schedule domain 中。
 
@@ -28,7 +28,7 @@ Schedule 会给每个活跃根 Agent 的请求增加四个工具 schema，并在
 
 ## Consequences
 
-- 默认的 `dsh web` 会话不带 Schedule 工具 schema、Session 提醒目录、自动化任务页面与逐步时钟读数。需要它们的安装可从插件管理页启用该可选 bundle，或把该包列进 profile 的 `dsh.profile.bundles`。
+- 默认的 `sqh web` 会话不带 Schedule 工具 schema、Session 提醒目录、自动化任务页面与逐步时钟读数。需要它们的安装可从插件管理页启用该可选 bundle，或把该包列进 profile 的 `sqh.profile.bundles`。
 - 启用后的安装会给每个活跃根 Agent 增加四个工具 schema，并在每个符合条件的步骤追加一条持久时钟消息；该读数对模型可见且持久，因此它与其他 user 消息一样参与回放、压缩，并出现在导出的 Session 日志中。
 - 插件管理页在该 bundle 下列出这三行，显示各自包的 `locale/*.json` 声明的标题、它们的状态，并在 bundle 打开时为每行提供开关；关掉其中一行会让 Schedule 缺少这一部分。
 - 未选中该 bundle 时，按 id 定位这三行之一的 profile 补丁或 `--patch` overlay 匹配不到任何条目，加载器会为它报告 `patch: entry <id> not found` 警告；选中该 bundle 即可取代按 id 打开这些行。

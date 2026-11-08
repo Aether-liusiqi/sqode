@@ -18,7 +18,7 @@ A second cause reaches the same end by another route: a lifecycle script that in
 - A run whose captured output stays silent for `idleTimeoutMs` is terminated, reports `timedOut` beside its own exit status, and is not asked of the next registry, which bounds how long one operation can hold the lock.
 - A terminated run is classified `timeout` whatever exit status the signal left behind. Installation and removal report failure instead of success, so a manifest pnpm had half written is restored rather than activated.
 - A terminated run stops its whole process tree and waits for it to disappear before the caller restores the profile and releases the lock, because an approved lifecycle script runs as a child of pnpm and outlives it. execa's `killDescendants` addresses the tree on every kill path, including cancellation, and is passed only for a captured run, so a run that inherits the terminal keeps the caller's process group.
-- `dsh plugin` inherits the caller's terminal and captures nothing, so no silence bound applies to it and its operator keeps the ability to interrupt.
+- `sqh plugin` inherits the caller's terminal and captures nothing, so no silence bound applies to it and its operator keeps the ability to interrupt.
 
 ## Why a silence bound rather than a duration bound
 

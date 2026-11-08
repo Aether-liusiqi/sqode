@@ -9,14 +9,14 @@
   en: 547a3f60ac28095e
   zh: 85a9d996257f0273
 /agent-note-keyless-browser-e2e-lane-for-the-web-gui/decision:
-  en: 5b61472e33c94ffd
-  zh: 8b22c3de982f366c
+  en: e415e49456a1a255
+  zh: 812b6a5cf7ca7906
 /agent-note-keyless-browser-e2e-lane-for-the-web-gui/decision/scaffold-apps-web-tests-scaffold-ts:
-  en: 3d09cd693966a674
-  zh: 4cda02850961f8d0
+  en: a8547444c7f61b9c
+  zh: caf4737141a87d91
 /agent-note-keyless-browser-e2e-lane-for-the-web-gui/decision/determinism-rules:
-  en: a26029a7d4284a32
-  zh: 78ecc05d2d5b1e0a
+  en: 285d9926d3e34162
+  zh: f29e8bb924fe3c01
 /agent-note-keyless-browser-e2e-lane-for-the-web-gui/decision/expected-outputs:
   en: ca1ae9ccbeab8c01
   zh: 662cd5d98ee20ccc
@@ -30,14 +30,14 @@
   en: 6759ee42940bd6cf
   zh: 0dcc6a6e149288ee
 /agent-note-keyless-browser-e2e-lane-for-the-web-gui/prior-art:
-  en: 7472e212043721dd
-  zh: 61dd9f5a8e12730b
+  en: 28845a853103a4eb
+  zh: 82e16aa7ccf5af1b
 /agent-note-keyless-browser-e2e-lane-for-the-web-gui/alternatives-considered:
-  en: 71fb885f20a47a27
-  zh: 1c1d46342270e421
+  en: 15d31cf6452c050b
+  zh: b14e1a494ee04551
 /agent-note-keyless-browser-e2e-lane-for-the-web-gui/testing:
-  en: ab1a03439b404bae
-  zh: 954bfb961b19f3d7
+  en: 90d48f5c2b938a5b
+  zh: 4f45ca5534a62309
 /agent-note-keyless-browser-e2e-lane-for-the-web-gui/deferred:
   en: aef84d3933bb72a1
   zh: 1cc5e2f1c9bcccf9

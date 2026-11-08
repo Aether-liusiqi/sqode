@@ -20,7 +20,7 @@ GUI 栈需要考虑多种应用形态，同应用形态内的不同运行环境�
 |---|---|---|---|
 | 1 协议同构层 | 生成的 Typert Remote 描述符 + `ApiGateway` + Connection RPC 承载（参数/结果/错误/流/取消） | **同构点全链**：gateway host/client 套件在进程内验证描述符 codec 与 Remote 分派；Connection host 套件不经浏览器即可运行相同的 `/api` 承载帧与信任检查 | `packages/api/gateway/tests/`、`packages/client/connection/tests/` |
 | 2 对象层编排 | `Session`/`SessionManager`/`ConnectionController`（状态机与时序：缝合/去重/翻页/乐观清稿/pendingBuffers/重连/退避） | **「事件序列进→快照出」黄金路径**：可编程假体 + deferred 控时序 + fake timers 控退避 | `packages/client/{runtime,connection}/tests/` |
-| 3 组装呈现层 | 构建产物 × 真实 client loader 与插件组合 | 归应用所有的语义快照在 jsdom 下用测试持有的 `RemoteMock` 启动构建后 Client 图；Playwright 用例分别验证真实浏览器与 Host 载体，并通过 `dsh-llm-replay` 回放已录制的模型会话（[整机客户端测试档](../testing/2026-09-06-client-assembly-test-line.zh.md)、[web e2e 车道](../testing/2026-07-24-web-gui-browser-e2e-lane.zh.md)） | `apps/web/tests/*.expected.e2e.ts`、`apps/web/tests/*.e2e.ts`、`apps/web/tests/*.snapshot.ts` |
+| 3 组装呈现层 | 构建产物 × 真实 client loader 与插件组合 | 归应用所有的语义快照在 jsdom 下用测试持有的 `RemoteMock` 启动构建后 Client 图；Playwright 用例分别验证真实浏览器与 Host 载体，并通过 `sqh-llm-replay` 回放已录制的模型会话（[整机客户端测试档](../testing/2026-09-06-client-assembly-test-line.zh.md)、[web e2e 车道](../testing/2026-07-24-web-gui-browser-e2e-lane.zh.md)） | `apps/web/tests/*.expected.e2e.ts`、`apps/web/tests/*.e2e.ts`、`apps/web/tests/*.snapshot.ts` |
 
 层间纪律：**各层各测各的，上层不重测下层**：应用语义快照只固定组装后插件边界上的用户可见投影，Playwright 冒烟测试负责验证浏览器与承载层是否存活；wire 语义归 1 层，数据语义归 2 层。纯函数层（lineage/partial/notifier/transcript-adapter）随 2 层同包 tests/ 零假体直测。
 

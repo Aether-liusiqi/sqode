@@ -2,39 +2,39 @@
 # section, a hash of its English and Chinese blocks outside code blocks and generated regions.
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/simplification/2026-06-26-fsspec-style-fs-seam.md
-/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-dsh-fs-observation-policy-plugin:
-  en: 181df186598c42fc
-  zh: 07b7687434105955
-/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-dsh-fs-observation-policy-plugin/problem:
-  en: 872e4d62aa26a0ca
-  zh: 09dd093209bad7c5
-/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-dsh-fs-observation-policy-plugin/decision:
-  en: 6f6dc20965bb9948
-  zh: 5a858a0359f96a98
-/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-dsh-fs-observation-policy-plugin/provider-contract:
-  en: aa05d1d361612836
-  zh: 016a6ddf10209fa5
-/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-dsh-fs-observation-policy-plugin/policy-contract:
-  en: 85821ea458f25227
-  zh: 4e90d35a5e241d56
-/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-dsh-fs-observation-policy-plugin/tool-contract:
-  en: b517106d3e0ac7ef
-  zh: 2b128d7af26ebed2
-/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-dsh-fs-observation-policy-plugin/concurrency-boundary:
+/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-sqh-fs-observation-policy-plugin:
+  en: 14a647abaec644dd
+  zh: 8b96f65e8ef50fef
+/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-sqh-fs-observation-policy-plugin/problem:
+  en: 0827b7d2a7b5be65
+  zh: 14dd4c487d4d1aad
+/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-sqh-fs-observation-policy-plugin/decision:
+  en: 637d3bace8ea199d
+  zh: b1c149ee7cd96d2a
+/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-sqh-fs-observation-policy-plugin/provider-contract:
+  en: 9baa426a04c5726a
+  zh: 1a9bf409582e4e4d
+/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-sqh-fs-observation-policy-plugin/policy-contract:
+  en: 928bafbd1529239c
+  zh: ca5f21e1cebf9674
+/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-sqh-fs-observation-policy-plugin/tool-contract:
+  en: a135244255578dba
+  zh: 4e375e66bc129c8d
+/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-sqh-fs-observation-policy-plugin/concurrency-boundary:
   en: 6a459d121a49988c
   zh: 048de517a0f952b6
-/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-dsh-fs-observation-policy-plugin/supersedes:
-  en: 780789585ce58330
-  zh: 7b4b8d171dfdefae
-/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-dsh-fs-observation-policy-plugin/verification:
-  en: ee6e0f4922f991af
-  zh: 3ce55e7b7d0fd431
-/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-dsh-fs-observation-policy-plugin/later-extension:
+/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-sqh-fs-observation-policy-plugin/supersedes:
+  en: df2db20394fa009d
+  zh: c8bd5df23e4d798a
+/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-sqh-fs-observation-policy-plugin/verification:
+  en: 8b57ee480737e12c
+  zh: 1b4d21a5c679b14b
+/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-sqh-fs-observation-policy-plugin/later-extension:
   en: b56210bf2c8f8dec
   zh: 27decb39624c0ef7
-/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-dsh-fs-observation-policy-plugin/alternatives-considered:
+/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-sqh-fs-observation-policy-plugin/alternatives-considered:
   en: 3d169e07a912cbab
   zh: d8a550835cfe7801
-/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-dsh-fs-observation-policy-plugin/consequences:
-  en: 70264e0d9422b871
-  zh: ae93add503e8a9bc
+/agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-sqh-fs-observation-policy-plugin/consequences:
+  en: 17aa3cd2798f39eb
+  zh: 8eab49bada7485f7

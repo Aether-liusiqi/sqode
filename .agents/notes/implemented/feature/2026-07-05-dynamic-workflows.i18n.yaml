@@ -6,26 +6,26 @@
   en: 472dec484bf937c1
   zh: 1d6c38c699d43828
 /agent-note-dynamic-workflows-a-script-driven-multi-agent-orchestration-seam/problem:
-  en: e890f8ac24054d94
-  zh: 45ec14140f62e1c9
+  en: 5032cfb6be534811
+  zh: 0cb028f138d77bf3
 /agent-note-dynamic-workflows-a-script-driven-multi-agent-orchestration-seam/decision:
   en: 16af14c0c9fc54ee
   zh: 463dd56b53d05ea7
 /agent-note-dynamic-workflows-a-script-driven-multi-agent-orchestration-seam/decision/the-script-contract-claude-code-compatible:
   en: 889beb90c3650f25
   zh: b1ba5dac3c77f8d2
-/agent-note-dynamic-workflows-a-script-driven-multi-agent-orchestration-seam/decision/the-seam-dsh-workflow:
-  en: d37f01afb4d9cd6a
-  zh: 5648b981b61e6624
-/agent-note-dynamic-workflows-a-script-driven-multi-agent-orchestration-seam/decision/the-engine-dsh-workflow-ptc-shared-node-process-execution:
-  en: 7567d5fcf218e4b5
-  zh: 2ba33b1237df9e4a
-/agent-note-dynamic-workflows-a-script-driven-multi-agent-orchestration-seam/decision/the-consumer-dsh-tool-workflow:
-  en: 00b015ee9db948fb
-  zh: 6dac8d8aaf0b32d2
+/agent-note-dynamic-workflows-a-script-driven-multi-agent-orchestration-seam/decision/the-seam-sqh-workflow:
+  en: b4d3934ee5a6179e
+  zh: fe86a655222fda9c
+/agent-note-dynamic-workflows-a-script-driven-multi-agent-orchestration-seam/decision/the-engine-sqh-workflow-ptc-shared-node-process-execution:
+  en: a1e8a52d3a41d8b5
+  zh: af6fea923e82a929
+/agent-note-dynamic-workflows-a-script-driven-multi-agent-orchestration-seam/decision/the-consumer-sqh-tool-workflow:
+  en: 3ae0ab17a07a7490
+  zh: b57c14d14747c694
 /agent-note-dynamic-workflows-a-script-driven-multi-agent-orchestration-seam/decision/the-foundation-structured-output-on-the-subagent-seam:
-  en: 40ad0d1f23ffa7db
-  zh: 23a81a277fb24cd9
+  en: 57f8467d75902154
+  zh: cd113e14a8148fe0
 /agent-note-dynamic-workflows-a-script-driven-multi-agent-orchestration-seam/testing:
   en: a1607694b584dcbc
   zh: 29c9c7560f0fcf56
@@ -33,8 +33,8 @@
   en: 2bff807d808bfa13
   zh: add602509c0a826c
 /agent-note-dynamic-workflows-a-script-driven-multi-agent-orchestration-seam/alternatives-considered:
-  en: 44a36cb0a91546cc
-  zh: f4ed8c49f3764d7a
+  en: 90ea6f41dfa2a555
+  zh: f5a6c4ab6e8fa8f7
 /agent-note-dynamic-workflows-a-script-driven-multi-agent-orchestration-seam/consequences:
   en: bfd2d827ffb20587
   zh: 310c4fe77f48aa4e

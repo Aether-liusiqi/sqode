@@ -166,7 +166,7 @@ This path retains one durable metadata projection because it runs while the cano
 
 `SessionToolCallView`, `SessionToolView`, and `SessionEventEntry.view` are deleted.
 
-The Client connection stops re-exporting `ToolCallView` and `ToolResultView` from `dsh-tools/presentation` for Session consumers.
+The Client connection stops re-exporting `ToolCallView` and `ToolResultView` from `sqh-tools/presentation` for Session consumers.
 
 Generated catalogs and graphs derive the narrowed Remote types and package dependencies from their owning sources.
 
@@ -550,7 +550,7 @@ This change does not promise to preserve differences expressed only through a Ho
 ### Static and documentation
 
 - Production code contains no `SessionToolView` or `SessionToolCallView`.
-- Session history does not reference `dsh-tools/presentation`, `ctx.tools`, `presenterScopeFor`, or `backscanArgs`.
+- Session history does not reference `sqh-tools/presentation`, `ctx.tools`, `presenterScopeFor`, or `backscanArgs`.
 - Client Conversation does not reference `ToolCallView` or `ToolResultView`.
 - Client models do not read `callView` or `resultView`.
 - The fixture defines no presenter mirror.

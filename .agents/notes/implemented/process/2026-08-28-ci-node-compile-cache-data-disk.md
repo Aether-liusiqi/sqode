@@ -6,7 +6,7 @@ English | [中文](2026-08-28-ci-node-compile-cache-data-disk.zh.md)
 
 ## Problem
 
-The self-hosted Linux CI VM (`vm-backup` pool, 32 runner instances on one host) exhausts the root partition's inode capacity. Issue #3134's residue (`/tmp/dsh-*`) is one source; a second, larger source is the Node.js module compile cache. Tools in the CI toolchain call `module.enableCompileCache()` explicitly: pnpm 11.7.0 enables the cache in its entry (`module.enableCompileCache?.()` in `bin/pnpm.mjs`) on every invocation, and TypeScript does so in `tsc`/`tsserver`; vitest forwards the API but does not enable it itself. Every such call writes the serialized V8 bytecode cache under `os.tmpdir()/node-compile-cache`. On the shared VM that is the root partition's `/tmp`: measured 2026-08-28 at **697,389 inodes and 9.2 GB**, with 34,110 files younger than 1 hour — the cache grows on every CI run and is never cleaned, so the root partition's 3,276,800 inodes trend toward exhaustion even after the `dsh-*` residue is controlled.
+The self-hosted Linux CI VM (`vm-backup` pool, 32 runner instances on one host) exhausts the root partition's inode capacity. Issue #3134's residue (`/tmp/sqh-*`) is one source; a second, larger source is the Node.js module compile cache. Tools in the CI toolchain call `module.enableCompileCache()` explicitly: pnpm 11.7.0 enables the cache in its entry (`module.enableCompileCache?.()` in `bin/pnpm.mjs`) on every invocation, and TypeScript does so in `tsc`/`tsserver`; vitest forwards the API but does not enable it itself. Every such call writes the serialized V8 bytecode cache under `os.tmpdir()/node-compile-cache`. On the shared VM that is the root partition's `/tmp`: measured 2026-08-28 at **697,389 inodes and 9.2 GB**, with 34,110 files younger than 1 hour — the cache grows on every CI run and is never cleaned, so the root partition's 3,276,800 inodes trend toward exhaustion even after the `sqh-*` residue is controlled.
 
 ## Decision
 
@@ -27,7 +27,7 @@ The redirect is a step right after `actions/checkout` that writes `NODE_COMPILE_
 
 `NODE_DISABLE_COMPILE_CACHE=1` would stop root-partition growth immediately but forfeit the startup speedup on every run, and the cache is a legitimately useful Node feature (enabled explicitly by pnpm and TypeScript). Redirecting preserves the benefit while moving the cost off the constrained partition.
 
-### Why not add `node-compile-cache` to the `dsh-*` residue sweep?
+### Why not add `node-compile-cache` to the `sqh-*` residue sweep?
 
 The CI sweep (added in the residue-cleanup change) targets test residue; the compile cache is a cache, not residue. Deleting it every run would discard the speedup the cache exists to provide. Redirecting is the structural fix: the cache's growth moves to the volume sized for it.
 

@@ -6,35 +6,35 @@
   en: 874618fd5ad1d06a
   zh: a5e4bfad490fab34
 /agent-note-client-plugin-loading-lazy-factories-cordis-lifecycle-and-hot-reload/problem:
-  en: 46c4b208707e024e
-  zh: b6f86a6374b251da
+  en: e52be610206ef790
+  zh: 57edff3c990dedb2
 /agent-note-client-plugin-loading-lazy-factories-cordis-lifecycle-and-hot-reload/decision:
   en: a15c7c13f167e5ac
   zh: a15c7c13f167e5ac
 /agent-note-client-plugin-loading-lazy-factories-cordis-lifecycle-and-hot-reload/decision/package-membership-and-module-requests:
-  en: 6af228b03e5e533f
-  zh: 276a522af6be5d7a
+  en: c6a7941ffc9ae0ff
+  zh: 8b13f79fa1a12006
 /agent-note-client-plugin-loading-lazy-factories-cordis-lifecycle-and-hot-reload/decision/one-module-system-one-plugin-governor:
-  en: 575aad62490f32e9
-  zh: a6c18eb63965fc1e
+  en: c377c118ea6de3b1
+  zh: b71f7d3d789f903e
 /agent-note-client-plugin-loading-lazy-factories-cordis-lifecycle-and-hot-reload/decision/combo-external-script-arrival-and-source-maps:
   en: 0a4240d88cca240a
   zh: 8f5f1527caf571cd
 /agent-note-client-plugin-loading-lazy-factories-cordis-lifecycle-and-hot-reload/decision/the-loading-flow-end-to-end:
-  en: ab4a4746fac1eecb
-  zh: 4eb0ddb380378914
+  en: b85edc23c7c4608a
+  zh: adc24d00f0593b56
 /agent-note-client-plugin-loading-lazy-factories-cordis-lifecycle-and-hot-reload/decision/live-graph-reconciliation:
   en: 37e2fa1fe5cb2b95
   zh: 80e513db87709cb4
 /agent-note-client-plugin-loading-lazy-factories-cordis-lifecycle-and-hot-reload/decision/hot-reload-one-driver-plugin-self-watched-bundles:
-  en: f8b591d4c41ef492
-  zh: bc70f1cd540b7753
+  en: f6e27745dcdd7018
+  zh: 029cc8a543eb9828
 /agent-note-client-plugin-loading-lazy-factories-cordis-lifecycle-and-hot-reload/package-ownership:
   en: 94ca0d09e6fd1e3a
   zh: d5949a2bdec795ba
 /agent-note-client-plugin-loading-lazy-factories-cordis-lifecycle-and-hot-reload/consequences:
-  en: 6a96d9ac06c222e5
-  zh: b2814ab58348e831
+  en: f74fb21a7efe5de9
+  zh: ef526d5d83152e5d
 /agent-note-client-plugin-loading-lazy-factories-cordis-lifecycle-and-hot-reload/alternatives-considered:
-  en: b8f036f50cff7cd8
-  zh: 6d623c4a1f4314b1
+  en: ee33f8a6b2c3fd9a
+  zh: 0ab1b13ba26664f8

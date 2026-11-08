@@ -9,8 +9,8 @@
   en: 70e26df62568c337
   zh: a9e6f5f8a5482d0a
 /agent-note-the-background-job-runtime-ctx-jobs-and-generic-task-control-tools/decision:
-  en: 48945127b6a60195
-  zh: 77cc514e50d70b29
+  en: fa9c536b364b9f19
+  zh: 5a34379973cd0088
 /agent-note-the-background-job-runtime-ctx-jobs-and-generic-task-control-tools/runtime-contract:
   en: eeb7ed8eec13668a
   zh: 3f236f63c72fbba7
@@ -18,17 +18,17 @@
   en: 3819a73ca70ecdfd
   zh: c1a4f461a4e45978
 /agent-note-the-background-job-runtime-ctx-jobs-and-generic-task-control-tools/service-api:
-  en: a1a884816aac3d7f
-  zh: b21129e5cd93b9a1
+  en: bbd01a290cb1ac67
+  zh: b412958260939e56
 /agent-note-the-background-job-runtime-ctx-jobs-and-generic-task-control-tools/model-facing-control-api:
-  en: dd3f4d85d0ec136f
-  zh: ca4209cb856271dd
+  en: 835aa63b2fbe3211
+  zh: ec1b6a0dbad24f0a
 /agent-note-the-background-job-runtime-ctx-jobs-and-generic-task-control-tools/producer-opt-in:
-  en: a39343bf6f655051
-  zh: d9894d39e7f4d6e1
+  en: 4fed7cbf49fe59b0
+  zh: fee2eed0c668711a
 /agent-note-the-background-job-runtime-ctx-jobs-and-generic-task-control-tools/producer-integrations:
-  en: ae4a6d6e0d83d3bd
-  zh: 9072890ba9374426
+  en: bce3338f185f835a
+  zh: 34df7164a99254d6
 /agent-note-the-background-job-runtime-ctx-jobs-and-generic-task-control-tools/alternatives-considered:
   en: 6119e2aff3b6be5a
   zh: e01a6c669a9ec6aa

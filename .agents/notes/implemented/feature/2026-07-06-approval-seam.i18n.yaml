@@ -9,20 +9,20 @@
   en: 0903931cf3fd2d9b
   zh: ae39e774ffa66c36
 /agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/decision:
-  en: 058d4bd95d3c55d3
-  zh: a861c6a59340b121
+  en: 44a91e47908694d9
+  zh: 7c5c22de1420eac1
 /agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/decision/how-a-deployment-uses-it:
-  en: d0bcdfb988eaeadc
-  zh: 5ce6fd8f89b503fc
+  en: 6d8fa9567a04699f
+  zh: f32b3d8dcad229cc
 /agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/decision/design-detail:
   en: a6d7884e4359af3a
   zh: e72588705942000a
 /agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/decision/design-detail/the-seam-mechanism-and-policy-split:
-  en: 53da7800d8744d9e
-  zh: 316fef884853ca5d
-/agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/decision/design-detail/ask-routing-in-dsh-tools:
-  en: 1d4478059f608fd2
-  zh: 4a1d12e4ccb766b5
+  en: dcb3878e7cbd54c7
+  zh: 4dbcbcb387200346
+/agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/decision/design-detail/ask-routing-in-sqh-tools:
+  en: 1b891774228c9c3c
+  zh: 598b9e8fab1a17e6
 /agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/decision/design-detail/the-per-session-policy-tier:
   en: 4eaf3ae10290dc6a
   zh: 0cb65c79a5e9effc
@@ -33,8 +33,8 @@
   en: d9f129e893e76bec
   zh: 92929dbc54c65a5b
 /agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/decision/design-detail/entities-and-dependencies:
-  en: 08abe894f74bcb00
-  zh: a94052662c8536c7
+  en: a5325859f9aa058f
+  zh: 2e10e01334433a03
 /agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/decision/testing:
   en: 01356985c175fcda
   zh: b1bb3b68f619e698
@@ -42,8 +42,8 @@
   en: 3a9a1ddf86364f14
   zh: ec8413e23f171bd2
 /agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/alternatives-considered:
-  en: ae974b0f43a29b4e
-  zh: bbc4662c0c63b6c1
+  en: b1c255bee25999f3
+  zh: 29e60a1cb4bf5721
 /agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/consequences:
   en: 9d2097d7b796dd63
   zh: 4f1a0493dc109b12
@@ -51,5 +51,5 @@
   en: 85f3a8270d96497d
   zh: b97bedebc08f23f0
 /agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/prior-art:
-  en: 964a5c6afd4724d6
-  zh: 1a386e1376860105
+  en: 0346d568f3d1dc4e
+  zh: 883bb34a582073e3

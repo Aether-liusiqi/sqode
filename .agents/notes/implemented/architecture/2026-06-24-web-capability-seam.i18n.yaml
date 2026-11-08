@@ -6,47 +6,47 @@
   en: ca120635fc40431c
   zh: 6be7c5ae3c86cdcc
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers/problem:
-  en: c8b932b02a4e1c80
-  zh: 96c466be1a521f3f
+  en: e589d19ca32b5d5d
+  zh: 19b11bc251b86673
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers/decision:
-  en: 0d7ceb6b55531d66
-  zh: a6881df1e8db29ec
+  en: 6f2647c34acb4481
+  zh: b21a5f1c88e83fa9
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers/package-topology:
-  en: 35ec2f07e4973050
-  zh: 86b740855d694ebc
+  en: ae7ec8e7f7904596
+  zh: 4c719a809e3a6a6e
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers/ctx-web-contract:
-  en: b432f80a424c3e49
-  zh: faa26925fdd98387
+  en: fd7ee37b59f6b9a0
+  zh: a450d4bbecf3b72f
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers/provider-availability-and-selection:
-  en: 13a6baf45ec1f15e
-  zh: a3ab377cbe82b596
+  en: a8380a1397f6cf1d
+  zh: 470d41cd0ccbf438
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers/search-request-and-result-schema:
-  en: ec3703b7e7c6b23d
-  zh: 325755e6e90092da
+  en: 8536d4ac681a1e6b
+  zh: 32880d9f0537cade
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers/fetch-request-and-result-schema:
-  en: f734fdc57a6546c9
-  zh: 027c28cbc584a8c2
+  en: 59bd57e758c7e4f0
+  zh: 0cb9697acf789a39
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers/tool-consumer-behavior:
-  en: 62127883453dd79c
-  zh: 01503a8177a0ddab
+  en: 8bfc3007320013ff
+  zh: e95eacb8939cfa50
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers/errors:
-  en: 3440f2b34b93f4a1
-  zh: 57a8f784c7e26eff
+  en: 4b0cd21733cf43f8
+  zh: 213f024c24db7c4e
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers/testing:
-  en: 7f73699ac4459432
-  zh: c16be49ac50c34c8
+  en: 92c04b60069f1b6a
+  zh: 5bb2028306e2fdc0
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers/alternatives-considered:
   en: 6119e2aff3b6be5a
   zh: 76136ef5249c23eb
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers/alternatives-considered/let-each-provider-register-its-own-model-facing-tool:
   en: e0d84a9b1b9c2123
   zh: 9e116a7b96751563
-/agent-note-web-capability-seam-stable-tools-over-multiple-providers/alternatives-considered/put-provider-dispatch-directly-in-dsh-tool-web:
-  en: dc01d014d03b49d2
-  zh: b956b02f41c62682
-/agent-note-web-capability-seam-stable-tools-over-multiple-providers/alternatives-considered/split-search-and-fetch-into-two-seams-dsh-search-dsh-fetch:
-  en: 3fb72ba3e554f20a
-  zh: aff5f0add5773388
+/agent-note-web-capability-seam-stable-tools-over-multiple-providers/alternatives-considered/put-provider-dispatch-directly-in-sqh-tool-web:
+  en: ef84dcd78df469b7
+  zh: 190c72589491dd6a
+/agent-note-web-capability-seam-stable-tools-over-multiple-providers/alternatives-considered/split-search-and-fetch-into-two-seams-sqh-search-sqh-fetch:
+  en: 6ccbe6334b73325c
+  zh: c85ee1f184052ace
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers/alternatives-considered/choose-the-first-registered-provider:
   en: 1800706ea0f6b90b
   zh: ced985b7657e2d7f
@@ -54,8 +54,8 @@
   en: fc22e6a8bfaeaa20
   zh: 64032ea6ab61b836
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers/alternatives-considered/mirror-claude-code-s-url-prompt-webfetch-shape:
-  en: 56a080de39e96056
-  zh: ae4d070aa7657503
+  en: b61e19de87a98bcf
+  zh: 67c3d4468c644d08
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers/alternatives-considered/validate-dns-and-then-call-an-ordinary-fetch:
   en: aa6c1e7e6374a875
   zh: 045c8af6cd44c3e1
@@ -69,8 +69,8 @@
   en: 12fd20ba54818215
   zh: c1ca000b13666701
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers/deferred-work:
-  en: 48b7b8e7310cd56b
-  zh: d406cd6a8a649e58
+  en: 98ccb7cb873c1448
+  zh: 0f97e740fab46028
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers/open-questions:
   en: 63848c6ef9a6ab44
   zh: 041b340802091e60

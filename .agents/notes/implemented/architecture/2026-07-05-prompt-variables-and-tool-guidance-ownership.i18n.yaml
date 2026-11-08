@@ -6,29 +6,29 @@
   en: 6f8b4a9d26ab3e50
   zh: 9741e5718e647f0a
 /agent-note-prompt-variables-and-tool-guidance-ownership/problem:
-  en: 8ccef8fbd9260dfe
-  zh: 106b2bafe969c676
+  en: 238861aca25c4a6a
+  zh: 6643554215186956
 /agent-note-prompt-variables-and-tool-guidance-ownership/decision:
   en: c551d888282d9c73
   zh: 889b5ca3cdf25aff
 /agent-note-prompt-variables-and-tool-guidance-ownership/decision/assemble-context:
-  en: 46e67248692e333a
-  zh: 51c5f2c6152c94d7
+  en: 011b488eb7834b59
+  zh: 4a3fba29de02e415
 /agent-note-prompt-variables-and-tool-guidance-ownership/decision/prompt-variables:
-  en: 04b623ed2879fdf1
-  zh: c111be62834fda93
+  en: 77b23d1a3df91293
+  zh: f1ff81cfdce9024b
 /agent-note-prompt-variables-and-tool-guidance-ownership/decision/persona-as-the-order-0-section:
-  en: c2d32c0ac5d28759
-  zh: 59cd252ba6da6e59
+  en: 5a68075cdc5b7d60
+  zh: 3c44e1f38d9bd54c
 /agent-note-prompt-variables-and-tool-guidance-ownership/decision/tool-guidance-ownership:
   en: 308c0d2ef4e41f56
   zh: d38f84a517da20df
 /agent-note-prompt-variables-and-tool-guidance-ownership/decision/the-subagent-conversation-history-descriptor:
-  en: 1cb9644f22918749
-  zh: fb9fdee133159ab2
+  en: a7c9ac12a97c7527
+  zh: 2b9fe01f03f71a05
 /agent-note-prompt-variables-and-tool-guidance-ownership/alternatives-considered:
-  en: 9a114359d2e8988b
-  zh: ce39453408b2af7f
+  en: d590cd1167eca82c
+  zh: dd38757c78b118d1
 /agent-note-prompt-variables-and-tool-guidance-ownership/out-of-scope:
   en: bbfecc70d0b457fe
   zh: 7f207a37a86484f4

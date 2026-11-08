@@ -9,17 +9,17 @@
   en: dbd5758c1c46b303
   zh: ca5b8479f4358c9b
 /agent-note-claude-code-and-codex-subagent-backends/decision:
-  en: caf8c74c3466b27a
-  zh: 5b1daf0a738221cd
+  en: 5e152a1b638b4edd
+  zh: 4115892ba3467315
 /agent-note-claude-code-and-codex-subagent-backends/decision/ownership-and-lifecycle:
-  en: 1c106b8b0063fee2
-  zh: 0a38a1ffbe93086d
+  en: 544082690ace64bb
+  zh: 4c360dc374604a43
 /agent-note-claude-code-and-codex-subagent-backends/codex-provider:
-  en: 634d65827e176143
-  zh: 65a5cce9ed34b791
+  en: 8ca5ca806d11dc10
+  zh: cc7debd50f8b2750
 /agent-note-claude-code-and-codex-subagent-backends/claude-code-provider:
-  en: f394f03a25793216
-  zh: 6825aee7e02b2050
+  en: d51a08556bfd1fd9
+  zh: ded70c3886d08d58
 /agent-note-claude-code-and-codex-subagent-backends/distribution-and-evidence:
   en: ff6d6216e5ce11dd
   zh: 6198c006ba8c61e7
@@ -27,5 +27,5 @@
   en: 10b5b282fac03988
   zh: bf9fb4899f2c8e16
 /agent-note-claude-code-and-codex-subagent-backends/consequences:
-  en: 4154bcdc7ad9ff7c
-  zh: e2bc1f2010bb48a9
+  en: a42c8346ed8c7f93
+  zh: 4aaf9205b0022615

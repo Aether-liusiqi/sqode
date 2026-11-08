@@ -21,18 +21,18 @@ exe 使用 [@yao-pkg/pkg](https://github.com/yao-pkg/pkg)（vercel/pkg 归档后
 
 `--sea` 要求构建目标 ≥ node22，exe 统一以 node24 为构建目标；每次 pkg 调用只打包一个构建目标，多平台各调用一次。
 
-`@yao-pkg/pkg` 是精确钉版的根 `devDependency`，经 `pnpm exec pkg` 调用，并以 [`patches/@yao-pkg__pkg@6.21.0.patch`](../../../../patches/@yao-pkg__pkg@6.21.0.patch) 移除 SEA bootstrap 中的 `patchChildProcess` 调用。未打补丁时，pkg 会把 spawn 的 `node` 命令——包括 `-c`/`/c` 标志后的命令串，恰是 Bash 工具的 `bash -c` 形态——改写为 exe 自身，并向每个子进程环境注入 `PKG_EXECPATH`，模型下发的 `node --version` 会静默启动 dsh CLI；Node 自身的 SEA 层没有这种改写，且 SEA 二进制永远启动内嵌应用、无法充当纯 Node。移除该调用后，子进程像普通进程一样经 PATH 解析 `node`（无 Node 的机器如实报 command not found），子进程环境不再出现 `PKG_EXECPATH`，以 `process.execPath` 绝对路径 spawn 的重入不受影响，worker 线程本来就未应用该钩子，`process.pkg` 侧车选择也不受影响。
+`@yao-pkg/pkg` 是精确钉版的根 `devDependency`，经 `pnpm exec pkg` 调用，并以 [`patches/@yao-pkg__pkg@6.21.0.patch`](../../../../patches/@yao-pkg__pkg@6.21.0.patch) 移除 SEA bootstrap 中的 `patchChildProcess` 调用。未打补丁时，pkg 会把 spawn 的 `node` 命令——包括 `-c`/`/c` 标志后的命令串，恰是 Bash 工具的 `bash -c` 形态——改写为 exe 自身，并向每个子进程环境注入 `PKG_EXECPATH`，模型下发的 `node --version` 会静默启动 sqh CLI；Node 自身的 SEA 层没有这种改写，且 SEA 二进制永远启动内嵌应用、无法充当纯 Node。移除该调用后，子进程像普通进程一样经 PATH 解析 `node`（无 Node 的机器如实报 command not found），子进程环境不再出现 `PKG_EXECPATH`，以 `process.execPath` 绝对路径 spawn 的重入不受影响，worker 线程本来就未应用该钩子，`process.pkg` 侧车选择也不受影响。
 
 同一补丁还把 SEA bootstrap 的原生插件解包改成原子写入。VFS 内的插件首次 `dlopen` 时，pkg 的 `patchDlopen` 会把该插件所在的包目录整棵拷到 `$PKG_NATIVE_CACHE_PATH/pkg/<.node 文件的 sha256>/`（默认 `~/.cache/pkg/...`），这是同一个 exe 的所有并发进程共用的按用户目录；上游用 `writeFileSync` 直接写目标路径，会把另一个进程可能已经映射的文件截断，并让该进程的 `existsSync`/哈希比对读到写了一半的文件。因此并发首次启动在 Linux 上以 SIGBUS 崩溃，在 macOS 上对 sharp 的 libvips 报 `ERR_DLOPEN_FAILED: Library not loaded`（#4664）。补丁让三处写入都经过同目录临时文件加 `renameSync`，于是缓存路径要么不存在、要么完整，每个进程都在加载前走完自己的拷贝，相同内容的并发 rename 不需要锁。缓存位置、哈希键与逐文件比对均未改变，通过 `PKG_NATIVE_CACHE_PATH` 按实例隔离缓存的消费方照常工作；worker 线程只定义该钩子而从不安装。 实测（linux-x64、node24 构建目标、pkg 6.21.0，一个加载 sharp 及其 18 MB libvips 库的探针，16 个进程对同一个空缓存并发首次启动，跑五轮）：改动前 80 个进程中 39 个以 SIGBUS 崩溃，改动后 80 个全部正常，且无残留临时文件。
 
 术语提醒：pkg 的 `/snapshot` VFS 与本仓库测试体系的「快照」（ACP（Agent Client Protocol）回放预期输出、`$SQH_SNAPSHOT`）无关，本文用「VFS」指前者。
 
-### 对外服务接口是 dsh 应用中的插件
+### 对外服务接口是 sqh 应用中的插件
 
-确定性服务接口由打包后的 `dsh` 应用选择为插件：
+确定性服务接口由打包后的 `sqh` 应用选择为插件：
 
-- [`packages/sdk/server`](../../../../packages/sdk/server/README.zh.md)（`@siqi-ai/dsh-sdk-jsonrpc-server`）：纯协议插件；执行 `apply` 时，在进程 stdio 上挂载 `HarnessSdkJsonRpcServer` 与按行分隔的 JSON-RPC 传输层，资源释放走 `ctx.effect()`。是否提供服务由 `cordis.yml` 决定；未挂载该插件的配置会启动一个不提供此服务的合法进程。协议级退出归插件所有（应答并确保 `shutdown` 响应发送完毕后，对根运行时执行 dispose（资源释放），让待处理的持久化操作完成，再调用 `exit(0)`；HMR（热模块替换）式卸载只停止服务，不退出进程）。
-- [`apps/cli`](../../../../apps/cli/README.zh.md)（`@siqi-ai/dsh`）：打包后的应用入口；其 `sdk` profile 挂载 `dsh-sdk-jsonrpc-server`，CLI 负责环境分层、profile 组合、stdin／signal 关闭与进程退出。
+- [`packages/sdk/server`](../../../../packages/sdk/server/README.zh.md)（`@siqi-ai/sqh-sdk-jsonrpc-server`）：纯协议插件；执行 `apply` 时，在进程 stdio 上挂载 `HarnessSdkJsonRpcServer` 与按行分隔的 JSON-RPC 传输层，资源释放走 `ctx.effect()`。是否提供服务由 `cordis.yml` 决定；未挂载该插件的配置会启动一个不提供此服务的合法进程。协议级退出归插件所有（应答并确保 `shutdown` 响应发送完毕后，对根运行时执行 dispose（资源释放），让待处理的持久化操作完成，再调用 `exit(0)`；HMR（热模块替换）式卸载只停止服务，不退出进程）。
+- [`apps/cli`](../../../../apps/cli/README.zh.md)（`@siqi-ai/sqh`）：打包后的应用入口；其 `sdk` profile 挂载 `sqh-sdk-jsonrpc-server`，CLI 负责环境分层、profile 组合、stdin／signal 关闭与进程退出。
 
 Python 客户端提供显式 Harness home，并选择 `sdk` profile 与有序 patch 文件。缺失 home、profile、bundle 或 server 配置项都会明确失败；不存在外部完整配置回退。[docs/architecture.md](../../../../docs/architecture.zh.md)负责该应用接口。
 
@@ -40,9 +40,9 @@ Python 客户端提供显式 Harness home，并选择 `sdk` profile 与有序 pa
 
 exe 的 VFS 内是**构建产物形态的真实包树**（各包的 `lib/` + 真实 `node_modules`）。打包专用 JSON-RPC 入口会向 app-boot 的根 Include 提供自身已安装 harness 的基准位置：相对插件说明符从外部配置目录解析，裸包名则从 VFS 解析，因此位于另一个 Node 项目内的配置无法遮蔽已打包的插件集合。普通开发 bin 仍由配置项目提供裸包。打包入口中的裸包名从该入口在 VFS 内的位置沿 `node_modules` 向上解析，自然落在 VFS 内。封闭集不需要白名单代码——VFS 中安装了什么，集合中就有什么；`import()` 集合外的名称会失败。
 
-部署根目录是 [`python/sdk-runtime/package.json`](../../../../python/sdk-runtime/package.json)（`dsh-python-runtime-closure`，pnpm 工作区成员、零代码纯依赖 manifest），也是「exe 安装哪些插件」与「Python 运行时分发什么」的统一真源。向 exe 添加插件，就是在 manifest 中增加一行依赖后重新打包。[`scripts/verify-runtime-closure.ts`](../../../../scripts/verify-runtime-closure.ts) 读取每个已发布的 `packages/bundle/web-app/cordis.patch.yml*/agent.cordis.yml`，针对 `python/sdk-runtime/platforms.json` 中的每个目标解析比较 `process.platform` 的 `disabled` 条件，并要求该目标启用的每个工作区插件都通过显式的 `workspace:` 依赖列在运行时根目录。它还遍历该 manifest 覆盖的全部工作区包，要求每个非可选的工作区对等依赖（peer dependency）都显式列出，并报告“preset 或引用包 → 缺失依赖”的完整链路；无法识别的平台条件会保持启用，避免因不支持的表达式遗漏插件。`pnpm run hygiene`、CI 静态检查与 single-exe 构建都会在打包前运行该门禁。部署还会依据各包的 `files` 字段打包，因此 tsdown 拆出的共享分片必须被 `files` 覆盖。
+部署根目录是 [`python/sdk-runtime/package.json`](../../../../python/sdk-runtime/package.json)（`sqh-python-runtime-closure`，pnpm 工作区成员、零代码纯依赖 manifest），也是「exe 安装哪些插件」与「Python 运行时分发什么」的统一真源。向 exe 添加插件，就是在 manifest 中增加一行依赖后重新打包。[`scripts/verify-runtime-closure.ts`](../../../../scripts/verify-runtime-closure.ts) 读取每个已发布的 `packages/bundle/web-app/cordis.patch.yml*/agent.cordis.yml`，针对 `python/sdk-runtime/platforms.json` 中的每个目标解析比较 `process.platform` 的 `disabled` 条件，并要求该目标启用的每个工作区插件都通过显式的 `workspace:` 依赖列在运行时根目录。它还遍历该 manifest 覆盖的全部工作区包，要求每个非可选的工作区对等依赖（peer dependency）都显式列出，并报告“preset 或引用包 → 缺失依赖”的完整链路；无法识别的平台条件会保持启用，避免因不支持的表达式遗漏插件。`pnpm run hygiene`、CI 静态检查与 single-exe 构建都会在打包前运行该门禁。部署还会依据各包的 `files` 字段打包，因此 tsdown 拆出的共享分片必须被 `files` 覆盖。
 
-部署根目录显式包含 `@siqi-ai/dsh-mcp-client`，将其作为自定义配置可用的插件，即使随附 preset 均未挂载该插件。外部配置因此可以连接由用户提供的 stdio 与 Streamable HTTP MCP server 并注册其工具；分发物不包含这些 server。可选资源服务提供 MCP Resources；MCP Prompts 仍不受支持。可执行程序与已安装 wheel 包的冒烟测试会启动临时 stdio server，发现其工具，并完成一次由模型请求的调用。
+部署根目录显式包含 `@siqi-ai/sqh-mcp-client`，将其作为自定义配置可用的插件，即使随附 preset 均未挂载该插件。外部配置因此可以连接由用户提供的 stdio 与 Streamable HTTP MCP server 并注册其工具；分发物不包含这些 server。可选资源服务提供 MCP Resources；MCP Prompts 仍不受支持。可执行程序与已安装 wheel 包的冒烟测试会启动临时 stdio server，发现其工具，并完成一次由模型请求的调用。
 
 [Office kit](2026-09-14-independent-libreoffice-kit.zh.md) 及其已安装依赖树位于 `<executable-stem>-office/node_modules`，保留完整包内容与辅助程序权限。顶层 `pkg.ignore` 从 SEA 归档排除 kit 包，包括依赖 `files` 字段选中的资源；与其他使用方共享的小型依赖仍可在 VFS 中使用。Python 私有 bootstrap 使用 Node `registerHooks` 从真实目录解析 kit 入口及其包清单。因此原生可执行程序与 URL Worker 保留普通文件路径，无需修改 kit 或公开 CLI。必需包缺失或已安装包缺少清单会使复制失败；未安装的可选包保留 kit 自身的引擎选择规则。
 
@@ -54,11 +54,11 @@ CI 使用 [`.github/workflows/build-exe-for-python-sdk.yml`](../../../../.github
 
 ### Python SDK 分发：双载体，exe 用于生产，`node` 用于开发
 
-Python SDK 位于 [`python/`](../../../../python/README.zh.md)：`python/sdk` 是客户端，`python/sdk-runtime` 是运行时载体包。运行时包的数据目录包含构建注入的平台可执行文件及其必需的 `-rg` 伴随文件、`-office/` 目录和可选的 macOS helper，以及供仓库开发使用的构建注入 `runtime/node/` 闭包树。`resolve_bundled_launch_args()` 默认选择可执行文件；显式设置 `SQH_RUNTIME_MODE=node` 会在系统 Node 22.19 或更高版本上运行 `runtime/node/node_modules/@siqi-ai/dsh/lib/bin.js`。node 载体从不进入 wheel 分发，两种载体都不使用检入的完整 `cordis.yml`。
+Python SDK 位于 [`python/`](../../../../python/README.zh.md)：`python/sdk` 是客户端，`python/sdk-runtime` 是运行时载体包。运行时包的数据目录包含构建注入的平台可执行文件及其必需的 `-rg` 伴随文件、`-office/` 目录和可选的 macOS helper，以及供仓库开发使用的构建注入 `runtime/node/` 闭包树。`resolve_bundled_launch_args()` 默认选择可执行文件；显式设置 `SQH_RUNTIME_MODE=node` 会在系统 Node 22.19 或更高版本上运行 `runtime/node/node_modules/@siqi-ai/sqh/lib/bin.js`。node 载体从不进入 wheel 分发，两种载体都不使用检入的完整 `cordis.yml`。
 
 [`scripts/build-python-release.py`](../../../../scripts/build-python-release.py) 从仓库根目录的 `package.json` 读取权威的 `X.Y.Z` 或预发布版本，把预发布版本转换为 PEP 440 写法，并以该 wheel 包版本暂存两个包，让 `deepseek-harness-sdk` 精确依赖匹配版本的 `deepseek-harness-runtime-bin`。可选的 `python-v<repository-version>` 发布标签只是一项一致性断言，与仓库版本不同时会被拒绝；源码 `pyproject.toml` 中的开发占位版本从不决定发布版本。暂存过程还会把仓库许可证放入两个 wheel 包，并把第三方声明放入内置运行时 wheel 包。SDK 是 `py3-none-any` wheel 包；每个只提供 wheel 包的运行时包都包含一个 exe、其 Office 目录及架构匹配的 ripgrep 伴随文件，macOS wheel 包还包含与其架构匹配的 spawn helper。运行时 wheel 包使用 `py3-none-manylinux_2_28_x86_64`、`py3-none-manylinux_2_28_aarch64`、`py3-none-macosx_14_0_arm64`、`py3-none-macosx_14_0_x86_64` 或 `py3-none-win_amd64`；Hatch 钩子拒绝 sdist、通用标签、混合平台载荷、伴随文件缺失或多余，以及不支持的平台。两个 macOS 标签都会特意声明保守的 14.0 安装下限：打包后的 Node 24 可执行文件声明 macOS 13.5，x64 PTY helper 声明 10.7，但发布验证只按照 14.0 wheel 声明证明完整载荷，不会把各组件实测的最低版本承诺为受支持宿主。两个 macOS wheel 包仍按架构分别发布，不发布 universal2 wheel 包。
 
-Python 客户端使用所选 profile（默认 `sdk`）、有序 patch 文件和显式 Harness home 启动打包后的 `dsh` 命令。Profile 负责 JSON-RPC 服务和应用组合；缺失 home、profile、bundle、patch 或 server 配置项都会失败，不存在外部完整配置回退。
+Python 客户端使用所选 profile（默认 `sdk`）、有序 patch 文件和显式 Harness home 启动打包后的 `sqh` 命令。Profile 负责 JSON-RPC 服务和应用组合；缺失 home、profile、bundle、patch 或 server 配置项都会失败，不存在外部完整配置回退。
 
 ### 命名血统
 
@@ -66,7 +66,7 @@ Python 客户端使用所选 profile（默认 `sdk`）、有序 patch 文件和�
 
 ## 打包后的工作流与代码执行
 
-`dsh-workflow-ptc` 通过 `dsh-ptc-runtime-node` 发送自包含 guest 程序。共享提供方通过可执行文件的私有 Node bootstrap 分派启动受管子进程，并使用专用控制通道；不需要独立的工作流 worker 资源。[沙箱 Node 决策](2026-09-11-sandboxed-node-ptc-runtime.zh.md)负责进程与策略生命周期，[工作流沙箱复用](2026-09-13-workflow-ptc-sandbox-reuse.zh.md)负责工作流适配器。
+`sqh-workflow-ptc` 通过 `sqh-ptc-runtime-node` 发送自包含 guest 程序。共享提供方通过可执行文件的私有 Node bootstrap 分派启动受管子进程，并使用专用控制通道；不需要独立的工作流 worker 资源。[沙箱 Node 决策](2026-09-11-sandboxed-node-ptc-runtime.zh.md)负责进程与策略生命周期，[工作流沙箱复用](2026-09-13-workflow-ptc-sandbox-reuse.zh.md)负责工作流适配器。
 
 ## 测试
 

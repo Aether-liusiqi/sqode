@@ -6,9 +6,9 @@ English | [中文](2026-09-24-exited-holder-lock-takeover.zh.md)
 
 ## Problem
 
-`withFileLock` in [dsh-atomic-write](../../../../packages/util/atomic-write/README.md) creates `<file>.lock` with exclusive create and removes it in a `finally`. A process that ends without running that `finally` leaves the lock behind, and every later writer of the file times out until someone deletes it by hand. The [original decision](../../archived/architecture/2026-07-30-settings-write-path-integrity.md) accepted this because file age cannot distinguish a crashed holder from a paused one.
+`withFileLock` in [sqh-atomic-write](../../../../packages/util/atomic-write/README.md) creates `<file>.lock` with exclusive create and removes it in a `finally`. A process that ends without running that `finally` leaves the lock behind, and every later writer of the file times out until someone deletes it by hand. The [original decision](../../archived/architecture/2026-07-30-settings-write-path-integrity.md) accepted this because file age cannot distinguish a crashed holder from a paused one.
 
-The profile package lock (`<profile>/package.json.lock`) made the cost visible. `dsh plugin` installs no signal handler, so Ctrl-C, SIGTERM, or closing its terminal ends the process while pnpm runs, and the lock stays. `dsh` and `dsh web` exit right after application disposal resolves, while a cancelled installation is still restoring files and has not released the lock. A crash, SIGKILL, or out-of-memory kill has the same effect. After any of these, every plugin operation on that profile fails after `lockWaitMs` (two minutes by default) without saying that the holder is gone.
+The profile package lock (`<profile>/package.json.lock`) made the cost visible. `sqh plugin` installs no signal handler, so Ctrl-C, SIGTERM, or closing its terminal ends the process while pnpm runs, and the lock stays. `sqh` and `sqh web` exit right after application disposal resolves, while a cancelled installation is still restoring files and has not released the lock. A crash, SIGKILL, or out-of-memory kill has the same effect. After any of these, every plugin operation on that profile fails after `lockWaitMs` (two minutes by default) without saying that the holder is gone.
 
 ## Decision
 
@@ -23,7 +23,7 @@ The profile package lock (`<profile>/package.json.lock`) made the cost visible. 
 
 **Remove a lock older than a fixed age.** Age cannot separate a crashed holder from one running a ten-minute pnpm installation, and the plugin manager legitimately holds the lock that long.
 
-**Kernel-released locks.** The kernel releases them when the holder dies, which removes the problem instead of detecting it. The [Session write lease](../../../../packages/session/session-persistence-jsonl/src/lease.ts) already holds one on both platforms: `flock` through `@siqi-ai/node-addon-system` on POSIX and a named semaphore through `koffi` on Windows. Moving `withFileLock` onto it would give the zero-dependency `dsh-atomic-write` both dependencies, and processes of earlier releases still exclude each other only through `<file>.lock`, so a transition would have to hold both locks. This stays the stronger fix if PID reuse or shared-filesystem deployments turn out to matter.
+**Kernel-released locks.** The kernel releases them when the holder dies, which removes the problem instead of detecting it. The [Session write lease](../../../../packages/session/session-persistence-jsonl/src/lease.ts) already holds one on both platforms: `flock` through `@siqi-ai/node-addon-system` on POSIX and a named semaphore through `koffi` on Windows. Moving `withFileLock` onto it would give the zero-dependency `sqh-atomic-write` both dependencies, and processes of earlier releases still exclude each other only through `<file>.lock`, so a transition would have to hold both locks. This stays the stronger fix if PID reuse or shared-filesystem deployments turn out to matter.
 
 **Rename the stale lock aside and restore it when the renamed record differs.** Restoring can race a third contender that acquires the empty path in between, which leaves two holders. The claim file prevents that race without restoring anything.
 
@@ -31,7 +31,7 @@ The profile package lock (`<profile>/package.json.lock`) made the cost visible. 
 
 **Terminate the recorded pnpm run instead of refusing.** Its PID can have been reused by an unrelated process, which a signal would then kill. Refusing leaves that case to the operator, whom the diagnostic names the process and the record.
 
-**Signal handlers in `dsh plugin` only.** This covers one of the paths that leave a lock and leaves crashes, forced exits, and the other lock files behind.
+**Signal handlers in `sqh plugin` only.** This covers one of the paths that leave a lock and leaves crashes, forced exits, and the other lock files behind.
 
 ## Testing
 

@@ -6,9 +6,9 @@ Status: implemented
 
 ## Problem
 
-profile 从自己的包项目加载插件。dsh 本体包和 bundle 内嵌的依赖不在 profile 的依赖树上，Node 默认的 `node_modules` 查找从 profile 出发找不到它们。
+profile 从自己的包项目加载插件。sqh 本体包和 bundle 内嵌的依赖不在 profile 的依赖树上，Node 默认的 `node_modules` 查找从 profile 出发找不到它们。
 
-解析规则需要能被开发者一句话复述：哪一段是普通 Node 行为，哪一段是 dsh 的干预，干预的范围到哪里为止。此前的运行时实现把 `$SQH_HOME/profiles/node_modules` 整层对所有包名隐藏，又为历史目录形状保留了专门的识别代码，规则无法用一句话说清，也无法判断某次解析结果是否符合预期。
+解析规则需要能被开发者一句话复述：哪一段是普通 Node 行为，哪一段是 sqh 的干预，干预的范围到哪里为止。此前的运行时实现把 `$SQH_HOME/profiles/node_modules` 整层对所有包名隐藏，又为历史目录形状保留了专门的识别代码，规则无法用一句话说清，也无法判断某次解析结果是否符合预期。
 
 ## Decision
 
@@ -38,13 +38,13 @@ importer 指发起 `import` 或 `require` 的那个模块文件。Node 从 impor
 
 拦截层是 importer 所属 profile 目录（`$SQH_HOME/profiles/<name>`）之上的第一个祖先 `node_modules`。树内所有 profile 的这一层都是 `$SQH_HOME/profiles/node_modules`。
 
-runtime resolution 中的每个包名，在这一层上占据 `<拦截层>/<包名>` 这个包目录的位置。对 `@siqi-ai/dsh-tools` 这样的本体包名，③ 上的包目录就是运行中安装的那一份；磁盘上同名的旧链接或旧目录不再是链上的成员。对 runtime resolution 没有的包名，③ 上的包目录就是磁盘上的物理内容。
+runtime resolution 中的每个包名，在这一层上占据 `<拦截层>/<包名>` 这个包目录的位置。对 `@siqi-ai/sqh-tools` 这样的本体包名，③ 上的包目录就是运行中安装的那一份；磁盘上同名的旧链接或旧目录不再是链上的成员。对 runtime resolution 没有的包名，③ 上的包目录就是磁盘上的物理内容。
 
 一次裸包名请求的顺序：主线先走完 profile 目录内部的各层（①②），有候选就交给 Node 在候选内解析并返回。走到 ③ 时，runtime resolution 有该包名的条目，Node 就在条目记录的包目录内解析；找到就返回，包内缺文件则按 Node 自身对"已找到包"的处理继续，CommonJS 从 ④ 继续逐层找子路径，ESM 直接报错。runtime resolution 没有条目，Node 就看 ③ 的物理目录，再到 ④。
 
 Node 仍然负责 `exports`、`imports`、conditions、`main`、子路径、扩展名、缓存与错误码。被选中的包因 `exports` 拒绝某个子路径时报错终局，不会换另一个同名包。
 
-拦截层不读、不写、不删任何磁盘链接。历史残留的软链接一律按普通文件系统内容处理：本体包名在 ③ 上的位置已被 runtime resolution 占据，旧链接永远不会被读到；其余包名按主线正常看到 ③ 里的内容。profile 加载时一次性删除 dsh 0.1.5 系列发布版的 Link 后端写进 profile 的投影：profile `node_modules` 下目标位于 `<profile>/.sqh-module-fallback/node_modules` 内的软链接，以及该目录本身。pnpm 安装的包和其他软链接都保留。
+拦截层不读、不写、不删任何磁盘链接。历史残留的软链接一律按普通文件系统内容处理：本体包名在 ③ 上的位置已被 runtime resolution 占据，旧链接永远不会被读到；其余包名按主线正常看到 ③ 里的内容。profile 加载时一次性删除 sqh 0.1.5 系列发布版的 Link 后端写进 profile 的投影：profile `node_modules` 下目标位于 `<profile>/.sqh-module-fallback/node_modules` 内的软链接，以及该目录本身。pnpm 安装的包和其他软链接都保留。
 
 #### 3. 链接目录：在每个祖先候选位置应用 peer 拦截
 
@@ -83,7 +83,7 @@ ESM 与 CommonJS 两个适配器调用同一个路由函数，主线程与 Harne
 
 #### 表 1：ESM 与 CommonJS 在各类请求下的主线与拦截
 
-下表以本体包 `@siqi-ai/dsh-tools`（runtime resolution 有条目）和第三方库 `left-pad`（runtime resolution 无条目）为例；`pkg` 泛指两者。
+下表以本体包 `@siqi-ai/sqh-tools`（runtime resolution 有条目）和第三方库 `left-pad`（runtime resolution 无条目）为例；`pkg` 泛指两者。
 
 | 请求形态 | ESM | CommonJS | ③ 上该包名的位置 | 包内缺文件时 |
 |---|---|---|---|---|
@@ -108,14 +108,14 @@ ESM 与 CommonJS 两个适配器调用同一个路由函数，主线程与 Harne
 
 #### 表 3：插件被 link 到树外时的主线
 
-插件 `my-plugin` 被 `<profile>/node_modules/my-plugin` 链接到真实目录 R；R 的 manifest 把 `@siqi-ai/dsh-tools` 声明为 peer 并装成 devDependency，把 `zod` 声明为 dependency。
+插件 `my-plugin` 被 `<profile>/node_modules/my-plugin` 链接到真实目录 R；R 的 manifest 把 `@siqi-ai/sqh-tools` 声明为 peer 并装成 devDependency，把 `zod` 声明为 dependency。
 
 | import 来源 → 目标 | hook 是否参与 | 结果 |
 |---|---|---|
 | profile → 链接的插件 | 参与到 ② 为止 | ② 的软链接被 Node 跟随，插件以真实路径加载 |
 | 链接插件 → `zod` | 参与，`R/node_modules` 上 `zod` 未被占据 | `R/node_modules/zod`，开发者自己安装的版本 |
-| 链接插件 → `@siqi-ai/dsh-tools`（peer） | 参与，`R/node_modules` 上该名被占据 | 运行中的 dsh 的那一份；`R/node_modules` 里的 devDependency 副本不被读到 |
-| 链接插件 → 只声明为 dependency 的有状态 dsh 包 | 参与，未被占据 | `R/node_modules` 里自己的副本，产生第二个实例；与树内把 dsh 包装进 ② 的错误相同，改为 peer 即可 |
+| 链接插件 → `@siqi-ai/sqh-tools`（peer） | 参与，`R/node_modules` 上该名被占据 | 运行中的 sqh 的那一份；`R/node_modules` 里的 devDependency 副本不被读到 |
+| 链接插件 → 只声明为 dependency 的有状态 sqh 包 | 参与，未被占据 | `R/node_modules` 里自己的副本，产生第二个实例；与树内把 sqh 包装进 ② 的错误相同，改为 peer 即可 |
 | 链接插件 → 未声明的包名 | 参与，R 不占据该包名 | `R/node_modules` 的物理内容，再沿真实祖先链逐位置应用同一规则 |
 | R 内传递依赖 → 任何包名 | 参与 | 每个位置使用自己的 manifest 的 peer；更近的物理候选先于后续 peer 声明 |
 | link 目标 R 无 manifest → 祖先声明的 peer | 参与 | 从 R 开始查；更近的物理候选优先，否则祖先 peer 可以选中运行时包，即使那里没有物理 `node_modules` |
@@ -127,17 +127,17 @@ ESM 与 CommonJS 两个适配器调用同一个路由函数，主线程与 Harne
 
 #### 1. 正常安装
 
-`dsh plugin --profile <name> add <包名 | git spec | file:../本地检出>` 把参数转发给 pnpm，在 profile 目录内以 hoisted 布局安装。profile 的 `pnpm-workspace.yaml` 设置 `autoInstallPeers: false`，插件声明为 peer 的 dsh 包不会被装进 profile，由拦截层提供当前运行安装的那一份，插件与 dsh 共用同一个模块实例。
+`sqh plugin --profile <name> add <包名 | git spec | file:../本地检出>` 把参数转发给 pnpm，在 profile 目录内以 hoisted 布局安装。profile 的 `pnpm-workspace.yaml` 设置 `autoInstallPeers: false`，插件声明为 peer 的 sqh 包不会被装进 profile，由拦截层提供当前运行安装的那一份，插件与 sqh 共用同一个模块实例。
 
 插件自己的第三方依赖被 hoist 到 `$SQH_HOME/profiles/<name>/node_modules`，按主线 ② 找到。与 installation 闭包同名时最近者优先，插件使用自己声明的版本。`file:` 形式把本地检出复制进 profile，随后的解析与注册表安装完全相同。
 
 #### 2. 开发模式：插件仓库在 profile 树外
 
-`npm link`，或 `dsh plugin add ../my-plugin` 这类裸目录路径（pnpm 按 `link:` 处理），会让 profile 里的条目成为指向插件仓库的软链接，仓库目录成为 linked root。插件以真实路径加载。查找到其 manifest 的 peer 位置时，匹配的运行时条目由当前运行的安装提供，无论 dsh 来自 npm 全局安装、Desktop 内置还是源码仓启动。该位置的 devDependency 副本服务编译器，普通请求不会加载它。link 指向无 manifest 的 `src` 目录时，也可以通过同一条祖先查询使用父目录的 peer。
+`npm link`，或 `sqh plugin add ../my-plugin` 这类裸目录路径（pnpm 按 `link:` 处理），会让 profile 里的条目成为指向插件仓库的软链接，仓库目录成为 linked root。插件以真实路径加载。查找到其 manifest 的 peer 位置时，匹配的运行时条目由当前运行的安装提供，无论 sqh 来自 npm 全局安装、Desktop 内置还是源码仓启动。该位置的 devDependency 副本服务编译器，普通请求不会加载它。link 指向无 manifest 的 `src` 目录时，也可以通过同一条祖先查询使用父目录的 peer。
 
-manifest 的写法与 harness 自身的包相同：需要与宿主共享实例的 dsh 包同时声明在 `peerDependencies` 与 `devDependencies`，peer 让 `R/node_modules` 上的位置被占据，dev 副本给编译器和独立测试使用；第三方依赖以及 `@siqi-ai/dsh-brand`、`@siqi-ai/dsh-util-values` 这类无状态 dsh 工具包放在 `dependencies`。修改 `peerDependencies` 后，重新加载插件时的新解析会使用新声明；已加载模块的生命周期仍由 Node 和 Cordis 管理。
+manifest 的写法与 harness 自身的包相同：需要与宿主共享实例的 sqh 包同时声明在 `peerDependencies` 与 `devDependencies`，peer 让 `R/node_modules` 上的位置被占据，dev 副本给编译器和独立测试使用；第三方依赖以及 `@siqi-ai/sqh-brand`、`@siqi-ai/sqh-util-values` 这类无状态 sqh 工具包放在 `dependencies`。修改 `peerDependencies` 后，重新加载插件时的新解析会使用新声明；已加载模块的生命周期仍由 Node 和 Cordis 管理。
 
-另两种可用布局：插件仓库自装 `@siqi-ai/dsh` 并从仓库里启动 `pnpm exec dsh --profile <name>`；或把 dsh 包 link 到本机源码仓并从源码仓启动。两者让运行中的 dsh 与仓库里的副本本来就是同一份，但 linked 插件不要求使用这两种布局。
+另两种可用布局：插件仓库自装 `@siqi-ai/sqh` 并从仓库里启动 `pnpm exec sqh --profile <name>`；或把 sqh 包 link 到本机源码仓并从源码仓启动。两者让运行中的 sqh 与仓库里的副本本来就是同一份，但 linked 插件不要求使用这两种布局。
 
 ## Alternatives considered
 
@@ -145,7 +145,7 @@ manifest 的写法与 harness 自身的包相同：需要与宿主共享实例�
 
 **把 runtime resolution 当作插入主线的一整层，而不是占据 ③ 上的包目录。** 两者只在一处不同：CommonJS 命中 runtime resolution 的包后子路径缺失时，前者会再回头读 ③ 上同名的旧副本，后者按 Node 对"已找到的包"的处理直接到 ④。占据包目录与 Node 语义一致，也不需要为 ③ 保留任何额外判断。
 
-**让 installation 闭包条目绝对优先于更近的副本。** 闭包含 281 个第三方库。插件私有的 `zod`、`yaml` 等版本会被安装闭包里的版本覆盖，破坏与 Node 一致的最近者优先。受支持的安装流程已经不把 dsh 的 peer 装进 profile，不需要再用覆盖来保证单实例。
+**让 installation 闭包条目绝对优先于更近的副本。** 闭包含 281 个第三方库。插件私有的 `zod`、`yaml` 等版本会被安装闭包里的版本覆盖，破坏与 Node 一致的最近者优先。受支持的安装流程已经不把 sqh 的 peer 装进 profile，不需要再用覆盖来保证单实例。
 
 **在解析时识别 `.sqh-module-fallback` 形状的软链接并绕过。** 这会为不再产生的目录在查找路径里保留专门逻辑，每次解析都要付出判断。在 profile 加载时一次性删除这些投影能得到同样的结果：一个 bundle 被停用但仍装着时，它投影出来的插件不再遮住 runtime resolution 从另一个 bundle 选出的同名插件。
 
@@ -157,7 +157,7 @@ manifest 的写法与 harness 自身的包相同：需要与宿主共享实例�
 
 **只读 linked root 的 peer，或要求它自身有 manifest。** link 可以指向 `src` 目录，更近的包与祖先 manifest 都有各自的查询位置。把拦截固定在 R 会漏掉这些声明，或覆盖更近的物理候选。
 
-**在 runtime resolution 构造时固定 peer 集合。** 开发者每次修改 `peerDependencies` 都得重启 dsh。解析时读取让新查询看到变动，代价是开发模式下要读取所访问的 manifest。已加载的请求是否需要再次解析，仍由 Node 的模块缓存决定。
+**在 runtime resolution 构造时固定 peer 集合。** 开发者每次修改 `peerDependencies` 都得重启 sqh。解析时读取让新查询看到变动，代价是开发模式下要读取所访问的 manifest。已加载的请求是否需要再次解析，仍由 Node 的模块缓存决定。
 
 **拦截指向 profile 内的显式 CommonJS paths。** 显式搜索列表是调用方的选择。原样交给 Node 能保留一个清晰的例外，而不是让各个路径项遵循不同策略。
 
@@ -173,7 +173,7 @@ manifest 的写法与 harness 自身的包相同：需要与宿主共享实例�
 
 ## Consequences
 
-买到的：模块解析无需磁盘投影；命中拦截层的 dsh 本体包来自当前运行的安装，link 到树外的插件声明的 peer 也适用；其余解析保留 Node 的祖先链和包入口规则；解析路径不识别历史投影目录。
+买到的：模块解析无需磁盘投影；命中拦截层的 sqh 本体包来自当前运行的安装，link 到树外的插件声明的 peer 也适用；其余解析保留 Node 的祖先链和包入口规则；解析路径不识别历史投影目录。
 
 付出的：installation 闭包中的第三方库仍占据 ③ 上的包目录；profile 插件没有更近副本时会使用安装中的版本。linked 请求只在匹配的 peer 位置选中运行时包，更近的物理副本仍优先。开发者需要相应安排声明与依赖位置。runtime resolution 不校验 peer 版本范围。
 

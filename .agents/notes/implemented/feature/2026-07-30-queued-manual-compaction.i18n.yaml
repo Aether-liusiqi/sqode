@@ -12,14 +12,14 @@
   en: a15c7c13f167e5ac
   zh: 63bcc2ef60c2f344
 /agent-note-queued-manual-compaction-with-one-durable-lock/decision/compact-is-a-command-over-a-backend-independent-seam:
-  en: 7fb2138df3880700
-  zh: eb0977dce6fc0d20
+  en: 9de9980ac65b9ac3
+  zh: 9ddce1a781a8d01f
 /agent-note-queued-manual-compaction-with-one-durable-lock/decision/idle-maintenance-is-synchronously-claimed:
   en: a11c700f32838561
   zh: c20636c5f7efabaf
 /agent-note-queued-manual-compaction-with-one-durable-lock/decision/one-parameterized-transaction-owns-every-bracket:
-  en: 7b75672fafc370c9
-  zh: 4fb473856c9c7265
+  en: 74ac9b7697d23ead
+  zh: 02cef09571818627
 /agent-note-queued-manual-compaction-with-one-durable-lock/decision/bracket-first-deliberately-differs-from-the-surveyed-implementations:
   en: a06f85d03c04e3f1
   zh: 01ee0a19731a765e

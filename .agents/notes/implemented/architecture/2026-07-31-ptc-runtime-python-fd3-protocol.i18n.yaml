@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-31-ptc-runtime-python-fd3-protocol.md
 /agent-note-the-ptc-runtime-python-fd-3-frame-protocol:
-  en: ff8c4fce16ad807d
-  zh: 5896081a71ae9b3a
+  en: 5f9685120c261a6c
+  zh: e11063302a579513
 /agent-note-the-ptc-runtime-python-fd-3-frame-protocol/problem:
-  en: b98b27b9e7612c68
-  zh: fc4ff1dd09303fe3
+  en: 593327e7e7a380d5
+  zh: 1c357ac0b3b1934a
 /agent-note-the-ptc-runtime-python-fd-3-frame-protocol/decision:
   en: 1f93159850fc7f48
   zh: dcc2a4788e3254f7

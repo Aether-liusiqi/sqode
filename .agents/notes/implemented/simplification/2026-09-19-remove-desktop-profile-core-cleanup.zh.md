@@ -37,4 +37,4 @@ profile 内的解析按[查找顺序 Note](../architecture/2026-09-19-profile-re
 
 ## Consequences
 
-买到的：生产启动不再写 profile，没有临时启用开关，Desktop 与 CLI 对 profile 内副本采用同一套规则。付出的：旧版 Desktop 装进 profile 的核心包副本靠手工清理；第三方插件以实依赖带进 profile 的 dsh 副本按其自身版本运行。
+买到的：生产启动不再写 profile，没有临时启用开关，Desktop 与 CLI 对 profile 内副本采用同一套规则。付出的：旧版 Desktop 装进 profile 的核心包副本靠手工清理；第三方插件以实依赖带进 profile 的 sqh 副本按其自身版本运行。

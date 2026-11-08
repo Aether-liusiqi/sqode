@@ -18,8 +18,8 @@
   en: 975df574ee6e6df8
   zh: 96d765058482835a
 /agent-note-source-owned-session-immutability-and-dev-mode-invariants/decision/package-owned-invariant-companions-check-relationships:
-  en: a88e3a896eedca91
-  zh: 03e96c7870cba932
+  en: 1b5d84812fcf92fe
+  zh: a82de9c1421e284c
 /agent-note-source-owned-session-immutability-and-dev-mode-invariants/alternatives-considered:
   en: 6119e2aff3b6be5a
   zh: 76136ef5249c23eb
@@ -33,5 +33,5 @@
   en: a9848dec50664b92
   zh: 7c558550b054627b
 /agent-note-source-owned-session-immutability-and-dev-mode-invariants/consequences:
-  en: bcccf7d464a070db
-  zh: eccd442a21e2c99e
+  en: ea538e02c60f2911
+  zh: 0826d73b4e8e6112
