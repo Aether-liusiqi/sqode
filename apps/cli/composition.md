@@ -8,194 +8,194 @@ The sqh-base bundle patch shared by the web, headless, sdk, and acp profiles; th
 ```mermaid
 flowchart LR
   cfg["packages/bundle/base/cordis.patch.yml<br/>cordis.yml"]
-  plugin_dsh_base_tool_plugin_manager["tool-plugin-manager<br/>@liusiqi-dev/sqh-plugin-manager/tools"]
-  cfg --> plugin_dsh_base_tool_plugin_manager
-  plugin_dsh_base_plugin_manager["plugin-manager<br/>@liusiqi-dev/sqh-plugin-manager"]
-  cfg --> plugin_dsh_base_plugin_manager
-  plugin_dsh_base_timer["timer<br/>@liusiqi-dev/cordis-plugin-timer"]
-  cfg --> plugin_dsh_base_timer
-  plugin_dsh_base_hmr["hmr<br/>@liusiqi-dev/sqh-hmr"]
-  cfg --> plugin_dsh_base_hmr
-  plugin_dsh_base_llm["llm<br/>@liusiqi-dev/sqh-llm"]
-  cfg --> plugin_dsh_base_llm
-  plugin_dsh_base_deepseek_llm_api_extensions["deepseek-llm-api-extensions<br/>@liusiqi-dev/sqh-deepseek-llm-api-extensions"]
-  cfg --> plugin_dsh_base_deepseek_llm_api_extensions
-  plugin_dsh_base_session["session<br/>@liusiqi-dev/sqh-session"]
-  cfg --> plugin_dsh_base_session
-  plugin_dsh_base_session_log_deepseek["session-log-deepseek<br/>@liusiqi-dev/sqh-session-log-deepseek"]
-  cfg --> plugin_dsh_base_session_log_deepseek
-  plugin_dsh_base_typert["typert<br/>@liusiqi-dev/sqh-typert-registry"]
-  cfg --> plugin_dsh_base_typert
-  plugin_dsh_base_typert_loader["typert-loader<br/>@liusiqi-dev/sqh-typert-loader"]
-  cfg --> plugin_dsh_base_typert_loader
-  plugin_dsh_base_typert_gateway["typert-gateway<br/>@liusiqi-dev/sqh-api-gateway"]
-  cfg --> plugin_dsh_base_typert_gateway
-  plugin_dsh_base_session_title["session-title<br/>@liusiqi-dev/sqh-session-title"]
-  cfg --> plugin_dsh_base_session_title
-  plugin_dsh_base_session_title_llm["session-title-llm<br/>@liusiqi-dev/sqh-session-title-first-prompt-llm"]
-  cfg --> plugin_dsh_base_session_title_llm
-  plugin_dsh_base_user_questions["user-questions<br/>@liusiqi-dev/sqh-user-questions"]
-  cfg --> plugin_dsh_base_user_questions
-  plugin_dsh_base_agent["agent<br/>@liusiqi-dev/sqh-agent"]
-  cfg --> plugin_dsh_base_agent
-  plugin_dsh_base_plugin_package_inventory_deepseek["plugin-package-inventory-deepseek<br/>@liusiqi-dev/sqh-plugin-package-inventory-deepseek"]
-  cfg --> plugin_dsh_base_plugin_package_inventory_deepseek
-  plugin_dsh_base_agent_default_model["agent-default-model<br/>@liusiqi-dev/sqh-agent-default-model"]
-  cfg --> plugin_dsh_base_agent_default_model
-  plugin_dsh_base_jobs["jobs<br/>@liusiqi-dev/sqh-jobs-local"]
-  cfg --> plugin_dsh_base_jobs
-  plugin_dsh_base_llm_retry["llm-retry<br/>@liusiqi-dev/sqh-llm-retry"]
-  cfg --> plugin_dsh_base_llm_retry
-  plugin_dsh_base_config_editor["config-editor<br/>@liusiqi-dev/sqh-config-editor"]
-  cfg --> plugin_dsh_base_config_editor
-  plugin_dsh_base_settings["settings<br/>@liusiqi-dev/sqh-settings"]
-  cfg --> plugin_dsh_base_settings
-  plugin_dsh_base_authorization["authorization<br/>@liusiqi-dev/sqh-authorization"]
-  cfg --> plugin_dsh_base_authorization
-  plugin_dsh_base_deepseek_account["deepseek-account<br/>@liusiqi-dev/sqh-deepseek-account-platform"]
-  cfg --> plugin_dsh_base_deepseek_account
-  plugin_dsh_base_credentials["credentials<br/>@liusiqi-dev/sqh-credentials-local"]
-  cfg --> plugin_dsh_base_credentials
-  plugin_dsh_base_llm_pi_ai["llm-pi-ai<br/>@liusiqi-dev/sqh-llm-pi-ai"]
-  cfg --> plugin_dsh_base_llm_pi_ai
-  plugin_dsh_base_session_persistence_jsonl["session-persistence-jsonl<br/>@liusiqi-dev/sqh-session-persistence-jsonl"]
-  cfg --> plugin_dsh_base_session_persistence_jsonl
-  plugin_dsh_base_attachment_local["attachment-local<br/>@liusiqi-dev/sqh-attachment-local"]
-  cfg --> plugin_dsh_base_attachment_local
-  plugin_dsh_base_session_query_sqlite["session-query-sqlite<br/>@liusiqi-dev/sqh-session-query-sqlite"]
-  cfg --> plugin_dsh_base_session_query_sqlite
-  plugin_dsh_base_session_projection["session-projection<br/>@liusiqi-dev/sqh-session-projection"]
-  cfg --> plugin_dsh_base_session_projection
-  plugin_dsh_base_storage["storage<br/>@liusiqi-dev/sqh-storage"]
-  cfg --> plugin_dsh_base_storage
-  plugin_dsh_base_storage_json["storage-json<br/>@liusiqi-dev/sqh-storage-json"]
-  cfg --> plugin_dsh_base_storage_json
-  plugin_dsh_base_storage_domain["storage-domain<br/>@liusiqi-dev/sqh-storage-domain"]
-  cfg --> plugin_dsh_base_storage_domain
-  plugin_dsh_base_session_projection_cache["session-projection-cache<br/>@liusiqi-dev/sqh-session-projection-cache"]
-  cfg --> plugin_dsh_base_session_projection_cache
-  plugin_dsh_base_otel["otel<br/>@liusiqi-dev/sqh-otel"]
-  cfg --> plugin_dsh_base_otel
-  plugin_dsh_base_session_telemetry_otel["session-telemetry-otel<br/>@liusiqi-dev/sqh-session-telemetry-otel"]
-  cfg --> plugin_dsh_base_session_telemetry_otel
-  plugin_dsh_base_subprocess["subprocess<br/>@liusiqi-dev/sqh-subprocess-local"]
-  cfg --> plugin_dsh_base_subprocess
-  plugin_dsh_base_sandbox["sandbox<br/>@liusiqi-dev/sqh-sandbox-local"]
-  cfg --> plugin_dsh_base_sandbox
-  plugin_dsh_base_sandbox_policy["sandbox-policy<br/>@liusiqi-dev/sqh-sandbox-policy"]
-  cfg --> plugin_dsh_base_sandbox_policy
-  plugin_dsh_base_bash_sandbox["bash-sandbox<br/>@liusiqi-dev/sqh-bash-sandbox"]
-  cfg --> plugin_dsh_base_bash_sandbox
-  plugin_dsh_base_pwsh_sandbox["pwsh-sandbox<br/>@liusiqi-dev/sqh-pwsh-sandbox"]
-  cfg --> plugin_dsh_base_pwsh_sandbox
-  plugin_dsh_base_approval["approval<br/>@liusiqi-dev/sqh-user-approval"]
-  cfg --> plugin_dsh_base_approval
-  plugin_dsh_base_permission["permission<br/>@liusiqi-dev/sqh-permission-presets"]
-  cfg --> plugin_dsh_base_permission
-  plugin_dsh_base_shell_env["shell-env<br/>@liusiqi-dev/sqh-shell-env"]
-  cfg --> plugin_dsh_base_shell_env
-  plugin_dsh_base_tool_bash["tool-bash<br/>@liusiqi-dev/sqh-tool-bash"]
-  cfg --> plugin_dsh_base_tool_bash
-  plugin_dsh_base_tool_pwsh["tool-pwsh<br/>@liusiqi-dev/sqh-tool-pwsh"]
-  cfg --> plugin_dsh_base_tool_pwsh
-  plugin_dsh_base_tool_jobs["tool-jobs<br/>@liusiqi-dev/sqh-tool-jobs"]
-  cfg --> plugin_dsh_base_tool_jobs
-  plugin_dsh_base_fs_observation_policy["fs-observation-policy<br/>@liusiqi-dev/sqh-fs-observation-policy"]
-  cfg --> plugin_dsh_base_fs_observation_policy
-  plugin_dsh_base_tool_fs["tool-fs<br/>@liusiqi-dev/sqh-tool-fs"]
-  cfg --> plugin_dsh_base_tool_fs
-  plugin_dsh_base_tool_fs_search["tool-fs-search<br/>@liusiqi-dev/sqh-tool-fs-search"]
-  cfg --> plugin_dsh_base_tool_fs_search
-  plugin_dsh_base_agent_instructions["agent-instructions<br/>@liusiqi-dev/sqh-agent-instructions"]
-  cfg --> plugin_dsh_base_agent_instructions
-  plugin_dsh_base_skill["skill<br/>@liusiqi-dev/sqh-skill"]
-  cfg --> plugin_dsh_base_skill
-  plugin_dsh_base_skill_filesystem["skill-filesystem<br/>@liusiqi-dev/sqh-skill-filesystem"]
-  cfg --> plugin_dsh_base_skill_filesystem
-  plugin_dsh_base_skill_badge["skill-badge<br/>@liusiqi-dev/sqh-skill-badge"]
-  cfg --> plugin_dsh_base_skill_badge
-  plugin_dsh_base_tool_skill["tool-skill<br/>@liusiqi-dev/sqh-tool-skill"]
-  cfg --> plugin_dsh_base_tool_skill
-  plugin_dsh_base_commands["commands<br/>@liusiqi-dev/sqh-commands"]
-  cfg --> plugin_dsh_base_commands
-  plugin_dsh_base_command_feedback["command-feedback<br/>@liusiqi-dev/sqh-command-feedback"]
-  cfg --> plugin_dsh_base_command_feedback
-  plugin_dsh_base_goal["goal<br/>@liusiqi-dev/sqh-goal"]
-  cfg --> plugin_dsh_base_goal
-  plugin_dsh_base_goal_round_driver["goal-round-driver<br/>@liusiqi-dev/sqh-goal-round-driver"]
-  cfg --> plugin_dsh_base_goal_round_driver
-  plugin_dsh_base_command_goal["command-goal<br/>@liusiqi-dev/sqh-command-goal"]
-  cfg --> plugin_dsh_base_command_goal
-  plugin_dsh_base_plan_mode["plan-mode<br/>@liusiqi-dev/sqh-plan-mode"]
-  cfg --> plugin_dsh_base_plan_mode
-  plugin_dsh_base_token_meter["token-meter<br/>@liusiqi-dev/sqh-token-meter"]
-  cfg --> plugin_dsh_base_token_meter
-  plugin_dsh_base_compaction_basic["compaction-basic<br/>@liusiqi-dev/sqh-compaction-basic"]
-  cfg --> plugin_dsh_base_compaction_basic
-  plugin_dsh_base_command_compact["command-compact<br/>@liusiqi-dev/sqh-command-compact"]
-  cfg --> plugin_dsh_base_command_compact
-  plugin_dsh_base_subagent["subagent<br/>@liusiqi-dev/sqh-subagent"]
-  cfg --> plugin_dsh_base_subagent
-  plugin_dsh_base_subagent_spawn_in_process["subagent-spawn-in-process<br/>@liusiqi-dev/sqh-subagent-spawn-in-process"]
-  cfg --> plugin_dsh_base_subagent_spawn_in_process
-  plugin_dsh_base_subagent_fork_in_process["subagent-fork-in-process<br/>@liusiqi-dev/sqh-subagent-fork-in-process"]
-  cfg --> plugin_dsh_base_subagent_fork_in_process
-  plugin_dsh_base_tool_subagent_control["tool-subagent-control<br/>@liusiqi-dev/sqh-tool-subagent-control"]
-  cfg --> plugin_dsh_base_tool_subagent_control
-  plugin_dsh_base_tool_subagent_list_agents["tool-subagent-list-agents<br/>@liusiqi-dev/sqh-tool-subagent-control/list-agents"]
-  cfg --> plugin_dsh_base_tool_subagent_list_agents
-  plugin_dsh_base_tool_subagent["tool-subagent<br/>@liusiqi-dev/sqh-tool-subagent"]
-  cfg --> plugin_dsh_base_tool_subagent
-  plugin_dsh_base_tool_subagent_fork["tool-subagent-fork<br/>@liusiqi-dev/sqh-tool-subagent"]
-  cfg --> plugin_dsh_base_tool_subagent_fork
-  plugin_dsh_base_ptc_runtime["ptc-runtime<br/>@liusiqi-dev/sqh-ptc-runtime-node"]
-  cfg --> plugin_dsh_base_ptc_runtime
-  plugin_dsh_base_workflow_ptc["workflow-ptc<br/>@liusiqi-dev/sqh-workflow-ptc"]
-  cfg --> plugin_dsh_base_workflow_ptc
-  plugin_dsh_base_tool_workflow["tool-workflow<br/>@liusiqi-dev/sqh-tool-workflow"]
-  cfg --> plugin_dsh_base_tool_workflow
-  plugin_dsh_base_timeout_policy["timeout-policy<br/>@liusiqi-dev/sqh-tool-call-timeout-policy"]
-  cfg --> plugin_dsh_base_timeout_policy
-  plugin_dsh_base_spill_local["spill-local<br/>@liusiqi-dev/sqh-spill-local"]
-  cfg --> plugin_dsh_base_spill_local
-  plugin_dsh_base_spill_policy["spill-policy<br/>@liusiqi-dev/sqh-spill-policy"]
-  cfg --> plugin_dsh_base_spill_policy
-  plugin_dsh_base_session_checkpoint_policy["session-checkpoint-policy<br/>@liusiqi-dev/sqh-session-checkpoint-policy"]
-  cfg --> plugin_dsh_base_session_checkpoint_policy
-  plugin_dsh_base_tool_result_pruner["tool-result-pruner<br/>@liusiqi-dev/sqh-compaction-tool-result-pruner"]
-  cfg --> plugin_dsh_base_tool_result_pruner
-  plugin_dsh_base_image_offload["image-offload<br/>@liusiqi-dev/sqh-compaction-image-offload"]
-  cfg --> plugin_dsh_base_image_offload
-  plugin_dsh_base_tool_todo["tool-todo<br/>@liusiqi-dev/sqh-tool-todo"]
-  cfg --> plugin_dsh_base_tool_todo
-  plugin_dsh_base_tool_goal["tool-goal<br/>@liusiqi-dev/sqh-tool-goal"]
-  cfg --> plugin_dsh_base_tool_goal
-  plugin_dsh_base_tool_ralph["tool-ralph<br/>@liusiqi-dev/sqh-tool-ralph"]
-  cfg --> plugin_dsh_base_tool_ralph
-  plugin_dsh_base_repeat_tool_reminder["repeat-tool-reminder<br/>@liusiqi-dev/sqh-repeat-tool-reminder"]
-  cfg --> plugin_dsh_base_repeat_tool_reminder
-  plugin_dsh_base_web["web<br/>@liusiqi-dev/sqh-web"]
-  cfg --> plugin_dsh_base_web
-  plugin_dsh_base_web_search_deepseek["web-search-deepseek<br/>@liusiqi-dev/sqh-web-search-deepseek"]
-  cfg --> plugin_dsh_base_web_search_deepseek
-  plugin_dsh_base_web_fetch_http["web-fetch-http<br/>@liusiqi-dev/sqh-web-fetch-http"]
-  cfg --> plugin_dsh_base_web_fetch_http
-  plugin_dsh_base_tool_web["tool-web<br/>@liusiqi-dev/sqh-tool-web"]
-  cfg --> plugin_dsh_base_tool_web
-  plugin_dsh_base_mcp_resources["mcp-resources<br/>@liusiqi-dev/sqh-mcp-resources"]
-  cfg --> plugin_dsh_base_mcp_resources
-  plugin_dsh_base_tools["tools<br/>@liusiqi-dev/sqh-tools"]
-  cfg --> plugin_dsh_base_tools
-  plugin_dsh_base_system_prompt["system-prompt<br/>@liusiqi-dev/sqh-system-prompt"]
-  cfg --> plugin_dsh_base_system_prompt
-  plugin_dsh_base_agent_loop["agent-loop<br/>@liusiqi-dev/sqh-agent-loop"]
-  cfg --> plugin_dsh_base_agent_loop
-  plugin_dsh_base_fs_sandbox["fs-sandbox<br/>@liusiqi-dev/sqh-fs-sandbox"]
-  cfg --> plugin_dsh_base_fs_sandbox
-  plugin_dsh_base_llm_deepseek["llm-deepseek<br/>@liusiqi-dev/sqh-llm-deepseek-api-key"]
-  cfg --> plugin_dsh_base_llm_deepseek
-  plugin_dsh_base_llm_deepseek_account["llm-deepseek-account<br/>@liusiqi-dev/sqh-llm-deepseek-account"]
-  cfg --> plugin_dsh_base_llm_deepseek_account
+  plugin_sqh_base_tool_plugin_manager["tool-plugin-manager<br/>@liusiqi-dev/sqh-plugin-manager/tools"]
+  cfg --> plugin_sqh_base_tool_plugin_manager
+  plugin_sqh_base_plugin_manager["plugin-manager<br/>@liusiqi-dev/sqh-plugin-manager"]
+  cfg --> plugin_sqh_base_plugin_manager
+  plugin_sqh_base_timer["timer<br/>@liusiqi-dev/cordis-plugin-timer"]
+  cfg --> plugin_sqh_base_timer
+  plugin_sqh_base_hmr["hmr<br/>@liusiqi-dev/sqh-hmr"]
+  cfg --> plugin_sqh_base_hmr
+  plugin_sqh_base_llm["llm<br/>@liusiqi-dev/sqh-llm"]
+  cfg --> plugin_sqh_base_llm
+  plugin_sqh_base_deepseek_llm_api_extensions["deepseek-llm-api-extensions<br/>@liusiqi-dev/sqh-deepseek-llm-api-extensions"]
+  cfg --> plugin_sqh_base_deepseek_llm_api_extensions
+  plugin_sqh_base_session["session<br/>@liusiqi-dev/sqh-session"]
+  cfg --> plugin_sqh_base_session
+  plugin_sqh_base_session_log_deepseek["session-log-deepseek<br/>@liusiqi-dev/sqh-session-log-deepseek"]
+  cfg --> plugin_sqh_base_session_log_deepseek
+  plugin_sqh_base_typert["typert<br/>@liusiqi-dev/sqh-typert-registry"]
+  cfg --> plugin_sqh_base_typert
+  plugin_sqh_base_typert_loader["typert-loader<br/>@liusiqi-dev/sqh-typert-loader"]
+  cfg --> plugin_sqh_base_typert_loader
+  plugin_sqh_base_typert_gateway["typert-gateway<br/>@liusiqi-dev/sqh-api-gateway"]
+  cfg --> plugin_sqh_base_typert_gateway
+  plugin_sqh_base_session_title["session-title<br/>@liusiqi-dev/sqh-session-title"]
+  cfg --> plugin_sqh_base_session_title
+  plugin_sqh_base_session_title_llm["session-title-llm<br/>@liusiqi-dev/sqh-session-title-first-prompt-llm"]
+  cfg --> plugin_sqh_base_session_title_llm
+  plugin_sqh_base_user_questions["user-questions<br/>@liusiqi-dev/sqh-user-questions"]
+  cfg --> plugin_sqh_base_user_questions
+  plugin_sqh_base_agent["agent<br/>@liusiqi-dev/sqh-agent"]
+  cfg --> plugin_sqh_base_agent
+  plugin_sqh_base_plugin_package_inventory_deepseek["plugin-package-inventory-deepseek<br/>@liusiqi-dev/sqh-plugin-package-inventory-deepseek"]
+  cfg --> plugin_sqh_base_plugin_package_inventory_deepseek
+  plugin_sqh_base_agent_default_model["agent-default-model<br/>@liusiqi-dev/sqh-agent-default-model"]
+  cfg --> plugin_sqh_base_agent_default_model
+  plugin_sqh_base_jobs["jobs<br/>@liusiqi-dev/sqh-jobs-local"]
+  cfg --> plugin_sqh_base_jobs
+  plugin_sqh_base_llm_retry["llm-retry<br/>@liusiqi-dev/sqh-llm-retry"]
+  cfg --> plugin_sqh_base_llm_retry
+  plugin_sqh_base_config_editor["config-editor<br/>@liusiqi-dev/sqh-config-editor"]
+  cfg --> plugin_sqh_base_config_editor
+  plugin_sqh_base_settings["settings<br/>@liusiqi-dev/sqh-settings"]
+  cfg --> plugin_sqh_base_settings
+  plugin_sqh_base_authorization["authorization<br/>@liusiqi-dev/sqh-authorization"]
+  cfg --> plugin_sqh_base_authorization
+  plugin_sqh_base_deepseek_account["deepseek-account<br/>@liusiqi-dev/sqh-deepseek-account-platform"]
+  cfg --> plugin_sqh_base_deepseek_account
+  plugin_sqh_base_credentials["credentials<br/>@liusiqi-dev/sqh-credentials-local"]
+  cfg --> plugin_sqh_base_credentials
+  plugin_sqh_base_llm_pi_ai["llm-pi-ai<br/>@liusiqi-dev/sqh-llm-pi-ai"]
+  cfg --> plugin_sqh_base_llm_pi_ai
+  plugin_sqh_base_session_persistence_jsonl["session-persistence-jsonl<br/>@liusiqi-dev/sqh-session-persistence-jsonl"]
+  cfg --> plugin_sqh_base_session_persistence_jsonl
+  plugin_sqh_base_attachment_local["attachment-local<br/>@liusiqi-dev/sqh-attachment-local"]
+  cfg --> plugin_sqh_base_attachment_local
+  plugin_sqh_base_session_query_sqlite["session-query-sqlite<br/>@liusiqi-dev/sqh-session-query-sqlite"]
+  cfg --> plugin_sqh_base_session_query_sqlite
+  plugin_sqh_base_session_projection["session-projection<br/>@liusiqi-dev/sqh-session-projection"]
+  cfg --> plugin_sqh_base_session_projection
+  plugin_sqh_base_storage["storage<br/>@liusiqi-dev/sqh-storage"]
+  cfg --> plugin_sqh_base_storage
+  plugin_sqh_base_storage_json["storage-json<br/>@liusiqi-dev/sqh-storage-json"]
+  cfg --> plugin_sqh_base_storage_json
+  plugin_sqh_base_storage_domain["storage-domain<br/>@liusiqi-dev/sqh-storage-domain"]
+  cfg --> plugin_sqh_base_storage_domain
+  plugin_sqh_base_session_projection_cache["session-projection-cache<br/>@liusiqi-dev/sqh-session-projection-cache"]
+  cfg --> plugin_sqh_base_session_projection_cache
+  plugin_sqh_base_otel["otel<br/>@liusiqi-dev/sqh-otel"]
+  cfg --> plugin_sqh_base_otel
+  plugin_sqh_base_session_telemetry_otel["session-telemetry-otel<br/>@liusiqi-dev/sqh-session-telemetry-otel"]
+  cfg --> plugin_sqh_base_session_telemetry_otel
+  plugin_sqh_base_subprocess["subprocess<br/>@liusiqi-dev/sqh-subprocess-local"]
+  cfg --> plugin_sqh_base_subprocess
+  plugin_sqh_base_sandbox["sandbox<br/>@liusiqi-dev/sqh-sandbox-local"]
+  cfg --> plugin_sqh_base_sandbox
+  plugin_sqh_base_sandbox_policy["sandbox-policy<br/>@liusiqi-dev/sqh-sandbox-policy"]
+  cfg --> plugin_sqh_base_sandbox_policy
+  plugin_sqh_base_bash_sandbox["bash-sandbox<br/>@liusiqi-dev/sqh-bash-sandbox"]
+  cfg --> plugin_sqh_base_bash_sandbox
+  plugin_sqh_base_pwsh_sandbox["pwsh-sandbox<br/>@liusiqi-dev/sqh-pwsh-sandbox"]
+  cfg --> plugin_sqh_base_pwsh_sandbox
+  plugin_sqh_base_approval["approval<br/>@liusiqi-dev/sqh-user-approval"]
+  cfg --> plugin_sqh_base_approval
+  plugin_sqh_base_permission["permission<br/>@liusiqi-dev/sqh-permission-presets"]
+  cfg --> plugin_sqh_base_permission
+  plugin_sqh_base_shell_env["shell-env<br/>@liusiqi-dev/sqh-shell-env"]
+  cfg --> plugin_sqh_base_shell_env
+  plugin_sqh_base_tool_bash["tool-bash<br/>@liusiqi-dev/sqh-tool-bash"]
+  cfg --> plugin_sqh_base_tool_bash
+  plugin_sqh_base_tool_pwsh["tool-pwsh<br/>@liusiqi-dev/sqh-tool-pwsh"]
+  cfg --> plugin_sqh_base_tool_pwsh
+  plugin_sqh_base_tool_jobs["tool-jobs<br/>@liusiqi-dev/sqh-tool-jobs"]
+  cfg --> plugin_sqh_base_tool_jobs
+  plugin_sqh_base_fs_observation_policy["fs-observation-policy<br/>@liusiqi-dev/sqh-fs-observation-policy"]
+  cfg --> plugin_sqh_base_fs_observation_policy
+  plugin_sqh_base_tool_fs["tool-fs<br/>@liusiqi-dev/sqh-tool-fs"]
+  cfg --> plugin_sqh_base_tool_fs
+  plugin_sqh_base_tool_fs_search["tool-fs-search<br/>@liusiqi-dev/sqh-tool-fs-search"]
+  cfg --> plugin_sqh_base_tool_fs_search
+  plugin_sqh_base_agent_instructions["agent-instructions<br/>@liusiqi-dev/sqh-agent-instructions"]
+  cfg --> plugin_sqh_base_agent_instructions
+  plugin_sqh_base_skill["skill<br/>@liusiqi-dev/sqh-skill"]
+  cfg --> plugin_sqh_base_skill
+  plugin_sqh_base_skill_filesystem["skill-filesystem<br/>@liusiqi-dev/sqh-skill-filesystem"]
+  cfg --> plugin_sqh_base_skill_filesystem
+  plugin_sqh_base_skill_badge["skill-badge<br/>@liusiqi-dev/sqh-skill-badge"]
+  cfg --> plugin_sqh_base_skill_badge
+  plugin_sqh_base_tool_skill["tool-skill<br/>@liusiqi-dev/sqh-tool-skill"]
+  cfg --> plugin_sqh_base_tool_skill
+  plugin_sqh_base_commands["commands<br/>@liusiqi-dev/sqh-commands"]
+  cfg --> plugin_sqh_base_commands
+  plugin_sqh_base_command_feedback["command-feedback<br/>@liusiqi-dev/sqh-command-feedback"]
+  cfg --> plugin_sqh_base_command_feedback
+  plugin_sqh_base_goal["goal<br/>@liusiqi-dev/sqh-goal"]
+  cfg --> plugin_sqh_base_goal
+  plugin_sqh_base_goal_round_driver["goal-round-driver<br/>@liusiqi-dev/sqh-goal-round-driver"]
+  cfg --> plugin_sqh_base_goal_round_driver
+  plugin_sqh_base_command_goal["command-goal<br/>@liusiqi-dev/sqh-command-goal"]
+  cfg --> plugin_sqh_base_command_goal
+  plugin_sqh_base_plan_mode["plan-mode<br/>@liusiqi-dev/sqh-plan-mode"]
+  cfg --> plugin_sqh_base_plan_mode
+  plugin_sqh_base_token_meter["token-meter<br/>@liusiqi-dev/sqh-token-meter"]
+  cfg --> plugin_sqh_base_token_meter
+  plugin_sqh_base_compaction_basic["compaction-basic<br/>@liusiqi-dev/sqh-compaction-basic"]
+  cfg --> plugin_sqh_base_compaction_basic
+  plugin_sqh_base_command_compact["command-compact<br/>@liusiqi-dev/sqh-command-compact"]
+  cfg --> plugin_sqh_base_command_compact
+  plugin_sqh_base_subagent["subagent<br/>@liusiqi-dev/sqh-subagent"]
+  cfg --> plugin_sqh_base_subagent
+  plugin_sqh_base_subagent_spawn_in_process["subagent-spawn-in-process<br/>@liusiqi-dev/sqh-subagent-spawn-in-process"]
+  cfg --> plugin_sqh_base_subagent_spawn_in_process
+  plugin_sqh_base_subagent_fork_in_process["subagent-fork-in-process<br/>@liusiqi-dev/sqh-subagent-fork-in-process"]
+  cfg --> plugin_sqh_base_subagent_fork_in_process
+  plugin_sqh_base_tool_subagent_control["tool-subagent-control<br/>@liusiqi-dev/sqh-tool-subagent-control"]
+  cfg --> plugin_sqh_base_tool_subagent_control
+  plugin_sqh_base_tool_subagent_list_agents["tool-subagent-list-agents<br/>@liusiqi-dev/sqh-tool-subagent-control/list-agents"]
+  cfg --> plugin_sqh_base_tool_subagent_list_agents
+  plugin_sqh_base_tool_subagent["tool-subagent<br/>@liusiqi-dev/sqh-tool-subagent"]
+  cfg --> plugin_sqh_base_tool_subagent
+  plugin_sqh_base_tool_subagent_fork["tool-subagent-fork<br/>@liusiqi-dev/sqh-tool-subagent"]
+  cfg --> plugin_sqh_base_tool_subagent_fork
+  plugin_sqh_base_ptc_runtime["ptc-runtime<br/>@liusiqi-dev/sqh-ptc-runtime-node"]
+  cfg --> plugin_sqh_base_ptc_runtime
+  plugin_sqh_base_workflow_ptc["workflow-ptc<br/>@liusiqi-dev/sqh-workflow-ptc"]
+  cfg --> plugin_sqh_base_workflow_ptc
+  plugin_sqh_base_tool_workflow["tool-workflow<br/>@liusiqi-dev/sqh-tool-workflow"]
+  cfg --> plugin_sqh_base_tool_workflow
+  plugin_sqh_base_timeout_policy["timeout-policy<br/>@liusiqi-dev/sqh-tool-call-timeout-policy"]
+  cfg --> plugin_sqh_base_timeout_policy
+  plugin_sqh_base_spill_local["spill-local<br/>@liusiqi-dev/sqh-spill-local"]
+  cfg --> plugin_sqh_base_spill_local
+  plugin_sqh_base_spill_policy["spill-policy<br/>@liusiqi-dev/sqh-spill-policy"]
+  cfg --> plugin_sqh_base_spill_policy
+  plugin_sqh_base_session_checkpoint_policy["session-checkpoint-policy<br/>@liusiqi-dev/sqh-session-checkpoint-policy"]
+  cfg --> plugin_sqh_base_session_checkpoint_policy
+  plugin_sqh_base_tool_result_pruner["tool-result-pruner<br/>@liusiqi-dev/sqh-compaction-tool-result-pruner"]
+  cfg --> plugin_sqh_base_tool_result_pruner
+  plugin_sqh_base_image_offload["image-offload<br/>@liusiqi-dev/sqh-compaction-image-offload"]
+  cfg --> plugin_sqh_base_image_offload
+  plugin_sqh_base_tool_todo["tool-todo<br/>@liusiqi-dev/sqh-tool-todo"]
+  cfg --> plugin_sqh_base_tool_todo
+  plugin_sqh_base_tool_goal["tool-goal<br/>@liusiqi-dev/sqh-tool-goal"]
+  cfg --> plugin_sqh_base_tool_goal
+  plugin_sqh_base_tool_ralph["tool-ralph<br/>@liusiqi-dev/sqh-tool-ralph"]
+  cfg --> plugin_sqh_base_tool_ralph
+  plugin_sqh_base_repeat_tool_reminder["repeat-tool-reminder<br/>@liusiqi-dev/sqh-repeat-tool-reminder"]
+  cfg --> plugin_sqh_base_repeat_tool_reminder
+  plugin_sqh_base_web["web<br/>@liusiqi-dev/sqh-web"]
+  cfg --> plugin_sqh_base_web
+  plugin_sqh_base_web_search_deepseek["web-search-deepseek<br/>@liusiqi-dev/sqh-web-search-deepseek"]
+  cfg --> plugin_sqh_base_web_search_deepseek
+  plugin_sqh_base_web_fetch_http["web-fetch-http<br/>@liusiqi-dev/sqh-web-fetch-http"]
+  cfg --> plugin_sqh_base_web_fetch_http
+  plugin_sqh_base_tool_web["tool-web<br/>@liusiqi-dev/sqh-tool-web"]
+  cfg --> plugin_sqh_base_tool_web
+  plugin_sqh_base_mcp_resources["mcp-resources<br/>@liusiqi-dev/sqh-mcp-resources"]
+  cfg --> plugin_sqh_base_mcp_resources
+  plugin_sqh_base_tools["tools<br/>@liusiqi-dev/sqh-tools"]
+  cfg --> plugin_sqh_base_tools
+  plugin_sqh_base_system_prompt["system-prompt<br/>@liusiqi-dev/sqh-system-prompt"]
+  cfg --> plugin_sqh_base_system_prompt
+  plugin_sqh_base_agent_loop["agent-loop<br/>@liusiqi-dev/sqh-agent-loop"]
+  cfg --> plugin_sqh_base_agent_loop
+  plugin_sqh_base_fs_sandbox["fs-sandbox<br/>@liusiqi-dev/sqh-fs-sandbox"]
+  cfg --> plugin_sqh_base_fs_sandbox
+  plugin_sqh_base_llm_deepseek["llm-deepseek<br/>@liusiqi-dev/sqh-llm-deepseek-api-key"]
+  cfg --> plugin_sqh_base_llm_deepseek
+  plugin_sqh_base_llm_deepseek_account["llm-deepseek-account<br/>@liusiqi-dev/sqh-llm-deepseek-account"]
+  cfg --> plugin_sqh_base_llm_deepseek_account
 ```
 
 | Plugin id | Package / module |
