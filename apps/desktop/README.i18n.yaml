@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write apps/desktop/README.md
 /siqi-harness-desktop:
-  en: dadd0c0c3d3d1de0
-  zh: 512a0501750a09e1
+  en: b464b723ea758e8a
+  zh: 73009b8621aa5548
 /siqi-harness-desktop/terminal-command:
   en: 8f2901a61dfe56be
   zh: 96f1add3b23b2014

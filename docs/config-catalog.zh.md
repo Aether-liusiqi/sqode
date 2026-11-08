@@ -495,26 +495,6 @@ export interface Config {
 ```
 <!-- END GENERATED config-catalog:@liusiqi-dev/sqh-client-hmr -->
 
-<!-- BEGIN GENERATED config-catalog:@liusiqi-dev/sqh-client-product-analytics -->
-<a id="liusiqi-devsqh-client-product-analytics"></a>
-
-## `@liusiqi-dev/sqh-client-product-analytics`
-
-- `inject`: `deepseekAccount` · `productTelemetry`
-- `refs`: `Volatile` (`@liusiqi-dev/cordis`)
-- `source`: [`packages/client/product-analytics/src/index.ts:13`](../packages/client/product-analytics/src/index.ts)
-
-```ts config-catalog
-/** Application-owned collection policy; no user settings surface. */
-export interface Config {
-  /** Live application collection policy; ordinary Web does not mount this service. */
-  enabled: Volatile<boolean>
-  /** Running Desktop release, absent when unavailable. */
-  appVersion?: string
-}
-```
-<!-- END GENERATED config-catalog:@liusiqi-dev/sqh-client-product-analytics -->
-
 <!-- BEGIN GENERATED config-catalog:@liusiqi-dev/sqh-client-shortcuts -->
 <a id="liusiqi-devsqh-client-shortcuts"></a>
 

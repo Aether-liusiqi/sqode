@@ -42,7 +42,6 @@ No runtime invariant companion is published: channel creation registers no indep
 ## Further Exploration
 
 - [OTel subsystem](../../../docs/subsystems/otel.md) — service ownership and API.
-- [Product adapter](../../host/product-telemetry-otel/README.md) — explicit analytics policy and configuration.
 - [Session adapter](../../session/session-telemetry-otel/README.md) — feedback authorization and configured upload limits.
 
 <a id="model-experience"></a>

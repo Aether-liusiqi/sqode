@@ -7,8 +7,6 @@ kind: "package-reference"
 
 English | [中文](README.zh.md)
 
-Desktop product events use the optional [product analytics service](../product-analytics/README.md); ordinary Web interactions are excluded.
-
 ## Summary
 
 `sqh-client-ui-settings-models` is the Models settings page of the sqh web client: users configure API keys (stored write-only under the profile's credential reference), edit each provider's model list, and hand-declare custom pi-ai routes, with provider rows and one editor card at a time. The page joins the provider directory, the settings document, and the credential descriptions into one shared snapshot, so a row's state stays consistent across all three. It also walks first-run users through two ordered dialogs — a versioned preview notice and the conditional official-DeepSeek credential step.
@@ -118,7 +116,6 @@ None; this package neither assembles nor sends a provider request.
 ## Known Limitations and Deferred Work
 
 <a id="known-limitations-and-deferred-work"></a>
-
 
 These limits define the editor's field coverage and the page's reach; they are current package constraints, not a settings roadmap.
 

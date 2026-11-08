@@ -62,7 +62,6 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 | `@liusiqi-dev/sqh-client-hmr` | yes | Web client graph synchronization and rebuilt-bundle reload transport |
 | `@liusiqi-dev/sqh-client-locale` | no | Locale plugin: Host-backed preference, extensible language catalog, browser fallback, and typed built-in dictionaries |
 | `@liusiqi-dev/sqh-client-modules` | no | Client module system, dual-face: node half composes the __SQH_BOOT__ entry graph (incremental sqh.client scan, bundle route, index tap, webPlugins service); browser half is the lazy-CJS module table the vendored cordis Loader consumes as its internal seam |
-| `@liusiqi-dev/sqh-client-product-analytics` | yes | Desktop product event collection and authenticated Host reporting |
 | `@liusiqi-dev/sqh-client-resources` | no | Unified client resource model: protocol-registered providers turn URL addresses into live values, consumed through the useResource global standard hook |
 | `@liusiqi-dev/sqh-client-shortcuts` | yes | Application keyboard command registry and physical-key routing |
 | `@liusiqi-dev/sqh-client-ui-agent-preset` | no | Agent-preset surfaces: the default for later sessions, this session's seat, and the composition editor |
@@ -254,7 +253,6 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 | `@liusiqi-dev/sqh-host-frontend-static` | yes | SPA dist server for the Web shell: owns the webserver fallback seat, serving explicit index entries and static assets with traversal rejection and 404 misses |
 | `@liusiqi-dev/sqh-host-open-in-app` | yes | Host half of open-in-app: resolved application catalog, icons, and the launch endpoint as three webServer routes |
 | `@liusiqi-dev/sqh-host-plugin-inventory` | no | Read-only Remote projection of current Cordis Loader plugin state |
-| `@liusiqi-dev/sqh-host-product-telemetry-otel` | yes | Explicit product usage events exported through OpenTelemetry HTTP logs |
 | `@liusiqi-dev/sqh-host-webserver` | yes | Web route-registration plugin: HTTP and upgrade routes, index transform taps, and static dist fallback; knows no harness concepts |
 
 ## interaction
