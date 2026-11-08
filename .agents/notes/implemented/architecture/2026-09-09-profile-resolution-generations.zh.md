@@ -58,7 +58,7 @@ ESM `import` 和 CommonJS `require` 都选中这些版本。在每种模块格�
 
 ### 源码与构建产物的模块身份
 
-[源码启动器](2026-07-29-dsh-source-launch-tsx-esm.zh.md)使用 tsx 的 ESM-only 钩子。导入方 URL 含有 `/node_modules/` 时，tsx 会跳过 tsconfig `paths`。因此，把 workspace 软链接的逻辑路径用作 fallback 声明锚点，可能选中构建后的 `lib/` 导出，而这些模块在真实 workspace 路径中发起的 import 又通过 paths 映射选中 `src/`。真实声明锚点让 workspace import 一致遵循源码映射；没有匹配 workspace 映射的包仍使用普通包导出解析。
+[源码启动器](2026-07-29-sqh-source-launch-tsx-esm.zh.md)使用 tsx 的 ESM-only 钩子。导入方 URL 含有 `/node_modules/` 时，tsx 会跳过 tsconfig `paths`。因此，把 workspace 软链接的逻辑路径用作 fallback 声明锚点，可能选中构建后的 `lib/` 导出，而这些模块在真实 workspace 路径中发起的 import 又通过 paths 映射选中 `src/`。真实声明锚点让 workspace import 一致遵循源码映射；没有匹配 workspace 映射的包仍使用普通包导出解析。
 
 例如，`@siqi-ai/dsh-tools` 使用 `Symbol()` 创建 scheduler 键。从 `lib/` 加载的 Tools 实例，无法通过另一个 `src/` 模块实例导入的键暴露该 scheduler。源码启动让 Tools 与 AgentLoop 都位于 `src/`；普通 Node 启动让两者都位于 `lib/`。scheduler 保留模块本地的 Symbol；正确的 import 共享同一个模块实例。
 

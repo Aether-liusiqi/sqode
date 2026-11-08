@@ -25,7 +25,7 @@ agent（智能体）可以通过该内置提供方加载官方「powered by sqh�
 <a id="use-this-package"></a>
 ## 使用本包
 
-启用插件即可让 `dsh-badge` skill 出现在会话 skill 目录中；随后模型可以像加载任何其他 skill 一样加载它，并遵循其指令添加「powered by dsh」徽章。
+启用插件即可让 `sqh-badge` skill 出现在会话 skill 目录中；随后模型可以像加载任何其他 skill 一样加载它，并遵循其指令添加「powered by dsh」徽章。
 
 ### 何时选择
 
@@ -39,16 +39,16 @@ agent（智能体）可以通过该内置提供方加载官方「powered by sqh�
 - name: '@liusiqi-dev/sqh-skill-badge'
 ```
 
-启用后，`dsh-badge` 会出现在会话目录的可用 skill 中。该 skill 覆盖远程 Markdown 徽章（基于 Shields.io）和随包分发的 PNG 徽章资源，后者用于无法可靠获取远程图片的目标环境。
+启用后，`sqh-badge` 会出现在会话目录的可用 skill 中。该 skill 覆盖远程 Markdown 徽章（基于 Shields.io）和随包分发的 PNG 徽章资源，后者用于无法可靠获取远程图片的目标环境。
 
 ### 徽章 skill 提供什么
 
 - **Markdown 片段。** 在文档、PR 与 merge request 中嵌入官方徽章标记的指令。
-- **随包分发的 PNG 资源。** `dsh-badge.png`（726×120 源图，按 121×20 渲染），在无法导入远程图片的环境中可用。
+- **随包分发的 PNG 资源。** `sqh-badge.png`（726×120 源图，按 121×20 渲染），在无法导入远程图片的环境中可用。
 
 ### 可观察的成功与失败
 
-启用插件会使 `dsh-badge` 出现在目录中并可凭名称加载；禁用或省略该行则它不会出现在任何目录中。由于提供方不可变，发现始终成功且恰好返回一个 skill，绝不会报告部分结果。
+启用插件会使 `sqh-badge` 出现在目录中并可凭名称加载；禁用或省略该行则它不会出现在任何目录中。由于提供方不可变，发现始终成功且恰好返回一个 skill，绝不会报告部分结果。
 
 -----
 
@@ -62,7 +62,7 @@ agent（智能体）可以通过该内置提供方加载官方「powered by sqh�
 
 ### 设计理念
 
-该提供方是一个不可变、同步注册的 skill 来源：它以 `dsh-badge` 作为提供方名称、按内置 skill rank（600）注册一个固定候选项，把随包分发的 `assets/` 目录作为该 skill 的目录资源基底公开，并在每次加载时从随包分发的 `assets/dsh-badge.md` 文件读取 skill 正文。
+该提供方是一个不可变、同步注册的 skill 来源：它以 `sqh-badge` 作为提供方名称、按内置 skill rank（600）注册一个固定候选项，把随包分发的 `assets/` 目录作为该 skill 的目录资源基底公开，并在每次加载时从随包分发的 `assets/sqh-badge.md` 文件读取 skill 正文。
 
 ### 源码地图
 
@@ -70,7 +70,7 @@ agent（智能体）可以通过该内置提供方加载官方「powered by sqh�
 |---|---|
 | [`src/index.ts`](src/index.ts) | 插件入口与不可变提供方：一个候选项、资源基底、正文加载 |
 | — | 不发布运行时不变式伴生入口；本包只持有一个不可变的提供方注册，注册唯一性与生命周期检查由 skill 注册表负责。 |
-| [`assets/`](assets/) | 随包分发的 skill 正文（`dsh-badge.md`）与 PNG 资源（`dsh-badge.png`） |
+| [`assets/`](assets/) | 随包分发的 skill 正文（`sqh-badge.md`）与 PNG 资源（`sqh-badge.png`） |
 
 </details>
 
@@ -103,7 +103,7 @@ agent（智能体）可以通过该内置提供方加载官方「powered by sqh�
 
 这些限制说明内置提供方不做什么。它们是当前包约束，不是任务积压。
 
-- **固定一个 skill，无运行时自定义**——提供方恰好贡献 `dsh-badge` 这一个 skill；需要其他徽章变体的部署请自行编写 skill。
+- **固定一个 skill，无运行时自定义**——提供方恰好贡献 `sqh-badge` 这一个 skill；需要其他徽章变体的部署请自行编写 skill。
 - **远程 Markdown 依赖 Shields.io**——远程徽章标记内嵌 Shields.io 图片；目标环境无法可靠获取远程图片时，请使用随包分发的 PNG。
 
 <a id="dev-note"></a>

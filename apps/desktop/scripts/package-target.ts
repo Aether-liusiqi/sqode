@@ -284,7 +284,7 @@ export function preparedInputsDigest(): string {
   for (const file of [
     'pnpm-lock.yaml',
     'apps/desktop/package.json',
-    'apps/desktop/scripts/prepare-dsh.ts',
+    'apps/desktop/scripts/prepare-sqh.ts',
     'scripts/primary-runtime/prepare.ts',
     'packages/bundle/web-app/package.json',
   ]) {
@@ -565,7 +565,7 @@ export async function packageTarget(
     await execute(['run', 'prepare:runtime', ...(signPrimaryRuntime ? ['--defer-primary-runtime-smoke'] : [])], downloadEnv)
     if (signPrimaryRuntime) await execute(['run', 'sign:primary-runtime'], electronBuilderEnv)
     await execute(['run', 'prepare:packages'], targetEnv)
-    await execute(['run', 'prepare:dsh', ...(signPrimaryRuntime ? ['--defer-runtime-smoke'] : [])], downloadEnv)
+    await execute(['run', 'prepare:sqh', ...(signPrimaryRuntime ? ['--defer-runtime-smoke'] : [])], downloadEnv)
     if (signPrimaryRuntime) await execute(['run', 'sign:primary-runtime', '--dsh'], electronBuilderEnv)
     writePreparedStamp(buildPaths.root, preparedDigest)
   }

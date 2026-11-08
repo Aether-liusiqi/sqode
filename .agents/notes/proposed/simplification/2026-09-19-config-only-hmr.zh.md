@@ -16,7 +16,7 @@ Status: proposed
 
 删除模块监听与分发、依赖图分析、模块缓存/fiber 替换与恢复、仅供模块使用的状态/选项、`baseDir`、`getOuterStack`、`getLinked` 及 `hmr/change`/`hmr/reload`。删除[导入错误格式化器](../../../../packages/boot/hmr/src/error.ts)、仅供模块使用的依赖和模块/错误专用测试。保留 Chokidar 及[精确监听](../../../../packages/boot/hmr/src/watch-config.ts) 实际使用的配置监听选项。已定位约 400 行源码和 372 行专用测试属于可删除模块路径；实现时必须单独计算保留的配置代码和混合测试。
 
-仅修改[profile 管理决策](../../implemented/architecture/2026-09-14-current-profile-plugin-management.zh.md) 与[单一启动器决策](../../implemented/architecture/2026-08-22-single-dsh-application-launcher.zh.md) 中承诺模块替换及其协调的部分。其配置、安装与启动器职责保留。[非事务式 Loader 决策](../../implemented/simplification/2026-09-09-nontransactional-loader.zh.md) 为避免重复回滚提供理由，但尚未授权撤回源码 HMR。
+仅修改[profile 管理决策](../../implemented/architecture/2026-09-14-current-profile-plugin-management.zh.md) 与[单一启动器决策](../../implemented/architecture/2026-08-22-single-sqh-application-launcher.zh.md) 中承诺模块替换及其协调的部分。其配置、安装与启动器职责保留。[非事务式 Loader 决策](../../implemented/simplification/2026-09-09-nontransactional-loader.zh.md) 为避免重复回滚提供理由，但尚未授权撤回源码 HMR。
 
 ## 考虑过的替代方案
 
