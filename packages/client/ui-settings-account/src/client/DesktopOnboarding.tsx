@@ -1,5 +1,4 @@
 /** Coordinates onboarding navigation, transitions and the shared native recharge page. */
-import type { ProductEventMap } from '@liusiqi-dev/sqh-client-product-analytics/client'
 import { useEffect, useRef, useState } from 'react'
 import { Button } from '@liusiqi-dev/sqh-client-ui-primitives'
 import { hasOnboardingCredit } from './onboarding-balance.ts'
@@ -26,7 +25,7 @@ const onboardingPages = {
  * @returns the active first-run page.
  */
 export function DesktopOnboarding({
-  state, account, openPlatformPage, update, complete, retry, t, locale, track, exiting = false,
+  state, account, openPlatformPage, update, complete, retry, t, locale, exiting = false,
 }: DesktopOnboardingProps) {
   const [dialog, setDialog] = useState<OnboardingConfirmationKind | null>(null)
   const heading = useRef<HTMLHeadingElement>(null)
@@ -63,27 +62,19 @@ export function DesktopOnboarding({
     if (state.status === 'loading') return
     if (shownPage.current === pageName) return
     shownPage.current = pageName
-    track?.('onboarding_page_view', { page_name: pageName })
-  }, [state.visible, state.status, step, pageName, exiting, track])
+  }, [state.visible, state.status, step, pageName, exiting])
   const shownPopup = useRef<string | null>(null)
   useEffect(() => {
     if (dialog === null || !state.visible || state.status === 'loading' || step === 'done') { shownPopup.current = null; return }
     if (shownPopup.current === dialog) return
     shownPopup.current = dialog
-    track?.('onboarding_popup_view', { popup_name: dialog === 'skip' ? 'skip_setting' : 'skip_charge' })
-  }, [dialog, track, state.visible, state.status, step])
-  const popupClick = (button_name: ProductEventMap['onboarding_popup_click']['button_name']) => {
-    track?.('onboarding_popup_click', { popup_name: dialog === 'skip' ? 'skip_setting' : 'skip_charge', button_name })
-  }
+  }, [dialog, state.visible, state.status, step])
+  const popupClick = (_button_name: string): void => {}
   if (state.visible && state.status === 'loading') return <OnboardingSurface>
     <div className={css.loading} role="status">{t('onboardingLoading')}</div>
   </OnboardingSurface>
   if (!state.visible || pageName === undefined) return null
-  const click = (button_name: ProductEventMap['onboarding_page_click']['button_name']) => {
-    const selected_content = step === 'purpose' && progress.purpose !== null ? ({ office: 'office', development: 'code', both: 'code_office' } as const)[progress.purpose]
-      : step === 'process' && progress.process !== null ? ({ compact: 'focus_result', standard: 'key_detail', detailed: 'full_process' } as const)[progress.process] : undefined
-    track?.('onboarding_page_click', { page_name: pageName, button_name, ...selected_content === undefined ? {} : { selected_content } })
-  }
+  const click = (_button_name: string): void => {}
   const go = (next: 'welcome' | 'credit' | 'purpose' | 'process') => { void update({ step: next }) }
   const canRecharge = openPlatformPage !== undefined
   const recharge = () => {

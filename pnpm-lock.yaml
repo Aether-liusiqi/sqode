@@ -607,9 +607,6 @@ importers:
       '@liusiqi-dev/sqh-atomic-write':
         specifier: workspace:*
         version: link:../../packages/util/atomic-write
-      '@liusiqi-dev/sqh-client-product-analytics':
-        specifier: workspace:*
-        version: link:../../packages/client/product-analytics
       '@liusiqi-dev/sqh-client-shortcuts':
         specifier: workspace:*
         version: link:../../packages/client/shortcuts
@@ -1206,9 +1203,6 @@ importers:
       '@liusiqi-dev/sqh-client-file-upload':
         specifier: workspace:*
         version: link:../../client/file-upload
-      '@liusiqi-dev/sqh-client-product-analytics':
-        specifier: workspace:*
-        version: link:../../client/product-analytics
       '@liusiqi-dev/sqh-client-ui-plugin-manager':
         specifier: workspace:*
         version: link:../../client/ui-plugin-manager
@@ -2427,9 +2421,6 @@ importers:
       '@liusiqi-dev/sqh-client-modules':
         specifier: workspace:*
         version: link:../../client/modules
-      '@liusiqi-dev/sqh-client-product-analytics':
-        specifier: workspace:*
-        version: link:../../client/product-analytics
       '@liusiqi-dev/sqh-client-resources':
         specifier: workspace:*
         version: link:../../client/resources
@@ -2631,9 +2622,6 @@ importers:
       '@liusiqi-dev/sqh-host-plugin-inventory':
         specifier: workspace:*
         version: link:../../host/plugin-inventory
-      '@liusiqi-dev/sqh-host-product-telemetry-otel':
-        specifier: workspace:*
-        version: link:../../host/product-telemetry-otel
       '@liusiqi-dev/sqh-host-webserver':
         specifier: workspace:*
         version: link:../../host/webserver
@@ -2961,52 +2949,6 @@ importers:
         specifier: workspace:*
         version: link:../../util/package-manifest
 
-  packages/client/product-analytics:
-    dependencies:
-      '@liusiqi-dev/schemastery':
-        specifier: link:../../../vendor/schemastery
-        version: link:../../../vendor/schemastery
-      '@liusiqi-dev/sqh-typert-protocol':
-        specifier: workspace:*
-        version: link:../../typert/protocol
-      zod:
-        specifier: ^4.4.3
-        version: 4.4.3
-    devDependencies:
-      '@liusiqi-dev/cordis':
-        specifier: workspace:~
-        version: link:../../../vendor/cordis
-      '@liusiqi-dev/cordis-plugin-loader':
-        specifier: workspace:~
-        version: link:../../../vendor/loader
-      '@liusiqi-dev/sqh-api-gateway':
-        specifier: workspace:*
-        version: link:../../api/gateway
-      '@liusiqi-dev/sqh-compaction':
-        specifier: workspace:*
-        version: link:../../compaction/compaction
-      '@liusiqi-dev/sqh-deepseek-account':
-        specifier: workspace:*
-        version: link:../../credentials/deepseek-account
-      '@liusiqi-dev/sqh-host-product-telemetry-otel':
-        specifier: workspace:*
-        version: link:../../host/product-telemetry-otel
-      '@liusiqi-dev/sqh-host-webserver':
-        specifier: workspace:*
-        version: link:../../host/webserver
-      '@liusiqi-dev/sqh-llm':
-        specifier: workspace:*
-        version: link:../../llm/llm
-      '@liusiqi-dev/sqh-otel':
-        specifier: workspace:*
-        version: link:../../telemetry/otel
-      '@liusiqi-dev/sqh-session':
-        specifier: workspace:*
-        version: link:../../core/session
-      '@liusiqi-dev/sqh-settings':
-        specifier: workspace:*
-        version: link:../../settings/settings
-
   packages/client/resources:
     devDependencies:
       '@liusiqi-dev/cordis':
@@ -3287,9 +3229,6 @@ importers:
       '@liusiqi-dev/sqh-client-locale':
         specifier: workspace:*
         version: link:../locale
-      '@liusiqi-dev/sqh-client-product-analytics':
-        specifier: workspace:*
-        version: link:../product-analytics
       '@liusiqi-dev/sqh-client-store':
         specifier: workspace:*
         version: link:../store
@@ -3495,9 +3434,6 @@ importers:
       '@liusiqi-dev/sqh-client-locale':
         specifier: workspace:*
         version: link:../locale
-      '@liusiqi-dev/sqh-client-product-analytics':
-        specifier: workspace:*
-        version: link:../product-analytics
       '@liusiqi-dev/sqh-client-shortcuts':
         specifier: workspace:*
         version: link:../shortcuts
@@ -4063,9 +3999,6 @@ importers:
       '@liusiqi-dev/sqh-client-locale':
         specifier: workspace:*
         version: link:../locale
-      '@liusiqi-dev/sqh-client-product-analytics':
-        specifier: workspace:*
-        version: link:../product-analytics
       '@liusiqi-dev/sqh-client-store':
         specifier: workspace:*
         version: link:../store
@@ -4346,9 +4279,6 @@ importers:
       '@liusiqi-dev/sqh-client-locale':
         specifier: workspace:*
         version: link:../locale
-      '@liusiqi-dev/sqh-client-product-analytics':
-        specifier: workspace:*
-        version: link:../product-analytics
       '@liusiqi-dev/sqh-client-store':
         specifier: workspace:*
         version: link:../store
@@ -4735,9 +4665,6 @@ importers:
       '@liusiqi-dev/sqh-client-locale':
         specifier: workspace:*
         version: link:../locale
-      '@liusiqi-dev/sqh-client-product-analytics':
-        specifier: workspace:*
-        version: link:../product-analytics
       '@liusiqi-dev/sqh-client-store':
         specifier: workspace:*
         version: link:../store
@@ -4920,9 +4847,6 @@ importers:
       '@liusiqi-dev/sqh-client-locale':
         specifier: workspace:*
         version: link:../locale
-      '@liusiqi-dev/sqh-client-product-analytics':
-        specifier: workspace:*
-        version: link:../product-analytics
       '@liusiqi-dev/sqh-client-store':
         specifier: workspace:*
         version: link:../store
@@ -5259,9 +5183,6 @@ importers:
       '@liusiqi-dev/sqh-client-locale':
         specifier: workspace:*
         version: link:../locale
-      '@liusiqi-dev/sqh-client-product-analytics':
-        specifier: workspace:*
-        version: link:../product-analytics
       '@liusiqi-dev/sqh-client-shortcuts':
         specifier: workspace:*
         version: link:../shortcuts
@@ -6209,9 +6130,6 @@ importers:
       '@liusiqi-dev/sqh-client-locale':
         specifier: workspace:*
         version: link:../locale
-      '@liusiqi-dev/sqh-client-product-analytics':
-        specifier: workspace:*
-        version: link:../product-analytics
       '@liusiqi-dev/sqh-client-shortcuts':
         specifier: workspace:*
         version: link:../shortcuts
@@ -9167,37 +9085,6 @@ importers:
       '@liusiqi-dev/sqh-typert-protocol':
         specifier: workspace:*
         version: link:../../typert/protocol
-
-  packages/host/product-telemetry-otel:
-    dependencies:
-      '@liusiqi-dev/schemastery':
-        specifier: link:../../../vendor/schemastery
-        version: link:../../../vendor/schemastery
-      '@opentelemetry/api-logs':
-        specifier: ^0.220.0
-        version: 0.220.0
-      '@opentelemetry/otlp-exporter-base':
-        specifier: ^0.220.0
-        version: 0.220.0(@opentelemetry/api@1.9.1)
-      '@opentelemetry/sdk-logs':
-        specifier: ^0.220.0
-        version: 0.220.0(@opentelemetry/api@1.9.1)
-    devDependencies:
-      '@liusiqi-dev/cordis':
-        specifier: workspace:~
-        version: link:../../../vendor/cordis
-      '@liusiqi-dev/cordis-plugin-loader':
-        specifier: workspace:~
-        version: link:../../../vendor/loader
-      '@liusiqi-dev/sqh-app-boot':
-        specifier: workspace:*
-        version: link:../../boot/app-boot
-      '@liusiqi-dev/sqh-loader-smoke':
-        specifier: workspace:*
-        version: link:../../test-support/loader-smoke
-      '@liusiqi-dev/sqh-otel':
-        specifier: workspace:*
-        version: link:../../telemetry/otel
 
   packages/host/webserver:
     dependencies:

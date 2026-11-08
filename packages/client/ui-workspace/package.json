@@ -78,8 +78,7 @@
     "@types/react": "~18.3.1",
     "clsx": "^2.0.0",
     "react": "^18.2.0",
-    "@liusiqi-dev/sqh-client-shortcuts": "workspace:*",
-    "@liusiqi-dev/sqh-client-product-analytics": "workspace:*"
+    "@liusiqi-dev/sqh-client-shortcuts": "workspace:*"
   },
   "files": [
     "lib/index.js",

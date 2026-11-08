@@ -65,8 +65,7 @@
     "@liusiqi-dev/sqh-util-values": "workspace:*",
     "@liusiqi-dev/sqh-client-ui-renderer": "workspace:*",
     "@liusiqi-dev/sqh-client-ui-session": "workspace:*",
-    "clsx": "^2.1.1",
-    "@liusiqi-dev/sqh-client-product-analytics": "workspace:*"
+    "clsx": "^2.1.1"
   },
   "files": [
     "lib/index.js",

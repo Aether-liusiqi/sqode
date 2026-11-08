@@ -15,7 +15,6 @@
  * its relative time and its trailing status line. Export discipline:
  * packages/client/AGENTS.md.
  */
-import type {} from '@liusiqi-dev/sqh-client-product-analytics/client'
 import type { Context } from '@liusiqi-dev/cordis'
 import type { RemoteHostFacts } from '@liusiqi-dev/sqh-api-remotes/client'
 import type { ISessions } from '@liusiqi-dev/sqh-api-session-controller/client'

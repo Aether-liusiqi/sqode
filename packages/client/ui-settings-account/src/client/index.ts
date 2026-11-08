@@ -1,5 +1,4 @@
 /** Desktop account settings registration and reconnecting Remote subscription. */
-import type {} from '@liusiqi-dev/sqh-client-product-analytics/client'
 import type { TranscriptViewMode } from '@liusiqi-dev/sqh-client-ui-chat/client'
 import type { Context } from '@liusiqi-dev/cordis'
 import type {} from '@liusiqi-dev/sqh-client-locale/client'
@@ -268,7 +267,6 @@ export function apply(ctx: Context): void {
         update: (change: OnboardingChange) => controller.update(change),
         complete: (reason: 'completed' | 'skipped') => controller.complete(reason),
         retry: () => controller.retry(),
-        track: (name, attributes) => ctx.get('productAnalytics')?.track(name, attributes),
       }),
     }, DesktopOnboardingEntry))
   }

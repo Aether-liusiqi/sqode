@@ -500,7 +500,7 @@ export interface Config {
 
 - `inject`: `deepseekAccount` · `productTelemetry`
 - `refs`: `Volatile` (`@liusiqi-dev/cordis`)
-- `source`: [`packages/client/product-analytics/src/index.ts:14`](../packages/client/product-analytics/src/index.ts)
+- `source`: [`packages/client/product-analytics/src/index.ts:13`](../packages/client/product-analytics/src/index.ts)
 
 ```ts config-catalog
 /** Application-owned collection policy; no user settings surface. */
@@ -1451,43 +1451,6 @@ export interface Config {
 }
 ```
 <!-- END GENERATED config-catalog:@liusiqi-dev/sqh-host-open-in-app -->
-
-<!-- BEGIN GENERATED config-catalog:@liusiqi-dev/sqh-host-product-telemetry-otel -->
-<a id="liusiqi-devsqh-host-product-telemetry-otel"></a>
-
-## `@liusiqi-dev/sqh-host-product-telemetry-otel`
-
-- `inject`: `otel`
-- `source`: [`packages/host/product-telemetry-otel/src/index.ts:18`](../packages/host/product-telemetry-otel/src/index.ts)
-
-```ts config-catalog
-/** Collector routing, application identity, and bounded in-memory batch settings. */
-export interface Config {
-  /** Full HTTP(S) logs URL. */
-  endpoint: string
-  /** Collector routing header. */
-  channel: string
-  /** Resource service.name supplied by the application composition. */
-  serviceName: string
-  /** Resource service.version supplied by the application composition. */
-  serviceVersion: string
-  /** Omit to honor OTEL_EXPORTER_OTLP_LOGS_COMPRESSION / OTEL_EXPORTER_OTLP_COMPRESSION. */
-  compression?: 'none' | 'gzip'
-  /** Maximum records per export; must not exceed maxQueueSize. */
-  maxExportBatchSize: number
-  /** Maximum queued records; the SDK drops new records when full. */
-  maxQueueSize: number
-  /** Delay before exporting a partial batch. */
-  scheduledDelayMillis: number
-  /** Exporter HTTP deadline, including SDK transient-error retries. */
-  timeoutMillis: number
-  /** Processor deadline for one batch export. */
-  exportTimeoutMillis: number
-  /** Drain deadline; expiry cancels pending exports before disposal completes. */
-  shutdownTimeoutMillis: number
-}
-```
-<!-- END GENERATED config-catalog:@liusiqi-dev/sqh-host-product-telemetry-otel -->
 
 <!-- BEGIN GENERATED config-catalog:@liusiqi-dev/sqh-host-webserver -->
 <a id="liusiqi-devsqh-host-webserver"></a>

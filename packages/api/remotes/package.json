@@ -94,7 +94,6 @@
     "@liusiqi-dev/sqh-client-ui-plugin-manager": "workspace:*",
     "@liusiqi-dev/sqh-office-to-pdf": "workspace:*",
     "@liusiqi-dev/sqh-api-account-controller": "workspace:*",
-    "@liusiqi-dev/sqh-deepseek-account": "workspace:*",
-    "@liusiqi-dev/sqh-client-product-analytics": "workspace:*"
+    "@liusiqi-dev/sqh-deepseek-account": "workspace:*"
   }
 }

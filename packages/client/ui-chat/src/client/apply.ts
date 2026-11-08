@@ -1,5 +1,4 @@
 /** Register the Chat Conversation target, renderers, stats, and details surface. */
-import type {} from '@liusiqi-dev/sqh-client-product-analytics/client'
 import type { Context } from '@liusiqi-dev/cordis'
 import type { ImageAttachmentRef } from '@liusiqi-dev/sqh-attachment'
 import type {} from '@liusiqi-dev/sqh-api-remotes/client'

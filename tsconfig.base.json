@@ -33,9 +33,6 @@
     // not declaration path aliases, keep each package/vendor source compiled
     // under its own tsconfig boundary.
     "paths": {
-      "@liusiqi-dev/sqh-client-product-analytics": ["./packages/client/product-analytics/src/index.ts"],
-      "@liusiqi-dev/sqh-client-product-analytics/types": ["./packages/client/product-analytics/src/events.ts"],
-      "@liusiqi-dev/sqh-client-product-analytics/client": ["./packages/client/product-analytics/src/client/index.ts"],
       "@liusiqi-dev/sqh-otel": ["./packages/telemetry/otel/src"],
       "@liusiqi-dev/sqh-client-ui-settings-account": ["./packages/client/ui-settings-account/src/index.ts"],
       "@liusiqi-dev/sqh-client-ui-settings-account/client": ["./packages/client/ui-settings-account/src/client/index.ts"],
@@ -208,7 +205,6 @@
       "@liusiqi-dev/sqh-host-directory-picker-native/*": ["./packages/host/directory-picker-native/src/*"],
       "@liusiqi-dev/sqh-host-directory-picker-auto": ["./packages/host/directory-picker-auto/src"],
       "@liusiqi-dev/sqh-host-directory-picker-auto/*": ["./packages/host/directory-picker-auto/src/*"],
-      "@liusiqi-dev/sqh-host-product-telemetry-otel": ["./packages/host/product-telemetry-otel/src"],
       "@liusiqi-dev/sqh-host-open-in-app": ["./packages/host/open-in-app/src"],
       "@liusiqi-dev/sqh-host-open-in-app/shared": ["./packages/host/open-in-app/src/shared.ts"],
       "@liusiqi-dev/sqh-host-webserver": ["./packages/host/webserver/src"],

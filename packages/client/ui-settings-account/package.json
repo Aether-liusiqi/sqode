@@ -69,8 +69,7 @@
     "@liusiqi-dev/sqh-client-ui-settings-models": "workspace:*",
     "@types/react-dom": "~18.3.0",
     "@liusiqi-dev/sqh-host-webserver": "workspace:*",
-    "big.js": "^7.0.1",
-    "@liusiqi-dev/sqh-client-product-analytics": "workspace:*"
+    "big.js": "^7.0.1"
   },
   "files": [
     "lib/index.js",

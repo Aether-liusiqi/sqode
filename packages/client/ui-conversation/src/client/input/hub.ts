@@ -7,7 +7,6 @@
  * listeners on each Session context and owns the default-sink choreography: every session is a
  * real host entity, so the sink is one unconditional prompt path.
  */
-import type {} from '@liusiqi-dev/sqh-client-product-analytics/client'
 import type { ModelSelectionProjection } from '@liusiqi-dev/sqh-api-session-controller/types'
 import type { PlanProjection } from '@liusiqi-dev/sqh-plan-mode/types'
 import type { GoalProjection } from '@liusiqi-dev/sqh-goal/types'

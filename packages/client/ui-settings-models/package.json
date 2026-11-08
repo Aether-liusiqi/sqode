@@ -57,8 +57,7 @@
     "react": "^18.2.0",
     "@liusiqi-dev/sqh-client-ui-renderer": "workspace:*",
     "@liusiqi-dev/sqh-util-values": "workspace:*",
-    "@liusiqi-dev/sqh-remote-mock": "workspace:*",
-    "@liusiqi-dev/sqh-client-product-analytics": "workspace:*"
+    "@liusiqi-dev/sqh-remote-mock": "workspace:*"
   },
   "dependencies": {
     "@liusiqi-dev/schemastery": "workspace:~"

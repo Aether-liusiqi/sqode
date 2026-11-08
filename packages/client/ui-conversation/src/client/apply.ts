@@ -1,5 +1,4 @@
 /** Registers the target-neutral Conversation assembly, shell, input, and docks. */
-import type {} from '@liusiqi-dev/sqh-client-product-analytics/client'
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
 import type { ISessions, SessionBinding } from '@liusiqi-dev/sqh-api-session-controller/client'

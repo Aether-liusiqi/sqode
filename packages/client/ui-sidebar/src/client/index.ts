@@ -1,5 +1,4 @@
 /** Registers the sidebar shell and global panel navigation. */
-import type {} from '@liusiqi-dev/sqh-client-product-analytics/client'
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
 import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import { resolveSlotLabel } from '@liusiqi-dev/sqh-client-ui-slots'

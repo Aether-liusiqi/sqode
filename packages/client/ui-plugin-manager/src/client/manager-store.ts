@@ -6,7 +6,6 @@ import { sanitizeInstallInput } from './sanitize-install-input.ts'
  * after each action and after every `plugin-manager/changed` event, so a
  * change made on another surface shows here without a manual refresh.
  */
-import type {} from '@liusiqi-dev/sqh-client-product-analytics/client'
 import { randomUUID } from '@liusiqi-dev/sqh-util-crypto'
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
 import type {

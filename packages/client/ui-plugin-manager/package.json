@@ -72,8 +72,7 @@
     "react-dom": "^18.2.0",
     "@liusiqi-dev/sqh-util-crypto": "workspace:*",
     "@liusiqi-dev/sqh-client-ui-settings": "workspace:*",
-    "@liusiqi-dev/sqh-plugin-manager": "workspace:*",
-    "@liusiqi-dev/sqh-client-product-analytics": "workspace:*"
+    "@liusiqi-dev/sqh-plugin-manager": "workspace:*"
   },
   "files": [
     "lib/index.js",

@@ -62,8 +62,7 @@
     "@liusiqi-dev/cordis": "workspace:~",
     "react": "^18.2.0",
     "clsx": "^2.0.0",
-    "@liusiqi-dev/sqh-client-shortcuts": "workspace:*",
-    "@liusiqi-dev/sqh-client-product-analytics": "workspace:*"
+    "@liusiqi-dev/sqh-client-shortcuts": "workspace:*"
   },
   "files": [
     "lib/index.js",
