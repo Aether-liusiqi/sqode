@@ -53,7 +53,7 @@ A Siqi Harness child uses the product launcher and an explicit absolute `SQODE_H
   name: '@liusiqi-dev/sqh-subagent-acp'
   config:
     providerName: acp
-    command: dsh
+    command: sqh
     args: ['--profile', 'acp', '--patch', '/absolute/path/to/acp.patch.yml']
     permission: reject
     env:
@@ -111,9 +111,9 @@ The child spawns through the subprocess seam: credential-shaped ambient variable
 Read these pages when the package-level contract is not enough. They move from this backend to the seam it plugs into and the protocol it drives.
 
 - [Subagent subsystem](../../../docs/subsystems/subagent.md) — the service contract, provider contract, and terminal result semantics.
-- [dsh-subagent seam](../subagent/README.md) — the registry and start API this provider registers on.
+- [sqh-subagent seam](../subagent/README.md) — the registry and start API this provider registers on.
 - [Agent Client Protocol automation server](../../acp/acp/README.md) — the automation-only server this provider drives as a client.
-- [dsh-subprocess seam](../../subprocess/subprocess/README.md) — the process-spawn and teardown machinery behind each run.
+- [sqh-subprocess seam](../../subprocess/subprocess/README.md) — the process-spawn and teardown machinery behind each run.
 - [Generated configuration catalog](../../../docs/config-catalog.md#deepseek-aidsh-subagent-acp) — every accepted config field and its source declaration.
 
 -----
@@ -139,7 +139,7 @@ Independent of the parent request cache. Each ACP child can reuse only prefixes 
 
 #### What the model sees
 
-Through `dsh-tool-subagent`, the parent receives only the child's final streamed assistant text or that consumer's exact stop-reason error, not intermediate messages or tool traffic. Non-completed results present the safe diagnostic before separately preserved partial assistant output. A request already cancelled before publication becomes exactly `Error: subagent request was aborted before the ACP child started`; another start failure contains only the fixed `Subagent failure (...)` line.
+Through `sqh-tool-subagent`, the parent receives only the child's final streamed assistant text or that consumer's exact stop-reason error, not intermediate messages or tool traffic. Non-completed results present the safe diagnostic before separately preserved partial assistant output. A request already cancelled before publication becomes exactly `Error: subagent request was aborted before the ACP child started`; another start failure contains only the fixed `Subagent failure (...)` line.
 
 #### Token effect
 

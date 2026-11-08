@@ -9,14 +9,14 @@
   en: 737819e5a4ecf662
   zh: e86c0286295801c1
 /liusiqi-dev-sqh-tool-bash/summary:
-  en: 18a6015145919b51
-  zh: c8d7822a84df50e6
+  en: 620048de4b096091
+  zh: f54694b20a581ca6
 /liusiqi-dev-sqh-tool-bash/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
 /liusiqi-dev-sqh-tool-bash/use-this-package:
-  en: e20abe0ff6964f16
-  zh: 143d7c17499b2247
+  en: 3c383e78d5e624d8
+  zh: 316e85dbbb1eec65
 /liusiqi-dev-sqh-tool-bash/use-this-package/minimal-configuration:
   en: 9a16909fc013c6e5
   zh: ba740dbce3cd2e93
@@ -24,14 +24,14 @@
   en: 1710624931aa2aa7
   zh: ef4fa86fd05a1cc8
 /liusiqi-dev-sqh-tool-bash/use-this-package/running-long-commands-in-the-background:
-  en: a5eecea7bb7a75e8
-  zh: fae7f08e0e11594e
+  en: c99a51791adf2aaa
+  zh: 3d56a59c37498040
 /liusiqi-dev-sqh-tool-bash/use-this-package/foreground-commands-as-jobs:
   en: 5eef538028ca60d6
   zh: dc1c8ec24c81d2ca
 /liusiqi-dev-sqh-tool-bash/use-this-package/sandboxed-execution-and-escalation:
-  en: 472beeb895ca46cf
-  zh: ba110c9f62f7d5b8
+  en: 3888dcafc5bf87e5
+  zh: a1227d4342698779
 /liusiqi-dev-sqh-tool-bash/use-this-package/what-can-go-wrong:
   en: ac6575155c6c9792
   zh: 46f2997ef1f38a42
@@ -48,8 +48,8 @@
   en: b03c1d84aa4b5cd4
   zh: 111eba387b7082ae
 /liusiqi-dev-sqh-tool-bash/understand-the-implementation/rendering-story:
-  en: 167c045d6a6278cc
-  zh: 3f17ee8d31e0bbad
+  en: 2d212a55bd71b21a
+  zh: 4447d4bdfffe57bc
 /liusiqi-dev-sqh-tool-bash/further-exploration:
   en: 1147ce91c2d881ce
   zh: 7d05ca998bfb4334
@@ -87,8 +87,8 @@
   en: d83f1f25a3719c54
   zh: 445ca808e28dc936
 /liusiqi-dev-sqh-tool-bash/model-experience/foreground-result/what-the-model-sees:
-  en: 1cf435133078b803
-  zh: 3e7eb766a62b7e77
+  en: e6055ee15889ed8c
+  zh: 8a4e410521536e1f
 /liusiqi-dev-sqh-tool-bash/model-experience/foreground-result/token-effect:
   en: b2018adbda15b8a7
   zh: 79521073a45c7f80
@@ -99,8 +99,8 @@
   en: 38ce70c1818a5694
   zh: ed3ad10f12ed1b8e
 /liusiqi-dev-sqh-tool-bash/model-experience/background-job-context-and-results/what-the-model-sees:
-  en: b2586ae30256dda7
-  zh: 03000224da9a68d1
+  en: ca30e26f2903907a
+  zh: 53a5d28ce0e04821
 /liusiqi-dev-sqh-tool-bash/model-experience/background-job-context-and-results/token-effect:
   en: 3a0d2d43640158d6
   zh: 45ae711aedaa1d41

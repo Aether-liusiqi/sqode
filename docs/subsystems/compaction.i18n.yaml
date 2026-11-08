@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/compaction.md
 /compaction:
-  en: 7eb1d2d84fb85447
-  zh: 1927119f75c0dd45
+  en: 893312186c654bd8
+  zh: 27a58ceefa653403
 /compaction/the-compaction-session-events:
   en: a056950d69ff171d
   zh: b3cfe3b7db11ae64
@@ -15,8 +15,8 @@
   en: 9dde333b53c14f24
   zh: 8959aafefc55f9a4
 /compaction/the-service:
-  en: e08aa2119ea0b2a2
-  zh: 968fd43cc0025acc
+  en: 3aa018693bb78638
+  zh: 4ad33052b1483443
 /compaction/tool-result-pruning-outcomes:
   en: 27091b0a3d454575
   zh: e22431e27e1349f2

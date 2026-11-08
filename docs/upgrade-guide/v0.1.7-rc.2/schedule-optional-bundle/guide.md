@@ -17,6 +17,6 @@ Profiles that enabled Schedule by id lose it after upgrading: the loader warns `
 
 ## Migration
 
-1. Open Plugins, find Automation tasks in the Official group, and switch it on. The switch appends `@liusiqi-dev/sqh-experimental-schedule-bundle` to `dsh.profile.bundles` in `$SQODE_HOME/profiles/<name>/package.json`; for a profile edited by hand, add that entry yourself.
+1. Open Plugins, find Automation tasks in the Official group, and switch it on. The switch appends `@liusiqi-dev/sqh-experimental-schedule-bundle` to `sqh.profile.bundles` in `$SQODE_HOME/profiles/<name>/package.json`; for a profile edited by hand, add that entry yourself.
 2. Keep existing overrides that set other fields on `schedule`, `time-context`, or `ui-schedule`, such as `deliveryHistoryDays`; they apply again once the bundle inserts the rows. Overrides that only set `disabled: false` are redundant and can be deleted.
-3. Confirm: restart `dsh web`, check that startup logs no `patch: entry ... not found` warning for the three ids, and that the sidebar shows Automation tasks with the previously stored reminders.
+3. Confirm: restart `sqh web`, check that startup logs no `patch: entry ... not found` warning for the three ids, and that the sidebar shows Automation tasks with the previously stored reminders.

@@ -9,20 +9,20 @@
   en: 67c415f543d34265
   zh: af3f31f2899fd37b
 /liusiqi-dev-sqh-ptc-runtime/summary:
-  en: d5a1f0be39931018
-  zh: 3584bd577f654a38
+  en: a9c6f9f555d4a5e9
+  zh: 9271d18adc144bfc
 /liusiqi-dev-sqh-ptc-runtime/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
 /liusiqi-dev-sqh-ptc-runtime/use-this-package:
-  en: 7e5ebf7420c13af4
-  zh: 9ad1e056e794ca4a
+  en: aeaffb8ac80ff417
+  zh: f2640c456a881107
 /liusiqi-dev-sqh-ptc-runtime/use-this-package/run-a-program:
   en: 6f97019cebc2f417
   zh: c56f18a690dbe814
 /liusiqi-dev-sqh-ptc-runtime/use-this-package/choose-a-backend:
-  en: f2dd49b11ef5e888
-  zh: f2be82b0cae2d8e4
+  en: 6fe33ad82ed2d683
+  zh: d4cb09f0549f41d1
 /liusiqi-dev-sqh-ptc-runtime/use-this-package/name-your-bindings-portably:
   en: 4e46c1672701b8df
   zh: 0353c5855c9ff6be
@@ -33,8 +33,8 @@
   en: 686d570f5e669fa4
   zh: 2075cf27c30f251a
 /liusiqi-dev-sqh-ptc-runtime/understand-the-implementation/design-concept:
-  en: 9f0055e22a1595a5
-  zh: 0aa3ceb9dd145128
+  en: 532272967a59be4e
+  zh: 899d7a82c61029f7
 /liusiqi-dev-sqh-ptc-runtime/understand-the-implementation/service-api:
   en: 1d7a792c9a78a517
   zh: b49bddf18c259edc
@@ -51,8 +51,8 @@
   en: a77e68bc4f5e66d9
   zh: 101a57bcad581668
 /liusiqi-dev-sqh-ptc-runtime/model-experience:
-  en: 5506904c50c1ee20
-  zh: f0ffa9f4f08b20cf
+  en: a456d5fe7805de4a
+  zh: 2ff9a0a75b4dcdf1
 /liusiqi-dev-sqh-ptc-runtime/model-experience/kv-cache-effect:
   en: 40294c1c31b74824
   zh: 081cebc2e2650f03

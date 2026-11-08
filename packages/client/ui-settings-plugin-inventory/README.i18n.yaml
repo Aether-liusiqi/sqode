@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write packages/client/ui-settings-plugin-inventory/README.md
 /:
-  en: 9121298d88fe8ea6
-  zh: 5da705491f951d0e
+  en: 9cfbbd8f325d63c5
+  zh: c997d3b4b52a3cce
 /liusiqi-dev-sqh-client-ui-settings-plugin-inventory:
   en: 0eedd6c38c330468
   zh: 1dec52776a465ed7
@@ -18,8 +18,8 @@
   en: 67637808e7940157
   zh: d4d0716ea4d33e4a
 /liusiqi-dev-sqh-client-ui-settings-plugin-inventory/use-this-package/reading-a-card:
-  en: 141d6a73e99fee51
-  zh: 2aa28b174867c967
+  en: 763ac776179a2767
+  zh: 96d85022ef4ebf84
 /liusiqi-dev-sqh-client-ui-settings-plugin-inventory/use-this-package/the-preset-switcher:
   en: 84e5938329199a22
   zh: 6f5cfaac56433e8b

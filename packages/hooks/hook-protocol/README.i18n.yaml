@@ -9,17 +9,17 @@
   en: 769e242eb211e825
   zh: 9bdc982be304c622
 /liusiqi-dev-sqh-hook-protocol/summary:
-  en: e8ab847d0db16043
-  zh: 5c1e72f4b4a54fe1
+  en: abf35202cf3c2973
+  zh: b88a4a651a32acc9
 /liusiqi-dev-sqh-hook-protocol/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
 /liusiqi-dev-sqh-hook-protocol/use-this-package:
-  en: 4b29a18ac60be5bb
-  zh: 4a02b48f9e914101
+  en: 576752ad752e1a31
+  zh: 34cb251c801c956b
 /liusiqi-dev-sqh-hook-protocol/use-this-package/when-to-choose-it:
-  en: 435c1a335f8dfccf
-  zh: efe58c06dc40d4d9
+  en: cefe2efe0252fa66
+  zh: fc0fa86ac7d45733
 /liusiqi-dev-sqh-hook-protocol/use-this-package/what-a-hook-can-do:
   en: 043f54b3a5b518a7
   zh: a4115083a9b1cef1
@@ -30,14 +30,14 @@
   en: 08b3960150e9c5e2
   zh: 6bb2f236d697de01
 /liusiqi-dev-sqh-hook-protocol/understand-the-implementation/processing-pipeline:
-  en: 5672f4151de0b50a
-  zh: d8fdc68d806e0d7b
+  en: 53d02755880a31fb
+  zh: 8193eaa80661259e
 /liusiqi-dev-sqh-hook-protocol/understand-the-implementation/hook-session-events:
   en: ad77f468168fcbff
   zh: 897bc6880fe76e1b
 /liusiqi-dev-sqh-hook-protocol/understand-the-implementation/design-philosophy:
-  en: ccf3eacdd2219631
-  zh: 0732935a47a17c9d
+  en: dd05f52e6cca2f65
+  zh: 6c4c76828b49f484
 /liusiqi-dev-sqh-hook-protocol/understand-the-implementation/source-map:
   en: d613d9bd98d499fb
   zh: afe2939d7df250ea
@@ -45,8 +45,8 @@
   en: d93c5107a12af16c
   zh: 89da3abc953a4c6b
 /liusiqi-dev-sqh-hook-protocol/model-experience:
-  en: 53d2f59435a4a88f
-  zh: 79c8fc2849b20718
+  en: c62573881e0fabc8
+  zh: dba9015176f2b8e8
 /liusiqi-dev-sqh-hook-protocol/model-experience/kv-cache-effect:
   en: e290ccc9b3c92c08
   zh: cb3c8823f41e7afe

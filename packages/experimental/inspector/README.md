@@ -9,9 +9,9 @@ English | [中文](README.zh.md)
 
 ## Summary
 
-Inspect one running dsh Host and its browser Clients in Chrome DevTools: Host and Client Console contexts, Host Sources and debugging, captured Host fetches, and a shared Cordis tree, with all CDP state in a Worker.
+Inspect one running sqh Host and its browser Clients in Chrome DevTools: Host and Client Console contexts, Host Sources and debugging, captured Host fetches, and a shared Cordis tree, with all CDP state in a Worker.
 
-The Inspector stays off the default plugin list. Install its bundle explicitly with `dsh plugin --profile web add @liusiqi-dev/sqh-experimental-inspector`. Its [`cordis.patch.yml`](cordis.patch.yml) mounts the installed package; `pnpm run demo:inspector` mounts the source tree. The Host row needs a Web server. The Worker never accesses live Cordis objects: the shared collector projects them into validated snapshots before transport.
+The Inspector stays off the default plugin list. Install its bundle explicitly with `sqh plugin --profile web add @liusiqi-dev/sqh-experimental-inspector`. Its [`cordis.patch.yml`](cordis.patch.yml) mounts the installed package; `pnpm run demo:inspector` mounts the source tree. The Host row needs a Web server. The Worker never accesses live Cordis objects: the shared collector projects them into validated snapshots before transport.
 
 ## Table of Contents
 

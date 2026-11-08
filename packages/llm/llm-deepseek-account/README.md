@@ -11,7 +11,7 @@ English | [中文](README.zh.md)
 
 Register authentication and model discovery for `deepseek-account`. This plugin shares the [Messages transport](../llm-deepseek/README.md) and owns credential resolution and catalog availability.
 
-Authentication resolution returns `x-dsh-auth-token` and a failure callback capturing the same token. HTTP 401 classification and rejection stay in this provider; a rejected older request cannot clear a replacement login.
+Authentication resolution returns `x-sqh-auth-token` and a failure callback capturing the same token. HTTP 401 classification and rejection stay in this provider; a rejected older request cannot clear a replacement login.
 
 ## Table of Contents
 

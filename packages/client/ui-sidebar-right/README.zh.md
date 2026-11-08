@@ -1,5 +1,5 @@
 ---
-description: "dsh Web 客户端的右侧 Sidebar：每会话一个停靠面、两种呈现形态、导航控制器 ctx.sidebarRight、tab 类型注册表 ctx.sidebarRightTabs 与 Tab 域。"
+description: "sqh Web 客户端的右侧 Sidebar：每会话一个停靠面、两种呈现形态、导航控制器 ctx.sidebarRight、tab 类型注册表 ctx.sidebarRightTabs 与 Tab 域。"
 kind: "package-reference"
 ---
 
@@ -43,7 +43,7 @@ kind: "package-reference"
 | `push`（默认） | 面板宽度：会话区让出空间 | 在轨道内；它的左缘与会话区的右缘沿框架自己的曲线一起移动 |
 | `fullscreen` | 保留宽屏普通轨道；窄屏自动全屏不占轨道 | 覆盖整个窗口 |
 
-在 Windows Electron 中，`html[data-windows-titlebar]` 让全屏面板保持在顶栏下方及展开侧栏的右侧。框架的 `--dsh-windows-sidebar-width` 提供该缩进及最大宽度；`--dsh-windows-content-radius` 提供左上圆角。仅全屏面板为该圆角裁剪溢出内容。
+在 Windows Electron 中，`html[data-windows-titlebar]` 让全屏面板保持在顶栏下方及展开侧栏的右侧。框架的 `--sqh-windows-sidebar-width` 提供该缩进及最大宽度；`--sqh-windows-content-radius` 提供左上圆角。仅全屏面板为该圆角裁剪溢出内容。
 
 席位通过 `ctx.layout.openRightbar(track, fullscreen)` / `closeRightbar()` 报告呈现，框架不注入本包。宽屏切换全屏不改变中栏宽度；宽度拖拽区只在普通展开态显示。独立浮窗及 `float`/`dock` 操作保持可用。
 
@@ -71,7 +71,7 @@ root 作用域的 `rightbar` 入口通过独立的 `rightbar.session` 子树渲�
 
 停靠面的最后一个 tab 还多带一条规则，由 store 的 `closeTab` 决定并经 `canCloseTab` 镜像给套件：作为唯一停靠 tab 的引导页不画关闭控件也不画菜单里的关闭项——它的 chip 呈安静样式，在没有扩展条目时次键按下也不弹出菜单——对它的编程式关闭什么都不记录；任何其它 tab 独自留下时，点击关闭会连同整列一起收起，记为一条历史，布局保持为空，直到下次展开时创建当时的默认页。浮动面板不参与这条规则：前台 Session 的浮窗无论列是否展开都会渲染，其 tab 照常关闭。
 
-store 将每个 Session 的布局、标签身份、选中项、分栏比例、浮窗矩形、呈现方式和身份计数以 JSON 保存到 localStorage 的 `dsh.sidebar-right.v1.<sessionId>`。刷新时在渲染标签正文前恢复布局；不同 Session 的布局独立。provider 根据保留的标签身份和资源地址恢复自身内容，包括[终端重连](../ui-sidebar-terminal/README.zh.md#use-this-package)。导航参数、资源内容和活动连接不属于布局状态。撤销历史只保留在内存中，刷新后清空。采用布局或启动探测前会校验保存字段类型、节点成员关系、选中项、身份计数，以及单格或左右两格的停靠布局；无效数据只清除对应 Session 的 key。存储失败时，当前布局仍可在内存中使用。同源窗口共享每个 Session 最后保存的布局；活动窗口在刷新前保留各自的当前布局。
+store 将每个 Session 的布局、标签身份、选中项、分栏比例、浮窗矩形、呈现方式和身份计数以 JSON 保存到 localStorage 的 `sqh.sidebar-right.v1.<sessionId>`。刷新时在渲染标签正文前恢复布局；不同 Session 的布局独立。provider 根据保留的标签身份和资源地址恢复自身内容，包括[终端重连](../ui-sidebar-terminal/README.zh.md#use-this-package)。导航参数、资源内容和活动连接不属于布局状态。撤销历史只保留在内存中，刷新后清空。采用布局或启动探测前会校验保存字段类型、节点成员关系、选中项、身份计数，以及单格或左右两格的停靠布局；无效数据只清除对应 Session 的 key。存储失败时，当前布局仍可在内存中使用。同源窗口共享每个 Session 最后保存的布局；活动窗口在刷新前保留各自的当前布局。
 
 `sidebarRight.openTabs` 发布所有已保存和已采用 Session 的打开标签元数据，并保持快照引用稳定。启动时读取布局 key，不挂载非当前内容、pin 文件或激活 Agent。已采用的 store 在标签成员变化时更新自己的元数据，永久清除的 scope 删除对应记录。其他窗口写入 storage 不会覆盖当前窗口的活动成员关系。provider 使用该清单恢复自己的资源生命周期。
 

@@ -71,7 +71,7 @@ The package is built on one principle: all harness user data lives under one roo
 
 ### Resolution rules
 
-`resolveSqhHome` reads the explicit override, then `$SQODE_HOME`, then falls back to the operating-system home joined with `.dsh`. The chosen value is tilde-expanded and normalized to an absolute path; `sqhHomePath` joins child segments with Node's platform path rules. `sqhHomeDisplay` compares the resolved path against the default root and returns the symbolic label, so a configured home never leaks its absolute path.
+`resolveSqhHome` reads the explicit override, then `$SQODE_HOME`, then falls back to the operating-system home joined with `.sqh`. The chosen value is tilde-expanded and normalized to an absolute path; `sqhHomePath` joins child segments with Node's platform path rules. `sqhHomeDisplay` compares the resolved path against the default root and returns the symbolic label, so a configured home never leaks its absolute path.
 
 ### Canonicalization mechanics
 

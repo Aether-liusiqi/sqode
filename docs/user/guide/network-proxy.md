@@ -11,7 +11,7 @@ export HTTPS_PROXY=http://127.0.0.1:7890
 export HTTP_PROXY=http://127.0.0.1:7890
 ```
 
-Put both lines in your shell profile so every `dsh` invocation inherits them, or in `$SQODE_HOME/.env` (`~/.sqode/.env` by default) next to your API key; an exported variable always wins over that file. A project's own `.env` cannot set them: it arrives with `git clone`, and Sqode refuses to start rather than let a repository decide where your traffic goes.
+Put both lines in your shell profile so every `sqh` invocation inherits them, or in `$SQODE_HOME/.env` (`~/.sqode/.env` by default) next to your API key; an exported variable always wins over that file. A project's own `.env` cannot set them: it arrives with `git clone`, and Sqode refuses to start rather than let a repository decide where your traffic goes.
 
 A proxy that needs credentials takes them in the URL: `http://user:password@proxy.example:8080`. Sqode never prints the URL back: a diagnostic names the variable it rejected, so neither the username nor the password appears anywhere.
 
@@ -55,7 +55,7 @@ You do not need to list `localhost` or `127.0.0.1`. Sqode always bypasses loopba
 export NODE_EXTRA_CA_CERTS=/path/to/corporate-ca.pem
 ```
 
-Node reads that variable only at process start, so export it before running `dsh`.
+Node reads that variable only at process start, so export it before running `sqh`.
 
 **Tools Sqode runs for you follow the same proxy.** Commands in the bash tool, `git`, `gh`, and MCP servers started as child processes all inherit these variables. A child that is itself a Node program honors them only on Node 22.21 or later; an older Node connects directly. If one of your proxy variables holds a value Sqode rejected — a SOCKS URL, say — Node-based tools also connect directly rather than fail to start, while `curl` and `git` still read that value.
 
@@ -75,7 +75,7 @@ Not every request Sqode makes goes through the proxy:
 Ask the agent to fetch a page and watch your proxy application's connection log:
 
 ```sh
-dsh --profile headless "fetch https://example.com and tell me the page title"
+sqh --profile headless "fetch https://example.com and tell me the page title"
 ```
 
 If the request does not appear there, confirm the variables survive into Sqode's own environment:

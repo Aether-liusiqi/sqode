@@ -9,7 +9,7 @@ English | [中文](README.zh.md)
 
 ## Summary
 
-`dsh-subagent-sdk` runs each delegated task in a fresh Siqi Harness subprocess with its own profile, session, model route, and tools. The parent provides the task and working directory, while each child uses its configured runtime and remains isolated from the parent conversation. The parent receives the child's final assistant text or a safe error; intermediate messages and tool traffic stay inside the child process. Choose this backend when delegation needs a complete Harness runtime rather than shared in-process state, and accept the cost of starting a new process for every run.
+`sqh-subagent-sdk` runs each delegated task in a fresh Siqi Harness subprocess with its own profile, session, model route, and tools. The parent provides the task and working directory, while each child uses its configured runtime and remains isolated from the parent conversation. The parent receives the child's final assistant text or a safe error; intermediate messages and tool traffic stay inside the child process. Choose this backend when delegation needs a complete Harness runtime rather than shared in-process state, and accept the cost of starting a new process for every run.
 
 ## Table of Contents
 
@@ -31,14 +31,14 @@ Mount this provider when a delegation should run as a complete Harness runtime i
 
 Choose this backend when the child must be a full harness peer — its own composition, session persistence, model route, and tools — rather than an agent that shares the parent's process. Choose an in-process backend when the child must share the parent's composition or honor parent-enforced non-route capabilities: this provider accepts agent route options but rejects structured output, depth caps, tool filters, and personas rather than silently omitting them.
 
-The provider advertises `agentOptions: true`, with `outputSchema`/`depthLimit`/`toolFilter`/`persona` false, and `inheritsParentContext: false`. Its immutable `agentRouteDefaults` publish the configured provider/model baseline to `dsh-tool-subagent` before model overrides and exact-route preflight; `start()` independently applies the same configuration defaults for direct callers and `maxTokens`. Agent route values cross the SDK wire as an explicit whitelist; the child remains a fresh runtime in another process, and the only value derived from the parent agent itself is the workspace cwd. `dsh-tool-subagent` deployments over this provider set `maxDepth: 'provider-managed'` — the child harness owns its own recursion budget.
+The provider advertises `agentOptions: true`, with `outputSchema`/`depthLimit`/`toolFilter`/`persona` false, and `inheritsParentContext: false`. Its immutable `agentRouteDefaults` publish the configured provider/model baseline to `sqh-tool-subagent` before model overrides and exact-route preflight; `start()` independently applies the same configuration defaults for direct callers and `maxTokens`. Agent route values cross the SDK wire as an explicit whitelist; the child remains a fresh runtime in another process, and the only value derived from the parent agent itself is the workspace cwd. `sqh-tool-subagent` deployments over this provider set `maxDepth: 'provider-managed'` — the child harness owns its own recursion budget.
 
 ### Configuration
 
 | Field | Default | Meaning |
 |---|---|---|
-| `providerName` | `dsh-sdk` | Registry name on `ctx.subagents` |
-| `sqhBin` | SDK dependency | Explicit dsh CLI module, resolved and checked at plugin load; omission uses the SDK dependency |
+| `providerName` | `sqh-sdk` | Registry name on `ctx.subagents` |
+| `sqhBin` | SDK dependency | Explicit sqh CLI module, resolved and checked at plugin load; omission uses the SDK dependency |
 | `profile` | `sdk` | Named child profile |
 | `patches` | `[]` | Ordered per-launch profile patch files, resolved and checked at plugin load |
 | `sqhHome` | required | Absolute isolated Harness home for every nested child process |
@@ -59,7 +59,7 @@ Request `agentOptions` override `provider`, `model`, and `maxTokens` independent
 - id: subagent-sdk
   name: '@liusiqi-dev/sqh-subagent-sdk'
   config:
-    providerName: dsh-sdk
+    providerName: sqh-sdk
     profile: sdk
     patches: ['./profiles/research-child.cordis.yml']
     sqhHome: !!js sqhHomePath('children')
@@ -68,7 +68,7 @@ Request `agentOptions` override `provider`, `model`, and `maxTokens` independent
       DEEPSEEK_API_KEY: !!js process.env.DEEPSEEK_API_KEY
 - id: tool-subagent
   name: '@liusiqi-dev/sqh-tool-subagent'
-  config: { provider: dsh-sdk, toolName: subagent, maxDepth: 'provider-managed' }
+  config: { provider: sqh-sdk, toolName: subagent, maxDepth: 'provider-managed' }
 ```
 
 ### What you get
@@ -124,7 +124,7 @@ The child environment is the subprocess seam's credential-scrubbed parent enviro
 Read these pages when the package-level contract is not enough. They move from this backend to the seam it plugs into and the SDK it drives.
 
 - [Subagent subsystem](../../../docs/subsystems/subagent.md) — the service contract, provider contract, and terminal result semantics.
-- [dsh-subagent seam](../subagent/README.md) — the registry and start API this provider registers on.
+- [sqh-subagent seam](../subagent/README.md) — the registry and start API this provider registers on.
 - [ACP subagent backend](../subagent-acp/README.md) — the sibling out-of-process provider over the Agent Client Protocol.
 - [TypeScript SDK client](../../sdk/client/README.md) — the stdio JSON-RPC client this backend drives the child through.
 - [Generated configuration catalog](../../../docs/config-catalog.md#deepseek-aidsh-subagent-sdk) — every accepted config field and its source declaration.
@@ -152,7 +152,7 @@ Independent of the parent request cache. Each SDK child can reuse only prefixes 
 
 #### What the model sees
 
-Through `dsh-tool-subagent`, the parent receives only the child's final assistant text (or accumulated partial text) or that consumer's exact stop-reason error, not intermediate messages or tool traffic. A diagnostic-bearing non-completed result presents the safe diagnostic before separately preserved partial assistant output; startup and shutdown errors expose the same fixed facts without raw SDK text.
+Through `sqh-tool-subagent`, the parent receives only the child's final assistant text (or accumulated partial text) or that consumer's exact stop-reason error, not intermediate messages or tool traffic. A diagnostic-bearing non-completed result presents the safe diagnostic before separately preserved partial assistant output; startup and shutdown errors expose the same fixed facts without raw SDK text.
 
 #### Token effect
 

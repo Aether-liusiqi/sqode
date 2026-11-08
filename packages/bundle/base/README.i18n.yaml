@@ -3,23 +3,23 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write packages/bundle/base/README.md
 /:
-  en: 21c1b63e74134d34
-  zh: 78c69828d5930a86
+  en: 52a5ef940bd1c014
+  zh: 02bcee794287c365
 /liusiqi-dev-sqh-base:
   en: 52d4a85ef2c70326
   zh: 7bcf3e1827e044ae
 /liusiqi-dev-sqh-base/summary:
-  en: 5c15f68a65aadc7d
-  zh: 7ac9ace622e161ae
+  en: 2f8e0fca93cae016
+  zh: 4378dd6e508790fc
 /liusiqi-dev-sqh-base/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
 /liusiqi-dev-sqh-base/use-this-package:
-  en: 4c0d7045f95ff79c
-  zh: 456bb24bd1d35db1
+  en: c29aaf53d5faf49a
+  zh: dbee47d5bcdac560
 /liusiqi-dev-sqh-base/use-this-package/a-minimal-custom-profile:
-  en: 86367782539372a1
-  zh: 6ce9ac07dce76a19
+  en: f7bf91e90e672640
+  zh: 5ebaf931f696704c
 /liusiqi-dev-sqh-base/use-this-package/what-you-get:
   en: 7ee3a3def76e0ce6
   zh: b53b1fdc78cf0339
@@ -36,8 +36,8 @@
   en: fd37bc66e39ac5e7
   zh: 1a039afb8bf2d517
 /liusiqi-dev-sqh-base/understand-the-implementation/platform-gating:
-  en: 836b7078008943c2
-  zh: 617f2cd712726b97
+  en: 0fe1bc48992c7513
+  zh: 1ca1e704d960b9ae
 /liusiqi-dev-sqh-base/understand-the-implementation/source-map:
   en: 3aaf655b9c93534b
   zh: 5a1b627cc6385a17
@@ -54,8 +54,8 @@
   en: e6e907c99df7cd0a
   zh: f19f2f84a5f95177
 /liusiqi-dev-sqh-base/known-limitations-and-deferred-work:
-  en: 1ac6ef8b8c5af44e
-  zh: dfb5aa59f09a4520
+  en: 5e1eac08af77adaf
+  zh: cfd3824a720a815c
 /liusiqi-dev-sqh-base/known-limitations-and-deferred-work/dev-note:
   en: ca037cb236aa841a
   zh: e06f3899be43b572

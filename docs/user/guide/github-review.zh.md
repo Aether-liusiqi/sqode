@@ -2,7 +2,7 @@
 
 [English](github-review.md) | 中文
 
-此可选 overlay 会为 `dsh web` 增加一个签名 GitHub 端点。当已配置仓库中的 pull request 从 draft 变为 ready for review 时，规则会在该仓库的 Web Workspace 下创建带标题的根 Session，并启动只读评审提示词。
+此可选 overlay 会为 `sqh web` 增加一个签名 GitHub 端点。当已配置仓库中的 pull request 从 draft 变为 ready for review 时，规则会在该仓库的 Web Workspace 下创建带标题的根 Session，并启动只读评审提示词。
 
 ## 前置条件
 
@@ -26,16 +26,16 @@ printf '%s\n' "$SQODE_GITHUB_WEBHOOK_SECRET"
 
 ```sh
 export SQODE_GITHUB_REVIEW_WORKSPACE=/path/to/siqi-harness
-pnpm dsh web --patch apps/cli/config/examples/github-review/cordis.yml
+pnpm sqh web --patch apps/cli/config/examples/github-review/cordis.yml
 ```
 
 安装版 Sqode 通过绝对路径使用同一 overlay：
 
 ```sh
-dsh web --patch /absolute/path/to/github-review/cordis.yml
+sqh web --patch /absolute/path/to/github-review/cordis.yml
 ```
 
-对于永久 profile，把 `github-ready-review-rule.mjs` 放在 `$SQODE_HOME/profiles/web/cordis.patch.yml` 旁边，把 `cordis.yml` 中的行追加到该 patch，然后运行 `dsh web`。随附 CLI 已经包含两个 webhook 包；只需 overlay 即可激活它们。
+对于永久 profile，把 `github-ready-review-rule.mjs` 放在 `$SQODE_HOME/profiles/web/cordis.patch.yml` 旁边，把 `cordis.yml` 中的行追加到该 patch，然后运行 `sqh web`。随附 CLI 已经包含两个 webhook 包；只需 overlay 即可激活它们。
 
 ## 暴露专用端点
 
@@ -90,7 +90,7 @@ if (!response.ok || (await response.json()).automaticReview !== true) return nul
 ```js
 const workspacePath = {
   'siqi-harness/siqi-harness': '/path/to/siqi-harness',
-  'siqi-harness/dsh-sdk': '/path/to/dsh-sdk',
+  'siqi-harness/sqh-sdk': '/path/to/sqh-sdk',
 }[payload.repository.full_name]
 if (workspacePath === undefined) return null
 ```

@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write packages/client/ui-sidebar-files/README.md
 /:
-  en: d6514e0d092a210b
-  zh: 9980cb0f4fc6f903
+  en: 12bf20fd3494efef
+  zh: 7f90dc8fc95db1ae
 /liusiqi-dev-sqh-client-ui-sidebar-files:
   en: 5ea12e94fcd02a50
   zh: b8804bc53822e028

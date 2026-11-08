@@ -9,7 +9,7 @@ English | [中文](README.zh.md)
 
 ## Summary
 
-`dsh-experimental-agent-team-profile` enables [Agent Teams](../agent-team/README.md) collaboration, tools, and Web UI with one bundle. Delegate work to teammates and view members, shared tasks, and teammate sessions in Web. Ordinary subagent delegation and overlapping global child controls are disabled; Workflow can still create fresh children. The bundle ships with dsh switched off. Enable it from the Plugins page or add it to an initialized profile.
+`sqh-experimental-agent-team-profile` enables [Agent Teams](../agent-team/README.md) collaboration, tools, and Web UI with one bundle. Delegate work to teammates and view members, shared tasks, and teammate sessions in Web. Ordinary subagent delegation and overlapping global child controls are disabled; Workflow can still create fresh children. The bundle ships with sqh switched off. Enable it from the Plugins page or add it to an initialized profile.
 
 ## Table of Contents
 
@@ -30,19 +30,19 @@ English | [中文](README.zh.md)
 Add the package to an initialized profile, then run a task that asks the Lead to delegate work:
 
 ```sh
-dsh plugin --profile headless add @liusiqi-dev/sqh-experimental-agent-team-profile
-dsh --profile headless "Use Agent Teams to split this task between two teammates, wait, and summarize."
+sqh plugin --profile headless add @liusiqi-dev/sqh-experimental-agent-team-profile
+sqh --profile headless "Use Agent Teams to split this task between two teammates, wait, and summarize."
 ```
 
-The profile must already contain `@liusiqi-dev/sqh-base`, whose Subagent services and provider rows this layer consumes. Removing the package with `dsh plugin --profile <name> remove @liusiqi-dev/sqh-experimental-agent-team-profile` removes the bundle from the profile's ordered layer list.
+The profile must already contain `@liusiqi-dev/sqh-base`, whose Subagent services and provider rows this layer consumes. Removing the package with `sqh plugin --profile <name> remove @liusiqi-dev/sqh-experimental-agent-team-profile` removes the bundle from the profile's ordered layer list.
 
 Enable Agent Teams on the Web or Desktop Plugins page to activate both tools and UI. For a CLI Web profile, use:
 
 ```sh
-dsh plugin --profile web add @liusiqi-dev/sqh-experimental-agent-team-profile
+sqh plugin --profile web add @liusiqi-dev/sqh-experimental-agent-team-profile
 ```
 
-In an existing profile’s `package.json`, keep `@liusiqi-dev/sqh-experimental-agent-team-profile` in `dsh.profile.bundles` and remove the separate `@liusiqi-dev/sqh-experimental-agent-team-web-profile` entry. User patches targeting `ui-agent-team` still apply.
+In an existing profile’s `package.json`, keep `@liusiqi-dev/sqh-experimental-agent-team-profile` in `sqh.profile.bundles` and remove the separate `@liusiqi-dev/sqh-experimental-agent-team-web-profile` entry. User patches targeting `ui-agent-team` still apply.
 
 ### What you get
 
@@ -58,11 +58,11 @@ In Web and Desktop conversations, the [Team UI](../client-ui-agent-team/README.m
 <details>
 <summary>Implementation internals — click to expand</summary>
 
-The package's runtime content is [`cordis.patch.yml`](cordis.patch.yml). Applied after `dsh-base`, the patch disables `tool-subagent-control`, `tool-subagent-list-agents`, `tool-subagent`, and `tool-subagent-fork`, and inserts the Team service, tools, and UI with explicit providers and limits. The UI plugin has an inert Host entry; only the Web Client loader mounts its browser entry, so headless needs no Web server.
+The package's runtime content is [`cordis.patch.yml`](cordis.patch.yml). Applied after `sqh-base`, the patch disables `tool-subagent-control`, `tool-subagent-list-agents`, `tool-subagent`, and `tool-subagent-fork`, and inserts the Team service, tools, and UI with explicit providers and limits. The UI plugin has an inert Host entry; only the Web Client loader mounts its browser entry, so headless needs no Web server.
 
 | File | Role |
 |---|---|
-| [`cordis.patch.yml`](cordis.patch.yml) | Ordered patch over `dsh-base` |
+| [`cordis.patch.yml`](cordis.patch.yml) | Ordered patch over `sqh-base` |
 | [`src/index.ts`](src/index.ts) | Empty module entry; the patch is the runtime content |
 | — | No runtime invariant companion is published; the package carries only a static profile patch. The Team service and tools own their mutable relationships; the UI package owns its disposable slot registration. |
 
@@ -106,7 +106,7 @@ The bundle's composition is prefix-stable while its patch, Team identity, and co
 - **Workflow child tools** — the [Team tool visibility limitation](../tool-agent-team/README.md#known-limitations-and-deferred-work) also applies to workflow children.
 - **Shared checkout** — every teammate observes the same working directory; this bundle adds no worktree isolation or filesystem locking.
 - **Preset-scoped child controls** — Web presets can still mount continuable Subagent controls in their own scope; this top-level bundle does not replace those registrations.
-- **Base profile required** — the patch depends on row ids and Subagent providers supplied by `dsh-base`; it is not a standalone profile.
+- **Base profile required** — the patch depends on row ids and Subagent providers supplied by `sqh-base`; it is not a standalone profile.
 
 <a id="dev-note"></a>
 ### Dev Note

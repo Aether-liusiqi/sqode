@@ -2,7 +2,7 @@
 
 English | [中文](github-review.zh.md)
 
-This opt-in overlay adds a signed GitHub endpoint to `dsh web`. When a pull request in the configured repository changes from draft to ready for review, the rule creates a titled root Session under the repository's Web Workspace and starts a read-only review prompt.
+This opt-in overlay adds a signed GitHub endpoint to `sqh web`. When a pull request in the configured repository changes from draft to ready for review, the rule creates a titled root Session under the repository's Web Workspace and starts a read-only review prompt.
 
 ## Prerequisites
 
@@ -26,16 +26,16 @@ From a development checkout:
 
 ```sh
 export SQODE_GITHUB_REVIEW_WORKSPACE=/path/to/siqi-harness
-pnpm dsh web --patch apps/cli/config/examples/github-review/cordis.yml
+pnpm sqh web --patch apps/cli/config/examples/github-review/cordis.yml
 ```
 
 An installed Sqode uses the same overlay through an absolute path:
 
 ```sh
-dsh web --patch /absolute/path/to/github-review/cordis.yml
+sqh web --patch /absolute/path/to/github-review/cordis.yml
 ```
 
-For a permanent profile, place `github-ready-review-rule.mjs` beside `$SQODE_HOME/profiles/web/cordis.patch.yml`, append the rows from `cordis.yml` to that patch, and start with `dsh web`. The shipped CLI already contains both webhook packages; the overlay alone activates them.
+For a permanent profile, place `github-ready-review-rule.mjs` beside `$SQODE_HOME/profiles/web/cordis.patch.yml`, append the rows from `cordis.yml` to that patch, and start with `sqh web`. The shipped CLI already contains both webhook packages; the overlay alone activates them.
 
 ## Expose the dedicated endpoint
 
@@ -90,7 +90,7 @@ It can also map repositories to different local paths:
 ```js
 const workspacePath = {
   'siqi-harness/siqi-harness': '/path/to/siqi-harness',
-  'siqi-harness/dsh-sdk': '/path/to/dsh-sdk',
+  'siqi-harness/sqh-sdk': '/path/to/sqh-sdk',
 }[payload.repository.full_name]
 if (workspacePath === undefined) return null
 ```

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write packages/client/ui-skill/README.md
 /:
-  en: 490d60d7bec05d21
-  zh: 72a1300893d68f31
+  en: 0439b5bf076d5e5b
+  zh: 5b6e7f51262db3a5
 /liusiqi-dev-sqh-client-ui-skill:
   en: bfa2e6695938dabb
   zh: e02145d777a58db8
 /liusiqi-dev-sqh-client-ui-skill/summary:
-  en: fad7bff8d3371dfc
-  zh: c546189c87d6fbf2
+  en: 769117a50f7af0b0
+  zh: dccfaf545222d2f6
 /liusiqi-dev-sqh-client-ui-skill/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
@@ -42,8 +42,8 @@
   en: ae1928252b0ea55c
   zh: 6c78cb51c6805a2d
 /liusiqi-dev-sqh-client-ui-skill/model-experience/user-explicit-skill-invocation/what-the-model-sees:
-  en: 02313760445799a2
-  zh: 46007ed9e9f35b44
+  en: ca2e4472cc75dd1f
+  zh: 0387625184460a64
 /liusiqi-dev-sqh-client-ui-skill/model-experience/user-explicit-skill-invocation/token-effect:
   en: cb759321f8c62a96
   zh: 6d479501856d9cd6

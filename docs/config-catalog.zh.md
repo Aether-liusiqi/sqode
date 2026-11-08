@@ -2255,7 +2255,7 @@ export interface PlanModeConfig {
 ```ts config-catalog
 /** The pnpm executable, registries, and limits for diagnostics, lookups and connection checks. */
 export interface Config {
-  /** The pnpm executable name or path; resolved through `PATH` like the `dsh plugin` command. */
+  /** The pnpm executable name or path; resolved through `PATH` like the `sqh plugin` command. */
   pnpmCommand?: string
   /** Maximum retained package-operation diagnostic bytes. */
   outputBytes?: number
@@ -3252,9 +3252,9 @@ export interface Config {
 ```ts config-catalog
 /** Config: how to spawn and drive the child SDK runtime process. */
 export interface Config {
-  /** Provider name on `ctx.subagents` (default `dsh-sdk`). */
+  /** Provider name on `ctx.subagents` (default `sqh-sdk`). */
   providerName: string
-  /** Explicit dsh CLI module, resolved and checked at plugin load; omission uses the SDK dependency. */
+  /** Explicit sqh CLI module, resolved and checked at plugin load; omission uses the SDK dependency. */
   sqhBin?: string
   /** Named child profile (default `sdk`). */
   profile: string
@@ -3973,7 +3973,7 @@ export interface Config {
   /**
    * Expose `run_in_background` (default true); disabled calls are also
    * rejected. A background run needs a live `ctx.jobs` registry with a
-   * controller serving the caller (`dsh-jobs-local` plus `dsh-tool-jobs` in
+   * controller serving the caller (`sqh-jobs-local` plus `sqh-tool-jobs` in
    * the shipped composition); without one the call fails with the missing
    * piece named.
    */

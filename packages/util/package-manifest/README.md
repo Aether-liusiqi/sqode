@@ -9,7 +9,7 @@ English | [中文](README.zh.md)
 
 ## Summary
 
-Use `DshPackageManifest` for package metadata, `DshManifest` for the public fields under `dsh`, and member types such as `DshClientManifest` for one domain. Each reader owns JSON parsing, validation, and default resolution.
+Use `DshPackageManifest` for package metadata, `DshManifest` for the public fields under `sqh`, and member types such as `DshClientManifest` for one domain. Each reader owns JSON parsing, validation, and default resolution.
 
 ## Table of Contents
 
@@ -32,10 +32,10 @@ import type { DshClientManifest, DshPackageManifest } from '@liusiqi-dev/sqh-pac
 
 const client: DshClientManifest = { platform: 'web' }
 const manifest: DshPackageManifest = {
-  name: 'example-dsh-plugin',
+  name: 'example-sqh-plugin',
   version: '1.0.0',
-  engines: { node: '>=24', dsh: '0.1.5-alpha.1' },
-  dsh: {
+  engines: { node: '>=24', sqh: '0.1.5-alpha.1' },
+  sqh: {
     manifestVersion: 1,
     bundle: { patch: './cordis.patch.yml' },
     client,
@@ -43,7 +43,7 @@ const manifest: DshPackageManifest = {
 }
 ```
 
-`DshPackageManifest` describes the package.json fields used by SQH, with required `name` and `version`; it is not an exhaustive npm schema. Local profile readers use `Partial<DshPackageManifest>` because profiles need no published version. `DshManifest` describes only public author fields under `dsh`. `DshBundleManifest.patch` is one patch file path or an ordered list of them, each relative to the package root; the launcher applies a list in order as one bundle layer. TypeScript checks the example and erases `import type`; these interfaces do not parse JSON or write a file.
+`DshPackageManifest` describes the package.json fields used by SQH, with required `name` and `version`; it is not an exhaustive npm schema. Local profile readers use `Partial<DshPackageManifest>` because profiles need no published version. `DshManifest` describes only public author fields under `sqh`. `DshBundleManifest.patch` is one patch file path or an ordered list of them, each relative to the package root; the launcher applies a list in order as one bundle layer. TypeScript checks the example and erases `import type`; these interfaces do not parse JSON or write a file.
 
 The following metadata fields are optional. Omitting them leaves the format version or compatible host versions undeclared; readers do not infer defaults.
 

@@ -33,7 +33,7 @@ The adapter accepts the LLM service's [request-only user inputs](../llm/README.m
 
 ### When to choose it
 
-Choose this adapter for DeepSeek's official API or a Messages-compatible gateway through `baseURL`. Choose `dsh-llm-pi-ai` when the same composition also routes other providers or hand-declared gateways through pi-ai's catalogs; the two adapters can be mounted together because their route names do not collide. Registering any other adapter for `deepseek-official` fails with `DUPLICATE_ADAPTER`.
+Choose this adapter for DeepSeek's official API or a Messages-compatible gateway through `baseURL`. Choose `sqh-llm-pi-ai` when the same composition also routes other providers or hand-declared gateways through pi-ai's catalogs; the two adapters can be mounted together because their route names do not collide. Registering any other adapter for `deepseek-official` fails with `DUPLICATE_ADAPTER`.
 
 ### Minimal configuration
 
@@ -70,7 +70,7 @@ A request selects the route with `provider: deepseek-official`; the model id pas
 | `fileExpiresAfterSeconds` | `604,800` | Requested uploaded-image lifetime and local reuse bound |
 | `fileRefreshMarginSeconds` | `3,600` | Remaining reuse lifetime below which an id is replaced |
 | `fileQuotaCleanupBatch` | `100` | Oldest harness-owned files removed before one quota retry |
-| `retryPolicy` | normal, 5 retries | Provider-owned retry policy executed by `dsh-llm-retry` |
+| `retryPolicy` | normal, 5 retries | Provider-owned retry policy executed by `sqh-llm-retry` |
 
 The generated [configuration catalog](../../../docs/config-catalog.md#deepseek-aidsh-llm-deepseek-api-key) is the exhaustive source for every accepted field and its JSDoc.
 
@@ -87,7 +87,7 @@ Messages sends text, thinking, tool calls, and tool results as content blocks, r
 
 `deepseek-official` resolves only its configured API-key reference. `deepseek-account` resolves only the stored grant from the [account provider](../../credentials/deepseek-account-platform/README.md), whose allowed `inferenceOrigin` defaults to `https://api.deepseek.com`. Neither route falls back to the other. Signing out removes the account grant and preserves API keys.
 
-Messages and Files requests send account tokens as `x-dsh-auth-token` without a Bearer prefix; API keys use `x-api-key`. Neither credential mode follows redirects. The account provider owns HTTP 401 classification and credential invalidation; the transport passes failures to its callback.
+Messages and Files requests send account tokens as `x-sqh-auth-token` without a Bearer prefix; API keys use `x-api-key`. Neither credential mode follows redirects. The account provider owns HTTP 401 classification and credential invalidation; the transport passes failures to its callback.
 
 ### Streaming with thinking and images
 
@@ -150,7 +150,7 @@ One `stream()` call normally makes one model request: resolve deterministic requ
 
 Read these pages when the package-level contract is not enough. They move from the service contract to the twin adapter, the retry executor, and the shared types.
 
-- [dsh-llm service](../llm/README.md) — the provider-neutral service this adapter registers on.
+- [sqh-llm service](../llm/README.md) — the provider-neutral service this adapter registers on.
 - [llm-pi-ai adapter](../llm-pi-ai/README.md) — the library-backed twin serving other providers and gateways.
 - [LLM streaming subsystem](../../../docs/subsystems/llm-streaming.md) — the `StreamChunk` protocol and adapter contract.
 - [llm-retry](../llm-retry/README.md) — the retry executor that applies this adapter's `retryPolicy`.
@@ -173,7 +173,7 @@ The selected DeepSeek model receives the harness system prompt, message history,
 
 #### Token effect
 
-Provider tokenization governs exact text and image-token input. The adapter declares per-route `imageRequestPricing`: it prices each occurrence selected by a logged image-offload decision as its placeholder text and each retained image at its projected dimensions with the published vision accounting (14px patch grid, 3:1 downsampling, 544×544 scale-up floor, 1024-token cap). This lets the token meter price image pressure before a request; reported usage remains authoritative. Reasoning passback carries every reasoned turn's chain of thought into later requests, while offloaded images stop costing visual tokens. A request whose retained occurrences exceed the file-mode or inline-fallback budget (`maxRequestFilesBytes`, `maxImagesPerRequest`, both quanta) at their exact request-version bytes fails with `IMAGE_OFFLOAD_REQUIRED` naming the additional oldest occurrences to offload, and `dsh-compaction-image-offload` records the selected occurrences in an `image/offload` event and retries. Cache-read usage is reported when available. Messages totals include uncached input, output, cache-read, and cache-write tokens.
+Provider tokenization governs exact text and image-token input. The adapter declares per-route `imageRequestPricing`: it prices each occurrence selected by a logged image-offload decision as its placeholder text and each retained image at its projected dimensions with the published vision accounting (14px patch grid, 3:1 downsampling, 544×544 scale-up floor, 1024-token cap). This lets the token meter price image pressure before a request; reported usage remains authoritative. Reasoning passback carries every reasoned turn's chain of thought into later requests, while offloaded images stop costing visual tokens. A request whose retained occurrences exceed the file-mode or inline-fallback budget (`maxRequestFilesBytes`, `maxImagesPerRequest`, both quanta) at their exact request-version bytes fails with `IMAGE_OFFLOAD_REQUIRED` naming the additional oldest occurrences to offload, and `sqh-compaction-image-offload` records the selected occurrences in an `image/offload` event and retries. Cache-read usage is reported when available. Messages totals include uncached input, output, cache-read, and cache-write tokens.
 
 #### KV Cache effect
 

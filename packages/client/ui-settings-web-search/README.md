@@ -1,5 +1,5 @@
 ---
-description: "The web-search provider's settings page on the dsh web client's Plugins page: the route it uses, plus the key, endpoint and per-request budget that belong to the API route."
+description: "The web-search provider's settings page on the sqh web client's Plugins page: the route it uses, plus the key, endpoint and per-request budget that belong to the API route."
 kind: "package-reference"
 ---
 

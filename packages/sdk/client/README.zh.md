@@ -9,7 +9,7 @@ kind: "package-library"
 
 ## 概述
 
-`dsh-sdk-client` 让 TypeScript 程序通过 stdio JSON-RPC 启动并驱动完整的 Siqi Harness 运行时。使用 `DeepSeekHarness` 可打开会话、发送文本或图像提示词、收集事件与通知流，并在运行时进入 idle 后取得最后提交的助手响应；使用 `HarnessClient` 可直接发送协议请求和订阅通知。调用方可以提供 `sqhBin`；否则客户端解析同版本的 `@liusiqi-dev/sqode` 可执行文件。客户端跨多次运行持有子进程，公开类型化的传输与协议错误，并在 `close()` 或 `await using` 时回收进程。它适用于调用方能够选择运行时 profile 和启动设置的场景。
+`sqh-sdk-client` 让 TypeScript 程序通过 stdio JSON-RPC 启动并驱动完整的 Siqi Harness 运行时。使用 `DeepSeekHarness` 可打开会话、发送文本或图像提示词、收集事件与通知流，并在运行时进入 idle 后取得最后提交的助手响应；使用 `HarnessClient` 可直接发送协议请求和订阅通知。调用方可以提供 `sqhBin`；否则客户端解析同版本的 `@liusiqi-dev/sqode` 可执行文件。客户端跨多次运行持有子进程，公开类型化的传输与协议错误，并在 `close()` 或 `await using` 时回收进程。它适用于调用方能够选择运行时 profile 和启动设置的场景。
 
 ## 目录
 
@@ -51,7 +51,7 @@ console.log(result.finalResponse)
 
 `HarnessClient` 是运行 API 之下的协议客户端：显式 `start()`、`initialize()`、`prompt()`、`request()` 与 `close()`，外加通知订阅。`prompt()` 在运行时接受排队消息后立即返回该消息的 id，绝不等待 agent 活动。`subscribe(filter?)` 返回 `NotificationSubscription`（可等待的 `next()`、非阻塞 `tryNext()`、异步迭代）；`subscribeSessionTree(id)` 把范围限定到一个会话及从 `subagent.started` 血缘边发现的后代——运行时对上下文内每个会话都发通知，范围限定在客户端完成，与 Python SDK 完全一致。
 
-本客户端为每种失败模式导出类型化错误：`JsonRpcResponseError`（协议错误响应，保留 code 与 data）、`RequestTimeoutError`（配置的时限已到）、`SdkProtocolError`（响应超出文档化协议）、`TransportClosedError`（运行时已消失——消息携带退出码与有界 stderr 尾部）。`close()` 先请求协议 `shutdown`（受 `shutdownTimeoutMs` 约束，默认 1000 毫秒），然后走 stdin-EOF → SIGTERM → SIGKILL 阶梯直到进程退出；幂等，已关闭的客户端拒绝复用。`HarnessClientOptions.env` 给定时整体替换子进程环境（`undefined` 原样继承父进程环境）；凭据策略归调用方——`dsh-subprocess` 的 `scrubbedParentEnv` 是面向隔离启动的共享擦除基底。
+本客户端为每种失败模式导出类型化错误：`JsonRpcResponseError`（协议错误响应，保留 code 与 data）、`RequestTimeoutError`（配置的时限已到）、`SdkProtocolError`（响应超出文档化协议）、`TransportClosedError`（运行时已消失——消息携带退出码与有界 stderr 尾部）。`close()` 先请求协议 `shutdown`（受 `shutdownTimeoutMs` 约束，默认 1000 毫秒），然后走 stdin-EOF → SIGTERM → SIGKILL 阶梯直到进程退出；幂等，已关闭的客户端拒绝复用。`HarnessClientOptions.env` 给定时整体替换子进程环境（`undefined` 原样继承父进程环境）；凭据策略归调用方——`sqh-subprocess` 的 `scrubbedParentEnv` 是面向隔离启动的共享擦除基底。
 
 -----
 
@@ -65,7 +65,7 @@ console.log(result.finalResponse)
 
 ### 设计理念
 
-客户端是同一协议上的两层：`DeepSeekHarness`（自有运行）叠加在 `HarnessClient`（协议客户端）之上，与 Python SDK 的分层一致。它运行在任何 harness 上下文之外，因此直接 spawn 运行时而非经由 `dsh-subprocess` 服务——即该 seam 记录的 SDK 托管传输例外——其关闭阶梯也位于本包。运行时对上下文内每个会话都发通知；会话树范围限定是客户端对 `subagent.started` 血缘边的过滤。
+客户端是同一协议上的两层：`DeepSeekHarness`（自有运行）叠加在 `HarnessClient`（协议客户端）之上，与 Python SDK 的分层一致。它运行在任何 harness 上下文之外，因此直接 spawn 运行时而非经由 `sqh-subprocess` 服务——即该 seam 记录的 SDK 托管传输例外——其关闭阶梯也位于本包。运行时对上下文内每个会话都发通知；会话树范围限定是客户端对 `subagent.started` 血缘边的过滤。
 
 ### 源码地图
 
@@ -99,7 +99,7 @@ console.log(result.finalResponse)
 - [JSON-RPC 服务插件](../server/README.zh.md)——服务本客户端的运行时插件。
 - [Python SDK](../../../python/README.zh.md) — 共享同一运行时对端与协议的设计孪生。
 - [SDK subagent 后端](../../subagent/subagent-sdk/README.zh.md) — harness 内部消费本客户端的例子。
-- [SDK 应用组合包](../../bundle/sdk-app/README.zh.md) — 本客户端启动的 `dsh --profile sdk` 运行时应用。
+- [SDK 应用组合包](../../bundle/sdk-app/README.zh.md) — 本客户端启动的 `sqh --profile sdk` 运行时应用。
 
 -----
 

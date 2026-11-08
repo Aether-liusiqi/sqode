@@ -1,5 +1,5 @@
 ---
-description: "随包附带的「powered by dsh」徽章 skill（技能），供启用、使用或排查该可选徽章提供方的用户与维护者阅读。"
+description: "随包附带的「powered by sqh」徽章 skill（技能），供启用、使用或排查该可选徽章提供方的用户与维护者阅读。"
 kind: "package-reference"
 ---
 
@@ -9,7 +9,7 @@ kind: "package-reference"
 
 ## 概述
 
-agent（智能体）可以通过该内置提供方加载官方「powered by dsh」徽章 skill，并遵循其指令，给文档、PR（Pull Request）以及其他用 Siqi Harness 生成的内容添加署名徽章。该提供方没有配置，随附 CLI（命令行界面）组合以禁用状态包含该插件，因此部署方需要显式启用。该 skill 同时提供 Markdown 片段和随包分发的 PNG，供无法可靠导入远程图片的系统使用。
+agent（智能体）可以通过该内置提供方加载官方「powered by sqh」徽章 skill，并遵循其指令，给文档、PR（Pull Request）以及其他用 Siqi Harness 生成的内容添加署名徽章。该提供方没有配置，随附 CLI（命令行界面）组合以禁用状态包含该插件，因此部署方需要显式启用。该 skill 同时提供 Markdown 片段和随包分发的 PNG，供无法可靠导入远程图片的系统使用。
 
 ## 目录
 
@@ -90,7 +90,7 @@ agent（智能体）可以通过该内置提供方加载官方「powered by dsh�
 <a id="model-experience"></a>
 ## 模型体验
 
-通过 `dsh-tool-skill` 间接影响模型；该包会把该提供方的目录条目和所选 skill 的正文渲染给模型。
+通过 `sqh-tool-skill` 间接影响模型；该包会把该提供方的目录条目和所选 skill 的正文渲染给模型。
 
 #### KV Cache 影响
 

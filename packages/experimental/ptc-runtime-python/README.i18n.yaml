@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write packages/experimental/ptc-runtime-python/README.md
 /:
-  en: 21d67ee6d4caef1e
-  zh: 815c36a37b8a2c3e
+  en: 4ddf8a273ee90049
+  zh: 57d51261cfb87dac
 /liusiqi-dev-sqh-experimental-ptc-runtime-python:
   en: ce0c25e3a49ba28f
   zh: b766026a37255ea1
@@ -15,8 +15,8 @@
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
 /liusiqi-dev-sqh-experimental-ptc-runtime-python/use-this-package:
-  en: d8db36ca3f32afeb
-  zh: fec311dea315aac4
+  en: 56ea9d75a79acdc2
+  zh: f24df847477c2c2a
 /liusiqi-dev-sqh-experimental-ptc-runtime-python/use-this-package/what-you-get:
   en: ca7b9cc958069c7f
   zh: 8a4ac72d02ad76eb
@@ -48,8 +48,8 @@
   en: ab4a08f301de599d
   zh: e698b35ccf3ce665
 /liusiqi-dev-sqh-experimental-ptc-runtime-python/model-experience:
-  en: 42064c81cda8f059
-  zh: fa68d1acac16e263
+  en: e035599b59c5c916
+  zh: 9ed636e94d3cf3e1
 /liusiqi-dev-sqh-experimental-ptc-runtime-python/model-experience/kv-cache-effect:
   en: 40294c1c31b74824
   zh: d805c6bd7270505e

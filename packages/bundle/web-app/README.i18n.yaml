@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write packages/bundle/web-app/README.md
 /:
-  en: af2e4e5296596e8f
-  zh: 70c0b5ac93209d00
+  en: 4a5cd5198a656b8e
+  zh: e4aa67deb8a25e22
 /liusiqi-dev-sqh-web-app:
   en: daee06d4a99e92b1
   zh: 3800f157ba4a4e2b
 /liusiqi-dev-sqh-web-app/summary:
-  en: 0ebb6c3ca8c0a84e
-  zh: 4d85e02c769ddae0
+  en: 31fe608e176456b6
+  zh: ceae0505a8638d9b
 /liusiqi-dev-sqh-web-app/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
@@ -18,23 +18,23 @@
   en: 3bd37b85139d2fa7
   zh: ba86c807eb83866e
 /liusiqi-dev-sqh-web-app/use-this-package/starting-the-web-gui:
-  en: b7ab01cfe9fed40f
-  zh: 23703ab7727c3ab5
+  en: a481d4f86da41fd3
+  zh: 7b5d0951551f02cb
 /liusiqi-dev-sqh-web-app/use-this-package/configuration:
-  en: 4119fcd599b7ca0a
-  zh: 70fce847dcee84e7
+  en: fecb7675640e9364
+  zh: 391493a1a7f2f52e
 /liusiqi-dev-sqh-web-app/use-this-package/lan-access-and-trusted-hosts:
   en: 2522c806db384ddc
   zh: 7e96f11194af9f9f
 /liusiqi-dev-sqh-web-app/use-this-package/running-over-ssh:
-  en: 1fe96dde34f21b23
-  zh: 5689c4f4186805c1
+  en: 2eaee85cd7a84576
+  zh: 5c8cdf807c60d141
 /liusiqi-dev-sqh-web-app/use-this-package/per-session-agent-setup:
   en: 50299c620628edb5
   zh: 548e154b9c4b46a2
 /liusiqi-dev-sqh-web-app/understand-the-implementation:
-  en: 4eb00d95238e3b92
-  zh: 0d6ca9e1a3e7db84
+  en: 10b3e271824a42a2
+  zh: 8fb51b4f2693e50d
 /liusiqi-dev-sqh-web-app/understand-the-implementation/patch-semantics:
   en: ab193ffcd9cbe8ce
   zh: 1dd4687b2dce1f31
@@ -51,8 +51,8 @@
   en: 34767bb4c0471622
   zh: e6d76e7c7a0b9ce8
 /liusiqi-dev-sqh-web-app/further-exploration:
-  en: f81694f7424e2988
-  zh: 6643f9227039e228
+  en: f8a715bddd48ea88
+  zh: 91db15d1e7be742e
 /liusiqi-dev-sqh-web-app/model-experience:
   en: 215e7ba838619b7b
   zh: a311da3843709f90

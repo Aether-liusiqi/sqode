@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write packages/client/ui-dockkit/README.md
 /:
-  en: 93fc2e9e86fc50f8
-  zh: 61c7c38a66935ad6
+  en: 9f149dfa430d16f4
+  zh: 1f3ea65fd2a27bf3
 /liusiqi-dev-sqh-client-ui-dockkit:
   en: ac5c09cb2d0482ba
   zh: 160381d1c17b0cce

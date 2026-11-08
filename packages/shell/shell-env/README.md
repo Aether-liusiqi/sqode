@@ -9,7 +9,7 @@ English | [中文](README.zh.md)
 
 ## Summary
 
-`dsh-shell-env` provides the trusted `SQH_*` environment that every model shell call — bash or pwsh — runs with: built-in facts such as `SQODE_HOME`, `SQODE_SHELL=1`, the agent's `SQODE_SESSION_ID`, and the launched profile's `SQODE_PROFILE` and `SQODE_PROFILE_DIR`. Plugin authors can register their own facts with declared keys, collected per execution and disposed with their plugin; duplicate ownership or undeclared runtime keys fail loudly instead of silently overwriting. The registry changes nothing else the model sees — the shell tools own their own schemas and prompts. Choose it in any composition that mounts a model shell tool; configuration only picks the Harness home directory.
+`sqh-shell-env` provides the trusted `SQH_*` environment that every model shell call — bash or pwsh — runs with: built-in facts such as `SQODE_HOME`, `SQODE_SHELL=1`, the agent's `SQODE_SESSION_ID`, and the launched profile's `SQODE_PROFILE` and `SQODE_PROFILE_DIR`. Plugin authors can register their own facts with declared keys, collected per execution and disposed with their plugin; duplicate ownership or undeclared runtime keys fail loudly instead of silently overwriting. The registry changes nothing else the model sees — the shell tools own their own schemas and prompts. Choose it in any composition that mounts a model shell tool; configuration only picks the Harness home directory.
 
 ## Table of Contents
 
@@ -25,11 +25,11 @@ English | [中文](README.zh.md)
 <a id="use-this-package"></a>
 ## Use this package
 
-Load this plugin in any composition that mounts a model shell tool (`dsh-tool-bash` or `dsh-tool-pwsh`): each foreground or background shell call then runs with a freshly collected managed environment instead of whatever `SQH_*` values the process inherited.
+Load this plugin in any composition that mounts a model shell tool (`sqh-tool-bash` or `sqh-tool-pwsh`): each foreground or background shell call then runs with a freshly collected managed environment instead of whatever `SQH_*` values the process inherited.
 
 ### What every shell call receives
 
-Every call receives `SQODE_HOME` (the absolute Harness home), `SQODE_SHELL=1`, and, for agent calls, `SQODE_SESSION_ID` (the calling session's id). When the launcher provided a profile context, every call also receives `SQODE_PROFILE` (the profile name) and `SQODE_PROFILE_DIR` (its absolute directory; its `node_modules` holds only profile-installed packages, while the harness's own bundles resolve from the dsh installation); compositions booted without a profile omit both.
+Every call receives `SQODE_HOME` (the absolute Harness home), `SQODE_SHELL=1`, and, for agent calls, `SQODE_SESSION_ID` (the calling session's id). When the launcher provided a profile context, every call also receives `SQODE_PROFILE` (the profile name) and `SQODE_PROFILE_DIR` (its absolute directory; its `node_modules` holds only profile-installed packages, while the harness's own bundles resolve from the sqh installation); compositions booted without a profile omit both.
 
 ### Adding your own environment facts
 
@@ -114,7 +114,7 @@ Read these pages when the package-level contract is not enough. They move from t
 <a id="model-experience"></a>
 ## Model Experience
 
-Indirectly, through the shell tools (`dsh-tool-bash`, `dsh-tool-pwsh`), which expose this registry's managed `SQH_*` facts in every shell-tool call.
+Indirectly, through the shell tools (`sqh-tool-bash`, `sqh-tool-pwsh`), which expose this registry's managed `SQH_*` facts in every shell-tool call.
 
 #### KV Cache effect
 

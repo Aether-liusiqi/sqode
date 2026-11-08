@@ -9,20 +9,20 @@
   en: d5fbfd984518f759
   zh: 0485fea193802e03
 /liusiqi-dev-sqh-tool-call-timeout-policy/summary:
-  en: 745e3c8642ed9ea9
-  zh: c8cfd6a3b0c3c9bf
+  en: c530bc0218e829ef
+  zh: 9fe2002dc12fbdcf
 /liusiqi-dev-sqh-tool-call-timeout-policy/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
 /liusiqi-dev-sqh-tool-call-timeout-policy/use-this-package:
-  en: 1235dce86c24bdd6
-  zh: d96b544b0b745766
+  en: bc37332c49174434
+  zh: 8e513c5d14b34cf0
 /liusiqi-dev-sqh-tool-call-timeout-policy/use-this-package/when-to-choose-it:
   en: 2c6495054dfaf09c
   zh: 7f2d65c3202d75f3
 /liusiqi-dev-sqh-tool-call-timeout-policy/use-this-package/setting-it-up:
-  en: 42c3fee6ddf0e952
-  zh: 6b7728300cf5bfdc
+  en: b1700a6149a37617
+  zh: 345df79c52670916
 /liusiqi-dev-sqh-tool-call-timeout-policy/use-this-package/what-you-get:
   en: 339ff1d6001f3def
   zh: c3e378abc7c58fa4
@@ -30,8 +30,8 @@
   en: 9bdd0f9388915825
   zh: c101ec504869d187
 /liusiqi-dev-sqh-tool-call-timeout-policy/understand-the-implementation/design-philosophy:
-  en: 39f08d20a467b458
-  zh: 61f9e8ba3a5479d2
+  en: 21e1e37c8a8bb8e4
+  zh: 011826d067fd7a9d
 /liusiqi-dev-sqh-tool-call-timeout-policy/understand-the-implementation/how-a-deadline-is-armed-and-mapped:
   en: 4c2f31d760d5ad4b
   zh: 42e5c42675c32dcc
@@ -42,8 +42,8 @@
   en: 35abf9419848ba92
   zh: 3c08b161064abdcd
 /liusiqi-dev-sqh-tool-call-timeout-policy/further-exploration:
-  en: fb2426b1c4c3da4a
-  zh: ff9a7cd6a6b9f631
+  en: e3ce40f74a5ebbac
+  zh: 90c832dea4dd8284
 /liusiqi-dev-sqh-tool-call-timeout-policy/model-experience:
   en: 215e7ba838619b7b
   zh: a311da3843709f90

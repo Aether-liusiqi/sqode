@@ -9,7 +9,7 @@ kind: "package-reference"
 
 ## 概述
 
-`dsh-shell-env` 提供每次模型 shell 调用——bash 或 pwsh——所运行的受信 `SQH_*` 环境：内置事实如 `SQODE_HOME`、`SQODE_SHELL=1`、agent（智能体）的 `SQODE_SESSION_ID`，以及所启动 profile 的 `SQODE_PROFILE` 与 `SQODE_PROFILE_DIR`。插件作者可以注册自己的事实，带声明键、按每次执行收集，并随插件释放；重复所有权或未声明的运行时键会明确报错，而不是静默覆盖。注册表不会改变模型看到的其他任何内容——shell 工具拥有各自的 schema 与提示词。任何挂载了模型 shell 工具的组合都适合选择它；配置只决定 Harness 主目录。
+`sqh-shell-env` 提供每次模型 shell 调用——bash 或 pwsh——所运行的受信 `SQH_*` 环境：内置事实如 `SQODE_HOME`、`SQODE_SHELL=1`、agent（智能体）的 `SQODE_SESSION_ID`，以及所启动 profile 的 `SQODE_PROFILE` 与 `SQODE_PROFILE_DIR`。插件作者可以注册自己的事实，带声明键、按每次执行收集，并随插件释放；重复所有权或未声明的运行时键会明确报错，而不是静默覆盖。注册表不会改变模型看到的其他任何内容——shell 工具拥有各自的 schema 与提示词。任何挂载了模型 shell 工具的组合都适合选择它；配置只决定 Harness 主目录。
 
 ## 目录
 
@@ -25,11 +25,11 @@ kind: "package-reference"
 <a id="use-this-package"></a>
 ## 使用本包
 
-在任何挂载模型 shell 工具（`dsh-tool-bash` 或 `dsh-tool-pwsh`）的组合中加载本插件：此后每次前台或后台 shell 调用都会运行在新收集的受管环境中，而不是进程继承来的任意 `SQH_*` 值。
+在任何挂载模型 shell 工具（`sqh-tool-bash` 或 `sqh-tool-pwsh`）的组合中加载本插件：此后每次前台或后台 shell 调用都会运行在新收集的受管环境中，而不是进程继承来的任意 `SQH_*` 值。
 
 ### 每次 shell 调用都会收到什么
 
-每次调用都会收到 `SQODE_HOME`（Harness 主目录的绝对路径）、`SQODE_SHELL=1`，agent 调用还会收到 `SQODE_SESSION_ID`（调用方会话的 id）。启动器提供了 profile 上下文时，每次调用还会收到 `SQODE_PROFILE`（profile 名）与 `SQODE_PROFILE_DIR`（其绝对目录；其 `node_modules` 只存放 profile 自行安装的包，harness 自带的组合包从 dsh 安装目录解析）；不带 profile 启动的组合则两者都没有。
+每次调用都会收到 `SQODE_HOME`（Harness 主目录的绝对路径）、`SQODE_SHELL=1`，agent 调用还会收到 `SQODE_SESSION_ID`（调用方会话的 id）。启动器提供了 profile 上下文时，每次调用还会收到 `SQODE_PROFILE`（profile 名）与 `SQODE_PROFILE_DIR`（其绝对目录；其 `node_modules` 只存放 profile 自行安装的包，harness 自带的组合包从 sqh 安装目录解析）；不带 profile 启动的组合则两者都没有。
 
 ### 添加你自己的环境事实
 
@@ -114,7 +114,7 @@ contributor 必须声明它返回的每个键；返回未声明或非字符串�
 <a id="model-experience"></a>
 ## 模型体验
 
-通过 shell 工具（`dsh-tool-bash`、`dsh-tool-pwsh`）间接产生影响；这些工具把本注册表的受管 `SQH_*` 事实暴露在每次 shell 工具调用中。
+通过 shell 工具（`sqh-tool-bash`、`sqh-tool-pwsh`）间接产生影响；这些工具把本注册表的受管 `SQH_*` 事实暴露在每次 shell 工具调用中。
 
 #### KV Cache 影响
 

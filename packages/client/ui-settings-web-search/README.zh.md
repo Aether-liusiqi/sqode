@@ -1,5 +1,5 @@
 ---
-description: "dsh Web 客户端插件页上的网页搜索设置页：检索所用通道，以及只属于 API 通道的密钥、接口地址与单次请求上限。"
+description: "sqh Web 客户端插件页上的网页搜索设置页：检索所用通道，以及只属于 API 通道的密钥、接口地址与单次请求上限。"
 kind: "package-reference"
 ---
 

@@ -71,7 +71,7 @@ const cache = sqhCachePath('models')         // $SQODE_HOME/cache/models, defaul
 
 ### 解析规则
 
-`resolveSqhHome` 先读显式覆盖值，然后读 `$SQODE_HOME`，最后回退到操作系统主目录拼接 `.dsh`。选中的值经过波浪号展开并规范化为绝对路径；`sqhHomePath` 用 Node 的平台路径规则拼接子路径段。`sqhHomeDisplay` 把解析出的路径与默认根目录比较并返回符号标签，因此已配置的主目录绝不泄露其绝对路径。
+`resolveSqhHome` 先读显式覆盖值，然后读 `$SQODE_HOME`，最后回退到操作系统主目录拼接 `.sqh`。选中的值经过波浪号展开并规范化为绝对路径；`sqhHomePath` 用 Node 的平台路径规则拼接子路径段。`sqhHomeDisplay` 把解析出的路径与默认根目录比较并返回符号标签，因此已配置的主目录绝不泄露其绝对路径。
 
 ### 规范化机制
 

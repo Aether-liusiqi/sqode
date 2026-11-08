@@ -10,7 +10,7 @@ python -m pip install siqi-harness-sdk
 
 ## Start a runtime
 
-The Python SDK has no separate application entrypoint. It launches the bundled `dsh` CLI with `--profile sdk`; the selected profile owns the JSON-RPC server, agent composition, credentials, persistence, tools, and shutdown behavior.
+The Python SDK has no separate application entrypoint. It launches the bundled `sqh` CLI with `--profile sdk`; the selected profile owns the JSON-RPC server, agent composition, credentials, persistence, tools, and shutdown behavior.
 
 Every launch requires an explicit Harness home. Pass `dsh_home` or provide a non-empty `SQODE_HOME` in the child environment. The SDK deliberately never discovers `~/.sqode`.
 
@@ -18,7 +18,7 @@ Every launch requires an explicit Harness home. Pass `dsh_home` or provide a non
 from deepseek_harness import DeepSeekHarness
 
 with DeepSeekHarness(
-    dsh_home="/absolute/path/to/isolated-dsh-home",
+    dsh_home="/absolute/path/to/isolated-sqh-home",
     cwd="/absolute/path/to/workspace",
     provider="deepseek-official",
     model="deepseek-v4-flash",
@@ -34,32 +34,32 @@ print(result.final_response)
 
 ## Customize plugins
 
-Persistent customization belongs to a `dsh` profile. Initialize the shipped SDK profile and install an external bundle with the runtime wheel's `dsh` command:
+Persistent customization belongs to a `sqh` profile. Initialize the shipped SDK profile and install an external bundle with the runtime wheel's `sqh` command:
 
 ```sh
-export SQODE_HOME=/absolute/path/to/isolated-dsh-home
-dsh --profile sdk --dump-default-config >/dev/null
-dsh plugin --profile sdk add file:/absolute/path/to/my-plugin-bundle
+export SQODE_HOME=/absolute/path/to/isolated-sqh-home
+sqh --profile sdk --dump-default-config >/dev/null
+sqh plugin --profile sdk add file:/absolute/path/to/my-plugin-bundle
 ```
 
-The `file:` form installs the local bundle into the profile package tree, where its peer imports reach the bundled installation fallback. The profile manifest records installed dependencies and ordered bundle layers; its `$SQODE_HOME/profiles/sdk/cordis.patch.yml` is the persistent user patch. `dsh plugin` needs `pnpm` only when managing external packages. Running the SDK does not require system Node.js.
+The `file:` form installs the local bundle into the profile package tree, where its peer imports reach the bundled installation fallback. The profile manifest records installed dependencies and ordered bundle layers; its `$SQODE_HOME/profiles/sdk/cordis.patch.yml` is the persistent user patch. `sqh plugin` needs `pnpm` only when managing external packages. Running the SDK does not require system Node.js.
 
 For an invocation-specific change, pass one or more patch files. They become absolute and are forwarded in order after the profile and home patch layers:
 
 ```py
 with DeepSeekHarness(
-    dsh_home="/absolute/path/to/isolated-dsh-home",
+    dsh_home="/absolute/path/to/isolated-sqh-home",
     profile="sdk",
     patches=("/absolute/path/to/first.patch.yml", "/absolute/path/to/last.patch.yml"),
 ) as harness:
     result = harness.run("Make the requested code change.")
 ```
 
-`profile` may select another existing profile, but that composition must retain `@liusiqi-dev/sqh-sdk-app` or another `@liusiqi-dev/sqh-sdk-jsonrpc-server` row. Misconfiguration fails during CLI boot or SDK initialization; there is no complete-config fallback. `dsh_bin` may select another `dsh` executable while preserving the same profile grammar. Arbitrary argv replacement remains an internal fake-runtime test adapter, not public API.
+`profile` may select another existing profile, but that composition must retain `@liusiqi-dev/sqh-sdk-app` or another `@liusiqi-dev/sqh-sdk-jsonrpc-server` row. Misconfiguration fails during CLI boot or SDK initialization; there is no complete-config fallback. `dsh_bin` may select another `sqh` executable while preserving the same profile grammar. Arbitrary argv replacement remains an internal fake-runtime test adapter, not public API.
 
 `provider` selects a provider route registered by the chosen Cordis composition; `model` is the model id resolved by that adapter. `reasoning_effort` is an optional non-empty adapter-owned identifier for that exact route; omission preserves the model's own default. `max_tokens` is an optional positive per-request output-token cap for the root agent and its in-process descendants; omission leaves the provider default in control. Initialization rejects a missing adapter, unavailable model, or unsupported effort before a prompt runs. Compaction summaries keep the separate limit configured by their compaction plugin. The bundled default composition registers `deepseek-official`. A custom composition can mount `llm-pi-ai`, configure provider-specific credentials/endpoints there, and select any provider/model present in pi-ai's installed catalog.
 
-The shipped `sdk-minimal` profile is a standalone explicit tree rather than an overlay on `dsh-base`. Select it with `profile="sdk-minimal"`; the ordinary `model` argument is the sole runtime model selection, including for model ids outside the adapter's advisory catalog. It provides only a platform-selected persistent shell, local execution, and JSONL sessions; filesystem tools, settings, managed credentials, telemetry, Web tools, and the full default tool roster remain available through the separate full `sdk` and `web` profiles.
+The shipped `sdk-minimal` profile is a standalone explicit tree rather than an overlay on `sqh-base`. Select it with `profile="sdk-minimal"`; the ordinary `model` argument is the sole runtime model selection, including for model ids outside the adapter's advisory catalog. It provides only a platform-selected persistent shell, local execution, and JSONL sessions; filesystem tools, settings, managed credentials, telemetry, Web tools, and the full default tool roster remain available through the separate full `sdk` and `web` profiles.
 
 ## Results and notifications
 

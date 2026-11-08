@@ -9,11 +9,11 @@
   en: 529f401da4757a98
   zh: 041ff5e86b5dd8db
 /background-job-runtime/producer-contract:
-  en: 2b9c087048b73091
-  zh: 9d1ff560ce79c9b1
+  en: f342418523d1c50c
+  zh: e0778ff9ee78aee1
 /background-job-runtime/the-output-ring:
-  en: eee762c5ae896a2d
-  zh: 93984e2007381ae8
+  en: d8e6cc3479e26062
+  zh: 4077cf1213341b21
 /background-job-runtime/consumer-views:
   en: 8923d586da35964e
   zh: 85437e407856cd5f
@@ -21,5 +21,5 @@
   en: 413216510fce678e
   zh: 18efe733a0b35d0c
 /background-job-runtime/service-behavior:
-  en: b4c51bdf4816f1ef
-  zh: c8f3e872dd988a7b
+  en: b8925eb4382b4a1d
+  zh: 417241762a13ba65

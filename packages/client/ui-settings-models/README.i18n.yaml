@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write packages/client/ui-settings-models/README.md
 /:
-  en: d1bc4d9ef67bfb19
-  zh: d095e4dc76f1c5e0
+  en: a7e295eae9a271cf
+  zh: fe2ef40c4da69f1b
 /liusiqi-dev-sqh-client-ui-settings-models:
   en: d1a1b0c7c695d05f
   zh: 683d758df93a72dc
 /liusiqi-dev-sqh-client-ui-settings-models/summary:
-  en: 51252c1e9fa6da0a
-  zh: 227b54d7898417fa
+  en: 4d86c045e72f6edf
+  zh: 7d6a2251bac86d69
 /liusiqi-dev-sqh-client-ui-settings-models/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb

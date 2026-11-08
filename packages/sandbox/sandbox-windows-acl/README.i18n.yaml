@@ -9,8 +9,8 @@
   en: 633f5cb12238b3a6
   zh: 5045bd7478cafff0
 /liusiqi-dev-sqh-sandbox-windows-acl/summary:
-  en: 777921135c23ee55
-  zh: 7c726cc63995d443
+  en: 43b71f9a09a4204b
+  zh: 4e82f1525562f11e
 /liusiqi-dev-sqh-sandbox-windows-acl/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
@@ -27,20 +27,20 @@
   en: 289e65bddf20dd79
   zh: 7ff72ed64c4b4d1c
 /liusiqi-dev-sqh-sandbox-windows-acl/use-this-package/failures-and-recovery:
-  en: 7fc0707debb1e67c
-  zh: e3b5529bf82f868e
+  en: e90309be73f716fd
+  zh: ac67dd160e59ef0f
 /liusiqi-dev-sqh-sandbox-windows-acl/understand-the-implementation:
   en: c2cde86c85c2c619
   zh: a29a114e591f9d3f
 /liusiqi-dev-sqh-sandbox-windows-acl/understand-the-implementation/mechanism:
-  en: a37ea37f2d527693
-  zh: 749b5a263d0e1534
+  en: 36597cecbc4fef68
+  zh: 36a92887bfad8c14
 /liusiqi-dev-sqh-sandbox-windows-acl/understand-the-implementation/modes-and-token-lists:
   en: 9c8d9af84f9abd99
   zh: 1c82b355aa5f210f
 /liusiqi-dev-sqh-sandbox-windows-acl/understand-the-implementation/the-confinement-runner:
-  en: 0847de0e53e50061
-  zh: 90fa3dcaf080c3be
+  en: fe52c33b585e13d5
+  zh: b26fa09b84c8d4d2
 /liusiqi-dev-sqh-sandbox-windows-acl/understand-the-implementation/verified-boundaries:
   en: c0a377425ce71ea4
   zh: bd584b43e1e84ee1
@@ -51,8 +51,8 @@
   en: 7850da9522bf984b
   zh: a9f2273a85bafcf9
 /liusiqi-dev-sqh-sandbox-windows-acl/model-experience:
-  en: bbb19594a2c2e4d4
-  zh: 075a65d9b9182aad
+  en: 391b175ae3d1087a
+  zh: 61bb5511cf79322c
 /liusiqi-dev-sqh-sandbox-windows-acl/model-experience/kv-cache-effect:
   en: 817eb1b7de13872e
   zh: 06fe175e41e7459b

@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write packages/client/ui-settings-agent-loop/README.md
 /:
-  en: 12adb999b01b035a
-  zh: 15ac17dd70c78e07
+  en: 85890180810017a1
+  zh: 99af1b9ef637add3
 /liusiqi-dev-sqh-client-ui-settings-agent-loop:
   en: 42791d6e4d271822
   zh: efb5ec8b934c92ca

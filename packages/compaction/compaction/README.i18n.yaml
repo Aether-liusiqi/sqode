@@ -9,8 +9,8 @@
   en: ca572bcc4a2692a9
   zh: 1b5108dbf1b2df77
 /liusiqi-dev-sqh-compaction/summary:
-  en: 8cde722f68374b24
-  zh: 11f5aff0d0ecd573
+  en: 32534b5c087ab027
+  zh: d189f0a31d75efee
 /liusiqi-dev-sqh-compaction/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
@@ -18,14 +18,14 @@
   en: 7d1dad97626dbd2e
   zh: 075fef4e1844ad12
 /liusiqi-dev-sqh-compaction/use-this-package/when-to-choose-it:
-  en: 19c39a458294769b
-  zh: fd7534068f49e2af
+  en: e301dee59f47090b
+  zh: 1e93a41b92ecf516
 /liusiqi-dev-sqh-compaction/use-this-package/what-condensation-looks-like:
   en: 0abbee3a3b929a90
   zh: 334736dffe93488d
 /liusiqi-dev-sqh-compaction/use-this-package/turning-condensation-on:
-  en: 8213b79c776f1a75
-  zh: 481c0dffd342426a
+  en: 8421e818306e6e09
+  zh: 48c7d9c934abe322
 /liusiqi-dev-sqh-compaction/use-this-package/implementing-a-backend:
   en: 280b5fda4c9b9c8b
   zh: 764ca79fccf98279
@@ -36,14 +36,14 @@
   en: 321c3dc665ea03ff
   zh: f0fa408cde7b0454
 /liusiqi-dev-sqh-compaction/understand-the-implementation/design-philosophy:
-  en: 83b841c2263c3661
-  zh: 2d75dba71717f681
+  en: 522e6f9cb0889767
+  zh: 1943f3a438d31686
 /liusiqi-dev-sqh-compaction/understand-the-implementation/service-api:
   en: d742d41c7eb5d406
   zh: 6ff26c23eba5dd59
 /liusiqi-dev-sqh-compaction/understand-the-implementation/manual-failure-taxonomy:
-  en: 81449c88ba52f445
-  zh: 2cdcce236bfbf284
+  en: ff4da5dc87bc5988
+  zh: b9e03cd7228e21b9
 /liusiqi-dev-sqh-compaction/understand-the-implementation/tool-pairing-boundaries:
   en: 15dad68a04d6c86b
   zh: 3b95acf1b7e503bf

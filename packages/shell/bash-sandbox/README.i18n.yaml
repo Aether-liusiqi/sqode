@@ -9,17 +9,17 @@
   en: 5a1b82974b3eeed9
   zh: a0bafa945a874c03
 /liusiqi-dev-sqh-bash-sandbox/summary:
-  en: 37a0fcab18f972c0
-  zh: f7b4222e646e7050
+  en: 86da85701652ed4d
+  zh: da7fcefc50252248
 /liusiqi-dev-sqh-bash-sandbox/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
 /liusiqi-dev-sqh-bash-sandbox/use-this-package:
-  en: bd59d09bee36362c
-  zh: 7086c8268e7517d5
+  en: d7c85e19c36add19
+  zh: 91116cff38c71b48
 /liusiqi-dev-sqh-bash-sandbox/use-this-package/when-to-choose-it:
-  en: af387f23325c1435
-  zh: 7a160aca5edd657e
+  en: 6b808c4624ff00ae
+  zh: 614ec4a69fc828b3
 /liusiqi-dev-sqh-bash-sandbox/use-this-package/modes-and-file-effects:
   en: bc096fe6f8eb54cd
   zh: 1a3e3122ca40b0e5
@@ -36,8 +36,8 @@
   en: 05e2abe4a25886fd
   zh: 9240b331c45ac81e
 /liusiqi-dev-sqh-bash-sandbox/understand-the-implementation/design-concept:
-  en: e1b1ac62e94ce535
-  zh: 5fa7a0353fbf777d
+  en: 85c346570953eb96
+  zh: 7e937459a76b3106
 /liusiqi-dev-sqh-bash-sandbox/understand-the-implementation/source-map:
   en: 418d9c2a61061adb
   zh: ffbc0d7723b45017
@@ -57,11 +57,11 @@
   en: 8e3df84fdcaeee60
   zh: 25ad519340c6c232
 /liusiqi-dev-sqh-bash-sandbox/model-experience/bash-tool-schema-indirectly/what-the-model-sees:
-  en: a6d30d6d5f7d2a5e
-  zh: dfc77de2d2d66f9e
+  en: 3887eb17430e0b3f
+  zh: b932d1922cefe719
 /liusiqi-dev-sqh-bash-sandbox/model-experience/bash-tool-schema-indirectly/token-effect:
-  en: 2278530f1f9e93b2
-  zh: 86e2a20746ce3f3c
+  en: a430f35e41f6223d
+  zh: e876d2461729285c
 /liusiqi-dev-sqh-bash-sandbox/model-experience/bash-tool-schema-indirectly/kv-cache-effect:
   en: d25d46a61dc2b0c1
   zh: e1deea6d70be4691

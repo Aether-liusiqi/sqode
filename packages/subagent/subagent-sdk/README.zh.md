@@ -9,7 +9,7 @@ kind: "package-reference"
 
 ## 概述
 
-`dsh-subagent-sdk` 在全新的 Siqi Harness 子进程中运行每个委派任务，子进程拥有自己的 profile、会话、模型路由与工具。父级提供任务与工作目录，每个子进程使用其已配置的运行时，并与父级对话保持隔离。父级只会收到子进程最终的 assistant 文本或安全错误；中间消息与工具流量保留在子进程内。当委派需要完整的 Harness 运行时而不是共享进程内状态时，选择此后端，并接受每次运行都要启动新进程的成本。
+`sqh-subagent-sdk` 在全新的 Siqi Harness 子进程中运行每个委派任务，子进程拥有自己的 profile、会话、模型路由与工具。父级提供任务与工作目录，每个子进程使用其已配置的运行时，并与父级对话保持隔离。父级只会收到子进程最终的 assistant 文本或安全错误；中间消息与工具流量保留在子进程内。当委派需要完整的 Harness 运行时而不是共享进程内状态时，选择此后端，并接受每次运行都要启动新进程的成本。
 
 ## 目录
 
@@ -31,14 +31,14 @@ kind: "package-reference"
 
 当子进程必须是完整的 harness 对等体——拥有自己的组合、会话持久化、模型路由与工具——而不是共享父进程的 agent 时，选择此后端。当子进程必须共享父级组合或遵守父级强制的非路由能力时，请选择进程内后端：本提供方接受 agent 路由选项，但会拒绝结构化输出、深度上限、工具过滤或 persona，而不是静默省略。
 
-提供方声明 `agentOptions: true`，同时保持 `outputSchema`/`depthLimit`/`toolFilter`/`persona` 为 false，并且 `inheritsParentContext: false`。不可变的 `agentRouteDefaults` 会在模型覆盖与确切路由预检前，把配置的 provider／model 基线公开给 `dsh-tool-subagent`；`start()` 则为直接调用方独立应用同一份配置默认值，包括 `maxTokens`。agent 路由值通过显式白名单跨越 SDK 协议；子进程仍是另一进程里的全新运行时，唯一从父 agent 本身派生的值是工作区 cwd。基于本提供方的 `dsh-tool-subagent` 部署应设置 `maxDepth: 'provider-managed'`——子 harness 拥有自己的递归预算。
+提供方声明 `agentOptions: true`，同时保持 `outputSchema`/`depthLimit`/`toolFilter`/`persona` 为 false，并且 `inheritsParentContext: false`。不可变的 `agentRouteDefaults` 会在模型覆盖与确切路由预检前，把配置的 provider／model 基线公开给 `sqh-tool-subagent`；`start()` 则为直接调用方独立应用同一份配置默认值，包括 `maxTokens`。agent 路由值通过显式白名单跨越 SDK 协议；子进程仍是另一进程里的全新运行时，唯一从父 agent 本身派生的值是工作区 cwd。基于本提供方的 `sqh-tool-subagent` 部署应设置 `maxDepth: 'provider-managed'`——子 harness 拥有自己的递归预算。
 
 ### 配置
 
 | 字段 | 默认值 | 含义 |
 |---|---|---|
-| `providerName` | `dsh-sdk` | `ctx.subagents` 上的注册表名称 |
-| `sqhBin` | SDK 依赖 | 显式 dsh CLI（命令行界面）模块，在插件加载时解析并校验；省略则使用 SDK 依赖 |
+| `providerName` | `sqh-sdk` | `ctx.subagents` 上的注册表名称 |
+| `sqhBin` | SDK 依赖 | 显式 sqh CLI（命令行界面）模块，在插件加载时解析并校验；省略则使用 SDK 依赖 |
 | `profile` | `sdk` | 具名子 profile |
 | `patches` | `[]` | 每次启动的有序 profile patch 文件，在插件加载时解析并校验 |
 | `sqhHome` | 必填 | 每个嵌套子进程的绝对隔离 Harness home |
@@ -59,7 +59,7 @@ kind: "package-reference"
 - id: subagent-sdk
   name: '@liusiqi-dev/sqh-subagent-sdk'
   config:
-    providerName: dsh-sdk
+    providerName: sqh-sdk
     profile: sdk
     patches: ['./profiles/research-child.cordis.yml']
     sqhHome: !!js sqhHomePath('children')
@@ -68,7 +68,7 @@ kind: "package-reference"
       DEEPSEEK_API_KEY: !!js process.env.DEEPSEEK_API_KEY
 - id: tool-subagent
   name: '@liusiqi-dev/sqh-tool-subagent'
-  config: { provider: dsh-sdk, toolName: subagent, maxDepth: 'provider-managed' }
+  config: { provider: sqh-sdk, toolName: subagent, maxDepth: 'provider-managed' }
 ```
 
 ### 你会得到什么
@@ -124,7 +124,7 @@ kind: "package-reference"
 当包级约定不够用时阅读以下页面。它们从本后端逐步进入它接入的 seam 与它驱动的 SDK。
 
 - [Subagent 子系统](../../../docs/subsystems/subagent.zh.md)——服务约定、提供方约定与终态结果语义。
-- [dsh-subagent seam](../subagent/README.zh.md)——本提供方注册于其上的注册表与启动 API。
+- [sqh-subagent seam](../subagent/README.zh.md)——本提供方注册于其上的注册表与启动 API。
 - [ACP subagent 后端](../subagent-acp/README.zh.md)——经 Agent Client Protocol 的兄弟进程外提供方。
 - [TypeScript SDK 客户端](../../sdk/client/README.zh.md)——本后端用以驱动子进程的 stdio JSON-RPC 客户端。
 - [生成配置目录](../../../docs/config-catalog.zh.md#deepseek-aidsh-subagent-sdk)——每个受支持配置字段及其源声明。
@@ -152,7 +152,7 @@ kind: "package-reference"
 
 #### 模型看到什么
 
-经由 `dsh-tool-subagent`，父级只会收到子运行时最终的 assistant 文本（或累积的部分文本），或该消费方给出的精确停止原因错误；不会收到中间消息或工具流量。带诊断的非完成结果会先呈现安全诊断，再单独呈现保留的部分 assistant 输出；启动与 shutdown 错误使用同一固定事实，不公开原始 SDK 文本。
+经由 `sqh-tool-subagent`，父级只会收到子运行时最终的 assistant 文本（或累积的部分文本），或该消费方给出的精确停止原因错误；不会收到中间消息或工具流量。带诊断的非完成结果会先呈现安全诊断，再单独呈现保留的部分 assistant 输出；启动与 shutdown 错误使用同一固定事实，不公开原始 SDK 文本。
 
 #### Token 影响
 

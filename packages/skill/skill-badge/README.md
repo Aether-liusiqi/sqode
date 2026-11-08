@@ -1,5 +1,5 @@
 ---
-description: "The bundled 'powered by dsh' badge skill for users and maintainers enabling, using, or debugging the optional badge provider."
+description: "The bundled 'powered by sqh' badge skill for users and maintainers enabling, using, or debugging the optional badge provider."
 kind: "package-reference"
 ---
 
@@ -9,7 +9,7 @@ English | [中文](README.zh.md)
 
 ## Summary
 
-Agents can load the official "powered by dsh" badge skill from this bundled provider and follow its instructions for adding attribution badges to documents, PRs, and other content produced with Siqi Harness. The provider has no configuration, and the shipped CLI composition includes the plugin disabled, so deployments enable it explicitly. The skill ships both Markdown snippets and a packaged PNG for systems that cannot reliably import remote images.
+Agents can load the official "powered by sqh" badge skill from this bundled provider and follow its instructions for adding attribution badges to documents, PRs, and other content produced with Siqi Harness. The provider has no configuration, and the shipped CLI composition includes the plugin disabled, so deployments enable it explicitly. The skill ships both Markdown snippets and a packaged PNG for systems that cannot reliably import remote images.
 
 ## Table of Contents
 
@@ -90,7 +90,7 @@ Read these pages when the package-level contract is not enough. They move from t
 <a id="model-experience"></a>
 ## Model Experience
 
-Indirectly, through `dsh-tool-skill`, which renders the provider's catalog entry and the selected skill body to the model.
+Indirectly, through `sqh-tool-skill`, which renders the provider's catalog entry and the selected skill body to the model.
 
 #### KV Cache effect
 

@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write packages/client/ui-trajectory/README.md
 /:
-  en: b9065ee3da8927c2
-  zh: 36a38fa86d552b46
+  en: 5104dacd69faa526
+  zh: c16a251db5bd4913
 /liusiqi-dev-sqh-client-ui-trajectory:
   en: 20d6286aaac559f3
   zh: b358b19585f24e9f

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write packages/bundle/headless/README.md
 /:
-  en: 68ff17b596cbc6aa
-  zh: 8c6f3d309403ba81
+  en: 6df894213d70be93
+  zh: 0445966b50b01b5c
 /liusiqi-dev-sqh-headless:
   en: 539de4a6cfc2db58
   zh: 480b59b41c9f8f25
 /liusiqi-dev-sqh-headless/summary:
-  en: 2c31f2cf129ed020
-  zh: 2b34e3640b011475
+  en: 52a1d724dea412bb
+  zh: 6ae940bc70c62b46
 /liusiqi-dev-sqh-headless/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
@@ -18,20 +18,20 @@
   en: 4447012f4c84100d
   zh: faf579ae9f04c096
 /liusiqi-dev-sqh-headless/use-this-package/running-a-one-shot-task:
-  en: 76a22e98d2b3cc2f
-  zh: c9eb624609b8cc32
+  en: 9745f1b1f2450062
+  zh: c391d9777109146e
 /liusiqi-dev-sqh-headless/use-this-package/choosing-the-session-identity:
   en: dbaa2fac63910a4c
   zh: 4fd5c17815ca444b
 /liusiqi-dev-sqh-headless/use-this-package/machine-readable-output:
-  en: 2804a96e88857b16
-  zh: fe20dc0fb9962785
+  en: 0730061491c6d289
+  zh: 9ca0d305de683216
 /liusiqi-dev-sqh-headless/use-this-package/when-to-use-it:
-  en: 5262b93dcef0d489
-  zh: 1638965b2aabcd38
+  en: 99cf6a7012f1ae8e
+  zh: c487de150e971149
 /liusiqi-dev-sqh-headless/use-this-package/help-and-task-errors:
-  en: ecd381558cf7b0e7
-  zh: a351efbf4a1a2ac5
+  en: 2ee22b9e1b96204f
+  zh: 3aedf48cf60b8bbd
 /liusiqi-dev-sqh-headless/understand-the-implementation:
   en: be1b73a6d0ee3902
   zh: bdba099685d68b27
@@ -39,20 +39,20 @@
   en: 2f2adf0c346c6c1b
   zh: f1e988c7e597a852
 /liusiqi-dev-sqh-headless/understand-the-implementation/patch-surface-over-base:
-  en: cf170ca8baaba68b
-  zh: a205a7ee6e66e36b
+  en: 16ef0661cc2a6b10
+  zh: f91cd4b1e5ca45a7
 /liusiqi-dev-sqh-headless/understand-the-implementation/exit-mapping:
-  en: cc6c485a42d40d28
-  zh: c57775d9319d8dfd
+  en: 250d88b80384e97c
+  zh: a3b42117329c7a61
 /liusiqi-dev-sqh-headless/understand-the-implementation/source-map:
-  en: 20a37f62e58b3ddb
-  zh: ede1fb8cfbae7a0e
+  en: e11cfbf860c61528
+  zh: 12a85a7be34621dc
 /liusiqi-dev-sqh-headless/understand-the-implementation/invariant-ownership:
   en: 329f170dec4b2279
   zh: bb40f8beda5b3a1c
 /liusiqi-dev-sqh-headless/further-exploration:
-  en: 65aebf0f8ab3047c
-  zh: 85616d3859073c4b
+  en: 9d4b7dd801a91c10
+  zh: 915880e8648a3ef2
 /liusiqi-dev-sqh-headless/model-experience:
   en: c5a0991833f64dd7
   zh: 46f9feb255778f11
@@ -60,8 +60,8 @@
   en: 0b0f74b412c7c6d8
   zh: 6e8f918d0c4bf342
 /liusiqi-dev-sqh-headless/known-limitations-and-deferred-work:
-  en: b2df65836d53ba03
-  zh: 82a56dc1255a0c3b
+  en: 8739d20e62960dbd
+  zh: 15bc8be23e789630
 /liusiqi-dev-sqh-headless/known-limitations-and-deferred-work/dev-note:
   en: e67f633dc6fe7773
   zh: 3bb0c20c93f16f98

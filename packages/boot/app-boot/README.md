@@ -1,5 +1,5 @@
 ---
-description: "Shared Loader boot support for dsh profiles and the temporary Python SDK runtime: environment layers, patches, diagnostics, and configuration preview."
+description: "Shared Loader boot support for sqh profiles and the temporary Python SDK runtime: environment layers, patches, diagnostics, and configuration preview."
 kind: "package-library"
 ---
 
@@ -9,7 +9,7 @@ English | [中文](README.zh.md)
 
 ## Summary
 
-`sqh-app-boot` is the shared Loader boot library behind `dsh` profiles, including the CLI packaged by the Python runtime wheel. It loads environment layers, composes profile bundles and patches, boots every plugin, and returns the running app or identifies the failed plugin and cause. Product applications use the `dsh` launcher instead of publishing separate bins; direct-config helpers remain only for lower-level embedders and tests. You can preview the effective configuration before booting, configure HMR through profile YAML, and let a terminal-owning app restore its terminal before a fatal exit.
+`sqh-app-boot` is the shared Loader boot library behind `sqh` profiles, including the CLI packaged by the Python runtime wheel. It loads environment layers, composes profile bundles and patches, boots every plugin, and returns the running app or identifies the failed plugin and cause. Product applications use the `sqh` launcher instead of publishing separate bins; direct-config helpers remain only for lower-level embedders and tests. You can preview the effective configuration before booting, configure HMR through profile YAML, and let a terminal-owning app restore its terminal before a fatal exit.
 
 ## Table of Contents
 
@@ -29,15 +29,15 @@ Starting an app with this package is a small, explicit entry point: you give it 
 
 ### When to use it
 
-Use it when implementing the shared `dsh` launcher or embedding its lower-level boot helpers. Product features belong in profile bundles instead of new application bins; code that only adds plugins to an already-running app mounts those plugins directly.
+Use it when implementing the shared `sqh` launcher or embedding its lower-level boot helpers. Product features belong in profile bundles instead of new application bins; code that only adds plugins to an already-running app mounts those plugins directly.
 
 ### Starting the app
 
 You give your entry point a config file, and the process starts the whole app: it loads your environment layers, applies patches and profiles, boots every plugin, and returns once the app is running. In replay mode it boots the sibling `cordis.snapshot.yml` instead, so a recorded session reproduces identically. The smallest entry point is two calls:
 
 ```text
-installFailLoud('dsh')
-const ctx = await boot('dsh', resolveConfigPath(argv[2], process.env.SQODE_SNAPSHOT))
+installFailLoud('sqh')
+const ctx = await boot('sqh', resolveConfigPath(argv[2], process.env.SQODE_SNAPSHOT))
 ```
 
 `installFailLoud` writes one labelled `util.inspect` diagnostic to stderr for an unhandled rejection or an uncaught exception, awaits the surface's release hook under a fixed timeout, and exits 1; control never returns to the failed operation, because only the throw site knows which state is intact, and the event loop runs only until the release settles or times out. With that entry point, startup keeps every plugin that can activate. An enabled failed plugin produces a labelled warning. A failed required entry makes startup dispose the whole app and exit nonzero; required ids absent from a profile and disabled required entries do not affect startup. The global required list covers shared Agent execution, application endpoints, and Web bootstrap/transport: `agent-loop`, `webserver`, `modules`, `connection`, `headless-runner`, `acp`, and `sdk-jsonrpc-server`.
@@ -47,7 +47,7 @@ const ctx = await boot('dsh', resolveConfigPath(argv[2], process.env.SQODE_SNAPS
 
 Import profile and bundle declaration types from [`@liusiqi-dev/sqh-package-manifest`](../../util/package-manifest/README.md). App-boot adapts `DshPackageManifest` to `ProfileManifest` with optional package identity because local profiles need no published version. App-boot owns profile loading, JSON validation, and resolved runtime data.
 
-A profile is how one dsh installation ships different app surfaces: `web`, `headless`, `acp`, `sdk`, and `sdk-minimal` start distinct compositions from the same launcher. A profile lives at `$SQODE_HOME/profiles/<name>` and combines installable bundles with its own `cordis.patch.yml`. A bundle's `dsh.bundle.patch` names one patch file or an ordered list of files; `bundlePatchFiles` validates the declaration and `bundlePatchPaths` resolves it to absolute paths; the layer concatenates their patch lists in that order. The YAML composition enables or disables HMR. The shipped `web` template uses live reload, while the other shipped templates apply patches only at startup. `sdk-minimal` names only its standalone bundle; the other templates retain base-plus-mode stacks. `dsh --profile <name> --from-default-profile <template>` creates a custom profile at a new non-shipped name from one shipped template, while `dsh plugin` initializes a base-backed profile and manages its installed bundles. Bundle resolution, manifest, and patch-loading failures skip that bundle without changing its selection; the loaded profile lists each skip in `skippedBundles`, and the launcher prints them once per start with `reportSkippedBundles`. Remaining bundles keep their order; profile and user-patch errors still fail startup. Skipping a bundle does not guarantee that the remaining composition can provide the required services. Application-owned npm projects, such as Electron's reserved Desktop profile, use `loadProfileDirectory` to load an already initialized directory without exposing it through CLI profile lookup.
+A profile is how one sqh installation ships different app surfaces: `web`, `headless`, `acp`, `sdk`, and `sdk-minimal` start distinct compositions from the same launcher. A profile lives at `$SQODE_HOME/profiles/<name>` and combines installable bundles with its own `cordis.patch.yml`. A bundle's `sqh.bundle.patch` names one patch file or an ordered list of files; `bundlePatchFiles` validates the declaration and `bundlePatchPaths` resolves it to absolute paths; the layer concatenates their patch lists in that order. The YAML composition enables or disables HMR. The shipped `web` template uses live reload, while the other shipped templates apply patches only at startup. `sdk-minimal` names only its standalone bundle; the other templates retain base-plus-mode stacks. `sqh --profile <name> --from-default-profile <template>` creates a custom profile at a new non-shipped name from one shipped template, while `sqh plugin` initializes a base-backed profile and manages its installed bundles. Bundle resolution, manifest, and patch-loading failures skip that bundle without changing its selection; the loaded profile lists each skip in `skippedBundles`, and the launcher prints them once per start with `reportSkippedBundles`. Remaining bundles keep their order; profile and user-patch errors still fail startup. Skipping a bundle does not guarantee that the remaining composition can provide the required services. Application-owned npm projects, such as Electron's reserved Desktop profile, use `loadProfileDirectory` to load an already initialized directory without exposing it through CLI profile lookup.
 
 Before a profile imports a plugin, SQH checks its `peerDependencies` on `@liusiqi-dev/sqode` and `@liusiqi-dev/sqh-*` against the single runtime version returned by `getDshRuntimeVersion()`. Every declared range must match; prereleases participate in range matching. Source-workspace `workspace:^`, `workspace:~`, and `workspace:*` refer to that same runtime. Missing SQH peers impose no constraint; invalid ranges are incompatible. These checks use peer declarations, not `engines.dsh`, and are not a sandbox against malicious package code.
 
@@ -60,11 +60,11 @@ Your machine-local preferences also live in the Harness home:
 - **`.env`** — your ordinary environment layers: the invoking directory's file outranks the Harness-home file, and both sit below the inherited environment. Variables that decide how the process starts (`PATH`, `SQH_*`, `XDG_*` and similar) are rejected from files: export them instead. The four proxy names (`HTTP_PROXY`, `HTTPS_PROXY`, `ALL_PROXY`, `NO_PROXY`) are accepted from the Harness-home file only, never from the invoking directory's, which arrives with a clone. For a non-product bin that just wants one directory's `.env`, a missing file is fine and an unloadable one prints one labelled warning line.
 - **`cordis.patch.yml`** — your tweak layer, applied after every bundle layer (per-profile first, then the home-level file, which therefore outranks it): replace one entry's whole config (restating the fields you keep), insert new entries, or interpolate `!!js` expressions at boot. A patch naming an entry that does not exist prints a stderr warning; an empty or comments-only file fails boot — disable the layer with `[]` instead.
 
-The enabled `dsh-hmr` plugin watches the profile manifest and both user patch files, re-reads the ordered bundle layers, and applies the [reload failure policy](#startup-and-reload-failures). [SQH HMR](../hmr/README.md) serializes these reloads with [Plugin Manager](../plugin-manager/README.md) configuration writes; package operations run outside its queue. The launcher does not install HMR or watchers; disabled or absent HMR means changes require restart.
+The enabled `sqh-hmr` plugin watches the profile manifest and both user patch files, re-reads the ordered bundle layers, and applies the [reload failure policy](#startup-and-reload-failures). [SQH HMR](../hmr/README.md) serializes these reloads with [Plugin Manager](../plugin-manager/README.md) configuration writes; package operations run outside its queue. The launcher does not install HMR or watchers; disabled or absent HMR means changes require restart.
 
 Inserted plugin names may be absolute filesystem paths, file URLs, or package specifiers. Patch loading converts absolute paths and patch-relative `./` or `../` paths to file URLs within `insert` rows and their nested groups; existing-entry name assertions and replacement `config` values remain literal.
 
-Before mounting profile rows, the `dsh` launcher computes one immutable runtime resolution from the installation and ordered bundle dependency graphs. Every profile launcher uses runtime resolution, including plain Node, packaged executables, and the Electron Host. It installs the runtime resolution through Node's ESM and CommonJS resolvers without creating fallback links.
+Before mounting profile rows, the `sqh` launcher computes one immutable runtime resolution from the installation and ordered bundle dependency graphs. Every profile launcher uses runtime resolution, including plain Node, packaged executables, and the Electron Host. It installs the runtime resolution through Node's ESM and CommonJS resolvers without creating fallback links.
 
 `sanitizeProfile(binName, profileDir, bundles)` provides filesystem recovery without loading plugins or parsing patches. Desktop uses it for native fatal recovery. Call it only after stopping the profile and excluding concurrent profile writes. It renames the profile’s `cordis.patch.yml` to a unique `.bak-<timestamp>` sibling and restores the supplied bundle list, preserving installed packages and other manifest fields. The timestamp is Unix time in milliseconds; collisions append an ordinal (`-1`, `-2`, …) without changing it. It returns the backup path, or `undefined` when no patch exists; missing profiles remain absent. Profile initialization recreates an empty patch on the next launch. The home-level patch is unchanged. Invalid profile JSON fails before mutation; later errors propagate and retain completed changes for retry.
 
@@ -171,10 +171,10 @@ The exports each own one stage of the boot: config resolution and snapshot repla
 Read these pages when the package-level contract is not enough. They move from the shared boot mechanics to the composition model and the decision evidence behind it.
 
 - [Cordis primer](../../../docs/cordis-primer.md) — Loader, `!!js` config expressions, and include/group semantics.
-- [dsh app](../../../apps/cli/README.md) — the `dsh` bin that consumes these helpers.
-- [dsh-cmdline](../cmdline/README.md) — the launcher-to-app command-line handoff the bins use.
-- [Profile bundles](../../bundle/README.md) — installable patch layers composed into `dsh --profile`.
-- [dsh-home-paths](../../util/home-paths/README.md) — the Harness-home resolver (`resolveSqhHome`).
+- [sqh app](../../../apps/cli/README.md) — the `sqh` bin that consumes these helpers.
+- [sqh-cmdline](../cmdline/README.md) — the launcher-to-app command-line handoff the bins use.
+- [Profile bundles](../../bundle/README.md) — installable patch layers composed into `sqh --profile`.
+- [sqh-home-paths](../../util/home-paths/README.md) — the Harness-home resolver (`resolveSqhHome`).
 - [Configuration source ownership](../../../.agents/notes/implemented/architecture/2026-08-04-configuration-source-ownership.md) — why a discovered file may not decide bootstrap behavior.
 - [Profile plugin bundles](../../../.agents/notes/implemented/architecture/2026-08-05-profile-plugin-bundles.md) — the profile and bundle composition design.
 - [User-patch HMR tests](../../../.agents/notes/implemented/testing/2026-09-09-user-patch-hmr-test-delivery.md) — ownership of live-patch behavior and native filesystem delivery.

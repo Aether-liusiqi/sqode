@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write python/sdk-runtime/README.md
 /siqi-harness-runtime-bin:
-  en: 570ea995a6c835a1
-  zh: d18772448ba4eef4
+  en: b2f5f7abd63c4bcd
+  zh: e1e3c8425dbec137
 /siqi-harness-runtime-bin/installed-commands-and-artifacts:
-  en: a3958922da9efd9b
-  zh: 70653818b02320ff
+  en: 407c066d2c83945f
+  zh: 698b721367bb431d
 /siqi-harness-runtime-bin/python-module-api:
-  en: bee1231d8542d345
-  zh: 643a2b182df76ad9
+  en: b57f683db1f2d630
+  zh: ca2fb2360bf97a1f
 /siqi-harness-runtime-bin/packaged-profile-resolution:
-  en: 641c647efc49c568
-  zh: a29371de9fbbebfd
+  en: 574fb854015ec775
+  zh: b19678382733a983
 /siqi-harness-runtime-bin/build-and-distribution:
   en: f0fd75956438d772
   zh: d46b716e65f30ae9

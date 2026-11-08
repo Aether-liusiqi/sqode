@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write packages/client/ui-primitives/README.md
 /:
-  en: 6da33cc935e210c4
-  zh: 752948e68a6e2c32
+  en: d41b3275fc63b916
+  zh: 397abf7440e25af5
 /liusiqi-dev-sqh-client-ui-primitives:
   en: 3dcbd5bea5daa982
   zh: bd07891e691ca009
 /liusiqi-dev-sqh-client-ui-primitives/summary:
-  en: a05472dce901d64f
-  zh: 6747ad81824a5c0d
+  en: 7928324ca56b8429
+  zh: 15a2c6dc723acd2b
 /liusiqi-dev-sqh-client-ui-primitives/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
@@ -21,8 +21,8 @@
   en: 1039e92fa67f4ba5
   zh: 904e1b500156bfa2
 /liusiqi-dev-sqh-client-ui-primitives/use-this-package/controls-and-icons:
-  en: b4cd33720a6cf6b8
-  zh: 8db75bf633789c6d
+  en: fc949d5138926470
+  zh: 94756c7d73435ce1
 /liusiqi-dev-sqh-client-ui-primitives/use-this-package/rendering-agent-output:
   en: b0295e9815d87c0a
   zh: 87cbb17e6a8e90ab

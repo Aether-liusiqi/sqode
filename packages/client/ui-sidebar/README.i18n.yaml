@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write packages/client/ui-sidebar/README.md
 /:
-  en: 7884381c2c554eca
-  zh: e6d7199a9bb2f0f8
+  en: 176bb6716952d685
+  zh: dc5735db6236d11a
 /liusiqi-dev-sqh-client-ui-sidebar:
   en: 9fc260c031d47f78
   zh: eb13ab2e611bf08b
 /liusiqi-dev-sqh-client-ui-sidebar/summary:
-  en: af17f03561e5372b
-  zh: 91a1b9f6c7a51025
+  en: 7cbdb9de270d7c96
+  zh: b70a7ce9273b2a59
 /liusiqi-dev-sqh-client-ui-sidebar/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
@@ -24,8 +24,8 @@
   en: 5d3300d3506254c5
   zh: 541ae1ee1e10b921
 /liusiqi-dev-sqh-client-ui-sidebar/use-this-package/collapse-behavior:
-  en: 8996c9b65c8eb635
-  zh: 9c7ce08b90f3c1f5
+  en: 5a4bf3eca381e0f2
+  zh: e90d03961c04c72c
 /liusiqi-dev-sqh-client-ui-sidebar/use-this-package/macos-desktop:
   en: bcf4ba5b9276faa4
   zh: f200ecad86631695

@@ -2,7 +2,7 @@
 
 English | [中文](python-sdk.zh.md)
 
-This tutorial installs the published Python SDK, runs the shipped standalone minimal profile, and shows how to customize the same `dsh` profile from your own program.
+This tutorial installs the published Python SDK, runs the shipped standalone minimal profile, and shows how to customize the same `sqh` profile from your own program.
 
 ## Prerequisites
 
@@ -39,7 +39,7 @@ python -m pip install siqi-harness-sdk
 
 :::
 
-The installation includes a matching native runtime wheel and the `dsh` command. Normal SDK execution needs no system Node.js. Repository contributors who build the artifacts should use the [Python contributor workflow](../../../python/development.md).
+The installation includes a matching native runtime wheel and the `sqh` command. Normal SDK execution needs no system Node.js. Repository contributors who build the artifacts should use the [Python contributor workflow](../../../python/development.md).
 
 ## Run the checked-in example
 
@@ -76,7 +76,7 @@ Run one task with explicit workspace and home paths:
 ```sh [Linux/macOS]
 python python/sdk/examples/minimal.py \
   --workspace /absolute/path/to/disposable-workspace \
-  --dsh-home /absolute/path/to/example-dsh-home \
+  --sqh-home /absolute/path/to/example-sqh-home \
   --session-id example-001 \
   "Inspect the repository and fix the failing tests."
 ```
@@ -84,7 +84,7 @@ python python/sdk/examples/minimal.py \
 ```powershell [Windows PowerShell]
 python python/sdk/examples/minimal.py `
   --workspace C:\work\disposable-workspace `
-  --dsh-home C:\work\example-dsh-home `
+  --sqh-home C:\work\example-sqh-home `
   --session-id example-001 `
   "Inspect the repository and fix the failing tests."
 ```
@@ -101,7 +101,7 @@ from pathlib import Path
 from deepseek_harness import DeepSeekHarness
 
 workspace = Path("/absolute/path/to/disposable-workspace").resolve()
-dsh_home = Path("/absolute/path/to/example-dsh-home").resolve()
+dsh_home = Path("/absolute/path/to/example-sqh-home").resolve()
 with DeepSeekHarness(
     provider="deepseek-official",
     model="deepseek-v4-flash",
@@ -118,11 +118,11 @@ with DeepSeekHarness(
 print(result.final_response)
 ```
 
-The SDK starts the bundled `dsh --profile sdk-minimal` process lazily and reuses it until context-manager exit. The profile, its persistent patch, the home patch, and any ordered `patches` tuple form the application configuration. There is no separate Python runtime bin or complete-config option.
+The SDK starts the bundled `sqh --profile sdk-minimal` process lazily and reuses it until context-manager exit. The profile, its persistent patch, the home patch, and any ordered `patches` tuple form the application configuration. There is no separate Python runtime bin or complete-config option.
 
 ## Install or define plugins
 
-Use `dsh plugin` for dependencies and bundle layers that should persist in this home:
+Use `sqh plugin` for dependencies and bundle layers that should persist in this home:
 
 <div>
 <a id="linux-and-macos-3"></a>
@@ -132,20 +132,20 @@ Use `dsh plugin` for dependencies and bundle layers that should persist in this 
 ::: code-group
 
 ```sh [Linux/macOS]
-export SQODE_HOME=/absolute/path/to/example-dsh-home
-dsh --profile sdk-minimal --dump-default-config >/dev/null
-dsh plugin --profile sdk-minimal add file:/absolute/path/to/my-plugin-bundle
+export SQODE_HOME=/absolute/path/to/example-sqh-home
+sqh --profile sdk-minimal --dump-default-config >/dev/null
+sqh plugin --profile sdk-minimal add file:/absolute/path/to/my-plugin-bundle
 ```
 
 ```powershell [Windows PowerShell]
-$env:SQODE_HOME = "C:\work\example-dsh-home"
-dsh --profile sdk-minimal --dump-default-config | Out-Null
-dsh plugin --profile sdk-minimal add file:C:/work/my-plugin-bundle
+$env:SQODE_HOME = "C:\work\example-sqh-home"
+sqh --profile sdk-minimal --dump-default-config | Out-Null
+sqh plugin --profile sdk-minimal add file:C:/work/my-plugin-bundle
 ```
 
 :::
 
-The first command initializes the shipped standalone profile. The second forwards package management to `pnpm`, then records any installed package that exports a `dsh.bundle` layer. Install `pnpm` only for this management command; launching the installed SDK does not need it. Edit `$SQODE_HOME/profiles/sdk-minimal/cordis.patch.yml` for persistent row changes, or pass patch files from Python for per-launch changes.
+The first command initializes the shipped standalone profile. The second forwards package management to `pnpm`, then records any installed package that exports a `sqh.bundle` layer. Install `pnpm` only for this management command; launching the installed SDK does not need it. Edit `$SQODE_HOME/profiles/sdk-minimal/cordis.patch.yml` for persistent row changes, or pass patch files from Python for per-launch changes.
 
 Another `profile` is valid when it includes `@liusiqi-dev/sqh-sdk-app` or another JSON-RPC server row. Missing server rows, unresolved plugins, and invalid patches fail during startup instead of falling back to another composition.
 
@@ -177,10 +177,10 @@ Pass `patches=("/absolute/path/to/editor.patch.yml",)` when constructing `DeepSe
 | Runtime context and compaction | Absent |
 | Session persistence | Uncompressed JSONL under `<dsh_home>/sessions` |
 
-The profile's sole bundle inserts the complete tree over an empty root and does not include `dsh-base`; later base-profile tools therefore cannot appear implicitly. It contains the SDK protocol, one environment-configured DeepSeek adapter, local execution, and persistence, while filesystem tools, settings, managed credentials, OTel telemetry, Web tools, subagents, local instruction discovery, and compaction are absent. The [DeepSeek session-log contributor](../../../packages/session/session-log-deepseek/README.md) uploads unaccepted log events with DeepSeek requests by default, at most `maxBytes` (8 MiB) per request; set `session-log-deepseek.enabled: false` in a profile patch to disable it. It pins `danger-full-access`, so the platform-selected persistent shell can modify any path visible to the runtime; use a disposable checkout or container.
+The profile's sole bundle inserts the complete tree over an empty root and does not include `sqh-base`; later base-profile tools therefore cannot appear implicitly. It contains the SDK protocol, one environment-configured DeepSeek adapter, local execution, and persistence, while filesystem tools, settings, managed credentials, OTel telemetry, Web tools, subagents, local instruction discovery, and compaction are absent. The [DeepSeek session-log contributor](../../../packages/session/session-log-deepseek/README.md) uploads unaccepted log events with DeepSeek requests by default, at most `maxBytes` (8 MiB) per request; set `session-log-deepseek.enabled: false` in a profile patch to disable it. It pins `danger-full-access`, so the platform-selected persistent shell can modify any path visible to the runtime; use a disposable checkout or container.
 
-The installed wheel still packages the full `web` profile and frontend assets. Run `dsh web` against an explicit `SQODE_HOME` when a Python SDK deployment also needs the browser application; `web` is a separate CLI application and cannot serve a Python SDK client.
+The installed wheel still packages the full `web` profile and frontend assets. Run `sqh web` against an explicit `SQODE_HOME` when a Python SDK deployment also needs the browser application; `web` is a separate CLI application and cannot serve a Python SDK client.
 
 Use a fresh home when profiles, plugins, credentials, settings, and sessions must be isolated. Use a fresh session id for independent work; reuse a harness, home, and id only to continue the same durable conversation and session-owned resources.
 
-The [bundle reference](../../../packages/bundle/sdk-minimal/README.md) owns the exact tree, and the [example reference](../../../python/sdk/examples/README.md) owns the runnable program. The [Python SDK reference](../../../python/sdk/README.md) covers lifecycle, results, notifications, and low-level behavior; the [dsh CLI reference](../../../apps/cli/reference/README.md) covers profile layering.
+The [bundle reference](../../../packages/bundle/sdk-minimal/README.md) owns the exact tree, and the [example reference](../../../python/sdk/examples/README.md) owns the runnable program. The [Python SDK reference](../../../python/sdk/README.md) covers lifecycle, results, notifications, and low-level behavior; the [sqh CLI reference](../../../apps/cli/reference/README.md) covers profile layering.

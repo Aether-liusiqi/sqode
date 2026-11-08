@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write packages/boot/cmdline/README.md
 /:
-  en: 29e1bbea853a5634
-  zh: ef6bc8af7a8ae1dc
+  en: c980ccae6ba03026
+  zh: 47d4bef4dd663824
 /liusiqi-dev-sqh-cmdline:
   en: be95009f77cc0cc8
   zh: 09e9b8fe65e17d8f
 /liusiqi-dev-sqh-cmdline/summary:
-  en: cd0cc4458af8f563
-  zh: b2cba42fcf5c810b
+  en: e198ccfc4960c413
+  zh: fbef7ac6a6f71d2b
 /liusiqi-dev-sqh-cmdline/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
@@ -18,11 +18,11 @@
   en: ad6f55231a2cb77d
   zh: 9039fa43deeaa458
 /liusiqi-dev-sqh-cmdline/use-this-package/the-launcher-values:
-  en: 67d2ceaa6b4dd429
-  zh: 632d9396ba760eee
+  en: 5be5da7761cc3d44
+  zh: 4fa315e742ba6423
 /liusiqi-dev-sqh-cmdline/use-this-package/parsing-your-flags:
-  en: e88383d7638cb933
-  zh: 0d0608be857be763
+  en: 1dba1bfae305f660
+  zh: ea05015567db3927
 /liusiqi-dev-sqh-cmdline/use-this-package/how-flags-beat-config-values:
   en: 301e1dc64b9ffdce
   zh: d2fbd70267fe7bda
@@ -42,8 +42,8 @@
   en: 9867efd4c939077c
   zh: 00247b7fe19bc2eb
 /liusiqi-dev-sqh-cmdline/further-exploration:
-  en: 3a80e63f60280ce2
-  zh: 81a6fa9e6267565e
+  en: b42a0a7e035e1f7c
+  zh: 944cd510d21a78b8
 /liusiqi-dev-sqh-cmdline/model-experience:
   en: f9f5061b618b962a
   zh: 75c6de06b1d981a0

@@ -47,7 +47,7 @@ An interactive smoke test needs `DEEPSEEK_API_KEY` in the environment or reposit
 ```python
 from deepseek_harness import DeepSeekHarness
 
-with DeepSeekHarness(dsh_home="/absolute/path/to/test-dsh-home") as harness:
+with DeepSeekHarness(dsh_home="/absolute/path/to/test-sqh-home") as harness:
     print(harness.run("say hi").final_response)
 ```
 
@@ -55,7 +55,7 @@ Alternatively export a non-empty `SQODE_HOME`. The SDK rejects a launch that wou
 
 ## Run against Node source
 
-Repository contributors can select either development route; both execute the normal `dsh --profile sdk` launcher:
+Repository contributors can select either development route; both execute the normal `sqh --profile sdk` launcher:
 
 - Set `SQODE_RUNTIME_MODE=node` to use the built Node carrier on system Node `>=22.19`. The build script refreshes this carrier, but distributions never include or auto-select it.
 - Set `dsh_bin` to the absolute built `apps/cli/lib/bin.js` path to exercise the checkout's CLI directly. Supply an explicit `dsh_home`, plus `profile` and ordered `patches` as needed.

@@ -48,7 +48,7 @@ After all text pages load, Markdown images use the authenticated `/api/file` rou
 
 Coding Tools selects the HTML preview policy in both Web and desktop. The renderer receives `interactivePreview` from plugin assembly. Off uses a DOMPurify-sanitized complete static document in an iframe with no sandbox permissions: CSP blocks scripts, external resources, connections, forms, and nested frames; all `href` and `xlink:href` attributes, refresh directives, and declarative shadow roots are removed before reparsing. Inline styles and data images remain visible, and related files are not read. On uses the scripted Blob preview described below. A mode change unmounts the previous frame and aborts its pending related-file reads. Static preview releases CSS/JS resource subscriptions and keeps the root file watched. Other document formats retain their own policies.
 
-Both HTML modes set the initial iframe name to `dsh-sidebar-html-<tab-id>` for Desktop shortcut routing. This correlation does not grant the preview access to the parent document.
+Both HTML modes set the initial iframe name to `sqh-sidebar-html-<tab-id>` for Desktop shortcut routing. This correlation does not grant the preview access to the parent document.
 
 The body reads its record, navigation and lifetime through `useTabInfo().tab`. `useResource<'file'>(tab.contentId)` supplies metadata; ordinary inject callbacks supply content reads:
 
