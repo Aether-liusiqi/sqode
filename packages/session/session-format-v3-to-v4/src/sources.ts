@@ -43,6 +43,9 @@ const RENAMED_PRODUCERS: Readonly<Record<string, string>> = Object.freeze({
   'sqh-compaction-basic': 'compact-basic',
   '@liusiqi-dev/sqh-system-prompt': 'runtime-context',
   '@liusiqi-dev/dsh-system-prompt': 'runtime-context',
+  // One canonical spelling is written back; the other two are historical.
+  'dsh-session-title-llm': 'sqh-session-title-llm',
+  'sqhsession-title-llm': 'sqh-session-title-llm',
 })
 
 /** First-party V3 plugin identities that intentionally keep their current kind. */
@@ -53,9 +56,7 @@ const RELEASED_SAME_NAME_PRODUCERS: ReadonlySet<string> = new Set([
   'plan-mode', 'time-context', 'tmux-context', 'user-approval',
   'repeat-tool-reminder', 'tool-cordis', 'cordis-host-runner', 'tool-goal',
   'tool-jobs', 'hooks-codex', 'hooks-claude-code', 'schedule',
-  'sqh-session-title-llm', 'dsh-session-title-llm',
-  // Written by build 112, which lost the separator in this very name.
-  'sqhsession-title-llm',
+  'sqh-session-title-llm',
 ])
 
 /**
