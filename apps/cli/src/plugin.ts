@@ -9,7 +9,7 @@ import { join } from 'node:path'
 
 function requireDesktopProfile(dir: string): void {
   if (!existsSync(join(dir, 'package.json'))) {
-    throw new Error('Open Sqode Desktop once to initialize its profile, then fully quit it before running dsh plugin --profile desktop.')
+    throw new Error('Open Siqi Harness Desktop once to initialize its profile, then fully quit it before running dsh plugin --profile desktop.')
   }
 }
 
@@ -38,7 +38,7 @@ async function versionCommand(profile: string, args: readonly string[]): Promise
       request = { packageVersion, runtimeVersion }
     }
     if (command === 'allow-version') {
-      process.stderr.write('dsh: warning: allowing incompatible plugin versions can break the application or corrupt data. Approval applies only to the exact package and SQH versions.\n')
+      process.stderr.write('sqh: warning: allowing incompatible plugin versions can break the application or corrupt data. Approval applies only to the exact package and SQH versions.\n')
     }
     const dir = resolveProfileDir(profile)
     if (profile !== 'desktop') await mkdir(dir, { recursive: true })
@@ -95,7 +95,7 @@ export async function runPlugin(profile: string, args: readonly string[], packag
       return runProfilePnpm(context, args, options)
     }, { waitMs: 120000 })
     : await runPluginCommand(context, args, options)
-  if (result.exitCode === 127) process.stderr.write('dsh: pnpm was not found; install pnpm and make it available on PATH.\n')
+  if (result.exitCode === 127) process.stderr.write('sqh: pnpm was not found; install pnpm and make it available on PATH.\n')
   for (const { name, version, runtimeVersion } of result.incompatible ?? []) {
     process.stderr.write(`sqh: to accept the risk, run: dsh plugin --profile ${profile} allow-version ${name}@${version} --sqh-version ${runtimeVersion} --accept-risk\n`)
   }

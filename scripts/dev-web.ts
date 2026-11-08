@@ -419,7 +419,7 @@ if (isMain) {
     // The same launch vector as the root `sqh` script, so the served Host runs
     // from source exactly as `pnpm sqh web` would.
     if (options.serve) {
-      spawnStage(supervisor, 'dsh web', process.execPath, [
+      spawnStage(supervisor, 'sqh web', process.execPath, [
         '--import', 'tsx/esm', 'apps/cli/src/bin.ts', 'web', ...options.appArgs,
       ], false)
     }

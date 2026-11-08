@@ -37,7 +37,7 @@ export interface HeadlessStartupValues {
  */
 function headlessCommand(): Command {
   return new Command()
-    .name('dsh --profile headless')
+    .name('sqh --profile headless')
     .description('Answer one task and exit; the answer goes to stdout and diagnostics to stderr.')
     .helpOption('-h, --help', 'show this help')
     .option('--json', 'write newline-delimited run events to stdout instead of the final message')

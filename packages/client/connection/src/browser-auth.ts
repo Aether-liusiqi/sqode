@@ -306,6 +306,6 @@ export class BrowserAuth {
     })
     res.end(req.method === 'HEAD'
       ? undefined
-      : 'dsh web authentication required; reopen the URL printed by dsh web.\n')
+      : 'sqh web authentication required; reopen the URL printed by dsh web.\n')
   }
 }

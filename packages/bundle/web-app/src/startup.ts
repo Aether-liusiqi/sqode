@@ -45,7 +45,7 @@ interface WebOptions {
  */
 function webCommand(): Command {
   return new Command()
-    .name('dsh --profile web')
+    .name('sqh --profile web')
     .description('Serve the Sqode browser UI.')
     .helpOption('-h, --help', 'show this help')
     .option('--host <host>', 'bind host')

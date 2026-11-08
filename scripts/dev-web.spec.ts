@@ -51,7 +51,7 @@ describe('StageSupervisor', () => {
     const stale: string[] = []
     const supervisor = new StageSupervisor((name) => { stale.push(name) })
     const polite = fakeStage('vite', ['SIGTERM'])
-    const stubborn = fakeStage('dsh web', ['SIGKILL'])
+    const stubborn = fakeStage('sqh web', ['SIGKILL'])
     supervisor.add(polite.handle)
     supervisor.add(stubborn.handle)
     await supervisor.stop({ signal: 'SIGTERM', graceMs: 20 })
@@ -63,7 +63,7 @@ describe('StageSupervisor', () => {
   it('waits for stages the terminal already interrupted before signaling survivors', async () => {
     const supervisor = new StageSupervisor(() => { throw new Error('unexpected stale report') })
     const interrupted = fakeStage('tsdown', [])
-    const survivor = fakeStage('dsh web', ['SIGTERM'])
+    const survivor = fakeStage('sqh web', ['SIGTERM'])
     supervisor.add(interrupted.handle)
     supervisor.add(survivor.handle)
     const stopping = supervisor.stop({ graceMs: 20 })

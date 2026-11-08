@@ -152,8 +152,8 @@ export function parseSqhArgs(argv: readonly string[], version: string, manageDes
   program
     .name('sqode')
     .version(version, '-V, --version', 'output the version number')
-    .usage('[--profile] <name> [options] [app-args...]\n       dsh plugin --profile <name> <pnpm-args...>')
-    .description('dsh: boot a Sqode profile — an ordered stack of plugin-bundle patch layers under your own overrides.')
+    .usage('[--profile] <name> [options] [app-args...]\n       sqh plugin --profile <name> <pnpm-args...>')
+    .description('sqh: boot a Sqode profile — an ordered stack of plugin-bundle patch layers under your own overrides.')
     .addHelpText('after', HELP_EXAMPLES)
     .exitOverride()
     // The launcher's flags come first and end at the first token it does not
@@ -207,6 +207,6 @@ export function parseSqhArgs(argv: readonly string[], version: string, manageDes
     return process.exit(error instanceof CommanderError ? error.exitCode : 1)
   }
   /* v8 ignore next -- an action resolves or Commander throws */
-  if (resolved === undefined) throw new Error('dsh: no invocation resolved')
+  if (resolved === undefined) throw new Error('sqh: no invocation resolved')
   return resolved
 }

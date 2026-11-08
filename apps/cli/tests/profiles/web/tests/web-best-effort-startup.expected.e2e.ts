@@ -101,7 +101,7 @@ async function waitForStartup(
   let settled = false
   const finish = (): void => {
     if (settled || url === undefined) return
-    if (!stderrText.includes('dsh: warning: 6 entries did not activate')) return
+    if (!stderrText.includes('sqh: warning: 6 entries did not activate')) return
     if (!stderrText.includes('web async apply failure')) return
     if (!stderrText.includes('webProbeMissingService')) return
     settled = true
@@ -237,7 +237,7 @@ describe.skipIf(!builtArtifactsExist)('dsh Web profile best-effort startup', () 
       expect(result.timedOut).toBe(false)
       expect(result.signal).toBeUndefined()
       expect(result.exitCode).toBe(1)
-      expect(result.stdout).not.toContain('dsh web: http://')
+      expect(result.stdout).not.toContain('sqh web: http://')
       expect(result.stderr).toContain('startup failed:')
       expect(result.stderr).toContain(`${id} (required)`)
       expect(result.stderr).toContain(diagnostic)
@@ -290,9 +290,9 @@ describe.skipIf(!builtArtifactsExist)('dsh Web profile best-effort startup', () 
       expect(result.timedOut).toBe(false)
       expect(result.signal).toBeUndefined()
       expect(result.exitCode).toBe(1)
-      expect(result.stdout).not.toContain('dsh web: http://')
+      expect(result.stdout).not.toContain('sqh web: http://')
       expect(result.stderr).toContain('startup failed:')
-      expect(result.stderr).toContain('dsh: startup failed: 2 required plugins did not activate')
+      expect(result.stderr).toContain('sqh: startup failed: 2 required plugins did not activate')
       expect(result.stderr).toContain('Failed plugins (1):')
       expect(result.stderr).toContain('  webserver (required)\n    Package: @liusiqi-dev/sqh-host-webserver')
       expect(result.stderr).toContain('Plugins waiting for services (')
@@ -303,7 +303,7 @@ describe.skipIf(!builtArtifactsExist)('dsh Web profile best-effort startup', () 
       expect(summary).not.toMatch(/dsh: warning:|\[cause\]|at boot \(|at runCli \(|Node\.js v/u)
       let report: string
       if (logsBlocked) {
-        expect(result.stderr).toContain('dsh: warning: could not write startup diagnostics:')
+        expect(result.stderr).toContain('sqh: warning: could not write startup diagnostics:')
         expect(result.stderr).not.toMatch(/Full diagnostics: [^\r\n]/u)
         report = result.stderr.split('Full diagnostics:\n')[1]!
         expect(readFileSync(join(home, 'logs'), 'utf8')).toBe('blocked')

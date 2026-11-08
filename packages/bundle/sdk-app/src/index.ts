@@ -37,7 +37,7 @@ export const Config: z<Config> = z.object({
  */
 function sdkCommand(profile: string): Command {
   return new Command()
-    .name(`dsh --profile ${profile}`)
+    .name(`sqh --profile ${profile}`)
     .description('Serve Sqode SDK clients over stdio JSON-RPC.')
     .helpOption('-h, --help', 'show this help')
     .addHelpText('after', `

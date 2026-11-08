@@ -1,4 +1,4 @@
-/** Assembled keyless snapshot for the default `dsh web` browser handoff. */
+/** Assembled keyless snapshot for the default `sqh web` browser handoff. */
 
 import { existsSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
@@ -11,12 +11,12 @@ const repoRoot = fileURLToPath(new URL('../../../', import.meta.url))
 const builtBin = join(repoRoot, 'apps/cli/lib/bin.js')
 const frontendIndex = join(repoRoot, 'apps/web/dist/index.html')
 const openerHook = new URL('./fixtures/web-browser-open/register.mjs', import.meta.url).href
-const openingMessage = 'dsh web: opening the default browser; pass --no-open to disable'
+const openingMessage = 'sqh web: opening the default browser; pass --no-open to disable'
 const tempRoots: string[] = []
 const builtArtifactsExist = existsSync(builtBin) && existsSync(frontendIndex)
 
 if (process.env.SQODE_EXAMPLE_MODE === 'lib' && !builtArtifactsExist) {
-  throw new Error('dsh web browser-open snapshot requires built CLI and Web artifacts in lib mode')
+  throw new Error('sqh web browser-open snapshot requires built CLI and Web artifacts in lib mode')
 }
 
 afterEach(() => {
@@ -37,7 +37,7 @@ function normalizeLocalUrl(url: string): string {
     .replace(/token=[^&]+/u, 'token={{token}}')
 }
 
-describe.skipIf(!builtArtifactsExist)('dsh web browser-open assembled snapshot', () => {
+describe.skipIf(!builtArtifactsExist)('sqh web browser-open assembled snapshot', () => {
   it('hands the reachable page to the default browser after the shipped tree settles', async () => {
     const root = mkdtempSync(join(tmpdir(), 'sqh-web-browser-open-snapshot-'))
     tempRoots.push(root)
@@ -67,7 +67,7 @@ describe.skipIf(!builtArtifactsExist)('dsh web browser-open assembled snapshot',
     const openLine = result.stdout.split('\n').find(line => line.startsWith('dsh browser-open: '))
     const opening = result.stdout.includes(openingMessage)
     if (readyUrl === undefined || openLine === undefined || !opening) {
-      throw new Error(`dsh web browser-open evidence missing\nstdout:\n${result.stdout}\nstderr:\n${result.stderr}`)
+      throw new Error(`sqh web browser-open evidence missing\nstdout:\n${result.stdout}\nstderr:\n${result.stderr}`)
     }
     const opened = JSON.parse(openLine.slice('dsh browser-open: '.length)) as BrowserOpenRecord
 
@@ -219,17 +219,17 @@ describe.skipIf(!builtArtifactsExist)('dsh web browser-open assembled snapshot',
 
     const diagnostic = result.stderr.split(/\r?\n/u)
       .find(line => line.startsWith('Error: dsh: '))
-      ?.replace(/^Error: dsh: .*[/\\]\.env/u, 'dsh: {{root}}/.env')
+      ?.replace(/^Error: dsh: .*[/\\]\.env/u, 'sqh: {{root}}/.env')
 
     expect({
       diagnostic,
       exitCode: result.exitCode,
       opening: result.stdout.includes(openingMessage),
       opened: result.stdout.includes('dsh browser-open: '),
-      ready: result.stdout.includes('dsh web: '),
+      ready: result.stdout.includes('sqh web: '),
     }).toMatchInlineSnapshot(`
       {
-        "diagnostic": "dsh: {{root}}/.env sets "BROWSER", which only the launching environment may set (it decides how this process starts, where its code and instructions load from, or how it reaches the network); export BROWSER instead of putting it in a .env file",
+        "diagnostic": "sqh: {{root}}/.env sets "BROWSER", which only the launching environment may set (it decides how this process starts, where its code and instructions load from, or how it reaches the network); export BROWSER instead of putting it in a .env file",
         "exitCode": 1,
         "opened": false,
         "opening": false,

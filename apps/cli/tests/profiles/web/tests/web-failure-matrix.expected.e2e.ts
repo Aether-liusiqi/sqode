@@ -177,7 +177,7 @@ describe.skipIf(!built)('Web process failure matrix', () => {
         if (required) {
           const result = await app.child
           exit(result, 1)
-          expect(result.stdout).not.toContain('dsh web: http://')
+          expect(result.stdout).not.toContain('sqh web: http://')
           expect(result.stderr).toContain('startup failed:')
           expect(app.events()).toBe('witness apply 1\nwitness dispose 1\n')
         } else {
@@ -239,7 +239,7 @@ describe.skipIf(!built)('Web process failure matrix', () => {
       const result = await app.child
       exit(result, 1)
       expect(result.stderr).toContain(diagnostic)
-      expect(result.stdout).not.toContain('dsh web: http://')
+      expect(result.stdout).not.toContain('sqh web: http://')
       expect(app.events()).toBe('')
     } finally { exit(await app.close(), 1) }
   })

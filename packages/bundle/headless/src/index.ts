@@ -133,7 +133,7 @@ function streamReasoning(
       case 'reasoning-delta':
         if (chunk.text === '') return
         if (!open) {
-          stderr.write('dsh: reasoning:\n')
+          stderr.write('sqh: reasoning:\n')
           open = true
         }
         stderr.write(chunk.text)
@@ -296,7 +296,7 @@ async function resolveAgent(
 function fail(io: HeadlessIo, error: unknown, json: boolean): void {
   const message = error instanceof Error ? error.message : String(error)
   if (json) io.stdout.write(`${boundJsonLine({ type: 'error', message })}\n`)
-  io.stderr.write(`dsh: ${message}\n`)
+  io.stderr.write(`sqh: ${message}\n`)
   io.exit(1)
 }
 
@@ -375,7 +375,7 @@ async function run(ctx: Context, config: Config, io: HeadlessIo): Promise<void> 
     if (projection === undefined) io.stdout.write(outcome.text + '\n')
     else projection.finish(outcome.text)
     if (outcome.reason?.kind === 'error') {
-      io.stderr.write(`dsh: ${outcome.reason.error.code}: ${outcome.reason.error.message}\n`)
+      io.stderr.write(`sqh: ${outcome.reason.error.code}: ${outcome.reason.error.message}\n`)
     }
     io.exit(outcome.reason?.kind === 'completed' ? 0 : 1)
   } finally {
