@@ -6,8 +6,8 @@
   en: 80eda776da54e90d
   zh: 967fe136a7fefaf4
 /liusiqi-dev-sqh-tool-todo:
-  en: db3bb4ae0da55a8d
-  zh: e0df65d0d5901c1d
+  en: cac35dd3ecef75bf
+  zh: 9afa259f3fdaf344
 /liusiqi-dev-sqh-tool-todo/summary:
   en: 7ccd393e35e06f5b
   zh: 795a8a2cbc133b42
@@ -21,8 +21,8 @@
   en: c964ee10289fcd21
   zh: 4c1e68220906eb06
 /liusiqi-dev-sqh-tool-todo/use-this-package/minimal-configuration:
-  en: 02ee43b537f8ab85
-  zh: a20116a4fcc36a33
+  en: f11a97b67970c686
+  zh: 1a3a7f2a48d39a32
 /liusiqi-dev-sqh-tool-todo/use-this-package/what-each-call-does:
   en: 415a6775984f539d
   zh: 04e6f16e7c81b8ba
@@ -39,11 +39,11 @@
   en: d53829e90f7f63ca
   zh: fc3006d788a84013
 /liusiqi-dev-sqh-tool-todo/understand-the-implementation/export-shape:
-  en: 35b4f6c718e60dab
-  zh: 9bffe86c88a7ad6d
+  en: 23e6d3471e8157fe
+  zh: 09fd8916f944730f
 /liusiqi-dev-sqh-tool-todo/understand-the-implementation/session-projection:
-  en: 3a7e350ddf319094
-  zh: 633dade828d4d058
+  en: 3976a2a678718ded
+  zh: 6bf808a921e8c5c1
 /liusiqi-dev-sqh-tool-todo/understand-the-implementation/durable-log-invariant:
   en: 3234e0405b88e314
   zh: 135a5b12d810e6dd
@@ -51,8 +51,8 @@
   en: d55f6a32b05ed686
   zh: c815f930a2acebda
 /liusiqi-dev-sqh-tool-todo/further-exploration:
-  en: 38488722b03c25dd
-  zh: 23efe2cce1e29917
+  en: 6d62b7c1da2bf841
+  zh: a4a9e02b8fc3ce5f
 /liusiqi-dev-sqh-tool-todo/model-experience:
   en: 215e7ba838619b7b
   zh: a311da3843709f90
@@ -60,8 +60,8 @@
   en: e4c7376d4f29dbd5
   zh: 6b7a9eaf69c9ea53
 /liusiqi-dev-sqh-tool-todo/model-experience/tool-schema/what-the-model-sees:
-  en: 1d761e1652e9fc94
-  zh: f847760856f74c8b
+  en: 75e0b7a823d1c665
+  zh: db97ab4967908a1e
 /liusiqi-dev-sqh-tool-todo/model-experience/tool-schema/token-effect:
   en: a0a8f5ec3db0f500
   zh: eac37a524c6e777e

@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-07-tool-call-timeout-policy.md
 /agent-note-tool-call-timeout-policy-as-a-plugin:
-  en: 46fa7d1eac4fe061
-  zh: 7a62f8f7b1c66722
+  en: a5c0a234056e02cb
+  zh: 80f5a7f0518ea27d
 /agent-note-tool-call-timeout-policy-as-a-plugin/problem:
-  en: 3095cf55b97d960c
-  zh: ce97fd134b54f9f1
+  en: cb5bada96e634f4a
+  zh: 4156f59f955e29bb
 /agent-note-tool-call-timeout-policy-as-a-plugin/decision:
   en: 786796ddc338e9f5
   zh: 5936781e4612532d
@@ -15,8 +15,8 @@
   en: c9b67e0673db1777
   zh: 5de0a7d5201143df
 /agent-note-tool-call-timeout-policy-as-a-plugin/decision/the-timeout-policy-plugin:
-  en: 01ed5dc9a050809e
-  zh: 4a76a4616778741f
+  en: 1c0ef1e31d97b866
+  zh: a71d895ac4d80258
 /agent-note-tool-call-timeout-policy-as-a-plugin/decision/existing-tool-adaptation:
   en: 95364f7658cbf4f4
   zh: e007a01a54a550b5

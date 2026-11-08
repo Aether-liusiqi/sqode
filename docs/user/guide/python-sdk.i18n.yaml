@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/user/guide/python-sdk.md
 /get-started-with-the-python-sdk:
-  en: 2114c56b1dd50c91
-  zh: 480262ec190747c3
+  en: 0a1cc2310c96cc5b
+  zh: b9b4d5ba80047ce3
 /get-started-with-the-python-sdk/prerequisites:
   en: b5a921f7d6c4a420
   zh: ef51283857d18c64
 /get-started-with-the-python-sdk/install-the-sdk:
-  en: 2b2688bcb01431bd
-  zh: 25209f6a707f5b12
+  en: 7146ef05f0444f19
+  zh: e9ee605bc879a0b5
 /get-started-with-the-python-sdk/run-the-checked-in-example:
   en: 1bc77ef0aac3550c
   zh: 0f956295dd1b5e3d
@@ -24,5 +24,5 @@
   en: 2eb46b2639710b13
   zh: 70af15951053f382
 /get-started-with-the-python-sdk/understand-the-minimal-profile:
-  en: e42d0a32d2195d6f
-  zh: 97587f407da5c7fe
+  en: 91ca3e56067b0477
+  zh: c04022a8c85e8a66

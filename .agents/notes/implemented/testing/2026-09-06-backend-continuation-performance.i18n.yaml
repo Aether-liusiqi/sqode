@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/testing/2026-09-06-backend-continuation-performance.md
 /agent-note-performance-baselines-for-tool-heavy-backend-continuation:
-  en: 542fea07db8861a3
-  zh: 3a9d381c2366f5ec
+  en: 48bf9e999d5fad87
+  zh: e2cee8089342c8fa
 /agent-note-performance-baselines-for-tool-heavy-backend-continuation/problem:
-  en: c6a89dac7dea293a
-  zh: b10610932d55996c
+  en: f775bd8d10c62154
+  zh: a6878bccf98e977a
 /agent-note-performance-baselines-for-tool-heavy-backend-continuation/decision:
-  en: 32625deac440b177
-  zh: 67a0855779c8d407
+  en: 81a9b656e19c47d7
+  zh: 8288275f0d4812b4
 /agent-note-performance-baselines-for-tool-heavy-backend-continuation/calibration-evidence:
-  en: 4f47ca6859cc2d70
-  zh: 5bfe8314fd30d82b
+  en: 3348ed9d6b5e7bf3
+  zh: 33319df61bfc4ed9
 /agent-note-performance-baselines-for-tool-heavy-backend-continuation/alternatives-considered:
   en: 3a61dff7c926eb22
   zh: 8f2633b16be78233

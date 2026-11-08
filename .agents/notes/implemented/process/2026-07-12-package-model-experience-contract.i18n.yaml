@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-07-12-package-model-experience-contract.md
 /agent-note-package-model-experience-contract:
-  en: c14f97f66251831b
-  zh: a7ef93d593a72215
+  en: 1ffeebaab16f40f9
+  zh: df9a8e225144e20d
 /agent-note-package-model-experience-contract/problem:
   en: 69034b9a9ba40d49
   zh: 016b64cb54c4c873
 /agent-note-package-model-experience-contract/decision:
-  en: f67c13ad41004520
-  zh: 28cf10f7d217f626
+  en: dc4d238f86608e7f
+  zh: a93705ee09842d2a
 /agent-note-package-model-experience-contract/alternatives-considered:
   en: 206bc943c04313b1
   zh: 6d295d9da6675854

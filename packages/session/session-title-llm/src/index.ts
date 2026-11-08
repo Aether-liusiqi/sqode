@@ -10,7 +10,7 @@ import { createUserMessage, BlockAssembler } from '@liusiqi-dev/sqh-llm'
 import type { ContextFormed } from '@liusiqi-dev/sqh-llm'
 declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
-    'dsh-session-title-llm': { kind: 'dsh-session-title-llm' } & ContextFormed
+    'sqhsession-title-llm': { kind: 'sqhsession-title-llm' } & ContextFormed
   }
 }
 
@@ -254,7 +254,7 @@ export async function generateSessionTitleWithLlm(
   const route = resolveRoute(config, request)
   const messages: Message[] = [createUserMessage({
     content: [{ type: 'text', text: framedInput }],
-    source: { kind: 'dsh-session-title-llm' },
+    source: { kind: 'sqhsession-title-llm' },
   })]
   const system = systemPrompt(config)
   using callDeadline = deadline(request.signal, config.timeoutMs, SESSION_TITLE_TIMEOUT_CODE)

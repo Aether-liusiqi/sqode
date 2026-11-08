@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/proposed/process/2026-08-20-audience-first-documentation-quality.md
 /agent-note-audience-first-documentation-quality-criteria:
-  en: 5fd84aa1a097f80f
-  zh: 073d973331b00ca4
+  en: f95d6e89ea414b0d
+  zh: ea321c9c228ab113
 /agent-note-audience-first-documentation-quality-criteria/problem:
   en: 86ee1c395115b7d2
   zh: 7fea995569331599
 /agent-note-audience-first-documentation-quality-criteria/problem/semantic-correctness-can-pass-without-a-current-owner:
-  en: ed2badec52562e70
-  zh: f93c861019895bf9
+  en: 66a452e2007dc0c2
+  zh: 9d9b6aef7823137a
 /agent-note-audience-first-documentation-quality-criteria/problem/reader-success-is-implicit-rather-than-testable:
   en: 9d7c94e84fdeea18
   zh: e315ae5d470d576b

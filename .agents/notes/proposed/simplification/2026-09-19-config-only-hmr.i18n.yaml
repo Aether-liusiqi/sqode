@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/proposed/simplification/2026-09-19-config-only-hmr.md
 /agent-note-limit-sqh-hmr-to-live-profile-configuration:
-  en: 44940b0aae425722
-  zh: ff43d43ab0b07467
+  en: 75dc861d4567c3db
+  zh: d89feef26494d1a3
 /agent-note-limit-sqh-hmr-to-live-profile-configuration/problem:
   en: 772810cc8d76d79d
   zh: f855dc52415ca17d
 /agent-note-limit-sqh-hmr-to-live-profile-configuration/proposal:
-  en: 12754aeac40fa1f5
-  zh: fea3e2fa8d845c2d
+  en: e9ac569618c427f0
+  zh: 54a02932c20318cf
 /agent-note-limit-sqh-hmr-to-live-profile-configuration/alternatives-considered:
   en: ba8f7308990da544
   zh: c8260b84697b7f02

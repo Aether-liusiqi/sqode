@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-12-computer-use-provider-registration.md
 /agent-note-computer-use-provider-registration:
-  en: 7179585d8663cf3c
-  zh: e0ac002425dfd40b
+  en: 26864fd07055ccc8
+  zh: b99ba7a52da557fb
 /agent-note-computer-use-provider-registration/problem:
   en: 2badc01ef355daf2
   zh: 960f59525520b1d6
 /agent-note-computer-use-provider-registration/decision:
-  en: b1827b49bbb5eb4d
-  zh: cd4710ed9f4c382a
+  en: 0ba04a4d4c76e297
+  zh: dc728eab3f9ec7e6
 /agent-note-computer-use-provider-registration/alternatives-considered:
   en: 64dd8fb3c84289d6
   zh: fc8df858bbcc13f3

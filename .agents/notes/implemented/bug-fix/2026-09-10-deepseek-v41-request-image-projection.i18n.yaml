@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-10-deepseek-v41-request-image-projection.md
 /agent-note-deepseek-request-images-on-the-published-token-grid:
-  en: 67401dae42c79c06
-  zh: 19ab8d82fec9ec25
+  en: 74f741f34ede37bd
+  zh: 151b2fbd513a8e44
 /agent-note-deepseek-request-images-on-the-published-token-grid/problem:
-  en: 3c86cfcbd6895dc5
-  zh: 68cb8bd4c1ef2d24
+  en: 74ea899ba775bb01
+  zh: 4089ac9883351d04
 /agent-note-deepseek-request-images-on-the-published-token-grid/decision:
   en: ec418a8ace570b27
   zh: 8b950f88f1b52084

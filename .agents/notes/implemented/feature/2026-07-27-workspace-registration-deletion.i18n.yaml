@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-07-27-workspace-registration-deletion.md
 /agent-note-workspace-registration-deletion:
-  en: 68262d0cd61db2ae
-  zh: bb2f78757972aae6
+  en: f0eadb3d400d9280
+  zh: cb7245774f170b67
 /agent-note-workspace-registration-deletion/problem:
   en: a51dbe0190d4dff0
   zh: 25b6c3083ee60627

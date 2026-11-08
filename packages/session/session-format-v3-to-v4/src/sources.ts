@@ -40,7 +40,7 @@ const RENAMED_PRODUCERS: Readonly<Record<string, string>> = Object.freeze({
   'compact': 'compact-checkpoint',
   'tools-code-mode': 'ptc-mode',
   'tools-ptc': 'ptc-mode',
-  'dsh-compaction-basic': 'compact-basic',
+  'sqhcompaction-basic': 'compact-basic',
   '@liusiqi-dev/sqh-system-prompt': 'runtime-context',
 })
 
@@ -52,7 +52,7 @@ const RELEASED_SAME_NAME_PRODUCERS: ReadonlySet<string> = new Set([
   'plan-mode', 'time-context', 'tmux-context', 'user-approval',
   'repeat-tool-reminder', 'tool-cordis', 'cordis-host-runner', 'tool-goal',
   'tool-jobs', 'hooks-codex', 'hooks-claude-code', 'schedule',
-  'dsh-session-title-llm',
+  'sqhsession-title-llm',
 ])
 
 /**
@@ -64,7 +64,7 @@ const RELEASED_SAME_NAME_PRODUCERS: ReadonlySet<string> = new Set([
  * "message must have system-prompt source", which is what an unmigratable session
  * looks like rather than what a renamed package should cause.
  */
-const SYSTEM_PROMPT_PRODUCER = 'dsh-system-prompt'
+const SYSTEM_PROMPT_PRODUCER = 'sqhsystem-prompt'
 
 /** Scopes this repository has shipped under; a released file may name either. */
 const LEGACY_SCOPES: readonly string[] = ['@deepseek-ai/', '@liusiqi-dev/']

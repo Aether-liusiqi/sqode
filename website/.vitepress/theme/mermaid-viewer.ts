@@ -59,7 +59,7 @@ export function installMermaidViewer(
       const svg = container.querySelector<SVGSVGElement>('svg:not(.dsh-media-icon)')
       if (!svg || !dimensions(svg)) continue
       const trigger = viewerButton(doc, copy.open, 'open')
-      trigger.className = 'dsh-diagram-open'
+      trigger.className = 'sqhdiagram-open'
       trigger.setAttribute('aria-haspopup', 'dialog')
       trigger.addEventListener('click', () => {
         closeActive()

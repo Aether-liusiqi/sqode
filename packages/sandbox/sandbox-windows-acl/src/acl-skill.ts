@@ -21,17 +21,17 @@ import { parse as parseYaml } from 'yaml'
 export const ACL_DIAGNOSIS_SKILL = 'diagnose-windows-sandbox-acl'
 
 /** Provider name this module registers the skill under. */
-const PROVIDER = 'dsh-windows-acl'
+const PROVIDER = 'sqhwindows-acl'
 
 function parseSkill(raw: string, path: string): { description: string; content: string } {
   const frontmatter = /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/u.exec(raw)
-  if (frontmatter?.[1] === undefined) throw new Error(`dsh-sandbox-windows-acl: ${path} has no YAML frontmatter`)
+  if (frontmatter?.[1] === undefined) throw new Error(`sqhsandbox-windows-acl: ${path} has no YAML frontmatter`)
   const metadata: unknown = parseYaml(frontmatter[1])
   const description = typeof metadata === 'object' && metadata !== null && 'description' in metadata
     ? metadata.description
     : undefined
   if (typeof description !== 'string' || description.length === 0) {
-    throw new Error(`dsh-sandbox-windows-acl: ${path} has no description`)
+    throw new Error(`sqhsandbox-windows-acl: ${path} has no description`)
   }
   return { description, content: raw.slice(frontmatter[0].length).trim() }
 }
@@ -44,7 +44,7 @@ function parseSkill(raw: string, path: string): { description: string; content: 
 export function registerAclDiagnosisSkill(ctx: Context): void {
   const packaged = fileURLToPath(new URL(`../assets/${ACL_DIAGNOSIS_SKILL}/`, import.meta.url))
   ctx.effect(function* () {
-    const directory = mkdtempSync(join(tmpdir(), 'dsh-acl-skill-'))
+    const directory = mkdtempSync(join(tmpdir(), 'sqhacl-skill-'))
     yield async () => { await rm(directory, { recursive: true, force: true }) }
     mkdirSync(join(directory, 'scripts'))
     for (const path of ['SKILL.md', 'scripts/diagnose-windows-sandbox-acl.ps1']) {

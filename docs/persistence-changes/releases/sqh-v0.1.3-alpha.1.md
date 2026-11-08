@@ -1,9 +1,9 @@
 ---
-description: "Retrospective Session persistence types and adjacent-release changes for dsh-v0.1.3-alpha.1."
+description: "Retrospective Session persistence types and adjacent-release changes for sqhv0.1.3-alpha.1."
 kind: persistence-release
 ---
 
-# Persistence release: dsh-v0.1.3-alpha.1
+# Persistence release: sqhv0.1.3-alpha.1
 
 English | [中文](sqh-v0.1.3-alpha.1.zh.md)
 
@@ -28,10 +28,10 @@ This approximate backfill supports reading and format validation; it is not a co
 
 | Item | Recorded value |
 |---|---|
-| Source tag | `dsh-v0.1.3-alpha.1` |
+| Source tag | `sqhv0.1.3-alpha.1` |
 | Source date | 2026-09-04T09:16:23.000Z |
 | Release record | Release object present. |
-| Previous release | [dsh-v0.1.2-rc.1](sqh-v0.1.2-rc.1.md) |
+| Previous release | [sqhv0.1.2-rc.1](sqh-v0.1.2-rc.1.md) |
 | Session writer version | 2 |
 | Reconstructed inventory | <!-- persistence-release-inventory:start -->54 roots / 425 types<!-- persistence-release-inventory:end --> |
 | This snapshot | [sqh-v0.1.3-alpha.1.schema.json](sqh-v0.1.3-alpha.1.schema.json) |
@@ -45,8 +45,8 @@ Source evidence for the writer version constant at this tag:
 
 ```yaml persistence-release
 schemaVersion: 1
-tag: dsh-v0.1.3-alpha.1
-previous: dsh-v0.1.2-rc.1
+tag: sqhv0.1.3-alpha.1
+previous: sqhv0.1.2-rc.1
 sessionFormatVersion: 2
 changes:
   - root: JsonlHeaderLine

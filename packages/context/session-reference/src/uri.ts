@@ -6,7 +6,7 @@ import { SessionReferenceError } from './config.ts'
 import type { SessionReferenceInput } from './types.ts'
 
 /** URI scheme reserved for Siqi Harness session snapshots. */
-export const SESSION_REFERENCE_SCHEME = 'dsh-session:'
+export const SESSION_REFERENCE_SCHEME = 'sqhsession:'
 
 /**
  * Encode any JavaScript session-id string as a canonical lossless URI.
@@ -68,7 +68,7 @@ export interface ParsedSessionReferenceText {
  */
 export function parseSessionReferenceText(text: string): ParsedSessionReferenceText {
   const references: SessionReferenceInput[] = []
-  const pattern = /@\[((?:\\.|[^\\\]])*)\]\((dsh-session:[^\s)]*)\)|(dsh-session:[A-Za-z0-9_-]+)/gu
+  const pattern = /@\[((?:\\.|[^\\\]])*)\]\((sqhsession:[^\s)]*)\)|(sqhsession:[A-Za-z0-9_-]+)/gu
   const rendered = text.replace(pattern, (
     _match,
     rawLabel: string | undefined,

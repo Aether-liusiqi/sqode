@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-18-localized-package-metadata.md
 /agent-note-plugin-owned-localized-display-metadata:
-  en: b78ee8e580f068ea
-  zh: 17dd59c9b6273897
+  en: 77914bbc2fde7c2c
+  zh: e0cf6ee161dba16f
 /agent-note-plugin-owned-localized-display-metadata/problem:
   en: 4022a58baf82e77d
   zh: 8439268ed4df9b69
 /agent-note-plugin-owned-localized-display-metadata/decision:
-  en: 7ecfa902fdf51bff
-  zh: 323f491b98ee5db1
+  en: d3931c72188955b3
+  zh: db4820bc30bfa2cc
 /agent-note-plugin-owned-localized-display-metadata/existing-decisions:
-  en: a84f44d6a3179d47
-  zh: 8fb62f08bec5f75d
+  en: edcfce2231317827
+  zh: f32d3b8f2d9c67c6
 /agent-note-plugin-owned-localized-display-metadata/alternatives-considered:
   en: abbdb1b8ab360380
   zh: edfe6c06b1d67fd7

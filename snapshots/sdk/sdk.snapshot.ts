@@ -87,11 +87,11 @@ const RUNTIME_WORKSPACE_ENTRIES = [
   '.replay-fixtures',
   '.snapshot-patches',
 ] as const
-const dshSdkDiagnosticChildPatch = fileURLToPath(new URL(
+const sqhSdkDiagnosticChildPatch = fileURLToPath(new URL(
   './subagent-sdk-diagnostic/child.cordis.yml',
   import.meta.url,
 ))
-const dshSdkChildConfig = fileURLToPath(new URL(
+const sqhSdkChildConfig = fileURLToPath(new URL(
   '../../packages/subagent/subagent-sdk/tests/fixtures/loader/child.patch.yml',
   import.meta.url,
 ))
@@ -108,7 +108,7 @@ interface SdkAssertions {
   /** Environment overrides passed to the runtime subprocess. */
   environment?: Readonly<Record<string, string>>
   /** A separate SQH SDK child whose persisted session joins the evidence. */
-  dshSdkChild?: {
+  sqhSdkChild?: {
     /** Profile patch materialized for the child runtime. */
     config: string
     /** Exact request configuration committed by the child runtime. */
@@ -144,7 +144,7 @@ const SDK_ASSERTIONS: Readonly<Record<string, SdkAssertions>> = {
     environment: { SQODE_SNAPSHOT_HUMAN_STEER: '1' },
   },
   'subagent-sdk-diagnostic': {
-    environment: { SQODE_TEST_CHILD_PATCH: dshSdkDiagnosticChildPatch },
+    environment: { SQODE_TEST_CHILD_PATCH: sqhSdkDiagnosticChildPatch },
   },
   'persistent-tools': {
     environment: { SQODE_SYSTEM_PROMPT: MINIMAL_SYSTEM_PROMPT },
@@ -158,8 +158,8 @@ const SDK_ASSERTIONS: Readonly<Record<string, SdkAssertions>> = {
   },
   'subagent-sdk-dynamic-route': {
     environment: { SQODE_TEST_PARENT_PROVIDER: 'deepseek-official' },
-    dshSdkChild: {
-      config: dshSdkChildConfig,
+    sqhSdkChild: {
+      config: sqhSdkChildConfig,
       agentConfig: {
         provider: 'mock',
         model: 'mock-routed',
@@ -563,9 +563,9 @@ async function runScenario(scenario: CorpusScenario): Promise<{
     .map((patch, index) => materializeProfilePatch(patch, cwd, 'sdk', patchRoot, index))
   let childSessionsRoot: string | undefined
   let childEnvironment: Record<string, string> = {}
-  if (assertions.dshSdkChild !== undefined) {
+  if (assertions.sqhSdkChild !== undefined) {
     const childHome = join(cwd, '.child-dsh')
-    const childPatch = materializeProfilePatch(assertions.dshSdkChild.config, cwd, 'sdk', patchRoot, patches.length)
+    const childPatch = materializeProfilePatch(assertions.sqhSdkChild.config, cwd, 'sdk', patchRoot, patches.length)
     await mkdir(childHome, { recursive: true })
     childSessionsRoot = join(childHome, 'sessions')
     childEnvironment = {
@@ -743,7 +743,7 @@ async function verifyHeaders(
   scenario: CorpusScenario,
   ordered: readonly PersistedLog[],
   ctx: NormalizeContext,
-  dshSdkChildConfig?: Readonly<Record<string, unknown>>,
+  sqhSdkChildConfig?: Readonly<Record<string, unknown>>,
 ): Promise<void> {
   const pin = headerPin(scenario)
   const [pinFixturePath] = await fixtureFiles(pin)
@@ -806,8 +806,8 @@ async function verifyHeaders(
     for (const [index, header] of headers.entries()) {
       const selectedSchemas = childSchemas.get(logIndex)?.[index]
       const base = reconstructed[index] ?? reconstructed[0]
-      const configured = logIndex === 1 && dshSdkChildConfig !== undefined
-        ? { ...base as JsonObject, config: dshSdkChildConfig }
+      const configured = logIndex === 1 && sqhSdkChildConfig !== undefined
+        ? { ...base as JsonObject, config: sqhSdkChildConfig }
         : base
       const expected = selectedSchemas === undefined
         ? configured
@@ -868,7 +868,7 @@ describe('TypeScript SDK snapshots over the jsonrpc runtime', () => {
       const ordered = orderLogs(
         logs,
         recording ? logs.length : files.length,
-        assertions.dshSdkChild !== undefined,
+        assertions.sqhSdkChild !== undefined,
       )
       reconcileCatalogCreationTimes(ordered.map(log => log.content), 'validate')
       const actualContext = contextOf(ordered, cwd)
@@ -1015,7 +1015,7 @@ describe('TypeScript SDK snapshots over the jsonrpc runtime', () => {
       const actualSnapshots = normalizeSessionSnapshots(ordered.map(log => log.content), actualContext, { nativeWriterOutput: true })
       const expectedSnapshots = normalizeSessionSnapshots(expectedContents, expectedContext, { nativeWriterOutput: true })
       expect(actualSnapshots.map(records), `${scenario.name}: sessions`).toEqual(expectedSnapshots.map(records))
-      await verifyHeaders(scenario, ordered, actualContext, assertions.dshSdkChild?.agentConfig)
+      await verifyHeaders(scenario, ordered, actualContext, assertions.sqhSdkChild?.agentConfig)
 
       // Genuine SDK protocol cases retain their secondary wire projections.
       const finalResult = results.at(-1)
@@ -1095,7 +1095,7 @@ describe('TypeScript SDK snapshots over the jsonrpc runtime', () => {
           for (const clause of assertions.runtimeContext.includes) expect(system).not.toContain(clause)
         }
       }
-      if (ordered.length > 1 && assertions.dshSdkChild === undefined) {
+      if (ordered.length > 1 && assertions.sqhSdkChild === undefined) {
         expect(observedMethods.has('subagent.started')).toBe(true)
         expect(observedMethods.has('subagent.finished')).toBe(true)
       }

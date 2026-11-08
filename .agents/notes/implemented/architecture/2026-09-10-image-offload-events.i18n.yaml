@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-10-image-offload-events.md
 /agent-note-durable-image-offload-events:
-  en: 13b817438040d321
-  zh: 490038f3c93551c7
+  en: 03a8f67120140546
+  zh: 623af958fe41783c
 /agent-note-durable-image-offload-events/problem:
-  en: 93c2241e0f40fca1
-  zh: fe3528cff00e07b3
+  en: 720b7f5bcec7278c
+  zh: a03b39c4d1ca692c
 /agent-note-durable-image-offload-events/decision:
-  en: ab8eeb99dd3229d6
-  zh: bdb752d2fef67252
+  en: c4e57396aefa491c
+  zh: 954b64f716e10e0c
 /agent-note-durable-image-offload-events/alternatives-considered:
   en: f1ab95c3bf1a17f8
   zh: 2708521190143182

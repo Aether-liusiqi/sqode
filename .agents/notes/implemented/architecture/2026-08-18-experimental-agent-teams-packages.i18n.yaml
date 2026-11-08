@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-08-18-experimental-agent-teams-packages.md
 /agent-note-publish-agent-teams-under-experimental-package-names:
-  en: 4c772309d60d4ccc
-  zh: 91bf0acc208e5167
+  en: 699413115ebf8791
+  zh: cd90d9c4838388b3
 /agent-note-publish-agent-teams-under-experimental-package-names/problem:
   en: e45938d278a6c12d
   zh: 93c790d466f7bd12
 /agent-note-publish-agent-teams-under-experimental-package-names/decision:
-  en: e50d2d827a8ea651
-  zh: d49b89fc842a0f53
+  en: a15a7f4401377cf7
+  zh: 31914b0db56fe9eb
 /agent-note-publish-agent-teams-under-experimental-package-names/alternatives-considered:
   en: 869decdfbc7b3466
   zh: b51f5ab731d1a84a

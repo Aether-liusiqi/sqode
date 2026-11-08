@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/simplification/2026-07-17-one-send-one-turn.md
 /agent-note-remove-implicit-batching-from-ordinary-sends:
-  en: 5376ddae6e8cf5b9
-  zh: 1dae892f25da755e
+  en: edbfc27840049fb3
+  zh: dd61a0fc6be7552b
 /agent-note-remove-implicit-batching-from-ordinary-sends/problem:
   en: ed05e7ef01abfafc
   zh: 40293ad57c00f902
 /agent-note-remove-implicit-batching-from-ordinary-sends/decision:
-  en: 354fbb4e6a776538
-  zh: c78879212400bf0f
+  en: 1700ab9f122c69af
+  zh: f49b461cc150f5d1
 /agent-note-remove-implicit-batching-from-ordinary-sends/alternatives-considered:
   en: f944e18c49b30b4c
   zh: cfcc0b18ce94f37c

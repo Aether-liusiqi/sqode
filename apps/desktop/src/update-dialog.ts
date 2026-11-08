@@ -4,7 +4,7 @@ import type { DesktopLocale } from './locale.ts'
 import type { DesktopUpdateOverlays } from './update-overlay.ts'
 
 /** Channels available only to the isolated update-dialog document. */
-export const UPDATE_DIALOG_IPC = { status: 'dsh-update-dialog:status', changed: 'dsh-update-dialog:changed', respond: 'dsh-update-dialog:respond' } as const
+export const UPDATE_DIALOG_IPC = { status: 'sqhupdate-dialog:status', changed: 'sqhupdate-dialog:changed', respond: 'sqhupdate-dialog:respond' } as const
 
 /** Text and choices supplied by the main process, never by product documents. */
 export interface UpdateDialogView {

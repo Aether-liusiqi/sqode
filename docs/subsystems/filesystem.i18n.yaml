@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/filesystem.md
 /filesystem:
-  en: 99641f8970df18f8
-  zh: 54bfb0ca57a95cbf
+  en: 61fe6dc495d317c3
+  zh: 3689a94c619927e2
 /filesystem/target-identity-and-metadata-provider-contract:
   en: 345def8a8e6c58e0
   zh: 01d6e2f0f22daf9d
@@ -27,8 +27,8 @@
   en: 41f357e84a828e13
   zh: ab0755656661c6a8
 /filesystem/no-timeouts-on-file-io:
-  en: 86dc8f63ba44194c
-  zh: 545f8118a9401e6a
+  en: b1130fe32084917a
+  zh: ec62f5bf4a1e8d03
 /filesystem/the-service-and-the-plugin:
   en: b588ea6b6cd6df79
   zh: 0b94d8fd280515ff

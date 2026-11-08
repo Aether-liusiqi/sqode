@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-22-unbounded-completion-wakes-by-default.md
 /agent-note-background-job-completion-wakes-are-unbounded-by-default:
-  en: 5c8e5c0ff2d19ab9
-  zh: a046e3297aba3904
+  en: 7b20e0a67b9a666b
+  zh: f7c9145d2892bea2
 /agent-note-background-job-completion-wakes-are-unbounded-by-default/problem:
-  en: e18d14a9eab9ffa3
-  zh: cc0596c1ec82fd39
+  en: fde7902299eb08a8
+  zh: e61443e7bf454df7
 /agent-note-background-job-completion-wakes-are-unbounded-by-default/decision:
   en: 624cd2fed9a36d1b
   zh: 65eff9f70c51aa7f

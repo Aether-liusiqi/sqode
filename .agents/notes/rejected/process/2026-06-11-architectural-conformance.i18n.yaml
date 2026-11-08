@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/rejected/process/2026-06-11-architectural-conformance.md
 /agent-note-architectural-conformance-dependency-rules-and-the-adapter-kit:
-  en: 708fe0c94db3e25a
-  zh: 07437d3cb67a9240
+  en: 2b19c4b9ef2bf4b5
+  zh: db6b4da31373527b
 /agent-note-architectural-conformance-dependency-rules-and-the-adapter-kit/problem:
-  en: 2d5d19405f22920b
-  zh: 8ca48379706cbe35
+  en: f9a1ec8963f858b0
+  zh: e3986aebf422b738
 /agent-note-architectural-conformance-dependency-rules-and-the-adapter-kit/proposal:
-  en: e2b3c8b47e0a00bf
-  zh: e3163241ca1c3c87
+  en: 5574a6c37c49bb64
+  zh: 6396c79bcd617534
 /agent-note-architectural-conformance-dependency-rules-and-the-adapter-kit/plan:
   en: 56bb9b7b97ba6bf5
   zh: 2e3f0a70ce391029

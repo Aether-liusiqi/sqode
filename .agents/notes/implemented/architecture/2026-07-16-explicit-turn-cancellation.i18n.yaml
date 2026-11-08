@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-16-explicit-turn-cancellation.md
 /agent-note-explicit-turn-cancellation-capability:
-  en: 729ed6291e9d4d2c
-  zh: 32ae526ef41199da
+  en: 47a3d76a9da75168
+  zh: f7724c059c72f7c4
 /agent-note-explicit-turn-cancellation-capability/problem:
-  en: 0a7826345be2a509
-  zh: 430fccb5c4d6a5e2
+  en: 5eded489376e6d27
+  zh: 56ddc00816abc505
 /agent-note-explicit-turn-cancellation-capability/decision:
-  en: 2c15edb35f38e7e5
-  zh: fa5145d26e3bff20
+  en: d6d0c7aa2ca65488
+  zh: c7ad377353f7deef
 /agent-note-explicit-turn-cancellation-capability/verification:
   en: a7ab1d06542be1c0
   zh: 1687979b7f2460fa

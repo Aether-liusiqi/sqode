@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-06-20-generic-long-running-tool-runtime.md
 /agent-note-the-background-job-runtime-ctx-jobs-and-generic-task-control-tools:
-  en: 56e269b2a2839796
-  zh: 8fc971036985ac0d
+  en: 74fe09598e858b00
+  zh: aee34ce6496b2c91
 /agent-note-the-background-job-runtime-ctx-jobs-and-generic-task-control-tools/problem:
   en: 70e26df62568c337
   zh: a9e6f5f8a5482d0a
@@ -12,8 +12,8 @@
   en: fa9c536b364b9f19
   zh: 5a34379973cd0088
 /agent-note-the-background-job-runtime-ctx-jobs-and-generic-task-control-tools/runtime-contract:
-  en: eeb7ed8eec13668a
-  zh: 3f236f63c72fbba7
+  en: da0e5a8291c713b6
+  zh: 11f5d641090fce82
 /agent-note-the-background-job-runtime-ctx-jobs-and-generic-task-control-tools/authorization-and-owner-lifecycle:
   en: 3819a73ca70ecdfd
   zh: c1a4f461a4e45978
@@ -21,8 +21,8 @@
   en: bbd01a290cb1ac67
   zh: b412958260939e56
 /agent-note-the-background-job-runtime-ctx-jobs-and-generic-task-control-tools/model-facing-control-api:
-  en: 835aa63b2fbe3211
-  zh: ec1b6a0dbad24f0a
+  en: 526f5ca41a75edc1
+  zh: f12b96ce7c4ac2a6
 /agent-note-the-background-job-runtime-ctx-jobs-and-generic-task-control-tools/producer-opt-in:
   en: 4fed7cbf49fe59b0
   zh: fee2eed0c668711a
@@ -54,5 +54,5 @@
   en: e891db1723828da8
   zh: 657a62ed595bd081
 /agent-note-the-background-job-runtime-ctx-jobs-and-generic-task-control-tools/consequences:
-  en: b95ecd6052465ad3
-  zh: 1527c38d1b4631d6
+  en: cfba411dd902f534
+  zh: 64bfcc7fb9d631c1

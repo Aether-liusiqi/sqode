@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-07-31-web-workspace-file-links.md
 /agent-note-opening-a-produced-file-from-the-web-ui:
-  en: bdfcd62110aaefa2
-  zh: 92981f1fe8ca52c9
+  en: d7a9980dca5f5ac1
+  zh: e65b7a4065d3a182
 /agent-note-opening-a-produced-file-from-the-web-ui/problem:
   en: a9e02faf21f58827
   zh: 5a4773ae28e39187
 /agent-note-opening-a-produced-file-from-the-web-ui/decision:
-  en: 8645746188ee6eda
-  zh: 55e41b865fb7586a
+  en: d10c360cc4c7cf21
+  zh: 7b6040a512d0d153
 /agent-note-opening-a-produced-file-from-the-web-ui/alternatives-considered:
   en: ba9603055aea84aa
   zh: 3ab217f1b1ccb3b6

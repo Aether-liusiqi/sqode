@@ -704,7 +704,7 @@ async function verifyProviderCwdResume(
   expect(providerCwd).toBeDefined()
   expect(primary?.header.cwd).toBe(providerCwd)
   expect(primary?.header.cwd).not.toBe(cwd)
-  const otherHostCwd = await mkdtemp(join(tmpdir(), 'dsh-provider-resume-'))
+  const otherHostCwd = await mkdtemp(join(tmpdir(), 'sqhprovider-resume-'))
   const env = {
     SQODE_HOME: join(cwd, '.sqode'),
     SQODE_SNAPSHOT: 'replay',
@@ -883,7 +883,7 @@ describe('headless recorded-session snapshots', () => {
 
   it('replays original inbox mentions before normalized user messages', () => {
     const message = (text: string) => ({ source: { kind: 'user' }, content: [{ type: 'text', text }] })
-    const original = 'Use @[Research](dsh-session:InJlZmVyZW5jZS1zb3VyY2Ui)'
+    const original = 'Use @[Research](sqhsession:InJlZmVyZW5jZS1zb3VyY2Ui)'
     const log = [
       { type: 'agent/inbox/spliced', data: { inserted: [message(original)] } },
       { type: 'user/message', data: message('Use @Research') },
@@ -959,7 +959,7 @@ describe('headless recorded-session snapshots', () => {
   })
 
   it.each([10, 20])('assigns sibling roles by catalog order when the first child timestamp is %i', async (firstCreatedAt) => {
-    const cwd = await mkdtemp(join(tmpdir(), 'dsh-headless-catalog-order-'))
+    const cwd = await mkdtemp(join(tmpdir(), 'sqhheadless-catalog-order-'))
     try {
       const logs = [
         [
@@ -984,7 +984,7 @@ describe('headless recorded-session snapshots', () => {
   })
 
   it('writes header sidecars without replacing a retained Session generation', async () => {
-    const directory = await mkdtemp(join(tmpdir(), 'dsh-headless-sidecars-'))
+    const directory = await mkdtemp(join(tmpdir(), 'sqhheadless-sidecars-'))
     try {
       const scenario: HeadlessScenario = {
         name: 'retained-pin',
@@ -1123,7 +1123,7 @@ describe('headless recorded-session snapshots', () => {
       try {
         result = await runLoaderSmoke({
           label: `${scenario.name} headless snapshot`,
-          tempDirPrefix: 'dsh-log-snap-',
+          tempDirPrefix: 'sqhlog-snap-',
           ...(scenario.manifest.workspace?.parent === 'outside-temp' ? { tempDirParent: outsideTempWorkspaceParent() } : {}),
           binScript: sqhBin,
           sourceImport: 'tsx/esm',

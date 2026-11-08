@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-08-15-client-shells-and-dynamic-packages.md
 /agent-note-client-shell-layering-and-dynamic-package-boundaries:
-  en: c8976de4e5547fdd
-  zh: 3d1bcb3273993af4
+  en: b762071ca8bff20e
+  zh: b659ba8b2c8fba38
 /agent-note-client-shell-layering-and-dynamic-package-boundaries/problem:
   en: bd5f38c7aba648dc
   zh: 3c28670556b3b34d
@@ -21,8 +21,8 @@
   en: dda616703802647d
   zh: be7009da6e6863f7
 /agent-note-client-shell-layering-and-dynamic-package-boundaries/decision/dependency-declarations:
-  en: a6631bc54400e64c
-  zh: 6f2148f9b992defa
+  en: 88ee9a0b8df688ed
+  zh: e43baa60ad98d40f
 /agent-note-client-shell-layering-and-dynamic-package-boundaries/alternatives-considered:
   en: 2257178f8f474757
   zh: 7da85b5899b91520

@@ -37,7 +37,7 @@ const startupFailureConfigPath = fileURLToPath(new URL('./fixtures/startup-activ
 const startupFailurePluginUrl = new URL('./fixtures/startup-activation-error/activation-error.mjs', import.meta.url).href
 const startupFailureExpected = join(goldensDir, 'startup-activation-error', 'stderr.expected.txt')
 const binScript = fileURLToPath(new URL('../../../../../../packages/test-support/loader-smoke/tests/fixtures/headless-driver.ts', import.meta.url))
-const dshBinScript = fileURLToPath(new URL('../../../../src/bin.ts', import.meta.url))
+const sqhBinScript = fileURLToPath(new URL('../../../../src/bin.ts', import.meta.url))
 const tsconfigPath = fileURLToPath(new URL('../../../../../../tsconfig.json', import.meta.url))
 const reasoningConfigPath = fileURLToPath(new URL('./fixtures/cli.patch.yml', import.meta.url))
 const deepseekDefaultsConfigPath = fileURLToPath(new URL('./fixtures/deepseek-defaults.patch.yml', import.meta.url))
@@ -243,7 +243,7 @@ describe('headless stream-json snapshots', () => {
       mode,
       sourceImport: 'tsx/esm',
       tempDirPrefix: 'headless-snapshot-profile-',
-      binScript: dshBinScript,
+      binScript: sqhBinScript,
       configPath: headlessOverlayPath,
       binArgs: ['headless', '--patch', headlessOverlayPath, task],
       tsconfigPath,
@@ -276,7 +276,7 @@ describe('headless stream-json snapshots', () => {
     const result = await runLoaderSmoke({
       label: 'product headless profile json snapshot',
       tempDirPrefix: 'headless-snapshot-profile-json-',
-      binScript: dshBinScript,
+      binScript: sqhBinScript,
       configPath: headlessOverlayPath,
       binArgs: [
         '--profile', 'headless', '--patch', headlessOverlayPath,
@@ -306,7 +306,7 @@ describe('headless stream-json snapshots', () => {
     const result = await runLoaderSmoke({
       label: 'product headless profile unknown session',
       tempDirPrefix: 'headless-snapshot-profile-unknown-session-',
-      binScript: dshBinScript,
+      binScript: sqhBinScript,
       configPath: headlessOverlayPath,
       binArgs: [
         '--profile', 'headless', '--patch', headlessOverlayPath,
@@ -341,7 +341,7 @@ describe('headless stream-json snapshots', () => {
       const first = await runLoaderSmoke({
         label: 'product headless profile resume first wake',
         cwd,
-        binScript: dshBinScript,
+        binScript: sqhBinScript,
         configPath: headlessOverlayPath,
         binArgs: ['--profile', 'headless', '--patch', headlessOverlayPath, '--json', firstTask],
         tsconfigPath,
@@ -355,7 +355,7 @@ describe('headless stream-json snapshots', () => {
       const second = await runLoaderSmoke({
         label: 'product headless profile resume second wake',
         cwd,
-        binScript: dshBinScript,
+        binScript: sqhBinScript,
         configPath: headlessOverlayPath,
         binArgs: [
           '--profile', 'headless', '--patch', headlessOverlayPath,
@@ -386,7 +386,7 @@ describe('headless stream-json snapshots', () => {
     const result = await runLoaderSmoke({
       label: 'product headless profile model failure snapshot',
       tempDirPrefix: 'headless-snapshot-profile-failure-',
-      binScript: dshBinScript,
+      binScript: sqhBinScript,
       configPath: headlessOverlayPath,
       binArgs: ['--profile', 'headless', '--patch', headlessOverlayPath, 'Trigger the keyless model failure.'],
       tsconfigPath,
@@ -406,7 +406,7 @@ describe('headless stream-json snapshots', () => {
     const result = await runLoaderSmoke({
       label: 'headless best-effort startup snapshot',
       tempDirPrefix: 'headless-snapshot-startup-error-',
-      binScript: dshBinScript,
+      binScript: sqhBinScript,
       configPath: startupFailureConfigPath,
       binArgs: [
         '--profile', 'headless',

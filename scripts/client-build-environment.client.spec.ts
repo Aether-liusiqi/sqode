@@ -25,7 +25,7 @@ const COMMIT_HASH = '0123456789abcdef0123456789abcdef01234567'
 const PROBE_KEY = `process.env.${PROBE_NAME}`
 const originalProbe = process.env[PROBE_NAME]
 const roots: string[] = []
-const dshBuildWorkflows = [
+const sqhBuildWorkflows = [
   'build-exe-for-python-sdk.yml',
   'ci.yml',
   'e2e.yml',
@@ -282,7 +282,7 @@ describe('client build environment', () => {
   })
 
   it('keeps public client values out of workflow-wide environments', () => {
-    for (const name of dshBuildWorkflows) {
+    for (const name of sqhBuildWorkflows) {
       const path = `.github/workflows/${name}`
       const document: unknown = yaml.load(readFileSync(resolve(root, path), 'utf8'))
       if (typeof document !== 'object' || document === null || Array.isArray(document)) {

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-12-mcp-sdk-protocol-negotiation.md
 /agent-note-mcp-sdk-protocol-negotiation:
-  en: 9228ca2f4da2f41b
-  zh: 7cd10429865c3f2d
+  en: 8863d0d48f604d88
+  zh: 032954d02445b6bc
 /agent-note-mcp-sdk-protocol-negotiation/problem:
   en: bd614e17c62d137e
   zh: ee71fdcd310a9592
 /agent-note-mcp-sdk-protocol-negotiation/decision:
-  en: 90ed8e6273b8d0c4
-  zh: 27ddc29d47dbd9e3
+  en: 4f551d95254d071f
+  zh: 9eebaf4695e7dbfb
 /agent-note-mcp-sdk-protocol-negotiation/alternatives-considered:
   en: 1fba2ebdcc100c37
   zh: 45c384641d3b0300

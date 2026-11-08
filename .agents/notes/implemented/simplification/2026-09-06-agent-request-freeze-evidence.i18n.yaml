@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/simplification/2026-09-06-agent-request-freeze-evidence.md
 /agent-note-reuse-only-loop-proven-message-freezes:
-  en: 7ec7e2c8c1eb46bb
-  zh: 93a619878774a795
+  en: 7cc873fa923e66c1
+  zh: 8027f9ef5144bc88
 /agent-note-reuse-only-loop-proven-message-freezes/problem:
-  en: af6aa6181efb2163
-  zh: 3f1630947294db0a
+  en: 00a23396b2180dbf
+  zh: 7547caffcdb29872
 /agent-note-reuse-only-loop-proven-message-freezes/decision:
-  en: 64e5058366d82142
-  zh: 073f4e1856c58294
+  en: a39581f253f08af9
+  zh: 3423f46932d3a2df
 /agent-note-reuse-only-loop-proven-message-freezes/measurement-evidence:
   en: 731e00bb5059b1f3
   zh: 118464dc6e640431

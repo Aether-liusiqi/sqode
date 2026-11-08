@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write python/README.md
 /siqi-harness-python-sdk:
-  en: 57c721daa811ccb1
-  zh: c77b6313039b1e30
+  en: 9511cb3c5fca0208
+  zh: 35979a3ca3a42f5f
 /siqi-harness-python-sdk/packages:
-  en: 457be236a1eab8fd
-  zh: 0c34d2b050d568c2
+  en: 95eeab2e42b9f430
+  zh: 15a8b08c353e2b71
 /siqi-harness-python-sdk/behavior:
-  en: a5d1dbb59c9abd65
-  zh: 0db3eddb06f3f576
+  en: 89e7b41bf48ebc68
+  zh: 8124c2f9205bc24f
 /siqi-harness-python-sdk/contributor-workflows:
-  en: 292b8aab762f515a
-  zh: 93da3d5c6af97d70
+  en: 7701223c821a4728
+  zh: 71354a16216412d1

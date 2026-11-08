@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/proposed/architecture/2026-09-06-logical-session-storage-rebuild.md
 /agent-note-logical-session-and-storage-rebuild:
-  en: 035f8aa28d4fb486
-  zh: 4fa5eef40371cf2f
+  en: 7ff50ccb0f8d5037
+  zh: 050a6ec0902bd154
 /agent-note-logical-session-and-storage-rebuild/problem:
   en: fe3de6c728124b77
   zh: a28e89b8fee09662
 /agent-note-logical-session-and-storage-rebuild/proposal:
-  en: 68347f4cef24d57d
-  zh: e11eaec209be63c6
+  en: 151ff0e339170c3e
+  zh: 76af32ee50437012
 /agent-note-logical-session-and-storage-rebuild/stage-1-one-public-logical-session-interface:
   en: 27e8e604c508ca73
   zh: 70247d9608e139a4
@@ -39,11 +39,11 @@
   en: d61edd7e232bcb44
   zh: f9065dd60d49bc13
 /agent-note-logical-session-and-storage-rebuild/compatibility-and-non-goals:
-  en: bf81660f7d4638fa
-  zh: 4d59310d2e6476fd
+  en: dacb1dcaa7f79712
+  zh: d0299ab0a72cf5a8
 /agent-note-logical-session-and-storage-rebuild/references:
-  en: 11932453cf9a8caa
-  zh: ccf02c395ec02543
+  en: 9c1261b39e0edf48
+  zh: 137fb36fc71891da
 /agent-note-logical-session-and-storage-rebuild/alternatives-considered:
   en: 4bc014b676d93c13
   zh: 1e0a04856da60bb0

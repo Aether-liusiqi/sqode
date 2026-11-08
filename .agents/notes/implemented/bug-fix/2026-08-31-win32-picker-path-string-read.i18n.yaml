@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-08-31-win32-picker-path-string-read.md
 /agent-note-read-the-win32-picker-path-without-a-fixed-size-unmanaged-view:
-  en: abd03a3bff03600e
-  zh: 8a4a21ecc7cae78b
+  en: 0cbcfc5ce9c51496
+  zh: ecf201b2037e328f
 /agent-note-read-the-win32-picker-path-without-a-fixed-size-unmanaged-view/problem:
   en: 1835aa6f42229a1f
   zh: 928cb408e879fc41

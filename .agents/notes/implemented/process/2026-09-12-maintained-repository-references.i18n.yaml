@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-09-12-maintained-repository-references.md
 /agent-note-maintained-repository-references:
-  en: 10750a69061b5dd0
-  zh: ab4be61612ead1da
+  en: 4541d55c39521780
+  zh: 238a4e09adc9af6f
 /agent-note-maintained-repository-references/problem:
   en: 36ca11f2ef3d8b4e
   zh: 6e6ca6ae00fab2f7

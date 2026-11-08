@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-23-bounded-pnpm-runs.md
 /agent-note-bounding-a-pnpm-run-that-stops-progressing:
-  en: c2bd52dec2a41d84
-  zh: 80dae83761a09a60
+  en: 350bbc338c7d5381
+  zh: f2597c02d59ae952
 /agent-note-bounding-a-pnpm-run-that-stops-progressing/problem:
   en: 227a287fe7127eae
   zh: 5d7eae54a4a75f8c
@@ -21,8 +21,8 @@
   en: eb3c4907aec48db3
   zh: 56b7168b732c782a
 /agent-note-bounding-a-pnpm-run-that-stops-progressing/related:
-  en: a9c6d0a071ea9834
-  zh: 0702183c645d03b9
+  en: 09230bdd462b7bc2
+  zh: 2e8cd9dbec27ce39
 /agent-note-bounding-a-pnpm-run-that-stops-progressing/consequences:
   en: c13a64cd3dd381e9
   zh: 83d2db47153e3d8c

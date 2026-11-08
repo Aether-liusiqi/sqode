@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-16-messages-historical-tool-input.md
 /agent-note-replay-malformed-historical-tool-input-through-messages:
-  en: 88cdfca30918b47f
-  zh: 1203d380805f81e4
+  en: 46dfb61722691f44
+  zh: b04dbb102ccf219e
 /agent-note-replay-malformed-historical-tool-input-through-messages/problem:
   en: b9f848905bb31969
   zh: 7c56aab1a15cfc85
 /agent-note-replay-malformed-historical-tool-input-through-messages/decision:
-  en: ee7c586820c28e54
-  zh: fced4d6c50c7d227
+  en: 3f912bf8aa905fb3
+  zh: 66e9526d5cbe63ef
 /agent-note-replay-malformed-historical-tool-input-through-messages/alternatives-considered:
   en: c7d7275282a83780
   zh: c0c570f156ac546f

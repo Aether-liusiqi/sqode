@@ -910,7 +910,7 @@ export class ToolRuntime extends Service {
         // otherwise resolve an inherited Object.prototype member as a renderer.
         const render = SDK_RENDERERS[runtime.language]
         /* v8 ignore next -- requirePtcRuntime rejects an unknown language before this runs. */
-        if (render === undefined) throw new Error(`dsh-tools: no SDK renderer for ${runtime.language}`)
+        if (render === undefined) throw new Error(`sqhtools: no SDK renderer for ${runtime.language}`)
         return render(this.sdkSchemas(context.scope))
       },
     }
@@ -950,7 +950,7 @@ export class ToolRuntime extends Service {
       peekApprover: () => this.ctx.get('approval'),
       resolveSandboxPolicy: (exec) => {
         const policy = this.ctx.get('sandboxPolicy')
-        if (policy === undefined) throw new Error('dsh-tools: confined PTC runtime requires sandboxPolicy')
+        if (policy === undefined) throw new Error('sqhtools: confined PTC runtime requires sandboxPolicy')
         return policy.resolve(exec.agent === undefined ? {} : { session: exec.agent.session })
       },
       // The language-aware description/parameters getters read the runtime
@@ -1048,11 +1048,11 @@ export class ToolRuntime extends Service {
   private requirePtcRuntime(mode: ToolPresentationMode): PtcRuntime {
     const runtime = this.ctx.get('ptcRuntime')
     if (!runtime) {
-      throw new Error(`dsh-tools: mode "${mode}" requires a PTC runtime — load a ctx.ptcRuntime implementation (e.g. @liusiqi-dev/sqh-ptc-runtime-node) or set tools mode to "native"`)
+      throw new Error(`sqhtools: mode "${mode}" requires a PTC runtime — load a ctx.ptcRuntime implementation (e.g. @liusiqi-dev/sqh-ptc-runtime-node) or set tools mode to "native"`)
     }
     if (!Object.hasOwn(SDK_RENDERERS, runtime.language)) {
       const known = Object.keys(SDK_RENDERERS).map(name => JSON.stringify(name)).join(', ')
-      throw new Error(`dsh-tools: no SDK renderer registered for runtime language ${JSON.stringify(runtime.language)} (known: ${known})`)
+      throw new Error(`sqhtools: no SDK renderer registered for runtime language ${JSON.stringify(runtime.language)} (known: ${known})`)
     }
     return runtime
   }

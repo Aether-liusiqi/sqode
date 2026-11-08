@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-09-22-desktop-main-bundle-after-workspace-tsdown.md
 /agent-note-bundle-the-desktop-main-process-after-the-workspace-tsdown-pass:
-  en: 47f6a531ef05a7be
-  zh: 18dc33bcd916e2b5
+  en: e23eb24db11a4afa
+  zh: 3e697fa409515cb7
 /agent-note-bundle-the-desktop-main-process-after-the-workspace-tsdown-pass/problem:
   en: b10b8c8f0a7fbef9
   zh: bf30c1ae227f8b52
@@ -15,5 +15,5 @@
   en: 1927c07efe64422c
   zh: 47ead1fdcbd74377
 /agent-note-bundle-the-desktop-main-process-after-the-workspace-tsdown-pass/consequences:
-  en: e46c28e2ba972cfb
-  zh: 70d4076a89e0b2ec
+  en: 74cf8379b745ab18
+  zh: 5b2ef5a38fc41002

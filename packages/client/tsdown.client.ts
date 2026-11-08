@@ -295,7 +295,7 @@ function staticLinkedConfig(id: string, entry: string, outputName = basename(ent
     }, tscSourceMapPlugin(), isolation.plugin, {
       // Contract 4. The import survives verbatim and the sheet lands beside the
       // JavaScript, so the shell's CSS Modules pipeline sees a real stylesheet.
-      name: 'dsh-css-asset',
+      name: 'sqhcss-asset',
       async resolveId(this: AssetEmitter, source: string, importer: string | undefined) {
         if (!source.endsWith('.css') || importer === undefined) return null
         const { file, fileName } = stylesheetAsset(source, importer)
@@ -437,7 +437,7 @@ function matchesSpecifier(patterns: readonly RegExp[], specifier: string): boole
 /** Render package-local dynamic imports through the Client module loader's asynchronous operation. */
 function asyncChunkRequirePlugin(): TsdownPlugin {
   return {
-    name: 'dsh-client-async-chunk-require',
+    name: 'sqhclient-async-chunk-require',
     renderChunk(code, chunk, outputOptions) {
       if (outputOptions.format !== 'cjs') return null
       const transformed = new Rolldown.RolldownMagicString(code)
@@ -532,7 +532,7 @@ function clientConfig(id: string, entry: string, clientBanner?: (fileName: strin
       // cross-plugin value import either inlines a duplicate runtime instance
       // or requires a specifier the module table cannot answer for this package.
       // Cross-plugin collaboration goes through cordis services instead.
-      name: 'dsh-client-bundle-purity',
+      name: 'sqhclient-bundle-purity',
       resolveId(source: string) {
         if (!source.startsWith('@liusiqi-dev/')) return null
         if (isRequested(source)) return null // requested module-table row: external wins
@@ -545,7 +545,7 @@ function clientConfig(id: string, entry: string, clientBanner?: (fileName: strin
         )
       },
     }, tscSourceMapPlugin(), asyncChunkRequirePlugin(), isolation.plugin, {
-      name: 'dsh-css-modules-inline',
+      name: 'sqhcss-modules-inline',
       resolveId(source: string, importer: string | undefined) {
         if (!source.endsWith('.module.css')) return null
         const abs = importer !== undefined ? sourceAssetPath(source, importer) : source
@@ -570,7 +570,7 @@ function clientConfig(id: string, entry: string, clientBanner?: (fileName: strin
         return styleInjectionModule(id, fileId, code.toString(), classMap)
       },
     }, {
-      name: 'dsh-css-text-inline',
+      name: 'sqhcss-text-inline',
       resolveId(source: string, importer: string | undefined) {
         if (!source.endsWith(`.css${INLINE_CSS_QUERY}`)) return null
         const stylesheet = source.slice(0, -INLINE_CSS_QUERY.length)
@@ -586,7 +586,7 @@ function clientConfig(id: string, entry: string, clientBanner?: (fileName: strin
         return `export default ${JSON.stringify(code.toString())};`
       },
     }, {
-      name: 'dsh-css-global-inline',
+      name: 'sqhcss-global-inline',
       resolveId(source: string, importer: string | undefined) {
         if (!source.endsWith('.css') || source.endsWith('.module.css')) return null
         const abs = importer !== undefined ? sourceAssetPath(source, importer) : source
@@ -637,7 +637,7 @@ function clientInputIsolation(id: string): {
   const inputs = new BundleInputIsolation(REPOSITORY_ROOT, `client bundle isolation (${id})`)
   return {
     plugin: {
-      name: 'dsh-client-input-isolation',
+      name: 'sqhclient-input-isolation',
       buildStart() { inputs.reset() },
       generateBundle(_options, bundle) {
         if (experimental) return
@@ -685,7 +685,7 @@ function clientInputFile(id: string): string {
 /** Chain tsc's emitted maps into any Client bundle that consumes `lib/types`. */
 function tscSourceMapPlugin() {
   return {
-    name: 'dsh-tsc-sourcemap',
+    name: 'sqhtsc-sourcemap',
     async load(id: string) {
       if (!id.includes(TYPES_MARKER) || !id.endsWith('.js') || !existsSync(`${id}.map`)) return null
       const code = await readFile(id, 'utf8')
@@ -718,7 +718,7 @@ function tscSourceMapPlugin() {
 const TYPES_MARKER = `${sep}lib${sep}types${sep}`
 
 /** Plugin name carrying contract 1, and the marker that identifies a statically linked config. */
-const STATIC_LINKED_PLUGIN = 'dsh-static-linked-external'
+const STATIC_LINKED_PLUGIN = 'sqhstatic-linked-external'
 
 /** Path segment a package's sources hang under, and the root emitted assets mirror. */
 const SOURCE_MARKER = `${sep}src${sep}`

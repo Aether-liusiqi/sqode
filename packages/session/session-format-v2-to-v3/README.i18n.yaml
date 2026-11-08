@@ -6,8 +6,8 @@
   en: d0920097a4f82e1c
   zh: 49c1486c7342011b
 /liusiqi-dev-sqh-session-format-v2-to-v3:
-  en: cb07971ed60e4372
-  zh: ca6a904304eb53d5
+  en: 2d3b297ed4181f55
+  zh: 800313d30c638994
 /liusiqi-dev-sqh-session-format-v2-to-v3/summary:
   en: f07931a0033c4f9b
   zh: aa126cc8c9a2c0df
@@ -18,11 +18,11 @@
   en: bbff250eba0f1b89
   zh: 0a618f05cc88ee2b
 /liusiqi-dev-sqh-session-format-v2-to-v3/use-this-package/when-to-use-it:
-  en: 9fdd49c5c8047659
-  zh: 25b04da32127eb6c
+  en: cc40a750397d8305
+  zh: 864454030b628ecd
 /liusiqi-dev-sqh-session-format-v2-to-v3/use-this-package/entry-point:
-  en: f79ffa1ea825f0aa
-  zh: 54f2723f279f84d2
+  en: 81d77aa3abf912be
+  zh: 9bbc12099207ab6f
 /liusiqi-dev-sqh-session-format-v2-to-v3/v2-to-v3-specification:
   en: 0132dbed9ea34acb
   zh: 40eb4b1bb39504b8
@@ -51,11 +51,11 @@
   en: 2f9127759a38289f
   zh: d3c7b539f5e3c670
 /liusiqi-dev-sqh-session-format-v2-to-v3/understand-the-implementation:
-  en: 6d630626cd7a5017
-  zh: 8312cc7bd3abcab6
+  en: 5567d89edd1914f3
+  zh: 68f6bb14c3fa416e
 /liusiqi-dev-sqh-session-format-v2-to-v3/further-exploration:
-  en: 2c07a2d0f6157c4a
-  zh: db4910ffa738dd72
+  en: 861191734e280509
+  zh: ca9e98865ad54a9c
 /liusiqi-dev-sqh-session-format-v2-to-v3/model-experience:
   en: 215e7ba838619b7b
   zh: a311da3843709f90
@@ -72,8 +72,8 @@
   en: 2b3f89391a5d5369
   zh: 8ee03de5e07cd67d
 /liusiqi-dev-sqh-session-format-v2-to-v3/known-limitations-and-deferred-work:
-  en: eb15595f7db1cdef
-  zh: ef6d792b616e681a
+  en: fe2921684b773ffd
+  zh: d9c96c85ef5db853
 /liusiqi-dev-sqh-session-format-v2-to-v3/known-limitations-and-deferred-work/dev-note:
   en: e67f633dc6fe7773
   zh: 8ec3e73528ddb1a6

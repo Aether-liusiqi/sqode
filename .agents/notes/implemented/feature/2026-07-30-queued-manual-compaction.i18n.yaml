@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-07-30-queued-manual-compaction.md
 /agent-note-queued-manual-compaction-with-one-durable-lock:
-  en: 45504a64618db51a
-  zh: f8dfebaf42ee4ddf
+  en: 27cd649acb2a0811
+  zh: f2a5bf007471ee84
 /agent-note-queued-manual-compaction-with-one-durable-lock/problem:
-  en: ffd033e0cea4b612
-  zh: 63fa18871f038eb7
+  en: a2036abc4638d8c0
+  zh: 3e3c5cee29d99b51
 /agent-note-queued-manual-compaction-with-one-durable-lock/decision:
   en: a15c7c13f167e5ac
   zh: 63bcc2ef60c2f344

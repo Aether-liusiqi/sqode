@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-08-10-subagent-approval-pinned-never.md
 /agent-note-delegated-subagents-run-with-approvals-pinned-to-never:
-  en: f38cf8f2c67fc976
-  zh: a4b357a3452383c3
+  en: 26917d9327c19b9e
+  zh: 4e099b1d93027416
 /agent-note-delegated-subagents-run-with-approvals-pinned-to-never/problem:
   en: fa1add8bd8bb3733
   zh: 35ac0951e676acaf
 /agent-note-delegated-subagents-run-with-approvals-pinned-to-never/decision:
-  en: d0f5305c939efa1a
-  zh: 93760bb4ccd2404e
+  en: cdd26d399d801081
+  zh: 9a3e1754da0f02d1
 /agent-note-delegated-subagents-run-with-approvals-pinned-to-never/alternatives-considered:
-  en: 32fe1eb5bd7cd5ab
-  zh: ea437edee4fbc1c6
+  en: f85b26293d06f097
+  zh: 0443295ab954fec2
 /agent-note-delegated-subagents-run-with-approvals-pinned-to-never/consequences:
   en: 3d6f92b4ba430724
   zh: 8dde42f481dc6efc

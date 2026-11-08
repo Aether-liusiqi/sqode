@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/simplification/2026-06-26-fsspec-style-fs-seam.md
 /agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-sqh-fs-observation-policy-plugin:
-  en: 14a647abaec644dd
-  zh: 8b96f65e8ef50fef
+  en: adfd1fcd7d72df61
+  zh: b8fe62a936fca9f9
 /agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-sqh-fs-observation-policy-plugin/problem:
   en: 0827b7d2a7b5be65
   zh: 14dd4c487d4d1aad
 /agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-sqh-fs-observation-policy-plugin/decision:
-  en: 637d3bace8ea199d
-  zh: b1c149ee7cd96d2a
+  en: 7488d4d46d61bc72
+  zh: 8699315d3e9b9672
 /agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-sqh-fs-observation-policy-plugin/provider-contract:
   en: 9baa426a04c5726a
   zh: 1a9bf409582e4e4d
@@ -33,8 +33,8 @@
   en: b56210bf2c8f8dec
   zh: 27decb39624c0ef7
 /agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-sqh-fs-observation-policy-plugin/alternatives-considered:
-  en: 3d169e07a912cbab
-  zh: d8a550835cfe7801
+  en: ef1db4b1a8dae98e
+  zh: 6b72d3cd45b59323
 /agent-note-split-the-filesystem-seam-provider-text-mutations-plus-the-sqh-fs-observation-policy-plugin/consequences:
   en: 17aa3cd2798f39eb
   zh: 8eab49bada7485f7

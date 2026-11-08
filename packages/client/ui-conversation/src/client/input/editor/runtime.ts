@@ -55,7 +55,7 @@ export class DraftEditorRuntime {
   /** @param deps - model callbacks used by editor listeners and transforms. */
   constructor(private readonly deps: DraftEditorRuntimeDeps) {
     this.editor = createEditor({
-      namespace: 'dsh-composer',
+      namespace: 'sqhcomposer',
       nodes: [ReferenceChipNode, TextRefNode],
       onError: (error) => { throw error },
     })

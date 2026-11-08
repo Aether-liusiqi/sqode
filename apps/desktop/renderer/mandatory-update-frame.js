@@ -8,12 +8,12 @@ if (window.parent !== window && window.sqhMandatoryUpdate === undefined) {
   const initial = Promise.withResolvers()
   const receive = event => {
     const message = event.data
-    if (message?.type === 'dsh-mandatory-state' && message.state) {
+    if (message?.type === 'sqhmandatory-state' && message.state) {
       state = message.state
       initial.resolve(state)
       for (const listener of listeners) listener(state)
     }
-    if (message?.type === 'dsh-mandatory-result') {
+    if (message?.type === 'sqhmandatory-result') {
       const request = requests.get(message.id)
       if (!request) return
       requests.delete(message.id)
@@ -23,7 +23,7 @@ if (window.parent !== window && window.sqhMandatoryUpdate === undefined) {
   }
   window.addEventListener('message', event => {
     if (!event.isTrusted || event.source !== window.parent || event.origin !== 'sqh-app://app'
-      || event.data?.type !== 'dsh-mandatory-connect' || event.ports.length !== 1 || port) return
+      || event.data?.type !== 'sqhmandatory-connect' || event.ports.length !== 1 || port) return
     port = event.ports[0]
     port.onmessage = receive
   })
@@ -35,7 +35,7 @@ if (window.parent !== window && window.sqhMandatoryUpdate === undefined) {
       const id = ++sequence
       const request = Promise.withResolvers()
       requests.set(id, request)
-      port.postMessage({ type: 'dsh-mandatory-action', id, action, version, revision })
+      port.postMessage({ type: 'sqhmandatory-action', id, action, version, revision })
       return request.promise
     },
   }

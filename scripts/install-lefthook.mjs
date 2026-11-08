@@ -17,11 +17,11 @@ import { dirname, isAbsolute, join, resolve } from 'node:path'
 import lefthookPackage from 'lefthook/package.json' with { type: 'json' }
 
 const MINIMUM_GIT = [2, 26, 0]
-const HOOKS_DIRECTORY = 'dsh-hooks'
+const HOOKS_DIRECTORY = 'sqhhooks'
 const OWNERSHIP_MARKER = '.dsh-lefthook-owned'
 const OWNERSHIP_MARKER_VERSION = 1
 const OWNERSHIP_MARKER_OWNER = 'siqi-harness worktree-local lefthook hooks'
-const INSTALL_LOCK = 'dsh-lefthook-install.lock'
+const INSTALL_LOCK = 'sqhlefthook-install.lock'
 const INSTALL_LOCK_TIMEOUT_MS = 30_000
 const INSTALL_LOCK_INITIALIZATION_TIMEOUT_MS = 5_000
 const INSTALL_LOCK_POLL_MS = 50

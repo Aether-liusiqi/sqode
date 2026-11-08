@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-05-client-resource-model.md
 /agent-note-client-resource-model:
-  en: 48276fc837820219
-  zh: 2d99ee9eae22e1e0
+  en: 4aa3ff48344d0571
+  zh: 967acd092ac7920d
 /agent-note-client-resource-model/problem:
   en: 22aec3ac5b197342
   zh: 0cd0b1f8094addb3
 /agent-note-client-resource-model/decision:
-  en: 8f0bdc4f728dd813
-  zh: 38e0082781d11060
+  en: 8b031836070e2bac
+  zh: ebefdb75c62e730d
 /agent-note-client-resource-model/decision/addresses:
-  en: 8c3b329e26271fcf
-  zh: 8a6d4f6fb6228f23
+  en: 298f751fadc819a5
+  zh: ea2cae45a8b5ba4c
 /agent-note-client-resource-model/decision/the-service:
   en: f42277e961bb7209
   zh: 9f3f8a50ad55cf4a
@@ -21,11 +21,11 @@
   en: 4f082c4f5a44320a
   zh: eba5449b7a1fd52e
 /agent-note-client-resource-model/decision/frames:
-  en: bc1c4e9a9e8e9b20
-  zh: f80a77ee66943ce4
+  en: 40abe0f4094cbabd
+  zh: 658be410f64fdb39
 /agent-note-client-resource-model/decision/lifecycle:
-  en: 4c11bfba97a54646
-  zh: a07bda77e918d613
+  en: 8807dc92287fc86d
+  zh: 5ea33d322a448fe5
 /agent-note-client-resource-model/alternatives-considered:
   en: 0a1fbf324f63d58e
   zh: 3a49fc976597547b
@@ -36,5 +36,5 @@
   en: ca2c610e4f0352ac
   zh: fbaa69ee8de7e4c1
 /agent-note-client-resource-model/deferred:
-  en: 312b46f16d88f301
-  zh: a530b3940859079c
+  en: f57d6f55e22f069f
+  zh: d531f92fac377912

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-11-node-office-kit.md
 /agent-note-node-office-conversion-with-independently-packaged-engines:
-  en: 04142abd8eef58bc
-  zh: 1a2fe733f74e88ef
+  en: 74c909b0ca638f9c
+  zh: e974b1773ecb8e70
 /agent-note-node-office-conversion-with-independently-packaged-engines/problem:
   en: ac8ace90fa115f0d
   zh: 18b9977031cbadeb
 /agent-note-node-office-conversion-with-independently-packaged-engines/decision:
-  en: 9135995f00320e40
-  zh: 341bf4ea6b2cada6
+  en: fe61ca70579d6981
+  zh: 5e6cf742614a26b2
 /agent-note-node-office-conversion-with-independently-packaged-engines/alternatives-considered:
   en: 70315a46124cbde7
   zh: ee258ed0ef7effb0

@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-11-desktop-mandatory-update-client.md
 /agent-note-desktop-mandatory-update-client-and-blocking-window:
-  en: 059254153764a162
-  zh: 17dfd84fd2ba6eea
+  en: a175f9fb54dd4aa6
+  zh: d44d183c8c65f291
 /agent-note-desktop-mandatory-update-client-and-blocking-window/problem:
   en: f1aeaa7df97a744f
   zh: 039b2cccd9a45198
 /agent-note-desktop-mandatory-update-client-and-blocking-window/decision:
-  en: 7d8ece211be36774
-  zh: d25c3ebac6420187
+  en: 8a52c4b1c023ed2f
+  zh: 19c1818bf2b878b0
 /agent-note-desktop-mandatory-update-client-and-blocking-window/alternatives-considered:
   en: 136afb04a37db4a1
   zh: 2b049e0d9fd8aa27
 /agent-note-desktop-mandatory-update-client-and-blocking-window/consequences:
-  en: 6f7a3decf4f0504f
-  zh: 16241131d1053989
+  en: cb9aba202159a14b
+  zh: 3efcec670f484f17

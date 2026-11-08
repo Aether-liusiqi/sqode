@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-08-19-remove-knip.md
 /agent-note-remove-knip-from-repository-gates:
-  en: adba00071ebc35c8
-  zh: 44f778106e0b9965
+  en: 255d1f6bb2314265
+  zh: 498559d22fe9772c
 /agent-note-remove-knip-from-repository-gates/problem:
   en: 5639c535ee600449
   zh: 4732e2975aaaf8d6

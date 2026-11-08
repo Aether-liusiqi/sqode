@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-19-profile-owned-live-configuration.md
 /agent-note-keep-live-configuration-in-the-owning-profile:
-  en: 4331f70f04ab7bac
-  zh: 68dece695f6f43a8
+  en: 7d9c253f85ea4d94
+  zh: 92ae4e8b19282745
 /agent-note-keep-live-configuration-in-the-owning-profile/problem:
   en: 2abacff687661d28
   zh: 2d7ba3ae27dba888
@@ -15,5 +15,5 @@
   en: 4089464ad1fb60bd
   zh: 3168e9e4a205145d
 /agent-note-keep-live-configuration-in-the-owning-profile/consequences:
-  en: 6033aaa12b2a521b
-  zh: 43934413c97670de
+  en: 146163529615dee7
+  zh: c6bc8baafd51cecf

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-09-22-workspace-release-ranges.md
 /agent-note-workspace-dependency-release-ranges:
-  en: 8b7bf2179034aa08
-  zh: a7a8b5dc60849d88
+  en: 34e799e20604f796
+  zh: 9fa8b76ece3025f3
 /agent-note-workspace-dependency-release-ranges/problem:
   en: d0aea2b09e4fc678
   zh: ef25678a78ace0cb
 /agent-note-workspace-dependency-release-ranges/decision:
-  en: 035a46b86bcf9e5b
-  zh: 8d66d7e4f02ee461
+  en: bde9082752d379d0
+  zh: 60cc02d7beb85bdb
 /agent-note-workspace-dependency-release-ranges/alternatives-considered:
   en: b6aa87296ee61fcf
   zh: f516320e589ce7a3

@@ -12,7 +12,7 @@ export function installMandatoryUpdateOverlay(): void {
   let frame: HTMLIFrameElement | undefined
   let port: MessagePort | undefined
   let closing: ReturnType<typeof setTimeout> | undefined
-  const publish = (): void => { port?.postMessage({ type: 'dsh-mandatory-state', state }) }
+  const publish = (): void => { port?.postMessage({ type: 'sqhmandatory-state', state }) }
   const remove = (): void => { port?.close(); port = undefined; host?.remove(); host = undefined; frame = undefined }
   const render = (): void => {
     if (state === undefined || document.readyState === 'loading') return
@@ -39,7 +39,7 @@ export function installMandatoryUpdateOverlay(): void {
         const channel = new MessageChannel()
         port = channel.port1
         port.onmessage = message
-        frame?.contentWindow?.postMessage({ type: 'dsh-mandatory-connect' }, 'sqh-app://shell', [channel.port2])
+        frame?.contentWindow?.postMessage({ type: 'sqhmandatory-connect' }, 'sqh-app://shell', [channel.port2])
         publish()
         frame?.focus()
       })
@@ -50,13 +50,13 @@ export function installMandatoryUpdateOverlay(): void {
   const message = (event: MessageEvent<unknown>): void => {
     const value = event.data
     if (typeof value !== 'object' || value === null || !('type' in value)) return
-    if (value.type !== 'dsh-mandatory-action' || !('id' in value) || !Number.isSafeInteger(value.id)
+    if (value.type !== 'sqhmandatory-action' || !('id' in value) || !Number.isSafeInteger(value.id)
       || !('action' in value) || !('version' in value) || !('revision' in value)) return
     const target = port
     if (target === undefined) return
     void ipcRenderer.invoke(MANDATORY_IPC.action, value.action, value.version, value.revision).then(
-      () => { target.postMessage({ type: 'dsh-mandatory-result', id: value.id, ok: true }) },
-      () => { target.postMessage({ type: 'dsh-mandatory-result', id: value.id, ok: false }) },
+      () => { target.postMessage({ type: 'sqhmandatory-result', id: value.id, ok: true }) },
+      () => { target.postMessage({ type: 'sqhmandatory-result', id: value.id, ok: false }) },
     )
   }
   const blockBackgroundKey = (event: KeyboardEvent): void => {

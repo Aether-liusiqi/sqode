@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-09-12-experimental-publication-denylist.md
 /agent-note-publish-experimental-packages-with-explicit-private-exceptions:
-  en: 20aed7271477745f
-  zh: 81b50a3ba89b7935
+  en: e532480c57876496
+  zh: 7a19b4b58775973b
 /agent-note-publish-experimental-packages-with-explicit-private-exceptions/problem:
   en: c267b50c3004619f
   zh: 91830d04d2972d46
 /agent-note-publish-experimental-packages-with-explicit-private-exceptions/decision:
-  en: ebd89394c4148b67
-  zh: c3230695fe50fce3
+  en: 6ce96ee45456bfac
+  zh: 0ff4b47a21e336d3
 /agent-note-publish-experimental-packages-with-explicit-private-exceptions/alternatives-considered:
-  en: 61369830fb32e695
-  zh: 445eb44e1ae3457a
+  en: e4d266c047768010
+  zh: 77c9b487e83b3481
 /agent-note-publish-experimental-packages-with-explicit-private-exceptions/consequences:
   en: 23f4d725196f1c2d
   zh: ebd9455778d8a89f

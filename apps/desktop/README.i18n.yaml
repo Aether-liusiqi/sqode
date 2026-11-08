@@ -3,71 +3,71 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write apps/desktop/README.md
 /siqi-harness-desktop:
-  en: ff339046e4f00f8d
-  zh: 54413ad5e62e37b4
+  en: 16333e4450cdc1d9
+  zh: 020996ff9a55b426
 /siqi-harness-desktop/terminal-command:
-  en: a3e413ebfa30ebcf
-  zh: a73a9f556d081c57
+  en: 95a76cdaf9a05bbd
+  zh: f2ab17268ad8cac6
 /siqi-harness-desktop/closing-the-window-and-quitting:
   en: c22774b06a025b82
   zh: 6a8ce117b63270d0
 /siqi-harness-desktop/key-technical-decisions:
-  en: 375805f68da4da3f
-  zh: 2209688676af80d7
+  en: 0122f98d2c148d68
+  zh: 1d72c3eafa197982
 /siqi-harness-desktop/key-technical-decisions/bundled-workspace-dependencies:
-  en: 4c130ec37f059d30
-  zh: 17302232e467ed90
+  en: 34e81e22cc48c0ab
+  zh: 08c9edd1aced115f
 /siqi-harness-desktop/bundled-command-runtime:
-  en: 8ce66cf9ef69e01d
-  zh: 2abeda4ce93a3a52
+  en: 9d62a035b28e260a
+  zh: a076f9b2573cb366
 /siqi-harness-desktop/installation-ownership:
-  en: 5667c8205521793a
-  zh: a30e0fe8f9be67d1
+  en: 20327926853b5dbb
+  zh: f4b99fb894c5f5ba
 /siqi-harness-desktop/installation-ownership/runtime-and-plugin-activation:
-  en: 8ab869ed522a0663
-  zh: b8958968c82d8884
+  en: 6d6a7f6bfbd94692
+  zh: d062e80b30874240
 /siqi-harness-desktop/installation-ownership/host-environment:
   en: d92300c317e70827
   zh: 9c83bfabfee99180
 /siqi-harness-desktop/develop:
-  en: 540c08a9466dae8a
-  zh: 273b8442574cad33
+  en: 3af8a24457682f8a
+  zh: c838e62293f69881
 /siqi-harness-desktop/develop/startup-onboarding:
   en: b2e10e99b97aca0f
   zh: 4b43ee2e6e76e3c5
 /siqi-harness-desktop/develop/welcome-window-appearance:
-  en: ae319a496639b38d
-  zh: ef044103240ac9da
+  en: 4879dd4dd0886e03
+  zh: 5f4d50bcb6a1b03b
 /siqi-harness-desktop/package:
   en: 4cd8a8da6977928d
   zh: 9f624855a2edac37
 /siqi-harness-desktop/package/release-versions:
-  en: 24f0dc843b4898f1
-  zh: 60c9b0e201a5a5bb
+  en: be0f1a607b7ba210
+  zh: 10b2dd8a46065d14
 /siqi-harness-desktop/package/runtime-file-selection:
-  en: 52f3fedcd489d27c
-  zh: 9d36db4775ad38ba
+  en: 24f6a55ecc019a82
+  zh: 8d87da24acaa456d
 /siqi-harness-desktop/package/upload-updates:
-  en: 92d2d2cf241c3d91
-  zh: 584450f066f6d8eb
+  en: 19e7e14002034743
+  zh: 8b5e6db29273f641
 /siqi-harness-desktop/package/unsigned-windows-test-installer:
   en: d685a2a05f1ef26c
   zh: b1cd599dc59508d2
 /siqi-harness-desktop/package/windows-installer-interface:
-  en: bb81f84e8b847908
-  zh: 72851ba434550512
+  en: bdd038518c6ef213
+  zh: 085ab6f2aff0343d
 /siqi-harness-desktop/package/windows-ev-signing:
-  en: 91b7fd0887ccf29e
-  zh: 6076e0ac1e337c76
+  en: d4b403bde8051785
+  zh: 084801353ec982b1
 /siqi-harness-desktop/updates:
-  en: e41cc7e13f09a7f1
-  zh: 4f4e7a06fcdc8eaa
+  en: 05f5a5fde5c5f99b
+  zh: cda08cc12741bc56
 /siqi-harness-desktop/updates/mandatory-update-policy:
-  en: ee39d8bfbf865fc3
-  zh: 9a11276f02af716c
+  en: bea39cd31d4e0bad
+  zh: 7fb18695907eb44b
 /siqi-harness-desktop/updates/local-updater-qualification:
-  en: af2a8e649faeb9c5
-  zh: 1b28c6d11fdef152
+  en: 709d1988fcab2622
+  zh: 93b1590f289ce69e
 /siqi-harness-desktop/low-level-development-overrides:
   en: 7624b07f3f0b6146
   zh: d424bd81ef98d8ab
@@ -75,5 +75,5 @@
   en: 1b5bd01481a930da
   zh: f63eba216821236d
 /siqi-harness-desktop/dev-note:
-  en: 8e26b460ba31f21b
-  zh: fbcd0307b3867125
+  en: b76231adc5915df2
+  zh: 161e155832c8fbc1

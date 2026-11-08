@@ -3,20 +3,20 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-09-07-selective-issue-policy-evaluation.md
 /agent-note-selective-issue-policy-evaluation:
-  en: b0f986e68a7b7d74
-  zh: cffd2efae38626ef
+  en: e8129bd5584dba0c
+  zh: 6406d7b4eb74295c
 /agent-note-selective-issue-policy-evaluation/problem:
   en: 5af4901a5e9576fb
   zh: eb089750b27129b1
 /agent-note-selective-issue-policy-evaluation/decision:
-  en: 99e6c76f04a4d49b
-  zh: 2631ff72b4db3bdf
+  en: 8254798b17512690
+  zh: ce8a9fbdbfc88797
 /agent-note-selective-issue-policy-evaluation/alternatives-considered:
   en: 89631c2a92ab079a
   zh: 37b94f76ec6dc36a
 /agent-note-selective-issue-policy-evaluation/consequences:
-  en: 6013a044827444e5
-  zh: 69f767a1d534761a
+  en: 0f11e1ce2d3ad560
+  zh: 42e953491056adae
 /agent-note-selective-issue-policy-evaluation/verification:
   en: b7fb4ebd009d7fd3
   zh: 6d682a4b7f41a4e0

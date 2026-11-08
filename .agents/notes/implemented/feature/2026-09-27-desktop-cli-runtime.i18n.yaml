@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-27-desktop-cli-runtime.md
 /agent-note-desktop-installed-cli-runtime:
-  en: 0527f32e8a3c13eb
-  zh: 77dde6e91fc1a636
+  en: 4dda45704862cbc5
+  zh: 3c671923652f75bd
 /agent-note-desktop-installed-cli-runtime/problem:
   en: 86026eca42fc435e
   zh: 4f6af794f19bf97e
@@ -12,8 +12,8 @@
   en: 0d14f5ac49365147
   zh: a370ecb685e2b549
 /agent-note-desktop-installed-cli-runtime/consequences:
-  en: 1dfe287934c9f4bc
-  zh: 138f226ec7409a1f
+  en: a6760faba0342494
+  zh: 846c9f06ade48a24
 /agent-note-desktop-installed-cli-runtime/command-registration:
   en: f7f7bd6f08a226a7
   zh: 999e74eeb6a3e836

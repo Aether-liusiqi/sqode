@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-09-02-project-local-issue-planning-fields.md
 /agent-note-project-local-issue-planning-fields:
-  en: 9791d03a5df4c38c
-  zh: 19cbbf884294402b
+  en: a4923e6119c800aa
+  zh: c5229dd6627cb2aa
 /agent-note-project-local-issue-planning-fields/problem:
   en: 3eae7c314e7aad0d
   zh: 3477bb3504eb2dcd
 /agent-note-project-local-issue-planning-fields/decision:
-  en: ba46b3a8d9b5ba18
-  zh: e969713b93311b0b
+  en: 9a657a0e98ed769b
+  zh: 3cad440c7236c192
 /agent-note-project-local-issue-planning-fields/verification:
   en: 7d1ef3eb9aac465d
   zh: 68280a4511bce360

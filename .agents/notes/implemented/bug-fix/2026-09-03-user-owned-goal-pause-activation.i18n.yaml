@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-03-user-owned-goal-pause-activation.md
 /agent-note-user-owned-goal-pause-exposes-live-activation:
-  en: 07749eb6ac180964
-  zh: b9c1165739fc45bf
+  en: ec2ece0816caa48c
+  zh: 400100f3029aeb55
 /agent-note-user-owned-goal-pause-exposes-live-activation/problem:
   en: 9f044f22e6782773
   zh: 6c17c53aa75280fd

@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/cookbook/maintaining-sqh-code-review.md
 /maintaining-the-sqh-code-review-skill:
-  en: 274becf6d3d7425f
-  zh: ee117a943cd8b068
+  en: e4fa5ba3cdc9fcf3
+  zh: 5aa116561970d19d
 /maintaining-the-sqh-code-review-skill/what-the-maintainer-receives:
   en: 74a6e21cdc5d03dd
   zh: 2f850d53a572106b

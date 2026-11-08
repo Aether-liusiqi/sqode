@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-06-11-dev-invariants-over-deep-readonly.md
 /agent-note-source-owned-session-immutability-and-dev-mode-invariants:
-  en: 052aa271e87074c0
-  zh: 3ccffc50fc1a28d4
+  en: ab360171fa7b6aac
+  zh: 5c857a920694d778
 /agent-note-source-owned-session-immutability-and-dev-mode-invariants/problem:
   en: 6ea85a4531d5e59f
   zh: b4b568eb347f016a
@@ -12,14 +12,14 @@
   en: 6e701ec64c3bbfae
   zh: b8ed0f1cb7a0477a
 /agent-note-source-owned-session-immutability-and-dev-mode-invariants/decision/session-owns-immutable-history:
-  en: ff47e58c377a8dc0
-  zh: 5edbe4f3642a3fe6
+  en: 6e29b728d401660b
+  zh: ed3ede0abc9a2583
 /agent-note-source-owned-session-immutability-and-dev-mode-invariants/decision/derived-requests-remain-detached:
   en: 975df574ee6e6df8
   zh: 96d765058482835a
 /agent-note-source-owned-session-immutability-and-dev-mode-invariants/decision/package-owned-invariant-companions-check-relationships:
-  en: 1b5d84812fcf92fe
-  zh: a82de9c1421e284c
+  en: 64ec59188f9570b5
+  zh: ac4d689e0df718c8
 /agent-note-source-owned-session-immutability-and-dev-mode-invariants/alternatives-considered:
   en: 6119e2aff3b6be5a
   zh: 76136ef5249c23eb

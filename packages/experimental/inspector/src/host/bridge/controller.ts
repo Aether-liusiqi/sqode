@@ -185,7 +185,7 @@ export function resolveInspectorOptions(options: InspectorOptions = {}): Inspect
 export async function startInspector(options: InspectorOptions = {}): Promise<InspectorHandle> {
   const spec = resolveInspectorOptions(options)
   const channel = new MessageChannel()
-  const clientProtocol = `dsh-inspector-v${String(INSPECTOR_PROTOCOL_VERSION)}-${randomBytes(32).toString('base64url')}`
+  const clientProtocol = `sqhinspector-v${String(INSPECTOR_PROTOCOL_VERSION)}-${randomBytes(32).toString('base64url')}`
   const config: InspectorWorkerConfig = {
     host: spec.host,
     startPort: spec.port,

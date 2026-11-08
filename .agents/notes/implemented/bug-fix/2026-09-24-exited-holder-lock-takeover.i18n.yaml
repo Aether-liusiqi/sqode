@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-24-exited-holder-lock-takeover.md
 /agent-note-taking-over-a-writer-lock-whose-holder-exited:
-  en: ecf6fb35c9eed3ca
-  zh: 59c29b64e23608e4
+  en: c0140bdfc9e659d8
+  zh: 76ec4456d75a63cb
 /agent-note-taking-over-a-writer-lock-whose-holder-exited/problem:
-  en: b7a46756c3a2ac72
-  zh: d80e2e020c8f8252
+  en: 4b7894ad12aefdba
+  zh: 8063c1eec0313791
 /agent-note-taking-over-a-writer-lock-whose-holder-exited/decision:
-  en: 2c3d46206d54c7ed
-  zh: 2d823da5c63589fb
+  en: c478800602978a6a
+  zh: efb4cf92cbe15fb9
 /agent-note-taking-over-a-writer-lock-whose-holder-exited/alternatives-considered:
   en: a48dc67dc1157f3b
   zh: c635abb53c1baa40

@@ -22,7 +22,7 @@ function escapeHtmlText(value: string): string {
 function clientDocumentTitle(): Plugin {
   const title = escapeHtmlText(process.env.SQODE_CLIENT_TITLE ?? DEFAULT_CLIENT_TITLE)
   return {
-    name: 'dsh-client-document-title',
+    name: 'sqhclient-document-title',
     transformIndexHtml(html) {
       return html.replace('<title>SQH Local Build</title>', `<title>${title}</title>`)
     },
@@ -32,7 +32,7 @@ function clientDocumentTitle(): Plugin {
 /** Keep the redistribution license beside the bundled brand font. */
 function brandFontLicense(): Plugin {
   return {
-    name: 'dsh-brand-font-license',
+    name: 'sqhbrand-font-license',
     async generateBundle() {
       this.emitFile({
         type: 'asset',
@@ -46,7 +46,7 @@ function brandFontLicense(): Plugin {
 /** Fail before a Vite dev or preview server can expose the boot-manifest-free shell. */
 function rejectStandaloneServe(): Plugin {
   return {
-    name: 'dsh-reject-standalone-web-serve',
+    name: 'sqhreject-standalone-web-serve',
     config(_config, env) {
       if (env.command === 'serve') throw new Error(STANDALONE_ERROR)
     },
@@ -66,7 +66,7 @@ function emitPreviewPage(): Plugin {
   let written = false
   let outputDirectory = ''
   return {
-    name: 'dsh-emit-preview-page',
+    name: 'sqhemit-preview-page',
     configResolved(config) {
       write = config.build.write
       outputDirectory = resolve(config.root, config.build.outDir)

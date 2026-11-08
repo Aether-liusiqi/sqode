@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-07-06-parallel-pre-push-gates.md
 /agent-note-parallel-pre-push-gates:
-  en: d5ee83ee15159e15
-  zh: 07a6599af21d98a9
+  en: 3a62f56edb367b8b
+  zh: c04b2f92f19d5791
 /agent-note-parallel-pre-push-gates/problem:
   en: 896ffdae7d51cc19
   zh: eed0d7e80456bd8e

@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-08-03-cli-signal-shutdown-escalation.md
 /agent-note-bounded-escalating-signal-shutdown-for-web-and-headless:
-  en: d8f8ef8811dfe378
-  zh: ca728da97cb35920
+  en: 593339fc79c5db91
+  zh: 0ec85410f3971a03
 /agent-note-bounded-escalating-signal-shutdown-for-web-and-headless/problem:
   en: 5b55fbe59860611a
   zh: 1d262911138fd813

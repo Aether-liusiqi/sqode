@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-05-prompt-variables-and-tool-guidance-ownership.md
 /agent-note-prompt-variables-and-tool-guidance-ownership:
-  en: 6f8b4a9d26ab3e50
-  zh: 9741e5718e647f0a
+  en: 573c31829dd085c0
+  zh: d0f55ae94beacd2a
 /agent-note-prompt-variables-and-tool-guidance-ownership/problem:
   en: 238861aca25c4a6a
   zh: 6643554215186956
@@ -18,8 +18,8 @@
   en: 77b23d1a3df91293
   zh: f1ff81cfdce9024b
 /agent-note-prompt-variables-and-tool-guidance-ownership/decision/persona-as-the-order-0-section:
-  en: 5a68075cdc5b7d60
-  zh: 3c44e1f38d9bd54c
+  en: e26042f9bda260c4
+  zh: 0be9ebbeebacea66
 /agent-note-prompt-variables-and-tool-guidance-ownership/decision/tool-guidance-ownership:
   en: 308c0d2ef4e41f56
   zh: d38f84a517da20df

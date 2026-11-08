@@ -41,12 +41,12 @@ An inflation guard bounds the whole pass: if the post-compaction size is not str
 
 ### The recall tools
 
-A new package `@siqi-ai/dsh-tool-recall` (consumer-only, over the `dsh-session` and `dsh-compaction` vocabularies) registers two model-facing tools:
+A new package `@siqi-ai/sqhtool-recall` (consumer-only, over the `sqhsession` and `sqhcompaction` vocabularies) registers two model-facing tools:
 
 - `history_read(checkpoint, offset?)` — renders the shadowed span of any checkpoint in the log, including superseded ones, as `User:`/`Assistant:`/`Tool result:` transcript, paginated by a configured budget with a continuation cursor.
 - `history_search(query, checkpoint?, limit?)` — case-insensitive literal scan over every shadowed span; returns snippets with checkpoint ids and coverage metadata (`scanned`/`matched`/`truncated`). The zero-match hint notes the scan is literal and points at direct `history_read` of a plausible checkpoint.
 
-Both use explicit asynchronous, paged history reads under the [synchronous event-read deprecation](../../implemented/architecture/2026-09-09-deprecate-synchronous-session-event-reads.md) (non-agent callers rejected), render only surface-type message events, and return ordinary `tool/result`s — recalled bytes land at the context tail, logged, so reconstructability holds with no special casing. There is no new storage and no sidecar index: the session log stores the content, `compaction/summary.shadowedRange` and `shadowedSeqs` identify what each checkpoint replaced, and the tools read both. The tool schemas and the package's one system-prompt section are static strings; checkpoint ids reach the model only through footers. The transcript renderer moves from `compaction-basic` into `dsh-session`, shared by summarizer and tools.
+Both use explicit asynchronous, paged history reads under the [synchronous event-read deprecation](../../implemented/architecture/2026-09-09-deprecate-synchronous-session-event-reads.md) (non-agent callers rejected), render only surface-type message events, and return ordinary `tool/result`s — recalled bytes land at the context tail, logged, so reconstructability holds with no special casing. There is no new storage and no sidecar index: the session log stores the content, `compaction/summary.shadowedRange` and `shadowedSeqs` identify what each checkpoint replaced, and the tools read both. The tool schemas and the package's one system-prompt section are static strings; checkpoint ids reach the model only through footers. The transcript renderer moves from `compaction-basic` into `sqhsession`, shared by summarizer and tools.
 
 ### Cache and cost
 
@@ -54,7 +54,7 @@ The request prefix after a pass is `[system][stubs…][state][tail]`. Frozen stu
 
 ### Packaging
 
-The design ships as a new backend `dsh-compact-recallable` on the existing `ctx.compaction` seam, enabled by default in the shipped example configs; `compaction-basic` remains as the reference implementation and the seam's design twin, in the pattern of the paired LLM adapters. The seam JSDoc's "at most one auto-generated checkpoint, always at the head" clause is relaxed to name both backend behaviors.
+The design ships as a new backend `sqhcompact-recallable` on the existing `ctx.compaction` seam, enabled by default in the shipped example configs; `compaction-basic` remains as the reference implementation and the seam's design twin, in the pattern of the paired LLM adapters. The seam JSDoc's "at most one auto-generated checkpoint, always at the head" clause is relaxed to name both backend behaviors.
 
 ### Relation to in-flight work
 

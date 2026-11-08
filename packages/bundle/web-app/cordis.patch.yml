@@ -1,5 +1,5 @@
-# The dsh-web-app bundle patch: the browser surface over the dsh-base layer.
-# Applied after dsh-base's insert; rows here override base rows by id, with
+# The sqhweb-app bundle patch: the browser surface over the sqhbase layer.
+# Applied after sqhbase's insert; rows here override base rows by id, with
 # the profile's own cordis.patch.yml and any --patch overlays still to come.
 #
 # A patch replaces the targeted row's whole `config`, so each row below
@@ -201,7 +201,7 @@
         compressionThresholdBytes: 1024
 
     # Web glue owned by this bundle: resolves the built frontend dist (an
-    # assembly fact of dsh-web-app, never user config), mounts the
+    # assembly fact of sqhweb-app, never user config), mounts the
     # frontend-static fallback owner, registers the web-surface prompt
     # section and the bash runtime variable, prints the URL line, and opens the
     # canonical local URL after the full Loader tree settles and the required-

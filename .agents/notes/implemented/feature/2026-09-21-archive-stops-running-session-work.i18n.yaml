@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-21-archive-stops-running-session-work.md
 /agent-note-archiving-a-session-with-running-work:
-  en: 0fbbf70c0c7c2bfa
-  zh: 5d3119ee84af3796
+  en: 37876372f6a0fe17
+  zh: aeb829d6f2ce2c37
 /agent-note-archiving-a-session-with-running-work/problem:
   en: 7926983089aebab2
   zh: 366e32db00674a83
 /agent-note-archiving-a-session-with-running-work/decision:
-  en: 23adfbe72d671d6c
-  zh: 6fec976acfa54720
+  en: e0c87d1d7dd7e835
+  zh: 546bf838f07f888f
 /agent-note-archiving-a-session-with-running-work/alternatives-considered:
-  en: a6abab3a8f7f18b1
-  zh: fed13597847db267
+  en: 48e3d51f217f2be9
+  zh: 635910f8306cdcb0
 /agent-note-archiving-a-session-with-running-work/consequences:
   en: cb3fdefd60483d62
   zh: 87d3cead6dc8c37c

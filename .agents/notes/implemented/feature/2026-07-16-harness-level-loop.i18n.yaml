@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-07-16-harness-level-loop.md
 /agent-note-harness-level-goal-based-execution:
-  en: 20d103f4160b124d
-  zh: 36e888ebeec1d366
+  en: cf92689201ebc2a6
+  zh: 6b766bdcc35eb705
 /agent-note-harness-level-goal-based-execution/problem:
   en: b0294f40b8915f39
   zh: 786bcecd8e0df343
@@ -15,11 +15,11 @@
   en: 7321257b501c77b5
   zh: 098fdd55f18950a0
 /agent-note-harness-level-goal-based-execution/decision/package-topology-and-owning-verbs:
-  en: ef34c8ad6bc82a51
-  zh: fa15e6056d391088
+  en: dc06c852258c1521
+  zh: 51d296eafcaa61af
 /agent-note-harness-level-goal-based-execution/decision/durable-goal-state-and-live-authority:
-  en: ef386ad58ff3bcaf
-  zh: 9517886000faf515
+  en: e03046e4def81397
+  zh: 25573851d38d0dd2
 /agent-note-harness-level-goal-based-execution/decision/same-session-continuation:
   en: 669447319e89b06a
   zh: 2a08e6a8622aabd1

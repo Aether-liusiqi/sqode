@@ -14,7 +14,7 @@ import { fileURLToPath } from 'node:url'
 
 const entry = new URL('./lib/bin.js', import.meta.url)
 if (!existsSync(fileURLToPath(entry))) {
-  process.stderr.write('dsh-pack-vfs-image: lib/bin.js is missing — run `pnpm run build` before packing an image\n')
+  process.stderr.write('sqhpack-vfs-image: lib/bin.js is missing — run `pnpm run build` before packing an image\n')
   process.exit(1)
 }
 await import(entry.href)

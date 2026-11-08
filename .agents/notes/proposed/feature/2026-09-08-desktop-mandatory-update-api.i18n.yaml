@@ -3,20 +3,20 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/proposed/feature/2026-09-08-desktop-mandatory-update-api.md
 /agent-note-desktop-mandatory-update-api:
-  en: c0ea3f7826d8e253
-  zh: 89feec8209a54f26
+  en: 00972b571cca7896
+  zh: 5b4bc72e3304a049
 /agent-note-desktop-mandatory-update-api/problem:
   en: cc14e499c0f87586
   zh: 4cf849710b782d4b
 /agent-note-desktop-mandatory-update-api/proposal:
-  en: 264c54ffe91f3193
-  zh: 005512e1c498ccc1
+  en: 4a8f4291da3f3044
+  zh: 627f31904b7f4c5d
 /agent-note-desktop-mandatory-update-api/proposal/endpoint-and-access:
-  en: 6c82820724930bb5
-  zh: 5f6a0bbfd6fb6b16
+  en: 374de9b0c3c41ed5
+  zh: b16992c5989753bd
 /agent-note-desktop-mandatory-update-api/proposal/request:
-  en: 85606e87d485fa31
-  zh: 4de67ffefa3441fd
+  en: 33af711997ac69ce
+  zh: 49ac22801eaebf4d
 /agent-note-desktop-mandatory-update-api/proposal/no-mandatory-update:
   en: 4814b1bd7002d6ed
   zh: 3f0d77beb046e2fc

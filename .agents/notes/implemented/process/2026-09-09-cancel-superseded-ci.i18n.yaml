@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-09-09-cancel-superseded-ci.md
 /agent-note-cancel-superseded-ci-validation:
-  en: 78c382bc45c48256
-  zh: a6a93a2ef554c61c
+  en: 61c86807c265d2ba
+  zh: 7074c6caf20de603
 /agent-note-cancel-superseded-ci-validation/problem:
   en: b436e3c8a7ffe727
   zh: 80b9f77b5cb051de
 /agent-note-cancel-superseded-ci-validation/decision:
-  en: 400cab24fa301e82
-  zh: 1c45464558393e71
+  en: 28d7ea94840e9436
+  zh: 0511235318824caa
 /agent-note-cancel-superseded-ci-validation/alternatives-considered:
   en: c7d012d6e43f35ec
   zh: 6f3eaf1342319aeb

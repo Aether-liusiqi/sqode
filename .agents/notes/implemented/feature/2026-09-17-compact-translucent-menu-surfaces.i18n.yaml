@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-17-compact-translucent-menu-surfaces.md
 /agent-note-compact-translucent-menu-surfaces:
-  en: 629cdf857a84d1f3
-  zh: 676a34bac03903be
+  en: 0385f9eaa382a248
+  zh: 8bea224ef3de04e1
 /agent-note-compact-translucent-menu-surfaces/problem:
   en: f1ff5b408b409003
   zh: 1f548352bc075cc4

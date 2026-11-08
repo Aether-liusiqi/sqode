@@ -1,9 +1,9 @@
 ---
-description: "Retrospective Session persistence types and adjacent-release changes for dsh-v0.0.1-rc.1."
+description: "Retrospective Session persistence types and adjacent-release changes for sqhv0.0.1-rc.1."
 kind: persistence-release
 ---
 
-# Persistence release: dsh-v0.0.1-rc.1
+# Persistence release: sqhv0.0.1-rc.1
 
 English | [中文](sqh-v0.0.1-rc.1.zh.md)
 
@@ -28,7 +28,7 @@ This approximate backfill supports reading and format validation; it is not a co
 
 | Item | Recorded value |
 |---|---|
-| Source tag | `dsh-v0.0.1-rc.1` |
+| Source tag | `sqhv0.0.1-rc.1` |
 | Source date | 2026-08-10T19:25:09.000Z |
 | Release record | Tag only; no release object. |
 | Previous release | Earliest available prerelease tag; no earlier comparison input. |
@@ -45,7 +45,7 @@ Source evidence for the writer version constant at this tag:
 
 ```yaml persistence-release
 schemaVersion: 1
-tag: dsh-v0.0.1-rc.1
+tag: sqhv0.0.1-rc.1
 previous: null
 sessionFormatVersion: 0
 changes:

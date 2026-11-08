@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-14-provider-routed-llm-adapters.md
 /agent-note-provider-routed-llm-adapters-and-a-generic-pi-ai-backend:
-  en: e57698907c40f783
-  zh: 47004d8f68af1d7d
+  en: 5d1a1e1c2f75e0ea
+  zh: 8fe26628408b25e0
 /agent-note-provider-routed-llm-adapters-and-a-generic-pi-ai-backend/problem:
   en: 1487e0e4e59f4595
   zh: 0848bca9448874d9
@@ -15,11 +15,11 @@
   en: 5bbaf30248378c1a
   zh: 4ac88ab02498ef49
 /agent-note-provider-routed-llm-adapters-and-a-generic-pi-ai-backend/decision/explicit-pi-ai-provider-profiles:
-  en: f8596ff51a10ea7a
-  zh: a3ab366dfecb6861
+  en: 300f0659f062de7b
+  zh: 1c655ccadb9f1fa4
 /agent-note-provider-routed-llm-adapters-and-a-generic-pi-ai-backend/decision/recorded-assistant-route-and-replay-state:
-  en: 8439e90c9f6d7642
-  zh: daeda3ce5146c9f5
+  en: 63447e00436a72ce
+  zh: e55a2edf293ade02
 /agent-note-provider-routed-llm-adapters-and-a-generic-pi-ai-backend/decision/propagate-the-target-through-every-request-producer:
   en: 20c96455130f214d
   zh: 73cf8bbeae0e9161

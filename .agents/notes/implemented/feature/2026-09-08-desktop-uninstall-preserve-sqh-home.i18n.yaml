@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-08-desktop-uninstall-preserve-sqh-home.md
 /agent-note-windows-uninstall-retains-the-harness-home:
-  en: b4bd009db6ebe7ce
-  zh: dae29d7db7351154
+  en: 9cce21ecde82885b
+  zh: 34caf770eb38a2a8
 /agent-note-windows-uninstall-retains-the-harness-home/problem:
   en: 7e0091e3af8b52d8
   zh: b40193a58711c6a5

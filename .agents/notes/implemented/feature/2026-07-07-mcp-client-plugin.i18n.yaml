@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-07-07-mcp-client-plugin.md
 /agent-note-mcp-client-plugin-connect-to-external-mcp-servers-and-bridge-their-tools:
-  en: 7d41e632fd40efe0
-  zh: 4c7f6410b74a5bd3
+  en: 3d0b25220883e649
+  zh: 00b2e3e5b781f0a2
 /agent-note-mcp-client-plugin-connect-to-external-mcp-servers-and-bridge-their-tools/problem:
   en: 0177ae402a1c3b83
   zh: 1f10c32be3b9c7f5
@@ -12,14 +12,14 @@
   en: a15c7c13f167e5ac
   zh: 63bcc2ef60c2f344
 /agent-note-mcp-client-plugin-connect-to-external-mcp-servers-and-bridge-their-tools/decision/package:
-  en: ca2594039bad2b20
-  zh: 08d7bd80890f58e0
+  en: c83868dfbbcc2f92
+  zh: fde16bf12517adcf
 /agent-note-mcp-client-plugin-connect-to-external-mcp-servers-and-bridge-their-tools/decision/sdk:
-  en: f69bbd1cfca85fa0
-  zh: 9b21abc7e3eeb2fd
+  en: 0f55cf916f96f9c2
+  zh: 051f18ddadc85863
 /agent-note-mcp-client-plugin-connect-to-external-mcp-servers-and-bridge-their-tools/decision/scope:
-  en: 32cd57e8d3ea1ac1
-  zh: 7c14401492f22c32
+  en: 25e1b73802ac9200
+  zh: 26cf86c2a2b9af55
 /agent-note-mcp-client-plugin-connect-to-external-mcp-servers-and-bridge-their-tools/decision/plugin-shape:
   en: eda5902de67c42e5
   zh: 0f0798338eaf07f8
@@ -30,8 +30,8 @@
   en: b428a4e72dec4ba0
   zh: c070db6fdd2d3c7f
 /agent-note-mcp-client-plugin-connect-to-external-mcp-servers-and-bridge-their-tools/decision/tool-discovery-and-registration:
-  en: 75da266ca8141a90
-  zh: 078e3a969273ed9b
+  en: 68cd6ff765e1110c
+  zh: a0fec340d8244014
 /agent-note-mcp-client-plugin-connect-to-external-mcp-servers-and-bridge-their-tools/decision/public-name-normalization:
   en: eb0511bd6173c99c
   zh: c5fc98231a733699
@@ -48,8 +48,8 @@
   en: c7d463118845fb85
   zh: bc380af350abca45
 /agent-note-mcp-client-plugin-connect-to-external-mcp-servers-and-bridge-their-tools/decision/disconnection-crash:
-  en: e8207a70c6511778
-  zh: aa281be51d85be13
+  en: abfc7dff327a70ba
+  zh: 798675cec399a401
 /agent-note-mcp-client-plugin-connect-to-external-mcp-servers-and-bridge-their-tools/alternatives-considered:
   en: 6119e2aff3b6be5a
   zh: 76136ef5249c23eb
@@ -63,8 +63,8 @@
   en: e92d18530feb1ee3
   zh: 2fecc50b4b6a96d9
 /agent-note-mcp-client-plugin-connect-to-external-mcp-servers-and-bridge-their-tools/alternatives-considered/bridge-resources-and-prompts:
-  en: 606ee33502fa60cc
-  zh: 0c21afec01caf4c2
+  en: 280c02c829b2e033
+  zh: 1a45638ce7f70c63
 /agent-note-mcp-client-plugin-connect-to-external-mcp-servers-and-bridge-their-tools/alternatives-considered/raw-model-facing-tool-names-with-an-optional-toolprefix:
   en: ef886d275ac5734c
   zh: 304c578e674f50a2

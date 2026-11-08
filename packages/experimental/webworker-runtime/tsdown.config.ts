@@ -25,7 +25,7 @@ const SHELL_PARSER_ENTRY = join(dirname(resolveFrom.resolve('@yarnpkg/parsers/pa
 
 /** Redirects the parsers root specifier onto {@link SHELL_PARSER_ENTRY}. */
 const shellParserOnlyPlugin = {
-  name: 'dsh-shell-parser-only',
+  name: 'sqhshell-parser-only',
   resolveId(source: string): string | null {
     return source === '@yarnpkg/parsers' ? SHELL_PARSER_ENTRY : null
   },
@@ -38,7 +38,7 @@ const shellParserOnlyPlugin = {
  * loads with `new Worker(url, { type: 'module' })`.
  */
 const moduleProxyPlugin = {
-  name: 'dsh-module-proxies',
+  name: 'sqhmodule-proxies',
   resolveId(source: string): string | null {
     const exact = MODULE_PROXIES[source]
     if (exact !== undefined) return here(`./src/${exact.replace('./', '')}`)

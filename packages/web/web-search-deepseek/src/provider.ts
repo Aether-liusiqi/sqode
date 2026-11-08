@@ -316,7 +316,7 @@ export class DeepSeekSearchProvider implements WebSearchProvider {
     const token = resolveAccountToken === undefined
       ? undefined
       : await resolveCredential(() => resolveAccountToken(endpoint), signal)
-    if (token !== undefined && token.length > 0) return { kind: 'account', headers: { 'x-dsh-auth-token': token } }
+    if (token !== undefined && token.length > 0) return { kind: 'account', headers: { 'x-sqhauth-token': token } }
     const apiKey = await this.apiKey(options, signal)
     // Official DeepSeek expects `x-api-key`; an Anthropic-compatible proxy
     // may expect `Authorization: Bearer` — send both so either resolves.

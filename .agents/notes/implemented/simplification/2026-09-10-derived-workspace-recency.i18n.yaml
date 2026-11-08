@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/simplification/2026-09-10-derived-workspace-recency.md
 /agent-note-derive-workspace-recency-independently-of-manual-order:
-  en: 96d0de6bdc9dcac1
-  zh: a50ab8a60f58a24d
+  en: c09689ad96f32c21
+  zh: 1fac1880ebad9ee2
 /agent-note-derive-workspace-recency-independently-of-manual-order/problem:
   en: 796dc4d186169b89
   zh: 058b6a8438e46238
 /agent-note-derive-workspace-recency-independently-of-manual-order/decision:
-  en: c598d4991271fbf4
-  zh: 6454e56191922501
+  en: 81b1734d63653adc
+  zh: 0a1063ed5364ede8
 /agent-note-derive-workspace-recency-independently-of-manual-order/alternatives-considered:
   en: 0e74f1c4f176107a
   zh: 66a66eaa811c8b11

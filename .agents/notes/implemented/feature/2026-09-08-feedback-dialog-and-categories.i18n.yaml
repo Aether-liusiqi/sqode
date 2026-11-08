@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-08-feedback-dialog-and-categories.md
 /agent-note-feedback-dialog-categories-and-the-acknowledgement-toast:
-  en: 0ca76fe002b0b0fc
-  zh: 14fa2772a6a23e25
+  en: 4cb3cdb970381df5
+  zh: 13875dfab1894e42
 /agent-note-feedback-dialog-categories-and-the-acknowledgement-toast/problem:
   en: 90ac7f116156c209
   zh: 20274add2ffbcdc0
 /agent-note-feedback-dialog-categories-and-the-acknowledgement-toast/decision:
-  en: 4cde40e5b1ad6beb
-  zh: fb49e47434faf06f
+  en: bd148971e31ea1c4
+  zh: e899b3d744e87933
 /agent-note-feedback-dialog-categories-and-the-acknowledgement-toast/alternatives-considered:
   en: 3713257ee75869da
   zh: 5892d375fe8d0764

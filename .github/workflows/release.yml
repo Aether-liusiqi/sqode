@@ -4,7 +4,7 @@
 #
 # Pack and dependency-layout verification run without credentials on every pull
 # request and master push. Publication is a manual workflow_dispatch of
-# release-publish.yml from a dsh-v* tag.
+# release-publish.yml from a sqhv* tag.
 name: Release (dsh)
 
 on:
@@ -161,7 +161,7 @@ jobs:
       - name: Pack the vendored framework for verification
         run: pnpm run release:pack --family vendor --out dist/npm-vendor --concurrency 8
 
-      # dsh-sandbox-local declares the Landlock entry as a runtime dependency, so
+      # sqhsandbox-local declares the Landlock entry as a runtime dependency, so
       # the verification needs its tarball. Its platform packages stay out: they
       # are optional, and building them needs a musl toolchain per architecture.
       - name: Pack the Landlock entry for verification
@@ -174,7 +174,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: dsh-npm-tarballs
+          name: sqhnpm-tarballs
           path: dist/npm/*
           if-no-files-found: error
           retention-days: 7

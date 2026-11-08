@@ -40,7 +40,7 @@ let defaultSpillDir: string | undefined
  * external cleanup).
  */
 function privateSpillDir(): string {
-  defaultSpillDir ??= mkdtempSync(join(tmpdir(), 'dsh-subprocess-'))
+  defaultSpillDir ??= mkdtempSync(join(tmpdir(), 'sqhsubprocess-'))
   return defaultSpillDir
 }
 
@@ -63,7 +63,7 @@ process.once('exit', () => {
  * @param label - the failed stream label.
  */
 function reportSpillFailureToStderr(error: unknown, label: string): void {
-  process.stderr.write(`dsh-subprocess-local: ${label} spill failed; only the in-memory tail is retained: ${String(error)}\n`)
+  process.stderr.write(`sqhsubprocess-local: ${label} spill failed; only the in-memory tail is retained: ${String(error)}\n`)
 }
 
 /**
@@ -203,7 +203,7 @@ export class OutputCollector {
         // process did not create.
         const file = join(
           spill.dir,
-          `dsh-subprocess-${process.pid}-${++spillCounter}-${randomBytes(6).toString('hex')}-${this.label}.log`,
+          `sqhsubprocess-${process.pid}-${++spillCounter}-${randomBytes(6).toString('hex')}-${this.label}.log`,
         )
         const fd = openSync(file, 'wx', 0o600)
         this.spillFile = file
@@ -221,7 +221,7 @@ export class OutputCollector {
       } catch (reporterFailure) {
         // The reporter runs inside the stream listener too; a failing logger
         // must not become the uncaught exception this path exists to prevent.
-        process.stderr.write(`dsh-subprocess-local: spill failure reporter threw: ${String(reporterFailure)}\n`)
+        process.stderr.write(`sqhsubprocess-local: spill failure reporter threw: ${String(reporterFailure)}\n`)
       }
     }
   }

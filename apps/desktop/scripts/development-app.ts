@@ -28,7 +28,7 @@ export function prepareDevelopmentApp(options: DevelopmentAppOptions): string {
   const source = dirname(dirname(dirname(options.electron)))
   const bundle = join(options.directory, 'Harness Dev.app')
   const executable = join(bundle, 'Contents', 'MacOS', 'HarnessDev')
-  const stamp = join(bundle, 'Contents', 'Resources', 'dsh-development.json')
+  const stamp = join(bundle, 'Contents', 'Resources', 'sqhdevelopment.json')
   const launcher = developmentLauncher(options, bundle)
   const identity = JSON.stringify({ ...options, launcher, plist: readFileSync(join(source, 'Contents', 'Info.plist'), 'utf8') })
   if (!existsSync(stamp) || readFileSync(stamp, 'utf8') !== identity) {

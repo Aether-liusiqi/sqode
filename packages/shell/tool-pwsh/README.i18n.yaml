@@ -6,8 +6,8 @@
   en: 83e748b077469aac
   zh: f858d23ea8c1c6ba
 /liusiqi-dev-sqh-tool-pwsh:
-  en: 948150d21d0b4608
-  zh: 5d95a338f4074674
+  en: ff9586d916bc01c5
+  zh: 0f4bab3b2d426418
 /liusiqi-dev-sqh-tool-pwsh/summary:
   en: eb5f0081b96ddc8e
   zh: decb786d72ac2ff7
@@ -18,14 +18,14 @@
   en: 4a4d1a1b2cc6fae5
   zh: 4f8662947760ca57
 /liusiqi-dev-sqh-tool-pwsh/use-this-package/when-to-choose-it:
-  en: 0b071c19ca2fcb7f
-  zh: b35f4769db50cd3a
+  en: b2f948ef4eff9484
+  zh: 23bed28f2814beb8
 /liusiqi-dev-sqh-tool-pwsh/use-this-package/minimal-configuration:
-  en: addf35c4e607d33c
-  zh: 081f511d6b5a79d6
+  en: 81df35d6b045a6bc
+  zh: 9e9e7b09dfc5181e
 /liusiqi-dev-sqh-tool-pwsh/use-this-package/running-a-command:
-  en: 85a50d9a631572a9
-  zh: 4e4d1dea98b6f1eb
+  en: be4c2014dc747d9e
+  zh: 2dcc51a6131ae5e7
 /liusiqi-dev-sqh-tool-pwsh/use-this-package/foreground-commands-as-jobs:
   en: 4a487e48ef146846
   zh: 0a34dc49bffb03af
@@ -39,8 +39,8 @@
   en: 8d94a7381bca3fa9
   zh: f4bd2866fff6fa8d
 /liusiqi-dev-sqh-tool-pwsh/understand-the-implementation/design-philosophy:
-  en: 71a4e6ce2e67ca44
-  zh: 5c5726d397bce757
+  en: 6f13e3cfb3357d30
+  zh: b532d84bf1d7ae51
 /liusiqi-dev-sqh-tool-pwsh/understand-the-implementation/source-map:
   en: 09557aa79cbe3a7d
   zh: e5f36b411d01f844
@@ -48,8 +48,8 @@
   en: 094aed0d683e06a0
   zh: 8b17a2af261014d6
 /liusiqi-dev-sqh-tool-pwsh/further-exploration:
-  en: cd154bad26d4ee9a
-  zh: aabe4c2a2999d126
+  en: 56b18ebd4e6a9d33
+  zh: 48d9879f35e43e11
 /liusiqi-dev-sqh-tool-pwsh/model-experience:
   en: 215e7ba838619b7b
   zh: a311da3843709f90
@@ -72,8 +72,8 @@
   en: 3039bc5e7a796b21
   zh: 6b7a9eaf69c9ea53
 /liusiqi-dev-sqh-tool-pwsh/model-experience/tool-schemas/what-the-model-sees:
-  en: 319b3a4512305a26
-  zh: fed6a1c70bf79a0e
+  en: ff6e70ed0bdc28b6
+  zh: bb70692ae3330ee2
 /liusiqi-dev-sqh-tool-pwsh/model-experience/tool-schemas/token-effect:
   en: 97cce067584eadff
   zh: 54b1f5cd5899e7f3
@@ -117,8 +117,8 @@
   en: f5d5f97a153f7c70
   zh: 31911b4f3506d6c8
 /liusiqi-dev-sqh-tool-pwsh/known-limitations-and-deferred-work:
-  en: e785d911cf44ca2a
-  zh: 556536312586f20f
+  en: 421c99f0153f800f
+  zh: d892c9584a225c07
 /liusiqi-dev-sqh-tool-pwsh/known-limitations-and-deferred-work/dev-note:
   en: e67f633dc6fe7773
   zh: 3bb0c20c93f16f98

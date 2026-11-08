@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/simplification/2026-07-22-plan-specific-collaboration-state.md
 /agent-note-plan-specific-collaboration-state:
-  en: b1e94e354a36ef2b
-  zh: bbc98d4b9a837a5a
+  en: 50f8d14cf4c3d5da
+  zh: 00bbb5526a791435
 /agent-note-plan-specific-collaboration-state/problem:
   en: e79a03a0ec1ebc34
   zh: 94adee6ef4f1bcc2
 /agent-note-plan-specific-collaboration-state/decision:
-  en: 9dacae1f17fc76e6
-  zh: 1808835785bfd75f
+  en: e2163594c5af49b2
+  zh: 5221a92597bdbab9
 /agent-note-plan-specific-collaboration-state/decision/boundary-and-model-contract:
   en: f9d67f4f91e14f9d
   zh: 3284e2432e8a8466

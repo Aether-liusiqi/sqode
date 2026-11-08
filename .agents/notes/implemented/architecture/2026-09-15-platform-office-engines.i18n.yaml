@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-15-platform-office-engines.md
 /agent-note-one-office-engine-per-platform:
-  en: 5ba8eea6deb11824
-  zh: 7d1cb289fa278c74
+  en: 86fafa25f3dc86b5
+  zh: 86b943a502d9e350
 /agent-note-one-office-engine-per-platform/problem:
-  en: 803030fa18966fef
-  zh: bb1bbd185860f533
+  en: 7bc3de427c74f796
+  zh: d1d6bde02a66131a
 /agent-note-one-office-engine-per-platform/decision:
   en: 8cea2cb889666af7
   zh: 346adb1e99787c78
@@ -15,5 +15,5 @@
   en: ff6293dce37b541f
   zh: 4274192dad4803e8
 /agent-note-one-office-engine-per-platform/consequences:
-  en: 7e236c479975eee6
-  zh: 94a8e0e8883bd324
+  en: c986051e84dcb274
+  zh: fdc232c850211857

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-13-mcp-resources-in-profiles.md
 /agent-note-mcp-resource-availability-follows-configured-servers:
-  en: 2f520034ae7711ed
-  zh: 0e76516042ef51c1
+  en: 5466b5c77782e142
+  zh: dbc38b583ecf0b11
 /agent-note-mcp-resource-availability-follows-configured-servers/problem:
   en: 729c308d0bb4e142
   zh: 42df44189f83a701
 /agent-note-mcp-resource-availability-follows-configured-servers/decision:
-  en: 0cf9e4d656426f46
-  zh: a2f9e2953f6d46fe
+  en: d59c1492c6e4b977
+  zh: 5914dd51f11378b1
 /agent-note-mcp-resource-availability-follows-configured-servers/alternatives-considered:
   en: e60cb2c45a8a8cf7
   zh: e74f3b9ca5157278

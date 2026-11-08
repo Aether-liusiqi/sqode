@@ -3,26 +3,26 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/mcp.md
 /mcp:
-  en: 8e65e07d162dcc41
-  zh: 5f4ae607cd468767
+  en: 18a86f099abaca88
+  zh: 40d8c830eab158f8
 /mcp/summary:
-  en: 7855928245a9ae43
-  zh: 41a2e31cfe7c68c3
+  en: 31b5819dfe0c3cc9
+  zh: 0d42c56adaf9a03e
 /mcp/table-of-contents:
   en: 5c0aa5a2e528af97
   zh: ae2ba2297294e3de
 /mcp/configuration:
-  en: d54082d132266eb2
-  zh: 8285f77c9ec4d45a
+  en: f8c24a8acd01bb4a
+  zh: c3b7d8177683cac7
 /mcp/responsibilities-and-scope:
-  en: dd1323247f70625e
-  zh: 10a7eb288d7bd223
+  en: 4ac0c9f8aae9c59b
+  zh: 6325b9ad6f2a1939
 /mcp/protocol-and-results:
-  en: 46e9b914f016b636
-  zh: e1e9ee92a22f2562
+  en: 34348894f89ca5b9
+  zh: 0275dc6f1a93abd8
 /mcp/resources-and-instructions:
-  en: df9cc13a5d6eb923
-  zh: 3276d65c19d4c446
+  en: d5d399e84561ce78
+  zh: 30bddb889dea35cc
 /mcp/resource-provider-types:
   en: 16ae356364b54262
   zh: 28fa0c87dbbd5e88
@@ -30,5 +30,5 @@
   en: 27a59706525c88ed
   zh: 1fb1684bc03bb6ae
 /mcp/further-reading:
-  en: f63b120a0f4f9979
-  zh: 524c191ba61b8802
+  en: 0ba5aeaa3949273d
+  zh: ba68113a0f212ef8

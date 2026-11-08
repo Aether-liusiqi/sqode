@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/testing.md
 /testing-policy:
-  en: 0d7399a58529b9eb
-  zh: 7f445b06430f21a4
+  en: 65d683473644de9d
+  zh: 986346baec02ea40
 /testing-policy/tiers:
-  en: 9f588d8ad1e5a85f
-  zh: 7065d3f148f2d36f
+  en: f3c32e49aceca136
+  zh: 88b3abf8176fb3dc
 /testing-policy/how-specs-execute:
   en: 381a31e57da4fb54
   zh: b599ebc2d0b046c7
 /testing-policy/the-with-key-policy-inference-is-cheap-here:
-  en: 6e8c7842cb63fb54
-  zh: 54759c366d2d69fd
+  en: f8548da0a1b16e60
+  zh: f58783036ac091d3
 /testing-policy/prefer-the-real-implementation-over-a-mock:
   en: 96a5bdcea4960b25
   zh: 98ad9d468e55a5ed
@@ -24,11 +24,11 @@
   en: 002e4c4a1bcbef50
   zh: c3dd3820c0b2164f
 /testing-policy/test-resolution-source-plane-only:
-  en: 8a142fe4cbd196d7
-  zh: 0f8c682cd8c654de
+  en: d4bb90dee8c0bc7b
+  zh: 934e003b04f0049d
 /testing-policy/test-subprocess-launch-modes:
   en: 5ea1c7ff7a9a5728
   zh: bbae70e0cd2d5cbf
 /testing-policy/when-a-snapshot-test-is-required:
-  en: 5a010cfe551dc539
-  zh: 5518544ef3699bb2
+  en: 5ab452af3bd4f9cb
+  zh: d7b772ecfa563b1e

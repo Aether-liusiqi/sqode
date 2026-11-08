@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-17-developer-tools-settings.md
 /agent-note-shared-developer-tool-settings:
-  en: 353fa09368362d0f
-  zh: b36c06c8b49833b1
+  en: 12288f8cb63a3a7d
+  zh: 1afa06f1d3714b32
 /agent-note-shared-developer-tool-settings/problem:
   en: e22ee243b1503319
   zh: b53c1a932d547f55
 /agent-note-shared-developer-tool-settings/decision:
-  en: 6b94e4c856dbd92a
-  zh: e923b1118dfad7b6
+  en: 97bea20537b8b622
+  zh: 9ca5a991ea30c7af
 /agent-note-shared-developer-tool-settings/alternatives-considered:
   en: df1b80e5b8d2a178
   zh: 0136d16fc44d57bf

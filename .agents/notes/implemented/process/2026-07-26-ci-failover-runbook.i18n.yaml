@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-07-26-ci-failover-runbook.md
 /agent-note-ci-failover-runbook-hosted-pools-in-house-pool:
-  en: 677b522817e84e2f
-  zh: f8518a7033b0fd54
+  en: 78f5d68bdb8cbb32
+  zh: 0d8e28f45d9e67fa
 /agent-note-ci-failover-runbook-hosted-pools-in-house-pool/problem:
-  en: 671d51c7e457c5e8
-  zh: 6878d43757f5750f
+  en: 7c4c48b668b73f75
+  zh: 052e9bfb3e973410
 /agent-note-ci-failover-runbook-hosted-pools-in-house-pool/decision:
-  en: f36ea4821d135e6f
-  zh: a855e10d09368ca8
+  en: 7cfb761d0d9dd8fc
+  zh: e4205c682696517c
 /agent-note-ci-failover-runbook-hosted-pools-in-house-pool/decision/release-rehearsals-share-the-linux-switch:
-  en: d328d5e66cf7fbad
-  zh: de009aa1245577c1
+  en: a450273325d79d73
+  zh: 68657a72a08cf3c8
 /agent-note-ci-failover-runbook-hosted-pools-in-house-pool/decision/what-the-in-house-pool-is:
   en: 00d8934ed30e838c
   zh: bdb5584fbaf27c7d
@@ -21,11 +21,11 @@
   en: e28cdd26b9264fc3
   zh: d7b1d41303fe2987
 /agent-note-ci-failover-runbook-hosted-pools-in-house-pool/decision/switch-any-repository-writer-1-minute-no-merge:
-  en: d161ff4563b467e6
-  zh: c6dba8eceef09602
+  en: ab74efaa9e11b95e
+  zh: e3443f94f13d4cd1
 /agent-note-ci-failover-runbook-hosted-pools-in-house-pool/capacity-during-failover:
-  en: 4095da1b492d7484
-  zh: 0c0bb9c97e4af977
+  en: 43d805e45bb4bd7e
+  zh: 20746519f2bf0062
 /agent-note-ci-failover-runbook-hosted-pools-in-house-pool/capacity-during-failover/switch-back:
   en: fc21e496f64264f6
   zh: 90006f196054da7d
@@ -36,5 +36,5 @@
   en: e68b70d7caca52f1
   zh: e6f0be792105a9e6
 /agent-note-ci-failover-runbook-hosted-pools-in-house-pool/consequences:
-  en: f66e0aa401136799
-  zh: 657188692959955e
+  en: 5aeb8c9e27375a91
+  zh: 0f54a2c730a3db15

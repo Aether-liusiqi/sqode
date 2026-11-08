@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-10-built-bundle-css-exemption.md
 /agent-note-built-bundle-exemption-for-a-failing-stylesheet:
-  en: 7eea80c07cea261d
-  zh: 936523023c0b527d
+  en: 29746234237bb932
+  zh: a2384f6c6e4c536a
 /agent-note-built-bundle-exemption-for-a-failing-stylesheet/problem:
   en: 5b3dee642c354f5b
   zh: fd7adeb8f98bc6ba
@@ -15,5 +15,5 @@
   en: 7f0eb995b7f00d73
   zh: aaf7b18f7bb2c20d
 /agent-note-built-bundle-exemption-for-a-failing-stylesheet/consequences:
-  en: 767857f0bbd93ca8
-  zh: f49bf34e304a7dee
+  en: 33353f3ac772cb26
+  zh: 71d1bedb13e61462

@@ -141,8 +141,8 @@ export class NetworkDomain {
         this.sendRequestStart(session, event.requestKey, resourceType)
         session.sendEvent('Network.responseReceived', {
           requestId: event.requestId,
-          loaderId: 'dsh-inspector-loader',
-          frameId: 'dsh-inspector-host-frame',
+          loaderId: 'sqhinspector-loader',
+          frameId: 'sqhinspector-host-frame',
           timestamp,
           type: resourceType,
           response: {
@@ -213,7 +213,7 @@ export class NetworkDomain {
     this.requestTypes.get(session)?.set(requestKey, resourceType)
     session.sendEvent('Network.requestWillBeSent', {
       requestId: event.requestId,
-      loaderId: 'dsh-inspector-loader',
+      loaderId: 'sqhinspector-loader',
       documentURL: 'sqode://host',
       request: {
         url: event.url,

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/cordis-tutorial/06-composition-and-hmr.md
 /6-composition-and-hmr:
-  en: 628a6175275ee566
-  zh: 0880eb3d5a90be9e
+  en: be03d9ff99074696
+  zh: 495dd85b9eb47fb4
 /6-composition-and-hmr/entries-are-more-than-a-name:
-  en: bdbf57b5166d37e5
-  zh: 9b3b38f52be1dbd9
+  en: 20fbf0b0bd58b02f
+  zh: e89a8ed83f833804
 /6-composition-and-hmr/hot-module-replacement:
-  en: 3b3ea48a414438b9
-  zh: 1160a37a0eac824b
+  en: 465599838cd5bf00
+  zh: 59f67a103bc912dd
 /6-composition-and-hmr/diagnosing-a-plugin-that-never-loads:
-  en: 4929b295681c5c6d
-  zh: dd77dd80a50d6eac
+  en: 4c4d0e69d36392d0
+  zh: b420417eb09b1a34

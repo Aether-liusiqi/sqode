@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-07-19-web-styling-system.md
 /agent-note-web-styling-system-the-token-framework-and-engineering-constraints:
-  en: 60e793c38185c08c
-  zh: 8f4d4644e3502c31
+  en: 9c3662e9e5a92e14
+  zh: e1050b8011054a76
 /agent-note-web-styling-system-the-token-framework-and-engineering-constraints/problem:
   en: aa546850f8c51cd1
   zh: bba14f66aaf1e06a

@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-06-11-microkernel-event-taxonomy.md
 /agent-note-microkernel-extension-via-cordis-event-taxonomy-one-concrete-loop:
-  en: e5775d7ec6f1cdc3
-  zh: a364697f860a545a
+  en: 87b2337b5bf186b8
+  zh: 3e4fe8a55bf7d338
 /agent-note-microkernel-extension-via-cordis-event-taxonomy-one-concrete-loop/problem:
   en: 3bc74749db819441
   zh: 19b5497ed3a9378b
@@ -15,5 +15,5 @@
   en: e528c5a20e0c55a3
   zh: 004d3bf06241cc26
 /agent-note-microkernel-extension-via-cordis-event-taxonomy-one-concrete-loop/consequences:
-  en: 6acb80cdaa7c010f
-  zh: acca672d8094d985
+  en: 0ff94c976d2f7dad
+  zh: e44af8631196bbcc

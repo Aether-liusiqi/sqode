@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-llm-pi-ai",
-  "description": "pi-ai-backed DeepSeek adapter for the Siqi Harness LLM seam (design-verification twin of dsh-llm-deepseek)",
+  "description": "pi-ai-backed DeepSeek adapter for the Siqi Harness LLM seam (design-verification twin of sqhllm-deepseek)",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

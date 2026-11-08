@@ -6,15 +6,15 @@ import type { DesktopLocale } from './locale.ts'
 
 /** Private native welcome channels, installed only while its window exists. */
 export const WELCOME_IPC = {
-  saveApiKey: 'dsh-welcome:save-api-key',
-  analytics: 'dsh-welcome:analytics',
-  analyticsEnabled: 'dsh-welcome:analytics-enabled',
-  skip: 'dsh-welcome:skip',
-  start: 'dsh-welcome:start',
-  cancel: 'dsh-welcome:cancel',
-  copyLink: 'dsh-welcome:copy-link',
-  state: 'dsh-welcome:state',
-  takeNotice: 'dsh-welcome:take-notice',
+  saveApiKey: 'sqhwelcome:save-api-key',
+  analytics: 'sqhwelcome:analytics',
+  analyticsEnabled: 'sqhwelcome:analytics-enabled',
+  skip: 'sqhwelcome:skip',
+  start: 'sqhwelcome:start',
+  cancel: 'sqhwelcome:cancel',
+  copyLink: 'sqhwelcome:copy-link',
+  state: 'sqhwelcome:state',
+  takeNotice: 'sqhwelcome:take-notice',
 } as const
 
 /** Credential writes return a safe outcome without exposing Host diagnostics. */

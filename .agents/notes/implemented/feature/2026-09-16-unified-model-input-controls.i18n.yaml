@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-16-unified-model-input-controls.md
 /agent-note-unified-model-input-controls:
-  en: a22f2dd1b73eb314
-  zh: 1f43526fa6af593a
+  en: 3b8e65e79de01f58
+  zh: f47446d267ea29a3
 /agent-note-unified-model-input-controls/problem:
   en: e28035e73033057d
   zh: 262cf7551cdb783a
@@ -15,5 +15,5 @@
   en: 83f8ffa39259a9f4
   zh: e158cb5868c82d74
 /agent-note-unified-model-input-controls/consequences:
-  en: 768bb77e3a4d72be
-  zh: 81080b075b0cc26c
+  en: b9420bbe8134a28d
+  zh: ab81f8956e247993

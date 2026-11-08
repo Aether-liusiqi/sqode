@@ -278,7 +278,7 @@ export async function createDesktopUploadPlan(
     const stableFilename = metadataFilename.replace('nightly', 'latest')
     artifacts.push({ ...channelArtifact, filename: stableFilename, key: `${update.keyPrefix}/${stableFilename}` })
   }
-  const latestFilename = `dsh-latest-${target.platform === 'darwin' ? 'macos' : 'windows'}-${target.arch}.${target.platform === 'darwin' ? 'dmg' : 'exe'}`
+  const latestFilename = `sqhlatest-${target.platform === 'darwin' ? 'macos' : 'windows'}-${target.arch}.${target.platform === 'darwin' ? 'dmg' : 'exe'}`
   const latestKey = `desktop/${latestFilename}`
   return {
     environment: update.environment,

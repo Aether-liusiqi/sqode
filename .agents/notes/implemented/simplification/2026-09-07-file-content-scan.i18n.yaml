@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/simplification/2026-09-07-file-content-scan.md
 /agent-note-scan-file-content-without-per-array-callbacks:
-  en: a814034fce2407dc
-  zh: 7de9ec55cbbb30ab
+  en: aa240fcd9bcb8bf6
+  zh: a3052899301d4536
 /agent-note-scan-file-content-without-per-array-callbacks/problem:
-  en: cb13a0053453cf45
-  zh: ce40afb7fa03f9ed
+  en: bfb4d7bd9aaf119d
+  zh: 7f0de6e737276c84
 /agent-note-scan-file-content-without-per-array-callbacks/decision:
-  en: e3d83658869a24f7
-  zh: 44dd61458a47df6c
+  en: 3f07c11588a53e6a
+  zh: 6cfaa3ecfa98602a
 /agent-note-scan-file-content-without-per-array-callbacks/measurement-evidence:
   en: ad23fa4ee386f3cf
   zh: 41e54e28d26b3d02
@@ -18,5 +18,5 @@
   en: 0128940c217dd77c
   zh: 9394e713dac9675d
 /agent-note-scan-file-content-without-per-array-callbacks/consequences:
-  en: dace71e8857e57b1
-  zh: 0ee88fdaa4e067ee
+  en: 3a1ff79155fbf984
+  zh: 3358524e99db660d

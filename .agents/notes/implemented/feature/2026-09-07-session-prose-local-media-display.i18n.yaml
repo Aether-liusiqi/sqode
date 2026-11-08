@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-07-session-prose-local-media-display.md
 /agent-note-session-prose-local-media-paths-display-through-a-same-origin-file-route:
-  en: 58736e33d45c5578
-  zh: 224ab6304833ce7f
+  en: 1db2c98fcfaf5892
+  zh: a5d090f5fc5d3012
 /agent-note-session-prose-local-media-paths-display-through-a-same-origin-file-route/problem:
   en: 934cbf480461e9e6
   zh: 986d53c72b94cfe4
 /agent-note-session-prose-local-media-paths-display-through-a-same-origin-file-route/decision:
-  en: 37e189446dd25601
-  zh: 0321b091e2250650
+  en: 746ceb1823fcff0c
+  zh: 121607c4e8c44c89
 /agent-note-session-prose-local-media-paths-display-through-a-same-origin-file-route/alternatives-considered:
   en: b184da259c41e4de
   zh: 5c75e50fa595a30e

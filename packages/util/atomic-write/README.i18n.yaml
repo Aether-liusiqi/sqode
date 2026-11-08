@@ -6,8 +6,8 @@
   en: 1065a4fcafd0430d
   zh: 40bc911b6d01288b
 /liusiqi-dev-sqh-atomic-write:
-  en: 9a64a425b8b4383b
-  zh: c694b0b8c58fa58f
+  en: 5ef93c6372cae919
+  zh: 91034b468720ec83
 /liusiqi-dev-sqh-atomic-write/summary:
   en: 444a65ed203c61f0
   zh: 98920c5dbd25a144
@@ -33,14 +33,14 @@
   en: 725509a8b621c668
   zh: c11e3ffdf73af844
 /liusiqi-dev-sqh-atomic-write/understand-the-implementation/write-path:
-  en: 2e6561c9282f0c0d
-  zh: 7f0e76f6dbdea501
+  en: 4e51fc33bf4f6017
+  zh: 3b869b091b61ef55
 /liusiqi-dev-sqh-atomic-write/understand-the-implementation/why-the-swap-stays-safe:
   en: 784e985c1fb3a25e
   zh: 4afda1b9bf5f29cc
 /liusiqi-dev-sqh-atomic-write/further-exploration:
-  en: 16ece9b754f7fff6
-  zh: 2456fe14cc5a658b
+  en: 57952bda21e3f8e1
+  zh: 96887007e6733069
 /liusiqi-dev-sqh-atomic-write/model-experience:
   en: 225fc1d94a284905
   zh: 7319a43c3b8a884d

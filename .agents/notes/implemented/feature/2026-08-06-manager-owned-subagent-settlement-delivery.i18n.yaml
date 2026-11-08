@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-08-06-manager-owned-subagent-settlement-delivery.md
 /agent-note-settlement-delivery-belongs-to-the-continuation-manager:
-  en: e8e4fec15acfe5d4
-  zh: 6dac0279cf244edc
+  en: a8053183b493889c
+  zh: c7a6a9c8159e1645
 /agent-note-settlement-delivery-belongs-to-the-continuation-manager/problem:
   en: 325f283354af59f6
   zh: 059179e883da78c2
@@ -30,11 +30,11 @@
   en: 1237028c90ad9360
   zh: 6438542645225c1c
 /agent-note-settlement-delivery-belongs-to-the-continuation-manager/decision/snapshot-coverage:
-  en: 9e50e4014df1d5b0
-  zh: 1a111b53a149a21b
+  en: 0e749e1eb3b20546
+  zh: 159a667813fbd7af
 /agent-note-settlement-delivery-belongs-to-the-continuation-manager/alternatives-considered:
-  en: dd3073a05a8e13bd
-  zh: e58debc18a591077
+  en: c0937d9d8aeb1609
+  zh: 4323db3d60488643
 /agent-note-settlement-delivery-belongs-to-the-continuation-manager/consequences:
   en: ed5e2034efd012f2
   zh: 3e0e4a940d741352

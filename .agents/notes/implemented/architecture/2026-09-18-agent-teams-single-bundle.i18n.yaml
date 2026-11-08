@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-18-agent-teams-single-bundle.md
 /agent-note-enable-agent-teams-with-one-bundle:
-  en: c595b526791a8dfd
-  zh: 61f4bf6948e41bee
+  en: 2afca909eb3cf4f3
+  zh: 36d7569d13bd736a
 /agent-note-enable-agent-teams-with-one-bundle/problem:
   en: 8dd802c775d24e42
   zh: 53cf2818dd93181e
 /agent-note-enable-agent-teams-with-one-bundle/decision:
-  en: 2c75bb5911e30f84
-  zh: d2489b6b1a7cce59
+  en: 880b88a0c63f1c85
+  zh: 0359ac878a913d1b
 /agent-note-enable-agent-teams-with-one-bundle/alternatives-considered:
   en: 32952c4e1b6f486d
   zh: 6c9b91eaf0460d30

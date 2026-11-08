@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-08-23-client-derived-tool-presentation.md
 /agent-note-client-derived-presentation-from-raw-session-tool-events:
-  en: de8d02e979715600
-  zh: 1db4d0364c30a7e3
+  en: 89a2f87ed443f4db
+  zh: 58dfbbd6b2a646ad
 /agent-note-client-derived-presentation-from-raw-session-tool-events/problem:
   en: 9f34c53e647c69ca
   zh: 551776c7cc9618b5
 /agent-note-client-derived-presentation-from-raw-session-tool-events/decision:
-  en: 5c8de416b8fa0fb1
-  zh: 1662926ba8e17405
+  en: ea2407ddd108f575
+  zh: 08bca812332f489b
 /agent-note-client-derived-presentation-from-raw-session-tool-events/decision/goals-and-non-goals:
-  en: 4ff7b07cb79bc9de
-  zh: a74ec6e7ebbede0a
+  en: 34450e9a3442277d
+  zh: a5584ce8b438c005
 /agent-note-client-derived-presentation-from-raw-session-tool-events/terminology:
   en: 021106dd41176715
   zh: 131caff7bd37251b
@@ -60,8 +60,8 @@
   en: 46a772ac51da43a2
   zh: 8709a7e3e6a872f1
 /agent-note-client-derived-presentation-from-raw-session-tool-events/client-session-and-conversation/root-and-ptc-dispatch-subcalls:
-  en: 2c8ff511a5527a72
-  zh: 3eeddc9686ff1709
+  en: d2797c73e12cee3d
+  zh: 8cc1824a9f7c0b4f
 /agent-note-client-derived-presentation-from-raw-session-tool-events/client-session-and-conversation/missing-call-head:
   en: b9efc339173e546e
   zh: c7639861b3b96e83
@@ -183,8 +183,8 @@
   en: bc8905288acaa820
   zh: ff551936bd5ea93f
 /agent-note-client-derived-presentation-from-raw-session-tool-events/alternatives-considered/allow-presentation-enhancements:
-  en: fc270977e320fd0a
-  zh: bb77a11ec6973d03
+  en: 7bbbf67c04257db2
+  zh: 9af2ee23c908324a
 /agent-note-client-derived-presentation-from-raw-session-tool-events/alternatives-considered/accept-temporary-generic-degradation:
   en: 1a8fd108d32bd199
   zh: 5cd1c7adf3fe824d
@@ -222,8 +222,8 @@
   en: d7e581086940fafa
   zh: d452320fee6ef875
 /agent-note-client-derived-presentation-from-raw-session-tool-events/relationship-to-existing-decisions:
-  en: f7501cfad1c94062
-  zh: 2574582ee86c3c4a
+  en: be4c3d8110f88787
+  zh: 39959ed6bf0035d9
 /agent-note-client-derived-presentation-from-raw-session-tool-events/deferred:
   en: dcd92bc33fbb1885
   zh: 3d1ea8a6b3f3f3a7

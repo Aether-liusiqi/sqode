@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-09-06-node-compatibility-selfhosted.md
 /agent-note-isolated-node-compatibility-jobs-on-self-hosted-linux:
-  en: 21c12c8bd0c44122
-  zh: b07f0ffc18092f0d
+  en: 335ad42431374675
+  zh: a2874e1731a2080f
 /agent-note-isolated-node-compatibility-jobs-on-self-hosted-linux/problem:
   en: 6bcedb8e3f0dce21
   zh: 83e88ed593259292
 /agent-note-isolated-node-compatibility-jobs-on-self-hosted-linux/decision:
-  en: 14f1348f993b9102
-  zh: a94e1b802e6a8c39
+  en: 3f2b44489bf85ca4
+  zh: 6319a3696c13837b
 /agent-note-isolated-node-compatibility-jobs-on-self-hosted-linux/alternatives-considered:
   en: 93217ca46c2cefb8
   zh: 77a167c69f59111c

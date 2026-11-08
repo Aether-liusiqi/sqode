@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-09-10-approval-review-workflow-identity.md
 /agent-note-identify-approval-review-workflows-by-file-path:
-  en: 8a332b9d080f3d62
-  zh: 29f1de05d7867a77
+  en: e25ad8bf28a2c8a5
+  zh: 52649231c89ea68c
 /agent-note-identify-approval-review-workflows-by-file-path/problem:
   en: 6b927a7545ac2c48
   zh: 0902f03aa478d5ee
@@ -15,5 +15,5 @@
   en: f8fdd869a03ac5ff
   zh: c355eb36e9cba350
 /agent-note-identify-approval-review-workflows-by-file-path/consequences:
-  en: 9f31e023a04a7849
-  zh: 66831c450af4c88f
+  en: c0e664071aa29b14
+  zh: e323784245f318f0

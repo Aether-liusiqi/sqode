@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/subprocess.md
 /subprocess:
-  en: d53750a621421d66
-  zh: 7f5d29e9e01d0631
+  en: eaaf1b522b6eda97
+  zh: d112892bfe4288bb
 /subprocess/executable-lookup:
   en: be4ddc71906d893d
   zh: 49823ef13713dea0
@@ -24,8 +24,8 @@
   en: b61bda6c2806b335
   zh: 0adcb61c5c2af380
 /subprocess/terminal-process-primitive:
-  en: c207221293cfe4d8
-  zh: 3101c861eaa30d81
+  en: a2969e39666ae6ca
+  zh: 50023534a0c1ade2
 /subprocess/service-behavior:
-  en: cf1409a4e0354ab5
-  zh: b5b4b1a8ca3d4335
+  en: 082273c3b7a61ec3
+  zh: 6c12d45da195776b

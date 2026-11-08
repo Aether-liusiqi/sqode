@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-18-profile-plugin-host-runtime-instances.md
 /agent-note-profile-plugins-share-the-installation-s-host-runtime-instances:
-  en: 04d5248dde932469
-  zh: 877d263ca4b0beef
+  en: 11ef2873f8e22b76
+  zh: 5a8b6c1c5af697d2
 /agent-note-profile-plugins-share-the-installation-s-host-runtime-instances/problem:
-  en: 717ae74ade972b18
-  zh: 2a26681a26354ada
+  en: 6fb6e5f6191ff2c1
+  zh: 11afd337087203db
 /agent-note-profile-plugins-share-the-installation-s-host-runtime-instances/decision:
-  en: 35e92c46672e555f
-  zh: 51eec5828cbc6f0f
+  en: 7ea1e538c11fba77
+  zh: c14ec6d6d200ba47
 /agent-note-profile-plugins-share-the-installation-s-host-runtime-instances/alternatives-considered:
   en: 564ac54996c2d3f5
   zh: 9bb1768988cf3702

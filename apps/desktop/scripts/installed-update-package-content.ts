@@ -38,7 +38,7 @@ export async function verifyInstalledUpdatePackageContent(manifest: string, vers
   const archive = await readAsar(join(payload, 'resources/app.asar'))
   const metadata = object(await archive.readJson('package.json'))
   const policy = resolveDesktopPolicyConfig(metadata.dshMandatoryUpdatePolicy)
-  if (metadata.name !== `dsh-update-test-${run.id}` || metadata.version !== version
+  if (metadata.name !== `sqhupdate-test-${run.id}` || metadata.version !== version
     || metadata.dshDesktopAppId !== run.appId || metadata.main !== 'qualification-bootstrap.mjs'
     || metadata.type !== 'module' || policy?.authentication !== 'feishu-test') {
     throw new Error('installed update: packaged application identity, version, entry, or policy differs')
@@ -83,7 +83,7 @@ export async function verifyInstalledUpdatePackageContent(manifest: string, vers
   const update = object(load(await readFile(join(payload, 'resources/app-update.yml'), 'utf8')))
   const url = `${run.origin}/${run.feedKey.slice(0, -'nightly.yml'.length)}`
   if (update.provider !== 'generic' || update.url !== url || update.channel !== 'nightly'
-    || update.updaterCacheDirName !== `dsh-update-test-${run.id}-updater`
+    || update.updaterCacheDirName !== `sqhupdate-test-${run.id}-updater`
     || !Array.isArray(update.publisherName) || update.publisherName.length !== 1 || update.publisherName[0] !== publisher) {
     throw new Error('installed update: packaged feed, cache identity, channel, or publisher differs')
   }

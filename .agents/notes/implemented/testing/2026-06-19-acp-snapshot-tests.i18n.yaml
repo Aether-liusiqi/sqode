@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/testing/2026-06-19-acp-snapshot-tests.md
 /agent-note-acp-snapshot-tests-record-once-replay-deterministic:
-  en: 2f19b76966d5cf54
-  zh: cbaed521d650e079
+  en: ee331ac547053582
+  zh: 9d46c865342792ac
 /agent-note-acp-snapshot-tests-record-once-replay-deterministic/problem:
-  en: d1738d268738633e
-  zh: ce62a5b0ff65ce8c
+  en: a4093ac6f00a9907
+  zh: 1bcb99cea1310076
 /agent-note-acp-snapshot-tests-record-once-replay-deterministic/decision:
-  en: 809f44557b74e67c
-  zh: 517eb9aa87411937
+  en: 1c59787058c1abf6
+  zh: 249409757ae4dd83
 /agent-note-acp-snapshot-tests-record-once-replay-deterministic/decision/the-fixture-projects-the-persisted-session-jsonl:
   en: bdd1333366edfc30
   zh: ed8a0fbab516a62b
@@ -30,8 +30,8 @@
   en: ee891a839a0c05e9
   zh: 677259307e4357fa
 /agent-note-acp-snapshot-tests-record-once-replay-deterministic/decision/isolation-normalization-now-sandbox-later:
-  en: ce58ef2e3180d0d3
-  zh: 1e9354614e4d7219
+  en: 83059b52afc40455
+  zh: 0ca1c0ad7fe6737c
 /agent-note-acp-snapshot-tests-record-once-replay-deterministic/decision/the-replay-plugin-is-its-own-package:
   en: 7481dae04bade667
   zh: c93f1b8ed18630b3
@@ -42,5 +42,5 @@
   en: c4e83a568e8f483e
   zh: eff19f1872565ff6
 /agent-note-acp-snapshot-tests-record-once-replay-deterministic/consequences:
-  en: ea210a6a43707447
-  zh: 8c1e2a474d595b96
+  en: 2d78905459297d21
+  zh: 8076a037d31dcf6c

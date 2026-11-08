@@ -3,5 +3,5 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write BRAND_GUIDELINES.md
 /sqode-brand-asset-usage-guidelines:
-  en: 5c37851293279587
-  zh: 4ad505e5072b2796
+  en: 01caba177a74a5eb
+  zh: fca4bf286f586417

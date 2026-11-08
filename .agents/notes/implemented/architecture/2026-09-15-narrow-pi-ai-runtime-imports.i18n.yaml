@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-15-narrow-pi-ai-runtime-imports.md
 /agent-note-narrow-pi-ai-runtime-imports:
-  en: d29340bbc4bf0e5b
-  zh: 12a39c4efe53b580
+  en: b23a603891a5824b
+  zh: 7231aae2991a9f67
 /agent-note-narrow-pi-ai-runtime-imports/problem:
   en: a9c7005d56715e92
   zh: 38a8c06b5a7696da

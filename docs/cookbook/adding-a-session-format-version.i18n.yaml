@@ -3,32 +3,32 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/cookbook/adding-a-session-format-version.md
 /cookbook-adding-a-session-log-format-version:
-  en: 71132d61e41cb40b
-  zh: 0b56ed8893bf8d0a
+  en: 365decc2126ec9d0
+  zh: b2a57adc4bbbef9d
 /cookbook-adding-a-session-log-format-version/summary:
-  en: 76b76c19e0889ab3
-  zh: 1ddc1afa5c2333f0
+  en: 77cb5f6e31c44010
+  zh: 1e849bc4b4f49bf2
 /cookbook-adding-a-session-log-format-version/table-of-contents:
   en: 6977fff29f49e4a4
   zh: 7ffb6f5490831dce
 /cookbook-adding-a-session-log-format-version/1-choose-the-version-and-release-base:
-  en: 3205409b918b891d
-  zh: 98f17c19045954d5
+  en: 26b329bd78d7e090
+  zh: b05dad97c550d1f6
 /cookbook-adding-a-session-log-format-version/2-add-an-identity-edge:
-  en: 245b80dcfe60b60b
-  zh: be42bef670fdf231
+  en: 67e7d47df788154e
+  zh: 62687bc09c5e6915
 /cookbook-adding-a-session-log-format-version/3-implement-per-artifact-stages-and-validation:
-  en: 2bea8b93ac9b359a
-  zh: 2c24e71680f66ef7
+  en: ae3cafa1361d2d08
+  zh: a7c7426ba7e3bb61
 /cookbook-adding-a-session-log-format-version/4-update-current-version-consumers:
-  en: a285126945d02c12
-  zh: e039c77cf7866ad2
+  en: 0f42e92e44c07ee1
+  zh: 66128b513785c43c
 /cookbook-adding-a-session-log-format-version/5-create-snapshot-successors:
-  en: 7f865673d550a949
-  zh: 8bde6a9ef29f382a
+  en: e349078488fea4e3
+  zh: 7a98ed07fa40aa61
 /cookbook-adding-a-session-log-format-version/6-validate-the-integrated-result:
-  en: fb1c6d23599659c5
-  zh: b51e4ee8c0d1daeb
+  en: d8e921b3e398c241
+  zh: cd1b6438e4977bb9
 /cookbook-adding-a-session-log-format-version/6-validate-the-integrated-result/developer-v4-corpus-trial:
   en: ed39c9668ff88cbd
   zh: ff26b42ede79c46d

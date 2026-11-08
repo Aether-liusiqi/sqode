@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-09-12-publish-all-experimental-packages.md
 /agent-note-publish-every-current-experimental-package:
-  en: e08e7bc92478407d
-  zh: 45501f51a5f619ec
+  en: 05a9c343cecd3e52
+  zh: 10e288c55579538f
 /agent-note-publish-every-current-experimental-package/problem:
   en: 7db3c27e4b5c2d09
   zh: 0a770941ec41a50a
 /agent-note-publish-every-current-experimental-package/decision:
-  en: 3f5705a317247a7c
-  zh: 5ef8e9784d31e3e9
+  en: 6ae4928c3acdea4e
+  zh: 36526714ff02cc8f
 /agent-note-publish-every-current-experimental-package/alternatives-considered:
   en: e59c9f8484629e20
   zh: d6f64683af3d0460

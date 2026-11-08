@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-06-16-pnpm-over-yarn.md
 /agent-note-pnpm-as-the-package-manager-instead-of-yarn-4:
-  en: 2c8be5b7d3dae8c7
-  zh: e6d4d5dc41455f52
+  en: f45cbf2025ce29b3
+  zh: 777bad2b46875870
 /agent-note-pnpm-as-the-package-manager-instead-of-yarn-4/problem:
   en: a397e5f0a83c3306
   zh: 5ced99f94dae9e30
 /agent-note-pnpm-as-the-package-manager-instead-of-yarn-4/decision:
-  en: 6a6bf1f7a4329b28
-  zh: 8aa3fe3279ffe864
+  en: 352d7314f1bf4d34
+  zh: adf6312afcb82781
 /agent-note-pnpm-as-the-package-manager-instead-of-yarn-4/alternatives-considered:
   en: 20e2ebed65f92625
   zh: f1717d69d271fb43

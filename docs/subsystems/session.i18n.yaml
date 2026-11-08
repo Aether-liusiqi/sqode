@@ -3,23 +3,23 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/session.md
 /sessions:
-  en: a8ebe160fb4584b8
-  zh: ea2708e0f0b3051f
+  en: c97993b32c9bdcc9
+  zh: 01e13cfceea5cb6e
 /sessions/sessioneventmap-the-event-vocabulary:
-  en: e056aa7dcdcab513
-  zh: 63cc96d0db0dfd44
+  en: a2aa1c4e77d6eb9b
+  zh: 2e1a14c03c636a49
 /sessions/sessioneventmap-the-event-vocabulary/the-request-header-event-request-header:
-  en: 6eb931fcb2f4ab8d
-  zh: d822a83384cc1fee
+  en: 35b7a4cd736faf8d
+  zh: a0856af921604326
 /sessions/sessioneventmap-the-event-vocabulary/the-route-capacity-event-request-context:
-  en: e6bf2297344b77e3
-  zh: f99beedebc892f6a
+  en: 6d6bc4c143cd0d26
+  zh: 23604d039974ebc1
 /sessions/sessionevent-t-one-log-entry:
   en: 622d333d9d903795
   zh: fdc9ee663330f01e
 /sessions/surface-types:
-  en: 55fa7be0643afc08
-  zh: 0bc544886c68cdb3
+  en: 3739702bd724c23d
+  zh: 98c87ff1fb38294b
 /sessions/surface-types/surfaceeventtype-the-message-producing-subset-of-event-types:
   en: 2f1b6a16a4ee7cc1
   zh: 7f16b568c4aa940f
@@ -27,11 +27,11 @@
   en: 8fcc967516a13692
   zh: d3978d3b8d02c566
 /sessions/surface-types/surfaceintent-the-parameter-to-session-append:
-  en: 0b0636aa3795b910
-  zh: e5e1243cff27289f
+  en: cd6350298cb01da2
+  zh: 9ba928ff428ac8f9
 /sessions/surface-types/plugin-owned-message-projections:
-  en: f1f73607d650620f
-  zh: b3ef72f19fb5ee3d
+  en: 3055c29536238464
+  zh: 1561f69216cb91d5
 /sessions/surface-types/sessionsurface-the-live-readonly-surface-projection:
   en: 350259099d8d60c9
   zh: 7b25db461748c04e
@@ -48,20 +48,20 @@
   en: b8734ceb9f5844d5
   zh: 4feb2ae5681379a5
 /sessions/why-a-turn-ended-turnendreasonmap:
-  en: 966cc60273fb3911
-  zh: de5123ea9dbb0df2
+  en: 3325a6af36174e09
+  zh: f07e996e8e55dc22
 /sessions/execution-enclosure-and-standalone-events:
-  en: c0480a4bd4fb3848
-  zh: 9747e3b6803e3c53
+  en: cdee6d25ef26a5fa
+  zh: 1f4080ad2e291fcc
 /sessions/the-end-seed-boundary-session-end-seed:
   en: 63b4059793255ca3
   zh: 6bc7891c320249f4
 /sessions/plugin-contributed-log-only-events:
-  en: afbc9bc414db982d
-  zh: 92317d6792859c02
+  en: f31c5fb9b8951dbf
+  zh: 811702b22c2a11ca
 /sessions/durability-contract:
-  en: 62e3e4fbcba292a3
-  zh: cb6dcaf531621e85
+  en: a5c28ac54a5d97bd
+  zh: e3ba2f8c7b3ffa5d
 /sessions/remote-catalog-and-workspace-opening:
   en: dd27307e0d7c893c
   zh: b77d2a749b7b641c

@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-09-19-evidence-led-simplification-surveys.md
 /agent-note-evidence-led-simplification-surveys:
-  en: f0941223baf75c96
-  zh: b3cc733f7f90509a
+  en: 45cbf098ef5bf007
+  zh: 1676f46530e4c1c2
 /agent-note-evidence-led-simplification-surveys/problem:
   en: 528a0c462d456493
   zh: a2af4901a8f498a7
@@ -15,11 +15,11 @@
   en: 53eea2f1d7560461
   zh: 3c55432d9cd3ebe3
 /agent-note-evidence-led-simplification-surveys/bounded-survey-evidence:
-  en: 3637438d2ed7f606
-  zh: d78b39ae6b67a442
+  en: 5a1ea5b33f51f8d9
+  zh: 9e1889362477672b
 /agent-note-evidence-led-simplification-surveys/alternatives-considered:
   en: 9e0039e0ff82ba1b
   zh: fa4b0a52bf3dcbdd
 /agent-note-evidence-led-simplification-surveys/consequences:
-  en: 395acde9597898c5
-  zh: 45ee94d13427862a
+  en: 429593ae03327dfd
+  zh: 16b062578529f431

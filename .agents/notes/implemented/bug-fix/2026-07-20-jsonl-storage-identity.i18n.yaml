@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-07-20-jsonl-storage-identity.md
 /agent-note-bind-jsonl-session-identity-before-mutation:
-  en: 1d52db2391f1433e
-  zh: 3bcb9dca6b77bfdd
+  en: 7fd838ad9c5a7935
+  zh: ed6576252603ba9e
 /agent-note-bind-jsonl-session-identity-before-mutation/problem:
   en: 960d783083269ddd
   zh: ef52b53d99b520d1

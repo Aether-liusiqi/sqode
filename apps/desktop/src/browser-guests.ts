@@ -32,7 +32,7 @@ export class DesktopBrowserGuests {
     }
     let partition = this.partitions.get(workspace)
     if (partition === undefined) {
-      partition = `dsh-sidebar-browser-${randomUUID()}`
+      partition = `sqhsidebar-browser-${randomUUID()}`
       this.configureSession(session.fromPartition(partition))
       this.partitions.set(workspace, partition)
     }

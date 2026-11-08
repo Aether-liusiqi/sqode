@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-08-04-claude-code-and-codex-subagent-backends.md
 /agent-note-claude-code-and-codex-subagent-backends:
-  en: 0f3599cefa53ad5b
-  zh: 988c28cdd9ee4e61
+  en: 4815f89cf1ee1849
+  zh: 97244c1898f1eb6e
 /agent-note-claude-code-and-codex-subagent-backends/problem:
-  en: dbd5758c1c46b303
-  zh: ca5b8479f4358c9b
+  en: 90c615720cb25f29
+  zh: a2f649d191c7114c
 /agent-note-claude-code-and-codex-subagent-backends/decision:
-  en: 5e152a1b638b4edd
-  zh: 4115892ba3467315
+  en: 877a0f26bb66fbf8
+  zh: 5c2c32daa2b72d17
 /agent-note-claude-code-and-codex-subagent-backends/decision/ownership-and-lifecycle:
   en: 544082690ace64bb
   zh: 4c360dc374604a43
@@ -27,5 +27,5 @@
   en: 10b5b282fac03988
   zh: bf9fb4899f2c8e16
 /agent-note-claude-code-and-codex-subagent-backends/consequences:
-  en: a42c8346ed8c7f93
-  zh: 4aaf9205b0022615
+  en: 104acee36950eadc
+  zh: 43ff4fd4605c42cb

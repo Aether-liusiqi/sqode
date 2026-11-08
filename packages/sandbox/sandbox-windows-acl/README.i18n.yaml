@@ -6,8 +6,8 @@
   en: 14d3fdd57b94c86f
   zh: abcd3b4f9dd908fa
 /liusiqi-dev-sqh-sandbox-windows-acl:
-  en: 633f5cb12238b3a6
-  zh: 5045bd7478cafff0
+  en: c5cc7c824c681d55
+  zh: 76e3157e1847a350
 /liusiqi-dev-sqh-sandbox-windows-acl/summary:
   en: 43b71f9a09a4204b
   zh: 4e82f1525562f11e
@@ -27,14 +27,14 @@
   en: 289e65bddf20dd79
   zh: 7ff72ed64c4b4d1c
 /liusiqi-dev-sqh-sandbox-windows-acl/use-this-package/failures-and-recovery:
-  en: e90309be73f716fd
-  zh: ac67dd160e59ef0f
+  en: 10e60d0e01b409fb
+  zh: a5a09f55727aac55
 /liusiqi-dev-sqh-sandbox-windows-acl/understand-the-implementation:
   en: c2cde86c85c2c619
   zh: a29a114e591f9d3f
 /liusiqi-dev-sqh-sandbox-windows-acl/understand-the-implementation/mechanism:
-  en: 36597cecbc4fef68
-  zh: 36a92887bfad8c14
+  en: 6b7295792c4f53bb
+  zh: 0cd796c965c42aa1
 /liusiqi-dev-sqh-sandbox-windows-acl/understand-the-implementation/modes-and-token-lists:
   en: 9c8d9af84f9abd99
   zh: 1c82b355aa5f210f
@@ -45,14 +45,14 @@
   en: c0a377425ce71ea4
   zh: bd584b43e1e84ee1
 /liusiqi-dev-sqh-sandbox-windows-acl/understand-the-implementation/header-verification-and-source-map:
-  en: 83d2e57f1a1fb5b1
-  zh: 3037de4fdcbd1955
+  en: 1321b624b5881a93
+  zh: 0e167eee128175dd
 /liusiqi-dev-sqh-sandbox-windows-acl/further-exploration:
-  en: 7850da9522bf984b
-  zh: a9f2273a85bafcf9
+  en: d965c551fd494dfd
+  zh: 21a5be4488216688
 /liusiqi-dev-sqh-sandbox-windows-acl/model-experience:
-  en: 391b175ae3d1087a
-  zh: 61bb5511cf79322c
+  en: 2e66215a869ff87f
+  zh: bb816c431bdf5bc9
 /liusiqi-dev-sqh-sandbox-windows-acl/model-experience/kv-cache-effect:
   en: 817eb1b7de13872e
   zh: 06fe175e41e7459b

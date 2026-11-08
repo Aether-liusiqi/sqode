@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-08-shared-file-type-icons.md
 /agent-note-shared-file-type-icons:
-  en: d83f437754356503
-  zh: 7f5b673537312d8c
+  en: ee8e490d744dfcc4
+  zh: 53d2a2725080271f
 /agent-note-shared-file-type-icons/problem:
   en: 05be941b96126075
   zh: eed2e2f17d71df7a
 /agent-note-shared-file-type-icons/decision:
-  en: 8808a4c9cb2bb68b
-  zh: 2b9fb28101f2c586
+  en: 74222f0d91524526
+  zh: 5910977e2c57b728
 /agent-note-shared-file-type-icons/alternatives-considered:
   en: 67dc36a02b841541
   zh: cf262c343957ff69

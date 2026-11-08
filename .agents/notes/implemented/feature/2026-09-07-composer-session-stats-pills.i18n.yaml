@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-07-composer-session-stats-pills.md
 /agent-note-composer-session-stats-two-icon-pills-with-click-open-stat-dialogs:
-  en: 76e613674da56884
-  zh: 4c9c5d750eace3e0
+  en: 30e1581fe2d307f9
+  zh: 16f499c0f1ab4bdd
 /agent-note-composer-session-stats-two-icon-pills-with-click-open-stat-dialogs/problem:
   en: 654462fa4eeb58dc
   zh: 7c9cd57947ab8639
 /agent-note-composer-session-stats-two-icon-pills-with-click-open-stat-dialogs/decision:
-  en: 27eb1718cd80b39b
-  zh: e39576842a3578c1
+  en: 55f8bc4745e250f6
+  zh: 3dc7494cf1947c32
 /agent-note-composer-session-stats-two-icon-pills-with-click-open-stat-dialogs/alternatives-considered:
   en: 7798b1fb9824b920
   zh: 7e75cd154ab58a0b
 /agent-note-composer-session-stats-two-icon-pills-with-click-open-stat-dialogs/consequences:
-  en: c078fb870536eec6
-  zh: 17076d824c74ee9d
+  en: 6d78a5815e10d232
+  zh: 3c12381ac45fb760

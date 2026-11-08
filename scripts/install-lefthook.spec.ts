@@ -515,7 +515,7 @@ syncBuiltinESMExports()
   it('refuses dormant repository extensions before upgrading the repository format', async () => {
     const fixture = createFixture()
     const commonConfig = join(commonDirectory(fixture), 'config')
-    git(fixture, fixture.main, ['config', 'extensions.dshUnknown', 'true'])
+    git(fixture, fixture.main, ['config', 'extensions.sqhUnknown', 'true'])
     expect(gitResult(fixture, fixture.main, ['status', '--porcelain']).status).toBe(0)
 
     const result = await runInstaller(fixture, fixture.main)

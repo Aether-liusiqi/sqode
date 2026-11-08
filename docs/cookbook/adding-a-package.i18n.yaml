@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/cookbook/adding-a-package.md
 /cookbook-adding-a-workspace-package:
-  en: d5626d468913b01b
-  zh: ab951b565dc75e5e
+  en: 7c288c122174ceea
+  zh: 857aca81f3903fcf
 /cookbook-adding-a-workspace-package/1-create-the-package:
   en: 5a582fbfdf12ff9a
   zh: eba67442341595b1
 /cookbook-adding-a-workspace-package/2-register-it-in-the-root-configs:
-  en: 412b44b552659c63
-  zh: feb6aa6284369526
+  en: 9da7bbeb60accac1
+  zh: 28a03ed817301a7a
 /cookbook-adding-a-workspace-package/3-decide-the-package-topology:
   en: 455fd18c17d2e813
   zh: 610f17d2ca673492
@@ -18,11 +18,11 @@
   en: 17147ee3806150b3
   zh: 8a4c95f575c0c4bd
 /cookbook-adding-a-workspace-package/4-write-the-package-readme:
-  en: f4c73e33a22e1200
-  zh: 3ecc6f9439a9e3de
+  en: e68e324aa782422b
+  zh: 23c65bfb1d3031e5
 /cookbook-adding-a-workspace-package/5-add-optional-plugin-display-metadata:
-  en: 008f60daa242b2cc
-  zh: 0ebf372479b5f859
+  en: 49b0eb8dc33a5101
+  zh: 767f1d319ae93448
 /cookbook-adding-a-workspace-package/6-verify:
-  en: 80c7fb90b1175aae
-  zh: 2ba37962dbc57299
+  en: 0935b245ca9fc3dc
+  zh: cd48584a85d364b4

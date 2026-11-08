@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/testing/2026-09-27-web-lane-assertions-name-their-input-state.md
 /agent-note-web-lane-assertions-name-their-input-state:
-  en: 6b04734ce8fbeb4a
-  zh: 73db3bd3ac5985dc
+  en: ef6a62b24ff002fc
+  zh: 76511594a980b750
 /agent-note-web-lane-assertions-name-their-input-state/problem:
   en: 12391509553e0152
   zh: 86d02884ae9c1b09
@@ -12,11 +12,11 @@
   en: c6a8e79707975429
   zh: 4fe1f6abd6fd4c1e
 /agent-note-web-lane-assertions-name-their-input-state/alternatives-considered:
-  en: 6cd5940f55500c3d
-  zh: 4a2e13717e87b783
+  en: 8edb6dd3740b5931
+  zh: af71c352130289d8
 /agent-note-web-lane-assertions-name-their-input-state/verification:
-  en: aa7c49b1eaee604e
-  zh: 786461db5100f1b0
+  en: 48e4e442a2bfea39
+  zh: b7ff9e24315b3472
 /agent-note-web-lane-assertions-name-their-input-state/consequences:
-  en: ad3d8ec4b171b04a
-  zh: e254cc9515b33e0e
+  en: 8885a98302ace0a2
+  zh: 30b2e1ee2a27e1b1

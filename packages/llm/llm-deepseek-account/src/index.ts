@@ -22,7 +22,7 @@ export function apply(ctx: Context, config: Config): void {
     const token = await account?.resolveToken(connection.baseURL)
     if (token === undefined) throw new LlmError('Sign in to DeepSeek to use the account provider. The request destination must allow account authentication.', 'ACCOUNT_SIGN_IN_REQUIRED')
     return {
-      headers: { 'x-dsh-auth-token': token },
+      headers: { 'x-sqhauth-token': token },
       onRequestError: async (error) => {
         if (!(error instanceof LlmError)) return error
         if (error.code === QUOTA_EXCEEDED_CODE) {

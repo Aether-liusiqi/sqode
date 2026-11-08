@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-07-31-fail-loud-releases-the-terminal.md
 /agent-note-fail-loud-releases-the-terminal-before-exiting:
-  en: c070ae81b744a18b
-  zh: 8379e89b11e263c4
+  en: 3d14fe0bf080442d
+  zh: ac8d42c1e2f5ebae
 /agent-note-fail-loud-releases-the-terminal-before-exiting/problem:
-  en: 0c39e889c5781dcb
-  zh: 6f26f2e32a86c391
+  en: 1d84eb7bcd792805
+  zh: 9498015a8d4d5f2d
 /agent-note-fail-loud-releases-the-terminal-before-exiting/decision:
-  en: 489770f63297ddee
-  zh: dbeb136d7ec79ea1
+  en: 88cad0dd82b8fb70
+  zh: 515555a8ebfe79e3
 /agent-note-fail-loud-releases-the-terminal-before-exiting/alternatives-considered:
   en: 5ee239978e8f1ece
   zh: 55267740c7726c25

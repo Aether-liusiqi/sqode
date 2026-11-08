@@ -257,10 +257,10 @@ async function runNpm(args: readonly string[], cwd: string, env: NodeJS.ProcessE
 }
 
 async function refreshResolution(): Promise<void> {
-  const temporary = await mkdtemp(join(tmpdir(), 'dsh-dependency-catalog-'))
+  const temporary = await mkdtemp(join(tmpdir(), 'sqhdependency-catalog-'))
   try {
     writeFileSync(join(temporary, 'package.json'), `${JSON.stringify({
-      name: 'dsh-dependency-catalog', version: '0.0.0', private: true, dependencies: { [PACKAGE]: 'latest' },
+      name: 'sqhdependency-catalog', version: '0.0.0', private: true, dependencies: { [PACKAGE]: 'latest' },
     }, null, 2)}\n`)
     const environment = createNpmResolutionEnvironment(temporary)
     const npm = await runNpm(['--version'], temporary, environment)

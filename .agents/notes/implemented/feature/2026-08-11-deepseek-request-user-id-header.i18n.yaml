@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-08-11-deepseek-request-user-id-header.md
 /agent-note-deepseek-request-user-and-session-identity-headers:
-  en: 6888d1c6a57a6839
-  zh: e3817ccbcd782a44
+  en: 449d26343eb1be7e
+  zh: 70942f89b12bb2b8
 /agent-note-deepseek-request-user-and-session-identity-headers/problem:
   en: fdeb3bc22bab88c0
   zh: 089ea4713776fb7a
 /agent-note-deepseek-request-user-and-session-identity-headers/decision:
-  en: a38a212416709346
-  zh: 00e29b742eed0405
+  en: 0c50e9448d7e3a24
+  zh: 151bb6726a207102
 /agent-note-deepseek-request-user-and-session-identity-headers/verification:
   en: 3984cb1cb953605e
   zh: 59e06d6eac8070d7

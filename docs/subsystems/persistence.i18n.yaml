@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/persistence.md
 /session-persistence:
-  en: 74a3e9ebf8b61ea4
-  zh: f815ac96153f5f05
+  en: 80adcc8ba6c5325e
+  zh: 7b22da96f55b5d94
 /session-persistence/sessionhandle-one-open-channel-onto-a-stored-session:
   en: 283765de86ff454d
   zh: ef8fcf55a3071243
@@ -12,8 +12,8 @@
   en: a751d1952a47d938
   zh: f0ae8447fdc26dfb
 /session-persistence/crash-recovery-preserves-an-interrupted-turn:
-  en: 534044a0ce482d52
-  zh: d2e8a7dfeb066946
+  en: 005268104f0cbd97
+  zh: 7d323ee3bfca1628
 /session-persistence/sessionlocation-refusal-diagnostics-artifact-target:
   en: 886589f052a916d7
   zh: 2ca126aa700c933c
@@ -21,8 +21,8 @@
   en: 5795ae03d2d163cd
   zh: a46ceeb22cfbb6a1
 /session-persistence/format-refusal-logs-a-build-cannot-faithfully-read:
-  en: fa822e9185bf758b
-  zh: 7fcdbe2f69f848b9
+  en: 87968cfedd310167
+  zh: 800522177c89b281
 /session-persistence/createsessionoptions-seeding-and-metadata:
   en: 627c1f7798802ae7
   zh: ebfe7fb5a7f981b9

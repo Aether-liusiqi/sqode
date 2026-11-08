@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-03-root-marker-metadata-failures.md
 /agent-note-root-marker-metadata-failures:
-  en: c351be96177b2ea5
-  zh: a094d77aaffd1fbe
+  en: 6b8b09f3d227ab4d
+  zh: 2fe70a32c7f73b4b
 /agent-note-root-marker-metadata-failures/problem:
   en: 3d88594600ede55b
   zh: fd9e36f5b72d8aee

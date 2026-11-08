@@ -6,8 +6,8 @@
   en: 51d99b2500db958f
   zh: 91f2b113ba7989fd
 /liusiqi-dev-sqh-system-prompt:
-  en: d56b3bb6af70719c
-  zh: 17c7cc3925a04809
+  en: 9b02bae688d2613b
+  zh: 9fd0b7f45d1dcaff
 /liusiqi-dev-sqh-system-prompt/summary:
   en: 2341e5ac67760105
   zh: f21e79b84d1149cf
@@ -18,8 +18,8 @@
   en: a352cd9313facaba
   zh: c40e103bd7be2d20
 /liusiqi-dev-sqh-system-prompt/use-this-package/configure-the-prompt:
-  en: 6d4bf1bfe274da5a
-  zh: 810d332636de7f0e
+  en: e2b7440458431530
+  zh: bcbc66feb5fabc4a
 /liusiqi-dev-sqh-system-prompt/use-this-package/contribute-a-prompt-section:
   en: 15d70e3b8eddd636
   zh: a3a67cab60eee86f
@@ -48,8 +48,8 @@
   en: 1100ab1dfe961631
   zh: c510275c893951b4
 /liusiqi-dev-sqh-system-prompt/further-exploration:
-  en: 108d1b4cca466bc7
-  zh: e1275966f83c14f9
+  en: fb146157a0c5ebf9
+  zh: 1648d3bceca02049
 /liusiqi-dev-sqh-system-prompt/model-experience:
   en: 215e7ba838619b7b
   zh: a311da3843709f90
@@ -66,14 +66,14 @@
   en: 29722e212137deaa
   zh: 92cd0f1a16b10315
 /liusiqi-dev-sqh-system-prompt/model-experience/system-prompt/kv-cache-effect:
-  en: ae980c28b57dc060
-  zh: 331eea5b204fa9ac
+  en: 8a4bf3f6c2360a81
+  zh: a181d3acb1ebf7d2
 /liusiqi-dev-sqh-system-prompt/model-experience/tool-schemas:
   en: 3039bc5e7a796b21
   zh: 6b7a9eaf69c9ea53
 /liusiqi-dev-sqh-system-prompt/model-experience/tool-schemas/what-the-model-sees:
-  en: a983ef220593cf73
-  zh: 28770612ffc1be60
+  en: e9d8446812681873
+  zh: 1e997fab9c12ba11
 /liusiqi-dev-sqh-system-prompt/model-experience/tool-schemas/token-effect:
   en: f3a7d374c55e1720
   zh: 0ee48af678cb875f

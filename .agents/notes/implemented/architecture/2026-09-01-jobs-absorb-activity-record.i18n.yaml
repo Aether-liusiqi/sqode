@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-01-jobs-absorb-activity-record.md
 /agent-note-the-job-registry-absorbs-the-observation-record-the-standalone-activity-seam-is-removed:
-  en: f407477a58d20fb6
-  zh: b65bc22b9e1e21c3
+  en: 2964dfb3b7fb6b11
+  zh: 6c5ecfe751c0ef21
 /agent-note-the-job-registry-absorbs-the-observation-record-the-standalone-activity-seam-is-removed/problem:
-  en: a4008f3bcd1e3bd0
-  zh: fa8432ddc47003c4
+  en: a4df0e03e62ace2e
+  zh: 8364fbfe07ebe42e
 /agent-note-the-job-registry-absorbs-the-observation-record-the-standalone-activity-seam-is-removed/decision:
   en: c7ada6a40d92daf4
   zh: bd16a02f295c4ae2
 /agent-note-the-job-registry-absorbs-the-observation-record-the-standalone-activity-seam-is-removed/alternatives-considered:
-  en: 00067552f2fcb740
-  zh: aa23082899db1a1a
+  en: 652a4030a097445b
+  zh: 6a2eea98ab0bc817
 /agent-note-the-job-registry-absorbs-the-observation-record-the-standalone-activity-seam-is-removed/review-corrections:
   en: 93db5342c848587a
   zh: d4e67a47d573eb39

@@ -241,7 +241,7 @@ export function createWorkerHost(options: WorkerHostOptions): WorkerHost {
 
       const { patches, profile } = bootPatches(loader, mounted, configPath, root)
       const profileConfig = join(profile.dir, 'cordis.yml')
-      const ctx = await appBoot.boot('dsh-webworker', profileConfig, patches, (hostCtx) => {
+      const ctx = await appBoot.boot('sqhwebworker', profileConfig, patches, (hostCtx) => {
         hostCtx.provide('profileContext', profile)
         // Before any entry mounts: the Loader would otherwise fall back to the
         // runtime's own dynamic import for every row.
@@ -432,7 +432,7 @@ function bootPatches(
   const appBoot = loader.load(loader.resolve('@liusiqi-dev/sqh-app-boot', root)) as {
     readProfilePatches(binName: string, profile: ProfileContext): unknown[]
   }
-  return { patches: appBoot.readProfilePatches('dsh-webworker', profile), profile }
+  return { patches: appBoot.readProfilePatches('sqhwebworker', profile), profile }
 }
 
 /**

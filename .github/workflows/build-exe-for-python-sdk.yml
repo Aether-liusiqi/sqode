@@ -321,7 +321,7 @@ jobs:
           SDK_WHEEL: deepseek_harness_sdk-${{ needs.plan.outputs.version }}-py3-none-any.whl
         run: |
           set -euo pipefail
-          venv="$(python -c 'import tempfile; print(tempfile.mkdtemp(prefix="dsh-sdk-smoke-"))')"
+          venv="$(python -c 'import tempfile; print(tempfile.mkdtemp(prefix="sqhsdk-smoke-"))')"
           python -m venv "$venv"
           smoke_python="$venv/bin/python"
           "$smoke_python" -m pip install \
@@ -337,7 +337,7 @@ jobs:
           RUNTIME_WHEEL: ${{ steps.runtime-windows.outputs.wheel }}
           SDK_WHEEL: deepseek_harness_sdk-${{ needs.plan.outputs.version }}-py3-none-any.whl
         run: |
-          $venv = (& python -c 'import tempfile; print(tempfile.mkdtemp(prefix="dsh-sdk-smoke-"))').Trim()
+          $venv = (& python -c 'import tempfile; print(tempfile.mkdtemp(prefix="sqhsdk-smoke-"))').Trim()
           python -m venv $venv
           $smokePython = Join-Path $venv 'Scripts\python.exe'
           & $smokePython -m pip install "dist-python/$env:SDK_WHEEL" "dist-python/$env:RUNTIME_WHEEL"
@@ -348,7 +348,7 @@ jobs:
         if: runner.os != 'Windows'
         run: |
           set -euo pipefail
-          blackbox_root="$(python -c 'import tempfile; print(tempfile.mkdtemp(prefix="dsh-sdk-blackbox-"))')"
+          blackbox_root="$(python -c 'import tempfile; print(tempfile.mkdtemp(prefix="sqhsdk-blackbox-"))')"
           cd "$blackbox_root"
           env -u PYTHONPATH -u SQODE_RUNTIME_MODE \
             "${{ steps.smoke-venv-posix.outputs.python }}" \
@@ -360,7 +360,7 @@ jobs:
         if: runner.os == 'Windows'
         shell: pwsh
         run: |
-          $blackboxRoot = (& python -c 'import tempfile; print(tempfile.mkdtemp(prefix="dsh-sdk-blackbox-"))').Trim()
+          $blackboxRoot = (& python -c 'import tempfile; print(tempfile.mkdtemp(prefix="sqhsdk-blackbox-"))').Trim()
           Remove-Item Env:PYTHONPATH -ErrorAction SilentlyContinue
           Remove-Item Env:SQODE_RUNTIME_MODE -ErrorAction SilentlyContinue
           Push-Location $blackboxRoot
@@ -414,7 +414,7 @@ jobs:
           DEEPSEEK_BASE_URL: https://api.deepseek.com/anthropic
         run: |
           set -euo pipefail
-          blackbox_root="$(python -c 'import tempfile; print(tempfile.mkdtemp(prefix="dsh-sdk-blackbox-live-"))')"
+          blackbox_root="$(python -c 'import tempfile; print(tempfile.mkdtemp(prefix="sqhsdk-blackbox-live-"))')"
           cd "$blackbox_root"
           env -u PYTHONPATH -u SQODE_RUNTIME_MODE \
             "${{ steps.smoke-venv-posix.outputs.python }}" \
@@ -434,7 +434,7 @@ jobs:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY_EXTERNAL }}
           DEEPSEEK_BASE_URL: https://api.deepseek.com/anthropic
         run: |
-          $blackboxRoot = (& python -c 'import tempfile; print(tempfile.mkdtemp(prefix="dsh-sdk-blackbox-live-"))').Trim()
+          $blackboxRoot = (& python -c 'import tempfile; print(tempfile.mkdtemp(prefix="sqhsdk-blackbox-live-"))').Trim()
           Remove-Item Env:PYTHONPATH -ErrorAction SilentlyContinue
           Remove-Item Env:SQODE_RUNTIME_MODE -ErrorAction SilentlyContinue
           Push-Location $blackboxRoot
@@ -489,12 +489,12 @@ jobs:
             *) echo "::error::Unsupported Linux runner architecture $RUNNER_ARCH"; exit 1 ;;
           esac
           docker run --rm -e RUNTIME_WHEEL -e SDK_WHEEL -e SQODE_TELEMETRY_DISABLED -v "$PWD:/work" -w /work "$image" bash -euxo pipefail -c '
-            /opt/python/cp310-cp310/bin/python -m venv /tmp/dsh-sdk
-            /tmp/dsh-sdk/bin/python -m pip install "/work/dist-python/$SDK_WHEEL" "/work/dist-python/$RUNTIME_WHEEL"
-            mkdir -p /tmp/dsh-sdk-manylinux-smoke
-            cd /tmp/dsh-sdk-manylinux-smoke
-            env -u PYTHONPATH -u SQODE_RUNTIME_MODE /tmp/dsh-sdk/bin/python /work/scripts/smoke-python-runtime.py --scenario sdk-default --installed-wheel
-            env -u PYTHONPATH -u SQODE_RUNTIME_MODE /tmp/dsh-sdk/bin/python /work/scripts/smoke-python-runtime.py --scenario sdk-mcp --installed-wheel
+            /opt/python/cp310-cp310/bin/python -m venv /tmp/sqhsdk
+            /tmp/sqhsdk/bin/python -m pip install "/work/dist-python/$SDK_WHEEL" "/work/dist-python/$RUNTIME_WHEEL"
+            mkdir -p /tmp/sqhsdk-manylinux-smoke
+            cd /tmp/sqhsdk-manylinux-smoke
+            env -u PYTHONPATH -u SQODE_RUNTIME_MODE /tmp/sqhsdk/bin/python /work/scripts/smoke-python-runtime.py --scenario sdk-default --installed-wheel
+            env -u PYTHONPATH -u SQODE_RUNTIME_MODE /tmp/sqhsdk/bin/python /work/scripts/smoke-python-runtime.py --scenario sdk-mcp --installed-wheel
           '
 
       - uses: actions/upload-artifact@v7

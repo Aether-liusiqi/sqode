@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/simplification/2026-09-05-base-default-file-editor.md
 /agent-note-shared-base-default-file-editor-selection:
-  en: 2adaf509a18a68eb
-  zh: 3103eec286980735
+  en: f4df855bfa13ac19
+  zh: 0fe591e78ba53cfa
 /agent-note-shared-base-default-file-editor-selection/problem:
   en: b9cf9c91689aeca7
   zh: 4fce9354bb6c2af0
 /agent-note-shared-base-default-file-editor-selection/decision:
-  en: 685ddb9dc4b35acc
-  zh: df1bc4ce7a389042
+  en: 87342914eb803994
+  zh: 5f2f5563d799284e
 /agent-note-shared-base-default-file-editor-selection/alternatives-considered:
   en: 172ed2cdc1d47e20
   zh: e12bbb0576244f43

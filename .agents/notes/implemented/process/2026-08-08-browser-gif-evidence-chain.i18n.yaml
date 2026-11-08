@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-08-08-browser-gif-evidence-chain.md
 /agent-note-browser-gifs-preserve-one-evidence-chain:
-  en: acd1abc5215025db
-  zh: 13d04f81ebb47d18
+  en: 227c62fc51dc230f
+  zh: e57bd2fa55bfc2bf
 /agent-note-browser-gifs-preserve-one-evidence-chain/problem:
   en: 427edb924ca3106e
   zh: 2115278719f9fd25

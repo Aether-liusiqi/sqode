@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/testing/2026-09-06-client-assembly-test-line.md
 /agent-note-whole-client-test-tier-over-an-endpoint-named-remote-mock:
-  en: f11c0f43c9f9be09
-  zh: 991625645ac91f06
+  en: f31e4f83d5e50bad
+  zh: 1d9cba2823b9cda8
 /agent-note-whole-client-test-tier-over-an-endpoint-named-remote-mock/problem:
   en: 33c0c3670dae25c3
   zh: 4d91a11eea9bbb8f
 /agent-note-whole-client-test-tier-over-an-endpoint-named-remote-mock/decision:
-  en: 33a918ae2c0c312a
-  zh: 5865bdfcdeee252e
+  en: c069ecd26b4d0f08
+  zh: da86b37a0ba5cec1
 /agent-note-whole-client-test-tier-over-an-endpoint-named-remote-mock/product-exports-added-for-the-tier:
   en: b45dd80dbe278c5f
   zh: cdfb145cd8fab276

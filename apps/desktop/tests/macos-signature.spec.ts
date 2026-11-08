@@ -54,14 +54,14 @@ describe('desktop macOS release signature', () => {
     expect(config.extraResources).toHaveLength(2)
     expect(config.extraResources[0]?.to).toBe('runtime')
     expect(portablePath(config.extraResources[0]?.from ?? '')).toContain('/.desktop-build/targets/mac-arm64/runtime')
-    const [dshFiles, dshNodeModules] = config.files.slice(-2)
-    if (!dshFiles || !dshNodeModules || typeof dshFiles === 'string' || typeof dshNodeModules === 'string') {
+    const [sqhFiles, sqhNodeModules] = config.files.slice(-2)
+    if (!sqhFiles || !sqhNodeModules || typeof sqhFiles === 'string' || typeof sqhNodeModules === 'string') {
       throw new Error('desktop SQH resources must use electron-builder file mappings')
     }
-    expect(portablePath(dshFiles.from)).toContain('/.desktop-build/targets/mac-arm64/sqh')
-    expect(dshFiles.to).toBe('sqh')
-    expect(portablePath(dshNodeModules.from)).toContain('/.desktop-build/targets/mac-arm64/sqh/node_modules')
-    expect(dshNodeModules.to).toBe('sqh/node_modules')
+    expect(portablePath(sqhFiles.from)).toContain('/.desktop-build/targets/mac-arm64/sqh')
+    expect(sqhFiles.to).toBe('sqh')
+    expect(portablePath(sqhNodeModules.from)).toContain('/.desktop-build/targets/mac-arm64/sqh/node_modules')
+    expect(sqhNodeModules.to).toBe('sqh/node_modules')
     expect(config.asarUnpack).toEqual(expect.arrayContaining([
       '**/*.{node,dylib,dll,so,exe}',
       '**/@vscode/ripgrep-*/bin/rg',

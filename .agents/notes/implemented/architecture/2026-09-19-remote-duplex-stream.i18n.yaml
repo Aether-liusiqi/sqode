@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-19-remote-duplex-stream.md
 /agent-note-remote-duplex-stream-one-kind-of-stream-an-uplink-channel-and-an-invocation-context:
-  en: c52d4b55f470a50f
-  zh: d2d446516b1011bc
+  en: 1e223c526ebe4064
+  zh: 9bad54a9800e1321
 /agent-note-remote-duplex-stream-one-kind-of-stream-an-uplink-channel-and-an-invocation-context/problem:
   en: 70a969dce3283824
   zh: 18c61bf840a6518a
@@ -138,5 +138,5 @@
   en: 3b99a327464edc3e
   zh: dcffdc75369925dc
 /agent-note-remote-duplex-stream-one-kind-of-stream-an-uplink-channel-and-an-invocation-context/related:
-  en: f8995f478dc1d478
-  zh: 96621e80a4d3cefc
+  en: 32e80f36a54779af
+  zh: 2c5ad48ff6fc8942

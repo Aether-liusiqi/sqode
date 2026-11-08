@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-08-24-activity-observation-seam.md
 /agent-note-the-activity-observation-seam-ctx-activities-and-live-output-streaming-to-the-web-client:
-  en: 7fe6230c2327e0b5
-  zh: 13a07f7926f6861c
+  en: 1609c3b4824379bc
+  zh: facedc6bf7334562
 /agent-note-the-activity-observation-seam-ctx-activities-and-live-output-streaming-to-the-web-client/problem:
-  en: 8b50b64ed5a852bd
-  zh: 21d651e0109dc641
+  en: 6a055afeb51bf7e7
+  zh: acbf5574cee63d2d
 /agent-note-the-activity-observation-seam-ctx-activities-and-live-output-streaming-to-the-web-client/decision:
   en: 778a6c456df78f2a
   zh: baf727d810b6c5de

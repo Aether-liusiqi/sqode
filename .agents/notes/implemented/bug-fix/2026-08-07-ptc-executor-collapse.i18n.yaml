@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-08-07-ptc-executor-collapse.md
 /agent-note-ptc-mode-collapses-the-executor-not-just-the-wire:
-  en: 7958ca7ba1201af2
-  zh: bc7f74c91444eed6
+  en: 7619fb07b5fe5f84
+  zh: 2f0be095275919fd
 /agent-note-ptc-mode-collapses-the-executor-not-just-the-wire/problem:
   en: a6fcd5114ffde259
   zh: 05940375a30756d0
 /agent-note-ptc-mode-collapses-the-executor-not-just-the-wire/decision:
-  en: 66f55639766a6d02
-  zh: a8819b045463a927
+  en: dac7a4b914637e5a
+  zh: 7cbca3e6020e77ef
 /agent-note-ptc-mode-collapses-the-executor-not-just-the-wire/alternatives-considered:
   en: 6119e2aff3b6be5a
   zh: e01a6c669a9ec6aa

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-12-agent-scope-runtime-design.md
 /agent-note-agent-scope-runtime-design-and-correctness:
-  en: b63ecbd21fc1f427
-  zh: 4990d96d76888802
+  en: 0936dc249bed5bc6
+  zh: 4e19e674e337cb2d
 /agent-note-agent-scope-runtime-design-and-correctness/problem:
-  en: ae7b688bd991a6df
-  zh: 73b6b28755852054
+  en: 90e22f41aec4b9f8
+  zh: aef74a9de8e62583
 /agent-note-agent-scope-runtime-design-and-correctness/decision:
-  en: cfd6abca8404c7d4
-  zh: a9372aae85e49f55
+  en: befa1a3d6d3d827d
+  zh: 44cbc267019e2983
 /agent-note-agent-scope-runtime-design-and-correctness/cordis-model-context-fiber-effect-receiver-and-waterfall:
   en: 4d4bdb629a57139d
   zh: 7b4d21d9eb42d94b
@@ -42,14 +42,14 @@
   en: 092b49671e83df98
   zh: 330ea6e45c4deb99
 /agent-note-agent-scope-runtime-design-and-correctness/agent-creation-one-transaction-owns-the-complete-operation/the-transaction-owns-preparation-before-awaiting-it:
-  en: 3940920908ec6066
-  zh: 888e36ca43611d30
+  en: cd21a36b65c93ce4
+  zh: 4874560f2f2ff1e9
 /agent-note-agent-scope-runtime-design-and-correctness/agent-creation-one-transaction-owns-the-complete-operation/setup-is-trusted-composition-inside-a-private-world:
   en: 40a73b8eede856ee
   zh: 7dab8f2548cb92ea
 /agent-note-agent-scope-runtime-design-and-correctness/agent-creation-one-transaction-owns-the-complete-operation/publication-has-one-ordered-commit-path:
-  en: 227eff7a5adacd0e
-  zh: b9ee423c2dd4212f
+  en: 4c19e01cf0b2f936
+  zh: 2769d7a04acabc0e
 /agent-note-agent-scope-runtime-design-and-correctness/agent-creation-one-transaction-owns-the-complete-operation/teardown-preserves-work-before-revoking-registrations:
   en: 1cbe77cff192815d
   zh: 7f517936a8aa469e
@@ -69,8 +69,8 @@
   en: 456ac0359d3c02f6
   zh: 9099e15d22139751
 /agent-note-agent-scope-runtime-design-and-correctness/tools-and-prompts-one-view-authoritative-assembly-committed-outcomes/one-resolver-defines-the-tool-view:
-  en: 120e1c79f0b99b1a
-  zh: 1c21a5b1d6b08235
+  en: 44a7aa4262866cb9
+  zh: 6bb4df107644f10b
 /agent-note-agent-scope-runtime-design-and-correctness/tools-and-prompts-one-view-authoritative-assembly-committed-outcomes/tool-execution-owns-identity-and-boundary-materialization:
   en: 41f1f2ad73d83d73
   zh: e6bff63958ede05e
@@ -102,14 +102,14 @@
   en: effbb0acf7f66bed
   zh: e0cc9ad6ac0777de
 /agent-note-agent-scope-runtime-design-and-correctness/workflows-and-acp-processes-retain-only-independent-async-facts/workflow-children-are-pending-starts-or-published-records:
-  en: 9f05eed800f3413c
-  zh: 8230a28a0f94bffa
+  en: 663203a4b55cedb7
+  zh: 63bfaa21e524f369
 /agent-note-agent-scope-runtime-design-and-correctness/workflows-and-acp-processes-retain-only-independent-async-facts/terminal-result-and-physical-cleanup-remain-separate:
   en: 5ad141c6df9f4fc3
   zh: 63effa4f14f3c530
 /agent-note-agent-scope-runtime-design-and-correctness/workflows-and-acp-processes-retain-only-independent-async-facts/acp-prompt-settlement-does-not-depend-on-update-delivery:
-  en: d39f73f50f0370bd
-  zh: 3889c1db46de560e
+  en: a8226ddc5a2b9dc0
+  zh: 85d2392880b9d01f
 /agent-note-agent-scope-runtime-design-and-correctness/correctness-enforcement:
   en: 840564e766d2f05c
   zh: 059243afea7eb9c0
@@ -123,8 +123,8 @@
   en: d0ddc5f38289225d
   zh: 781d910228d5e334
 /agent-note-agent-scope-runtime-design-and-correctness/alternatives-considered:
-  en: 5eef7873a795c8f0
-  zh: 3e8ba109a6e29ba5
+  en: 38e013a76a9e4d21
+  zh: 6a808721f7955bb9
 /agent-note-agent-scope-runtime-design-and-correctness/alternatives-considered/use-a-transparent-proxy-as-the-scope-carrier:
   en: 199c7345a237e7e9
   zh: b262d5ad0c7cb562
@@ -153,5 +153,5 @@
   en: eb2001592d7bd7b1
   zh: e534dbb6daa9af32
 /agent-note-agent-scope-runtime-design-and-correctness/consequences/costs-and-limits:
-  en: e9383713d56b9e10
-  zh: d3ab00aea8ecf4e0
+  en: 1cac5c16240ad5cc
+  zh: c7b97bd62d6ea392

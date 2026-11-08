@@ -77,7 +77,7 @@ export interface Config {
 }
 
 export const Config: z<Config> = z.object({
-  providerName: z.string().default('dsh-sdk'),
+  providerName: z.string().default('sqhsdk'),
   sqhBin: z.string(),
   profile: z.string().default('sdk'),
   patches: z.array(z.string()).default([]),

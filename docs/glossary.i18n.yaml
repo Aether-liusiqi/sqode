@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/glossary.md
 /glossary:
-  en: e484ecce82b83294
-  zh: 1dc4ad30b3a2a5e5
+  en: aa318e1db42e24ae
+  zh: 5d17d074c0f03bd1
 /glossary/capability-seam:
   en: a8d65853d3039d1a
   zh: f951f90c2e9366e4

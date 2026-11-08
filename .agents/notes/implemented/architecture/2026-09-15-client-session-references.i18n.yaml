@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-15-client-session-references.md
 /agent-note-client-session-references-reference-sources-and-ui-status:
-  en: 720fca3e1f085f8f
-  zh: 3480eb43eb5f0e44
+  en: 8cb18323ad455e37
+  zh: 94145f574accd887
 /agent-note-client-session-references-reference-sources-and-ui-status/problem:
   en: 0f4d2b6e8b0393dc
   zh: fe20aca8b4fd0701
@@ -12,8 +12,8 @@
   en: a15c7c13f167e5ac
   zh: 63bcc2ef60c2f344
 /agent-note-client-session-references-reference-sources-and-ui-status/decision/scope-and-ownership:
-  en: d9d52caab1468205
-  zh: 1b7665610bb025c6
+  en: a871d22d43c1c226
+  zh: fe8b31c4aad479a9
 /agent-note-client-session-references-reference-sources-and-ui-status/decision/addresses-bindings-and-references:
   en: 3743abc8bca00348
   zh: d79e6a9311f0a2fe
@@ -30,8 +30,8 @@
   en: 04802baa0147fec1
   zh: b86037bf2e4bc936
 /agent-note-client-session-references-reference-sources-and-ui-status/decision/main-area-navigation-and-presentation:
-  en: 2b7e92660c606d55
-  zh: 89032d881b8dfda5
+  en: 55b4df053fce4b63
+  zh: 654f61e66f50248c
 /agent-note-client-session-references-reference-sources-and-ui-status/decision/presets-and-creation-flows:
   en: 70ef26a3cd399b14
   zh: 5c81515ff896f91a

@@ -82,7 +82,7 @@ export function HtmlBody({
     if (!interactivePreview) setResources([])
   }, [interactivePreview, setResources])
   if (content.kind !== 'bytes') return null
-  const frameName = `dsh-sidebar-html-${tab.id}`
+  const frameName = `sqhsidebar-html-${tab.id}`
   if (!interactivePreview) return <BasicHtmlFrame data={content.data} frameName={frameName} t={t} />
   return <HtmlFrame key={resourceAddress} data={content.data} resourceAddress={resourceAddress}
     readRelated={readRelated} signal={tab.signal} frameName={frameName} addResource={addResource} setResources={setResources} t={t} />

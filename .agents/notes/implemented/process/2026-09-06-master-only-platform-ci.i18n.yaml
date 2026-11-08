@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-09-06-master-only-platform-ci.md
 /agent-note-master-only-platform-ci:
-  en: fed101c5775cbbcd
-  zh: b407efdb4c46cfe2
+  en: 94c643dee74dd8f1
+  zh: 07c5fbb3ff841861
 /agent-note-master-only-platform-ci/problem:
   en: 85cf39297a859208
   zh: c959bf7f94ebc50b
 /agent-note-master-only-platform-ci/decision:
-  en: 98b8ecd3b4cfe5e5
-  zh: 2c622950ea7afd42
+  en: 07affd55fb1be1ab
+  zh: 0afa3a3248fe2939
 /agent-note-master-only-platform-ci/alternatives-considered:
   en: 71ce7f8bb8a31323
   zh: 45f97b72eb9c6971

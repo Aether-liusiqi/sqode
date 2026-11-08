@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/rejected/architecture/2026-07-25-client-settings-locale-theme.md
 /agent-note-client-settings-locale-and-theme-layering:
-  en: ebeba4110da742d5
-  zh: 3cfc57b1eb553185
+  en: 684ad1cef2a41cb8
+  zh: 1ba6f396a6c84b22
 /agent-note-client-settings-locale-and-theme-layering/problem:
   en: 4cec7e053c53607b
   zh: 3796b79366e7ea58
 /agent-note-client-settings-locale-and-theme-layering/proposal:
-  en: 90c89ee3e2473960
-  zh: 030be30fd29e2539
+  en: c320f73ca687fd64
+  zh: 7421bc70ceb0a191
 /agent-note-client-settings-locale-and-theme-layering/proposal/first-phase-registration-surfaces:
   en: 7a4890dffd207a66
   zh: 4353be1cf48bf68d

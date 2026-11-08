@@ -3,35 +3,35 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/sidebar-right.md
 /right-sidebar:
-  en: 1225c944be06f253
-  zh: 2123278f116b82c9
+  en: e647e336a39788a7
+  zh: 03c75068581545db
 /right-sidebar/position-and-ownership:
-  en: 35e347438a6ea22f
-  zh: a33a57edd698a6ec
+  en: 64643cf081a714e7
+  zh: 37f3b168819fc4bd
 /right-sidebar/addresses:
-  en: 45b0b4bddb17f9f8
-  zh: 0e93adce068f73ee
+  en: eb3abf16b141f474
+  zh: 4b12538a49a49f5c
 /right-sidebar/tab-type-registration:
-  en: 57b2f65641f2f219
-  zh: 3078aa7cbae03592
+  en: 86f826c39629f86b
+  zh: 82063b310f4d9f2b
 /right-sidebar/navigation-ctx-sidebarright:
-  en: 3cbc4a1638e81c5f
-  zh: 0e49213f7a51f09e
+  en: dd35476cc654bce6
+  zh: 830311b5356e8d46
 /right-sidebar/slots-and-owner-props:
-  en: f58dc6ff6b0027a7
-  zh: 707722fcbd096efc
+  en: 33850a53f6d2942f
+  zh: 1a9d0c6ca89b1cb1
 /right-sidebar/document-renderers:
-  en: 2bf47a890fce175e
-  zh: 45f81c579b8939a8
+  en: f99bc04034431f23
+  zh: 212c88cb5ced984e
 /right-sidebar/resource-model:
-  en: 041c3582124233b5
-  zh: aa5292f07d2e3464
+  en: 4d81ff14d14663e3
+  zh: 64e9857a6e1ea163
 /right-sidebar/workspace-files:
-  en: b3f26608e772fca6
-  zh: 808433bf8161499f
+  en: 1cd88ccfae25bbc6
+  zh: de9c187c64ad8690
 /right-sidebar/shipped-types:
-  en: 1ab81f4c62fb6a40
-  zh: 2cfa243d28ba9755
+  en: e0acd9ccac6a0088
+  zh: 42da12bb79c68e25
 /right-sidebar/not-built:
-  en: 65e86c293eb99242
-  zh: 852dfe7713848453
+  en: 0b58e107642a2326
+  zh: a995d55a93f62151

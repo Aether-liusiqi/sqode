@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-16-sandbox-same-mode.md
 /agent-note-repeated-sandbox-modes-need-no-approval:
-  en: 85325770757063d8
-  zh: 9c55052551299ddf
+  en: 80a41da100b1b19e
+  zh: 71f7141378bf1f08
 /agent-note-repeated-sandbox-modes-need-no-approval/problem:
   en: 0d5832fd63b9cd7b
   zh: f07b20a91b92de25
 /agent-note-repeated-sandbox-modes-need-no-approval/decision:
-  en: b102948c4acbdd96
-  zh: 7220f043716d571c
+  en: ba1985f62ce0d97c
+  zh: 20040ceffc4a8a1a
 /agent-note-repeated-sandbox-modes-need-no-approval/alternatives-considered:
   en: fb337915525ed95c
   zh: d0584f998f0a3b8f

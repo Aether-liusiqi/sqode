@@ -3,29 +3,29 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/persistence-changes/releases/sqh-v0.0.1-rc.1.md
 /:
-  en: 6125f163634554a1
-  zh: 8adbf74c8db4b237
-/persistence-release-dsh-v0-0-1-rc-1:
-  en: 4f13d41cc2ae2ec3
-  zh: 8c7f8600df5c0e23
-/persistence-release-dsh-v0-0-1-rc-1/summary:
+  en: 54584b0fab2d2a26
+  zh: d32f369d7745fdaa
+/persistence-release-sqhv0-0-1-rc-1:
+  en: 7fbfc74f5daffd7e
+  zh: 81ab4018a51bcffb
+/persistence-release-sqhv0-0-1-rc-1/summary:
   en: 7501e83ff7e8b56a
   zh: 5aca9bdda6b8e5d7
-/persistence-release-dsh-v0-0-1-rc-1/table-of-contents:
+/persistence-release-sqhv0-0-1-rc-1/table-of-contents:
   en: 0ff4a6f3c6af323f
   zh: f5c7bd70cc1585c7
-/persistence-release-dsh-v0-0-1-rc-1/release-evidence:
-  en: 016fe3a1e9550b9e
-  zh: 2fc7dad56aec9d56
-/persistence-release-dsh-v0-0-1-rc-1/declaration:
+/persistence-release-sqhv0-0-1-rc-1/release-evidence:
+  en: 9843100f0308d974
+  zh: b039f4799a7bc03c
+/persistence-release-sqhv0-0-1-rc-1/declaration:
   en: af9cea43334ee692
   zh: c6c8bd0d6a17718a
-/persistence-release-dsh-v0-0-1-rc-1/structural-changes:
+/persistence-release-sqhv0-0-1-rc-1/structural-changes:
   en: aed15ef7091b8455
   zh: c44b2756c730d39b
-/persistence-release-dsh-v0-0-1-rc-1/verification:
+/persistence-release-sqhv0-0-1-rc-1/verification:
   en: 8ccca317964523b1
   zh: 2c8b3e70a3320778
-/persistence-release-dsh-v0-0-1-rc-1/dev-note:
+/persistence-release-sqhv0-0-1-rc-1/dev-note:
   en: b75c8458928b72b9
   zh: 003ba4e17b4b5269

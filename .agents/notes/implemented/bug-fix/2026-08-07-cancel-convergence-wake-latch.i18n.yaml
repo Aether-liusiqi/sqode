@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-08-07-cancel-convergence-wake-latch.md
 /agent-note-latch-wake-ups-that-land-in-the-cancel-convergence-window:
-  en: 0b877f8208b50162
-  zh: dd6b6af7d96a5f86
+  en: d26f395fd4242100
+  zh: 4b8c9f5985880cf0
 /agent-note-latch-wake-ups-that-land-in-the-cancel-convergence-window/problem:
-  en: 4539f5fa2c7dc7e4
-  zh: f7b6cbe04ca0ffc2
+  en: 13f6be7e21be2228
+  zh: 3b6ea1eb800bba6d
 /agent-note-latch-wake-ups-that-land-in-the-cancel-convergence-window/decision:
   en: 23d5dbc6b75ca908
   zh: 116ae93f6a48e6ed

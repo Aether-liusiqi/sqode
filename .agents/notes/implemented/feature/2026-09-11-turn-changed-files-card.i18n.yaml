@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-11-turn-changed-files-card.md
 /agent-note-turn-changed-files-card:
-  en: 21aea14160ab0796
-  zh: c8b389f1b684f677
+  en: 898377826ecfd300
+  zh: 6d369e8bfa337f3d
 /agent-note-turn-changed-files-card/problem:
   en: f3416b4d37371155
   zh: 52e22bd5a90358e5
 /agent-note-turn-changed-files-card/decision:
-  en: 75a1a9aa9b204844
-  zh: 941fdb3556ebe035
+  en: 1b66d3abad1d6f41
+  zh: 4628a8028490ae6e
 /agent-note-turn-changed-files-card/alternatives-considered:
-  en: 7ade7ce52c2a320d
-  zh: 18832d5f45568429
+  en: 5478f62d0c68c2d6
+  zh: 24920764d43e3f26
 /agent-note-turn-changed-files-card/consequences:
   en: 33504bcb31f30f84
   zh: c6626b532701fcc7

@@ -1,5 +1,5 @@
 # Standalone minimal SDK application. Unlike the ordinary SDK profile, this
-# bundle does not layer over dsh-base: this insert is the complete Cordis tree.
+# bundle does not layer over sqhbase: this insert is the complete Cordis tree.
 # User profile, home, and invocation patches still apply above it.
 
 - insert:
@@ -74,7 +74,7 @@
         shellDialect: pwsh
         timeoutMs: 300000
 
-    # Keep the minimal agent kernel explicit: unlike dsh-base, this profile
+    # Keep the minimal agent kernel explicit: unlike sqhbase, this profile
     # owns each service row and omits every optional producer it does not use.
     - id: timer
       name: '@liusiqi-dev/cordis-plugin-timer'

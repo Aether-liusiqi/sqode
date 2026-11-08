@@ -33,7 +33,7 @@ x-client-locale: zh_CN
 x-client-timezone-offset: 28800
 x-client-arch: x64
 x-client-update-channel: nightly
-x-client-bundled-dsh-version: 0.1.3-rc.2
+x-client-bundled-sqhversion: 0.1.3-rc.2
 ```
 
 All listed headers are required on every Desktop request; a required header may still carry an empty value, as `x-client-bundle-id` does. The values describing installed software come from the application and its release metadata, not editable UI fields.
@@ -47,7 +47,7 @@ All listed headers are required on every Desktop request; a required header may 
 | `x-client-timezone-offset` | Whole-second offset from UTC, positive east of Greenwich, sampled from the shell for every request |
 | `x-client-arch` | Windows `x64`; macOS `x64` or `arm64` |
 | `x-client-update-channel` | Initially always `nightly`, independent of version suffix |
-| `x-client-bundled-dsh-version` | Full bundled dsh version from release metadata |
+| `x-client-bundled-sqhversion` | Full bundled dsh version from release metadata |
 
 | Query | Client behavior | Initial backend behavior |
 |---|---|---|

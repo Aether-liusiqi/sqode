@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-17-session-row-menu-actions-slot.md
 /agent-note-session-row-actions-as-slot-lists:
-  en: 6c14eadc272cbe5f
-  zh: d0fb9907cddcae5a
+  en: efb1044e4f399bcf
+  zh: d5f8ee35a09ac588
 /agent-note-session-row-actions-as-slot-lists/problem:
   en: 1afb986570a4bb49
   zh: 22862e82275038b7

@@ -14,7 +14,7 @@
   "main": "lib/index.js",
   "types": "lib/types/index.d.ts",
   "bin": {
-    "dsh-pack-vfs-image": "./bin.js"
+    "sqhpack-vfs-image": "./bin.js"
   },
   "exports": {
     ".": {

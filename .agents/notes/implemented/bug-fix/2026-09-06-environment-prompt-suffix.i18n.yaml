@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-06-environment-prompt-suffix.md
 /agent-note-environment-facts-follow-reusable-prompt-instructions:
-  en: 8677e5d20233627f
-  zh: 684772490164fbdf
+  en: 52caf506f02f5a93
+  zh: a7b25c86d9964ed7
 /agent-note-environment-facts-follow-reusable-prompt-instructions/problem:
   en: 7b20207cd4dc1583
   zh: ca5014aa437a5239
 /agent-note-environment-facts-follow-reusable-prompt-instructions/decision:
-  en: 0f28a61d659c0f4d
-  zh: d2ef431d15a54d57
+  en: 2521480713f83a8f
+  zh: a580c9c0fa57354f
 /agent-note-environment-facts-follow-reusable-prompt-instructions/alternatives-considered:
   en: 9fb4ff8a8786ce2d
   zh: 25820720365b489f
@@ -18,5 +18,5 @@
   en: 212b29160c254854
   zh: e6a1ea253e8f7780
 /agent-note-environment-facts-follow-reusable-prompt-instructions/testing:
-  en: d5132186efc6afcd
-  zh: e5cc036c7c8ed68e
+  en: 887c0a2dcc4b29b6
+  zh: f1e46a54f1dd3917

@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-14-docs-mermaid-viewer.md
 /agent-note-documentation-diagram-and-image-viewer:
-  en: c43de97ff7fbe82d
-  zh: 5e2ecb9d39255ad7
+  en: cb92c04bbf2fafbd
+  zh: 3a0a8c78c44af07a
 /agent-note-documentation-diagram-and-image-viewer/problem:
   en: 3630dd02a8e8dfdf
   zh: f25b00903e05bd05

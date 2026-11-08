@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-06-14-session-persistence.md
 /agent-note-session-persistence-as-an-abstract-service-over-the-existing-sessionevent:
-  en: d7cf18702f4ed830
-  zh: 7e0cc6db7c90a7bd
+  en: 929d5d4165bab540
+  zh: d12e2f03de17b771
 /agent-note-session-persistence-as-an-abstract-service-over-the-existing-sessionevent/problem:
-  en: fa1ffb258aee90f6
-  zh: c25cead52e72f97d
+  en: df37f2224cc65662
+  zh: cb63f5eebb88f2ef
 /agent-note-session-persistence-as-an-abstract-service-over-the-existing-sessionevent/decision:
-  en: bf5e35fe9b9c4198
-  zh: fd37cd5e7c7ecfcb
+  en: 7338fea4731e7479
+  zh: 3f509dd15b2d2c5f
 /agent-note-session-persistence-as-an-abstract-service-over-the-existing-sessionevent/alternatives-considered:
-  en: e5c9929ca92cc12e
-  zh: 3e0668f6a822577c
+  en: d9481a4aead063f4
+  zh: 50c916bea6245469
 /agent-note-session-persistence-as-an-abstract-service-over-the-existing-sessionevent/consequences:
   en: 983e58daf1b5ac0c
   zh: 759f5caebd278032

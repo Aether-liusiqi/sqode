@@ -1,9 +1,9 @@
 ---
-description: "Retrospective Session persistence types and adjacent-release changes for dsh-v0.1.0-rc.7."
+description: "Retrospective Session persistence types and adjacent-release changes for sqhv0.1.0-rc.7."
 kind: persistence-release
 ---
 
-# Persistence release: dsh-v0.1.0-rc.7
+# Persistence release: sqhv0.1.0-rc.7
 
 English | [中文](sqh-v0.1.0-rc.7.zh.md)
 
@@ -28,10 +28,10 @@ This approximate backfill supports reading and format validation; it is not a co
 
 | Item | Recorded value |
 |---|---|
-| Source tag | `dsh-v0.1.0-rc.7` |
+| Source tag | `sqhv0.1.0-rc.7` |
 | Source date | 2026-08-17T11:03:17.000Z |
 | Release record | Release object present. |
-| Previous release | [dsh-v0.1.0-rc.6](sqh-v0.1.0-rc.6.md) |
+| Previous release | [sqhv0.1.0-rc.6](sqh-v0.1.0-rc.6.md) |
 | Session writer version | 0 |
 | Reconstructed inventory | <!-- persistence-release-inventory:start -->47 roots / 376 types<!-- persistence-release-inventory:end --> |
 | This snapshot | [sqh-v0.1.0-rc.7.schema.json](sqh-v0.1.0-rc.7.schema.json) |
@@ -45,8 +45,8 @@ Source evidence for the writer version constant at this tag:
 
 ```yaml persistence-release
 schemaVersion: 1
-tag: dsh-v0.1.0-rc.7
-previous: dsh-v0.1.0-rc.6
+tag: sqhv0.1.0-rc.7
+previous: sqhv0.1.0-rc.6
 sessionFormatVersion: 0
 changes:
   - root: event:assistant/chunk

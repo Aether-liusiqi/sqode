@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/webhook.md
 /webhook-runtime:
-  en: a9237452c010af40
-  zh: ce76dc8401ca88ee
+  en: 06c51a0e139910d1
+  zh: 501d9d24b9603848
 /webhook-runtime/shared-values:
   en: 99af66fb4c51ecf6
   zh: fa1f2e88c7b13e46
@@ -15,5 +15,5 @@
   en: 2ccdbc45140f9c41
   zh: af509a7fb0f84e18
 /webhook-runtime/github-adapter:
-  en: a0f2750bdb4822b3
-  zh: 345e14e769f0aa3b
+  en: 01f23b4395495e91
+  zh: 27b11b8f13862125

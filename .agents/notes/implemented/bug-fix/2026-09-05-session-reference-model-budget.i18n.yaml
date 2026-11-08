@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-05-session-reference-model-budget.md
 /agent-note-model-relative-session-reference-budgets:
-  en: 6d4d5e9c678c93cb
-  zh: 7023bca0480a27df
+  en: 3f67de4b9e3312c4
+  zh: a841ec6f48f66243
 /agent-note-model-relative-session-reference-budgets/problem:
   en: 2bc7bc4083a96c5d
   zh: d0d290871def4abf
 /agent-note-model-relative-session-reference-budgets/decision:
-  en: e686c4ed659fc44c
-  zh: 41484c0431a53177
+  en: 799f4cdb89c0a354
+  zh: 4d3f45a0a3811886
 /agent-note-model-relative-session-reference-budgets/alternatives-considered:
   en: 77148c41d109895a
   zh: dba534347f0e0877

@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-08-24-user-authorized-subagent-model-routes.md
 /agent-note-user-authorized-subagent-model-routes:
-  en: 572df418f108d72b
-  zh: d17c31e1c4150155
+  en: d166f6455050841d
+  zh: 1d0e4bf45dde8677
 /agent-note-user-authorized-subagent-model-routes/problem:
   en: 3238dfb7db7dfdd8
   zh: ec3bdd9a9da0a321
@@ -18,5 +18,5 @@
   en: f1927d31ffc1dee9
   zh: b0fed04b80043c71
 /agent-note-user-authorized-subagent-model-routes/related-decisions:
-  en: 0b54fad7171103ec
-  zh: 8cf1d007a42fb991
+  en: e9dd93677b2efa1d
+  zh: 2e55dc418c2cc2f0

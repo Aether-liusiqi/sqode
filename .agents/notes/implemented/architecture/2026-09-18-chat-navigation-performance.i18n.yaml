@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-18-chat-navigation-performance.md
 /agent-note-bound-turn-navigation-work-and-batch-historical-jumps:
-  en: c37ea37bfa045a00
-  zh: 88a75b8739e99fb5
+  en: f5580372a5cbc384
+  zh: 191e3c26385302d7
 /agent-note-bound-turn-navigation-work-and-batch-historical-jumps/problem:
   en: c3ca28379b414fc5
   zh: 4a25378cef3f2259
@@ -15,8 +15,8 @@
   en: 79e61c0dbffe6f01
   zh: 47dd4758d115f8bb
 /agent-note-bound-turn-navigation-work-and-batch-historical-jumps/decision/two-layer-transcript-navigation:
-  en: 022a8ad83ac099f1
-  zh: b4393e39bfdd401d
+  en: 2e1c6195289326a2
+  zh: b8e528e90174ad86
 /agent-note-bound-turn-navigation-work-and-batch-historical-jumps/decision/one-publication-per-historical-jump:
   en: 510e80edc58ebdea
   zh: cfbff46bff1e43bb

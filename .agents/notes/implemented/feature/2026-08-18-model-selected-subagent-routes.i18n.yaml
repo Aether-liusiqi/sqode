@@ -3,20 +3,20 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-08-18-model-selected-subagent-routes.md
 /agent-note-model-selected-subagent-routes:
-  en: 1e719fd754836549
-  zh: 603cce7a5f9ec6bd
+  en: 8d58ae0da765d468
+  zh: de3191f97948f88d
 /agent-note-model-selected-subagent-routes/problem:
   en: 756e9d80a3e77e41
   zh: b8a3b25d45bc13ea
 /agent-note-model-selected-subagent-routes/decision:
-  en: f8de5715a28f74c5
-  zh: 454e8cac790dcef5
+  en: 43dec9e08e20e1bd
+  zh: 9d748befadae243a
 /agent-note-model-selected-subagent-routes/alternatives-considered:
-  en: 3b9fd91294fbfd27
-  zh: 2854dd690ead3d15
+  en: e4a7e413eeda18e4
+  zh: be90c03c23bb5508
 /agent-note-model-selected-subagent-routes/consequences:
   en: b7a2f27c904fa489
   zh: 42d6093560a4487a
 /agent-note-model-selected-subagent-routes/related-decisions:
-  en: 28c4eb2e90488ff0
-  zh: ba59bb2fafdd4720
+  en: ab389273e54fb24e
+  zh: a864cb9df1652882

@@ -25,7 +25,7 @@ export async function launchChromium(config: NativeBrowserConfig, signal: AbortS
   signal.throwIfAborted()
   const executablePath = config.executablePath
     ?? computeSystemExecutablePath({ browser: Browser.CHROME, channel: ChromeReleaseChannel.STABLE })
-  const profile = await mkdtemp(join(tmpdir(), 'dsh-stagehand-chrome-'))
+  const profile = await mkdtemp(join(tmpdir(), 'sqhstagehand-chrome-'))
   let browser: ReturnType<typeof launch> | undefined
   let closed: Promise<void> | undefined
   let closing: Promise<void> | undefined

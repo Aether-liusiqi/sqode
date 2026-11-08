@@ -64,7 +64,7 @@ async function extractBundleIconPng(
     // Swallows ENOENT: Info.plist may declare an icon file that is not on disk.
     return null
   }
-  const workDir = await mkdtemp(join(tmpdir(), 'dsh-open-in-app-'))
+  const workDir = await mkdtemp(join(tmpdir(), 'sqhopen-in-app-'))
   try {
     const outPng = join(workDir, 'icon.png')
     if (await output('sips', ['-s', 'format', 'png', '-Z', '128', icns, '--out', outPng], timeoutMs, internals) === null) {
@@ -102,7 +102,7 @@ const EXTRACT_ICON_PS1 = [
 async function extractExecutableIconPng(
   executablePath: string, timeoutMs: number, internals: ResolvedInternals,
 ): Promise<Buffer | null> {
-  const workDir = await mkdtemp(join(tmpdir(), 'dsh-open-in-app-'))
+  const workDir = await mkdtemp(join(tmpdir(), 'sqhopen-in-app-'))
   try {
     const script = join(workDir, 'extract-icon.ps1')
     const outPng = join(workDir, 'icon.png')

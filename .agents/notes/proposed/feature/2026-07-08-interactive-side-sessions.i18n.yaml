@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/proposed/feature/2026-07-08-interactive-side-sessions.md
 /agent-note-interactive-side-sessions-and-merge-back:
-  en: a200e33a65a4f530
-  zh: 47d02d3736310892
+  en: 960ee4730036ba12
+  zh: 0f921dcba58786ec
 /agent-note-interactive-side-sessions-and-merge-back/problem:
-  en: 181d0078a702fdf2
-  zh: ad1bff4f82fafdf3
+  en: 5a1d0d579af49ed9
+  zh: b4de95a4a7f2b680
 /agent-note-interactive-side-sessions-and-merge-back/proposal:
-  en: 5fa7d2000db6b265
-  zh: a892b74299e0f984
+  en: 832157dd97c28be7
+  zh: 55091e592dcb20fe
 /agent-note-interactive-side-sessions-and-merge-back/alternatives-considered:
   en: de50cab213a61b91
   zh: 85b912193092dfe2
@@ -18,5 +18,5 @@
   en: 17d0937a1f28b1ac
   zh: 9710ab0af3268da1
 /agent-note-interactive-side-sessions-and-merge-back/risks:
-  en: 86f12d62580d8d98
-  zh: 8c39be21a1e3958f
+  en: 4d73e9500ba2e771
+  zh: e848fa7c64cb0730

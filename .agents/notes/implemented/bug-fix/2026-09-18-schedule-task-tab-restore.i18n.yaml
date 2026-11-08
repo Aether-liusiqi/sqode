@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-18-schedule-task-tab-restore.md
 /agent-note-task-tab-recovery-after-a-reload:
-  en: d7edcc16307d350a
-  zh: 63301b138b2a203b
+  en: 0d4f287d77f1b67b
+  zh: 0cc1f324fce5a9a5
 /agent-note-task-tab-recovery-after-a-reload/problem:
-  en: 244f309423fff24e
-  zh: ddd2ab66a3f4fd5b
+  en: 7fe36fba8da8580b
+  zh: 8b8dc0c5f0f44d14
 /agent-note-task-tab-recovery-after-a-reload/decision:
   en: 3de0cd8c6ba70b45
   zh: 6785fb8d75486fc3
 /agent-note-task-tab-recovery-after-a-reload/alternatives-considered:
-  en: 2fb8e2e0688d22ac
-  zh: a584b183723aace7
+  en: 23b88694721f0046
+  zh: 202dad4abf833535
 /agent-note-task-tab-recovery-after-a-reload/consequences:
   en: 20b7e4c551df0bc0
   zh: c17426fb981f0b06

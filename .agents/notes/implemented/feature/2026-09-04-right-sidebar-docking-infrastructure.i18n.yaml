@@ -3,32 +3,32 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-04-right-sidebar-docking-infrastructure.md
 /agent-note-right-sidebar-docking-infrastructure:
-  en: 850908fd93d39f7e
-  zh: 371d9b0d946c2cb4
+  en: 15c8687b374e1e9b
+  zh: 6deb0e3a70b42ec3
 /agent-note-right-sidebar-docking-infrastructure/problem:
   en: dae256ae605900f2
   zh: 11e9c51126ad836c
 /agent-note-right-sidebar-docking-infrastructure/decision:
-  en: a30a377c8df0e654
-  zh: f2577e74c6be3e88
+  en: 268202707f78d13f
+  zh: 71295166ad995569
 /agent-note-right-sidebar-docking-infrastructure/decision/package-topology:
-  en: aa5f3309bae48701
-  zh: 5b8c2bf931ac11e4
+  en: d6cc49ac83c539ba
+  zh: 11bee0f30a95f303
 /agent-note-right-sidebar-docking-infrastructure/decision/layout-engine:
   en: af79bc03cd8e8f72
   zh: 88145221570301bf
 /agent-note-right-sidebar-docking-infrastructure/decision/the-frame-s-right-column:
-  en: 78c5b5bf86d0293a
-  zh: 28b8856d88b78d1e
+  en: f6adc2ffa541e7b8
+  zh: ae9dd98eca2b7941
 /agent-note-right-sidebar-docking-infrastructure/decision/state:
-  en: 7a73e989059c0871
-  zh: ef4f8783fc5f3229
+  en: 4fa89851dfb5aa7e
+  zh: 7f3d783fff36f848
 /agent-note-right-sidebar-docking-infrastructure/decision/beyond-the-surface:
-  en: 82b5fd9d88c3ea43
-  zh: d8581e996abbe034
+  en: 2d473e98a1dbd4d2
+  zh: 03c0cc9fcb31c7b1
 /agent-note-right-sidebar-docking-infrastructure/decision/entry-points-and-removals:
-  en: e9cb121a18afadc2
-  zh: 37ff2e89d5641e11
+  en: a4511707327e2ee3
+  zh: ee87e856579ec350
 /agent-note-right-sidebar-docking-infrastructure/alternatives-considered:
   en: 6569babd25fc0599
   zh: f9d93c937b2cad60

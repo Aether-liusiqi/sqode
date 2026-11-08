@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-02-projcache-cross-version-read-compat.md
 /agent-note-projection-cache-predecessor-recovery-and-session-format-binding-session-projcache-v3-v6-v7:
-  en: 5744de86025f278d
-  zh: 5ba2198c13ac54f9
+  en: 38d7f2524c6aa3f7
+  zh: 46e42a43ff8d853b
 /agent-note-projection-cache-predecessor-recovery-and-session-format-binding-session-projcache-v3-v6-v7/problem:
   en: 95f4f12fc06caa70
   zh: 83030061898dfc72
@@ -12,8 +12,8 @@
   en: 221b8afd2599e139
   zh: ba1de634b87edc71
 /agent-note-projection-cache-predecessor-recovery-and-session-format-binding-session-projcache-v3-v6-v7/decision:
-  en: 264e40c0fb90cdc1
-  zh: 2e986615bbd656cf
+  en: 5e2c84b0c75e00b5
+  zh: c15d1ba625c022be
 /agent-note-projection-cache-predecessor-recovery-and-session-format-binding-session-projcache-v3-v6-v7/decision/v3-v6-v7-disposition:
   en: fe188d164c08a7f5
   zh: 30aa9e9201621f35

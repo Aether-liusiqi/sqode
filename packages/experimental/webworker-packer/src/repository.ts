@@ -96,7 +96,7 @@ export function indexWorkspacePackages(repoRoot: string): Map<string, string> {
  * @returns The composed YAML.
  */
 export function composeProfile(repoRoot: string, profile: string): string {
-  const home = mkdtempSync(join(tmpdir(), 'dsh-pack-home-'))
+  const home = mkdtempSync(join(tmpdir(), 'sqhpack-home-'))
   try {
     return execFileSync(
       process.execPath,
