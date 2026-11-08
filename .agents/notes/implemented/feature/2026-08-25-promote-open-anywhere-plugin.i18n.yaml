@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-08-25-promote-open-anywhere-plugin.md
 /agent-note-promote-open-anywhere-from-community-plugin-to-first-party-package:
-  en: 4ef4fe2537585ea4
-  zh: baf36af23940544d
+  en: 4e17c79fb8775225
+  zh: 16eb4cacfe372814
 /agent-note-promote-open-anywhere-from-community-plugin-to-first-party-package/problem:
   en: 51086863ba68e9dc
   zh: ea03ff021cce8556
 /agent-note-promote-open-anywhere-from-community-plugin-to-first-party-package/decision:
-  en: 15246c84763e1bbf
-  zh: 9900b80ca512fa1f
+  en: 6d24097f86640f80
+  zh: 38ad5bea22895365
 /agent-note-promote-open-anywhere-from-community-plugin-to-first-party-package/alternatives-considered:
   en: fc841620a1e0864c
   zh: 69f7e166eab39942

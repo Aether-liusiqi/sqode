@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-07-06-sandbox.md
 /agent-note-the-subprocess-sandbox-confinement-seam-native-runners-escalation-and-per-session-modes:
-  en: 5bf0e7d65711e5ba
-  zh: 07bde06542231f24
+  en: e8a781d7849bdb81
+  zh: 7a90224aafca2132
 /agent-note-the-subprocess-sandbox-confinement-seam-native-runners-escalation-and-per-session-modes/problem:
   en: 045e61bb682755dc
   zh: ac95eb64ce892f8d
@@ -12,8 +12,8 @@
   en: f4748553d52935ff
   zh: 1802a543c6d989ef
 /agent-note-the-subprocess-sandbox-confinement-seam-native-runners-escalation-and-per-session-modes/decision/how-a-deployment-uses-it:
-  en: e4765ddd9faf3a8c
-  zh: fab28634b9de618d
+  en: 4f39addc759f2b39
+  zh: 8efdb686bc759632
 /agent-note-the-subprocess-sandbox-confinement-seam-native-runners-escalation-and-per-session-modes/decision/design-detail:
   en: a6d7884e4359af3a
   zh: e72588705942000a
@@ -24,8 +24,8 @@
   en: d32490c42ad50652
   zh: d3aa4bb4491d6dec
 /agent-note-the-subprocess-sandbox-confinement-seam-native-runners-escalation-and-per-session-modes/decision/design-detail/local-backends-and-the-shipped-launcher:
-  en: 93007a2a2faf47c9
-  zh: 584fa2227e8b1322
+  en: 23b3e7a8032f45a4
+  zh: 3255827cca99dee9
 /agent-note-the-subprocess-sandbox-confinement-seam-native-runners-escalation-and-per-session-modes/decision/design-detail/asynchronous-preparation:
   en: 7bc0fab85c7c91d0
   zh: 3eafcde6b1e3249c
@@ -33,14 +33,14 @@
   en: e317b878852c4d0d
   zh: dfaf0f976439e418
 /agent-note-the-subprocess-sandbox-confinement-seam-native-runners-escalation-and-per-session-modes/decision/design-detail/escalation-one-approved-wider-retry-after-a-denial:
-  en: 26ff111157404b7c
-  zh: 31dac82586592292
+  en: 3aea6d4b308310f2
+  zh: b38998015b558586
 /agent-note-the-subprocess-sandbox-confinement-seam-native-runners-escalation-and-per-session-modes/decision/design-detail/per-session-modes-the-session-log-as-the-store:
-  en: 5faf8bf7b87357f6
-  zh: 40a7f462654c80ab
+  en: 5154f0de5d9adc3e
+  zh: b1215039c3a58b58
 /agent-note-the-subprocess-sandbox-confinement-seam-native-runners-escalation-and-per-session-modes/decision/design-detail/in-process-tools:
-  en: 31fe4f2f7595c073
-  zh: 24e2f1f7ed9e34a0
+  en: a7796123a2209706
+  zh: 8df53c4ef626f51e
 /agent-note-the-subprocess-sandbox-confinement-seam-native-runners-escalation-and-per-session-modes/decision/testing:
   en: c0189d491354eb48
   zh: ac68b07188402f9c
@@ -51,11 +51,11 @@
   en: c43b1053966ec40b
   zh: 9e8e9979485113e3
 /agent-note-the-subprocess-sandbox-confinement-seam-native-runners-escalation-and-per-session-modes/consequences:
-  en: 5c88c2d096380065
-  zh: 3e508c06073394d1
+  en: a1e7c43a36921074
+  zh: 2922014770c57768
 /agent-note-the-subprocess-sandbox-confinement-seam-native-runners-escalation-and-per-session-modes/faq:
-  en: d696c3a8aacfa608
-  zh: 3348c6ca4831d16d
+  en: 848770eeb17d71da
+  zh: 1624819cd0e101c9
 /agent-note-the-subprocess-sandbox-confinement-seam-native-runners-escalation-and-per-session-modes/prior-art:
-  en: 3f8990e634e66a27
-  zh: 6f824d94781e0bc4
+  en: 11b1979cc3555566
+  zh: 933df8e159a8cb20

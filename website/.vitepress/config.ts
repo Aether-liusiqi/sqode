@@ -186,7 +186,7 @@ const siteIdentity = {
  */
 const wordmark = readFileSync(resolve(import.meta.dirname, '../public/wordmark.svg'), 'utf8')
   .trim()
-  .replace('<svg ', '<svg class="sqhwordmark" ')
+  .replace('<svg ', '<svg class="sqh-wordmark" ')
 
 /**
  * Head-injected styles for the site identity and sidebar scrollbar.
@@ -259,7 +259,7 @@ const scrollbarScript = `
  * @returns Markup placed beside the navigation-bar home link.
  */
 function siteTitle(previewTag: string): string {
-  return `<span class="sqhlockup">${wordmark}<span class="sqhtag">${previewTag}</span></span>`
+  return `<span class="sqh-lockup">${wordmark}<span class="sqh-tag">${previewTag}</span></span>`
 }
 
 export default withMermaid({

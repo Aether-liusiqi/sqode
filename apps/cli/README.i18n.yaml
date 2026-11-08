@@ -3,20 +3,20 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write apps/cli/README.md
 /liusiqi-dev-sqode:
-  en: 7923994c8d1133b2
-  zh: ad597a3ea24cdd09
+  en: e9b558d9e3a265fd
+  zh: a43dbd67ac127746
 /liusiqi-dev-sqode/entry-modes:
-  en: f3790aef8b804f2e
-  zh: e87e8c1e667523d6
+  en: 31be2ec228f68251
+  zh: 0a98dd428736f5d2
 /liusiqi-dev-sqode/app-arguments:
-  en: eb209e4c9e85ce35
-  zh: 649bb50bd1fc4cb0
+  en: c56864b81957972a
+  zh: e6116fc710be6d35
 /liusiqi-dev-sqode/profiles:
-  en: 5e0b6fef986d2917
-  zh: 92f6e7186b74e02e
+  en: 5422fc6ca8d2ff41
+  zh: 5711f59019c63bc3
 /liusiqi-dev-sqode/optional-overlays:
-  en: ac4ffe37f69f0b5b
-  zh: 0c8bf948ef1bf687
+  en: 6c6bce2eff568a29
+  zh: dc187c166a1c1157
 /liusiqi-dev-sqode/development:
-  en: bcc921528ceb3a03
-  zh: fad8c584281a9d45
+  en: ea6913f321ff30a7
+  zh: eae37055c320c562

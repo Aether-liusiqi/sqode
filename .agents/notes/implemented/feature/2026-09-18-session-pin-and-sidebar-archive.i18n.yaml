@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-18-session-pin-and-sidebar-archive.md
 /agent-note-session-pinning-and-the-sidebar-archived-filter:
-  en: 4a472ce411452b9c
-  zh: a073de4adf5d836a
+  en: 921e5d3bc32d8753
+  zh: d8c61f4c619fb556
 /agent-note-session-pinning-and-the-sidebar-archived-filter/problem:
   en: 8a33826809d1dd8f
   zh: b37aa33a8e2ed8d8
@@ -12,11 +12,11 @@
   en: 6807cf980e6d2caf
   zh: 7a209f7f1e6bc02e
 /agent-note-session-pinning-and-the-sidebar-archived-filter/decision/complete-session-order:
-  en: 53592df835264f8c
-  zh: 73afe059dcd35bfd
+  en: cba950d0209f84fc
+  zh: 986936a425f5ed45
 /agent-note-session-pinning-and-the-sidebar-archived-filter/decision/archive-restoration:
-  en: cd250fd9a61ecf1a
-  zh: ba0c2fdc82170907
+  en: 447b985020a0560d
+  zh: 96f65c509455dc0f
 /agent-note-session-pinning-and-the-sidebar-archived-filter/decision/archived-visibility-and-row-motion:
   en: 83dd778a865f2cf5
   zh: 7636166749f63633

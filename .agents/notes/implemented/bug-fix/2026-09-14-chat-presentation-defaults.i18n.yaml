@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-14-chat-presentation-defaults.md
 /agent-note-keep-chat-presentation-independent-of-trajectory-inspection:
-  en: 2bbdcbce0a8776b7
-  zh: 97165b3c7f493e97
+  en: 9b99933821bf5b25
+  zh: 163459ab85a056d8
 /agent-note-keep-chat-presentation-independent-of-trajectory-inspection/problem:
   en: 2102a58c1baafe54
   zh: 939872d86e013f94
 /agent-note-keep-chat-presentation-independent-of-trajectory-inspection/decision:
-  en: 07b8a65202e98048
-  zh: 1912e5b4353de1cb
+  en: 36d9aecd14088685
+  zh: 78488aa2bac77efe
 /agent-note-keep-chat-presentation-independent-of-trajectory-inspection/alternatives-considered:
   en: f4c1b9c9998e3355
   zh: f684e39ffabce5e6

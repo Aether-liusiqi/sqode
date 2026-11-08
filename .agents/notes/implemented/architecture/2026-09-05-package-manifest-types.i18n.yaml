@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-05-package-manifest-types.md
 /agent-note-package-manifest-declaration-ownership:
-  en: 0150067688447fb9
-  zh: 9c700c330caef900
+  en: 8be1d8ded4dbb064
+  zh: 45f307ce6789fb86
 /agent-note-package-manifest-declaration-ownership/problem:
   en: bdc0fcaf27081889
   zh: 45eb034edd0bed82
 /agent-note-package-manifest-declaration-ownership/decision:
-  en: 1546ce02de8f782a
-  zh: 9886a9267d06e8fd
+  en: e3e1e7d84e26db77
+  zh: 1dbdd657c629094e
 /agent-note-package-manifest-declaration-ownership/alternatives-considered:
   en: bf99e75ffab5cb45
   zh: 398f5934858aaca5
 /agent-note-package-manifest-declaration-ownership/consequences:
-  en: 8e497a3a301991f9
-  zh: ee5ea6b0c6be2b5f
+  en: b351469c45734867
+  zh: 18b20fe94842e6c0

@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/simplification/2026-08-28-omit-unneeded-invariant-companions.md
 /agent-note-omit-invariant-companions-without-independent-observations:
-  en: 688a8fe9edcc061b
-  zh: 2c13ff6ef903452b
+  en: d8eb21e039d7cb5c
+  zh: fadf669e80a63a05
 /agent-note-omit-invariant-companions-without-independent-observations/problem:
   en: 5e417a4cdbd05829
   zh: 1d3fda4e6d9e28d9
@@ -24,5 +24,5 @@
   en: 7cba6497b02f0a89
   zh: f4f65b9d410d2cbb
 /agent-note-omit-invariant-companions-without-independent-observations/consequences:
-  en: 7eb634b821d5c01b
-  zh: 2573ea7c82f2a7e7
+  en: d515b2c5677de0dc
+  zh: 5362d06a8fe954d2

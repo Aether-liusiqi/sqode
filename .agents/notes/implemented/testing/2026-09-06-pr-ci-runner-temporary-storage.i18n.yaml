@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/testing/2026-09-06-pr-ci-runner-temporary-storage.md
 /agent-note-runner-owned-temporary-storage-for-pr-ci:
-  en: 51306a666429c662
-  zh: ae0f2d773ccbbc52
+  en: 7efb80ac2746c0c6
+  zh: 8cc4ed8f7b1c63e5
 /agent-note-runner-owned-temporary-storage-for-pr-ci/problem:
   en: 5787327a360024d9
   zh: ee9b8cb63d79e551
 /agent-note-runner-owned-temporary-storage-for-pr-ci/decision:
-  en: beaebda3d2de283f
-  zh: 7d1074d95d9a7c1b
+  en: 40176c10ac13df94
+  zh: 0390ab725af13b6a
 /agent-note-runner-owned-temporary-storage-for-pr-ci/recorded-acp-completion-order:
   en: 51f2f962db14ba9c
   zh: 5fc8a908431c3865
@@ -18,8 +18,8 @@
   en: 1008b2fc61d01b10
   zh: f5314d10980611ef
 /agent-note-runner-owned-temporary-storage-for-pr-ci/live-verification-and-browser-fixture-inputs:
-  en: 0368b8ff8858b08d
-  zh: 6e23536f75acbd4e
+  en: b6e7c12354021e32
+  zh: e6dcaa67961844da
 /agent-note-runner-owned-temporary-storage-for-pr-ci/alternatives-considered:
   en: 8b0f2798f91ff190
   zh: f6e871a723e4d079

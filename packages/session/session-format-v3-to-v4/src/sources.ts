@@ -40,8 +40,9 @@ const RENAMED_PRODUCERS: Readonly<Record<string, string>> = Object.freeze({
   'compact': 'compact-checkpoint',
   'tools-code-mode': 'ptc-mode',
   'tools-ptc': 'ptc-mode',
-  'sqhcompaction-basic': 'compact-basic',
+  'sqh-compaction-basic': 'compact-basic',
   '@liusiqi-dev/sqh-system-prompt': 'runtime-context',
+  '@liusiqi-dev/dsh-system-prompt': 'runtime-context',
 })
 
 /** First-party V3 plugin identities that intentionally keep their current kind. */
@@ -52,7 +53,7 @@ const RELEASED_SAME_NAME_PRODUCERS: ReadonlySet<string> = new Set([
   'plan-mode', 'time-context', 'tmux-context', 'user-approval',
   'repeat-tool-reminder', 'tool-cordis', 'cordis-host-runner', 'tool-goal',
   'tool-jobs', 'hooks-codex', 'hooks-claude-code', 'schedule',
-  'sqhsession-title-llm',
+  'sqh-session-title-llm', 'dsh-session-title-llm',
 ])
 
 /**
@@ -64,7 +65,8 @@ const RELEASED_SAME_NAME_PRODUCERS: ReadonlySet<string> = new Set([
  * "message must have system-prompt source", which is what an unmigratable session
  * looks like rather than what a renamed package should cause.
  */
-const SYSTEM_PROMPT_PRODUCER = 'sqhsystem-prompt'
+/** Names the system-prompt producer has shipped under; a released file may carry any. */
+const SYSTEM_PROMPT_PRODUCERS: readonly string[] = ['sqh-system-prompt', 'dsh-system-prompt']
 
 /** Scopes this repository has shipped under; a released file may name either. */
 const LEGACY_SCOPES: readonly string[] = ['@deepseek-ai/', '@liusiqi-dev/']
@@ -84,7 +86,7 @@ function canonicalPlugin(plugin: string): string {
 /** Resolve the current producer kind for one released V3 plugin string. */
 function producerKind(plugin: string, role: SessionFormatJsonValue | undefined): string {
   const bare = plugin.slice(plugin.lastIndexOf('/') + 1)
-  if (bare === SYSTEM_PROMPT_PRODUCER && role === 'system') return 'system-prompt'
+  if (SYSTEM_PROMPT_PRODUCERS.includes(bare) && role === 'system') return 'system-prompt'
   const canonical = canonicalPlugin(plugin)
   const renamed = Object.hasOwn(RENAMED_PRODUCERS, canonical)
     ? RENAMED_PRODUCERS[canonical]

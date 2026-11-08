@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/cookbook/adding-an-llm-adapter.md
 /cookbook-adding-an-llm-adapter:
-  en: 1bc8436807c02c6d
-  zh: 7ba730dd58995b85
+  en: fa8268fc40a2f8fe
+  zh: fa4ad49e60227260
 /cookbook-adding-an-llm-adapter/the-shape:
   en: 52a0bbb65eaadf28
   zh: 106021dc36e12533
@@ -12,8 +12,8 @@
   en: 2702a60f5670dd27
   zh: 5ac992d0a8a61818
 /cookbook-adding-an-llm-adapter/implementation-structure:
-  en: 78248320104cf0e8
-  zh: 29a79ce04427e093
+  en: ca706e572caf7434
+  zh: 92acd6abb546876a
 /cookbook-adding-an-llm-adapter/verification:
-  en: 7cf195c623e851b3
-  zh: 8ce163679becfc5a
+  en: 0574c418a97347f8
+  zh: 99280c0d391d2666

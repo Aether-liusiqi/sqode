@@ -22,8 +22,8 @@ export function handleScaffold(
   target: CdpTargetDescriptor,
 ): object | typeof CDP_METHOD_NOT_HANDLED {
   const frame = {
-    id: 'sqhinspector-host-frame',
-    loaderId: 'sqhinspector-loader',
+    id: 'sqh-inspector-host-frame',
+    loaderId: 'sqh-inspector-loader',
     url: 'sqode://host',
     domainAndRegistry: '',
     securityOrigin: 'sqode://host',
@@ -66,9 +66,9 @@ export function handleScaffold(
     case 'Browser.getVersion':
       return {
         protocolVersion: '1.3',
-        product: 'sqhexperimental-inspector/0',
+        product: 'sqh-experimental-inspector/0',
         revision: '@experimental',
-        userAgent: 'sqhexperimental-inspector',
+        userAgent: 'sqh-experimental-inspector',
         jsVersion: process.versions.v8,
       }
     default:

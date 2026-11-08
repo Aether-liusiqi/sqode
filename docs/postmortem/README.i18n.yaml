@@ -3,5 +3,5 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/postmortem/README.md
 /post-mortems:
-  en: f33992b4002f3e0c
-  zh: f368f603d351976b
+  en: 9886b753ead0d7c9
+  zh: a5ac8ec3a541a50f

@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-09-03-semantic-issue-templates-and-policy.md
 /agent-note-semantic-issue-templates-and-presentation-neutral-policy:
-  en: a55b41c42f0034ce
-  zh: 60b189bac344c4c5
+  en: 0960f7449539fe6c
+  zh: 3dd629b599eb5a91
 /agent-note-semantic-issue-templates-and-presentation-neutral-policy/problem:
   en: 5da7b92d65316469
   zh: 30bc615947b3a8aa

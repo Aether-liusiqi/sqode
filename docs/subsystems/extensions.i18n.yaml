@@ -3,5 +3,5 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/extensions.md
 /extensions:
-  en: d207e68bcc2433b2
-  zh: 2b9e9263ccd1b75d
+  en: 322521e6efefcc16
+  zh: d0625344a058c659

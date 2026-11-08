@@ -3,20 +3,20 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/cordis-tutorial/01-first-plugin.md
 /1-your-first-plugin:
-  en: 675e74a9e132e6a2
-  zh: a16bd8e62c8a8474
+  en: e1cfa8bb6f326376
+  zh: e62279d04cad4a4e
 /1-your-first-plugin/write-the-plugin:
-  en: 0d4c62389cc05dab
-  zh: fd2320eebc8d78d7
+  en: e9b8186db0b5e5ca
+  zh: d1914c8fb9be5ee3
 /1-your-first-plugin/compose-the-app:
-  en: 9ce6cc1c2391929e
-  zh: 83cc28486a71cfa8
+  en: d62d675b92792848
+  zh: c2e4dbcb828bc710
 /1-your-first-plugin/run-it:
   en: 01c4fae1f3a36efa
   zh: a38652ef6ca46449
 /1-your-first-plugin/the-two-other-plugin-shapes:
-  en: a71d1b02a92016f0
-  zh: e5da80377334b33d
+  en: 701cc0e1f6dcf8c3
+  zh: ebdd451eb9a12695
 /1-your-first-plugin/try-breaking-it:
-  en: 845a0d7c960b11bc
-  zh: 1567c2b25d4d83cd
+  en: 18fa66d416325e97
+  zh: ccafd7d23c1bdf81

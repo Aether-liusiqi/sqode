@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-25-web-client-session-scope-and-provide-channel.md
 /agent-note-web-client-agent-scope-parity-model-and-the-provisioning-channel-agents-scope-blank-reuse-provide:
-  en: 26a852cea717fbc7
-  zh: 878b097a4ddd1456
+  en: f03d3d5a4a8263fb
+  zh: b2857b06d103102b
 /agent-note-web-client-agent-scope-parity-model-and-the-provisioning-channel-agents-scope-blank-reuse-provide/problem:
   en: 1738c071cb9824bc
   zh: 7af7770739d5430a
 /agent-note-web-client-agent-scope-parity-model-and-the-provisioning-channel-agents-scope-blank-reuse-provide/decision:
-  en: 727078c93304c73d
-  zh: 097c9c3f112dac3a
+  en: c932305fa9cd0572
+  zh: ebd6cc83ad605742
 /agent-note-web-client-agent-scope-parity-model-and-the-provisioning-channel-agents-scope-blank-reuse-provide/decision/the-parity-model-client-and-host-share-one-root-state-axis:
-  en: 94de2c47cf1b7f51
-  zh: 16e4246c15006599
+  en: 018d956580d42c1c
+  zh: 7e24f8e1cccbda9a
 /agent-note-web-client-agent-scope-parity-model-and-the-provisioning-channel-agents-scope-blank-reuse-provide/decision/agent-scope-the-actx-is-the-sole-session-carrier-in-the-client-side-cordis-world:
   en: 4578ecf510a792c9
   zh: 92ecdde94ccf21e6
@@ -21,8 +21,8 @@
   en: e2ed0052678a2b9b
   zh: e0fe1b87dc3766af
 /agent-note-web-client-agent-scope-parity-model-and-the-provisioning-channel-agents-scope-blank-reuse-provide/decision/the-blank-bit-the-empty-session-s-visible-projection-conversion-and-reuse:
-  en: 64eca3b61ebcf988
-  zh: 3ddd65e8bd3aeec5
+  en: e3f1667a88e5c24c
+  zh: e3594f9db37584d6
 /agent-note-web-client-agent-scope-parity-model-and-the-provisioning-channel-agents-scope-blank-reuse-provide/decision/connectworkspace-the-sole-entry-point-of-new-session:
   en: 833df42c5a87afbd
   zh: 82d789a99fd2b968
@@ -33,11 +33,11 @@
   en: 2073e96f851d1e6e
   zh: f0433bf5dfd0a23d
 /agent-note-web-client-agent-scope-parity-model-and-the-provisioning-channel-agents-scope-blank-reuse-provide/decision/host-wire-smalls:
-  en: da1a47af309ed9ef
-  zh: c6b13d29b1ef1f6a
+  en: 32162ca7620b76c7
+  zh: 65e7105465670bb3
 /agent-note-web-client-agent-scope-parity-model-and-the-provisioning-channel-agents-scope-blank-reuse-provide/alternatives-considered:
   en: e4f80c97bc786118
   zh: 400068ecf8df465b
 /agent-note-web-client-agent-scope-parity-model-and-the-provisioning-channel-agents-scope-blank-reuse-provide/consequences:
-  en: b397bad8916f2c8d
-  zh: 796377df7b1e4dab
+  en: 00681f760ca8a8ed
+  zh: 4b095629c4ddae08

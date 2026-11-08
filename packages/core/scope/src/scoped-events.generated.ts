@@ -1,5 +1,5 @@
 /**
- * Generated scoped-event routing-subject resolvers for sqhscope invariants.
+ * Generated scoped-event routing-subject resolvers for sqh-scope invariants.
  * Do not edit by hand; run `pnpm run gen-scoped-events`.
  *
  * @module @liusiqi-dev/sqh-scope/scoped-events.generated

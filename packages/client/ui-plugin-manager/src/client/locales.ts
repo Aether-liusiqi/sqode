@@ -1,7 +1,7 @@
 /** Plugin management interface copy. */
 
 /** Git template a field still holding it reports as needing the actual address; no guide entry shows it. */
-export const INSTALL_GIT_EXAMPLE = 'https://github.com/author/sqhplugin'
+export const INSTALL_GIT_EXAMPLE = 'https://github.com/author/sqh-plugin'
 /** Local-path template a field still holding it reports as needing the actual path; no guide entry shows it. */
 export const INSTALL_PATH_EXAMPLE = '/Users/name/my-plugin'
 
@@ -56,12 +56,12 @@ export const zh = {
   installTitle: '添加插件',
   installDescription: '输入插件的包名、GitHub 仓库地址或本地目录路径。',
   installSpecLabel: '包名或地址',
-  installSpecPlaceholder: '例如 sqhplugin-whale-pet',
+  installSpecPlaceholder: '例如 sqh-plugin-whale-pet',
   installGuideToggle: '插件安装引导和示例',
   installGuideHide: '收起引导',
   installGuideIdTitle: '填入插件 npm 包名',
-  installGuideIdExample: 'sqhplugin-whale-pet',
-  installGuideIdHint: '插件包名即 npm 包名（如 sqhxxx 或 @作者/插件名），社区插件的 README 安装命令中 dsh plugin add 或 pnpm add 之后的部分。',
+  installGuideIdExample: 'sqh-plugin-whale-pet',
+  installGuideIdHint: '插件包名即 npm 包名（如 sqh-xxx 或 @作者/插件名），社区插件的 README 安装命令中 dsh plugin add 或 pnpm add 之后的部分。',
   installGuideExampleLabel: '示例：',
   installGitTemplateHint: '请替换为实际的 Git 仓库地址',
   installPathTemplateHint: '请替换为本机插件目录的实际路径',
@@ -252,12 +252,12 @@ export const en = {
   installTitle: 'Add plugin',
   installDescription: 'Enter the plugin\'s package name, GitHub repository address, or local directory path.',
   installSpecLabel: 'Package name or address',
-  installSpecPlaceholder: 'for example sqhplugin-whale-pet',
+  installSpecPlaceholder: 'for example sqh-plugin-whale-pet',
   installGuideToggle: 'Install guide and examples',
   installGuideHide: 'Hide the guide',
   installGuideIdTitle: 'Enter the plugin\'s npm package name',
-  installGuideIdExample: 'sqhplugin-whale-pet',
-  installGuideIdHint: 'The plugin package name is the npm package name (like sqhxxx or @author/plugin): the part after dsh plugin add or pnpm add in a community plugin\'s README install command.',
+  installGuideIdExample: 'sqh-plugin-whale-pet',
+  installGuideIdHint: 'The plugin package name is the npm package name (like sqh-xxx or @author/plugin): the part after dsh plugin add or pnpm add in a community plugin\'s README install command.',
   installGuideExampleLabel: 'Example: ',
   installGitTemplateHint: 'Replace this with the actual Git repository address.',
   installPathTemplateHint: 'Replace this with the actual path to your local plugin directory.',

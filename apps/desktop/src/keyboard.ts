@@ -242,7 +242,7 @@ export function installDesktopShortcuts(
     fileMenu: (labels) => {
       const accelerator = closeAccelerator()
       return { label: labels.fileMenu, submenu: [{
-        id: 'sqhpage-close', label: labels.closePage, enabled: revision !== undefined,
+        id: 'sqh-page-close', label: labels.closePage, enabled: revision !== undefined,
         ...accelerator === undefined ? {} : { accelerator },
         click: sendMenuClose,
       }] }

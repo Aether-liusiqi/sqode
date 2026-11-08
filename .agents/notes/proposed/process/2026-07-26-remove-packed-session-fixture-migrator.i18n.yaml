@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/proposed/process/2026-07-26-remove-packed-session-fixture-migrator.md
 /agent-note-remove-the-packed-session-fixture-branch-migrator:
-  en: ae6915264fb5345f
-  zh: f95d8bb33b0165f6
+  en: 56af2d9418456a69
+  zh: ac7f379855a1d17c
 /agent-note-remove-the-packed-session-fixture-branch-migrator/problem:
   en: 26671139b244f2ad
   zh: fb2bbcc283b6f108

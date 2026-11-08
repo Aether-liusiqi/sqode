@@ -6,11 +6,11 @@
   en: 99acbd5c1e2a16ce
   zh: 31342508a4e1bf09
 /liusiqi-dev-sqh-session-persistence:
-  en: f8d7328f5c6dcae5
-  zh: 6e62a12693b11786
+  en: 03bcd0193cdb086e
+  zh: 1b3b3a58e1b137a5
 /liusiqi-dev-sqh-session-persistence/summary:
-  en: 993e0358ce006475
-  zh: c6b534b5cb275942
+  en: 4860a047f51f9779
+  zh: 716bc348b21561a5
 /liusiqi-dev-sqh-session-persistence/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
@@ -18,8 +18,8 @@
   en: bd48e96d14122170
   zh: f8a06e7246b55a6f
 /liusiqi-dev-sqh-session-persistence/use-this-package/choosing-a-backend:
-  en: 472717df96623ed9
-  zh: 93422dad53325554
+  en: 2900f79a6ab2be41
+  zh: 64937dee760a7106
 /liusiqi-dev-sqh-session-persistence/use-this-package/what-the-service-provides:
   en: c10b9c7d9bad305c
   zh: 0e9c391e9df37da6
@@ -36,8 +36,8 @@
   en: 6d8beec038b1121a
   zh: 1f02952eb2a0b386
 /liusiqi-dev-sqh-session-persistence/understand-the-implementation:
-  en: 9fe50a34e68acfe2
-  zh: 153242c0882f46f8
+  en: d93fdf93972e833f
+  zh: 42e0121400ff6380
 /liusiqi-dev-sqh-session-persistence/understand-the-implementation/design-concept:
   en: 3d21cded1f7e74ff
   zh: 5f624aefebb1f63d
@@ -51,11 +51,11 @@
   en: c920cf9262f4a563
   zh: 0f8e3ff17e39c861
 /liusiqi-dev-sqh-session-persistence/understand-the-implementation/stored-record-validation:
-  en: d084f86d42fe2e1f
-  zh: af416bf2da7f43dc
+  en: 04f8277445c6881b
+  zh: 138dce2f5821ed2b
 /liusiqi-dev-sqh-session-persistence/further-exploration:
-  en: 83f266f13ac78b93
-  zh: c17e7e5f3618ffae
+  en: d16f03be6d0088bb
+  zh: b2ded5df08e386bb
 /liusiqi-dev-sqh-session-persistence/model-experience:
   en: 215e7ba838619b7b
   zh: a311da3843709f90

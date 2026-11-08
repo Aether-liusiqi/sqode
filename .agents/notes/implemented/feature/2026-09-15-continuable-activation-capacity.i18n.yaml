@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-15-continuable-activation-capacity.md
 /agent-note-shared-continuable-activation-capacity:
-  en: 0ede06145a3ef552
-  zh: ef6d49f38d7f7426
+  en: 202ed7ddd73c8d7a
+  zh: 0a85678092f42112
 /agent-note-shared-continuable-activation-capacity/problem:
   en: f940cc05cf90362d
   zh: 1cdb4281d845c0da
@@ -15,8 +15,8 @@
   en: 54aefa812e00ce1e
   zh: 08251d541b7991df
 /agent-note-shared-continuable-activation-capacity/consequences:
-  en: 58c4eca7166520d5
-  zh: 226b02405cd239f0
+  en: c33ac13f6bf74369
+  zh: c23f22ca9c8693f0
 /agent-note-shared-continuable-activation-capacity/verification:
   en: f599edb8fb0112af
   zh: a66f9102a79234f0

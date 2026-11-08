@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-08-10-child-agents-join-their-parent-preset.md
 /agent-note-child-agents-join-their-parent-s-preset-composition:
-  en: baf80398ed91a000
-  zh: 2ce380cf1bc0aeed
+  en: 287b5434e3f64ba8
+  zh: 9cedf913efabe698
 /agent-note-child-agents-join-their-parent-s-preset-composition/problem:
-  en: 9b47369570b8a48b
-  zh: 829ff1b2ef1da9c6
+  en: 63b4109ddfbea2b1
+  zh: 27338889b4d9c5b9
 /agent-note-child-agents-join-their-parent-s-preset-composition/decision:
   en: ad62ff1a92a34f87
   zh: b414402194ad0ff4

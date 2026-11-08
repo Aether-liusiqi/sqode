@@ -60,7 +60,7 @@ export function packPreviewFixture(trees: readonly ImageTree[]): PackOverlayResu
     )
   }
   if (successors.size === 0) return original
-  const directory = mkdtempSync(join(tmpdir(), 'sqhpreview-sessions-'))
+  const directory = mkdtempSync(join(tmpdir(), 'sqh-preview-sessions-'))
   try {
     for (const [imagePath, content] of successors) {
       const path = join(directory, imagePath.slice('home/sessions/'.length))

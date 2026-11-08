@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-20-unified-json-value-schema-dsl.md
 /agent-note-unified-json-value-schema-dsl:
-  en: 9e91859b26028165
-  zh: 56fcd38234f240a9
+  en: 59efdebf25b01237
+  zh: d20ddbc5b86a22de
 /agent-note-unified-json-value-schema-dsl/problem:
   en: 5c7e79e37c007896
   zh: 759f5803141b0960

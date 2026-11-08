@@ -3,20 +3,20 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-07-25-subagent-policy-inheritance.md
 /agent-note-in-process-subagent-policy-inheritance-the-child-starts-under-the-parent-s-sandbox-override:
-  en: e43ce8d910e67101
-  zh: 1713ae57f607088c
+  en: 66764a524a14fbe2
+  zh: 553fb2ef71b8d5ac
 /agent-note-in-process-subagent-policy-inheritance-the-child-starts-under-the-parent-s-sandbox-override/problem:
   en: 476b4a1b9ada2d8a
   zh: 15b8051d22bb1dd0
 /agent-note-in-process-subagent-policy-inheritance-the-child-starts-under-the-parent-s-sandbox-override/decision:
-  en: 8c79eef8b1444bcc
-  zh: f58f1dd4eb139653
+  en: bcccd10b03707d7f
+  zh: e86f0943edc36a77
 /agent-note-in-process-subagent-policy-inheritance-the-child-starts-under-the-parent-s-sandbox-override/decision/what-a-blocked-child-experiences:
-  en: c7f8e2e7bdd5196e
-  zh: 8d2401e3b5dc990b
+  en: 4778ce17b50b6349
+  zh: 321228e928dbb1d2
 /agent-note-in-process-subagent-policy-inheritance-the-child-starts-under-the-parent-s-sandbox-override/alternatives-considered:
-  en: 351062eafc91736c
-  zh: 318ca0e97a1cb1ee
+  en: 3caa2e0601025624
+  zh: 5bfb65dc94c504a0
 /agent-note-in-process-subagent-policy-inheritance-the-child-starts-under-the-parent-s-sandbox-override/consequences:
   en: 6b4ef0d489646cbc
   zh: 212abc5546d710b6

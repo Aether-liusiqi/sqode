@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-07-win32-picker-foreground-alt-key.md
 /agent-note-foreground-activation-for-the-win32-picker-via-a-synthesized-alt-press:
-  en: 11d80a075f5caf7e
-  zh: e1babf2c904ea4db
+  en: 6dbfeb1e5377c561
+  zh: e08d677a92f69c9e
 /agent-note-foreground-activation-for-the-win32-picker-via-a-synthesized-alt-press/problem:
   en: b21a34182868057e
   zh: 54cb143a2a11479b

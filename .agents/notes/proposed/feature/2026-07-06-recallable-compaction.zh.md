@@ -41,12 +41,12 @@ Status: proposed
 
 ### 回溯工具
 
-新增包 `@siqi-ai/sqhtool-recall`，它只是 `sqhsession` 与 `sqhcompaction` 词汇之上的消费方，注册两个面向模型的工具：
+新增包 `@siqi-ai/sqh-tool-recall`，它只是 `sqh-session` 与 `sqh-compaction` 词汇之上的消费方，注册两个面向模型的工具：
 
 - `history_read(checkpoint, offset?)`：把日志中任意检查点（包括已被取代的检查点）遮蔽的区段渲染为 `User:`／`Assistant:`／`Tool result:` transcript（文本记录），并按配置预算分页，提供续传游标。
 - `history_search(query, checkpoint?, limit?)`：对每个被遮蔽区段进行不区分大小写的字面量扫描；返回带检查点 id 的片段与覆盖元数据（`scanned`／`matched`／`truncated`）。零匹配提示会说明扫描按字面量执行，并建议对可能的检查点直接使用 `history_read`。
 
-两个工具都按[同步事件读取弃用规则](../../implemented/architecture/2026-09-09-deprecate-synchronous-session-event-reads.zh.md)使用显式异步分页历史读取（拒绝非 agent（智能体）调用方），只渲染表面类型的消息事件，并返回普通 `tool/result`：回溯字节会进入上下文尾部并记录到日志，因此无需特殊处理即可满足可重建性。系统不增加新存储或伴随索引：会话日志存储内容，`compaction/summary.shadowedRange` 和 `shadowedSeqs` 指明每个检查点替换了什么，这些工具读取两者。工具 schema 与该包唯一的系统提示词章节都是静态字符串；检查点 id 只会通过页脚抵达模型。transcript 渲染器从 `compaction-basic` 移入 `sqhsession`，供摘要器与工具共享。
+两个工具都按[同步事件读取弃用规则](../../implemented/architecture/2026-09-09-deprecate-synchronous-session-event-reads.zh.md)使用显式异步分页历史读取（拒绝非 agent（智能体）调用方），只渲染表面类型的消息事件，并返回普通 `tool/result`：回溯字节会进入上下文尾部并记录到日志，因此无需特殊处理即可满足可重建性。系统不增加新存储或伴随索引：会话日志存储内容，`compaction/summary.shadowedRange` 和 `shadowedSeqs` 指明每个检查点替换了什么，这些工具读取两者。工具 schema 与该包唯一的系统提示词章节都是静态字符串；检查点 id 只会通过页脚抵达模型。transcript 渲染器从 `compaction-basic` 移入 `sqh-session`，供摘要器与工具共享。
 
 ### 缓存与成本
 
@@ -54,7 +54,7 @@ Status: proposed
 
 ### 打包方式
 
-该设计以新的后端 `sqhcompact-recallable` 交付，挂在现有 `ctx.compaction` seam 上，并在已交付的示例配置中默认启用。`compaction-basic` 保留为参考实现和该 seam 的设计对照，与成对 LLM 适配器的模式一致。seam JSDoc 中「最多一个自动生成的检查点，始终位于头部」这一条会放宽，改为说明两个后端各自的行为。
+该设计以新的后端 `sqh-compact-recallable` 交付，挂在现有 `ctx.compaction` seam 上，并在已交付的示例配置中默认启用。`compaction-basic` 保留为参考实现和该 seam 的设计对照，与成对 LLM 适配器的模式一致。seam JSDoc 中「最多一个自动生成的检查点，始终位于头部」这一条会放宽，改为说明两个后端各自的行为。
 
 ### 与进行中工作的关系
 

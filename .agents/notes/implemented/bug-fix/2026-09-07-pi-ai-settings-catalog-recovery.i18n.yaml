@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-07-pi-ai-settings-catalog-recovery.md
 /agent-note-repairable-pi-ai-settings-after-catalog-changes:
-  en: 29afeecb3a6d9853
-  zh: 79741a3ad05abb60
+  en: a8c5eede2681d3c5
+  zh: 7bf81a76844ca176
 /agent-note-repairable-pi-ai-settings-after-catalog-changes/problem:
   en: acc6a5afd829fde0
   zh: a2173b59b670efe2
 /agent-note-repairable-pi-ai-settings-after-catalog-changes/decision:
-  en: b94686cde2cf04d3
-  zh: 481130f4138213a9
+  en: dd591f516344641c
+  zh: 9eb618219b807dce
 /agent-note-repairable-pi-ai-settings-after-catalog-changes/alternatives-considered:
   en: 1dcabe193953fa1b
   zh: 02263349cdbdc843

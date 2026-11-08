@@ -6,8 +6,8 @@
   en: f172767891b86bf4
   zh: e66e1cc8c96cc259
 /liusiqi-dev-sqh-sandbox-local:
-  en: ed804ee83006bf5b
-  zh: a29163bd9cb70bbe
+  en: 728c4a93cb5c0e52
+  zh: 70de45348c95ee04
 /liusiqi-dev-sqh-sandbox-local/summary:
   en: 0531da225ce56bd3
   zh: da1f246eff9f8a20
@@ -21,8 +21,8 @@
   en: 722ad601000b13c7
   zh: d2723f3743fe160b
 /liusiqi-dev-sqh-sandbox-local/use-this-package/minimal-configuration:
-  en: f435d492b9c2b11f
-  zh: b8aba08a1be1a740
+  en: 4b14231becb848b1
+  zh: 6167ec57e1aa3673
 /liusiqi-dev-sqh-sandbox-local/use-this-package/confined-execution-and-enforcement:
   en: 7282c9ec77fd6f01
   zh: 10e385a9489105e3
@@ -36,8 +36,8 @@
   en: f0c44248c2ca6acc
   zh: 554e9f706671d222
 /liusiqi-dev-sqh-sandbox-local/understand-the-implementation/platform-profiles:
-  en: 1db04735932dc200
-  zh: e2514524d6303bb8
+  en: f8f26a683d5ac695
+  zh: 2dbce4b0e9ba7334
 /liusiqi-dev-sqh-sandbox-local/understand-the-implementation/denial-and-runner-failure-dialects:
   en: 62adfc9229c656cc
   zh: 11b1534b6d61e5de
@@ -45,11 +45,11 @@
   en: 8ab5bcc8dd97df3c
   zh: ee7a6a237a142cbd
 /liusiqi-dev-sqh-sandbox-local/further-exploration:
-  en: 1197fb9b5e7797bd
-  zh: 56b9ed7b3c5ff3ea
+  en: 7a0f4067843fc5c6
+  zh: 66aec8c7deee5f6f
 /liusiqi-dev-sqh-sandbox-local/model-experience:
-  en: 38360fc3d7a61bc3
-  zh: 9c2a805c60191292
+  en: 13f151ef1cc16ab0
+  zh: c2950d6f2464a1c8
 /liusiqi-dev-sqh-sandbox-local/model-experience/kv-cache-effect:
   en: e290ccc9b3c92c08
   zh: 469589ac12cdadab
@@ -60,5 +60,5 @@
   en: cc273320f6a1beaf
   zh: 5c57a312ddc50651
 /liusiqi-dev-sqh-sandbox-local/known-limitations-and-deferred-work/dev-note/future-environment-coherent-groups:
-  en: 7e5242507466d55d
-  zh: 1c4838dfd770f370
+  en: e48a64b0fd8289a6
+  zh: b0a8747b74b66097

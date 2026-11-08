@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-09-23-section-keyed-translation-pairing-records.md
 /agent-note-section-keyed-translation-pairing-records:
-  en: 920926deb98bfdee
-  zh: 54587baa0cda763b
+  en: 9d2ff6aab22bfa2c
+  zh: aa82c988b123f208
 /agent-note-section-keyed-translation-pairing-records/problem:
   en: 1662619f5cc6743f
   zh: e98e9b39e82a2294
@@ -21,5 +21,5 @@
   en: 97af2f09c25338f1
   zh: 2ec62a414fa61254
 /agent-note-section-keyed-translation-pairing-records/related:
-  en: 43f2a7d5b77b2189
-  zh: ab023e7334e29ba3
+  en: eaa9db5d050d11c5
+  zh: e7d967dd138ddacf

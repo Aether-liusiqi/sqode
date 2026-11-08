@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-07-02-bilingual-docs-and-pairing-gate.md
 /agent-note-bilingual-documentation-via-paired-sibling-files-and-a-pairing-gate:
-  en: d1c092aca728af0a
-  zh: e1953a5382c90671
+  en: bcf5641308387d0f
+  zh: 5688e0de8d2753d0
 /agent-note-bilingual-documentation-via-paired-sibling-files-and-a-pairing-gate/problem:
-  en: ee4005498467863d
-  zh: f6d552bc88cbf159
+  en: b1b2be6583c25537
+  zh: 65c3b8b7f35c6713
 /agent-note-bilingual-documentation-via-paired-sibling-files-and-a-pairing-gate/decision:
-  en: b2878be00c94d682
-  zh: 8cf07a08b1ea4884
+  en: 7fbe139b20f6f932
+  zh: 25899c102e58bc14
 /agent-note-bilingual-documentation-via-paired-sibling-files-and-a-pairing-gate/verification:
   en: 8fbf681b863a831c
   zh: e5ba11a549a92612
@@ -21,5 +21,5 @@
   en: 6b5d62086bfd3868
   zh: 219dad72943f590a
 /agent-note-bilingual-documentation-via-paired-sibling-files-and-a-pairing-gate/consequences:
-  en: a0829bb69a917583
-  zh: 19f8f1e91d986cd0
+  en: b228608eebf84986
+  zh: 97c7603f7e290f05

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/rejected/simplification/2026-07-26-dependency-swaps-rejected-by-nih-audit.md
 /agent-note-dependency-swaps-rejected-by-the-2026-07-nih-audit:
-  en: 2e2bfd89996a1f03
-  zh: f94766d733fde2a5
+  en: 8fa147bb29683f1a
+  zh: e671530c9f0caeb3
 /agent-note-dependency-swaps-rejected-by-the-2026-07-nih-audit/problem:
-  en: 18a753de6f5a49ac
-  zh: 05f67ef2e9ae45ac
+  en: 8aadc95e1b6863cd
+  zh: 4f17d1889185520b
 /agent-note-dependency-swaps-rejected-by-the-2026-07-nih-audit/proposal:
-  en: 523c2b3af4f0a0af
-  zh: f545e98e10584911
+  en: 2e4a821cf6f1c521
+  zh: 89d686417eb96703
 /agent-note-dependency-swaps-rejected-by-the-2026-07-nih-audit/alternatives-considered:
   en: 229a0110ca47384e
   zh: 3f86f858d56190c5

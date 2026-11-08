@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-16-windows-subprocess-console-visibility.md
 /agent-note-hide-windows-subprocess-console-windows-at-creation:
-  en: 0b8980b0ec0e7795
-  zh: 29f609ffe9c44710
+  en: d5e6d997e435057d
+  zh: bac89255fec76a6b
 /agent-note-hide-windows-subprocess-console-windows-at-creation/problem:
   en: b76c3b25b8616076
   zh: d14facfdf3948bc4
 /agent-note-hide-windows-subprocess-console-windows-at-creation/decision:
-  en: 9c29eb8b8470b72d
-  zh: 4f732643aa67e459
+  en: 58f531651675d0fb
+  zh: b58bc5b277e98191
 /agent-note-hide-windows-subprocess-console-windows-at-creation/alternatives-considered:
   en: 9dcf5702a5032d69
   zh: 493c2709d441d52c

@@ -3,23 +3,23 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-05-sidebar-tab-types-and-navigation.md
 /agent-note-right-sidebar-tab-types-and-navigation:
-  en: 35309d76c4f5e2b8
-  zh: 255f002abef5de2e
+  en: d558241f215fcf0e
+  zh: 5d8825b7e403e290
 /agent-note-right-sidebar-tab-types-and-navigation/problem:
-  en: 09d5448882a09693
-  zh: 8433fbaa88d0c97c
+  en: 8fd64d237e145f9d
+  zh: 29de872f0b01bdb0
 /agent-note-right-sidebar-tab-types-and-navigation/decision:
   en: 905fd6fbedad540f
   zh: 5420c0dff38012d8
 /agent-note-right-sidebar-tab-types-and-navigation/decision/the-type-registry-ctx-sidebarrighttabs:
-  en: ab6b37876ae767fa
-  zh: 04b3a5e645b59859
+  en: 108c7e194565b128
+  zh: 55fce419d4285836
 /agent-note-right-sidebar-tab-types-and-navigation/decision/bodies-and-titles-keyed-slot-seats-under-the-definition-s-id:
   en: 9e80f2d213b394fe
   zh: 79f2e5c504b9863e
 /agent-note-right-sidebar-tab-types-and-navigation/decision/tab-occurrence-information:
-  en: fc0476eae16ddf07
-  zh: f9d5c313c99dd1f2
+  en: 07cd908667c2b407
+  zh: aa1b42df794e42c5
 /agent-note-right-sidebar-tab-types-and-navigation/decision/navigation-ctx-sidebarright:
   en: f351c04bd7c86670
   zh: 982e2243673aaefc
@@ -30,8 +30,8 @@
   en: 6386bde2654f9a0a
   zh: 700439be6a01e162
 /agent-note-right-sidebar-tab-types-and-navigation/alternatives-considered:
-  en: 06a3a2ff12e42032
-  zh: 8af1704181d76751
+  en: 19b2abe76cb69cfe
+  zh: 9e5261f0d15a4067
 /agent-note-right-sidebar-tab-types-and-navigation/consequences:
   en: 3cdb1159ee55d851
   zh: dcd068005e678a89

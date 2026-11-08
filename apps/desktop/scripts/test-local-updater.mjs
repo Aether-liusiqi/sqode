@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url'
 import electron from 'electron'
 
 if (process.platform !== 'win32') throw new Error('Local NSIS updater qualification requires Windows')
-const root = await mkdtemp(join(tmpdir(), 'sqhlocal-updater-'))
+const root = await mkdtemp(join(tmpdir(), 'sqh-local-updater-'))
 let timedOut = false
 try {
   const environment = Object.fromEntries(Object.entries(process.env).filter(([name]) =>

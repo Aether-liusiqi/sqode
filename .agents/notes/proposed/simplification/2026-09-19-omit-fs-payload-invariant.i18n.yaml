@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/proposed/simplification/2026-09-19-omit-fs-payload-invariant.md
 /agent-note-omit-the-filesystem-payload-only-invariant-companion:
-  en: 74bb5b1297111835
-  zh: 483287ccb6edf95f
+  en: eb59aa13c1ca87d5
+  zh: be5f85feeb1ebc06
 /agent-note-omit-the-filesystem-payload-only-invariant-companion/problem:
-  en: cab3169a834c6ad0
-  zh: f58c217611c60ce5
+  en: f9602d6ea5a0847e
+  zh: 45367521aa3e7cd1
 /agent-note-omit-the-filesystem-payload-only-invariant-companion/proposal:
   en: 2bfceaa480b6645d
   zh: 3ad1060bf91ded74

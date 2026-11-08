@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-05-windows-jsonl-durable-publish.md
 /agent-note-windows-native-durable-jsonl-publication:
-  en: f4b1dce11f6a06ee
-  zh: b0d008b786125c68
+  en: 396829ab2fa4148f
+  zh: 86d1f88d25c3c340
 /agent-note-windows-native-durable-jsonl-publication/problem:
   en: 603e2f0aa76dd16f
   zh: e5bcfdcc018170f2
@@ -15,5 +15,5 @@
   en: 83d5bf5781f89e29
   zh: 068835993789e09d
 /agent-note-windows-native-durable-jsonl-publication/consequences:
-  en: 29acfc7ac412a178
-  zh: 2eae80802b404056
+  en: 918ac04c07f46530
+  zh: a80e57aec9e319a9

@@ -3,20 +3,20 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/simplification/2026-07-24-agent-loop-observable-state-machine.md
 /agent-note-collapse-agent-loop-events-around-the-observable-state-machine:
-  en: 7d98033cd0548dd7
-  zh: e216d8daced62a89
+  en: 6580de109396faf0
+  zh: 48ac162df9cf94bd
 /agent-note-collapse-agent-loop-events-around-the-observable-state-machine/problem:
   en: c55232633eaacf5a
   zh: a71c538c61234c42
 /agent-note-collapse-agent-loop-events-around-the-observable-state-machine/decision:
-  en: a9b21b3ed97bdc30
-  zh: 099d38b3037c4ae9
+  en: ea977d52121e0e1c
+  zh: d109cd8af3904c54
 /agent-note-collapse-agent-loop-events-around-the-observable-state-machine/alternatives-considered:
-  en: 46d5244fa922286c
-  zh: eb70645697f5e71e
+  en: b64b65e1dcb424a5
+  zh: 1bb53af69bf04098
 /agent-note-collapse-agent-loop-events-around-the-observable-state-machine/consequences:
   en: 675d4ae63174031d
   zh: 2649109d067352e2
 /agent-note-collapse-agent-loop-events-around-the-observable-state-machine/related:
-  en: a67687247d2d4035
-  zh: 85d15b27bea8c9a8
+  en: 5d76a1519b1dece8
+  zh: 6ea3cd47c30c3fae

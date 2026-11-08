@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/testing/2026-09-07-pwsh-ci-observable-completion.md
 /agent-note-powershell-ci-completion-and-profile-expectations:
-  en: e7ec56017cb3a6a4
-  zh: f98ea5a2fb02ffec
+  en: 8b8bea8ea9e45aa3
+  zh: 268788106010cb6d
 /agent-note-powershell-ci-completion-and-profile-expectations/problem:
   en: 5806986dfd58191c
   zh: ac082211e112c2d4
@@ -12,8 +12,8 @@
   en: f23d0691bc168ad7
   zh: 2873eb08c925f2f6
 /agent-note-powershell-ci-completion-and-profile-expectations/alternatives-considered:
-  en: 8f8a59b49f49f661
-  zh: aa8be43870b6ba89
+  en: 237f872d29b44377
+  zh: 8bd783d9b5222d50
 /agent-note-powershell-ci-completion-and-profile-expectations/consequences:
   en: d486f9db082655db
   zh: 01c46ff6b700cb15

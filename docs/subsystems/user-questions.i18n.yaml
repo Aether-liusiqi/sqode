@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/user-questions.md
 /user-interaction:
-  en: a1cf25b733eb9341
-  zh: ecc8643efd8de728
+  en: f13a359eb33f93fe
+  zh: 99b477eba842535b
 /user-interaction/question-options:
   en: 88cceb3cf383248e
   zh: 8e1d2627823b1ffc

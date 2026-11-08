@@ -282,7 +282,7 @@ export function initProfile(
   const manifestPath = join(dir, 'package.json')
   if (!existsSync(manifestPath)) {
     const manifest: ProfileManifest & { private: boolean } = {
-      name: `sqhprofile-${basename(dir)}`,
+      name: `sqh-profile-${basename(dir)}`,
       private: true,
       dependencies: {},
       sqh: { profile: { bundles: [...bundles] } },

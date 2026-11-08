@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-09-plugin-management-in-the-web-sidebar.md
 /agent-note-plugin-management-moves-to-the-web-sidebar:
-  en: ba338326626a0e4e
-  zh: ad9f2fd625507e3d
+  en: 0387b5bdeed62073
+  zh: e5bbc9ee56616ed3
 /agent-note-plugin-management-moves-to-the-web-sidebar/problem:
-  en: 777ae03e25c46661
-  zh: 960ba6b592ae95bb
+  en: e719f12476a2efb9
+  zh: c34d53235a9a5f26
 /agent-note-plugin-management-moves-to-the-web-sidebar/decision:
-  en: 415b2c3780246cb7
-  zh: 1cebc8f394b4b450
+  en: 7957528f89d2589a
+  zh: 6c4facde236d9fc1
 /agent-note-plugin-management-moves-to-the-web-sidebar/alternatives-considered:
-  en: b57302c9de50fca8
-  zh: c09996eb07782fb7
+  en: 979921dbd89cc390
+  zh: b268d56475c64579
 /agent-note-plugin-management-moves-to-the-web-sidebar/consequences:
   en: 74c0051937f03444
   zh: 256b38ff34549a4d

@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-06-21-mandatory-app-attribution-headers.md
 /agent-note-mandatory-user-agent-attribution-for-provider-requests:
-  en: 072e8e8349a16f65
-  zh: f8e6bc705068ce3b
+  en: 58e31c64e8e32f2e
+  zh: 242641223e205dbe
 /agent-note-mandatory-user-agent-attribution-for-provider-requests/problem:
-  en: f16d14f35cd4a0df
-  zh: 41dd49fbc126edc8
+  en: 38d572b43aacd964
+  zh: c1aa069c4c73b92f
 /agent-note-mandatory-user-agent-attribution-for-provider-requests/investigation:
   en: 5ea11f54f507ba64
   zh: 22a83a0714a2fda3
 /agent-note-mandatory-user-agent-attribution-for-provider-requests/decision:
-  en: 0b92756290b66474
-  zh: b838f8e5f7d3ccdc
+  en: 2af9d317d218fa0f
+  zh: f7e424896a8f48f8
 /agent-note-mandatory-user-agent-attribution-for-provider-requests/verification:
   en: 0021a3807927b91d
   zh: 026565b8561fbb30

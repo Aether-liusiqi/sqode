@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-16-size-neutral-product-icon-weights.md
 /agent-note-size-neutral-product-icon-weights:
-  en: 95c886c62bd935e6
-  zh: 512e061d0aca491f
+  en: 6351f62fead32e3d
+  zh: 9b801b75b26d4b21
 /agent-note-size-neutral-product-icon-weights/problem:
   en: aae2bf56f8695ee8
   zh: 491fa683d7cc580f

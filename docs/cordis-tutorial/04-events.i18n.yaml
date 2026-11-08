@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/cordis-tutorial/04-events.md
 /4-events:
-  en: fa5994dd7eef2fac
-  zh: f74ffc6b2fae9444
+  en: 9d07c5478a371fed
+  zh: 3d8fd249843ab40a
 /4-events/declare-emit-listen:
   en: a5b9207a435caf1f
   zh: 3e06d12249fb712e
 /4-events/dispatch-modes:
-  en: 1903ebbd7ffafd16
-  zh: a704b4b787bd3516
+  en: 44d0b771b2909964
+  zh: 0b10ec1668e40d51
 /4-events/waterfall-transform-or-short-circuit:
-  en: 9ecf402c5e887d91
-  zh: 128c0353540c81a8
+  en: cd603dbfea7c5a3f
+  zh: f74c3a909002a469

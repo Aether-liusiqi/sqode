@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-16-windows-desktop-titlebar.md
 /agent-note-windows-desktop-caption-and-application-menus:
-  en: c1e22a60040f72a6
-  zh: 0d01caf226c71780
+  en: a418d96786123da6
+  zh: 21528a69f0816202
 /agent-note-windows-desktop-caption-and-application-menus/problem:
   en: 9a3d1b6d02197c6b
   zh: 5eba9f9bf6928430
 /agent-note-windows-desktop-caption-and-application-menus/decision:
-  en: 3b71f9c985c9c2c7
-  zh: 006c15e3b948048f
+  en: 574a72c6389ccc91
+  zh: fbf1b56fef22d3e1
 /agent-note-windows-desktop-caption-and-application-menus/alternatives-considered:
   en: db7703a7a37ac5da
   zh: 704a2a289b8f7cb0

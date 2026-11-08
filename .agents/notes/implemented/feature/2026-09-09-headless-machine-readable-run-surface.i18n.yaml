@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-09-headless-machine-readable-run-surface.md
 /agent-note-headless-machine-readable-run-surface:
-  en: f2041137011bcf82
-  zh: d9ee9aa6db7feaf1
+  en: 4f6e8ff20f3bfae1
+  zh: 9eb026d8612fa446
 /agent-note-headless-machine-readable-run-surface/problem:
   en: 19d432190b92916e
   zh: 00d22cb5cd235783
@@ -18,8 +18,8 @@
   en: b6837e3de1305559
   zh: 183956da3319a126
 /agent-note-headless-machine-readable-run-surface/decision/session-identity:
-  en: 464ed9c2f31b262c
-  zh: 5d6a6ad2998ab807
+  en: ef903391f0cd5407
+  zh: c1f3b3bf4ab80db6
 /agent-note-headless-machine-readable-run-surface/consequences:
   en: 1ba14087f533dd8e
   zh: 66f4aa9d63a0da23

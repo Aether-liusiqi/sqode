@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/simplification/2026-09-16-subagent-catalog-membership-only.md
 /agent-note-keep-model-configuration-outside-subagent-catalogs:
-  en: e9c29a51dc2cfdaa
-  zh: 7dd4eb7b46709c7c
+  en: 9bbddf3a78269327
+  zh: fd5e9870a5ce984d
 /agent-note-keep-model-configuration-outside-subagent-catalogs/problem:
   en: d817b413b7e38939
   zh: a4a3a12df1407a34
 /agent-note-keep-model-configuration-outside-subagent-catalogs/decision:
-  en: 1837738430e7541f
-  zh: 1afd060385329a17
+  en: 7f9bbc04f3cc74e8
+  zh: 8e0bdfc2efc0bb7e
 /agent-note-keep-model-configuration-outside-subagent-catalogs/alternatives-considered:
   en: 415a276e8011a2ab
   zh: d86739d9fbe72fb9

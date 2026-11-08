@@ -423,7 +423,7 @@ export class RemoteProcesses {
     const capability = randomBytes(32)
     const server = createServer({
       ...SSH_STREAM_TLS_OPTIONS, allowHalfOpen: true, handshakeTimeout: this.preparationMs,
-      pskCallback: (_socket, identity) => identity === 'sqhstream' ? capability : null,
+      pskCallback: (_socket, identity) => identity === 'sqh-stream' ? capability : null,
     })
     const endpoint: Endpoint = { path, capability: capability.toString('hex'), server, connected: connected.promise, pending: new Set() }
     server.maxConnections = 8

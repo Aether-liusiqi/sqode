@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-08-sidebar-default-pages.md
 /agent-note-sidebar-default-pages:
-  en: 8c00737f9c708ff9
-  zh: bb1ac420203a7680
+  en: 0449be02e943d13c
+  zh: 50ca829f054cb30a
 /agent-note-sidebar-default-pages/problem:
   en: 48127a7f5a873a52
   zh: a722f139876a415a
 /agent-note-sidebar-default-pages/decision:
-  en: cad3d8946b00533e
-  zh: 3fe49a0246101072
+  en: 9e6b9c025a0ddce4
+  zh: 59b77f9c396b9a77
 /agent-note-sidebar-default-pages/alternatives-considered:
   en: 8d981eef6c5088b8
   zh: 0bc9541a7f7d7b53

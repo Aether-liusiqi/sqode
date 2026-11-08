@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-08-22-standard-acp-automation-controls.md
 /agent-note-standard-acp-v1-automation-controls:
-  en: 3abcab94b10e154b
-  zh: 87786b09c50eb1d6
+  en: 60257d58843bc87f
+  zh: 2219c1c7c2947094
 /agent-note-standard-acp-v1-automation-controls/problem:
   en: 445e3f881bdaa070
   zh: 436c9b4f7e107a3b

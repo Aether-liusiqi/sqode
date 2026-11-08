@@ -80,12 +80,12 @@ export function apply(ctx: Context, config: Config = {}): void {
     return {
       name: skillName, description,
       invocation: { modelInvocable: true, userInvocable: true },
-      provider: 'sqhoffice', source: 'bundled', rank: BUNDLED_SKILL_RANK,
+      provider: 'sqh-office', source: 'bundled', rank: BUNDLED_SKILL_RANK,
       resourceBase: { kind: 'directory', path: directory }, locator: path,
     }
   })
   const provider: SkillProvider = {
-    name: 'sqhoffice',
+    name: 'sqh-office',
     list: () => Promise.resolve(candidates),
     async get(candidate, options) {
       const { rank: _rank, locator, ...summary } = candidate

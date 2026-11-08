@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-20-default-workspace.md
 /agent-note-first-use-default-workspace:
-  en: 3c461f8843e02823
-  zh: a967986683518f57
+  en: 085476412cc07062
+  zh: 40017b9089a9fb97
 /agent-note-first-use-default-workspace/problem:
   en: 952ca70e83872f88
   zh: 471b4e39dba2039a
 /agent-note-first-use-default-workspace/decision:
-  en: 4bdd28d098a3685d
-  zh: 53fe2901b34233ab
+  en: 1bcaa7239e91c39c
+  zh: 8a83b93db4dacfec
 /agent-note-first-use-default-workspace/alternatives-considered:
   en: 58523eb415e53e2a
   zh: 714ddd81ef7d3262
 /agent-note-first-use-default-workspace/consequences:
-  en: b4f24a0b8863a796
-  zh: 8028050da28202fb
+  en: 627b5f6e1212c963
+  zh: 5567edf0afbdd12b

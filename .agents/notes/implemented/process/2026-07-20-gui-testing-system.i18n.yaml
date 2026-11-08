@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-07-20-gui-testing-system.md
 /agent-note-gui-testing-system-the-three-tier-structure:
-  en: ce003233f0a2c917
-  zh: bd1daf4163a34758
+  en: 4bac917bcef0d95e
+  zh: 45e433b07ea37942
 /agent-note-gui-testing-system-the-three-tier-structure/problem:
   en: 1c54e58ea993ef6a
   zh: 73108687fa58a6f2
 /agent-note-gui-testing-system-the-three-tier-structure/decision:
-  en: 2c6b46aaadcd10bd
-  zh: eefc94afb630b14d
+  en: feedd8a36dad37fe
+  zh: 920939f27247d8ee
 /agent-note-gui-testing-system-the-three-tier-structure/lane-map:
   en: 5986e6f4547a75e2
   zh: 51635e8807ae1313
@@ -21,5 +21,5 @@
   en: 22f2475a438c639c
   zh: aafab5ff60b7c644
 /agent-note-gui-testing-system-the-three-tier-structure/alternatives-considered:
-  en: 81035affae166330
-  zh: bd38920ed54036c5
+  en: c7426ac5f648b352
+  zh: 554cce6eddeb95ea

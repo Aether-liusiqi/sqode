@@ -246,7 +246,7 @@ function workerTransport(): FileUploadTransport {
       const workerUrl = URL.createObjectURL(new Blob([
         `(${fileUploadWorker.toString()})()`,
       ], { type: 'text/javascript' }))
-      const worker = new Worker(workerUrl, { name: 'sqhfile-upload' })
+      const worker = new Worker(workerUrl, { name: 'sqh-file-upload' })
       URL.revokeObjectURL(workerUrl)
       return new Promise((resolve, reject) => {
         let settled = false

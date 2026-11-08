@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-17-developer-session-changes.md
 /agent-note-developer-messages-for-incremental-session-changes:
-  en: 835241dc27be312e
-  zh: 7505096336bbf148
+  en: ad6fe161ca7ba719
+  zh: 6a4974b9c99d2532
 /agent-note-developer-messages-for-incremental-session-changes/problem:
   en: 4b02ed98a500205c
   zh: e1a075f6a8251059
 /agent-note-developer-messages-for-incremental-session-changes/decision:
-  en: 1751a6a5b2b1e9c9
-  zh: 6a7a5859c59ac337
+  en: 25c4ca6c90570edb
+  zh: a27c3f44870c6e1f
 /agent-note-developer-messages-for-incremental-session-changes/alternatives-considered:
   en: a9ec42fb650d6cd8
   zh: c748181c603e675f
 /agent-note-developer-messages-for-incremental-session-changes/consequences:
-  en: fb18d1c19d05e923
-  zh: 04573f8067902cd3
+  en: 75bc5f33eeee4810
+  zh: ad6a665d7cfed563

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-09-09-parallel-macos-notarization.md
 /agent-note-parallel-macos-notarization-from-isolated-app-copies:
-  en: c4f225c16d23544c
-  zh: d105b433666746c8
+  en: ab576a173a28ca29
+  zh: c7f92cf6af6715cb
 /agent-note-parallel-macos-notarization-from-isolated-app-copies/problem:
   en: 12c2160b03bac5e0
   zh: 2222e4490505f728
 /agent-note-parallel-macos-notarization-from-isolated-app-copies/decision:
-  en: e5174c7d978870d2
-  zh: fb86f8fc3e845543
+  en: f7aa03b19f075ae0
+  zh: 7662580a847aca97
 /agent-note-parallel-macos-notarization-from-isolated-app-copies/alternatives-considered:
   en: 0ec8e4f3902e17e6
   zh: 3df3091fc01ab600

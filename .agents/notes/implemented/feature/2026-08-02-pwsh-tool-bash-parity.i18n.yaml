@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-08-02-pwsh-tool-bash-parity.md
 /agent-note-pwsh-tool-bash-parity:
-  en: 79f02b8249387c00
-  zh: 81b6f6dfe821d9bd
+  en: 11a154eb6c117f3d
+  zh: c4725e1890d842ab
 /agent-note-pwsh-tool-bash-parity/problem:
   en: d59f8c588e088c04
   zh: 6bbacc0f9f66500c
 /agent-note-pwsh-tool-bash-parity/decision:
-  en: 571ef44eaa0712d2
-  zh: c0152bae0f03df5c
+  en: 06092c86080d5929
+  zh: 3517c5581b1f87c4
 /agent-note-pwsh-tool-bash-parity/alternatives-considered:
   en: 4182559388e867d1
   zh: 97cf98e05d6823b9

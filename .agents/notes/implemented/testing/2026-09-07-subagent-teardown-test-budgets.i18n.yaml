@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/testing/2026-09-07-subagent-teardown-test-budgets.md
 /agent-note-subagent-teardown-tests-inherit-their-execution-lane-budgets:
-  en: e88f88ab5d7c6b44
-  zh: 2a6f4f75dc8dad59
+  en: 7a21ee9487648f2f
+  zh: 8309fbd482e10c89
 /agent-note-subagent-teardown-tests-inherit-their-execution-lane-budgets/problem:
   en: 5853599207f6b3bb
   zh: d58b5e8e19d93a4f
 /agent-note-subagent-teardown-tests-inherit-their-execution-lane-budgets/decision:
-  en: 3263813031a89d69
-  zh: e5fab4481e33ffb8
+  en: e4615a533a4c69b8
+  zh: 0ae040936a856cb2
 /agent-note-subagent-teardown-tests-inherit-their-execution-lane-budgets/alternatives-considered:
   en: 3ad30b2574818a61
   zh: d323adddd5065ae4

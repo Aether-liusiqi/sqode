@@ -49,7 +49,7 @@ export async function withMacOSSigningKeychain(environment, action, run = execut
   const certificate = environment.CSC_LINK
   const exportPassword = environment.CSC_KEY_PASSWORD
   if (!certificate || exportPassword === undefined) throw new Error('desktop macOS signing: CSC_LINK and CSC_KEY_PASSWORD are required')
-  const directory = mkdtempSync(join(tmpdir(), 'sqhmacos-signing-'))
+  const directory = mkdtempSync(join(tmpdir(), 'sqh-macos-signing-'))
   const keychain = join(directory, 'signing.keychain-db')
   const password = randomBytes(32).toString('base64')
   /** @param {string[]} args Security command arguments. */

@@ -89,10 +89,10 @@ function main(): void {
   const expected = packed.get(entry.packageName)
   if (expected === undefined) throw new Error(`${entry.packageName} is not among the packed tarballs`)
 
-  const consumerRoot = mkdtempSync(join(tmpdir(), `sqhpacked-${family.id}-`))
+  const consumerRoot = mkdtempSync(join(tmpdir(), `sqh-packed-${family.id}-`))
   try {
     writeFileSync(join(consumerRoot, 'package.json'), `${JSON.stringify({
-      name: `sqhpacked-install-${family.id}`,
+      name: `sqh-packed-install-${family.id}`,
       version: '0.0.0',
       private: true,
       dependencies: Object.fromEntries([...packed].map(([name, entryPacked]) => [name, entryPacked.url])),

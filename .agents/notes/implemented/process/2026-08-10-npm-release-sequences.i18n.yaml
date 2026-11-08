@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-08-10-npm-release-sequences.md
 /agent-note-private-npm-publication-as-three-independent-sequences:
-  en: 699e64980999ea8d
-  zh: b6f6cc3f4b3cbf96
+  en: f3b59ba143f18fbc
+  zh: f23c43182dc59ca3
 /agent-note-private-npm-publication-as-three-independent-sequences/problem:
   en: a08ff883c2391343
   zh: 1465ffd5cc0e6011
@@ -12,8 +12,8 @@
   en: a15c7c13f167e5ac
   zh: 63bcc2ef60c2f344
 /agent-note-private-npm-publication-as-three-independent-sequences/decision/three-independent-sequences:
-  en: d72f2e4a8dbc8cce
-  zh: 1081e2ba95b4143f
+  en: 65d6dd51be7b2402
+  zh: fbbe899a7edea047
 /agent-note-private-npm-publication-as-three-independent-sequences/decision/versions-land-in-the-repository-from-a-local-command-ci-only-checks-and-uploads:
   en: 564e7534b02803eb
   zh: 0c2a06f441323f8e
@@ -24,11 +24,11 @@
   en: 4f399390f58d7a34
   zh: 9df67248acfc61c8
 /agent-note-private-npm-publication-as-three-independent-sequences/decision/workspace-internal-references-use-the-workspace-protocol:
-  en: 3cf8618c79bfcb31
-  zh: b45ffc4f0b211815
+  en: de54a1152cb6aa82
+  zh: 4784c277790c1b68
 /agent-note-private-npm-publication-as-three-independent-sequences/decision/published-dependency-faces-use-an-explicit-policy:
-  en: 2068dee0596e2153
-  zh: eba33cc4cc9e6a0c
+  en: d36c99d3dada4297
+  zh: 839727e4202c23d5
 /agent-note-private-npm-publication-as-three-independent-sequences/decision/an-optional-dependency-is-never-loaded-at-module-scope:
   en: d83f6cf38529c5b5
   zh: 4df5659b2154d3b7
@@ -36,14 +36,14 @@
   en: 9e03cfa5b6b9fde3
   zh: b534a50c9d917078
 /agent-note-private-npm-publication-as-three-independent-sequences/decision/workflow-shape-pack-on-pr-push-publish-from-a-manual-dispatch-workflow:
-  en: 09c4f5376df89302
-  zh: e9e0c10a7c228a90
+  en: 16ef8a57c663a809
+  zh: 761630a8d66cae35
 /agent-note-private-npm-publication-as-three-independent-sequences/decision/repository-changes-this-carried:
   en: e132a8118bf7575e
   zh: 75dcc3b18c8d871f
 /agent-note-private-npm-publication-as-three-independent-sequences/decision/relationship-to-the-earlier-proposal:
-  en: 1c6682d0d508f0a4
-  zh: c34953175f335c2d
+  en: 09d473c61f3d9517
+  zh: 4c2c53e4ce3049f3
 /agent-note-private-npm-publication-as-three-independent-sequences/alternatives-considered:
   en: 891eb8c22d59c49b
   zh: a49fce640158fbf7

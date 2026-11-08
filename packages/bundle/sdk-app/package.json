@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-sdk-app",
-  "description": "The dsh SDK profile bundle: stdio JSON-RPC serving and process lifecycle over sqhbase",
+  "description": "The dsh SDK profile bundle: stdio JSON-RPC serving and process lifecycle over sqh-base",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

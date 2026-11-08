@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/todo.md
 /todo:
-  en: a1cc284a14556ead
-  zh: f4bb8293af49c31c
+  en: fd520bec6d63020e
+  zh: 24a651700e1a9eb4
 /todo/todoitem-one-list-entry:
   en: 3580467f183af02a
   zh: e3fc7208b0c2ee59
 /todo/durable-event-and-invariant:
-  en: 6aa13d911d6e1f60
-  zh: a5ae2c9002ce7f7e
+  en: 2d867b18c291bf10
+  zh: e3f0ee0e743debc1

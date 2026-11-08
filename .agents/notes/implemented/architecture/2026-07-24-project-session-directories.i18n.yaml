@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-24-project-session-directories.md
 /agent-note-project-grouped-session-directories:
-  en: d90c0a07ab019287
-  zh: 3281e8788e69e9ec
+  en: fdb9da3d461b771b
+  zh: 633c86aa8be76981
 /agent-note-project-grouped-session-directories/problem:
   en: 7df6078347bd7176
   zh: bb769760d7abc903

@@ -35,7 +35,7 @@ export function browserPackageOfFile(file: string): string | undefined {
 
 function recorder(seen: Set<string>, workspaceNames: ReadonlySet<string>, followWorkspace = false) {
   return {
-    name: 'sqhbrowser-direct-dependencies',
+    name: 'sqh-browser-direct-dependencies',
     enforce: 'pre' as const,
     resolveId: {
       order: 'pre' as const,

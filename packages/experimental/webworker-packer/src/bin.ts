@@ -31,11 +31,11 @@ function flag(name: string, fallback?: string): string {
   const index = process.argv.indexOf(`--${name}`)
   if (index === -1) {
     if (fallback !== undefined) return fallback
-    throw new Error(`sqhpack-vfs-image: --${name} is required`)
+    throw new Error(`sqh-pack-vfs-image: --${name} is required`)
   }
   const value = process.argv[index + 1]
   if (value === undefined || value.startsWith('--')) {
-    throw new Error(`sqhpack-vfs-image: --${name} needs a value`)
+    throw new Error(`sqh-pack-vfs-image: --${name} needs a value`)
   }
   return value
 }

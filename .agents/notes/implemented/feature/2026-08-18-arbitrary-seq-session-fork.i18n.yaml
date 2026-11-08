@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-08-18-arbitrary-seq-session-fork.md
 /agent-note-exact-event-session-forks-with-shared-crash-repair:
-  en: 6412e0f9e2338baf
-  zh: 16ad28e7a84577e4
+  en: 073284260f8ebbf2
+  zh: 09f6e37119a442a3
 /agent-note-exact-event-session-forks-with-shared-crash-repair/problem:
   en: e01b73d9d4b50c50
   zh: 14f7816869b76241

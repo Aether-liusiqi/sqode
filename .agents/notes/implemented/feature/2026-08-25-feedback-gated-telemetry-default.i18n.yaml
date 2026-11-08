@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-08-25-feedback-gated-telemetry-default.md
 /agent-note-feedback-gated-session-telemetry-default:
-  en: 46900a2ec53597cb
-  zh: 316f77fe95d12888
+  en: 55067e4622849742
+  zh: 68b9097ad278d590
 /agent-note-feedback-gated-session-telemetry-default/problem:
   en: 87106432bfc6c70a
   zh: 2692c02989a808d7
 /agent-note-feedback-gated-session-telemetry-default/decision:
-  en: 42f6e7492ee9e4ec
-  zh: 9b46585c5c81a503
+  en: 9264b2278b30d406
+  zh: 2fa12b15fdf1f76c
 /agent-note-feedback-gated-session-telemetry-default/alternatives-considered:
   en: 14b51f0de8771943
   zh: 616afb4097857368

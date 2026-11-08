@@ -3,20 +3,20 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-19-projection-cache-listing-identity-and-cached-rows.md
 /agent-note-projection-cache-read-only-face-matches-the-lifecycle-identity-the-client-store-separates-cached-and-sequenced-rows:
-  en: dcda6b992225eb7a
-  zh: bd34bc42d7a92510
+  en: 9aa734167aa48fd3
+  zh: c008b70aef99be62
 /agent-note-projection-cache-read-only-face-matches-the-lifecycle-identity-the-client-store-separates-cached-and-sequenced-rows/problem:
   en: 2e7f99c81fbc941f
   zh: b0fac7cd5eb86ffe
 /agent-note-projection-cache-read-only-face-matches-the-lifecycle-identity-the-client-store-separates-cached-and-sequenced-rows/problem/mechanism:
-  en: c4eb35188f94ccc0
-  zh: 99a1262a992ea2c9
+  en: eb8ab46b7e2c45bf
+  zh: bc463807167e7810
 /agent-note-projection-cache-read-only-face-matches-the-lifecycle-identity-the-client-store-separates-cached-and-sequenced-rows/problem/the-cache-s-two-uses-and-where-validation-lives:
   en: 055ead18162ca1cd
   zh: 9046bf04229e45d1
 /agent-note-projection-cache-read-only-face-matches-the-lifecycle-identity-the-client-store-separates-cached-and-sequenced-rows/problem/the-client-store-cannot-guarantee-that-connected-data-replaces-hints:
-  en: 335beba06eec8323
-  zh: be633053c4bded2f
+  en: b21c1dfa5c7040d8
+  zh: e3e01f870d7808ed
 /agent-note-projection-cache-read-only-face-matches-the-lifecycle-identity-the-client-store-separates-cached-and-sequenced-rows/decision:
   en: a15c7c13f167e5ac
   zh: a15c7c13f167e5ac

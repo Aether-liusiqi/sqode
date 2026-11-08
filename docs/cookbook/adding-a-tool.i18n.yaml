@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/cookbook/adding-a-tool.md
 /tool-authoring-reference:
-  en: 20d29960f25e0010
-  zh: 273f51608a37048c
+  en: ba4dd52263b67f23
+  zh: 368a4a95205ecdb4
 /tool-authoring-reference/the-minimal-shape:
   en: 2cc80a2a79e23005
   zh: 87e43383055890ce
@@ -12,20 +12,20 @@
   en: 110fa68298c53f96
   zh: f5762893eb615ddf
 /tool-authoring-reference/long-running-work:
-  en: 0fd829cb2f20ae86
-  zh: 4d36c5d5bb2a138f
+  en: 65dcd50202142ec6
+  zh: 14cfb16808454cfb
 /tool-authoring-reference/execution-policy-and-observation:
-  en: e910673b1d3e4f02
-  zh: 152864f7e385456c
+  en: fe6ef9c92557472b
+  zh: 6c802c3069e0f7aa
 /tool-authoring-reference/ptc-mode-reaches-your-tool-for-free:
-  en: d97960df6ff2ef4f
-  zh: aeea4a85565bf9c2
+  en: ea24be9046deea75
+  zh: 66f10a00d0cc82dd
 /tool-authoring-reference/how-your-tool-renders-in-a-ui:
-  en: 087c21eaa194fd01
-  zh: aaed7059944b7b65
+  en: 35eb0b18edef26d2
+  zh: 2ad9b407989c6eb2
 /tool-authoring-reference/web-client-presentation:
-  en: 488563f8866ab51b
-  zh: 73145d3d4522039b
+  en: 5bcf607c6c421c64
+  zh: d63079e549e00be6
 /tool-authoring-reference/verification:
-  en: 79161782fd5f0039
-  zh: f39e577d454bf411
+  en: 44de3b8af6dc083d
+  zh: 8e0e612c831a0a80

@@ -3,20 +3,20 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-07-31-even-out-shipped-tool-rosters.md
 /agent-note-even-out-the-shipped-tool-rosters:
-  en: a7345434342549be
-  zh: 19de9a6f746120e9
+  en: 027d42adf0695fe8
+  zh: 288f1864e9a0a2e9
 /agent-note-even-out-the-shipped-tool-rosters/problem:
   en: 338e07bf7bb4da29
   zh: 0e0b8ff605b5b75c
 /agent-note-even-out-the-shipped-tool-rosters/decision:
-  en: 43b0ecdbdfe4df94
-  zh: 5d0e1b5bc6de57c3
+  en: 4f1c56602b28a540
+  zh: 62bb82ba069ab144
 /agent-note-even-out-the-shipped-tool-rosters/decision/what-stays-unmounted-and-why:
-  en: f6dd90e891cc02ab
-  zh: e01357f810a7e6ed
+  en: 389e6cba0f6f2f5a
+  zh: 842c52d74893822e
 /agent-note-even-out-the-shipped-tool-rosters/decision/mcp-is-a-dependency-not-a-row:
-  en: 272878851153db13
-  zh: 56219e6b29f00647
+  en: 6faf9fcbbfcbe6bc
+  zh: 54ee6759ffbb023e
 /agent-note-even-out-the-shipped-tool-rosters/testing:
   en: 6c922bb6c5071edc
   zh: cb0d29326a181114

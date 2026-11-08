@@ -159,7 +159,7 @@ export class DesktopMandatoryUpdatePolicy {
     return {
       ...platformClientHeaders(this.identity.platform, this.client()),
       'x-client-arch': this.identity.arch, 'x-client-update-channel': 'nightly',
-      'x-client-bundled-sqhversion': this.identity.bundledSqhVersion,
+      'x-client-bundled-sqh-version': this.identity.bundledSqhVersion,
     }
   }
 

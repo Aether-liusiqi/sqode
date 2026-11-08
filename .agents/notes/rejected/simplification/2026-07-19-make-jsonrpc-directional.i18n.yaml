@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/rejected/simplification/2026-07-19-make-jsonrpc-directional.md
 /agent-note-make-json-rpc-completion-and-transport-directional:
-  en: 4a8e74240b5747f6
-  zh: 35b00240eb4752bc
+  en: b8003c46eeb426c4
+  zh: 0c0e5ae3d146f767
 /agent-note-make-json-rpc-completion-and-transport-directional/problem:
-  en: 7e176d2b43cbe792
-  zh: 8394de2b81dfd080
+  en: 9fe47bc014302bdf
+  zh: 9ea38663bcf2aeea
 /agent-note-make-json-rpc-completion-and-transport-directional/proposal:
   en: 1877df56f4a6c009
   zh: 88945feba13fd7f2

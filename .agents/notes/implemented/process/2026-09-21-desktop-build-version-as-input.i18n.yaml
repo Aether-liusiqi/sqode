@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-09-21-desktop-build-version-as-input.md
 /agent-note-pass-the-desktop-build-version-as-an-argument-instead-of-rewriting-manifests:
-  en: 84e7df86c58362a7
-  zh: 56225aba733efa6e
+  en: de3e830da69d167b
+  zh: 4614a3153e4eb8b5
 /agent-note-pass-the-desktop-build-version-as-an-argument-instead-of-rewriting-manifests/problem:
-  en: 55f25b2699492ad2
-  zh: 2d0878d2721b9f1d
+  en: 8e84404f56e5b901
+  zh: 0ed24c4807c1ed41
 /agent-note-pass-the-desktop-build-version-as-an-argument-instead-of-rewriting-manifests/decision:
-  en: b39c7118abaee9e3
-  zh: d462575652d93e02
+  en: 054c96374a9b0dc9
+  zh: 23c69f40aa4faf8f
 /agent-note-pass-the-desktop-build-version-as-an-argument-instead-of-rewriting-manifests/alternatives-considered:
   en: 661bbadd0715d0a6
   zh: fcf9e06a0b957eb0

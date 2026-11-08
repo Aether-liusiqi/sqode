@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-05-nested-terminal-cards.md
 /agent-note-nested-terminal-cards:
-  en: 80ba650a769dcf9e
-  zh: 15d5aff7e41a7d5a
+  en: ff9996ec463303a6
+  zh: aaf58e9e63040409
 /agent-note-nested-terminal-cards/problem:
   en: 1bd9adbd90b66871
   zh: 0a87672dffc07bae
 /agent-note-nested-terminal-cards/decision:
-  en: cb06a502f97c0664
-  zh: 5935dacc9113faec
+  en: c160075f86c84ffe
+  zh: 7404b25c9ce0623f
 /agent-note-nested-terminal-cards/alternatives-considered:
   en: c585eb14efb10514
   zh: c5a1cc87fc4edacc

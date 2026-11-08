@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-08-26-shell-execute-projection-and-jobs-at-start.md
 /agent-note-one-shell-execute-foreground-as-a-projection-timeout-as-a-bounded-wait-on-the-job:
-  en: 97231051315dc174
-  zh: 92e322ae189c21b6
+  en: 2e4c5623ab00ef10
+  zh: 5acf54b71751a5bc
 /agent-note-one-shell-execute-foreground-as-a-projection-timeout-as-a-bounded-wait-on-the-job/problem:
   en: e0e1292e5a785322
   zh: 34ec6572ed6cf406

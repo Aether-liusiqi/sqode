@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-08-10-event-directed-pr-review-status.md
 /agent-note-event-directed-pr-review-status-commands:
-  en: 7bcafd72a3f3c4bd
-  zh: 9d3e97db2e974cad
+  en: a7de00f059d5a439
+  zh: de006c87ccb907ff
 /agent-note-event-directed-pr-review-status-commands/problem:
   en: 3e00a9cb6c0e53ec
   zh: 1bd27ceea8a424ce
 /agent-note-event-directed-pr-review-status-commands/decision:
-  en: ed32b537179bfc79
-  zh: 33018b5538d0a34e
+  en: fe70e96f8725a859
+  zh: 6f7e682d588ab388
 /agent-note-event-directed-pr-review-status-commands/verification:
   en: 46301d11d2f1c8df
   zh: daa44a617912c315

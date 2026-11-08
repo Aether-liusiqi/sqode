@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-16-performance-usage-preference.md
 /agent-note-performance-and-usage-detail-preference:
-  en: c5a1325b421af260
-  zh: edbe61281581ef8a
+  en: f5b722632ce9c366
+  zh: 120c5f34a378df1c
 /agent-note-performance-and-usage-detail-preference/problem:
   en: 3b420f5fb2952b3e
   zh: 6fa1ef1090e595ec
 /agent-note-performance-and-usage-detail-preference/decision:
-  en: 9e0991f9dab43525
-  zh: 74eb41ff1d62555d
+  en: 1ca9e15d0ad2f850
+  zh: 29b98e47e093d2eb
 /agent-note-performance-and-usage-detail-preference/alternatives-considered:
   en: 7c676c0b192d03eb
   zh: 2e994f30fc99c5d4

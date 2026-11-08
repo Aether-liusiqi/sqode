@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/proposed/architecture/2026-07-27-session-projection-and-command-log.md
 /agent-note-session-projections-and-command-lifecycle-logging:
-  en: 02eb63fb5a25d87e
-  zh: 4df2aa8f6c937f84
+  en: b32297ef70c0fd0e
+  zh: 1d1241bb7abd903d
 /agent-note-session-projections-and-command-lifecycle-logging/problem:
   en: 017166a86aa35cad
   zh: b6a2e826fbed2474
@@ -14,9 +14,9 @@
 /agent-note-session-projections-and-command-lifecycle-logging/proposal/whole-value-event-rule:
   en: e6c93d89a25f0d03
   zh: 65e1f5842bc74008
-/agent-note-session-projections-and-command-lifecycle-logging/proposal/host-projection-registry-sqhsession-projection-new-package:
-  en: 3cfacce9f9bcf00d
-  zh: c772b69452052672
+/agent-note-session-projections-and-command-lifecycle-logging/proposal/host-projection-registry-sqh-session-projection-new-package:
+  en: 99622aadeb14e38d
+  zh: 4f2d4b5cb8c2b835
 /agent-note-session-projections-and-command-lifecycle-logging/proposal/shipped-consumer-the-subagent-identity-unit:
   en: 10093535660c3cae
   zh: a7f4ff9e71ee6751
@@ -33,11 +33,11 @@
   en: 7b536bd8a51cc5dc
   zh: 1ead63f6358b3799
 /agent-note-session-projections-and-command-lifecycle-logging/proposal/command-lifecycle-in-the-log:
-  en: 5bd105d4092e71e9
-  zh: c33e5c8ed2bf4167
+  en: 0f3aac14ac8b3bf4
+  zh: 915bbd00dd285f9e
 /agent-note-session-projections-and-command-lifecycle-logging/delivery-plan:
-  en: d4c33f85551f4354
-  zh: 8a322e2cfb69096e
+  en: 432a3626867d2c4f
+  zh: 07b1920903d7c67b
 /agent-note-session-projections-and-command-lifecycle-logging/alternatives-considered:
   en: e945e84e8360e0c4
   zh: becdeb100a4c5b6b

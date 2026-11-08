@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-09-profile-resolution-generations.md
 /agent-note-add-immutable-profile-resolution-generations:
-  en: 8f5a05760fcd1cb5
-  zh: 06ebd4da25fcfc59
+  en: 843587bbb6caecfe
+  zh: 1f17592ee8b1b687
 /agent-note-add-immutable-profile-resolution-generations/problem:
   en: 8e192c176fe48c4c
   zh: adb965d650088eb0
@@ -18,14 +18,14 @@
   en: f77ef79e2499a0dc
   zh: 4bc28292763a1075
 /agent-note-add-immutable-profile-resolution-generations/decision/source-and-built-module-identity:
-  en: 92be7d150d8febce
-  zh: c470e7f3dadb28d4
+  en: 6469d1113b838683
+  zh: 71bb19502d55ac03
 /agent-note-add-immutable-profile-resolution-generations/decision/immutable-generations:
   en: cd4e64bd80f448a2
   zh: 585e1fbd8721ae99
 /agent-note-add-immutable-profile-resolution-generations/decision/shared-esm-and-commonjs-rule:
-  en: c627d162ad43d7f3
-  zh: 6391d0498fbc8336
+  en: bb83a725b91d4465
+  zh: 7fd5ccdd9e8059b4
 /agent-note-add-immutable-profile-resolution-generations/decision/active-plugin-list-and-package-metadata:
   en: b9e0f78b36e3751b
   zh: 9393f182911afed7
@@ -36,8 +36,8 @@
   en: 718dfa7826783f2a
   zh: 21c3d5fdfae9cb99
 /agent-note-add-immutable-profile-resolution-generations/decision/filesystem-and-runtime-carriers:
-  en: 9d8603661a01e61e
-  zh: 7c55d00ee2ba85f6
+  en: c98365935eab7f12
+  zh: 05b4af45ea12b51f
 /agent-note-add-immutable-profile-resolution-generations/decision/performance-and-verification:
   en: bf7bd2f8371f54f3
   zh: 426c3b33af8874b8

@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write README.md
 /sqode:
-  en: ffcc4722b556693f
-  zh: cc6a656cecf4fa91
+  en: 32582ab81caea74f
+  zh: 4e45b413e18e59ac
 /sqode/developer-preview:
-  en: b55e2ab4f9d07217
-  zh: 7d71021ef9a76d0d
+  en: 20d8cbbe3e885f6f
+  zh: 37ca8dacd6ebd2aa
 /sqode/run:
   en: 4e0248e4c6474fc6
   zh: eb2fb8d78c7d6bc0
 /sqode/run/run-from-npm:
-  en: f73304c05d719a52
-  zh: bc716e642ba3ca37
+  en: 7fab27d3ee3cccaf
+  zh: fac9bb21fcae23dd
 /sqode/run/run-from-source:
   en: 19bccd5f32b897a3
   zh: 29153b7796fbf9ef
@@ -21,11 +21,11 @@
   en: b11f098d573f742f
   zh: 6740347bef19ba0e
 /sqode/contributing:
-  en: 970477dae137d027
-  zh: b3660863e6ed48b3
+  en: 369fe106c9820c9c
+  zh: 4d3d803d3e0a2690
 /sqode/development:
-  en: 4a46ac8b238501b3
-  zh: 90502c0b67a69a08
+  en: bca9ce1bf94e8562
+  zh: f0158edc85fb5424
 /sqode/citation:
   en: 6704e9e5a8d49a91
   zh: 85c9cdd8d56f8e9d

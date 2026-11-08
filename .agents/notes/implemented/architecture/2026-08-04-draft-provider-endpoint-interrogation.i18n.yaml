@@ -3,20 +3,20 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-08-04-draft-provider-endpoint-interrogation.md
 /agent-note-interrogating-a-draft-provider-endpoint:
-  en: 8116df708341b3d9
-  zh: b24e2ded31cc0ae3
+  en: f5c9f8372eed76f9
+  zh: c0432df0debe0a73
 /agent-note-interrogating-a-draft-provider-endpoint/problem:
   en: c50e44492b4b30a2
   zh: 74a17b3d3ec6cf0d
 /agent-note-interrogating-a-draft-provider-endpoint/decision:
-  en: a7976fcfc4b1ed92
-  zh: 68bebd27dd475f39
+  en: ba9fa47993a7d155
+  zh: 17f6caaf9ac1fc1f
 /agent-note-interrogating-a-draft-provider-endpoint/decision/why-not-pi-ai-s-own-refresh-machinery:
   en: a9654499e32c91b3
   zh: cfb5a76500b6fe1a
 /agent-note-interrogating-a-draft-provider-endpoint/alternatives-considered:
-  en: 7f144222bf0dc2b4
-  zh: 17eb0af0ad4639f6
+  en: e6c0f031b7dffbec
+  zh: 9b21b8e9774fc1cd
 /agent-note-interrogating-a-draft-provider-endpoint/consequences:
   en: a4911a205e713f60
   zh: 04adc6be1f4f34c7

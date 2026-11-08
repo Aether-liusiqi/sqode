@@ -386,7 +386,7 @@ function normalizeProjectedHeader(header: Readonly<Record<string, unknown>>): Re
     normalized['delegationDepth'] = 0
   }
   if (typeof header['cwd'] === 'string' && /^\{\{cwd\}\}(?:\/|$)/.test(header['cwd'])) {
-    normalized['cwd'] = header['cwd'].replace('{{cwd}}', '/sqhsnapshot-cwd')
+    normalized['cwd'] = header['cwd'].replace('{{cwd}}', '/sqh-snapshot-cwd')
   }
   return normalized
 }

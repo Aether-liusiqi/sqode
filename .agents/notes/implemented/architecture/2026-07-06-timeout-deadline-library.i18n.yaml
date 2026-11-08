@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-06-timeout-deadline-library.md
 /agent-note-a-shared-timeout-deadline-primitive-with-hard-kill-left-to-each-capability:
-  en: 3186334251be4fa5
-  zh: 2f22a3faa83e0988
+  en: 8bd2103f33c92269
+  zh: d24eb63cdeee8c11
 /agent-note-a-shared-timeout-deadline-primitive-with-hard-kill-left-to-each-capability/problem:
-  en: 429c2d5eeea61df9
-  zh: e521fbfe86a96fd6
+  en: e91c196e1dc8093f
+  zh: cdd12c5f59ca759e
 /agent-note-a-shared-timeout-deadline-primitive-with-hard-kill-left-to-each-capability/decision:
   en: a6558849ace9a30e
   zh: bc2983b04ce932d5

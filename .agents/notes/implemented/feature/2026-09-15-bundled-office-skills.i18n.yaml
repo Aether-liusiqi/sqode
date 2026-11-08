@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-15-bundled-office-skills.md
 /agent-note-bundled-office-skills-with-structural-verification:
-  en: 95e7c73e00ee76c6
-  zh: 4a646993ee9f4b4e
+  en: 4ba2353b93e28536
+  zh: 95ad59b444bdddaf
 /agent-note-bundled-office-skills-with-structural-verification/problem:
   en: d1e1e74b0fa286de
   zh: 61ce855e4726d4a3
 /agent-note-bundled-office-skills-with-structural-verification/decision:
-  en: 9ff980901f339847
-  zh: ba57eb1af96b11fe
+  en: 29c177de115a3115
+  zh: e546469ff5957b2f
 /agent-note-bundled-office-skills-with-structural-verification/alternatives-considered:
   en: c5389aef638deb0c
   zh: a11a99a269e81c6a

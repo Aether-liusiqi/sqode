@@ -3,29 +3,29 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-06-30-interception-extension-points.md
 /agent-note-interception-extension-points-the-typed-decision-surface-a-hook-programs-against:
-  en: a0690ab5e6183144
-  zh: c82f2488e063bbeb
+  en: e1738f71498c60a8
+  zh: 6a760db60f29e38e
 /agent-note-interception-extension-points-the-typed-decision-surface-a-hook-programs-against/problem:
-  en: 22f59723c2fa7ffd
-  zh: ddde702216816c94
+  en: 34c0dc17be152b43
+  zh: 3a4605ac8a583e7f
 /agent-note-interception-extension-points-the-typed-decision-surface-a-hook-programs-against/decision:
-  en: bde95c944489ab45
-  zh: 88b704e7c8d87df3
+  en: be3f21d437f4f649
+  zh: 9ed011b5a83bab36
 /agent-note-interception-extension-points-the-typed-decision-surface-a-hook-programs-against/decision/the-tool-pipeline-gives-each-phase-one-kind-of-authority:
-  en: a26173a923853a7e
-  zh: 824b1b43073a97d5
+  en: f50e3e229c853c07
+  zh: 51893ca3ae86f921
 /agent-note-interception-extension-points-the-typed-decision-surface-a-hook-programs-against/decision/three-load-bearing-loop-decisions:
-  en: 20073a7571dc0ac0
-  zh: db9fdb2afae79a16
+  en: e146a83facf12af7
+  zh: ef26582a116c0f3b
 /agent-note-interception-extension-points-the-typed-decision-surface-a-hook-programs-against/decision/pre-tool-input-rewrite-is-a-separate-consistency-decision:
-  en: a3a587d1d6b8f756
-  zh: a5151de767650819
+  en: 2865994fe8dda278
+  zh: 3afa7d8307464775
 /agent-note-interception-extension-points-the-typed-decision-surface-a-hook-programs-against/decision/boundaries:
-  en: c13e0a636c08b913
-  zh: da757b7211a7fdec
+  en: eddc06f3304e6b1e
+  zh: 4fb25d3b9f979c1a
 /agent-note-interception-extension-points-the-typed-decision-surface-a-hook-programs-against/alternatives-considered:
-  en: 9ee6258d407c745e
-  zh: a5fe7227c03a4f4c
+  en: 222355ae252437eb
+  zh: a5691e5c98bb2362
 /agent-note-interception-extension-points-the-typed-decision-surface-a-hook-programs-against/consequences:
-  en: cb260467a5107aea
-  zh: 46924265431cee18
+  en: 24095e8959da529d
+  zh: dccf431a64932d84

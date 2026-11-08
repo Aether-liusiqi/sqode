@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/rejected/process/2026-08-04-artifact-first-npm-baseline-publication.md
 /agent-note-artifact-first-npm-baseline-publication:
-  en: ef5e9c2c01a4095c
-  zh: 08e5e2135d49268a
+  en: afdec15067683d58
+  zh: 70c3585ba8dcb736
 /agent-note-artifact-first-npm-baseline-publication/problem:
   en: 262109304a235ff0
   zh: 0399026e9afa9403

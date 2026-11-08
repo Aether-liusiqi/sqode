@@ -3,29 +3,29 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write apps/cli/reference/README.md
 /sqh-cli-behavior-reference:
-  en: ec0ab64dc4f76772
-  zh: 8138fc9c9fa503bc
+  en: af0ece4a908cff9f
+  zh: 1a50fc16833f53c0
 /sqh-cli-behavior-reference/profile-boot:
   en: 4e5241ba203981c5
   zh: 5a9000e215d8b175
 /sqh-cli-behavior-reference/profile-boot/app-arguments:
-  en: cbf3417651efc0fc
-  zh: ca25b234ef88e88b
+  en: fdb1b4eff5987997
+  zh: ca23032648971823
 /sqh-cli-behavior-reference/profile-boot/config-schema-dump:
-  en: 8d18e0d85ac747bc
-  zh: 5a2aed6619de89d6
+  en: 6aba9d2cef2f94f7
+  zh: 52ddb364c17b1788
 /sqh-cli-behavior-reference/startup-diagnostics:
   en: 394407190a2bf096
   zh: 6a52daccb84beaa4
 /sqh-cli-behavior-reference/plugin-management:
-  en: cbf906ba704101f6
-  zh: a4879ee9900382ac
+  en: ae2fada02103640a
+  zh: adbc88d8cd080fa3
 /sqh-cli-behavior-reference/web-profile:
   en: a8ad36b9128c0f47
   zh: b7bf751869d41ce6
 /sqh-cli-behavior-reference/shared-deployment-behavior:
-  en: 2e54b0a493eead57
-  zh: 953c64368c5dd1bd
+  en: 3e6ae3392f4e44eb
+  zh: 9119050a27f21d52
 /sqh-cli-behavior-reference/source-execution:
   en: e0074344cb10a943
   zh: 0f666939226b9f48

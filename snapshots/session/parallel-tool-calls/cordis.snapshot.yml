@@ -1,5 +1,5 @@
 # Keyless filesystem snapshots combine spill settings with replay. The
-# sandboxed filesystem stack already lives in `sqhbase`; the ACP row re-pins
+# sandboxed filesystem stack already lives in `sqh-base`; the ACP row re-pins
 # `deepseek-v4-flash` for the recorded corpus.
 - id: llm-deepseek
   name: '@liusiqi-dev/sqh-llm-deepseek-api-key'

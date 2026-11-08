@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-09-15-shipped-optional-bundles.md
 /agent-note-ship-optional-bundles-with-the-installation:
-  en: dcdbb31504f6c566
-  zh: 190f53741b7e9c26
+  en: 3534a85b43945f44
+  zh: 58e28140625cd6ff
 /agent-note-ship-optional-bundles-with-the-installation/problem:
-  en: a24a0cc926839b4b
-  zh: d473c13df500c7e8
+  en: fc06f7d643aded61
+  zh: a8f91a8ff6b50055
 /agent-note-ship-optional-bundles-with-the-installation/decision:
-  en: 7d14b78b6eeabe01
-  zh: 0c19a54e4f7e5dc1
+  en: a3d9fce99351022f
+  zh: bc999747330cfc32
 /agent-note-ship-optional-bundles-with-the-installation/alternatives-considered:
   en: 7906c1880759934a
   zh: c3a25667cb2d1431

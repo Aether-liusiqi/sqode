@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-10-command-identities-and-composer-file-action.md
 /agent-note-command-identities-and-composer-owned-file-action:
-  en: 95d60ab1183c8d23
-  zh: 9bdedc5521d18be1
+  en: 89ec2578bcfa43ef
+  zh: e71890d420cfd2b0
 /agent-note-command-identities-and-composer-owned-file-action/problem:
   en: ad2c360593eb7a42
   zh: 503a9c31a5eb55e7
 /agent-note-command-identities-and-composer-owned-file-action/decision:
-  en: 83b88ba6fc100690
-  zh: 281565d96b64bce3
+  en: d4432fa72a1d52a2
+  zh: 24e2d2ce5c11707e
 /agent-note-command-identities-and-composer-owned-file-action/alternatives-considered:
   en: 94ccabd1fe224408
   zh: bfa28806f0218ce8

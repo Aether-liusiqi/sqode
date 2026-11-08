@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-14-unattended-browser-terminal-reclamation.md
 /agent-note-two-hour-reclamation-of-unattended-browser-terminals:
-  en: 70df4049ef266aad
-  zh: 61768a9cd1e837a1
+  en: 56dc188d207eb709
+  zh: b452054b3ca7efb4
 /agent-note-two-hour-reclamation-of-unattended-browser-terminals/problem:
   en: bd5cfc222df1a98c
   zh: b58a3570a98298ee
 /agent-note-two-hour-reclamation-of-unattended-browser-terminals/decision:
-  en: edf9cd344b1675a8
-  zh: 91a3aa53a0dc8d2b
+  en: f9fbfc7af5746d10
+  zh: 56930b7e87378e59
 /agent-note-two-hour-reclamation-of-unattended-browser-terminals/alternatives-considered:
   en: 165fedee22bdb52e
   zh: 6b9b7054ddb2a3a9

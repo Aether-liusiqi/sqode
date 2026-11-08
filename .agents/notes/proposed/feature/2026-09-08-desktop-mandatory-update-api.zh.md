@@ -33,7 +33,7 @@ x-client-locale: zh_CN
 x-client-timezone-offset: 28800
 x-client-arch: x64
 x-client-update-channel: nightly
-x-client-bundled-sqhversion: 0.1.3-rc.2
+x-client-bundled-sqh-version: 0.1.3-rc.2
 ```
 
 以上 header 在每次 Desktop 请求中均为必填；必填 header 的取值可以为空，`x-client-bundle-id` 即如此。描述已安装软件的值来自应用与发布元数据，不来自可编辑 UI 字段。
@@ -47,7 +47,7 @@ x-client-bundled-sqhversion: 0.1.3-rc.2
 | `x-client-timezone-offset` | 与 UTC 的整秒偏移，东为正，每次请求时从壳采样 |
 | `x-client-arch` | Windows 为 `x64`；macOS 为 `x64` 或 `arm64` |
 | `x-client-update-channel` | 一期固定 `nightly`，独立于版本后缀 |
-| `x-client-bundled-sqhversion` | 发布元数据中的完整内置 dsh 版本 |
+| `x-client-bundled-sqh-version` | 发布元数据中的完整内置 dsh 版本 |
 
 | Query | 客户端行为 | 后端一期行为 |
 |---|---|---|

@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/user/guide/schedule.md
 /schedule-reminders:
-  en: 8d432d7bc13cb063
-  zh: b68f23af6b7d40d4
+  en: 996011717a9e28d5
+  zh: 1b4f826295dcf54a
 /schedule-reminders/summary:
   en: bc85e4ac935f2fd5
   zh: c39e54e4beaa3f9a
@@ -24,8 +24,8 @@
   en: 6e5aa8ae5906df4f
   zh: afdf670a31fae2bb
 /schedule-reminders/further-exploration:
-  en: b72b842b81b4d9ac
-  zh: 2b015a867b471033
+  en: e53dcf1d60500354
+  zh: f8ac1e14b29debae
 /schedule-reminders/dev-note:
   en: b75c8458928b72b9
   zh: 003ba4e17b4b5269

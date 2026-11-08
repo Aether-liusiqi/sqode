@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/simplification/2026-07-28-remove-synthetic-log-only-turns.md
 /agent-note-remove-synthetic-turns-for-log-only-events:
-  en: 957bcd0e5218bcc0
-  zh: 845db7bd5f4dd897
+  en: e8bb2924c9f4104b
+  zh: e1b71ad5409101be
 /agent-note-remove-synthetic-turns-for-log-only-events/problem:
   en: 33413b092d535f4f
   zh: 02f79f372227c104
 /agent-note-remove-synthetic-turns-for-log-only-events/decision:
-  en: 6de59fb890604c0f
-  zh: f44c90481904ad8d
+  en: 8fb5182464d6161b
+  zh: 8c8b25e14d37dcca
 /agent-note-remove-synthetic-turns-for-log-only-events/alternatives-considered:
   en: fbee860bf43530a7
   zh: 276647ba5402d6a8

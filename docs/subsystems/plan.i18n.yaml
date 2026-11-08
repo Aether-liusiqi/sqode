@@ -3,20 +3,20 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/plan.md
 /plan-mode:
-  en: b015ea8d601c9da9
-  zh: 975ef3920c8e390e
+  en: c89e51d31fa5ed7c
+  zh: 0209194413766203
 /plan-mode/logged-state-and-recovery:
-  en: a75f6824390c39d6
-  zh: 7f5e6ec73c4b5c42
+  en: f644ef3753be6c6f
+  zh: e4ed61109458b9a5
 /plan-mode/pending-selections-and-the-pre-step-append:
-  en: 49db48027ff72dc3
-  zh: 744cd5d2052c29c2
+  en: dd942ea607022548
+  zh: 6445280c4c8f0b04
 /plan-mode/configuration:
-  en: 17e02df2d00f6ce4
-  zh: fcd38c016f7adbaa
+  en: fcea773163c718c2
+  zh: cfb14095e4f39f32
 /plan-mode/the-exit-tool-and-the-plan-command:
-  en: 0bdecba210c20d4b
-  zh: a9e04bb307cdd93e
+  en: 6b642110ede847c8
+  zh: b28e5519d1f623eb
 /plan-mode/the-service:
   en: 07c3eec12e0dc75c
   zh: 183d73f6672e2c5a

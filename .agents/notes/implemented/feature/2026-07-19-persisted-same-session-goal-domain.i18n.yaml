@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-07-19-persisted-same-session-goal-domain.md
 /agent-note-persisted-same-session-goal-domain:
-  en: 229bfc2ac6e4966a
-  zh: c6e920dea93e7bfe
+  en: 49b5d63c939464d6
+  zh: e369ccbbfe37a870
 /agent-note-persisted-same-session-goal-domain/problem:
   en: 45e351264fabe761
   zh: 6513999a7d83a528
@@ -12,8 +12,8 @@
   en: dc02b226efd48aa4
   zh: 4b0610ed32a5add0
 /agent-note-persisted-same-session-goal-domain/decision/durable-record-and-replay:
-  en: ccb1c3b071a69d5e
-  zh: 4b44423763e3ba17
+  en: a81182ff1fe7d988
+  zh: 9182621e2daadea2
 /agent-note-persisted-same-session-goal-domain/decision/lifecycle-and-live-activation:
   en: d68c058ff7a49fee
   zh: cbcdbce1aade7758
@@ -24,8 +24,8 @@
   en: 9fb97674d1dd45ac
   zh: c56df41a9aa6767a
 /agent-note-persisted-same-session-goal-domain/alternatives-considered:
-  en: 86408921fc737e6b
-  zh: 28b8d1283418a6b4
+  en: 57eaf901120d92a7
+  zh: a4ffe7e04c198b7f
 /agent-note-persisted-same-session-goal-domain/consequences:
   en: fa46d172b9d01b52
   zh: 54c40631d1719624

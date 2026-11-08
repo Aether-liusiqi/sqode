@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-28-desktop-login-shell-environment.md
 /agent-note-desktop-reads-the-login-shell-environment-once:
-  en: 303cc141277e24b2
-  zh: a7c1ee8dbf640ba5
+  en: be8f825bf96f7fc4
+  zh: 6ba7bc5cfac36b50
 /agent-note-desktop-reads-the-login-shell-environment-once/problem:
   en: 3a4b92c977e42f45
   zh: 575d92a41e29ae7a
 /agent-note-desktop-reads-the-login-shell-environment-once/decision:
-  en: 31df7b5a02b4f160
-  zh: 0e18b94c4fa1ec4c
+  en: bc2374bf78297ec3
+  zh: 4088fe4dbed2d61f
 /agent-note-desktop-reads-the-login-shell-environment-once/alternatives-considered:
   en: bf3613fb04ccab66
   zh: 2c4af366f3f22555

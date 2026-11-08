@@ -2,18 +2,18 @@
 # section, a hash of its English and Chinese blocks outside code blocks and generated regions.
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/rejected/simplification/2026-06-20-fold-session-persistence-interface.md
-/agent-note-fold-the-persistence-interface-into-sqhsession:
-  en: 49504a5b90727855
-  zh: 11f26e017184177f
-/agent-note-fold-the-persistence-interface-into-sqhsession/problem:
-  en: acb2bf139763351e
-  zh: d7b08982d81efe89
-/agent-note-fold-the-persistence-interface-into-sqhsession/proposal:
-  en: 18cb56e6d44b1ee4
-  zh: b963d9565f5595c1
-/agent-note-fold-the-persistence-interface-into-sqhsession/acceptance-criteria:
-  en: 07417fdb6fd79bc3
-  zh: 01b0f283a8363687
-/agent-note-fold-the-persistence-interface-into-sqhsession/what-we-give-up:
-  en: 9d987523e96bc763
-  zh: d1ec5390999737b2
+/agent-note-fold-the-persistence-interface-into-sqh-session:
+  en: cd327f30e9b4b489
+  zh: 3937f6e0a2fe20b8
+/agent-note-fold-the-persistence-interface-into-sqh-session/problem:
+  en: b2e169c3742f6b1b
+  zh: 4b0ffe3df6fe2fd5
+/agent-note-fold-the-persistence-interface-into-sqh-session/proposal:
+  en: c8e1f3afe26b4cfa
+  zh: 293020bda64f0fe0
+/agent-note-fold-the-persistence-interface-into-sqh-session/acceptance-criteria:
+  en: 2c96a20787bfd9dd
+  zh: f3c912cbe7ad9594
+/agent-note-fold-the-persistence-interface-into-sqh-session/what-we-give-up:
+  en: 9a0a4b9886e0563e
+  zh: 661685e9263d65c4

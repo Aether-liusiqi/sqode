@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/simplification/2026-09-15-host-only-remote-input-validation.md
 /agent-note-validate-remote-inputs-only-on-the-host:
-  en: 47ab715782fb7542
-  zh: be6d3767805928d8
+  en: ed67b0080fba36e5
+  zh: 04d1e645550723ee
 /agent-note-validate-remote-inputs-only-on-the-host/problem:
   en: 6cddd9c31c5bf1e5
   zh: f2730b6448f7fc26
 /agent-note-validate-remote-inputs-only-on-the-host/decision:
-  en: 5fcb2df45e581f23
-  zh: 0df5259db745cce0
+  en: 402f29b5ea851293
+  zh: 708e992f108f0cd1
 /agent-note-validate-remote-inputs-only-on-the-host/alternatives-considered:
   en: 1c9ed80b25403e03
   zh: edbc8301e50cf3a1

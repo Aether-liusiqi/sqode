@@ -3,35 +3,35 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/architecture.md
 /sqode-architecture:
-  en: 8743e42238de8fdf
-  zh: b08e634ff365c795
+  en: db96bcfc4993214a
+  zh: 9860f8f5293f7b5b
 /sqode-architecture/cordis:
-  en: 50da28e508187051
-  zh: 437d39e56348a463
+  en: feaa59c8f071cf5a
+  zh: f310ea4d508466e8
 /sqode-architecture/profiles-and-bundles:
-  en: ce5a38742fcfce68
-  zh: 39b99bfe37667adb
+  en: 1b1aaa66f450e1b3
+  zh: ceb82be5e41ba606
 /sqode-architecture/application-launch:
   en: 3b6cf66f1c202d85
   zh: 6240b0f1c5c00c0a
 /sqode-architecture/desktop-application:
-  en: b59022b3a0cac3d2
-  zh: abb1e7842ff65ba6
+  en: 50a0a43dc19da5e2
+  zh: 9158a2234c20dc23
 /sqode-architecture/core-packages:
-  en: 0e55a077570c2096
-  zh: e39a0de055373e10
+  en: 72ef12449c9bf094
+  zh: c5f3f38e3a8bff7a
 /sqode-architecture/events:
-  en: 8690f110c94caaad
-  zh: a363bcaa6c8a2db1
+  en: 4848a7669c3aab77
+  zh: 90e5d4b99f23dfd1
 /sqode-architecture/turn-flow:
-  en: 7e90394eb9f56dee
-  zh: 276be1f1b1e43812
+  en: 46fa62f610f3bd86
+  zh: 76b21841ebf042cd
 /sqode-architecture/session-log:
-  en: 6ad7b6fb6bbbc600
-  zh: f6b3e3ad3c54972c
+  en: 04fd71000d41d0c6
+  zh: 0f44f85c57fd1849
 /sqode-architecture/capability-seams:
-  en: ab8e375598e2e82b
-  zh: d76b71555e40c4d0
+  en: bbb384c347add028
+  zh: 5652cf71a3f6f451
 /sqode-architecture/where-new-behavior-goes:
-  en: 63d43b700b7b2488
-  zh: 491fca45fbcfa6ae
+  en: 9d86d0d3c4a8583c
+  zh: 2c9673f3d38ac8c4

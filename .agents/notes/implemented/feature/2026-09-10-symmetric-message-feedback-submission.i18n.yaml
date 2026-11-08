@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-10-symmetric-message-feedback-submission.md
 /agent-note-symmetric-message-feedback-submission:
-  en: 749359587ed7dbe1
-  zh: dd103e118a9f98bb
+  en: e0f1e16706d1d50e
+  zh: f6e2aa693d6c7c0f
 /agent-note-symmetric-message-feedback-submission/problem:
   en: f5afa64229a1e8db
   zh: b73e730754f33cc5
 /agent-note-symmetric-message-feedback-submission/decision:
-  en: 24ea6ec69264f85d
-  zh: 1eecbb385ed8b3de
+  en: 41b7e80e597b954d
+  zh: 853540302de044dc
 /agent-note-symmetric-message-feedback-submission/alternatives-considered:
   en: b425d01d854f8962
   zh: f74131c171c9f74a

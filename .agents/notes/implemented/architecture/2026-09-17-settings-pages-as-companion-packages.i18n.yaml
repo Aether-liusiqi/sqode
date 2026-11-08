@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-17-settings-pages-as-companion-packages.md
 /agent-note-settings-pages-as-companion-packages:
-  en: 4ce7fae0339d68c2
-  zh: 854142dc3aceeedf
+  en: 698020bc16b7d33b
+  zh: e6d61e7b189fd44c
 /agent-note-settings-pages-as-companion-packages/problem:
   en: 8c23fffd3cef6ea8
   zh: 6072e1e4197afd7c
@@ -15,8 +15,8 @@
   en: cc29e94d925d84b4
   zh: bdaec6d6ff2d511a
 /agent-note-settings-pages-as-companion-packages/consequences:
-  en: 71e309a31a10ebd8
-  zh: a0d54e32c9f651a7
+  en: e88a689e91747d99
+  zh: b4228960302e7c89
 /agent-note-settings-pages-as-companion-packages/testing:
   en: 92bef8e1c609359b
   zh: c4f2016243441b1e

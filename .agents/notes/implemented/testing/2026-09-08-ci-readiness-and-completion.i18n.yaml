@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/testing/2026-09-08-ci-readiness-and-completion.md
 /agent-note-ci-assertions-wait-for-owned-completion:
-  en: 602d7e1212c5f5db
-  zh: cb4d3debc2c15e5b
+  en: 6bbf34e6135b630f
+  zh: 8dbb9a34178102b7
 /agent-note-ci-assertions-wait-for-owned-completion/problem:
   en: a7fe3958c0c18911
   zh: cce83727500187bc
 /agent-note-ci-assertions-wait-for-owned-completion/decision:
-  en: 6867eb6809c5a1ee
-  zh: 0ec07d482e31ac99
+  en: 3f3022bd40c9ffd9
+  zh: 3edbaa8d2b4d77d7
 /agent-note-ci-assertions-wait-for-owned-completion/alternatives-considered:
   en: 07ee7017cc6f6e74
   zh: b42f742932edd3f8

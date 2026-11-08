@@ -3,23 +3,23 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/README.md
 /agent-notes:
-  en: e63922442480a6b5
-  zh: 86dde8c7d4e148b2
+  en: 1930242c8f2e699e
+  zh: 55332138c4cefb5a
 /agent-notes/layout-and-naming:
-  en: a1b1b6d870971b10
-  zh: 893192978c99e435
+  en: 36f7bc3e1f3959e0
+  zh: b619bb1ac8a2d303
 /agent-notes/classification:
   en: 055a5e49f9af3dc2
   zh: 9f7c78409cccfded
 /agent-notes/archiving-and-deletion:
-  en: 165848ae4a0abefc
-  zh: cd4e7b1ddb7b6ba4
+  en: 1282811287bf4ff4
+  zh: 5669804a19aff116
 /agent-notes/when-to-write-one:
   en: 2beb1b94d8fb633c
   zh: 889b5542bb771205
 /agent-notes/the-file-format:
-  en: 973b5aa226da9707
-  zh: 50f09d30ab5fdb94
+  en: 32fbaf1096626563
+  zh: de8175bf9cb8f8e3
 /agent-notes/the-file-format/the-header-block:
   en: 16fdaab0c74a5bb5
   zh: 2553f145a1eb878f
@@ -42,5 +42,5 @@
   en: d3f18ba194dfb677
   zh: 3d202868deda2f31
 /agent-notes/the-file-format/chinese-counterparts:
-  en: 43db868a47839ca8
-  zh: 3e53a0eaae8ab8d6
+  en: 045f66ac6cd975e0
+  zh: 8f70345371d048c7

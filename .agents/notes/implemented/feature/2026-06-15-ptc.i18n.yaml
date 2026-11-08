@@ -3,29 +3,29 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-06-15-ptc.md
 /agent-note-ptc-mode-the-model-writes-typescript-against-the-tool-registry:
-  en: 689f87c2f1c896a6
-  zh: 6df269db04147a86
+  en: 39ee95aac7f0e5b5
+  zh: 2e7e98dc2a6a65ee
 /agent-note-ptc-mode-the-model-writes-typescript-against-the-tool-registry/problem:
-  en: 71d4e8925ca75a8d
-  zh: c61c7093db361296
+  en: 591adc9effb9337b
+  zh: bec4d73f78376089
 /agent-note-ptc-mode-the-model-writes-typescript-against-the-tool-registry/decision:
-  en: 64d8941ffeae7753
-  zh: bc0b55189f4476f8
+  en: 4cb09ad1f157a161
+  zh: b6d7f3d2a6cb9e12
 /agent-note-ptc-mode-the-model-writes-typescript-against-the-tool-registry/decision/per-program-execution-controls:
-  en: 4510f9b0a4af27fd
-  zh: d50e1f5c3f789915
+  en: 849ae609360540dd
+  zh: e6494cc85775b200
 /agent-note-ptc-mode-the-model-writes-typescript-against-the-tool-registry/decision/the-registry-owns-the-mode:
   en: 55287fedeaaee6d8
   zh: d2afe242e84acc43
 /agent-note-ptc-mode-the-model-writes-typescript-against-the-tool-registry/decision/the-run-code-tool-and-the-dispatch-bridge:
-  en: f618609460995d15
-  zh: 99722f66cd2d0f98
+  en: 9172a6c0e9edb780
+  zh: b77c595a8629e70b
 /agent-note-ptc-mode-the-model-writes-typescript-against-the-tool-registry/decision/observability-tool-ptc-dispatch:
-  en: 8036b5ae0d261388
-  zh: 0bba20bb71dc7294
+  en: 76d6715c4f10b2af
+  zh: 2013c913fdb32185
 /agent-note-ptc-mode-the-model-writes-typescript-against-the-tool-registry/decision/the-ptc-runtime-seam:
-  en: 703294b415223ea1
-  zh: 8f2c5673598711be
+  en: e59e243b44da1780
+  zh: 8ecef8829148a114
 /agent-note-ptc-mode-the-model-writes-typescript-against-the-tool-registry/decision/the-node-process-runtime:
   en: 0b846ed33977e383
   zh: e45158758d657f9a
@@ -42,8 +42,8 @@
   en: f5d287f610962a48
   zh: 88368e1df517b087
 /agent-note-ptc-mode-the-model-writes-typescript-against-the-tool-registry/alternatives-considered:
-  en: 1914b2c184da0429
-  zh: 8619bf8fdc87cf0b
+  en: c89f4ff0650296d8
+  zh: 1ebba344a16296f4
 /agent-note-ptc-mode-the-model-writes-typescript-against-the-tool-registry/risks:
-  en: 64ef11d5e4e6edd3
-  zh: ea660dd695bba952
+  en: 5886de2d07147967
+  zh: 9fa66ed918b781a3

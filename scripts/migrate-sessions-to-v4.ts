@@ -165,7 +165,7 @@ export async function runMigrationJobs(
 }
 
 async function migrate(root: string, jobs: number): Promise<number> {
-  const reportDirectory = mkdtempSync(join(tmpdir(), 'sqhmigrate-v4-'))
+  const reportDirectory = mkdtempSync(join(tmpdir(), 'sqh-migrate-v4-'))
   const logPath = join(reportDirectory, 'migration.log')
   const summaryPath = join(reportDirectory, 'summary.json')
   const log = openSync(logPath, 'wx', 0o600)

@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-11-desktop-electron-node-runtime.md
 /agent-note-use-electron-as-the-desktop-node-runtime:
-  en: db7844066d7d68f9
-  zh: 32ded49efd7319da
+  en: ba2c86321db9dada
+  zh: 245ca6ca08986cc7
 /agent-note-use-electron-as-the-desktop-node-runtime/problem:
   en: 67e580ac6d9298d9
   zh: bb2bd7486090bde4
 /agent-note-use-electron-as-the-desktop-node-runtime/decision:
-  en: c659b010e4a3a9b2
-  zh: 26fdad6a24ed9c91
+  en: bbccc575e38aaa79
+  zh: af77d15e8b805923
 /agent-note-use-electron-as-the-desktop-node-runtime/consequences:
-  en: fc7078ae0518f981
-  zh: b601953c3d5ef0e1
+  en: 65a9d13792b08daa
+  zh: 75f931705446577e
 /agent-note-use-electron-as-the-desktop-node-runtime/alternatives-considered:
   en: 402978396810dca3
   zh: 5146ec7ad3cabdc1

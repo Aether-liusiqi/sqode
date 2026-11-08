@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/product-telemetry.md
 /product-telemetry:
-  en: c4ac9f55d5f275a8
-  zh: 626f8628ab330d35
+  en: b5267a54d804da37
+  zh: 44d86fbac0d1dc85
 /product-telemetry/record-types:
   en: bf5eadedbc896f5a
   zh: 158fce1609a85d6d

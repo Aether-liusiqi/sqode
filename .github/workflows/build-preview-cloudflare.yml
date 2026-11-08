@@ -25,7 +25,7 @@ env:
   # Cloudflare Pages project receiving the upload. Its preview deployments are
   # the surface the Access application protects; the project's production branch
   # is deliberately a name no deployment uses, so no unprotected URL exists.
-  CF_PROJECT: sqhbuild-preview
+  CF_PROJECT: sqh-build-preview
   # CI runs must never report to the production telemetry endpoint baked into
   # apps/cli/cordis.yml (AppCLIEntry disables the row when set).
   SQODE_TELEMETRY_DISABLED: '1'
@@ -155,7 +155,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR: ${{ github.event.pull_request.number }}
         run: |
-          marker='<!-- sqhpreview-url -->'
+          marker='<!-- sqh-preview-url -->'
           existing=$(gh pr view "$PR" --json comments \
             --jq "[.comments[] | select(.body | contains(\"$marker\")) | .url] | first // empty")
           if [ -n "$existing" ]; then

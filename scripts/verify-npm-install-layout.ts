@@ -12,7 +12,7 @@ import {
 
 const SQODE_PACKAGE = '@liusiqi-dev/sqode'
 const CORDIS_PACKAGE = '@liusiqi-dev/cordis'
-const NESTED_SQH_ALIAS = 'sqhprevious'
+const NESTED_SQH_ALIAS = 'sqh-previous'
 const NESTED_SQH_PATH = `node_modules/${NESTED_SQH_ALIAS}`
 const DEPENDENCY_FIELDS = ['dependencies', 'optionalDependencies', 'peerDependencies'] as const
 

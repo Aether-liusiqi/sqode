@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/invariants.md
 /runtime-invariants:
-  en: fdc10128867f7452
-  zh: c04dc682ff354785
+  en: a5104b6b43f879f0
+  zh: 87d211495fad4206
 /runtime-invariants/selection:
-  en: d7109a96a67d6e42
-  zh: db931fa678444a90
+  en: 54a6f4a57f92099f
+  zh: dd31b1c6be9ce6b2
 /runtime-invariants/the-installer:
   en: ba1607612e5ed640
   zh: 33459bdb7c42443c
@@ -15,5 +15,5 @@
   en: 6368b54b2cbdb36c
   zh: 4859ac095e536d42
 /runtime-invariants/the-companion-contract:
-  en: 5a17d8aa09596a7d
-  zh: 09f179a0515839a0
+  en: b3f3496f30d00973
+  zh: 083f883cfa0d2663

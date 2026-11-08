@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/simplification/2026-06-20-unify-agent-and-session-id.md
 /agent-note-unify-the-agent-id-and-the-session-id:
-  en: 92e09820ff8c7360
-  zh: 5243feaad7c800a9
+  en: 4adde64fabf7f132
+  zh: 1c8430d7384c18a4
 /agent-note-unify-the-agent-id-and-the-session-id/problem:
-  en: eb72ea7acb47e0b1
-  zh: 8f3146e2a51b2078
+  en: f69676dd839c5157
+  zh: a1f7284d162e0be8
 /agent-note-unify-the-agent-id-and-the-session-id/decision:
   en: 58fe3d6c1fbe5aff
   zh: 564332602546955e

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-08-27-continuable-subagent-human-inbox-control.md
 /agent-note-human-inbox-controls-for-continuable-subagents:
-  en: c1bc52d4d43b7428
-  zh: 1f53314855b9194f
+  en: d561193f21bcc864
+  zh: 823d9381b6effbc6
 /agent-note-human-inbox-controls-for-continuable-subagents/problem:
   en: 4241f01a3a205ff5
   zh: 415c642ad379a53c
 /agent-note-human-inbox-controls-for-continuable-subagents/decision:
-  en: 8766453d2df14d85
-  zh: 78e82a4b4eb8963c
+  en: c62da58b11afcbfb
+  zh: 49ae2060bfa62e53
 /agent-note-human-inbox-controls-for-continuable-subagents/alternatives-considered:
   en: 70f965669e4cea12
   zh: 9d1ed0639240bb9e

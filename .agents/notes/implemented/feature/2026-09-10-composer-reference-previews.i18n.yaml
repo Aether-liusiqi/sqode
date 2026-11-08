@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-10-composer-reference-previews.md
 /agent-note-composer-reference-previews:
-  en: 441e39c448c70170
-  zh: 22a3a6b50034f95a
+  en: 016c1ec935581f20
+  zh: 74742c2a0fd355ac
 /agent-note-composer-reference-previews/problem:
   en: b6c93af7ecb4f6df
   zh: e6efd6ac2e2193fc
 /agent-note-composer-reference-previews/decision:
-  en: 47d00d4a4c19228b
-  zh: 5015643c9500c254
+  en: b21f240d17021ef9
+  zh: f487acaa8bb191b6
 /agent-note-composer-reference-previews/alternatives-considered:
   en: c76709c683a56316
   zh: a6708957a465c3ce
 /agent-note-composer-reference-previews/consequences:
-  en: 892def29a3f3fbfb
-  zh: 6c378ccc5462a5ab
+  en: 4c620cae1e271b48
+  zh: 373dbd930fe4a88b

@@ -224,7 +224,7 @@ export function snapshotSpillRoot(
   const scenario = basename(dirname(fixtureFile))
   const key = createHash('sha256').update(scenario).digest('hex').slice(0, 9)
   const root = platform === 'win32' ? '/t' : '/tmp'
-  return `${root}/sqhacp-snap-${key}`
+  return `${root}/sqh-acp-snap-${key}`
 }
 
 /**

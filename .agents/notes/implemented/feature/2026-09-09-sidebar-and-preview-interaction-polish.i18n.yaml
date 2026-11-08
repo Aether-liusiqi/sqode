@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-09-sidebar-and-preview-interaction-polish.md
 /agent-note-sidebar-and-preview-interaction-polish:
-  en: eb14d059b65a7aa1
-  zh: 01bb556391b5e102
+  en: faca50afec0e3fa0
+  zh: dc696d9c605a6d22
 /agent-note-sidebar-and-preview-interaction-polish/problem:
   en: 2d6e8ec1b08dcce9
   zh: 75e1c454d71da103
 /agent-note-sidebar-and-preview-interaction-polish/decision:
-  en: 675ec242fd71be22
-  zh: 22e85d04d06cb99c
+  en: 74f5605f6277d328
+  zh: 7f35af77fe3ea0c7
 /agent-note-sidebar-and-preview-interaction-polish/alternatives-considered:
   en: c828e83875412d49
   zh: d0277bf0d1f5d7a9

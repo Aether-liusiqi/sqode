@@ -19,7 +19,7 @@ import { preparePrimaryRuntime, smokePrimaryRuntime, type PrimaryRuntimeTarget }
 const root = resolve(import.meta.dirname, '..')
 
 /** The closure manifest whose dependencies define the executable. */
-const DEPLOY_ROOT_PACKAGE = 'sqhpython-runtime-closure'
+const DEPLOY_ROOT_PACKAGE = 'sqh-python-runtime-closure'
 /** The sole executable entry inside the deployed closure. */
 const ENTRY_BIN = 'runtime-bootstrap.mjs'
 /** Python-visible executable basename. */
@@ -459,7 +459,7 @@ class SingleExeBuild {
     } else {
       const { version } = JSON.parse(await readFile(join(root, 'package.json'), 'utf8')) as { version: string }
       await preparePrimaryRuntime({ target: runtimeTarget, output: resources,
-        cache: join(tmpdir(), 'sqhprimary-runtime-downloads'), version })
+        cache: join(tmpdir(), 'sqh-primary-runtime-downloads'), version })
       smokePrimaryRuntime(join(resources, 'primary-runtime'))
     }
     if (target.platform !== 'macos') return [product, ripgrep, office, resources]

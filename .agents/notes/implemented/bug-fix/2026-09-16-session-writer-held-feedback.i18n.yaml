@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-16-session-writer-held-feedback.md
 /agent-note-session-writer-contention-feedback:
-  en: 1e33b9faef06e30f
-  zh: c128aae5684ba791
+  en: 3bf73ef8f67dbdee
+  zh: 4929a3b96a825501
 /agent-note-session-writer-contention-feedback/problem:
   en: ce6f2ed854986c2a
   zh: 74b28d3282f610e8
 /agent-note-session-writer-contention-feedback/decision:
-  en: 179910c68f35cdf8
-  zh: db85af62bac906aa
+  en: b4a8e0932a3365d5
+  zh: 46117527cfed9d16
 /agent-note-session-writer-contention-feedback/alternatives-considered:
   en: 43f74d015db77ab1
   zh: 38c7ffda0a33ecac

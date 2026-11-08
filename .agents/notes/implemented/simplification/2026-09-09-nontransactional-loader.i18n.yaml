@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/simplification/2026-09-09-nontransactional-loader.md
 /agent-note-keep-loader-mutations-non-transactional:
-  en: 954244c15255345b
-  zh: f7c399bffcbf7fad
+  en: 018d5267cf770913
+  zh: b74f35e9ec3c1a79
 /agent-note-keep-loader-mutations-non-transactional/problem:
   en: d4ab65a39cf4fd7c
   zh: 62144be9b4fd7956
 /agent-note-keep-loader-mutations-non-transactional/decision:
-  en: 5fbc1506502cb21e
-  zh: 6ef3bf18a9129e57
+  en: 01eafc9356a42ad0
+  zh: f4790949b0cf3a97
 /agent-note-keep-loader-mutations-non-transactional/alternatives-considered:
   en: 72b871064c7ae315
   zh: a09e5168f8124c4c
 /agent-note-keep-loader-mutations-non-transactional/consequences:
-  en: f8c6b100d7b60449
-  zh: 32312687f7b9f889
+  en: 612616c011f8882f
+  zh: feb6428a5b38af31

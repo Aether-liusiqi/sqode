@@ -3,35 +3,35 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/web-client.md
 /web-client-architecture:
-  en: d532f22f02f8225d
-  zh: a6c6feb26325ea83
+  en: 52cb4b62d915f61b
+  zh: 65ff9d3943d57d32
 /web-client-architecture/layers-and-ownership:
   en: c0454bca818f86ee
   zh: 427582150fd3b976
 /web-client-architecture/browser-boot:
-  en: af9a931e3fc0acec
-  zh: 65a845f1d2f2d02e
+  en: 1f6414b825f18469
+  zh: a0601dd3be9f4743
 /web-client-architecture/remote-communication:
-  en: 8b6d927a08770d7c
-  zh: 93c27df840741149
+  en: c8fef5b3f9e15434
+  zh: ec28628af1df444a
 /web-client-architecture/client-models:
   en: 13be17c2a2790ae9
   zh: f5af715d0ae222be
 /web-client-architecture/client-models/sessions:
-  en: 6b40d7845777b98c
-  zh: c27baf5a026cb996
+  en: a54fc7275e8cb976
+  zh: 37bfd3090f8c58c1
 /web-client-architecture/client-models/workspaces:
-  en: 0c1b13b276fbcb66
-  zh: 3a8d3054f0a6f3fc
+  en: 27d9ca96df15bce2
+  zh: 0ba81fe80b35d674
 /web-client-architecture/conversation-and-presentation:
-  en: dbf8cb4b3f5e66dc
-  zh: 21796427f1a37c72
+  en: ba5ef6dbe272d333
+  zh: ef9842c72b8af15e
 /web-client-architecture/data-paths:
-  en: 62e9d85e892131db
-  zh: 3b0b8e12066c5c32
+  en: 31a81db6465d408b
+  zh: 9943375625a1af55
 /web-client-architecture/reconnection:
   en: 478f461e261b1ca5
   zh: 626791d04656faee
 /web-client-architecture/package-boundaries:
-  en: b88ac715ba92ef55
-  zh: 89634b2201eb63e1
+  en: b485ef85b70292bd
+  zh: 4ec4d34602bea17a

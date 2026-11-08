@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-12-linux-scope-direct-kill-settlement.md
 /agent-note-join-direct-termination-before-rejecting-linux-scope-cleanup:
-  en: 7f8f118fad943eaa
-  zh: 07b2566205c1357e
+  en: 31dd8b9ad54dbe4e
+  zh: 82ec0e74a6dffb35
 /agent-note-join-direct-termination-before-rejecting-linux-scope-cleanup/problem:
   en: be042a28c1154171
   zh: 7b8356c9dcb159be
 /agent-note-join-direct-termination-before-rejecting-linux-scope-cleanup/decision:
-  en: 11e127463af0834c
-  zh: 2a04b5b0488c7a26
+  en: 95bc06588476c73a
+  zh: a48ccec8c2ffc45a
 /agent-note-join-direct-termination-before-rejecting-linux-scope-cleanup/alternatives-considered:
   en: ea3f33dd6c9bab88
   zh: 6f274fcd86b231a7

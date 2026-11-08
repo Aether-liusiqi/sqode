@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/i18n/translation-rules.md
 /translation-rules:
-  en: ff01c49cce15ded1
-  zh: 170b1603edc8e783
+  en: 24a2e4e83be5e9d1
+  zh: 807386bea3bc738d
 /translation-rules/faithfulness:
   en: 8ce28f619f598d6e
   zh: 2d594d5c48dca50e
@@ -12,8 +12,8 @@
   en: 141f316ff4118081
   zh: ee7d3584c213cd00
 /translation-rules/structure-preservation:
-  en: 1fe0931f7b43e13c
-  zh: b6f82a7575dcb679
+  en: 5995af41e2b731bb
+  zh: e9c40373f7aa5742
 /translation-rules/terminology:
   en: f99cf0e192e4a77f
   zh: 2a716cf90873fe1d

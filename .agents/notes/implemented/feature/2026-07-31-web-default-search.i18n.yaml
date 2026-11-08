@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-07-31-web-default-search.md
 /agent-note-default-web-search-in-shipped-compositions:
-  en: 3b6c7f92fc504827
-  zh: 11bbcc307b3d085e
+  en: 24a5322412411c6f
+  zh: dc93bbd51cda473b
 /agent-note-default-web-search-in-shipped-compositions/problem:
   en: 6bd43e02029f378d
   zh: 10a6527388b043d8
 /agent-note-default-web-search-in-shipped-compositions/decision:
-  en: c029f877312e1506
-  zh: 079fe107e0c43b7f
+  en: 3e3ada64d1425f73
+  zh: f84912e62036921e
 /agent-note-default-web-search-in-shipped-compositions/alternatives-considered:
-  en: e5a285815bef81e9
-  zh: 8a3318da3f626cdb
+  en: 40e9b0e5860d0b72
+  zh: a1f56de1b2ec9f68
 /agent-note-default-web-search-in-shipped-compositions/consequences:
   en: d69965f3be327186
   zh: 4e2b10bb0a227f0a

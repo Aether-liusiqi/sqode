@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-11-incremental-terminal-retention.md
 /agent-note-incremental-terminal-retention:
-  en: bc21090013687f88
-  zh: 86f8ef1b56f23257
+  en: 1efc6ae62ef7ad6f
+  zh: 95c940c199d27407
 /agent-note-incremental-terminal-retention/problem:
   en: 0c3232a4a2429315
   zh: c6b3c6224bc9031d
 /agent-note-incremental-terminal-retention/decision:
-  en: 546e7458087337b1
-  zh: eb9562edef72f845
+  en: b4424a1ee5c1b8b4
+  zh: 86fe83e66c402863
 /agent-note-incremental-terminal-retention/measurement-design:
   en: 925815f8ae326179
   zh: 188ee3f695ece8de

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/testing/2026-09-10-hosted-image-test-assumptions.md
 /agent-note-hosted-image-assumptions-in-the-coverage-suite:
-  en: e6c8ae4c641f673a
-  zh: 424ddc7cd5fa3c91
+  en: fc95c41695b35c9e
+  zh: 12d45ebcd45160cc
 /agent-note-hosted-image-assumptions-in-the-coverage-suite/problem:
-  en: 9a1baab45d8d5f2e
-  zh: cbf198ba04b44eaa
+  en: 1d0f7e0c28935867
+  zh: c15c0e8eb28967f8
 /agent-note-hosted-image-assumptions-in-the-coverage-suite/decision:
-  en: 789d511b45b3cad9
-  zh: 8d2242c479816fc3
+  en: d5b83c2967fabdd0
+  zh: ca3005d0b4a9818f
 /agent-note-hosted-image-assumptions-in-the-coverage-suite/alternatives-considered:
   en: 7cc99ab98600ed3f
   zh: c302b579791a403d

@@ -204,7 +204,7 @@ class DetachedWorktree {
   ) {}
 
   static create(repositoryRoot: string, commit: string, runner: CommandRunner): DetachedWorktree {
-    const temporaryRoot = mkdtempSync(join(tmpdir(), 'sqhnpm-baseline-'))
+    const temporaryRoot = mkdtempSync(join(tmpdir(), 'sqh-npm-baseline-'))
     const path = join(temporaryRoot, 'worktree')
     try {
       runner.run('git', ['worktree', 'add', '--detach', path, commit], repositoryRoot)
@@ -425,14 +425,14 @@ class InstalledBundleSmoke {
   ) {}
 
   run(): void {
-    const consumerRoot = mkdtempSync(join(tmpdir(), 'sqhnpm-consumer-'))
+    const consumerRoot = mkdtempSync(join(tmpdir(), 'sqh-npm-consumer-'))
     try {
       const dependencies = Object.fromEntries(this.bundle.manifest.packages.map(pkg => [
         pkg.name,
         pathToFileURL(this.bundle.tarballPath(pkg)).href,
       ]))
       writeFileSync(resolve(consumerRoot, 'package.json'), `${JSON.stringify({
-        name: 'sqhnpm-baseline-consumer',
+        name: 'sqh-npm-baseline-consumer',
         version: '0.0.0',
         private: true,
         dependencies,
@@ -482,7 +482,7 @@ class InstalledBundleSmoke {
       environment,
     )
     if (result.status !== 0) {
-      throw commandFailure('python3', ['installed-sqhweb-probe'], result)
+      throw commandFailure('python3', ['installed-sqh-web-probe'], result)
     }
   }
 }

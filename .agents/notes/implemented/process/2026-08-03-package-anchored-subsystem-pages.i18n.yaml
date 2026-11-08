@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-08-03-package-anchored-subsystem-pages.md
 /agent-note-package-anchored-subsystem-pages-and-thin-group-readmes:
-  en: 5d89dd22ae127404
-  zh: d0270c45701cbea5
+  en: 05155fe7390baf67
+  zh: a7b4001951a22cad
 /agent-note-package-anchored-subsystem-pages-and-thin-group-readmes/problem:
   en: 244099e9da9c15ce
   zh: 72b5dd59abe0133a
 /agent-note-package-anchored-subsystem-pages-and-thin-group-readmes/decision:
-  en: 9c4e7a46a861b22a
-  zh: 29dfbc552becc850
+  en: 88ff3edbcd5c3273
+  zh: b74e845d7de60a8d
 /agent-note-package-anchored-subsystem-pages-and-thin-group-readmes/alternatives-considered:
   en: 07b4fc9048074b31
   zh: d14c862196f545fa

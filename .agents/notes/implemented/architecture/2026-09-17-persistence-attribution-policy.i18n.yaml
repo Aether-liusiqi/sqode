@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-17-persistence-attribution-policy.md
 /agent-note-recorded-user-source-attribution-compatibility:
-  en: e1cff1721d03fd77
-  zh: 38cc900988c6395d
+  en: 75dfb005f7ab8513
+  zh: a420b48edac04f83
 /agent-note-recorded-user-source-attribution-compatibility/problem:
   en: 21904d2f57e4e159
   zh: 589fe41a93ec9e5d
 /agent-note-recorded-user-source-attribution-compatibility/decision:
-  en: 61c066d00d2a0c65
-  zh: d1e490581288fceb
+  en: 7df7526cabb82264
+  zh: ae05f9b207ca26a2
 /agent-note-recorded-user-source-attribution-compatibility/alternatives-considered:
   en: 2e1b3bcd9e00b5be
   zh: e5a1725390346470

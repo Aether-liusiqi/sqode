@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-20-config-schema-dump-validation-policy.md
 /agent-note-config-schema-dump-validation-policy:
-  en: d064cf06f0b6952e
-  zh: f78823f5fbe8b9ab
+  en: aa04c4853b33c916
+  zh: 2f1dc7b6f3b1b64c
 /agent-note-config-schema-dump-validation-policy/problem:
   en: 97a0e06975f5524c
   zh: b0011be33372be5c
 /agent-note-config-schema-dump-validation-policy/decision:
-  en: 27f78850a3151fc1
-  zh: a7eeeea7e74e4f40
+  en: 443da44cec8dc0e4
+  zh: a9654c228ea92432
 /agent-note-config-schema-dump-validation-policy/alternatives-considered:
   en: be0e67675b0a6bf3
   zh: 361c7fd4eb482f3a

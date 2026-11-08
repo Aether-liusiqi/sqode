@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-07-model-switch-notice.md
 /agent-note-model-visible-route-change-notices:
-  en: 53cf9d1cceb1176e
-  zh: 611d4eeeb052a429
+  en: 19efe60de54a2805
+  zh: 44d47e24dc5c6b47
 /agent-note-model-visible-route-change-notices/problem:
   en: 0c0be027f271e132
   zh: c4f6aa9217633f43

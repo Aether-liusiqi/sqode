@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/testing/2026-07-30-web-browser-snapshot-ci-gate.md
 /agent-note-required-ci-gate-for-web-browser-expected-outputs:
-  en: 89f63a855838c9c7
-  zh: 8c0b4ac23ae2bdf2
+  en: c0716258dfa4ab8b
+  zh: 514846a231df0ae7
 /agent-note-required-ci-gate-for-web-browser-expected-outputs/problem:
-  en: 9c70f15c7ad119d0
-  zh: 9e8ed03e039ab775
+  en: eff654d890b64458
+  zh: 752d873430dcce18
 /agent-note-required-ci-gate-for-web-browser-expected-outputs/decision:
   en: 3787d7fe244e92f0
   zh: 7d9cc451919ad0f2

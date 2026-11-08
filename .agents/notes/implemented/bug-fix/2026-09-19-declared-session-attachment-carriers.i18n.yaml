@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-19-declared-session-attachment-carriers.md
 /agent-note-declared-session-attachment-carriers:
-  en: 74c37844f61d8f20
-  zh: caf0771e6a0d4373
+  en: 90077c337986f3bf
+  zh: af55e6b61e6bc5ad
 /agent-note-declared-session-attachment-carriers/problem:
   en: 2c3544ea223fd86c
   zh: fee865c0ce374115

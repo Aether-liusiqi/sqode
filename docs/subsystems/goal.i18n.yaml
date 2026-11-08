@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/goal.md
 /same-session-goals:
-  en: e70a94bde3c3ac3e
-  zh: a69cb43144f8a310
+  en: 50f58e455bce1e3d
+  zh: b111460d32bc1505
 /same-session-goals/identity-and-lifecycle:
-  en: ec4365ff42a6b6c9
-  zh: acb91846a67a954b
+  en: 36962aa80bf85335
+  zh: bdacfa4cc1b7679d
 /same-session-goals/durable-changes:
   en: c23e38f00f1d8a55
   zh: 69c53f7e3ee505e1
@@ -15,5 +15,5 @@
   en: 2148e6a388284de0
   zh: 6293130430f483c3
 /same-session-goals/service-behavior:
-  en: c06dd8ef10963d25
-  zh: 883c3f407edf4488
+  en: 2ba5b16890f874ad
+  zh: 1db0ceb61a32599a

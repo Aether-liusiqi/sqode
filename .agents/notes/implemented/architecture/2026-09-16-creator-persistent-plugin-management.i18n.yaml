@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-16-creator-persistent-plugin-management.md
 /agent-note-creator-mode-installs-persistent-plugin-bundles:
-  en: ee73629cd742f8d2
-  zh: b06161d2b5018251
+  en: 71a3daded28290f7
+  zh: b35e8dc7c032aa94
 /agent-note-creator-mode-installs-persistent-plugin-bundles/problem:
   en: 44615a7a0939054e
   zh: b8efa721321ba0d7
 /agent-note-creator-mode-installs-persistent-plugin-bundles/decision:
-  en: d150270e60035fc2
-  zh: 2cee6df45664890a
+  en: 7af5c6e37a162180
+  zh: eb2c3f63e9a70de3
 /agent-note-creator-mode-installs-persistent-plugin-bundles/alternatives-considered:
   en: af527d8aabdfd59c
   zh: 34388da992d2ab56

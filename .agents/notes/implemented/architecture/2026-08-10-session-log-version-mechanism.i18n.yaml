@@ -3,20 +3,20 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-08-10-session-log-version-mechanism.md
 /agent-note-session-log-versioning-one-integer-an-upgrade-chain-and-a-per-event-ignorable-marker:
-  en: bc6017474865228c
-  zh: 550720800949f715
+  en: f74fc413e7e2728a
+  zh: dd16fc0bdf2d7af7
 /agent-note-session-log-versioning-one-integer-an-upgrade-chain-and-a-per-event-ignorable-marker/problem:
   en: c11f54e24be6cc3b
   zh: c1c274fbb161a57b
 /agent-note-session-log-versioning-one-integer-an-upgrade-chain-and-a-per-event-ignorable-marker/decision:
-  en: b213cda10f84a841
-  zh: 85fa056dfdd10107
+  en: 71282db9eb367f8c
+  zh: 9c03b76fd2bf6398
 /agent-note-session-log-versioning-one-integer-an-upgrade-chain-and-a-per-event-ignorable-marker/decision/writer-and-publication-authority:
-  en: f405f2cbccbd815d
-  zh: 04931caf89d1e6ba
+  en: 1fd262e8663f55fd
+  zh: cb151f901fa00e89
 /agent-note-session-log-versioning-one-integer-an-upgrade-chain-and-a-per-event-ignorable-marker/consequences:
-  en: 729d4a18f022dfea
-  zh: a34dae80677b80fb
+  en: d877aa97ba8d6bdc
+  zh: 2c768075aa1e0f08
 /agent-note-session-log-versioning-one-integer-an-upgrade-chain-and-a-per-event-ignorable-marker/alternatives-considered:
-  en: 8b6096682cf641aa
-  zh: 32dcc98ffa066d78
+  en: 794268705b15e832
+  zh: 8d2b656dd7ddc7ff

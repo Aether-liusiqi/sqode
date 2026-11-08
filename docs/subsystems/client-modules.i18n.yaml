@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/client-modules.md
 /client-modules:
-  en: db42a8d4070864f3
-  zh: 11674a58aa647dc6
+  en: 6fb9221f61f250df
+  zh: 275d18787ae22fd2
 /client-modules/the-wire:
   en: 970ba39b67a2660b
   zh: 1607ae92346b3d25
@@ -15,5 +15,5 @@
   en: d653be500d3a0d67
   zh: fffb1901ce8ba7d9
 /client-modules/the-service:
-  en: 1f7b7873c407e49d
-  zh: 4f0d1079369bf1cb
+  en: 8129b6bee1ea0426
+  zh: dfaba24ab094f40b

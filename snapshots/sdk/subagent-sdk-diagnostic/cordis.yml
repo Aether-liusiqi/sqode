@@ -26,7 +26,7 @@
     - id: subagent-sdk-diagnostic
       name: '@liusiqi-dev/sqh-subagent-sdk'
       config:
-        providerName: sqhsdk-diagnostic
+        providerName: sqh-sdk-diagnostic
         profile: sdk
         patches:
           - !!js process.env.SQODE_TEST_CHILD_PATCH
@@ -39,14 +39,14 @@
     - id: tool-subagent-sdk-diagnostic
       name: '@liusiqi-dev/sqh-tool-subagent'
       config:
-        provider: sqhsdk-diagnostic
+        provider: sqh-sdk-diagnostic
         toolName: subagent_dsh_sdk
         backgroundMode: one-shot
         maxDepth: provider-managed
     - id: subagent-sdk-diagnostic-background
       name: '@liusiqi-dev/sqh-subagent-sdk'
       config:
-        providerName: sqhsdk-diagnostic-background
+        providerName: sqh-sdk-diagnostic-background
         profile: sdk
         patches:
           - !!js process.env.SQODE_TEST_CHILD_PATCH
@@ -60,9 +60,9 @@
     - id: tool-subagent-sdk-diagnostic-background
       name: '@liusiqi-dev/sqh-tool-subagent'
       config:
-        provider: sqhsdk-diagnostic-background
+        provider: sqh-sdk-diagnostic-background
         toolName: subagent_dsh_sdk_background
         backgroundMode: one-shot
         maxDepth: provider-managed
-    - id: release-sqhsdk-background-on-job-output
+    - id: release-sqh-sdk-background-on-job-output
       name: '../../../apps/cli/tests/profiles/sdk/fixtures/subagent-sdk-release-on-job-output.ts'

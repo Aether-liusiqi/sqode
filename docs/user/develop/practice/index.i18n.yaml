@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/user/develop/practice/index.md
 /three-role-capability-design:
-  en: a76a530025c4e167
-  zh: c4996d31a4cd538e
+  en: 3e0c3b50c4a06037
+  zh: 0effd990474dd666
 /three-role-capability-design/concept-reference:
   en: 4e60abf663a9748f
   zh: 3c80c65e519a51dd
@@ -21,8 +21,8 @@
   en: bdf8329fe9d51537
   zh: 416b7d81d8d30881
 /three-role-capability-design/benefits-of-the-split/decouple-dependencies:
-  en: ac24286929d94e73
-  zh: 15abd7647413d69d
+  en: 63f68e25f8b9ff39
+  zh: 64aa68513efdc614
 /three-role-capability-design/tutorial-develop-a-three-role-capability:
   en: 7bd3c99c2cdb06ad
   zh: 264d321e9fa35dd8
@@ -42,5 +42,5 @@
   en: 5822e06c2cfce8e1
   zh: aed13f901bb8891e
 /three-role-capability-design/next-steps:
-  en: 79627325c9d13d11
-  zh: 2d2ffed8f85ace07
+  en: a6e8c2fac43157b7
+  zh: c82cd2aa751465c1

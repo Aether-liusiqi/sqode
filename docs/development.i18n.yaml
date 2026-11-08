@@ -3,26 +3,26 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/development.md
 /development-guide:
-  en: 708801d5b0ce0a43
-  zh: be6b2c9e583ddbaa
+  en: 0410860373075499
+  zh: d88152ddcc77076c
 /development-guide/setup-tutorial:
   en: 5207d17725c07a27
   zh: 258884c4300ac63a
 /development-guide/setup-tutorial/prerequisites:
-  en: 1e21d4f22efbc2b2
-  zh: 7e0c7021dc34323e
+  en: fb3c7e645182889d
+  zh: 292467a457ec6f53
 /development-guide/setup-tutorial/windows-and-wsl-2:
   en: e86be579be6f1813
   zh: 14f6a220337d0861
 /development-guide/setup-tutorial/first-time-setup:
-  en: 4584bd17db12b011
-  zh: 39f32858a083db44
+  en: 194afc213d6d950e
+  zh: f1331ea12cd9a5cc
 /development-guide/contributor-reference:
   en: 3221d1076554001f
   zh: 29f166be6a5c04d9
 /development-guide/contributor-reference/typescript-project-layout:
-  en: 044445695bc965a9
-  zh: a908517feecc2964
+  en: 42f5bf961613e8a7
+  zh: 625aec3648fa39df
 /development-guide/contributor-reference/environment-variables:
   en: dba2c72ee6ffa930
   zh: b65c27fbb9129ec8
@@ -30,8 +30,8 @@
   en: dc98eda4f4021feb
   zh: b08766708803cf10
 /development-guide/contributor-reference/ci-gates:
-  en: 3ea11a41e8981243
-  zh: 948976b46fd0d275
+  en: cca6138dfb5345ea
+  zh: cd973a9493ae1f91
 /development-guide/contributor-reference/daily-commands:
   en: 08aa6ec1cdabfeb7
   zh: dcce5ae9d3c829d0
@@ -39,11 +39,11 @@
   en: 7ce6264a6a06dc4a
   zh: e12b684f2bef942b
 /development-guide/contributor-reference/application-commands:
-  en: fb8b661bc439c2b4
-  zh: 62d2dc0cf8cf6d6f
+  en: 01d9157c7e8374d0
+  zh: fb698db94446d373
 /development-guide/contributor-reference/todo-markers:
   en: 85b38f78d87fc88f
   zh: 00d5eb625e7dfb61
 /development-guide/contributor-reference/documenting-types-verbatim-ts-type-equiv:
-  en: b112fa4144f04d8d
-  zh: 422fbe5437b63cbd
+  en: dfd0559dfaaeb9e2
+  zh: f6846506be23c365

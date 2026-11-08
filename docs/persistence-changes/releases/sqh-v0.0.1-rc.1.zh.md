@@ -1,9 +1,9 @@
 ---
-description: "回溯 sqhv0.0.1-rc.1 的已声明 Session 持久化类型及相邻版本变化。"
+description: "回溯 sqh-v0.0.1-rc.1 的已声明 Session 持久化类型及相邻版本变化。"
 kind: persistence-release
 ---
 
-# 持久化版本回溯: sqhv0.0.1-rc.1
+# 持久化版本回溯: sqh-v0.0.1-rc.1
 
 [English](sqh-v0.0.1-rc.1.md) | 中文
 
@@ -28,7 +28,7 @@ kind: persistence-release
 
 | 项目 | 记录值 |
 |---|---|
-| 源码 tag | `sqhv0.0.1-rc.1` |
+| 源码 tag | `sqh-v0.0.1-rc.1` |
 | 源码日期 | 2026-08-10T19:25:09.000Z |
 | 发行记录 | 只有 tag，没有 release 对象。 |
 | 前一版本 | 最早可用的预发行 tag；没有更早的比较输入。 |
@@ -45,7 +45,7 @@ kind: persistence-release
 
 ```yaml persistence-release
 schemaVersion: 1
-tag: sqhv0.0.1-rc.1
+tag: sqh-v0.0.1-rc.1
 previous: null
 sessionFormatVersion: 0
 changes:

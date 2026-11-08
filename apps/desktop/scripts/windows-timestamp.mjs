@@ -38,7 +38,7 @@ export async function normalizeWindowsSignature(path, signTool, environment) {
  */
 export async function completeWindowsSignature(path, options) {
   const original = await digest(path)
-  const staging = await mkdtemp(join(tmpdir(), 'sqhsign-'))
+  const staging = await mkdtemp(join(tmpdir(), 'sqh-sign-'))
   const extension = extname(path)
   let publication
   let completed = false

@@ -256,7 +256,7 @@ export function startConnection(ctx: Context, config: Config, policy: ResolvedRe
    */
   async function connectGeneration(startup: boolean): Promise<void> {
     const generation = new Client(
-      { name: 'sqhmcp-client', version: '0.0.1' },
+      { name: 'sqh-mcp-client', version: '0.0.1' },
       {
         capabilities: {},
         versionNegotiation: { mode: 'auto' },

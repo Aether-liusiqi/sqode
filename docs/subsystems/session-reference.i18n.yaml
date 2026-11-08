@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/session-reference.md
 /session-references:
-  en: 2cf070a358ec871c
-  zh: f8efc0514c715a50
+  en: 7fadcd96659e546a
+  zh: c1beb870c10342f7
 /session-references/file-candidates:
   en: ec03370596bf2322
   zh: 85cf6439dc6484b3

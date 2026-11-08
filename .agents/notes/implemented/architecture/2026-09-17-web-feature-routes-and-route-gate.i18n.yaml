@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-17-web-feature-routes-and-route-gate.md
 /agent-note-feature-routes-follow-the-document-base-and-a-gate-keeps-them-there:
-  en: 7ee3f2fcf592de4f
-  zh: 33301e3033eba969
+  en: 8e95132944e14cf2
+  zh: 0c0078835f8686ad
 /agent-note-feature-routes-follow-the-document-base-and-a-gate-keeps-them-there/problem:
-  en: b5d6e1298c0c00ef
-  zh: eade6a53633b2d37
+  en: 77b0f56fe835de59
+  zh: e52342ff6458c1c6
 /agent-note-feature-routes-follow-the-document-base-and-a-gate-keeps-them-there/decision:
   en: 5b89e02010c2da46
   zh: d11e67d86ef27908
@@ -15,8 +15,8 @@
   en: d90dbd0c95914085
   zh: 6256f4fd76a7cb55
 /agent-note-feature-routes-follow-the-document-base-and-a-gate-keeps-them-there/consequences:
-  en: 46aada4892c19388
-  zh: 57fbf360099a7915
+  en: 6d024f9ac827361d
+  zh: 067e4f2fe7eaa77c
 /agent-note-feature-routes-follow-the-document-base-and-a-gate-keeps-them-there/testing:
   en: 95c952092857cb53
   zh: 232cd731afcd3288

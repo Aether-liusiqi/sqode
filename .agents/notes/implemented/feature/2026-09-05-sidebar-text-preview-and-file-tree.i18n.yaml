@@ -3,23 +3,23 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-05-sidebar-text-preview-and-file-tree.md
 /agent-note-sidebar-text-preview-and-file-tree:
-  en: 5b685adbf732211e
-  zh: a9f9aa2b85d1476a
+  en: d9d1d087aaac2612
+  zh: 6bd49d1562685764
 /agent-note-sidebar-text-preview-and-file-tree/problem:
-  en: d1945c166a9db5fc
-  zh: 602fec2130eeedff
+  en: 8c57c7f871cf3fed
+  zh: c82b2f6dc69ec5b9
 /agent-note-sidebar-text-preview-and-file-tree/decision:
   en: f8ea6a52a404b064
   zh: c91528d66487bb33
 /agent-note-sidebar-text-preview-and-file-tree/decision/the-guide:
-  en: adbf01b06d3c6caa
-  zh: a0fdb08f0ea22c05
+  en: 6242b4696e84c6da
+  zh: 9766680a4c5d9589
 /agent-note-sidebar-text-preview-and-file-tree/decision/the-text-preview:
-  en: b63d2aa268b92765
-  zh: 0f10374dc76265c2
+  en: 30624f03c281d205
+  zh: c685c05810c5d514
 /agent-note-sidebar-text-preview-and-file-tree/decision/the-file-tree:
-  en: bd26ce008e5b5d81
-  zh: f6d707495b197e19
+  en: a8f18bea1242740c
+  zh: e6c2fc4c5e36fa49
 /agent-note-sidebar-text-preview-and-file-tree/alternatives-considered:
   en: 87fddbd01f117061
   zh: 1810d283202db648
@@ -33,5 +33,5 @@
   en: 6c788b26fb65227b
   zh: 1bafda76bac92edd
 /agent-note-sidebar-text-preview-and-file-tree/related:
-  en: 6d8de2bbf0d79f6a
-  zh: f911f19fb2eb0d10
+  en: 10627d935d9a619e
+  zh: fc7181198b6f8a0d

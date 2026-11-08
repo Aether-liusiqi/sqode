@@ -13,7 +13,7 @@ import { join } from 'node:path'
 import { tmpdir } from 'node:os'
 
 /** Prefix shared by default-root creation and startup discovery. */
-export const DEFAULT_ROOT_PREFIX = 'sqhspill-'
+export const DEFAULT_ROOT_PREFIX = 'sqh-spill-'
 
 /**
  * Test a caught value for a Node system error code.

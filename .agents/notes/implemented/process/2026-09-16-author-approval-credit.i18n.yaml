@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-09-16-author-approval-credit.md
 /agent-note-author-approval-credit:
-  en: 2744715e83ae713e
-  zh: 81a0bcdce2d8b67b
+  en: 606cf54119094194
+  zh: a0b80764c0181d10
 /agent-note-author-approval-credit/problem:
   en: 13def594e495779d
   zh: d5ceaa0d156ba043

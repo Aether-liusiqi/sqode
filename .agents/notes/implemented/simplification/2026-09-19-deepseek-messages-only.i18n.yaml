@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/simplification/2026-09-19-deepseek-messages-only.md
 /agent-note-one-messages-transport-for-the-official-deepseek-route:
-  en: 3d1f3cb25eee0fce
-  zh: b6b937c00c8b8d2f
+  en: 3339b1cedaf618da
+  zh: 10a81bbe49be4520
 /agent-note-one-messages-transport-for-the-official-deepseek-route/problem:
   en: 050718df19ce3089
   zh: 676838e85ba91e25
 /agent-note-one-messages-transport-for-the-official-deepseek-route/decision:
-  en: 8adc6a4e7f2c337f
-  zh: 66ce10356f040079
+  en: 359b1fc50edd90ad
+  zh: 5c4a5df4ece5a8cc
 /agent-note-one-messages-transport-for-the-official-deepseek-route/alternatives-considered:
   en: f92695788ada65aa
   zh: b885b30ba9f846f8

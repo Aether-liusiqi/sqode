@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-08-28-ci-node-compile-cache-data-disk.md
 /agent-note-redirect-the-node-compile-cache-to-the-data-volume-runner-temp:
-  en: a6edb4fe32641161
-  zh: 4fde03a8fb6bccea
+  en: 0ab30f9c91a64931
+  zh: 710f58548bb33be7
 /agent-note-redirect-the-node-compile-cache-to-the-data-volume-runner-temp/problem:
   en: 9600e68793d75a36
   zh: 4544fc3fe0c6449e

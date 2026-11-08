@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-19-package-invariant-runtime-contracts.md
 /agent-note-meaningful-package-invariant-contracts:
-  en: c3cecb66ab44be04
-  zh: beff3b3532c4b4ce
+  en: 8ca6c61a3953d132
+  zh: 8c1878a6da6a096c
 /agent-note-meaningful-package-invariant-contracts/problem:
   en: 220a4ceb3cd9b9c9
   zh: 9eac93e1762b2914
@@ -12,11 +12,11 @@
   en: a15c7c13f167e5ac
   zh: 63bcc2ef60c2f344
 /agent-note-meaningful-package-invariant-contracts/decision/published-assertions-must-be-meaningful:
-  en: 71e7913205b6dc23
-  zh: cc54f155631f1aaa
+  en: e9a3520c8512e810
+  zh: 65ad6a4d84034908
 /agent-note-meaningful-package-invariant-contracts/decision/representative-implemented-checks:
-  en: 6e7b74b0d4e767cb
-  zh: a49cd89ba5690f98
+  en: 3f139fd6997d3a25
+  zh: 917fd515d90db8c9
 /agent-note-meaningful-package-invariant-contracts/decision/repository-gate-and-tests:
   en: 37e646754f13dd65
   zh: 355ebf3ce1403117

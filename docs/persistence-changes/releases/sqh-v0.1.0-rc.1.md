@@ -1,9 +1,9 @@
 ---
-description: "Retrospective Session persistence types and adjacent-release changes for sqhv0.1.0-rc.1."
+description: "Retrospective Session persistence types and adjacent-release changes for sqh-v0.1.0-rc.1."
 kind: persistence-release
 ---
 
-# Persistence release: sqhv0.1.0-rc.1
+# Persistence release: sqh-v0.1.0-rc.1
 
 English | [中文](sqh-v0.1.0-rc.1.zh.md)
 
@@ -28,10 +28,10 @@ This approximate backfill supports reading and format validation; it is not a co
 
 | Item | Recorded value |
 |---|---|
-| Source tag | `sqhv0.1.0-rc.1` |
+| Source tag | `sqh-v0.1.0-rc.1` |
 | Source date | 2026-08-13T08:51:36.000Z |
 | Release record | Tag only; no release object. |
-| Previous release | [sqhv0.0.1-rc.5](sqh-v0.0.1-rc.5.md) |
+| Previous release | [sqh-v0.0.1-rc.5](sqh-v0.0.1-rc.5.md) |
 | Session writer version | 0 |
 | Reconstructed inventory | <!-- persistence-release-inventory:start -->47 roots / 374 types<!-- persistence-release-inventory:end --> |
 | This snapshot | [sqh-v0.1.0-rc.1.schema.json](sqh-v0.1.0-rc.1.schema.json) |
@@ -45,8 +45,8 @@ Source evidence for the writer version constant at this tag:
 
 ```yaml persistence-release
 schemaVersion: 1
-tag: sqhv0.1.0-rc.1
-previous: sqhv0.0.1-rc.5
+tag: sqh-v0.1.0-rc.1
+previous: sqh-v0.0.1-rc.5
 sessionFormatVersion: 0
 changes: []
 ```

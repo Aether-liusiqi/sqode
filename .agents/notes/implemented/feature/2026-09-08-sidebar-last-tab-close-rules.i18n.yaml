@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-08-sidebar-last-tab-close-rules.md
 /agent-note-last-tab-close-rules-on-the-sidebar-s-docked-surface:
-  en: f8e76aac909cfa6c
-  zh: 062fed6da8dabe53
+  en: 2941fe495cac498e
+  zh: 142ef4dc5280fac5
 /agent-note-last-tab-close-rules-on-the-sidebar-s-docked-surface/problem:
   en: 90a9c3dc146c7d11
   zh: a12b784b66fa3979
 /agent-note-last-tab-close-rules-on-the-sidebar-s-docked-surface/decision:
-  en: 23ef20ced69e20b5
-  zh: bdce82cc143c95bc
+  en: 23a15ddca6b573ef
+  zh: beaa289e0195f9a8
 /agent-note-last-tab-close-rules-on-the-sidebar-s-docked-surface/alternatives-considered:
   en: 4e2673d521d6540e
   zh: 0d5f0b99ea80d5ff

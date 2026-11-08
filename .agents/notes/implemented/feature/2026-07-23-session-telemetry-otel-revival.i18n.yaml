@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-07-23-session-telemetry-otel-revival.md
 /agent-note-session-telemetry-seam-with-mandatory-redaction-and-the-otel-backend:
-  en: 458b7b0a457b5655
-  zh: 5fc9b239f3867427
+  en: 1ce5107fda8eab44
+  zh: ba9977954404c12f
 /agent-note-session-telemetry-seam-with-mandatory-redaction-and-the-otel-backend/problem:
   en: d3383b495424d118
   zh: 4e6ffc8ebfa7f741
 /agent-note-session-telemetry-seam-with-mandatory-redaction-and-the-otel-backend/decision:
-  en: 8c91ed001c331f28
-  zh: a5a69520a083e0e9
+  en: 1d6d43b5347fa0e4
+  zh: 1e98f24468bc426e
 /agent-note-session-telemetry-seam-with-mandatory-redaction-and-the-otel-backend/alternatives-considered:
   en: 01838eefca2bc117
   zh: fc71f5449d095b27
 /agent-note-session-telemetry-seam-with-mandatory-redaction-and-the-otel-backend/consequences:
-  en: 8eb2ba17f694aea2
-  zh: fe597e04a4068132
+  en: 6adc88b8ef98593d
+  zh: 7e9eeb5bdc2a3b13

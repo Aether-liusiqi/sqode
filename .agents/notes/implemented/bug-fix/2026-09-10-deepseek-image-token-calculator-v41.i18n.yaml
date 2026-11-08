@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-10-deepseek-image-token-calculator-v41.md
 /agent-note-deepseek-image-token-estimator-on-the-v41-calculator:
-  en: 7a3abca5ee3314e5
-  zh: 6b6d1a283988f957
+  en: 30357799ae22b969
+  zh: 77204decec7b5e95
 /agent-note-deepseek-image-token-estimator-on-the-v41-calculator/problem:
   en: c47a183a3192d1ae
   zh: bbc157ff44423dd3
 /agent-note-deepseek-image-token-estimator-on-the-v41-calculator/decision:
-  en: 3bd9169692428f13
-  zh: d4838835e6fff0b0
+  en: ff180f51e1306cab
+  zh: 60e6fea6d1291826
 /agent-note-deepseek-image-token-estimator-on-the-v41-calculator/alternatives-considered:
   en: 8f5bb52220ead193
   zh: f267fda075b19963
 /agent-note-deepseek-image-token-estimator-on-the-v41-calculator/consequences:
-  en: d2ab1787dc00ee61
-  zh: f5116965aac27fea
+  en: 0e5366686e7a8428
+  zh: 5814f78d6f91c334

@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/rejected/architecture/2026-08-08-cordis-web-dynamic-packages.md
 /agent-note-cordis-host-client-dynamic-plugin-runtime:
-  en: 41a9045415caa080
-  zh: 2be7257883335423
+  en: 29f25b50fe54f151
+  zh: ac57f4bac7b17dec
 /agent-note-cordis-host-client-dynamic-plugin-runtime/problem:
   en: 66726ba00db63510
   zh: a4164adef961457c
@@ -15,8 +15,8 @@
   en: 400bacbc13cc4ca2
   zh: efb84f4257ebf13c
 /agent-note-cordis-host-client-dynamic-plugin-runtime/proposal/package-responsibilities-and-dependency-direction:
-  en: 379fe56f8ab5c78d
-  zh: 648d6c48a0ff6fd2
+  en: 15487b5e6f05322d
+  zh: 37c20468dd488cb0
 /agent-note-cordis-host-client-dynamic-plugin-runtime/proposal/domain-objects:
   en: fb29437ba7cc624a
   zh: 2c2322991e282f7c

@@ -4,6 +4,9 @@ import type { SessionFormatArtifact, SessionFormatEvent, SessionFormatJsonValue 
 import { releasedV0Record } from './validation-helpers.ts'
 import { RELEASED_V0_EVENT_DISPOSITIONS } from './dispositions.ts'
 
+
+/** Titles were produced under either codename while the rename was in flight. */
+const TITLE_PRODUCERS: readonly string[] = ['sqh-session-title-llm', 'dsh-session-title-llm']
 const SURFACE_TYPES = new Set(['user/message', 'assistant/message', 'tool/result'])
 
 interface CompactionState {
@@ -454,7 +457,8 @@ function assertTitleSources(
     const content = message?.['content'] as readonly Record<string, SessionFormatJsonValue>[] | undefined
     const source = message === undefined ? undefined : releasedV0Record(message['source'], 'session/title-llm-request message source')
     if (messages.length !== 1 || message?.['role'] !== 'user' || content?.length !== 1
-      || source?.['kind'] !== 'plugin' || source['plugin'] !== 'sqhsession-title-llm') {
+      || source?.['kind'] !== 'plugin'
+      || !TITLE_PRODUCERS.includes(String(source['plugin']))) {
       throw new SessionFormatError('session/title-llm-request messages do not represent messageSeqs')
     }
     const framed = content[0]

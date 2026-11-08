@@ -95,7 +95,7 @@ export function installProcessGlobal(options: ProcessShimOptions): ProcessShim {
     argv: [...(options.argv ?? [EXEC_PATH])],
     execArgv: [],
     execPath: EXEC_PATH,
-    title: 'sqhwebworker',
+    title: 'sqh-webworker',
     platform: 'linux',
     arch: 'x64',
     pid: 1,

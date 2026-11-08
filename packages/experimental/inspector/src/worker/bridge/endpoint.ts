@@ -103,7 +103,7 @@ export class InspectorEndpoint {
     }
     if (pathname === '/json/version') {
       this.json(response, {
-        Browser: 'sqhexperimental-inspector/0',
+        Browser: 'sqh-experimental-inspector/0',
         'Protocol-Version': '1.3',
         webSocketDebuggerUrl: this.cdpUrl(),
       })

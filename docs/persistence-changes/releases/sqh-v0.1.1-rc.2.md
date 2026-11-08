@@ -1,9 +1,9 @@
 ---
-description: "Retrospective Session persistence types and adjacent-release changes for sqhv0.1.1-rc.2."
+description: "Retrospective Session persistence types and adjacent-release changes for sqh-v0.1.1-rc.2."
 kind: persistence-release
 ---
 
-# Persistence release: sqhv0.1.1-rc.2
+# Persistence release: sqh-v0.1.1-rc.2
 
 English | [中文](sqh-v0.1.1-rc.2.zh.md)
 
@@ -28,10 +28,10 @@ This approximate backfill supports reading and format validation; it is not a co
 
 | Item | Recorded value |
 |---|---|
-| Source tag | `sqhv0.1.1-rc.2` |
+| Source tag | `sqh-v0.1.1-rc.2` |
 | Source date | 2026-08-21T12:03:37.000Z |
 | Release record | Release object present. |
-| Previous release | [sqhv0.1.1-rc.1](sqh-v0.1.1-rc.1.md) |
+| Previous release | [sqh-v0.1.1-rc.1](sqh-v0.1.1-rc.1.md) |
 | Session writer version | 0 |
 | Reconstructed inventory | <!-- persistence-release-inventory:start -->51 roots / 404 types<!-- persistence-release-inventory:end --> |
 | This snapshot | [sqh-v0.1.1-rc.2.schema.json](sqh-v0.1.1-rc.2.schema.json) |
@@ -45,8 +45,8 @@ Source evidence for the writer version constant at this tag:
 
 ```yaml persistence-release
 schemaVersion: 1
-tag: sqhv0.1.1-rc.2
-previous: sqhv0.1.1-rc.1
+tag: sqh-v0.1.1-rc.2
+previous: sqh-v0.1.1-rc.1
 sessionFormatVersion: 0
 changes:
   - root: event:agent/inbox/spliced

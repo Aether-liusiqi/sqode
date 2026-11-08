@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-08-17-durable-web-queue-recovery.md
 /agent-note-recover-the-web-queue-from-durable-inbox-state:
-  en: 9461f1c80a4ceb82
-  zh: 8090701b5148469a
+  en: 10ceb69ff617ac30
+  zh: 6e1574810b46e312
 /agent-note-recover-the-web-queue-from-durable-inbox-state/problem:
   en: 79fe907a6201ed27
   zh: 55d0de6b6518f946
 /agent-note-recover-the-web-queue-from-durable-inbox-state/decision:
-  en: 0e6ed7434b5ec653
-  zh: 1a46777dce14ca79
+  en: fae3c9a74e8cd63f
+  zh: 268c4a33d6d7d69e
 /agent-note-recover-the-web-queue-from-durable-inbox-state/verification:
   en: bab880ec7de69673
   zh: 769f2641856fde60
@@ -18,5 +18,5 @@
   en: df29962ab5d779ee
   zh: 2593f0973b725d54
 /agent-note-recover-the-web-queue-from-durable-inbox-state/consequences:
-  en: e82643fc1c596488
-  zh: a05a8e70f440423c
+  en: 3846f1dff6343300
+  zh: 11be8e4a75c42673

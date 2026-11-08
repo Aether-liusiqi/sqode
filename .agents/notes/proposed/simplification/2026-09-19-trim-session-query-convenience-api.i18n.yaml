@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/proposed/simplification/2026-09-19-trim-session-query-convenience-api.md
 /agent-note-trim-unused-sessionquery-convenience-methods:
-  en: 192a15e525143541
-  zh: 2c440140c8f28207
+  en: cbb94a9c1cd833d2
+  zh: 66181d064c6e2886
 /agent-note-trim-unused-sessionquery-convenience-methods/problem:
   en: 62f49ae402951c28
   zh: 95985e67cbb5b6ac
@@ -12,8 +12,8 @@
   en: 3848c7dcdbf70815
   zh: d2ae878e6057afc8
 /agent-note-trim-unused-sessionquery-convenience-methods/alternatives-considered:
-  en: 857f79b25ab8b262
-  zh: 953503595770897b
+  en: 1ec2adbd84aaf321
+  zh: ccf095ace3838707
 /agent-note-trim-unused-sessionquery-convenience-methods/acceptance-criteria:
   en: 44741d711dff0e30
   zh: be1e6f9547dabc74

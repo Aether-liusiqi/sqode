@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-15-profile-command-shorthand.md
 /agent-note-profile-command-shorthand:
-  en: d30c3d9b62f28461
-  zh: 7686f0b8fc756db2
+  en: 826377f4562d7d8f
+  zh: 392a6bfaed1a4bc8
 /agent-note-profile-command-shorthand/problem:
   en: b5c950343e5fbe8c
   zh: df2a055d2c0b3f53
 /agent-note-profile-command-shorthand/decision:
-  en: 5d8e75781ef225c5
-  zh: b82b0b292564fbbe
+  en: 36273263b0e338f5
+  zh: 4c5c2a236b212b47
 /agent-note-profile-command-shorthand/alternatives-considered:
   en: 8d10eee94348e187
   zh: 5930dee3861058e1

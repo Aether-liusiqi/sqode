@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-21-live-config-inspect-provider.md
 /agent-note-live-plugin-config-inspection-replaces-the-host-builtin-provider:
-  en: 3aaf345c94c31f4e
-  zh: 646b1cdcdb0e596f
+  en: 6e7ddcc23e4efdce
+  zh: fd5580248192344c
 /agent-note-live-plugin-config-inspection-replaces-the-host-builtin-provider/problem:
   en: e01cc31ce200b24b
   zh: 7462a52c3e59ec87

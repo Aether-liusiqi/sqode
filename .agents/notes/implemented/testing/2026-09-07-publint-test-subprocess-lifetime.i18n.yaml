@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/testing/2026-09-07-publint-test-subprocess-lifetime.md
 /agent-note-publint-test-subprocesses-inherit-the-execution-lane-deadline:
-  en: 2a611510ee7b6a39
-  zh: 96f9e916446451e0
+  en: 4390bc6fc4ab3b7a
+  zh: 935ff88b31ae9257
 /agent-note-publint-test-subprocesses-inherit-the-execution-lane-deadline/problem:
   en: a5fb106b97023934
   zh: 537bd40564850192
 /agent-note-publint-test-subprocesses-inherit-the-execution-lane-deadline/decision:
-  en: 54e41cc41b07b687
-  zh: 495aac311b8e1c0a
+  en: dd001b9bc87a7019
+  zh: b13181679c7fef16
 /agent-note-publint-test-subprocesses-inherit-the-execution-lane-deadline/alternatives-considered:
   en: 5cc52a67c84dd039
   zh: 9fdc5ac07da9a056

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-20-windows-embedded-mandatory-update.md
 /agent-note-windows-embedded-mandatory-update:
-  en: 84becb81d1083b3b
-  zh: 195989984010293d
+  en: bb13a185bb1da090
+  zh: ca66b0caa1b661dd
 /agent-note-windows-embedded-mandatory-update/problem:
   en: df8f2127905913d7
   zh: 64d27253ce39e031
 /agent-note-windows-embedded-mandatory-update/decision:
-  en: 1384122926ffd06e
-  zh: 15099bd48a1440f6
+  en: c896dccd406df8d7
+  zh: 5f3cfeb3f35457bd
 /agent-note-windows-embedded-mandatory-update/alternatives-considered:
   en: 9564f979909f0743
   zh: 6730e42a123b707a

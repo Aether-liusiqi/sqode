@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-16-desktop-cos-upload-transport.md
 /agent-note-upload-desktop-releases-through-the-tencent-cos-sdk:
-  en: 86b92154324a0d54
-  zh: d7dfd6f833389ad6
+  en: f7e09bcffdc573d9
+  zh: 30d8a96194b7c2ac
 /agent-note-upload-desktop-releases-through-the-tencent-cos-sdk/problem:
   en: 74f8515cdbb2a0aa
   zh: a00d1b08db6d6158
@@ -18,5 +18,5 @@
   en: faae1f132d6cd404
   zh: 1683143fbe6b07ce
 /agent-note-upload-desktop-releases-through-the-tencent-cos-sdk/consequences:
-  en: dccd7d1940dcf518
-  zh: 792ad961c7e29957
+  en: a84f13f7ce8f7381
+  zh: ab12e7ef4dd7ba5b

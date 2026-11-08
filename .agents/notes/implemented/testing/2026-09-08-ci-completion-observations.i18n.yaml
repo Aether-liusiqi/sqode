@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/testing/2026-09-08-ci-completion-observations.md
 /agent-note-ci-fixture-completion-and-isolation:
-  en: 2704c64f916d2f7e
-  zh: c35c8a8295600cda
+  en: 00d7757f2fb8a680
+  zh: d5c16023af960ddd
 /agent-note-ci-fixture-completion-and-isolation/problem:
-  en: 65c701e51e32d0d6
-  zh: 52a4afd3ac823f5a
+  en: 47eadfd0d79c2165
+  zh: d45217b993e594f6
 /agent-note-ci-fixture-completion-and-isolation/decision:
-  en: 383f24dbaee25816
-  zh: d498c46a83ffd55a
+  en: c49eca7505a2d4c5
+  zh: 712e526ac8d336db
 /agent-note-ci-fixture-completion-and-isolation/decision/built-client-import-classification:
-  en: 2caf4a0f0bcf61e9
-  zh: 87befac00fe3e59c
+  en: eab75230c675a93b
+  zh: d07cbd74c6bac517
 /agent-note-ci-fixture-completion-and-isolation/alternatives-considered:
   en: 569976702b273da6
   zh: 3a5e5faba0074398

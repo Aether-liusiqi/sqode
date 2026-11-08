@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write benchmarks/long-session-browser/README.md
 /long-session-browser-benchmark:
-  en: e099d9117750b531
-  zh: caa8cf8d78eb4aed
+  en: 0b4590f30b8f274b
+  zh: 95f4da0d23bae10a
 /long-session-browser-benchmark/run:
   en: e52e52132fec9fbd
   zh: fd2265d32153358a
 /long-session-browser-benchmark/measurements:
-  en: 805db4a894f91133
-  zh: 21cea3b6a5ac8e9e
+  en: 922feecdbddfe542
+  zh: f07e28819b738469

@@ -36,7 +36,7 @@ const TOP_MARGIN = 84
 
 /** DOM id of one option row (the aria-activedescendant target). */
 function optionId(source: string, index: number): string {
-  return `sqhslash-option-${source}-${index}`
+  return `sqh-slash-option-${source}-${index}`
 }
 
 /**

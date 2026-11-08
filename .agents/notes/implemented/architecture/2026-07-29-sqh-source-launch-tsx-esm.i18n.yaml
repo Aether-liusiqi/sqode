@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-29-sqh-source-launch-tsx-esm.md
 /agent-note-sqh-source-launch-through-the-tsx-esm-hook:
-  en: 81f1204916e19408
-  zh: f0d9a030c0bbdac8
+  en: db6dc7f2dcd5d095
+  zh: a72bbcdbf737001d
 /agent-note-sqh-source-launch-through-the-tsx-esm-hook/problem:
   en: 32597859a027f6b3
   zh: c7789f742d6f2812
 /agent-note-sqh-source-launch-through-the-tsx-esm-hook/decision:
-  en: 7abfdea78f98bc78
-  zh: dd10b95a056a55e3
+  en: 2f7915170069b6c9
+  zh: 32f10057275862d7
 /agent-note-sqh-source-launch-through-the-tsx-esm-hook/alternatives-considered:
   en: c6eec3d899a61df1
   zh: 128edd753d49c0da

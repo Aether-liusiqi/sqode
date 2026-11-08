@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-08-present-workspace-source-files.md
 /agent-note-present-declares-workspace-source-files:
-  en: 1ef71dd2f5683b0b
-  zh: 82f282119195ab50
+  en: 305330d04c2d9bb6
+  zh: 6de8b740baf32b42
 /agent-note-present-declares-workspace-source-files/problem:
   en: 8598b8d2e92bcfa1
   zh: e3ae5fc294711095
 /agent-note-present-declares-workspace-source-files/decision:
-  en: fc661235fa8e4235
-  zh: 41dca1c8bbf24322
+  en: 1b791ab6af42df5f
+  zh: 5292b3c7e8a86545
 /agent-note-present-declares-workspace-source-files/alternatives-considered:
   en: b959eae9786351da
   zh: 030c06051d6ac4be

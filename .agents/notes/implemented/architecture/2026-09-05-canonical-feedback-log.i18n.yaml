@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-05-canonical-feedback-log.md
 /agent-note-canonical-feedback-log-and-request-delivery:
-  en: 8a1484523c6db825
-  zh: fae8116b7d4c5cab
+  en: 5e43902aac479eb8
+  zh: f22c09a965ef1c59
 /agent-note-canonical-feedback-log-and-request-delivery/problem:
   en: 702e5973c264ec35
   zh: 71b095565593629c
 /agent-note-canonical-feedback-log-and-request-delivery/decision:
-  en: be6d1e25da133afc
-  zh: 8312bbf39010cf5a
+  en: cf0534f7c9d363c9
+  zh: bf2b4072a2442b98
 /agent-note-canonical-feedback-log-and-request-delivery/alternatives-considered:
   en: 9ddfc84ac3a25f3b
   zh: f185250a0ec512ba

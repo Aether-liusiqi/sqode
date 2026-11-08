@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/testing/2026-09-12-connection-and-compaction-fixture-preconditions.md
 /agent-note-connection-and-compaction-fixture-preconditions:
-  en: 71c9a084536937c1
-  zh: 6b09064395320097
+  en: ad882a4dc54e7563
+  zh: e73d041ebf2d4576
 /agent-note-connection-and-compaction-fixture-preconditions/problem:
   en: 43949801eda059d6
   zh: 83b579735b9d3e3f
 /agent-note-connection-and-compaction-fixture-preconditions/decision:
-  en: 9837522ac98c655d
-  zh: 5f192afdee83ddf7
+  en: d22fb906c78bf043
+  zh: 6a1e44e798a1b041
 /agent-note-connection-and-compaction-fixture-preconditions/alternatives-considered:
   en: b8842654dbe80f4c
   zh: e4b80e80d89203b0

@@ -3,23 +3,23 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/subagent.md
 /subagent:
-  en: 2ca22db562f214a5
-  zh: a5829ab3719322ff
+  en: 7e9cb9d44faf1b21
+  zh: d3708bd497d45658
 /subagent/two-kinds-of-capability-discovered-two-ways:
   en: 7be7cbc224948ed1
   zh: 6da4f61394ed900e
 /subagent/the-one-shot-start-request:
-  en: 5af94fa173835c91
-  zh: ba97e3f0d750bbd2
+  en: 43e4f3d00d8fd21e
+  zh: d16999f3f4d64580
 /subagent/continuable-children-and-activations:
-  en: 21a0f18254e750da
-  zh: 2db3e648a865c80d
+  en: efe964e293a265a5
+  zh: 4d875bc7afddf65f
 /subagent/durable-enumeration-listchildren-listdescendants-and-their-entries:
-  en: 3368130d295791b3
-  zh: 12ff0b8782263823
+  en: 94f5eab749ac05c0
+  zh: fbd86192b6d63f96
 /subagent/the-terminal-result-subagentresult:
-  en: 53a09ac1649e667d
-  zh: 624603c6cd7be940
+  en: fc434d23e33afae0
+  zh: e1e6fc88c150b7a4
 /subagent/a-one-shot-run-subagentrun:
   en: 39df94dd1343ffde
   zh: 047605d7f5ba91ae
@@ -27,5 +27,5 @@
   en: cb05cffdb837b7bc
   zh: a53133845d673f0a
 /subagent/in-process-backends-permission-depth-and-seed:
-  en: 8df3fee9d95b0217
-  zh: 54b80ba67e9c9ce5
+  en: ec452ebdd16bb10f
+  zh: e921bab00439229b

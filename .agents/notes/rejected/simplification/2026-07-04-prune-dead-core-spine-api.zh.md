@@ -33,12 +33,12 @@ Status: rejected — stale 2026-07 inventory: rows were pruned piecemeal or gain
 
 ### 分组辅助导出清单
 
-- `sqhllm-deepseek`：`httpErrorCode`、`serializeMessages`、`serializeRequest`、`DONE`、`parseSse`、`mapFinishReason`、`mapUsage` 与 `translate`；`sqhllm-pi-ai`：`buildModel`、`mapStopReason`、`mapUsage`、`toPiContext` 与 `toStreamChunks`。
-- `sqhbash-local`：`DEFAULT_GRACE_MS`、`ENV_OVERRIDES`、`killGroup`、`OutputCollector` 与 `runBash`；`sqhbash-sandbox`：`shellQuote`、`classifyDenial` 与 `classifyRunnerFailure`；`sqhsandbox-local`：`bwrapProfileArgs`、`landlockProfileArgs` 与 `seatbeltProfileArgs`。公开的可变测试注入字段及其类型不在本提案范围内。
-- `sqhfs-local`：`applyLiteralEdit`、`listDirectory`、`probe`、`readForEdit`、`readTextForDiff`、`readWholeText`、`resolveLocalTarget`、`restoreLineEndings`、`streamWholeText` 与 `writeFileAtomic`。
-- `sqhweb-fetch-http`：`classifyContentType`、`decoderForCharset`、`isSameOrigin`、`parseCharset` 与 `validateFetchUrl`；`sqhweb-search-exa`：`mapExaResponse` 与 `mapExaResult`；`sqhweb-search-deepseek`：`citationSnippets` 与 `mapAnthropicResponse`；`sqhweb-search-perplexity`：`mapPerplexityResponse` 与 `mapPerplexityResult`。
-- `sqhtool-fs`：`READ_LIMIT`、`STREAM_MIN_SIZE`、`READ_MAX_BYTES`、`READ_MAX_LINE_LENGTH`、`DIFF_CONTEXT`、`applyReadTool`、`parseReadArgs`、`applyWriteTool`、`formatWriteOutput`、`parseWriteArgs`、`applyEditTool`、`formatEditOutput`、`parseEditArgs`、`buildWindow`、`formatReadOutput`、`computeHunkDiffs` 与 `diffsFromMeta`。
-- `sqhtool-web`：`WEB_SEARCH_MAX_RESULTS`、`applyWebSearchTool`、`formatSearchOutput`、`parseSearchArgs`、`presentSearchCall`、`applyWebFetchTool`、`formatFetchOutput`、`parseFetchArgs`、`presentFetchCall`、`renderBody` 与 `htmlToMarkdown`；`sqhtool-call-timeout-policy`：`toolTimeoutResult`；`sqhcompaction-basic`：`resolveConfig`；`sqhtool-bash`：`renderResult`。
+- `sqh-llm-deepseek`：`httpErrorCode`、`serializeMessages`、`serializeRequest`、`DONE`、`parseSse`、`mapFinishReason`、`mapUsage` 与 `translate`；`sqh-llm-pi-ai`：`buildModel`、`mapStopReason`、`mapUsage`、`toPiContext` 与 `toStreamChunks`。
+- `sqh-bash-local`：`DEFAULT_GRACE_MS`、`ENV_OVERRIDES`、`killGroup`、`OutputCollector` 与 `runBash`；`sqh-bash-sandbox`：`shellQuote`、`classifyDenial` 与 `classifyRunnerFailure`；`sqh-sandbox-local`：`bwrapProfileArgs`、`landlockProfileArgs` 与 `seatbeltProfileArgs`。公开的可变测试注入字段及其类型不在本提案范围内。
+- `sqh-fs-local`：`applyLiteralEdit`、`listDirectory`、`probe`、`readForEdit`、`readTextForDiff`、`readWholeText`、`resolveLocalTarget`、`restoreLineEndings`、`streamWholeText` 与 `writeFileAtomic`。
+- `sqh-web-fetch-http`：`classifyContentType`、`decoderForCharset`、`isSameOrigin`、`parseCharset` 与 `validateFetchUrl`；`sqh-web-search-exa`：`mapExaResponse` 与 `mapExaResult`；`sqh-web-search-deepseek`：`citationSnippets` 与 `mapAnthropicResponse`；`sqh-web-search-perplexity`：`mapPerplexityResponse` 与 `mapPerplexityResult`。
+- `sqh-tool-fs`：`READ_LIMIT`、`STREAM_MIN_SIZE`、`READ_MAX_BYTES`、`READ_MAX_LINE_LENGTH`、`DIFF_CONTEXT`、`applyReadTool`、`parseReadArgs`、`applyWriteTool`、`formatWriteOutput`、`parseWriteArgs`、`applyEditTool`、`formatEditOutput`、`parseEditArgs`、`buildWindow`、`formatReadOutput`、`computeHunkDiffs` 与 `diffsFromMeta`。
+- `sqh-tool-web`：`WEB_SEARCH_MAX_RESULTS`、`applyWebSearchTool`、`formatSearchOutput`、`parseSearchArgs`、`presentSearchCall`、`applyWebFetchTool`、`formatFetchOutput`、`parseFetchArgs`、`presentFetchCall`、`renderBody` 与 `htmlToMarkdown`；`sqh-tool-call-timeout-policy`：`toolTimeoutResult`；`sqh-compaction-basic`：`resolveConfig`；`sqh-tool-bash`：`renderResult`。
 
 ## 提案
 

@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/testing/2026-08-03-opt-in-reasoning-chunk-browser-stress.md
 /agent-note-frame-coalesced-reasoning-chunk-publication-and-browser-stress-validation:
-  en: 2ffe633a20fc62b8
-  zh: 3528bdb5044c9371
+  en: 0ddc49ab1392c500
+  zh: 3fd31cfaa7ba3716
 /agent-note-frame-coalesced-reasoning-chunk-publication-and-browser-stress-validation/problem:
   en: 73673725b44538c9
   zh: 32027f7a457ee3ae

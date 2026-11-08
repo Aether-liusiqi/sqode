@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-01-workflow-run-in-background.md
 /agent-note-workflow-runs-gain-run-in-background-over-the-job-registry:
-  en: b5c4b02064548d45
-  zh: ea5fc23b3b16333a
+  en: 707e12c747e42fbc
+  zh: 5f368308d4b8fb70
 /agent-note-workflow-runs-gain-run-in-background-over-the-job-registry/problem:
-  en: 8c6a141c30c04598
-  zh: a79e49271c5c6023
+  en: 48a9b5aa8d2544e3
+  zh: b93a159112ccdbef
 /agent-note-workflow-runs-gain-run-in-background-over-the-job-registry/decision:
   en: b0bc1669a6e61b1e
   zh: 99ba5afe693aed9d

@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/schedule.md
 /host-wide-schedule:
-  en: 86556459a1190d3d
-  zh: fd3fb5fba49acb7d
+  en: e08c8257184e115d
+  zh: 7df3a94ec1321917
 /host-wide-schedule/durable-records:
-  en: 637e2c6b53652a9b
-  zh: ae4bc95e08324b01
+  en: 81f05377c50762f6
+  zh: 7a7c8976f71baca8
 /host-wide-schedule/absolute-time-input:
   en: a3f6b107000dcbff
   zh: 1fc11c25be142626
@@ -21,14 +21,14 @@
   en: 1ba9ae84f05d8919
   zh: 5b4abfdcddbbcae0
 /host-wide-schedule/historical-session-changes:
-  en: cde7403609a023f1
-  zh: a073f62203ed01a2
+  en: 5a9d7fb70460580b
+  zh: b42fc27b65e46440
 /host-wide-schedule/active-views-and-management:
-  en: d463ce6f78052f04
-  zh: 355cd24943af6475
+  en: 8260830b0bcc2807
+  zh: fa872274da5502ba
 /host-wide-schedule/web-catalog:
-  en: 1531fca49d662b8d
-  zh: 620d74514324f324
+  en: b448c8ed6207e8ac
+  zh: 4e1a3b81844bdb16
 /host-wide-schedule/timing-edits:
   en: ce5d2095a3ad2e82
   zh: 167b3715f8eaffc1

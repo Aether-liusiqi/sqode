@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-09-awaited-agent-creation.md
 /agent-note-awaited-per-agent-initialization:
-  en: 039956ba92c86b55
-  zh: ca1aec65f369b19e
+  en: ba616959fe919642
+  zh: 935406d717e6a23a
 /agent-note-awaited-per-agent-initialization/problem:
   en: 03e6b75365b29406
   zh: cc880a33cf2303d0
 /agent-note-awaited-per-agent-initialization/decision:
-  en: b677f4ea51277a34
-  zh: 32bc3a25b4f0e1e5
+  en: 565a7065775d2867
+  zh: 3d2304ed6bf53ce3
 /agent-note-awaited-per-agent-initialization/alternatives-considered:
   en: 466a9ebbb13f68c6
   zh: ab88fb34786d2c2b

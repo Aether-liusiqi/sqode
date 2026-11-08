@@ -3,20 +3,20 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/proposed/process/2026-08-27-port-tool-owned-render.md
 /agent-note-port-tool-owned-render-into-current-sqh-apis:
-  en: 9f72498b4dc4402c
-  zh: c8dde18c83e44337
+  en: 966c7f980389f1bf
+  zh: 857bb709918fc4c2
 /agent-note-port-tool-owned-render-into-current-sqh-apis/problem:
-  en: ddfbf44708625fc5
-  zh: 43c7681efe59040c
+  en: 5b5d2e72994c55fa
+  zh: 3b20b749a0dfd8a6
 /agent-note-port-tool-owned-render-into-current-sqh-apis/proposal:
-  en: af6d73b2e7eeaaeb
-  zh: b4315110e997b067
+  en: 9d852611a35b322f
+  zh: a79b765cff9058d7
 /agent-note-port-tool-owned-render-into-current-sqh-apis/alternatives-considered:
   en: a2364e3fca0a06e5
   zh: a76370082e218154
 /agent-note-port-tool-owned-render-into-current-sqh-apis/acceptance-criteria:
-  en: 2e578cae58e5b109
-  zh: 95adc7f5d7f699a6
+  en: 3457411daf4e8005
+  zh: 7fcfe8fca9dde251
 /agent-note-port-tool-owned-render-into-current-sqh-apis/risks:
   en: 4fa51a62af0a3fc5
   zh: d6f555a8a5d9120c

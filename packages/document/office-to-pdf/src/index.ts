@@ -245,7 +245,7 @@ export class OfficeToPdf extends TypertRemoteService {
       }
       const converter = await slot.converter
       signal.throwIfAborted()
-      directory = await mkdtemp(join(tmpdir(), 'sqhoffice-to-pdf-'))
+      directory = await mkdtemp(join(tmpdir(), 'sqh-office-to-pdf-'))
       const inputPath = join(directory, `source.${extension}`)
       const outputPath = join(directory, 'converted.pdf')
       await writeFile(inputPath, bytes, { flag: 'wx', mode: 0o600, signal })

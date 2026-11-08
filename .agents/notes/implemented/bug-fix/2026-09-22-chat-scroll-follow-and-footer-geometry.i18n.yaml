@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-22-chat-scroll-follow-and-footer-geometry.md
 /agent-note-separate-chat-clipping-and-independent-follow-intent:
-  en: 3f6027d51bbcbcd7
-  zh: af55619876eb1c14
+  en: bdb8a37608b2d26f
+  zh: 6bb4cda60f5bf210
 /agent-note-separate-chat-clipping-and-independent-follow-intent/problem:
   en: 8e4310ee05cf535c
   zh: bd57ba36ebe8c201
 /agent-note-separate-chat-clipping-and-independent-follow-intent/decision:
-  en: 047a11a9d0895a95
-  zh: 32bb62ad29f1294f
+  en: 0e76da4418d2c5f0
+  zh: 71fc7fcf69b5c5f9
 /agent-note-separate-chat-clipping-and-independent-follow-intent/alternatives-considered:
   en: 014e7974ce1cadae
   zh: 63c1743c598413e4
@@ -18,5 +18,5 @@
   en: 235dc4e251fa8124
   zh: 2c08ab5e14213b54
 /agent-note-separate-chat-clipping-and-independent-follow-intent/consequences:
-  en: 735e8c4699dca030
-  zh: 92d07123b4b76483
+  en: 419f92b8c1760b29
+  zh: 5068d08351f941cf

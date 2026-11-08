@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-09-consumer-owned-startup-strictness.md
 /agent-note-consumer-owned-startup-strictness:
-  en: 7285706adf2b7838
-  zh: 3953c8efb6f98f44
+  en: d5a0b07c657bbbb1
+  zh: 67c5f78330286b9e
 /agent-note-consumer-owned-startup-strictness/problem:
   en: 4548e7fbdbee5b5a
   zh: 0078762ea92fa180
 /agent-note-consumer-owned-startup-strictness/decision:
-  en: 9a171e0748d7c207
-  zh: ce2e68f159bdc163
+  en: 0f1b1741db6d088c
+  zh: b99426ce4d511084
 /agent-note-consumer-owned-startup-strictness/alternatives-considered:
   en: 1b67e062213184cd
   zh: 91cc8a015de2bfe4
@@ -18,5 +18,5 @@
   en: 1495a88b64fdae7c
   zh: 707d54240d70df5c
 /agent-note-consumer-owned-startup-strictness/testing:
-  en: 5cce6dc7cda5f47a
-  zh: bd03413bb4c12267
+  en: a1b368eca8a9d0ea
+  zh: b820d83103515498

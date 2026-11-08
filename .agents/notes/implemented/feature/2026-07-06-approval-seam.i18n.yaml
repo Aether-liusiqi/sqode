@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-07-06-approval-seam.md
 /agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers:
-  en: 3b0ddf0618181e66
-  zh: 530db5ecd9fa68f1
+  en: 0e772d468ab4dd55
+  zh: dc4d9b8dbdabb382
 /agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/problem:
-  en: db0454c791b555d3
-  zh: cccf148d3794d245
+  en: 7de439ce956afa2f
+  zh: 508bc4e981eefc1a
 /agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/decision:
   en: 44a91e47908694d9
   zh: 7c5c22de1420eac1
 /agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/decision/how-a-deployment-uses-it:
-  en: 84a0eec2fabd3f1b
-  zh: 39a04a79d2d3f992
+  en: cfeb4f626a69537e
+  zh: 51588eb7277f7c54
 /agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/decision/design-detail:
   en: a6d7884e4359af3a
   zh: e72588705942000a
@@ -24,11 +24,11 @@
   en: 1b891774228c9c3c
   zh: 598b9e8fab1a17e6
 /agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/decision/design-detail/the-per-session-policy-tier:
-  en: 10cd38c45a6b8aa4
-  zh: 6836492a11fa98b0
+  en: fc5973ecb862bb44
+  zh: b37ca24d94d16f6e
 /agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/decision/design-detail/the-acp-answerer:
-  en: a1fa3c442b323568
-  zh: 4f981146b496477e
+  en: d06a643a0f4e4cb3
+  zh: 0ab0713e8c20bd4a
 /agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/decision/design-detail/audit-and-what-the-model-sees:
   en: d9f129e893e76bec
   zh: 92929dbc54c65a5b
@@ -39,8 +39,8 @@
   en: 01356985c175fcda
   zh: b1bb3b68f619e698
 /agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/deferred:
-  en: 6f88660e77559ca1
-  zh: 14e67b25343ae89f
+  en: 80280076e4738b5e
+  zh: 2e28a4c812a38ddd
 /agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/alternatives-considered:
   en: b1c255bee25999f3
   zh: 29e60a1cb4bf5721
@@ -48,8 +48,8 @@
   en: 9d2097d7b796dd63
   zh: 4f1a0493dc109b12
 /agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/faq:
-  en: d1202d1c5b846902
-  zh: 6e32883ae744de12
+  en: eb3167d77a23f8d0
+  zh: 479ffffb8be7862f
 /agent-note-the-approval-seam-one-shot-permission-decisions-over-a-waterfall-of-answerers/prior-art:
-  en: 57791fc44e734636
-  zh: b5b2b9458b2941a2
+  en: d4c0a1a99385dbcf
+  zh: 14e40b8873ec620b

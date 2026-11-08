@@ -1,9 +1,9 @@
 ---
-description: "回溯 sqhv0.1.2-rc.1 的已声明 Session 持久化类型及相邻版本变化。"
+description: "回溯 sqh-v0.1.2-rc.1 的已声明 Session 持久化类型及相邻版本变化。"
 kind: persistence-release
 ---
 
-# 持久化版本回溯: sqhv0.1.2-rc.1
+# 持久化版本回溯: sqh-v0.1.2-rc.1
 
 [English](sqh-v0.1.2-rc.1.md) | 中文
 
@@ -28,10 +28,10 @@ kind: persistence-release
 
 | 项目 | 记录值 |
 |---|---|
-| 源码 tag | `sqhv0.1.2-rc.1` |
+| 源码 tag | `sqh-v0.1.2-rc.1` |
 | 源码日期 | 2026-09-03T02:35:15.000Z |
 | 发行记录 | 有 release 对象。 |
-| 前一版本 | [sqhv0.1.2-alpha.5](sqh-v0.1.2-alpha.5.zh.md) |
+| 前一版本 | [sqh-v0.1.2-alpha.5](sqh-v0.1.2-alpha.5.zh.md) |
 | Session 写入版本 | 0 |
 | 完整重建清单 | <!-- persistence-release-inventory:start -->54 个根类型 / 415 种类型<!-- persistence-release-inventory:end --> |
 | 本条快照 | [sqh-v0.1.2-rc.1.schema.json](sqh-v0.1.2-rc.1.schema.json) |
@@ -45,8 +45,8 @@ kind: persistence-release
 
 ```yaml persistence-release
 schemaVersion: 1
-tag: sqhv0.1.2-rc.1
-previous: sqhv0.1.2-alpha.5
+tag: sqh-v0.1.2-rc.1
+previous: sqh-v0.1.2-alpha.5
 sessionFormatVersion: 0
 changes: []
 ```

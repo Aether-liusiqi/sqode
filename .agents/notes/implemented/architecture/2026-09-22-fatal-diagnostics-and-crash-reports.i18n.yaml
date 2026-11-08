@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-22-fatal-diagnostics-and-crash-reports.md
 /agent-note-fatal-diagnostics-and-desktop-crash-reports:
-  en: 1722bc34516f5dd1
-  zh: 9c61de5c822bb23d
+  en: ebcb333a4902151c
+  zh: 71bbf90d599231ca
 /agent-note-fatal-diagnostics-and-desktop-crash-reports/problem:
   en: 77c3ca8dbc9faf91
   zh: be55b42c26d90681
@@ -12,8 +12,8 @@
   en: cecf11675466409b
   zh: d49c7f0e335fbf17
 /agent-note-fatal-diagnostics-and-desktop-crash-reports/relationship-to-earlier-decisions:
-  en: c51879f554dcd021
-  zh: 1c8dfa6f41f05834
+  en: 5754b83f085480c6
+  zh: 5eec04dfcf1136b4
 /agent-note-fatal-diagnostics-and-desktop-crash-reports/relationship-to-the-desktop-logging-design:
   en: 7dc438912d10574a
   zh: 07d05f9f17043d67

@@ -21,7 +21,7 @@ import css from './user-text.module.css'
 import markdownCss from './markdown/MarkdownText.module.css'
 
 /** The wire form a session chip serializes to; label is the display text. */
-const SESSION_WIRE_RE = /@\[([^\]\n]+)\]\(sqhsession:[^)\s]+\)/gu
+const SESSION_WIRE_RE = /@\[([^\]\n]+)\]\(sqh-session:[^)\s]+\)/gu
 
 /** Sentence punctuation a bare `@name` token may carry without being part of the reference. */
 const TRAILING_PUNCTUATION_RE = /[.,;:!?，。；：！？]+$/u

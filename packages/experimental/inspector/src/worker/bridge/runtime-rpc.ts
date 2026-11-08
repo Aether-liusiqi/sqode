@@ -243,7 +243,7 @@ export class ClientRuntimeRouter {
     if (capability === undefined) return
     const target: ClientRuntimeTarget = {
       contextId: this.nextContextId--,
-      uniqueContextId: `sqhclient:${source.sourceId}:${source.generation}`,
+      uniqueContextId: `sqh-client:${source.sourceId}:${source.generation}`,
       source,
       capability,
     }

@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-22-tool-call-three-phases.md
 /agent-note-tool-calls-own-preparation-dispatch-and-results-by-callid:
-  en: e7d3e7f77dc2788d
-  zh: eb0c62ddc7a70cee
+  en: 060714c5ef7bc58c
+  zh: 36101da5b518795b
 /agent-note-tool-calls-own-preparation-dispatch-and-results-by-callid/problem:
   en: 0539e5f25f594681
   zh: 5446bd08229eab9b
@@ -18,14 +18,14 @@
   en: 696a180246e23391
   zh: aeb2b1fdcfdf9631
 /agent-note-tool-calls-own-preparation-dispatch-and-results-by-callid/decision/converge-on-final-state-without-replaying-preparation:
-  en: 5481ddf748f9589d
-  zh: 47a986ec02f3f6c5
+  en: 1df4a3fed1b8519f
+  zh: cbd844552b1f5a02
 /agent-note-tool-calls-own-preparation-dispatch-and-results-by-callid/decision/shared-rows-reuse-their-existing-presentation:
   en: 24536588cd0c979b
   zh: 992d4c4657d6d034
 /agent-note-tool-calls-own-preparation-dispatch-and-results-by-callid/decision/relationship-to-existing-records:
-  en: dd990e2afaa42892
-  zh: 1923833388131dae
+  en: 5e5b9e4a2c83a9d6
+  zh: 16ab2353c27520bf
 /agent-note-tool-calls-own-preparation-dispatch-and-results-by-callid/alternatives-considered:
   en: 505095bec889700e
   zh: b77c492de3e8641a

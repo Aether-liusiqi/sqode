@@ -349,7 +349,7 @@ export class RuntimeDomainSession {
     if (typeof unique === 'string') {
       const realm = this.realms.byUniqueContextId(unique)
       if (realm !== undefined) return realm
-      if (unique.startsWith('sqhclient:')) throw new Error('Client execution context is no longer available')
+      if (unique.startsWith('sqh-client:')) throw new Error('Client execution context is no longer available')
       return this.realms.host()
     }
     return undefined
@@ -391,7 +391,7 @@ export class RuntimeDomainSession {
     if (typeof params.uniqueContextId === 'string') {
       const realm = this.realms.byUniqueContextId(params.uniqueContextId)
       if (realm?.nativeDomains.state === 'unsupported') return realm.nativeDomains.reason
-      if (params.uniqueContextId.startsWith('sqhclient:') && realm === undefined) {
+      if (params.uniqueContextId.startsWith('sqh-client:') && realm === undefined) {
         return 'Client execution context is no longer available'
       }
     }
@@ -442,7 +442,7 @@ export class RuntimeDomainSession {
           uniqueId: realm.context.uniqueId,
           origin: realm.context.origin,
           name: `Client — ${realm.descriptor.label}`,
-          auxData: { isDefault: false, type: 'sqhclient', sourceId: realm.descriptor.sourceId },
+          auxData: { isDefault: false, type: 'sqh-client', sourceId: realm.descriptor.sourceId },
         },
       },
     })

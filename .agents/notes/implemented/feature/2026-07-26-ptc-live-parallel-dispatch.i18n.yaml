@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-07-26-ptc-live-parallel-dispatch.md
 /agent-note-ptc-mode-live-dispatch-lifecycle-and-native-contract-parallelism:
-  en: 44feaddc3a6e455c
-  zh: 4cd071ba85a69ab4
+  en: 2ca6661aa348bebe
+  zh: 1ba687f572875959
 /agent-note-ptc-mode-live-dispatch-lifecycle-and-native-contract-parallelism/problem:
   en: ce16b44b1db07ec0
   zh: 30681dab84948cd8

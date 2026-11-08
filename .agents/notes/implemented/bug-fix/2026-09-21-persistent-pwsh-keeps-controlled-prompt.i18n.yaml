@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-21-persistent-pwsh-keeps-controlled-prompt.md
 /agent-note-persistent-pwsh-keeps-the-backend-s-controlled-prompt:
-  en: 51204afbee2b70ce
-  zh: 9e0ba5ef0dc6a0fb
+  en: 4c5fe849a2387280
+  zh: d3a24e31bde04d1d
 /agent-note-persistent-pwsh-keeps-the-backend-s-controlled-prompt/problem:
-  en: 07121857227db2c2
-  zh: 43ec05b67167a5f2
+  en: c68325fd34a269fc
+  zh: 4fcfaace3a038ef0
 /agent-note-persistent-pwsh-keeps-the-backend-s-controlled-prompt/decision:
   en: 794ce101a0472d66
   zh: 932fcab7cd894ecf

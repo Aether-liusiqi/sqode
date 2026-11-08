@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-07-workspace-files-dual-face-package.md
 /agent-note-workspace-files-as-one-dual-face-api-package:
-  en: 2751655863fcae4b
-  zh: 3925ba171e854b38
+  en: 5c36d06212d8e862
+  zh: ec045543c0e80f5c
 /agent-note-workspace-files-as-one-dual-face-api-package/problem:
   en: 3c6cd5caafd8d7b6
   zh: 53e41137675bcbc1
 /agent-note-workspace-files-as-one-dual-face-api-package/decision:
-  en: 80934a8b40acc6a3
-  zh: 28b01c60b57cfeea
+  en: 34a7d6629b82b65b
+  zh: 7378260eeb9b88cd
 /agent-note-workspace-files-as-one-dual-face-api-package/alternatives-considered:
   en: 26832f105f0cffb4
   zh: 41be71171f89b08a

@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-06-21-subagent-capability-seam.md
 /agent-note-subagent-capability-seam:
-  en: e6a7f0401313c8d6
-  zh: adbcee37cdcae809
+  en: 1492dcf841392173
+  zh: 675417229872e98e
 /agent-note-subagent-capability-seam/problem:
-  en: 381eca3a96753674
-  zh: 490d7530dc9caf70
+  en: 11ab8e6534b87c78
+  zh: 9300cb776dec93d5
 /agent-note-subagent-capability-seam/alternatives-considered:
   en: 6119e2aff3b6be5a
   zh: 76136ef5249c23eb
 /agent-note-subagent-capability-seam/alternatives-considered/why-not-the-bash-seam-shape:
-  en: 2cf770936ced164b
-  zh: d277c03df6945147
+  en: 57e63d528b045f1b
+  zh: c2308f6ad6a0c200
 /agent-note-subagent-capability-seam/decision:
   en: a15c7c13f167e5ac
   zh: 63bcc2ef60c2f344
@@ -24,8 +24,8 @@
   en: 08250dc4d5faf918
   zh: 1b413cb438af6796
 /agent-note-subagent-capability-seam/decision/two-kinds-of-optional-capability-discovered-two-ways:
-  en: c135a8c7efae23b8
-  zh: 3e0d2f563b1a2e59
+  en: 136ce484693aae89
+  zh: 18bb5078f55b0065
 /agent-note-subagent-capability-seam/decision/fork-vs-fresh-are-separate-backends-not-a-flag:
   en: be7d5f35856da4d1
   zh: 852fdabc5ea0cf58
@@ -33,14 +33,14 @@
   en: e970f97f27d11f4a
   zh: 34ece0dfe5ec6185
 /agent-note-subagent-capability-seam/decision/synchronous-collect-first-cut:
-  en: e90a6de30a9a2183
-  zh: 5b2b35e6f8a22705
+  en: dcb4e8920b33e350
+  zh: 043d847d45ba32d3
 /agent-note-subagent-capability-seam/decision/transport-provider-selection-is-config-not-model-facing:
-  en: 20024339b6ae6f0c
-  zh: f21bc9fbfbb3b1c2
+  en: 4d5c62fddd0776ea
+  zh: cbfd1f640d45224e
 /agent-note-subagent-capability-seam/testing:
-  en: 3a0b089a3b5c4beb
-  zh: 7957ab6667f17f66
+  en: fee7e84d7de61db3
+  zh: a8d86b40f4cb0255
 /agent-note-subagent-capability-seam/consequences:
-  en: 347495927329dac0
-  zh: f44cee5211c670df
+  en: 098b60027057f8b2
+  zh: 89ad18c4f2aec1f3

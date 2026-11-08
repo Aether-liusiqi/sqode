@@ -98,8 +98,8 @@ export class DesktopPlatformView {
       owner.webContents.removeListener('destroyed', closeOwnedView)
       owner.removeListener('closed', closeOwnedView)
     }
-    const partition = account.userId === null ? `sqhplatform-${randomUUID()}`
-      : `persist:sqhplatform-${createHash('sha256').update(JSON.stringify([account.origin, account.userId])).digest('hex')}`
+    const partition = account.userId === null ? `sqh-platform-${randomUUID()}`
+      : `persist:sqh-platform-${createHash('sha256').update(JSON.stringify([account.origin, account.userId])).digest('hex')}`
     const browserSession = session.fromPartition(partition)
     // Sanitize persisted authentication even after an unclean previous process exit.
     const failure = await this.cleanStorage(browserSession)

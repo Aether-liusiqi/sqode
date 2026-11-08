@@ -11,4 +11,4 @@ import {
 
 const image = `preview/${IMAGE_FILE_NAME}`
 const source = await chooseWorkerHostSource({ image })
-await connectWorkerHost(new SqhWorker({ name: 'sqhhost' }), { image, overlays: source.overlays })
+await connectWorkerHost(new SqhWorker({ name: 'sqh-host' }), { image, overlays: source.overlays })

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-07-20-ptc-typed-tool-returns.md
 /agent-note-typed-tool-returns-in-ptc-mode:
-  en: 35a98b3a4381ac6b
-  zh: 60024721b6570659
+  en: b102a1d12169eece
+  zh: b742050ec212a2da
 /agent-note-typed-tool-returns-in-ptc-mode/problem:
-  en: 0d7e853cc29dae4a
-  zh: f890740c058f3a56
+  en: ba2f7a85485043f9
+  zh: 40d540abf8270fd7
 /agent-note-typed-tool-returns-in-ptc-mode/decision:
-  en: 9b17d3dc32d52c70
-  zh: 92542074551d4fac
+  en: 5f3d74b2987c207b
+  zh: 4fc2381790f81e68
 /agent-note-typed-tool-returns-in-ptc-mode/decision/generated-sdk:
   en: 30583e9ac6715952
   zh: 3a85c9482abf574c
@@ -21,11 +21,11 @@
   en: d907d0a8205157e1
   zh: 1ed99168266a7ca4
 /agent-note-typed-tool-returns-in-ptc-mode/decision/typed-handles-and-lifetime:
-  en: 94a8a4bf2d30e615
-  zh: d68f2c11b3260437
+  en: f996d283fd8046b9
+  zh: 227c88da11503915
 /agent-note-typed-tool-returns-in-ptc-mode/decision/persistence-metadata-and-spill:
-  en: e613bccb71578adf
-  zh: fc8101a8ab1bac40
+  en: bec667496585fb35
+  zh: 91aba821c1ad6df4
 /agent-note-typed-tool-returns-in-ptc-mode/testing:
   en: 728513c779f031f8
   zh: f6d869f18add7242

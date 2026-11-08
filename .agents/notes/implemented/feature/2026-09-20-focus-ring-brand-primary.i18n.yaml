@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-20-focus-ring-brand-primary.md
 /agent-note-one-keyboard-focus-colour-for-every-control:
-  en: 87040b52969b220d
-  zh: 63f6b199bfe70d91
+  en: ac1ef6931f96a5f6
+  zh: 2bc9b793bd7e480a
 /agent-note-one-keyboard-focus-colour-for-every-control/problem:
   en: 2f3f77b1de539959
   zh: a4fa146b1d9ddecf
 /agent-note-one-keyboard-focus-colour-for-every-control/decision:
-  en: 2ec784ebaf371f7f
-  zh: d3004405544732d7
+  en: 40ec0be863afd865
+  zh: f255a5f479f804f2
 /agent-note-one-keyboard-focus-colour-for-every-control/alternatives-considered:
   en: 392968102d520d1d
   zh: e7b7b68f145cf3d3

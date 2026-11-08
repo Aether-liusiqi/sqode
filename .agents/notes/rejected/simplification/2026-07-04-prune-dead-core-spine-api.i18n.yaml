@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/rejected/simplification/2026-07-04-prune-dead-core-spine-api.md
 /agent-note-prune-dead-public-api-and-result-fields:
-  en: c9653cacf1f0fa32
-  zh: 8b7dca98746a7da3
+  en: 683b49d439a00d0b
+  zh: 7dac4f65c8c18b72
 /agent-note-prune-dead-public-api-and-result-fields/problem:
   en: 277564591633536c
   zh: ddfbc0231a04b51d
 /agent-note-prune-dead-public-api-and-result-fields/problem/grouped-helper-export-inventory:
-  en: bdb7ce2308b24cca
-  zh: d388e03db4535211
+  en: eb26847be0e56aea
+  zh: 1137c2e2c44a9a9a
 /agent-note-prune-dead-public-api-and-result-fields/proposal:
   en: 414aca8de0a22c38
   zh: 9458a8db0cea11e7

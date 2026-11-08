@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/llm-streaming.md
 /llm-streaming:
-  en: 08f67e4c3abb3fa8
-  zh: af250269a790bcea
+  en: 9ee2b39eb52c761e
+  zh: 258b290b3a38b744
 /llm-streaming/content-blocks-and-messages:
-  en: 50034261e53d5d6a
-  zh: 3386469621ca873d
+  en: 138b51f7d3f66109
+  zh: f3bce3c39cbc3f4c
 /llm-streaming/streamchunk-the-raw-protocol:
   en: a18fe401763efde4
   zh: ef59a76d9c694654
 /llm-streaming/compact-assistant-streams:
-  en: 1af5f7229313f9a3
-  zh: d68e1f64de830047
+  en: a12bb17600fef5fb
+  zh: e52964a877da5bac
 /llm-streaming/llmfailure:
   en: 13415501869b4ca9
   zh: 723c7533cce3d1d6
@@ -24,11 +24,11 @@
   en: 8c68af3a1c44533a
   zh: 2004e0c4e34e37df
 /llm-streaming/resolvedretrypolicy:
-  en: d86eaf190346ee51
-  zh: ffcafaaccd5d74f9
+  en: bb7ee3095a05e263
+  zh: 2308a70487ca7617
 /llm-streaming/appidentity-app-attribution:
-  en: 1016ff267f8d135b
-  zh: 98d755a17ffc55f1
+  en: bbbd462f11420a05
+  zh: 1612819c262cd935
 /llm-streaming/tokenusage:
   en: 33830f78fdb845fa
   zh: f43a4502c4c3bfff
@@ -36,14 +36,14 @@
   en: 58dec2259b0b1c6f
   zh: fc99fe965acaabf3
 /llm-streaming/the-model-request:
-  en: 86795555407aae6c
-  zh: 7996bf41547aa912
+  en: d98e200577e9be05
+  zh: 3d4b066a5fa47422
 /llm-streaming/the-model-request/the-request-envelope-llmcallconfig-and-the-logged-header:
-  en: 888a1125f2e7758f
-  zh: 6f7bbbfb55cee9a3
+  en: 7b741841b83e920f
+  zh: 87594391898d91a6
 /llm-streaming/official-deepseek-request-extensions:
-  en: f240054be47de9ac
-  zh: 057b65fef9356ddb
+  en: 09a629afa4bc0beb
+  zh: 25c310b37ac28496
 /llm-streaming/service-and-provider-contracts:
-  en: 2b1fde3612b03c8c
-  zh: 1445d5e412f8737c
+  en: 39cf8685a55db154
+  zh: 548bb53c5a94e55b

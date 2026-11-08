@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-09-15-pr-approval-delegation.md
 /agent-note-pr-scoped-approval-delegation:
-  en: f396d6f9ad138edb
-  zh: 87dcd85dac30579e
+  en: 9c94eb7e0c6b0cb8
+  zh: 0e6bc81c68a0c2a7
 /agent-note-pr-scoped-approval-delegation/problem:
   en: 5fe2f3b3cb7ce046
   zh: ed27d4efc995b8b5
 /agent-note-pr-scoped-approval-delegation/decision:
-  en: 5aa23931fd39a63f
-  zh: cbc3ec1d3322c498
+  en: 6df2c365ffa7368f
+  zh: bb3c1be5e417a0e0
 /agent-note-pr-scoped-approval-delegation/alternatives-considered:
   en: a6006217cb29613a
   zh: 83968328096f1d91
 /agent-note-pr-scoped-approval-delegation/consequences:
-  en: e4a3c3945c1e1c81
-  zh: 836d0a87a1227d3a
+  en: aae4d101cbabac59
+  zh: 7e13dfe3ed1f9f5a

@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-07-05-dynamic-workflows.md
 /agent-note-dynamic-workflows-a-script-driven-multi-agent-orchestration-seam:
-  en: 63ff24fa508a7ba2
-  zh: baf0c02de2131d93
+  en: 41245ed5e956e903
+  zh: 06313291561d7e81
 /agent-note-dynamic-workflows-a-script-driven-multi-agent-orchestration-seam/problem:
   en: 5032cfb6be534811
   zh: 0cb028f138d77bf3
@@ -15,17 +15,17 @@
   en: 889beb90c3650f25
   zh: b1ba5dac3c77f8d2
 /agent-note-dynamic-workflows-a-script-driven-multi-agent-orchestration-seam/decision/the-seam-sqh-workflow:
-  en: df493f7978076851
-  zh: 49a106633fcf7f64
+  en: 34818c0d124bcea4
+  zh: 6b470bff19696f85
 /agent-note-dynamic-workflows-a-script-driven-multi-agent-orchestration-seam/decision/the-engine-sqh-workflow-ptc-shared-node-process-execution:
-  en: 03932cb45cb25531
-  zh: 78cda120e4fad995
+  en: 95ca73ff2cf1aa3a
+  zh: e77c4335fda2adbf
 /agent-note-dynamic-workflows-a-script-driven-multi-agent-orchestration-seam/decision/the-consumer-sqh-tool-workflow:
-  en: 0170219ffa35eadb
-  zh: 515aca60ff23591c
+  en: b2b9d6bee347c6c8
+  zh: 4729e1535f54b346
 /agent-note-dynamic-workflows-a-script-driven-multi-agent-orchestration-seam/decision/the-foundation-structured-output-on-the-subagent-seam:
-  en: eaa08a7febfc22f3
-  zh: 1691fbe03fecf06a
+  en: cfdf6b940f63aa4b
+  zh: 6f65ac42b2e34dc9
 /agent-note-dynamic-workflows-a-script-driven-multi-agent-orchestration-seam/testing:
   en: a1607694b584dcbc
   zh: 29c9c7560f0fcf56

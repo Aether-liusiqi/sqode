@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-15-messages-v1-base-url.md
 /agent-note-exact-v1-recognition-for-messages-base-urls:
-  en: 39a3d1226af2731c
-  zh: e593398b36b479f2
+  en: 8b0b1312b564ef9a
+  zh: 0adf7e40e7ca2eb0
 /agent-note-exact-v1-recognition-for-messages-base-urls/problem:
   en: d6d0baca328ce1cd
   zh: 152d5c7793674ed2

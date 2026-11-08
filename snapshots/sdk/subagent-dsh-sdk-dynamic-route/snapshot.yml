@@ -1,10 +1,10 @@
 version: 1
 scenario: subagent-sdk-dynamic-route
 profile: sdk
-composition: sdk-sqhsdk-dynamic-route
+composition: sdk-sqh-sdk-dynamic-route
 recording: authored
 header:
-  class: sdk-sqhsdk-dynamic-route
+  class: sdk-sqh-sdk-dynamic-route
   pin: true
   childSystemPrompts: [1]
   childToolSchemas: [1]

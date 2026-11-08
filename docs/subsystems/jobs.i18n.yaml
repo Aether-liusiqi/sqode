@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/jobs.md
 /background-job-runtime:
-  en: d97b4ae7890c1991
-  zh: 49cdd70326f51e72
+  en: 9aa402b0d0a793a4
+  zh: 0e141943cabbc9fa
 /background-job-runtime/ids-and-status:
-  en: 3d4f0a34bfa9ead5
-  zh: 519090a8e4574379
+  en: 81d693d706f7901b
+  zh: 75e40441c6d6dc57
 /background-job-runtime/producer-contract:
   en: f342418523d1c50c
   zh: e0778ff9ee78aee1
 /background-job-runtime/the-output-ring:
-  en: 7f533eb9d3fd9708
-  zh: bdb23ce47311951f
+  en: 37f5602519a2634e
+  zh: fd270d89087cf4f7
 /background-job-runtime/consumer-views:
   en: 8923d586da35964e
   zh: 85437e407856cd5f
@@ -21,5 +21,5 @@
   en: 413216510fce678e
   zh: 18efe733a0b35d0c
 /background-job-runtime/service-behavior:
-  en: 79ec9b3a0803c8ae
-  zh: 914bf95a2e02518c
+  en: 3ea87b2e8720883a
+  zh: 0e06523688545e72

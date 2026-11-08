@@ -19,14 +19,14 @@ interface RootManifest {
 }
 
 interface LauncherPolicy {
-  readonly kind: 'sqhdirect' | 'sqhwrapper'
+  readonly kind: 'sqh-direct' | 'sqh-wrapper'
   readonly wrapper?: string
 }
 
 /** Public product launcher plus the build-only WebWorker packer. */
 const MANIFEST_BIN_ALLOWLIST = new Map<string, ManifestBin>([
   ['apps/cli/package.json', { dsh: 'lib/bin.js' }],
-  ['packages/experimental/webworker-packer/package.json', { 'sqhpack-vfs-image': './bin.js' }],
+  ['packages/experimental/webworker-packer/package.json', { 'sqh-pack-vfs-image': './bin.js' }],
 ])
 
 /** Every JavaScript executable in an application or packaging workspace has one explicit role. */
@@ -54,10 +54,10 @@ const EXECUTABLE_SOURCE_ALLOWLIST = new Map<string, string>([
  * by name.
  */
 const ROOT_LAUNCHER_POLICIES = new Map<string, LauncherPolicy>([
-  ['demo:ptc', { kind: 'sqhwrapper', wrapper: 'scripts/demo-ptc.mjs' }],
-  ['demo:inspector', { kind: 'sqhdirect' }],
-  ['start:web', { kind: 'sqhdirect' }],
-  ['dev:web', { kind: 'sqhwrapper', wrapper: 'scripts/dev-web.ts' }],
+  ['demo:ptc', { kind: 'sqh-wrapper', wrapper: 'scripts/demo-ptc.mjs' }],
+  ['demo:inspector', { kind: 'sqh-direct' }],
+  ['start:web', { kind: 'sqh-direct' }],
+  ['dev:web', { kind: 'sqh-wrapper', wrapper: 'scripts/dev-web.ts' }],
 ])
 
 const SOURCE_PATTERNS = [
@@ -151,7 +151,7 @@ function rootLauncherViolations(root: string): string[] {
       continue
     }
     const command = typeof commandValue === 'string' ? commandValue : ''
-    if (policy.kind === 'sqhdirect') {
+    if (policy.kind === 'sqh-direct') {
       if (!referencesSqhCli(command)) failures.push(`package.json scripts.${name}: application launcher script must launch apps/cli/src/bin.ts`)
       if (referencesPackageEntry(command)) failures.push(`package.json scripts.${name}: application launcher script must not launch a package entry directly`)
       continue

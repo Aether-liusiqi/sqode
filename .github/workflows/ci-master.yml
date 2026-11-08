@@ -227,7 +227,7 @@ jobs:
   serial-windows:
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     name: serial / windows (self-hosted standby)
-    runs-on: [self-hosted, sqhwin-ci, windows]
+    runs-on: [self-hosted, sqh-win-ci, windows]
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@v6
@@ -297,62 +297,62 @@ jobs:
         include:
           - platform: linux
             cores: '4'
-            runner: sqhubuntu-24-04-4core
+            runner: sqh-ubuntu-24-04-4core
             blacksmith: blacksmith-4vcpu-ubuntu-2404
             workload: typecheck
           - platform: linux
             cores: '8'
-            runner: sqhubuntu-24-04-8core
+            runner: sqh-ubuntu-24-04-8core
             blacksmith: blacksmith-8vcpu-ubuntu-2404
             workload: typecheck
           - platform: linux
             cores: '16'
-            runner: sqhubuntu-24-04-16core
+            runner: sqh-ubuntu-24-04-16core
             blacksmith: blacksmith-16vcpu-ubuntu-2404
             workload: typecheck
           - platform: linux
             cores: '32'
-            runner: sqhubuntu-24-04-32core
+            runner: sqh-ubuntu-24-04-32core
             blacksmith: blacksmith-32vcpu-ubuntu-2404
             workload: typecheck
           - platform: linux
             cores: '64'
-            runner: sqhubuntu-24-04-64core
+            runner: sqh-ubuntu-24-04-64core
             blacksmith: ''
             workload: typecheck
           - platform: linux
             cores: '96'
-            runner: sqhubuntu-24-04-96core
+            runner: sqh-ubuntu-24-04-96core
             blacksmith: ''
             workload: typecheck
           - platform: windows
             cores: '4'
-            runner: sqhwindows-2025-4core
+            runner: sqh-windows-2025-4core
             blacksmith: blacksmith-4vcpu-windows-2025
             workload: production-site
           - platform: windows
             cores: '8'
-            runner: sqhwindows-2025-8core
+            runner: sqh-windows-2025-8core
             blacksmith: blacksmith-8vcpu-windows-2025
             workload: production-site
           - platform: windows
             cores: '16'
-            runner: sqhwindows-2025-16core
+            runner: sqh-windows-2025-16core
             blacksmith: blacksmith-16vcpu-windows-2025
             workload: production-site
           - platform: windows
             cores: '32'
-            runner: sqhwindows-2025-32core
+            runner: sqh-windows-2025-32core
             blacksmith: blacksmith-32vcpu-windows-2025
             workload: production-site
           - platform: windows
             cores: '64'
-            runner: sqhwindows-2025-64core
+            runner: sqh-windows-2025-64core
             blacksmith: ''
             workload: production-site
           - platform: windows
             cores: '96'
-            runner: sqhwindows-2025-96core
+            runner: sqh-windows-2025-96core
             blacksmith: ''
             workload: production-site
     steps:
@@ -408,62 +408,62 @@ jobs:
         include:
           - platform: linux
             cores: '4'
-            runner: sqhubuntu-24-04-4core
+            runner: sqh-ubuntu-24-04-4core
             blacksmith: blacksmith-4vcpu-ubuntu-2404
             workers: '4'
           - platform: linux
             cores: '8'
-            runner: sqhubuntu-24-04-8core
+            runner: sqh-ubuntu-24-04-8core
             blacksmith: blacksmith-8vcpu-ubuntu-2404
             workers: '8'
           - platform: linux
             cores: '16'
-            runner: sqhubuntu-24-04-16core
+            runner: sqh-ubuntu-24-04-16core
             blacksmith: blacksmith-16vcpu-ubuntu-2404
             workers: '16'
           - platform: linux
             cores: '32'
-            runner: sqhubuntu-24-04-32core
+            runner: sqh-ubuntu-24-04-32core
             blacksmith: blacksmith-32vcpu-ubuntu-2404
             workers: '32'
           - platform: linux
             cores: '64'
-            runner: sqhubuntu-24-04-64core
+            runner: sqh-ubuntu-24-04-64core
             blacksmith: ''
             workers: '32'
           - platform: linux
             cores: '96'
-            runner: sqhubuntu-24-04-96core
+            runner: sqh-ubuntu-24-04-96core
             blacksmith: ''
             workers: '32'
           - platform: windows
             cores: '4'
-            runner: sqhwindows-2025-4core
+            runner: sqh-windows-2025-4core
             blacksmith: blacksmith-4vcpu-windows-2025
             workers: '2'
           - platform: windows
             cores: '8'
-            runner: sqhwindows-2025-8core
+            runner: sqh-windows-2025-8core
             blacksmith: blacksmith-8vcpu-windows-2025
             workers: '2'
           - platform: windows
             cores: '16'
-            runner: sqhwindows-2025-16core
+            runner: sqh-windows-2025-16core
             blacksmith: blacksmith-16vcpu-windows-2025
             workers: '2'
           - platform: windows
             cores: '32'
-            runner: sqhwindows-2025-32core
+            runner: sqh-windows-2025-32core
             blacksmith: blacksmith-32vcpu-windows-2025
             workers: '2'
           - platform: windows
             cores: '64'
-            runner: sqhwindows-2025-64core
+            runner: sqh-windows-2025-64core
             blacksmith: ''
             workers: '2'
           - platform: windows
             cores: '96'
-            runner: sqhwindows-2025-96core
+            runner: sqh-windows-2025-96core
             blacksmith: ''
             workers: '2'
     steps:

@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-07-21-follow-instruction-symlinks.md
 /agent-note-follow-symlinked-instruction-files:
-  en: 07adc19bb148abd6
-  zh: 5645244a26037834
+  en: 37446a55560064a3
+  zh: bbe39bde8a05a644
 /agent-note-follow-symlinked-instruction-files/problem:
   en: ddbe2ae184a4208d
   zh: 8f95fdca087f8109
@@ -12,8 +12,8 @@
   en: 3fe1137908ff7554
   zh: 6f10b704f8fa14d4
 /agent-note-follow-symlinked-instruction-files/decision/trust-boundary-and-residual-risk:
-  en: e6707731683277ba
-  zh: 16cecc32eecaac4f
+  en: fb0726fc728769ae
+  zh: 350d82c4538176e0
 /agent-note-follow-symlinked-instruction-files/alternatives-considered:
   en: 509861b892161012
   zh: f39269117cea84d3

@@ -3,20 +3,20 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-05-workspace-files-service.md
 /agent-note-workspace-file-service:
-  en: 1fea354ce1b8a922
-  zh: d4e51042c020e3a8
+  en: ae52ec809112c9e5
+  zh: cff5b1551f01ef39
 /agent-note-workspace-file-service/problem:
   en: 5db6aa946a4a4401
   zh: 49ebd447e57cbfd8
 /agent-note-workspace-file-service/decision:
-  en: b630cd393e009476
-  zh: bf01b9aff433e098
+  en: 6099fd5b2df6e9fe
+  zh: f6f4bc1054682d1a
 /agent-note-workspace-file-service/decision/package-topology:
-  en: f4b6a6d1628a0dde
-  zh: 9f03cbc369d509c6
+  en: b4b3fe6cd981d6ed
+  zh: e4458f3871e1a10b
 /agent-note-workspace-file-service/decision/the-workspacefiles-file-operations:
-  en: 537de67ae536cae9
-  zh: 89185cee643cab86
+  en: faeb8bbbfa356cee
+  zh: a6869985e457f47d
 /agent-note-workspace-file-service/decision/paths-on-the-wire:
   en: a39172337124b6a0
   zh: 03c68faf15dc5bbc
@@ -36,11 +36,11 @@
   en: 0d42d4716dde706f
   zh: 4e95b8af2df232b6
 /agent-note-workspace-file-service/decision/related-notes:
-  en: b426d8647161918a
-  zh: 8153a97887b64ca9
+  en: 7b5cd294dd595ac9
+  zh: 3ef481b50fcb834e
 /agent-note-workspace-file-service/alternatives-considered:
-  en: 072256d3ecc641dd
-  zh: b5870d0bf582216d
+  en: 168643dcc751062d
+  zh: ca3a36ae079029fd
 /agent-note-workspace-file-service/consequences:
   en: 246bb7aed62f6c9b
   zh: debf6d4129ee477b

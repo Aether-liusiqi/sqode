@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-08-06-bwrap-private-pid-namespace.md
 /agent-note-isolate-bwrap-from-the-host-pid-namespace:
-  en: 1375a43957e4ca8e
-  zh: 3bb814bca1464324
+  en: ae4408a345df6215
+  zh: 04ecd7c22797d6ba
 /agent-note-isolate-bwrap-from-the-host-pid-namespace/problem:
-  en: e19a9982a3c2b90f
-  zh: cb431fb065cdf386
+  en: 5405f840438721b7
+  zh: 07598cfa61745c0d
 /agent-note-isolate-bwrap-from-the-host-pid-namespace/decision:
   en: d1000f28dd8cd2c6
   zh: 9b35f7085ae68b99

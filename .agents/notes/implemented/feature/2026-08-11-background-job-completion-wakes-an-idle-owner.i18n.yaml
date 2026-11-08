@@ -3,20 +3,20 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-08-11-background-job-completion-wakes-an-idle-owner.md
 /agent-note-background-job-completion-wakes-an-idle-owner:
-  en: 526aa453a39b70ea
-  zh: 751c48dfb1b5b088
+  en: 17e695356ee5e9a9
+  zh: 04420e314c1da4e3
 /agent-note-background-job-completion-wakes-an-idle-owner/problem:
-  en: c2a76530f5e6eed9
-  zh: 9e453a4eb9d7c8e2
+  en: 214d58bd46219bfd
+  zh: 13350aa6304f2915
 /agent-note-background-job-completion-wakes-an-idle-owner/decision:
-  en: db5b2e9eb1091126
-  zh: b4176ba645b95481
+  en: e108014bcb6c0eb4
+  zh: 86936066131f53ad
 /agent-note-background-job-completion-wakes-an-idle-owner/decision/the-busy-owner-keeps-injection:
   en: 841588bc73fc4613
   zh: 7fb4095bd55ee241
 /agent-note-background-job-completion-wakes-an-idle-owner/decision/the-cap-on-consecutive-wakes-is-opt-in-and-it-is-not-time:
-  en: 750ad2d26780fb72
-  zh: d474a70bfaee834b
+  en: 419ce696f2cf776d
+  zh: bc3b0b850e973fd5
 /agent-note-background-job-completion-wakes-an-idle-owner/decision/teardown-claims-the-report:
   en: f79257596c755a32
   zh: 856bf42492425f9c
@@ -27,8 +27,8 @@
   en: 6a49bf0042ae76c0
   zh: 3c9e8e49d10565ab
 /agent-note-background-job-completion-wakes-an-idle-owner/consequences:
-  en: 23d4cac98c207616
-  zh: 9c5cb9b7bbdbad71
+  en: 5bc49ef9c4a31b12
+  zh: 34a9e706a8b9b70a
 /agent-note-background-job-completion-wakes-an-idle-owner/consequences/accepted-risks:
-  en: 7a6fd2d8f7764ede
-  zh: abf811be88038d80
+  en: 86a00339c4c07bcd
+  zh: 0eae7d1af4330b69

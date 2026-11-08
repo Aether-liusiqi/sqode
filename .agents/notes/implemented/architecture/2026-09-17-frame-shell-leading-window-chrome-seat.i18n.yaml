@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-17-frame-shell-leading-window-chrome-seat.md
 /agent-note-frame-owned-shell-leading-window-chrome-seat:
-  en: 934015e6672f57ca
-  zh: d37ae71090daf422
+  en: 56eed26208db8a14
+  zh: e7405891bf11f41b
 /agent-note-frame-owned-shell-leading-window-chrome-seat/problem:
-  en: 0659fcdd5a967b4e
-  zh: 479b88b88f6dacdf
+  en: 7b0201225170befd
+  zh: def29d74f3a589e2
 /agent-note-frame-owned-shell-leading-window-chrome-seat/decision:
   en: d14248e836509f00
   zh: c198481ecffa473f

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/testing/2026-09-14-desktop-installed-update-journal.md
 /agent-note-preserve-installed-desktop-update-evidence-across-restarts:
-  en: de53da48c7addd4e
-  zh: cd0a7920d63cb07d
+  en: 7c19b7e9b7a3d7ef
+  zh: 1f6d24b3670f42ad
 /agent-note-preserve-installed-desktop-update-evidence-across-restarts/problem:
   en: 5401829797ce63d2
   zh: 8a05a7d216aba56d
 /agent-note-preserve-installed-desktop-update-evidence-across-restarts/decision:
-  en: 9fca1deefe6a6f49
-  zh: 57ec0e948ceafbd6
+  en: 40f210cffa447bb3
+  zh: 3a75fe41b4dfa4f7
 /agent-note-preserve-installed-desktop-update-evidence-across-restarts/alternatives-considered:
   en: bd3c8ebb1d8e2360
   zh: db38b0725b7eae9c

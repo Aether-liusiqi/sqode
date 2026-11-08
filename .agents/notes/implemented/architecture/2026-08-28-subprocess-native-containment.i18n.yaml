@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-08-28-subprocess-native-containment.md
 /agent-note-native-owners-contain-escaped-subprocess-descendants:
-  en: 914e7251ba2aa68b
-  zh: bb79513effd19135
+  en: 488e7fcba66fb41e
+  zh: 328ca500235e0743
 /agent-note-native-owners-contain-escaped-subprocess-descendants/problem:
   en: a88b160c6c1f57e5
   zh: 0b1a7cb68e9aaabd
@@ -24,8 +24,8 @@
   en: 19da14bf2234744f
   zh: 8f723b1c9c8a3a58
 /agent-note-native-owners-contain-escaped-subprocess-descendants/existing-decisions-and-supersession:
-  en: e35e0ae0dac9c332
-  zh: 24de81e9414d0a3f
+  en: b8cfbf3b1e1e4983
+  zh: 75d5a9b13948c880
 /agent-note-native-owners-contain-escaped-subprocess-descendants/verification:
   en: 900e10a3f9cd3b67
   zh: efc5d9f09a0e8e5a

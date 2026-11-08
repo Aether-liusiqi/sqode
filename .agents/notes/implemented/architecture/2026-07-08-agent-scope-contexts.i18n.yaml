@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-08-agent-scope-contexts.md
 /agent-note-the-agent-is-a-registration-scope:
-  en: 6d56bcc33b68e8a1
-  zh: fc6b0aa3f71c3758
+  en: 788e53413f814fb4
+  zh: 892dcebd3f6e362a
 /agent-note-the-agent-is-a-registration-scope/problem:
   en: 87634b46a5642328
   zh: 2adce8b041626437
 /agent-note-the-agent-is-a-registration-scope/decision:
-  en: 3bc3cc8d742da3a5
-  zh: 77b0453f922e9a4c
+  en: 428235711bcbb544
+  zh: 29e01bb29230dfc4
 /agent-note-the-agent-is-a-registration-scope/decision/registration-origin-chooses-visibility-and-cleanup:
   en: 1ec8e54543272e1b
   zh: b5b1695a805574a2
@@ -18,8 +18,8 @@
   en: 2e236d399efdc0b2
   zh: 00a7ba20f90862c6
 /agent-note-the-agent-is-a-registration-scope/decision/scoped-events-keep-routing-separate-from-event-data:
-  en: f182c3995806a44a
-  zh: ede8688c56e102f2
+  en: bfe05cb7faadefa2
+  zh: 72a75d090bb7b192
 /agent-note-the-agent-is-a-registration-scope/decision/creation-publishes-last-and-disposal-revokes-last:
   en: f46920b4945e0e6d
   zh: 870a157205883144

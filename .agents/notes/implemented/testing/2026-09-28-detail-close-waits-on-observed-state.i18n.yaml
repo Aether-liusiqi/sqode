@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/testing/2026-09-28-detail-close-waits-on-observed-state.md
 /agent-note-the-task-detail-close-waits-on-the-observed-state:
-  en: 8cabd7c65d33f6c5
-  zh: 6172cc38db898a23
+  en: 95898b95358c083b
+  zh: 9f8cca138056f10d
 /agent-note-the-task-detail-close-waits-on-the-observed-state/problem:
   en: 0a3fa08f242a0f7e
   zh: fb8c39531405952b
@@ -18,5 +18,5 @@
   en: c0993f90f7af9c41
   zh: 6a877cb1287000e3
 /agent-note-the-task-detail-close-waits-on-the-observed-state/related:
-  en: 313a9c9a1c4ebb68
-  zh: a3617943a6b5eb20
+  en: 221009a0c985214f
+  zh: fefefa8d31d17944

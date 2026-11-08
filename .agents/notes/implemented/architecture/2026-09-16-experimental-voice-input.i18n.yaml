@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-16-experimental-voice-input.md
 /agent-note-experimental-voice-input-with-explicit-recognition-providers:
-  en: 4ad5c962b678803e
-  zh: 572c7abc57e0fcd0
+  en: 213bec67cc6f3db9
+  zh: e98ec78070fe51b6
 /agent-note-experimental-voice-input-with-explicit-recognition-providers/problem:
   en: 098f766687e70ec0
   zh: 5f75407de5357c36

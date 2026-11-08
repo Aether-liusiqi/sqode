@@ -143,8 +143,8 @@ The proposal preserves the shipped [handle-based persistence decision](../../imp
 
 - [Sessions subsystem](../../../../docs/subsystems/session.md) defines the shipped session API and event semantics.
 - [Session persistence subsystem](../../../../docs/subsystems/persistence.md) defines the shipped durable format and lifecycle.
-- [`@siqi-ai/sqhsession`](../../../../packages/core/session/README.md) owns the session package contract.
-- [`@siqi-ai/sqhsession-persistence`](../../../../packages/session/session-persistence/README.md) owns the current persistence service contract.
+- [`@siqi-ai/sqh-session`](../../../../packages/core/session/README.md) owns the session package contract.
+- [`@siqi-ai/sqh-session-persistence`](../../../../packages/session/session-persistence/README.md) owns the current persistence service contract.
 
 ## Alternatives considered
 

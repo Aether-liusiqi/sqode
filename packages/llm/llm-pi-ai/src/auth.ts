@@ -114,7 +114,7 @@ function writableStore(ctx: Context): CredentialProvider {
   if (credentials === undefined) {
     throw new LlmError(
       'llm-pi-ai: this composition mounts no credentials service, so there is nowhere to store the'
-      + ' credential a sign-in produces; mount one (sqhcredentials-local) to sign in',
+      + ' credential a sign-in produces; mount one (sqh-credentials-local) to sign in',
       'NO_CREDENTIAL_STORE',
     )
   }

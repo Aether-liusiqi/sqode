@@ -173,7 +173,7 @@ function foreignAssistant(message: HarnessAssistantMessage): AssistantMessage {
     content,
     // Deliberately never equals a catalog API: absent replay state is foreign
     // even if source names the same provider/model as this request.
-    api: 'sqhforeign',
+    api: 'sqh-foreign',
     provider: source.provider,
     model: source.model,
     usage: emptyPiUsage(),

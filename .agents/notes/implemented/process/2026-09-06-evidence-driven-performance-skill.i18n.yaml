@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-09-06-evidence-driven-performance-skill.md
 /agent-note-evidence-driven-performance-optimization-workflow:
-  en: 5a31f7910b3fb221
-  zh: 4e0828b5ee0194a8
+  en: be8421318d5f0943
+  zh: d4993106bdddc9a9
 /agent-note-evidence-driven-performance-optimization-workflow/problem:
   en: 2e0cb63ef966a541
   zh: 1853e223e530708e
 /agent-note-evidence-driven-performance-optimization-workflow/decision:
-  en: d9140939f83c4602
-  zh: 39fe0c01e67ca16f
+  en: b2f2c12c39f3253d
+  zh: 5f22d0058bf8687e
 /agent-note-evidence-driven-performance-optimization-workflow/historical-evidence:
   en: 2d913642c87e5a01
   zh: 45fce898640c87e8

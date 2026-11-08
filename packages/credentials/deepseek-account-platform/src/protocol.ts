@@ -64,7 +64,7 @@ export function platformHeaders(values: Record<string, string>): Record<string, 
   const names = new Set<string>()
   for (const [name, value] of Object.entries(values)) {
     const key = name.toLowerCase()
-    if (['authorization', 'x-sqhauth-token', 'host', 'content-length', 'transfer-encoding', 'connection', 'content-type'].includes(key)
+    if (['authorization', 'x-sqh-auth-token', 'host', 'content-length', 'transfer-encoding', 'connection', 'content-type'].includes(key)
       || names.has(key)) throw new Error('account: requestHeaders contains a reserved or duplicate header')
     names.add(key)
     try { headers.set(name, value) }
@@ -145,7 +145,7 @@ export function requestBonusNotified(origin: string, token: string, orderId: Acc
 
 // The grant is provider-owned; deployment requestHeaders cannot override it or the client identity.
 function accountHeaders(headers: Record<string, string>, token: string): Record<string, string> {
-  return { ...headers, 'x-sqhauth-token': token }
+  return { ...headers, 'x-sqh-auth-token': token }
 }
 
 /**
@@ -159,7 +159,7 @@ function accountHeaders(headers: Record<string, string>, token: string): Record<
 export async function logoutAccount(origin: string, token: string,
   signal: AbortSignal, headers: Record<string, string>): Promise<void> {
   await platformRequest(`${origin}/auth-api/v0/users/logout`, {
-    method: 'POST', headers: { ...headers, 'x-sqhauth-token': token },
+    method: 'POST', headers: { ...headers, 'x-sqh-auth-token': token },
   }, signal)
 }
 
@@ -174,7 +174,7 @@ async function platformRequest(url: string, init: RequestInit, signal: AbortSign
     throw new PlatformAuthError('network')
   }
   console.info('[deepseek-account] response', { path, status: response.status })
-  if (response.status === 401 && new Headers(init.headers).has('x-sqhauth-token')) {
+  if (response.status === 401 && new Headers(init.headers).has('x-sqh-auth-token')) {
     await response.body?.cancel()
     throw new AccountUnauthorizedError()
   }
@@ -200,7 +200,7 @@ async function platformRequest(url: string, init: RequestInit, signal: AbortSign
     stage = 'parse-json'
     const payload: unknown = JSON.parse(Buffer.concat(chunks).toString('utf8'))
     const authorization = z.object({ code: z.literal(40003) }).safeParse(payload)
-    if (authorization.success && new Headers(init.headers).has('x-sqhauth-token')) {
+    if (authorization.success && new Headers(init.headers).has('x-sqh-auth-token')) {
       throw new AccountUnauthorizedError()
     }
     const codes = z.object({ code: z.number().int(), data: z.object({ biz_code: z.number().int() }).optional() }).safeParse(payload)

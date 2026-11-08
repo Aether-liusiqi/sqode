@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-05-shared-client-control-primitives.md
 /agent-note-shared-client-control-primitives:
-  en: 10c361688e650551
-  zh: 0b07f7b3b95b1fca
+  en: 30d87e02cb8f5bc6
+  zh: c7d842651b0a71ec
 /agent-note-shared-client-control-primitives/problem:
   en: 3b3bf2cbec1ac5f5
   zh: 61c354fd0b41d2d4
 /agent-note-shared-client-control-primitives/decision:
-  en: 687915f9cf671601
-  zh: 6e6a442628baabd6
+  en: 114be6641333e3b1
+  zh: 4919dfeadffa3aff
 /agent-note-shared-client-control-primitives/finding-the-duplicates:
   en: f50ed2aea00a34c5
   zh: a8a27c1d1e0177a8

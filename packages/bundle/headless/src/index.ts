@@ -260,7 +260,7 @@ async function resolveAgent(
   // query service, so every --session-id run requires it.
   const query = ctx.get('sessionQuery')
   if (query === undefined) {
-    throw new Error('headless --session-id requires the sessionQuery service; sqhbase provides it')
+    throw new Error('headless --session-id requires the sessionQuery service; sqh-base provides it')
   }
   const live = agents.get(sessionId)
   if (live !== undefined) {

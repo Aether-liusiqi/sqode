@@ -3,20 +3,20 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/rejected/simplification/2026-07-19-fold-compaction-package-split.md
 /agent-note-fold-the-single-compaction-backend-into-its-service-package:
-  en: cad86205959b4cd6
-  zh: 9c00efc4658552cc
+  en: 1aa2e2e787c54ee2
+  zh: fd24d468cd19c0f2
 /agent-note-fold-the-single-compaction-backend-into-its-service-package/problem:
-  en: 437f0d299e67f380
-  zh: 4d801212a6a5af17
+  en: 01fc82e0fbde7e6c
+  zh: 9df7dccf3bb56a5c
 /agent-note-fold-the-single-compaction-backend-into-its-service-package/proposal:
-  en: 6048c14ab284f1f9
-  zh: 0dd27eccb6da7af0
+  en: c39b736f2e5092e9
+  zh: 45e66db5019ccf4d
 /agent-note-fold-the-single-compaction-backend-into-its-service-package/alternatives-considered:
   en: 0c7f4bd4b7745c96
   zh: 9bf5a98dd485dbbd
 /agent-note-fold-the-single-compaction-backend-into-its-service-package/acceptance-criteria:
-  en: 11944281ba6ddf5a
-  zh: d332390dee356e00
+  en: 77d6e6c79cb88bcb
+  zh: 89b12231b331c2e3
 /agent-note-fold-the-single-compaction-backend-into-its-service-package/risks:
-  en: 8e0db7bf7d37a7ba
-  zh: e073eb977ebb556b
+  en: 8e4309b91bd41849
+  zh: e5399c410e6ec069

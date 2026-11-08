@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-19-v3-incomplete-child-catalog-evidence.md
 /agent-note-preserve-v3-sessions-with-incomplete-child-catalog-evidence:
-  en: 5e74f535a4bc276b
-  zh: 73938325b16f39b9
+  en: 62b8438b9f92acba
+  zh: 6ba9eaac1f00fcbd
 /agent-note-preserve-v3-sessions-with-incomplete-child-catalog-evidence/problem:
   en: a5d524599f02e77f
   zh: b79687f999f4024c
 /agent-note-preserve-v3-sessions-with-incomplete-child-catalog-evidence/decision:
-  en: 83f8a1e1709302ef
-  zh: b4c41993030a56a2
+  en: 655c80fe727d776a
+  zh: 2b9152d5d7d56429
 /agent-note-preserve-v3-sessions-with-incomplete-child-catalog-evidence/alternatives-considered:
   en: b7ce0d1b6b280d7f
   zh: 3deeaef73a3a7856

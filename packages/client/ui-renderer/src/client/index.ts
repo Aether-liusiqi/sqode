@@ -63,14 +63,14 @@ function BootHandoff(props: { app: () => ReactNode; boot: BootSnapshot }): React
   if (ready) return props.app()
   return createElement('div', {
     className: props.boot.className,
-    'data-sqhboot': '',
+    'data-sqh-boot': '',
     dangerouslySetInnerHTML: { __html: props.boot.html },
   })
 }
 
 /** Mount React while preserving the framework-free boot DOM through hydration. */
 function mountApp(container: HTMLElement, app: () => ReactNode): Root {
-  const boot = container.querySelector<HTMLElement>(':scope > [data-sqhboot]')
+  const boot = container.querySelector<HTMLElement>(':scope > [data-sqh-boot]')
   if (boot !== null) {
     return hydrateRoot(container, createElement(BootHandoff, {
       app,

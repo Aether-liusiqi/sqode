@@ -24,7 +24,7 @@ import type { DesktopRuntimeDescriptor } from '../src/runtime-tree.ts'
 export async function smokeDesktopRuntime(
   root: string, node: string, runtime: DesktopRuntimeDescriptor, environment: NodeJS.ProcessEnv, resourcesRuntime: string,
 ): Promise<void> {
-  const home = mkdtempSync(join(tmpdir(), 'sqhdesktop-smoke-'))
+  const home = mkdtempSync(join(tmpdir(), 'sqh-desktop-smoke-'))
   const profile = join(home, 'profiles', 'desktop')
   const host = new DesktopHostProcess(node, root, profile, undefined, { ...environment, SQODE_HOME: home },
     undefined, join(resourcesRuntime, 'primary-runtime'),

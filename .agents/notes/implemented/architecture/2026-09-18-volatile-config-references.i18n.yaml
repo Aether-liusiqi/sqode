@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-18-volatile-config-references.md
 /agent-note-volatile-configuration-references:
-  en: c206af5da10a32f1
-  zh: 4a80764f7cce5ed5
+  en: 8abc8ff06a4d541f
+  zh: 9e953081515ede80
 /agent-note-volatile-configuration-references/problem:
   en: da97e9a3eabc9a36
   zh: bca53a3021689d06
 /agent-note-volatile-configuration-references/decision:
-  en: 6db6e3702ecc4871
-  zh: 256275a38ac650cb
+  en: 9fc0d4c9443cf2a8
+  zh: 9f026ef37d7e99e9
 /agent-note-volatile-configuration-references/alternatives-considered:
   en: cf68e95cde8ff288
   zh: 817667d5c8c93056

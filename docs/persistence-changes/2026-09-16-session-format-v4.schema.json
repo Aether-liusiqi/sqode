@@ -758,7 +758,7 @@
           },
           {
             "kind": "literal",
-            "value": "sqhsession-title-llm"
+            "value": "sqh-session-title-llm"
           },
           {
             "kind": "object",
@@ -6018,7 +6018,7 @@
           },
           {
             "kind": "literal",
-            "value": "sqhsession-title-llm"
+            "value": "sqh-session-title-llm"
           },
           {
             "kind": "object",
@@ -9050,7 +9050,7 @@
           },
           {
             "kind": "literal",
-            "value": "sqhsession-title-llm"
+            "value": "sqh-session-title-llm"
           },
           {
             "kind": "object",
@@ -14064,7 +14064,7 @@
           },
           {
             "kind": "literal",
-            "value": "sqhsession-title-llm"
+            "value": "sqh-session-title-llm"
           },
           {
             "kind": "object",

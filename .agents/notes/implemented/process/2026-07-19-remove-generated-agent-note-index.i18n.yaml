@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-07-19-remove-generated-agent-note-index.md
 /agent-note-keep-agent-notes-discoverable-without-a-generated-index:
-  en: 033f289d231fafb4
-  zh: 15a832f920224963
+  en: 8d2f24efb4c7e855
+  zh: 5c8bf9fbc48eefb3
 /agent-note-keep-agent-notes-discoverable-without-a-generated-index/problem:
   en: 8a66ca1096aab8f4
   zh: f9774f5f3e7d0a31
 /agent-note-keep-agent-notes-discoverable-without-a-generated-index/decision:
-  en: f095a74d6d4707d0
-  zh: db0c0b5700375ccf
+  en: 1e971ab9c2296a41
+  zh: 49dbc999c346f5b3
 /agent-note-keep-agent-notes-discoverable-without-a-generated-index/alternatives-considered:
   en: 0317d3d10b97f004
   zh: 9315c31a17f7057a

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-14-web-diff-context.md
 /agent-note-web-diff-cards-compare-contextual-content:
-  en: 18a50890c9abed7c
-  zh: 50184be62f670029
+  en: a4892b93a7990ad6
+  zh: 170316d69c9847d6
 /agent-note-web-diff-cards-compare-contextual-content/problem:
   en: 73aa63782984835f
   zh: 41982214968dcca8
 /agent-note-web-diff-cards-compare-contextual-content/decision:
-  en: ea6d8e482e0f9146
-  zh: 80f0338da2a02598
+  en: 24a21540d8e0deca
+  zh: 25310ed80fac4753
 /agent-note-web-diff-cards-compare-contextual-content/alternatives-considered:
   en: b5d00cc913db27c9
   zh: ef72c91cff5ebcce

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-19-session-local-subagent-migration.md
 /agent-note-complete-parent-catalogs-without-migrating-child-catalogs:
-  en: 599be58a6da19f78
-  zh: d895b9e74a13352e
+  en: 1e6b1af385b37780
+  zh: 7d831e620d90f18a
 /agent-note-complete-parent-catalogs-without-migrating-child-catalogs/problem:
   en: 5ca0c3232895a9dd
   zh: cb89e5464d4a5f99
 /agent-note-complete-parent-catalogs-without-migrating-child-catalogs/decision:
-  en: 3b4be09f626156ac
-  zh: 8ddc4598162d8349
+  en: e6bd2b6e6329435d
+  zh: f7cbf2650457bb75
 /agent-note-complete-parent-catalogs-without-migrating-child-catalogs/alternatives-considered:
   en: 7272107ab68ceefd
   zh: 8b8bba44c9e0c402

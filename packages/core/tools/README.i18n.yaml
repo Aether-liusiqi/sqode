@@ -6,8 +6,8 @@
   en: 3b12a77945c0d1e9
   zh: e9af32047e4f658b
 /liusiqi-dev-sqh-tools:
-  en: a87cfd53eea86703
-  zh: 14da4dd3e70876ed
+  en: 414ebfe4522f1657
+  zh: 4ff491f6f2b390bf
 /liusiqi-dev-sqh-tools/summary:
   en: 05328037fb710e0d
   zh: cbca944b7f2f5379
@@ -21,8 +21,8 @@
   en: 02fce53c21a33d74
   zh: 01110c4714dfd602
 /liusiqi-dev-sqh-tools/use-this-package/configure-the-presentation-mode:
-  en: bb0e232f3090ac51
-  zh: 0d0114d524c074e0
+  en: 1df19110c6ed0bb9
+  zh: 1a95fde8d3d67ff1
 /liusiqi-dev-sqh-tools/use-this-package/restrict-tools-per-agent:
   en: c6f98b2283cc2e47
   zh: c2cdce5d13473f15
@@ -30,8 +30,8 @@
   en: cbfe8317565ac62d
   zh: 1e71c66941e50881
 /liusiqi-dev-sqh-tools/use-this-package/host-presentation-descriptors:
-  en: e76f84055a3d94d5
-  zh: f53436feba888f67
+  en: fc9589dcdc0a4d69
+  zh: 36d81de5a85b3940
 /liusiqi-dev-sqh-tools/understand-the-implementation:
   en: ce7e776e9d516bdb
   zh: 59d2751743db7795
@@ -45,14 +45,14 @@
   en: dc44a88997777988
   zh: 56454aeace1c8b77
 /liusiqi-dev-sqh-tools/understand-the-implementation/ptc-mode:
-  en: d19474d53af8e5fd
-  zh: ff76ff91c19d48cc
+  en: 58ecf902217c3cb7
+  zh: 81a9dcb66b7ef871
 /liusiqi-dev-sqh-tools/understand-the-implementation/extension-points:
   en: c2a14d6f22bc9428
   zh: 89c1414fca465931
 /liusiqi-dev-sqh-tools/further-exploration:
-  en: 5d00e12309f1489e
-  zh: 2cf68ed8a9193cab
+  en: 0886996a1c50d48b
+  zh: ae166841bd1acbe8
 /liusiqi-dev-sqh-tools/model-experience:
   en: 215e7ba838619b7b
   zh: a311da3843709f90
@@ -60,8 +60,8 @@
   en: 483b01d9bb2cb49a
   zh: 1d95095e76fb0996
 /liusiqi-dev-sqh-tools/model-experience/normal-tool-schemas/what-the-model-sees:
-  en: 201912b93dc5b2e7
-  zh: 22b18fe38ca90fba
+  en: da81600b763b627d
+  zh: a9ba65ff4e7ddf69
 /liusiqi-dev-sqh-tools/model-experience/normal-tool-schemas/token-effect:
   en: d594b71ff5e4cc87
   zh: dcec1ea0dd2a0fa6
@@ -72,8 +72,8 @@
   en: eaefd7303f22977d
   zh: 9c425f9501128224
 /liusiqi-dev-sqh-tools/model-experience/ptc-mode-schema-and-system-prompt/what-the-model-sees:
-  en: f6c075fa4ccbaec8
-  zh: 1b24b5ca897af543
+  en: 0837373db8e646d1
+  zh: 2443b5ad7343fa6f
 /liusiqi-dev-sqh-tools/model-experience/ptc-mode-schema-and-system-prompt/what-the-model-sees/typescript-ptc-mode-sdk-instructions-with-bash:
   en: 3a8df15e4ae32f9e
   zh: fc4a800ba363e835
@@ -96,8 +96,8 @@
   en: 2fbf2175168e8244
   zh: ad59a120b54a0996
 /liusiqi-dev-sqh-tools/known-limitations-and-deferred-work:
-  en: 73fd1c9981bffc5f
-  zh: 85d34e1e43fff0d3
+  en: 398915c80456689e
+  zh: eb8c4243ff9c4e24
 /liusiqi-dev-sqh-tools/known-limitations-and-deferred-work/dev-note:
   en: e67f633dc6fe7773
   zh: 3bb0c20c93f16f98

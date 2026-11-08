@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-30-followup-enqueue-and-owned-runs.md
 /agent-note-follow-up-enqueue-and-owned-run-boundaries:
-  en: d65c134d1f4b16a8
-  zh: 9cecf61ecd7c8ca9
+  en: 11b5965ae6a94a22
+  zh: 79adad9c13b0d84a
 /agent-note-follow-up-enqueue-and-owned-run-boundaries/problem:
-  en: 9821556852f82494
-  zh: 7bc94089c66e1ace
+  en: a495b8c9f6f4bfd5
+  zh: a2e006b9bcf4eae9
 /agent-note-follow-up-enqueue-and-owned-run-boundaries/decision:
   en: 9d68149d8090d355
   zh: d3efa8ac850603bf

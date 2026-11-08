@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-07-19-plugin-command-registration.md
 /agent-note-plugin-owned-human-command-registration:
-  en: 994e7903c2f71acd
-  zh: 018bdcf76d44ab8f
+  en: ce836892a9c26bce
+  zh: 4de13b0a9fe308aa
 /agent-note-plugin-owned-human-command-registration/problem:
   en: 628dcc0bda181677
   zh: 71b110588f89c2b4
 /agent-note-plugin-owned-human-command-registration/decision:
-  en: d3e2eb4f77442f2a
-  zh: ac96f0b6c5f46fad
+  en: 84e2fcb880c090e0
+  zh: c5e2cfa9b1bbdb6f
 /agent-note-plugin-owned-human-command-registration/decision/registry-contract:
   en: 1b3daffaa9a8b56e
   zh: fa99bb6bc553cafb

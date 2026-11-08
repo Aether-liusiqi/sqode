@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-11-sidebar-document-preview-polish.md
 /agent-note-sidebar-document-preview-polish:
-  en: 4c796c510a03b4cb
-  zh: 44374745a76c965e
+  en: 375fd6550a2aebcc
+  zh: a76f0d5fb483367f
 /agent-note-sidebar-document-preview-polish/problem:
   en: 4a52e0a397d95c28
   zh: ecaeb3f570c775da

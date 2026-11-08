@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-22-slot-type-chain-implementation.md
 /agent-note-the-slot-system-standard-single-register-four-props-shares-and-the-framework-store-seat:
-  en: fe12a17910eed073
-  zh: e1e184bff099b600
+  en: e4c88a3362640977
+  zh: 4c979cef0e0d53a3
 /agent-note-the-slot-system-standard-single-register-four-props-shares-and-the-framework-store-seat/problem:
   en: 4f8d6891a8ba7061
   zh: 5a619e562e00458d
 /agent-note-the-slot-system-standard-single-register-four-props-shares-and-the-framework-store-seat/decision:
-  en: 7bf9c076fa905f05
-  zh: 85898d6148be9b22
+  en: 755fa092241f5565
+  zh: 334e4ed3caf693e5
 /agent-note-the-slot-system-standard-single-register-four-props-shares-and-the-framework-store-seat/decision/root-is-the-only-a-priori-slot:
   en: 43b856b4a8cf371f
   zh: cde298ab8b8a3815

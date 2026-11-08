@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-08-06-host-backed-web-preferences.md
 /agent-note-persist-web-user-preferences-through-host-settings:
-  en: 295e2b8cc1744c82
-  zh: 2de8cd9a31bce562
+  en: 570121c0a2531cf4
+  zh: 5e042da5082e6d3f
 /agent-note-persist-web-user-preferences-through-host-settings/problem:
   en: 125913a499eca1a1
   zh: f45e87a818aadc4e

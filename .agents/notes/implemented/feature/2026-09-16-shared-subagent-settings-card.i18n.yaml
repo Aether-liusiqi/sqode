@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-16-shared-subagent-settings-card.md
 /agent-note-shared-subagent-settings-card:
-  en: 9c38a4a0d12634d4
-  zh: 396e24f9587d4753
+  en: b7c3d2d911f38014
+  zh: ca115b77cead5dcc
 /agent-note-shared-subagent-settings-card/problem:
   en: a63f47c29f3a6305
   zh: 9f2150e9a9c5bc4b
@@ -15,8 +15,8 @@
   en: 8674979fbd8197f1
   zh: 6c2169803839f70b
 /agent-note-shared-subagent-settings-card/consequences:
-  en: e51ddb2766c82430
-  zh: e4ece1423af7550e
+  en: 014175342b5dc94e
+  zh: a060ddec801ee8c7
 /agent-note-shared-subagent-settings-card/verification:
   en: 8d9956c13fb6658b
   zh: 3d95564e51595bca

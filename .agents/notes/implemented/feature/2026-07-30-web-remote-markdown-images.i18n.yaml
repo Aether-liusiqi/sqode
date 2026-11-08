@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-07-30-web-remote-markdown-images.md
 /agent-note-remote-web-markdown-images:
-  en: 47e3a1a52f60557a
-  zh: 831f96eddbe668a7
+  en: 4b6c637424756e9b
+  zh: 5189207497db58ef
 /agent-note-remote-web-markdown-images/problem:
   en: 97447c93b654eda7
   zh: 456a3ceed4967d0a

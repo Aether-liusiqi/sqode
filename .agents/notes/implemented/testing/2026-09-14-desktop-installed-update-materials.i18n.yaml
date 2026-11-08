@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/testing/2026-09-14-desktop-installed-update-materials.md
 /agent-note-isolate-installed-update-materials-from-releases-and-user-data:
-  en: 2f5c36f1efcb1484
-  zh: d4865353b74b95f7
+  en: 645bca4efebf29c3
+  zh: c9b7d22f25fe0495
 /agent-note-isolate-installed-update-materials-from-releases-and-user-data/problem:
   en: 8d63b992ff6d3161
   zh: 86d333255a5400d3
 /agent-note-isolate-installed-update-materials-from-releases-and-user-data/decision:
-  en: 6c7457901d21e3a6
-  zh: 24099bd8cab09c86
+  en: fc90b808c2f11b34
+  zh: 0038311dabbfa151
 /agent-note-isolate-installed-update-materials-from-releases-and-user-data/alternatives-considered:
   en: c608f186cc94a9d3
   zh: 39750c8347e8bece
 /agent-note-isolate-installed-update-materials-from-releases-and-user-data/consequences:
-  en: fb5e2d6892c9e134
-  zh: 49938aba824c9c2a
+  en: 3c169dbbc98a48c7
+  zh: 0931e183ae084e61

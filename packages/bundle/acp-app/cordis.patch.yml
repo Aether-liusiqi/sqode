@@ -1,4 +1,4 @@
-# The automation-only ACP application over sqhbase. Stdout belongs to ACP.
+# The automation-only ACP application over sqh-base. Stdout belongs to ACP.
 
 - id: system-prompt
   config:

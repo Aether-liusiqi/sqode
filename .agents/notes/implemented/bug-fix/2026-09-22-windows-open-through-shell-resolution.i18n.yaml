@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-22-windows-open-through-shell-resolution.md
 /agent-note-windows-opens-go-through-explorer-exe:
-  en: eb9292445583ce86
-  zh: 0a7a58f0aaba53fd
+  en: 9083a300b1290bf5
+  zh: 7b4596c3930f91e9
 /agent-note-windows-opens-go-through-explorer-exe/problem:
   en: bc2c92e4247ea71e
   zh: ca20fdeccc58e883
@@ -15,8 +15,8 @@
   en: 64712f720fca44a1
   zh: aad98e46f0c7a6bb
 /agent-note-windows-opens-go-through-explorer-exe/consequences:
-  en: 405cb237be53bce1
-  zh: 6de2cb175bc4bf45
+  en: 24caf8126e9c901c
+  zh: 996c53bf0cfac2be
 /agent-note-windows-opens-go-through-explorer-exe/verification:
   en: c7ff7cb42072737c
   zh: 9bbf5ff6596938a0

@@ -3,20 +3,20 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-07-27-web-subagent-conversations.md
 /agent-note-web-subagent-catalog-and-human-continuation:
-  en: 193d72baffb28ba0
-  zh: bdeaaf60965eedd6
+  en: 91c39a4186a55f53
+  zh: ed5c670484c69361
 /agent-note-web-subagent-catalog-and-human-continuation/problem:
-  en: fce9d60156ed3979
-  zh: 66ffd75e218061ff
+  en: 91d086d13e53982a
+  zh: b3fccc761602454a
 /agent-note-web-subagent-catalog-and-human-continuation/decision:
-  en: bf1cb356bfd2df11
-  zh: e0bea8b216b45fc0
+  en: adb6ca6d6a86bfb8
+  zh: 65709ae45b543e9e
 /agent-note-web-subagent-catalog-and-human-continuation/design-context:
   en: da3858c86cf685ff
   zh: b13ee4f45e3dff7d
 /agent-note-web-subagent-catalog-and-human-continuation/product-contract:
-  en: 94ad2e234e13e96f
-  zh: b61f0fd195a642a6
+  en: faa9de40073ed25a
+  zh: 521ea21378167ec2
 /agent-note-web-subagent-catalog-and-human-continuation/host-adapter-and-wire-contract:
   en: ca3b07847ebafd05
   zh: 815cf80fc77fd2ee
@@ -27,11 +27,11 @@
   en: 6d4d8db99535aa18
   zh: 803554b55a67acb1
 /agent-note-web-subagent-catalog-and-human-continuation/alternatives-considered:
-  en: 5e986dea1c596d74
-  zh: cfc988fbe71c5c10
+  en: 168c46e2d3798ec7
+  zh: 47fc0735c242e719
 /agent-note-web-subagent-catalog-and-human-continuation/testing:
   en: 0c2f7f5cc473ecff
   zh: 00b2c22e109b3429
 /agent-note-web-subagent-catalog-and-human-continuation/consequences:
-  en: 47b076810ca94b62
-  zh: 7cfec851de8d2cb5
+  en: 235b6abd4c1c031f
+  zh: 7eed8308953be4ff

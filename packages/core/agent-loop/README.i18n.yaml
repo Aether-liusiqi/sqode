@@ -6,8 +6,8 @@
   en: 5d57c28077cb670a
   zh: 8113ea0248d66a17
 /liusiqi-dev-sqh-agent-loop:
-  en: f672bb23935888fe
-  zh: f066f55cb641a3b3
+  en: 20607b102b0623a2
+  zh: aabde2bd7568a305
 /liusiqi-dev-sqh-agent-loop/summary:
   en: d13f469b663eb74c
   zh: 5f2e4c7a530cf22d
@@ -15,11 +15,11 @@
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
 /liusiqi-dev-sqh-agent-loop/use-this-package:
-  en: 3b3122330dace1f3
-  zh: 32d6b26accec4177
+  en: ccf7097da566a4aa
+  zh: 5189248546c011dd
 /liusiqi-dev-sqh-agent-loop/use-this-package/configure-declarative-agents:
-  en: 9f27aa199529918f
-  zh: 45d162e3233e6bab
+  en: c8cf63fb1651cf58
+  zh: 508556eba60b7922
 /liusiqi-dev-sqh-agent-loop/use-this-package/create-or-resume-agents-programmatically:
   en: 82ec792637e8e57f
   zh: e32f8ec5ee17afcf
@@ -33,8 +33,8 @@
   en: 030202c112f89366
   zh: 621d53ed755cafa3
 /liusiqi-dev-sqh-agent-loop/understand-the-implementation/request-headers-and-adapter-defaults:
-  en: 37c3072749ac578d
-  zh: 61e90ffea1b2743c
+  en: 19b319779beb993d
+  zh: 92791c95b7c692cd
 /liusiqi-dev-sqh-agent-loop/understand-the-implementation/source-map:
   en: d7f6b2947ec9b2f3
   zh: 8a3d566fb8cf2938
@@ -48,11 +48,11 @@
   en: ed5137ef858b3424
   zh: af2ff3bc15576456
 /liusiqi-dev-sqh-agent-loop/understand-the-implementation/failure-and-cancellation:
-  en: 69c924cb3a73a45a
-  zh: 37836c4440ef9e75
+  en: 65d04abdffc7237d
+  zh: f366028556c283e1
 /liusiqi-dev-sqh-agent-loop/further-exploration:
-  en: 2cf4ff6f613066cc
-  zh: 35e93b07050bf4ae
+  en: 2e761dcf120e02ad
+  zh: 631c25d4a1513e23
 /liusiqi-dev-sqh-agent-loop/model-experience:
   en: 215e7ba838619b7b
   zh: a311da3843709f90
@@ -105,8 +105,8 @@
   en: 83531f2a13cc1f0e
   zh: 81a780d637dd8c5d
 /liusiqi-dev-sqh-agent-loop/known-limitations-and-deferred-work:
-  en: 133a0fdee1f6efa4
-  zh: f1cc8504e4ab8dd2
+  en: 7abede32f2a72d0a
+  zh: 82ece26dc781eb56
 /liusiqi-dev-sqh-agent-loop/known-limitations-and-deferred-work/dev-note:
   en: e67f633dc6fe7773
   zh: 3bb0c20c93f16f98

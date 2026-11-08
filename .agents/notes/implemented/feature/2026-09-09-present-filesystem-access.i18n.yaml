@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-09-present-filesystem-access.md
 /agent-note-present-follows-session-filesystem-access:
-  en: 03892f60671e18d4
-  zh: eb659d3a3e06c39d
+  en: 2816467ff1b1a2ad
+  zh: eef65ae4e3d4949b
 /agent-note-present-follows-session-filesystem-access/problem:
   en: dda1953cb567c3dc
   zh: 3c447175454c844a
 /agent-note-present-follows-session-filesystem-access/decision:
-  en: 5b6c2eba641ab993
-  zh: de888cc341680d8c
+  en: 71926153283750b5
+  zh: b58ea71e90dc81e3
 /agent-note-present-follows-session-filesystem-access/alternatives-considered:
   en: 85336cd165610ddf
   zh: 75608e3bfeab5dc5

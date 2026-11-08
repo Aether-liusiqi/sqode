@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-06-24-web-capability-seam.md
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers:
-  en: d7d2b2bf893ac70f
-  zh: fddc45fd80cfbb74
+  en: 8c880c2a78f4e2b4
+  zh: 89ed8fc49c8f5d18
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers/problem:
   en: e589d19ca32b5d5d
   zh: 19b11bc251b86673
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers/decision:
-  en: 662e5cac24b74468
-  zh: 5c3cb03210d8ecc6
+  en: 8429475170e6d52c
+  zh: e6fd45f06081efe0
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers/package-topology:
   en: ae7ec8e7f7904596
   zh: 4c719a809e3a6a6e
@@ -33,8 +33,8 @@
   en: 4b0cd21733cf43f8
   zh: 213f024c24db7c4e
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers/testing:
-  en: 42ff442f861a9d63
-  zh: 3c6725afc947a749
+  en: dfa2f9e14c4a04ca
+  zh: 0e2b55aa5ba89894
 /agent-note-web-capability-seam-stable-tools-over-multiple-providers/alternatives-considered:
   en: 6119e2aff3b6be5a
   zh: 76136ef5249c23eb

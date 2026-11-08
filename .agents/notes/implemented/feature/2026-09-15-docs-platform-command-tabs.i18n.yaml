@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-15-docs-platform-command-tabs.md
 /agent-note-platform-command-tabs-in-the-python-sdk-guide:
-  en: 27da1a5ed7f68df1
-  zh: cadb4b1dcc7051a8
+  en: bc5ad806198b3647
+  zh: a8bae893fb4882e4
 /agent-note-platform-command-tabs-in-the-python-sdk-guide/problem:
-  en: e027055d714f5abd
-  zh: 3a5655ee78888a68
+  en: 205e97f96e15afa1
+  zh: 260b1aa6566a749e
 /agent-note-platform-command-tabs-in-the-python-sdk-guide/decision:
   en: 0ec36e0eccea6209
   zh: 5df6069c60a55f31

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-06-embedded-stream-record-readers.md
 /agent-note-embedded-assistant-stream-consumers-read-compact-records:
-  en: b9c1e9d5c272bf82
-  zh: c6421d344f6008ff
+  en: 631713ebabbe7baa
+  zh: 71e721b5a0876d4e
 /agent-note-embedded-assistant-stream-consumers-read-compact-records/problem:
   en: 34ceceb99e246ae6
   zh: 0a18314b78557205
 /agent-note-embedded-assistant-stream-consumers-read-compact-records/decision:
-  en: 1128b7c334cf8dd3
-  zh: 41b153d9a7da0725
+  en: d04f19df7ac2ba82
+  zh: efaf1a2d43384b39
 /agent-note-embedded-assistant-stream-consumers-read-compact-records/decision/measurements:
   en: 2eedf644fa07e35a
   zh: cb691c75fbeda518

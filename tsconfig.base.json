@@ -185,7 +185,7 @@
       "@liusiqi-dev/sqh-scope/invariant": ["./packages/core/scope/src/invariant.ts"],
       "@liusiqi-dev/sqh-agent-loop/invariant": ["./packages/core/agent-loop/src/invariant.ts"],
       "@liusiqi-dev/sqh-experimental-agent-team/invariant": ["./packages/experimental/agent-team/src/invariant.ts"],
-      // host/client package names prefix the group dir (sqhclient-<dir>), so
+      // host/client package names prefix the group dir (sqh-client-<dir>), so
       // the generated aliases below — which map a package only when its name is
       // exactly dsh-<dir> — skip them; strip the group prefix with a dedicated
       // wildcard per group instead.
@@ -335,7 +335,7 @@
       "@liusiqi-dev/sqh-util-values": ["./packages/util/values/src"],
       "@liusiqi-dev/sqh-util-code-language": ["./packages/util/code-language/src"],
       // util/ folders are role-named without the util- prefix their npm names carry,
-      // so these aliases stay hand-written like sqhutil-crypto above.
+      // so these aliases stay hand-written like sqh-util-crypto above.
       "@liusiqi-dev/sqh-util-time": ["./packages/util/time/src"],
       // session-log-export lives under session-query/, so the generated aliases map only its
       // bare name; the browser half needs this explicit subpath for source-mode dynamic imports.

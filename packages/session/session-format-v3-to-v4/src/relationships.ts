@@ -4,6 +4,9 @@ import { isDeepStrictEqual } from 'node:util'
 import { SessionFormatError, isSessionFormatJsonObject, sessionFormatCount } from '@liusiqi-dev/sqh-session-format'
 import type { SessionFormatArtifact, SessionFormatEvent, SessionFormatJsonObject, SessionFormatJsonValue } from '@liusiqi-dev/sqh-session-format'
 
+
+/** Titles were produced under either codename while the rename was in flight. */
+const TITLE_KINDS: readonly string[] = ['sqh-session-title-llm', 'dsh-session-title-llm']
 const SURFACE_TYPES = new Set(['system/message', 'user/message', 'developer/message', 'assistant/message', 'tool/result'])
 const STEP_EVENT_TYPES = new Set(['system/message', 'developer/message', 'assistant/attempt'])
 const RELATIONSHIP_TYPES = new Set([
@@ -368,7 +371,7 @@ function titleSources(
   const content = array(message['content'], 'title content')
   const block = content[0]
   if (references.length === 0 || messages.length !== 1 || message['role'] !== 'user'
-    || record(message['source'], 'title source')['kind'] !== 'sqhsession-title-llm'
+    || !TITLE_KINDS.includes(String(record(message['source'], 'title source')['kind']))
     || content.length !== 1 || !isSessionFormatJsonObject(block) || block['type'] !== 'text') {
     throw new SessionFormatError('session/title-llm-request messages do not represent messageSeqs')
   }

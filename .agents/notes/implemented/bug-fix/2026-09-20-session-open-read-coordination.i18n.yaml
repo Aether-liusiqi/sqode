@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-20-session-open-read-coordination.md
 /agent-note-session-opening-cache-identity-and-read-ordering:
-  en: 1097d9fd1cad796c
-  zh: 1ae6259c85043d2d
+  en: 6e681f4c195669ee
+  zh: 0ea90669eb8f55c1
 /agent-note-session-opening-cache-identity-and-read-ordering/problem:
   en: 490984caf5af4323
   zh: 273ac6284e1ff67f
@@ -33,5 +33,5 @@
   en: 13437882143e2025
   zh: 586bcd68eaa03969
 /agent-note-session-opening-cache-identity-and-read-ordering/relationship-to-existing-records:
-  en: 9446341b5e3e0d6e
-  zh: 1ac1537da69cadde
+  en: 673bf4bc203b25ee
+  zh: 759c752f34ba11cb

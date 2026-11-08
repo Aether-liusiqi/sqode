@@ -6,8 +6,8 @@
   en: 94ed82a1f272bbf1
   zh: 49ab254262942334
 /liusiqi-dev-sqh-app-boot:
-  en: b41fbae8c55b9ca6
-  zh: cd3695601e728d23
+  en: 5945b9841ac6dc08
+  zh: 20a1f0307387a592
 /liusiqi-dev-sqh-app-boot/summary:
   en: 219bd2b1705c9582
   zh: de87b11d2c97bcf7
@@ -24,20 +24,20 @@
   en: 1099528bde0e2aee
   zh: b68772bdb9bb7856
 /liusiqi-dev-sqh-app-boot/use-this-package/profiles:
-  en: 0e128232f6e23f1b
-  zh: 385695a7b43ecffa
+  en: e9d3bf7490d44ccf
+  zh: 3fddd544ee1d37fc
 /liusiqi-dev-sqh-app-boot/use-this-package/previewing-the-effective-configuration:
   en: 646a0ccdd7881ad1
   zh: e3696acb1573dd7b
 /liusiqi-dev-sqh-app-boot/use-this-package/inspecting-plugin-configuration-schemas:
-  en: 06c438ce33e76d79
-  zh: 81fd29673de6d907
+  en: 481f3a64a531f71d
+  zh: aba7c8eb4d261576
 /liusiqi-dev-sqh-app-boot/use-this-package/reading-plugin-display-metadata:
-  en: aee340368742c6b5
-  zh: b957d69eb6df8dab
+  en: cb13b10f15ffe30d
+  zh: 6d35376c00837ba1
 /liusiqi-dev-sqh-app-boot/use-this-package/startup-and-reload-failures:
-  en: 874fa469eb79111a
-  zh: c0cefd5910b21ed4
+  en: a8f7ee25c4b9cdce
+  zh: 21e553daff1cc8ee
 /liusiqi-dev-sqh-app-boot/use-this-package/telling-the-agent-where-the-harness-lives:
   en: 5beb0ef3413a3014
   zh: 31fb7f8ee9e74835
@@ -45,8 +45,8 @@
   en: f4a2695cb4c8a570
   zh: 89837235d2f376cf
 /liusiqi-dev-sqh-app-boot/understand-the-implementation/design-notes:
-  en: fd6e49abdf3e42a6
-  zh: 2ac31ad72596c296
+  en: 35f133a2bbd95d06
+  zh: 1c062f6861453e9b
 /liusiqi-dev-sqh-app-boot/understand-the-implementation/helper-behavior:
   en: f7bc3a8dd4b00bdd
   zh: 30098428aa769ad0
@@ -54,8 +54,8 @@
   en: 25602fd8eb9b2907
   zh: 870a33dd34a52c32
 /liusiqi-dev-sqh-app-boot/further-exploration:
-  en: 30d7a7df406759cd
-  zh: ddf7c0e4a3c6788d
+  en: 504f8b6a22f192e2
+  zh: aa0ca8182783e773
 /liusiqi-dev-sqh-app-boot/model-experience:
   en: 769777f1cb1a9408
   zh: f02b2834179df50d
@@ -69,5 +69,5 @@
   en: d2f0d68fe29fb750
   zh: 323d21ee73a9e3f6
 /liusiqi-dev-sqh-app-boot/known-limitations-and-deferred-work/dev-note/open-yaml-config-dump-stability:
-  en: f8d28efbfc2da3b7
-  zh: 2c717b0217d5d4cd
+  en: 76569cdaaefe8750
+  zh: 9a111eb0dcdcbb7d

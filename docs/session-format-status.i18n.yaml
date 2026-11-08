@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/session-format-status.md
 /session-format-version-and-release-status:
-  en: 6dfbe3c1b129cdb1
-  zh: 26316155a7d29201
+  en: b940b8d737fcbc01
+  zh: 463a6808e432a1e7
 /session-format-version-and-release-status/summary:
   en: 702f6c39cc29beca
   zh: 75cd72d886640bb5
@@ -12,17 +12,17 @@
   en: 4b723de0471eae1b
   zh: b308bf89ea47ae05
 /session-format-version-and-release-status/sources-of-truth:
-  en: fe8c2f63a4cdcca8
-  zh: 7aa93fc8c6c86225
+  en: 15836013ca5a42c8
+  zh: 3d8734817b4c65eb
 /session-format-version-and-release-status/finalization-record:
-  en: c07f5ef441d2e97b
-  zh: 0b9b26738a520ff7
+  en: 7079d1ec9fc3a116
+  zh: 35b99db2eb6d5e74
 /session-format-version-and-release-status/release-record:
   en: e35fc13c7e9f76e5
   zh: 5099f31b3af4badf
 /session-format-version-and-release-status/updating-the-record:
-  en: b3ef94a01eea09b6
-  zh: 347f76a6c442aa22
+  en: 4a2d2d663234d081
+  zh: 2d691ac14f648932
 /session-format-version-and-release-status/dev-note:
   en: b75c8458928b72b9
   zh: 003ba4e17b4b5269

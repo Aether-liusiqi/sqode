@@ -3,20 +3,20 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-13-macos-hidden-titlebar-vibrancy.md
 /agent-note-macos-hidden-titlebar-with-vibrancy-sidebar:
-  en: f580b1fe86105f80
-  zh: e2438ad0ce5be616
+  en: 63421d25446aba8f
+  zh: a178e6b63dac3371
 /agent-note-macos-hidden-titlebar-with-vibrancy-sidebar/problem:
   en: 199f00b0e7f3c09c
   zh: bb331fc8d7d46bbd
 /agent-note-macos-hidden-titlebar-with-vibrancy-sidebar/decision:
-  en: 933aba3077548091
-  zh: a373794967634ea4
+  en: 684bb627a821a6e3
+  zh: 7ffbf24a31be974d
 /agent-note-macos-hidden-titlebar-with-vibrancy-sidebar/alternatives-considered:
   en: 28d920253012bd11
   zh: ae6a27f959d5afe3
 /agent-note-macos-hidden-titlebar-with-vibrancy-sidebar/consequences:
-  en: 176b62318f78f23e
-  zh: 5dd1a8048f8fa2a0
+  en: 506053e508e6070f
+  zh: 57237a032eb25dc9
 /agent-note-macos-hidden-titlebar-with-vibrancy-sidebar/testing:
   en: a075febd9b78dc5f
   zh: 7c59a9b7f0798dac

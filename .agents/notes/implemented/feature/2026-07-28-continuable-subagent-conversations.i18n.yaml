@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-07-28-continuable-subagent-conversations.md
 /agent-note-continuable-subagents:
-  en: 80e57feb372a4689
-  zh: 5751936f9b3f7fa8
+  en: 1182e160944773c5
+  zh: 0bc30c12cbfa22a8
 /agent-note-continuable-subagents/problem:
   en: a72071eeedb77402
   zh: 818d16ce429fd610
@@ -27,8 +27,8 @@
   en: 503fb4311cd94674
   zh: 376fa98ec4d22b20
 /agent-note-continuable-subagents/decision/adjacent-agent-messaging:
-  en: 5837efe62906fa28
-  zh: 9ed40aa9c893044b
+  en: 4c149fba03d65de2
+  zh: a09f2392ef2501c6
 /agent-note-continuable-subagents/decision/agent-and-human-scheduling:
   en: 8c861f3846fef1b5
   zh: 8cc3d668d73c7748
@@ -36,17 +36,17 @@
   en: f5ba7e9c5339ceef
   zh: 31ae1b2f57e44463
 /agent-note-continuable-subagents/decision/durability-disposal-and-recovery:
-  en: 143a2d10cf74b698
-  zh: 456dd65b0db348e5
+  en: e64ed3ccb0bc5089
+  zh: 17b060af6bbce6a3
 /agent-note-continuable-subagents/decision/scope:
-  en: c8b472a84ffd8c5a
-  zh: edb06bbcf64f12cb
+  en: 359e1d2b54debeae
+  zh: 87db815633b3d9ca
 /agent-note-continuable-subagents/alternatives-considered:
   en: 485aef32231dac62
   zh: 5e2c103afb3e2d6f
 /agent-note-continuable-subagents/consequences:
-  en: 792caf38177e3821
-  zh: 2fdefc9583e4b336
+  en: 65910ea5b426cd5b
+  zh: 26e665c5e2718a9d
 /agent-note-continuable-subagents/consequences/accepted-costs:
-  en: b40100289b61e21d
-  zh: d29e7b0fe95a469a
+  en: 9c7cdcd362162375
+  zh: be27e9a413137051

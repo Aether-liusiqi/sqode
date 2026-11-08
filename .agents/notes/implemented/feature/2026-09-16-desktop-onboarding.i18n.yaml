@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-16-desktop-onboarding.md
 /agent-note-device-local-desktop-onboarding:
-  en: 5b8609d5cb639115
-  zh: 653bcf1ace807161
+  en: fbf7b12cc2965c34
+  zh: 50d461814819fcfc
 /agent-note-device-local-desktop-onboarding/problem:
   en: 50c7c883a2115b7e
   zh: 60533d618a3b2da7
 /agent-note-device-local-desktop-onboarding/decision:
-  en: 8efbd400b573ec45
-  zh: 7501341d96d99886
+  en: 407a21e755e882fa
+  zh: 1b1162845035b0db
 /agent-note-device-local-desktop-onboarding/alternatives-considered:
   en: 82debfeba02ecfdb
   zh: c15d8fcc012058e3

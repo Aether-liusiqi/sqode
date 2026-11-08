@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-08-10-remote-event-delivery.md
 /agent-note-remote-event-delivery-ctx-remote-on:
-  en: 0ceb4ecb62163f9e
-  zh: 516c15cd0947fcb2
+  en: e7ff495420e561dd
+  zh: 696675eaf1a31944
 /agent-note-remote-event-delivery-ctx-remote-on/problem:
-  en: de75e3870492d1c0
-  zh: 2ee3456860cfa183
+  en: a5bbb6dedfc5b6d5
+  zh: 02f1869eb9c296c4
 /agent-note-remote-event-delivery-ctx-remote-on/decision:
   en: 83f6f48ce1fc517b
   zh: abcfcd1c0eb777ea
@@ -36,5 +36,5 @@
   en: 8d428c2b80505999
   zh: ef941ef9ff7068ce
 /agent-note-remote-event-delivery-ctx-remote-on/related:
-  en: 02227bae5a5deeb0
-  zh: cc1efe584c64c3ec
+  en: 9b8ab3368d4a978b
+  zh: 08ec761dea22071f

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-15-agent-initiator-scope.md
 /agent-note-initiating-agent-scope-over-asynclocalstorage:
-  en: 31a346de89e4bb80
-  zh: dc141b8570dce693
+  en: a8130bc83299ec64
+  zh: 06b3c4612949dca9
 /agent-note-initiating-agent-scope-over-asynclocalstorage/problem:
   en: a26991200892c735
   zh: 04a7dfaca64e3f0c
 /agent-note-initiating-agent-scope-over-asynclocalstorage/decision:
-  en: f88d4858fd059760
-  zh: ddc2f808366225ec
+  en: 942f1030e456e851
+  zh: 5aa61a56815fc30f
 /agent-note-initiating-agent-scope-over-asynclocalstorage/verification:
   en: 312f5c4b843d515e
   zh: a8993e3b84844fab

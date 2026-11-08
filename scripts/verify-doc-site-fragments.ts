@@ -106,7 +106,7 @@ export function inspectSiteFragments(distRoot: string): SiteFragmentReport {
     }
   }
 
-  const origin = 'https://sqhdocs.invalid'
+  const origin = 'https://sqh-docs.invalid'
   const broken: BrokenSiteFragment[] = []
   let checked = 0
   for (const page of pages) {

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-04-busy-send-button-follows-enter-setting.md
 /agent-note-the-busy-send-button-follows-the-enter-setting:
-  en: fa99fda7777a4f21
-  zh: 77860061b2c91463
+  en: da5f1f0bd85efb39
+  zh: e245224fae4aee08
 /agent-note-the-busy-send-button-follows-the-enter-setting/problem:
   en: c378dfa9efcc0758
   zh: 785c3b9ee99c66a4
 /agent-note-the-busy-send-button-follows-the-enter-setting/decision:
-  en: 45482eec4ca61e52
-  zh: 430a3c7fd814303f
+  en: 274c4414fef360bd
+  zh: f83d4693101ed6c8
 /agent-note-the-busy-send-button-follows-the-enter-setting/verification:
   en: eb886930b09445bd
   zh: 1e671f8f81868490

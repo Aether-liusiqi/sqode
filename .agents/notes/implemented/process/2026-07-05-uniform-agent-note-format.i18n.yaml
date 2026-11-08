@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/process/2026-07-05-uniform-agent-note-format.md
 /agent-note-one-gated-in-file-format-for-agent-notes:
-  en: b7f0ab467d4f9990
-  zh: 26298a0646d8b45a
+  en: d10fe6bf876b7964
+  zh: 26b8b75b9f382338
 /agent-note-one-gated-in-file-format-for-agent-notes/problem:
   en: 71bd2d16e40c3ed7
   zh: 485862218afcdc00
 /agent-note-one-gated-in-file-format-for-agent-notes/decision:
-  en: db31901468a51761
-  zh: 70a1ba702e99c859
+  en: 50ba61a87291b378
+  zh: 4e85a257fa018102
 /agent-note-one-gated-in-file-format-for-agent-notes/alternatives-considered:
   en: 330044b841da3ab9
   zh: e909207cbcbc5edb

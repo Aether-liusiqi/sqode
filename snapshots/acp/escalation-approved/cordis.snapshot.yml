@@ -47,6 +47,6 @@
     - id: snapshot-shell-path
       name: ../../../scripts/snapshot-shell-path.ts
       config:
-        command: "printf 'escalated\\n' > /tmp/sqhescalated.txt && cat /tmp/sqhescalated.txt && rm /tmp/sqhescalated.txt"
-        recordedPath: /tmp/sqhescalated.txt
-        livePath: !!js process.env.SQODE_SNAPSHOT_SPILL_ROOT + '/sqhescalated.txt'
+        command: "printf 'escalated\\n' > /tmp/sqh-escalated.txt && cat /tmp/sqh-escalated.txt && rm /tmp/sqh-escalated.txt"
+        recordedPath: /tmp/sqh-escalated.txt
+        livePath: !!js process.env.SQODE_SNAPSHOT_SPILL_ROOT + '/sqh-escalated.txt'

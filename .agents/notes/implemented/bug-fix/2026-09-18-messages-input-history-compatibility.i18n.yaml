@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-18-messages-input-history-compatibility.md
 /agent-note-replay-assistant-blocks-in-messages-user-input:
-  en: f86c7e8463db86eb
-  zh: b1bd9fd84c7f362e
+  en: 92a17da032edd324
+  zh: 92d4f87932add18e
 /agent-note-replay-assistant-blocks-in-messages-user-input/problem:
-  en: 6fa2051b6f7c204c
-  zh: 65ef9efbe2ae519a
+  en: 0673c4ea1e0d96c2
+  zh: a00395e63d835628
 /agent-note-replay-assistant-blocks-in-messages-user-input/decision:
-  en: 73a875b48aaf6198
-  zh: e8399d5ec4a67d8b
+  en: 22bb84f39051d9d9
+  zh: 775f19a8d76dfea7
 /agent-note-replay-assistant-blocks-in-messages-user-input/alternatives-considered:
-  en: bfef71639a3f2150
-  zh: 3be1694163598929
+  en: ca2ddb28a275b372
+  zh: 6c4fb0f5610e63eb
 /agent-note-replay-assistant-blocks-in-messages-user-input/consequences:
   en: c1770c7aa4097c42
   zh: 80ab7f2b66408ad7

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-15-first-class-tool-role-messages.md
 /agent-note-first-class-tool-role-messages:
-  en: 456327831c3a1373
-  zh: a810be91958fde17
+  en: f47a8e9021793db4
+  zh: 6570b8e5bcca8441
 /agent-note-first-class-tool-role-messages/problem:
   en: d1bff2dd3b7c5070
   zh: 866aecc4211992fd
 /agent-note-first-class-tool-role-messages/decision:
-  en: 08429fdf7871ae6d
-  zh: 0b4e61c59211bd34
+  en: b68645eaa5382409
+  zh: da264784887ee3af
 /agent-note-first-class-tool-role-messages/alternatives-considered:
   en: 5f727366e0885a7a
   zh: b1ac16578076c286

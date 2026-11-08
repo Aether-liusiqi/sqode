@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-31-claimed-pre-step-inbox-lifecycle.md
 /agent-note-claim-inbox-input-before-one-pre-step-decision:
-  en: c80b28fdea72cc36
-  zh: 97af4fc5123c4cf1
+  en: 62fa046e852bc01e
+  zh: 00a5cf96e948c763
 /agent-note-claim-inbox-input-before-one-pre-step-decision/problem:
   en: f2a920b8770c2f99
   zh: 1c111f175131714e

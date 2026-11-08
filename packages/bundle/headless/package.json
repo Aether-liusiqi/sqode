@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-headless",
-  "description": "The dsh one-shot bundle: a direct core Agent/Session runner over sqhbase with no Host, HTTP, or browser layer",
+  "description": "The dsh one-shot bundle: a direct core Agent/Session runner over sqh-base with no Host, HTTP, or browser layer",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

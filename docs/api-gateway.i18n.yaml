@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/api-gateway.md
 /api-gateway:
-  en: 1290749f6b79db03
-  zh: d79c11e9ee97f40d
+  en: 0bfbcdefecbd2f7d
+  zh: 379cb90ad9801cd9
 /api-gateway/programming-model:
-  en: 4e11d9217dae73c0
-  zh: 964544c6f98ddb80
+  en: 5ae038390b7f5177
+  zh: c0d92e8da3bbee44
 /api-gateway/component-responsibilities:
   en: a335a0f8943d68e9
   zh: b5c60547265ebd6f
 /api-gateway/strict-generation-pipeline:
-  en: 98ed50809d11f7dc
-  zh: bdd358dba5e3db69
+  en: 6b1a232f6f2889a8
+  zh: 637274f380b09491
 /api-gateway/runtime-invocation:
   en: 2a2fed340aaa926c
   zh: 46bb1f500c870a76
@@ -24,5 +24,5 @@
   en: d0708a44515f4ac3
   zh: 1dc7fd935905a0d5
 /api-gateway/boundaries:
-  en: b6a6c7646c76e802
-  zh: 1ba74a4d1b51b1d9
+  en: e7c3d1cfee6462d8
+  zh: 2daec3bb4fca4a9c

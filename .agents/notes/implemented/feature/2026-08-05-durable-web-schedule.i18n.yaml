@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-08-05-durable-web-schedule.md
 /agent-note-durable-scheduled-reminders:
-  en: 716a2fc2040684f5
-  zh: 63697e0b1fc89c4b
+  en: c3102f65ae7f7686
+  zh: 90d459b57ccdb5bd
 /agent-note-durable-scheduled-reminders/problem:
   en: 85e09d88c1383aeb
   zh: 2d90fcbf2fe5ad3c
@@ -12,17 +12,17 @@
   en: a15c7c13f167e5ac
   zh: 63bcc2ef60c2f344
 /agent-note-durable-scheduled-reminders/decision/explicit-absolute-time-boundary:
-  en: 8996e2f6dfbb32bb
-  zh: 7740522635a6be86
+  en: 23969b7a3fbd8d88
+  zh: 625294048c1f4713
 /agent-note-durable-scheduled-reminders/decision/bounded-fixed-rate-semantics:
-  en: 95c3d8d4cb3c2969
-  zh: 0c37ed9774df4c7d
+  en: 0a9e78c86834d03a
+  zh: c324e251b1983faf
 /agent-note-durable-scheduled-reminders/decision/queue-admission-is-not-completion:
   en: 1d88821105254303
   zh: 08982a1534d8fd18
 /agent-note-durable-scheduled-reminders/alternatives-considered:
-  en: 0aa7127cc5d859dc
-  zh: cc42c75025918a06
+  en: bbf8f5841644687f
+  zh: 6217a77593ad93eb
 /agent-note-durable-scheduled-reminders/verification:
   en: 113a6d381ff1b145
   zh: 59f9693741adbbab

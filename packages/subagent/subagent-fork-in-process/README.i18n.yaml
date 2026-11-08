@@ -6,8 +6,8 @@
   en: a4a75d423f70c4de
   zh: a60816274b877a80
 /liusiqi-dev-sqh-subagent-fork-in-process:
-  en: 5596c409541a3734
-  zh: 5be65ab52f83ac38
+  en: eaf2baa9b3d28ada
+  zh: bcddad0aec117576
 /liusiqi-dev-sqh-subagent-fork-in-process/summary:
   en: 7bd83ec69e096267
   zh: 1004645f6333c01c
@@ -24,8 +24,8 @@
   en: f4dfd1ce652f019b
   zh: 9bb75239491f07cc
 /liusiqi-dev-sqh-subagent-fork-in-process/use-this-package/minimal-configuration:
-  en: 0cbd988b7ef0ebcd
-  zh: c821f777391a9cd4
+  en: 22ab168b2c2aecce
+  zh: ec2ef1323b7a6c94
 /liusiqi-dev-sqh-subagent-fork-in-process/use-this-package/what-a-fork-delegation-does:
   en: 221626f65c2faf04
   zh: dfa8200b5349340f
@@ -42,11 +42,11 @@
   en: 59b82d0f46c21967
   zh: aacc5455eaabc8f7
 /liusiqi-dev-sqh-subagent-fork-in-process/understand-the-implementation/lifecycle-binding:
-  en: 3fe6db02355566f6
-  zh: f7b1fa585654350d
+  en: 3e8b0ee4b59973ac
+  zh: 4bdd9a395d6f255f
 /liusiqi-dev-sqh-subagent-fork-in-process/further-exploration:
-  en: e7cc9755b7de07fe
-  zh: 034fb47d6997cb9b
+  en: 46f8d56bed553e80
+  zh: 870fd4285983ef7f
 /liusiqi-dev-sqh-subagent-fork-in-process/model-experience:
   en: 215e7ba838619b7b
   zh: a311da3843709f90
@@ -60,8 +60,8 @@
   en: db9ae2edb5ee28ce
   zh: 5a342ffa3e7a7b40
 /liusiqi-dev-sqh-subagent-fork-in-process/model-experience/child-agent-history-and-envelope/kv-cache-effect:
-  en: 62d95df59ce039ef
-  zh: 6717d7959109c48d
+  en: eeaa3e02715b90dd
+  zh: 184aff136f65f657
 /liusiqi-dev-sqh-subagent-fork-in-process/model-experience/parent-tool-result-indirectly:
   en: 75d061c2151624a7
   zh: 71e58e020b60ff90
@@ -75,8 +75,8 @@
   en: f5d5f97a153f7c70
   zh: 3d6bc05b9eadfbc2
 /liusiqi-dev-sqh-subagent-fork-in-process/known-limitations-and-deferred-work:
-  en: 1c9c07255656eee1
-  zh: 5f05a2c4b0912f14
+  en: 878872d2155fbd99
+  zh: 90f9b011576a6b07
 /liusiqi-dev-sqh-subagent-fork-in-process/known-limitations-and-deferred-work/dev-note:
   en: e67f633dc6fe7773
   zh: 3bb0c20c93f16f98

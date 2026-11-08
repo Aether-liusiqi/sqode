@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-08-31-released-session-format-migrations.md
 /agent-note-released-session-formats-migrate-through-stateful-streaming-stages:
-  en: 5ad1f1e8ea38cc97
-  zh: 86f062a86b201a99
+  en: de102f73a4e0b0b0
+  zh: 95251d24e1dbbce0
 /agent-note-released-session-formats-migrate-through-stateful-streaming-stages/problem:
   en: a1f71d6123b80d10
   zh: 8e05da34ba92686a
@@ -21,14 +21,14 @@
   en: ed34c76e1a2c0a42
   zh: 0efe92c6c9ea314e
 /agent-note-released-session-formats-migrate-through-stateful-streaming-stages/decision/adjacent-version-ownership:
-  en: 20bfbb2d3f83f115
-  zh: 062cb16e352e83cd
+  en: 2dd8cca764f3d7f1
+  zh: ddec90306bae2a33
 /agent-note-released-session-formats-migrate-through-stateful-streaming-stages/decision/physical-codecs-and-packed-runs:
-  en: c91112d48ca80381
-  zh: 9a04af4dfb060069
+  en: be34e5081f017b06
+  zh: cbe069c6de1e3d4a
 /agent-note-released-session-formats-migrate-through-stateful-streaming-stages/decision/jsonl-integration:
-  en: 034d4120c727404c
-  zh: 12bb43aa7da935d0
+  en: ddc237afc253bbd1
+  zh: dc5d08aa1ceec703
 /agent-note-released-session-formats-migrate-through-stateful-streaming-stages/decision/durable-format-and-publication-rules:
   en: 6e2a76ae14612199
   zh: 3c90fd32d292f9d0
@@ -36,8 +36,8 @@
   en: 65968c18c3d1b7e9
   zh: 2e43d7ce1391d554
 /agent-note-released-session-formats-migrate-through-stateful-streaming-stages/problem-to-solution-mapping/parent-catalog-prerequisites:
-  en: e41b21e2d85f1193
-  zh: 01a6f07cc5144385
+  en: e790362c0fb4b687
+  zh: 805b94a773237692
 /agent-note-released-session-formats-migrate-through-stateful-streaming-stages/problem-to-solution-mapping/catalog-scan-measurements:
   en: 6b7a79fb81e58bac
   zh: 51fc00eaf3a0c3dc
@@ -57,8 +57,8 @@
   en: 60f7de284f6ded10
   zh: 877b300503a4615d
 /agent-note-released-session-formats-migrate-through-stateful-streaming-stages/verification/streaming-serial-migration-breakdown:
-  en: b8ebd9da3b3c2e6e
-  zh: 903c889dea3dec38
+  en: 538e7026707160dc
+  zh: e5152731d0f22edf
 /agent-note-released-session-formats-migrate-through-stateful-streaming-stages/consequences:
   en: fa005a93cc0b0906
   zh: 248a08f307d4c1b7

@@ -31,7 +31,7 @@ const INITIAL: SessionLogDownloadState = { bySession: {} }
  * @returns one safe browser download filename.
  */
 export function sessionLogZipFilename(sessionId: SessionId): string {
-  return `sqhsession-${String(sessionId).replace(/[^A-Za-z0-9_-]/g, '_')}.zip`
+  return `sqh-session-${String(sessionId).replace(/[^A-Za-z0-9_-]/g, '_')}.zip`
 }
 
 /**

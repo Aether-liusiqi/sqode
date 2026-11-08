@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-08-desktop-welcome-window-material.md
 /agent-note-desktop-welcome-window-material:
-  en: e6efaad43fdd308a
-  zh: 6990e68d72e561b2
+  en: c53041da56b3b8d5
+  zh: a5670ec159e4e218
 /agent-note-desktop-welcome-window-material/problem:
   en: 8578b584bda3abdc
   zh: 85dcf44aab2cfd51
 /agent-note-desktop-welcome-window-material/decision:
-  en: a0e13a60e8a87256
-  zh: a53d90759aaabe14
+  en: 041b4757a17adf68
+  zh: 240ff5f8b6ee221d
 /agent-note-desktop-welcome-window-material/alternatives-considered:
   en: cf42e200b1d0f00a
   zh: de96b5647f5ffb23

@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-17-plugin-detail-page-extension-slots.md
 /agent-note-plugin-detail-pages-as-an-extension-point:
-  en: 94776cc55aabf803
-  zh: 02781e17a90a5cee
+  en: b5a1d17645c24987
+  zh: c8d4bce2a7809d61
 /agent-note-plugin-detail-pages-as-an-extension-point/problem:
-  en: bce077caa80dd1b6
-  zh: 39d12b81ef1fc6b4
+  en: 282f36872f08a574
+  zh: a921e5092b6d6341
 /agent-note-plugin-detail-pages-as-an-extension-point/decision:
   en: df2cba037b6bcb4d
   zh: 82d0a5dc61a1716c

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/subsystems/spill.md
 /spill-storage:
-  en: 375b562ac27a1327
-  zh: ee74e78811989fa8
+  en: c35c32de29512699
+  zh: 403845419f2be2a3
 /spill-storage/the-save-request:
   en: 05dd1d013c45ee55
   zh: e2ba974827f47a54
 /spill-storage/the-result:
-  en: 9b8facd0a35eb82e
-  zh: 30b280e8e4b7e790
+  en: f7d05b1b26593f45
+  zh: 59c64ab390cf20a1
 /spill-storage/the-service:
   en: 734915d08cd2226f
   zh: a012968dda98a24f

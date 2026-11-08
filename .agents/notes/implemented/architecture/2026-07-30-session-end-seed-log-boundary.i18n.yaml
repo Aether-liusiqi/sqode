@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-30-session-end-seed-log-boundary.md
 /agent-note-the-end-seed-log-boundary:
-  en: 48e7fdb0ea4f0e73
-  zh: c2758c99e157d106
+  en: fca76643c94359ca
+  zh: b39d8599a9c73948
 /agent-note-the-end-seed-log-boundary/problem:
   en: e7192f854b24129c
   zh: 74a38ee95988e338
@@ -21,5 +21,5 @@
   en: cd1ed7dfa77722ae
   zh: 4ad834f3cf3b5443
 /agent-note-the-end-seed-log-boundary/consequences:
-  en: 9355cbaae58860b2
-  zh: 2f3fba590f1b4922
+  en: 784f489f2e8bb0f1
+  zh: c4a6bbe3f4770a88

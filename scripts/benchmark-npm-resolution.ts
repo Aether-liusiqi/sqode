@@ -464,10 +464,10 @@ export async function resolveNpmPackageLock(
   })
   const port = await listen(server)
   registry = `http://127.0.0.1:${String(port)}/`
-  const consumer = mkdtempSync(join(tmpdir(), 'sqhnpm-resolution-'))
+  const consumer = mkdtempSync(join(tmpdir(), 'sqh-npm-resolution-'))
   try {
     writeFileSync(join(consumer, 'package.json'), `${JSON.stringify({
-      name: 'sqhnpm-resolution-benchmark',
+      name: 'sqh-npm-resolution-benchmark',
       version: '0.0.0',
       private: true,
       dependencies,

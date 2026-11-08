@@ -72,7 +72,7 @@ export function buildExplicitAccess(
  */
 export function lockFilePath(api: Win32Bindings, path: string): string {
   const digest = createHash('sha256').update(path.toLowerCase()).digest('hex').slice(0, 16)
-  return join(getTempPath(api), 'sqhacl-locks', `${digest}.lock`)
+  return join(getTempPath(api), 'sqh-acl-locks', `${digest}.lock`)
 }
 
 /**

@@ -46,7 +46,7 @@
     - id: tool-subagent-sdk
       name: '../../../packages/subagent/subagent-sdk/tests/fixtures/loader/scoped-tool-subagent.ts'
       config:
-        provider: sqhsdk
+        provider: sqh-sdk
         toolName: subagent
         enableRunInBackground: false
         agentOptions:

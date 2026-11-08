@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-05-session-reference-spill-reuse.md
 /agent-note-reuse-spill-storage-for-truncated-session-references:
-  en: f511c0ed93819fb5
-  zh: 56597215184ae724
+  en: c29a8cee0c6a7259
+  zh: 33f8dde56fc11220
 /agent-note-reuse-spill-storage-for-truncated-session-references/problem:
   en: 50a1ef10604acb5f
   zh: 128abfd3e43740dc
 /agent-note-reuse-spill-storage-for-truncated-session-references/decision:
-  en: f7aadedfc8839ee3
-  zh: 6dd757974075f544
+  en: 54bb4a7d725989de
+  zh: 59e9bdc72337a249
 /agent-note-reuse-spill-storage-for-truncated-session-references/alternatives-considered:
   en: fccf1c25876b92a0
   zh: 7d5c7c3d240132c3
@@ -18,8 +18,8 @@
   en: 2bff957549afe59b
   zh: 30c6be54168fe183
 /agent-note-reuse-spill-storage-for-truncated-session-references/verification:
-  en: 561bfa86b038a28b
-  zh: de0714519b1b9c96
+  en: 75ac7ff7444e1658
+  zh: 402dd7371d668e5b
 /agent-note-reuse-spill-storage-for-truncated-session-references/related-decisions:
-  en: 296f46d57d908e6c
-  zh: 77e8d53217ae88b1
+  en: 80e8f6976638c4ce
+  zh: 2143e10b5831738f

@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-10-windows-native-installer-pages.md
 /agent-note-native-windows-installer-pages:
-  en: 5f1e5e025bd82668
-  zh: 13fbc5b94aa02794
+  en: 707936dc9d7dbf5f
+  zh: 5ae78c82c5101383
 /agent-note-native-windows-installer-pages/problem:
   en: 5d148a332b151928
   zh: a79cdfd0f1556c58
 /agent-note-native-windows-installer-pages/decision:
-  en: 1c7b3aaeb95caec5
-  zh: f3f37f5d37b8816e
+  en: e33b56385d4ba563
+  zh: fd80b0272ca867e3
 /agent-note-native-windows-installer-pages/alternatives-considered:
   en: a5b1e11a1b30ab99
   zh: 8495f05dc87b831a

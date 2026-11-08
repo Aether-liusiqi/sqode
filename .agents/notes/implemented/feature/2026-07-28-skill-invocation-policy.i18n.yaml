@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-07-28-skill-invocation-policy.md
 /agent-note-independent-model-and-user-skill-invocation-policy:
-  en: 966880f6de21ac63
-  zh: 477e5719cbcd9a17
+  en: 767ff6eead0c6ee2
+  zh: 7070ac8028b96ba0
 /agent-note-independent-model-and-user-skill-invocation-policy/problem:
   en: 9fc564115fca4b22
   zh: 3a414ee5c1f7f842

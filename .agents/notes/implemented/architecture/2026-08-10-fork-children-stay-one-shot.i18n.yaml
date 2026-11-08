@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-08-10-fork-children-stay-one-shot.md
 /agent-note-forked-children-preserve-the-parent-request-prefix:
-  en: f86ddc7935a6d9df
-  zh: a66def2299607a33
+  en: ac40fc75c748eb4f
+  zh: 84e1b070e9582e53
 /agent-note-forked-children-preserve-the-parent-request-prefix/problem:
   en: 1fe344c95a0de36d
   zh: 656c3e0f1117f64e

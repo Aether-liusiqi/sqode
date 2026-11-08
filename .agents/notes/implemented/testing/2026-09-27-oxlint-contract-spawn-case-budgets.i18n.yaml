@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/testing/2026-09-27-oxlint-contract-spawn-case-budgets.md
 /agent-note-oxlint-contract-cases-that-spawn-a-process-carry-a-90-s-ceiling:
-  en: de452ce79a81bcfd
-  zh: 987da3e350043dd7
+  en: 73ded067ba4799cc
+  zh: 69fe50ecf9ab1848
 /agent-note-oxlint-contract-cases-that-spawn-a-process-carry-a-90-s-ceiling/problem:
   en: 88fda43695f9daa7
   zh: e9ecde2079f8b25a
@@ -12,8 +12,8 @@
   en: 34bd113b8c9228fb
   zh: 99843bf33b703b5e
 /agent-note-oxlint-contract-cases-that-spawn-a-process-carry-a-90-s-ceiling/alternatives-considered:
-  en: ac527427e1fe7028
-  zh: f8be1a8be6fbecdb
+  en: 4402033b28e327cc
+  zh: 01146b5c18cdd8c0
 /agent-note-oxlint-contract-cases-that-spawn-a-process-carry-a-90-s-ceiling/consequences:
   en: 444772fe9614a990
   zh: 3e13c953eda6a43c

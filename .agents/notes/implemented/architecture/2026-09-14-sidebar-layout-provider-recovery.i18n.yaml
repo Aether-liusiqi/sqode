@@ -3,17 +3,17 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-14-sidebar-layout-provider-recovery.md
 /agent-note-sidebar-layout-persistence-and-provider-recovery:
-  en: 1417cabef84e7592
-  zh: e60ebfa49b57c4b7
+  en: 47244090666c0986
+  zh: fec582d3618dc147
 /agent-note-sidebar-layout-persistence-and-provider-recovery/problem:
   en: 8adb7105e89be803
   zh: 96c4e92e85b6980e
 /agent-note-sidebar-layout-persistence-and-provider-recovery/decision:
-  en: 019ed5f7e8fc7102
-  zh: cd299bf93199a10f
+  en: 2c8db6836e54e694
+  zh: eb06ad400fb034a5
 /agent-note-sidebar-layout-persistence-and-provider-recovery/alternatives-considered:
   en: 4a9b1234b0289ae7
   zh: 81854e0e9d32b6da
 /agent-note-sidebar-layout-persistence-and-provider-recovery/consequences:
-  en: cca5203d1786b115
-  zh: 27ef0e8dce583161
+  en: 15a1603e25fcd19f
+  zh: c2c65921b8f328b9

@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-05-continuous-client-recovery.md
 /agent-note-continuous-client-connection-recovery:
-  en: 73cf51f8aef82aa5
-  zh: c7fef68d33786fbb
+  en: 40bafcbca53b19b2
+  zh: 38e96526489c3a3f
 /agent-note-continuous-client-connection-recovery/problem:
   en: 70259bdedbf6b449
   zh: b0a3014c27483a09

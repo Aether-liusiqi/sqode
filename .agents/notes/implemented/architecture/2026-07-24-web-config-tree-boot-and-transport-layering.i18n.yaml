@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-24-web-config-tree-boot-and-transport-layering.md
 /agent-note-sqh-web-config-tree-boot-and-the-web-transport-layering:
-  en: 7e49b74260ba332d
-  zh: 4d33ebe770e13f14
+  en: 331b3fdf3ecf303d
+  zh: 2e091c71e156ef50
 /agent-note-sqh-web-config-tree-boot-and-the-web-transport-layering/problem:
   en: a1de5b8e8f081f67
   zh: d8c5fa2f3f90047a
 /agent-note-sqh-web-config-tree-boot-and-the-web-transport-layering/decision:
-  en: 2e169ba53e283efa
-  zh: e9ea4ed46de50965
+  en: 1adcbfe48a115477
+  zh: 8b7599178a8cd64c
 /agent-note-sqh-web-config-tree-boot-and-the-web-transport-layering/consequences:
   en: 47f8a6beba1f320b
   zh: 5f444699dc52cabf

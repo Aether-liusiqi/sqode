@@ -6,8 +6,8 @@
   en: 5c47c9629036f119
   zh: 7730d7468a38b38d
 /liusiqi-dev-sqh-compaction:
-  en: f517313e56e8dc50
-  zh: b39329589c0aad44
+  en: 2d767d5f53d47e82
+  zh: 0f59fb21fe7c0d42
 /liusiqi-dev-sqh-compaction/summary:
   en: 32534b5c087ab027
   zh: d189f0a31d75efee
@@ -27,8 +27,8 @@
   en: 8421e818306e6e09
   zh: 48c7d9c934abe322
 /liusiqi-dev-sqh-compaction/use-this-package/implementing-a-backend:
-  en: 556642ded24b1cbb
-  zh: b4c920cef42a57a7
+  en: db7c1ab6de716864
+  zh: 7173deb6a0b84cde
 /liusiqi-dev-sqh-compaction/use-this-package/recognizing-condensed-history:
   en: 35502487f2850f05
   zh: 333d2b86cc1d6eb0
@@ -36,20 +36,20 @@
   en: 321c3dc665ea03ff
   zh: f0fa408cde7b0454
 /liusiqi-dev-sqh-compaction/understand-the-implementation/design-philosophy:
-  en: b26a3f6af31f3f4a
-  zh: c957a82160c3690a
+  en: 31538769ee8dee2e
+  zh: 209c059828eee105
 /liusiqi-dev-sqh-compaction/understand-the-implementation/service-api:
-  en: a2f581e8eb0d81cb
-  zh: 8a0cdcac2620d018
+  en: babc9f0b532d7b7f
+  zh: 172d55cfd2d532c6
 /liusiqi-dev-sqh-compaction/understand-the-implementation/manual-failure-taxonomy:
-  en: 74c57aaf919da534
-  zh: 3d5dab2cd8cb42eb
+  en: 428d93559d58ed5d
+  zh: 29e3f24eff2c0c32
 /liusiqi-dev-sqh-compaction/understand-the-implementation/tool-pairing-boundaries:
   en: 15dad68a04d6c86b
   zh: 3b95acf1b7e503bf
 /liusiqi-dev-sqh-compaction/understand-the-implementation/the-surface-contract:
-  en: b91477943ca25acb
-  zh: 4105cf1b21a2ac2e
+  en: dbfeb4f2811f45af
+  zh: 15c7f02fe626f94d
 /liusiqi-dev-sqh-compaction/understand-the-implementation/source-map:
   en: 121139cf1878d7cf
   zh: f8f9d8d3eb9866b5
@@ -57,11 +57,11 @@
   en: 68caa51bed28bada
   zh: 3f8261f9dcba95ed
 /liusiqi-dev-sqh-compaction/understand-the-implementation/events:
-  en: 3e923214d172067f
-  zh: c86014caef7a526a
+  en: 076f83c196f07fb3
+  zh: 254990905e1652e4
 /liusiqi-dev-sqh-compaction/further-exploration:
-  en: dd35aed801bb0d46
-  zh: 802e911c1eee2e72
+  en: 086ada29c511935e
+  zh: 912892efbe700a10
 /liusiqi-dev-sqh-compaction/model-experience:
   en: 215e7ba838619b7b
   zh: a311da3843709f90

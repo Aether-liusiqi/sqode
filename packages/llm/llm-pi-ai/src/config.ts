@@ -380,7 +380,7 @@ function rejectRemovedFields(provider: string, source: PiAiProviderProfile): voi
   if ('maxRetries' in legacy || 'maxRetryDelayMs' in legacy) {
     throw new Error(
       `llm-pi-ai: provider "${provider}" sets maxRetries or maxRetryDelayMs, which were removed;`
-      + ' compose agent recovery with sqhllm-retry',
+      + ' compose agent recovery with sqh-llm-retry',
     )
   }
 }

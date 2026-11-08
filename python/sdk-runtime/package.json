@@ -1,5 +1,5 @@
 {
-  "name": "sqhpython-runtime-closure",
+  "name": "sqh-python-runtime-closure",
   "description": "Dependency-only deploy root defining the dsh executable shipped by the Python runtime wheel.",
   "version": "0.0.1",
   "private": true,

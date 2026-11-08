@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-19-lossless-projection-checkpoint-json.md
 /agent-note-lossless-projection-checkpoint-json:
-  en: de7c8b0e23f67cb6
-  zh: 34ac2ac537d5e5f6
+  en: 662e1662d08fcb74
+  zh: 07367095764d35e9
 /agent-note-lossless-projection-checkpoint-json/problem:
   en: 26e613246f31ee5a
   zh: e0aa1e2f63bce802
@@ -15,5 +15,5 @@
   en: 1d64345d3d72ed5f
   zh: 4c9d3410cfd815b3
 /agent-note-lossless-projection-checkpoint-json/consequences:
-  en: 94a0bbde50a6b2f6
-  zh: dbbda9a6dece8588
+  en: 49a5b88bfdb9b53f
+  zh: d6594ccb9393e362

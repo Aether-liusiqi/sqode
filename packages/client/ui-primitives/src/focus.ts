@@ -12,7 +12,7 @@ const navigationKeys = new Set(['Tab', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'Arr
 export function focusWithoutRing(element: HTMLElement, options?: FocusOptions): void {
   releases.get(element)?.()
   const release = (): void => {
-    element.removeAttribute('data-sqhautomatic-focus')
+    element.removeAttribute('data-sqh-automatic-focus')
     element.removeEventListener('blur', release)
     element.removeEventListener('keydown', navigate, true)
     releases.delete(element)
@@ -21,7 +21,7 @@ export function focusWithoutRing(element: HTMLElement, options?: FocusOptions): 
     if (!event.isComposing && !event.ctrlKey && !event.altKey && !event.metaKey && navigationKeys.has(event.key)) release()
   }
   releases.set(element, release)
-  element.setAttribute('data-sqhautomatic-focus', '')
+  element.setAttribute('data-sqh-automatic-focus', '')
   element.addEventListener('blur', release)
   element.addEventListener('keydown', navigate, true)
   element.focus(options)

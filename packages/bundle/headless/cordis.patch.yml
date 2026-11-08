@@ -1,4 +1,4 @@
-# The sqhheadless bundle patch: one-shot task mode directly over sqhbase.
+# The sqh-headless bundle patch: one-shot task mode directly over sqh-base.
 # It mounts no Host, HTTP server, Web runtime, or browser plugin. An ordinary
 # provider plugin injects `cmdlineArgs`, parses the task positional
 # (`dsh --profile headless "<task>"`), the `--session-id` and `--json` options,

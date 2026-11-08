@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-17-shared-office-runtime.md
 /agent-note-shared-office-runtime-for-desktop-and-sdk:
-  en: 2faa4aee670764e9
-  zh: 23e4574873602c9e
+  en: 230cf6f52a9c767d
+  zh: 99261e0215964baa
 /agent-note-shared-office-runtime-for-desktop-and-sdk/problem:
   en: 4d08aed08c8aff27
   zh: d618b4ac68832867
 /agent-note-shared-office-runtime-for-desktop-and-sdk/decision:
-  en: 6c2a417080b6c1a7
-  zh: f334c6ca9b701a0f
+  en: fc6d79d7e4a76a59
+  zh: 88b7397a025e4274
 /agent-note-shared-office-runtime-for-desktop-and-sdk/alternatives-considered:
   en: d85334a384a32a7d
   zh: 61c370390d9fdcf9

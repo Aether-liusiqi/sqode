@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-11-windows-directory-installation.md
 /agent-note-replace-windows-application-directories-after-staging:
-  en: c988dfa00dc1406a
-  zh: 225a4340365f646d
+  en: cf44eae97be94747
+  zh: 9ee645860146f08d
 /agent-note-replace-windows-application-directories-after-staging/problem:
   en: fa0015dca8cd9e85
   zh: a826baa59c0a3bd1
 /agent-note-replace-windows-application-directories-after-staging/decision:
-  en: 0f9e05f76a253ed3
-  zh: 503bc023f575fd0f
+  en: 5de9f8a77ddcc77b
+  zh: 3471c89698f310d3
 /agent-note-replace-windows-application-directories-after-staging/consequences:
   en: 3562fbc117967fb3
   zh: 6600b28ea6202f68

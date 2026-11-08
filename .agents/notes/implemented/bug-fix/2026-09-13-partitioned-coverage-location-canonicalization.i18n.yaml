@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-13-partitioned-coverage-location-canonicalization.md
 /agent-note-canonicalize-partition-coverage-locations-before-the-blob-merge:
-  en: 2b3c9d4b6b9af14b
-  zh: 6aa6e890f8c2ad96
+  en: 462efe964e263f53
+  zh: a58ed0ad81e22f47
 /agent-note-canonicalize-partition-coverage-locations-before-the-blob-merge/problem:
   en: c2f8792fb6ec46d1
   zh: cc01e2e2ff14f367
 /agent-note-canonicalize-partition-coverage-locations-before-the-blob-merge/decision:
-  en: 2b3ce6221d5aa6ae
-  zh: 3e51855fc1380e46
+  en: 6180f64a37d8ecad
+  zh: 5729180dea478642
 /agent-note-canonicalize-partition-coverage-locations-before-the-blob-merge/divergent-statement-maps-across-vite-environments:
   en: 4f6d088fd7e272fc
   zh: d44463ee8485b060

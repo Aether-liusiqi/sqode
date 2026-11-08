@@ -101,7 +101,7 @@ function parseErrorResult(value: Record<string, unknown>): LinuxStartupError {
  * @returns private paths owned by this launch.
  */
 export function createLinuxLaunchFiles(request: LinuxLaunchRequest): LinuxLaunchFiles {
-  const directory = mkdtempSync(join(tmpdir(), 'sqhsubprocess-launch-'))
+  const directory = mkdtempSync(join(tmpdir(), 'sqh-subprocess-launch-'))
   const files = {
     directory,
     requestPath: join(directory, 'launch-request.json'),

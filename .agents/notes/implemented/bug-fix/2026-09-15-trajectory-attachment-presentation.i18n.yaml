@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-15-trajectory-attachment-presentation.md
 /agent-note-consistent-trajectory-attachment-presentation:
-  en: bb55b098f6ada8a0
-  zh: c961b5ad53b06150
+  en: 123dd69aa4f24f73
+  zh: 83026c5ddd7c69f2
 /agent-note-consistent-trajectory-attachment-presentation/problem:
   en: 3a02d475408db611
   zh: 49ef7f0e91917e13
@@ -12,8 +12,8 @@
   en: 9a37a61d84813db3
   zh: 546cf3d1734289ee
 /agent-note-consistent-trajectory-attachment-presentation/decision/ownership:
-  en: 2ec3fce5505982e3
-  zh: 2a378b3a323856f9
+  en: be0e930df4b74c4f
+  zh: 4fb0a815a7ed2d19
 /agent-note-consistent-trajectory-attachment-presentation/alternatives-considered:
   en: f32a7ff301caf058
   zh: fbea3a171a300aef

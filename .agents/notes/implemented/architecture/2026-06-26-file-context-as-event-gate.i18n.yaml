@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-06-26-file-context-as-event-gate.md
 /agent-note-make-sqh-fs-observation-policy-an-event-gate-plugin-not-a-method-interface:
-  en: 0057d4a086a3a4ec
-  zh: 57203f4c098d5375
+  en: 59b33b65a3dbd79a
+  zh: 637b432686b3c0b3
 /agent-note-make-sqh-fs-observation-policy-an-event-gate-plugin-not-a-method-interface/problem:
-  en: e45f7f08cef36c25
-  zh: 6df8e9e3ea51fa3d
+  en: 8d2016cfe0d9df7f
+  zh: 9df42086b15dce73
 /agent-note-make-sqh-fs-observation-policy-an-event-gate-plugin-not-a-method-interface/decision:
   en: c65e822880f29bed
   zh: 56da089aff93a326
@@ -30,14 +30,14 @@
   en: aee188c90e3718be
   zh: fa1392fd5b115ab6
 /agent-note-make-sqh-fs-observation-policy-an-event-gate-plugin-not-a-method-interface/supersedes:
-  en: f061d46a9f01a7e9
-  zh: 223059c2066b1bfd
+  en: 4cd05ff46af53ffa
+  zh: 149cdcccafcec032
 /agent-note-make-sqh-fs-observation-policy-an-event-gate-plugin-not-a-method-interface/verification:
   en: 15cb455605b1d96c
   zh: d9fea6e674b20ec1
 /agent-note-make-sqh-fs-observation-policy-an-event-gate-plugin-not-a-method-interface/alternatives-considered:
-  en: 3618903eff84c8ed
-  zh: b23962773b98f86e
+  en: eaf74721f2c1a990
+  zh: e3f951f84ff926ec
 /agent-note-make-sqh-fs-observation-policy-an-event-gate-plugin-not-a-method-interface/consequences:
   en: d81028109921ec2f
   zh: 52db64fab05e231e

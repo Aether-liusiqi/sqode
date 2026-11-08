@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-07-10-after-call-compaction-pressure-and-overflow-recovery.md
 /agent-note-after-call-compaction-pressure-and-context-overflow-recovery:
-  en: c98f14fb82bae6d9
-  zh: 9794fca2745eec67
+  en: a50352417235cdb5
+  zh: eaf8e28770ca4d5a
 /agent-note-after-call-compaction-pressure-and-context-overflow-recovery/problem:
   en: 036da3e545debe29
   zh: 82e031a3120ca36c
@@ -15,8 +15,8 @@
   en: 62c71894f4028730
   zh: 5aff358d35ba55b9
 /agent-note-after-call-compaction-pressure-and-context-overflow-recovery/decision/request-recovery-is-limited-to-the-final-model-boundary:
-  en: 677faf24f8d237fb
-  zh: 7a6273d45dd77aa3
+  en: 43d469367f0a6843
+  zh: 0f0173c1b7c4e647
 /agent-note-after-call-compaction-pressure-and-context-overflow-recovery/decision/compactionengine-exposes-intent-not-token-accounting:
   en: be9505b3d73c7f6b
   zh: ed753f1afec2787a
@@ -27,5 +27,5 @@
   en: 3cb5363732ef5758
   zh: 07746411cc80878f
 /agent-note-after-call-compaction-pressure-and-context-overflow-recovery/consequences:
-  en: ac47b47c9f475aa9
-  zh: 11131f4bf0716135
+  en: f0a58d0d794937f2
+  zh: 93720506d28b5a30

@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-03-normalized-unread-fs-tool-diagnostic.md
 /agent-note-normalized-unread-filesystem-tool-diagnostic:
-  en: 194ef4f81a6161de
-  zh: 117c4a4ce8a53b9d
+  en: a55f0fdcc49f9632
+  zh: 4d22378801b5f6ca
 /agent-note-normalized-unread-filesystem-tool-diagnostic/problem:
   en: 1ebc5aa63b91eb4d
   zh: 1c7b917e3e3f4f4a

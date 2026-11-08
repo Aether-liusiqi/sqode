@@ -3,11 +3,11 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-08-15-product-subagent-noninteractive-permissions.md
 /agent-note-product-subagents-use-profile-selected-non-interactive-permissions:
-  en: c228f2c7024b4716
-  zh: f5ae03af7f4cfd35
+  en: fb27a152decee7d7
+  zh: 7a1b36256819ab29
 /agent-note-product-subagents-use-profile-selected-non-interactive-permissions/problem:
-  en: 5d5bc80d09b1019c
-  zh: 7565244bcd3dfd54
+  en: 58bed707347d43fe
+  zh: c4c2e926996c3379
 /agent-note-product-subagents-use-profile-selected-non-interactive-permissions/decision:
   en: a4635e16af21d478
   zh: 6cd59ad7e2bb9885

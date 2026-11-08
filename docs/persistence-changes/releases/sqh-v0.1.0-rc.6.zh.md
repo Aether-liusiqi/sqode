@@ -1,9 +1,9 @@
 ---
-description: "回溯 sqhv0.1.0-rc.6 的已声明 Session 持久化类型及相邻版本变化。"
+description: "回溯 sqh-v0.1.0-rc.6 的已声明 Session 持久化类型及相邻版本变化。"
 kind: persistence-release
 ---
 
-# 持久化版本回溯: sqhv0.1.0-rc.6
+# 持久化版本回溯: sqh-v0.1.0-rc.6
 
 [English](sqh-v0.1.0-rc.6.md) | 中文
 
@@ -28,10 +28,10 @@ kind: persistence-release
 
 | 项目 | 记录值 |
 |---|---|
-| 源码 tag | `sqhv0.1.0-rc.6` |
+| 源码 tag | `sqh-v0.1.0-rc.6` |
 | 源码日期 | 2026-08-13T11:56:40.000Z |
 | 发行记录 | 只有 tag，没有 release 对象。 |
-| 前一版本 | [sqhv0.1.0-rc.5](sqh-v0.1.0-rc.5.zh.md) |
+| 前一版本 | [sqh-v0.1.0-rc.5](sqh-v0.1.0-rc.5.zh.md) |
 | Session 写入版本 | 0 |
 | 完整重建清单 | <!-- persistence-release-inventory:start -->47 个根类型 / 374 种类型<!-- persistence-release-inventory:end --> |
 | 本条快照 | [sqh-v0.1.0-rc.6.schema.json](sqh-v0.1.0-rc.6.schema.json) |
@@ -45,8 +45,8 @@ kind: persistence-release
 
 ```yaml persistence-release
 schemaVersion: 1
-tag: sqhv0.1.0-rc.6
-previous: sqhv0.1.0-rc.5
+tag: sqh-v0.1.0-rc.6
+previous: sqh-v0.1.0-rc.5
 sessionFormatVersion: 0
 changes: []
 ```

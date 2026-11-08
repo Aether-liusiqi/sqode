@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-09-15-changed-file-diff-preview.md
 /agent-note-turn-review-tab:
-  en: dddde918becf766e
-  zh: d41f0a9958434b15
+  en: 72acc62412ff92a1
+  zh: 4fe8922f7e75aff9
 /agent-note-turn-review-tab/problem:
-  en: 1e887f6392b7be23
-  zh: 01443f288e80a271
+  en: 710ccdc8ed6ce256
+  zh: 0ca55481ad69eb7a
 /agent-note-turn-review-tab/decision:
-  en: c77c5bc5081ff6b4
-  zh: 8b29edd0fe2c1c32
+  en: 8482288596f3235b
+  zh: 87b5b7ed8bea2c91
 /agent-note-turn-review-tab/alternatives-considered:
   en: e648f82b78a2c0d3
   zh: f4e6511766ace168

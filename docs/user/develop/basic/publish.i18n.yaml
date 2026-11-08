@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/user/develop/basic/publish.md
 /package-and-install-a-plugin:
-  en: af2b8cccc6e1a081
-  zh: 0642b58f27252853
+  en: 408c6a28a11be2da
+  zh: a9bf64c60ce73fbf
 /package-and-install-a-plugin/two-concepts-two-manifests:
   en: 6d02b9541c8ce274
   zh: 502a4bd0795d26ea
@@ -12,20 +12,20 @@
   en: d66cfaba67e77508
   zh: 7a32d6e00f7435c2
 /package-and-install-a-plugin/two-concepts-two-manifests/the-profile-manifest:
-  en: 392914dbe4310084
-  zh: 9242084946f86205
+  en: ca90f7d7f91173fe
+  zh: 0b2b8d1526f31ae1
 /package-and-install-a-plugin/install-into-a-profile:
-  en: 69f46ad67871b9cf
-  zh: e7048f7db8ef99c9
+  en: f66843151cb43242
+  zh: 20f5b7d75b2a8134
 /package-and-install-a-plugin/the-loading-order:
   en: aa1649d966fdd5ee
   zh: bb6259470f1b9605
 /package-and-install-a-plugin/give-a-surface-bundle-its-own-command-line:
-  en: 70a0eb63beb5d283
-  zh: 2f677c9cbab4fe45
+  en: 68bff98e9f70cd4c
+  zh: c100dbe5a22483b3
 /package-and-install-a-plugin/installing-from-github-the-build-script-catch:
   en: d3d1e64e3321f2f4
   zh: 96816135c73c77f0
 /package-and-install-a-plugin/next-steps:
-  en: 2132e4d91e94eb42
-  zh: bbbb9ca6bda2a64f
+  en: 9df8199d362353cb
+  zh: 36aced892ea7a413

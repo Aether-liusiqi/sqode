@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-07-08-self-referential-cordis-toolset.md
 /agent-note-cordis-runtime-inspection-and-runner-isolation:
-  en: 7e57722c3044118c
-  zh: 51686732f5624af9
+  en: c1da69af8baa6b3c
+  zh: ebb836355ea87039
 /agent-note-cordis-runtime-inspection-and-runner-isolation/problem:
   en: 29d1465c348331e9
   zh: 25dbc885f5d7ee7d
 /agent-note-cordis-runtime-inspection-and-runner-isolation/decision:
-  en: f0265aa55293fbbb
-  zh: 528080db590673f5
+  en: 96b424faae67d167
+  zh: 506f1b4a355aacad
 /agent-note-cordis-runtime-inspection-and-runner-isolation/alternatives-considered:
   en: 637137a3b035c211
   zh: 5a667bfe2446a5f8

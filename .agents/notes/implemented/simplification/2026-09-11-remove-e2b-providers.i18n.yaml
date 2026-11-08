@@ -3,23 +3,23 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/simplification/2026-09-11-remove-e2b-providers.md
 /agent-note-remove-the-e2b-execution-providers:
-  en: 0a21186ee80f8a0f
-  zh: f2fb51c2c697ba0d
+  en: ac84a065acdfa51f
+  zh: a6b07f23ebffc9bf
 /agent-note-remove-the-e2b-execution-providers/problem:
   en: 92edfc6f0da7a874
   zh: 21487929a5631087
 /agent-note-remove-the-e2b-execution-providers/decision:
-  en: 1e17675aa94f205b
-  zh: 18d7343a14610d9f
+  en: c64579b12a8d044d
+  zh: 3d577ef0c49e2626
 /agent-note-remove-the-e2b-execution-providers/alternatives-considered:
   en: dc8a267887d4a65c
   zh: 806f4a6c844b6284
 /agent-note-remove-the-e2b-execution-providers/consequences:
-  en: 17fa7fc2bbaf694b
-  zh: 78692c3e9fef7b73
+  en: 6c1166b8e6f0205f
+  zh: 8659efc0644800b4
 /agent-note-remove-the-e2b-execution-providers/reintroduction-conditions:
-  en: d2d6f3839abe40c9
-  zh: 5e81a72fcb3595f3
+  en: 3fb9c0198a89f148
+  zh: 6b5fbdb61c226255
 /agent-note-remove-the-e2b-execution-providers/verification:
   en: d4f3b559dd32d80a
   zh: c4ba5b64178faf81

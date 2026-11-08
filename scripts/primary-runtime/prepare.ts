@@ -116,7 +116,7 @@ export async function preparePrimaryRuntime(options: PreparePrimaryRuntimeOption
   const artifact = lock.targets[target]
   mkdirSync(paths.runtime, { recursive: true })
   mkdirSync(paths.downloads, { recursive: true })
-  const staging = mkdtempSync(join(tmpdir(), 'sqhprimary-'))
+  const staging = mkdtempSync(join(tmpdir(), 'sqh-primary-'))
   try {
     const output = join(staging, 'payload')
     const dependencies = join(output, 'dependencies')
@@ -207,7 +207,7 @@ if (import.meta.main) {
   const output = resolve(values.output)
   await preparePrimaryRuntime({
     target: values.target as PrimaryRuntimeTarget, output,
-    cache: values.cache ?? join(tmpdir(), 'sqhprimary-runtime-downloads'), version,
+    cache: values.cache ?? join(tmpdir(), 'sqh-primary-runtime-downloads'), version,
     pythonOnly: values['python-only'],
   })
   smokePrimaryRuntime(join(output, 'primary-runtime'))

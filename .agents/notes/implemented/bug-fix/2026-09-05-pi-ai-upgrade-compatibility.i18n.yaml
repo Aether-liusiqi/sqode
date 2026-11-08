@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/bug-fix/2026-09-05-pi-ai-upgrade-compatibility.md
 /agent-note-pi-ai-upgrade-compatibility:
-  en: b2920a2dfdf84510
-  zh: a21ccb9ccb01722c
+  en: ecef1bdecd7a4962
+  zh: 9ab1f54ed40eb94f
 /agent-note-pi-ai-upgrade-compatibility/problem:
   en: 0a106a9d74115ce5
   zh: a65945e32455944e
 /agent-note-pi-ai-upgrade-compatibility/decision:
-  en: 31ea64477c13b043
-  zh: ace860e31c28474e
+  en: ff2a25a2308219f5
+  zh: b433acdca8fb44a1
 /agent-note-pi-ai-upgrade-compatibility/alternatives-considered:
   en: bcfd595bb17c3cd6
   zh: b7d4346e9c50f95d
