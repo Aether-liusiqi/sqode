@@ -9,7 +9,7 @@ English | [中文](README.zh.md)
 
 ## Summary
 
-Use `DshPackageManifest` for package metadata, `DshManifest` for the public fields under `sqh`, and member types such as `DshClientManifest` for one domain. Each reader owns JSON parsing, validation, and default resolution.
+Use `SqhPackageManifest` for package metadata, `SqhManifest` for the public fields under `sqh`, and member types such as `SqhClientManifest` for one domain. Each reader owns JSON parsing, validation, and default resolution.
 
 ## Table of Contents
 
@@ -28,10 +28,10 @@ Use `DshPackageManifest` for package metadata, `DshManifest` for the public fiel
 Import from the package root. Use a development dependency when only checking your own source; use a production dependency if your published declarations reference these types.
 
 ```ts
-import type { DshClientManifest, DshPackageManifest } from '@liusiqi-dev/sqh-package-manifest'
+import type { SqhClientManifest, SqhPackageManifest } from '@liusiqi-dev/sqh-package-manifest'
 
-const client: DshClientManifest = { platform: 'web' }
-const manifest: DshPackageManifest = {
+const client: SqhClientManifest = { platform: 'web' }
+const manifest: SqhPackageManifest = {
   name: 'example-sqh-plugin',
   version: '1.0.0',
   engines: { node: '>=24', sqh: '0.1.5-alpha.1' },
@@ -43,7 +43,7 @@ const manifest: DshPackageManifest = {
 }
 ```
 
-`DshPackageManifest` describes the package.json fields used by SQH, with required `name` and `version`; it is not an exhaustive npm schema. Local profile readers use `Partial<DshPackageManifest>` because profiles need no published version. `DshManifest` describes only public author fields under `sqh`. `DshBundleManifest.patch` is one patch file path or an ordered list of them, each relative to the package root; the launcher applies a list in order as one bundle layer. TypeScript checks the example and erases `import type`; these interfaces do not parse JSON or write a file.
+`SqhPackageManifest` describes the package.json fields used by SQH, with required `name` and `version`; it is not an exhaustive npm schema. Local profile readers use `Partial<SqhPackageManifest>` because profiles need no published version. `SqhManifest` describes only public author fields under `sqh`. `SqhBundleManifest.patch` is one patch file path or an ordered list of them, each relative to the package root; the launcher applies a list in order as one bundle layer. TypeScript checks the example and erases `import type`; these interfaces do not parse JSON or write a file.
 
 The following metadata fields are optional. Omitting them leaves the format version or compatible host versions undeclared; readers do not infer defaults.
 

@@ -9,7 +9,7 @@ import { expect, it, onTestFinished } from 'vitest'
 import { prepareDesktopCli } from '../scripts/prepare-cli.ts'
 
 function fixture() {
-  const root = realpathSync(mkdtempSync(join(tmpdir(), 'dsh-cli-launcher-')))
+  const root = realpathSync(mkdtempSync(join(tmpdir(), 'sqh-cli-launcher-')))
   const children: ChildProcessWithoutNullStreams[] = []
   const exits: Promise<unknown>[] = []
   onTestFinished(async () => {

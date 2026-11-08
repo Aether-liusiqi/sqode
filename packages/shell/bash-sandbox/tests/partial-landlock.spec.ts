@@ -43,7 +43,7 @@ afterEach(async () => {
 
 /** Write a fake native launcher that reports partial enforcement, then execs or fails. */
 async function fakeLauncher(fatalExit?: number): Promise<string> {
-  const dir = await mkdtemp(join(tmpdir(), 'dsh-partial-landlock-'))
+  const dir = await mkdtemp(join(tmpdir(), 'sqh-partial-landlock-'))
   tempDirs.push(dir)
   const launcher = join(dir, 'landlock-run')
   const fatalBranch = fatalExit === undefined ? '' : `printf '%s\\n' '${FATAL}' >&2\nexit ${fatalExit}\n`
@@ -95,12 +95,12 @@ async function setupConfiguredRunner(runner: string): Promise<SandboxBashExecuto
 
 describe('partial Landlock runner-failure classification', () => {
   it.each(['missing', 'unexecutable', 'missing-interpreter'] as const)('classifies a %s configured runner through the direct spawn error channel', async (kind) => {
-    const dir = await mkdtemp(join(tmpdir(), 'dsh-unusable-sandbox-runner-'))
+    const dir = await mkdtemp(join(tmpdir(), 'sqh-unusable-sandbox-runner-'))
     tempDirs.push(dir)
     const runner = join(dir, `${kind}-runner`)
     if (kind === 'unexecutable') await writeFile(runner, '#!/bin/sh\nexit 0\n', { mode: 0o644 })
     if (kind === 'missing-interpreter') {
-      await writeFile(runner, '#!/dsh-definitely-missing-sandbox-interpreter\nexit 0\n', { mode: 0o755 })
+      await writeFile(runner, '#!/sqh-definitely-missing-sandbox-interpreter\nexit 0\n', { mode: 0o755 })
     }
     const bash = await setupConfiguredRunner(runner)
 
@@ -126,11 +126,11 @@ describe('partial Landlock runner-failure classification', () => {
   it.each(['bare-name', 'relative'] as const)(
     'classifies a %s runner whose shebang interpreter is missing',
     async (form) => {
-      const dir = await mkdtemp(join(tmpdir(), 'dsh-argv-form-sandbox-runner-'))
+      const dir = await mkdtemp(join(tmpdir(), 'sqh-argv-form-sandbox-runner-'))
       tempDirs.push(dir)
       const filename = 'missing-interpreter-runner'
       const runner = form === 'bare-name' ? filename : `./${filename}`
-      await writeFile(join(dir, filename), '#!/dsh-definitely-missing-sandbox-interpreter\nexit 0\n', { mode: 0o755 })
+      await writeFile(join(dir, filename), '#!/sqh-definitely-missing-sandbox-interpreter\nexit 0\n', { mode: 0o755 })
       const bash = await setupConfiguredRunner(runner)
       const request = form === 'bare-name'
         ? { command: 'true', env: { PATH: dir } }
@@ -157,7 +157,7 @@ describe('partial Landlock runner-failure classification', () => {
   )
 
   it('keeps a real malformed executable ordinary across no-shebang spawn behavior', async () => {
-    const dir = await mkdtemp(join(tmpdir(), 'dsh-malformed-sandbox-runner-'))
+    const dir = await mkdtemp(join(tmpdir(), 'sqh-malformed-sandbox-runner-'))
     tempDirs.push(dir)
     const runner = join(dir, 'malformed-runner')
     await writeFile(runner, 'not a native executable or shebang script\n', { mode: 0o755 })

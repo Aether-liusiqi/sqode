@@ -86,7 +86,7 @@ describe('dsh path helpers', () => {
   })
 
   it('canonicalizes a watcher ancestor while preserving a missing suffix', async () => {
-    const root = await mkdtemp(join(tmpdir(), 'dsh-watch-path-'))
+    const root = await mkdtemp(join(tmpdir(), 'sqh-watch-path-'))
     const target = join(root, 'target')
     const alias = join(root, 'alias')
     try {

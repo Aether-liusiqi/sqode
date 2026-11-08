@@ -116,7 +116,7 @@ it('synchronizes two pages, disposes effects and restores an offline page from t
       liveDisposals: document.documentElement.dataset.liveDisposals,
       liveHits: document.documentElement.dataset.liveHits,
     }))
-    const ping = (target: Page) => target.evaluate(() => { window.dispatchEvent(new Event('dsh-fixture-ping')) })
+    const ping = (target: Page) => target.evaluate(() => { window.dispatchEvent(new Event('sqh-fixture-ping')) })
     expect(await live(page).count()).toBe(0)
     expect(scaffold.ctx.clientModules.graph().entries.some(row => row.id === '@fixture/live-client')).toBe(false)
 
@@ -200,7 +200,7 @@ it('keeps a failed client download local and retries without changing Host enabl
 }, 90_000)
 
 it('recovers an uncreated client entry with rebuilt factory code without navigation', async () => {
-  const fixture = await mkdtemp(join(tmpdir(), 'dsh-client-rebuild-'))
+  const fixture = await mkdtemp(join(tmpdir(), 'sqh-client-rebuild-'))
   // Finished hooks unwind in reverse order, so the Host closes before its fixture is removed.
   onTestFinished(() => rm(fixture, { recursive: true, force: true }))
   await cp(FIXTURE, fixture, { recursive: true })
@@ -298,7 +298,7 @@ it('removes the client UI and resources while Host cleanup is still pending', as
     await expect.poll(() => live.count()).toBe(0)
     await expect.poll(() => page.evaluate(() => document.documentElement.dataset.liveDisposals)).toBe('1')
     expect(await page.locator('style[data-plugin="@fixture/live-client"]').count()).toBe(0)
-    await page.evaluate(() => { window.dispatchEvent(new Event('dsh-fixture-ping')) })
+    await page.evaluate(() => { window.dispatchEvent(new Event('sqh-fixture-ping')) })
     expect(await page.evaluate(() => document.documentElement.dataset.liveHits)).toBeUndefined()
     expect(hostDisposed).toBe(false)
     expect(scaffold.ctx.loader.ctx.fiber.uid).toBe(host)

@@ -114,7 +114,7 @@ describe.skipIf(MODE === 'record')('web e2e: archiving a running Session stops i
   }
 
   beforeAll(async () => {
-    replayDir = await mkdtemp(join(tmpdir(), 'dsh-session-archive-active-'))
+    replayDir = await mkdtemp(join(tmpdir(), 'sqh-session-archive-active-'))
     const replayOverride = join(replayDir, 'replay.override.json')
     await writeFile(replayOverride, JSON.stringify(script()))
     scaffold = await launchWebScaffold({

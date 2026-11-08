@@ -109,7 +109,7 @@ describe('parseDevWebArguments', () => {
 })
 
 it('samples one local environment at startup without validating watcher outputs', async () => {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-dev-web-environment-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-dev-web-environment-'))
   try {
     await mkdir(join(root, 'apps/web/dist'), { recursive: true })
     await mkdir(join(root, 'packages/client/example/lib'), { recursive: true })
@@ -141,7 +141,7 @@ it('samples one local environment at startup without validating watcher outputs'
 })
 
 it('discovers dsh.client packages with sibling roles', async () => {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-dev-web-discovery-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-dev-web-discovery-'))
   try {
     const current = join(root, 'packages', 'client', 'current')
     await mkdir(current, { recursive: true })
@@ -160,7 +160,7 @@ it('discovers dsh.client packages with sibling roles', async () => {
 })
 
 it('discovers client-preset packages the shell links, excluding loader-delivered and test infrastructure', async () => {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-dev-web-library-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-dev-web-library-'))
   try {
     const write = async (dir: string, manifest: unknown, config: string): Promise<void> => {
       await mkdir(join(root, dir), { recursive: true })
@@ -185,11 +185,11 @@ it('discovers client-preset packages the shell links, excluding loader-delivered
 })
 
 it('rebuilds a client-plugin bundle after its source changes', async () => {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-dev-web-watch-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-dev-web-watch-'))
   let bundles: TsdownBundle[] = []
   try {
     await symlink(join(import.meta.dirname, '..', 'node_modules'), join(root, 'node_modules'), 'dir')
-    await writeFile(join(root, 'package.json'), JSON.stringify({ name: '@dsh-test/dev-web-watch', private: true, type: 'module' }))
+    await writeFile(join(root, 'package.json'), JSON.stringify({ name: '@sqh-test/dev-web-watch', private: true, type: 'module' }))
     await writeFile(join(root, 'tsdown.config.ts'), `
 import { defineConfig } from 'tsdown'
 export default defineConfig({

@@ -11,7 +11,7 @@ import * as yaml from 'js-yaml'
 import { entryListSchema } from '@liusiqi-dev/cordis-plugin-include'
 import { evaluate } from '@liusiqi-dev/cordis-plugin-loader'
 
-describe('dsh-base bundle', () => {
+describe('sqh-base bundle', () => {
   it('declares a parseable patch list through the dsh.bundle.patch manifest field', () => {
     const root = fileURLToPath(new URL('..', import.meta.url))
     const manifest = JSON.parse(

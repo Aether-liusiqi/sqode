@@ -42,7 +42,7 @@ async function fixture(body: (context: {
   journals: string
   store: Store
 }) => Promise<void>): Promise<void> {
-  const parent = await mkdtemp(join(tmpdir(), 'dsh-publication-'))
+  const parent = await mkdtemp(join(tmpdir(), 'sqh-publication-'))
   try {
     vi.spyOn(console, 'log').mockImplementation(() => undefined)
     const run = await createInstalledUpdateRun(parent, ['0.1.6-nightly.20260914.1', '0.1.6-nightly.20260914.2'],

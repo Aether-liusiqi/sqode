@@ -27,7 +27,7 @@ async function open(root: string) {
 }
 
 it('refuses an array-shaped tables map instead of opening an empty task catalog', async () => {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-schedule-malformed-')); roots.push(root)
+  const root = await mkdtemp(join(tmpdir(), 'sqh-schedule-malformed-')); roots.push(root)
   const path = join(root, 'schedule.json')
   const task = {
     sessionId: 'session-1',

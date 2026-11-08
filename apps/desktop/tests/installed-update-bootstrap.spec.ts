@@ -12,7 +12,7 @@ const versions = ['0.1.6-nightly.20260914.1', '0.1.6-nightly.20260914.2'] as con
 const source = { version: '0.1.5-rc.2', commit: 'a'.repeat(40), dirtyFiles: [] }
 
 async function fixture<T>(body: (directory: string) => Promise<T>): Promise<T> {
-  const directory = await mkdtemp(join(tmpdir(), 'dsh-update-bootstrap-'))
+  const directory = await mkdtemp(join(tmpdir(), 'sqh-update-bootstrap-'))
   try { return await body(directory) }
   finally { await rm(directory, { recursive: true, force: true }) }
 }
@@ -49,8 +49,8 @@ console.log(JSON.stringify({ paths: app.paths, home: process.env.SQODE_HOME, jou
       }
       const root = join(directory, 'application-data/sqh-update-qualification', run.id)
       expect(results).toEqual([0, 1].map(() => ({ paths: { userData: join(root, 'user-data'), sessionData: join(root, 'user-data') },
-        home: join(root, 'dsh-home'), journals: join(root, 'journals') })))
-      expect((await readdir(root)).sort()).toEqual(['dsh-home', 'journals', 'user-data'])
+        home: join(root, 'sqh-home'), journals: join(root, 'journals') })))
+      expect((await readdir(root)).sort()).toEqual(['sqh-home', 'journals', 'user-data'])
       await expect(prepareInstalledUpdateBootstrap(join(run.root, 'run.json'))).rejects.toMatchObject({ code: 'EEXIST' })
     })
   })

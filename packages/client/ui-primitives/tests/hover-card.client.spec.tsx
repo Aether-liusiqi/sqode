@@ -218,9 +218,9 @@ describe('HoverCard', () => {
   })
 
   it('keeps previews below the desktop frame clearance', () => {
-    const prior = document.documentElement.style.getPropertyValue('--dsh-frame-top-clearance')
-    const priority = document.documentElement.style.getPropertyPriority('--dsh-frame-top-clearance')
-    document.documentElement.style.setProperty('--dsh-frame-top-clearance', '100px')
+    const prior = document.documentElement.style.getPropertyValue('--sqh-frame-top-clearance')
+    const priority = document.documentElement.style.getPropertyPriority('--sqh-frame-top-clearance')
+    document.documentElement.style.setProperty('--sqh-frame-top-clearance', '100px')
     try {
       const { wrapper } = mount({ variant: 'preview' })
       wrapper.getBoundingClientRect = () => DOMRect.fromRect({ x: 100, y: 600, width: 600, height: 32 })
@@ -233,8 +233,8 @@ describe('HoverCard', () => {
       expect(card.style.top).toBe('120px')
       expect(card.style.maxHeight).toBe('322px')
     } finally {
-      if (prior === '') document.documentElement.style.removeProperty('--dsh-frame-top-clearance')
-      else document.documentElement.style.setProperty('--dsh-frame-top-clearance', prior, priority)
+      if (prior === '') document.documentElement.style.removeProperty('--sqh-frame-top-clearance')
+      else document.documentElement.style.setProperty('--sqh-frame-top-clearance', prior, priority)
     }
   })
 

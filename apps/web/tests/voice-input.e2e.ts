@@ -20,7 +20,7 @@ const recordingExpected = fileURLToPath(new URL('../../../snapshots/web/voice-in
 const bundle = fileURLToPath(new URL('../../../packages/experimental/voice-input-bundle', import.meta.url))
 
 it.skipIf(webSnapshotMode() === 'record')('guides voice setup, records from standby and submits only the reviewed transcript through Session replay', async () => {
-  const scratch = await mkdtemp(join(tmpdir(), 'dsh-voice-browser-'))
+  const scratch = await mkdtemp(join(tmpdir(), 'sqh-voice-browser-'))
   const resources: { scaffold?: WebScaffold; browser?: Browser } = {}
   onTestFinished(async () => {
     try { await resources.browser?.close() } finally {

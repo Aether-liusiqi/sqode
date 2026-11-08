@@ -56,7 +56,7 @@ class ScreenshotModel extends LlmAdapter {
 }
 
 async function load(mode?: string): Promise<{ ctx: Context; root: string; model: ScreenshotModel }> {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-computer-use-mcp-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-computer-use-mcp-'))
   roots.push(root)
   const model = new ScreenshotModel()
   const modules = new Map<string, unknown>([

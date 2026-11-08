@@ -168,7 +168,7 @@ check('promises.rm recursive', fs.existsSync('/dsh/config-copy'), false)
 // ---------------------------------------------------------------------------
 // The `{ bigint: true }` stats the filesystem service reads.
 //
-// `dsh-fs-local` stats EVERY target this way before it lists or reads: it masks
+// `sqh-fs-local` stats EVERY target this way before it lists or reads: it masks
 // `mode` with a BigInt literal and builds its version token from
 // `dev:ino:size:mtimeNs:ctimeNs`. A number-valued `mode` here made that mask
 // throw `Cannot mix BigInt and other types`, which the service reported as
@@ -217,7 +217,7 @@ check('a directory reports the creation-default mode in the bigint shape', Numbe
 
 // ---------------------------------------------------------------------------
 // Permission bits round-trip: creation takes the caller's mode, chmod changes
-// it, stat reads back the stored value. dsh-credentials-local's owner-only
+// it, stat reads back the stored value. sqh-credentials-local's owner-only
 // check reads exactly this (writeFileAtomic writes `wx` + mode 600, renames
 // into place, then the provider stats the result).
 // ---------------------------------------------------------------------------

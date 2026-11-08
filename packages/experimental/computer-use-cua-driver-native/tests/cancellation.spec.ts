@@ -25,7 +25,7 @@ beforeEach(async () => {
   ctx = new Context()
   await mountAgentLoopTestDependencies(ctx)
   await ctx.plugin(ComputerUseRegistry)
-  root = await mkdtemp(join(tmpdir(), 'dsh-native-cancellation-'))
+  root = await mkdtemp(join(tmpdir(), 'sqh-native-cancellation-'))
   await ctx.plugin(LocalAttachmentStore, { sqhHome: root })
 })
 

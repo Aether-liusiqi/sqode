@@ -38,7 +38,7 @@ describe('ripgrep resolution', () => {
     Reflect.defineProperty(process, 'platform', { configurable: true, enumerable: true, value: 'linux' })
     process.execPath = '/runtime/dsh'
     existsSync.mockReturnValue(true)
-    const sidecar = '/runtime/dsh-rg'
+    const sidecar = '/runtime/sqh-rg'
     const { resolveRgPath } = await import('@liusiqi-dev/sqh-tool-fs-search')
 
     await expect(resolveRgPath()).resolves.toBe(sidecar)

@@ -15,7 +15,7 @@ import { authenticateStream } from '../src/stream-security.ts'
 
 describe.skipIf(process.platform === 'win32')('SSH stream pathname replacement', () => {
   it('keeps the key and payload private when a workspace-write process rebinds and relays the listener', async ({ skip }) => {
-    const root = await realpath(await mkdtemp('/tmp/dsh-ssh-rebind-'))
+    const root = await realpath(await mkdtemp('/tmp/sqh-ssh-rebind-'))
     const ctx = new Context()
     const fs = ctx.plugin(LocalFileSystem, { cwd: root })
     const subprocess = ctx.plugin(LocalSubprocessRuntime)

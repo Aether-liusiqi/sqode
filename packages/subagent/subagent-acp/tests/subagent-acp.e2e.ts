@@ -55,8 +55,8 @@ afterEach(async () => {
 
 describe.skipIf(!process.env.DEEPSEEK_API_KEY)('ACP backend with-key e2e (drive our own acp-agent)', () => {
   it('drives the real acp-agent example process to answer a prompt', async () => {
-    workdir = await mkdtemp(join(tmpdir(), 'dsh-subagent-acp-e2e-'))
-    const childLaunch = resolveChildLaunch(join(workdir, '.dsh-child'))
+    workdir = await mkdtemp(join(tmpdir(), 'sqh-subagent-acp-e2e-'))
+    const childLaunch = resolveChildLaunch(join(workdir, '.sqh-child'))
     ctx = new Context()
     await ctx.plugin(SessionProjectionRegistry)
     await ctx.plugin(SubagentRuntime)
@@ -87,8 +87,8 @@ describe.skipIf(!process.env.DEEPSEEK_API_KEY)('ACP backend with-key e2e (drive 
   }, 180_000)
 
   it('drives the child to do real file work via its own bash tool', async () => {
-    workdir = await mkdtemp(join(tmpdir(), 'dsh-subagent-acp-e2e-'))
-    const childLaunch = resolveChildLaunch(join(workdir, '.dsh-child'))
+    workdir = await mkdtemp(join(tmpdir(), 'sqh-subagent-acp-e2e-'))
+    const childLaunch = resolveChildLaunch(join(workdir, '.sqh-child'))
     ctx = new Context()
     await ctx.plugin(SessionProjectionRegistry)
     await ctx.plugin(SubagentRuntime)

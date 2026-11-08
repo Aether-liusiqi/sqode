@@ -11,7 +11,7 @@ const versions = ['0.1.6-nightly.20260914.1', '0.1.6-nightly.20260914.2'] as con
 const source = { version: '0.1.5-rc.2', commit: 'a'.repeat(40), dirtyFiles: [] }
 
 async function fixture<T>(body: (directory: string) => Promise<T>): Promise<T> {
-  const directory = await mkdtemp(join(tmpdir(), 'dsh-update-materials-'))
+  const directory = await mkdtemp(join(tmpdir(), 'sqh-update-materials-'))
   try { return await body(directory) }
   finally { await rm(directory, { recursive: true, force: true }) }
 }

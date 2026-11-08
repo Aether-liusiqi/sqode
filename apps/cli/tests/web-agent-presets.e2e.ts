@@ -36,7 +36,7 @@ import type {} from '@liusiqi-dev/sqh-token-meter'
 
 const REPO_ROOT = fileURLToPath(new URL('../../..', import.meta.url))
 const { boot } = createRequire(import.meta.url)(join(REPO_ROOT, 'packages/boot/app-boot/lib/index.js')) as typeof import('@liusiqi-dev/sqh-app-boot')
-/** The shipped Web surface: the dsh-base and dsh-web-app bundle patches over an empty profile. */
+/** The shipped Web surface: the sqh-base and sqh-web-app bundle patches over an empty profile. */
 const BASE_PATCH = join(REPO_ROOT, 'packages/bundle/base/cordis.patch.yml')
 const WEB_BUNDLE = join(REPO_ROOT, 'packages/bundle/web-app')
 const WEB_PATCHES = bundlePatchPaths(WEB_BUNDLE, (JSON.parse(readFileSync(join(WEB_BUNDLE, 'package.json'), 'utf8')) as { dsh: { bundle: { patch: string[] } } }).dsh.bundle)
@@ -141,8 +141,8 @@ async function bootWeb(
     patches: [],
   }
   let bundlePatches: PatchOptions[] = [
-    ...loadOverlayPatches('dsh-test', BASE_PATCH),
-    ...webPatches('dsh-test'),
+    ...loadOverlayPatches('sqh-test', BASE_PATCH),
+    ...webPatches('sqh-test'),
   ]
   if (profileBundles !== undefined) {
     await writeFile(join(profileDir, 'package.json'), JSON.stringify({
@@ -150,11 +150,11 @@ async function bootWeb(
       dependencies: Object.fromEntries(profileBundles.map(name => [name, 'workspace:*'])),
       dsh: { profile: { bundles: profileBundles } },
     }, null, 2) + '\n')
-    profile = loadProfile('dsh-test', 'spec', INSTALL_ANCHOR, home, { userLayer: false })
+    profile = loadProfile('sqh-test', 'spec', INSTALL_ANCHOR, home, { userLayer: false })
     bundlePatches = profile.layers.flatMap(layer => layer.patches)
   }
   // Deployment defaults live in a bundle beneath the profile patch, so Settings writes are not shadowed by overlays.
-  const fixtureName = 'dsh-web-presets-defaults'
+  const fixtureName = 'sqh-web-presets-defaults'
   const fixtureDir = join(profileDir, 'node_modules', fixtureName)
   await mkdir(fixtureDir, { recursive: true })
   await writeFile(join(fixtureDir, 'package.json'), JSON.stringify({ name: fixtureName, version: '1.0.0', dsh: { bundle: { patch: 'cordis.patch.yml' } } }))
@@ -165,7 +165,7 @@ async function bootWeb(
   const resolution = await createRuntimeResolution({ installAnchor: INSTALL_ANCHOR, home, profile })
   const rootConfig = join(profileDir, 'cordis.yml')
   await writeFile(rootConfig, '[]\n')
-  return await boot('dsh-test', rootConfig, [...bundlePatches, ...overrides], async (bootCtx) => {
+  return await boot('sqh-test', rootConfig, [...bundlePatches, ...overrides], async (bootCtx) => {
     bootCtx.provide('profileContext', { name: 'spec', dir: profileDir, patchPath: profile.patchPath,
       installAnchor: INSTALL_ANCHOR, home, cwd: home,
       startedBundles: profileBundles ?? ['@liusiqi-dev/sqh-base', '@liusiqi-dev/sqh-web-app'],
@@ -204,7 +204,7 @@ function enablePresetTool(composition: string, id: string): string {
 
 let ctx: Context
 beforeAll(async () => {
-  ctx = await bootWeb(await mkdtemp(join(tmpdir(), 'dsh-web-presets-')))
+  ctx = await bootWeb(await mkdtemp(join(tmpdir(), 'sqh-web-presets-')))
 }, 120_000)
 
 describe('the shipped Web composition', () => {
@@ -454,7 +454,7 @@ describe('the shipped Web composition', () => {
   })
 
   it('merges the global skill layer into a preset agent\'s catalog, keeping local discovery preset-side', async () => {
-    const proj = await mkdtemp(join(tmpdir(), 'dsh-preset-skill-proj-'))
+    const proj = await mkdtemp(join(tmpdir(), 'sqh-preset-skill-proj-'))
     await mkdir(join(proj, '.sqode', 'skills', 'project-proof'), { recursive: true })
     await writeFile(join(proj, '.sqode', 'skills', 'project-proof', 'SKILL.md'), [
       '---',
@@ -543,7 +543,7 @@ describe('product Bundle and user-preset intersection', () => {
   type PresetId = typeof presetIds[number]
 
   async function bootProducts(installed: readonly Product[]): Promise<Context> {
-    const root = await mkdtemp(join(tmpdir(), 'dsh-product-presets-'))
+    const root = await mkdtemp(join(tmpdir(), 'sqh-product-presets-'))
     const definitions: import('@liusiqi-dev/cordis-plugin-loader').EntryOptions[] = []
     const standardConfig = composeEntries([webPatches('test')]).find(row => row.id === 'preset-standard')!.config as import('@liusiqi-dev/sqh-agent-preset-registry').PresetDefinition
     const standard = dump(standardConfig.plugins, { schema: entryListSchema })
@@ -637,7 +637,7 @@ describe('a user preset declared from the shipped cordis rows', () => {
     // host composition (`@liusiqi-dev/sqh-tool-cordis/host`); each preset's
     // `tool-cordis` row only registers the tools. Before that split the copy
     // failed to mount: its row re-registered provider "Service".
-    const root = await mkdtemp(join(tmpdir(), 'dsh-copied-preset-'))
+    const root = await mkdtemp(join(tmpdir(), 'sqh-copied-preset-'))
     const cordis = composeEntries([webPatches('test')]).find(row => row.id === 'preset-cordis')!.config as import('@liusiqi-dev/sqh-agent-preset-registry').PresetDefinition
     const copyCtx = await bootWeb(root, [{ insert: [{
       id: 'preset-cordis-copy', name: '@liusiqi-dev/sqh-agent-preset',
@@ -882,7 +882,7 @@ describe('a profile patch stored before Developer tools owned preset selection',
   let legacy: Context
   let legacyHome: string
   beforeAll(async () => {
-    legacyHome = await mkdtemp(join(tmpdir(), 'dsh-web-presets-legacy-'))
+    legacyHome = await mkdtemp(join(tmpdir(), 'sqh-web-presets-legacy-'))
     // A stored configuration from before the switch moved to Developer tools:
     // it carries the retired key beside the default the user had saved. The
     // Loader resolves the declared fields and leaves the extra one alone.

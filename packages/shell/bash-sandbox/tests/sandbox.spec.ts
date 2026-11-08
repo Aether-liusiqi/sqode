@@ -31,7 +31,7 @@ function start(x: { execute(spec: ShellExecSpec): Promise<ShellExecution> }, spe
 }
 
 
-const spillDir = mkdtempSync(join(tmpdir(), 'dsh-bash-sandbox-spec-'))
+const spillDir = mkdtempSync(join(tmpdir(), 'sqh-bash-sandbox-spec-'))
 
 afterAll(() => {
   rmSync(spillDir, { recursive: true, force: true })
@@ -222,7 +222,7 @@ describe('the provider hand-off', () => {
   })
 
   it('starts a non-Bash runner before the confined inner Bash evaluates BASH_ENV', async () => {
-    const dir = mkdtempSync(join(tmpdir(), 'dsh-bash-env-order-'))
+    const dir = mkdtempSync(join(tmpdir(), 'sqh-bash-env-order-'))
     const hook = join(dir, 'hook.sh')
     const order = join(dir, 'order.txt')
     writeFileSync(hook, 'printf "hook\\n" >> "$SQODE_ORDER_FILE"\n')
@@ -301,7 +301,7 @@ describe('fail closed', () => {
         denialSignatures: UNIX_SIGNATURES,
         runnerFailureRules: RUNNER_FAILURE,
       }))
-      const parent = mkdtempSync(join(tmpdir(), 'dsh-sandbox-missing-cwd-'))
+      const parent = mkdtempSync(join(tmpdir(), 'sqh-sandbox-missing-cwd-'))
       try {
         const failure = await run(bash, bash.resolve({ command: 'true', workdir: join(parent, 'missing') }))
           .catch((error: unknown) => error)
@@ -315,7 +315,7 @@ describe('fail closed', () => {
 
   it('keeps an invalid workdir ordinary when danger-full-access bypasses the provider', async () => {
     const { bash } = await setup({ mode: 'danger-full-access' })
-    const parent = mkdtempSync(join(tmpdir(), 'dsh-sandbox-missing-cwd-'))
+    const parent = mkdtempSync(join(tmpdir(), 'sqh-sandbox-missing-cwd-'))
     try {
       const failure = await run(bash, bash.resolve({ command: 'true', workdir: join(parent, 'missing') }))
         .catch((error: unknown) => error)
@@ -385,7 +385,7 @@ describe('fail closed', () => {
       denialSignatures: UNIX_SIGNATURES,
       runnerFailureRules: RUNNER_FAILURE,
     }))
-    const parent = mkdtempSync(join(tmpdir(), 'dsh-sandbox-missing-cwd-'))
+    const parent = mkdtempSync(join(tmpdir(), 'sqh-sandbox-missing-cwd-'))
     const workdir = join(parent, 'missing')
     const failure = Object.assign(new Error('spawn ENOENT'), { code: 'ENOENT', syscall: `spawn ${runner}`, path: runner })
     vi.spyOn(ctx.subprocess, 'spawn').mockImplementation(() => { throw failure })
@@ -517,7 +517,7 @@ describe('result facts', () => {
 
   it('reports a real permission failure as a sandbox denial with the mode it ran under', async () => {
     const { bash } = await setup()
-    const deniedRoot = mkdtempSync(join(tmpdir(), 'dsh-sandbox-denied-'))
+    const deniedRoot = mkdtempSync(join(tmpdir(), 'sqh-sandbox-denied-'))
     try {
       const lockedDir = join(deniedRoot, 'locked')
       mkdirSync(lockedDir)
@@ -545,7 +545,7 @@ describe('background sandbox facts', () => {
       denialSignatures: UNIX_SIGNATURES,
       runnerFailureRules: RUNNER_FAILURE,
     }))
-    const parent = mkdtempSync(join(tmpdir(), 'dsh-sandbox-missing-cwd-'))
+    const parent = mkdtempSync(join(tmpdir(), 'sqh-sandbox-missing-cwd-'))
     try {
       const task = (await start(bash, bash.resolve({ command: 'true', workdir: join(parent, 'missing') })))
       await task.done

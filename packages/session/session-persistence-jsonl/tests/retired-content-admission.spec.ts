@@ -17,7 +17,7 @@ const modes = (['none', 'zstd'] as const).flatMap(compression =>
 
 describe.each(modes)('retired content in JSONL ($compression, $access)', ({ compression, access }) => {
   async function stored(version: 3 | 4, opaque: boolean, corruptPrefix: boolean) {
-    const root = await mkdtemp(join(tmpdir(), 'dsh-retired-content-'))
+    const root = await mkdtemp(join(tmpdir(), 'sqh-retired-content-'))
     const ctx = new Context()
     onTestFinished(async () => {
       try { await ctx.fiber.dispose() } finally { await rm(root, { recursive: true, force: true }) }

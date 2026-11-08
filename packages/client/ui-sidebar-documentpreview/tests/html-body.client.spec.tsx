@@ -139,7 +139,7 @@ describe('HtmlBody', () => {
     const basic = { ...initial, useInteractivePreview: ((select: (enabled: boolean) => unknown) => select(false)) as HtmlBodyProps['useInteractivePreview'] }
     const view = render(<HtmlBody {...basic} />)
     const frame = screen.getByTitle(en.frame)
-    expect(frame.getAttribute('name')).toBe(`dsh-sidebar-html-${TAB_ID}`)
+    expect(frame.getAttribute('name')).toBe(`sqh-sidebar-html-${TAB_ID}`)
     expect(frame.getAttribute('sandbox')).toBe('')
     expect(frame.getAttribute('srcdoc')).toContain("default-src 'none'")
     expect(frame.getAttribute('srcdoc')).not.toContain('<script')
@@ -149,7 +149,7 @@ describe('HtmlBody', () => {
     view.rerender(<HtmlBody {...scripted} />)
     const advanced = await screen.findByTitle(en.frame)
     expect(advanced).not.toBe(frame)
-    expect(advanced.getAttribute('name')).toBe(`dsh-sidebar-html-${TAB_ID}`)
+    expect(advanced.getAttribute('name')).toBe(`sqh-sidebar-html-${TAB_ID}`)
     expect(advanced.getAttribute('sandbox')).toBe('allow-scripts')
     view.rerender(<HtmlBody {...basic} />)
     expect(advanced.isConnected).toBe(false)

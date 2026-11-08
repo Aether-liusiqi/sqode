@@ -503,14 +503,14 @@ describe('web e2e: settings modal and General preferences', () => {
       await page.getByRole('dialog', { name: '设置', exact: true }).waitFor({ state: 'hidden' })
     })
     const readFontSize = async (target: Page = page): Promise<string> => await target.evaluate(
-      () => document.body.style.getPropertyValue('--dsh-content-font-size'),
+      () => document.body.style.getPropertyValue('--sqh-content-font-size'),
     )
     // The secondary tier resolved by the real engine: a probe element's
     // font-size forces min/max/calc evaluation, which the CSS-text specs
     // cannot exercise. Setting −1 at ≤14, setting −2 above.
     const readSecondaryFontSize = async (): Promise<string> => await page.evaluate(() => {
       const probe = document.createElement('div')
-      probe.style.fontSize = 'var(--dsh-content-font-size-secondary, 13px)'
+      probe.style.fontSize = 'var(--sqh-content-font-size-secondary, 13px)'
       document.body.appendChild(probe)
       const size = getComputedStyle(probe).fontSize
       probe.remove()

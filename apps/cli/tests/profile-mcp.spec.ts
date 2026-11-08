@@ -12,7 +12,7 @@ const resourcePackage = '@liusiqi-dev/sqh-mcp-resources'
 
 describe('shipped MCP resource composition', () => {
   it.each(Object.keys(PROFILE_TEMPLATES))('%s carries one shared resource consumer without a server', (name) => {
-    const home = mkdtempSync(join(tmpdir(), 'dsh-profile-mcp-'))
+    const home = mkdtempSync(join(tmpdir(), 'sqh-profile-mcp-'))
     try {
       const profile = loadProfile('dsh', name, installAnchor, home)
       const warnings: string[] = []

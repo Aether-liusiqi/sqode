@@ -100,7 +100,7 @@ async function mockPlatform() {
       res.writeHead(200, { 'content-type': 'application/json' })
       res.end(JSON.stringify(payload))
     }
-    if (req.headers['x-dsh-auth-token'] !== TOKEN) { res.writeHead(401).end(); return }
+    if (req.headers['x-sqh-auth-token'] !== TOKEN) { res.writeHead(401).end(); return }
     if (url.pathname === '/auth-api/v0/users/current') {
       // `email` is required by the provider's profile schema even when the account has none.
       reply({ code: 0, data: { biz_code: 0, biz_data: {
@@ -246,7 +246,7 @@ describe.skipIf(MODE === 'record')('web e2e: bonus notice', () => {
   beforeAll(async () => {
     platform = await mockPlatform()
     platform.grant(ORDER_FIRST, '5.00')
-    root = await mkdtemp(join(tmpdir(), 'dsh-bonus-notice-'))
+    root = await mkdtemp(join(tmpdir(), 'sqh-bonus-notice-'))
     const home = join(root, 'home')
     await mkdir(home, { recursive: true })
     // A stored grant bound to the double's origin starts the account credential-stored

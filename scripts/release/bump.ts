@@ -49,7 +49,7 @@ interface PlannedVersion {
 }
 
 /** One private sqh workspace whose version follows the publishable family. */
-interface PrivateDshVersion {
+interface PrivateSqhVersion {
   /** Repository-relative manifest path. */
   readonly manifestPath: string
   /** Package directory used in bump output. */
@@ -248,7 +248,7 @@ function rootVersion(root: string): string {
  * @param root - repository root.
  * @returns Private workspace manifests sorted by path.
  */
-function privateDshVersions(root: string): PrivateDshVersion[] {
+function privateSqhVersions(root: string): PrivateSqhVersion[] {
   return globSync(['apps/*/package.json', 'packages/*/*/package.json'], { cwd: root })
     .map(path => path.replaceAll('\\', '/'))
     .sort()
@@ -303,7 +303,7 @@ export function planShared(
     })
   }
   const publishableManifests = new Set(members.map(member => `${member.directory}/package.json`))
-  for (const entry of privateDshVersions(root)) {
+  for (const entry of privateSqhVersions(root)) {
     if (publishableManifests.has(entry.manifestPath)) continue
     planned.push({
       manifestPath: entry.manifestPath,

@@ -11,7 +11,7 @@ import { launchWebScaffold, webSnapshotMode } from './scaffold.ts'
 import { connectFreshWorkspace, newEnglishPage, openSettings } from './support.ts'
 
 it.skipIf(webSnapshotMode() === 'record')('persists the upload switch and omits or resumes session logs on subsequent API requests', async () => {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-upload-browser-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-upload-browser-'))
   onTestFinished(() => rm(root, { recursive: true, force: true }))
   const server = await startMockLlmServer({ sequence: ['success', 'success', 'success'], successText: 'UPLOAD_SETTING_DONE' })
   onTestFinished(() => server.close())

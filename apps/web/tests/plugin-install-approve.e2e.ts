@@ -10,7 +10,7 @@ import { launchWebScaffold, captureStableAria, compareOrRefreshGolden, webSnapsh
 import { ZH_BROWSER_LOCALE } from './support.ts'
 
 it('offers approval for blocked install scripts and installs once they are allowed', async () => {
-  const scratch = await mkdtemp(join(tmpdir(), 'dsh-install-approve-'))
+  const scratch = await mkdtemp(join(tmpdir(), 'sqh-install-approve-'))
   const overlay = join(scratch, 'cordis.patch.yml')
   await writeFile(overlay, `- id: plugin-manager\n  config: ${JSON.stringify({ pnpmCommand: process.execPath })}\n`)
   let scaffold: WebScaffold | undefined

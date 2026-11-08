@@ -1,7 +1,7 @@
 /**
  * A profile installs this package from npm beside the dsh installation, so the
  * host runtimes it mounts must resolve to the installation's single module
- * instance. `dsh-scope` mints its scope-tag symbol and `dsh-mcp-client` keeps
+ * instance. `sqh-scope` mints its scope-tag symbol and `sqh-mcp-client` keeps
  * its live `serverName` reservations per module instance.
  *
  * A dependency edge installs a second copy instead. That copy's `createScope`

@@ -48,7 +48,7 @@ const roots: string[] = []
 afterEach(() => { for (const root of roots.splice(0)) rmSync(root, { recursive: true, force: true }) })
 
 function fixture(): string {
-  const root = mkdtempSync(join(tmpdir(), 'dsh-persistence-changes-'))
+  const root = mkdtempSync(join(tmpdir(), 'sqh-persistence-changes-'))
   roots.push(root)
   mkdirSync(join(root, 'docs/persistence-changes'), { recursive: true })
   return root

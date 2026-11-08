@@ -15,7 +15,7 @@ const CHILD_EVENTS = 1_000
 const SAMPLES = 3
 
 async function measure(unrelated: number) {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-catalog-perf-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-catalog-perf-'))
   const ctx = new Context()
   try {
     for (let i = 0; i < unrelated + CHILDREN + 1; i++) {

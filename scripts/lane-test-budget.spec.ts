@@ -31,7 +31,7 @@ let configPath = ''
 // is outside the repository; the sibling package.json keeps Vite bundling the
 // config as ESM, which the repository root's "type" otherwise supplies.
 beforeAll(() => {
-  temporaryRoot = mkdtempSync(join(tmpdir(), 'dsh-lane-test-budget-'))
+  temporaryRoot = mkdtempSync(join(tmpdir(), 'sqh-lane-test-budget-'))
   configPath = join(temporaryRoot, 'vitest.config.ts')
   writeFileSync(join(temporaryRoot, 'package.json'), '{ "type": "module" }\n', 'utf8')
   writeFileSync(configPath, [

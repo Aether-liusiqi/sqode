@@ -26,7 +26,7 @@ describe('bundled Office skills', () => {
       expect(catalog.map(skill => skill.name)).toEqual(names)
       for (const skill of catalog) {
         expect(skill.description.length).toBeLessThanOrEqual(500)
-        expect(skill).toMatchObject({ source: 'bundled', provider: 'dsh-office', invocation: { modelInvocable: true, userInvocable: true } })
+        expect(skill).toMatchObject({ source: 'bundled', provider: 'sqh-office', invocation: { modelInvocable: true, userInvocable: true } })
         const loaded = await ctx.skills.get(skill.name)
         expect(loaded?.resourceBase).toEqual({ kind: 'directory', path: join(assets, skill.name) })
         const raw = await readFile(join(assets, skill.name, 'SKILL.md'), 'utf8')
@@ -42,7 +42,7 @@ describe('bundled Office skills', () => {
   })
 
   it('loads relocated resources through a real cordis.yml composition', async () => {
-    const root = await mkdtemp(join(tmpdir(), 'dsh-office-skills-'))
+    const root = await mkdtemp(join(tmpdir(), 'sqh-office-skills-'))
     const ctx = new Context()
     try {
       const external = join(root, '中文 assets')
@@ -86,7 +86,7 @@ describe('bundled Office skills', () => {
     ['description: "Quoted: description"', '\r\n', 'Quoted: description'],
     ['description: >-\n  Folded\n  description', '\n', 'Folded description'],
   ])('parses frontmatter %s and leaves body metadata-like lines intact', async (header, newline, description) => {
-    const root = await mkdtemp(join(tmpdir(), 'dsh-office-metadata-'))
+    const root = await mkdtemp(join(tmpdir(), 'sqh-office-metadata-'))
     const ctx = new Context()
     try {
       await cp(assets, root, { recursive: true })
@@ -104,7 +104,7 @@ describe('bundled Office skills', () => {
   })
 
   it('rejects relative resource paths and incomplete asset trees before registration', async () => {
-    const root = await mkdtemp(join(tmpdir(), 'dsh-office-invalid-'))
+    const root = await mkdtemp(join(tmpdir(), 'sqh-office-invalid-'))
     const ctx = new Context()
     try {
       await ctx.plugin(SkillRegistry)
@@ -130,7 +130,7 @@ describe('bundled Office skills', () => {
 })
 
 it('rejects unavailable CLI and Node paths before exposing an executable command', async () => {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-office-command-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-office-command-'))
   const ctx = new Context()
   try {
     await ctx.plugin(SkillRegistry)

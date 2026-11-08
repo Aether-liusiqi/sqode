@@ -71,7 +71,7 @@ describe.skipIf(!enabled)('POSIX SSH runtime acceptance', () => {
         stdio: { stdin: 'ignore', stdout: 'pipe', stderr: 'pipe', control: 'pipe' },
       }, preparedSchema)
       const endpoint = prepared.streams.control!
-      const attack = "let connected=false,secure=false;const s=require('node:tls').connect({path:process.argv[1],ciphers:'PSK-AES256-GCM-SHA384',minVersion:'TLSv1.2',maxVersion:'TLSv1.2',pskCallback:()=>({identity:'dsh-stream',psk:Buffer.alloc(32)}),checkServerIdentity:()=>undefined});s.on('connect',()=>{connected=true});s.on('secureConnect',()=>{secure=true});s.on('error',()=>{});s.on('close',()=>process.stdout.write(JSON.stringify({connected,secure})));"
+      const attack = "let connected=false,secure=false;const s=require('node:tls').connect({path:process.argv[1],ciphers:'PSK-AES256-GCM-SHA384',minVersion:'TLSv1.2',maxVersion:'TLSv1.2',pskCallback:()=>({identity:'sqh-stream',psk:Buffer.alloc(32)}),checkServerIdentity:()=>undefined});s.on('connect',()=>{connected=true});s.on('secureConnect',()=>{secure=true});s.on('error',()=>{});s.on('close',()=>process.stdout.write(JSON.stringify({connected,secure})));"
       const attacker = test.ctx.subprocess.spawn({
         argv: (await test.ctx.sandbox.confine([test.hello.node, '-e', attack, endpoint.path], {
           mode: 'read-only', workspaceRoot: test.root,
@@ -156,7 +156,7 @@ describe.skipIf(!enabled)('POSIX SSH runtime acceptance', () => {
       expect(['EROFS', 'EPERM', 'EACCES']).toContain(facts.denied)
       if (test.hello.platform === 'linux') {
         expect(facts.pid).toBe(2)
-        expect(facts.cgroup).toMatch(/dsh-subprocess-[^\n]+\.scope/)
+        expect(facts.cgroup).toMatch(/sqh-subprocess-[^\n]+\.scope/)
       }
     } finally { await removeOwned(test) }
   }, 60_000)
@@ -220,7 +220,7 @@ describe.skipIf(!enabled)('POSIX SSH runtime acceptance', () => {
       })
       const [bytes] = await once(handle.stdout!, 'data') as [Buffer]
       const scope = `/sys/fs/cgroup${Buffer.from(bytes).toString().trim().split('::')[1]}`
-      expect(scope).toMatch(/dsh-subprocess-[^\n]+\.scope$/)
+      expect(scope).toMatch(/sqh-subprocess-[^\n]+\.scope$/)
       const scopeTarget = await observer.ctx.fs.resolve(scope)
       expect(await observer.ctx.fs.stat(scopeTarget)).toBeDefined()
       const sshChild = Reflect.get(victim.ctx.ssh, 'child') as ChildProcess

@@ -16,7 +16,7 @@ let unwatch: Mock<() => Promise<void>>
 const cleanups: Array<() => Promise<unknown>> = []
 
 beforeEach(async () => {
-  harness = await openWorkspace('dsh-workspace-files-changes-')
+  harness = await openWorkspace('sqh-workspace-files-changes-')
   unwatch = vi.fn<() => Promise<void>>().mockResolvedValue(undefined)
   watch = vi.spyOn(harness.ctx.fs, 'watch').mockResolvedValue(unwatch)
 })

@@ -95,7 +95,7 @@ function sourceFacts(
   manifest: Partial<PackageDependencyManifest> = {},
   role: PackageDependencyRole = 'client-host',
 ): PackageDependencyFacts {
-  const root = mkdtempSync(join(tmpdir(), 'dsh-dependency-source-'))
+  const root = mkdtempSync(join(tmpdir(), 'sqh-dependency-source-'))
   roots.push(root)
   const subject = pkg('@f/probe', 'packages/g/probe/package.json', manifest)
   for (const [path, source] of Object.entries(files)) {
@@ -107,7 +107,7 @@ function sourceFacts(
 }
 
 function generatedHostFixture(mode: 'schema' | 'object'): { root: string; manifestPath: string; source: string } {
-  const root = mkdtempSync(join(tmpdir(), 'dsh-generated-host-dependencies-'))
+  const root = mkdtempSync(join(tmpdir(), 'sqh-generated-host-dependencies-'))
   roots.push(root)
   const manifestPath = 'packages/client/probe/package.json'
   const source = `/** @typert ${mode} */\nexport interface Payload { value: string }\n`
@@ -542,7 +542,7 @@ describe('face-aware source classification', () => {
   })
 
   it('fails when a managed Host package has no Host entry', () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-package-missing-host-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-package-missing-host-'))
     roots.push(root)
     const subject = pkg('@f/host', 'packages/g/host/package.json')
 
@@ -551,7 +551,7 @@ describe('face-aware source classification', () => {
   })
 
   it('counts Host values as dependencies and Client values as development inputs', () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-package-faces-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-package-faces-'))
     roots.push(root)
     const subject = pkg('@f/dual', 'packages/g/dual/package.json', {
       dsh: { client: { inject: ['@f/injected'] } },
@@ -718,7 +718,7 @@ describe('dependency sections', () => {
   })
 
   it('validates every third-party range before writing any manifest in a repair batch', () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-dependency-batch-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-dependency-batch-'))
     roots.push(root)
     const valid = { ...facts({ name: '@liusiqi-dev/sqh-first' }), manifestPath: 'first.json' }
     const base = facts({ name: '@liusiqi-dev/sqh-second' })
@@ -943,7 +943,7 @@ describe('dependency sections', () => {
   })
 
   it('repairs owned relationships without changing unrelated dependencies', () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-package-dependencies-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-package-dependencies-'))
     roots.push(root)
     const manifestPath = 'package.json'
     const manifest: PackageDependencyManifest = {

@@ -1,5 +1,5 @@
 <# Per-user PATH ownership. The worker owns its mutex through registry publication. #>
-function Invoke-DshCommandPath {
+function Invoke-SqhCommandPath {
     param([hashtable]$Request, [string]$EnvironmentKey, [string]$OwnerKey, [string]$MachinePath, [string]$MutexName)
     $ErrorActionPreference = 'Stop'
     function Fail([string]$Code, [string]$Message) {
@@ -113,13 +113,13 @@ function Invoke-DshCommandPath {
     }
 }
 
-function Send-DshCommandEnvironmentChange {
+function Send-SqhCommandEnvironmentChange {
     try {
-        if (-not ('DshCommandEnvironment' -as [type])) {
-            Add-Type -TypeDefinition 'using System; using System.Runtime.InteropServices; public static class DshCommandEnvironment { [DllImport("user32.dll", CharSet=CharSet.Unicode)] public static extern IntPtr SendMessageTimeout(IntPtr h, uint m, IntPtr w, string l, uint f, uint t, out IntPtr r); }'
+        if (-not ('SqhCommandEnvironment' -as [type])) {
+            Add-Type -TypeDefinition 'using System; using System.Runtime.InteropServices; public static class SqhCommandEnvironment { [DllImport("user32.dll", CharSet=CharSet.Unicode)] public static extern IntPtr SendMessageTimeout(IntPtr h, uint m, IntPtr w, string l, uint f, uint t, out IntPtr r); }'
         }
         $ignored = [IntPtr]::Zero
-        [void][DshCommandEnvironment]::SendMessageTimeout([IntPtr]0xffff, 0x1a, [IntPtr]::Zero, 'Environment', 2, 2000, [ref]$ignored)
+        [void][SqhCommandEnvironment]::SendMessageTimeout([IntPtr]0xffff, 0x1a, [IntPtr]::Zero, 'Environment', 2, 2000, [ref]$ignored)
     } catch {
         # The PATH write is committed. A failed notification only delays other processes observing it.
         return
@@ -137,9 +137,9 @@ if ($MyInvocation.InvocationName -ne '.') {
         try { $machinePath = [string]$machine.GetValue('Path', '', [Microsoft.Win32.RegistryValueOptions]::DoNotExpandEnvironmentNames) }
         finally { $machine.Dispose() }
         $sid = [Security.Principal.WindowsIdentity]::GetCurrent().User.Value
-        $state = Invoke-DshCommandPath -Request $request -EnvironmentKey 'Environment' -OwnerKey 'Software\DeepSeekHarness\Command' -MachinePath $machinePath -MutexName ('Global\DeepSeekHarness.Command.' + $sid)
+        $state = Invoke-SqhCommandPath -Request $request -EnvironmentKey 'Environment' -OwnerKey 'Software\DeepSeekHarness\Command' -MachinePath $machinePath -MutexName ('Global\DeepSeekHarness.Command.' + $sid)
         if ($request.operation -ne 'inspect') {
-            Send-DshCommandEnvironmentChange
+            Send-SqhCommandEnvironmentChange
         }
         @{ ok=$true; state=$state } | ConvertTo-Json -Compress -Depth 5
     } catch {

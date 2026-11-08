@@ -55,7 +55,7 @@ async function bootStartup(
   args: string[],
   options: { stdinIsTty?: boolean } = {},
 ): Promise<{ task: HeadlessStartupValues | undefined; observed: Observed }> {
-  const dir = mkdtempSync(join(tmpdir(), 'dsh-headless-startup-'))
+  const dir = mkdtempSync(join(tmpdir(), 'sqh-headless-startup-'))
   tempDirs.push(dir)
   const observed: Observed = { exits: [], out: '', err: '' }
   writeFileSync(join(dir, 'row.mjs'), 'export function apply(_ctx, config) { globalThis.__headlessStartupObserved.runnerConfig = config }\n')

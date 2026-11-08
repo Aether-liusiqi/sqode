@@ -20,7 +20,7 @@ export interface SqhPackageLicenseReport {
 function readManifest(root: string, file: string): Record<string, unknown> {
   const parsed: unknown = JSON.parse(readFileSync(resolve(root, file), 'utf8'))
   if (typeof parsed !== 'object' || parsed === null || Array.isArray(parsed)) {
-    throw new Error(`verify-dsh-package-licenses: ${file} must contain a JSON object.`)
+    throw new Error(`verify-sqh-package-licenses: ${file} must contain a JSON object.`)
   }
   return parsed as Record<string, unknown>
 }
@@ -33,7 +33,7 @@ function workspaceManifestPaths(root: string): string[] {
   const rootManifest = readManifest(root, 'package.json')
   const workspaces = rootManifest.workspaces
   if (!isStringArray(workspaces)) {
-    throw new Error('verify-dsh-package-licenses: package.json workspaces must be a string array.')
+    throw new Error('verify-sqh-package-licenses: package.json workspaces must be a string array.')
   }
 
   const files = new Set(['package.json'])
@@ -54,7 +54,7 @@ function printable(value: unknown): string {
  * @param root - absolute repository root containing the workspace package.json.
  * @returns the checked package count and every non-MIT declaration.
  */
-export function inspectDshPackageLicenses(root: string): SqhPackageLicenseReport {
+export function inspectSqhPackageLicenses(root: string): SqhPackageLicenseReport {
   let packageCount = 0
   const failures: string[] = []
 
@@ -76,14 +76,14 @@ export function inspectDshPackageLicenses(root: string): SqhPackageLicenseReport
 }
 
 if (process.argv[1] && import.meta.filename === resolve(process.argv[1])) {
-  const report = inspectDshPackageLicenses(ROOT)
+  const report = inspectSqhPackageLicenses(ROOT)
   if (report.failures.length > 0) {
-    process.stderr.write('verify-dsh-package-licenses: non-MIT SQH package declarations found:\n')
+    process.stderr.write('verify-sqh-package-licenses: non-MIT SQH package declarations found:\n')
     for (const failure of report.failures) process.stderr.write(`  ${failure}\n`)
     process.exitCode = 1
   } else {
     process.stdout.write(
-      `verify-dsh-package-licenses: ${String(report.packageCount)} SQH package(s) checked; all declare MIT.\n`,
+      `verify-sqh-package-licenses: ${String(report.packageCount)} SQH package(s) checked; all declare MIT.\n`,
     )
   }
 }

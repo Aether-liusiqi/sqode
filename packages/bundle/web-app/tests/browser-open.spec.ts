@@ -34,7 +34,7 @@ afterEach(async () => {
 
 describe('web app browser startup', () => {
   it('opens the canonical URL only after the complete page is reachable', async () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-web-browser-open-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-web-browser-open-'))
     tempRoots.push(root)
     const dist = join(root, 'dist')
     mkdirSync(dist)

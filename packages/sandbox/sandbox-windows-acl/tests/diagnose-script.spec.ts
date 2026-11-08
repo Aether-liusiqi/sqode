@@ -135,7 +135,7 @@ describe.skipIf(!isWin32 || !pwshAvailable())('diagnose-windows-sandbox-acl scri
 
   function newScratch(): string {
     // Windows runners may expose TEMP through an 8.3 alias; PowerShell reports long paths.
-    return realpathSync.native(mkdtempSync(join(tmpdir(), 'dsh-acl-diagnose-')))
+    return realpathSync.native(mkdtempSync(join(tmpdir(), 'sqh-acl-diagnose-')))
   }
 
   function makeDir(root: string, name: string): string {

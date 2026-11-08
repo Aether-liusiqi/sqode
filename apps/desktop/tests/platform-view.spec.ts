@@ -322,7 +322,7 @@ it('bootstraps the current language and updates an open view without reloading',
   expect(manager.bootstrap({ sender, senderFrame: sender.mainFrame }).locale).toBe('zh_CN')
   locale = 'en_US'
   manager.notifyLocaleChanged()
-  expect(sender.send).toHaveBeenCalledWith('dsh-platform:locale-changed', 'en_US')
+  expect(sender.send).toHaveBeenCalledWith('sqh-platform:locale-changed', 'en_US')
   expect(sender.loadURL).toHaveBeenCalledOnce()
   manager.close()
   sender.send.mockClear()
@@ -353,7 +353,7 @@ it('reuses persistent storage across closes, token replacement, and manager recr
   const { manager, owner } = setup()
   await manager.open(owner, 'usage', bounds)
   const first = browserSession()
-  expect(first.partition).toMatch(/^persist:dsh-platform-[a-f0-9]{64}$/)
+  expect(first.partition).toMatch(/^persist:sqh-platform-[a-f0-9]{64}$/)
   expect(first.partition).not.toContain('fixture-user')
   expect(first.partition).not.toContain('fixture-secret')
   manager.close()

@@ -47,7 +47,7 @@ function write(path: string, content: string): void {
 }
 
 function buildFixture(environment: Record<string, string>): string {
-  const fixtureRoot = mkdtempSync(join(tmpdir(), 'dsh-client-build-'))
+  const fixtureRoot = mkdtempSync(join(tmpdir(), 'sqh-client-build-'))
   roots.push(fixtureRoot)
   write(join(fixtureRoot, 'apps/web/dist/index.html'), '<main></main>')
   write(join(fixtureRoot, 'packages/client/example/lib/client.js'), 'module.exports = {}\n')
@@ -64,13 +64,13 @@ function git(root: string, args: readonly string[]): string {
 }
 
 function repositoryFixture(version = '1.2.3-rc.4'): string {
-  const fixtureRoot = mkdtempSync(join(tmpdir(), 'dsh-client-build-repository-'))
+  const fixtureRoot = mkdtempSync(join(tmpdir(), 'sqh-client-build-repository-'))
   roots.push(fixtureRoot)
   write(join(fixtureRoot, 'package.json'), `${JSON.stringify({ version })}\n`)
   write(join(fixtureRoot, 'tracked.txt'), 'committed\n')
   git(fixtureRoot, ['init'])
   git(fixtureRoot, ['config', 'user.name', 'SQH test'])
-  git(fixtureRoot, ['config', 'user.email', 'dsh-test@example.invalid'])
+  git(fixtureRoot, ['config', 'user.email', 'sqh-test@example.invalid'])
   git(fixtureRoot, ['config', 'commit.gpgsign', 'false'])
   git(fixtureRoot, ['add', 'package.json', 'tracked.txt'])
   git(fixtureRoot, ['commit', '-m', 'fixture'])
@@ -201,7 +201,7 @@ describe('client build environment', () => {
   })
 
   it('omits dirty metadata when repository metadata is unavailable', () => {
-    const fixtureRoot = mkdtempSync(join(tmpdir(), 'dsh-client-build-no-git-'))
+    const fixtureRoot = mkdtempSync(join(tmpdir(), 'sqh-client-build-no-git-'))
     roots.push(fixtureRoot)
     write(join(fixtureRoot, 'package.json'), '{"version":"2.0.0"}\n')
 

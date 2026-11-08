@@ -14,7 +14,7 @@ import { assertWorkspaceOutsideTemp, outsideTempWorkspaceParent } from './snapsh
 describe('snapshot workspace parent', () => {
   // Windows directory permissions and root bypass do not enforce POSIX write bits.
   it.skipIf(process.platform === 'win32' || process.getuid?.() === 0)('uses home when the temp parent is not writable', async () => {
-    const base = await mkdtemp(join(outsideTempWorkspaceParent(), '.dsh-snapshot-readonly-'))
+    const base = await mkdtemp(join(outsideTempWorkspaceParent(), '.sqh-snapshot-readonly-'))
     try {
       const temporary = join(base, '_temp')
       await mkdir(temporary)
@@ -33,7 +33,7 @@ describe('snapshot workspace parent', () => {
   })
 
   it('rejects automatically writable temporary workspaces, including symlink aliases', async () => {
-    const root = await mkdtemp(join(tmpdir(), 'dsh-snapshot-parent-'))
+    const root = await mkdtemp(join(tmpdir(), 'sqh-snapshot-parent-'))
     try {
       expect(() => { assertWorkspaceOutsideTemp(root) }).toThrow('must be outside temporary writable root')
       const alias = join(root, 'alias')
@@ -45,7 +45,7 @@ describe('snapshot workspace parent', () => {
   })
 
   it('allows the allocated workspace but denies sibling writes and cleans the complete tree', async () => {
-    const base = await mkdtemp(join(outsideTempWorkspaceParent(), 'dsh-snapshot-parent-'))
+    const base = await mkdtemp(join(outsideTempWorkspaceParent(), 'sqh-snapshot-parent-'))
     const ctx = new Context()
     const fibers: Awaited<ReturnType<Context['plugin']>>[] = []
     try {

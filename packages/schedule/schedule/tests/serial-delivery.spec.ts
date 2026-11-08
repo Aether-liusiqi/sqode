@@ -35,7 +35,7 @@ async function core(persistenceRoot: string) {
 
 describe('due delivery during Agent creation', () => {
   it('enqueues the reminder without starting a turn before every creation listener finishes', async () => {
-    const root = await mkdtemp(join(tmpdir(), 'dsh-schedule-serial-'))
+    const root = await mkdtemp(join(tmpdir(), 'sqh-schedule-serial-'))
     roots.push(root)
     const ctx = await core(join(root, 'sessions'))
     await ctx.plugin(Storage)

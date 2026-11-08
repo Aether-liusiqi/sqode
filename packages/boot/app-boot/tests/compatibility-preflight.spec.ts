@@ -9,14 +9,14 @@ import type { EntryOptions } from '@liusiqi-dev/cordis-plugin-loader'
 import { load } from 'js-yaml'
 import { describe, expect, it, onTestFinished, vi } from 'vitest'
 import {
-  PROFILE_COMPATIBILITY_FILENAME, PluginPackages, boot, getDshRuntimeVersion,
+  PROFILE_COMPATIBILITY_FILENAME, PluginPackages, boot, getSqhRuntimeVersion,
   prepareProfileEntries, prepareProfilePatches, type ProfileContext,
 } from '../src/index.ts'
 
-const runtime = getDshRuntimeVersion()
+const runtime = getSqhRuntimeVersion()
 
 function fixture() {
-  const temporary = mkdtempSync(join(tmpdir(), 'dsh-preflight-'))
+  const temporary = mkdtempSync(join(tmpdir(), 'sqh-preflight-'))
   let ctx: Context | undefined
   onTestFinished(async () => {
     try { await ctx?.fiber.dispose() } finally { rmSync(temporary, { recursive: true, force: true }) }

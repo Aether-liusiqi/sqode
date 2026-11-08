@@ -65,7 +65,7 @@ describe('web e2e: exact-boundary fork seeds branch closers and continues', () =
   let forkAt: number
 
   beforeAll(async () => {
-    replayDir = await mkdtemp(join(tmpdir(), 'dsh-fork-mid-turn-replay-'))
+    replayDir = await mkdtemp(join(tmpdir(), 'sqh-fork-mid-turn-replay-'))
     const replayOverride = join(replayDir, 'replay.override.json')
     await writeFile(replayOverride, JSON.stringify(continuationScript()))
     scaffold = await launchWebScaffold({

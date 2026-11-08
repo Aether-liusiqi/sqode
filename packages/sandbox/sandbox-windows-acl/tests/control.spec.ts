@@ -19,7 +19,7 @@ afterEach(async () => {
 
 describe.skipIf(process.platform !== 'win32')('managed Windows ACL control pipe', () => {
   it.each(['read-only', 'workspace-write'])('runs without a visible console in %s mode', async (mode) => {
-    scratch = await mkdtemp(join(tmpdir(), 'dsh-acl-console-'))
+    scratch = await mkdtemp(join(tmpdir(), 'sqh-acl-console-'))
     const workspace = join(scratch, 'workspace')
     const temp = join(scratch, 'temp')
     await mkdir(workspace)
@@ -46,7 +46,7 @@ describe.skipIf(process.platform !== 'win32')('managed Windows ACL control pipe'
   })
 
   it('preserves binary bytes through the Job and restricted-token runners while denying writes', async () => {
-    scratch = await mkdtemp(join(tmpdir(), 'dsh-acl-control-'))
+    scratch = await mkdtemp(join(tmpdir(), 'sqh-acl-control-'))
     ctx = new Context()
     await ctx.plugin(LocalSubprocessRuntime)
     const runner = fileURLToPath(new URL('../src/runner.ts', import.meta.url))

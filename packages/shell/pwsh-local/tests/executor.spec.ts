@@ -33,7 +33,7 @@ function start(x: { execute(spec: ShellExecSpec): Promise<ShellExecution> }, spe
 }
 
 
-const spillDir = mkdtempSync(join(tmpdir(), 'dsh-pwsh-exec-spec-'))
+const spillDir = mkdtempSync(join(tmpdir(), 'sqh-pwsh-exec-spec-'))
 
 afterAll(() => {
   rmSync(spillDir, { recursive: true, force: true })
@@ -59,7 +59,7 @@ function createContext(): Context {
 
 /** A private file barrier keeps the command alive until the test releases it. */
 function commandBarrier() {
-  const dir = mkdtempSync(join(tmpdir(), 'dsh-pwsh-barrier-'))
+  const dir = mkdtempSync(join(tmpdir(), 'sqh-pwsh-barrier-'))
   tempDirs.push(dir)
   const path = join(dir, 'release')
   return {
@@ -155,7 +155,7 @@ describe('resolvePwshPath and candidatePwshPaths (pure, every platform)', () => 
   })
 
   it('returns the first EXISTING win32 candidate, else pwsh', () => {
-    const dir = mkdtempSync(join(tmpdir(), 'dsh-pwsh-resolve-'))
+    const dir = mkdtempSync(join(tmpdir(), 'sqh-pwsh-resolve-'))
     tempDirs.push(dir)
     const store = join(dir, 'store')
     mkdirSync(store, { recursive: true })
@@ -173,7 +173,7 @@ describe('resolvePwshPath and candidatePwshPaths (pure, every platform)', () => 
   it('accepts a link-shaped PATH candidate whose target cannot be stat-ed', () => {
     // Store app execution aliases stat as EACCES but lstat as a link; a
     // dangling symlink reproduces that split on every platform.
-    const dir = mkdtempSync(join(tmpdir(), 'dsh-pwsh-resolve-link-'))
+    const dir = mkdtempSync(join(tmpdir(), 'sqh-pwsh-resolve-link-'))
     tempDirs.push(dir)
     const store = join(dir, 'store')
     mkdirSync(store, { recursive: true })
@@ -184,7 +184,7 @@ describe('resolvePwshPath and candidatePwshPaths (pure, every platform)', () => 
   })
 
   it('skips a directory candidate and falls through to the PATH-resolution default', () => {
-    const dir = mkdtempSync(join(tmpdir(), 'dsh-pwsh-resolve-dir-'))
+    const dir = mkdtempSync(join(tmpdir(), 'sqh-pwsh-resolve-dir-'))
     tempDirs.push(dir)
     const store = join(dir, 'store')
     mkdirSync(join(store, 'pwsh.exe'), { recursive: true })
@@ -444,8 +444,8 @@ describe.skipIf(!hasPwsh)('PwshLocalExecutor.run', () => {
   })
 
   it('uses config cwd, overridable per call', async () => {
-    const first = mkdtempSync(join(tmpdir(), 'dsh-pwsh-cwd-a-'))
-    const second = mkdtempSync(join(tmpdir(), 'dsh-pwsh-cwd-b-'))
+    const first = mkdtempSync(join(tmpdir(), 'sqh-pwsh-cwd-a-'))
+    const second = mkdtempSync(join(tmpdir(), 'sqh-pwsh-cwd-b-'))
     tempDirs.push(first, second)
     const { bash } = await setup({ cwd: first })
     const fromConfig = await run(bash, bash.resolve({ command: '(Get-Location).Path' }))
@@ -545,14 +545,14 @@ describe.skipIf(!hasPwsh)('PwshLocalExecutor.run', () => {
       command: '$s = ([Console]::In.ReadToEnd()).TrimEnd(); Write-Output $s; Write-Output "[$env:SEAM_VAR][$env:SQODE_SEAM_VAR]"',
       stdin: 'piped\n',
       env: { SEAM_VAR: 'env-ok' },
-      sqhEnv: { SQODE_SEAM_VAR: 'dsh-ok' },
+      sqhEnv: { SQODE_SEAM_VAR: 'sqh-ok' },
     })
     // resolve() keeps the optional input/environment fields verbatim.
     expect(spec.stdin).toBe('piped\n')
     expect(spec.env).toEqual({ SEAM_VAR: 'env-ok' })
-    expect(spec.sqhEnv).toEqual({ SQODE_SEAM_VAR: 'dsh-ok' })
+    expect(spec.sqhEnv).toEqual({ SQODE_SEAM_VAR: 'sqh-ok' })
     const result = await run(bash, spec)
-    expect(lf(result.stdout.text)).toBe('piped\n[env-ok][dsh-ok]\n')
+    expect(lf(result.stdout.text)).toBe('piped\n[env-ok][sqh-ok]\n')
   })
 
   it('resolve() omits stdin/env/sqhEnv when the request supplies none', async () => {
@@ -589,13 +589,13 @@ describe.skipIf(!hasPwsh)('PwshLocalExecutor.start (background process handles)'
       command: '$s = ([Console]::In.ReadToEnd()).TrimEnd(); Write-Output $s; Write-Output "[$env:BG_VAR][$env:SQODE_BG_VAR]"',
       stdin: 'bg-stdin\n',
       env: { BG_VAR: 'bg-env' },
-      sqhEnv: { SQODE_BG_VAR: 'bg-dsh-env' },
+      sqhEnv: { SQODE_BG_VAR: 'bg-sqh-env' },
     })))
     await proc.done
     expect(proc.status).toBe('completed')
     expect(proc.signal).toBeNull()
     expect(proc.exitCode).toBe(0)
-    expect(lf(proc.readOutput().delta)).toBe('bg-stdin\n[bg-env][bg-dsh-env]\n')
+    expect(lf(proc.readOutput().delta)).toBe('bg-stdin\n[bg-env][bg-sqh-env]\n')
   })
 
   it('readOutput is consuming: increments are never re-delivered, and reads stay valid after exit', async ({ task }) => {

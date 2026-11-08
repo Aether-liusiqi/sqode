@@ -20,7 +20,7 @@ type MockScript = ConstructorParameters<typeof MockAdapter>[0]
 const testToolSignal = new AbortController().signal
 
 async function mountExecution(ctx: Context): Promise<string> {
-  const cwd = await mkdtemp(join(tmpdir(), 'dsh-ralph-'))
+  const cwd = await mkdtemp(join(tmpdir(), 'sqh-ralph-'))
   onTestFinished(async () => {
     await ctx.fiber.dispose()
     await rm(cwd, { recursive: true, force: true })
@@ -49,7 +49,7 @@ async function mountRalph(script: MockScript, config: toolRalph.Config) {
   return { ctx, adapter, parentHandle, parent: parentHandle.agent }
 }
 
-describe('dsh-tool-ralph over the real spawn and sandboxed PTC stack', () => {
+describe('sqh-tool-ralph over the real spawn and sandboxed PTC stack', () => {
   it('uses distinct empty-seed children, shared cwd, and only the prior bounded handoff', { timeout: 90_000 }, async () => {
     const firstReport = {
       status: 'continue',

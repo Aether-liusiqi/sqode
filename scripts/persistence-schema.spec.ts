@@ -19,7 +19,7 @@ function put(root: string, file: string, source: string): void {
 }
 
 function fixture(payload: string, options: { surface?: string; event?: string } = {}): string {
-  const root = mkdtempSync(join(tmpdir(), 'dsh-persistence-schema-'))
+  const root = mkdtempSync(join(tmpdir(), 'sqh-persistence-schema-'))
   roots.push(root)
   put(root, 'tsconfig.host.json', JSON.stringify({ compilerOptions: {
     target: 'es2024', module: 'esnext', moduleResolution: 'bundler', strict: true, skipLibCheck: true,
@@ -523,7 +523,7 @@ declare module './message.js' {
     [`${ATTRIBUTION} duplicate: {kind: 'semantic'}`, 'conflicting attribution'],
     [`${ATTRIBUTION} first: {kind: 'same'};\n${ATTRIBUTION} second: {kind: 'same'; value: number}`, 'conflicting attribution'],
     ['broadUnmarked: {kind: string}', 'invalid source compatibility'],
-    ...['model', 'tool', 'system-prompt', 'compact-checkpoint', 'dsh-session-title-llm', 'tool-registry', 'runtime-context', 'plugin']
+    ...['model', 'tool', 'system-prompt', 'compact-checkpoint', 'sqh-session-title-llm', 'tool-registry', 'runtime-context', 'plugin']
       .map(kind => [`${ATTRIBUTION} forbidden: {kind: '${kind}'}`, 'invalid source compatibility']),
     ["/** @persistenceAttribution yes */ invalid: {kind: 'new'}", 'invalid @persistenceAttribution'],
     ['/** @persistenceAttribution\n * @persistenceAttribution */ duplicateTag: {kind: \'new\'}', 'invalid @persistenceAttribution'],

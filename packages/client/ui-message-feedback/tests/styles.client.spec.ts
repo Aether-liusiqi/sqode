@@ -83,9 +83,9 @@ describe('MessageFeedbackActions row styles', () => {
     // These buttons render inside ui-chat's MessageIconActions row; a fixed
     // 28px would leave them undersized (or overflowing) once the Settings
     // font size moves the row.
-    expect(block('MessageFeedbackActions', '.action')).toMatch(/width:\s*calc\(28px \+ var\(--dsh-content-font-delta, 0px\)\)/)
-    expect(block('MessageFeedbackActions', '.action')).toMatch(/height:\s*calc\(28px \+ var\(--dsh-content-font-delta, 0px\)\)/)
-    expect(block('MessageFeedbackActions', '.action svg')).toMatch(/width:\s*calc\(15px \+ var\(--dsh-content-font-delta, 0px\)\)/)
+    expect(block('MessageFeedbackActions', '.action')).toMatch(/width:\s*calc\(28px \+ var\(--sqh-content-font-delta, 0px\)\)/)
+    expect(block('MessageFeedbackActions', '.action')).toMatch(/height:\s*calc\(28px \+ var\(--sqh-content-font-delta, 0px\)\)/)
+    expect(block('MessageFeedbackActions', '.action svg')).toMatch(/width:\s*calc\(15px \+ var\(--sqh-content-font-delta, 0px\)\)/)
   })
 
   it('uses the tertiary label colour for recorded rating icons', () => {

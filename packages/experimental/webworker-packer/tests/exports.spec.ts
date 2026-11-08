@@ -8,7 +8,7 @@ import { packVfsImage, type PackOptions } from '../src/pack.ts'
 const SUBJECT = '@liusiqi-dev/sqh-image-export-fixture'
 
 function fixture(test: TestContext, face: unknown, source = 'export const value = 1'): PackOptions {
-  const root = mkdtempSync(join(tmpdir(), 'dsh-image-exports-'))
+  const root = mkdtempSync(join(tmpdir(), 'sqh-image-exports-'))
   test.onTestFinished(() => { rmSync(root, { recursive: true, force: true }) })
   mkdirSync(join(root, 'lib'))
   writeFileSync(join(root, 'package.json'), JSON.stringify({

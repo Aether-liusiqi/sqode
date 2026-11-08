@@ -3,7 +3,7 @@ import { existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { expect, it, onTestFinished, vi } from 'vitest'
-import { getDshRuntimeVersion, initProfile, PROFILE_TEMPLATES, readProfileVersionExemptions } from '@liusiqi-dev/sqh-app-boot'
+import { getSqhRuntimeVersion, initProfile, PROFILE_TEMPLATES, readProfileVersionExemptions } from '@liusiqi-dev/sqh-app-boot'
 import { runPluginCommand, runProfilePnpm } from '@liusiqi-dev/sqh-plugin-manager/operations'
 import { runPlugin } from '../src/plugin.ts'
 
@@ -31,8 +31,8 @@ function fixture() {
 
 it('requires explicit acknowledgement, grants only the exact pair, lists and revokes it without pnpm', async () => {
   const { dir, stdout, stderr } = fixture()
-  const runtime = getDshRuntimeVersion()
-  expect(await runPlugin('test', ['allow-version', '@example/plugin@1.2.3', '--dsh-version', runtime, '--accept-risk'])).toBe(0)
+  const runtime = getSqhRuntimeVersion()
+  expect(await runPlugin('test', ['allow-version', '@example/plugin@1.2.3', '--sqh-version', runtime, '--accept-risk'])).toBe(0)
   expect(stderr.mock.calls.map(call => call[0]).join('')).toMatchInlineSnapshot(`
     "dsh: warning: allowing incompatible plugin versions can break the application or corrupt data. Approval applies only to the exact package and SQH versions.
     "
@@ -42,23 +42,23 @@ it('requires explicit acknowledgement, grants only the exact pair, lists and rev
   expect(JSON.parse(readFileSync(join(dir, 'compatibility.json'), 'utf8'))).toEqual({ '@example/plugin@1.2.3': [runtime] })
   expect(await runPlugin('test', ['version-exemptions'])).toBe(0)
   expect(stdout).toHaveBeenLastCalledWith(JSON.stringify({ '@example/plugin@1.2.3': [runtime] }, undefined, 2) + '\n')
-  expect(await runPlugin('test', ['revoke-version', '@example/plugin@1.2.3', `--dsh-version=${runtime}`])).toBe(0)
+  expect(await runPlugin('test', ['revoke-version', '@example/plugin@1.2.3', `--sqh-version=${runtime}`])).toBe(0)
   expect(readProfileVersionExemptions(dir)).toEqual({})
   expect(runPluginCommand).not.toHaveBeenCalled()
 })
 
 it.each([
-  ['allow-version', 'plugin@1.2.3', '--dsh-version', 'CURRENT'],
+  ['allow-version', 'plugin@1.2.3', '--sqh-version', 'CURRENT'],
   ['allow-version', 'plugin@1.2.3', '--accept-risk'],
-  ['allow-version', 'plugin@^1.2.3', '--dsh-version', 'CURRENT', '--accept-risk'],
-  ['allow-version', 'plugin@1.2.3', '--dsh-version', '999.0.0', '--accept-risk'],
-  ['allow-version', 'plugin@1.2.3', '--dsh-version', 'CURRENT', '--accept-risk=false'],
-  ['allow-version', 'plugin@1.2.3', '--dsh-version', 'CURRENT', '--accept-risk', '--accept-risk'],
+  ['allow-version', 'plugin@^1.2.3', '--sqh-version', 'CURRENT', '--accept-risk'],
+  ['allow-version', 'plugin@1.2.3', '--sqh-version', '999.0.0', '--accept-risk'],
+  ['allow-version', 'plugin@1.2.3', '--sqh-version', 'CURRENT', '--accept-risk=false'],
+  ['allow-version', 'plugin@1.2.3', '--sqh-version', 'CURRENT', '--accept-risk', '--accept-risk'],
   ['revoke-version', 'plugin@1.2.3'],
   ['version-exemptions', 'extra'],
 ])('rejects malformed or unacknowledged exemption command %j', async (...arguments_) => {
   const { dir, stderr } = fixture()
-  const args = arguments_.map(value => value === 'CURRENT' ? getDshRuntimeVersion() : value)
+  const args = arguments_.map(value => value === 'CURRENT' ? getSqhRuntimeVersion() : value)
   expect(await runPlugin('test', args)).toBe(1)
   expect(stderr).toHaveBeenCalled()
   expect(existsSync(join(dir, 'compatibility.json'))).toBe(false)
@@ -91,7 +91,7 @@ it('names the exact grant command for each package a compatibility check refused
   })
   expect(await runPlugin('test', ['add', '@example/plugin'])).toBe(1)
   expect(stderr.mock.calls.map(call => call[0])).toEqual([
-    'dsh: to accept the risk, run: dsh plugin --profile test allow-version @example/plugin@1.2.3 --dsh-version 0.1.0 --accept-risk\n',
+    'dsh: to accept the risk, run: dsh plugin --profile test allow-version @example/plugin@1.2.3 --sqh-version 0.1.0 --accept-risk\n',
     'dsh: plugin command failed; diagnostics: /profile/log\n',
   ])
 })
@@ -123,11 +123,11 @@ it('uses the installation package runtime without changing CLI authentication or
 it.each([
   ['list'], ['add', 'example-plugin'],
   ['version-exemptions'],
-  ['allow-version', 'example-plugin@1.2.3', '--dsh-version', 'CURRENT', '--accept-risk'],
-  ['revoke-version', 'example-plugin@1.2.3', '--dsh-version', 'CURRENT'],
+  ['allow-version', 'example-plugin@1.2.3', '--sqh-version', 'CURRENT', '--accept-risk'],
+  ['revoke-version', 'example-plugin@1.2.3', '--sqh-version', 'CURRENT'],
 ])('requires Desktop initialization before %j without creating a profile', async (...arguments_) => {
   const { home, stderr } = fixture()
-  const args = arguments_.map(value => value === 'CURRENT' ? getDshRuntimeVersion() : value)
+  const args = arguments_.map(value => value === 'CURRENT' ? getSqhRuntimeVersion() : value)
   expect(await runPlugin('desktop', args)).toBe(1)
   expect(stderr.mock.calls.map(call => call[0]).join('')).toMatchInlineSnapshot(`
     "dsh: Error: Open Siqi Harness Desktop once to initialize its profile, then fully quit it before running dsh plugin --profile desktop.
@@ -164,11 +164,11 @@ it('applies version approvals to the existing Desktop profile without replacing 
   const dir = join(home, 'profiles', 'desktop')
   initProfile(dir, PROFILE_TEMPLATES.web!.bundles)
   const manifest = readFileSync(join(dir, 'package.json'), 'utf8')
-  const runtime = getDshRuntimeVersion()
-  expect(await runPlugin('desktop', ['allow-version', 'example-plugin@1.2.3', '--dsh-version', runtime, '--accept-risk'])).toBe(0)
+  const runtime = getSqhRuntimeVersion()
+  expect(await runPlugin('desktop', ['allow-version', 'example-plugin@1.2.3', '--sqh-version', runtime, '--accept-risk'])).toBe(0)
   expect(readProfileVersionExemptions(dir)).toEqual({ 'example-plugin@1.2.3': [runtime] })
   expect(await runPlugin('desktop', ['version-exemptions'])).toBe(0)
-  expect(await runPlugin('desktop', ['revoke-version', 'example-plugin@1.2.3', '--dsh-version', runtime])).toBe(0)
+  expect(await runPlugin('desktop', ['revoke-version', 'example-plugin@1.2.3', '--sqh-version', runtime])).toBe(0)
   expect(readProfileVersionExemptions(dir)).toEqual({})
   expect(readFileSync(join(dir, 'package.json'), 'utf8')).toBe(manifest)
   expect(existsSync(join(dir, 'package.json.lock'))).toBe(false)

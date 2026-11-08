@@ -24,7 +24,7 @@ const sandboxUsable = await (async () => {
 })()
 
 async function setup(config: Config = {}, mode: 'read-only' | 'workspace-write' | 'danger-full-access' = 'danger-full-access') {
-  const root = await mkdtemp(join(homedir(), '.dsh-node-runtime-test-'))
+  const root = await mkdtemp(join(homedir(), '.sqh-node-runtime-test-'))
   const cwd = join(root, 'workspace')
   await mkdir(cwd)
   const ctx = new Context()
@@ -90,7 +90,7 @@ describe('Node program process', () => {
     expect(value.native.env).not.toContain('SQODE_TEST_RUNTIME_SECRET')
     expect(value.native.temp.startsWith(`${temp}\\dsh-`)).toBe(true)
     expect(value.observed).toBe('native-temp')
-    expect((await readdir(join(tmp, 'dsh-acl-locks'))).some(name => name.endsWith('.lock'))).toBe(true)
+    expect((await readdir(join(tmp, 'sqh-acl-locks'))).some(name => name.endsWith('.lock'))).toBe(true)
   })
 
   it('returns binding values and preserves typed binding rejection', async () => {

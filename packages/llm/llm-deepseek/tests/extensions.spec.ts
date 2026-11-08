@@ -26,7 +26,7 @@ afterEach(async () => {
 })
 
 async function boot() {
-  const home = await mkdtemp(join(tmpdir(), 'dsh-messages-extensions-'))
+  const home = await mkdtemp(join(tmpdir(), 'sqh-messages-extensions-'))
   cleanup.push(() => rm(home, { recursive: true, force: true }))
   vi.stubEnv('SQODE_HOME', home)
   vi.stubEnv('DEEPSEEK_API_KEY', 'test-key')

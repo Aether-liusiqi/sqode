@@ -398,7 +398,7 @@ beforeEach(() => {
   testAuth.login.mockResolvedValue('cancelled')
   vi.useFakeTimers()
   harness.reset()
-  const userData = mkdtempSync(join(tmpdir(), 'dsh-main-user-data-'))
+  const userData = mkdtempSync(join(tmpdir(), 'sqh-main-user-data-'))
   onTestFinished(() => { rmSync(userData, { recursive: true, force: true }) })
   harness.app.getPath.mockImplementation(name => name === 'userData' ? userData : `desktop-test-${name}`)
   harness.dialog.showMessageBox.mockImplementation((options: { title?: string }) => {
@@ -650,7 +650,7 @@ describe('desktop main startup', () => {
   })
 
   it('persists opt-in update evidence from the real main entry without private diagnostics', async () => {
-    const directory = mkdtempSync(join(tmpdir(), 'dsh-main-update-journal-'))
+    const directory = mkdtempSync(join(tmpdir(), 'sqh-main-update-journal-'))
     try {
       vi.stubEnv('SQODE_DESKTOP_UPDATE_JOURNAL_DIR', directory)
       await readyForUpdate()
@@ -1435,7 +1435,7 @@ describe('desktop main startup', () => {
     expect(host.stop).not.toHaveBeenCalled()
     expect(request.mock.calls[0]![1]!.headers).toMatchObject({
       'x-client-bundle-id': '', 'x-client-platform': 'desktop-win', 'x-client-version': '1.2.3',
-      'x-client-arch': 'x64', 'x-client-update-channel': 'nightly', 'x-client-bundled-dsh-version': '1.0.0',
+      'x-client-arch': 'x64', 'x-client-update-channel': 'nightly', 'x-client-bundled-sqh-version': '1.0.0',
       'x-client-locale': 'en_US', 'x-client-timezone-offset': String(-new Date().getTimezoneOffset() * 60),
     })
   })

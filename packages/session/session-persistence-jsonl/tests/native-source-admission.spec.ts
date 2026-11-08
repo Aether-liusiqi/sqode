@@ -13,7 +13,7 @@ const id = SessionId('native-source-admission')
 const modes = (['none', 'zstd'] as const).flatMap(compression => (['read', 'write'] as const).map(access => ({ compression, access })))
 let root: string
 const contexts: Context[] = []
-beforeEach(async () => { root = await mkdtemp(join(tmpdir(), 'dsh-native-source-')) })
+beforeEach(async () => { root = await mkdtemp(join(tmpdir(), 'sqh-native-source-')) })
 afterEach(async () => {
   try {
     for (const ctx of contexts.splice(0).reverse()) await ctx.fiber.dispose()

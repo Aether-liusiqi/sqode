@@ -13,7 +13,7 @@ const packages = ['webworker-runtime', 'webworker-packer']
 const packageNames = new Set(packages.map(name => `@liusiqi-dev/sqh-experimental-${name}`))
 
 it('loads both tarballs through plain Node and mounts their base image and overlay', { retry: 0 }, async (test) => {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-webworker-packed-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-webworker-packed-'))
   const links: string[] = []
   let pending: Promise<string> = Promise.resolve('')
   test.onTestFinished(async () => {
@@ -45,7 +45,7 @@ it('loads both tarballs through plain Node and mounts their base image and overl
   await writeFile(join(root, 'package.json'), JSON.stringify({ private: true, type: 'module' }))
   for (const name of packages) {
     const source = join(experimentalDirectory, name)
-    const directory = join(root, 'node_modules/@deepseek-ai', `dsh-experimental-${name}`)
+    const directory = join(root, 'node_modules/@deepseek-ai', `sqh-experimental-${name}`)
     const packRoot = join(root, name)
     await mkdir(packRoot, { recursive: true })
     await mkdir(directory, { recursive: true })

@@ -205,8 +205,8 @@ describe('desktop macOS release signature', () => {
       appleApiIssuer: RELEASE_ENVIRONMENT.APPLE_API_ISSUER,
     })
     expect(resolveMacOSNotarizationEnvironment({
-      APPLE_KEYCHAIN_PROFILE: 'dsh-notary',
-    })).toEqual({ keychainProfile: 'dsh-notary' })
+      APPLE_KEYCHAIN_PROFILE: 'sqh-notary',
+    })).toEqual({ keychainProfile: 'sqh-notary' })
     expect(() => resolveMacOSNotarizationEnvironment({})).toThrow(/macOS packaging requires/u)
     expect(() => resolveMacOSNotarizationEnvironment({ APPLE_API_KEY: '/tmp/key.p8' })).toThrow(/APPLE_API_KEY_ID/u)
   })

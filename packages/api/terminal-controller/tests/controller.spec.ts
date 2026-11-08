@@ -486,7 +486,7 @@ describe('shell resolution', () => {
 })
 
 it.skipIf(process.platform === 'win32')('runs a real interactive shell with completion, TERM and live window dimensions', async () => {
-  const cwd = await mkdtemp(join(tmpdir(), 'dsh-web-terminal-'))
+  const cwd = await mkdtemp(join(tmpdir(), 'sqh-web-terminal-'))
   const ctx = new Context()
   const runtime = await ctx.plugin(LocalSubprocessRuntime)
   try {

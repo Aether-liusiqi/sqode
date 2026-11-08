@@ -7,7 +7,7 @@ import { failureOf, openWorkspace, signal, type Harness } from './harness.ts'
 
 let harness: Harness
 
-beforeEach(async () => { harness = await openWorkspace('dsh-workspace-files-read-all-') })
+beforeEach(async () => { harness = await openWorkspace('sqh-workspace-files-read-all-') })
 afterEach(async () => { await harness.dispose() })
 
 describe('workspaceFiles.readBytes — complete files', () => {

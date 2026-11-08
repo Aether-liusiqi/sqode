@@ -85,7 +85,7 @@ class RestartableServer {
 }
 
 it.each([false, true])('keeps the same revision, Session and page across a server restart (delayed startup: %s)', async (holdStartup) => {
-  const world = await mkdtemp(join(tmpdir(), 'dsh-server-restart-'))
+  const world = await mkdtemp(join(tmpdir(), 'sqh-server-restart-'))
   onTestFinished(() => rm(world, { recursive: true, force: true }))
   const model = createServer((request, response) => {
     request.resume()

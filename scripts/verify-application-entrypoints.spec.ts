@@ -1,4 +1,4 @@
-/** Application-entrypoint classification and dsh-launch enforcement. */
+/** Application-entrypoint classification and sqh-launch enforcement. */
 
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'

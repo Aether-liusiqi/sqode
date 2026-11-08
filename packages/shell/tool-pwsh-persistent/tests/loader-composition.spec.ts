@@ -51,7 +51,7 @@ function hostFacts(): string {
   return [
     `host: ${process.platform} ${process.arch} ${release()} (${version()}); node ${process.version}`,
     `shell: ${pwshPath}; ${shell}`,
-    // dsh-subprocess-local spawns node-pty without useConptyDll, so the system console host,
+    // sqh-subprocess-local spawns node-pty without useConptyDll, so the system console host,
     // not the OpenConsole build node-pty bundles, renders every session.
     'conpty: system conhost',
   ].join('\n')
@@ -105,7 +105,7 @@ function text(result: { content: { type: string; text?: string }[] }): string {
 
 describe.skipIf(!hasPwsh)('persistent pwsh through a real cordis.yml Loader composition', () => {
   it('preserves cwd and environment across calls', async () => {
-    root = await realpath(await mkdtemp(join(tmpdir(), 'dsh-persistent-pwsh-loader-')))
+    root = await realpath(await mkdtemp(join(tmpdir(), 'sqh-persistent-pwsh-loader-')))
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
       "- name: '@liusiqi-dev/sqh-agent'",
@@ -136,8 +136,8 @@ describe.skipIf(!hasPwsh)('persistent pwsh through a real cordis.yml Loader comp
       // PSReadLine + Defender) inside the tool deadline; a 60s bound on the
       // fully loaded self-hosted Windows pool is exceeded often enough to
       // reset the session mid-test (2026-09-01, two runs ~62s each). 300s
-      // matches the dsh-tool-pwsh-persistent product default; the
-      // dsh-terminal-bash value bounds one send plus the complete startup
+      // matches the sqh-tool-pwsh-persistent product default; the
+      // sqh-terminal-bash value bounds one send plus the complete startup
       // sequence, so it covers the same cold start (its 30s product default
       // would not).
       '    timeoutMs: 300000',

@@ -151,8 +151,8 @@ function Get-CurrentIdentity {
 # token that process fails to initialize (STATUS_DLL_INIT_FAILED, 0xc0000142) and
 # raises an application-error dialog on the user's desktop.
 function Initialize-NativeApi {
-    if (-not ('Dsh.TokenInfo' -as [type])) {
-      Add-Type -Namespace Dsh -Name TokenInfo -MemberDefinition @'
+    if (-not ('Sqh.TokenInfo' -as [type])) {
+      Add-Type -Namespace Sqh -Name TokenInfo -MemberDefinition @'
 [StructLayout(LayoutKind.Sequential)]
 public struct SID_AND_ATTRIBUTES { public IntPtr Sid; public uint Attributes; }
 [StructLayout(LayoutKind.Sequential)]
@@ -210,7 +210,7 @@ public static int Level(IntPtr token) {
 
 function Get-IntegritySid {
   try {
-    $level = [Dsh.TokenInfo]::Level([System.Security.Principal.WindowsIdentity]::GetCurrent().Token)
+    $level = [Sqh.TokenInfo]::Level([System.Security.Principal.WindowsIdentity]::GetCurrent().Token)
     switch ($level) {
       0 { return 'S-1-16-0 (Untrusted)' }
       4096 { return 'S-1-16-4096 (Low)' }
@@ -377,9 +377,9 @@ function Restore-SavedDacl {
   if ($saved.Path -isnot [string] -or $saved.Path -ine $FullPath -or $saved.Dacl -isnot [string]) {
     throw [System.ArgumentException]::new('RESTORE_REFUSED backup does not describe the requested path')
   }
-  if (-not [Dsh.TokenInfo]::HasAccess($FullPath, 0x40000)) { throw 'RESTORE_REFUSED the caller lacks WRITE_DAC' }
+  if (-not [Sqh.TokenInfo]::HasAccess($FullPath, 0x40000)) { throw 'RESTORE_REFUSED the caller lacks WRITE_DAC' }
   Invoke-ReportedOperation restore_dacl $FullPath 'Restore the requested backup DACL and inheritance protection, preserving owner and SACL.' acl {
-    [Dsh.TokenInfo]::SetDacl($FullPath, $saved.Dacl)
+    [Sqh.TokenInfo]::SetDacl($FullPath, $saved.Dacl)
   }
   $restoredAcl = Invoke-ReportedOperation read_restored_dacl $FullPath 'Read the restored DACL to compare it with the saved record.' none {
     Get-Acl -LiteralPath $FullPath
@@ -450,7 +450,7 @@ function Get-ObjectFacts {
     $facts.Errors += @{ operation = 'read_owner'; error = (Get-HResultChain $_.Exception) }
   }
   foreach ($check in @(@{ field = 'HasWriteDac'; mask = 0x40000 }, @{ field = 'HasWriteOwner'; mask = 0x80000 })) {
-    try { $facts[$check.field] = [Dsh.TokenInfo]::HasAccess($FullPath, $check.mask) }
+    try { $facts[$check.field] = [Sqh.TokenInfo]::HasAccess($FullPath, $check.mask) }
     catch { $facts.Errors += @{ operation = $check.field; error = (Get-HResultChain $_.Exception) } }
   }
   # The mandatory label lives in the SACL. Reading the SACL needs a privilege while
@@ -665,7 +665,7 @@ try {
         [System.Security.AccessControl.FileSystemRights]::FullControl,
         [System.Security.AccessControl.AccessControlType]::Allow))
       Invoke-ReportedOperation grant_dacl $object "WRITE_DAC or WRITE_OWNER is missing; add a FullControl allow ACE for $meSid while preserving deny ACEs, owner and SACL." acl {
-        [Dsh.TokenInfo]::SetDacl($object, $grantAcl.GetSecurityDescriptorSddlForm([System.Security.AccessControl.AccessControlSections]::Access))
+        [Sqh.TokenInfo]::SetDacl($object, $grantAcl.GetSecurityDescriptorSddlForm([System.Security.AccessControl.AccessControlSections]::Access))
       }
       $grantAfter = Get-ObjectFacts -FullPath $object -MeSid $meSid -CompactRecord
       $factsByPath[$object] = $grantAfter

@@ -170,7 +170,7 @@ let root: string
 const contexts: Context[] = []
 
 beforeEach(async () => {
-  root = await mkdtemp(join(tmpdir(), 'dsh-migration-refusal-'))
+  root = await mkdtemp(join(tmpdir(), 'sqh-migration-refusal-'))
 })
 
 afterEach(async () => {

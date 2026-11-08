@@ -145,7 +145,7 @@ describe('session cwd resolution', () => {
     expect(sessionCwd(execution(cwd) as never)).toBe(cwd)
     expect(sessionCwd(execution(throughParent) as never)).toBe(throughParent)
 
-    const root = mkdtempSync(join(tmpdir(), 'dsh-tool-fs-session-cwd-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-tool-fs-session-cwd-'))
     const physical = join(root, 'physical')
     const link = join(root, 'link')
     try {

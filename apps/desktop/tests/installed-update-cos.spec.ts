@@ -88,7 +88,7 @@ describe('qualification COS transport with real SDK serialization over a loopbac
 
   it('streams a file-backed object with its declared length', async () => {
     const { store: cos, loopback } = await store((_request, response) => { answer(response, 200) })
-    const root = await mkdtemp(join(tmpdir(), 'dsh-cos-file-'))
+    const root = await mkdtemp(join(tmpdir(), 'sqh-cos-file-'))
     roots.push(root)
     const path = join(root, 'package.exe')
     await writeFile(path, 'file bytes')

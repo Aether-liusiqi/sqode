@@ -28,7 +28,7 @@ afterEach(async () => {
 
 describe('real Loader composition', () => {
   it('loads the shipped rows and records a turn’s changes', async () => {
-    root = await mkdtemp(join(tmpdir(), 'dsh-workspace-changes-loader-'))
+    root = await mkdtemp(join(tmpdir(), 'sqh-workspace-changes-loader-'))
     const cwd = join(root, 'ws')
     await writeFile(join(root, 'cordis.yml'), [
       "- name: '@liusiqi-dev/sqh-session'",

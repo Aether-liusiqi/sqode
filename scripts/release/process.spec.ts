@@ -17,7 +17,7 @@ afterEach(async () => {
  * @returns Absolute path of the archive.
  */
 async function packedTarball(name: string, version: string): Promise<string> {
-  const directory = await mkdtemp(join(tmpdir(), 'dsh-tarball-'))
+  const directory = await mkdtemp(join(tmpdir(), 'sqh-tarball-'))
   directories.push(directory)
   const contents = join(directory, 'package')
   await import('node:fs/promises').then(async fs => fs.mkdir(contents))

@@ -34,7 +34,7 @@ export async function withDefaultWeb(
   inspect: (app: DefaultWeb) => Promise<void>,
   options: { patches?: readonly string[]; prepare?: (root: string) => Promise<void> } = {},
 ): Promise<void> {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-web-default-isolation-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-web-default-isolation-'))
   let removal: Promise<void> | undefined
   const removeRoot = (): Promise<void> => removal ??= rm(root, { recursive: true, force: true })
   test.onTestFinished(removeRoot)

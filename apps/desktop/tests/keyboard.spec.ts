@@ -78,7 +78,7 @@ function browserGuest(reservation: DesktopBrowserReservation) {
 }
 
 async function fixture(platform: 'macos' | 'windows' | 'linux' = 'macos') {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-keyboard-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-keyboard-'))
   onTestFinished(async () => { await rm(root, { recursive: true, force: true }) })
   const frame: FrameFixture = { url: 'sqh-app://app/', name: '', parent: null }
   const contents = Object.assign(new EventEmitter(), { mainFrame: frame, focusedFrame: frame,

@@ -20,7 +20,7 @@ import {
   reconcileProfilePatches,
 } from '../src/index.ts'
 
-const NAME = 'dsh-test-bin'
+const NAME = 'sqh-test-bin'
 
 const tempRoots: string[] = []
 afterAll(() => {
@@ -28,7 +28,7 @@ afterAll(() => {
 })
 
 const tmp = (): string => {
-  const dir = mkdtempSync(join(tmpdir(), 'dsh-user-patches-'))
+  const dir = mkdtempSync(join(tmpdir(), 'sqh-user-patches-'))
   tempRoots.push(dir)
   return dir
 }

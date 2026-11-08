@@ -49,7 +49,7 @@ async function connection(factory: () => Transport, retry: boolean) {
 }
 
 async function stdioFixture() {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-mcp-negotiation-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-mcp-negotiation-'))
   onTestFinished(() => rm(root, { recursive: true, force: true }))
   const eventsPath = join(root, 'events.jsonl')
   const releasePath = join(root, 'release')

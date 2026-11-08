@@ -26,7 +26,7 @@ describe('current event admission at EOF', () => {
   let ctx: Context
 
   beforeEach(async () => {
-    root = await mkdtemp(join(tmpdir(), 'dsh-current-admission-'))
+    root = await mkdtemp(join(tmpdir(), 'sqh-current-admission-'))
     ctx = new Context()
     await ctx.plugin(JsonlSessionPersistence, { root, compression: 'none' })
   })

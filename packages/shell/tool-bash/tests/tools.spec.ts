@@ -31,7 +31,7 @@ const silentReader = { readFrom: (fromByte: number) => ({ text: '', nextOffset: 
 
 const testToolSignal = new AbortController().signal
 
-const spillDir = mkdtempSync(join(tmpdir(), 'dsh-tool-bash-spec-'))
+const spillDir = mkdtempSync(join(tmpdir(), 'sqh-tool-bash-spec-'))
 
 afterAll(() => {
   rmSync(spillDir, { recursive: true, force: true })
@@ -1248,7 +1248,7 @@ describe('tool-owned UI presentation (presentCall / presentResult)', () => {
 })
 
 describe('the model-facing bash tool builds its request from named args only (no {...args} forward)', () => {
-  const recordingDshHome = join(spillDir, 'dsh-home')
+  const recordingSqhHome = join(spillDir, 'sqh-home')
 
   /**
    * Records every {@link ShellExecRequest} the consumer hands to `resolve()`, so a
@@ -1259,7 +1259,7 @@ describe('the model-facing bash tool builds its request from named args only (no
    * future refactor that blindly forwards `...args` — which would silently thread
    * model input into the post-scrub `env` merge or per-run capture budget — NOT
    * to defend a trust boundary
-   * (the credential scrub in dsh-bash-local is the security control; see the
+   * (the credential scrub in sqh-bash-local is the security control; see the
    * bash-stdin-env Agent Note). Foreground `run()` returns a canned result; `start()`
    * hands back an already-settled fake handle so the task registration completes.
    */
@@ -1303,7 +1303,7 @@ describe('the model-facing bash tool builds its request from named args only (no
     await ctx.plugin(AgentRegistry)
     await ctx.plugin(LocalJobRegistry)
     await ctx.plugin(ToolJobs)
-    await ctx.plugin(BashEnvPlugin, { sqhHome: recordingDshHome })
+    await ctx.plugin(BashEnvPlugin, { sqhHome: recordingSqhHome })
     await ctx.plugin(RecordingBashExecutor)
     await ctx.plugin(ToolBash)
     return { ctx, bash: ctx.shell as RecordingBashExecutor }
@@ -1329,7 +1329,7 @@ describe('the model-facing bash tool builds its request from named args only (no
     })
 
     expect(bash.requests[0]?.sqhEnv).toEqual({
-      SQODE_HOME: recordingDshHome,
+      SQODE_HOME: recordingSqhHome,
       SQODE_SESSION_ID: 'request-fg',
       SQODE_SHELL: '1',
     })
@@ -1355,7 +1355,7 @@ describe('the model-facing bash tool builds its request from named args only (no
 
     expect(bash.requests[0]?.env).toBeUndefined()
     expect(bash.requests[0]?.sqhEnv).toEqual({
-      SQODE_HOME: recordingDshHome,
+      SQODE_HOME: recordingSqhHome,
       SQODE_SESSION_ID: 'request-bg',
       SQODE_SHELL: '1',
     })
@@ -1378,12 +1378,12 @@ describe('the model-facing bash tool builds its request from named args only (no
 
     expect(bash.requests.map(request => request.sqhEnv)).toEqual([
       {
-        SQODE_HOME: recordingDshHome,
+        SQODE_HOME: recordingSqhHome,
         SQODE_SESSION_ID: 'request-parent',
         SQODE_SHELL: '1',
       },
       {
-        SQODE_HOME: recordingDshHome,
+        SQODE_HOME: recordingSqhHome,
         SQODE_SESSION_ID: 'request-child',
         SQODE_SHELL: '1',
       },

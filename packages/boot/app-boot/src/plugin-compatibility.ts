@@ -49,7 +49,7 @@ function identityField(manifest: Record<string, unknown>, field: 'name' | 'versi
  * @returns the validated runtime semantic version, preserving its exact spelling.
  * @throws if package.json cannot be read or its version is missing or invalid.
  */
-export function getDshRuntimeVersion(): string {
+export function getSqhRuntimeVersion(): string {
   // The executable's virtual filesystem intercepts string paths, not URL arguments.
   const filename = fileURLToPath(new URL('../package.json', import.meta.url))
   const manifest = objectOf(JSON.parse(fs.readFileSync(filename, 'utf8')), 'app-boot package.json')
@@ -69,7 +69,7 @@ export function getDshRuntimeVersion(): string {
 export function evaluatePluginCompatibility(
   manifest: object,
   exemptions: Readonly<Record<string, readonly string[]>> = {},
-  runtimeVersion = getDshRuntimeVersion(),
+  runtimeVersion = getSqhRuntimeVersion(),
 ): PluginCompatibility | undefined {
   runtimeVersionOf(runtimeVersion)
   const fields = objectOf(manifest, 'Plugin manifest')

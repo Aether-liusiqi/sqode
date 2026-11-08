@@ -12,7 +12,7 @@ import * as LibreOfficeProvider from '@liusiqi-dev/sqh-office-to-pdf'
 import { expect, it, onTestFinished } from 'vitest'
 
 it('loads one shared conversion row and retains caller-owned PDFs after disposal', async () => {
-  const directory = await mkdtemp(join(tmpdir(), 'dsh-conversion-loader-'))
+  const directory = await mkdtemp(join(tmpdir(), 'sqh-conversion-loader-'))
   const ctx = new Context()
   onTestFinished(async () => {
     try { await ctx.fiber.dispose() }

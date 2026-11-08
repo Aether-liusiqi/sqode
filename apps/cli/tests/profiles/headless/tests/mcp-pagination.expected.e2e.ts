@@ -12,7 +12,7 @@ const expectedPath = fileURLToPath(new URL('./expected/mcp-pagination/stderr-cau
 it('warns when MCP discovery exceeds the SDK page limit and completes the headless task', async () => {
   const { stdout, stderr } = await runLoaderSmoke({
     label: 'MCP discovery pagination limit',
-    tempDirPrefix: 'dsh-mcp-pagination-',
+    tempDirPrefix: 'sqh-mcp-pagination-',
     binScript: fileURLToPath(new URL('../../../../src/bin.ts', import.meta.url)),
     libBinScript: fileURLToPath(new URL('../../../../lib/bin.js', import.meta.url)),
     configPath,

@@ -35,7 +35,7 @@ afterEach(async () => {
 async function boot(
   sessionLog: { enabled: boolean; maxBytes?: number }, mock: MockLlmServerOptions,
 ): Promise<{ ctx: Context; server: MockLlmServer }> {
-  root = await mkdtemp(join(tmpdir(), 'dsh-feedback-upload-'))
+  root = await mkdtemp(join(tmpdir(), 'sqh-feedback-upload-'))
   vi.stubEnv('SQODE_HOME', root)
   vi.stubEnv('DEEPSEEK_API_KEY', 'feedback-test-key')
   server = await startMockLlmServer(mock)

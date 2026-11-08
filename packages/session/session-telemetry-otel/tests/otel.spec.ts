@@ -52,7 +52,7 @@ const servers: Server[] = []
 let tempHome: string
 let previousSqhHome: string | undefined
 beforeAll(() => {
-  tempHome = mkdtempSync(join(tmpdir(), 'dsh-otel-home-'))
+  tempHome = mkdtempSync(join(tmpdir(), 'sqh-otel-home-'))
   previousSqhHome = process.env.SQODE_HOME
   process.env.SQODE_HOME = tempHome
 })
@@ -532,7 +532,7 @@ describe('OpenTelemetrySessionBackend route and feedback', () => {
 
   it.each(['deepseek-official', 'mock', undefined])('uploads live ratings, notes and withdrawal for %s without further interaction', async (provider) => {
     const { url, captures } = await mockCollector()
-    const root = mkdtempSync(join(tmpdir(), 'dsh-otel-live-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-otel-live-'))
     const ctx = new Context()
     ctx.plugin(OTel)
     try {
@@ -609,7 +609,7 @@ describe('OpenTelemetrySessionBackend route and feedback', () => {
 
   it.each([SessionTelemetryMode.FEEDBACK_ONLY])('restores a cold fork with its exact inherited cut in %s', async (mode) => {
     const { url, captures } = await mockCollector()
-    const root = mkdtempSync(join(tmpdir(), 'dsh-otel-cold-fork-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-otel-cold-fork-'))
     const ctx = new Context()
     ctx.plugin(OTel)
     try {
@@ -665,7 +665,7 @@ describe('OpenTelemetrySessionBackend route and feedback', () => {
     ['mock', SessionTelemetryMode.DISABLED],
   ] as const)('captures cold put, note edit and withdrawal for %s in %s without opening a live Session', async (provider, mode) => {
     const { url, captures } = await mockCollector()
-    const root = mkdtempSync(join(tmpdir(), 'dsh-otel-cold-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-otel-cold-'))
     const ctx = new Context()
     ctx.plugin(OTel)
     const warn = vi.spyOn(ctx.logger, 'warn').mockImplementation(() => {})
@@ -799,7 +799,7 @@ describe('OpenTelemetrySessionBackend config fails loud', () => {
   })
 })
 
-describe('dsh-session-telemetry-otel real-load-path guard', () => {
+describe('sqh-session-telemetry-otel real-load-path guard', () => {
   it('keeps the Service class with inject/Config through unwrapExports', async () => {
     const module = await import('../src/index.ts')
     const loader = Object.create(Loader.prototype) as Loader

@@ -18,7 +18,7 @@ vi.setConfig({ hookTimeout: 30_000 })
 // Desktop's downloaded Electron binary is not installed by ordinary workspace dependency setup.
 it.skipIf(process.platform !== 'darwin' || !electronInstalled).each(['workspace-write', 'danger-full-access'] as const)('runs PTC writes under Electron with %s', { timeout: 120_000 }, async (mode) => {
   const electron = require('electron') as string
-  const root = await mkdtemp(join(homedir(), '.dsh-electron-ptc-'))
+  const root = await mkdtemp(join(homedir(), '.sqh-electron-ptc-'))
   const ctx = new Context()
   onTestFinished(async () => {
     try { await ctx.fiber.dispose() } finally {

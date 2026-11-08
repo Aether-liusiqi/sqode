@@ -29,7 +29,7 @@ afterEach(async () => {
   if (errors.length > 0) throw new AggregateError(errors, 'Schedule recovery cleanup failed')
 })
 async function rootWith(tasks: Record<string, unknown>, bytes?: string) {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-schedule-recovery-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-schedule-recovery-'))
   roots.push(root)
   const path = join(root, 'schedule.json')
   if (bytes !== undefined || Object.keys(tasks).length > 0) {

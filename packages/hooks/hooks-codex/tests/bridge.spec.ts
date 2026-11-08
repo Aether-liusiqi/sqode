@@ -29,7 +29,7 @@ afterEach(async () => {
 })
 
 function configDir(): string {
-  const dir = mkdtempSync(join(tmpdir(), 'dsh-hooks-codex-'))
+  const dir = mkdtempSync(join(tmpdir(), 'sqh-hooks-codex-'))
   dirs.push(dir)
   return dir
 }

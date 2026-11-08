@@ -44,7 +44,7 @@ describe('capToolResultContent', () => {
   })
 
   it('caps a large result and spills the whole text beside the workspace', () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-tool-cap-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-tool-cap-'))
     roots.push(root)
     const whole = 'A'.repeat(20_000) + 'B'.repeat(20_000)
 

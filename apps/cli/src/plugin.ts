@@ -24,8 +24,8 @@ async function versionCommand(profile: string, args: readonly string[]): Promise
     const argumentsIterator = rest.values()
     for (const argument of argumentsIterator) {
       if (argument === '--accept-risk' && command === 'allow-version' && !acceptRisk) acceptRisk = true
-      else if (argument === '--dsh-version' && runtimeVersion === undefined) runtimeVersion = argumentsIterator.next().value
-      else if (argument.startsWith('--dsh-version=') && runtimeVersion === undefined) runtimeVersion = argument.slice('--dsh-version='.length)
+      else if (argument === '--sqh-version' && runtimeVersion === undefined) runtimeVersion = argumentsIterator.next().value
+      else if (argument.startsWith('--sqh-version=') && runtimeVersion === undefined) runtimeVersion = argument.slice('--sqh-version='.length)
       else if (!argument.startsWith('-') && packageVersion === undefined) packageVersion = argument
       else throw new Error(`unexpected argument ${JSON.stringify(argument)}`)
     }
@@ -33,7 +33,7 @@ async function versionCommand(profile: string, args: readonly string[]): Promise
     let request: { packageVersion: string; runtimeVersion: string } | undefined
     if (command !== 'version-exemptions') {
       if (packageVersion === undefined || runtimeVersion === undefined) {
-        throw new Error(`usage: dsh plugin ${command} <package@version> --dsh-version <exact>${command === 'allow-version' ? ' --accept-risk' : ''}`)
+        throw new Error(`usage: dsh plugin ${command} <package@version> --sqh-version <exact>${command === 'allow-version' ? ' --accept-risk' : ''}`)
       }
       request = { packageVersion, runtimeVersion }
     }
@@ -47,16 +47,16 @@ async function versionCommand(profile: string, args: readonly string[]): Promise
       else if (!existsSync(join(dir, 'package.json'))) initProfile(dir, PROFILE_TEMPLATES[profile]?.bundles ?? DEFAULT_PROFILE_BUNDLES)
       if (request === undefined) {
         const { exemptions, warnings } = readProfileCompatibility(dir)
-        for (const warning of warnings) process.stderr.write(`dsh: warning: ${warning}\n`)
+        for (const warning of warnings) process.stderr.write(`sqh: warning: ${warning}\n`)
         process.stdout.write(JSON.stringify(exemptions, undefined, 2) + '\n')
       } else {
         await setProfileVersionExemption(dir, request.packageVersion, request.runtimeVersion, command === 'allow-version', acceptRisk)
-        process.stdout.write(`dsh: ${command === 'allow-version' ? 'allowed' : 'revoked'} ${request.packageVersion} for SQH ${request.runtimeVersion}\n`)
+        process.stdout.write(`sqh: ${command === 'allow-version' ? 'allowed' : 'revoked'} ${request.packageVersion} for SQH ${request.runtimeVersion}\n`)
       }
     }, { waitMs: 120000 })
     return 0
   } catch (error) {
-    process.stderr.write(`dsh: ${String(error)}\n`)
+    process.stderr.write(`sqh: ${String(error)}\n`)
     return 1
   }
 }
@@ -70,7 +70,7 @@ async function versionCommand(profile: string, args: readonly string[]): Promise
 export async function runPlugin(profile: string, args: readonly string[], packageManager?: ProfileContext['packageManager']): Promise<number> {
   if (profile === 'desktop') {
     try { requireDesktopProfile(resolveProfileDir(profile)) } catch (error) {
-      process.stderr.write(`dsh: ${String(error)}\n`)
+      process.stderr.write(`sqh: ${String(error)}\n`)
       return 1
     }
   }
@@ -78,7 +78,7 @@ export async function runPlugin(profile: string, args: readonly string[], packag
   if (versionResult !== undefined) return versionResult
   const dir = resolveProfileDir(profile)
   if (existsSync(join(dir, 'package.json'))) {
-    for (const warning of readProfileCompatibility(dir).warnings) process.stderr.write(`dsh: warning: ${warning}\n`)
+    for (const warning of readProfileCompatibility(dir).warnings) process.stderr.write(`sqh: warning: ${warning}\n`)
   }
   const context = { profile, dir, installAnchor: INSTALL_ANCHOR, cwd: process.cwd() }
   const options: PackageOperationOptions = {
@@ -97,11 +97,11 @@ export async function runPlugin(profile: string, args: readonly string[], packag
     : await runPluginCommand(context, args, options)
   if (result.exitCode === 127) process.stderr.write('dsh: pnpm was not found; install pnpm and make it available on PATH.\n')
   for (const { name, version, runtimeVersion } of result.incompatible ?? []) {
-    process.stderr.write(`dsh: to accept the risk, run: dsh plugin --profile ${profile} allow-version ${name}@${version} --dsh-version ${runtimeVersion} --accept-risk\n`)
+    process.stderr.write(`sqh: to accept the risk, run: dsh plugin --profile ${profile} allow-version ${name}@${version} --sqh-version ${runtimeVersion} --accept-risk\n`)
   }
-  if (result.exitCode !== 0) process.stderr.write(`dsh: plugin command failed; diagnostics: ${result.logPath}\n`)
+  if (result.exitCode !== 0) process.stderr.write(`sqh: plugin command failed; diagnostics: ${result.logPath}\n`)
   if (result.exitCode !== 0 && args.some(argument => /^git\+|^github:|\.git(?:#|$)/.test(argument))) {
-    process.stderr.write(`dsh: git-hosted plugins build on install via their prepare script, which pnpm blocks until allowed — add the exact key pnpm printed above under allowBuilds in ${join(resolveProfileDir(profile), 'pnpm-workspace.yaml')}, then re-run\n`)
+    process.stderr.write(`sqh: git-hosted plugins build on install via their prepare script, which pnpm blocks until allowed — add the exact key pnpm printed above under allowBuilds in ${join(resolveProfileDir(profile), 'pnpm-workspace.yaml')}, then re-run\n`)
   }
   return result.exitCode
 }

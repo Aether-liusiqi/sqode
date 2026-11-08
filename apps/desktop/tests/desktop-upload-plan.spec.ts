@@ -39,7 +39,7 @@ async function fixture(
   version = '1.2.3',
   environment: 'test' | 'production' = 'test',
 ): Promise<Fixture> {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-desktop-upload-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-desktop-upload-'))
   temporaryDirectories.push(root)
   const repositoryRoot = join(root, 'repository')
   const appRoot = join(repositoryRoot, 'apps', 'desktop')
@@ -152,7 +152,7 @@ describe('desktop upload plan', () => {
     expect(plan.artifacts).toHaveLength(1)
     expect(plan.artifacts[0]).toMatchObject({
       path: join(paths.artifactsRoot, 'siqi-harness-1.2.3-alpha.4-win-x64.exe'),
-      key: 'desktop/dsh-latest-windows-x64.exe', channelMetadata: false,
+      key: 'desktop/sqh-latest-windows-x64.exe', channelMetadata: false,
     })
   })
 

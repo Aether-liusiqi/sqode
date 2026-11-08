@@ -143,7 +143,7 @@ function fixture(name = '@liusiqi-dev/sqh-core'): {
   // root plays $SQODE_HOME; the running dsh lives in a global install outside the profiles tree.
   // Node reports resolved module paths through the native realpath: /private/var for a macOS tmpdir under /var,
   // and the long directory name for a Windows tmpdir spelled with an 8.3 short name.
-  const root = realpathSync.native(mkdtempSync(join(tmpdir(), 'dsh-profile-resolution-')))
+  const root = realpathSync.native(mkdtempSync(join(tmpdir(), 'sqh-profile-resolution-')))
   roots.push(root)
   const installDir = join(root, 'global', 'node_modules', '@liusiqi-dev', 'sqode')
   const installed = join(installDir, 'node_modules', name)
@@ -151,7 +151,7 @@ function fixture(name = '@liusiqi-dev/sqh-core'): {
   pkg(installed, name, 1)
   const profileDir = join(root, 'profiles', 'web')
   file(join(profileDir, 'package.json'), JSON.stringify({
-    name: 'dsh-profile-web', private: true, dependencies: { 'missing-local': '*' },
+    name: 'sqh-profile-web', private: true, dependencies: { 'missing-local': '*' },
   }))
   return {
     root,
@@ -533,7 +533,7 @@ describe('runtime resolution', { concurrent: false }, () => {
   it('keeps a profile-local package ahead of the resolution', async () => {
     const f = fixture()
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
-      name: 'dsh-profile-web',
+      name: 'sqh-profile-web',
       private: true,
       dependencies: { '@liusiqi-dev/sqh-core': '*', 'linked-local': '*' },
     }))
@@ -572,7 +572,7 @@ describe('runtime resolution', { concurrent: false }, () => {
     const installedRealName = join(dirname(f.installAnchor), 'node_modules', 'real-name')
     pkg(installedRealName, 'real-name', 7)
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
-      name: 'dsh-profile-web',
+      name: 'sqh-profile-web',
       private: true,
       dependencies: { alias: 'npm:real-name' },
     }))
@@ -613,7 +613,7 @@ describe('runtime resolution', { concurrent: false }, () => {
   it('keeps package imports aliases on the resolution route', async () => {
     const f = fixture()
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
-      name: 'dsh-profile-web',
+      name: 'sqh-profile-web',
       private: true,
       imports: { '#@liusiqi-dev/sqh-core': '@liusiqi-dev/sqh-core' },
     }))
@@ -638,7 +638,7 @@ describe('runtime resolution', { concurrent: false }, () => {
   it('imports package aliases through the resolution and reports the original importer', async () => {
     const f = fixture()
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
-      name: 'dsh-profile-web',
+      name: 'sqh-profile-web',
       private: true,
       imports: { '#library': '@liusiqi-dev/sqh-core', '#missing': '@liusiqi-dev/sqh-core/missing' },
     }))
@@ -655,7 +655,7 @@ describe('runtime resolution', { concurrent: false }, () => {
   it('leaves relative package imports targets and their diagnostics to Node', async () => {
     const f = fixture()
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
-      name: 'dsh-profile-web',
+      name: 'sqh-profile-web',
       private: true,
       imports: { '#missing-relative': './missing.cjs' },
     }))
@@ -678,7 +678,7 @@ describe('runtime resolution', { concurrent: false }, () => {
   it('keeps local and native-after-resolution package imports targets in native order', async () => {
     const f = fixture()
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
-      name: 'dsh-profile-web',
+      name: 'sqh-profile-web',
       private: true,
       imports: { '#local': 'local-import', '#ancestor': 'ancestor-import' },
     }))
@@ -713,7 +713,7 @@ describe('runtime resolution', { concurrent: false }, () => {
   it('does not inherit package imports across node_modules', async () => {
     const f = fixture()
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
-      name: 'dsh-profile-web', private: true, imports: { '#@liusiqi-dev/sqh-core': '@liusiqi-dev/sqh-core' },
+      name: 'sqh-profile-web', private: true, imports: { '#@liusiqi-dev/sqh-core': '@liusiqi-dev/sqh-core' },
     }))
     const nested = join(f.profile.dir, 'node_modules', 'manifestless', 'entry.cjs')
     file(nested, '')
@@ -728,7 +728,7 @@ describe('runtime resolution', { concurrent: false }, () => {
   it('falls through a missing local CommonJS subpath to the resolution', async () => {
     const f = fixture()
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
-      name: 'dsh-profile-web',
+      name: 'sqh-profile-web',
       private: true,
       dependencies: { '@liusiqi-dev/sqh-core': '*' },
     }))
@@ -757,7 +757,7 @@ describe('runtime resolution', { concurrent: false }, () => {
   it('treats null exports as legacy CommonJS package resolution', async () => {
     const f = fixture()
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
-      name: 'dsh-profile-web',
+      name: 'sqh-profile-web',
       private: true,
       dependencies: { '@liusiqi-dev/sqh-core': '*' },
     }))
@@ -1004,7 +1004,7 @@ describe('runtime resolution', { concurrent: false }, () => {
       dir: profileDir,
       patchPath: join(profileDir, 'cordis.patch.yml'),
     }
-    file(join(profileDir, 'package.json'), JSON.stringify({ name: 'dsh-profile-web', private: true }))
+    file(join(profileDir, 'package.json'), JSON.stringify({ name: 'sqh-profile-web', private: true }))
     file(join(profileDir, 'node_modules', '@liusiqi-dev/sqh-core', 'package.json'), JSON.stringify({
       name: '@liusiqi-dev/sqh-core', version: '2.0.0',
     }))
@@ -1079,7 +1079,7 @@ describe('runtime resolution', { concurrent: false }, () => {
     const name = '@liusiqi-dev/sqh-core'
     const f = fixture(name)
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
-      name: 'dsh-profile-web', private: true, dependencies: { [name]: '*' },
+      name: 'sqh-profile-web', private: true, dependencies: { [name]: '*' },
       imports: { '#library': name },
     }))
     const parentDir = importer === 'profile' ? f.profile.dir : join(f.profile.dir, 'node_modules', 'my-plugin')
@@ -1114,7 +1114,7 @@ describe('runtime resolution', { concurrent: false }, () => {
   it('treats a profile symlink into .sqh-module-fallback as an ordinary local package', async () => {
     const f = fixture()
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
-      name: 'dsh-profile-web', private: true, dependencies: { '@liusiqi-dev/sqh-core': '*' },
+      name: 'sqh-profile-web', private: true, dependencies: { '@liusiqi-dev/sqh-core': '*' },
     }))
     const target = join(f.root, 'old-dsh', 'node_modules', '@liusiqi-dev', 'sqh-core')
     pkg(target, '@liusiqi-dev/sqh-core', 9)
@@ -1150,7 +1150,7 @@ describe('runtime resolution', { concurrent: false }, () => {
     const middleDir = join(selected, 'node_modules', middle)
     const leafDir = join(middleDir, 'node_modules', leaf)
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
-      name: 'dsh-profile-web', private: true, dependencies: { [plugin]: '*' },
+      name: 'sqh-profile-web', private: true, dependencies: { [plugin]: '*' },
     }))
     pkg(pluginDir, plugin, 1, { [dependency]: '*' })
     pkg(selected, dependency, 2, { [middle]: '*' })
@@ -1212,7 +1212,7 @@ describe('runtime resolution', { concurrent: false }, () => {
     symlinkSync(join(modules, 'bundle-a', 'node_modules', plugin), owned, process.platform === 'win32' ? 'junction' : 'dir')
     symlinkSync(owned, join(modules, plugin), process.platform === 'win32' ? 'junction' : 'dir')
     file(join(profileDir, 'package.json'), JSON.stringify({
-      name: 'dsh-profile-web', private: true,
+      name: 'sqh-profile-web', private: true,
       dependencies: { 'bundle-a': '*', 'bundle-b': '*' },
       dsh: { profile: { bundles: ['bundle-b'] } },
     }))
@@ -1270,7 +1270,7 @@ describe('runtime resolution', { concurrent: false }, () => {
       patchPaths: [join(bundleDir, 'cordis.patch.yml')], patches: [],
     })
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
-      name: 'dsh-profile-web', private: true, dependencies: { 'my-plugin': '*', 'my-bundle': '*' },
+      name: 'sqh-profile-web', private: true, dependencies: { 'my-plugin': '*', 'my-bundle': '*' },
     }))
     const logical: Record<LookupLayer, string> = {
       private: join(pluginDir, 'node_modules', name),
@@ -1326,7 +1326,7 @@ describe('runtime resolution', { concurrent: false }, () => {
   })
 
   it('uses shared packages in the canonicalized profiles tree before its ancestors', async () => {
-    const root = realpathSync.native(mkdtempSync(join(tmpdir(), 'dsh-profile-resolution-symlink-')))
+    const root = realpathSync.native(mkdtempSync(join(tmpdir(), 'sqh-profile-resolution-symlink-')))
     roots.push(root)
     const carrier = join(root, 'carrier')
     const profilesDir = join(root, 'home', 'profiles')
@@ -1595,7 +1595,7 @@ describe('runtime resolution', { concurrent: false }, () => {
     const first = await resolutionOf(f)
     const registration = installRuntimeInterception(first)
     registrations.push(registration)
-    const alias = join(f.root, 'dsh-core-alias')
+    const alias = join(f.root, 'sqh-core-alias')
     symlinkSync(f.installed, alias, process.platform === 'win32' ? 'junction' : 'dir')
     registration.replace({
       ...first,
@@ -1895,7 +1895,7 @@ describe('runtime resolution', { concurrent: false }, () => {
     mkdirSync(modules, { recursive: true })
     symlinkSync(linkedRoot, join(modules, 'my-plugin'), linkType)
     file(join(f.profile.dir, 'package.json'), JSON.stringify({
-      name: 'dsh-profile-web', private: true, dependencies: { 'my-plugin': '*' },
+      name: 'sqh-profile-web', private: true, dependencies: { 'my-plugin': '*' },
     }))
     return { f, linkedRoot, helper, writeManifest }
   }
@@ -1906,7 +1906,7 @@ describe('runtime resolution', { concurrent: false }, () => {
     function unsavedFixture(): ReturnType<typeof linkedPluginFixture> {
       const result = linkedPluginFixture()
       file(join(result.f.profile.dir, 'package.json'), JSON.stringify({
-        name: 'dsh-profile-web', private: true, dependencies: {},
+        name: 'sqh-profile-web', private: true, dependencies: {},
       }))
       return result
     }

@@ -40,7 +40,7 @@ describe.skipIf(MODE === 'record')('web e2e: App-only desktop onboarding', () =>
     walletBalance = '0E-16'
     bonusBalance = '0'
     screenshots = undefined
-    root = await mkdtemp(join(tmpdir(), 'dsh-desktop-onboarding-'))
+    root = await mkdtemp(join(tmpdir(), 'sqh-desktop-onboarding-'))
     server = createServer((request, response) => {
       if (request.url !== '/auth-api/v0/users/current' && request.url !== '/api/v0/users/get_user_summary') {
         response.writeHead(404).end()

@@ -13,7 +13,7 @@ import { ZH_BROWSER_LOCALE } from './support.ts'
 const MIRROR = 'https://registry.npmmirror.com/'
 
 it.each(['https://registry.npmjs.org/', MIRROR])('selects the fastest responding registry %s, remembers it, and falls back after a registry failure', async (winner) => {
-  const scratch = await mkdtemp(join(tmpdir(), 'dsh-install-registry-'))
+  const scratch = await mkdtemp(join(tmpdir(), 'sqh-install-registry-'))
   onTestFinished(() => rm(scratch, { recursive: true, force: true }))
   const requestLog = join(scratch, 'registry-pings.jsonl')
   await writeFile(requestLog, '')

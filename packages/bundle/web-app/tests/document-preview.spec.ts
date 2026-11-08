@@ -24,7 +24,7 @@ const kit = vi.hoisted(() => ({ create: vi.fn<(options?: ConverterOptions) => Pr
 vi.mock('@deepseek-ai/libreoffice-kit', () => ({ createConverter: kit.create }))
 
 it('loads the shipped Office rows with separately patched settings and authorized PDF output', async () => {
-  const directory = await realpath(await mkdtemp(join(tmpdir(), 'dsh-web-office-')))
+  const directory = await realpath(await mkdtemp(join(tmpdir(), 'sqh-web-office-')))
   const ctx = new Context()
   onTestFinished(async () => {
     try { await ctx.fiber.dispose() }

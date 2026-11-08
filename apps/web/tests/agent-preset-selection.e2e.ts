@@ -225,7 +225,7 @@ describe('web e2e: agent-preset selection', () => {
 
   beforeAll(async () => {
     // The failed declaration remains in the registry, outside the selectable options.
-    fixtureRoot = await realpath(await mkdtemp(join(tmpdir(), 'dsh-web-e2e-refusing-')))
+    fixtureRoot = await realpath(await mkdtemp(join(tmpdir(), 'sqh-web-e2e-refusing-')))
     await seedRefusingPreset(fixtureRoot)
     scaffold = await launchWebScaffold({
       agentPresets: { default: 'standard', definitions: [{ id: REFUSING_ID, name: 'Refusing mode', description: 'Refuses to start.', plugins: [{ name: pathToFileURL(join(fixtureRoot, REFUSING_ID, 'refuses.mjs')).href }] }] },

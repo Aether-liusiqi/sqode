@@ -29,7 +29,7 @@ function meta(id: string): SessionHeader {
 }
 
 async function freshRoot(): Promise<string> {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-jsonl-destroy-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-jsonl-destroy-'))
   roots.push(root)
   return root
 }

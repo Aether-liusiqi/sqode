@@ -293,7 +293,7 @@ function manifest(path: string, content: Record<string, unknown>): void {
 
 class MatrixFixture {
   // Node keeps resolved paths and modules after cleanup; no fixture may reuse an earlier fixture's path.
-  readonly root = realpathSync.native(mkdtempSync(join(tmpdir(), `dsh-linked-matrix-${++fixtureSequence}-`)))
+  readonly root = realpathSync.native(mkdtempSync(join(tmpdir(), `sqh-linked-matrix-${++fixtureSequence}-`)))
   readonly home = join(this.root, 'home')
   readonly profileDir = join(this.home, 'profiles', 'web')
   readonly workspace = join(this.root, 'work', 'workspace')

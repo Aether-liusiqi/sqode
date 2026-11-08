@@ -701,10 +701,10 @@ describe('ConversationRoot resident composer', () => {
     // layout reports, and the CSS clamp() floors the axis at 680px either way.
     Object.defineProperty(content, 'offsetWidth', { value: 1200, configurable: true })
     act(() => { fireResize(content) })
-    expect(root.style.getPropertyValue('--dsh-conversation-column-width')).toBe('1200px')
+    expect(root.style.getPropertyValue('--sqh-conversation-column-width')).toBe('1200px')
     // No dragged preference: the user-width override stays absent so the
     // adaptive clamp term applies.
-    expect(root.style.getPropertyValue('--dsh-chat-user-width')).toBe('')
+    expect(root.style.getPropertyValue('--sqh-chat-user-width')).toBe('')
   })
 
   it('drag → persist → window clamp round-trip on a width handle', () => {
@@ -731,16 +731,16 @@ describe('ConversationRoot resident composer', () => {
       // inside both bounds (max = 1600 − 176 = 1424 keeps the handles on-column).
       fireEvent.pointerDown(handle, { pointerId: 1, clientX: 800, clientY: 300 })
       fireEvent.pointerMove(handle, { pointerId: 1, clientX: 825, clientY: 300 })
-      expect(handle.style.getPropertyValue('--dsh-width-handle-pointer-y')).toBe('300px')
+      expect(handle.style.getPropertyValue('--sqh-width-handle-pointer-y')).toBe('300px')
       fireEvent.pointerUp(handle, { pointerId: 1, clientX: 825, clientY: 300 })
       expect(handle.hasAttribute('data-dragging')).toBe(false)
-      expect(root.style.getPropertyValue('--dsh-chat-user-width')).toBe('970px')
+      expect(root.style.getPropertyValue('--sqh-chat-user-width')).toBe('970px')
       expect(localStorage.getItem('dsh.conversation.contentWidth')).toBe('970')
       // Window shrinks: the displayed width re-clamps (900 − 176 = 724) but the
       // preference stays.
       Object.defineProperty(content, 'offsetWidth', { value: 900, configurable: true })
       act(() => { fireResize(content) })
-      expect(root.style.getPropertyValue('--dsh-chat-user-width')).toBe('724px')
+      expect(root.style.getPropertyValue('--sqh-chat-user-width')).toBe('724px')
       expect(localStorage.getItem('dsh.conversation.contentWidth')).toBe('970')
       // A press without travel (a real double-click delivers two such
       // press/release rounds) must not commit the clamped display value over
@@ -748,7 +748,7 @@ describe('ConversationRoot resident composer', () => {
       fireEvent.pointerDown(handle, { pointerId: 1, clientX: 800, clientY: 300 })
       fireEvent.pointerUp(handle, { pointerId: 1, clientX: 800, clientY: 300 })
       expect(localStorage.getItem('dsh.conversation.contentWidth')).toBe('970')
-      expect(root.style.getPropertyValue('--dsh-chat-user-width')).toBe('724px')
+      expect(root.style.getPropertyValue('--sqh-chat-user-width')).toBe('724px')
       // No reset affordance on the handle: double-click leaves the preference alone.
       fireEvent.doubleClick(handle)
       expect(localStorage.getItem('dsh.conversation.contentWidth')).toBe('970')
@@ -833,7 +833,7 @@ describe('ConversationRoot resident composer', () => {
     fireEvent.pointerCancel(handle, { pointerId: 2 })
     expect(handle.hasAttribute('data-dragging')).toBe(false)
     fireEvent.pointerMove(handle, { pointerId: 2, clientX: 825, clientY: 300 })
-    expect(handle.style.getPropertyValue('--dsh-width-handle-pointer-y')).toBe('')
+    expect(handle.style.getPropertyValue('--sqh-width-handle-pointer-y')).toBe('')
   })
 
   it('hero phase renders no width handles (no transcript to size)', () => {

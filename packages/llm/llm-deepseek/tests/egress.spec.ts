@@ -42,7 +42,7 @@ import * as LlmDeepSeek from '@liusiqi-dev/sqh-llm-deepseek-api-key'
 
 let home: string
 beforeAll(() => {
-  home = mkdtempSync(join(tmpdir(), 'dsh-deepseek-egress-'))
+  home = mkdtempSync(join(tmpdir(), 'sqh-deepseek-egress-'))
   vi.stubEnv('SQODE_HOME', home)
   vi.stubEnv('DEEPSEEK_API_KEY', 'probe-key')
 })

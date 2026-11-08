@@ -24,7 +24,7 @@ afterEach(async () => {
 
 describe('experimental Inspector through a real Loader composition', () => {
   it('mounts the bundle patch over a Web server row and releases its endpoint', async () => {
-    root = await mkdtemp(join(tmpdir(), 'dsh-inspector-loader-'))
+    root = await mkdtemp(join(tmpdir(), 'sqh-inspector-loader-'))
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
       "- name: '@liusiqi-dev/sqh-host-webserver'",

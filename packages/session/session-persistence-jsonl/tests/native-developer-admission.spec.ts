@@ -19,7 +19,7 @@ const developer = { type: 'developer/message', surfaceOp: 'append', data: {
 
 describe.each(modes)('native developer admission ($compression, $access)', ({ compression, access }) => {
   async function stored(event: object, corruptPrefix = false) {
-    const root = await mkdtemp(join(tmpdir(), 'dsh-native-developer-'))
+    const root = await mkdtemp(join(tmpdir(), 'sqh-native-developer-'))
     const ctx = new Context()
     onTestFinished(async () => {
       try {

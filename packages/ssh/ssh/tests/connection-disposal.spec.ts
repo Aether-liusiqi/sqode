@@ -25,7 +25,7 @@ vi.mock('node:tls', async importOriginal => ({
 // These transport-only tests own no filesystem or native process; cleanup
 // settles in microtasks so it cannot hide an unjoined control command.
 vi.mock('node:fs/promises', () => ({
-  mkdtemp: async () => '/virtual/dsh-ssh-test',
+  mkdtemp: async () => '/virtual/sqh-ssh-test',
   rm: async () => {},
 }))
 

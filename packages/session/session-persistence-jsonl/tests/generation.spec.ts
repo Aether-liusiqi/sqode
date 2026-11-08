@@ -42,7 +42,7 @@ import type {
 const roots: string[] = []
 
 async function tempRoot(): Promise<string> {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-jsonl-generation-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-jsonl-generation-'))
   roots.push(root)
   return root
 }

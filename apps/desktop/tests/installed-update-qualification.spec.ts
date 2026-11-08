@@ -16,7 +16,7 @@ interface CollectionReport {
 }
 
 async function fixture<T>(body: (directory: string) => Promise<T>): Promise<T> {
-  const directory = await mkdtemp(join(tmpdir(), 'dsh-installed-update-'))
+  const directory = await mkdtemp(join(tmpdir(), 'sqh-installed-update-'))
   try { return await body(directory) }
   finally { await rm(directory, { recursive: true, force: true }) }
 }

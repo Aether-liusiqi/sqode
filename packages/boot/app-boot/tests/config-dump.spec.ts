@@ -16,7 +16,7 @@ import * as yaml from 'js-yaml'
 import { entryListSchema } from '@liusiqi-dev/cordis-plugin-include'
 import { loadOverlayPatches, renderConfigDump } from '../src/index.ts'
 
-const NAME = 'dsh-test-bin'
+const NAME = 'sqh-test-bin'
 
 const tempRoots: string[] = []
 afterAll(() => {
@@ -24,7 +24,7 @@ afterAll(() => {
 })
 
 const tmp = (): string => {
-  const dir = mkdtempSync(join(tmpdir(), 'dsh-config-dump-'))
+  const dir = mkdtempSync(join(tmpdir(), 'sqh-config-dump-'))
   tempRoots.push(dir)
   return dir
 }

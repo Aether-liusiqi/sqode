@@ -36,7 +36,7 @@ async function fixture(
   desktopPlatform: 'darwin' | 'win32' | null = null,
   balanceTimeoutMs = 30_000,
 ) {
-  const home = await mkdtemp(join(tmpdir(), 'dsh-account-'))
+  const home = await mkdtemp(join(tmpdir(), 'sqh-account-'))
   cleanups.push(() => rm(home, { recursive: true, force: true }))
   let init: Record<string, string> = {}
   const cancellations: Array<Record<string, string>> = []
@@ -85,18 +85,18 @@ async function fixture(
       version: req.headers['x-client-version'] as string | undefined,
       locale: req.headers['x-client-locale'] as string | undefined,
       timezoneOffset: req.headers['x-client-timezone-offset'] as string | undefined,
-      path: req.url, cookie: req.headers.cookie, authorization: req.headers['x-dsh-auth-token'] as string | undefined })
+      path: req.url, cookie: req.headers.cookie, authorization: req.headers['x-sqh-auth-token'] as string | undefined })
     if (redirect) { res.writeHead(302, { location: `${origin}/redirect-target` }).end(); return }
     if (req.url === '/auth-api/v0/users/logout') {
       logoutCount++
-      logoutHeaders.push(req.headers['x-dsh-auth-token'] as string | undefined)
+      logoutHeaders.push(req.headers['x-sqh-auth-token'] as string | undefined)
       if (logoutHold) await release.promise
       res.setHeader('content-type', 'application/json')
       res.end(JSON.stringify({ code: logoutFailed ? 50000 : 0, data: { biz_code: 0, biz_data: null } }))
       return
     }
     if (req.method === 'GET') {
-      detailRequests.push({ path: req.url!, authorization: req.headers['x-dsh-auth-token'] as string | undefined })
+      detailRequests.push({ path: req.url!, authorization: req.headers['x-sqh-auth-token'] as string | undefined })
       const status = detailStatus
       detailsStarted.resolve(undefined)
       if (detailsHold || (balanceHold && req.url === '/api/v0/users/get_user_summary')) await release.promise

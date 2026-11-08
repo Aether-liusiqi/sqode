@@ -14,7 +14,7 @@ import { ACL_DIAGNOSIS_SKILL } from '../src/acl-skill.ts'
 
 // sandbox-local's POSIX suites are excluded on Windows; this owner runs in Windows coverage.
 it.skipIf(process.platform !== 'win32')('loads and unloads the ACL skill through the real sandbox-local composition', async () => {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-acl-composition-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-acl-composition-'))
   const ctx = new Context()
   try {
     // Loader persists disposal as disabled config; the committed seed stays read-only.
@@ -40,7 +40,7 @@ it.skipIf(process.platform !== 'win32')('loads and unloads the ACL skill through
     await ctx.loader.await()
     expect((await ctx.skills.list()).map(entry => entry.name)).toEqual([ACL_DIAGNOSIS_SKILL])
     const loaded = await ctx.skills.get(ACL_DIAGNOSIS_SKILL)
-    expect(loaded).toMatchObject({ source: 'bundled', provider: 'dsh-windows-acl' })
+    expect(loaded).toMatchObject({ source: 'bundled', provider: 'sqh-windows-acl' })
     expect(loaded?.content).toContain('Stop after any failed or refused repair')
     if (loaded?.resourceBase?.kind !== 'directory') throw new Error('Missing extracted skill resources')
     const resources = loaded.resourceBase.path

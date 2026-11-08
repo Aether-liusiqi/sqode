@@ -18,14 +18,14 @@ function records(content: string): Record<string, unknown>[] {
 
 describe('dsh run with Agent Teams enabled', () => {
   it('runs two teammates, durable peer mail, dependent tasks, waiting, and final aggregation', async () => {
-    const cwd = await mkdtemp(join(tmpdir(), 'dsh-agent-team-headless-'))
+    const cwd = await mkdtemp(join(tmpdir(), 'sqh-agent-team-headless-'))
     try {
       const home = join(cwd, '.sqode')
       const sessions = join(home, 'sessions')
       const profileDir = join(home, 'profiles', 'headless')
       await mkdir(profileDir, { recursive: true })
       await writeFile(join(profileDir, 'package.json'), JSON.stringify({
-        name: 'dsh-profile-headless',
+        name: 'sqh-profile-headless',
         private: true,
         dependencies: {
           '@liusiqi-dev/sqh-experimental-agent-team-profile': 'workspace:^',

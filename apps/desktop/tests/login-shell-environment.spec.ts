@@ -14,7 +14,7 @@ const DELIMITER = '_SQH_SHELL_ENV_DELIMITER_'
 const config = { timeoutMs: 5_000 }
 let directory: string
 
-beforeEach(() => { directory = mkdtempSync(join(tmpdir(), 'dsh-login-shell-')) })
+beforeEach(() => { directory = mkdtempSync(join(tmpdir(), 'sqh-login-shell-')) })
 afterEach(() => { rmSync(directory, { recursive: true, force: true }) })
 
 /** Whether `pid` has exited; Linux can keep a killed process as a zombie until its new parent reaps it. */

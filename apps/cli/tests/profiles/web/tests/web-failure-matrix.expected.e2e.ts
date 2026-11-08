@@ -25,7 +25,7 @@ const failures = [
 type Failure = typeof failures[number][0]
 
 function fixture() {
-  const root = mkdtempSync(join(tmpdir(), 'dsh-web-failure-matrix-'))
+  const root = mkdtempSync(join(tmpdir(), 'sqh-web-failure-matrix-'))
   const home = join(root, 'home')
   mkdirSync(home)
   const events = join(root, 'events')

@@ -17,7 +17,7 @@ vi.mock('node:fs/promises', async (original) => {
 
 describe.skipIf(process.platform === 'win32')('SSH completed-process cleanup ownership', () => {
   it.each(['success', 'failure'] as const)('joins finalization after native %s while retaining the direct result', async (kind) => {
-    const root = await mkdtemp('/tmp/dsh-ssh-final-')
+    const root = await mkdtemp('/tmp/sqh-ssh-final-')
     const ctx = new Context()
     const filesystem = await ctx.plugin(LocalFileSystem, { cwd: root })
     const subprocess = await ctx.plugin(LocalSubprocessRuntime)

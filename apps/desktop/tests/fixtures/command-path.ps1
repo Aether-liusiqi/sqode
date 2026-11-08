@@ -6,17 +6,17 @@ $identity = [Guid]::NewGuid().ToString('N')
 $keyRoot = 'Software\DeepSeekHarness\CommandTests\' + $identity
 $environmentKey = $keyRoot + '\Environment'
 $ownerKey = $keyRoot + '\Owner'
-$options = @{ EnvironmentKey=$environmentKey; OwnerKey=$ownerKey; MachinePath=''; MutexName=('Local\DshCommandTest-' + $identity) }
+$options = @{ EnvironmentKey=$environmentKey; OwnerKey=$ownerKey; MachinePath=''; MutexName=('Local\SqhCommandTest-' + $identity) }
 function Require([bool]$Condition, [string]$Message) { if (-not $Condition) { throw $Message } }
 function UserPath {
     $key = [Microsoft.Win32.Registry]::CurrentUser.OpenSubKey($environmentKey)
     try { return $key.GetValue('Path', $null, [Microsoft.Win32.RegistryValueOptions]::DoNotExpandEnvironmentNames) }
     finally { $key.Dispose() }
 }
-function State([string]$Directory) { return Invoke-DshCommandPath @options -Request @{ operation='inspect'; directory=$Directory } }
+function State([string]$Directory) { return Invoke-SqhCommandPath @options -Request @{ operation='inspect'; directory=$Directory } }
 function Apply([string]$Operation, [string]$Directory) {
     $state = State $Directory
-    return Invoke-DshCommandPath @options -Request @{ operation=$Operation; directory=$Directory; expected=$state.fingerprint }
+    return Invoke-SqhCommandPath @options -Request @{ operation=$Operation; directory=$Directory; expected=$state.fingerprint }
 }
 try {
     $desktop = Join-Path $Root ('Desktop space ' + [char]0x4e2d + [char]0x6587)
@@ -47,7 +47,7 @@ try {
     try { $key.SetValue('Path', (UserPath) + ';newer-entry', [Microsoft.Win32.RegistryValueKind]::ExpandString) }
     finally { $key.Dispose() }
     $rejected = $false
-    try { [void](Invoke-DshCommandPath @options -Request @{ operation='install'; directory=$desktop; expected=$stale.fingerprint }) }
+    try { [void](Invoke-SqhCommandPath @options -Request @{ operation='install'; directory=$desktop; expected=$stale.fingerprint }) }
     catch { $rejected = $_.Exception.Data['code'] -eq 'ESTALE' }
     Require $rejected 'stale confirmation was accepted'
     [void](Apply 'install' $desktop)
@@ -88,7 +88,7 @@ try {
     Require ((State $desktop).activeCommand -eq (Join-Path $npm 'dsh.ps1')) 'invalid PATH entries prevented command discovery'
     [void](Apply 'install' $desktop)
     function Add-Type { throw 'Environment notification is unavailable' }
-    try { Send-DshCommandEnvironmentChange } finally { Remove-Item Function:\Add-Type }
+    try { Send-SqhCommandEnvironmentChange } finally { Remove-Item Function:\Add-Type }
     Require ((UserPath) -eq ($desktop + ';' + $invalidPath)) 'a notification failure changed the committed PATH'
     [void](Apply 'remove' $desktop)
     Require ((UserPath) -eq $invalidPath) 'removal changed invalid user PATH entries'

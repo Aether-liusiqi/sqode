@@ -29,7 +29,7 @@ export async function verifyMcpBrowser(
   mode: 'launch' | 'attach',
 ): Promise<void> {
   const executable = process.env.SQODE_BROWSER_EXECUTABLE!
-  const root = await mkdtemp(join(tmpdir(), 'dsh-browser-upstream-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-browser-upstream-'))
   const observed = new Set<string>()
   const server = createServer((request, response) => {
     observed.add(request.url!)

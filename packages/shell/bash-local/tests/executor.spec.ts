@@ -21,7 +21,7 @@ function start(x: { execute(spec: ShellExecSpec): Promise<ShellExecution> }, spe
 }
 
 
-const spillDir = mkdtempSync(join(tmpdir(), 'dsh-bash-exec-spec-'))
+const spillDir = mkdtempSync(join(tmpdir(), 'sqh-bash-exec-spec-'))
 
 afterAll(() => {
   rmSync(spillDir, { recursive: true, force: true })
@@ -157,14 +157,14 @@ describe('LocalBashExecutor.run', () => {
       command: 'cat; echo "[$SEAM_VAR][$SQODE_SEAM_VAR]"',
       stdin: 'piped\n',
       env: { SEAM_VAR: 'env-ok' },
-      sqhEnv: { SQODE_SEAM_VAR: 'dsh-ok' },
+      sqhEnv: { SQODE_SEAM_VAR: 'sqh-ok' },
     })
     // resolve() keeps the optional input/environment fields verbatim.
     expect(spec.stdin).toBe('piped\n')
     expect(spec.env).toEqual({ SEAM_VAR: 'env-ok' })
-    expect(spec.sqhEnv).toEqual({ SQODE_SEAM_VAR: 'dsh-ok' })
+    expect(spec.sqhEnv).toEqual({ SQODE_SEAM_VAR: 'sqh-ok' })
     const result = await run(bash, spec)
-    expect(result.stdout.text).toBe('piped\n[env-ok][dsh-ok]\n')
+    expect(result.stdout.text).toBe('piped\n[env-ok][sqh-ok]\n')
   })
 
   it('resolve() omits stdin/env/sqhEnv when the request supplies none', async () => {
@@ -204,9 +204,9 @@ describe('LocalBashExecutor.start (background process handles)', () => {
       command: 'cat; echo "[$BG_VAR][$SQODE_BG_VAR]"',
       stdin: 'bg-stdin\n',
       env: { BG_VAR: 'bg-env' },
-      sqhEnv: { SQODE_BG_VAR: 'bg-dsh-env' },
+      sqhEnv: { SQODE_BG_VAR: 'bg-sqh-env' },
     })))
-    const output = await readUntil(proc, '[bg-env][bg-dsh-env]')
+    const output = await readUntil(proc, '[bg-env][bg-sqh-env]')
     expect(output).toContain('bg-stdin')
     await proc.done
     expect(proc.exitCode).toBe(0)

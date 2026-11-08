@@ -1,7 +1,7 @@
 /**
  * Issue #4573: a profile install of this package sits beside the dsh
  * installation and installs its own copy of `@liusiqi-dev/sqh-scope`, so two
- * scope module instances coexist in one host process. `dsh-scope` mints its
+ * scope module instances coexist in one host process. `sqh-scope` mints its
  * scope-tag symbol per module instance, so the copy's `createScope` writes a
  * tag every host registry ignores: each Agent's MCP tools register in the
  * global tool layer, the first Agent succeeds, and every later Agent's tool
@@ -12,7 +12,7 @@
  * two Agents, each with its own browser client.
  *
  * The first case is a characterization of the duplicated package, not a
- * behavior to preserve. Delete it once `dsh-scope` stops depending on module
+ * behavior to preserve. Delete it once `sqh-scope` stops depending on module
  * identity (for example a `Symbol.for` tag shared across copies).
  *
  * Run: `pnpm vitest run packages/experimental/browser-use-runtime/tests/host-runtime-duplication.spec.ts`
@@ -41,7 +41,7 @@ afterEach(async () => {
 
 /** Composition with the registries a browser provider contributes to. */
 async function load(): Promise<{ ctx: Context; root: string }> {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-browser-duplication-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-browser-duplication-'))
   roots.push(root)
   const ctx = new Context()
   contexts.push(ctx)

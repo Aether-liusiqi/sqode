@@ -28,7 +28,7 @@ const { validateConfiguration } = require('app-builder-lib/out/util/config/confi
 }
 
 async function fixture<T>(body: (manifest: string, source: string) => Promise<T>): Promise<T> {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-update-builder-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-update-builder-'))
   try {
     const run = await createInstalledUpdateRun(root, versions, { version: '0.1.5-rc.2', commit: 'a'.repeat(40), dirtyFiles: [] })
     const manifest = join(run.root, 'run.json')

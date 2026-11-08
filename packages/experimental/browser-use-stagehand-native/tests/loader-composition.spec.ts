@@ -73,7 +73,7 @@ afterEach(async () => {
 
 it('loads browser tools from cordis.yml, logs browser results, and admits the screenshot', async () => {
   resetFixture()
-  root = await mkdtemp(join(tmpdir(), 'dsh-stagehand-composition-'))
+  root = await mkdtemp(join(tmpdir(), 'sqh-stagehand-composition-'))
   const modules = new Map<string, unknown>([
     ['@liusiqi-dev/sqh-llm', LlmRuntime],
     ['@liusiqi-dev/sqh-session', SessionStore],

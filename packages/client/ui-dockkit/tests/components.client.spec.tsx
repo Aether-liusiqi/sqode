@@ -1320,7 +1320,7 @@ describe('FloatLayer', () => {
     })
     root.setAttribute('data-windows-titlebar', '')
     root.toggleAttribute('data-fullscreen', fullscreen)
-    root.style.setProperty('--dsh-windows-titlebar-height', '40px')
+    root.style.setProperty('--sqh-windows-titlebar-height', '40px')
     const { intents, paneId, panel } = floating(undefined, savedY)
     const measure = vi.spyOn(HTMLElement.prototype, 'getBoundingClientRect')
     const computedStyle = vi.spyOn(window, 'getComputedStyle')
@@ -1466,7 +1466,7 @@ describe('FloatLayer', () => {
 
     drag(grip, [150, 90], [180, 110], false)
     expect(panel.style.left).toBe('130px')
-    expect(panel.style.top).toBe('max(var(--dsh-dockkit-float-top, 0px), 100px)')
+    expect(panel.style.top).toBe('max(var(--sqh-dockkit-float-top, 0px), 100px)')
     // Mid-gesture the panel draws on top, as the move it records will leave it.
     expect(panel.style.zIndex).toBe('3')
     fireEvent.pointerUp(window, { pointerId: 7, clientX: 180, clientY: 110 })

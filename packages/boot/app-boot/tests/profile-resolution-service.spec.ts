@@ -54,7 +54,7 @@ function resolution(
 
 describe('profile package metadata service', () => {
   it('reads translated metadata from the selected local package without importing its entry', async () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-localized-package-service-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-localized-package-service-'))
     roots.push(root)
     const packageDir = join(root, 'node_modules', 'localized')
     file(join(packageDir, 'package.json'), JSON.stringify({
@@ -75,7 +75,7 @@ describe('profile package metadata service', () => {
   })
 
   it('resolves module URLs and package metadata through the current resolution', async () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-profile-package-service-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-profile-package-service-'))
     roots.push(root)
     const profilesDir = join(root, 'profiles')
     const profileDir = join(profilesDir, 'test')
@@ -109,7 +109,7 @@ describe('profile package metadata service', () => {
   })
 
   it('uses native package lookup without a registration and caches parsed metadata', async () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-native-package-service-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-native-package-service-'))
     roots.push(root)
     const packageDir = join(root, 'node_modules', '@scope', 'metadata')
     file(join(packageDir, 'package.json'), JSON.stringify({ name: '@scope/metadata' }))
@@ -129,7 +129,7 @@ describe('profile package metadata service', () => {
   })
 
   it('rejects malformed package metadata selected by the resolver', async () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-invalid-package-service-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-invalid-package-service-'))
     roots.push(root)
     const anonymous = join(root, 'node_modules', 'anonymous')
     file(join(anonymous, 'package.json'), '{}')
@@ -146,7 +146,7 @@ describe('profile package metadata service', () => {
   })
 
   it('returns undefined when a selected package directory has no manifest', async () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-missing-package-service-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-missing-package-service-'))
     roots.push(root)
     const profilesDir = join(root, 'profiles')
     const profileDir = join(profilesDir, 'test')
@@ -162,7 +162,7 @@ describe('profile package metadata service', () => {
   })
 
   it('removes and restores linked roots while rejecting changes to their historical targets', async () => {
-    const root = realpathSync.native(mkdtempSync(join(tmpdir(), 'dsh-linked-package-service-')))
+    const root = realpathSync.native(mkdtempSync(join(tmpdir(), 'sqh-linked-package-service-')))
     roots.push(root)
     const profilesDir = join(root, 'profiles')
     const profileDir = join(profilesDir, 'test')
@@ -227,7 +227,7 @@ describe('profile package metadata service', () => {
   })
 
   it('publishes additive generations to the process and future Workers', async () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-package-service-resolution-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-package-service-resolution-'))
     roots.push(root)
     const profilesDir = join(root, 'profiles')
     const profileDir = join(profilesDir, 'test')

@@ -403,7 +403,7 @@ describe('argument validation', () => {
 
 describe('execution through the bash seam', () => {
   it('forwards command, session cwd, timeout, and managed SQH_* environment', async () => {
-    const sqhHome = mkdtempSync(join(tmpdir(), 'dsh-tool-pwsh-home-'))
+    const sqhHome = mkdtempSync(join(tmpdir(), 'sqh-tool-pwsh-home-'))
     tempDirs.push(sqhHome)
     const { ctx, bash } = await setup({}, sqhHome)
     bash.handler = () => runResult('hi\n')
@@ -554,7 +554,7 @@ describe('execution through the bash seam', () => {
 describe('per-call sandbox policy resolution', () => {
   it('stamps the CALLING SESSION\'s resolved policy onto the request (session cwd, not the server launch dir)', async () => {
     const { ctx, bash } = await setupSandboxed()
-    const sessionCwd = mkdtempSync(join(tmpdir(), 'dsh-tool-pwsh-policy-'))
+    const sessionCwd = mkdtempSync(join(tmpdir(), 'sqh-tool-pwsh-policy-'))
     tempDirs.push(sessionCwd)
     const agent = await registerFakeAgent(ctx, 'policy-session')
     Object.assign(agent.session.header, { cwd: sessionCwd })

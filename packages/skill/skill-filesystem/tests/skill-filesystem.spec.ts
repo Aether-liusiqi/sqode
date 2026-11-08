@@ -173,7 +173,7 @@ async function waitFor<T>(read: () => Promise<T>, accept: (value: T) => boolean)
   }
 }
 
-describe('dsh-skill-filesystem plugin exports', () => {
+describe('sqh-skill-filesystem plugin exports', () => {
   it('declares stable plugin metadata', () => {
     expect(SkillFileSystem.name).toBe('skill-filesystem')
     expect(SkillFileSystem.inject).toEqual(['skills'])

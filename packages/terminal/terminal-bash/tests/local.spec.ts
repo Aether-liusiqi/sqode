@@ -56,7 +56,7 @@ async function harness(
   timing: { idleSilenceMs?: number; handoffGraceMs?: number; timeoutMs?: number } = {},
   dialect: 'bash' | 'pwsh' = 'bash',
 ) {
-  const root = mkdtempSync(join(tmpdir(), 'dsh-pty-local-'))
+  const root = mkdtempSync(join(tmpdir(), 'sqh-pty-local-'))
   roots.push(root)
   const ctx = new Context()
   contexts.push(ctx)

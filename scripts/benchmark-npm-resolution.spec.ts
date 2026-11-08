@@ -60,7 +60,7 @@ describe('npm resolution benchmark', () => {
   })
 
   it('combines installed metadata with current publishable workspace fields', () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-npm-registry-index-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-npm-registry-index-'))
     roots.push(root)
     writeJson(root, 'node_modules/.pnpm/external@2.0.0/node_modules/external/package.json', {
       name: 'external',
@@ -113,19 +113,19 @@ describe('npm resolution benchmark', () => {
 
     const result = await resolveNpmPackageLock(index, {
       '@liusiqi-dev/sqode': '0.2.0',
-      'dsh-previous': 'npm:@liusiqi-dev/sqode@0.1.0',
+      'sqh-previous': 'npm:@liusiqi-dev/sqode@0.1.0',
     }, 10_000)
 
     expect(result.archiveRequests).toBe(0)
     expect(result.packageLock.packages['node_modules/@liusiqi-dev/sqode']?.version).toBe('0.2.0')
-    expect(result.packageLock.packages['node_modules/dsh-previous']).toMatchObject({
+    expect(result.packageLock.packages['node_modules/sqh-previous']).toMatchObject({
       name: '@liusiqi-dev/sqode',
       version: '0.1.0',
     })
   })
 
   it('isolates peer resolution from inherited npm configuration', async () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-hostile-npm-config-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-hostile-npm-config-'))
     roots.push(root)
     const userConfig = join(root, 'user.npmrc')
     writeFileSync(userConfig, '@deepseek-ai:registry=http://127.0.0.1:1/\nlegacy-peer-deps=true\nomit=peer\n')

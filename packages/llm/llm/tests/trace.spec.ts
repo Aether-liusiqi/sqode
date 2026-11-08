@@ -16,7 +16,7 @@ import type { GenerateOptions } from '../src/index.ts'
 
 /** A fake home holding the `.sqode` directory the trace writes into. */
 function fakeHome(): { home: string; marker: string; log: string } {
-  const home = mkdtempSync(join(tmpdir(), 'dsh-llm-trace-'))
+  const home = mkdtempSync(join(tmpdir(), 'sqh-llm-trace-'))
   const dir = join(home, '.sqode')
   mkdirSync(dir)
   return { home, marker: join(dir, 'llm-trace.enabled'), log: join(dir, 'llm-trace.log') }

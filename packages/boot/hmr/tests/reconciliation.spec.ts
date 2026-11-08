@@ -19,7 +19,7 @@ import {
   reconcileProfilePatches,
 } from '@liusiqi-dev/sqh-app-boot'
 
-const NAME = 'dsh-test-bin'
+const NAME = 'sqh-test-bin'
 
 const configWatch = vi.hoisted(() => ({
   create: undefined as ((options?: ChokidarOptions) => FSWatcher) | undefined,
@@ -41,7 +41,7 @@ afterAll(() => {
 })
 
 const tmp = (): string => {
-  const dir = mkdtempSync(join(tmpdir(), 'dsh-user-patches-'))
+  const dir = mkdtempSync(join(tmpdir(), 'sqh-user-patches-'))
   tempRoots.push(dir)
   return dir
 }

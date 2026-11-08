@@ -22,7 +22,7 @@ const details = { valid: true, timestamped: true, signer: 'A'.repeat(40), timest
 afterEach(() => { calls.execute.mockReset(); vi.unstubAllEnvs() })
 
 async function fixture(body: (file: string, root: string) => Promise<void>): Promise<void> {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-signature-read-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-signature-read-'))
   try {
     const file = join(root, "inert ' executable.exe")
     await writeFile(file, 'inert bytes, never executed')

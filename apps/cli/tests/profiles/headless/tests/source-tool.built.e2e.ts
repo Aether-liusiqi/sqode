@@ -25,7 +25,7 @@ const sourceToolTimeoutMs = 90_000
 
 describe.skipIf(!existsSync(join(repoRoot, 'apps/cli/lib/bin.js')))('dsh SOURCE tools with prepared runtime artifacts', () => {
   it('dispatches a source-profile shell call to a result, including sandbox-unavailable hosts, without mixing tools src/lib', async () => {
-    const root = await mkdtemp(join(tmpdir(), 'dsh-source-tool-'))
+    const root = await mkdtemp(join(tmpdir(), 'sqh-source-tool-'))
     try {
       const cwd = join(root, 'workspace')
       await mkdir(cwd)

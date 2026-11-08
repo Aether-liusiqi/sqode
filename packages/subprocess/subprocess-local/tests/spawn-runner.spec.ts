@@ -169,7 +169,7 @@ describe('closed runner protocol', () => {
   })
 
   it('removes the private directory when request creation fails partway through', () => {
-    const isolatedTmp = mkdtempSync(join(tmpdir(), 'dsh-launch-failure-spec-'))
+    const isolatedTmp = mkdtempSync(join(tmpdir(), 'sqh-launch-failure-spec-'))
     vi.stubEnv('TMPDIR', isolatedTmp)
     vi.stubEnv('TMP', isolatedTmp)
     vi.stubEnv('TEMP', isolatedTmp)
@@ -229,8 +229,8 @@ describe('closed runner protocol', () => {
     cleanupLinuxLaunchFiles(files)
     cleanupLinuxLaunchFiles(files)
 
-    const target = join(tmpdir(), `dsh-runner-cleanup-target-${String(process.pid)}`)
-    const link = join(tmpdir(), `dsh-runner-cleanup-link-${String(process.pid)}`)
+    const target = join(tmpdir(), `sqh-runner-cleanup-target-${String(process.pid)}`)
+    const link = join(tmpdir(), `sqh-runner-cleanup-link-${String(process.pid)}`)
     scratch.push(target, link)
     mkdirSync(target, { recursive: true })
     symlinkSync(target, link)
@@ -343,7 +343,7 @@ describe('runner launch inputs', () => {
     expect(invocation[0]).toBe(process.execPath)
     expect(invocation).toContain(import.meta.resolve('tsx/esm'))
     expect(runnerInvocationAvailable(invocation)).toBe(true)
-    expect(runnerInvocationAvailable(['/definitely/missing-dsh-runner'])).toBe(false)
+    expect(runnerInvocationAvailable(['/definitely/missing-sqh-runner'])).toBe(false)
     expect(runnerInvocationAvailable(['node'])).toBe(true)
     expect(runnerInvocationAvailable(['node', 'runner.js'])).toBe(true)
 
@@ -356,7 +356,7 @@ describe('runner launch inputs', () => {
   })
 
   it('loads the source runner from an isolated application cwd', () => {
-    const directory = mkdtempSync(join(tmpdir(), 'dsh-runner-cwd-'))
+    const directory = mkdtempSync(join(tmpdir(), 'sqh-runner-cwd-'))
     scratch.push(directory)
     const invocation = spawnRunnerInvocation()
     const env = runnerEnvironment('unused', invocation)
@@ -445,7 +445,7 @@ describe('runner launch inputs', () => {
     expect(resolveWindowsExecutable('missing.cmd', 'C:\\target', {}, () => false, noSearchEnvironment))
       .toBeUndefined()
 
-    const directory = mkdtempSync(join(tmpdir(), 'dsh-windows-resolver-'))
+    const directory = mkdtempSync(join(tmpdir(), 'sqh-windows-resolver-'))
     scratch.push(directory)
     const executable = join(directory, 'direct.exe')
     const directoryCandidate = join(directory, 'directory')
@@ -522,7 +522,7 @@ describe('Linux one-shot exec bootstrap', () => {
   })
 
   it.skipIf(process.platform === 'win32')('preserves symlink-sensitive parent traversal in PATH candidates', async () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-linux-path-symlink-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-linux-path-symlink-'))
     scratch.push(root)
     const cwd = join(root, 'cwd')
     const target = join(root, 'target')

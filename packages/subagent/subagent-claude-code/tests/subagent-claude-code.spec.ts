@@ -620,8 +620,8 @@ describe('task admission and package contracts', () => {
       model: 'claude-diagnostic-model',
       env: {
         ANTHROPIC_API_KEY: 'provider-fake-key',
-        CLAUDE_CONFIG_DIR: '/private/tmp/dsh-claude-code-unit-config',
-        HOME: '/private/tmp/dsh-claude-code-unit-home',
+        CLAUDE_CONFIG_DIR: '/private/tmp/sqh-claude-code-unit-config',
+        HOME: '/private/tmp/sqh-claude-code-unit-home',
       },
       permissionMode: 'auto',
       disposeGraceMs: 29,

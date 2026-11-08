@@ -58,7 +58,7 @@ describe('client bundle build faces', () => {
 
 describe('client bundle dynamic imports', () => {
   it('compiles import() to the module loader asynchronous operation', async () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-client-dynamic-import-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-client-dynamic-import-'))
     onTestFinished(() => { rmSync(root, { recursive: true, force: true }) })
     const entry = join(root, 'lib/types/client/index.js')
     mkdirSync(dirname(entry), { recursive: true })
@@ -93,7 +93,7 @@ function purityResolveId(id = REQUESTING_PACKAGE): ResolveId {
   // package-invariants text check can see the invariant entry per package.
   const configs = clientConfigs(id)
   const plugins = (configs[0] as { plugins: { name: string; resolveId?: unknown }[] }).plugins
-  const gate = plugins.find(p => p.name === 'dsh-client-bundle-purity')
+  const gate = plugins.find(p => p.name === 'sqh-client-bundle-purity')
   if (gate?.resolveId === undefined) throw new Error('purity plugin missing from client config')
   return gate.resolveId as ResolveId
 }
@@ -101,7 +101,7 @@ function purityResolveId(id = REQUESTING_PACKAGE): ResolveId {
 function cssModulePlugin(): CssModulePlugin {
   const configs = clientConfigs()
   const plugins = (configs[0] as { plugins: CssModulePlugin[] }).plugins
-  const plugin = plugins.find(candidate => candidate.name === 'dsh-css-modules-inline')
+  const plugin = plugins.find(candidate => candidate.name === 'sqh-css-modules-inline')
   if (plugin?.resolveId === undefined || plugin.load === undefined) {
     throw new Error('CSS Modules plugin missing from client config')
   }
@@ -111,7 +111,7 @@ function cssModulePlugin(): CssModulePlugin {
 function sourceMapPlugin(): SourceMapPlugin {
   const configs = clientConfigs()
   const plugins = (configs[0] as { plugins: SourceMapPlugin[] }).plugins
-  const plugin = plugins.find(candidate => candidate.name === 'dsh-tsc-sourcemap')
+  const plugin = plugins.find(candidate => candidate.name === 'sqh-tsc-sourcemap')
   if (plugin?.load === undefined) throw new Error('tsc sourcemap plugin missing from client config')
   return plugin
 }
@@ -197,7 +197,7 @@ describe('client bundle experimental input isolation', () => {
   const experimental = '@liusiqi-dev/sqh-experimental-client-ui-agent-team'
 
   function fixture() {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-client-inputs-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-client-inputs-'))
     onTestFinished(() => { rmSync(root, { recursive: true, force: true }) })
     const owner = join(root, 'client')
     const entry = join(owner, 'lib/types/client/index.js')
@@ -237,7 +237,7 @@ describe('client bundle experimental input isolation', () => {
 
   function checkCompilerModule(module: string, imports?: string[]): void {
     const plugins = config('dynamic').plugins as InputIsolationPlugin[]
-    const plugin = plugins.find(plugin => plugin.name === 'dsh-client-input-isolation')
+    const plugin = plugins.find(plugin => plugin.name === 'sqh-client-input-isolation')
     if (plugin === undefined) throw new Error('client input isolation plugin missing')
     plugin.generateBundle.call({
       getModuleInfo: () => imports === undefined ? null : { importedIds: imports, dynamicallyImportedIds: [] },
@@ -278,7 +278,7 @@ describe('client bundle experimental input isolation', () => {
     const plugins = guarded.plugins as Array<{ name: string }>
     const unguarded: UserConfig = {
       ...guarded,
-      plugins: plugins.filter(plugin => plugin.name !== 'dsh-client-input-isolation'),
+      plugins: plugins.filter(plugin => plugin.name !== 'sqh-client-input-isolation'),
       outputOptions: { sourcemapExcludeSources: false },
     }
 
@@ -391,7 +391,7 @@ describe('client bundle debug artifacts', () => {
   })
 
   it('chains emitted tsc maps when the production Client build consumes lib/types', async () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-client-sourcemap-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-client-sourcemap-'))
     try {
       const entry = join(root, 'lib', 'types', 'client', 'index.js')
       const source = join(root, 'src', 'client', 'index.ts')

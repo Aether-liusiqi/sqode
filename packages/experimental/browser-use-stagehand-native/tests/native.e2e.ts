@@ -34,7 +34,7 @@ it.skipIf(process.env.SQODE_STAGEHAND_E2E !== '1')('launches and attaches to ins
     response.setHeader('content-type', 'text/html')
     response.end('<!doctype html><title>Stagehand fixture</title><h1>Stagehand local smoke</h1><button onclick="this.textContent=\'Clicked\'">Click fixture</button>')
   })
-  const root = await mkdtemp(join(tmpdir(), 'dsh-stagehand-live-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-stagehand-live-'))
   const ctx = new Context()
   let external: ReturnType<typeof spawn> | undefined
   let exited: Promise<unknown> | undefined
@@ -144,7 +144,7 @@ it.skipIf(process.env.SQODE_STAGEHAND_E2E !== '1' || !process.env.SQODE_STAGEHAN
 it.skipIf(process.env.SQODE_STAGEHAND_E2E !== '1' || process.platform === 'win32')('scrubs real Chromium environment and closes it during canceled Stagehand initialization', { timeout: 120_000, retry: 0 }, async () => {
   const executable = process.env.SQODE_BROWSER_EXECUTABLE
   if (executable === undefined) throw new Error('SQODE_STAGEHAND_E2E requires SQODE_BROWSER_EXECUTABLE')
-  const root = await mkdtemp(join(tmpdir(), 'dsh-stagehand-acquire-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-stagehand-acquire-'))
   const marker = join(root, 'browser.json')
   const wrapper = join(root, 'chrome.mjs')
   const sockets = new Set<import('node:stream').Duplex>()

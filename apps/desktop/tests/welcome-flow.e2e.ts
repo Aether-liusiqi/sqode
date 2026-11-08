@@ -39,7 +39,7 @@ async function mockPlatform() {
     }
     if (req.headers.cookie !== 'test_gate=synthetic') { res.writeHead(403).end(); return }
     if (req.url === '/auth-api/v0/users/logout' && req.method === 'POST') {
-      if (req.headers['x-dsh-auth-token'] !== 'dsh_mock_composition_test') { res.writeHead(401).end(); return }
+      if (req.headers['x-sqh-auth-token'] !== 'dsh_mock_composition_test') { res.writeHead(401).end(); return }
       res.writeHead(503).end()
       return
     }
@@ -85,7 +85,7 @@ async function mockPlatform() {
 describe.skipIf(!existsSync(builtHost))('built Desktop welcome flow', () => {
   it('persists explicit API keys and browser account login independently across Host restarts', async () => {
     vi.stubEnv('SQODE_CLIENT_VERSION', '1.2.3')
-    const root = mkdtempSync(join(tmpdir(), 'dsh-desktop-welcome-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-desktop-welcome-'))
     let host: DesktopHostProcess | undefined
     const platform = await mockPlatform()
     try {

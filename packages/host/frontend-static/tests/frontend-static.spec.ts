@@ -31,7 +31,7 @@ afterEach(async () => {
 
 /** Write a dist fixture and the authenticated Web rows, then boot them through the real Loader. */
 async function loadComposition(): Promise<Context> {
-  root = await mkdtemp(join(tmpdir(), 'dsh-frontend-static-'))
+  root = await mkdtemp(join(tmpdir(), 'sqh-frontend-static-'))
   const dist = join(root, 'dist')
   await mkdir(dist)
   const distIndex = join(dist, 'index.html')

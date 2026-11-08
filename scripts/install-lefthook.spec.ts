@@ -124,7 +124,7 @@ function installFakeLefthook(root: string): void {
 }
 
 function createFixture(names: { main?: string; linked?: string } = {}): Fixture {
-  const container = mkdtempSync(join(tmpdir(), 'dsh-lefthook-'))
+  const container = mkdtempSync(join(tmpdir(), 'sqh-lefthook-'))
   fixtures.push(container)
   const main = join(container, names.main ?? 'main')
   const linked = join(container, names.linked ?? 'linked')
@@ -171,11 +171,11 @@ function commonDirectory(fixture: Fixture): string {
 }
 
 function hooksPath(fixture: Fixture, root: string): string {
-  return join(gitDirectory(fixture, root), 'dsh-hooks')
+  return join(gitDirectory(fixture, root), 'sqh-hooks')
 }
 
 function installLockPath(fixture: Fixture): string {
-  return join(commonDirectory(fixture), 'dsh-lefthook-install.lock')
+  return join(commonDirectory(fixture), 'sqh-lefthook-install.lock')
 }
 
 async function waitForPath(path: string): Promise<void> {
@@ -324,7 +324,7 @@ describe('worktree-local Lefthook installer', { timeout: 90_000 }, () => {
     ])
     for (const result of repeated) expect(result.status, result.stderr).toBe(0)
     expect(readFileSync(mainHookPath, 'utf8')).toBe(initialHook)
-    expect(existsSync(join(commonDirectory(fixture), 'dsh-lefthook-install.lock'))).toBe(false)
+    expect(existsSync(join(commonDirectory(fixture), 'sqh-lefthook-install.lock'))).toBe(false)
     expect(existsSync(join(hooksPath(fixture, fixture.main), '.fake-lefthook-running'))).toBe(false)
   })
 
@@ -446,7 +446,7 @@ syncBuiltinESMExports()
     expect(git(fixture, movedRoot, ['config', '--worktree', '--get', 'core.hooksPath'])).toBe(movedHooks)
     const canonicalMoved = git(fixture, movedRoot, ['rev-parse', '--show-toplevel'])
     expect(readFileSync(join(movedHooks, 'pre-commit'), 'utf8')).toContain(`# root=${canonicalMoved}`)
-    expect(readFileSync(join(movedHooks, '.dsh-lefthook-owned'), 'utf8')).toContain(
+    expect(readFileSync(join(movedHooks, '.sqh-lefthook-owned'), 'utf8')).toContain(
       JSON.stringify(movedHooks),
     )
   })
@@ -457,7 +457,7 @@ syncBuiltinESMExports()
     const first = await runInstaller(fixture, oldRoot)
     expect(first.status, first.stderr).toBe(0)
     const oldHooks = hooksPath(fixture, oldRoot)
-    const markerName = '.dsh-lefthook-owned'
+    const markerName = '.sqh-lefthook-owned'
     const externalMarker = join(fixture.container, 'external-marker')
     linkSync(join(oldHooks, markerName), externalMarker)
     const externalContent = readFileSync(externalMarker, 'utf8')
@@ -498,7 +498,7 @@ syncBuiltinESMExports()
     const first = await runInstaller(fixture, oldRoot)
     expect(first.status, first.stderr).toBe(0)
     const oldHooks = hooksPath(fixture, oldRoot)
-    const markerName = '.dsh-lefthook-owned'
+    const markerName = '.sqh-lefthook-owned'
     const previousMarker = readFileSync(join(oldHooks, markerName), 'utf8')
     const movedRoot = join(fixture.container, 'moved-main')
     renameSync(oldRoot, movedRoot)
@@ -659,7 +659,7 @@ syncBuiltinESMExports()
     expect(mainInstall.status, mainInstall.stderr).toBe(0)
     const externalHooks = join(fixture.container, 'external-owned-hooks')
     write(
-      join(externalHooks, '.dsh-lefthook-owned'),
+      join(externalHooks, '.sqh-lefthook-owned'),
       `${JSON.stringify({
         version: 1,
         owner: 'siqi-harness worktree-local lefthook hooks',

@@ -502,7 +502,7 @@ const EXPECTED_TOOLS = [
 ]
 
 /**
- * `glob` and `grep` come from `dsh-tool-fs-search`, which spawns the PACKAGED
+ * `glob` and `grep` come from `sqh-tool-fs-search`, which spawns the PACKAGED
  * ripgrep binary (`@vscode/ripgrep`) through the subprocess seam, so the pair
  * is always present on every host — asserted as fixed members, not a host
  * dependency.
@@ -824,7 +824,7 @@ it('routes one browser-authored Auto request through the same model and asks the
 }, 120_000)
 
 it('reviews one-shot, continuable, and cold-resumed in-process child calls independently', async () => {
-  childOverlayDirectory = await mkdtemp(join(tmpdir(), 'dsh-auto-child-overlay-'))
+  childOverlayDirectory = await mkdtemp(join(tmpdir(), 'sqh-auto-child-overlay-'))
   const overlayPath = join(childOverlayDirectory, 'cordis.patch.yml')
   await writeFile(overlayPath, [
     await readFile(AUTO_REVIEW_FIXTURE.extraOverlayPath, 'utf8'),

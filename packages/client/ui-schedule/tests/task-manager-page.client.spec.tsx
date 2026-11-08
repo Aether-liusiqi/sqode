@@ -3663,7 +3663,7 @@ describe('Mock detail metrics shared with the task list', () => {
     // The Plugins page's macOS head clearance above that same row inset, so the
     // heading clears the hiddenInset titlebar and keeps the 76px total offset.
     expect(stylesheet).toMatch(
-      /\[data-platform='darwin'\][^{]*\.pageHeading\s*\{[^}]*padding-top:\s*calc\(28px \+ var\(--dsh-frame-top-clearance, 0px\)\);/,
+      /\[data-platform='darwin'\][^{]*\.pageHeading\s*\{[^}]*padding-top:\s*calc\(28px \+ var\(--sqh-frame-top-clearance, 0px\)\);/,
     )
     // The column keeps no top inset of its own, on either platform.
     expect(stylesheet).not.toMatch(

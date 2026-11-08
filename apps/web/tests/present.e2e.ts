@@ -40,7 +40,7 @@ describe.skipIf(process.platform === 'win32' || release().toLowerCase().includes
   const downloads: string[] = []
 
   beforeAll(async () => {
-    nativeRoot = await mkdtemp(join(tmpdir(), 'dsh-present-native-'))
+    nativeRoot = await mkdtemp(join(tmpdir(), 'sqh-present-native-'))
     openLog = join(nativeRoot, 'opened.jsonl')
     await writeFile(openLog, '')
     // Exercise the built Host through its actual OS command, replacing only the desktop application.

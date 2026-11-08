@@ -131,7 +131,7 @@ function requirePreviewPages(): void {
  */
 function requireVfsAssets(): PreviewAssets {
   const fixtureDefinitions = previewFixtures(REPO_ROOT)
-  const directory = mkdtempSync(join(tmpdir(), 'dsh-preview-boot-'))
+  const directory = mkdtempSync(join(tmpdir(), 'sqh-preview-boot-'))
   const overrides = new Map<string, string>()
   const writeAsset = (relativePath: string, bytes: Uint8Array | string): void => {
     const path = join(directory, relativePath)
@@ -427,7 +427,7 @@ async function bootPreview(origin: string, browser: Browser): Promise<void> {
     expect(exercised.rereadTimeout).toBe(61_000)
     expect(exercised.resetTimeout).toBe(exercised.initialTimeout)
     expect(exercised.resetOverrides).not.toHaveProperty('timeoutMs')
-    await expect.poll(() => page.evaluate(() => document.body.style.getPropertyValue('--dsh-content-font-size')))
+    await expect.poll(() => page.evaluate(() => document.body.style.getPropertyValue('--sqh-content-font-size')))
       .toBe('17px')
     expect(exercised.renamedTitle).toBe(SHOWCASE_TITLE)
     expect(exercised.renameAdvanced).toBe(true)

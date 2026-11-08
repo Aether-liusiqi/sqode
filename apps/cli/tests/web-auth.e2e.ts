@@ -153,7 +153,7 @@ function describeSettings(port: number, host: string, cookie?: string): Promise<
 
 describe('dsh web authentication through the real CLI', () => {
   it('rejects a forged loopback Host and preserves the browser cookie across restart', { timeout: 180_000 }, async () => {
-    const root = await mkdtemp(join(tmpdir(), 'dsh-web-auth-real-cli-'))
+    const root = await mkdtemp(join(tmpdir(), 'sqh-web-auth-real-cli-'))
     const sqhHome = join(root, '.sqode')
     const port = await freePort()
     let first: RunningWeb | undefined

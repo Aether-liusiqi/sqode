@@ -380,7 +380,7 @@ describe('pi-ai request context conversion', () => {
 
   it('renders an offloaded occurrence with independently resolved access', async () => {
     const sized: ImageAttachmentRef = { ...ref, bytes: 3 }
-    const access = { readonlyPath: '/tmp/dsh-normalized-image' }
+    const access = { readonlyPath: '/tmp/sqh-normalized-image' }
     const readImageRequest = vi.fn()
 
     const context = await toPiContext(request([

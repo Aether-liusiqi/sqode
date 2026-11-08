@@ -6,9 +6,9 @@
 
 /* v8 ignore file -- built-bin acceptance exercises this self-executing dispatch. */
 
-import { getDshRuntimeVersion, loadLayeredEnv, StartupError } from '@liusiqi-dev/sqh-app-boot'
+import { getSqhRuntimeVersion, loadLayeredEnv, StartupError } from '@liusiqi-dev/sqh-app-boot'
 import { resolveSqhHome } from '@liusiqi-dev/sqh-home-paths'
-import { parseDshArgs } from './args.ts'
+import { parseSqhArgs } from './args.ts'
 import { reportStartupFailure } from './startup-diagnostics.ts'
 import type { RunProfileOptions } from './profile-boot.ts'
 
@@ -24,9 +24,9 @@ export type RunCliOptions = Pick<RunProfileOptions, 'packageManager'> & {
  * @returns a promise that settles when the selected command mode finishes.
  */
 export async function runCli(options: RunCliOptions = {}): Promise<void> {
-  const version = getDshRuntimeVersion()
+  const version = getSqhRuntimeVersion()
   const { manageDesktopProfile, ...profileOptions } = options
-  const invocation = parseDshArgs(process.argv.slice(2), version, manageDesktopProfile)
+  const invocation = parseSqhArgs(process.argv.slice(2), version, manageDesktopProfile)
 
   switch (invocation.mode) {
     case 'profile': {

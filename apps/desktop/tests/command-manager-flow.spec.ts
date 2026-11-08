@@ -39,7 +39,7 @@ async function fixture(options: {
   elevate?: boolean
   messages?: DesktopMessages
 } = {}) {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-command-dialog-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-command-dialog-'))
   onTestFinished(() => rm(root, { recursive: true, force: true, maxRetries: 10, retryDelay: 100 }))
   const resources = join(root, 'resources')
   const bin = join(resources, 'runtime', 'primary-runtime', 'dependencies', 'node', 'bin')

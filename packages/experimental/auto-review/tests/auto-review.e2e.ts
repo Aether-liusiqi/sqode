@@ -251,12 +251,12 @@ it('certifies eight Auto risk/authorization cases with zero retries and zero ski
   retry: 0, timeout: 1_800_000,
 }, async () => {
   if (REAL && !process.env.DEEPSEEK_API_KEY) throw new Error('Real Auto certification requires DEEPSEEK_API_KEY')
-  const root = await mkdtemp(join(tmpdir(), 'dsh-auto-review-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-auto-review-'))
   const ctx = new Context()
   try {
     await chmod(root, 0o700)
     const workspace = join(root, 'workspace')
-    const sqhHome = join(root, 'dsh-home')
+    const sqhHome = join(root, 'sqh-home')
     await mkdir(workspace)
     await mkdir(sqhHome, { mode: 0o700 })
     vi.stubEnv('SQODE_HOME', sqhHome)
@@ -358,7 +358,7 @@ it('certifies eight Auto risk/authorization cases with zero retries and zero ski
 it.each(['native', 'ptc-inner'] as const)('feeds denial back, re-reviews a new call and accepts narrowed work through %s', {
   retry: 0,
 }, async (path) => {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-auto-review-recovery-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-auto-review-recovery-'))
   const ctx = new Context()
   try {
     const sqhHome = join(root, 'home')

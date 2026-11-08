@@ -29,7 +29,7 @@ async function listen(server: Server): Promise<string> {
 }
 
 beforeAll(async () => {
-  home = mkdtempSync(join(tmpdir(), 'dsh-otel-egress-'))
+  home = mkdtempSync(join(tmpdir(), 'sqh-otel-egress-'))
   previousHome = process.env.SQODE_HOME
   process.env.SQODE_HOME = home
   const proxy = createServer((request, response) => {

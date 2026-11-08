@@ -19,7 +19,7 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { evaluate, isJsExpr, type EntryOptions } from '@liusiqi-dev/cordis-plugin-loader'
 import { applyEntryPatches, entryListSchema, type PatchOptions } from '@liusiqi-dev/cordis-plugin-include'
-import { exactPackageSpecifier, parseDshClient } from '@liusiqi-dev/sqh-client-modules/client'
+import { exactPackageSpecifier, parseSqhClient } from '@liusiqi-dev/sqh-client-modules/client'
 import * as yaml from 'js-yaml'
 import { ClientRoster, type ClientRosterRow } from './roster.ts'
 
@@ -73,7 +73,7 @@ export function bundleRoster(
     if (manifest.name !== name) {
       throw new Error(`client-test-runtime: ${manifestPath} names ${JSON.stringify(manifest.name)}, expected ${name}`)
     }
-    const declaration = parseDshClient(name, (manifest.sqh ?? manifest.dsh)?.client)
+    const declaration = parseSqhClient(name, (manifest.sqh ?? manifest.dsh)?.client)
     if (declaration === undefined || declaration.platform !== 'web') continue
     if (disabled.some(value => value !== undefined && value !== null && typeof value !== 'boolean'
       && !(disabledContext !== undefined && isJsExpr(value)))) {

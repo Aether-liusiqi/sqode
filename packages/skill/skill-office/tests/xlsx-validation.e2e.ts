@@ -70,7 +70,7 @@ describe.skipIf(!process.env.DEEPSEEK_API_KEY || !runtime)('Excel validation sco
     let fixtureCalls: { args: string[]; status: number | null }[] = []
     await runLoaderSmoke({
       label: `Excel ${kind} validation`,
-      tempDirPrefix: 'dsh-xlsx-validation-',
+      tempDirPrefix: 'sqh-xlsx-validation-',
       binScript: join(repo, 'apps/cli/src/bin.ts'),
       sourceImport: 'tsx/esm',
       tsconfigPath: join(repo, 'tsconfig.base.json'),

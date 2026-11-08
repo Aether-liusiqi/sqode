@@ -22,7 +22,7 @@ import ToolRuntime from '@liusiqi-dev/sqh-tools'
 import LocalSubprocessRuntime from '@liusiqi-dev/sqh-subprocess-local'
 import * as toolFsSearch from '@liusiqi-dev/sqh-tool-fs-search'
 
-describe('dsh-tool-fs-search real-load-path guard', () => {
+describe('sqh-tool-fs-search real-load-path guard', () => {
   it('has no default export and keeps name/inject/Config through unwrapExports', () => {
     expect('default' in toolFsSearch).toBe(false)
 

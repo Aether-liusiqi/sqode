@@ -34,7 +34,7 @@ const builderRequire = createRequire(require.resolve('app-builder-lib/package.js
 const { parseDn } = builderRequire('builder-util-runtime') as { parseDn: (value: string) => Map<string, string> }
 
 async function withCertificate(subject: unknown, action: (file: string, signTool: string) => Promise<void>): Promise<void> {
-  const directory = await mkdtemp(join(tmpdir(), 'dsh-update-publisher-'))
+  const directory = await mkdtemp(join(tmpdir(), 'sqh-update-publisher-'))
   try {
     const certificate = join(directory, 'publisher.cer')
     const signTool = join(directory, 'signtool.exe')

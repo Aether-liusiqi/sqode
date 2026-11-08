@@ -25,7 +25,7 @@ describe('bundled Windows ACL diagnosis skill', () => {
       expect(entry.description.length).toBeLessThanOrEqual(500)
       expect(entry).toMatchObject({
         source: 'bundled',
-        provider: 'dsh-windows-acl',
+        provider: 'sqh-windows-acl',
         invocation: { modelInvocable: true, userInvocable: true },
       })
 

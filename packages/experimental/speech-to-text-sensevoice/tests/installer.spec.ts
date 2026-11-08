@@ -90,7 +90,7 @@ it('reports filesystem access errors instead of treating unreadable caches as ab
   expect(fetcher).not.toHaveBeenCalled()
 })
 async function fixture() {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-speech-onnx-')); roots.push(root)
+  const root = await mkdtemp(join(tmpdir(), 'sqh-speech-onnx-')); roots.push(root)
   fake.lock = { models: { int8: asset('model.int8.onnx'), fp32: asset('model.onnx') }, tokens: asset('tokens.txt'), vad: asset('silero_vad.onnx') }
   const fetcher = vi.fn(async (_url: string, _init?: RequestInit) => new Response(bytes)); vi.stubGlobal('fetch', fetcher)
   return { root, fetcher }

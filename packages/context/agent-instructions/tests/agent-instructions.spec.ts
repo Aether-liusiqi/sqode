@@ -83,7 +83,7 @@ function claimInbox(agent: Agent, target: 'next-turn' | 'next-step'): UserMessag
 const requestTimeoutMs = process.platform === 'win32' ? 5_000 : 1_000
 
 async function tempRepo(): Promise<string> {
-  return mkdtemp(join(tmpdir(), 'dsh-workspace-context-'))
+  return mkdtemp(join(tmpdir(), 'sqh-workspace-context-'))
 }
 
 async function write(path: string, content: string): Promise<void> {

@@ -58,7 +58,7 @@ async function invalidInputStyles(page: Page, input: Locator) {
 }
 
 it('cancels installation, retries and highlights the enabled plugin at 40% alpha, and recovers unknown results', async () => {
-  const scratch = await mkdtemp(join(tmpdir(), 'dsh-install-cancel-'))
+  const scratch = await mkdtemp(join(tmpdir(), 'sqh-install-cancel-'))
   const overlay = join(scratch, 'cordis.patch.yml')
   await writeFile(overlay, `- id: plugin-manager\n  config: ${JSON.stringify({ pnpmCommand: process.execPath })}\n`)
   let scaffold: WebScaffold | undefined
@@ -245,7 +245,7 @@ it('cancels installation, retries and highlights the enabled plugin at 40% alpha
             if (reducedMotion === 'reduce') {
               expect(style.animationName).toBe('none')
             } else {
-              expect(style.animationName).toContain('dsh-plugin-highlight')
+              expect(style.animationName).toContain('sqh-plugin-highlight')
               expect(style.animationDuration).toBe('2.4s')
             }
             styles.push({ colorScheme, reducedMotion, boxShadow: style.boxShadow, animated: style.animationName !== 'none' })

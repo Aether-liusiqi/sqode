@@ -6,7 +6,7 @@ import { desktopKeybindings } from '../src/keybindings.ts'
 import type { ShortcutCommandId, ShortcutConfigSnapshot } from '@liusiqi-dev/sqh-client-shortcuts/protocol'
 
 it('persists into the supplied userData, reloads null bindings, and retains original future-version bytes', async () => {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-keybindings-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-keybindings-'))
   onTestFinished(async () => { await rm(root, { recursive: true, force: true }) })
   let state!: ShortcutConfigSnapshot
   const first = desktopKeybindings(root, 'windows', (value) => { state = value })

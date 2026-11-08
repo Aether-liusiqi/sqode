@@ -7,7 +7,7 @@ import {
   DESKTOP_PACKAGES_DIR,
   DESKTOP_PACKAGE_SET_FILE,
   desktopCorePackageOverrides,
-  desktopDshPackageSpec,
+  desktopSqhPackageSpec,
   parseDesktopCorePackageSet,
   verifyDesktopCoreLockfile,
   verifyDesktopCorePackageSet,
@@ -32,7 +32,7 @@ function packageSetProject(): {
   base: DesktopCorePackageRecord
   host: DesktopCorePackageRecord
 } {
-  const root = mkdtempSync(join(tmpdir(), 'dsh-desktop-package-set-'))
+  const root = mkdtempSync(join(tmpdir(), 'sqh-desktop-package-set-'))
   roots.push(root)
   const packageDir = join(root, DESKTOP_PACKAGES_DIR)
   mkdirSync(packageDir)
@@ -40,8 +40,8 @@ function packageSetProject(): {
   const baseBody = Buffer.from('base')
   const hostBody = Buffer.from('host')
   const dsh = record('@liusiqi-dev/sqode', 'dsh.tgz', dshBody)
-  const base = record('@liusiqi-dev/sqh-base', 'dsh-base.tgz', baseBody)
-  const host = record('@liusiqi-dev/sqh-desktop-host', 'dsh-desktop-host.tgz', hostBody)
+  const base = record('@liusiqi-dev/sqh-base', 'sqh-base.tgz', baseBody)
+  const host = record('@liusiqi-dev/sqh-desktop-host', 'sqh-desktop-host.tgz', hostBody)
   writeFileSync(join(packageDir, dsh.file), dshBody)
   writeFileSync(join(packageDir, base.file), baseBody)
   writeFileSync(join(packageDir, host.file), hostBody)
@@ -60,11 +60,11 @@ describe('desktop core package set', () => {
   it('pins the direct dsh dependency and every internal package to local tarballs', () => {
     const { root } = packageSetProject()
     const packageSet = verifyDesktopCorePackageSet(root, '1.2.3')
-    expect(desktopDshPackageSpec(packageSet)).toBe('file:./desktop-packages/dsh.tgz')
+    expect(desktopSqhPackageSpec(packageSet)).toBe('file:./desktop-packages/dsh.tgz')
     expect(desktopCorePackageOverrides(packageSet)).toEqual({
       '@liusiqi-dev/sqode': 'file:./desktop-packages/dsh.tgz',
-      '@liusiqi-dev/sqh-base': 'file:./desktop-packages/dsh-base.tgz',
-      '@liusiqi-dev/sqh-desktop-host': 'file:./desktop-packages/dsh-desktop-host.tgz',
+      '@liusiqi-dev/sqh-base': 'file:./desktop-packages/sqh-base.tgz',
+      '@liusiqi-dev/sqh-desktop-host': 'file:./desktop-packages/sqh-desktop-host.tgz',
     })
   })
 
@@ -74,7 +74,7 @@ describe('desktop core package set', () => {
     expect(() => parseDesktopCorePackageSet({
       schemaVersion: 1,
       packages: [dsh, base, { ...host, version: '2.0.0' }],
-    }, '1.2.3')).toThrow(/dsh-desktop-host@2\.0\.0 does not match Desktop 1\.2\.3/u)
+    }, '1.2.3')).toThrow(/sqh-desktop-host@2\.0\.0 does not match Desktop 1\.2\.3/u)
     expect(() => parseDesktopCorePackageSet({ schemaVersion: 1, packages: [base, dsh, host] }))
       .toThrow(/sorted by name/u)
     writeFileSync(join(root, DESKTOP_PACKAGES_DIR, dsh.file), 'changed')

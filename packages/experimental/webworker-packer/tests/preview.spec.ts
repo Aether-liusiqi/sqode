@@ -19,7 +19,7 @@ afterEach(() => {
 })
 
 function source() {
-  const root = mkdtempSync(join(tmpdir(), 'dsh-preview-source-'))
+  const root = mkdtempSync(join(tmpdir(), 'sqh-preview-source-'))
   roots.push(root)
   const session = join(root, 'sessions', 'project', 'example')
   mkdirSync(session, { recursive: true })

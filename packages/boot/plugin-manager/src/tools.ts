@@ -7,7 +7,7 @@ import type {} from '@liusiqi-dev/sqh-user-approval'
 import { approveEscalation } from '@liusiqi-dev/sqh-sandbox'
 import type { PluginEntryId } from './types.ts'
 import { defineTool } from '@liusiqi-dev/sqh-tools'
-import { getDshRuntimeVersion } from '@liusiqi-dev/sqh-app-boot'
+import { getSqhRuntimeVersion } from '@liusiqi-dev/sqh-app-boot'
 
 /** Required services for the management tool. */
 export const inject = ['tools', 'pluginManager', 'sandboxPolicy']
@@ -45,7 +45,7 @@ export function apply(ctx: Context): void {
       const manager = ctx.pluginManager
       switch (args.action) {
         case 'list_version_exemptions':
-          return JSON.stringify({ runtimeVersion: getDshRuntimeVersion(), ...manager.listVersionExemptions() })
+          return JSON.stringify({ runtimeVersion: getSqhRuntimeVersion(), ...manager.listVersionExemptions() })
         case 'set_version_exemption':
           if (args.target === undefined || args.runtimeVersion === undefined || args.enabled === undefined) {
             throw new Error('target package-name@version, runtimeVersion, and enabled are required')

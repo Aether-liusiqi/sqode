@@ -23,7 +23,7 @@ async function responseBytes(response: Response): Promise<Uint8Array> {
  * @returns whether this host can create a file symlink.
  */
 function canSymlinkFiles(): boolean {
-  const base = mkdtempSync(join(tmpdir(), 'dsh-symlink-probe-'))
+  const base = mkdtempSync(join(tmpdir(), 'sqh-symlink-probe-'))
   try {
     writeFileSync(join(base, 'target'), '')
     symlinkSync(join(base, 'target'), join(base, 'link'))
@@ -42,7 +42,7 @@ describe('SessionMediaReferences /api/file', () => {
   const contexts: Context[] = []
 
   beforeEach(async () => {
-    root = await realpath(await mkdtemp(join(tmpdir(), 'dsh-media-references-')))
+    root = await realpath(await mkdtemp(join(tmpdir(), 'sqh-media-references-')))
   })
 
   afterEach(async () => {
@@ -189,7 +189,7 @@ describe('SessionMediaReferences /api/file', () => {
 
   it.skipIf(!fileSymlinks)('reads files and symlink targets outside the default cwd without a workspace registry', async () => {
     const route = await mount()
-    const outside = await mkdtemp(join(tmpdir(), 'dsh-media-outside-'))
+    const outside = await mkdtemp(join(tmpdir(), 'sqh-media-outside-'))
     try {
       const path = join(outside, 'image.png')
       await writeFile(path, PNG_BYTES)

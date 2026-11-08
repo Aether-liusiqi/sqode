@@ -20,7 +20,7 @@ describe('process shim', () => {
     const shim = installProcessGlobal({ cwd: '/dsh', env: { SQODE_HOME: '/dsh/home' } })
     expect(shim.cwd()).toBe('/dsh')
     expect(shim.env.SQODE_HOME).toBe('/dsh/home')
-    expect(shim.title).toBe('dsh-webworker')
+    expect(shim.title).toBe('sqh-webworker')
     // "0.0.0" keeps the vendored Loader off Node internals so the worker owns
     // the module seam.
     expect(shim.versions.node).toBe('0.0.0')

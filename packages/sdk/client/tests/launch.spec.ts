@@ -7,10 +7,10 @@ import { pathToFileURL } from 'node:url'
 import { afterEach, describe, expect, it } from 'vitest'
 import {
   DEFAULT_INITIALIZE_TIMEOUT_MS,
-  installedDshBin,
-  resolveDshNodeLaunchFromManifests,
-  resolveDshBinFromManifests,
-  resolveDshLaunch,
+  installedSqhBin,
+  resolveSqhNodeLaunchFromManifests,
+  resolveSqhBinFromManifests,
+  resolveSqhLaunch,
 } from '../src/launch.ts'
 
 const cleanups: string[] = []
@@ -19,9 +19,9 @@ afterEach(() => {
 })
 
 function manifestPair(dsh: object, client: object): { dshUrl: string; clientUrl: string; root: string } {
-  const root = mkdtempSync(join(tmpdir(), 'dsh-sdk-manifests-'))
+  const root = mkdtempSync(join(tmpdir(), 'sqh-sdk-manifests-'))
   cleanups.push(root)
-  const dshPath = join(root, 'dsh-package.json')
+  const dshPath = join(root, 'sqh-package.json')
   const clientPath = join(root, 'client-package.json')
   writeFileSync(dshPath, JSON.stringify(dsh))
   writeFileSync(clientPath, JSON.stringify(client))
@@ -34,9 +34,9 @@ function manifestPair(dsh: object, client: object): { dshUrl: string; clientUrl:
 
 describe('SDK dsh launch resolution', () => {
   it('resolves the same-version installed dsh entry by default', () => {
-    const bin = installedDshBin()
+    const bin = installedSqhBin()
     expect(bin.endsWith(join('apps', 'cli', 'lib', 'bin.js'))).toBe(true)
-    const launch = resolveDshLaunch()
+    const launch = resolveSqhLaunch()
     expect(launch.command).toBe(process.execPath)
     expect(launch.args).toEqual(existsSync(bin)
       ? [bin, '--profile', 'sdk']
@@ -51,7 +51,7 @@ describe('SDK dsh launch resolution', () => {
 
   it('makes every filesystem input absolute before spawn and preserves patch order', () => {
     const caller = resolve('/tmp', 'sdk-launch-caller')
-    const launch = resolveDshLaunch({
+    const launch = resolveSqhLaunch({
       sqhBin: './bin/dsh',
       profile: 'custom-sdk',
       patches: ['./first.yml', '../second.yml'],
@@ -93,13 +93,13 @@ describe('SDK dsh launch resolution', () => {
     writeFileSync(sourcePatch, '[]\n')
     writeFileSync(sourceTsconfig, '{}\n')
 
-    expect(resolveDshNodeLaunchFromManifests(pair.dshUrl, pair.clientUrl, 'file:///tsx-loader.mjs'))
+    expect(resolveSqhNodeLaunchFromManifests(pair.dshUrl, pair.clientUrl, 'file:///tsx-loader.mjs'))
       .toEqual({
         nodeArgs: ['--import', 'file:///tsx-loader.mjs', sourceBin],
         patches: [sourcePatch],
         environment: { TSX_TSCONFIG_PATH: sourceTsconfig },
       })
-    expect(resolveDshNodeLaunchFromManifests(pair.dshUrl, pair.clientUrl))
+    expect(resolveSqhNodeLaunchFromManifests(pair.dshUrl, pair.clientUrl))
       .toEqual({
         nodeArgs: ['--import', import.meta.resolve('tsx/esm'), sourceBin],
         patches: [sourcePatch],
@@ -113,7 +113,7 @@ describe('SDK dsh launch resolution', () => {
     mkdirSync(join(pair.root, 'lib'))
     writeFileSync(bin, '')
 
-    expect(resolveDshNodeLaunchFromManifests(pair.dshUrl, pair.clientUrl)).toEqual({
+    expect(resolveSqhNodeLaunchFromManifests(pair.dshUrl, pair.clientUrl)).toEqual({
       nodeArgs: [bin],
       patches: [],
       environment: {},
@@ -125,17 +125,17 @@ describe('SDK dsh launch resolution', () => {
     mkdirSync(join(pair.root, 'src'))
     const sourceFiles = ['src/bin.ts', 'src/sdk-source.cordis.patch.yml', 'tsconfig.json']
     for (const source of sourceFiles.slice(0, presentCount)) writeFileSync(join(pair.root, source), '')
-    expect(() => resolveDshNodeLaunchFromManifests(pair.dshUrl, pair.clientUrl, 'file:///tsx-loader.mjs'))
+    expect(() => resolveSqhNodeLaunchFromManifests(pair.dshUrl, pair.clientUrl, 'file:///tsx-loader.mjs'))
       .toThrow('is missing its built executable')
   })
 
   it('reads explicit and inherited environments when the child starts', () => {
     const explicit: NodeJS.ProcessEnv = { MARKER: 'before' }
-    const explicitLaunch = resolveDshLaunch({ sqhBin: '/bin/dsh', env: explicit })
+    const explicitLaunch = resolveSqhLaunch({ sqhBin: '/bin/dsh', env: explicit })
     explicit.MARKER = 'after'
     expect(explicitLaunch.environment().MARKER).toBe('after')
 
-    const inheritedLaunch = resolveDshLaunch({ sqhBin: '/bin/dsh' })
+    const inheritedLaunch = resolveSqhLaunch({ sqhBin: '/bin/dsh' })
     process.env.SQODE_SDK_LATE_ENV_TEST = 'late'
     try {
       expect(inheritedLaunch.environment().SQODE_SDK_LATE_ENV_TEST).toBe('late')
@@ -148,14 +148,14 @@ describe('SDK dsh launch resolution', () => {
     'rejects a dsh version that differs from the client (%j)',
     (version) => {
       const pair = manifestPair({ version, bin: 'bin.js' }, { version: '1.0.0' })
-      expect(() => resolveDshBinFromManifests(pair.dshUrl, pair.clientUrl))
+      expect(() => resolveSqhBinFromManifests(pair.dshUrl, pair.clientUrl))
         .toThrow(`requires the same dsh version, got ${String(version)}`)
     },
   )
 
   it('resolves an object bin keyed by the renamed command (sqode)', () => {
     const pair = manifestPair({ version: '1.0.0', bin: { sqode: 'lib/bin.js' } }, { version: '1.0.0' })
-    expect(resolveDshBinFromManifests(pair.dshUrl, pair.clientUrl)).toBe(join(pair.root, 'lib/bin.js'))
+    expect(resolveSqhBinFromManifests(pair.dshUrl, pair.clientUrl)).toBe(join(pair.root, 'lib/bin.js'))
   })
 
   it('prefers the sqode key over a legacy dsh key', () => {
@@ -163,19 +163,19 @@ describe('SDK dsh launch resolution', () => {
       { version: '1.0.0', bin: { dsh: 'lib/dsh.js', sqode: 'lib/bin.js' } },
       { version: '1.0.0' },
     )
-    expect(resolveDshBinFromManifests(pair.dshUrl, pair.clientUrl)).toBe(join(pair.root, 'lib/bin.js'))
+    expect(resolveSqhBinFromManifests(pair.dshUrl, pair.clientUrl)).toBe(join(pair.root, 'lib/bin.js'))
   })
 
   it('accepts the string npm bin form', () => {
     const pair = manifestPair({ version: '1.0.0', bin: './bin.js' }, { version: '1.0.0' })
-    expect(resolveDshBinFromManifests(pair.dshUrl, pair.clientUrl)).toBe(join(pair.root, 'bin.js'))
+    expect(resolveSqhBinFromManifests(pair.dshUrl, pair.clientUrl)).toBe(join(pair.root, 'bin.js'))
   })
 
   it.each([null, {}, ''])(
     'rejects a manifest without a usable dsh executable (%j)',
     (bin) => {
       const pair = manifestPair({ version: '1.0.0', bin }, { version: '1.0.0' })
-      expect(() => resolveDshBinFromManifests(pair.dshUrl, pair.clientUrl))
+      expect(() => resolveSqhBinFromManifests(pair.dshUrl, pair.clientUrl))
         .toThrow('declares no dsh executable')
     },
   )

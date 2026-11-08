@@ -48,7 +48,7 @@ class FakeWebSocket extends EventTarget {
 
 const bootstrap: InspectorClientBootstrap = {
   endpoint: 'ws://127.0.0.1:9230/ingest',
-  protocol: 'dsh-inspector-v0-token',
+  protocol: 'sqh-inspector-v0-token',
   maxQueuedRecords: 16,
   maxQueuedBytes: 16_384,
   maxRecordsPerFrame: 8,

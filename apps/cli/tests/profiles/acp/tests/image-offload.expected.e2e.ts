@@ -54,7 +54,7 @@ it('pins Messages Files offload and inline fallback in assembled requests', asyn
             type: 'file',
             size_bytes: file.size,
             created_at: new Date(createdAt * 1_000).toISOString(),
-            filename: 'dsh-snapshot.png',
+            filename: 'sqh-snapshot.png',
             mime_type: file.type,
           }))
           return

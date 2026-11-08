@@ -7,7 +7,7 @@ import { expect, it, onTestFinished } from 'vitest'
 import { developmentLauncher } from '../scripts/development-app.ts'
 
 it.skipIf(process.platform === 'win32')('passes literal workspace paths and cold-start settings to Electron', () => {
-  const root = mkdtempSync(join(tmpdir(), 'dsh-development-app-'))
+  const root = mkdtempSync(join(tmpdir(), 'sqh-development-app-'))
   onTestFinished(() => { rmSync(root, { recursive: true, force: true }) })
   const bundle = join(root, "Harness ' $(false).app")
   const binary = join(bundle, 'Contents', 'MacOS', 'Electron')

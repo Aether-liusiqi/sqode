@@ -125,7 +125,7 @@ describe('serial creation listener integrations', () => {
   })
 
   it('starts due plugin work only after every creation listener finishes', async () => {
-    const root = await mkdtemp(join(tmpdir(), 'dsh-serial-due-'))
+    const root = await mkdtemp(join(tmpdir(), 'sqh-serial-due-'))
     roots.push(root)
     const ctx = await core(root)
     const sessionId = SessionId('review-due-work')

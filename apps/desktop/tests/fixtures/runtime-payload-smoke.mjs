@@ -18,7 +18,7 @@ assert.equal(process.platform, descriptor.platform)
 assert.equal(process.arch, descriptor.arch)
 const resourcesRuntime = process.argv[3] ?? join(dirname(root), 'runtime')
 const requireRuntime = createRequire(join(root, 'package.json'))
-const scratch = mkdtempSync(join(tmpdir(), 'dsh-runtime-payload-'))
+const scratch = mkdtempSync(join(tmpdir(), 'sqh-runtime-payload-'))
 
 /** Run a package script with only the shipped node launcher available on PATH. */
 function checkPnpm() {

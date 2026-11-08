@@ -10,7 +10,7 @@ const roots: string[] = []
 const experimental = '@liusiqi-dev/sqh-experimental-example'
 
 function fixture(): string {
-  const root = mkdtempSync(join(tmpdir(), 'dsh-installed-isolation-'))
+  const root = mkdtempSync(join(tmpdir(), 'sqh-installed-isolation-'))
   roots.push(root)
   return root
 }

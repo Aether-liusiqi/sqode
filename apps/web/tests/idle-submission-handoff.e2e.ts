@@ -193,7 +193,7 @@ it.skipIf(webSnapshotMode() === 'record').each(['inbox-first', 'transcript-first
 
 it.skipIf(webSnapshotMode() === 'record').each(['ABC', 'ACB', 'BAC', 'BCA', 'CAB', 'CBA'])(
   'hands off three rapid submissions through all Turns in Host order %s', async (hostOrder) => {
-    const root = await mkdtemp(join(tmpdir(), 'dsh-input-handoff-'))
+    const root = await mkdtemp(join(tmpdir(), 'sqh-input-handoff-'))
     const releases = new Map(['A', 'B', 'C'].map(id => [id, Promise.withResolvers<undefined>()]))
     const blocked = new Set<string>()
     const gate = new HistoryDeliveryGate()

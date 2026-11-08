@@ -43,7 +43,7 @@ function setup() {
   Object.defineProperty(frame, 'contentWindow', { value: dom.window })
   const focus = vi.spyOn(frame, 'focus').mockImplementation(() => {})
   frame.dispatchEvent(new dom.window.Event('load'))
-  expect(post).toHaveBeenCalledWith({ type: 'dsh-mandatory-connect' }, 'sqh-app://shell', [channel.port2])
+  expect(post).toHaveBeenCalledWith({ type: 'sqh-mandatory-connect' }, 'sqh-app://shell', [channel.port2])
   return { publish, view, root, frame, focus, host: root.host as HTMLElement }
 }
 
@@ -60,14 +60,14 @@ it('uses an in-page frame below the caption and reuses it on updates', () => {
 
 it('rejects forged window events and accepts actions only through the transferred private port', async () => {
   const f = setup()
-  const data = { type: 'dsh-mandatory-action', id: 1, action: 'download', version: '2.0.0', revision: undefined }
+  const data = { type: 'sqh-mandatory-action', id: 1, action: 'download', version: '2.0.0', revision: undefined }
   dom.window.dispatchEvent(new dom.window.MessageEvent('message', { source: f.frame.contentWindow, origin: 'sqh-app://shell', data }))
   expect(ipc.invoke).not.toHaveBeenCalled()
   const result = new Promise<unknown>(resolve => channel.port2.on('message', (message: unknown) => {
-    if (typeof message === 'object' && message !== null && 'type' in message && message.type === 'dsh-mandatory-result') resolve(message)
+    if (typeof message === 'object' && message !== null && 'type' in message && message.type === 'sqh-mandatory-result') resolve(message)
   }))
   channel.port2.postMessage(data)
-  await expect(result).resolves.toEqual({ type: 'dsh-mandatory-result', id: 1, ok: true })
+  await expect(result).resolves.toEqual({ type: 'sqh-mandatory-result', id: 1, ok: true })
   expect(ipc.invoke).toHaveBeenCalledExactlyOnceWith(MANDATORY_IPC.action, 'download', '2.0.0', undefined)
 })
 

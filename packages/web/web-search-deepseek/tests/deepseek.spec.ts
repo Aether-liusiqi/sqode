@@ -247,7 +247,7 @@ describe('DeepSeekSearchProvider account authentication', () => {
     const { url, headers } = first()
     expect(resolveAccountToken).toHaveBeenCalledWith(url)
     expect(resolveApiKey).not.toHaveBeenCalled()
-    expect(headers['x-dsh-auth-token']).toBe('account-token')
+    expect(headers['x-sqh-auth-token']).toBe('account-token')
     expect(headers).not.toHaveProperty('x-api-key')
     expect(headers).not.toHaveProperty('authorization')
   })
@@ -257,7 +257,7 @@ describe('DeepSeekSearchProvider account authentication', () => {
     await searchProvider({ ...options, resolveAccountToken: async () => token }).search({ query: 'q' })
     const { headers } = first()
     expect(headers['x-api-key']).toBe('ds-key')
-    expect(headers).not.toHaveProperty('x-dsh-auth-token')
+    expect(headers).not.toHaveProperty('x-sqh-auth-token')
   })
 
   it('maps an account resolver rejection to WEB_PROVIDER_ERROR without dispatching', async () => {
@@ -639,7 +639,7 @@ describe('web-search-deepseek plugin registration', () => {
   it('resolves the credential for each search so a stored or rotated key needs no restart', async () => {
     const previous = process.env.DEEPSEEK_API_KEY
     delete process.env.DEEPSEEK_API_KEY
-    const dir = await mkdtemp(join(tmpdir(), 'dsh-web-search-credentials-'))
+    const dir = await mkdtemp(join(tmpdir(), 'sqh-web-search-credentials-'))
     const fetchMock = vi.fn(async (_input: RequestInfo | URL, _init?: RequestInit) => jsonResponse(searchResponse()))
     vi.stubGlobal('fetch', fetchMock)
     const ctx = new Context()
@@ -726,7 +726,7 @@ describe('web-search-deepseek account route selection', () => {
   it('authenticates with the account token when the initiating Session uses the account route', async () => {
     const { headers, asked } = await searchAs('deepseek-account')
     expect(asked).toEqual(['https://api.deepseek.com/anthropic/v1/messages'])
-    expect(headers['x-dsh-auth-token']).toBe('account-token')
+    expect(headers['x-sqh-auth-token']).toBe('account-token')
     expect(headers).not.toHaveProperty('x-api-key')
   })
 
@@ -734,6 +734,6 @@ describe('web-search-deepseek account route selection', () => {
     const { headers, asked } = await searchAs(provider)
     expect(asked).toEqual([])
     expect(headers['x-api-key']).toBe('ds-key')
-    expect(headers).not.toHaveProperty('x-dsh-auth-token')
+    expect(headers).not.toHaveProperty('x-sqh-auth-token')
   })
 })

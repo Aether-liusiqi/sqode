@@ -36,7 +36,7 @@ describe('runProfile with an application-owned profile', () => {
   it.each(
     ['composition', 'boot', 'watch', 'cleanup', 'tree-cleanup', 'both-cleanups'] as const,
   )('releases startup resources after a %s failure', async (stage) => {
-    const home = mkdtempSync(join(tmpdir(), 'dsh-profile-startup-failure-'))
+    const home = mkdtempSync(join(tmpdir(), 'sqh-profile-startup-failure-'))
     homes.push(home)
     mkdirSync(join(home, 'runtime'))
     writeFileSync(join(home, 'runtime/package.json'), '{"name":"test-runtime","version":"1.0.0"}')
@@ -87,7 +87,7 @@ describe('runProfile with an application-owned profile', () => {
   })
 
   it('uses shared layers, runtime resolution, and shutdown', async () => {
-    const home = mkdtempSync(join(tmpdir(), 'dsh-resolved-profile-'))
+    const home = mkdtempSync(join(tmpdir(), 'sqh-resolved-profile-'))
     homes.push(home)
     mkdirSync(join(home, 'runtime'))
     writeFileSync(join(home, 'runtime/package.json'), '{"name":"test-runtime","version":"1.0.0","exports":"./index.cjs"}')

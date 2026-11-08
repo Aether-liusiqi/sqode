@@ -40,7 +40,7 @@ async function packagePlugin(
 async function harness(
   enabled?: boolean, packageService = false,
 ): Promise<{ ctx: Context; root: string; disposeInventory: () => Promise<void> }> {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-plugin-packages-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-plugin-packages-'))
   roots.push(root)
   const ctx = new Context()
   contexts.push(ctx)

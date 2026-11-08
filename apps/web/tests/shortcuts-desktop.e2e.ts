@@ -28,7 +28,7 @@ it.each([
   { platform: 'macos', marker: 'darwin', primary: 'Meta' },
   { platform: 'windows', marker: 'win32', primary: 'Control' },
 ] as const)('records, persists and prioritizes $platform Desktop single keys and chords over recorded history', async ({ platform, marker, primary }) => {
-  const userData = await mkdtemp(join(tmpdir(), 'dsh-shortcuts-desktop-'))
+  const userData = await mkdtemp(join(tmpdir(), 'sqh-shortcuts-desktop-'))
   let snapshot = initialShortcutConfig()
   const persistence = desktopKeybindings(userData, platform, (value) => { snapshot = value })
   try {
@@ -156,7 +156,7 @@ it.each([
           }
           await page.getByRole('dialog', { name, exact: true }).waitFor({ state: 'hidden' })
           expect(await page.evaluate(() => window.shortcutFixture.closedWindows)).toBe(0)
-          expect(await page.evaluate(() => document.activeElement?.hasAttribute('data-dsh-automatic-focus'))).toBe(true)
+          expect(await page.evaluate(() => document.activeElement?.hasAttribute('data-sqh-automatic-focus'))).toBe(true)
           expect((await automaticFocusStyle()).outline).toBe('none')
         }
         await deliverPrimary('Comma')
@@ -176,7 +176,7 @@ it.each([
         expect(await page.evaluate(() => Number.parseFloat(getComputedStyle(document.activeElement!).outlineWidth))).toBeGreaterThan(0)
         await deliverPrimary('Comma')
         await settings.waitFor({ state: 'hidden' })
-        expect(await page.evaluate(() => document.activeElement?.hasAttribute('data-dsh-automatic-focus'))).toBe(true)
+        expect(await page.evaluate(() => document.activeElement?.hasAttribute('data-sqh-automatic-focus'))).toBe(true)
         expect((await automaticFocusStyle()).outline).toBe('none')
         const dialogsAfterSettingsToggle = await page.getByRole('dialog').count()
         expect(dialogsAfterSettingsToggle).toBe(0)
@@ -192,7 +192,7 @@ it.each([
         const referenceShadow = await dialog.evaluate(node => getComputedStyle(node).boxShadow)
         await deliverPrimary('Slash')
         await dialog.waitFor({ state: 'hidden' })
-        expect(await page.evaluate(() => document.activeElement?.hasAttribute('data-dsh-automatic-focus'))).toBe(true)
+        expect(await page.evaluate(() => document.activeElement?.hasAttribute('data-sqh-automatic-focus'))).toBe(true)
         expect((await automaticFocusStyle()).outline).toBe('none')
         const dialogsAfterReferenceToggle = await page.getByRole('dialog').count()
         expect(dialogsAfterReferenceToggle).toBe(0)
@@ -225,7 +225,7 @@ it.each([
         expect(await settings.isVisible()).toBe(true)
         const settingsAfterReferenceToggle = await modalState()
         expect(settingsAfterReferenceToggle).toEqual({ focused: 'Settings', foreground: 'Settings' })
-        expect(await selectedCategory.getAttribute('data-dsh-automatic-focus')).toBe('')
+        expect(await selectedCategory.getAttribute('data-sqh-automatic-focus')).toBe('')
         expect(await automaticFocusStyle()).toEqual(noFocusRing)
         await openReference()
         await dialog.waitFor()
@@ -234,7 +234,7 @@ it.each([
         const settingsAfterClose = await modalState()
         expect(settingsAfterClose).toEqual({ focused: 'Settings', foreground: 'Settings' })
         expect(await automaticFocusStyle()).toEqual(noFocusRing)
-        expect(await selectedCategory.getAttribute('data-dsh-automatic-focus')).toBe('')
+        expect(await selectedCategory.getAttribute('data-sqh-automatic-focus')).toBe('')
         expect(await settings.evaluate(node => getComputedStyle(node).boxShadow)).toBe(settingsShadow)
         await closeModal('Settings')
         const closedWindows = await page.evaluate(() => window.shortcutFixture.closedWindows)

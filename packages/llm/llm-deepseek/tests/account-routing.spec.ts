@@ -178,7 +178,7 @@ it('propagates account sign-out to the HTTP request signal', async () => {
   const started = Promise.withResolvers<AbortSignal>()
   vi.spyOn(globalThis, 'fetch').mockImplementation(async (_url, init) => {
     const signal = init!.signal!
-    expect(new Headers(init!.headers).get('x-dsh-auth-token')).toBe('fixture-account-token')
+    expect(new Headers(init!.headers).get('x-sqh-auth-token')).toBe('fixture-account-token')
     started.resolve(signal)
     return new Promise<Response>((_resolve, reject) => {
       signal.addEventListener('abort', () => { reject(new Error('request aborted', { cause: signal.reason })) }, { once: true })

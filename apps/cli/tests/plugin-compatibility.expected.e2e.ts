@@ -10,7 +10,7 @@ const bin = fileURLToPath(new URL('../lib/bin.js', import.meta.url))
 const version = (JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')) as { version: string }).version
 
 it('refuses incompatible installation and startup until an exact risk exemption is granted', async () => {
-  const home = mkdtempSync(join(tmpdir(), 'dsh-compatibility-cli-'))
+  const home = mkdtempSync(join(tmpdir(), 'sqh-compatibility-cli-'))
   onTestFinished(() => { rmSync(home, { recursive: true, force: true }) })
   const profile = join(home, 'profiles', 'compatibility')
   const source = join(home, 'fixture-plugin')
@@ -52,9 +52,9 @@ it('refuses incompatible installation and startup until an exact risk exemption 
   const deniedStartup = await run(['--profile', 'compatibility'])
   expect(deniedStartup.stdout).not.toContain('PLUGIN_IMPORTED')
   expect(deniedStartup.stderr).toContain('incompatible')
-  const missingConsent = await plugin(['allow-version', 'compatibility-fixture@1.0.0', '--dsh-version', version])
+  const missingConsent = await plugin(['allow-version', 'compatibility-fixture@1.0.0', '--sqh-version', version])
   expect(missingConsent.exitCode).toBe(1)
-  const granted = await plugin(['allow-version', 'compatibility-fixture@1.0.0', '--dsh-version', version, '--accept-risk'])
+  const granted = await plugin(['allow-version', 'compatibility-fixture@1.0.0', '--sqh-version', version, '--accept-risk'])
   expect(granted.exitCode).toBe(0)
   expect(granted.stderr).toContain('break the application or corrupt data')
   // The exemption is profile metadata of its own; the dependency manifest and bundle list stay untouched.
@@ -64,6 +64,6 @@ it('refuses incompatible installation and startup until an exact risk exemption 
   const admittedStartup = await run(['--profile', 'compatibility'])
   expect(admittedStartup.exitCode).toBe(0)
   expect(admittedStartup.stdout).toContain('PLUGIN_STARTED')
-  expect((await plugin(['revoke-version', 'compatibility-fixture@1.0.0', '--dsh-version', version])).exitCode).toBe(0)
+  expect((await plugin(['revoke-version', 'compatibility-fixture@1.0.0', '--sqh-version', version])).exitCode).toBe(0)
   expect((await run(['--profile', 'compatibility'])).stdout).not.toContain('PLUGIN_IMPORTED')
 })

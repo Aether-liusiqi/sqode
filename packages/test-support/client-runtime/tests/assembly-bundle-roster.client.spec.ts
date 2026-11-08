@@ -13,7 +13,7 @@ function profileScope(name: string) {
 }
 
 describe('webApp (the real web profile)', () => {
-  it('composes dsh-base then dsh-web-app: unique names, inject edges on roster rows or platform seed words', () => {
+  it('composes sqh-base then sqh-web-app: unique names, inject edges on roster rows or platform seed words', () => {
     expect(WEB_PROFILE_BUNDLES).toEqual(['@liusiqi-dev/sqh-base', '@liusiqi-dev/sqh-web-app'])
     const names = webApp.rows.map(row => row.name)
     expect(new Set(names).size).toBe(names.length)

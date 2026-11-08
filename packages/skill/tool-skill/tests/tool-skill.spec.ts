@@ -19,7 +19,7 @@ import { unsupportedInbox } from '@liusiqi-dev/sqh-agent-loop-testkit'
 
 declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
-    'dsh-tool-skill': { kind: 'dsh-tool-skill' } & ContextFormed
+    'sqh-tool-skill': { kind: 'sqh-tool-skill' } & ContextFormed
     'later-contribution': { kind: 'later-contribution' } & ContextFormed
   }
 }
@@ -185,7 +185,7 @@ async function mintAgentScope(ctx: Context, subject: string | Agent): Promise<{ 
   return { agent, scope }
 }
 
-describe('dsh-tool-skill', () => {
+describe('sqh-tool-skill', () => {
   it('registers the skill tool schema and removes it on dispose', async () => {
     const ctx = new Context()
     await ctx.plugin(SystemPrompt)
@@ -549,7 +549,7 @@ describe('dsh-tool-skill', () => {
     }), { surfaceOp: 'append' })
     session.append('user/message', createUserMessage({
       content: catalogContent(['- `resumed-skill`: Resumed skill']),
-      source: { kind: 'dsh-tool-skill' },
+      source: { kind: 'sqh-tool-skill' },
     }), { surfaceOp: 'append' })
 
     await fireStep(ctx, agent, 1, 1)

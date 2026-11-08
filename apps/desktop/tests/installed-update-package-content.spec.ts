@@ -47,7 +47,7 @@ async function fixture(body: (context: {
   seal: () => Promise<void>
   resealRuntime: () => Promise<void>
 }) => Promise<void>, version: string = versions[0]): Promise<void> {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-package-content-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-package-content-'))
   const archive = join(root, 'payload/resources/app.asar')
   try {
     const run = await createInstalledUpdateRun(root, versions, { version: '0.1.5-rc.2', commit: 'a'.repeat(40), dirtyFiles: [] })
@@ -62,7 +62,7 @@ async function fixture(body: (context: {
     await writeFile(join(source, 'renderer/index.html'), '<p>test</p>')
     await prepareInstalledUpdateApplication(manifest, source)
     await cp(join(run.root, 'application/files'), source, { recursive: true })
-    await writeFile(join(source, 'package.json'), JSON.stringify({ name: `dsh-update-test-${run.id}`, version,
+    await writeFile(join(source, 'package.json'), JSON.stringify({ name: `sqh-update-test-${run.id}`, version,
       dshDesktopAppId: run.appId, main: 'qualification-bootstrap.mjs', type: 'module',
       dshMandatoryUpdatePolicy: { origin: 'https://policy.example.com', allowedPageOrigins: ['https://policy.example.com'],
         authentication: 'feishu-test', allowedAuthOrigins: ['https://login.example.com'] } }))
@@ -82,7 +82,7 @@ async function fixture(body: (context: {
     await mkdir(join(payload, 'resources'), { recursive: true })
     await writeFile(join(payload, 'resources/app-update.yml'), JSON.stringify({ provider: 'generic', channel: 'nightly',
       url: `${run.origin}/${run.feedKey.slice(0, -'nightly.yml'.length)}`, publisherName: [publisher],
-      updaterCacheDirName: `dsh-update-test-${run.id}-updater` }))
+      updaterCacheDirName: `sqh-update-test-${run.id}-updater` }))
     const seal = async () => {
       // ASAR 3 returns the output stream after end(), before its writes finish.
       const output = await createPackageWithOptions(source, archive, { unpack: '**/*.exe' })

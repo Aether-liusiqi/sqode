@@ -110,7 +110,7 @@ describe('PythonPtcRuntime — seam descriptors and misuse', () => {
       const request = { program: 'return 1', bindings: [] }
       expect(runtime.sandboxMode).toBeUndefined()
       expect(runtime.resolve(request)).toEqual({ ...request, cwd: process.cwd(), timeoutMs: 30_000 })
-      const cwd = await makeTempDir('dsh-py-resolved-cwd-')
+      const cwd = await makeTempDir('sqh-py-resolved-cwd-')
       const spec = runtime.resolve({ ...request, cwd })
       expect(spec.cwd).toBe(cwd)
       expect(() => runtime.resolve({ ...request, cwd: 'relative' })).toThrow('cwd must be absolute')
@@ -283,7 +283,7 @@ describe('PythonPtcRuntime — seam descriptors and misuse', () => {
     // simply does not resolve on PATH.
     const nodePath = await import('node:path')
     const { writeFileSync, mkdirSync } = await import('node:fs')
-    const dir = makeTempDirSync('dsh-bad-bin-')
+    const dir = makeTempDirSync('sqh-bad-bin-')
     const notExecutable = nodePath.join(dir, 'not-executable')
     writeFileSync(notExecutable, '#!/bin/sh\nexit 0\n') // Regular file, but no X bit.
     const directory = nodePath.join(dir, 'is-a-directory')
@@ -315,7 +315,7 @@ describe('PythonPtcRuntime — seam descriptors and misuse', () => {
     await expect(nonPython.plugin(PythonPtcRuntime, { pythonBin: '/bin/echo' }))
       .rejects.toThrow(/did not report a CPython version/)
 
-    const dir = await mkdtemp(join(tmpdir(), 'dsh-python-probe-'))
+    const dir = await mkdtemp(join(tmpdir(), 'sqh-python-probe-'))
     const oldMajor = join(dir, 'python-old-major')
     const old = join(dir, 'python-old')
     const future = join(dir, 'python-future')
@@ -422,8 +422,8 @@ describe('PythonPtcRuntime — seam descriptors and misuse', () => {
   })
 
   it('resolves pythonBin once so a later PATH change cannot switch interpreters', async () => {
-    const firstDir = await mkdtemp(join(tmpdir(), 'dsh-python-first-'))
-    const secondDir = await mkdtemp(join(tmpdir(), 'dsh-python-second-'))
+    const firstDir = await mkdtemp(join(tmpdir(), 'sqh-python-first-'))
+    const secondDir = await mkdtemp(join(tmpdir(), 'sqh-python-second-'))
     const wrapper = (marker: string): string => `#!/bin/sh\nSQH_TEST_PYTHON=${marker}\nexport SQODE_TEST_PYTHON\nexec "${PYABS}" "$@"\n`
     await writeFile(join(firstDir, 'python3'), wrapper('first'), { mode: 0o755 })
     await writeFile(join(secondDir, 'python3'), wrapper('second'), { mode: 0o755 })
@@ -500,7 +500,7 @@ describe('PythonPtcRuntime — seam descriptors and misuse', () => {
     const nodePath = await import('node:path')
     const { mkdirSync } = await import('node:fs')
     const realPythonDir = nodePath.dirname(cp.execFileSync('which', ['python3'], { encoding: 'utf8' }).trim())
-    const fakeDir = makeTempDirSync('dsh-fake-bin-')
+    const fakeDir = makeTempDirSync('sqh-fake-bin-')
     mkdirSync(nodePath.join(fakeDir, 'python3')) // A directory named python3, executable by default.
     vi.stubEnv('PATH', `${fakeDir}:${realPythonDir}`)
     try {
@@ -719,7 +719,7 @@ describe('PythonPtcRuntime — seam descriptors and misuse', () => {
     // `os.tmpdir()`, so pointing it at a path that is not a directory makes the
     // real call fail without stubbing the module under test.
     const previous = process.env.TMPDIR
-    const notADirectory = join(await makeTempDir('dsh-staging-'), 'file')
+    const notADirectory = join(await makeTempDir('sqh-staging-'), 'file')
     await writeFile(notADirectory, '')
     process.env.TMPDIR = notADirectory
     try {
@@ -806,7 +806,7 @@ describe('PythonPtcRuntime — inherited resource limits', () => {
     // `pythonBin` is the honest lever: a wrapper that lowers RLIMIT_AS and then
     // execs the real interpreter reproduces the inherited-limit condition
     // without touching this test process's own limits.
-    const dir = await makeTempDir('dsh-rlimit-')
+    const dir = await makeTempDir('sqh-rlimit-')
     const wrapper = join(dir, 'python3-capped')
     // 256 MiB, half the 512 MiB addressSpaceMb default, so the requested cap is
     // unambiguously above the inherited ceiling.
@@ -834,7 +834,7 @@ describe('PythonPtcRuntime — inherited resource limits', () => {
     // rejected. The rejection surfaces as an 'exception' (bootstrap's
     // setrlimit-phase failure class), not a mid-run OOM. The repro is Linux-only
     // (macOS ignores `ulimit -v`); there the run proceeds.
-    const dir = await makeTempDir('dsh-rlimit-')
+    const dir = await makeTempDir('sqh-rlimit-')
     const wrapper = join(dir, 'python3-tight')
     await writeFile(wrapper, `#!/bin/sh\nulimit -v 131072\nexec "${PYABS}" "$@"\n`, { mode: 0o755 })
     const { runtime } = await setup({ pythonBin: wrapper, maxLogBytes: 32 * 1024 * 1024, addressSpaceMb: 512 })
@@ -885,7 +885,7 @@ describe('PythonPtcRuntime — inherited resource limits', () => {
     // requested soft (`cpuSeconds`) sits above the inherited soft — the case that
     // exposed the bug. RLIMIT_CPU is used because macOS ignores `ulimit -v`
     // (RLIMIT_AS), which is exactly why the backend skips address space there.
-    const dir = await makeTempDir('dsh-rlimit-soft-')
+    const dir = await makeTempDir('sqh-rlimit-soft-')
     const wrapper = join(dir, 'python3-soft-capped')
     // Soft CPU 5 s, well below the configured 30 s, hard left unlimited.
     await writeFile(wrapper, `#!/bin/sh\nulimit -S -t 5\nexec "${PYABS}" "$@"\n`, { mode: 0o755 })
@@ -910,7 +910,7 @@ describe('PythonPtcRuntime — inherited resource limits', () => {
     // timeout. This uses `ulimit -t 2` (hard == 2, so the soft is lowered to 1)
     // and leaves SIGXCPU unhandled, so the kernel terminates the busy loop at
     // 1 s with SIGXCPU and the host classifies it as a timeout.
-    const dir = await makeTempDir('dsh-rlimit-dual-')
+    const dir = await makeTempDir('sqh-rlimit-dual-')
     const wrapper = join(dir, 'python3-dual-capped')
     // Both soft and hard CPU 2 s; configured cpuSeconds 30 s.
     await writeFile(wrapper, `#!/bin/sh\nulimit -t 2\nexec "${PYABS}" "$@"\n`, { mode: 0o755 })
@@ -960,7 +960,7 @@ describe('PythonPtcRuntime — inherited resource limits', () => {
     // RLIMIT_CPU that cannot stop it. The bootstrap resets SIGXCPU to SIG_DFL
     // before model code runs, so a busy loop still ends as a timeout rather
     // than running to the hard limit and being misclassified as worker-exit.
-    const wrapper = join(tmpdir(), `dsh-xcpu-ignore-${process.pid}.sh`)
+    const wrapper = join(tmpdir(), `sqh-xcpu-ignore-${process.pid}.sh`)
     tempFiles.push(wrapper)
     writeFileSync(wrapper, `#!/bin/sh\ntrap "" XCPU\nexec "${PYABS}" "$@"\n`, { mode: 0o755 })
     try {
@@ -1014,7 +1014,7 @@ describe('PythonPtcRuntime — inherited resource limits', () => {
     // the inherited limit. The wrapper sets a 1 s soft CPU limit; the program
     // traps SIGXCPU and busy-loops past it, then returns — the recheck must
     // re-deliver SIGXCPU so the host classifies the run as a timeout.
-    const dir = await makeTempDir('dsh-cpu-recheck-')
+    const dir = await makeTempDir('sqh-cpu-recheck-')
     const wrapper = join(dir, 'python3-cpu-capped')
     await writeFile(wrapper, `#!/bin/sh\nulimit -S -t 1\nexec "${PYABS}" "$@"\n`, { mode: 0o755 })
     const { runtime } = await setup({ pythonBin: wrapper, cpuSeconds: 30, maxWallMs: 12_000 })
@@ -3104,7 +3104,7 @@ describe('PythonPtcRuntime — budgets, termination, disposal', () => {
   }, 5000)
 
   it('reports an interpreter removed after load as worker-exit', async () => {
-    const dir = await mkdtemp(join(tmpdir(), 'dsh-python-removed-'))
+    const dir = await mkdtemp(join(tmpdir(), 'sqh-python-removed-'))
     const pythonBin = join(dir, 'python3')
     await writeFile(pythonBin, `#!/bin/sh\nexec "${PYABS}" "$@"\n`, { mode: 0o755 })
     const { runtime, fiber } = await setup({ pythonBin, maxWallMs: 3000 })
@@ -3614,7 +3614,7 @@ describe('PythonPtcRuntime — budgets, termination, disposal', () => {
     // means whether the killed descendant is reaped or lingers as a zombie (a
     // SIGKILL'd process runs no more code either way). It sleeps 30 s as a safety
     // net so a broken fix cannot leak it forever.
-    const handoff = await makeTempDir('dsh-samegroup-')
+    const handoff = await makeTempDir('sqh-samegroup-')
     const readyMarker = join(handoff, 'ready')
     const heartbeat = join(handoff, 'heartbeat')
     const { runtime } = await setup({ maxWallMs: 10_000, graceMs: 300 })
@@ -3679,7 +3679,7 @@ describe('PythonPtcRuntime — budgets, termination, disposal', () => {
     // is called; the heartbeat must be stale BY THE TIME dispose() resolves —
     // proving teardown waited for the reap, not merely that the reap eventually
     // happened.
-    const handoff = await makeTempDir('dsh-dispose-quiesce-')
+    const handoff = await makeTempDir('sqh-dispose-quiesce-')
     const readyMarker = join(handoff, 'ready')
     const heartbeat = join(handoff, 'heartbeat')
     const { runtime, fiber } = await setup({ maxWallMs: 10_000, graceMs: 300 })
@@ -3732,7 +3732,7 @@ describe('PythonPtcRuntime — budgets, termination, disposal', () => {
     // rather than cancel the unfired escalation — otherwise a SIGTERM-ignoring
     // same-group survivor is released for good. A synchronous busy-loop after
     // run() resolves reproduces the block deterministically.
-    const handoff = await makeTempDir('dsh-deadline-')
+    const handoff = await makeTempDir('sqh-deadline-')
     const readyMarker = join(handoff, 'ready')
     const heartbeat = join(handoff, 'heartbeat')
     const graceMs = 300

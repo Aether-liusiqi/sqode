@@ -60,7 +60,7 @@ export function testProfileResolution(mode: ExampleMode): void {
   }, async (layout) => {
     // The child reports loaded module paths in the form SQODE_HOME was given; hand it the native realpath so
     // Windows 8.3 tmpdir names and macOS /var symlinks match the expectations computed below.
-    const root = realpathSync.native(await mkdtemp(join(tmpdir(), 'dsh-profile-resolution-')))
+    const root = realpathSync.native(await mkdtemp(join(tmpdir(), 'sqh-profile-resolution-')))
     const links: string[] = []
     try {
       const home = join(root, 'home')
@@ -104,7 +104,7 @@ export function testProfileResolution(mode: ExampleMode): void {
       const sharedModules = join(home, 'profiles', 'node_modules')
       const installedPlugin = join(profileDir, 'node_modules', pluginName)
       // npm-link keeps the plugin as a linked root outside the profile tree, so its own node_modules hold the
-      // developer's devDependency dsh-tools copy (stale, never read) and the declared dependency's install.
+      // developer's devDependency sqh-tools copy (stale, never read) and the declared dependency's install.
       const pluginDir = layout === 'npm-link' ? join(root, 'work', pluginName) : installedPlugin
       const sharedExternal = join(sharedModules, externalName)
       const externalDir = layout === 'npm-link' ? join(root, 'external', externalName) : sharedExternal

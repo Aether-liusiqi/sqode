@@ -21,7 +21,7 @@ import type {
 export { ClientModuleSystem }
 export { tearDownEntryFiber } from './entry-lifecycle.ts'
 export type { ClientEntries, ClientEntryState } from './entries.ts'
-export { exactPackageSpecifier, parseBootManifest, parseDshClient, stripClientSuffix } from './manifest.ts'
+export { exactPackageSpecifier, parseBootManifest, parseSqhClient, stripClientSuffix } from './manifest.ts'
 export type {
   BootManifest, BootModuleRow, BootPluginRow, ClientBootstrapModule, ClientBundleRegistration,
   ClientModuleCreateOptions, ClientModuleLoader, ClientModuleLoaderTarget, ClientModuleRecord,

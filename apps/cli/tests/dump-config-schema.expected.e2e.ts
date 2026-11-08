@@ -18,7 +18,7 @@ const builtArtifactsExist = existsSync(builtBin)
 if (process.env.SQODE_EXAMPLE_MODE === 'lib' && !builtArtifactsExist) {
   throw new Error('dsh config-schema acceptance requires built CLI artifacts in lib mode; run pnpm run build first')
 }
-const packageName = 'dsh-schema-acceptance-fixture'
+const packageName = 'sqh-schema-acceptance-fixture'
 const profileName = 'schema-acceptance'
 const processTimeoutMs = 90_000
 const schemaImport = "import Schema from '@liusiqi-dev/schemastery'"
@@ -38,7 +38,7 @@ interface Fixture {
 }
 
 async function createFixture(modules: Record<string, string>, patches: string): Promise<Fixture> {
-  const root = realpathSync.native(mkdtempSync(join(tmpdir(), 'dsh-schema-acceptance-')))
+  const root = realpathSync.native(mkdtempSync(join(tmpdir(), 'sqh-schema-acceptance-')))
   onTestFinished(() => rm(root, { recursive: true, force: true, maxRetries: 3 }))
   const home = join(root, 'home')
   const profile = join(home, 'profiles', profileName)
@@ -57,7 +57,7 @@ async function createFixture(modules: Record<string, string>, patches: string): 
   }
   await writeFile(join(moduleDir, 'cordis.patch.yml'), patches)
   await writeFile(join(profile, 'package.json'), JSON.stringify({
-    name: 'dsh-profile-schema-acceptance',
+    name: 'sqh-profile-schema-acceptance',
     private: true,
     dependencies: { [packageName]: '1.0.0' },
     dsh: { profile: { bundles: [packageName] } },
@@ -317,7 +317,7 @@ describe.skipIf(!builtArtifactsExist)('dsh --dump-config-schema assembled output
     - id: schema-retained
       name: ${packageName}/absent
 `)
-    const missingBundle = 'dsh-schema-acceptance-missing-bundle'
+    const missingBundle = 'sqh-schema-acceptance-missing-bundle'
     await writeFile(join(fixture.profile, 'package.json'), JSON.stringify({
       private: true,
       dependencies: { [packageName]: '1.0.0' },

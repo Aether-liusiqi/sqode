@@ -26,7 +26,7 @@ const vite = createRequire(new URL('../apps/web/package.json', import.meta.url))
 
 function fixture() {
   // Vite resolves inputs with native realpath, which expands Windows short names.
-  const root = realpathSync.native(mkdtempSync(join(tmpdir(), 'dsh-web-bundle-isolation-')))
+  const root = realpathSync.native(mkdtempSync(join(tmpdir(), 'sqh-web-bundle-isolation-')))
   const web = join(root, 'apps/web')
   const links: string[] = []
   onTestFinished(() => {

@@ -57,7 +57,7 @@ afterEach(async () => {
 
 it('loads from cordis.yml and logs the native screenshot before the next model request', async () => {
   resetFixture()
-  root = await mkdtemp(join(tmpdir(), 'dsh-native-composition-'))
+  root = await mkdtemp(join(tmpdir(), 'sqh-native-composition-'))
   const configPath = join(root, 'cordis.yml')
   const modules = new Map<string, unknown>([
     ['@liusiqi-dev/sqh-llm', LlmRuntime],

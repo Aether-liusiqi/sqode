@@ -524,10 +524,10 @@ describe.skipIf(MODE === 'record')('web e2e: document preview through Files', ()
     (await readFile(launchLog, 'utf8')).split('\n').filter(Boolean).map(line => JSON.parse(line) as { app: string; path: string })
 
   beforeAll(async () => {
-    outsideRoot = await mkdtemp(join(tmpdir(), 'dsh-preview-outside-'))
+    outsideRoot = await mkdtemp(join(tmpdir(), 'sqh-preview-outside-'))
     if (STUB_OPENER) {
       // Exercise the built Host through its actual OS command, replacing only the desktop application.
-      nativeRoot = await mkdtemp(join(tmpdir(), 'dsh-preview-native-'))
+      nativeRoot = await mkdtemp(join(tmpdir(), 'sqh-preview-native-'))
       openLog = join(nativeRoot, 'opened.jsonl')
       launchLog = join(nativeRoot, 'launched.jsonl')
       appsCatalog = join(nativeRoot, 'applications.json')
@@ -939,7 +939,7 @@ else process.exit(1);
     const firstColor = await canvasColor(canvas)
     expect(firstColor).toBe('red')
     const workerNames = await Promise.all(page.workers().map(worker => worker.evaluate(() => self.name)))
-    expect(workerNames).toContain('dsh-pdf')
+    expect(workerNames).toContain('sqh-pdf')
     await scrollIntoView(preview.locator('[data-pdf-page="2"]'))
     const secondPage = preview.getByRole('img', { name: 'PDF page 2', exact: true })
     await secondPage.waitFor({ state: 'visible', timeout: 30_000 })
@@ -971,7 +971,7 @@ else process.exit(1);
     sections.push([
       '## PDF', '',
       `- Viewer menu hidden: ${String(await viewer.count() === 0)}`,
-      `- Worker: ${workerNames.find(name => name === 'dsh-pdf')}`,
+      `- Worker: ${workerNames.find(name => name === 'sqh-pdf')}`,
       `- Continuous pages: ${await preview.locator('[data-pdf-page]').count()}`,
       '- Zoom reveal: hidden -> bottom hover -> delayed hidden',
       '- Zoom modes: fit width -> 100% -> 150% -> fit width',
@@ -1616,7 +1616,7 @@ describe.skipIf(MODE === 'record')('web e2e: Host Office preview', () => {
         return false
       }), { timeout: 30_000 }).toBe(true)
       const workerNames = await Promise.all(page.workers().map(worker => worker.evaluate(() => self.name)))
-      expect(workerNames).toContain('dsh-pdf')
+      expect(workerNames).toContain('sqh-pdf')
       expect(workerNames.some(name => /libreoffice|soffice/i.test(name))).toBe(false)
       await copyPdfText(page, preview, 'Office preview')
       await copyPdfText(page, preview, '中文文档')

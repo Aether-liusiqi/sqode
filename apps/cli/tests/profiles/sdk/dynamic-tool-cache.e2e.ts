@@ -42,7 +42,7 @@ function totalInput(usage: TokenUsage): number {
 
 describe.skipIf(!process.env.DEEPSEEK_API_KEY)('SDK native tool updates with real DeepSeek', () => {
   it.each([false, true])('keeps the preceding conversation cached after a tool addition (prompt update: %s)', { retry: 0 }, async (updatePrompt) => {
-    const root = await mkdtemp(join(tmpdir(), 'dsh-sdk-tool-cache-'))
+    const root = await mkdtemp(join(tmpdir(), 'sqh-sdk-tool-cache-'))
     onTestFinished(async () => { await rm(root, { recursive: true, force: true }) })
     const sampleLabel = `CACHE_SAMPLE_${randomUUID()}`
     const evidencePath = join(root, 'requests.jsonl')

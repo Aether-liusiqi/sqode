@@ -20,8 +20,8 @@ Ambient host state.
 }
 
 it('isolates replay skill discovery from every ambient host root', async () => {
-  const ambient = await mkdtemp(join(tmpdir(), 'dsh-web-ambient-skills-'))
-  const sqhHome = join(ambient, 'dsh-home')
+  const ambient = await mkdtemp(join(tmpdir(), 'sqh-web-ambient-skills-'))
+  const sqhHome = join(ambient, 'sqh-home')
   const agentsHome = join(ambient, 'agents-home')
   const bundled = join(ambient, 'bundled')
   await Promise.all([

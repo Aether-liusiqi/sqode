@@ -13,7 +13,7 @@ afterEach(() => {
 })
 
 function setup() {
-  const root = mkdtempSync(join(tmpdir(), 'dsh-desktop-notice-'))
+  const root = mkdtempSync(join(tmpdir(), 'sqh-desktop-notice-'))
   roots.push(root)
   const markerPath = join(root, 'background-close-confirmed')
   const response = Promise.withResolvers<MessageBoxReturnValue>()

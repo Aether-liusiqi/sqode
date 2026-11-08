@@ -78,7 +78,7 @@ describe('web e2e: current sandbox policy reaches the model before tools', () =>
         extraOverlayPath: fileURLToPath(new URL('./fixtures/sidebar-terminal.patch.yml', import.meta.url)),
       },
     })
-    outsideWorkspace = await mkdtemp(join(tmpdir(), 'dsh-user-terminal-'))
+    outsideWorkspace = await mkdtemp(join(tmpdir(), 'sqh-user-terminal-'))
     disposeApproval = scaffold.ctx.on('approval/request', () => Promise.resolve('allowed-once'), { prepend: true })
     scaffold.ctx.on('session/event', (session, event: SessionEvent) => {
       sessionWorkspace = session.header.cwd

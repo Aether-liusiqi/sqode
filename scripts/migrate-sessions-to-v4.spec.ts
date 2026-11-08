@@ -18,7 +18,7 @@ const directories = new Set<string>()
 const stopProcesses: Array<() => Promise<void>> = []
 
 function temporaryRoot(): string {
-  const directory = mkdtempSync(join(tmpdir(), 'dsh-migrate-v4-test-'))
+  const directory = mkdtempSync(join(tmpdir(), 'sqh-migrate-v4-test-'))
   directories.add(directory)
   return directory
 }

@@ -9,12 +9,12 @@ import {
   PRIVATE_EXPERIMENTAL_PACKAGE_DIRECTORIES,
 } from './experimental-package-policy.ts'
 import {
-  checkDshFamilyVersion,
+  checkSqhFamilyVersion,
   checkWorkspaceManifest,
   checkWorkspaceProtocol,
   checkExperimentalDependencyIsolation,
   checkExperimentalManifest,
-  expectedDshPackageFiles,
+  expectedSqhPackageFiles,
   readWorkspaceManifests,
   type WorkspaceManifest,
 } from './check-workspace-constraints.ts'
@@ -78,7 +78,7 @@ describe('workspace dependency ranges', () => {
 
 describe('workspace manifest discovery', () => {
   it('checks root, app, runtime, tooling, and newly declared members while honoring exclusions', () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-workspace-ranges-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-workspace-ranges-'))
     onTestFinished(() => { rmSync(root, { recursive: true, force: true }) })
     const consumers = ['.', 'apps/cli', 'apps/web', 'apps/desktop', 'apps/desktop-host', 'benchmarks', 'website', 'python/sdk-runtime', 'tools/probe']
     writeFileSync(join(root, 'pnpm-workspace.yaml'), [
@@ -99,7 +99,7 @@ describe('workspace manifest discovery', () => {
 
   it.each(['', 'null', '{}', 'packages: []', 'packages: [false]', 'packages: [""]', 'packages: wrong'])(
     'rejects an invalid workspace declaration: %s', (contents) => {
-      const root = mkdtempSync(join(tmpdir(), 'dsh-workspace-ranges-'))
+      const root = mkdtempSync(join(tmpdir(), 'sqh-workspace-ranges-'))
       onTestFinished(() => { rmSync(root, { recursive: true, force: true }) })
       writeFileSync(join(root, 'pnpm-workspace.yaml'), contents)
       expect(() => readWorkspaceManifests(root)).toThrow('packages must be a non-empty list of workspace patterns')
@@ -107,7 +107,7 @@ describe('workspace manifest discovery', () => {
   )
 
   it('rejects a declaration that matches no workspace members', () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-workspace-ranges-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-workspace-ranges-'))
     onTestFinished(() => { rmSync(root, { recursive: true, force: true }) })
     writeFileSync(join(root, 'pnpm-workspace.yaml'), 'packages: [missing/*]')
     expect(() => readWorkspaceManifests(root)).toThrow('packages matched no workspace manifests')
@@ -224,39 +224,39 @@ describe('experimental workspace constraints', () => {
 
 describe('dsh family version coherence', () => {
   it('rejects a package carrying a stale shared version', () => {
-    expect(checkDshFamilyVersion(
+    expect(checkSqhFamilyVersion(
       { name: '@liusiqi-dev/sqh-http-proxy', version: '0.1.2-alpha.5' },
       '0.1.2-rc.1',
     )).toBe('@liusiqi-dev/sqh-http-proxy: package.json version must match root version 0.1.2-rc.1')
   })
 
   it('rejects the root-named CLI app on a stale shared version', () => {
-    expect(checkDshFamilyVersion(
+    expect(checkSqhFamilyVersion(
       { name: '@liusiqi-dev/sqode', version: '0.1.2-alpha.5' },
       '0.1.2-rc.1',
     )).toBe('@liusiqi-dev/sqode: package.json version must match root version 0.1.2-rc.1')
   })
 
   it('accepts a manifest carrying the shared version', () => {
-    expect(checkDshFamilyVersion(
+    expect(checkSqhFamilyVersion(
       { name: '@liusiqi-dev/sqh-http-proxy', version: '0.1.2-rc.1' },
       '0.1.2-rc.1',
     )).toBeUndefined()
   })
 
   it('leaves other sequences to their own version lines', () => {
-    expect(checkDshFamilyVersion({ name: '@liusiqi-dev/cordis', version: '4.0.1' }, '0.1.2-rc.1')).toBeUndefined()
-    expect(checkDshFamilyVersion(
+    expect(checkSqhFamilyVersion({ name: '@liusiqi-dev/cordis', version: '4.0.1' }, '0.1.2-rc.1')).toBeUndefined()
+    expect(checkSqhFamilyVersion(
       { name: '@liusiqi-dev/node-addon-system', version: '0.1.1' },
       '0.1.2-rc.1',
     )).toBeUndefined()
-    expect(checkDshFamilyVersion({ version: '0.1.2-alpha.5' }, '0.1.2-rc.1')).toBeUndefined()
+    expect(checkSqhFamilyVersion({ version: '0.1.2-alpha.5' }, '0.1.2-rc.1')).toBeUndefined()
   })
 })
 
 describe('package payload constraints', () => {
   it.each(['./art/icon.svg', 'art/icon.svg'])('includes declared icon %s in the canonical payload', (icon) => {
-    expect(expectedDshPackageFiles({ icon, exports: { './locale/*.json': './locale/*.json' } })).toEqual([
+    expect(expectedSqhPackageFiles({ icon, exports: { './locale/*.json': './locale/*.json' } })).toEqual([
       'art/icon.svg', 'locale/*.json', 'lib/index.js', 'lib/types/**/*.d.ts',
     ])
   })
@@ -277,13 +277,13 @@ describe('package payload constraints', () => {
     { exports: { './locale/*.json': './locale/*.json', './search/locale/*.json': './locale/*.json' }, resources: ['locale/*.json'] },
     { exports: { './search/locale/*.json': './z/*.json', './locale/*.json': './a/*.json' }, resources: ['a/*.json', 'z/*.json'] },
   ])('includes declared locale resources in the canonical payload: $exports', ({ exports, resources }) => {
-    expect(expectedDshPackageFiles({ name: '@liusiqi-dev/sqh-localized', exports })).toEqual([
+    expect(expectedSqhPackageFiles({ name: '@liusiqi-dev/sqh-localized', exports })).toEqual([
       ...resources, 'lib/index.js', 'lib/types/**/*.d.ts',
     ])
   })
 
   it('does not infer locale payloads from unrelated or non-JSON exports', () => {
-    expect(expectedDshPackageFiles({
+    expect(expectedSqhPackageFiles({
       exports: {
         './config.json': './config.json',
         './locale/README.md': './locale/README.md',
@@ -315,7 +315,7 @@ describe('package payload constraints', () => {
   })
 
   it('includes a declared profile patch without a package-name allowlist', () => {
-    expect(expectedDshPackageFiles({
+    expect(expectedSqhPackageFiles({
       name: '@liusiqi-dev/sqh-private-profile',
       dsh: { bundle: { patch: './cordis.patch.yml' } },
     })).toEqual([
@@ -323,7 +323,7 @@ describe('package payload constraints', () => {
       'cordis.patch.yml',
       'lib/types/**/*.d.ts',
     ])
-    expect(expectedDshPackageFiles({
+    expect(expectedSqhPackageFiles({
       name: '@liusiqi-dev/sqh-private-profile',
       dsh: { bundle: { patch: ['./cordis.patch.yml', './layers/web.patch.yml'] } },
     })).toEqual([

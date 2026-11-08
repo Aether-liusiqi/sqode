@@ -7,7 +7,7 @@ import { StartupError } from '@liusiqi-dev/sqh-app-boot'
 import { reportStartupFailure } from '../src/startup-diagnostics.ts'
 
 async function home(): Promise<string> {
-  const dir = await mkdtemp(join(tmpdir(), 'dsh-startup-diagnostics-'))
+  const dir = await mkdtemp(join(tmpdir(), 'sqh-startup-diagnostics-'))
   onTestFinished(() => rm(dir, { recursive: true, force: true }))
   return dir
 }

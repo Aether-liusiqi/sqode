@@ -71,7 +71,7 @@ const suite = process.platform === 'linux' || process.platform === 'darwin' ? de
 
 suite('persistent Bash through a real cordis.yml Loader composition', () => {
   it('preserves cwd and environment across calls', async () => {
-    root = await mkdtemp(join(tmpdir(), 'dsh-persistent-bash-loader-'))
+    root = await mkdtemp(join(tmpdir(), 'sqh-persistent-bash-loader-'))
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
       "- name: '@liusiqi-dev/sqh-agent'",

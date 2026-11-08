@@ -116,7 +116,7 @@ export function desktopCorePackageOverrides(packageSet: DesktopCorePackageSet): 
 }
 
 /** Return the local direct dependency spec for the sqh package. */
-export function desktopDshPackageSpec(packageSet: DesktopCorePackageSet): string {
+export function desktopSqhPackageSpec(packageSet: DesktopCorePackageSet): string {
   const record = packageSet.packages.find(entry => entry.name === SQODE_PACKAGE)
   if (record === undefined) throw new Error(`desktop package set: missing ${SQODE_PACKAGE}`)
   return desktopCorePackageSpec(record)

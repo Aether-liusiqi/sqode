@@ -37,13 +37,13 @@
     - id: test-tool-subagent
       name: './scoped-tool-subagent.ts'
       config:
-        provider: dsh-sdk
+        provider: sqh-sdk
         toolName: subagent
         agentOptions:
           maxTokens: 777
         maxDepth: 'provider-managed'
 
-    # providerName is omitted to exercise the shipped `dsh-sdk` default.
+    # providerName is omitted to exercise the shipped `sqh-sdk` default.
     - id: subagent-sdk
       name: '@liusiqi-dev/sqh-subagent-sdk'
       config:

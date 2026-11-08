@@ -110,7 +110,7 @@ describe('parent-owned cold child catalog snapshot', () => {
     let cwd = ''
     const result = await runLoaderSmoke({
       label: 'subagent diagnostic headless stream-json snapshot',
-      tempDirPrefix: 'dsh-subagent-diag-',
+      tempDirPrefix: 'sqh-subagent-diag-',
       binScript,
       libBinScript: binScript,
       configPath,

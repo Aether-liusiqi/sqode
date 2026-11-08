@@ -83,7 +83,7 @@ describe('managed subprocess control pipe', () => {
   })
 
   it.each(['managed', 'fallback'] as const)('returns exact binary control bytes through %s independently of stdio', async (backend) => {
-    root = await mkdtemp(join(tmpdir(), 'dsh-control-'))
+    root = await mkdtemp(join(tmpdir(), 'sqh-control-'))
     ctx = new Context()
     await ctx.plugin(LocalSubprocessRuntime)
     const input = Buffer.alloc(256 * 1024)

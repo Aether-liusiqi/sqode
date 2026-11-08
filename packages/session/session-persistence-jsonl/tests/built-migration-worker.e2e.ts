@@ -20,7 +20,7 @@ describe.skipIf(!built)('built migration verifier (plain node)', () => {
       import { SESSION_FORMAT_VERSION } from '@liusiqi-dev/sqh-session'
       import JsonlSessionPersistence from '@liusiqi-dev/sqh-session-persistence-jsonl'
 
-      const root = await mkdtemp(join(tmpdir(), 'dsh-built-migration-'))
+      const root = await mkdtemp(join(tmpdir(), 'sqh-built-migration-'))
       const id = 'built-migration-worker'
       const directory = join(root, '_no-cwd', id)
       const ctx = new Context()

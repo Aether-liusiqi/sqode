@@ -74,11 +74,11 @@ interface ProfileLifecycleFixture {
 
 /**
  * A minimal custom profile: one lifecycle-marker plugin bundle listed in
- * dsh.profile.bundles, no dsh-base — proving out-of-box composition machinery without
+ * dsh.profile.bundles, no sqh-base — proving out-of-box composition machinery without
  * booting the entire product tree.
  */
 function createProfileLifecycleFixture(): ProfileLifecycleFixture {
-  const home = mkdtempSync(join(tmpdir(), 'dsh-profile-lifecycle-'))
+  const home = mkdtempSync(join(tmpdir(), 'sqh-profile-lifecycle-'))
   const ready = join(home, 'ready')
   const settled = join(home, 'settled')
   const disposed = join(home, 'disposed')
@@ -127,7 +127,7 @@ function createProfileLifecycleFixture(): ProfileLifecycleFixture {
     '',
   ].join('\n'))
   writeFileSync(join(bundleDir, 'package.json'), JSON.stringify({
-    name: 'dsh-lifecycle-bundle',
+    name: 'sqh-lifecycle-bundle',
     version: '0.0.0',
     type: 'module',
     dsh: { bundle: { patch: './cordis.patch.yml' } },
@@ -135,14 +135,14 @@ function createProfileLifecycleFixture(): ProfileLifecycleFixture {
   const profileDir = join(home, 'profiles', 'lifecycle')
   mkdirSync(join(profileDir, 'node_modules'), { recursive: true })
   writeFileSync(join(profileDir, 'package.json'), JSON.stringify({
-    name: 'dsh-profile-lifecycle',
+    name: 'sqh-profile-lifecycle',
     private: true,
     dependencies: {},
-    dsh: { profile: { bundles: ['dsh-lifecycle-bundle'] } },
+    dsh: { profile: { bundles: ['sqh-lifecycle-bundle'] } },
   }, undefined, 2))
   // Hand-place the "installed" bundle where profile resolution finds it.
   writeFileSync(join(profileDir, 'cordis.patch.yml'), '[]\n')
-  const linkTarget = join(profileDir, 'node_modules', 'dsh-lifecycle-bundle')
+  const linkTarget = join(profileDir, 'node_modules', 'sqh-lifecycle-bundle')
   mkdirSync(join(profileDir, 'node_modules'), { recursive: true })
   try {
     rmSync(linkTarget, { recursive: true, force: true })
@@ -209,7 +209,7 @@ function createEnvironmentProbeProfile(home: string, project: string): void {
   const profileDir = join(home, 'profiles', 'environment-probe')
   mkdirSync(profileDir, { recursive: true })
   writeFileSync(join(profileDir, 'package.json'), JSON.stringify({
-    name: 'dsh-profile-environment-probe',
+    name: 'sqh-profile-environment-probe',
     private: true,
     dependencies: {},
     dsh: { profile: { bundles: ['@liusiqi-dev/sqh-base'] } },
@@ -239,12 +239,12 @@ interface StartupFixture {
  * fallback, exactly as an installed out-of-tree bundle does.
  */
 function createStartupFixture(): StartupFixture {
-  const home = mkdtempSync(join(tmpdir(), 'dsh-profile-startup-'))
+  const home = mkdtempSync(join(tmpdir(), 'sqh-profile-startup-'))
   const profileDir = join(home, 'profiles', 'startup')
   // Written straight into the installed location: a row module resolves its
   // own imports from where it is installed, and only inside the profile does
   // Node's parent walk reach the installation fallback these plugins need.
-  const bundleDir = join(profileDir, 'node_modules', 'dsh-startup-bundle')
+  const bundleDir = join(profileDir, 'node_modules', 'sqh-startup-bundle')
   mkdirSync(bundleDir, { recursive: true })
   writeFileSync(join(bundleDir, 'startup.mjs'), [
     "import { Command } from 'commander'",
@@ -305,16 +305,16 @@ function createStartupFixture(): StartupFixture {
     '',
   ].join('\n'))
   writeFileSync(join(bundleDir, 'package.json'), JSON.stringify({
-    name: 'dsh-startup-bundle',
+    name: 'sqh-startup-bundle',
     version: '0.0.0',
     type: 'module',
     dsh: { bundle: { patch: './cordis.patch.yml' } },
   }, undefined, 2))
   writeFileSync(join(profileDir, 'package.json'), JSON.stringify({
-    name: 'dsh-profile-startup',
+    name: 'sqh-profile-startup',
     private: true,
     dependencies: {},
-    dsh: { profile: { bundles: ['dsh-startup-bundle'] } },
+    dsh: { profile: { bundles: ['sqh-startup-bundle'] } },
   }, undefined, 2))
   writeFileSync(join(profileDir, 'cordis.patch.yml'), '[]\n')
   return {
@@ -419,7 +419,7 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
   }, SPAWN_TIMEOUT_MS * 3 + 30_000)
 
   it('ignores an optional SDK plugin import failure before stdin reaches EOF', async () => {
-    const home = mkdtempSync(join(tmpdir(), 'dsh-built-sdk-startup-failure-'))
+    const home = mkdtempSync(join(tmpdir(), 'sqh-built-sdk-startup-failure-'))
     const patch = join(home, 'broken-sdk.cordis.yml')
     writeFileSync(patch, [
       '- insert:',
@@ -443,7 +443,7 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
   }, SPAWN_TIMEOUT_MS + 30_000)
 
   it('serves the SDK protocol with an absolute-path overlay plugin and exits after shutdown', async () => {
-    const home = mkdtempSync(join(tmpdir(), 'dsh-built-sdk-'))
+    const home = mkdtempSync(join(tmpdir(), 'sqh-built-sdk-'))
     const pluginPath = join(home, 'plugin #100%.mjs')
     const marker = join(home, 'plugin-loaded')
     writeFileSync(pluginPath, [
@@ -519,7 +519,7 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
       apiKey,
       successText: 'ACP BUILT PROFILE OK',
     })
-    const home = mkdtempSync(join(tmpdir(), 'dsh-built-acp-'))
+    const home = mkdtempSync(join(tmpdir(), 'sqh-built-acp-'))
     const child = execa(process.execPath, [sqhBin, '--profile', 'acp'], {
       cwd: home,
       reject: false,
@@ -547,7 +547,7 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
       Readable.toWeb(passthrough) as ReadableStream<Uint8Array>,
     )
     const updates: SessionNotification['update'][] = []
-    const clientApp = createAcpClientApp({ name: 'dsh-built-acp-profile' })
+    const clientApp = createAcpClientApp({ name: 'sqh-built-acp-profile' })
       .onNotification(methods.client.session.update, ({ params }) => {
         updates.push(params.update)
         return Promise.resolve()
@@ -597,14 +597,14 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
   }, SPAWN_TIMEOUT_MS + 30_000)
 
   it('runs the headless profile through its app-owned task positional', async () => {
-    const apiKey = 'built-dsh-headless-key'
+    const apiKey = 'built-sqh-headless-key'
     const server = await startMockLlmServer({
       sequence: ['reasoning_success'],
       apiKey,
       reasoningText: 'Inspecting the published entry.',
       successText: 'published headless profile reached the mock',
     })
-    const home = mkdtempSync(join(tmpdir(), 'dsh-built-headless-'))
+    const home = mkdtempSync(join(tmpdir(), 'sqh-built-headless-'))
     try {
       const result = await runBuiltBin(['--profile', 'headless', 'answer', 'from', 'the', 'published', 'entry'], {
         SQODE_HOME: home,
@@ -625,7 +625,7 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
   }, SPAWN_TIMEOUT_MS + 30_000)
 
   it('does not load a project environment for --version', async () => {
-    const project = mkdtempSync(join(tmpdir(), 'dsh-version-project-'))
+    const project = mkdtempSync(join(tmpdir(), 'sqh-version-project-'))
     writeFileSync(join(project, '.env'), 'PATH=/project-only-path\n')
     try {
       const result = await runBuiltBin(['--version'], {}, project)
@@ -636,7 +636,7 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
   })
 
   it.skipIf(process.platform === 'win32')('runs through an installed-style symlink', async () => {
-    const installation = mkdtempSync(join(tmpdir(), 'dsh-bin-link-'))
+    const installation = mkdtempSync(join(tmpdir(), 'sqh-bin-link-'))
     const installedBin = join(installation, 'dsh')
     symlinkSync(sqhBin, installedBin)
     try {
@@ -655,7 +655,7 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
   })
 
   it('fails loud on a nonexistent profile with the plugin-command hint', async () => {
-    const home = mkdtempSync(join(tmpdir(), 'dsh-missing-profile-'))
+    const home = mkdtempSync(join(tmpdir(), 'sqh-missing-profile-'))
     try {
       const result = await runBuiltBin(['nope'], { SQODE_HOME: home })
       expect(result.code).toBe(1)
@@ -667,7 +667,7 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
   }, SPAWN_TIMEOUT_MS + 30_000)
 
   it('creates a custom profile from the shipped web template before booting it', async () => {
-    const home = mkdtempSync(join(tmpdir(), 'dsh-from-default-profile-'))
+    const home = mkdtempSync(join(tmpdir(), 'sqh-from-default-profile-'))
     try {
       const created = await runBuiltBin(
         ['rescue', '--from-default-profile', 'web', '--help'],
@@ -711,7 +711,7 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
   }, SPAWN_TIMEOUT_MS * 3 + 30_000)
 
   it('keeps a newly created profile when application boot rejects its arguments', async () => {
-    const home = mkdtempSync(join(tmpdir(), 'dsh-from-default-profile-failed-boot-'))
+    const home = mkdtempSync(join(tmpdir(), 'sqh-from-default-profile-failed-boot-'))
     try {
       const failed = await runBuiltBin(
         ['--profile', 'rescue', '--from-default-profile', 'web', '--port', 'not-a-number'],
@@ -740,8 +740,8 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
       apiKey,
       successText: 'launching endpoint reached the mock',
     })
-    const home = mkdtempSync(join(tmpdir(), 'dsh-home-environment-'))
-    const project = mkdtempSync(join(tmpdir(), 'dsh-home-project-'))
+    const home = mkdtempSync(join(tmpdir(), 'sqh-home-environment-'))
+    const project = mkdtempSync(join(tmpdir(), 'sqh-home-project-'))
     writeFileSync(join(home, '.credentials.yaml'), `version: 1\nrefs:\n  DEEPSEEK_API_KEY: ${apiKey}\n`, { mode: 0o600 })
     createEnvironmentProbeProfile(home, project)
     try {
@@ -774,7 +774,7 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
   }, SPAWN_TIMEOUT_MS + 30_000)
 
   it('keeps serving when an optional patch-overlay plugin fails', async () => {
-    const home = mkdtempSync(join(tmpdir(), 'dsh-invalid-patch-'))
+    const home = mkdtempSync(join(tmpdir(), 'sqh-invalid-patch-'))
     try {
       const result = await runBuiltBin(['--profile', 'web', '--patch', invalidProvider, '--port', '0', '--no-open'], {
         SQODE_HOME: home,
@@ -905,7 +905,7 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
     }
   }, SPAWN_TIMEOUT_MS + 30_000)
 
-  it('coordinates source-module replacement and profile patches through dsh-hmr', async () => {
+  it('coordinates source-module replacement and profile patches through sqh-hmr', async () => {
     const fixture = createProfileLifecycleFixture()
     const dir = join(fixture.home, 'profiles', 'lifecycle')
     const source = join(fixture.home, 'lifecycle-bundle', 'plugin.mjs')
@@ -1041,7 +1041,7 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
   }, SPAWN_TIMEOUT_MS + 30_000)
 
   it('forwards CLI authentication and stdin through pnpm while preserving its exit code', async () => {
-    const home = mkdtempSync(join(tmpdir(), 'dsh-plugin-interaction-'))
+    const home = mkdtempSync(join(tmpdir(), 'sqh-plugin-interaction-'))
     try {
       const child = await execa(process.execPath, [sqhBin, 'plugin', '--profile', 'interactive', 'exec', process.execPath, '-e',
         "const fs = require('node:fs'); const input = fs.readFileSync(0, 'utf8'); const auth = ['NPM_TOKEN','NODE_AUTH_TOKEN','GH_TOKEN','GITHUB_TOKEN'].every(name => process.env[name] === 'fixture-auth'); process.stdout.write(JSON.stringify({ input, auth })); process.exit(42)",
@@ -1058,8 +1058,8 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
     // `dsh plugin --profile x add .` from a plugin checkout must install THAT
     // checkout — pnpm's cwd is the profile directory, so an un-anchored `.`
     // would self-link the profile.
-    const home = mkdtempSync(join(tmpdir(), 'dsh-plugin-anchor-'))
-    const checkout = mkdtempSync(join(tmpdir(), 'dsh-plugin-checkout-'))
+    const home = mkdtempSync(join(tmpdir(), 'sqh-plugin-anchor-'))
+    const checkout = mkdtempSync(join(tmpdir(), 'sqh-plugin-checkout-'))
     try {
       writeFileSync(join(checkout, 'package.json'), JSON.stringify({
         name: 'anchored-bundle',
@@ -1104,7 +1104,7 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
   }, SPAWN_TIMEOUT_MS * 2 + 30_000)
 
   it('reconciles a real pnpm alias without reactivating it and keeps ordinary dependencies outside the bundle list', async () => {
-    const home = mkdtempSync(join(tmpdir(), 'dsh-plugin-alias-'))
+    const home = mkdtempSync(join(tmpdir(), 'sqh-plugin-alias-'))
     try {
       const bundle = join(home, 'bundle-source')
       const library = join(home, 'library-source')
@@ -1148,13 +1148,13 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
   })
 
   it('keeps existing dependencies inactive when package metadata gains a bundle declaration', async () => {
-    const home = mkdtempSync(join(tmpdir(), 'dsh-plugin-update-'))
+    const home = mkdtempSync(join(tmpdir(), 'sqh-plugin-update-'))
     try {
       const profileDir = join(home, 'profiles', 'up')
       const installed = join(profileDir, 'node_modules', 'late-bundle')
       mkdirSync(installed, { recursive: true })
       writeFileSync(join(profileDir, 'package.json'), JSON.stringify({
-        name: 'dsh-profile-up',
+        name: 'sqh-profile-up',
         private: true,
         dependencies: { 'late-bundle': 'file:./late-bundle' },
         dsh: { profile: { bundles: ['@liusiqi-dev/sqh-base'] } },
@@ -1182,7 +1182,7 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
 
   describe('config dump', () => {
     let home: string
-    beforeEach(() => { home = mkdtempSync(join(tmpdir(), 'dsh-dump-bin-')) })
+    beforeEach(() => { home = mkdtempSync(join(tmpdir(), 'sqh-dump-bin-')) })
     afterEach(() => { rmSync(home, { recursive: true, force: true }) })
 
     it('prints the web profile bundle layers without a user layer', async () => {
@@ -1232,7 +1232,7 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
       expect(stdout).not.toMatch(/name: '@liusiqi-dev\/sqh-client-/)
     }, SPAWN_TIMEOUT_MS + 30_000)
 
-    it('prints the exact standalone sdk-minimal tree without dsh-base', async () => {
+    it('prints the exact standalone sdk-minimal tree without sqh-base', async () => {
       const { stdout, code, stderr } = await runBuiltBin(
         ['--profile', 'sdk-minimal', '--dump-default-config'],
         { SQODE_HOME: home },

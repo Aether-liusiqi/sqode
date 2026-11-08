@@ -12,7 +12,7 @@ import {
   installFailLoud, loadEnv, loadLayeredEnv, loadOverlayPatches, resolveConfigPath, type FailLoudEvent, type FailLoudProcess,
 } from '../src/index.ts'
 
-const NAME = 'dsh-test-bin'
+const NAME = 'sqh-test-bin'
 
 const tempRoots: string[] = []
 afterAll(() => {
@@ -519,15 +519,15 @@ describe('installFailLoud', () => {
   it('turns an uncaught exception into a labelled diagnostic with its enumerable properties and exits 1', () => {
     const proc = fakeProc()
     installFailLoud(NAME, proc)
-    const error = Object.assign(new Error("ENOENT: no such file or directory, open '/tmp/dsh-subprocess-x/out.log'"), {
-      errno: -2, code: 'ENOENT', syscall: 'open', path: '/tmp/dsh-subprocess-x/out.log',
+    const error = Object.assign(new Error("ENOENT: no such file or directory, open '/tmp/sqh-subprocess-x/out.log'"), {
+      errno: -2, code: 'ENOENT', syscall: 'open', path: '/tmp/sqh-subprocess-x/out.log',
     })
     proc.exception(error)
     expect(proc.written).toHaveLength(1)
     expect(proc.written[0]).toContain(`${NAME}: fatal uncaught exception: `)
     expect(proc.written[0]).toContain(error.stack)
     expect(proc.written[0]).toContain("syscall: 'open'")
-    expect(proc.written[0]).toContain("path: '/tmp/dsh-subprocess-x/out.log'")
+    expect(proc.written[0]).toContain("path: '/tmp/sqh-subprocess-x/out.log'")
     expect(proc.exits).toEqual([1])
   })
 
@@ -797,7 +797,7 @@ describe('auditStartupEntries', () => {
     ]), NAME, warn).catch((error: unknown) => error)
     expect(error).toBeInstanceOf(StartupError)
     expect((error as Error).message).toMatchInlineSnapshot(`
-      "dsh-test-bin: startup failed: 2 required plugins did not activate
+      "sqh-test-bin: startup failed: 2 required plugins did not activate
 
       Failed plugins (1):
         webserver (required)

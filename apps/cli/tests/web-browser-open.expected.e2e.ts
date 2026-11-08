@@ -39,7 +39,7 @@ function normalizeLocalUrl(url: string): string {
 
 describe.skipIf(!builtArtifactsExist)('dsh web browser-open assembled snapshot', () => {
   it('hands the reachable page to the default browser after the shipped tree settles', async () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-web-browser-open-snapshot-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-web-browser-open-snapshot-'))
     tempRoots.push(root)
     const result = await execa(process.execPath, [
       '--import', openerHook,
@@ -97,7 +97,7 @@ describe.skipIf(!builtArtifactsExist)('dsh web browser-open assembled snapshot',
   })
 
   it('prints the launcher reason and manual URL after the Web app is ready', async () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-web-browser-open-failure-snapshot-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-web-browser-open-failure-snapshot-'))
     tempRoots.push(root)
     const result = await execa(process.execPath, [
       '--import', openerHook,
@@ -145,7 +145,7 @@ describe.skipIf(!builtArtifactsExist)('dsh web browser-open assembled snapshot',
   })
 
   it('prints the host URL without launching a browser in a VS Code Remote SSH session', async () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-web-browser-open-ssh-snapshot-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-web-browser-open-ssh-snapshot-'))
     tempRoots.push(root)
     const result = await execa(process.execPath, [
       '--import', openerHook,
@@ -191,7 +191,7 @@ describe.skipIf(!builtArtifactsExist)('dsh web browser-open assembled snapshot',
   })
 
   it('rejects a project browser command before starting the Web app', async () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-web-browser-open-env-snapshot-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-web-browser-open-env-snapshot-'))
     tempRoots.push(root)
     writeFileSync(join(root, '.env'), 'BROWSER=./project-browser\n')
     const result = await execa(process.execPath, [

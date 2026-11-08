@@ -13,7 +13,7 @@ import ToolRuntime from '@liusiqi-dev/sqh-tools'
 import WebRuntime from '@liusiqi-dev/sqh-web'
 import * as toolWeb from '@liusiqi-dev/sqh-tool-web'
 
-describe('dsh-tool-web real-load-path guard', () => {
+describe('sqh-tool-web real-load-path guard', () => {
   it('has no default export and keeps name/inject/Config through unwrapExports', () => {
     expect('default' in toolWeb).toBe(false)
 

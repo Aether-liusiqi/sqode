@@ -69,17 +69,17 @@ describe('ui-plugin-manager browser plugin', () => {
     const entry = b.slots.entries('main')[0]!
     assert(entry.store && 'create' in entry.store)
     const navigation = entry.store.create()
-    b.ctx.pluginNavigation.openBundle('dsh-navigation-test')
+    b.ctx.pluginNavigation.openBundle('sqh-navigation-test')
     expect(b.panelInfo.getSnapshot().activePanelId).toBe(PANEL_ID)
-    expect(navigation.getSnapshot()).toEqual({ view: { kind: 'package', name: 'dsh-navigation-test' } })
+    expect(navigation.getSnapshot()).toEqual({ view: { kind: 'package', name: 'sqh-navigation-test' } })
     b.selectPanel(null)
     expect(navigation.getSnapshot()).toEqual({ view: { kind: 'list' } })
     b.selectPanel(PANEL_ID)
     expect(navigation.getSnapshot()).toEqual({ view: { kind: 'list' } })
-    b.ctx.pluginNavigation.openBundle('dsh-navigation-test')
+    b.ctx.pluginNavigation.openBundle('sqh-navigation-test')
     removeRoot()
     b.selectPanel(null)
-    expect(navigation.getSnapshot()).toEqual({ view: { kind: 'package', name: 'dsh-navigation-test' } })
+    expect(navigation.getSnapshot()).toEqual({ view: { kind: 'package', name: 'sqh-navigation-test' } })
   })
 
   it('shares refresh failures with the overlay after navigation and releases both registrations across reloads', async () => {
@@ -127,11 +127,11 @@ describe('ui-plugin-manager browser plugin', () => {
     const fiber = b.ctx.plugin({ inject: [...inject], apply })
     await fiber.await()
 
-    b.ctx.pluginNavigation.openBundle('dsh-navigation-test')
+    b.ctx.pluginNavigation.openBundle('sqh-navigation-test')
     expect(b.selectPanel).toHaveBeenCalledWith(PANEL_ID)
     const entry = b.slots.entries('main')[0]!
     assert(entry.store && 'create' in entry.store)
-    expect(entry.store.create().getSnapshot()).toEqual({ view: { kind: 'package', name: 'dsh-navigation-test' } })
+    expect(entry.store.create().getSnapshot()).toEqual({ view: { kind: 'package', name: 'sqh-navigation-test' } })
     expect(entry.component).toBe(PluginManagerPage)
     expect(entry.options).toMatchObject({ key: PANEL_ID })
     expect(entry.locale).toBe(NS)

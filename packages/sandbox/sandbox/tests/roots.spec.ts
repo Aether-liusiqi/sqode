@@ -18,7 +18,7 @@ afterEach(() => {
 
 describe('canonicalPath', () => {
   it('resolves symlinks (an existing path realpaths)', () => {
-    const dir = mkdtempSync(join(tmpdir(), 'dsh-roots-'))
+    const dir = mkdtempSync(join(tmpdir(), 'sqh-roots-'))
     roots.push(dir)
     expect(canonicalPath(dir)).toBe(realpathSync.native(dir))
   })
@@ -34,7 +34,7 @@ describe('writableRoots', () => {
   })
 
   it('workspace-write grants the workspace root plus the platform temp areas, canonical and deduplicated', () => {
-    const ws = mkdtempSync(join(tmpdir(), 'dsh-ws-'))
+    const ws = mkdtempSync(join(tmpdir(), 'sqh-ws-'))
     roots.push(ws)
     const writable = writableRoots({ mode: 'workspace-write', workspaceRoot: ws })
     expect(writable).toContain(realpathSync.native(ws))

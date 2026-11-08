@@ -170,7 +170,7 @@ async function run(ctx: Context, parent: Agent, source: { script: string; meta: 
 
 // The per-test cap leaves room for one generous startup wait plus the tight
 // post-event assertions; explicit narrower timeouts inside stay authoritative.
-describe('dsh-workflow-ptc', { timeout: 120_000 }, () => {
+describe('sqh-workflow-ptc', { timeout: 120_000 }, () => {
   describe('script execution through the Node PTC runtime', () => {
     it('captures args at start and isolates subsequent caller and script mutations', async () => {
       const { ctx, parent } = await setup()

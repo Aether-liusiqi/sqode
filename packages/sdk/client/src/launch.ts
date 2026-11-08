@@ -52,7 +52,7 @@ function manifest(url: string): PackageManifest {
  * @param clientManifestUrl - resolved URL of the SDK client manifest.
  * @returns the absolute sqh executable path.
  */
-export function resolveDshBinFromManifests(sqhManifestUrl: string, clientManifestUrl: string): string {
+export function resolveSqhBinFromManifests(sqhManifestUrl: string, clientManifestUrl: string): string {
   const sqhManifest = manifest(sqhManifestUrl)
   const clientManifest = manifest(clientManifestUrl)
   if (typeof sqhManifest.version !== 'string' || sqhManifest.version !== clientManifest.version) {
@@ -75,8 +75,8 @@ export function resolveDshBinFromManifests(sqhManifestUrl: string, clientManifes
  * Resolve and version-check the built sqh executable installed with this SDK.
  * @returns the absolute built executable path, whether or not it exists in a source checkout.
  */
-export function installedDshBin(): string {
-  return resolveDshBinFromManifests(
+export function installedSqhBin(): string {
+  return resolveSqhBinFromManifests(
     import.meta.resolve('@liusiqi-dev/sqode/package.json'),
     new URL('../package.json', import.meta.url).href,
   )
@@ -89,12 +89,12 @@ export function installedDshBin(): string {
  * @param sourceLoaderUrl - optional absolute tsx loader URL for deterministic tests.
  * @returns built output, or the source entry plus its compatibility patch and tsx environment.
  */
-export function resolveDshNodeLaunchFromManifests(
+export function resolveSqhNodeLaunchFromManifests(
   sqhManifestUrl: string,
   clientManifestUrl: string,
   sourceLoaderUrl?: string,
 ): SqhNodeLaunch {
-  const bin = resolveDshBinFromManifests(sqhManifestUrl, clientManifestUrl)
+  const bin = resolveSqhBinFromManifests(sqhManifestUrl, clientManifestUrl)
   if (existsSync(bin)) return { nodeArgs: [bin], patches: [], environment: {} }
 
   const packageDir = dirname(fileURLToPath(sqhManifestUrl))
@@ -118,8 +118,8 @@ export function resolveDshNodeLaunchFromManifests(
  * Resolve the installed sqh package to a built or source Node launch.
  * @returns the launch descriptor for the current checkout or installed package.
  */
-function installedDshNodeLaunch(): SqhNodeLaunch {
-  return resolveDshNodeLaunchFromManifests(
+function installedSqhNodeLaunch(): SqhNodeLaunch {
+  return resolveSqhNodeLaunchFromManifests(
     import.meta.resolve('@liusiqi-dev/sqode/package.json'),
     new URL('../package.json', import.meta.url).href,
   )
@@ -131,13 +131,13 @@ function installedDshNodeLaunch(): SqhNodeLaunch {
  * @param callerCwd - parent-process directory used for lexical resolution.
  * @returns one generic subprocess spec for the JSON-RPC transport.
  */
-export function resolveDshLaunch(
+export function resolveSqhLaunch(
   options: HarnessClientOptions = {},
   callerCwd: string = process.cwd(),
 ): RuntimeProcessOptions {
   const profile = options.profile ?? 'sdk'
   const sqhLaunch = options.sqhBin === undefined
-    ? installedDshNodeLaunch()
+    ? installedSqhNodeLaunch()
     : { nodeArgs: [resolve(callerCwd, options.sqhBin)], patches: [], environment: {} }
   const patches = [
     ...sqhLaunch.patches,

@@ -52,7 +52,7 @@ async function agent(ctx: Context): Promise<Agent> {
 
 describe('/feedback real Loader composition through cordis.yml', () => {
   it('boots cordis.yml and records feedback without model-visible output', async () => {
-    root = await mkdtemp(join(tmpdir(), 'dsh-command-feedback-loader-'))
+    root = await mkdtemp(join(tmpdir(), 'sqh-command-feedback-loader-'))
     vi.stubEnv('SQODE_HOME', root)
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [

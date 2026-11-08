@@ -33,7 +33,7 @@ import { Service } from '@liusiqi-dev/cordis'
 import type { Context } from '@liusiqi-dev/cordis'
 import type { Entry } from '@liusiqi-dev/cordis-plugin-loader'
 import type { IndexInjection } from '@liusiqi-dev/sqh-host-webserver'
-import { exactPackageSpecifier, parseDshClient, stripClientSuffix } from './client/manifest.ts'
+import { exactPackageSpecifier, parseSqhClient, stripClientSuffix } from './client/manifest.ts'
 import type { WebBootBatch, WebBootBatchPhase, WebBootEntry, WebBootGraph } from './client/manifest.ts'
 
 export { stripClientSuffix } from './client/manifest.ts'
@@ -834,7 +834,7 @@ export class ClientModuleRegistry extends Service {
     const { packageName, path: pkgPath } = located
     const pkg = JSON.parse(readFileSync(pkgPath, 'utf8')) as Record<string, unknown>
     const dsh = pkg.sqh ?? pkg.dsh
-    const decl = parseDshClient(
+    const decl = parseSqhClient(
       packageName,
       dsh !== null && typeof dsh === 'object' ? (dsh as Record<string, unknown>).client : undefined,
     )

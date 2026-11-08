@@ -43,7 +43,7 @@ async function endpoint(...args: Parameters<typeof server>) {
   return instance
 }
 async function context() {
-  const home = await mkdtemp(join(tmpdir(), 'dsh-messages-test-'))
+  const home = await mkdtemp(join(tmpdir(), 'sqh-messages-test-'))
   cleanup.push(() => rm(home, { recursive: true, force: true }))
   vi.stubEnv('SQODE_HOME', home)
   const ctx = new Context()
@@ -597,7 +597,7 @@ it.each([
     const headers = new Headers(init?.headers)
     expect(headers.has('authorization')).toBe(false)
     expect(headers.get('x-api-key')).toBe(expected === 'account-token' ? null : expected)
-    expect(headers.get('x-dsh-auth-token')).toBe(expected === 'account-token' ? expected : null)
+    expect(headers.get('x-sqh-auth-token')).toBe(expected === 'account-token' ? expected : null)
     expect(init?.redirect).toBe('error')
     return Promise.resolve(new Response(sse(textEvents), { status: 200 }))
   })

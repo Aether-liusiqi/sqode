@@ -27,7 +27,7 @@ function write(path: string, content: string): void {
 }
 
 function buildFixture(environment: Record<string, string>): string {
-  const root = mkdtempSync(join(tmpdir(), 'dsh-release-build-'))
+  const root = mkdtempSync(join(tmpdir(), 'sqh-release-build-'))
   roots.push(root)
   write(join(root, 'package.json'), `${JSON.stringify({ version: environment.SQODE_CLIENT_VERSION ?? '0.0.1' })}\n`)
   write(join(root, 'apps/web/dist/index.html'), '<main></main>')
@@ -73,7 +73,7 @@ describe('release families', () => {
   })
 
   it('excludes private applications from the publish set', () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-release-private-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-release-private-'))
     roots.push(root)
     write(join(root, 'apps/public/package.json'), '{"name":"@liusiqi-dev/sqh-public","version":"0.0.1"}\n')
     write(join(root, 'apps/private/package.json'), '{"name":"@liusiqi-dev/sqh-private","version":"0.0.1","private":true}\n')
@@ -82,7 +82,7 @@ describe('release families', () => {
   })
 
   it('publishes unlisted experimental packages while retaining private exclusions', () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-release-experimental-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-release-experimental-'))
     roots.push(root)
     write(join(root, 'packages/experimental/prototype/package.json'), JSON.stringify({
       name: '@liusiqi-dev/sqh-experimental-prototype',
@@ -101,7 +101,7 @@ describe('release families', () => {
   })
 
   it('bumps private dsh workspaces without adding release tags', () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-release-version-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-release-version-'))
     roots.push(root)
     write(join(root, 'package.json'), '{"version":"0.0.1"}\n')
     write(join(root, 'apps/desktop/package.json'), '{"version":"0.0.1","private":true}\n')
@@ -123,7 +123,7 @@ describe('release families', () => {
   it.each(['0.0.2-alpha.1', '0.0.2-canary.1', '0.0.2-rc.1'])(
     'accepts the explicit dsh prerelease version %s',
     (version) => {
-      const root = mkdtempSync(join(tmpdir(), 'dsh-release-prerelease-'))
+      const root = mkdtempSync(join(tmpdir(), 'sqh-release-prerelease-'))
       roots.push(root)
       write(join(root, 'package.json'), '{"version":"0.0.1"}\n')
 

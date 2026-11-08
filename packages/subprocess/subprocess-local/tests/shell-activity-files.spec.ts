@@ -15,7 +15,7 @@ afterEach(() => { for (const cleanup of cleanups.splice(0).reverse()) cleanup();
 const spec: SubprocessTerminalSpawnSpec = { argv: ['/bin/zsh', '-i'], cwd: '/', rows: 24, cols: 80, terminalType: 'xterm-256color', graceMs: 100, shellActivity: true }
 
 it('accepts only fresh complete records from the original shell and advances revisions on input', () => {
-  const directory = mkdtempSync(join(tmpdir(), 'dsh-activity-record-'))
+  const directory = mkdtempSync(join(tmpdir(), 'sqh-activity-record-'))
   cleanups.push(() => { rmSync(directory, { recursive: true, force: true }) })
   const activity = new ShellActivity(directory, [], {})
   expect(activity.inspect(123).state).toBe('unknown')

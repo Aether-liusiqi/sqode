@@ -21,7 +21,7 @@ const hasDisplay = process.platform !== 'linux' || Boolean(process.env.DISPLAY |
 
 // Linux Electron needs a display server; the test runs under xvfb in headless environments.
 it.skipIf(!hasDisplay)('retains dismissed notices across view and process restarts without sharing accounts', { retry: 0 }, async () => {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-platform-storage-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-platform-storage-'))
   const server = createServer((_request, response) => {
     response.setHeader('content-type', 'text/html')
     response.end(`<!doctype html><html><body><script>

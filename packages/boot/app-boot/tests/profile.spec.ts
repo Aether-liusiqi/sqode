@@ -15,7 +15,7 @@ import { afterAll, describe, expect, it, onTestFinished, vi } from 'vitest'
 import {
   composeEntries,
   createRuntimeResolution,
-  getDshRuntimeVersion,
+  getSqhRuntimeVersion,
   initProfile,
   loadProfile,
   loadProfileDirectory,
@@ -40,7 +40,7 @@ afterAll(() => {
 })
 
 const tmp = (): string => {
-  const dir = realpathSync.native(mkdtempSync(join(tmpdir(), 'dsh-profile-')))
+  const dir = realpathSync.native(mkdtempSync(join(tmpdir(), 'sqh-profile-')))
   tempRoots.push(dir)
   return dir
 }
@@ -445,9 +445,9 @@ describe('loadProfile', () => {
     const denied = loadProfileDirectory('dsh', dir, anchor)
     expect(denied.layers.map(layer => layer.packageName)).toEqual(['kept'])
     expect(denied.skippedBundles).toEqual([{ packageName: 'guarded', reason: expect.stringContaining(
-      `Error: Plugin guarded@0.0.0 is incompatible with dsh ${getDshRuntimeVersion()}`,
+      `Error: Plugin guarded@0.0.0 is incompatible with dsh ${getSqhRuntimeVersion()}`,
     ) as string }])
-    writeFileSync(join(dir, PROFILE_COMPATIBILITY_FILENAME), JSON.stringify({ 'guarded@0.0.0': [getDshRuntimeVersion()] }))
+    writeFileSync(join(dir, PROFILE_COMPATIBILITY_FILENAME), JSON.stringify({ 'guarded@0.0.0': [getSqhRuntimeVersion()] }))
     expect(loadProfileDirectory('dsh', dir, anchor).layers.map(layer => layer.packageName)).toEqual(['guarded', 'kept'])
   })
 

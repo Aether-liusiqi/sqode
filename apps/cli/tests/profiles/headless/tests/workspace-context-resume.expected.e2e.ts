@@ -140,7 +140,7 @@ describe('agent-instructions resume snapshot', () => {
     let sessionPath = ''
     const result = await runLoaderSmoke({
       label: 'agent-instructions resume headless stream-json snapshot',
-      tempDirPrefix: 'dsh-workspace-context-resume-',
+      tempDirPrefix: 'sqh-workspace-context-resume-',
       binScript,
       libBinScript: binScript,
       configPath,
@@ -197,7 +197,7 @@ describe('agent-instructions resume snapshot', () => {
     let sessionPath = ''
     const result = await runLoaderSmoke({
       label: 'agent-instructions precedence-change resume snapshot',
-      tempDirPrefix: 'dsh-workspace-context-precedence-',
+      tempDirPrefix: 'sqh-workspace-context-precedence-',
       binScript,
       libBinScript: binScript,
       configPath,

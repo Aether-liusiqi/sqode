@@ -38,7 +38,7 @@ function selectValue(
 
 describe('standard ACP v1 control surface', () => {
   it('selects, mounts MCP, closes, restarts, resumes, and cancels through the SDK only', async () => {
-    const cwd = await mkdtemp(join(tmpdir(), 'dsh-acp-control-'))
+    const cwd = await mkdtemp(join(tmpdir(), 'sqh-acp-control-'))
     const persistenceRoot = join(cwd, '.sessions')
     const env = { SQODE_CONFORMANCE_PERSISTENCE_ROOT: persistenceRoot, SQODE_TELEMETRY_DISABLED: '1' }
     const mcpServers = [{ name: 'fixture', command: process.execPath, args: [mcpServer], env: [] }]

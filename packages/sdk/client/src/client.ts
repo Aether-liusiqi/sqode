@@ -22,7 +22,7 @@ import {
   type SdkPromptContentBlock,
 } from '@liusiqi-dev/sqh-sdk-protocol'
 import { disposeRuntimeProcess } from './dispose.ts'
-import { resolveDshLaunch, type RuntimeProcessOptions } from './launch.ts'
+import { resolveSqhLaunch, type RuntimeProcessOptions } from './launch.ts'
 import type { HarnessClientOptions, HarnessNotification, NotificationFilter } from './types.ts'
 
 /** Retained stderr lines used to diagnose an unexpected runtime death. */
@@ -201,7 +201,7 @@ export class HarnessClient {
   constructor(options?: HarnessClientOptions)
   constructor(options: HarnessClientOptions = {}, runtime?: RuntimeProcessOptions) {
     this.options = options
-    this.runtime = runtime ?? resolveDshLaunch(options)
+    this.runtime = runtime ?? resolveSqhLaunch(options)
   }
 
   /**

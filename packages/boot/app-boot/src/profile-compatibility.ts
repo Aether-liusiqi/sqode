@@ -4,7 +4,7 @@ import { mkdir } from 'node:fs/promises'
 import { join } from 'node:path'
 import { parse } from 'semver'
 import { withFileLock, writeFileAtomic } from '@liusiqi-dev/sqh-atomic-write'
-import { getDshRuntimeVersion } from './plugin-compatibility.ts'
+import { getSqhRuntimeVersion } from './plugin-compatibility.ts'
 
 /** Independent profile metadata; neither package manifests nor Cordis patches carry grants. */
 export const PROFILE_COMPATIBILITY_FILENAME = 'compatibility.json'
@@ -117,9 +117,9 @@ export async function setProfileVersionExemption(
   if (enabled && !acceptRisk) {
     throw new Error('Incompatible plugins may cause crashes or data loss. To grant this exact-version exemption, explicitly acknowledge the risk with --accept-risk (acceptRisk: true).')
   }
-  const current = getDshRuntimeVersion()
+  const current = getSqhRuntimeVersion()
   if (enabled && runtimeVersion !== current) {
-    throw new Error(`Cannot approve SQH ${runtimeVersion}: this application runs SQH ${current}. Use --dsh-version ${current}.`)
+    throw new Error(`Cannot approve SQH ${runtimeVersion}: this application runs SQH ${current}. Use --sqh-version ${current}.`)
   }
   await mkdir(profileDir, { recursive: true })
   const filename = join(profileDir, PROFILE_COMPATIBILITY_FILENAME)

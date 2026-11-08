@@ -44,7 +44,7 @@ function lockfile() {
 }
 
 function fixture(): string {
-  const root = mkdtempSync(join(tmpdir(), 'dsh-dependency-catalog-test-'))
+  const root = mkdtempSync(join(tmpdir(), 'sqh-dependency-catalog-test-'))
   roots.push(root)
   mkdirSync(join(root, 'scripts/dependency-catalog'), { recursive: true })
   writeFileSync(join(root, 'scripts/dependency-catalog/package-lock.json'), JSON.stringify(lockfile()))

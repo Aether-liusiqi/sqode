@@ -50,7 +50,7 @@ const SIGN_SCRIPT = resolve(import.meta.dirname, '../scripts/windows-sign.cmd')
 describe('Windows token signing', () => {
   it.each(['invalid-primary', 'timestamp-exhausted', 'timestamp-recovered', 'normalization-corrupt'] as const)(
     'keeps hardware protection separate from %s', async (mode) => {
-      const root = await mkdtemp(join(tmpdir(), 'dsh-sign-completion-'))
+      const root = await mkdtemp(join(tmpdir(), 'sqh-sign-completion-'))
       const certificateFile = join(root, 'server.cer')
       const signTool = join(root, 'signtool.exe')
       const path = join(root, 'application.exe')
@@ -127,7 +127,7 @@ describe('Windows token signing', () => {
     }, 15_000,
   )
   it('preserves verified copies without hardware and rejects the entire queue after preservation failure', async () => {
-    const directory = await mkdtemp(join(tmpdir(), 'dsh-windows-copy-signature-'))
+    const directory = await mkdtemp(join(tmpdir(), 'sqh-windows-copy-signature-'))
     try {
       const certificateFile = join(directory, 'server.cer')
       const signTool = join(directory, 'signtool.exe')
@@ -150,7 +150,7 @@ describe('Windows token signing', () => {
   })
 
   it('stops concurrent and subsequent signing tasks after a PIN failure', async () => {
-    const directory = await mkdtemp(join(tmpdir(), 'dsh-windows-pin-failure-'))
+    const directory = await mkdtemp(join(tmpdir(), 'sqh-windows-pin-failure-'))
     try {
       const certificateFile = join(directory, 'server.cer')
       const signTool = join(directory, 'signtool.exe')
@@ -242,7 +242,7 @@ describe('Windows token signing', () => {
   })
 
   it('rejects incomplete signing identities and non-SHA-256 signing tasks', async () => {
-    const directory = await mkdtemp(join(tmpdir(), 'dsh-windows-sign-tool-'))
+    const directory = await mkdtemp(join(tmpdir(), 'sqh-windows-sign-tool-'))
     const certificateFile = join(directory, 'server.cer')
     const signTool = join(directory, 'signtool.exe')
     await writeFile(certificateFile, 'code-signing-certificate-fixture')
@@ -368,7 +368,7 @@ describe('Windows token signing', () => {
   })
 
   it('clears a certificate table inherited beyond the generated uninstaller', async () => {
-    const directory = await mkdtemp(join(tmpdir(), 'dsh-windows-sign-'))
+    const directory = await mkdtemp(join(tmpdir(), 'sqh-windows-sign-'))
     const path = join(directory, 'uninstaller.exe')
     const executable = Buffer.alloc(512)
     const peOffset = 216

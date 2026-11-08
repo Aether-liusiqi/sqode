@@ -17,7 +17,7 @@ const cleanup: Array<() => Promise<void>> = []
 afterEach(async () => { for (const close of cleanup.splice(0).reverse()) await close(); vi.clearAllMocks() })
 
 async function fixture(overrides: Partial<Config> = {}) {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-speech-test-'))
+  const root = await mkdtemp(join(tmpdir(), 'sqh-speech-test-'))
   cleanup.push(async () => { await rm(root, { recursive: true, force: true }) })
   const ctx = new Context()
   cleanup.push(async () => { await ctx.fiber.dispose() })

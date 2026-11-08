@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import type { NpmPackageLock, RegistryIndex } from './benchmark-npm-resolution.ts'
 import {
-  assertDualDshInstallLayout,
+  assertDualSqhInstallLayout,
   assertResolutionWorkBudget,
-  buildDualDshRegistry,
+  buildDualSqhRegistry,
   MAX_RESOLUTION_WORK_UNITS,
 } from './verify-npm-install-layout.ts'
 
@@ -11,7 +11,7 @@ function validLayout(): NpmPackageLock {
   return {
     lockfileVersion: 3,
     packages: {
-      '': { dependencies: { '@liusiqi-dev/sqode': '0.2.0', 'dsh-previous': 'npm:@liusiqi-dev/sqode@0.1.0' } },
+      '': { dependencies: { '@liusiqi-dev/sqode': '0.2.0', 'sqh-previous': 'npm:@liusiqi-dev/sqode@0.1.0' } },
       'node_modules/@liusiqi-dev/cordis': { version: '4.0.1' },
       'node_modules/@liusiqi-dev/sqode': {
         version: '0.2.0',
@@ -23,17 +23,17 @@ function validLayout(): NpmPackageLock {
         dependencies: { '@liusiqi-dev/sqh-leaf': '^0.2.0' },
       },
       'node_modules/@liusiqi-dev/sqh-leaf': { version: '0.2.0' },
-      'node_modules/dsh-previous': {
+      'node_modules/sqh-previous': {
         name: '@liusiqi-dev/sqode',
         version: '0.1.0',
         dependencies: { '@liusiqi-dev/sqh-child': '^0.1.0' },
         peerDependencies: { '@liusiqi-dev/cordis': '^4.0.1' },
       },
-      'node_modules/dsh-previous/node_modules/@liusiqi-dev/sqh-child': {
+      'node_modules/sqh-previous/node_modules/@liusiqi-dev/sqh-child': {
         version: '0.1.0',
         dependencies: { '@liusiqi-dev/sqh-leaf': '^0.1.0' },
       },
-      'node_modules/dsh-previous/node_modules/@liusiqi-dev/sqh-leaf': { version: '0.1.0' },
+      'node_modules/sqh-previous/node_modules/@liusiqi-dev/sqh-leaf': { version: '0.1.0' },
     },
   }
 }
@@ -57,7 +57,7 @@ describe('npm install layout verifier', () => {
       }]])],
     ])
 
-    const dual = buildDualDshRegistry(index, '0.1.1-rc.2')
+    const dual = buildDualSqhRegistry(index, '0.1.1-rc.2')
 
     expect([...dual.get('@liusiqi-dev/sqode')?.keys() ?? []]).toEqual(['0.1.0', '0.2.0'])
     expect(dual.get('@liusiqi-dev/sqode')?.get('0.1.0')).toMatchObject({
@@ -73,21 +73,21 @@ describe('npm install layout verifier', () => {
   })
 
   it('accepts isolated SQH releases with one shared Cordis installation', () => {
-    expect(assertDualDshInstallLayout(validLayout())).toEqual({
+    expect(assertDualSqhInstallLayout(validLayout())).toEqual({
       sqhPackagesPerVersion: 3,
-      checkedDshEdges: 4,
+      checkedSqhEdges: 4,
     })
   })
 
   it.each([
     ['react', 'node_modules/react'],
     ['react-dom', 'node_modules/react-dom'],
-    ['react', 'node_modules/dsh-previous/node_modules/react'],
-    ['react-dom', 'node_modules/dsh-previous/node_modules/react-dom'],
+    ['react', 'node_modules/sqh-previous/node_modules/react'],
+    ['react-dom', 'node_modules/sqh-previous/node_modules/react-dom'],
   ])('rejects browser runtime %s installed at %s in the SQH-only consumer', (name, path) => {
     const layout = validLayout()
     const packages = { ...layout.packages, [path]: { version: '18.3.1' } }
-    expect(() => assertDualDshInstallLayout({ ...layout, packages })).toThrow(
+    expect(() => assertDualSqhInstallLayout({ ...layout, packages })).toThrow(
       `${path}: ${name} is a browser build input`,
     )
   })
@@ -95,10 +95,10 @@ describe('npm install layout verifier', () => {
   it('rejects an internal edge that crosses release versions', () => {
     const layout = validLayout()
     const packages = { ...layout.packages }
-    Reflect.deleteProperty(packages, 'node_modules/dsh-previous/node_modules/@liusiqi-dev/sqh-leaf')
+    Reflect.deleteProperty(packages, 'node_modules/sqh-previous/node_modules/@liusiqi-dev/sqh-leaf')
 
-    expect(() => assertDualDshInstallLayout({ ...layout, packages })).toThrow(
-      'node_modules/dsh-previous/node_modules/@liusiqi-dev/sqh-child: dependencies '
+    expect(() => assertDualSqhInstallLayout({ ...layout, packages })).toThrow(
+      'node_modules/sqh-previous/node_modules/@liusiqi-dev/sqh-child: dependencies '
       + '@liusiqi-dev/sqh-leaf resolves to node_modules/@liusiqi-dev/sqh-leaf@0.2.0, expected 0.1.0',
     )
   })
@@ -107,10 +107,10 @@ describe('npm install layout verifier', () => {
     const layout = validLayout()
     const packages = {
       ...layout.packages,
-      'node_modules/dsh-previous/node_modules/@liusiqi-dev/cordis': { version: '4.0.1' },
+      'node_modules/sqh-previous/node_modules/@liusiqi-dev/cordis': { version: '4.0.1' },
     }
 
-    expect(() => assertDualDshInstallLayout({ ...layout, packages })).toThrow(
+    expect(() => assertDualSqhInstallLayout({ ...layout, packages })).toThrow(
       'expected one shared @liusiqi-dev/cordis',
     )
   })
@@ -118,7 +118,7 @@ describe('npm install layout verifier', () => {
 
 describe('resolution work budget', () => {
   it('accepts the measured dual-release graph', () => {
-    expect(assertResolutionWorkBudget({ sqhPackagesPerVersion: 277, checkedDshEdges: 2524 }))
+    expect(assertResolutionWorkBudget({ sqhPackagesPerVersion: 277, checkedSqhEdges: 2524 }))
       .toBe(699_148)
   })
 
@@ -127,18 +127,18 @@ describe('resolution work budget', () => {
     const edgesAtBudget = Math.floor(MAX_RESOLUTION_WORK_UNITS / packages)
 
     expect(packages * edgesAtBudget).toBe(MAX_RESOLUTION_WORK_UNITS)
-    expect(assertResolutionWorkBudget({ sqhPackagesPerVersion: packages, checkedDshEdges: edgesAtBudget }))
+    expect(assertResolutionWorkBudget({ sqhPackagesPerVersion: packages, checkedSqhEdges: edgesAtBudget }))
       .toBe(MAX_RESOLUTION_WORK_UNITS)
     expect(() => assertResolutionWorkBudget({
       sqhPackagesPerVersion: packages,
-      checkedDshEdges: edgesAtBudget + 1,
+      checkedSqhEdges: edgesAtBudget + 1,
     })).toThrow(`= ${String(MAX_RESOLUTION_WORK_UNITS + packages)} unit(s), budget ${String(MAX_RESOLUTION_WORK_UNITS)} unit(s)`)
   })
 
   it('accepts the headroom and rejects a runaway graph with its own measured counts', () => {
-    expect(assertResolutionWorkBudget({ sqhPackagesPerVersion: 300, checkedDshEdges: 2800 }))
+    expect(assertResolutionWorkBudget({ sqhPackagesPerVersion: 300, checkedSqhEdges: 2800 }))
       .toBe(840_000)
-    expect(() => assertResolutionWorkBudget({ sqhPackagesPerVersion: 400, checkedDshEdges: 3000 }))
+    expect(() => assertResolutionWorkBudget({ sqhPackagesPerVersion: 400, checkedSqhEdges: 3000 }))
       .toThrow('400 package(s) per release x 3000 internal edge(s) = 1200000 unit(s), budget 875000 unit(s)')
   })
 })

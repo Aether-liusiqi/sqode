@@ -57,7 +57,7 @@ interface PluginInvocation {
   args: string[]
 }
 
-/** The resolved `sqh` invocation. Help, version, and errors exit inside {@link parseDshArgs}. */
+/** The resolved `sqh` invocation. Help, version, and errors exit inside {@link parseSqhArgs}. */
 export type SqhInvocation = ProfileInvocation | DumpConfigInvocation | DumpConfigSchemaInvocation | PluginInvocation
 
 /** Launcher flags for profile boot and configuration dumps. */
@@ -143,7 +143,7 @@ function resolveBoot(program: Command, profile: string, options: BootOptions, ar
  * @param manageDesktopProfile - permit Desktop's installed carrier to manage its reserved profile's plugins.
  * @returns the resolved invocation.
  */
-export function parseDshArgs(argv: readonly string[], version: string, manageDesktopProfile = false): SqhInvocation {
+export function parseSqhArgs(argv: readonly string[], version: string, manageDesktopProfile = false): SqhInvocation {
   const first = argv[0]
   let resolved: SqhInvocation | undefined
   // Annotated, not inferred: the actions below call back into `program`, and an

@@ -43,7 +43,7 @@ describe('PR preview workflow', () => {
       group: 'build-preview-cloudflare-${{ github.event.pull_request.number }}',
       'cancel-in-progress': true,
     })
-    expect(workflow.env.CF_PROJECT).toBe('dsh-build-preview')
+    expect(workflow.env.CF_PROJECT).toBe('sqh-build-preview')
     const shape = preview.steps.find(step => step.name === 'Shape the upload')!
     expect(shape.run).toContain("find apps/web/dist -name '*.map' -delete")
     expect(shape.run).toContain('cp apps/web/dist/preview.html apps/web/dist/index.html')
@@ -57,7 +57,7 @@ describe('PR preview workflow', () => {
     expect(verify.run).toContain('"$magic" != "1f8b"')
     expect(verify.env?.CF_ACCESS_CLIENT_SECRET).toBe('${{ secrets.CF_ACCESS_CLIENT_SECRET }}')
     const comment = preview.steps.find(step => step.name === 'Comment the preview URL')!
-    expect(comment.run).toContain('<!-- dsh-preview-url -->')
+    expect(comment.run).toContain('<!-- sqh-preview-url -->')
     expect(comment.run).toContain('gh pr comment "$PR" --body-file -')
   })
 })

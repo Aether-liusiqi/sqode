@@ -22,7 +22,7 @@ async function identity(path: string) {
 
 describe.each(['none', 'zstd'] as const)('V3 interrupted-turn publication (%s)', (compression) => {
   async function fixture(openStep = false) {
-    const root = await mkdtemp(join(tmpdir(), 'dsh-v3-restart-'))
+    const root = await mkdtemp(join(tmpdir(), 'sqh-v3-restart-'))
     roots.push(root)
     const id = SessionId('restart')
     const path = generationLogPath(root, undefined, id, 3, compression)

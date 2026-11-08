@@ -10,7 +10,7 @@ import SpeechToText from '../src/index.ts'
 import type { SpeechProviderId } from '../src/types.ts'
 
 it('saves language and provider preferences without remounting and restores them at restart', async () => {
-  const home = realpathSync(mkdtempSync(join(tmpdir(), 'dsh-speech-configuration-')))
+  const home = realpathSync(mkdtempSync(join(tmpdir(), 'sqh-speech-configuration-')))
   let ctx: Awaited<ReturnType<typeof boot>> | undefined
   try {
     const dir = join(home, 'profiles', 'test')

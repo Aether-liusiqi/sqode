@@ -64,7 +64,7 @@ describe.skipIf(!existsSync(preload('preload-app')))('built sandboxed Desktop pr
         if (id !== 'electron') throw new Error(`sandbox cannot load ${id}`)
         return electron
       },
-      process: { argv: ['electron', '--dsh-welcome-locale=en'], isMainFrame: true },
+      process: { argv: ['electron', '--sqh-welcome-locale=en'], isMainFrame: true },
       location: new URL('sqh-app://app/'),
       exports: {},
     })
@@ -86,7 +86,7 @@ describe.skipIf(!existsSync(preload('preload-app')))('built sandboxed Desktop pr
       expect(exposed.has('sqhWelcome')).toBe(true)
       const bridge = exposed.get('sqhWelcome') as { takeNotice(): Promise<unknown> }
       void bridge.takeNotice()
-      expect(invoke).toHaveBeenCalledWith('dsh-welcome:take-notice')
+      expect(invoke).toHaveBeenCalledWith('sqh-welcome:take-notice')
     }
   })
 })

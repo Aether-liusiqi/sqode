@@ -21,7 +21,7 @@ describe.skipIf(!built)('built workflow PTC runtime', () => {
     const driverRoot = await mkdtemp(join(packageRoot, '.built-runtime-'))
     let root: string | undefined
     try {
-      root = await mkdtemp(join(homedir(), '.dsh-built-workflow-'))
+      root = await mkdtemp(join(homedir(), '.sqh-built-workflow-'))
       const cwd = join(root, 'workspace')
       const outside = join(root, 'outside.txt')
       await mkdir(cwd)

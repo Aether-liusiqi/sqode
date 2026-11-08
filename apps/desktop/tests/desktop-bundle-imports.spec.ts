@@ -58,7 +58,7 @@ describe('desktop bundle imports', () => {
 })
 
 describe('packaged imports plugin', () => {
-  const root = mkdtempSync(join(tmpdir(), 'dsh-desktop-bundle-imports-'))
+  const root = mkdtempSync(join(tmpdir(), 'sqh-desktop-bundle-imports-'))
   const entries = {
     static: ['import { app } from "electron";', 'import { resolveSqhHome } from "@liusiqi-dev/sqh-home-paths";', 'export const home = resolveSqhHome(app);'],
     dynamic: ['import { app } from "electron";', 'export const home = () => import("@liusiqi-dev/sqh-home-paths").then(m => m.resolveSqhHome(app));'],

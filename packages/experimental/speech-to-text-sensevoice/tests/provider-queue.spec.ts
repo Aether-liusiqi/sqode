@@ -14,7 +14,7 @@ vi.mock('../src/runtime.ts', () => ({ inspectRuntime: vi.fn(), prepareRuntime: v
 afterEach(() => { vi.restoreAllMocks() })
 
 it.each([false, true])('queues recordings during startup and honors waiting cancellation (%s)', async (cancelled) => {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-speech-queue-')), ctx = new Context()
+  const root = await mkdtemp(join(tmpdir(), 'sqh-speech-queue-')), ctx = new Context()
   const startupEntered = Promise.withResolvers<undefined>(), releaseStartup = Promise.withResolvers<undefined>()
   const gate = createServer((_request, response) => {
     startupEntered.resolve(undefined)

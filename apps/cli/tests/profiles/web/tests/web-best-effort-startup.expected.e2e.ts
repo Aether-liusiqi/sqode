@@ -23,7 +23,7 @@ interface Fixture {
 }
 
 function createFixture(): Fixture {
-  const root = mkdtempSync(join(tmpdir(), 'dsh-web-best-effort-'))
+  const root = mkdtempSync(join(tmpdir(), 'sqh-web-best-effort-'))
   const home = join(root, 'home')
   const events = join(root, 'events.log')
   const stop = join(root, 'stop')
@@ -248,7 +248,7 @@ describe.skipIf(!builtArtifactsExist)('dsh Web profile best-effort startup', () 
   })
 
   it.each([false, true])('fails the full Web profile when its required HTTP server cannot bind (logs blocked: %s)', async (logsBlocked) => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-web-required-bind-'))
+    const root = mkdtempSync(join(tmpdir(), 'sqh-web-required-bind-'))
     const home = join(root, 'home')
     mkdirSync(home)
     if (logsBlocked) writeFileSync(join(home, 'logs'), 'blocked')

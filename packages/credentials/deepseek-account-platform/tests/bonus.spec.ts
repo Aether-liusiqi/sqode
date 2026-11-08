@@ -46,7 +46,7 @@ function requestBody(req: IncomingMessage): Promise<string> {
 }
 
 async function fixture() {
-  const home = await mkdtemp(join(tmpdir(), 'dsh-bonus-'))
+  const home = await mkdtemp(join(tmpdir(), 'sqh-bonus-'))
   cleanups.push(() => rm(home, { recursive: true, force: true }))
   const requests: Recorded[] = []
   let profileId: string | null = USER
@@ -67,7 +67,7 @@ async function fixture() {
   const handle = async (req: IncomingMessage, res: ServerResponse): Promise<void> => {
     expect(req.headers.authorization).toBeUndefined()
     const body = await requestBody(req)
-    requests.push({ method: req.method, url: req.url, token: req.headers['x-dsh-auth-token'] as string | undefined,
+    requests.push({ method: req.method, url: req.url, token: req.headers['x-sqh-auth-token'] as string | undefined,
       locale: req.headers['x-client-locale'] as string | undefined,
       bundleId: req.headers['x-client-bundle-id'] as string | undefined,
       platform: req.headers['x-client-platform'] as string | undefined,

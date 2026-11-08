@@ -11,7 +11,7 @@ import { authenticateStream } from '../src/stream-security.ts'
 
 describe.skipIf(process.platform === 'win32')('SSH failed process settlement', () => {
   it('reuses a one-process capacity after ENOENT and preserves late done errors', async () => {
-    const root = await mkdtemp('/tmp/dsh-ssh-failed-')
+    const root = await mkdtemp('/tmp/sqh-ssh-failed-')
     const ctx = new Context()
     const filesystem = await ctx.plugin(LocalFileSystem, { cwd: root })
     const subprocess = await ctx.plugin(LocalSubprocessRuntime)

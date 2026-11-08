@@ -37,7 +37,7 @@ function nativeProcess() {
 }
 
 async function harness(child: ReturnType<typeof nativeProcess>, control: boolean) {
-  const root = await mkdtemp('/tmp/dsh-ssh-finalize-')
+  const root = await mkdtemp('/tmp/sqh-ssh-finalize-')
   const ctx = new Context()
   const owner = new RemoteProcesses(ctx, root, 1, 5000)
   const sockets: Socket[] = []

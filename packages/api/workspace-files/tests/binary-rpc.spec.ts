@@ -15,7 +15,7 @@ let harness: Harness
 let rpc: ReturnType<typeof createWebConnectionRpc>
 
 beforeEach(async () => {
-  harness = await openWorkspace('dsh-workspace-binary-rpc-')
+  harness = await openWorkspace('sqh-workspace-binary-rpc-')
   const ctx = harness.ctx
   await ctx.plugin(SessionStore)
   await ctx.plugin(TypertRegistry)
