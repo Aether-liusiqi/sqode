@@ -1,5 +1,5 @@
 /**
- * Bundled `dsh-badge` skill provider.
+ * Bundled `sqh-badge` skill provider.
  *
  * @module @liusiqi-dev/sqh-skill-badge
  */
@@ -54,7 +54,7 @@ export const name = 'skill-badge'
 /** Service required by the bundled provider. */
 export const inject = ['skills']
 
-/** Register the bundled `dsh-badge` provider on `ctx.skills`. */
+/** Register the bundled `sqh-badge` provider on `ctx.skills`. */
 export function apply(ctx: Context): void {
   ctx.skills.registerProvider(() => provider)
 }

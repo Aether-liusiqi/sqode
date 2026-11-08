@@ -46,7 +46,7 @@ declare module '@liusiqi-dev/sqh-llm' {
  * at. The `satisfies` clause pins this table's key set to that union, which
  * the flavor table is checked against too, so any of the three left out is a
  * typecheck failure. What no check reaches is the prose that names the values
- * instead of deriving them: the seam's `dsh-ptc-runtime` README pair, its
+ * instead of deriving them: the seam's `sqh-ptc-runtime` README pair, its
  * `PtcRuntime.language` JSDoc, and `docs/subsystems/ptc-runtime.md`
  * with its zh pair, plus this package's own README pair and the
  * {@link Config.mode} JSDoc.
@@ -815,7 +815,7 @@ export class ToolRuntime extends Service {
     maxParallelSubCalls: z.natural().min(1).default(10),
   })
 
-  /** Internal staged view consumed by `dsh-agent-loop`'s parallel scheduler. */
+  /** Internal staged view consumed by `sqh-agent-loop`'s parallel scheduler. */
   readonly [TOOL_RUNTIME_SCHEDULER]: ToolRuntimeScheduler = {
     prepare: exec => this.prepareScheduledExecution(exec),
     dispatch: exec => this.dispatchScheduledExecution(exec),
@@ -1344,7 +1344,7 @@ export class ToolRuntime extends Service {
    *
    * Resolved through {@link modeFor}, NOT `defaultMode`: an agent given `ptc`
    * by an agent preset under a native deployment is the composition
-   * `dsh-agent-tool-presentation` exists for, and reading the deployment default would
+   * `sqh-agent-tool-presentation` exists for, and reading the deployment default would
    * leave exactly that agent uncollapsed — announcing one surface while
    * executing another, which is the bypass this collapse closes.
    * @param name - the tool name as registered.

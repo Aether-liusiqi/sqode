@@ -4,7 +4,7 @@
  *
  * The library half takes all of this as parameters. Keeping the lookup here is what
  * lets the same library pack a different tree, and what keeps `pack.ts` free of
- * assumptions about pnpm workspaces or the `dsh` CLI.
+ * assumptions about pnpm workspaces or the `sqh` CLI.
  * @module @liusiqi-dev/sqh-experimental-webworker-packer/src/repository
  */
 import { execFileSync } from 'node:child_process'
@@ -24,10 +24,10 @@ export { packPreviewFixture } from './preview.ts'
  */
 const WORKSPACE_SCAN_ROOTS = ['vendor', 'packages', 'native/system/packages', 'apps']
 
-/** Composition entry point package: the `dsh` CLI, run from source. */
+/** Composition entry point package: the `sqh` CLI, run from source. */
 const CLI_PACKAGE = 'apps/cli'
 
-/** Composition entry point: the `dsh` CLI, run from source. */
+/** Composition entry point: the `sqh` CLI, run from source. */
 const CLI_ENTRY = `${CLI_PACKAGE}/src/bin.ts`
 
 /** Repository-owned deterministic filesystem content offered by the preview. */
@@ -117,7 +117,7 @@ export function composeProfile(repoRoot: string, profile: string): string {
 
 /**
  * Config trees the CLI package declares for deployment images
- * (`dsh.configTrees` in its package.json): `path` is relative to the CLI
+ * (`sqh.configTrees` in its package.json): `path` is relative to the CLI
  * package root, `mount` is the image path, `scanRoster` feeds the tree's yml
  * plugin rows into the pack roster. The CLI owns its config layout; this
  * reader follows the declaration instead of naming directories. A malformed

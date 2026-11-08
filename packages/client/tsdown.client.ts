@@ -390,11 +390,11 @@ function productionExternals(id: string): readonly RegExp[] {
 }
 
 /**
- * Module-table specifiers one `dsh.client` declaration requests. Matching is
+ * Module-table specifiers one `sqh.client` declaration requests. Matching is
  * exact, never normalized: a package declares the specifier its own code
  * imports, and the loader keys static entries the same way.
  * @param subject - package name, used in diagnostics.
- * @param declaration - the package's `dsh.client` object.
+ * @param declaration - the package's `sqh.client` object.
  * @returns the requested specifiers, empty when the package declares none.
  * @throws {Error} when `external` is not a string array.
  */
@@ -407,7 +407,7 @@ export function requestedExternals(
 
 /**
  * Module-table specifiers one package requests. The shell baseline is implicit
- * for every dynamic bundle; `dsh.client.external` only adds package-specific
+ * for every dynamic bundle; `sqh.client.external` only adds package-specific
  * dynamic rows or subpaths.
  * @param id - package name, as spelled at the preset call site.
  * @returns the baseline plus the package's explicit requests.

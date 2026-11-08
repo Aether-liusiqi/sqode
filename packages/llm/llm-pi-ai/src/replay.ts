@@ -5,7 +5,7 @@
  * module stores only the provider-native metadata needed to reconstruct a
  * pi-ai assistant message on a later request.
  *
- * @module dsh-llm-pi-ai/replay
+ * @module sqh-llm-pi-ai/replay
  */
 
 import { LlmError } from '@liusiqi-dev/sqh-llm'

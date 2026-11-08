@@ -4,7 +4,7 @@
  * The `Branded<B>` primitive lives in `@liusiqi-dev/sqh-brand`; this module
  * is a pure type/constructor outlet (no cordis imports, no module
  * augmentation) so wire and client programs can name the brand without
- * loading the host plugin's Context merges — the `dsh-llm/brand` shape.
+ * loading the host plugin's Context merges — the `sqh-llm/brand` shape.
  *
  * @module @liusiqi-dev/sqh-commands/brand
  */

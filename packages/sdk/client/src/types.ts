@@ -22,7 +22,7 @@ export type NotificationFilter = (notification: HarnessNotification) => boolean
 
 /** Launch and timeout options for {@link HarnessClient}. */
 export interface HarnessClientOptions {
-  /** Absolute or caller-relative dsh CLI module; omitted resolves this package's same-version dependency. */
+  /** Absolute or caller-relative sqh CLI module; omitted resolves this package's same-version dependency. */
   sqhBin?: string
   /** Named profile serving the SDK protocol (default `sdk`). */
   profile?: string
@@ -30,7 +30,7 @@ export interface HarnessClientOptions {
   patches?: string[]
   /** Explicit Harness home for this child; relative paths resolve before spawn. */
   sqhHome?: string
-  /** Working directory for the dsh process itself. */
+  /** Working directory for the sqh process itself. */
   processCwd?: string
   /**
    * The complete child environment, read when {@link HarnessClient.start}

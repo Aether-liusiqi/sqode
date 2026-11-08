@@ -1,4 +1,4 @@
-/** Unified JSON-value schema DSL, inference, compilation, and typed tool helper. @module dsh-tools/schema */
+/** Unified JSON-value schema DSL, inference, compilation, and typed tool helper. @module sqh-tools/schema */
 
 import { HarnessError } from '@liusiqi-dev/sqh-llm'
 import type { ContentBlock } from '@liusiqi-dev/sqh-llm'

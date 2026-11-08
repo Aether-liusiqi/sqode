@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Stable link target for the `dsh-pack-vfs-image` bin, forwarding to the build
+ * Stable link target for the `sqh-pack-vfs-image` bin, forwarding to the build
  * product.
  *
  * pnpm creates a workspace package's bin link only when the link target exists

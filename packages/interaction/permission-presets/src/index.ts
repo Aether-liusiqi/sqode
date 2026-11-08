@@ -9,7 +9,7 @@
  * side exposes a process catalog plus the current-value-only `permissions`
  * Session projection; the write side ships as the `/permission` command.
  *
- * @module dsh-permission-presets
+ * @module sqh-permission-presets
  */
 import type {} from '@liusiqi-dev/sqh-settings'
 

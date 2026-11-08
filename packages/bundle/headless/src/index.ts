@@ -1,6 +1,6 @@
 /**
  * @liusiqi-dev/sqh-headless — one-shot direct Agent driver. The bundle patch
- * rides over dsh-base without Host, HTTP, or browser plugins; this runner
+ * rides over sqh-base without Host, HTTP, or browser plugins; this runner
  * creates one Agent through the core registry (or adopts the exact Session a
  * `--session-id` names), drives the task to quiescence, streams provider
  * reasoning to stderr, flushes its Session, prints the final assistant text to
@@ -192,7 +192,7 @@ function* liveEvents(session: Session): Generator<SessionEvent> {
 function currentPreset(header: AdoptableHeader, events: Iterable<SessionEvent>, sessionId: SessionId): string | undefined {
   let preset = header.agentPreset
   for (const event of events) {
-    // Owned by dsh-agent-preset-registry, which this bundle does not compose, so the
+    // Owned by sqh-agent-preset-registry, which this bundle does not compose, so the
     // event is read structurally rather than through its module augmentation.
     const candidate = event as unknown as { type: string; data?: { agentPreset?: unknown } }
     if (candidate.type !== 'agent-preset/selected') continue

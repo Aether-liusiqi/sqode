@@ -1,14 +1,14 @@
 /**
- * The Web development loop: build once, serve through `dsh web`, and keep every
+ * The Web development loop: build once, serve through `sqh web`, and keep every
  * browser-side artifact rebuilt on source edits, in one terminal.
  *
  * Stages, in order: `pnpm run build` (skipped by `--skip-build`), three
- * long-lived watchers, then `dsh web` (skipped by `--no-serve`). The watchers
+ * long-lived watchers, then `sqh web` (skipped by `--no-serve`). The watchers
  * exist because the compile shell links built lib products rather than
  * sources: `tsc -b tsconfig.client.json --watch` emits `lib/types` (the tsdown
  * lib entries are that emit, not `src`), tsdown watch bundles `lib/index.js`
  * and `lib/client.js`, and `vite build --watch` rewrites `apps/web/dist`, which
- * `dsh web` serves. A missing watcher does not fail — it silently shows the
+ * `sqh web` serves. A missing watcher does not fail — it silently shows the
  * previous artifact, so an edit appears to do nothing; any stage exiting on its
  * own therefore stops the loop with exit code 1.
  *
@@ -19,11 +19,11 @@
  * MUST NOT run beside `pnpm run build`: both write the same `lib/` and
  * `apps/web/dist/` trees. The build stage here finishes before any watcher starts.
  *
- * Usage: `pnpm run dev:web [--skip-build] [--no-serve] [--poll[=ms]] [dsh web arguments]`.
+ * Usage: `pnpm run dev:web [--skip-build] [--no-serve] [--poll[=ms]] [sqh web arguments]`.
  * `--skip-build` requires the artifact tree from a prior complete build: every
  * watcher is incremental over the previous stage's output and none of them
  * bootstraps a missing tree. `--no-serve` keeps only the watchers, for a
- * `dsh web` started elsewhere. `--poll` switches the source watchers to polling
+ * `sqh web` started elsewhere. `--poll` switches the source watchers to polling
  * (default 500ms): network mounts (weka) deliver no inotify events, so native
  * watching sees the initial build only and never a source change. Polling has
  * to reach tsc too — a native-watching tsc never re-emits `lib/types`, which
@@ -56,7 +56,7 @@ const repoRoot = fileURLToPath(new URL('..', import.meta.url))
 /** Client-face type emit feeding every tsdown lib entry in the watch set. */
 const CLIENT_TYPE_PROGRAM = 'tsconfig.client.json'
 
-/** Compile-shell workspace whose dist `dsh web` serves. */
+/** Compile-shell workspace whose dist `sqh web` serves. */
 const SHELL_PACKAGE = '@liusiqi-dev/sqh-web-frontend'
 
 /**
@@ -78,15 +78,15 @@ export function devWebBuildEnvironment(
   return clientBuildProcessEnvironment(environment, repositoryClientBuildEnvironment(root, environment))
 }
 
-/** Resolved `dev-web` command line: the script's own flags plus the arguments forwarded to `dsh web`. */
+/** Resolved `dev-web` command line: the script's own flags plus the arguments forwarded to `sqh web`. */
 export interface DevWebArguments {
   /** Skip the complete `pnpm run build` that otherwise precedes the watchers. */
   readonly skipBuild: boolean
-  /** Start `dsh web`; false keeps only the rebuild watchers beside an already running server. */
+  /** Start `sqh web`; false keeps only the rebuild watchers beside an already running server. */
   readonly serve: boolean
   /** Source-watcher polling interval in milliseconds; undefined selects native watching. */
   readonly pollInterval: number | undefined
-  /** Arguments forwarded verbatim to `dsh web`, in order. */
+  /** Arguments forwarded verbatim to `sqh web`, in order. */
   readonly appArgs: readonly string[]
 }
 
@@ -96,11 +96,11 @@ const DEFAULT_POLL_INTERVAL = 500
 /**
  * Parse the script's command line. `--skip-build`, `--no-serve`, and `--poll[=ms]`
  * belong to this script; a bare `--` is dropped; every other token is forwarded
- * to `dsh web`.
+ * to `sqh web`.
  * @param argv - arguments after the script path.
  * @returns the resolved flags and forwarded arguments.
  * @throws Error when `--poll` carries a non-positive or non-integer interval, or
- * when `--no-serve` leaves forwarded arguments without a `dsh web` process.
+ * when `--no-serve` leaves forwarded arguments without a `sqh web` process.
  */
 export function parseDevWebArguments(argv: readonly string[]): DevWebArguments {
   let skipBuild = false
@@ -125,7 +125,7 @@ export function parseDevWebArguments(argv: readonly string[]): DevWebArguments {
 
 /**
  * Discover the watch workspace by declaration: every packages/<group>/<name>
- * whose package.json carries `dsh.client` with platform "web" is a client
+ * whose package.json carries `sqh.client` with platform "web" is a client
  * plugin bundle emitter. Scanned once at startup — a package added while
  * watching means restarting this script.
  * @param root - repository root containing the grouped package directories.
@@ -146,7 +146,7 @@ export function discoverPluginDirs(root = repoRoot): string[] {
 /**
  * Discover the statically linked library packages: the other half of the same
  * partition {@link discoverPluginDirs} takes. A package that builds through the
- * client preset without declaring `dsh.client` has no loader-delivered browser
+ * client preset without declaring `sqh.client` has no loader-delivered browser
  * half, so the compile shell links its `lib/index.js` instead — and an edit to
  * its source reaches the browser only once that bundle is rewritten. Deriving
  * the set from the build preset rather than a hand list keeps it correct when
@@ -285,7 +285,7 @@ export class StageSupervisor {
 }
 
 /**
- * Grace period per escalation step. `dsh web` gives its plugin tree five seconds
+ * Grace period per escalation step. `sqh web` gives its plugin tree five seconds
  * to dispose after the first signal; escalating earlier would turn the graceful
  * drain into a forced exit.
  */
@@ -416,8 +416,8 @@ if (isMain) {
     // running vite from anywhere but apps/web silently switches which react copy
     // the bundle gets.
     spawnStage(supervisor, 'vite build --watch', 'pnpm', ['--filter', SHELL_PACKAGE, 'run', 'watch'], false)
-    // The same launch vector as the root `dsh` script, so the served Host runs
-    // from source exactly as `pnpm dsh web` would.
+    // The same launch vector as the root `sqh` script, so the served Host runs
+    // from source exactly as `pnpm sqh web` would.
     if (options.serve) {
       spawnStage(supervisor, 'dsh web', process.execPath, [
         '--import', 'tsx/esm', 'apps/cli/src/bin.ts', 'web', ...options.appArgs,

@@ -5,7 +5,7 @@
  * name nothing from this library, so another adapter family can arrive with a
  * different auth model and share the same two seams.
  *
- * @module dsh-llm-pi-ai/auth
+ * @module sqh-llm-pi-ai/auth
  */
 
 import { homedir } from 'node:os'

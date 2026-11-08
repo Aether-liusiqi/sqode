@@ -1,6 +1,6 @@
 /**
  * Enforce the MIT license declaration for repository-owned SQH npm packages.
- * @module scripts/verify-dsh-package-licenses
+ * @module scripts/verify-sqh-package-licenses
  */
 
 import { globSync, readFileSync } from 'node:fs'

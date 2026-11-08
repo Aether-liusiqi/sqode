@@ -1,5 +1,5 @@
 /**
- * Generate dsh-scope's invariant resolver map from the repository TypeScript
+ * Generate sqh-scope's invariant resolver map from the repository TypeScript
  * Program.
  *
  * A scoped event declares `this: Scoped<Base>`. Real `scopeTarget(base, key)`
@@ -377,7 +377,7 @@ export function renderScopedEvents(projectRoot: string = root): string {
   return new ScopedEventGenerator(new TypeScriptProject(projectRoot)).render()
 }
 
-/** Generate or freshness-check the fixed dsh-scope source file. */
+/** Generate or freshness-check the fixed sqh-scope source file. */
 function main(): void {
   const content = renderScopedEvents()
   const output = resolve(root, OUT)

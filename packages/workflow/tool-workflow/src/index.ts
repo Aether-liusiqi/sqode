@@ -49,7 +49,7 @@ export interface Config {
   /**
    * Expose `run_in_background` (default true); disabled calls are also
    * rejected. A background run needs a live `ctx.jobs` registry with a
-   * controller serving the caller (`dsh-jobs-local` plus `dsh-tool-jobs` in
+   * controller serving the caller (`sqh-jobs-local` plus `sqh-tool-jobs` in
    * the shipped composition); without one the call fails with the missing
    * piece named.
    */

@@ -96,7 +96,7 @@ function parseEntry(value: unknown, location: string): PackageEntry {
 
 /**
  * Read npm's resolved production tree without substituting workspace or development dependencies.
- * @param input - Parsed npm lockfile v3 from a consumer with only dsh as its dependency.
+ * @param input - Parsed npm lockfile v3 from a consumer with only sqh as its dependency.
  * @returns The CLI version and sorted package locations, excluding the synthetic consumer and CLI itself.
  */
 export function collectDependencies(input: unknown): { version: string; rows: DependencyRow[] } {

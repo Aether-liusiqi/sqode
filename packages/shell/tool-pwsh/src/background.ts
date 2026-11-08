@@ -1,6 +1,6 @@
 /**
  * Generic-job adaptation for pwsh process handles — the shell-agnostic twin
- * of `dsh-tool-bash`'s background adaptation: the terminal
+ * of `sqh-tool-bash`'s background adaptation: the terminal
  * outcome the registry records and the pull sources it pumps.
  *
  * @module @liusiqi-dev/sqh-tool-pwsh/background
@@ -11,7 +11,7 @@ import { escalationHintMarker, sandboxDenialMarker } from '@liusiqi-dev/sqh-sand
 import type { ShellProcess, ShellSandboxInfo } from '@liusiqi-dev/sqh-shell'
 import type { JobChunk, JobHooks, JobOutcome, JobOutputSource } from '@liusiqi-dev/sqh-jobs'
 
-/* jscpd:ignore-start -- deliberate twin of dsh-tool-bash/background.ts (Agent Note). */
+/* jscpd:ignore-start -- deliberate twin of sqh-tool-bash/background.ts (Agent Note). */
 
 /**
  * Sandbox facts worth the terminal detail: a runner that never ran the

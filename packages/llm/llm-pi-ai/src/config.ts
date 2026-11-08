@@ -10,7 +10,7 @@
  * catalog diagnostics beside serviceable models; writes validate every changed
  * provider before persistence. Self-contained profile constraints apply to both.
  *
- * @module dsh-llm-pi-ai/config
+ * @module sqh-llm-pi-ai/config
  */
 import type { Volatile } from '@liusiqi-dev/cordis'
 

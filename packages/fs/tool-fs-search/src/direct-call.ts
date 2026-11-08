@@ -1,4 +1,4 @@
-/** Shared top-level-call post-policy selection for search result spill. @module dsh-tool-fs-search/direct-call */
+/** Shared top-level-call post-policy selection for search result spill. @module sqh-tool-fs-search/direct-call */
 
 import type { Context } from '@liusiqi-dev/cordis'
 import type { PostToolDecision, ToolDefinition, ToolExecution, ToolExecutionResult } from '@liusiqi-dev/sqh-tools'

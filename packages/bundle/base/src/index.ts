@@ -1,6 +1,6 @@
 /**
- * @liusiqi-dev/sqh-base — the shared dsh core as a profile bundle. The
- * package's substance is `cordis.patch.yml`, declared by the `dsh.bundle.patch`
+ * @liusiqi-dev/sqh-base — the shared sqh core as a profile bundle. The
+ * package's substance is `cordis.patch.yml`, declared by the `sqh.bundle.patch`
  * manifest field and resolved by the profile composer through that field;
  * this module carries no runtime API.
  * @module @liusiqi-dev/sqh-base

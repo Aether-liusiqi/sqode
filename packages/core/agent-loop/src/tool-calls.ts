@@ -8,7 +8,7 @@
  * Abort records synthetic error results for skipped calls so replay stays
  * valid. A terminal scheduler failure rejects after draining; the owning step
  * records conservative recovery results before closing.
- * @module dsh-agent-loop/tool-calls
+ * @module sqh-agent-loop/tool-calls
  */
 
 import { mkdirSync, writeFileSync } from 'node:fs'
@@ -323,7 +323,7 @@ export function toolResultBudgets(): { limit: number; head: number; tail: number
  * A result larger than the limit is replaced by its head and tail plus a notice that
  * names a file holding the whole text, so the model knows it was cut and can read the
  * rest on demand instead of guessing. The file lives under the workspace's ignored
- * `.dsh/tool-results` directory, which the sandbox already grants; when the session has
+ * `.sqh/tool-results` directory, which the sandbox already grants; when the session has
  * no directory (unit tests, in-memory sessions) the cap still applies and the notice
  * says so without a path.
  * @param session - owning session, used to locate the workspace directory.

@@ -13,7 +13,7 @@
  * @module @liusiqi-dev/sqh-pwsh-local
  */
 
-/* jscpd:ignore-start -- this executor mirrors dsh-bash-local call-for-call by
+/* jscpd:ignore-start -- this executor mirrors sqh-bash-local call-for-call by
    design (see this package's README), so the two import the same seam surface */
 import type { Volatile } from '@liusiqi-dev/cordis'
 import { Context } from '@liusiqi-dev/cordis'
@@ -25,7 +25,7 @@ import { clampTimeout, deadline, MAX_TIMER_DELAY_MS, timeoutOf } from '@liusiqi-
 /* jscpd:ignore-end */
 import { resolvePwshPath } from './resolve.ts'
 
-/* jscpd:ignore-start -- deliberate call-for-call mirror of dsh-bash-local (Agent Note: pwsh-tool-and-executor). */
+/* jscpd:ignore-start -- deliberate call-for-call mirror of sqh-bash-local (Agent Note: pwsh-tool-and-executor). */
 /**
  * Model-friendly environment overrides for PowerShell: disable colors and
  * pagers that would garble tool output. `TERM=dumb` is a POSIX concept and is
@@ -187,7 +187,7 @@ export class PwshLocalExecutor extends ShellExecutor {
   /**
    * The pwsh invocation argv for one resolved spec — the argv-level seam a
    * confining subclass wraps through `ctx.sandbox.confine` (the pwsh twin of
-   * `dsh-bash-local`'s `executeArgv` hook; see
+   * `sqh-bash-local`'s `executeArgv` hook; see
    * `@liusiqi-dev/sqh-pwsh-sandbox`).
    */
   protected argv(spec: ShellExecSpec): string[] {
@@ -435,7 +435,7 @@ export class PwshLocalExecutor extends ShellExecutor {
   /**
    * Settlement hook for subclasses that attach execution facts to a process.
    * The base implementation is intentionally empty. Mirrored from
-   * `dsh-bash-local` (whose sandboxing subclass consumes the same hook); the
+   * `sqh-bash-local` (whose sandboxing subclass consumes the same hook); the
    * pwsh-confining consumer is `@liusiqi-dev/sqh-pwsh-sandbox`.
    * @param _proc - the settled process handle.
    * @param _stderr - the process's retained stderr tail used by subclasses for settlement classification.

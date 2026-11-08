@@ -3,7 +3,7 @@
  * readable from the repository rather than derived inside CI
  * ([rationale](../../.agents/notes/implemented/process/2026-08-10-npm-release-sequences.md)).
  *
- * The dsh family shares one version across its publishable members, private
+ * The sqh family shares one version across its publishable members, private
  * package manifests, and the workspace root:
  * `major`, `minor`, `patch`, or an explicit `x.y.z` (including a prerelease such
  * as `0.0.1-rc.1`). The vendored family has one version line per package, but
@@ -32,10 +32,10 @@ const ALWAYS_PUBLISHED = ['package.json', 'README*', 'LICENSE*', 'LICENCE*'] as 
  */
 const BUILD_INPUTS = ['src/**', 'tsconfig*.json', 'tsdown.config.*', 'build.config.*'] as const
 
-/** Release types the dsh family accepts besides an explicit version. */
+/** Release types the sqh family accepts besides an explicit version. */
 const RELEASE_TYPES = ['major', 'minor', 'patch'] as const
 
-/** The workspace root manifest, which carries the dsh family's version. */
+/** The workspace root manifest, which carries the sqh family's version. */
 const ROOT_MANIFEST = 'package.json'
 
 /** One manifest the bump rewrites, and the tag its new version will carry. */
@@ -48,7 +48,7 @@ interface PlannedVersion {
   readonly tag: string | undefined
 }
 
-/** One private dsh workspace whose version follows the publishable family. */
+/** One private sqh workspace whose version follows the publishable family. */
 interface PrivateDshVersion {
   /** Repository-relative manifest path. */
   readonly manifestPath: string
@@ -131,7 +131,7 @@ export function compareVersions(left: string, right: string): number {
 }
 
 /**
- * The next dsh version.
+ * The next sqh version.
  * @param current - the family's current shared version.
  * @param request - `major`, `minor`, `patch`, or an explicit version.
  * @returns The target version.
@@ -243,7 +243,7 @@ function rootVersion(root: string): string {
 }
 
 /**
- * Discover private package and application manifests that share the dsh version
+ * Discover private package and application manifests that share the sqh version
  * without joining its publish set.
  * @param root - repository root.
  * @returns Private workspace manifests sorted by path.
@@ -271,9 +271,9 @@ function privateDshVersions(root: string): PrivateDshVersion[] {
 }
 
 /**
- * Plan the dsh family's rewrite: one version for every publishable member,
+ * Plan the sqh family's rewrite: one version for every publishable member,
  * private package, and the root.
- * @param family - the dsh family.
+ * @param family - the sqh family.
  * @param root - repository root.
  * @param members - the family's members.
  * @param request - `major`, `minor`, `patch`, or an explicit version.

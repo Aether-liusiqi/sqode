@@ -4,7 +4,7 @@
  * `@liusiqi-dev/sqh-pwsh-local`) backs `ctx.shell`; the tool contract is
  * PowerShell-dialect: native `C:\...` paths and `$env:NAME` variables.
  *
- * Behavior mirrors `dsh-tool-bash` call-for-call: foreground and
+ * Behavior mirrors `sqh-tool-bash` call-for-call: foreground and
  * `run_in_background` execution (with a job registry composed, every call
  * registers its process with `ctx.jobs` as it starts, and a foreground call
  * waits on its job until the timeout passes), the managed `SQH_*` environment through the
@@ -102,7 +102,7 @@ interface PwshForegroundResult {
   sandbox?: { mode: string; denied: boolean; enforcement?: string; runnerFailed?: boolean }
 }
 
-/* jscpd:ignore-start -- minimal mirror of dsh-tool-bash's validation and execute plumbing (Agent Note). */
+/* jscpd:ignore-start -- minimal mirror of sqh-tool-bash's validation and execute plumbing (Agent Note). */
 function validatePwshArgs(args: PwshToolArgs): void {
   if (args.command.trim().length === 0) {
     throw new Error('invalid command: expected a non-empty string')
@@ -175,7 +175,7 @@ function canonicalPwshResult(result: ShellRunResult): PwshForegroundResult {
     timedOut: result.timedOut,
     aborted: result.aborted,
     timeoutMs: result.timeoutMs,
-    /* jscpd:ignore-start -- the canonical projection and background-handle shape mirror dsh-tool-bash's by design (Agent Note). */
+    /* jscpd:ignore-start -- the canonical projection and background-handle shape mirror sqh-tool-bash's by design (Agent Note). */
     stdout: output(result.stdout),
     stderr: output(result.stderr),
     ...result.sandbox !== undefined ? {
@@ -210,7 +210,7 @@ const BACKGROUND_OUTPUT_PROPERTIES = {
 } as const
 /* jscpd:ignore-end */
 
-/* jscpd:ignore-start -- deliberate mirror of dsh-tool-bash's apply() preamble (pwsh-tool-and-executor Agent Note). */
+/* jscpd:ignore-start -- deliberate mirror of sqh-tool-bash's apply() preamble (pwsh-tool-and-executor Agent Note). */
 export function apply(ctx: Context, config: Config = {}): void {
   const backgroundEnabled = config.enableRunInBackground ?? true
   // Keeping a timed-out command needs the whole background surface: the job
@@ -227,7 +227,7 @@ export function apply(ctx: Context, config: Config = {}): void {
   const resolveSandboxPolicy = (exec: ToolExecution): SandboxExecutionPolicy | undefined =>
     sandboxPolicy?.resolve(exec.agent === undefined ? {} : { session: exec.agent.session })
 
-  /* jscpd:ignore-start -- deliberate mirror of dsh-tool-bash's escalation resolver (pwsh-tool-and-executor Agent Note). */
+  /* jscpd:ignore-start -- deliberate mirror of sqh-tool-bash's escalation resolver (pwsh-tool-and-executor Agent Note). */
   /**
    * Resolve a sandbox-escalation request through `ctx.approval` BEFORE
    * anything executes, delegating the shared fail-closed sequence (strict
@@ -278,7 +278,7 @@ export function apply(ctx: Context, config: Config = {}): void {
   const pwshTool = (jobs: JobRegistry | undefined): ToolDefinition => {
     const background = jobs !== undefined
     const promote = background && promoteOnTimeout
-    /* jscpd:ignore-start -- the job start and wait mirror dsh-tool-bash's by design (pwsh-tool-and-executor Agent Note). */
+    /* jscpd:ignore-start -- the job start and wait mirror sqh-tool-bash's by design (pwsh-tool-and-executor Agent Note). */
     /** Register the command as a job; the process spawns inside the starter, after admission. */
     const startJob = (registry: JobRegistry, args: PwshToolArgs, exec: ToolExecution, spec: ShellExecSpec): StartedJob => {
       let proc: ShellExecution | undefined
@@ -383,7 +383,7 @@ export function apply(ctx: Context, config: Config = {}): void {
     return defineTool({
       name: 'pwsh',
       description: pwshDescription(escalationModes.length > 0),
-      /* jscpd:ignore-start -- deliberate mirror of dsh-tool-bash's parameter surface (pwsh-tool-and-executor Agent Note). */
+      /* jscpd:ignore-start -- deliberate mirror of sqh-tool-bash's parameter surface (pwsh-tool-and-executor Agent Note). */
       parameters: {
         command: { type: 'string', required: true, description: 'The PowerShell command to execute.' },
         description: {
@@ -418,10 +418,10 @@ export function apply(ctx: Context, config: Config = {}): void {
       },
       /* jscpd:ignore-end */
       output: {
-        // The foreground result wire shape mirrors dsh-tool-bash's by contract —
+        // The foreground result wire shape mirrors sqh-tool-bash's by contract —
         // consumers of one must accept the other (see the pwsh-tool-and-executor
         // Agent Note).
-        /* jscpd:ignore-start -- deliberate result-schema symmetry with dsh-tool-bash. */
+        /* jscpd:ignore-start -- deliberate result-schema symmetry with sqh-tool-bash. */
         schema: {
           oneOf: [
             {
@@ -494,7 +494,7 @@ export function apply(ctx: Context, config: Config = {}): void {
               : renderPwshResult(value as RenderablePwshResult, escalationModes),
         }],
       },
-      /* jscpd:ignore-start -- the execute path mirrors dsh-tool-bash's by design (see the pwsh-tool-and-executor Agent Note). */
+      /* jscpd:ignore-start -- the execute path mirrors sqh-tool-bash's by design (see the pwsh-tool-and-executor Agent Note). */
       async execute(args: PwshToolArgs, exec) {
         validatePwshArgs(args)
         // Description is display metadata; workdir defaults to the caller's session.

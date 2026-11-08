@@ -5,7 +5,7 @@
  * activate, against that plugin context) and the entry `disabled` field (at
  * every mount decision, against the loader context). Every other entry
  * metadata field stays static, so an expression there remains truthy data and
- * silently changes composition. Shipped and test-only dsh overlays resolve
+ * silently changes composition. Shipped and test-only sqh overlays resolve
  * named plugins from the CLI application's owning manifest; package-owned
  * Loader fixtures resolve from their package manifest.
  */
@@ -34,7 +34,7 @@ export interface PluginReference {
 }
 
 const root = resolve(import.meta.dirname, '..')
-// These overlays are consumed by the built dsh app, so their bare specifiers
+// These overlays are consumed by the built sqh app, so their bare specifiers
 // resolve from apps/cli.
 const appOverlayFiles = new Set([
   ...globSync('apps/cli/config/examples/**/*.yml', { cwd: root }),
@@ -94,7 +94,7 @@ if (import.meta.main) {
  * A browser plugin must declare the browser half it ships.
  *
  * The browser roster is discovered by scanning composed packages for a
- * `dsh.client` block, and the node half of a surface plugin is an empty
+ * `sqh.client` block, and the node half of a surface plugin is an empty
  * `apply`. A `packages/client` package that exports `./client` without that
  * block therefore composes, activates, and contributes nothing — its bundle is
  * never served and no error is raised anywhere. The mismatch is invisible in
@@ -102,7 +102,7 @@ if (import.meta.main) {
  * this group is checked: a Host package's `./client` export is the typed wire
  * face its browser consumers import, not a plugin the roster serves.
  * @returns one violation per client package whose `./client` export and
- * `dsh.client` declaration disagree.
+ * `sqh.client` declaration disagree.
  */
 function validateClientHalvesDeclared(): string[] {
   return globSync('packages/client/*/package.json', { cwd: root }).flatMap((manifestPath) => {
@@ -244,7 +244,7 @@ function validateAppResolution(): string[] {
   const violations: string[] = []
   const bundleManifests = bundleManifestPaths()
   // App overlays (and any config left under apps/cli/config) resolve from the
-  // dsh app's own dependency surface — the runtime resolution mirrors it.
+  // sqh app's own dependency surface — the runtime resolution mirrors it.
   const appManifest = readManifest('apps/cli/package.json')
   const appDependencies = {
     ...appManifest.dependencies,
@@ -409,7 +409,7 @@ export function bundlePluginDependencyErrors(
 
 /**
  * Every configured specifier of a local workspace package must resolve through
- * the tsconfig `paths` facade to a `.ts`/`.tsx` source file. The `dsh` source
+ * the tsconfig `paths` facade to a `.ts`/`.tsx` source file. The `sqh` source
  * launch (tsx) and vitest resolve in the source plane; without a `paths` match
  * they fall back to package `exports`, which reach built `lib/` — present on a
  * built dev tree, absent on a clean one — so a missing mapping boots locally

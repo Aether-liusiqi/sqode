@@ -336,7 +336,7 @@ const INTERPRETER_BASELINE_BYTES = 64 * 1024 * 1024
 const HOST_PARSE_WORST_CASE_MULTIPLE = 16
 
 /**
- * Fixed host-heap headroom reserved for the application itself (the dsh
+ * Fixed host-heap headroom reserved for the application itself (the sqh
  * fiber, plugins, and this runtime's own state) before the frame-parse
  * multiple claims the rest: the effective frame cap is derived from
  * `heap_size_limit - HOST_PARSE_BASELINE_BYTES`, so a constrained host's

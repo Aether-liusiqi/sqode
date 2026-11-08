@@ -11,7 +11,7 @@ export const SESSION_REFERENCE_SCHEME = 'dsh-session:'
 /**
  * Encode any JavaScript session-id string as a canonical lossless URI.
  * @param sessionId - opaque session id to serialize.
- * @returns canonical `dsh-session:` URI.
+ * @returns canonical `sqh-session:` URI.
  */
 export function encodeSessionReferenceUri(sessionId: SessionIdType): string {
   const payload = Buffer.from(JSON.stringify(sessionId), 'utf8').toString('base64url')

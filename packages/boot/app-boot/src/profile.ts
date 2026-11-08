@@ -52,9 +52,9 @@ export type ProfileManifest = Partial<SqhPackageManifest>
  * Read a manifest's declarations, preferring the legacy key while migrating.
  *
  * The order is deliberate and temporary. Every manifest in the wild, and almost
- * every fixture in this repository, writes `dsh`; reading that first means a writer
+ * every fixture in this repository, writes `sqh`; reading that first means a writer
  * that mirrors both keys can never be shadowed by a stale copy of the other one.
- * Flip this back to `sqh ?? dsh` at cutover, after writing `dsh` has stopped.
+ * Flip this back to `sqh ?? sqh` at cutover, after writing `sqh` has stopped.
  *
  * Lives here rather than in the manifest package on purpose: that package is
  * type-only, and giving it runtime exports once changed the module graph enough to

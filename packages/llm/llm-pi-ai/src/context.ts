@@ -1,7 +1,7 @@
 /**
  * Harness request-history conversion into pi-ai's Context vocabulary.
  *
- * @module dsh-llm-pi-ai/context
+ * @module sqh-llm-pi-ai/context
  */
 
 import { brandString } from '@liusiqi-dev/sqh-brand'

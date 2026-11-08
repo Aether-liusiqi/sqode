@@ -1,4 +1,4 @@
-/** Canonical tool-definition fixtures for repository tests. @module dsh-tools/testing */
+/** Canonical tool-definition fixtures for repository tests. @module sqh-tools/testing */
 
 import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
 import type { JsonValue } from '@liusiqi-dev/sqh-util-values'

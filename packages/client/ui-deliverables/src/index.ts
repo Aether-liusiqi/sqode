@@ -2,7 +2,7 @@
  * Deliverables plugin, node half. Registers Web file-reference guidance and
  * serves authenticated native opens of declared files. The browser
  * half ships via exports["./client"], discovered through the package.json
- * dsh.client declaration.
+ * sqh.client declaration.
  */
 
 import type { Context } from '@liusiqi-dev/cordis'

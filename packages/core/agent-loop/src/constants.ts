@@ -1,5 +1,5 @@
 /** Shared agent-loop scheduler defaults.
- * @module dsh-agent-loop/constants
+ * @module sqh-agent-loop/constants
  */
 
 /** Default maximum in-flight parallel-safe calls per agent step. */

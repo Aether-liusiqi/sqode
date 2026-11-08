@@ -32,9 +32,9 @@ export const inject = ['subagents']
 
 /** Config: how to spawn and drive the child SDK runtime process. */
 export interface Config {
-  /** Provider name on `ctx.subagents` (default `dsh-sdk`). */
+  /** Provider name on `ctx.subagents` (default `sqh-sdk`). */
   providerName: string
-  /** Explicit dsh CLI module, resolved and checked at plugin load; omission uses the SDK dependency. */
+  /** Explicit sqh CLI module, resolved and checked at plugin load; omission uses the SDK dependency. */
   sqhBin?: string
   /** Named child profile (default `sdk`). */
   profile: string

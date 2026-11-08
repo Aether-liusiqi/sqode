@@ -62,7 +62,7 @@ export function buildExplicitAccess(
 }
 
 /**
- * One lock file per protected path: `<GetTempPathW()>\dsh-acl-locks\<first 16
+ * One lock file per protected path: `<GetTempPathW()>\sqh-acl-locks\<first 16
  * hex of sha256(lowercased path)>.lock`. The lock root derives from
  * GetTempPathW (never from runner argv or SQODE_HOME), and the lowercasing
  * maps Windows's case-insensitive path spellings onto one lock.

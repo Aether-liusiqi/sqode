@@ -98,7 +98,7 @@ declare module '@liusiqi-dev/sqh-session/types' {
 export interface DeepSeekSearchProviderOptions {
   /**
    * Resolve the DeepSeek account token for one search endpoint. A token takes
-   * precedence over every API key and is sent only as `x-dsh-auth-token`;
+   * precedence over every API key and is sent only as `x-sqh-auth-token`;
    * `undefined` selects API-key authentication.
    */
   resolveAccountToken?: (endpoint: string) => Promise<string | undefined>

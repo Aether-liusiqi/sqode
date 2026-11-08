@@ -3,14 +3,14 @@
  * rows). The logged model text remains the single truth; this is presentation
  * only. Inline references follow the consumer's wrapping policy and keep long
  * labels within its width. Four decoration sources, by precedence: the wire session form
- * `@[label](dsh-session:...)` folds to its label; exact session labels
+ * `@[label](sqh-session:...)` folds to its label; exact session labels
  * supplied by an adjacent recall decorate their bare `@label` mention; plain
  * `@name` word-boundary tokens decorate by shape alone; and a plain `/name`
  * token decorates only when the caller names it — a skill the host actually
  * loaded for that message (ui-chat reads the step's `skill-invocation`
  * injections) or the command a command-input bubble echoes — so `/123` or a
  * stray `/word` stays plain text. A `/name` token is whitespace-bounded like
- * the host skill gesture (`dsh-tool-skill`): it ends at whitespace or the
+ * the host skill gesture (`sqh-tool-skill`): it ends at whitespace or the
  * text end, so slash paths (`/nfs-hg/xxx`, `/plan.md`) and punctuation-glued
  * tokens (`/plan。`) stay plain even for a loaded name.
  */

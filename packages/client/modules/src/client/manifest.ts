@@ -133,7 +133,7 @@ export interface BootManifest {
 }
 
 /**
- * Validate an optional string-array field read from a `dsh.client` declaration
+ * Validate an optional string-array field read from a `sqh.client` declaration
  * or from the boot wire.
  * @param subject - diagnostic prefix naming the package or the wire row.
  * @param field - field name as it appears in the diagnostic.
@@ -150,11 +150,11 @@ export function optionalStringArray(subject: string, field: string, value: unkno
 }
 
 /**
- * Narrow an unknown parsed JSON value to the `dsh.client` declaration. Shared
+ * Narrow an unknown parsed JSON value to the `sqh.client` declaration. Shared
  * by the node half's Loader scan and the roster generator, so both read a
  * package's browser declaration through one validator.
  * @param pkgName - package name used as the diagnostic prefix.
- * @param value - the raw `dsh.client` field of the package manifest.
+ * @param value - the raw `sqh.client` field of the package manifest.
  * @returns the validated declaration, or undefined when the field is absent.
  * @throws {Error} when the field is present but any member is malformed.
  */

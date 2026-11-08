@@ -48,7 +48,7 @@ function encodingOf(options: VfsReadOptions): VfsEncoding | undefined {
 
 // Permission bits are entry state: creation takes the caller's mode (or the
 // umask-free default), `chmod` changes it, and both stat shapes report the
-// stored value — the round-trip consumers like dsh-credentials-local's
+// stored value — the round-trip consumers like sqh-credentials-local's
 // owner-only check rely on. The bits are never enforced: a single-owner
 // filesystem reads and writes as its owner regardless, like root.
 function statsOf(size: number, mtimeMs: number, directory: boolean, ino: bigint, mode: number): VfsStats {

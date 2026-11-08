@@ -108,7 +108,7 @@ declare module '@liusiqi-dev/sqh-llm' {
   interface MessageSourceMap {
     /**
      * Late reply to a continued `ask_user_question` call, steered into the
-     * agent by `dsh-user-questions` as an answer batch. Closing a question
+     * agent by `sqh-user-questions` as an answer batch. Closing a question
      * panel persists no reply. Readers preserve this message without the
      * producer; only the `userQuestions` projection reads the kind to close
      * the question and record its answers.

@@ -1,9 +1,9 @@
 /**
- * The browser roster of a `dsh --profile`, read from its bundle patch files
- * the way the launcher composes them: each bundle's `dsh.bundle.patch` file list is
+ * The browser roster of a `sqh --profile`, read from its bundle patch files
+ * the way the launcher composes them: each bundle's `sqh.bundle.patch` file list is
  * parsed with the include plugin's YAML dialect (`entryListSchema`) and
  * composed by its `applyEntryPatches`; every enabled row whose package
- * declares `dsh.client.platform === 'web'` becomes a roster row carrying that
+ * declares `sqh.client.platform === 'web'` becomes a roster row carrying that
  * declaration's `inject` and `immediately`; rows nested in Loader groups count
  * like the Loader counts them, a disabled group disabling every row beneath
  * it. A patch that matches nothing
@@ -23,7 +23,7 @@ import { exactPackageSpecifier, parseDshClient } from '@liusiqi-dev/sqh-client-m
 import * as yaml from 'js-yaml'
 import { ClientRoster, type ClientRosterRow } from './roster.ts'
 
-/** The `web` profile's bundle layers, in the order `dsh --profile web` applies them (app-boot `PROFILE_TEMPLATES.web`). */
+/** The `web` profile's bundle layers, in the order `sqh --profile web` applies them (app-boot `PROFILE_TEMPLATES.web`). */
 export const WEB_PROFILE_BUNDLES: readonly string[] = ['@liusiqi-dev/sqh-base', '@liusiqi-dev/sqh-web-app']
 
 interface PackageManifest {

@@ -1,4 +1,4 @@
-/** DeepSeek Files API transport. @module dsh-llm-deepseek/files-api */
+/** DeepSeek Files API transport. @module sqh-llm-deepseek/files-api */
 
 import { attributionHeaders, LlmError } from '@liusiqi-dev/sqh-llm'
 import type { ImageMediaType } from '@liusiqi-dev/sqh-attachment'

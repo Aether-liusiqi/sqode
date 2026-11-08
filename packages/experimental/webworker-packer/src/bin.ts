@@ -3,7 +3,7 @@
  * Pack a Preview deployment from this repository: compose and lower the base
  * image, then write each named fixture overlay and their manifest.
  *
- * Usage: dsh-pack-vfs-image --out <file> [--profile web] [--root /dsh]
+ * Usage: sqh-pack-vfs-image --out <file> [--profile web] [--root /sqh]
  *        node --import tsx/esm src/bin.ts --out ../../apps/web/dist/preview/vfs-image.tar.gz
  * @module @liusiqi-dev/sqh-experimental-webworker-packer/src/bin
  */

@@ -1,5 +1,5 @@
 /**
- * Resolve the public SDK launch configuration to one dsh subprocess.
+ * Resolve the public SDK launch configuration to one sqh subprocess.
  * @module @liusiqi-dev/sqh-sdk-client/launch
  */
 
@@ -26,7 +26,7 @@ export interface RuntimeProcessOptions {
   disposeGraceMs?: number
 }
 
-/** Node argv plus internal profile patches required by one resolved dsh entry. */
+/** Node argv plus internal profile patches required by one resolved sqh entry. */
 export interface SqhNodeLaunch {
   /** Arguments before the profile selector. */
   nodeArgs: string[]
@@ -47,10 +47,10 @@ function manifest(url: string): PackageManifest {
 }
 
 /**
- * Resolve and version-check a dsh executable from package manifests.
- * @param sqhManifestUrl - resolved URL of the dsh package manifest.
+ * Resolve and version-check a sqh executable from package manifests.
+ * @param sqhManifestUrl - resolved URL of the sqh package manifest.
  * @param clientManifestUrl - resolved URL of the SDK client manifest.
- * @returns the absolute dsh executable path.
+ * @returns the absolute sqh executable path.
  */
 export function resolveDshBinFromManifests(sqhManifestUrl: string, clientManifestUrl: string): string {
   const sqhManifest = manifest(sqhManifestUrl)
@@ -58,8 +58,8 @@ export function resolveDshBinFromManifests(sqhManifestUrl: string, clientManifes
   if (typeof sqhManifest.version !== 'string' || sqhManifest.version !== clientManifest.version) {
     throw new Error(`dsh SDK client ${String(clientManifest.version)} requires the same dsh version, got ${String(sqhManifest.version)}`)
   }
-  // The package's command was renamed from dsh to sqode, and an object bin now
-  // carries the new key only. Reading the old key alone threw "declares no dsh
+  // The package's command was renamed from sqh to sqode, and an object bin now
+  // carries the new key only. Reading the old key alone threw "declares no sqh
   // executable" for every SDK replay, which read like a packaging fault rather
   // than a rename that this resolver had not followed.
   const bin = typeof sqhManifest.bin === 'object' && sqhManifest.bin !== null
@@ -72,7 +72,7 @@ export function resolveDshBinFromManifests(sqhManifestUrl: string, clientManifes
 }
 
 /**
- * Resolve and version-check the built dsh executable installed with this SDK.
+ * Resolve and version-check the built sqh executable installed with this SDK.
  * @returns the absolute built executable path, whether or not it exists in a source checkout.
  */
 export function installedDshBin(): string {
@@ -83,8 +83,8 @@ export function installedDshBin(): string {
 }
 
 /**
- * Resolve the Node launch for one same-version dsh package.
- * @param sqhManifestUrl - resolved URL of the dsh package manifest.
+ * Resolve the Node launch for one same-version sqh package.
+ * @param sqhManifestUrl - resolved URL of the sqh package manifest.
  * @param clientManifestUrl - resolved URL of the SDK client manifest.
  * @param sourceLoaderUrl - optional absolute tsx loader URL for deterministic tests.
  * @returns built output, or the source entry plus its compatibility patch and tsx environment.
@@ -115,7 +115,7 @@ export function resolveDshNodeLaunchFromManifests(
 }
 
 /**
- * Resolve the installed dsh package to a built or source Node launch.
+ * Resolve the installed sqh package to a built or source Node launch.
  * @returns the launch descriptor for the current checkout or installed package.
  */
 function installedDshNodeLaunch(): SqhNodeLaunch {
@@ -126,7 +126,7 @@ function installedDshNodeLaunch(): SqhNodeLaunch {
 }
 
 /**
- * Resolve caller-relative filesystem inputs and construct canonical dsh argv.
+ * Resolve caller-relative filesystem inputs and construct canonical sqh argv.
  * @param options - public SDK launch options.
  * @param callerCwd - parent-process directory used for lexical resolution.
  * @returns one generic subprocess spec for the JSON-RPC transport.

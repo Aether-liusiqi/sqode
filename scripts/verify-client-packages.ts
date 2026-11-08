@@ -24,7 +24,7 @@ export interface ClientDeclaration {
   readonly dynamic: boolean
   readonly external: readonly string[]
   readonly runtimeSourceUses: Readonly<Record<string, readonly string[]>>
-  /** Exact runtime specifiers used to validate `dsh.client.external` declarations. */
+  /** Exact runtime specifiers used to validate `sqh.client.external` declarations. */
   readonly runtimeSourceSpecifiers: Readonly<Record<string, readonly string[]>>
   /** Informational package dependencies declared by the row. */
   readonly inject: readonly string[]
@@ -177,7 +177,7 @@ function collectSourceFileUses(
 /**
  * Read browser-module declarations from workspace manifests.
  * @param root - Absolute repository root.
- * @returns Declarations and malformed dsh.client fields.
+ * @returns Declarations and malformed sqh.client fields.
  */
 export function readClientDeclarations(root: string): ClientDeclarations {
   const malformed: string[] = []
@@ -208,7 +208,7 @@ interface ManifestDocument {
 }
 
 /**
- * Repair malformed or redundant `dsh.client` declaration entries.
+ * Repair malformed or redundant `sqh.client` declaration entries.
  * @param root - Absolute repository root.
  * @param facts - Facts used by the verification pass.
  * @returns Repository-relative manifests written by the fixer.

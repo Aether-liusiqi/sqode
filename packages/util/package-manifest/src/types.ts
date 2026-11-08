@@ -37,7 +37,7 @@ export interface SqhPackageManifest {
 /**
  * Public author fields under `package.json.sqh`; a package may declare several roles.
  *
- * Two keys below used to be declared ad hoc at their readers — an `as { dsh?: ... }`
+ * Two keys below used to be declared ad hoc at their readers — an `as { sqh?: ... }`
  * cast in the packer and a local `interface` in the catalog generator. Naming them
  * here makes this type the single source, so a rename becomes something the compiler
  * can enforce instead of something a text search has to notice.

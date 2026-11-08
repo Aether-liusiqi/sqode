@@ -6,7 +6,7 @@
  * token meter through `LlmAdapter.imageRequestPricing`; provider usage
  * remains the authoritative anchor for completed requests.
  *
- * @module dsh-llm-deepseek/request-pricing
+ * @module sqh-llm-deepseek/request-pricing
  */
 
 import { offloadedImageText, requestImageHandleText, textOnlyImageText } from '@liusiqi-dev/sqh-llm'

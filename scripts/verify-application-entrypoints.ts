@@ -1,5 +1,5 @@
 /**
- * Enforce dsh profiles as the only supported Node application launcher.
+ * Enforce sqh profiles as the only supported Node application launcher.
  * Vendor CLIs, build tools, and test tools are explicit classifications
  * rather than implicit holes.
  */
@@ -49,7 +49,7 @@ const EXECUTABLE_SOURCE_ALLOWLIST = new Map<string, string>([
 ])
 
 /**
- * Root scripts that start an application must visibly select dsh: every `demo:*`
+ * Root scripts that start an application must visibly select sqh: every `demo:*`
  * script needs a row here, and the Web start and development scripts are pinned
  * by name.
  */

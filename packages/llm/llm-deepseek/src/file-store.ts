@@ -1,4 +1,4 @@
-/** DeepSeek Files API upload reuse, invalidation, and quota recovery. @module dsh-llm-deepseek/file-store */
+/** DeepSeek Files API upload reuse, invalidation, and quota recovery. @module sqh-llm-deepseek/file-store */
 
 import type { RequestImageAttachment } from '@liusiqi-dev/sqh-attachment'
 import { LlmError } from '@liusiqi-dev/sqh-llm'

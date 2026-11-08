@@ -8,7 +8,7 @@
  * and publish it with `MoveFileExW(..., MOVEFILE_WRITE_THROUGH)` without
  * replacement or cross-volume copy fallback.
  *
- * @module dsh-session-persistence-jsonl/win32
+ * @module sqh-session-persistence-jsonl/win32
  */
 
 import { createHash } from 'node:crypto'

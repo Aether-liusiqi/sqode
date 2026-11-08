@@ -28,7 +28,7 @@ import { scrubbedParentEnv } from '@liusiqi-dev/sqh-subprocess'
 
 /** Resolved spawn spec for an SDK runtime child process (no defaults — see Config). */
 export interface SdkRunSpec {
-  /** Explicit dsh CLI module; omission resolves the SDK client's same-version dependency. */
+  /** Explicit sqh CLI module; omission resolves the SDK client's same-version dependency. */
   sqhBin?: string
   /** Named child profile. */
   profile: string
