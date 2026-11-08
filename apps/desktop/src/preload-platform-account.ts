@@ -2,7 +2,7 @@
 import { contextBridge, ipcRenderer } from 'electron'
 import { PLATFORM_IPC, type PlatformLocale } from './platform-ipc.ts'
 
-const originArgument = '--dsh-platform-origin='
+const originArgument = '--sqh-platform-origin='
 const allowedOrigin = process.argv.find(argument => argument.startsWith(originArgument))?.slice(originArgument.length)
 if (process.isMainFrame && location.origin === allowedOrigin) {
   let token: string | undefined

@@ -137,7 +137,7 @@ export class DesktopPlatformView {
     })
     const view = new WebContentsView({ webPreferences: {
       session: browserSession, preload: this.preload, sandbox: true, contextIsolation: true,
-      additionalArguments: [`--dsh-platform-origin=${account.origin}`],
+      additionalArguments: [`--sqh-platform-origin=${account.origin}`],
       nodeIntegration: false, webSecurity: true,
     } })
     this.view = view

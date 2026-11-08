@@ -683,8 +683,8 @@ async function runScenario(scenario: CorpusScenario): Promise<{
 }
 
 /** Order logs parent-first, children by creation time (fixture layout order). */
-function orderLogs(logs: PersistedLog[], expectedCount: number, separateDshSdkChild: boolean): PersistedLog[] {
-  if (separateDshSdkChild) {
+function orderLogs(logs: PersistedLog[], expectedCount: number, separateSqhSdkChild: boolean): PersistedLog[] {
+  if (separateSqhSdkChild) {
     expect(logs).toHaveLength(expectedCount)
     return logs
   }

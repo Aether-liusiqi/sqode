@@ -56,9 +56,9 @@ export function ConversationContent(props: ConversationContentProps) {
     const scroller = seat?.parentElement ?? null
     if (seat === null || scroller === null) return
     seatObserver.current = new ResizeObserver(() => {
-      scroller.style.setProperty('--dsh-composer-height', `${seat.offsetHeight}px`)
+      scroller.style.setProperty('--sqh-composer-height', `${seat.offsetHeight}px`)
       scroller.style.setProperty(
-        '--dsh-conversation-viewport-height',
+        '--sqh-conversation-viewport-height',
         `${scroller.clientHeight}px`,
       )
     })

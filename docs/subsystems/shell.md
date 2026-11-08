@@ -8,7 +8,7 @@ Source: [`packages/shell/shell/src/types.ts`](../../packages/shell/shell/src/typ
 
 ## Managed shell environment namespace
 
-`SQH_*` variables are Harness-owned child-process facts. The model-facing bash tool collects them through `ctx.shellEnv` and passes them through `ShellExecRequest.sqhEnv`; the subprocess service removes inherited `SQH_*` names before merging the current snapshot. The `DshEnvironmentKey`/`DshEnvironment` vocabulary is owned by the [subprocess seam](subprocess.md) and re-exported by `sqh-shell`.
+`SQH_*` variables are Harness-owned child-process facts. The model-facing bash tool collects them through `ctx.shellEnv` and passes them through `ShellExecRequest.sqhEnv`; the subprocess service removes inherited `SQH_*` names before merging the current snapshot. The `SqhEnvironmentKey`/`SqhEnvironment` vocabulary is owned by the [subprocess seam](subprocess.md) and re-exported by `sqh-shell`.
 
 ## Request vs. spec: the `resolve()` split
 
@@ -61,7 +61,7 @@ interface ShellExecRequest {
    * value from the harness process and a caller {@link env} entry cannot
    * displace a managed one.
    */
-  sqhEnv?: DshEnvironment | undefined
+  sqhEnv?: SqhEnvironment | undefined
   /** Fully resolved per-call sandbox policy; sandboxing executors default it. */
   sandboxPolicy?: SandboxExecutionPolicy | undefined
 }
@@ -96,7 +96,7 @@ interface ShellExecSpec {
    */
   env?: Record<string, string> | undefined
   /** Managed `SQH_*` snapshot (typed to managed keys); merges after {@link env}. */
-  sqhEnv?: DshEnvironment | undefined
+  sqhEnv?: SqhEnvironment | undefined
   /** Resolved sandbox policy; ignored by executors that do not confine. */
   sandboxPolicy: SandboxExecutionPolicy | undefined
 }
@@ -299,7 +299,7 @@ register(contributor: BashEnvContributor): () => void
  * @param execution - the current tool execution.
  * @returns an immutable environment overlay containing built-ins and current contributions.
  */
-collect(execution: ToolExecution): DshEnvironment
+collect(execution: ToolExecution): SqhEnvironment
 
 /**
  * Enumerate plugin-contributed variables without executing their resolvers.
@@ -308,7 +308,7 @@ collect(execution: ToolExecution): DshEnvironment
 list(): BashEnvVariableInfo[]
 ```
 
-Types: [DshEnvironment](subprocess.md) · [ToolExecution](tools.md)
+Types: [SqhEnvironment](subprocess.md) · [ToolExecution](tools.md)
 
 Source: [`packages/shell/shell-env/src/index.ts`](../../packages/shell/shell-env/src/index.ts)
 <!-- END GENERATED cordis-surface -->

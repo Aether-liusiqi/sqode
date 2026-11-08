@@ -26,7 +26,7 @@ export const DARK_ATTRIBUTE = 'data-ds-dark-theme'
 export const THEME_SOURCE_ATTRIBUTE = 'data-ds-theme-source'
 
 /** Body variable carrying the user's content font size in px. */
-export const CONTENT_FONT_SIZE_VARIABLE = '--dsh-content-font-size'
+export const CONTENT_FONT_SIZE_VARIABLE = '--sqh-content-font-size'
 
 /** Applies theme snapshots to the document; one instance per plugin fiber. */
 export class ThemePresenter {

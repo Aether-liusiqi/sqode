@@ -8,7 +8,7 @@ shell 执行 seam 由 [sqh-shell](../../packages/shell/shell) 在 `ctx.shell` �
 
 ## 受管 shell 环境命名空间
 
-`SQH_*` 变量是归 Harness 所有的子进程事实。面向模型的 bash 工具通过 `ctx.shellEnv` 收集它们，再经由 `ShellExecRequest.sqhEnv` 传递；子进程服务在合并当前快照之前会移除继承而来的 `SQH_*` 名称。`DshEnvironmentKey`／`DshEnvironment` 词汇归[子进程 seam](subprocess.zh.md)所有，由 `sqh-shell` 重导出。
+`SQH_*` 变量是归 Harness 所有的子进程事实。面向模型的 bash 工具通过 `ctx.shellEnv` 收集它们，再经由 `ShellExecRequest.sqhEnv` 传递；子进程服务在合并当前快照之前会移除继承而来的 `SQH_*` 名称。`SqhEnvironmentKey`／`SqhEnvironment` 词汇归[子进程 seam](subprocess.zh.md)所有，由 `sqh-shell` 重导出。
 
 ## 请求与规格：`resolve()` 拆分
 
@@ -61,7 +61,7 @@ interface ShellExecRequest {
    * value from the harness process and a caller {@link env} entry cannot
    * displace a managed one.
    */
-  sqhEnv?: DshEnvironment | undefined
+  sqhEnv?: SqhEnvironment | undefined
   /** Fully resolved per-call sandbox policy; sandboxing executors default it. */
   sandboxPolicy?: SandboxExecutionPolicy | undefined
 }
@@ -96,7 +96,7 @@ interface ShellExecSpec {
    */
   env?: Record<string, string> | undefined
   /** Managed `SQH_*` snapshot (typed to managed keys); merges after {@link env}. */
-  sqhEnv?: DshEnvironment | undefined
+  sqhEnv?: SqhEnvironment | undefined
   /** Resolved sandbox policy; ignored by executors that do not confine. */
   sandboxPolicy: SandboxExecutionPolicy | undefined
 }
@@ -299,7 +299,7 @@ register(contributor: BashEnvContributor): () => void
  * @param execution - the current tool execution.
  * @returns an immutable environment overlay containing built-ins and current contributions.
  */
-collect(execution: ToolExecution): DshEnvironment
+collect(execution: ToolExecution): SqhEnvironment
 
 /**
  * Enumerate plugin-contributed variables without executing their resolvers.
@@ -308,7 +308,7 @@ collect(execution: ToolExecution): DshEnvironment
 list(): BashEnvVariableInfo[]
 ```
 
-Types: [DshEnvironment](subprocess.zh.md) · [ToolExecution](tools.zh.md)
+Types: [SqhEnvironment](subprocess.zh.md) · [ToolExecution](tools.zh.md)
 
 Source: [`packages/shell/shell-env/src/index.ts`](../../packages/shell/shell-env/src/index.ts)
 <!-- END GENERATED cordis-surface -->

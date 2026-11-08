@@ -13,13 +13,13 @@
   overflow: hidden;
   /* Elevated surface: the scrollbar thumb takes the l2 elevation tokens
      (see ui-theme styles/scrollbar.css for the rebinding contract). */
-  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);
-  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);
+  --sqh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);
+  --sqh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);
   /* A 6px draggable rail carries a quiet 2px thumb, inset from the card's
      rounded ends. ui-theme's global scrollbar sheet renders these values. */
-  --dsh-scrollbar-width: 6px;
-  --dsh-scrollbar-thumb-border: 2px;
-  --dsh-scrollbar-track-margin: 12px;
+  --sqh-scrollbar-width: 6px;
+  --sqh-scrollbar-thumb-border: 2px;
+  --sqh-scrollbar-track-margin: 12px;
   padding: 4px;
   display: flex;
   flex-direction: column;

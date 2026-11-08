@@ -16,12 +16,12 @@ One provider's spawn working directories, executable paths, ordinary processes, 
 
 ```ts type-equiv
 /** One environment key inside the managed {@link SQODE_ENV_PREFIX} namespace. */
-type DshEnvironmentKey = `${typeof SQODE_ENV_PREFIX}${string}`
+type SqhEnvironmentKey = `${typeof SQODE_ENV_PREFIX}${string}`
 ```
 
 ```ts type-equiv
 /** Trusted Sqode variables for one child-process execution. */
-type DshEnvironment = Readonly<Record<DshEnvironmentKey, string>>
+type SqhEnvironment = Readonly<Record<SqhEnvironmentKey, string>>
 ```
 
 ```ts type-equiv

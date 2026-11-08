@@ -9,7 +9,7 @@
   z-index: 7;
   height: 0;
   /* Query the transcript's usable width while keeping the rail full-bleed. */
-  padding-inline: calc(var(--dsh-composer-side-clearance) + 16px);
+  padding-inline: calc(var(--sqh-composer-side-clearance) + 16px);
   container-type: inline-size;
   pointer-events: none;
 }
@@ -24,7 +24,7 @@
      the scrollport; the fallbacks carry the first paint before its observer
      fires. */
   --turn-rail-band: calc(
-    var(--dsh-conversation-viewport-height, 100dvh) - var(--dsh-composer-height, 152px)
+    var(--sqh-conversation-viewport-height, 100dvh) - var(--sqh-composer-height, 152px)
   );
   --turn-preview-height: 100px;
 
