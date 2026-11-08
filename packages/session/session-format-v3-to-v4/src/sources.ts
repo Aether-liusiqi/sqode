@@ -54,6 +54,8 @@ const RELEASED_SAME_NAME_PRODUCERS: ReadonlySet<string> = new Set([
   'repeat-tool-reminder', 'tool-cordis', 'cordis-host-runner', 'tool-goal',
   'tool-jobs', 'hooks-codex', 'hooks-claude-code', 'schedule',
   'sqh-session-title-llm', 'dsh-session-title-llm',
+  // Written by build 112, which lost the separator in this very name.
+  'sqhsession-title-llm',
 ])
 
 /**

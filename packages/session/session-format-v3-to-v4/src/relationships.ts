@@ -6,7 +6,11 @@ import type { SessionFormatArtifact, SessionFormatEvent, SessionFormatJsonObject
 
 
 /** Titles were produced under either codename while the rename was in flight. */
-const TITLE_KINDS: readonly string[] = ['sqh-session-title-llm', 'dsh-session-title-llm']
+const TITLE_KINDS: readonly string[] = [
+  'sqh-session-title-llm', 'dsh-session-title-llm',
+  // Written by build 112, which lost the separator in this very name.
+  'sqhsession-title-llm',
+]
 const SURFACE_TYPES = new Set(['system/message', 'user/message', 'developer/message', 'assistant/message', 'tool/result'])
 const STEP_EVENT_TYPES = new Set(['system/message', 'developer/message', 'assistant/attempt'])
 const RELATIONSHIP_TYPES = new Set([

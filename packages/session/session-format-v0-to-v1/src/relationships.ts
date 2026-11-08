@@ -6,7 +6,11 @@ import { RELEASED_V0_EVENT_DISPOSITIONS } from './dispositions.ts'
 
 
 /** Titles were produced under either codename while the rename was in flight. */
-const TITLE_PRODUCERS: readonly string[] = ['sqh-session-title-llm', 'dsh-session-title-llm']
+const TITLE_PRODUCERS: readonly string[] = [
+  'sqh-session-title-llm', 'dsh-session-title-llm',
+  // Written by build 112, which lost the separator in this very name.
+  'sqhsession-title-llm',
+]
 const SURFACE_TYPES = new Set(['user/message', 'assistant/message', 'tool/result'])
 
 interface CompactionState {
