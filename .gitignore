@@ -49,3 +49,6 @@ native/system/test/bin/
 
 # IDE safe-delete shim scratch files
 _tmp_*
+
+.sqh-sdk-client-*/
+.rendered-model-*/
