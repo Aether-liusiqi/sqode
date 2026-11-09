@@ -321,7 +321,7 @@ describe('translation scope discovery', () => {
     'docs/guide.md',
     'python/guide.md',
     'python/sdk-runtime/README.md',
-    'python/sdk-runtime/src/deepseek_harness_runtime/README.md',
+    'python/sdk-runtime/src/sqh_runtime/README.md',
   ])('includes %s', (file) => {
     expect(isTranslationScopeFile(file)).toBe(true)
   })
@@ -337,9 +337,9 @@ describe('translation scope discovery', () => {
     'packages/example/node_modules/dependency/README.md',
     'packages/example/lib/README.md',
     'coverage/report/README.md',
-    'python/sdk-runtime/src/deepseek_harness_runtime/runtime/siqi-harness-sdk-runtime-macos-arm64/README.md',
-    'python/sdk-runtime/src/deepseek_harness_runtime/runtime/node/README.md',
-    'python/sdk-runtime/src/deepseek_harness_runtime/runtime/macos-arm64/office-skills/office-docx/SKILL.md',
+    'python/sdk-runtime/src/sqh_runtime/runtime/sqh-sdk-runtime-macos-arm64/README.md',
+    'python/sdk-runtime/src/sqh_runtime/runtime/node/README.md',
+    'python/sdk-runtime/src/sqh_runtime/runtime/macos-arm64/office-skills/office-docx/SKILL.md',
   ])('excludes non-source or non-README path %s', (file) => {
     expect(isTranslationScopeFile(file)).toBe(false)
   })

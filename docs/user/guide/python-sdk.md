@@ -26,7 +26,7 @@ git clone https://github.com/deepseek-ai/deepseek-harness.git
 cd siqi-harness
 python -m venv .venv
 . .venv/bin/activate
-python -m pip install siqi-harness-sdk
+python -m pip install sqh-sdk
 ```
 
 ```powershell [Windows PowerShell]
@@ -34,7 +34,7 @@ git clone https://github.com/deepseek-ai/deepseek-harness.git
 Set-Location siqi-harness
 py -3.10 -m venv .venv
 .venv\Scripts\Activate.ps1
-python -m pip install siqi-harness-sdk
+python -m pip install sqh-sdk
 ```
 
 :::
@@ -98,7 +98,7 @@ The script prints the final assistant response. The selected home receives the g
 ```python
 from pathlib import Path
 
-from deepseek_harness import DeepSeekHarness
+from sqh_sdk import DeepSeekHarness
 
 workspace = Path("/absolute/path/to/disposable-workspace").resolve()
 dsh_home = Path("/absolute/path/to/example-sqh-home").resolve()

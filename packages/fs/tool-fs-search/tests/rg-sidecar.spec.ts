@@ -48,9 +48,9 @@ describe('ripgrep resolution', () => {
   it('uses a conventional executable name for the Windows ripgrep sidecar', async () => {
     Reflect.defineProperty(process, 'pkg', { configurable: true, value: {} })
     Reflect.defineProperty(process, 'platform', { configurable: true, enumerable: true, value: 'win32' })
-    process.execPath = 'C:\\runtime\\siqi-harness-sdk-runtime-win-x64.exe'
+    process.execPath = 'C:\\runtime\\sqh-sdk-runtime-win-x64.exe'
     existsSync.mockReturnValue(true)
-    const sidecar = 'C:\\runtime\\siqi-harness-sdk-runtime-win-x64-rg.exe'
+    const sidecar = 'C:\\runtime\\sqh-sdk-runtime-win-x64-rg.exe'
     const { resolveRgPath } = await import('@liusiqi-dev/sqh-tool-fs-search')
 
     await expect(resolveRgPath()).resolves.toBe(sidecar)

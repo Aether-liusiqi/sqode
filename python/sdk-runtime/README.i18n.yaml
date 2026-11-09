@@ -2,18 +2,18 @@
 # section, a hash of its English and Chinese blocks outside code blocks and generated regions.
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write python/sdk-runtime/README.md
-/siqi-harness-runtime-bin:
-  en: f8747d3b2c708dae
-  zh: 744eb5a274bd9320
-/siqi-harness-runtime-bin/installed-commands-and-artifacts:
-  en: 407c066d2c83945f
-  zh: 698b721367bb431d
-/siqi-harness-runtime-bin/python-module-api:
+/sqh-runtime-bin:
+  en: bb30aa1712f343a3
+  zh: f083e787a0708e89
+/sqh-runtime-bin/installed-commands-and-artifacts:
+  en: 9203bda82b0754f2
+  zh: 2aaf97c3ff5bd561
+/sqh-runtime-bin/python-module-api:
   en: b57f683db1f2d630
   zh: ca2fb2360bf97a1f
-/siqi-harness-runtime-bin/packaged-profile-resolution:
+/sqh-runtime-bin/packaged-profile-resolution:
   en: 574fb854015ec775
   zh: b19678382733a983
-/siqi-harness-runtime-bin/build-and-distribution:
-  en: c917fd715956e47d
-  zh: 8ba650e2fe4330af
+/sqh-runtime-bin/build-and-distribution:
+  en: 0af9edac6e95b8ad
+  zh: 33f856917a8b2a31

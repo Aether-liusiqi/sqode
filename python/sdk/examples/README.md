@@ -6,7 +6,7 @@ Runnable Python SDK example over the sole application launcher, `sqh --profile s
 
 ## Run the minimal agent
 
-Install `siqi-harness-sdk`, export a model credential, then supply an isolated Harness home and workspace:
+Install `sqh-sdk`, export a model credential, then supply an isolated Harness home and workspace:
 
 ```sh
 export DEEPSEEK_API_KEY=sk-your-key-here

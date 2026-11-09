@@ -96,7 +96,7 @@ const OVERRIDES: Record<string, { license?: string; repo?: string }> = {
  * manifests and the shared runtime lock reject names absent from this map.
  */
 const PYTHON_METADATA: Record<string, { license: string; repo: string; role?: string }> = {
-  pydantic: { license: 'MIT', repo: 'https://github.com/pydantic/pydantic', role: 'runtime dependency of `siqi-harness-sdk`' },
+  pydantic: { license: 'MIT', repo: 'https://github.com/pydantic/pydantic', role: 'runtime dependency of `sqh-sdk`' },
   hatchling: { license: 'MIT', repo: 'https://github.com/pypa/hatch', role: 'build backend' },
   'et-xmlfile': { license: 'MIT', repo: 'https://foss.heptapod.net/openpyxl/et_xmlfile' },
   lxml: { license: 'BSD-3-Clause', repo: 'https://github.com/lxml/lxml' },

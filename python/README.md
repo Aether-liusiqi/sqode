@@ -8,8 +8,8 @@ Python packages for driving Sqode as a subprocess. The client SDK communicates w
 
 | Directory | Dist / module | Role |
 |---|---|---|
-| [sdk](sdk/README.md) | `siqi-harness-sdk` / `deepseek_harness` | High-level turns API and lower-level JSON-RPC client |
-| [sdk-runtime](sdk-runtime/README.md) | `siqi-harness-runtime-bin` / `deepseek_harness_runtime` | Bundled `sqh` CLI executable and native sidecars |
+| [sdk](sdk/README.md) | `sqh-sdk` / `sqh_sdk` | High-level turns API and lower-level JSON-RPC client |
+| [sdk-runtime](sdk-runtime/README.md) | `sqh-runtime-bin` / `sqh_runtime` | Bundled `sqh` CLI executable and native sidecars |
 
 ## Behavior
 

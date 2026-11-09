@@ -25,7 +25,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Callable
 
 if TYPE_CHECKING:
-    from deepseek_harness import RunResult
+    from sqh_sdk import RunResult
 
 
 EXPECTED_TEXT = "runtime smoke ok"
@@ -870,9 +870,9 @@ def main() -> None:
 
 def smoke_sdk_authoring(base_url: str, executable: Path, update_snapshots: bool) -> None:
     """Query the bundled Python and switch skills without replacing that environment."""
-    from deepseek_harness import DeepSeekHarness
+    from sqh_sdk import DeepSeekHarness
 
-    resources = executable.with_name(executable.name.removeprefix("siqi-harness-sdk-runtime-").removesuffix(".exe"))
+    resources = executable.with_name(executable.name.removeprefix("sqh-sdk-runtime-").removesuffix(".exe"))
     manifest = json.loads((resources / "primary-runtime/runtime.json").read_text())
     for mode in ("default", "replacement", "disabled"):
         with tempfile.TemporaryDirectory(prefix="dsh-sdk-authoring-") as temporary:
@@ -931,13 +931,13 @@ def smoke_sdk_authoring(base_url: str, executable: Path, update_snapshots: bool)
 
 def smoke_sdk_office(executable: Path) -> None:
     """Relocate the wheel payload and convert a real DOCX with the target platform engine."""
-    from deepseek_harness import DeepSeekHarness
+    from sqh_sdk import DeepSeekHarness
 
     with tempfile.TemporaryDirectory(prefix="dsh-sdk-office-") as temporary:
         root = Path(temporary).resolve()
         relocated = root / executable.name
         stem = executable.name.removesuffix(".exe")
-        resources = executable.with_name(stem.removeprefix("siqi-harness-sdk-runtime-"))
+        resources = executable.with_name(stem.removeprefix("sqh-sdk-runtime-"))
         for source in [*executable.parent.glob(f"{stem}*"), resources]:
             destination = root / source.name
             if source.is_dir():
@@ -946,7 +946,7 @@ def smoke_sdk_office(executable: Path) -> None:
                 shutil.copy2(source, destination)
         office = root / f"{stem}-office"
         adapter = office / "node_modules/@deepseek-ai/libreoffice-kit/package.json"
-        native = stem.removeprefix("siqi-harness-sdk-runtime-").replace("win-", "win32-").replace("macos-", "darwin-")
+        native = stem.removeprefix("sqh-sdk-runtime-").replace("win-", "win32-").replace("macos-", "darwin-")
         declared = json.loads(adapter.read_text(encoding="utf-8")).get("optionalDependencies", {})
         selected = native if f"@deepseek-ai/libreoffice-kit-{native}" in declared else "wasm"
         expected_backend = "wasm" if selected == "wasm" else "native"
@@ -1014,14 +1014,14 @@ def assert_installed_wheel_environment() -> Path:
     if cwd.is_relative_to(repo_root):
         raise AssertionError(f"installed-wheel smoke must run outside the repository, got {cwd}")
 
-    sdk_version = importlib.metadata.version("siqi-harness-sdk")
-    runtime_version = importlib.metadata.version("siqi-harness-runtime-bin")
+    sdk_version = importlib.metadata.version("sqh-sdk")
+    runtime_version = importlib.metadata.version("sqh-runtime-bin")
     if sdk_version != runtime_version:
         raise AssertionError(
             f"installed SDK/runtime versions differ: {sdk_version} != {runtime_version}"
         )
-    expected_runtime_requirement = f"siqi-harness-runtime-bin=={sdk_version}"
-    requirements = importlib.metadata.requires("siqi-harness-sdk") or []
+    expected_runtime_requirement = f"sqh-runtime-bin=={sdk_version}"
+    requirements = importlib.metadata.requires("sqh-sdk") or []
     if expected_runtime_requirement not in requirements:
         raise AssertionError(
             f"installed SDK does not require {expected_runtime_requirement}: {requirements}"
@@ -1029,7 +1029,7 @@ def assert_installed_wheel_environment() -> Path:
 
     prefix = Path(sys.prefix).resolve()
     imported: dict[str, Path] = {}
-    for name in ("deepseek_harness", "deepseek_harness_runtime"):
+    for name in ("sqh_sdk", "sqh_runtime"):
         module = importlib.import_module(name)
         module_file = getattr(module, "__file__", None)
         if not isinstance(module_file, str):
@@ -1041,12 +1041,12 @@ def assert_installed_wheel_environment() -> Path:
             raise AssertionError(f"installed module {name} came from the repository checkout: {path}")
         imported[name] = path
 
-    runtime_module = sys.modules["deepseek_harness_runtime"]
+    runtime_module = sys.modules["sqh_runtime"]
     executable = runtime_module.bundled_runtime_path().resolve()
-    runtime_package = imported["deepseek_harness_runtime"].parent
+    runtime_package = imported["sqh_runtime"].parent
     if not executable.is_relative_to(runtime_package):
         raise AssertionError(f"bundled runtime came from outside the installed runtime wheel: {executable}")
-    runtime_files = importlib.metadata.files("siqi-harness-runtime-bin") or []
+    runtime_files = importlib.metadata.files("sqh-runtime-bin") or []
     if not any(Path(file).name == executable.name for file in runtime_files):
         raise AssertionError(f"runtime executable is absent from installed distribution records: {executable}")
     return executable
@@ -1054,7 +1054,7 @@ def assert_installed_wheel_environment() -> Path:
 
 def smoke_sdk_live() -> None:
     """Run a real-model, tool-using two-turn task through installed wheels."""
-    from deepseek_harness import DeepSeekHarness
+    from sqh_sdk import DeepSeekHarness
 
     api_key = os.environ.get("DEEPSEEK_API_KEY")
     base_url = os.environ.get("DEEPSEEK_BASE_URL")
@@ -1167,7 +1167,7 @@ def safe_turn_end(value: object) -> object:
 
 
 def smoke_sdk_default(base_url: str) -> None:
-    from deepseek_harness import DeepSeekHarness
+    from sqh_sdk import DeepSeekHarness
 
     with tempfile.TemporaryDirectory(prefix="dsh-sdk-default-") as temporary:
         root = Path(temporary).resolve()
@@ -1196,7 +1196,7 @@ def smoke_sdk_default(base_url: str) -> None:
 
 
 def smoke_sdk_custom(base_url: str, executable: Path) -> None:
-    from deepseek_harness import DeepSeekHarness
+    from sqh_sdk import DeepSeekHarness
 
     with tempfile.TemporaryDirectory(prefix="dsh-sdk-custom-") as temporary:
         root = Path(temporary).resolve()
@@ -1231,7 +1231,7 @@ def smoke_sdk_minimal(
     base_url: str, executable: Path, update_snapshots: bool, *, in_history: bool = False,
 ) -> None:
     """Exercise the shipped standalone minimal profile through the packaged executable."""
-    from deepseek_harness import DeepSeekHarness
+    from sqh_sdk import DeepSeekHarness
 
     # One mock model serves every scenario of a run, so the snapshot takes this turn's slice.
     first_request = len(MockModelHandler.requests)
@@ -1287,7 +1287,7 @@ def smoke_sdk_minimal(
 
 def smoke_sdk_dynamic_tools(base_url: str, executable: Path, update_snapshots: bool) -> None:
     """Observe native tool changes through the shipped SDK profile and its durable log."""
-    from deepseek_harness import DeepSeekHarness
+    from sqh_sdk import DeepSeekHarness
 
     first_request = len(MockModelHandler.requests)
     with tempfile.TemporaryDirectory(prefix="dsh-sdk-dynamic-tools-") as temporary:
@@ -1329,7 +1329,7 @@ def smoke_sdk_dynamic_tools(base_url: str, executable: Path, update_snapshots: b
 
 def smoke_sdk_fs_search(base_url: str, executable: Path) -> None:
     """Exercise real grep and glob spawns through the packaged executable."""
-    from deepseek_harness import DeepSeekHarness
+    from sqh_sdk import DeepSeekHarness
 
     with tempfile.TemporaryDirectory(prefix="dsh-sdk-fs-search-") as temporary:
         root = Path(temporary).resolve()
@@ -1363,7 +1363,7 @@ def smoke_sdk_fs_search(base_url: str, executable: Path) -> None:
 
 def smoke_sdk_spawn_node(base_url: str, executable: Path) -> None:
     """A shell command starting with `node` must reach the machine's Node, not the executable."""
-    from deepseek_harness import DeepSeekHarness
+    from sqh_sdk import DeepSeekHarness
 
     with tempfile.TemporaryDirectory(prefix="dsh-sdk-spawn-node-") as temporary:
         root = Path(temporary).resolve()
@@ -1393,7 +1393,7 @@ def smoke_sdk_spawn_node(base_url: str, executable: Path) -> None:
 
 def smoke_sdk_mcp(base_url: str, executable: Path | None) -> None:
     """Discover and call an external stdio MCP tool through the packaged client."""
-    from deepseek_harness import DeepSeekHarness
+    from sqh_sdk import DeepSeekHarness
 
     with tempfile.TemporaryDirectory(prefix="dsh-sdk-mcp-") as temporary:
         root = Path(temporary).resolve()
@@ -1433,7 +1433,7 @@ def smoke_sdk_mcp(base_url: str, executable: Path | None) -> None:
 
 def smoke_sdk_profile_plugin(base_url: str) -> None:
     """Install an external bundle through Python's dsh command and load it in the SDK."""
-    from deepseek_harness import DeepSeekHarness
+    from sqh_sdk import DeepSeekHarness
 
     with tempfile.TemporaryDirectory(prefix="dsh-sdk-profile-plugin-") as temporary:
         root = Path(temporary).resolve()
@@ -1515,7 +1515,7 @@ def smoke_sdk_profile_plugin(base_url: str) -> None:
 
 def smoke_sdk_snapshot(base_url: str, executable: Path, update_snapshots: bool) -> None:
     """Drive and compare the advanced SDK/executable behavioral snapshot."""
-    from deepseek_harness import DeepSeekHarness
+    from sqh_sdk import DeepSeekHarness
 
     with tempfile.TemporaryDirectory(prefix="dsh-sdk-snapshot-") as temporary:
         root = Path(temporary).resolve()
@@ -1614,7 +1614,7 @@ def smoke_sdk_snapshot(base_url: str, executable: Path, update_snapshots: bool) 
 
 def smoke_sdk_restart_snapshot(base_url: str, executable: Path, update_snapshots: bool) -> None:
     """Snapshot two isolated sessions across complete SDK runtime restarts."""
-    from deepseek_harness import DeepSeekHarness
+    from sqh_sdk import DeepSeekHarness
 
     with tempfile.TemporaryDirectory(prefix="dsh-sdk-restart-") as temporary:
         root = Path(temporary).resolve()
@@ -1681,7 +1681,7 @@ def smoke_sdk_restart_snapshot(base_url: str, executable: Path, update_snapshots
 
 def smoke_sdk_scheduler_recovery(base_url: str, executable: Path, update_snapshots: bool) -> None:
     """Keep a failed tool turn usable through the real Messages serializer and SDK."""
-    from deepseek_harness import DeepSeekHarness
+    from sqh_sdk import DeepSeekHarness
 
     first_request = len(MockModelHandler.requests)
     with tempfile.TemporaryDirectory(prefix="dsh-sdk-scheduler-recovery-") as temporary:

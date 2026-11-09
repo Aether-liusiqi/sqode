@@ -3,7 +3,7 @@ requires = ["hatchling==1.30.1"]
 build-backend = "hatchling.build"
 
 [project]
-name = "siqi-harness-runtime-bin"
+name = "sqh-runtime-bin"
 version = "0.0.0.dev0"
 description = "Bundled dsh CLI runtime for the Sqode Python SDK"
 readme = "README.md"
@@ -18,21 +18,21 @@ Issues = "https://github.com/deepseek-ai/deepseek-harness/issues"
 Source = "https://github.com/deepseek-ai/deepseek-harness"
 
 [project.scripts]
-dsh = "deepseek_harness_runtime:main"
+dsh = "sqh_runtime:main"
 
 # Include the injected dsh executable and sidecars; exclude the dev-only node closure.
 [tool.hatch.build]
 artifacts = [
-  "src/deepseek_harness_runtime/runtime/siqi-harness-sdk-runtime-*",
-  "src/deepseek_harness_runtime/runtime/siqi-harness-sdk-runtime-*/**",
-  "src/deepseek_harness_runtime/runtime/linux-*/**",
-  "src/deepseek_harness_runtime/runtime/macos-*/**",
-  "src/deepseek_harness_runtime/runtime/win-*/**",
+  "src/sqh_runtime/runtime/sqh-sdk-runtime-*",
+  "src/sqh_runtime/runtime/sqh-sdk-runtime-*/**",
+  "src/sqh_runtime/runtime/linux-*/**",
+  "src/sqh_runtime/runtime/macos-*/**",
+  "src/sqh_runtime/runtime/win-*/**",
 ]
-exclude = ["src/deepseek_harness_runtime/runtime/node"]
+exclude = ["src/sqh_runtime/runtime/node"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/deepseek_harness_runtime"]
+packages = ["src/sqh_runtime"]
 
 [tool.hatch.build.targets.wheel.hooks.custom]
 

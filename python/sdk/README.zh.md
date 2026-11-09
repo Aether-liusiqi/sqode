@@ -2,10 +2,10 @@
 
 [English](README.md) | 中文
 
-用于通过 stdio 上按行分隔的 JSON-RPC 驱动 Sqode 的 Python 子进程 SDK。安装 `siqi-harness-sdk` 时，会同时安装当前平台上版本完全相同的 `siqi-harness-runtime-bin` wheel 包。
+用于通过 stdio 上按行分隔的 JSON-RPC 驱动 Sqode 的 Python 子进程 SDK。安装 `sqh-sdk` 时，会同时安装当前平台上版本完全相同的 `sqh-runtime-bin` wheel 包。
 
 ```sh
-python -m pip install siqi-harness-sdk
+python -m pip install sqh-sdk
 ```
 
 ## 启动运行时
@@ -15,7 +15,7 @@ Python SDK 没有独立的应用入口。它以 `--profile sdk` 启动内置的 
 每次启动都必须显式指定 Harness home。请传入 `dsh_home`，或在子进程环境中提供非空的 `SQODE_HOME`。SDK 刻意不会发现 `~/.sqode`。
 
 ```py
-from deepseek_harness import DeepSeekHarness
+from sqh_sdk import DeepSeekHarness
 
 with DeepSeekHarness(
     dsh_home="/absolute/path/to/isolated-sqh-home",

@@ -7,7 +7,7 @@ import argparse
 import os
 from pathlib import Path
 
-from deepseek_harness import DeepSeekHarness
+from sqh_sdk import DeepSeekHarness
 
 
 def main() -> None:

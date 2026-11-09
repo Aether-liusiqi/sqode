@@ -2,10 +2,10 @@
 
 English | [中文](README.zh.md)
 
-Python subprocess SDK for driving Sqode over newline-delimited JSON-RPC on stdio. Install `siqi-harness-sdk`; it installs the exact same-version `siqi-harness-runtime-bin` wheel for the current platform.
+Python subprocess SDK for driving Sqode over newline-delimited JSON-RPC on stdio. Install `sqh-sdk`; it installs the exact same-version `sqh-runtime-bin` wheel for the current platform.
 
 ```sh
-python -m pip install siqi-harness-sdk
+python -m pip install sqh-sdk
 ```
 
 ## Start a runtime
@@ -15,7 +15,7 @@ The Python SDK has no separate application entrypoint. It launches the bundled `
 Every launch requires an explicit Harness home. Pass `dsh_home` or provide a non-empty `SQODE_HOME` in the child environment. The SDK deliberately never discovers `~/.sqode`.
 
 ```py
-from deepseek_harness import DeepSeekHarness
+from sqh_sdk import DeepSeekHarness
 
 with DeepSeekHarness(
     dsh_home="/absolute/path/to/isolated-sqh-home",

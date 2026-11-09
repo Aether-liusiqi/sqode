@@ -9,8 +9,8 @@ from pathlib import Path
 
 import pytest
 
-from deepseek_harness import DeepSeekHarness, HarnessClient, HarnessConfig, Notification, RunResult, SdkProtocolError
-from deepseek_harness.errors import JsonRpcError
+from sqh_sdk import DeepSeekHarness, HarnessClient, HarnessConfig, Notification, RunResult, SdkProtocolError
+from sqh_sdk.errors import JsonRpcError
 
 
 def test_high_level_sdk_runs_turn_and_preserves_auto_review_errors(tmp_path: Path) -> None:
@@ -950,7 +950,7 @@ for line in sys.stdin:
 
 
 def test_public_signatures_omit_unsupported_wire_parameters() -> None:
-    from deepseek_harness import DeepSeekHarnessConfig, Session
+    from sqh_sdk import DeepSeekHarnessConfig, Session
 
     assert "session_root" not in inspect.signature(HarnessClient.initialize).parameters
     assert "system_prompt" not in inspect.signature(HarnessClient.initialize).parameters
@@ -1096,7 +1096,7 @@ for line in sys.stdin:
 """.strip()
     )
 
-    module_dir = tmp_path / "deepseek_harness_runtime"
+    module_dir = tmp_path / "sqh_runtime"
     module_dir.mkdir()
     (module_dir / "__init__.py").write_text(
         f"""
@@ -1106,7 +1106,7 @@ def resolve_bundled_launch_args(mode=None):
     )
 
     monkeypatch.syspath_prepend(str(tmp_path))
-    monkeypatch.delitem(sys.modules, "deepseek_harness_runtime", raising=False)
+    monkeypatch.delitem(sys.modules, "sqh_runtime", raising=False)
 
 
 def test_client_default_launch_uses_bundled_dsh_sdk_profile_and_explicit_home(
@@ -1167,8 +1167,8 @@ def test_client_rejects_an_implicit_default_dsh_home(
 
 
 def test_client_reports_missing_bundled_runtime_dependency(monkeypatch: pytest.MonkeyPatch) -> None:
-    monkeypatch.delitem(sys.modules, "deepseek_harness_runtime", raising=False)
+    monkeypatch.delitem(sys.modules, "sqh_runtime", raising=False)
     monkeypatch.setattr(sys, "path", [])
 
-    with pytest.raises(FileNotFoundError, match="Install siqi-harness-runtime-bin"):
+    with pytest.raises(FileNotFoundError, match="Install sqh-runtime-bin"):
         HarnessClient(HarnessConfig(dsh_home="/explicit/home")).start()

@@ -167,7 +167,7 @@ export class HarnessSdkJsonRpcServer {
     this.reasoningEffort = reasoningEffort
     this.maxTokens = params.maxTokens
     this.initialized = true
-    return { serverInfo: { name: 'siqi-harness-sdk-runtime', version: '0.0.1' } }
+    return { serverInfo: { name: 'sqh-sdk-runtime', version: '0.0.1' } }
   }
 
   /**

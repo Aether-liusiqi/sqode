@@ -139,7 +139,7 @@ describe('Python SDK sqh profile keyless smoke', () => {
       expect(initialized).toMatchObject({
         jsonrpc: '2.0',
         id: 1,
-        result: { serverInfo: { name: 'siqi-harness-sdk-runtime' } },
+        result: { serverInfo: { name: 'sqh-sdk-runtime' } },
       })
 
       child.stdin.write(`${JSON.stringify({

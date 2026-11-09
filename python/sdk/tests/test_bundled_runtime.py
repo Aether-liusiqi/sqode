@@ -11,9 +11,9 @@ from pathlib import Path
 
 import pytest
 
-from deepseek_harness import DeepSeekHarness, HarnessClient, HarnessConfig
-from deepseek_harness.errors import JsonRpcError, TransportClosedError
-from deepseek_harness_runtime import RUNTIME_MODE_ENV_VAR, resolve_bundled_launch_args
+from sqh_sdk import DeepSeekHarness, HarnessClient, HarnessConfig
+from sqh_sdk.errors import JsonRpcError, TransportClosedError
+from sqh_runtime import RUNTIME_MODE_ENV_VAR, resolve_bundled_launch_args
 
 _MODES = ("exe", "node")
 
@@ -53,7 +53,7 @@ def test_bundled_runtime_boots_the_sdk_profile(
         init = client.initialize(provider="deepseek-official", cwd=str(tmp_path), model="deepseek-v4-pro")
 
     assert init.serverInfo is not None
-    assert init.serverInfo.name == "siqi-harness-sdk-runtime"
+    assert init.serverInfo.name == "sqh-sdk-runtime"
     profile = json.loads((tmp_path / "home" / "profiles" / "sdk" / "package.json").read_text())
     assert profile["dsh"]["profile"]["bundles"] == [
         "@siqi-ai/dsh-base",

@@ -3,7 +3,7 @@
  * request/result pairs and the four server-to-client notification payloads
  * exchanged over the newline-delimited JSON-RPC stdio transport. The server
  * plugin (`@liusiqi-dev/sqh-sdk-jsonrpc-server`) and SDK clients share these shapes;
- * `serverInfo.name` stays the wire-stable `siqi-harness-sdk-runtime`.
+ * `serverInfo.name` stays the wire-stable `sqh-sdk-runtime`.
  *
  * @module @liusiqi-dev/sqh-sdk-protocol/types
  */
@@ -28,7 +28,7 @@ export interface InitializeParams {
 
 /** Wire-stable server identity returned by initialization. */
 export interface InitializeResult {
-  /** Wire-stable server identity (`siqi-harness-sdk-runtime`) and version. */
+  /** Wire-stable server identity (`sqh-sdk-runtime`) and version. */
   serverInfo: { name: string; version: string }
 }
 
