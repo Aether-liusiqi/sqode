@@ -233,7 +233,7 @@ export class DesktopHostProcess {
     this.exitPromise = new Promise<void>((resolve) => {
       child.once('close', (code) => {
         const suffix = this.stderr.trim() === '' ? '' : `: ${this.stderr.trim()}`
-        if (code !== 0 && code !== null) this.fail(new Error(`dsh desktop host exited with ${String(code)}${suffix}`))
+        if (code !== 0 && code !== null) this.fail(new Error(`sqh desktop host exited with ${String(code)}${suffix}`))
         else this.fail(new Error(`dsh desktop host stopped${suffix}`))
         resolve()
       })

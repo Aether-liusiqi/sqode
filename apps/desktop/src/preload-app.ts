@@ -5,7 +5,6 @@ import { contextBridge, ipcRenderer, webUtils } from 'electron'
 import {
   DESKTOP_IPC, SCHEME, type DesktopFeedbackSaved, type SqhDesktopProductApi, type DesktopUpdatePresentation,
 } from './ipc.ts'
-import { PLATFORM_IPC } from './platform-ipc.ts'
 import { markDocumentPlatform, syncWindowFullscreen } from './preload-platform.ts'
 import { syncNativeTheme } from './preload-theme.ts'
 import { syncWindowsAppearance } from './preload-windows.ts'
@@ -90,11 +89,6 @@ if (location.protocol === `${SCHEME}:` && location.hostname === 'app') {
   contextBridge.exposeInMainWorld('sqhDesktopBoot', {
     ready: () => ipcRenderer.invoke(DESKTOP_IPC.boot) as Promise<unknown>,
     failed: (message: string) => ipcRenderer.invoke(DESKTOP_IPC.bootFailed, message) as Promise<void>,
-  })
-  contextBridge.exposeInMainWorld('sqhPlatform', {
-    open: (page: 'usage' | 'top-up', bounds: { x: number; y: number; width: number; height: number }) => ipcRenderer.invoke(PLATFORM_IPC.open, page, bounds),
-    setBounds: (bounds: { x: number; y: number; width: number; height: number }) => ipcRenderer.invoke(PLATFORM_IPC.bounds, bounds),
-    close: () => ipcRenderer.invoke(PLATFORM_IPC.close),
   })
 }
 
