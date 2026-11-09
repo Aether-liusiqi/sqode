@@ -23,7 +23,7 @@ import * as workerFs from '../../src/node/builtin_modules/implemented/fs.ts'
 import * as workerFsp from '../../src/node/builtin_modules/implemented/fs/promises.ts'
 import * as workerStream from '../../src/node/builtin_modules/implemented/stream.ts'
 
-const VFS_ROOT = '/dsh/watch-stream'
+const VFS_ROOT = '/sqh/watch-stream'
 const nativeRoots: string[] = []
 let vfs: MemoryVfs
 

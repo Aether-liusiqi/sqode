@@ -115,7 +115,7 @@ describe('WebWorker preview VFS example', () => {
       identity: {
         formatVersion: SESSION_FORMAT_VERSION,
         createdAt: 1_787_472_000_000,
-        cwd: '/dsh/workspace',
+        cwd: '/sqh/workspace',
         isSeeded: false,
         inheritedEventCount: 0,
       },
@@ -150,7 +150,7 @@ describe('WebWorker preview VFS example', () => {
     const { meta, inheritedEventCount, events } = readSession(VFS_EXAMPLE_SESSION_IDS.main)
     expect(meta).toMatchObject({
       id: VFS_EXAMPLE_SESSION_IDS.main,
-      cwd: '/dsh/workspace',
+      cwd: '/sqh/workspace',
       delegationDepth: 0,
       agentPreset: 'standard',
     })
@@ -189,7 +189,7 @@ describe('WebWorker preview VFS example', () => {
       const { meta, inheritedEventCount, events } = readSession(id)
       expect(meta).toMatchObject({
         id,
-        cwd: '/dsh/workspace',
+        cwd: '/sqh/workspace',
         parentSession: VFS_EXAMPLE_SESSION_IDS.main,
         origin: 'subagent',
         delegationDepth: 1,

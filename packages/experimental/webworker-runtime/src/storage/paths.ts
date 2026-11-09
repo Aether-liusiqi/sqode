@@ -5,7 +5,7 @@
  */
 
 /** Virtual filesystem root; `process.cwd()` and every absolute path start here. */
-export const SQODE_ROOT = '/dsh'
+export const SQODE_ROOT = '/sqh'
 
 /** `$SQODE_HOME`: durable-state directory inside the image. */
 export const SQODE_HOME = `${SQODE_ROOT}/home`

@@ -19,8 +19,8 @@ async function run(x: { execute(spec: ShellExecSpec): Promise<ShellExecution> },
 
 vi.mock('node:child_process', async () => await import('../../src/node/builtin_modules/implemented/child_process.ts'))
 
-const WORKSPACE = '/dsh/workspace'
-const OUTSIDE = '/dsh/home'
+const WORKSPACE = '/sqh/workspace'
+const OUTSIDE = '/sqh/home'
 let vfs: MemoryVfs
 const contexts: Context[] = []
 
@@ -29,7 +29,7 @@ beforeEach(() => {
   setActiveVfs(vfs)
   vfs.mkdirSync(WORKSPACE, { recursive: true })
   vfs.mkdirSync(OUTSIDE, { recursive: true })
-  vfs.mkdirSync('/dsh/tmp', { recursive: true })
+  vfs.mkdirSync('/sqh/tmp', { recursive: true })
   vi.spyOn(process, 'kill').mockImplementation((pid: number, signal?: string | number): true => {
     if (signal === 0) {
       if (processAlive(pid)) return true
@@ -67,7 +67,7 @@ describe('Worker Landlock through the production sandbox stack', () => {
     }))
     expect(allowed.sandbox).toEqual({ mode: 'workspace-write', denied: false, enforcement: 'full' })
     expect(vfs.readFileSync(`${WORKSPACE}/allowed.txt`, 'utf8')).toBe('workspace\n')
-    expect(vfs.readFileSync('/dsh/tmp/allowed.txt', 'utf8')).toBe('temp\n')
+    expect(vfs.readFileSync('/sqh/tmp/allowed.txt', 'utf8')).toBe('temp\n')
 
     const denied = await run(bash, bash.resolve({ command: `echo denied > ${OUTSIDE}/denied.txt` }))
     expect(denied.exitCode).toBe(1)

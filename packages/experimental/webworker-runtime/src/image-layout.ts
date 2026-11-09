@@ -6,7 +6,7 @@
  */
 
 /** Default virtual root; the runtime mounts the image here unless told otherwise. */
-export const DEFAULT_ROOT = '/dsh'
+export const DEFAULT_ROOT = '/sqh'
 
 /**
  * Leaf name of the packed base image: one gzip member holding the ustar archive.

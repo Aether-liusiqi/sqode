@@ -17,9 +17,9 @@ afterEach(() => {
 
 describe('process shim', () => {
   it('publishes cwd, env, and version zero for the loader probe', () => {
-    const shim = installProcessGlobal({ cwd: '/dsh', env: { SQODE_HOME: '/dsh/home' } })
-    expect(shim.cwd()).toBe('/dsh')
-    expect(shim.env.SQODE_HOME).toBe('/dsh/home')
+    const shim = installProcessGlobal({ cwd: '/sqh', env: { SQODE_HOME: '/sqh/home' } })
+    expect(shim.cwd()).toBe('/sqh')
+    expect(shim.env.SQODE_HOME).toBe('/sqh/home')
     expect(shim.title).toBe('sqh-webworker')
     // "0.0.0" keeps the vendored Loader off Node internals so the worker owns
     // the module seam.
@@ -27,8 +27,8 @@ describe('process shim', () => {
   })
 
   it('exposes an executable identity without enabling Node programs', () => {
-    const shim = installProcessGlobal({ cwd: '/dsh', env: {} })
-    expect(shim.execPath).toBe('/dsh/bin/node')
+    const shim = installProcessGlobal({ cwd: '/sqh', env: {} })
+    expect(shim.execPath).toBe('/sqh/bin/node')
     // No entry script: consumers that read argv[1] as the main module find none.
     expect(shim.argv).toEqual([shim.execPath])
     expect(spawnSync(shim.execPath, ['--eval', 'throw new Error("must not execute")']).error?.code).toBe('ENOENT')
@@ -41,14 +41,14 @@ describe('process shim', () => {
     // same object every time.
     const factory = (): unknown => fs
     const vfs = new MemoryVfs()
-    vfs.seedDirectory('/dsh')
+    vfs.seedDirectory('/sqh')
     const loader = new WorkerModuleLoader({
       vfs,
-      root: '/dsh',
+      root: '/sqh',
       staticModules: { 'node:fs': factory, 'fs': factory },
     })
     setActiveModuleLoader(loader)
-    const shim = installProcessGlobal({ cwd: '/dsh', env: {} })
+    const shim = installProcessGlobal({ cwd: '/sqh', env: {} })
     // The shim calls the factory: a caller receives the module, never the thunk.
     expect(shim.getBuiltinModule('fs')).toBe(fs)
     expect(shim.getBuiltinModule('node:fs')).toBe(fs)

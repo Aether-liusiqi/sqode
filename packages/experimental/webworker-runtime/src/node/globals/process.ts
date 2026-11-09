@@ -10,7 +10,7 @@ import { requireActiveModuleLoader } from '../../module-system/module-loader.ts'
 import { processAlive, signalProcess } from '../process-table.ts'
 
 /** Virtual executable identity; the worker has no Node binary behind it. */
-const EXEC_PATH = '/dsh/bin/node'
+const EXEC_PATH = '/sqh/bin/node'
 
 /** Construction inputs for {@link installProcessGlobal}. */
 export interface ProcessShimOptions {

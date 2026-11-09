@@ -48,7 +48,7 @@ const outputFile = isAbsolute(out) ? out : resolve(process.cwd(), out)
 const result = packVfsImage({
   config: composeProfile(repoRoot, profile),
   profile,
-  root: flag('root', '/dsh'),
+  root: flag('root', '/sqh'),
   workspaces: indexWorkspacePackages(repoRoot),
   resolveFrom: repoRoot,
   configTrees: configTrees(repoRoot),

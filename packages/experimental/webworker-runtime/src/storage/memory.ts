@@ -993,7 +993,7 @@ export class MemoryVfs implements Vfs {
  * @param vfs - Filesystem to fill; a fresh one by default.
  * @returns The filled filesystem.
  */
-export function loadVfsImage(image: Uint8Array, root = '/dsh', vfs = new MemoryVfs()): MemoryVfs {
+export function loadVfsImage(image: Uint8Array, root = '/sqh', vfs = new MemoryVfs()): MemoryVfs {
   vfs.seedDirectory(root)
   for (const entry of parseTar(image)) {
     const relativeName = entry.name.startsWith('./') ? entry.name.slice(2) : entry.name

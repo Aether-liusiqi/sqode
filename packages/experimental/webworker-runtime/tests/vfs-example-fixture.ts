@@ -43,7 +43,7 @@ export const VFS_EXAMPLE_SCHEDULE_IDS = {
   once: 'preview-release-window',
 } as const
 
-const WORKSPACE = '/dsh/workspace'
+const WORKSPACE = '/sqh/workspace'
 const CREATED_AT = 1_787_472_000_000
 const HISTORICAL_TURNS = 28
 
