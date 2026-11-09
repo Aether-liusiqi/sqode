@@ -1,4 +1,4 @@
-/** Official Siqi Harness occupants for the generic browser-brand slots. */
+/** Official Sqode occupants for the generic browser-brand slots. */
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
 import type {} from '@liusiqi-dev/sqh-client-ui-renderer/client'
 import type {} from '@liusiqi-dev/sqh-client-ui-sidebar/client'

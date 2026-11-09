@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-tool-web",
-  "description": "Model-facing web tools (web_search, web_fetch) over the Siqi Harness web capability seam (ctx.web)",
+  "description": "Model-facing web tools (web_search, web_fetch) over the Sqode web capability seam (ctx.web)",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-invariants",
-  "description": "Registry service for package-owned Siqi Harness runtime invariants",
+  "description": "Registry service for package-owned Sqode runtime invariants",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

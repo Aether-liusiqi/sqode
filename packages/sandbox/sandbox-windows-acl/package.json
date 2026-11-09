@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-sandbox-windows-acl",
-  "description": "Windows ACL write-restriction sandbox backend (restricted-token spawn with capability-SID write allowlist) for the Siqi Harness sandbox seam",
+  "description": "Windows ACL write-restriction sandbox backend (restricted-token spawn with capability-SID write allowlist) for the Sqode sandbox seam",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

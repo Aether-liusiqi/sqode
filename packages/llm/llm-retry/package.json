@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-llm-retry",
-  "description": "Provider-routed LLM request retry policy for the Siqi Harness",
+  "description": "Provider-routed LLM request retry policy for the Sqode",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

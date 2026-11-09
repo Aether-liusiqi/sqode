@@ -1,5 +1,5 @@
 /**
- * Fresh-process SDK subagent client. Drives one child Siqi Harness
+ * Fresh-process SDK subagent client. Drives one child Sqode
  * runtime over stdio JSON-RPC through `@liusiqi-dev/sqh-sdk-client` and owns
  * cancellation and quiescent disposal. It publishes after the child
  * handshake, maps child failures to stop reasons, and tears down to

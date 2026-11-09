@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-util-values",
-  "description": "Duplicate-install-safe value primitives for the Siqi Harness",
+  "description": "Duplicate-install-safe value primitives for the Sqode",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-storage-json",
-  "description": "JSON file KV storage backend for the Siqi Harness storage hub",
+  "description": "JSON file KV storage backend for the Sqode storage hub",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-home-paths",
-  "description": "Shared filesystem path helpers for the Siqi Harness",
+  "description": "Shared filesystem path helpers for the Sqode",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

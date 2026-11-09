@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-client-ui-brand-official",
-  "description": "Official Siqi Harness brand occupants for the Web client's sidebar slots",
+  "description": "Official Sqode brand occupants for the Web client's sidebar slots",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

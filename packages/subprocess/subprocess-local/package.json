@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-subprocess-local",
-  "description": "Local-subprocess implementation of the Siqi Harness subprocess seam",
+  "description": "Local-subprocess implementation of the Sqode subprocess seam",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

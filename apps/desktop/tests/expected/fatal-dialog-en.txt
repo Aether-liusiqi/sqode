@@ -1,4 +1,4 @@
-Siqi Harness is unavailable
+Sqode is unavailable
 The application could not start or stopped unexpectedly.
 Desktop Host failed
 Plugin initialization failed

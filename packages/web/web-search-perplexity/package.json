@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-web-search-perplexity",
-  "description": "Perplexity-backed search provider for the Siqi Harness web capability seam (ctx.web)",
+  "description": "Perplexity-backed search provider for the Sqode web capability seam (ctx.web)",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

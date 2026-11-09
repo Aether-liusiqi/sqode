@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-brand",
-  "description": "Stateless branded primitive types for the Siqi Harness",
+  "description": "Stateless branded primitive types for the Sqode",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

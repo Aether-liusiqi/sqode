@@ -203,7 +203,7 @@ describe('Windows token signing', () => {
     }, {
       certificateFile: CERTIFICATE_FILE,
       signTool: 'C:\\tools\\signtool.exe',
-      path: 'C:\\release\\Siqi Harness.exe',
+      path: 'C:\\release\\Sqode.exe',
       isNest: false,
       tokenPin: 'token-secret!',
       keyContainer: 'te-container',
@@ -213,7 +213,7 @@ describe('Windows token signing', () => {
       SQODE_DESKTOP_WINDOWS_CER_FILE: CERTIFICATE_FILE,
       SQODE_DESKTOP_WINDOWS_TOKEN_PIN: 'token-secret!',
       SQODE_DESKTOP_WINDOWS_KEY_CONTAINER: 'te-container',
-      SQODE_DESKTOP_WINDOWS_SIGN_TARGET: 'C:\\release\\Siqi Harness.exe',
+      SQODE_DESKTOP_WINDOWS_SIGN_TARGET: 'C:\\release\\Sqode.exe',
       SQODE_DESKTOP_WINDOWS_SIGN_APPEND: '',
     })
   })

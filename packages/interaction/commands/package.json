@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-commands",
-  "description": "Plugin-owned human command registry for Siqi Harness UIs",
+  "description": "Plugin-owned human command registry for Sqode UIs",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

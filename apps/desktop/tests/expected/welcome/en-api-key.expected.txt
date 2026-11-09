@@ -1,7 +1,7 @@
-Siqi Harness
-Siqi Harness
+Sqode
+Sqode
 Add an API key to get started
-Configure official DeepSeek models to start using Harness
+Configure a model provider to start using Sqode
 Enter API key [password]
 Save and continue [disabled]
 Set up later

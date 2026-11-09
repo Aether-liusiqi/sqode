@@ -2769,7 +2769,7 @@ export type Config = SessionTitleLlmConfig
 ```ts config-catalog
 /** Plugin config (all optional — the built-in facts resolve without defaults). */
 export interface Config {
-  /** Siqi Harness home directory exposed as `SQODE_HOME`; defaults to `$SQODE_HOME` or `~/.sqode`. */
+  /** Sqode home directory exposed as `SQODE_HOME`; defaults to `$SQODE_HOME` or `~/.sqode`. */
   sqhHome?: string
 }
 ```
@@ -2806,7 +2806,7 @@ export interface Config {
   providerName?: string
   /** Whether project and user roots are included around custom roots. */
   includeDefaultRoots?: boolean
-  /** Siqi Harness config root. Defaults to `$SQODE_HOME` or `~/.sqode`. */
+  /** Sqode config root. Defaults to `$SQODE_HOME` or `~/.sqode`. */
   sqhHome?: string
   /** Shared agent config root. Defaults to `$SQODE_AGENTS_HOME` or `~/.agents`. */
   agentsHome?: string

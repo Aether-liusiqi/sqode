@@ -1,5 +1,5 @@
 /**
- * OpenTelemetry Service Provider for the Siqi Harness telemetry capability.
+ * OpenTelemetry Service Provider for the Sqode telemetry capability.
  *
  * Authorizes feedback-bounded capture and hands complete event strings to the
  * Session-log reporter. This plugin owns resource identity and an outer

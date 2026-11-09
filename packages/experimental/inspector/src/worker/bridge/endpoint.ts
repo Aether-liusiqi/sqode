@@ -145,7 +145,7 @@ export class InspectorEndpoint {
     }
     const session = new CdpSession(
       transport,
-      { targetId: this.config.targetId, title: 'Siqi Harness Host' },
+      { targetId: this.config.targetId, title: 'Sqode Host' },
       this.sources,
       this.network,
       this.realms,
@@ -224,7 +224,7 @@ export class InspectorEndpoint {
     return {
       id: this.config.targetId,
       type: 'page',
-      title: 'Siqi Harness Host',
+      title: 'Sqode Host',
       description: 'Experimental cross-realm Inspector target',
       url: 'sqode://host',
       webSocketDebuggerUrl: this.cdpUrl(),

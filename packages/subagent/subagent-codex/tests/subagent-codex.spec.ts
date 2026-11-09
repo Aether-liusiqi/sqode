@@ -732,7 +732,7 @@ describe('CodexAppServerWire', () => {
     expect(initialize.params).toEqual({
       clientInfo: {
         name: 'siqi-harness',
-        title: 'Siqi Harness',
+        title: 'Sqode',
         version: '0.0.1',
       },
       capabilities: {

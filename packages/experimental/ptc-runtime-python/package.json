@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-experimental-ptc-runtime-python",
-  "description": "CPython subprocess implementation of the Siqi Harness PTC execution seam",
+  "description": "CPython subprocess implementation of the Sqode PTC execution seam",
   "version": "1.0.0",
   "repository": {
     "type": "git",

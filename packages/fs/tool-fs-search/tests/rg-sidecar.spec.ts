@@ -80,11 +80,11 @@ describe('ripgrep resolution', () => {
 
   it('uses the unpacked executable path for an Electron ASAR dependency', async () => {
     Reflect.defineProperty(process.versions, 'electron', { configurable: true, value: '44.0.0' })
-    dependency.rgPath = '/Applications/Siqi Harness.app/Contents/Resources/app.asar/dsh/node_modules/@vscode/ripgrep/bin/rg'
+    dependency.rgPath = '/Applications/Sqode.app/Contents/Resources/app.asar/dsh/node_modules/@vscode/ripgrep/bin/rg'
     const { resolveRgPath } = await import('@liusiqi-dev/sqh-tool-fs-search')
 
     await expect(resolveRgPath()).resolves.toBe(
-      '/Applications/Siqi Harness.app/Contents/Resources/app.asar.unpacked/dsh/node_modules/@vscode/ripgrep/bin/rg',
+      '/Applications/Sqode.app/Contents/Resources/app.asar.unpacked/dsh/node_modules/@vscode/ripgrep/bin/rg',
     )
   })
 })

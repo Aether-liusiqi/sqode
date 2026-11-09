@@ -268,7 +268,7 @@ export class CodexAppServerWire {
     object(await this.guarded(this.transport.request('initialize', {
       clientInfo: {
         name: 'siqi-harness',
-        title: 'Siqi Harness',
+        title: 'Sqode',
         version: '0.0.1',
       },
       capabilities: {

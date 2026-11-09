@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-storage-sqlite",
-  "description": "SQLite storage backend (kv facet) for the Siqi Harness storage hub",
+  "description": "SQLite storage backend (kv facet) for the Sqode storage hub",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

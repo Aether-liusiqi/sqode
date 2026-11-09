@@ -82,7 +82,7 @@ describe('client build environment', () => {
     const expected = {
       SQODE_CLIENT_BUILD_PROFILE: 'official',
       SQODE_CLIENT_COMMIT_HASH: COMMIT_HASH.slice(0, 7),
-      SQODE_CLIENT_TITLE: 'Siqi Harness',
+      SQODE_CLIENT_TITLE: 'Sqode',
       SQODE_CLIENT_VERSION: '1.2.3',
     } as const
 
@@ -112,7 +112,7 @@ describe('client build environment', () => {
     expect(resolveClientBuildEnvironment(parent)).toEqual({
       SQODE_CLIENT_BUILD_PROFILE: 'official',
       SQODE_CLIENT_COMMIT_HASH: COMMIT_HASH.slice(0, 7),
-      SQODE_CLIENT_TITLE: 'Siqi Harness',
+      SQODE_CLIENT_TITLE: 'Sqode',
       SQODE_CLIENT_VERSION: '1.2.3',
     })
     expect(() => {
@@ -128,13 +128,13 @@ describe('client build environment', () => {
     expect(clientBuildProcessEnvironment(parent, {
       SQODE_CLIENT_BUILD_PROFILE: 'official',
       SQODE_CLIENT_COMMIT_HASH: COMMIT_HASH.slice(0, 7),
-      SQODE_CLIENT_TITLE: 'Siqi Harness',
+      SQODE_CLIENT_TITLE: 'Sqode',
       SQODE_CLIENT_VERSION: '1.2.3',
     })).toEqual({
       PATH: '/bin',
       SQODE_CLIENT_BUILD_PROFILE: 'official',
       SQODE_CLIENT_COMMIT_HASH: COMMIT_HASH.slice(0, 7),
-      SQODE_CLIENT_TITLE: 'Siqi Harness',
+      SQODE_CLIENT_TITLE: 'Sqode',
       SQODE_CLIENT_VERSION: '1.2.3',
     })
     expect(repositoryCommitHash('/unused', { SQODE_CLIENT_COMMIT_HASH: COMMIT_HASH })).toBe(COMMIT_HASH.slice(0, 7))
@@ -159,7 +159,7 @@ describe('client build environment', () => {
     expect(officialClientBuildEnvironment(fixtureRoot)).toEqual({
       SQODE_CLIENT_BUILD_PROFILE: 'official',
       SQODE_CLIENT_COMMIT_HASH: commit,
-      SQODE_CLIENT_TITLE: 'Siqi Harness',
+      SQODE_CLIENT_TITLE: 'Sqode',
       SQODE_CLIENT_VERSION: '1.2.3-rc.4',
     })
 
@@ -263,7 +263,7 @@ describe('client build environment', () => {
     const officialEnvironment = {
       SQODE_CLIENT_BUILD_PROFILE: 'official',
       SQODE_CLIENT_COMMIT_HASH: COMMIT_HASH.slice(0, 7),
-      SQODE_CLIENT_TITLE: 'Siqi Harness',
+      SQODE_CLIENT_TITLE: 'Sqode',
       SQODE_CLIENT_VERSION: '1.2.3',
     }
     const official = buildFixture(officialEnvironment)

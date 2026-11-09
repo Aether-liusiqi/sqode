@@ -8,7 +8,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-acp` | yes | Automation-only Agent Client Protocol server for driving Siqi Harness agents over JSON-RPC stdio |
+| `@liusiqi-dev/sqh-acp` | yes | Automation-only Agent Client Protocol server for driving Sqode agents over JSON-RPC stdio |
 
 ## api
 
@@ -67,7 +67,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 | `@liusiqi-dev/sqh-client-ui-agent-preset` | no | Agent-preset surfaces: the default for later sessions, this session's seat, and the composition editor |
 | `@liusiqi-dev/sqh-client-ui-approval` | no | Approval composer takeover over the scoped Remote Event waterfall |
 | `@liusiqi-dev/sqh-client-ui-attachment` | no | Dynamic attachment presentation plugin for conversation input, message-image, and trajectory image slots |
-| `@liusiqi-dev/sqh-client-ui-brand-official` | no | Official Siqi Harness brand occupants for the Web client's sidebar slots |
+| `@liusiqi-dev/sqh-client-ui-brand-official` | no | Official Sqode brand occupants for the Web client's sidebar slots |
 | `@liusiqi-dev/sqh-client-ui-chat` | no | Chat Conversation target, node definitions, renderers, and details surface |
 | `@liusiqi-dev/sqh-client-ui-commands` | no | Client command surface: global directory cache, '/' source, three command UI kinds, popupSelect registry |
 | `@liusiqi-dev/sqh-client-ui-conversation` | no | Target-neutral Conversation assembly, shell, composer, queue, and view navigation |
@@ -120,7 +120,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 | Package | Config | Description |
 |---|---|---|
 | `@liusiqi-dev/sqh-command-compact` | no | Human-facing slash command for explicit session compaction |
-| `@liusiqi-dev/sqh-compaction-basic` | yes | Token-meter-driven compaction policy and LLM summarization backend for the Siqi Harness |
+| `@liusiqi-dev/sqh-compaction-basic` | yes | Token-meter-driven compaction policy and LLM summarization backend for the Sqode |
 | `@liusiqi-dev/sqh-compaction-image-offload` | no | Durable image offload for image-capable routes: replace over-budget request images with placeholders and retry |
 | `@liusiqi-dev/sqh-compaction-tool-result-pruner` | yes | Replay-safe model-free head/middle/tail pruning for tool-result surface nodes |
 
@@ -144,28 +144,28 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-agent` | no | Agent interface, registry, initiator scope, and event vocabulary for the Siqi Harness |
+| `@liusiqi-dev/sqh-agent` | no | Agent interface, registry, initiator scope, and event vocabulary for the Sqode |
 | `@liusiqi-dev/sqh-agent-default-model` | yes | Default model selection shared by Agent entry points |
-| `@liusiqi-dev/sqh-agent-loop` | yes | The concrete agent loop plugin for the Siqi Harness |
+| `@liusiqi-dev/sqh-agent-loop` | yes | The concrete agent loop plugin for the Sqode |
 | `@liusiqi-dev/sqh-agent-tool-presentation` | yes | Agent-plane presentation selector: composes one agent's tools as PTC mode, native, or both |
-| `@liusiqi-dev/sqh-session` | no | Event-sourced session store for the Siqi Harness |
-| `@liusiqi-dev/sqh-system-prompt` | yes | System prompt assembly registry for the Siqi Harness |
-| `@liusiqi-dev/sqh-tools` | yes | Tool registry and execution pipeline for the Siqi Harness |
+| `@liusiqi-dev/sqh-session` | no | Event-sourced session store for the Sqode |
+| `@liusiqi-dev/sqh-system-prompt` | yes | System prompt assembly registry for the Sqode |
+| `@liusiqi-dev/sqh-tools` | yes | Tool registry and execution pipeline for the Sqode |
 
 ## credentials
 
 | Package | Config | Description |
 |---|---|---|
 | `@liusiqi-dev/sqh-authorization` | no | Authorization seam (ctx.authorization): plugin-owned flows that obtain a credential through a conversation with the human |
-| `@liusiqi-dev/sqh-credentials-local` | yes | File-backed credentials provider ($SQODE_HOME/.env under the live process environment) for the Siqi Harness |
+| `@liusiqi-dev/sqh-credentials-local` | yes | File-backed credentials provider ($SQODE_HOME/.env under the live process environment) for the Sqode |
 | `@liusiqi-dev/sqh-deepseek-account-platform` | yes | Authorize DeepSeek accounts through browser PKCE |
 
 ## deliverables
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-tool-present` | yes | Explicit workspace file delivery declarations for the Siqi Harness |
-| `@liusiqi-dev/sqh-workspace-changes` | yes | Per-turn workspace file changes recorded from git working-tree snapshots and whole-file captures, with per-file comparisons, for the Siqi Harness |
+| `@liusiqi-dev/sqh-tool-present` | yes | Explicit workspace file delivery declarations for the Sqode |
+| `@liusiqi-dev/sqh-workspace-changes` | yes | Per-turn workspace file changes recorded from git working-tree snapshots and whole-file captures, with per-file comparisons, for the Sqode |
 
 ## document
 
@@ -179,7 +179,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 |---|---|---|
 | `@liusiqi-dev/sqh-experimental-agent-team` | yes | Implicit-root Agent Teams roster, durable peer mailbox, and shared task DAG |
 | `@liusiqi-dev/sqh-experimental-api-speech-to-text` | yes | Authenticated experimental speech transcription for browser clients |
-| `@liusiqi-dev/sqh-experimental-auto-review` | no | Per-tool LLM authorization review for the Siqi Harness Auto permission preset |
+| `@liusiqi-dev/sqh-experimental-auto-review` | no | Per-tool LLM authorization review for the Sqode Auto permission preset |
 | `@liusiqi-dev/sqh-experimental-browser-use-chrome-devtools-mcp` | yes | Experimental per-Session Chromium browser tools through chrome-devtools-mcp |
 | `@liusiqi-dev/sqh-experimental-browser-use-playwright-mcp` | yes | Experimental per-Session Chromium browser tools through @playwright/mcp |
 | `@liusiqi-dev/sqh-experimental-browser-use-stagehand-native` | yes | Experimental Stagehand browser tools with separately configured native models |
@@ -188,7 +188,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 | `@liusiqi-dev/sqh-experimental-computer-use-cua-driver-mcp` | yes | Experimental computer use through an installed Cua Driver MCP executable |
 | `@liusiqi-dev/sqh-experimental-computer-use-cua-driver-native` | no | Experimental computer-use provider embedding the Cua Driver native npm SDK |
 | `@liusiqi-dev/sqh-experimental-inspector` | yes | Experimental cross-realm CDP hub for Host debugging and Client Runtime inspection |
-| `@liusiqi-dev/sqh-experimental-ptc-runtime-python` | yes | CPython subprocess implementation of the Siqi Harness PTC execution seam |
+| `@liusiqi-dev/sqh-experimental-ptc-runtime-python` | yes | CPython subprocess implementation of the Sqode PTC execution seam |
 | `@liusiqi-dev/sqh-experimental-speech-to-text` | yes | Experimental speech recognition with independently selectable providers |
 | `@liusiqi-dev/sqh-experimental-speech-to-text-sensevoice` | yes | Local SenseVoice ONNX transcription with a managed sherpa-onnx process |
 | `@liusiqi-dev/sqh-experimental-tool-agent-team` | yes | Scoped model-facing Agent Teams tools over ctx.agentTeams |
@@ -213,10 +213,10 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-fs-local` | yes | Local-filesystem implementation of the Siqi Harness filesystem seam (ctx.fs) |
-| `@liusiqi-dev/sqh-fs-observation-policy` | no | File-context policy plugin for the Siqi Harness — observed-state, read-before-edit, and version-guarded write/edit added over the ctx.fs provider seam through the fs/* event gate (no service API) |
-| `@liusiqi-dev/sqh-fs-sandbox` | yes | Sandbox-enforcing implementation of the Siqi Harness filesystem seam: fences write/edit by the per-call sandbox mode (read-only denies mutation, workspace-write contains it to the workspace + temp roots) while reads pass through |
-| `@liusiqi-dev/sqh-tool-fs` | yes | Model-facing filesystem tools (read, write, edit) over the Siqi Harness filesystem seam (ctx.fs) |
+| `@liusiqi-dev/sqh-fs-local` | yes | Local-filesystem implementation of the Sqode filesystem seam (ctx.fs) |
+| `@liusiqi-dev/sqh-fs-observation-policy` | no | File-context policy plugin for the Sqode — observed-state, read-before-edit, and version-guarded write/edit added over the ctx.fs provider seam through the fs/* event gate (no service API) |
+| `@liusiqi-dev/sqh-fs-sandbox` | yes | Sandbox-enforcing implementation of the Sqode filesystem seam: fences write/edit by the per-call sandbox mode (read-only denies mutation, workspace-write contains it to the workspace + temp roots) while reads pass through |
+| `@liusiqi-dev/sqh-tool-fs` | yes | Model-facing filesystem tools (read, write, edit) over the Sqode filesystem seam (ctx.fs) |
 | `@liusiqi-dev/sqh-tool-fs-search` | yes | Model-facing filesystem discovery tools (glob, grep) backed by the packaged ripgrep binary (@vscode/ripgrep) |
 | `@liusiqi-dev/sqh-tool-str-replace-editor` | yes | Model-facing view, create, literal replace, and line insert tool over the Harness filesystem service |
 
@@ -225,7 +225,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 | Package | Config | Description |
 |---|---|---|
 | `@liusiqi-dev/sqh-command-goal` | no | Human-facing slash command for persisted same-session goals |
-| `@liusiqi-dev/sqh-goal` | yes | Event-sourced same-session goal state and lifecycle service for the Siqi Harness |
+| `@liusiqi-dev/sqh-goal` | yes | Event-sourced same-session goal state and lifecycle service for the Sqode |
 | `@liusiqi-dev/sqh-goal-round-driver` | no | Race-fenced same-session goal-round driver |
 | `@liusiqi-dev/sqh-tool-goal` | yes | Model-facing same-session goal tools with execution-time authority checks |
 
@@ -240,16 +240,16 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-hooks-claude-code` | yes | Bridge plugin: run a Claude Code hooks.json / settings hook config on the Siqi Harness interception seams |
-| `@liusiqi-dev/sqh-hooks-codex` | yes | Bridge plugin: run a Codex hooks.json hook config on the Siqi Harness interception seams |
+| `@liusiqi-dev/sqh-hooks-claude-code` | yes | Bridge plugin: run a Claude Code hooks.json / settings hook config on the Sqode interception seams |
+| `@liusiqi-dev/sqh-hooks-codex` | yes | Bridge plugin: run a Codex hooks.json hook config on the Sqode interception seams |
 
 ## host
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-host-directory-picker-auto` | no | Adaptive chooser of the directory-picker seam: resolves the host situation at boot and mounts the native or browse backend for the Siqi Harness web GUI host |
+| `@liusiqi-dev/sqh-host-directory-picker-auto` | no | Adaptive chooser of the directory-picker seam: resolves the host situation at boot and mounts the native or browse backend for the Sqode web GUI host |
 | `@liusiqi-dev/sqh-host-directory-picker-browse` | yes | In-app browsing backend of the directory-picker seam (listing/creation primitives over the host filesystem) |
-| `@liusiqi-dev/sqh-host-directory-picker-native` | no | Native-OS-chooser backend of the directory-picker seam for the Siqi Harness web GUI host |
+| `@liusiqi-dev/sqh-host-directory-picker-native` | no | Native-OS-chooser backend of the directory-picker seam for the Sqode web GUI host |
 | `@liusiqi-dev/sqh-host-frontend-static` | yes | SPA dist server for the Web shell: owns the webserver fallback seat, serving explicit index entries and static assets with traversal rejection and 404 misses |
 | `@liusiqi-dev/sqh-host-open-in-app` | yes | Host half of open-in-app: resolved application catalog, icons, and the launch endpoint as three webServer routes |
 | `@liusiqi-dev/sqh-host-plugin-inventory` | no | Read-only Remote projection of current Cordis Loader plugin state |
@@ -259,17 +259,17 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-commands` | no | Plugin-owned human command registry for Siqi Harness UIs |
-| `@liusiqi-dev/sqh-permission-presets` | yes | User-facing permission presets (ctx.permissionPresets) for the Siqi Harness: one product-level Permissions select bundling the sandbox-mode and approval-policy knobs, written through to their own session events |
+| `@liusiqi-dev/sqh-commands` | no | Plugin-owned human command registry for Sqode UIs |
+| `@liusiqi-dev/sqh-permission-presets` | yes | User-facing permission presets (ctx.permissionPresets) for the Sqode: one product-level Permissions select bundling the sandbox-mode and approval-policy knobs, written through to their own session events |
 | `@liusiqi-dev/sqh-tool-ask-user` | yes | Model-facing ask_user_question tool over the ctx.userQuestions seam |
-| `@liusiqi-dev/sqh-user-approval` | yes | User-approval seam (ctx.approval) for the Siqi Harness: one-shot permission decisions dispatched to composed answerers over the approval/request waterfall, fail-closed by default |
+| `@liusiqi-dev/sqh-user-approval` | yes | User-approval seam (ctx.approval) for the Sqode: one-shot permission decisions dispatched to composed answerers over the approval/request waterfall, fail-closed by default |
 | `@liusiqi-dev/sqh-user-questions` | no | Abstract user-questions seam (ctx.userQuestions) for asking the human during agent runs |
 
 ## jobs
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-jobs-local` | yes | Process-local implementation of the Siqi Harness background job registry seam |
+| `@liusiqi-dev/sqh-jobs-local` | yes | Process-local implementation of the Sqode background job registry seam |
 | `@liusiqi-dev/sqh-tool-jobs` | yes | Model-facing background job control tools (job_output, job_list, job_kill) over the ctx.jobs registry |
 
 ## llm
@@ -277,21 +277,21 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 | Package | Config | Description |
 |---|---|---|
 | `@liusiqi-dev/sqh-deepseek-llm-api-extensions` | no | Additive request-field registry for the official DeepSeek LLM API adapter |
-| `@liusiqi-dev/sqh-llm` | no | Provider-neutral LLM service interface for the Siqi Harness |
+| `@liusiqi-dev/sqh-llm` | no | Provider-neutral LLM service interface for the Sqode |
 | `@liusiqi-dev/sqh-llm-deepseek-account` | yes | DeepSeek account provider authentication and discovery |
 | `@liusiqi-dev/sqh-llm-deepseek-api-key` | yes | DeepSeek api-key provider authentication and discovery |
-| `@liusiqi-dev/sqh-llm-pi-ai` | yes | pi-ai-backed DeepSeek adapter for the Siqi Harness LLM seam (design-verification twin of sqh-llm-deepseek) |
-| `@liusiqi-dev/sqh-llm-retry` | yes | Provider-routed LLM request retry policy for the Siqi Harness |
+| `@liusiqi-dev/sqh-llm-pi-ai` | yes | pi-ai-backed DeepSeek adapter for the Sqode LLM seam (design-verification twin of sqh-llm-deepseek) |
+| `@liusiqi-dev/sqh-llm-retry` | yes | Provider-routed LLM request retry policy for the Sqode |
 | `@liusiqi-dev/sqh-plugin-package-inventory-deepseek` | yes | Active Loader-backed plugin package inventory for official DeepSeek LLM API requests |
-| `@liusiqi-dev/sqh-token-meter` | yes | Replay-aware token measurement service (ctx.tokenMeter) for the Siqi Harness |
+| `@liusiqi-dev/sqh-token-meter` | yes | Replay-aware token measurement service (ctx.tokenMeter) for the Sqode |
 
 ## lsp
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-lsp` | no | Abstract LSP capability seam (ctx.lsp) for the Siqi Harness — language-server provider registry keyed by branded id and extension mapping, order-independent per-query selection, normalized definition/references/implementation/hover requests and results, and the LspError taxonomy |
-| `@liusiqi-dev/sqh-lsp-stdio` | yes | Generic stdio language-server provider for the Siqi Harness LSP capability seam (ctx.lsp) — spawns configured servers, translates JSON-RPC, and serves transient-open goToDefinition/findReferences/goToImplementation/hover queries in the host filesystem namespace |
-| `@liusiqi-dev/sqh-tool-lsp` | yes | Model-facing lsp tool over the Siqi Harness LSP capability seam (ctx.lsp) — one read-only tool with goToDefinition/findReferences/goToImplementation/hover operations, one-based UTF-16 cursor coordinates, bounded location rendering, and hover normalization |
+| `@liusiqi-dev/sqh-lsp` | no | Abstract LSP capability seam (ctx.lsp) for the Sqode — language-server provider registry keyed by branded id and extension mapping, order-independent per-query selection, normalized definition/references/implementation/hover requests and results, and the LspError taxonomy |
+| `@liusiqi-dev/sqh-lsp-stdio` | yes | Generic stdio language-server provider for the Sqode LSP capability seam (ctx.lsp) — spawns configured servers, translates JSON-RPC, and serves transient-open goToDefinition/findReferences/goToImplementation/hover queries in the host filesystem namespace |
+| `@liusiqi-dev/sqh-tool-lsp` | yes | Model-facing lsp tool over the Sqode LSP capability seam (ctx.lsp) — one read-only tool with goToDefinition/findReferences/goToImplementation/hover operations, one-based UTF-16 cursor coordinates, bounded location rendering, and hover normalization |
 
 ## mcp
 
@@ -312,25 +312,25 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 |---|---|---|
 | `@liusiqi-dev/sqh-agent-preset` | yes | Declare an Agent capability composition in Cordis YAML |
 | `@liusiqi-dev/sqh-agent-preset-registry` | yes | Declarative Agent preset registry and profile-backed editing |
-| `@liusiqi-dev/sqh-persona` | yes | Composition-authored deployment persona section for the Siqi Harness |
+| `@liusiqi-dev/sqh-persona` | yes | Composition-authored deployment persona section for the Sqode |
 
 ## ptc-runtime
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-ptc-runtime-node` | yes | Sandboxed Node process implementation of the Siqi Harness PTC execution capability |
+| `@liusiqi-dev/sqh-ptc-runtime-node` | yes | Sandboxed Node process implementation of the Sqode PTC execution capability |
 
 ## runtime-diagnostics
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-invariants` | yes | Registry service for package-owned Siqi Harness runtime invariants |
+| `@liusiqi-dev/sqh-invariants` | yes | Registry service for package-owned Sqode runtime invariants |
 
 ## sandbox
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-sandbox-local` | yes | Local process-sandbox backends for the Siqi Harness sandbox seam: bwrap, the npm-distributed landlock-run launcher, macOS Seatbelt, or the Windows ACL restricted-token runner — functionally probed, fail-closed |
+| `@liusiqi-dev/sqh-sandbox-local` | yes | Local process-sandbox backends for the Sqode sandbox seam: bwrap, the npm-distributed landlock-run launcher, macOS Seatbelt, or the Windows ACL restricted-token runner — functionally probed, fail-closed |
 | `@liusiqi-dev/sqh-sandbox-policy` | yes | Per-call sandbox policy resolver and current model context: deployment fallbacks plus each session's mode and workspace root, shared by every enforcing capability family |
 
 ## schedule
@@ -343,7 +343,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-sdk-jsonrpc-server` | yes | Stdio JSON-RPC server plugin for out-of-process Siqi Harness SDK clients |
+| `@liusiqi-dev/sqh-sdk-jsonrpc-server` | yes | Stdio JSON-RPC server plugin for out-of-process Sqode SDK clients |
 
 ## session
 
@@ -351,15 +351,15 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 |---|---|---|
 | `@liusiqi-dev/sqh-session-checkpoint-policy` | no | Semantic session durability checkpoints before model requests and tool side effects |
 | `@liusiqi-dev/sqh-session-log-deepseek` | yes | Incremental lossless session-log request extension for the official DeepSeek LLM API |
-| `@liusiqi-dev/sqh-session-persistence-jsonl` | yes | JSONL durable session persistence backend for the Siqi Harness |
+| `@liusiqi-dev/sqh-session-persistence-jsonl` | yes | JSONL durable session persistence backend for the Sqode |
 | `@liusiqi-dev/sqh-session-projection` | no | Session-projection seam: the merge-extensible projection type table, the provider contract, and the ctx.sessionProjections registry serving whole current values of log-derived per-session state |
 | `@liusiqi-dev/sqh-session-projection-cache` | yes | Persisted projection cache (ctx.sessionProjectionCache): durable per-session checkpoint records on the session_projcache storage domain (per-record layout), throttled write-behind, and the cached listing read |
-| `@liusiqi-dev/sqh-session-stats` | no | Whole-log conversation counts and wall times projection (sessionStats) for the Siqi Harness |
+| `@liusiqi-dev/sqh-session-stats` | no | Whole-log conversation counts and wall times projection (sessionStats) for the Sqode |
 | `@liusiqi-dev/sqh-session-telemetry-otel` | yes | Feedback-authorized Session logs over byte-bounded OpenTelemetry HTTP requests |
-| `@liusiqi-dev/sqh-session-title` | yes | Log-backed session title service and provider registry for the Siqi Harness |
-| `@liusiqi-dev/sqh-session-title-all-prompts-llm` | yes | All-user-messages LLM provider plugin for Siqi Harness session titles |
-| `@liusiqi-dev/sqh-session-title-first-prompt-llm` | yes | First-message LLM provider plugin for Siqi Harness session titles |
-| `@liusiqi-dev/sqh-session-turn-outline` | no | Whole-log turn outline projection (turnOutline) for the Siqi Harness |
+| `@liusiqi-dev/sqh-session-title` | yes | Log-backed session title service and provider registry for the Sqode |
+| `@liusiqi-dev/sqh-session-title-all-prompts-llm` | yes | All-user-messages LLM provider plugin for Sqode session titles |
+| `@liusiqi-dev/sqh-session-title-first-prompt-llm` | yes | First-message LLM provider plugin for Sqode session titles |
+| `@liusiqi-dev/sqh-session-turn-outline` | no | Whole-log turn outline projection (turnOutline) for the Sqode |
 
 ## session-query
 
@@ -373,16 +373,16 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-settings` | no | Abstract user-settings seam (ctx.settings) for the Siqi Harness |
+| `@liusiqi-dev/sqh-settings` | no | Abstract user-settings seam (ctx.settings) for the Sqode |
 
 ## shell
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-bash-local` | yes | Local-subprocess implementation of the Siqi Harness bash executor seam |
-| `@liusiqi-dev/sqh-bash-sandbox` | yes | Sandbox-consuming implementation of the Siqi Harness bash executor seam (confines every command via ctx.sandbox, reports denial/enforcement result facts) |
-| `@liusiqi-dev/sqh-pwsh-local` | yes | Local PowerShell implementation of the Siqi Harness bash executor seam |
-| `@liusiqi-dev/sqh-pwsh-sandbox` | yes | Sandbox-consuming implementation of the Siqi Harness PowerShell executor seam (confines every command via ctx.sandbox, reports denial/enforcement result facts) |
+| `@liusiqi-dev/sqh-bash-local` | yes | Local-subprocess implementation of the Sqode bash executor seam |
+| `@liusiqi-dev/sqh-bash-sandbox` | yes | Sandbox-consuming implementation of the Sqode bash executor seam (confines every command via ctx.sandbox, reports denial/enforcement result facts) |
+| `@liusiqi-dev/sqh-pwsh-local` | yes | Local PowerShell implementation of the Sqode bash executor seam |
+| `@liusiqi-dev/sqh-pwsh-sandbox` | yes | Sandbox-consuming implementation of the Sqode PowerShell executor seam (confines every command via ctx.sandbox, reports denial/enforcement result facts) |
 | `@liusiqi-dev/sqh-shell-env` | yes | Tool-independent managed SQH_* shell environment registry |
 | `@liusiqi-dev/sqh-tool-bash` | yes | Model-facing bash tool with optional generic background-job and sandbox-escalation support |
 | `@liusiqi-dev/sqh-tool-bash-persistent` | yes | Model-facing owner-scoped persistent Bash tool backed by the Harness PTY service |
@@ -393,18 +393,18 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-skill` | yes | Agent skill provider registry for the Siqi Harness |
-| `@liusiqi-dev/sqh-skill-badge` | no | Bundled sqh badge skill provider for Siqi Harness |
-| `@liusiqi-dev/sqh-skill-filesystem` | yes | Local filesystem skill provider for the Siqi Harness |
+| `@liusiqi-dev/sqh-skill` | yes | Agent skill provider registry for the Sqode |
+| `@liusiqi-dev/sqh-skill-badge` | no | Bundled sqh badge skill provider for Sqode |
+| `@liusiqi-dev/sqh-skill-filesystem` | yes | Local filesystem skill provider for the Sqode |
 | `@liusiqi-dev/sqh-skill-office` | yes | Bundled Word, PowerPoint, and Excel workflows and structural checks |
-| `@liusiqi-dev/sqh-tool-skill` | yes | Model-facing skill loading tool for the Siqi Harness |
+| `@liusiqi-dev/sqh-tool-skill` | yes | Model-facing skill loading tool for the Sqode |
 | `@liusiqi-dev/sqh-tool-workspace-dependencies` | yes | The load_workspace_dependencies tool: absolute paths into a bundled Python, Node.js, and pnpm payload |
 
 ## spill
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-spill-local` | yes | Local-filesystem implementation of the Siqi Harness spill storage seam (private session-scoped files) |
+| `@liusiqi-dev/sqh-spill-local` | yes | Local-filesystem implementation of the Sqode spill storage seam (private session-scoped files) |
 | `@liusiqi-dev/sqh-spill-policy` | yes | Token-budgeted tool-result retention with recoverable text and image paths |
 
 ## ssh
@@ -420,10 +420,10 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-storage` | no | Storage hub (ctx.storage): named backend registry plus mounted data-form facilities for the Siqi Harness |
-| `@liusiqi-dev/sqh-storage-domain` | yes | Domain data form (ctx.storage.domain): schema-validated, event-emitting KV domains over storage backends for the Siqi Harness |
-| `@liusiqi-dev/sqh-storage-json` | yes | JSON file KV storage backend for the Siqi Harness storage hub |
-| `@liusiqi-dev/sqh-storage-sqlite` | yes | SQLite storage backend (kv facet) for the Siqi Harness storage hub |
+| `@liusiqi-dev/sqh-storage` | no | Storage hub (ctx.storage): named backend registry plus mounted data-form facilities for the Sqode |
+| `@liusiqi-dev/sqh-storage-domain` | yes | Domain data form (ctx.storage.domain): schema-validated, event-emitting KV domains over storage backends for the Sqode |
+| `@liusiqi-dev/sqh-storage-json` | yes | JSON file KV storage backend for the Sqode storage hub |
+| `@liusiqi-dev/sqh-storage-sqlite` | yes | SQLite storage backend (kv facet) for the Sqode storage hub |
 
 ## subagent
 
@@ -434,7 +434,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 | `@liusiqi-dev/sqh-subagent-claude-code` | yes | One-shot Claude Code subagent provider over the official Agent SDK |
 | `@liusiqi-dev/sqh-subagent-codex` | yes | One-shot Codex subagent provider over the official app-server protocol |
 | `@liusiqi-dev/sqh-subagent-fork-in-process` | yes | In-process fork subagent backend: runs a child agent seeded with a prefix of the parent's log |
-| `@liusiqi-dev/sqh-subagent-sdk` | yes | Out-of-process SDK subagent backend: drives a child Siqi Harness runtime subprocess over stdio JSON-RPC through the TypeScript SDK client |
+| `@liusiqi-dev/sqh-subagent-sdk` | yes | Out-of-process SDK subagent backend: drives a child Sqode runtime subprocess over stdio JSON-RPC through the TypeScript SDK client |
 | `@liusiqi-dev/sqh-subagent-spawn-in-process` | yes | In-process spawn subagent backend: runs a fresh child agent on ctx.agents |
 | `@liusiqi-dev/sqh-tool-subagent` | yes | Model-facing subagent delegation tool over the ctx.subagents seam |
 | `@liusiqi-dev/sqh-tool-subagent-control` | no | Globally named send_message, interrupt_agent, and list_agents tools over ctx.subagents continuations |
@@ -443,7 +443,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-subprocess-local` | no | Local-subprocess implementation of the Siqi Harness subprocess seam |
+| `@liusiqi-dev/sqh-subprocess-local` | no | Local-subprocess implementation of the Sqode subprocess seam |
 
 ## telemetry
 
@@ -455,8 +455,8 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-terminal` | no | Persistent PTY session seam for the Siqi Harness — owner-scoped ids, backend registry, interactive sends, reads, signals, and awaited cleanup |
-| `@liusiqi-dev/sqh-terminal-bash` | yes | Persistent shell PTY backend over the Siqi Harness subprocess terminal primitive |
+| `@liusiqi-dev/sqh-terminal` | no | Persistent PTY session seam for the Sqode — owner-scoped ids, backend registry, interactive sends, reads, signals, and awaited cleanup |
+| `@liusiqi-dev/sqh-terminal-bash` | yes | Persistent shell PTY backend over the Sqode subprocess terminal primitive |
 | `@liusiqi-dev/sqh-tool-terminal` | yes | Six model-facing persistent PTY tools with owner isolation and generic background-job integration |
 
 ## test-support
@@ -469,7 +469,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-tool-todo` | yes | Model-facing todo_write tool over the Siqi Harness event-sourced session log |
+| `@liusiqi-dev/sqh-tool-todo` | yes | Model-facing todo_write tool over the Sqode event-sourced session log |
 
 ## typert
 
@@ -481,21 +481,21 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-tool-web` | yes | Model-facing web tools (web_search, web_fetch) over the Siqi Harness web capability seam (ctx.web) |
-| `@liusiqi-dev/sqh-web` | yes | Abstract web access capability seam (ctx.web) for the Siqi Harness — search/fetch provider registry, registration-order-independent selection, request/result vocabulary, and the WebError taxonomy |
-| `@liusiqi-dev/sqh-web-fetch-http` | yes | Anonymous public HTTP(S) fetch provider for the Siqi Harness web capability seam (ctx.web) |
-| `@liusiqi-dev/sqh-web-search-deepseek` | yes | Search provider backed by an Anthropic-compatible Messages API with native web_search, for the Siqi Harness web capability seam (ctx.web) |
-| `@liusiqi-dev/sqh-web-search-exa` | yes | Exa-backed search provider for the Siqi Harness web capability seam (ctx.web) |
+| `@liusiqi-dev/sqh-tool-web` | yes | Model-facing web tools (web_search, web_fetch) over the Sqode web capability seam (ctx.web) |
+| `@liusiqi-dev/sqh-web` | yes | Abstract web access capability seam (ctx.web) for the Sqode — search/fetch provider registry, registration-order-independent selection, request/result vocabulary, and the WebError taxonomy |
+| `@liusiqi-dev/sqh-web-fetch-http` | yes | Anonymous public HTTP(S) fetch provider for the Sqode web capability seam (ctx.web) |
+| `@liusiqi-dev/sqh-web-search-deepseek` | yes | Search provider backed by an Anthropic-compatible Messages API with native web_search, for the Sqode web capability seam (ctx.web) |
+| `@liusiqi-dev/sqh-web-search-exa` | yes | Exa-backed search provider for the Sqode web capability seam (ctx.web) |
 | `@liusiqi-dev/sqh-web-search-http` | yes | Search-engine provider (Google Custom Search, falling back to Bing) for the web capability seam (ctx.web) |
-| `@liusiqi-dev/sqh-web-search-perplexity` | yes | Perplexity-backed search provider for the Siqi Harness web capability seam (ctx.web) |
+| `@liusiqi-dev/sqh-web-search-perplexity` | yes | Perplexity-backed search provider for the Sqode web capability seam (ctx.web) |
 | `@liusiqi-dev/sqh-web-search-serp` | yes | Keyless search provider that reads a public search result page (Bing) for the web capability seam (ctx.web) |
 
 ## webhook
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-webhook` | no | Fire-and-forget webhook rule runtime that creates Workspace-backed Siqi Harness Sessions |
-| `@liusiqi-dev/sqh-webhook-github` | yes | Signed GitHub HTTP webhook adapter for the Siqi Harness webhook runtime |
+| `@liusiqi-dev/sqh-webhook` | no | Fire-and-forget webhook rule runtime that creates Workspace-backed Sqode Sessions |
+| `@liusiqi-dev/sqh-webhook-github` | yes | Signed GitHub HTTP webhook adapter for the Sqode webhook runtime |
 
 ## workflow
 
@@ -509,4 +509,4 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-workspace` | no | Workspace entity registry (ctx.workspaceRegistry): durable workspace records with validated session attachment over the domain data form for the Siqi Harness |
+| `@liusiqi-dev/sqh-workspace` | no | Workspace entity registry (ctx.workspaceRegistry): durable workspace records with validated session attachment over the domain data form for the Sqode |

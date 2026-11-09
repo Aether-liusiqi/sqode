@@ -5,7 +5,7 @@ import type { SessionId as SessionIdType } from '@liusiqi-dev/sqh-session'
 import { SessionReferenceError } from './config.ts'
 import type { SessionReferenceInput } from './types.ts'
 
-/** URI scheme reserved for Siqi Harness session snapshots. */
+/** URI scheme reserved for Sqode session snapshots. */
 export const SESSION_REFERENCE_SCHEME = 'sqh-session:'
 
 /**

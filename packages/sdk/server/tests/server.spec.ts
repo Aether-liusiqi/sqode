@@ -1083,7 +1083,7 @@ describe('HarnessSdkJsonRpcServer', () => {
 
       await expect(server.handleRequest('does/not/exist', {}))
         .rejects
-        .toThrow('unknown Siqi Harness SDK runtime method: does/not/exist')
+        .toThrow('unknown Sqode SDK runtime method: does/not/exist')
 
       await server.shutdown()
     } finally {

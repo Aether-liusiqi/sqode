@@ -1,5 +1,5 @@
 /**
- * Outbound HTTP proxy support for Siqi Harness.
+ * Outbound HTTP proxy support for Sqode.
  *
  * Node's built-in `fetch` ignores `HTTP_PROXY` and friends, so every harness request would connect
  * directly no matter what the user exported. The launcher resolves one policy from the launch

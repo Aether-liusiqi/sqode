@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-scope",
-  "description": "Scoped-context registration primitive (scope tags, scope-filtered event dispatch) for the Siqi Harness",
+  "description": "Scoped-context registration primitive (scope tags, scope-filtered event dispatch) for the Sqode",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

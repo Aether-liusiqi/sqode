@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "siqi-harness-runtime-bin"
 version = "0.0.0.dev0"
-description = "Bundled dsh CLI runtime for the Siqi Harness Python SDK"
+description = "Bundled dsh CLI runtime for the Sqode Python SDK"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"

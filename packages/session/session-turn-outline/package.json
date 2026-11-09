@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-session-turn-outline",
-  "description": "Whole-log turn outline projection (turnOutline) for the Siqi Harness",
+  "description": "Whole-log turn outline projection (turnOutline) for the Sqode",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

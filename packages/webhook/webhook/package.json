@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-webhook",
-  "description": "Fire-and-forget webhook rule runtime that creates Workspace-backed Siqi Harness Sessions",
+  "description": "Fire-and-forget webhook rule runtime that creates Workspace-backed Sqode Sessions",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

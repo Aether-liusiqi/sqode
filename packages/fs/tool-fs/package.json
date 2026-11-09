@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-tool-fs",
-  "description": "Model-facing filesystem tools (read, write, edit) over the Siqi Harness filesystem seam (ctx.fs)",
+  "description": "Model-facing filesystem tools (read, write, edit) over the Sqode filesystem seam (ctx.fs)",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

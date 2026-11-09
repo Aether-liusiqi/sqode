@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-sdk-jsonrpc-server",
-  "description": "Stdio JSON-RPC server plugin for out-of-process Siqi Harness SDK clients",
+  "description": "Stdio JSON-RPC server plugin for out-of-process Sqode SDK clients",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

@@ -1,5 +1,5 @@
 /**
- * SessionTelemetryBackend Service Definition for the Siqi Harness.
+ * SessionTelemetryBackend Service Definition for the Sqode.
  *
  * This package owns the CAPTURE side of session-event reporting — the complete
  * one-record-per-event ledger mirror, what records carry, when

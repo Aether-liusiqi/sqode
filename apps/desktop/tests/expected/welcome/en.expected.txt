@@ -1,6 +1,6 @@
-Siqi Harness
-Siqi Harness
-Welcome to Siqi Harness
+Sqode
+Sqode
+Welcome to Sqode
 Build potential. Explore intelligence.
 Sign in
 Add API Key

@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-host-directory-picker",
-  "description": "Abstract workspace-directory picking seam (ctx.directoryPicker) for the Siqi Harness web GUI host",
+  "description": "Abstract workspace-directory picking seam (ctx.directoryPicker) for the Sqode web GUI host",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

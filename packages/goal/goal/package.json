@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-goal",
-  "description": "Event-sourced same-session goal state and lifecycle service for the Siqi Harness",
+  "description": "Event-sourced same-session goal state and lifecycle service for the Sqode",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

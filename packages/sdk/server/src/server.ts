@@ -254,7 +254,7 @@ export class HarnessSdkJsonRpcServer {
       case 'shutdown':
         return this.shutdown()
       default:
-        throw new Error(`unknown Siqi Harness SDK runtime method: ${method}`)
+        throw new Error(`unknown Sqode SDK runtime method: ${method}`)
     }
   }
 
