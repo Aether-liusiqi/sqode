@@ -1,12 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
-  <defs>
-    <linearGradient id="sq" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#5B21B6"/>
-      <stop offset="1" stop-color="#7C3AED"/>
-    </linearGradient>
-  </defs>
-  <rect x="96" y="96" width="832" height="832" rx="200" ry="200" fill="url(#sq)"/>
-  <text x="512" y="512" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="620"
-        font-weight="700" fill="#ffffff" text-anchor="middle" dominant-baseline="central">S</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" fill="none">
+  <g transform="translate(96 96) scale(0.8125)" stroke="#101317" stroke-width="96" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M836 284 C836 192 692 164 520 188 C348 212 224 288 224 392 C224 456 300 500 416 500"/>
+    <path d="M608 500 C712 500 784 540 784 656 C784 760 664 812 500 812 C438 812 388 804 344 792"/>
+    <path d="M200 752 L200 860"/>
+  </g>
 </svg>
