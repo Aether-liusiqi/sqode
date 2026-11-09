@@ -1,4 +1,4 @@
-/** Built dsh web + the `pnpm run dev:web --no-serve` watchers → browser HMR, with no page reload. */
+/** Built sqh web + the `pnpm run dev:web --no-serve` watchers → browser HMR, with no page reload. */
 
 import { existsSync, globSync, statSync } from 'node:fs'
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
@@ -124,7 +124,7 @@ it('hot-reloads a real client-plugin source edit without refreshing the page', a
         SQODE_HOME: join(world, '.sqode'),
       },
     ))
-    const baseUrl = await waitForOutput(host, /dsh web: (http:\/\/[^\s]+)/, 'built dsh web')
+    const baseUrl = await waitForOutput(host, /sqh web: (http:\/\/[^\s]+)/, 'built sqh web')
     browser = await chromium.launch()
     const page = await browser.newPage()
     const pageErrors: string[] = []

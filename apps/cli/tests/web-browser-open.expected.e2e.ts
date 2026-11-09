@@ -63,7 +63,7 @@ describe.skipIf(!builtArtifactsExist)('sqh web browser-open assembled snapshot',
       killSignal: 'SIGKILL',
       reject: false,
     })
-    const readyUrl = /dsh web: (http:\/\/[^\s]+)/u.exec(result.stdout)?.[1]
+    const readyUrl = /sqh web: (http:\/\/[^\s]+)/u.exec(result.stdout)?.[1]
     const openLine = result.stdout.split('\n').find(line => line.startsWith('dsh browser-open: '))
     const opening = result.stdout.includes(openingMessage)
     if (readyUrl === undefined || openLine === undefined || !opening) {
@@ -123,7 +123,7 @@ describe.skipIf(!builtArtifactsExist)('sqh web browser-open assembled snapshot',
       killSignal: 'SIGKILL',
       reject: false,
     })
-    const readyUrl = /dsh web: (http:\/\/[^\s]+)/u.exec(result.stdout)?.[1]
+    const readyUrl = /sqh web: (http:\/\/[^\s]+)/u.exec(result.stdout)?.[1]
     const diagnostic = result.stderr.split(/\r?\n/u)
       .find(line => line.startsWith('web-app: could not open the default browser because '))
 
@@ -135,7 +135,7 @@ describe.skipIf(!builtArtifactsExist)('sqh web browser-open assembled snapshot',
       readyUrl: readyUrl === undefined ? undefined : normalizeLocalUrl(readyUrl),
     }).toMatchInlineSnapshot(`
       {
-        "diagnostic": "web-app: could not open the default browser because fixture desktop unavailable; use the dsh web URL printed at startup",
+        "diagnostic": "web-app: could not open the default browser because fixture desktop unavailable; use the sqh web URL printed at startup",
         "exitCode": 0,
         "opened": false,
         "opening": true,
@@ -171,7 +171,7 @@ describe.skipIf(!builtArtifactsExist)('sqh web browser-open assembled snapshot',
       killSignal: 'SIGKILL',
       reject: false,
     })
-    const readyUrl = /dsh web: (http:\/\/[^\s]+)/u.exec(result.stdout)?.[1]
+    const readyUrl = /sqh web: (http:\/\/[^\s]+)/u.exec(result.stdout)?.[1]
 
     expect({
       exitCode: result.exitCode,

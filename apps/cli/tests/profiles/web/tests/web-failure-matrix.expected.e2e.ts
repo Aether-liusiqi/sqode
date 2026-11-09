@@ -128,8 +128,8 @@ function start(f: ReturnType<typeof fixture>, extra: string[] = []) {
     } catch (cause) { throw new Error(`Web condition failed\n${stdout}\n${stderr}\n${readFileSync(f.diagnostics, 'utf8')}\n${readFileSync(f.events, 'utf8')}`, { cause }) }
   }
   async function serves(currentServer = false) {
-    await wait(() => /dsh web: http:\/\//u.test(stdout))
-    const url = currentServer ? readFileSync(f.serverUrl, 'utf8') : /dsh web: (http:\/\/[^\s]+)/u.exec(stdout)?.[1]
+    await wait(() => /sqh web: http:\/\//u.test(stdout))
+    const url = currentServer ? readFileSync(f.serverUrl, 'utf8') : /sqh web: (http:\/\/[^\s]+)/u.exec(stdout)?.[1]
     if (!url) throw new Error('Missing Web URL')
     const auth = await fetch(url, { redirect: 'manual', signal: AbortSignal.timeout(10_000) })
     const cookie = auth.headers.get('set-cookie')?.split(';', 1)[0]

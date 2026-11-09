@@ -110,7 +110,7 @@ async function waitForStartup(
   }
   stdout.on('data', (chunk: string) => {
     stdoutText += chunk
-    url ??= /dsh web: (http:\/\/[^\s]+)/u.exec(stdoutText)?.[1]
+    url ??= /sqh web: (http:\/\/[^\s]+)/u.exec(stdoutText)?.[1]
     finish()
   })
   stderr.on('data', (chunk: string) => {

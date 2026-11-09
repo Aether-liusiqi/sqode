@@ -186,7 +186,7 @@ describe('BrowserAuth', () => {
       })
       expect(denied.state.body).toBe(candidate.method === 'HEAD'
         ? undefined
-        : 'sqh web authentication required; reopen the URL printed by dsh web.\n')
+        : 'sqh web authentication required; reopen the URL printed by sqh web.\n')
     }
   })
 
