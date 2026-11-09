@@ -256,7 +256,7 @@ export async function runScenario(input: InputScript, opts: RunOptions): Promise
     }
     await opts.prepareWorkspace?.(cwd)
     const initialWorkspace = await captureWorkspaceSnapshot(cwd, {
-      ignoredRootEntries: ['.agents', '.sqode', '.dsh-profile-patches', '.dsh-snapshot-stream-ready'],
+      ignoredRootEntries: ['.agents', '.sqode', '.sqh-profile-patches', '.dsh-snapshot-stream-ready'],
     })
     const env: NodeJS.ProcessEnv = {
       ...opts.env,
@@ -345,7 +345,7 @@ export async function runScenario(input: InputScript, opts: RunOptions): Promise
     // generated dirs still exist, ordered primary-first.
     sessionLogs = await harvestSessionLogs(sessionsRoot)
     const finalWorkspace = await captureWorkspaceSnapshot(cwd, {
-      ignoredRootEntries: ['.agents', '.sqode', '.dsh-profile-patches', '.dsh-snapshot-stream-ready'],
+      ignoredRootEntries: ['.agents', '.sqode', '.sqh-profile-patches', '.dsh-snapshot-stream-ready'],
     })
     return {
       rawStdout: launched.rawStdout(),

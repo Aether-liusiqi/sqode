@@ -250,7 +250,7 @@ export const OPTIONAL_BUNDLES: readonly string[] = [
   '@liusiqi-dev/sqh-experimental-schedule-bundle',
 ]
 
-const PROFILE_PATCH_TEMPLATE = `# Your patch layer for this dsh profile, applied after every bundle layer:
+const PROFILE_PATCH_TEMPLATE = `# Your patch layer for this sqh profile, applied after every bundle layer:
 # a top-level YAML array of loader patch entries (id-targeted config
 # overrides, disables, and insert lists; \`!!js\` expressions allowed).
 []

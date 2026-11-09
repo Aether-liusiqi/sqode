@@ -1,4 +1,4 @@
-/** Generic keyless ACP v1 automation-control conformance over the real dsh profile. */
+/** Generic keyless ACP v1 automation-control conformance over the real sqh profile. */
 
 import { mkdtemp, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
