@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write packages/sdk/client/README.md
 /:
-  en: dd3be7a1c1a3a9d6
-  zh: 0060cb7a8dcccc1d
+  en: c8006539baf96255
+  zh: a3c4ac6f9e0245b9
 /liusiqi-dev-sqh-sdk-client:
   en: 0773be4d2e4c15d4
   zh: 7d0a02acf1564abd
 /liusiqi-dev-sqh-sdk-client/summary:
-  en: 10238f59e717cdb4
-  zh: 7acef0cb58f4d300
+  en: 67d37e0f869f567e
+  zh: 05c368c86b9c6614
 /liusiqi-dev-sqh-sdk-client/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb

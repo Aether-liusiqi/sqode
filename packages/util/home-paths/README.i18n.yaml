@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write packages/util/home-paths/README.md
 /:
-  en: 7a4a88f508bed1db
-  zh: 14839f7da6282d69
+  en: d5b23c981a6fb6e6
+  zh: 9090711a7546e6cf
 /liusiqi-dev-sqh-home-paths:
   en: 899088749f45214b
   zh: 602991b83048dc18
 /liusiqi-dev-sqh-home-paths/summary:
-  en: 381fc34913c9fb07
-  zh: c6fee12ed77735fc
+  en: fbe1c69d6b621ff0
+  zh: 70d808c906f43455
 /liusiqi-dev-sqh-home-paths/table-of-contents:
   en: 80b31a934611cb4a
   zh: 05f3f7f9cb2fd881

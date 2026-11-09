@@ -6,12 +6,12 @@
   - tablist:
     - tab "Chat" [selected]
     - tab "Trajectory"
-- text: Use web_search once with queries ["Siqi Harness snapshot search","Siqi Harness multi-query search"]. Then reply exactly SEARCH_DONE and stop. {{clock}}
+- text: Use web_search once with queries ["Sqode snapshot search","Sqode multi-query search"]. Then reply exactly SEARCH_DONE and stop. {{clock}}
 - button "Copy"
 - status: Completed
 - button "Completed in {{duration}}" [expanded]
 - button "Searched the web" [expanded]
-- button "Search Siqi Harness snapshot search, Siqi Harness multi-query search"
+- button "Search Sqode snapshot search, Sqode multi-query search"
 - paragraph: SEARCH_DONE
 - button "Copy"
 - button "Good response"

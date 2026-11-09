@@ -10,7 +10,7 @@ Status: implemented
 
 ## 问题
 
-Siqi Harness 需要一个复用 Web UI 的 Electron 桌面应用。该应用无需系统 Node.js 或 pnpm 即可工作，通过应用内置 pnpm 安装 sqh 与桌面插件，并通过一个面向用户的流程更新完整桌面发布。
+Sqode 需要一个复用 Web UI 的 Electron 桌面应用。该应用无需系统 Node.js 或 pnpm 即可工作，通过应用内置 pnpm 安装 sqh 与桌面插件，并通过一个面向用户的流程更新完整桌面发布。
 
 桌面应用与通过 npm 安装的 sqh 共享 `.sqh` 数据根目录，但两者可能使用不同的 sqh 与插件版本。它们必须共享受支持的产品数据，同时不得共享可执行包、lockfile、`node_modules`、插件激活状态或包管理器配置。
 

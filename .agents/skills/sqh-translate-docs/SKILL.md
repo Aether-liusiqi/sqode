@@ -1,6 +1,6 @@
 ---
 name: sqh-translate-docs
-description: Manually run the extended Siqi Harness bilingual-document workflow, including generated briefings, delegated prose translation, whole-document translation, and scoped pairing verification.
+description: Manually run the extended Sqode bilingual-document workflow, including generated briefings, delegated prose translation, whole-document translation, and scoped pairing verification.
 disable-model-invocation: true
 user-invocable: true
 ---

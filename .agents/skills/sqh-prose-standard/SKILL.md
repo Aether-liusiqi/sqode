@@ -3,7 +3,7 @@ name: sqh-prose-standard
 description: Use when writing, reviewing, restoring, trimming, or auditing prose in the deepseek-harness repo, including deciding where documentation or comments are required across Markdown, JSDoc, code and test comments, prompts, descriptions, diagnostics, and CLI or UI strings.
 ---
 
-# Siqi Harness Prose Standard
+# Sqode Prose Standard
 
 Write enough to preserve the contract, then remove reasoning transcripts, repetition, and decoration. A contract is an obligation, invariant, precondition, postcondition, or compatibility promise that a caller, callee, implementer, producer, or consumer relies on. This skill owns editorial judgment and required prose coverage; use [sqh-doc](../sqh-doc/SKILL.md) for placement, budgets, bilingual pairs, and documentation gates, and [sqh-trim-cot-leakage](../sqh-trim-cot-leakage/SKILL.md) for hunting and fixing reasoning-transcript leakage. It is guidance, not a script.
 

@@ -2,15 +2,15 @@
 # section, a hash of its English and Chinese blocks outside code blocks and generated regions.
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write python/sdk/README.md
-/siqi-harness-python-sdk:
-  en: 3888034c8387f71e
-  zh: 100e195a1257ce27
-/siqi-harness-python-sdk/start-a-runtime:
+/sqode-python-sdk:
+  en: f05489884577d801
+  zh: e6c8389fa4df0d31
+/sqode-python-sdk/start-a-runtime:
   en: f4bba68cd3a4cbfd
   zh: d5981a46e37e0461
-/siqi-harness-python-sdk/customize-plugins:
+/sqode-python-sdk/customize-plugins:
   en: 1eebca692b707004
   zh: d0cd50b285aefde7
-/siqi-harness-python-sdk/results-and-notifications:
+/sqode-python-sdk/results-and-notifications:
   en: 74400097180478d8
   zh: 14a132ba3057757c

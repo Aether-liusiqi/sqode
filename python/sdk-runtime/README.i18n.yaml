@@ -3,8 +3,8 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write python/sdk-runtime/README.md
 /siqi-harness-runtime-bin:
-  en: ab4bb166ae341f0b
-  zh: 464a1edd9f6ba46f
+  en: f8747d3b2c708dae
+  zh: 744eb5a274bd9320
 /siqi-harness-runtime-bin/installed-commands-and-artifacts:
   en: 407c066d2c83945f
   zh: 698b721367bb431d

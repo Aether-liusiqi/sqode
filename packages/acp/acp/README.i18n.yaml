@@ -3,14 +3,14 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write packages/acp/acp/README.md
 /:
-  en: ef6d16a3c86fe040
-  zh: 054a6b8c0c21b5e1
+  en: 1163d01bcc13df04
+  zh: c33d0c2450df759b
 /liusiqi-dev-sqh-acp:
   en: c14899b2fb440227
   zh: a0cfddca4a8042c2
 /liusiqi-dev-sqh-acp/summary:
-  en: 21fa4671020c1a4f
-  zh: 2da654bc734c4dc8
+  en: 13bc963711d68ff7
+  zh: 144329662b288294
 /liusiqi-dev-sqh-acp/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb

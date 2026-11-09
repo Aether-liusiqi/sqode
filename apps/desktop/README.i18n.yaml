@@ -2,78 +2,78 @@
 # section, a hash of its English and Chinese blocks outside code blocks and generated regions.
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write apps/desktop/README.md
-/siqi-harness-desktop:
-  en: b464b723ea758e8a
-  zh: 73009b8621aa5548
-/siqi-harness-desktop/terminal-command:
+/sqode-desktop:
+  en: 91829b62df5513d5
+  zh: 724e7ba62a1d89f3
+/sqode-desktop/terminal-command:
   en: 8f2901a61dfe56be
   zh: 96f1add3b23b2014
-/siqi-harness-desktop/closing-the-window-and-quitting:
-  en: c22774b06a025b82
-  zh: 6a8ce117b63270d0
-/siqi-harness-desktop/key-technical-decisions:
+/sqode-desktop/closing-the-window-and-quitting:
+  en: e09242eaac03275f
+  zh: 7a511aca9b4f77b4
+/sqode-desktop/key-technical-decisions:
   en: 8a8daea16be78b63
   zh: c6df3b2485ff2192
-/siqi-harness-desktop/key-technical-decisions/bundled-workspace-dependencies:
+/sqode-desktop/key-technical-decisions/bundled-workspace-dependencies:
   en: 73544a71c6cfe91e
   zh: 2b07a3ce85247817
-/siqi-harness-desktop/bundled-command-runtime:
+/sqode-desktop/bundled-command-runtime:
   en: 0363187c46f7e88f
   zh: 78695c8b4c313bd6
-/siqi-harness-desktop/installation-ownership:
+/sqode-desktop/installation-ownership:
   en: e865ed6f85310e25
   zh: 93e1f37d9b5d2955
-/siqi-harness-desktop/installation-ownership/runtime-and-plugin-activation:
-  en: 08041b73766fbc9a
-  zh: cb584c70ead31ec7
-/siqi-harness-desktop/installation-ownership/host-environment:
+/sqode-desktop/installation-ownership/runtime-and-plugin-activation:
+  en: 204e1c03168cf681
+  zh: ff2eb1cacb46e1d1
+/sqode-desktop/installation-ownership/host-environment:
   en: d92300c317e70827
   zh: 9c83bfabfee99180
-/siqi-harness-desktop/develop:
+/sqode-desktop/develop:
   en: da25a560fc717f28
   zh: 5b954d6547f79aad
-/siqi-harness-desktop/develop/startup-onboarding:
+/sqode-desktop/develop/startup-onboarding:
   en: b2e10e99b97aca0f
   zh: 4b43ee2e6e76e3c5
-/siqi-harness-desktop/develop/welcome-window-appearance:
+/sqode-desktop/develop/welcome-window-appearance:
   en: c1c0ac5aa6d3565c
   zh: b890cff669ed0c7a
-/siqi-harness-desktop/package:
+/sqode-desktop/package:
   en: 4cd8a8da6977928d
   zh: 9f624855a2edac37
-/siqi-harness-desktop/package/release-versions:
+/sqode-desktop/package/release-versions:
   en: 55e0ad27488defa2
   zh: 08941c4203886481
-/siqi-harness-desktop/package/runtime-file-selection:
+/sqode-desktop/package/runtime-file-selection:
   en: 3f6e00a7bede306d
   zh: 6d4a706b04743697
-/siqi-harness-desktop/package/upload-updates:
+/sqode-desktop/package/upload-updates:
   en: f91a48e1bb4714cc
   zh: 43c34f6ca5397969
-/siqi-harness-desktop/package/unsigned-windows-test-installer:
+/sqode-desktop/package/unsigned-windows-test-installer:
   en: d685a2a05f1ef26c
   zh: b1cd599dc59508d2
-/siqi-harness-desktop/package/windows-installer-interface:
+/sqode-desktop/package/windows-installer-interface:
   en: 03600ae849464db2
   zh: 9db387c224d6f2b4
-/siqi-harness-desktop/package/windows-ev-signing:
+/sqode-desktop/package/windows-ev-signing:
   en: 5049329fd2b05f26
   zh: b4713c53aa74e546
-/siqi-harness-desktop/updates:
+/sqode-desktop/updates:
   en: d182f209d0bfaad0
   zh: 80e92ddd9eff7eef
-/siqi-harness-desktop/updates/mandatory-update-policy:
+/sqode-desktop/updates/mandatory-update-policy:
   en: 54a9b5f8ea7d56e0
   zh: b0893e2c9e1935a2
-/siqi-harness-desktop/updates/local-updater-qualification:
+/sqode-desktop/updates/local-updater-qualification:
   en: 3212cb5f9c41f960
   zh: b11fbf809ba4146b
-/siqi-harness-desktop/low-level-development-overrides:
+/sqode-desktop/low-level-development-overrides:
   en: 7624b07f3f0b6146
   zh: d424bd81ef98d8ab
-/siqi-harness-desktop/known-limitations:
+/sqode-desktop/known-limitations:
   en: 1b5bd01481a930da
   zh: f63eba216821236d
-/siqi-harness-desktop/dev-note:
+/sqode-desktop/dev-note:
   en: dbb80f9d3dd13897
   zh: c8d8b021505103ab

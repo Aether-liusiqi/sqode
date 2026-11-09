@@ -6,7 +6,7 @@ Status: implemented
 
 ## 问题
 
-对于"Siqi Harness 用户数据存放在哪里"，harness 里存在两套互不一致的约定：
+对于"Sqode 用户数据存放在哪里"，harness 里存在两套互不一致的约定：
 
 - `@siqi-ai/dsh-home` 按 `configured ?? $SQH_HOME ?? ~/.dsh` 解析。
 - `@siqi-ai/sqh-home-paths` 又提供了**第二个** `resolveDshHome`，优先级相同但额外做了波浪号展开——它几乎是 `sqh-home` 的重复实现，却没有任何门禁发现，因为两者分属不同的包，而且早已漂移（只有一个会展开波浪号）。
