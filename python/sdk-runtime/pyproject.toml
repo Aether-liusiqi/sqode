@@ -9,7 +9,7 @@ description = "Bundled dsh CLI runtime for the Sqode Python SDK"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
-authors = [{ name = "DeepSeek" }]
+authors = [{ name = "Liusiqi" }]
 
 [project.urls]
 Homepage = "https://github.com/deepseek-ai/deepseek-harness"
