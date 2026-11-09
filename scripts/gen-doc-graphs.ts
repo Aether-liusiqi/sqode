@@ -417,15 +417,8 @@ const SERVICE_ROLES: ServiceRole[] = [
     pkg: 'otel',
     title: 'Shared OTel reporting channels',
     mode: 'service',
-    consumers: ['host-product-telemetry-otel', 'session-telemetry-otel'],
+    consumers: ['session-telemetry-otel'],
     note: 'Product analytics and Session feedback adapters create independent reporting channels through one injected service.',
-  },
-  {
-    key: 'productTelemetry',
-    pkg: 'host-product-telemetry-otel',
-    title: 'Product usage event sender',
-    mode: 'service',
-    note: 'Exports explicitly submitted analytics events through OTLP/HTTP; mounting alone collects nothing.',
   },
 
   {
