@@ -47,9 +47,14 @@ export async function verifyInstalledUpdatePackageContent(manifest: string, vers
     files: { path: string; sha256: string }[]
   }
   const expectedPaths = new Set(inventory.files.map(file => file.path))
+  // Published update archives carry their payload under the codename the build
+  // shipped with; current builds use `sqh`, archived ones use `dsh`.
+  const payloadRoots = ['sqh', 'dsh'] as const
+  const isPayloadPath = (path: string): boolean =>
+    payloadRoots.some(root => path.startsWith(`${root}/`))
   const inspect = (node: AsarNode, path = ''): void => {
     if (path === 'node_modules' || path === 'package.json') return
-    if (node.link !== undefined || (node.unpacked === true && !path.startsWith('dsh/'))) {
+    if (node.link !== undefined || (node.unpacked === true && !isPayloadPath(path))) {
       throw new Error('installed update: application archive contains external entries')
     }
     if (node.files !== undefined) {
@@ -59,12 +64,13 @@ export async function verifyInstalledUpdatePackageContent(manifest: string, vers
         }
         inspect(child, path === '' ? name : `${path}/${name}`)
       }
-    } else if (!path.startsWith('dsh/') && !expectedPaths.has(path)) {
+    } else if (!isPayloadPath(path) && !expectedPaths.has(path)) {
       throw new Error('installed update: application archive contains additional files')
     }
   }
   inspect(archive.header)
-  if (archive.header.files?.dsh?.files === undefined) throw new Error('installed update: application archive lacks the dsh runtime')
+  const payloadRoot = archive.header.files?.sqh ?? archive.header.files?.dsh
+  if (payloadRoot?.files === undefined) throw new Error('installed update: application archive lacks the runtime payload')
   for (const file of inventory.files) {
     const path = file.path.split('/').join(process.platform === 'win32' ? '\\' : '/')
     const node = archive.getFile(path, false)

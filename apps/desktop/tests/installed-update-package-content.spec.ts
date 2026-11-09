@@ -70,14 +70,14 @@ async function fixture(body: (context: {
       await mkdir(join(source, 'node_modules', name), { recursive: true })
       await cp(require.resolve(`${name}/package.json`), join(source, 'node_modules', name, 'package.json'))
     }
-    const dsh = join(run.root, version, 'dsh')
+    const dsh = join(run.root, version, 'sqh')
     const descriptor = runtimeFixture(dsh, version)
     await writeFile(join(dsh, 'tool.exe'), 'inert executable fixture')
     const reseal = (directory: string): void => {
       writeDesktopRuntime(directory, descriptor.release, descriptor.sharedPackages.map(entry => entry.name), { platform: 'win32', arch: 'x64' })
     }
     reseal(dsh)
-    await cp(dsh, join(source, 'dsh'), { recursive: true })
+    await cp(dsh, join(source, 'sqh'), { recursive: true })
     const payload = join(root, 'payload')
     await mkdir(join(payload, 'resources'), { recursive: true })
     await writeFile(join(payload, 'resources/app-update.yml'), JSON.stringify({ provider: 'generic', channel: 'nightly',
@@ -91,7 +91,7 @@ async function fixture(body: (context: {
     }
     await seal()
     await body({ manifest, source, payload, version, seal, resealRuntime: async () => {
-      reseal(join(source, 'dsh'))
+      reseal(join(source, 'sqh'))
       await seal()
     } })
   } finally {
@@ -155,7 +155,7 @@ describe('installed update archive contents', () => {
 
   it('accepts only the builder transformation of runtime dependency manifests', async () => {
     await fixture(async ({ manifest, source, payload, version, seal }) => {
-      const preparedRoot = join(dirname(manifest), version, 'dsh')
+      const preparedRoot = join(dirname(manifest), version, 'sqh')
       const packagePath = 'node_modules/@liusiqi-dev/sqode/package.json'
       const preparedPath = join(preparedRoot, packagePath)
       const data = JSON.parse(await readFile(preparedPath, 'utf8')) as Record<string, unknown>
@@ -165,8 +165,8 @@ describe('installed update archive contents', () => {
       const descriptor = readDesktopRuntime(preparedRoot)
       writeDesktopRuntime(preparedRoot, descriptor.release, descriptor.sharedPackages.map(entry => entry.name),
         { platform: 'win32', arch: 'x64' })
-      await cp(join(preparedRoot, 'desktop-runtime.json'), join(source, 'dsh/desktop-runtime.json'))
-      const packagedPath = join(source, 'dsh', packagePath)
+      await cp(join(preparedRoot, 'desktop-runtime.json'), join(source, 'sqh/desktop-runtime.json'))
+      const packagedPath = join(source, 'sqh', packagePath)
       const packaged = { ...data }
       delete packaged.scripts
       delete packaged.bugs
@@ -183,7 +183,7 @@ describe('installed update archive contents', () => {
   it.each(['unsealed', 'resealed-change', 'resealed-addition'])(
     'rejects %s runtime content even when metadata is regenerated', async (failure) => {
       await fixture(async ({ manifest, source, payload, version, seal, resealRuntime }) => {
-        await writeFile(join(source, 'dsh', failure === 'resealed-addition' ? 'extra.js' : 'package.json'), '{}')
+        await writeFile(join(source, 'sqh', failure === 'resealed-addition' ? 'extra.js' : 'package.json'), '{}')
         if (failure !== 'unsealed') await resealRuntime()
         else await seal()
         await expect(verifyInstalledUpdatePackageContent(manifest, version, payload, publisher)).rejects.toThrow()
@@ -193,7 +193,7 @@ describe('installed update archive contents', () => {
   it('identifies changed executable resources for separate signature verification', async () => {
     await fixture(async ({ manifest, source, payload, version, resealRuntime }) => {
       const executable = join(payload, 'resources/app.asar.unpacked/dsh/tool.exe')
-      await writeFile(join(source, 'dsh/tool.exe'), 'inert changed executable, not a signature')
+      await writeFile(join(source, 'sqh/tool.exe'), 'inert changed executable, not a signature')
       await resealRuntime()
       expect((await verifyInstalledUpdatePackageContent(manifest, version, payload, publisher)).resignedExecutables).toEqual([executable])
     })

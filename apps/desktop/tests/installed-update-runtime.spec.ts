@@ -26,7 +26,7 @@ describe('installed-update runtime preparation', () => {
       const result = await prepareInstalledUpdateRuntime(join(run.root, 'run.json'), original)
       expect(result).toMatchObject({ signed: false, bootTested: false })
       for (const version of versions) {
-        const runtime = join(run.root, version, 'dsh')
+        const runtime = join(run.root, version, 'sqh')
         const descriptor = await verifyDesktopRuntime(runtime, version)
         expect(descriptor.sharedPackages.find(entry => entry.name === '@liusiqi-dev/cordis')?.version).toBe(source.version)
         expect(descriptor.sharedPackages.find(entry => entry.name === '@liusiqi-dev/sqode')?.version).toBe(version)

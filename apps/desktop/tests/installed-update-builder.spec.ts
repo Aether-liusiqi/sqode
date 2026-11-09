@@ -42,7 +42,7 @@ async function fixture<T>(body: (manifest: string, source: string) => Promise<T>
     await writeFile(join(source, 'renderer', 'index.html'), '<p>fixture</p>')
     await writeFile(join(source, '.env.windows'), 'must-not-copy')
     for (const version of versions) {
-      const dsh = join(run.root, version, 'dsh')
+      const dsh = join(run.root, version, 'sqh')
       const runtime = runtimeFixture(dsh, version)
       writeDesktopRuntime(dsh, runtime.release, runtime.sharedPackages.map(entry => entry.name), { platform: 'win32', arch: 'x64' })
     }
@@ -87,9 +87,9 @@ describe('installed-update application inputs and builder configuration', () => 
         expect(config.extraMetadata.version).toBe(versions[index])
         expect(config.extraMetadata.main).toBe('qualification-bootstrap.mjs')
         expect(config.directories.output).toBe(join(manifest, '..', versions[index]!, 'installer'))
-        const dsh = join(manifest, '..', versions[index]!, 'dsh')
-        expect(config.files[2]).toMatchObject({ from: dsh, to: 'dsh' })
-        expect(config.files[3]).toMatchObject({ from: join(dsh, 'node_modules'), to: 'dsh/node_modules' })
+        const dsh = join(manifest, '..', versions[index]!, 'sqh')
+        expect(config.files[2]).toMatchObject({ from: dsh, to: 'sqh' })
+        expect(config.files[3]).toMatchObject({ from: join(dsh, 'node_modules'), to: 'sqh/node_modules' })
         expect(config.win.forceCodeSigning).toBe(true)
         expect(config.win.signtoolOptions.publisherName).toBe('CN=Fixture,O=Fixture,C=CN')
         expect(typeof config.win.signtoolOptions.sign).toBe('function')
