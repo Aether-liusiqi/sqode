@@ -516,7 +516,7 @@ describe('headless runner', () => {
     })
     expect(await test.run()).toMatchObject({
       code: 1,
-      err: 'sqh: a task is required, for example: dsh --profile headless "run the tests"\n',
+      err: 'sqh: a task is required, for example: sqh --profile headless "run the tests"\n',
     })
     await test.ctx.fiber.dispose()
   })

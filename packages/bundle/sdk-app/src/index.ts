@@ -42,7 +42,7 @@ function sdkCommand(profile: string): Command {
     .helpOption('-h, --help', 'show this help')
     .addHelpText('after', `
 Example:
-  dsh --profile ${profile}     serve one SDK runtime until its client disconnects
+  sqh --profile ${profile}     serve one SDK runtime until its client disconnects
 `)
 }
 

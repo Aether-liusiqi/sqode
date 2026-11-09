@@ -326,7 +326,7 @@ async function run(ctx: Context, config: Config, io: HeadlessIo): Promise<void> 
     ? await internals.readStdin()
     : config.task
   if (task.trim() === '') {
-    throw new Error('a task is required, for example: dsh --profile headless "run the tests"')
+    throw new Error('a task is required, for example: sqh --profile headless "run the tests"')
   }
 
   const selection = defaultModel.currentSelection()

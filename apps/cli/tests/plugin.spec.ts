@@ -91,7 +91,7 @@ it('names the exact grant command for each package a compatibility check refused
   })
   expect(await runPlugin('test', ['add', '@example/plugin'])).toBe(1)
   expect(stderr.mock.calls.map(call => call[0])).toEqual([
-    'sqh: to accept the risk, run: dsh plugin --profile test allow-version @example/plugin@1.2.3 --sqh-version 0.1.0 --accept-risk\n',
+    'sqh: to accept the risk, run: sqh plugin --profile test allow-version @example/plugin@1.2.3 --sqh-version 0.1.0 --accept-risk\n',
     'sqh: plugin command failed; diagnostics: /profile/log\n',
   ])
 })
@@ -130,7 +130,7 @@ it.each([
   const args = arguments_.map(value => value === 'CURRENT' ? getSqhRuntimeVersion() : value)
   expect(await runPlugin('desktop', args)).toBe(1)
   expect(stderr.mock.calls.map(call => call[0]).join('')).toMatchInlineSnapshot(`
-    "sqh: Error: Open Sqode Desktop once to initialize its profile, then fully quit it before running dsh plugin --profile desktop.
+    "sqh: Error: Open Sqode Desktop once to initialize its profile, then fully quit it before running sqh plugin --profile desktop.
     "
   `)
   expect(existsSync(join(home, 'profiles', 'desktop'))).toBe(false)

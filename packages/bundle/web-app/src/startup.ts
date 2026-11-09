@@ -54,9 +54,9 @@ function webCommand(): Command {
     .option('--trusted-host <authority...>', 'extra authority the /api browser-trust fence accepts (host or host:port; repeatable)')
     .addHelpText('after', `
 Examples:
-  dsh --profile web                          serve on the composed host and port
-  dsh --profile web --no-open                serve without opening a browser
-  dsh --profile web --port 8080              serve on another port
+  sqh --profile web                          serve on the composed host and port
+  sqh --profile web --no-open                serve without opening a browser
+  sqh --profile web --port 8080              serve on another port
 `)
 }
 

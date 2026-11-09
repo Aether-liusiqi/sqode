@@ -370,7 +370,7 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
       })
       expect(web.code).toBe(0)
       expect(web.stderr).toBe('')
-      expect(web.stdout).toContain('Usage: dsh --profile web')
+      expect(web.stdout).toContain('Usage: sqh --profile web')
       expect(web.stdout).toContain('--port <port>')
       expect(web.stdout).not.toContain('sqh web: http://')
 
@@ -389,7 +389,7 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
       })
       expect(headlessHelp.code).toBe(0)
       expect(headlessHelp.stderr).toBe('')
-      expect(headlessHelp.stdout).toContain('Usage: dsh --profile headless')
+      expect(headlessHelp.stdout).toContain('Usage: sqh --profile headless')
 
       const sdkHelp = await runBuiltBin(['sdk', '--help'], {
         SQODE_HOME: home,
@@ -397,7 +397,7 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
       })
       expect(sdkHelp.code).toBe(0)
       expect(sdkHelp.stderr).toBe('')
-      expect(sdkHelp.stdout).toContain('Usage: dsh --profile sdk')
+      expect(sdkHelp.stdout).toContain('Usage: sqh --profile sdk')
 
       const acpHelp = await runBuiltBin(['acp', '--help'], {
         SQODE_HOME: home,
@@ -405,7 +405,7 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
       })
       expect(acpHelp.code).toBe(0)
       expect(acpHelp.stderr).toBe('')
-      expect(acpHelp.stdout).toContain('Usage: dsh --profile acp')
+      expect(acpHelp.stdout).toContain('Usage: sqh --profile acp')
 
       const missingTask = await runBuiltBin(['--profile', 'headless'], {
         SQODE_HOME: home,
@@ -675,7 +675,7 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
       )
       expect(created.code).toBe(0)
       expect(created.stderr).toBe('')
-      expect(created.stdout).toContain('Usage: dsh --profile web')
+      expect(created.stdout).toContain('Usage: sqh --profile web')
 
       const dir = join(home, 'profiles', 'rescue')
       const manifest = JSON.parse(readFileSync(join(dir, 'package.json'), 'utf8')) as {
@@ -704,7 +704,7 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
       )
       expect(reopened.code).toBe(0)
       expect(reopened.stderr).toBe('')
-      expect(reopened.stdout).toContain('Usage: dsh --profile web')
+      expect(reopened.stdout).toContain('Usage: sqh --profile web')
     } finally {
       rmSync(home, { recursive: true, force: true })
     }
@@ -727,7 +727,7 @@ describe.skipIf(!existsSync(sqhBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
       )
       expect(retried.code).toBe(0)
       expect(retried.stderr).toBe('')
-      expect(retried.stdout).toContain('Usage: dsh --profile web')
+      expect(retried.stdout).toContain('Usage: sqh --profile web')
     } finally {
       rmSync(home, { recursive: true, force: true })
     }

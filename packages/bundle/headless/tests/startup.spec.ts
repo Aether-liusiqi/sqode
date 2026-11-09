@@ -170,7 +170,7 @@ describe('headless command-line provider', () => {
     const first = JSON.parse(observed.out.trim().split('\n')[0] ?? '{}') as { type: string; message: string }
     expect(first).toEqual({
       type: 'error',
-      message: 'a task is required, for example: dsh --profile headless "run the tests"',
+      message: 'a task is required, for example: sqh --profile headless "run the tests"',
     })
     expect(task).toBeUndefined()
     expect(observed.err).toBe('')
