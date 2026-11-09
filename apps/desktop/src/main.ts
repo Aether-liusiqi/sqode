@@ -7,7 +7,6 @@ import { fileURLToPath } from 'node:url'
 import {
   app,
   BrowserWindow,
-  clipboard,
   dialog,
   ipcMain,
   Menu,
@@ -221,20 +220,6 @@ function chromeFallbackFill(): string {
   return nativeTheme.shouldUseDarkColors ? '#1b1b1c' : '#f9fafb'
 }
 
-/**
- * Add the effective Desktop palette to a Platform authorization URL so the
- * login page opens in the application's theme. `system` resolves through
- * `nativeTheme.shouldUseDarkColors`, which follows the theme source the
- * application preload publishes.
- * @param authorizeUrl - validated Platform authorization URL.
- * @returns the authorization URL carrying `theme=light` or `theme=dark`.
- */
-function platformLoginUrl(authorizeUrl: string): string {
-  const url = new URL(authorizeUrl)
-  url.searchParams.set('theme', nativeTheme.shouldUseDarkColors ? 'dark' : 'light')
-  return url.href
-}
-
 function createWindow(preload: string, show = false, primary = false): BrowserWindow {
   const window = new BrowserWindow({
     width: 1280,
@@ -438,7 +423,6 @@ async function main(): Promise<void> {
   let injections: readonly unknown[] = []
   let welcomeBackend: DesktopWelcomeBackend | undefined
   let stopAccount: (() => void) | undefined
-  let openedAttempt: string | undefined
   let returnedAttempt: string | undefined
   let pendingWelcomeNotice: WelcomeNotice | undefined
   let previousAccountStatus: string | undefined
@@ -486,10 +470,6 @@ async function main(): Promise<void> {
           if (quitting) return
           if (welcomeWindow !== undefined && !welcomeWindow.isDestroyed()) welcomeWindow.webContents.send(WELCOME_IPC.state, state)
           const attempt = state.attempt
-          if (attempt?.phase === 'waiting-browser' && attempt.authorizeUrl !== undefined && openedAttempt !== attempt.id) {
-            openedAttempt = attempt.id
-            void shell.openExternal(platformLoginUrl(attempt.authorizeUrl)).catch(() => undefined)
-          }
           if ((attempt?.phase === 'failed' || attempt?.phase === 'expired') && returnedAttempt !== attempt.id) {
             returnedAttempt = attempt.id
             focusPrimaryWindow()
@@ -1180,19 +1160,16 @@ async function main(): Promise<void> {
           return Promise.resolve(notice)
         },
         startSignIn: async () => {
-          if (welcomeBackend === undefined) throw new Error('desktop welcome: backend unavailable')
-          return welcomeBackend.account.start(desktopClientMetadata(locale.id))
+          // Sqode does not sign users in through the original service.
+          throw new Error('desktop welcome: official sign-in is unavailable')
         },
         cancelSignIn: async (id) => {
           if (welcomeBackend === undefined) throw new Error('desktop welcome: backend unavailable')
           return welcomeBackend.account.cancel(id)
         },
-        copySignInLink: async (id) => {
-          const state = await welcomeBackend?.account.state()
-          if (state?.attempt?.id !== id || state.attempt.phase !== 'waiting-browser' || state.attempt.authorizeUrl === undefined) {
-            throw new Error('desktop welcome: login link is unavailable')
-          }
-          await clipboard.writeText(platformLoginUrl(state.attempt.authorizeUrl))
+        copySignInLink: async () => {
+          // There is no sign-in link to copy once the official flow is off.
+          throw new Error('desktop welcome: official sign-in is unavailable')
         },
         saveApiKey: async (apiKey) => {
           if (backend.host === undefined || welcomeBackend === undefined) return { ok: false }
