@@ -4131,11 +4131,12 @@ describe('ChatView', () => {
     expect(column.lastElementChild).toBe(status)
     expect(within(status as HTMLElement).getByRole('status').textContent).toBe('Thinking')
     expect(status?.lastElementChild?.textContent).toBe('Thinking')
-    const icon = status?.querySelector('svg')?.parentElement
+    // The seat is a ThinkingOrb canvas now: decorative, so it stays out of the
+    // accessibility tree while the role="status" sibling owns the announcement.
+    const icon = status?.querySelector('canvas')
     expect(icon?.getAttribute('aria-hidden')).toBe('true')
-    expect(icon?.firstElementChild?.tagName).toBe('SPAN')
-    expect(icon?.querySelectorAll('path')).toHaveLength(1)
-    expect(icon?.getAttribute('style')).toBeNull()
+    expect(icon?.className).toContain('runningOrb')
+    expect(status?.querySelector('svg')).toBeNull()
     expect(status?.querySelector('animate')).toBeNull()
     act(() => { h.setSession({ running: false }) })
     expect(column.querySelector('[data-chat-running]')).toBeNull()
