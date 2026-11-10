@@ -82,17 +82,19 @@
     "@liusiqi-dev/sqh-session": "workspace:*",
     "@liusiqi-dev/sqh-session-stats": "workspace:*",
     "@liusiqi-dev/sqh-session-turn-outline": "workspace:*",
+    "@liusiqi-dev/sqh-settings": "workspace:*",
     "@liusiqi-dev/sqh-subagent": "workspace:*",
     "@liusiqi-dev/sqh-token-meter": "workspace:*",
     "@liusiqi-dev/sqh-tools": "workspace:*",
-    "@liusiqi-dev/sqh-util-workspace-path": "workspace:*",
     "@liusiqi-dev/sqh-util-values": "workspace:*",
+    "@liusiqi-dev/sqh-util-workspace-path": "workspace:*",
     "@tanstack/react-virtual": "^3.14.9",
     "@types/react": "~18.3.1",
     "@types/react-dom": "~18.3.0",
+    "border-beam": "1.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@liusiqi-dev/sqh-settings": "workspace:*"
+    "thinking-orbs": "0.3.2"
   },
   "dependencies": {
     "@liusiqi-dev/schemastery": "workspace:~"
