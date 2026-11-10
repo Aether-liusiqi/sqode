@@ -4,7 +4,7 @@
 import { useState } from 'react'
 import type { ReactNode, RefObject } from 'react'
 import {
-  FISH_LOGO_PATH, FISH_LOGO_VIEWBOX, IconChevronDownOutlineRegular, IconFolderCloseRegular, IconFolderOpenRegular,
+  BingMark, IconChevronDownOutlineRegular, IconFolderCloseRegular, IconFolderOpenRegular,
 } from '@liusiqi-dev/sqh-client-ui-primitives'
 import { workspaceTitleOf } from '@liusiqi-dev/sqh-util-workspace-path'
 import type { ConversationContentProps } from '../contract/slots.ts'
@@ -71,9 +71,6 @@ export interface HeroShellProps {
   children?: ReactNode
 }
 
-/** Initial drawn inside the product mark, in the shared 24 unit box. */
-const HERO_MARK_INITIAL = 'M16 9.4c-.7-1.1-1.9-1.8-3.3-1.8-2 0-3.6 1.3-3.6 3.1 0 1.7 1.3 2.5 3.4 2.9 1.7.3 2.3.8 2.3 1.6 0 .9-1 1.5-2.2 1.5-1.4 0-2.4-.7-3-1.8'
-
 /**
  * The hero fish (34px wide), static at rest. Hovering swims the whale in
  * place: a gentle head-up sway (CSS, on the hitbox hover) while the body
@@ -96,34 +93,17 @@ const HERO_MARK_INITIAL = 'M16 9.4c-.7-1.1-1.9-1.8-3.3-1.8-2 0-3.6 1.3-3.6 3.1 0
  */
 function HeroFish({ hovering }: { hovering: boolean }) {
   return (
-    <svg
-      className={css.fish}
-      width={34}
-      height={(34 * FISH_LOGO_VIEWBOX.height) / FISH_LOGO_VIEWBOX.width}
-      viewBox={`0 0 ${FISH_LOGO_VIEWBOX.width} ${FISH_LOGO_VIEWBOX.height}`}
-      fill="none"
-      aria-hidden="true"
-    >
-      <g>
-        <path d={FISH_LOGO_PATH} stroke="currentColor" strokeWidth="1.8" />
-        <path
-          d={HERO_MARK_INITIAL}
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+    <BingMark size={34} className={`${css.fish ?? ''}`}>
+      {hovering && (
+        <animate
+          attributeName="opacity"
+          values="1;0.75;1"
+          keyTimes="0;0.5;1"
+          dur="1.6s"
+          repeatCount="indefinite"
         />
-        {hovering && (
-          <animate
-            attributeName="opacity"
-            values="1;0.75;1"
-            keyTimes="0;0.5;1"
-            dur="1.6s"
-            repeatCount="indefinite"
-          />
-        )}
-      </g>
-    </svg>
+      )}
+    </BingMark>
   )
 }
 

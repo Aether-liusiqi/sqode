@@ -1,13 +1,13 @@
-import { BrandWordmark, FishLogo } from '@liusiqi-dev/sqh-client-ui-primitives'
+import { BingMark, BrandWordmark } from '@liusiqi-dev/sqh-client-ui-primitives'
 import type { SidebarBrandMarkOwnerProps } from '@liusiqi-dev/sqh-client-ui-sidebar/client'
 
 /**
  * Render the official mark with the presentation requested by its host surface.
  * @param props - Host-supplied mark presentation.
- * @returns the official whale mark.
+ * @returns the Bing-form brand mark scaled from the 1024 master.
  */
 export function OfficialBrandMark({ size }: SidebarBrandMarkOwnerProps) {
-  return <FishLogo size={size} />
+  return <BingMark size={size} />
 }
 
 /**
