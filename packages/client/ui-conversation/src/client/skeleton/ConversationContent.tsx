@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
+import { BorderBeam } from 'border-beam'
 import type { WorkspaceId } from '@liusiqi-dev/sqh-workspace/types'
 import { workspaceDisplayTitle } from '@liusiqi-dev/sqh-api-workspace-controller/default-workspace'
 import type { ConversationContentProps, ConversationViewsProps, InputZone } from '../contract/slots.ts'
@@ -26,6 +27,7 @@ export function ConversationContent(props: ConversationContentProps) {
     selectWorkspace, t, useFactorySlot,
   } = props
   const session = useSession(snapshot => snapshot)
+  const running = useSession(snapshot => snapshot.running)
   const Views = useFactorySlot('views', ConversationSessionView)
   const WidthControls = useFactorySlot('widthControls', NoConversationWidthControls)
   const [body, setBody] = useState<HTMLDivElement | null>(null)
@@ -180,9 +182,18 @@ export function ConversationContent(props: ConversationContentProps) {
   // on the fallback alone would leave a business-owned takeover at the content
   // end off-screen when the user is not pinned to the floor.
   const composerSeat = (
-    <div ref={seatResizeRef} className={css.composerSeat} data-composer-seat="" data-conversation-region="composer">
-      {composer}
-    </div>
+    <BorderBeam
+      active={running === true}
+      theme="auto"
+      colorVariant="ocean"
+      size="line"
+      strength={0.6}
+      className={css.composerBeam ?? ''}
+    >
+      <div ref={seatResizeRef} className={css.composerSeat} data-composer-seat="" data-conversation-region="composer">
+        {composer}
+      </div>
+    </BorderBeam>
   )
 
   return (

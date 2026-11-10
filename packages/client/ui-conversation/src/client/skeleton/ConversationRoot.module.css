@@ -543,3 +543,10 @@ button.crumb:hover {
 .embeddedBody[data-content-phase='settling'] .composerSeat {
   visibility: hidden;
 }
+
+/* Beam wrapper around the composer seat. It must not create a containing block
+ * for the sticky seat, so it carries no transform/filter of its own. */
+.composerBeam {
+  position: relative;
+  display: block;
+}
