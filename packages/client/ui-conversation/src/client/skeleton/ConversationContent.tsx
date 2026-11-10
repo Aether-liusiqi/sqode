@@ -7,6 +7,51 @@ import type { ConversationContentProps, ConversationViewsProps, InputZone } from
 import { HeroShell, WorkspaceChip, workspaceLabel } from './EmptyHero.tsx'
 import css from './ConversationRoot.module.css'
 
+/** Design package M4: each preset gets its own beam hue. `default` keeps the
+ * original ocean so shipping visuals do not shift for users who never pick one. */
+export const BEAM_VARIANT: Record<string, 'ocean' | 'sunset' | 'colorful' | 'mono'> = {
+  default: 'ocean',
+  obsidian: 'ocean',
+  yayun: 'sunset',
+  nebula: 'colorful',
+}
+
+/**
+ * Read a body attribute reactively. theme-presenter writes `data-sqh-theme`
+ * outside React, so a MutationObserver is the only way a sibling package can
+ * follow preset changes without a new cross-package contract.
+ */
+export function useBodyPreset(): string {
+  const [preset, setPreset] = useState(() =>
+    typeof document === 'undefined' ? 'default' : document.body.getAttribute('data-sqh-theme') ?? 'default')
+  useEffect(() => {
+    if (typeof document === 'undefined' || typeof MutationObserver === 'undefined') return
+    const read = (): void => {
+      setPreset(document.body.getAttribute('data-sqh-theme') ?? 'default')
+    }
+    const observer = new MutationObserver(read)
+    observer.observe(document.body, { attributes: true, attributeFilter: ['data-sqh-theme'] })
+    return () => { observer.disconnect() }
+  }, [])
+  return preset
+}
+
+/** Rotate-class beams do not honour prefers-reduced-motion; the caller must. */
+export function useReducedMotion(): boolean {
+  const [reduced, setReduced] = useState(() =>
+    typeof window === 'undefined' || typeof window.matchMedia !== 'function'
+      ? false
+      : window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+  useEffect(() => {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return
+    const query = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const onChange = (): void => { setReduced(query.matches) }
+    query.addEventListener('change', onChange)
+    return () => { query.removeEventListener('change', onChange) }
+  }, [])
+  return reduced
+}
+
 function ConversationSessionView({ renderSlot }: ConversationViewsProps) {
   return renderSlot('conversation.session', {})
 }
@@ -28,6 +73,8 @@ export function ConversationContent(props: ConversationContentProps) {
   } = props
   const session = useSession(snapshot => snapshot)
   const running = useSession(snapshot => snapshot.running)
+  const preset = useBodyPreset()
+  const reducedMotion = useReducedMotion()
   const Views = useFactorySlot('views', ConversationSessionView)
   const WidthControls = useFactorySlot('widthControls', NoConversationWidthControls)
   const [body, setBody] = useState<HTMLDivElement | null>(null)
@@ -183,9 +230,9 @@ export function ConversationContent(props: ConversationContentProps) {
   // end off-screen when the user is not pinned to the floor.
   const composerSeat = (
     <BorderBeam
-      active={running === true}
+      active={running === true && !reducedMotion}
       theme="auto"
-      colorVariant="ocean"
+      colorVariant={BEAM_VARIANT[preset] ?? 'ocean'}
       size="line"
       strength={0.6}
       className={css.composerBeam ?? ''}
