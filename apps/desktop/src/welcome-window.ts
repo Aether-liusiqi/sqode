@@ -3,7 +3,7 @@ import type { SignInAttemptId } from '@liusiqi-dev/sqh-deepseek-account/types'
 
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { app, BrowserWindow, ipcMain, type BrowserWindowConstructorOptions, type IpcMainInvokeEvent } from 'electron'
+import { app, BrowserWindow, ipcMain, nativeTheme, type BrowserWindowConstructorOptions, type IpcMainInvokeEvent } from 'electron'
 import type { DesktopLocale } from './locale.ts'
 import { WELCOME_IPC, type WelcomeOperations } from './welcome-api.ts'
 
@@ -38,7 +38,10 @@ export function welcomeWindowOptions(platform: NodeJS.Platform, locale: DesktopL
     } as const : {}),
     webPreferences: {
       preload: fileURLToPath(new URL('./preload-welcome.cjs', import.meta.url)),
-      additionalArguments: [`--sqh-welcome-locale=${locale.id}`],
+      additionalArguments: [
+        `--sqh-welcome-locale=${locale.id}`,
+        `--sqh-welcome-theme=${nativeTheme?.themeSource ?? 'system'}`,
+      ],
       nodeIntegration: false,
       contextIsolation: true,
       sandbox: true,

@@ -8,6 +8,24 @@ import { WELCOME_IPC, type WelcomeApi, type WelcomeNotice, type WelcomeSaveResul
 const prefix = '--sqh-welcome-locale='
 const locale = process.argv.find(argument => argument.startsWith(prefix))?.slice(prefix.length)
 if (locale === undefined) throw new Error('desktop welcome: missing window locale')
+/**
+ * The welcome renderer is a standalone BrowserWindow with its own stylesheet.
+ * Project the native theme source onto the same body attribute the main window
+ * uses, so a manual light/dark choice is honoured here too. `system` resolves
+ * through matchMedia; a missing preload argument falls back to system.
+ */
+const themePrefix = '--sqh-welcome-theme='
+const themeSource = process.argv.find(argument => argument.startsWith(themePrefix))?.slice(themePrefix.length) ?? 'system'
+const systemDark = typeof window !== 'undefined' && typeof window.matchMedia === 'function'
+  && window.matchMedia('(prefers-color-scheme: dark)').matches
+const welcomeDark = themeSource === 'dark' || (themeSource === 'system' && systemDark)
+const applyWelcomeTheme = (): void => {
+  if (welcomeDark) document.body.setAttribute('data-ds-dark-theme', '')
+  else document.body.removeAttribute('data-ds-dark-theme')
+}
+if (document.readyState === 'loading') window.addEventListener('DOMContentLoaded', applyWelcomeTheme, { once: true })
+else applyWelcomeTheme()
+
 const api: WelcomeApi = {
   ...resolveDesktopLocale(locale),
   takeNotice: () => ipcRenderer.invoke(WELCOME_IPC.takeNotice) as Promise<WelcomeNotice | undefined>,

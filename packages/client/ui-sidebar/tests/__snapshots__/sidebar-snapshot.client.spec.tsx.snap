@@ -122,10 +122,10 @@ exports[`sidebar shell snapshots > renders Windows caption controls in expanded 
             >
               <svg
                 aria-hidden="true"
-                data-content="dcb049c4"
+                data-content="6d2b566b"
                 fill="none"
                 height="24"
-                viewBox="0 0 24 24"
+                viewBox="0 0 1024 1024"
                 width="24"
               />
             </div>
@@ -143,7 +143,7 @@ exports[`sidebar shell snapshots > renders Windows caption controls in expanded 
                 <span
                   class="localBuildTitle"
                 >
-                  SQH Local Build
+                  Sqode Local Build
                 </span>
                 <span
                   class="buildVersion"
@@ -262,10 +262,10 @@ exports[`sidebar shell snapshots > renders the collapsed rail after the crossfad
           >
             <svg
               aria-hidden="true"
-              data-content="dcb049c4"
+              data-content="6d2b566b"
               fill="none"
               height="24"
-              viewBox="0 0 24 24"
+              viewBox="0 0 1024 1024"
               width="24"
             />
           </div>
@@ -374,10 +374,10 @@ exports[`sidebar shell snapshots > renders the expanded column (wordmark, capsul
             >
               <svg
                 aria-hidden="true"
-                data-content="dcb049c4"
+                data-content="6d2b566b"
                 fill="none"
                 height="24"
-                viewBox="0 0 24 24"
+                viewBox="0 0 1024 1024"
                 width="24"
               />
             </div>
@@ -395,7 +395,7 @@ exports[`sidebar shell snapshots > renders the expanded column (wordmark, capsul
                 <span
                   class="localBuildTitle"
                 >
-                  SQH Local Build
+                  Sqode Local Build
                 </span>
                 <span
                   class="buildVersion"
@@ -517,10 +517,10 @@ exports[`sidebar shell snapshots > renders the expanded column in the default lo
             >
               <svg
                 aria-hidden="true"
-                data-content="dcb049c4"
+                data-content="6d2b566b"
                 fill="none"
                 height="24"
-                viewBox="0 0 24 24"
+                viewBox="0 0 1024 1024"
                 width="24"
               />
             </div>
@@ -538,7 +538,7 @@ exports[`sidebar shell snapshots > renders the expanded column in the default lo
                 <span
                   class="localBuildTitle"
                 >
-                  SQH 本地构建
+                  Sqode 本地构建
                 </span>
                 <span
                   class="buildVersion"

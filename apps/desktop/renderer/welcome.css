@@ -23,19 +23,19 @@ body {
   --sqw-font-family-brand: 'Montserrat', var(--sqw-font-family);
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    --sqw-alias-label-primary: #f9fafb;
-    --sqw-alias-label-secondary: #cfd3d6;
-    --sqw-alias-label-tertiary: #adb2b8;
-    --sqw-alias-label-primary-inverted: #353638;
-    --sqw-alias-button-primary-hover: #ebeef2;
-    --sqw-alias-button-elevated-fill: #43454a;
-    --sqw-alias-button-floating-hover: #353638;
-    --sqw-alias-border-l2: #ffffff1f;
-    --sqw-alias-border-l4: #ffffff33;
-    --sqw-alias-label-caption: #81858c;
-  }
+/* The preload resolves `system` (matchMedia) and `dark` into this body
+ * attribute, matching the main window's theme-presenter. */
+body[data-ds-dark-theme] {
+  --sqw-alias-label-primary: #f9fafb;
+  --sqw-alias-label-secondary: #cfd3d6;
+  --sqw-alias-label-tertiary: #adb2b8;
+  --sqw-alias-label-primary-inverted: #353638;
+  --sqw-alias-button-primary-hover: #ebeef2;
+  --sqw-alias-button-elevated-fill: #43454a;
+  --sqw-alias-button-floating-hover: #353638;
+  --sqw-alias-border-l2: #ffffff1f;
+  --sqw-alias-border-l4: #ffffff33;
+  --sqw-alias-label-caption: #81858c;
 }
 
 * {

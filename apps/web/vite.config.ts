@@ -11,7 +11,7 @@ const src = (rel: string): string => fileURLToPath(new URL(rel, import.meta.url)
 const STANDALONE_ERROR = 'apps/web is not a standalone application: bare Vite cannot inject window.__SQH_BOOT__. '
   + 'From a repository checkout, run `pnpm sqh web`; an installed package uses `sqh web`. '
   + 'For client-plugin HMR, run `pnpm run dev:web`, which starts `sqh web` and the rebuild watchers together.'
-const DEFAULT_CLIENT_TITLE = 'SQH Local Build'
+const DEFAULT_CLIENT_TITLE = 'Sqode Local Build'
 
 /** Escape build-time text before placing it in the HTML title element. */
 function escapeHtmlText(value: string): string {
@@ -24,7 +24,7 @@ function clientDocumentTitle(): Plugin {
   return {
     name: 'sqh-client-document-title',
     transformIndexHtml(html) {
-      return html.replace('<title>SQH Local Build</title>', `<title>${title}</title>`)
+      return html.replace('<title>Sqode Local Build</title>', `<title>${title}</title>`)
     },
   }
 }

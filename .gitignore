@@ -55,3 +55,6 @@ _tmp_*
 
 # Created by scripts/oxlint-contract.spec.ts; a failed run leaves them behind.
 scripts/staged-lint-probe-*.ts
+
+# tsx temporary cache; never part of the source tree
+undefined/
