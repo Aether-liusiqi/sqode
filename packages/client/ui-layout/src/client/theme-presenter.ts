@@ -1,7 +1,8 @@
 /**
  * Global theme DOM applier: projects the resolved ThemeSnapshot onto the
  * document — `html { color-scheme }` for native UA chrome (scrollbars, form
- * controls), `body[data-ds-dark-theme]` for the token palette, the active
+ * controls), `body[data-ds-dark-theme]` for the token palette,
+ * `body[data-sqh-theme]` for the palette preset, the active
  * theme's alias-token overrides as inline CSS variables on body, the content
  * font-size axis (`--sqh-content-font-size`), `html[data-ds-theme-source]`
  * for native-chrome mirroring, and one presenter-owned
@@ -13,6 +14,9 @@ import type { ThemeSnapshot } from '@liusiqi-dev/sqh-client-ui-theme/client'
 
 /** Body attribute selecting the dark base palette in the token stylesheets. */
 export const DARK_ATTRIBUTE = 'data-ds-dark-theme'
+
+/** Body attribute selecting a preset palette. Absent means the shipped default. */
+export const PRESET_ATTRIBUTE = 'data-sqh-theme'
 
 /**
  * Root attribute publishing the theme source (`light`, `dark`, or `system`)
@@ -58,6 +62,8 @@ export class ThemePresenter {
     const body = document.body
     if (scheme === 'dark') body.setAttribute(DARK_ATTRIBUTE, '')
     else body.removeAttribute(DARK_ATTRIBUTE)
+    if (snapshot.preset === 'default') body.removeAttribute(PRESET_ATTRIBUTE)
+    else body.setAttribute(PRESET_ATTRIBUTE, snapshot.preset)
     body.style.setProperty(CONTENT_FONT_SIZE_VARIABLE, `${snapshot.fontSize}px`)
     for (const name of this.appliedTokens) body.style.removeProperty(name)
     this.appliedTokens = []
@@ -78,6 +84,7 @@ export class ThemePresenter {
     document.documentElement.removeAttribute(THEME_SOURCE_ATTRIBUTE)
     const body = document.body
     body.removeAttribute(DARK_ATTRIBUTE)
+    body.removeAttribute(PRESET_ATTRIBUTE)
     body.style.removeProperty(CONTENT_FONT_SIZE_VARIABLE)
     for (const name of this.appliedTokens) body.style.removeProperty(name)
     this.appliedTokens = []

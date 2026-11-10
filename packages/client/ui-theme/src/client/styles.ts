@@ -7,6 +7,7 @@ import onboarding from '../styles/onboarding.css?inline'
 import scrollbar from '../styles/scrollbar.css?inline'
 import gradientShadowText from '../styles/gradient-shadow-text.css?inline'
 import shiki from '../styles/shiki.css?inline'
+import themes from './themes.css?inline'
 
 const PLUGIN_ID = '@liusiqi-dev/sqh-client-ui-theme'
 
@@ -19,6 +20,7 @@ const STYLES = [
   ['scrollbar.css', scrollbar],
   ['gradient-shadow-text.css', gradientShadowText],
   ['shiki.css', shiki],
+  ['themes.css', themes],
 ] as const
 
 /**

@@ -25,7 +25,8 @@ import { installThemeStyles } from './styles.ts'
 import { en, zh, type ThemeKey } from './locales.ts'
 import {
   DEFAULT_FONT_SIZE, DEFAULT_PREFERENCE, FONT_SIZE_FIELD, FONT_SIZE_MAX, FONT_SIZE_MIN,
-  isThemePreference, THEME_PREFERENCE_FIELD, THEME_SETTINGS_NAMESPACE,
+  isThemePreference, isThemePreset, DEFAULT_PRESET, THEME_PRESET_FIELD, type ThemePreset,
+  THEME_PREFERENCE_FIELD, THEME_SETTINGS_NAMESPACE,
   type ThemePreference, type ThemeSettings,
 } from '../theme-settings.ts'
 
@@ -80,6 +81,8 @@ export interface ThemeDefinition {
 export interface ThemeSnapshot {
   /** The persisted preference (may be `system`). */
   preference: ThemePreference
+  /** The persisted palette preset. */
+  preset: ThemePreset
   /** Conversation content font size in px (integer within FONT_SIZE_MIN..FONT_SIZE_MAX). */
   fontSize: number
   /**
@@ -161,6 +164,7 @@ export class ThemeRuntime {
   private readonly host: ConfigForm<ThemeSettings>
   private themes: ThemeDefinition[] = [...BUILTIN_THEMES]
   private preference: ThemePreference
+  private preset: ThemePreset = DEFAULT_PRESET
   private fontSize: number = bootstrapFontSize()
   private revision = 0
   private snapshot: ThemeSnapshot
@@ -229,6 +233,19 @@ export class ThemeRuntime {
    * accepted value emits `theme/change`.
    * @param id - a registered theme id or `system`; unknown ids throw.
    */
+  /**
+   * Switch the palette preset. Presentational only: it writes the settings
+   * document and the stylesheet reacts through `data-sqh-theme`.
+   * @param id - preset id crossing the UI boundary.
+   */
+  setPreset(id: string): void {
+    if (!isThemePreset(id)) return
+    if (this.preset === id) return
+    this.preset = id
+    void this.host.set(THEME_PRESET_FIELD, id)
+    this.publish()
+  }
+
   setTheme(id: string): void {
     if (id !== 'system' && !this.themes.some(t => t.id === id)) {
       throw new Error(`theme "${id}" is not registered`)
@@ -259,8 +276,10 @@ export class ThemeRuntime {
   private adopt(): void {
     const section = this.host.getSnapshot().value
     if (section === undefined) return
-    if (this.preference === section.preference && this.fontSize === section.fontSize) return
+    if (this.preference === section.preference && this.preset === section.preset
+      && this.fontSize === section.fontSize) return
     this.preference = section.preference
+    this.preset = section.preset
     this.fontSize = section.fontSize
     this.publish()
   }
@@ -328,6 +347,7 @@ export class ThemeRuntime {
     if (active === undefined) throw new Error(`theme registry lost "${resolvedId}"`)
     return Object.freeze({
       preference: this.preference,
+      preset: this.preset,
       fontSize: this.fontSize,
       active: this.composeActive(active),
       themes: Object.freeze([...this.themes]),
@@ -439,7 +459,7 @@ export function apply(ctx: ClientContext): void {
   const fontSizeStore = createFontSizeRowStore()
   let fontSizeBound: BoundActions<typeof fontSizeStore> | undefined
   const sync = (snapshot: ThemeSnapshot): void => {
-    bound?.sync(snapshot.preference, snapshot.revision)
+    bound?.sync(snapshot.preference, snapshot.preset, snapshot.revision)
     fontSizeBound?.sync(snapshot.fontSize, snapshot.revision)
   }
   ctx.on('theme/change', sync)
@@ -450,6 +470,7 @@ export function apply(ctx: ClientContext): void {
     sync(theme.getTheme())
     return {
       setTheme: (id) => { theme.setTheme(id) },
+      setPreset: (id) => { theme.setPreset(id) },
     }
   }
   ctx.slots.inject('settings.general.item', () => ctx.slots.register({

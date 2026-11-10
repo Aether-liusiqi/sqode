@@ -20,6 +20,8 @@ import css from './AppearanceRow.module.css'
 export interface AppearanceRowInjected {
   /** Switch the theme preference. */
   setTheme: (id: ThemePreference) => void
+  /** Switch the palette preset. */
+  setPreset: (id: string) => void
 }
 
 /** Full component props: runtime share + store share + locale seat + injected face. */
@@ -34,13 +36,22 @@ const CUBES: readonly { id: ThemePreference; labelKey: ThemeKey; Icon: typeof Ic
   { id: 'system', labelKey: 'appearance.system', Icon: IconFollowsystemOutlineMedium },
 ]
 
+/** Palette presets; the swatch colour is each theme's light-mode link token. */
+const PRESETS: readonly { id: string; labelKey: ThemeKey; swatch: string }[] = [
+  { id: 'default', labelKey: 'appearance.preset.default', swatch: '#4176e6' },
+  { id: 'obsidian', labelKey: 'appearance.preset.obsidian', swatch: '#0369a1' },
+  { id: 'yayun', labelKey: 'appearance.preset.yayun', swatch: '#876740' },
+  { id: 'nebula', labelKey: 'appearance.preset.nebula', swatch: '#5b4bd6' },
+]
+
 /**
  * Render the Appearance row.
  * @param props - composed slot props.
  * @returns the row element tree.
  */
-export function AppearanceRow({ t, setTheme, useStore }: AppearanceRowComponentProps) {
+export function AppearanceRow({ t, setTheme, setPreset, useStore }: AppearanceRowComponentProps) {
   const preference = useStore(s => s.preference)
+  const preset = useStore(s => s.preset)
   return (
     <div className={css.group}>
       <div className={css.title}>{t('appearance.title')}</div>
@@ -54,6 +65,21 @@ export function AppearanceRow({ t, setTheme, useStore }: AppearanceRowComponentP
             onClick={() => { setTheme(id) }}
           >
             <Icon />
+            {t(labelKey)}
+          </button>
+        ))}
+      </div>
+      <div className={css.presetTitle}>{t('appearance.presetTitle')}</div>
+      <div className={css.cubeRow}>
+        {PRESETS.map(({ id, labelKey, swatch }) => (
+          <button
+            key={id}
+            type="button"
+            className={clsx(css.presetCube, preset === id && css.selected)}
+            aria-pressed={preset === id}
+            onClick={() => { setPreset(id) }}
+          >
+            <span className={css.swatch} style={{ backgroundColor: swatch }} aria-hidden="true" />
             {t(labelKey)}
           </button>
         ))}
