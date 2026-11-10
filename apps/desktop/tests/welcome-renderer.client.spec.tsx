@@ -36,7 +36,7 @@ function mount(language = 'zh-CN', takeNotice = vi.fn<() => Promise<WelcomeNotic
   const copy = () => {
     const heading = document.querySelector('main')!.getAttribute('aria-labelledby')!
     return [
-      document.title, document.querySelector('img')!.alt, document.getElementById(heading)!.textContent,
+      document.title, document.querySelector('svg.brand')!.getAttribute('aria-label'), document.getElementById(heading)!.textContent,
       ...heading === 'welcome-heading' ? [document.querySelector('#welcome-description')!.textContent] : [],
       ...heading === 'key-title' ? [document.querySelector('#key-description')!.textContent, `${input.placeholder} [password]`] : [],
       ...[...document.querySelectorAll('button')].filter(item => item.closest('[hidden]') === null)
@@ -51,7 +51,11 @@ describe('desktop welcome presentation', () => {
   it.each(['zh-CN', 'en'])('renders the %s entry and API-key step', async (language) => {
     const view = mount(language)
     expect(view.document.documentElement.lang).toBe(language)
-    expect(view.document.querySelector('img')!.getAttribute('src')).toBe('assets/welcome-brand.svg')
+    const brand = view.document.querySelector('svg.brand')!
+    for (const id of ['arc-upper', 'arc-lower', 'caret']) {
+      expect(brand.querySelector(`#${id}`)).not.toBeNull()
+    }
+    expect(brand.getAttribute('aria-label')).not.toBeNull()
     await expect(view.copy()).toMatchFileSnapshot(`./expected/welcome/${language}.expected.txt`)
     fireEvent.click(view.button('#api-key'))
     expect(view.document.activeElement).toBe(view.input)
@@ -329,15 +333,16 @@ it.each(['zh-CN', 'en'])('returns from completed sign-in to the initial page aft
   await expect(view.copy()).toMatchFileSnapshot(`./expected/welcome/${language}.expected.txt`)
 })
 
-it('reports each return to the welcome entry once, including account cancellation', async () => {
+it('returns to the welcome entry without reporting anything, including account cancellation', async () => {
   const view = mount()
   expect(view.api.analytics).not.toHaveBeenCalled()
   fireEvent.click(view.button('#api-key'))
   fireEvent.click(view.button('#back-to-login'))
-  expect(view.api.analytics.mock.calls.map(([action]) => action)).toEqual(['auth_page_click', 'auth_page_view'])
+  expect(view.api.analytics).not.toHaveBeenCalled()
   const pending = Promise.withResolvers<AccountView>()
   view.api.startSignIn.mockReturnValueOnce(pending.promise)
   fireEvent.click(view.button('#sign-in'))
   await act(async () => { pending.resolve({ links: { usageUrl: 'http://localhost/usage', topUpUrl: 'http://localhost/top_up' }, status: 'signed-out', attempt: null }) })
-  expect(view.api.analytics.mock.calls.map(([action]) => action)).toEqual(['auth_page_click', 'auth_page_view', 'auth_page_click', 'auth_page_view'])
+  // Sqode sends no product data upstream: the welcome flow must stay silent.
+  expect(view.api.analytics).not.toHaveBeenCalled()
 })

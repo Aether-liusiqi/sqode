@@ -1,5 +1,9 @@
 <svg width="472" height="40" viewBox="0 0 472 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="2" y="2" width="36" height="36" rx="8" stroke="currentColor" stroke-width="2.4" fill="none"/>
-  <path d="M27 14.5c-1.05-1.65-2.85-2.7-4.95-2.7-3 0-5.4 1.95-5.4 4.65 0 2.55 1.95 3.75 5.1 4.35 2.55.45 3.45 1.2 3.45 2.4 0 1.35-1.5 2.25-3.3 2.25-2.1 0-3.6-1.05-4.5-2.7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <g transform="translate(0 0) scale(0.0390625)" fill="none" stroke="currentColor"
+    stroke-width="96" stroke-linecap="round" stroke-linejoin="round">
+    <path id="arc-upper" pathLength="1000" d="M836 284 C836 192 692 164 520 188 C348 212 224 288 224 392 C224 456 300 500 416 500" />
+    <path id="arc-lower" pathLength="1000" d="M608 500 C712 500 784 540 784 656 C784 760 664 812 500 812 C438 812 388 804 344 792" />
+    <path id="caret" pathLength="1000" d="M200 752 L200 860" />
+  </g>
   <text x="52" y="28" fill="currentColor" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="26" font-weight="600" letter-spacing="-0.5">Sqode</text>
 </svg>

@@ -16,6 +16,7 @@ body {
   --dsw-alias-label-caption: #adb2b8;
   --welcome-tint: var(--dsw-desktop-window-tint);
   --ds-transition-duration: 0.2s;
+  --ds-transition-duration-fast: 0.1s;
   --ds-transition-duration-slow: 0.3s;
   --ds-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
   --dsw-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -98,8 +99,40 @@ body {
   flex: none;
   width: 100%;
   height: 40px;
+  color: var(--dsw-alias-label-primary);
   user-select: none;
   -webkit-user-drag: none;
+}
+
+/* M1 Bing-form self-drawing: 900ms, once. The 1024 canvas is scaled into the
+ * left 40x40; the three paths are normalised to pathLength=1000 so one
+ * keyframe serves all of them. */
+.brandMark path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 96;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  opacity: 0;
+}
+
+.brandMark #arc-upper { animation: markIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.brandMark #arc-lower { animation: markIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards; }
+.brandMark #caret { animation: markIn 0.08s ease-out 0.82s forwards; }
+
+@keyframes markIn {
+  from { stroke-dashoffset: 1000; opacity: 0; }
+  to { stroke-dashoffset: 0; opacity: 1; }
+}
+
+.brandWordmark {
+  fill: currentColor;
+  font-family: var(--dsw-font-family-brand);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
 }
 
 .tagline {
@@ -222,6 +255,14 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .actions button {
     transition: none;
+  }
+
+  /* Show the finished mark immediately; the packaged component has no
+   * fallback of its own for a CSS-driven animation. */
+  .brandMark path {
+    animation: none;
+    stroke-dashoffset: 0;
+    opacity: 1;
   }
 }
 
