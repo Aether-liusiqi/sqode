@@ -69,13 +69,13 @@ describe('ThemePresenter', () => {
 
   it('applies tokens as inline variables and clears the previous set on theme change', () => {
     const presenter = new ThemePresenter()
-    presenter.apply(snapshot('dark', { '--dsw-alias-bg': '#111', '--dsw-alias-fg': '#eee' }))
-    expect(document.body.style.getPropertyValue('--dsw-alias-bg')).toBe('#111')
-    expect(document.body.style.getPropertyValue('--dsw-alias-fg')).toBe('#eee')
-    presenter.apply(snapshot('light', { '--dsw-alias-bg': '#fff' }))
-    expect(document.body.style.getPropertyValue('--dsw-alias-bg')).toBe('#fff')
+    presenter.apply(snapshot('dark', { '--sqw-alias-bg': '#111', '--sqw-alias-fg': '#eee' }))
+    expect(document.body.style.getPropertyValue('--sqw-alias-bg')).toBe('#111')
+    expect(document.body.style.getPropertyValue('--sqw-alias-fg')).toBe('#eee')
+    presenter.apply(snapshot('light', { '--sqw-alias-bg': '#fff' }))
+    expect(document.body.style.getPropertyValue('--sqw-alias-bg')).toBe('#fff')
     // The old theme's extra variable is gone, not merged.
-    expect(document.body.style.getPropertyValue('--dsw-alias-fg')).toBe('')
+    expect(document.body.style.getPropertyValue('--sqw-alias-fg')).toBe('')
   })
 
   it('publishes the content font size and follows changes', () => {
@@ -99,12 +99,12 @@ describe('ThemePresenter', () => {
   it('dispose removes color-scheme, the attribute, the font-size axis, and every applied variable, sparing foreign inline styles', () => {
     document.body.style.setProperty('--foreign', 'kept')
     const presenter = new ThemePresenter()
-    presenter.apply(snapshot('dark', { '--dsw-alias-bg': '#111' }))
+    presenter.apply(snapshot('dark', { '--sqw-alias-bg': '#111' }))
     const meta = themeColorMeta()
     presenter.dispose()
     expect(document.documentElement.style.colorScheme).toBe('')
     expect(document.body.hasAttribute(DARK_ATTRIBUTE)).toBe(false)
-    expect(document.body.style.getPropertyValue('--dsw-alias-bg')).toBe('')
+    expect(document.body.style.getPropertyValue('--sqw-alias-bg')).toBe('')
     expect(document.body.style.getPropertyValue('--sqh-content-font-size')).toBe('')
     expect(document.body.style.getPropertyValue('--foreign')).toBe('kept')
     expect(meta?.isConnected).toBe(false)

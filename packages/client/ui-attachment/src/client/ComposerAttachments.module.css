@@ -17,9 +17,9 @@
   height: 64px;
   padding: 0;
   overflow: hidden;
-  border: 0.5px solid var(--dsw-alias-border-l2-darkmode-thin);
-  border-radius: var(--dsw-radius-xl);
-  background: var(--dsw-alias-interactive-bg-hover);
+  border: 0.5px solid var(--sqw-alias-border-l2-darkmode-thin);
+  border-radius: var(--sqw-radius-xl);
+  background: var(--sqw-alias-interactive-bg-hover);
   cursor: zoom-in;
 }
 
@@ -43,8 +43,8 @@
   border: none;
   border-radius: 50%;
   corner-shape: round;
-  background: var(--dsw-alias-button-contrast-fill);
-  color: var(--dsw-alias-label-primary-inverted);
+  background: var(--sqw-alias-button-contrast-fill);
+  color: var(--sqw-alias-label-primary-inverted);
   cursor: pointer;
   opacity: 0;
   transition: opacity 0.2s ease-in-out;

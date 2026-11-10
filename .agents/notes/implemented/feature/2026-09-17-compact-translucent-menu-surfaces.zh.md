@@ -10,7 +10,7 @@ Status: implemented
 
 ## Decision
 
-`ui-theme` 将 `--dsw-specific-menu` 定义为明暗主题各自的半透明填充，并将 `--dsw-menu-backdrop-filter` 定义为 `blur(40px) saturate(150%)`。每个绘制菜单填充的包级高层级表面同时应用该 backdrop filter、设置 `border: 0`，并使用带可重绑发丝描边的 elevation 投影。包含 fixed 定位浮层的表面把填充与滤镜绘制在隔离的背景伪元素上，因为带滤镜的祖先会改变这些浮层的包含块。后代 sticky 行可以再次绘制继承的填充，无需重复 filter。不支持 backdrop filtering 的浏览器仍渲染主题持有的半透明填充。
+`ui-theme` 将 `--sqw-specific-menu` 定义为明暗主题各自的半透明填充，并将 `--sqw-menu-backdrop-filter` 定义为 `blur(40px) saturate(150%)`。每个绘制菜单填充的包级高层级表面同时应用该 backdrop filter、设置 `border: 0`，并使用带可重绑发丝描边的 elevation 投影。包含 fixed 定位浮层的表面把填充与滤镜绘制在隔离的背景伪元素上，因为带滤镜的祖先会改变这些浮层的包含块。后代 sticky 行可以再次绘制继承的填充，无需重复 filter。不支持 backdrop filtering 的浏览器仍渲染主题持有的半透明填充。
 
 共享 `Menu` 与 composer 输入触发菜单使用同一套紧凑基准：16px 外圆角、3px 边框内距、34px 普通行、13px 主文字配 20px 行高、6px 图文间距，以及 8px 行圆角。dense 与 compact 变体在该基准上继续缩小，不再保留旧的普通几何。composer 菜单保留其功能包持有的分组与 400px 高度上限；别名和说明使用 12px 字号与 18px 行高。
 

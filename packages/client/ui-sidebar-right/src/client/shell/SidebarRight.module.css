@@ -49,8 +49,8 @@
   transform: translateX(var(--sqh-sidebar-width));
   visibility: hidden;
   transition:
-    transform var(--ds-transition-duration-slow) var(--ds-ease-in-out),
-    visibility 0s linear var(--ds-transition-duration-slow);
+    transform var(--sq-transition-duration-slow) var(--sq-ease-in-out),
+    visibility 0s linear var(--sq-transition-duration-slow);
 }
 
 .panel[data-sidebar-right-open] :global([data-dockkit-host='dock']),
@@ -58,7 +58,7 @@
 .panel[data-sidebar-right-open] :global([data-dockkit-divider]) {
   transform: none;
   visibility: visible;
-  transition: transform var(--ds-transition-duration-slow) var(--ds-ease-in-out);
+  transition: transform var(--sq-transition-duration-slow) var(--sq-ease-in-out);
 }
 
 .panel[data-sidebar-right-panel='fullscreen'] {
@@ -119,11 +119,11 @@
   width: 28px;
   height: 28px;
   padding: 6px;
-  color: var(--dsw-alias-label-secondary);
+  color: var(--sqw-alias-label-secondary);
   line-height: 1;
   background: transparent;
   border: none;
-  border-radius: var(--dsw-radius-sm);
+  border-radius: var(--sqw-radius-sm);
   cursor: pointer;
 }
 
@@ -133,7 +133,7 @@
 }
 
 .iconButton:hover {
-  background: var(--dsw-alias-interactive-bg-hover);
+  background: var(--sqw-alias-interactive-bg-hover);
 }
 
 /* The expand button's glyph, so collapse and expand share one affordance. */
@@ -150,7 +150,7 @@
 .unavailable {
   margin: 0;
   padding: 12px;
-  color: var(--dsw-alias-label-tertiary);
+  color: var(--sqw-alias-label-tertiary);
   font-size: var(--sqh-content-font-size-secondary, 13px);
 }
 

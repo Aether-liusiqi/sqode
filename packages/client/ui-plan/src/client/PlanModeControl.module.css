@@ -14,9 +14,9 @@
   min-width: 34px;
   padding: 0 8px;
   border: none;
-  border-radius: var(--dsw-radius-sm);
-  background: var(--dsw-alias-state-business-tertiary);
-  color: var(--dsw-alias-state-business-primary);
+  border-radius: var(--sqw-radius-sm);
+  background: var(--sqw-alias-state-business-tertiary);
+  color: var(--sqw-alias-state-business-primary);
   font-size: 13px;
   font-weight: 500;
   line-height: 20px;
@@ -26,13 +26,13 @@
 .chip:hover:not(:disabled) {
   background: color-mix(
     in srgb,
-    var(--dsw-alias-state-business-tertiary),
-    var(--dsw-alias-state-business-primary) 6%
+    var(--sqw-alias-state-business-tertiary),
+    var(--sqw-alias-state-business-primary) 6%
   );
 }
 
 .chip:focus-visible {
-  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));
+  outline: var(--sqw-focus-ring-width) solid var(--sqw-focus-ring-color, var(--sqw-alias-state-business-primary));
   outline-offset: 2px;
 }
 
@@ -64,7 +64,7 @@
 }
 
 .error {
-  color: var(--dsw-alias-state-error-primary);
+  color: var(--sqw-alias-state-error-primary);
   font-size: 12px;
   line-height: 18px;
 }

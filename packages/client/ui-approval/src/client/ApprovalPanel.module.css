@@ -9,12 +9,12 @@
   overflow: hidden;
   width: 100%;
   max-width: var(--sqh-chat-content-width);
-  border: 1px solid var(--dsw-alias-state-warn-secondary);
-  border-radius: var(--dsw-radius-xl);
-  background: var(--dsw-specific-input-major);
-  box-shadow: var(--dsw-shadow-lv2);
-  --sqh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);
-  --sqh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);
+  border: 1px solid var(--sqw-alias-state-warn-secondary);
+  border-radius: var(--sqw-radius-xl);
+  background: var(--sqw-specific-input-major);
+  box-shadow: var(--sqw-shadow-lv2);
+  --sqh-scrollbar-thumb: var(--sqw-alias-scrollbar-bg-l2);
+  --sqh-scrollbar-thumb-hover: var(--sqw-alias-scrollbar-hover-l2);
 }
 
 .strip {
@@ -22,8 +22,8 @@
   align-items: center;
   gap: 8px;
   padding: 10px 16px;
-  background: var(--dsw-alias-state-warn-tertiary);
-  color: var(--dsw-alias-state-warn-primary);
+  background: var(--sqw-alias-state-warn-tertiary);
+  color: var(--sqw-alias-state-warn-primary);
   font-size: 13px;
   line-height: 18px;
 }
@@ -39,15 +39,15 @@
 }
 
 .headline {
-  color: var(--dsw-alias-label-primary);
+  color: var(--sqw-alias-label-primary);
   font-size: 15px;
   font-weight: 500;
   line-height: 24px;
 }
 
 .command {
-  color: var(--dsw-alias-label-tertiary);
-  font-family: var(--ds-font-family-code);
+  color: var(--sqw-alias-label-tertiary);
+  font-family: var(--sq-font-family-code);
   font-size: 13px;
   line-height: 20px;
   word-break: break-all;
@@ -61,7 +61,7 @@
 }
 
 .reject:hover:not(:disabled) {
-  background: var(--dsw-alias-interactive-bg-hover-danger);
-  color: var(--dsw-alias-state-error-primary);
+  background: var(--sqw-alias-interactive-bg-hover-danger);
+  color: var(--sqw-alias-state-error-primary);
   border-color: transparent;
 }

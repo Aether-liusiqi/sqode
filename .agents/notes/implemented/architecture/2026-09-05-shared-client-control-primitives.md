@@ -67,7 +67,7 @@ The component and stylesheet specs pin the capsule geometry, StateDot artwork, a
 
 - A new client control now has one place to check and one place to add, and the catalog makes the check a single file read rather than a `grep` over forty exports.
 - `TagTone` is eight members wide because eight appearances shipped. Adding a ninth requires a render site that needs it, not a symmetry argument.
-- The plugin inventory uses capsule tags; the disabled tag uses the `neutral` tone's visible `--dsw-alias-bg-module-platform` fill. Its phase markers use the shared `StateDot`, including the rotating loader for active transitions. The unconfigured-secret badge in the plugin settings fields uses the baseline 500 weight.
-- The plugin inventory palette contains no literal `#b45309`. The conditional tag uses the real `--dsw-alias-state-warn-primary` token rather than the nonexistent `--dsw-alias-state-warning-primary` alias and its hardcoded fallback.
+- The plugin inventory uses capsule tags; the disabled tag uses the `neutral` tone's visible `--sqw-alias-bg-module-platform` fill. Its phase markers use the shared `StateDot`, including the rotating loader for active transitions. The unconfigured-secret badge in the plugin settings fields uses the baseline 500 weight.
+- The plugin inventory palette contains no literal `#b45309`. The conditional tag uses the real `--sqw-alias-state-warn-primary` token rather than the nonexistent `--sqw-alias-state-warning-primary` alias and its hardcoded fallback.
 - The rule cannot be checked mechanically. A future author can still copy a control, and only review will catch it. That is the accepted cost of not gating: the alternative rejects legitimate work, and the packages that stay local above are proof that legitimate work exists.
 - `Tag` and `Switch` are shared across settings and preset packages; future consumers extend these primitives only when an existing prop cannot express a deliberate difference.

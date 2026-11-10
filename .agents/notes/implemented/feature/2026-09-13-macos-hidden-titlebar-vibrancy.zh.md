@@ -14,7 +14,7 @@ Electron 主进程在 darwin 上以 `titleBarStyle: 'hiddenInset'`、`trafficLig
 
 所有 macOS Web 侧调整均以 `html[data-platform='darwin']` 为开关，该属性仅由桌面 preload 设置（`document.documentElement.dataset.platform = process.platform`）。这些规则不适用于纯 Web 或其他桌面平台。[Windows 顶栏决策](2026-09-16-windows-desktop-titlebar.zh.md)负责其独立呈现。
 
-**透明链。** 毛玻璃只透过透明像素显现：darwin 上 `html`/`body`（ui-web base.css）与 AppFrame 透明，中间列铺不透明的 `--dsw-alias-bg-base`，侧边栏列铺侧边栏底色的半透明 `color-mix`，让材质透出。SidebarRoot 自身的不透明底色出于同一原因移到框架列。
+**透明链。** 毛玻璃只透过透明像素显现：darwin 上 `html`/`body`（ui-web base.css）与 AppFrame 透明，中间列铺不透明的 `--sqw-alias-bg-base`，侧边栏列铺侧边栏底色的半透明 `color-mix`，让材质透出。SidebarRoot 自身的不透明底色出于同一原因移到框架列。
 
 **原生主题同步。** 毛玻璃材质跟随 `nativeTheme.themeSource`，后者默认跟踪系统外观，会与应用自身的主题偏好背离。ui-theme 引导脚本与 ui-layout 的 `ThemePresenter` 发布 `html[data-ds-theme-source]`（`light`、`dark` 或 `system`；固定偏好——包括注册主题 id——发布其解析后的配色）。应用 preload 观察该属性并经 `sqh-desktop:native-theme-set` 转发；主进程校验取值与发送者（主窗口的 WebContents，包括其本地静态 Web 文档）后赋给 `nativeTheme.themeSource`。发布偏好而非解析值，可在偏好为 `system` 时保留跟随系统。
 

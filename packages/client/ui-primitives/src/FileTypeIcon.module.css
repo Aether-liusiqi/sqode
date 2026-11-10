@@ -6,19 +6,19 @@
 }
 
 .code {
-  --sqh-file-type-default-color: var(--dsw-static-sqode-500);
+  --sqh-file-type-default-color: var(--sqw-static-sqode-500);
 }
 
 .excel {
-  --sqh-file-type-default-color: var(--dsw-static-green-500);
+  --sqh-file-type-default-color: var(--sqw-static-green-500);
 }
 
 .folder {
-  --sqh-file-type-default-color: var(--dsw-static-amber-400);
+  --sqh-file-type-default-color: var(--sqw-static-amber-400);
 }
 
 .html {
-  --sqh-file-type-default-color: var(--dsw-static-sqode-500);
+  --sqh-file-type-default-color: var(--sqw-static-sqode-500);
 }
 
 .image {
@@ -26,19 +26,19 @@
 }
 
 .markdown {
-  --sqh-file-type-default-color: var(--dsw-static-sqode-500);
+  --sqh-file-type-default-color: var(--sqw-static-sqode-500);
 }
 
 .other {
-  --sqh-file-type-default-color: var(--dsw-static-neutral-bluish-300);
+  --sqh-file-type-default-color: var(--sqw-static-neutral-bluish-300);
 }
 
 .pdf {
-  --sqh-file-type-default-color: var(--dsw-static-red-600);
+  --sqh-file-type-default-color: var(--sqw-static-red-600);
 }
 
 .ppt {
-  --sqh-file-type-default-color: var(--dsw-static-amber-500);
+  --sqh-file-type-default-color: var(--sqw-static-amber-500);
 }
 
 .video {
@@ -46,5 +46,5 @@
 }
 
 .word {
-  --sqh-file-type-default-color: var(--dsw-static-sqode-450);
+  --sqh-file-type-default-color: var(--sqw-static-sqode-450);
 }

@@ -14,9 +14,9 @@ Focus feedback has separate interaction and geometry constraints. A browser's `:
 
 [The theme's focus stylesheet](../../../../packages/client/ui-theme/src/styles/focus.css) owns the shared ring colour and standard width. [Input modality](../../../../packages/client/ui-primitives/README.md#input-modality) distinguishes tooltip input from keyboard focus navigation.
 
-**One colour.** Global and component `:focus-visible` outlines and focus-ring shadows read `--dsw-focus-ring-color`, falling back to `--dsw-alias-state-business-primary`. The global fallback names the colour and the standard width but never the style, so it cannot create an outline where the component disables one. Naming the width is what keeps a control with no ring of its own at the standard geometry instead of Chromium's `auto 1px`.
+**One colour.** Global and component `:focus-visible` outlines and focus-ring shadows read `--sqw-focus-ring-color`, falling back to `--sqw-alias-state-business-primary`. The global fallback names the colour and the standard width but never the style, so it cannot create an outline where the component disables one. Naming the width is what keeps a control with no ring of its own at the standard geometry instead of Chromium's `auto 1px`.
 
-**Context-owned geometry.** `--dsw-focus-ring-width` carries the standard 2px width. Dense tables and toolbars may keep 1px so the ring does not dominate compact content. Components own their offsets and use an inset ring where an outer ring would be clipped.
+**Context-owned geometry.** `--sqw-focus-ring-width` carries the standard 2px width. Dense tables and toolbars may keep 1px so the ring does not dominate compact content. Components own their offsets and use an inset ring where an outer ring would be clipped.
 
 **Pointer focus does not imply keyboard navigation.** In pointer modality, `:focus-visible:not(:read-write)` controls use a transparent ring colour. Descendant and pseudo-element rings inherit it. Only focus-ring paint is suppressed: selected-state borders and elevation shadows remain, and editable text controls keep their own focus feedback on click. DOM focus stays on the control.
 

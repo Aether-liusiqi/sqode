@@ -10,7 +10,7 @@ English | [中文](2026-09-17-state-dot-visual-language.zh.md)
 
 ## Decision
 
-`idle`, `done`, `warning`, and `error` render as one solid 6px circle inside the existing 10px layout slot, with no halo. `idle` uses the neutral `--dsw-alias-state-idle-primary` token, `done` remains success green, `warning` remains amber, and `error` remains red.
+`idle`, `done`, `warning`, and `error` render as one solid 6px circle inside the existing 10px layout slot, with no halo. `idle` uses the neutral `--sqw-alias-state-idle-primary` token, `done` remains success green, `warning` remains amber, and `error` remains red.
 
 `ongoing` is the sole non-dot member. Its default edge is 14px, while solid states retain their 10px layout slot. It renders a 25%-opacity complete ring behind a grey arc using the tertiary label token. The glyph rotates continuously over 1.5 seconds while the arc grows from 12 to 24 dash units around its center and returns to 12; the arc offset is zero at both ends, so the browser does not reset a second circular movement at the loop boundary. Reduced-motion environments retain an intermediate static arc. The explicit size override, `data-state`, and `aria-hidden` behavior do not change.
 

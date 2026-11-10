@@ -4,7 +4,7 @@
   gap: 6px;
   font-size: 14px;
   line-height: 20px;
-  color: var(--dsw-alias-label-primary);
+  color: var(--sqw-alias-label-primary);
   cursor: pointer;
 }
 
@@ -13,12 +13,12 @@
   width: 16px;
   height: 16px;
   margin: 0;
-  accent-color: var(--dsw-alias-brand-primary);
+  accent-color: var(--sqw-alias-brand-primary);
   cursor: inherit;
 }
 
 .checkbox input:focus-visible {
-  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));
+  outline: var(--sqw-focus-ring-width) solid var(--sqw-focus-ring-color, var(--sqw-alias-state-business-primary));
   outline-offset: 2px;
 }
 

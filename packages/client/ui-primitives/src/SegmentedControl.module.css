@@ -15,8 +15,8 @@
   grid-auto-columns: 1fr;
   gap: 2px;
   padding: 4px;
-  border-radius: var(--dsw-radius-md);
-  background: var(--dsw-alias-interactive-bg-hover);
+  border-radius: var(--sqw-radius-md);
+  background: var(--sqw-alias-interactive-bg-hover);
 }
 
 .indicator {
@@ -26,9 +26,9 @@
   width: calc((100% - 8px - 2px * (var(--sqh-segment-count) - 1)) / var(--sqh-segment-count));
   height: calc(100% - 8px);
   border: 0;
-  border-radius: var(--dsw-radius-sm);
-  background: var(--dsw-alias-bg-layer-1);
-  box-shadow: var(--dsw-elevation-soft);
+  border-radius: var(--sqw-radius-sm);
+  background: var(--sqw-alias-bg-layer-1);
+  box-shadow: var(--sqw-elevation-soft);
   transform: translateX(calc(var(--sqh-segment-index) * (100% + 2px)));
   transition: transform 160ms ease;
   pointer-events: none;
@@ -41,9 +41,9 @@
   height: 28px;
   padding: 0 16px;
   border: 0;
-  border-radius: var(--dsw-radius-sm);
+  border-radius: var(--sqw-radius-sm);
   background: transparent;
-  color: var(--dsw-alias-label-secondary);
+  color: var(--sqw-alias-label-secondary);
   font: inherit;
   font-size: 13px;
   line-height: 20px;
@@ -55,7 +55,7 @@
 
 .tab:hover:not(:disabled),
 .tab[aria-selected='true'] {
-  color: var(--dsw-alias-label-primary);
+  color: var(--sqw-alias-label-primary);
 }
 
 .tab:disabled {
@@ -64,7 +64,7 @@
 }
 
 .tab:focus-visible {
-  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));
+  outline: var(--sqw-focus-ring-width) solid var(--sqw-focus-ring-color, var(--sqw-alias-state-business-primary));
   outline-offset: -2px;
 }
 

@@ -10,7 +10,7 @@ Status: implemented
 
 ## 决策
 
-`idle`、`done`、`warning` 与 `error` 在既有 10px 布局槽内渲染一个 6px 纯色圆点，不再带光晕。`idle` 使用中性的 `--dsw-alias-state-idle-primary` token，`done` 保持成功绿色，`warning` 保持琥珀色，`error` 保持红色。
+`idle`、`done`、`warning` 与 `error` 在既有 10px 布局槽内渲染一个 6px 纯色圆点，不再带光晕。`idle` 使用中性的 `--sqw-alias-state-idle-primary` token，`done` 保持成功绿色，`warning` 保持琥珀色，`error` 保持红色。
 
 `ongoing` 是唯一不是圆点的成员。它的默认边长为 14px，纯色状态仍保留 10px 布局槽。它在透明度为 25% 的完整圆环上方，使用 tertiary label token 渲染灰色圆弧。图形以 1.5 秒周期持续旋转，圆弧围绕中心从 12 个 dash 单位增长到 24 个、再回到 12 个；圆弧偏移在首尾都为零，因此浏览器不会在循环边界重置第二段圆周运动。减少动态效果的环境保留中间长度的静态圆弧。显式 size 覆盖、`data-state` 与 `aria-hidden` 行为均不改变。
 

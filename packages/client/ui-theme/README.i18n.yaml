@@ -3,20 +3,20 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write packages/client/ui-theme/README.md
 /:
-  en: 08d1ff12deb3368d
-  zh: df04ec5f2884fa1c
+  en: b42a93e08a96f79b
+  zh: 5ac6fc8c9b274949
 /liusiqi-dev-sqh-client-ui-theme:
   en: 9fd4ce7493ef259e
   zh: 676f8a03ae75a143
 /liusiqi-dev-sqh-client-ui-theme/summary:
-  en: 667eb608d61005f5
-  zh: ef566b6ebbe98acb
+  en: 886c69652eec1e4c
+  zh: 34967de265aaef11
 /liusiqi-dev-sqh-client-ui-theme/table-of-contents:
   en: d152484eb41ac6b4
   zh: 09388d293f9be9cb
 /liusiqi-dev-sqh-client-ui-theme/use-this-package:
-  en: 5d64b3d918d5edfa
-  zh: fc929354a0faf33a
+  en: 797e599516eaeaee
+  zh: 04fbe175fe89b984
 /liusiqi-dev-sqh-client-ui-theme/use-this-package/appearance-and-font-size:
   en: ec98904b19d1b12b
   zh: 59d5823ddb168195
@@ -27,11 +27,11 @@
   en: 02080e067eb48165
   zh: 6f51fe304bcb2ed2
 /liusiqi-dev-sqh-client-ui-theme/understand-the-implementation:
-  en: f359196e686ae4ac
-  zh: 894bbb3ee0d57b2c
+  en: 2ebf20f75ae338a4
+  zh: 90809e37f1311bb6
 /liusiqi-dev-sqh-client-ui-theme/understand-the-implementation/stylesheets:
-  en: 3e2d110b73f2f1bb
-  zh: 926ea4973a94e7c1
+  en: 835eeb13596daacb
+  zh: fc10d17a2bcad193
 /liusiqi-dev-sqh-client-ui-theme/understand-the-implementation/scrollbar-rebinding:
   en: 8256cc39e4aec112
   zh: dcc6ccab316aa1da

@@ -16,7 +16,7 @@ Status: implemented
 
 **不支持预览的空态。** owner 侧的 `document/unviewable.ts` 列出没有渲染器认领的二进制容器后缀（视频、音频、压缩包、office 文档、可执行文件、字体、磁盘镜像、设计格式）。owner 仅在没有实现匹配时查询该列表，因此任何渲染器注册始终优先；匹配的文件显示路径头部、文件类型图标和一行 `unsupportedFile` 说明，并且不会发起读取。不确定的后缀不进入列表、保留纯文本兜底；被文本认领但字节未通过读取器检查的文件通过 `error.notText` 报告同一句文案。
 
-**统一 loading。** `LoadingIndicator` 只渲染图标，标签作为 `aria-label` 携带、没有可见文字；所有渲染器的 loading 文案统一为共享的「正在读取…」。内容出现前的每个等待——owner 首次读取、PDF 解析、HTML 打包、图片解码——都把 spinner 居中在面板中，打开文件到正文出现始终是同一位置的一个 spinner。未渲染的 PDF 页以主题骨架色 `--dsw-alias-bg-skeleton` 上的静态 3:4 占位块保持位置、不带 spinner；文档打开的等待保持为 owner 的居中读取 spinner，而不是特化进第一页的占位块，因为读取 spinner 在占位块之前出现，两者交接会明显跳位。占位块不带扫光动画，其逐页动画成本高于价值。
+**统一 loading。** `LoadingIndicator` 只渲染图标，标签作为 `aria-label` 携带、没有可见文字；所有渲染器的 loading 文案统一为共享的「正在读取…」。内容出现前的每个等待——owner 首次读取、PDF 解析、HTML 打包、图片解码——都把 spinner 居中在面板中，打开文件到正文出现始终是同一位置的一个 spinner。未渲染的 PDF 页以主题骨架色 `--sqw-alias-bg-skeleton` 上的静态 3:4 占位块保持位置、不带 spinner；文档打开的等待保持为 owner 的居中读取 spinner，而不是特化进第一页的占位块，因为读取 spinner 在占位块之前出现，两者交接会明显跳位。占位块不带扫光动画，其逐页动画成本高于价值。
 
 **PDF 铺满与文案。** 移除 PDF 正文和页面的内边距，页面贴边占满面板宽度；图片渲染器保留自己的 12px 内边距。预览各字典的中文报错与状态文案去掉句尾句号。
 

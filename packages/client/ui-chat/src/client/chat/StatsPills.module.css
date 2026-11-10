@@ -30,7 +30,7 @@
   border-radius: 999px;
   corner-shape: round;
   background: transparent;
-  color: var(--dsw-alias-label-tertiary);
+  color: var(--sqw-alias-label-tertiary);
   font: inherit;
   font-variant-numeric: tabular-nums;
   line-height: inherit;
@@ -51,8 +51,8 @@ button.pill {
 
 button.pill:hover,
 button.pill[aria-expanded='true'] {
-  background: var(--dsw-alias-interactive-bg-hover);
-  color: var(--dsw-alias-label-secondary);
+  background: var(--sqw-alias-interactive-bg-hover);
+  color: var(--sqw-alias-label-secondary);
 }
 
 .label {
@@ -62,6 +62,6 @@ button.pill[aria-expanded='true'] {
 }
 
 .sep {
-  color: var(--dsw-alias-separator-primary);
+  color: var(--sqw-alias-separator-primary);
   margin: 0 6px;
 }

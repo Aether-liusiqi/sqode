@@ -67,7 +67,7 @@ Status: implemented
 
 - 新的客户端控件现在有一处可查、一处可加，而目录把这次查询变成读一个文件，而不是在四十多个导出上 `grep`。
 - `TagTone` 有八个成员，因为发布了八种外观。加第九个需要一个真的需要它的渲染点，而不是一个对称性论证。
-- 插件清单使用胶囊标签；"已停用"标签使用 `neutral` 色调下可见的 `--dsw-alias-bg-module-platform` 填充。相位标记使用共享 `StateDot`，活动转换采用旋转 loading。插件设置字段中的"未配置"徽章使用基准 500 字重。
-- 插件清单调色板不含 `#b45309` 字面量。`conditional` 标签使用真实的 `--dsw-alias-state-warn-primary` token，而不是不存在的 `--dsw-alias-state-warning-primary` 别名及其硬编码兜底色。
+- 插件清单使用胶囊标签；"已停用"标签使用 `neutral` 色调下可见的 `--sqw-alias-bg-module-platform` 填充。相位标记使用共享 `StateDot`，活动转换采用旋转 loading。插件设置字段中的"未配置"徽章使用基准 500 字重。
+- 插件清单调色板不含 `#b45309` 字面量。`conditional` 标签使用真实的 `--sqw-alias-state-warn-primary` token，而不是不存在的 `--sqw-alias-state-warning-primary` 别名及其硬编码兜底色。
 - 这条规则无法被机械检查。将来的作者仍然可以复制一个控件，只有评审能拦住。这是不设门禁所接受的代价：另一条路会拒绝正当的工作，而上面那份保留在原包的清单就是正当工作确实存在的证据。
 - `Tag` 与 `Switch` 由多个设置和预设包共享；只有现有 prop 无法表达明确差异时，后续消费方才扩展这些原语。

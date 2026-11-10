@@ -18,15 +18,15 @@
 .mask {
   position: absolute;
   inset: var(--sqh-frame-chrome-top, 0px) 0 0;
-  backdrop-filter: var(--dsw-mask-blur);
+  backdrop-filter: var(--sqw-mask-blur);
 }
 
 .mask::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--dsw-alias-bg-mask-1);
-  animation: modalEnter var(--ds-transition-duration) ease-out;
+  background: var(--sqw-alias-bg-mask-1);
+  animation: modalEnter var(--sq-transition-duration) ease-out;
 }
 
 /* Dialogs use the prominent elevation on the secondary layer. */
@@ -41,10 +41,10 @@
   padding: 0 0 24px;
   overflow: hidden;
   border: 0;
-  border-radius: var(--dsw-radius-panel);
-  background: var(--dsw-alias-bg-layer-2);
-  box-shadow: var(--dsw-elevation-prominent);
-  animation: modalEnter var(--ds-transition-duration) ease-out;
+  border-radius: var(--sqw-radius-panel);
+  background: var(--sqw-alias-bg-layer-2);
+  box-shadow: var(--sqw-elevation-prominent);
+  animation: modalEnter var(--sq-transition-duration) ease-out;
 }
 
 @keyframes modalEnter {
@@ -81,7 +81,7 @@
   font-size: 16px;
   line-height: 24px;
   font-weight: 500; /* figma wt510, rendered 500 */
-  color: var(--dsw-alias-label-primary);
+  color: var(--sqw-alias-label-primary);
 }
 
 .close {
@@ -92,14 +92,14 @@
   width: 28px;
   height: 28px;
   border: none;
-  border-radius: var(--dsw-radius-sm);
+  border-radius: var(--sqw-radius-sm);
   background: transparent;
   cursor: pointer;
-  color: var(--dsw-alias-label-secondary);
+  color: var(--sqw-alias-label-secondary);
 }
 
 .close:hover {
-  background: var(--dsw-alias-interactive-bg-hover);
+  background: var(--sqw-alias-interactive-bg-hover);
 }
 
 /* Description and body share the 332px content column (24px side pads). */
@@ -109,7 +109,7 @@
   font-size: 14px;
   line-height: 22px;
   font-weight: 400;
-  color: var(--dsw-alias-label-primary);
+  color: var(--sqw-alias-label-primary);
 }
 
 .body {
