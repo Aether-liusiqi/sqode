@@ -344,6 +344,7 @@ button.crumb:hover {
 
 /* Common seat for the composer chain (fallback + elected overlay siblings). */
 .composerSeat {
+  position: relative;
   display: flex;
   flex: none;
   flex-direction: column;
@@ -544,9 +545,5 @@ button.crumb:hover {
   visibility: hidden;
 }
 
-/* Beam wrapper around the composer seat. It must not create a containing block
- * for the sticky seat, so it carries no transform/filter of its own. */
-.composerBeam {
-  position: relative;
-  display: block;
-}
+/* The beam layer is rendered by BorderBeam itself as an absolutely-positioned
+ * `inset:0` decoration inside the seat; no separate wrapper is needed. */
