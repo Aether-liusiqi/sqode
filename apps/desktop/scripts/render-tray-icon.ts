@@ -1,11 +1,16 @@
 /**
- * Render the Windows tray icon with an enlarged whale from `resources/icon-windows.svg`.
+ * Render the Windows tray icon from `resources/icon-windows.svg`.
  *
  * The tray shows the icon at 16 logical pixels, so Windows picks one of the
  * bundled bitmaps by display scale. Each size is rasterized from the vector
  * source separately instead of downscaling one large bitmap, which keeps edges
  * crisp at every scale. The committed `resources/tray-windows.ico` is the output;
  * rerun `pnpm run render:tray-icon` in `apps/desktop` after changing the vector source.
+ *
+ * The 16 px bitmap is not a downscale of the master. Round caps widen each stroke by
+ * half its width, so scaling the 1024 master down closes the waist gap the design
+ * package wants visible (M1 §2.4). At that size M1 §2.5 specifies a simplified
+ * two-path version drawn at its own 16-unit scale with a 1.6 stroke and a 3.0 gap.
  */
 
 import { readFile, writeFile } from 'node:fs/promises'
@@ -13,8 +18,21 @@ import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import sharp from 'sharp'
 
-/** Bitmap edge lengths bundled in the tray icon: 16 px at 100 % through 400 % display scale. */
-export const TRAY_ICON_SIZES = [16, 20, 24, 32, 40, 48, 64] as const
+
+/**
+ * The 16 px simplification from design package M1 §2.5: two strokes, the waist gap
+ * kept, the end caret dropped, stroke 1.6 so the 1.4-unit gap survives.
+ */
+const SMALL_ICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="none">
+  <g stroke="#101317" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M13 4.4 C13 3 10.8 2.6 8.1 2.9 C5.4 3.3 3.5 4.5 3.5 6.1 C3.5 7.1 4.7 7.8 6.5 7.8"/>
+    <path d="M9.5 7.8 C11.1 7.8 12.3 8.4 12.3 10.3 C12.3 11.9 10.4 12.7 7.8 12.7 C6.8 12.7 6.1 12.6 5.4 12.4"/>
+  </g>
+</svg>`
+
+/** Bitmap edge lengths bundled in the tray icon: 16 px at 100 % through 400 % display
+ *  scale, plus the 128 and 256 px frames Windows may pick for large shell icons. */
+export const TRAY_ICON_SIZES = [16, 20, 24, 32, 40, 48, 64, 128, 256] as const
 
 /** Vector source and committed output of the tray icon. */
 export const TRAY_ICON_PATHS = {
@@ -93,19 +111,16 @@ export function unpackIco(ico: Buffer): IcoEntry[] {
 
 /**
  * Rasterize the vector source at each tray size.
- * @param svg - SVG document with a 1024-unit square viewBox and a `tray-glyph` group.
+ * @param svg - SVG document with a 1024-unit square viewBox holding the brand strokes.
  * @param sizes - Bitmap edges to render.
  * @returns PNG entries in the given order.
  */
 export async function renderTrayIconEntries(svg: Buffer, sizes: readonly number[] = TRAY_ICON_SIZES): Promise<IcoEntry[]> {
-  const source = svg.toString('utf8')
-  const glyph = '<g id="tray-glyph"'
-  if (!source.includes(glyph)) throw new Error('tray icon: SVG requires a tray-glyph group')
-  // Scale around the application tile center, retaining its background and the whale's aspect ratio.
-  const tray = Buffer.from(source.replace(glyph, `${glyph} transform="translate(552 544) scale(1.2) translate(-552 -544)"`))
   return Promise.all(sizes.map(async size => ({
     size,
-    png: await sharp(tray, { density: SOURCE_DENSITY * size / SOURCE_EDGE }).resize(size, size).png().toBuffer(),
+    png: size === 16
+      ? await sharp(Buffer.from(SMALL_ICON_SVG)).png().toBuffer()
+      : await sharp(svg, { density: SOURCE_DENSITY * size / SOURCE_EDGE }).resize(size, size).png().toBuffer(),
   })))
 }
 
