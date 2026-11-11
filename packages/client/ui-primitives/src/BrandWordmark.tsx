@@ -1,4 +1,5 @@
 import type { IconProps } from './icons/props.ts'
+import { BING_MARK_PATHS } from './BingMark.tsx'
 
 /** Display options for the product wordmark. */
 export interface BrandWordmarkProps extends IconProps {
@@ -6,11 +7,13 @@ export interface BrandWordmarkProps extends IconProps {
   includeMark?: boolean | undefined
 }
 
-/** Frame geometry shared with the standalone mark, in the 24 unit box. */
-const MARK_FRAME = 'M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Z'
-
-/** Initial drawn inside the frame. */
-const MARK_INITIAL = 'M16 9.4c-.7-1.1-1.9-1.8-3.3-1.8-2 0-3.6 1.3-3.6 3.1 0 1.7 1.3 2.5 3.4 2.9 1.7.3 2.3.8 2.3 1.6 0 .9-1 1.5-2.2 1.5-1.4 0-2.4-.7-3-1.8'
+/**
+ * The brand mark is the Bing-form master, shared with {@link BingMark}. The master
+ * lives in a 1024 unit box; the wordmark's mark slot is 24 units wide, so the group
+ * is scaled rather than re-drawn, keeping one geometry for the whole product.
+ */
+const MARK_SCALE = 24 / 1024
+const MARK_STROKE = 96
 
 /**
  * Render the product wordmark.
@@ -36,15 +39,10 @@ export function BrandWordmark({ size = 24, className, includeMark = true }: Bran
       aria-hidden="true"
     >
       {includeMark && (
-        <g>
-          <path d={MARK_FRAME} stroke="currentColor" strokeWidth="1.8" />
-          <path
-            d={MARK_INITIAL}
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
+        <g transform={`scale(${MARK_SCALE})`} stroke="currentColor" strokeWidth={MARK_STROKE} strokeLinecap="round" strokeLinejoin="round">
+          {Object.values(BING_MARK_PATHS).map(path => (
+            <path key={path} d={path} />
+          ))}
         </g>
       )}
       <text

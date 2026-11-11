@@ -27,11 +27,16 @@ describe('ui-theme host', () => {
     const ctx = new Context()
     const configuration = await liveConfig(ctx, { Config, apply })
     const { fiber } = configuration
-    expect(plainConfig(configuration.fiber.config)).toEqual({ preference: DEFAULT_PREFERENCE, fontSize: 14 })
+    expect(plainConfig(configuration.fiber.config)).toEqual({ preference: DEFAULT_PREFERENCE, preset: 'default', fontSize: 14 })
     await configuration.update({ preference: 'dark', fontSize: 10 })
-    expect(plainConfig(configuration.fiber.config)).toEqual({ preference: 'dark', fontSize: 10 })
+    expect(plainConfig(configuration.fiber.config)).toEqual({ preference: 'dark', preset: 'default', fontSize: 10 })
     await configuration.update({ fontSize: 22 })
-    expect(plainConfig(configuration.fiber.config)).toEqual({ preference: 'dark', fontSize: 22 })
+    expect(plainConfig(configuration.fiber.config)).toEqual({ preference: 'dark', preset: 'default', fontSize: 22 })
+    // The preset is a volatile field of the durable namespace: without it the
+    // settings service rejects `set('preset', …)` and the UI reverts.
+    await configuration.update({ preset: 'obsidian' })
+    expect(plainConfig(configuration.fiber.config)).toEqual({ preference: 'dark', preset: 'obsidian', fontSize: 22 })
+    await expect(configuration.update({ preset: 'sepia' })).rejects.toThrow()
     await expect(configuration.update({ preference: 'sepia' })).rejects.toThrow()
     await expect(configuration.update({ fontSize: 9 })).rejects.toThrow()
     await expect(configuration.update({ fontSize: 23 })).rejects.toThrow()

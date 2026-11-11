@@ -279,7 +279,10 @@ export class ThemeRuntime {
     if (this.preference === section.preference && this.preset === section.preset
       && this.fontSize === section.fontSize) return
     this.preference = section.preference
-    this.preset = section.preset
+    // A settings document written before the preset dimension existed has no
+    // `preset` key; falling back keeps `data-sqh-theme` out of the DOM instead
+    // of publishing the literal string "undefined" as an attribute value.
+    this.preset = isThemePreset(section.preset) ? section.preset : DEFAULT_PRESET
     this.fontSize = section.fontSize
     this.publish()
   }

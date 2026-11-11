@@ -2,14 +2,15 @@
 import type {} from '@liusiqi-dev/sqh-settings'
 
 import type { Volatile } from '@liusiqi-dev/cordis'
-import type { ThemePreference } from './theme-settings.ts'
+import type { ThemePreference, ThemePreset } from './theme-settings.ts'
 import z from '@liusiqi-dev/schemastery'
 
 import type { Context } from '@liusiqi-dev/cordis'
 import type {} from '@liusiqi-dev/sqh-host-webserver'
 import { bootThemeInjections } from './boot-theme.ts'
 import {
-  DEFAULT_FONT_SIZE, DEFAULT_PREFERENCE, FONT_SIZE_MIN, FONT_SIZE_MAX, THEME_PREFERENCES,
+  DEFAULT_FONT_SIZE, DEFAULT_PREFERENCE, DEFAULT_PRESET, FONT_SIZE_MIN, FONT_SIZE_MAX,
+  THEME_PRESETS, THEME_PREFERENCES,
 } from './theme-settings.ts'
 
 export {
@@ -22,6 +23,8 @@ export {
 export interface Config {
   /** Browser palette preference. */
   preference: Volatile<ThemePreference>
+  /** Selected palette preset; volatile so the settings namespace accepts its writes. */
+  preset: Volatile<ThemePreset>
   /** Browser font size in pixels. */
   fontSize: Volatile<number>
 }
@@ -29,6 +32,7 @@ export interface Config {
 /** Live theme and typography preferences. */
 export const Config = z.object({
   preference: z.union([...THEME_PREFERENCES]).default(DEFAULT_PREFERENCE).volatile(),
+  preset: z.union([...THEME_PRESETS]).default(DEFAULT_PRESET).volatile(),
   fontSize: z.number().step(1).min(FONT_SIZE_MIN).max(FONT_SIZE_MAX).default(DEFAULT_FONT_SIZE).volatile(),
 })
 
