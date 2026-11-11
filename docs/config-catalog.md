@@ -635,19 +635,24 @@ export interface Config {
 ## `@liusiqi-dev/sqh-client-ui-theme`
 
 - `refs`: `Volatile` (`@liusiqi-dev/cordis`)
-- `source`: [`packages/client/ui-theme/src/index.ts:22`](../packages/client/ui-theme/src/index.ts)
+- `source`: [`packages/client/ui-theme/src/index.ts:23`](../packages/client/ui-theme/src/index.ts)
 
 ```ts config-catalog
 /** Runtime preferences projected to the browser. */
 export interface Config {
   /** Browser palette preference. */
   preference: Volatile<ThemePreference>
+  /** Selected palette preset; volatile so the settings namespace accepts its writes. */
+  preset: Volatile<ThemePreset>
   /** Browser font size in pixels. */
   fontSize: Volatile<number>
 }
 
 /** Theme preference persisted by the product Appearance row. */
 export type ThemePreference = typeof THEME_PREFERENCES[number]
+
+/** Palette preset persisted alongside the preference. */
+export type ThemePreset = typeof THEME_PRESETS[number]
 ```
 <!-- END GENERATED config-catalog:@liusiqi-dev/sqh-client-ui-theme -->
 
