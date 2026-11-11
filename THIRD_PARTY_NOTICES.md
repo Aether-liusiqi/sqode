@@ -76,7 +76,6 @@ External packages installed for runtime use or distributed inside the prebuilt b
 | [`ajv`](https://github.com/ajv-validator/ajv) | MIT |
 | [`anser`](https://github.com/IonicaBizau/anser) | MIT |
 | [`big.js`](https://github.com/MikeMcl/big.js) | MIT |
-| [`border-beam`](https://github.com/Jakubantalik/Libraries.dev) | MIT |
 | [`buffer`](https://github.com/feross/buffer) | MIT |
 | [`cheerio`](https://github.com/cheeriojs/cheerio) | MIT |
 | [`chokidar`](https://github.com/paulmillr/chokidar) | MIT |
@@ -218,6 +217,7 @@ External packages **directly declared** for development, tests, types, or toolin
 | [`@yao-pkg/pkg`](https://github.com/yao-pkg/pkg) | MIT |
 | [`@yarnpkg/cli-dist`](https://github.com/yarnpkg/berry) | BSD-2-Clause |
 | [`app-builder-lib`](https://github.com/electron-userland/electron-builder) | MIT |
+| [`border-beam`](https://github.com/Jakubantalik/Libraries.dev) | MIT |
 | [`cos-nodejs-sdk-v5`](https://github.com/tencentyun/cos-nodejs-sdk-v5) | ISC |
 | [`cytoscape`](https://github.com/cytoscape/cytoscape.js) | MIT |
 | [`cytoscape-cose-bilkent`](https://github.com/cytoscape/cytoscape.js-cose-bilkent) | MIT |

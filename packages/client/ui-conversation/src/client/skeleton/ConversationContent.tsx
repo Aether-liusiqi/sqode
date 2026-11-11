@@ -1,20 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
-import { BorderBeam } from 'border-beam'
 import type { WorkspaceId } from '@liusiqi-dev/sqh-workspace/types'
 import { workspaceDisplayTitle } from '@liusiqi-dev/sqh-api-workspace-controller/default-workspace'
 import type { ConversationContentProps, ConversationViewsProps, InputZone } from '../contract/slots.ts'
 import { HeroShell, WorkspaceChip, workspaceLabel } from './EmptyHero.tsx'
 import css from './ConversationRoot.module.css'
-
-/** Design package M4: each preset gets its own beam hue. `default` keeps the
- * original ocean so shipping visuals do not shift for users who never pick one. */
-export const BEAM_VARIANT: Record<string, 'ocean' | 'sunset' | 'colorful' | 'mono'> = {
-  default: 'ocean',
-  obsidian: 'ocean',
-  yayun: 'sunset',
-  nebula: 'colorful',
-}
 
 /**
  * Read a body attribute reactively. theme-presenter writes `data-sqh-theme`
@@ -72,9 +62,6 @@ export function ConversationContent(props: ConversationContentProps) {
     selectWorkspace, t, useFactorySlot,
   } = props
   const session = useSession(snapshot => snapshot)
-  const running = useSession(snapshot => snapshot.running)
-  const preset = useBodyPreset()
-  const reducedMotion = useReducedMotion()
   const Views = useFactorySlot('views', ConversationSessionView)
   const WidthControls = useFactorySlot('widthControls', NoConversationWidthControls)
   const [body, setBody] = useState<HTMLDivElement | null>(null)
@@ -227,20 +214,13 @@ export function ConversationContent(props: ConversationContentProps) {
   // Sticky wraps the whole chain output (fallback + elected overlay), not
   // only `.composerStack`: overlay:true renders those as siblings, and sticky
   // on the fallback alone would leave a business-owned takeover at the content
-  // end off-screen when the user is not pinned to the floor.
+  // end off-screen when the user is not pinned to the floor. The seat therefore
+  // stays the scrollport's direct child — the sticky and overlay geometry rules
+  // select it with `>` — and the beam is an out-of-flow decoration inside it.
   const composerSeat = (
-    <BorderBeam
-      active={running === true && !reducedMotion}
-      theme="auto"
-      colorVariant={BEAM_VARIANT[preset] ?? 'ocean'}
-      size="line"
-      strength={0.6}
-      className={css.composerBeam ?? ''}
-    >
-      <div ref={seatResizeRef} className={css.composerSeat} data-composer-seat="" data-conversation-region="composer">
-        {composer}
-      </div>
-    </BorderBeam>
+    <div ref={seatResizeRef} className={css.composerSeat} data-composer-seat="" data-conversation-region="composer">
+      {composer}
+    </div>
   )
 
   return (

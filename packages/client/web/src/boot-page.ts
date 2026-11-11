@@ -34,7 +34,7 @@ export class BootPage {
     this.root = div(css.boot)
     this.root.dataset.sqhBoot = ''
     this.card = div(css.card)
-    this.wordmark = div(css.wordmark, 'HARNESS')
+    this.wordmark = div(css.wordmark, 'SIQI HARNESS')
     this.spinner = div(css.spinner)
     this.spinner.dataset.sqhBootSpinner = ''
     this.hint = div(css.hint, 'Loading plugins…')

@@ -348,7 +348,7 @@
   bottom: -7px;
 }
 
-/* Hover-card body (figma 169:16903): dark surface, fixed colors both themes. */
+/* Hover-card body: surface follows theme, so text uses theme label colors. */
 .hoverContent {
   display: flex;
   flex-direction: column;
@@ -358,21 +358,21 @@
 .hoverTitle {
   font-size: 14px;
   line-height: 20px;
-  color: #FFFFFF;
+  color: var(--sqw-alias-label-primary);
   overflow-wrap: break-word;
 }
 
 .hoverPath {
   font-size: 12px;
   line-height: 16px;
-  color: #CFD3D6;
+  color: var(--sqw-alias-label-secondary);
   word-break: break-all;
 }
 
 .hoverTime {
   font-size: 12px;
   line-height: 16px;
-  color: #CFD3D6;
+  color: var(--sqw-alias-label-secondary);
 }
 
 .hoverStatus {

@@ -14,7 +14,7 @@ describe('BootPage', () => {
   it('draws the loading skeleton before any plugin state arrives', () => {
     const { el } = mount()
     expect(el.firstElementChild?.getAttribute('data-sqh-boot')).toBe('')
-    expect(el.textContent).toContain('HARNESS')
+    expect(el.textContent).toContain('SIQI HARNESS')
     expect(el.textContent).toContain('Loading plugins…')
   })
 
