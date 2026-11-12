@@ -1,5 +1,5 @@
 import type { IconProps } from './icons/props.ts'
-import { BING_MARK_PATHS } from './BingMark.tsx'
+import { BRAND_MASTER_PATH } from './brandMarkPath.ts'
 
 /** Display options for the product wordmark. */
 export interface BrandWordmarkProps extends IconProps {
@@ -8,12 +8,11 @@ export interface BrandWordmarkProps extends IconProps {
 }
 
 /**
- * The brand mark is the Bing-form master, shared with {@link BingMark}. The master
+ * The brand mark is the rounded-square master, shared with {@link BingMark}. The master
  * lives in a 1024 unit box; the wordmark's mark slot is 24 units wide, so the group
  * is scaled rather than re-drawn, keeping one geometry for the whole product.
  */
 const MARK_SCALE = 24 / 1024
-const MARK_STROKE = 96
 
 /**
  * Render the product wordmark.
@@ -39,10 +38,8 @@ export function BrandWordmark({ size = 24, className, includeMark = true }: Bran
       aria-hidden="true"
     >
       {includeMark && (
-        <g transform={`scale(${MARK_SCALE})`} stroke="currentColor" strokeWidth={MARK_STROKE} strokeLinecap="round" strokeLinejoin="round">
-          {Object.values(BING_MARK_PATHS).map(path => (
-            <path key={path} d={path} />
-          ))}
+        <g transform={`scale(${MARK_SCALE})`} fill="var(--sq-brand-mark-fill, #ED6A39)" fillRule="evenodd">
+          <path d={BRAND_MASTER_PATH} />
         </g>
       )}
       <text

@@ -144,6 +144,7 @@ body[data-sqh-theme="obsidian"][data-ds-dark-theme] {
   --sqw-alias-border-l4: rgba(242, 244, 247, 0.2);
   --sqw-alias-brand-primary: #f2f4f7;
   --sqw-alias-brand-primary-invert: #f2f4f7;
+  --sq-brand-mark-fill: #FFFFFF;
   --sqw-alias-brand-primary-new-colorprimary-new-color: #7dd3fc;
   --sqw-alias-brand-text: #f2f4f7;
   --sqw-alias-button-contrast-fill: #f2f4f7;
