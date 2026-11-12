@@ -62,4 +62,4 @@ pre-merge-commit:
 pre-push:
   jobs:
     - name: translation pairing
-      run: pnpm run verify-translation-pairing
+      run: node_modules/.bin/tsx scripts/pre-push-translation-gate.ts
