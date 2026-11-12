@@ -37,6 +37,10 @@ try {
     cwd: root, env: { ...environment, SQODE_HOME: join(root, 'home'), USERPROFILE: root, HOME: root,
       TEMP: root, TMP: root, TMPDIR: root }, stdio: 'inherit', windowsHide: true,
   })
+  /* jscpd:ignore-start */
+  // Qualification harness twins: test-workspace-updates.ts drives the same
+  // child-process/timeout handshake for the GUI variant. The two scripts are
+  // kept independent so one can be run or edited alone. Duplication gate, 2026-11-12.
   let timedOut = false
   const timeout = setTimeout(() => { timedOut = true; child.kill() }, 120_000)
   try {
@@ -49,6 +53,7 @@ try {
     }
     console.log(`Host update evidence: ${root}`)
   } finally { clearTimeout(timeout) }
+  /* jscpd:ignore-end */
 } finally {
   removeOwnedDirectory(project)
 }

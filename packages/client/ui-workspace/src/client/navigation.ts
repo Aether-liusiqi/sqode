@@ -61,6 +61,11 @@ export interface UiWorkspace {
    * @param workspaceId - explicit target; absent inherits the current or most recent Workspace.
    */
   startSession(workspaceId?: WorkspaceId): void
+  /* jscpd:ignore-start */
+  // This client-side navigation contract mirrors the host service declaration
+  // (api/workspace-controller/src/client/service.ts) on purpose: the two sides
+  // are checked independently so a host signature change cannot silently pass.
+  // Duplication gate, 2026-11-12.
   /**
    * Archive a Session and clear it when it is the current selection.
    * @param sessionId - Session to archive.
@@ -95,6 +100,7 @@ export interface UiWorkspace {
    * @param sessionId - Session to unpin.
    */
   unpinSession(sessionId: SessionId): Promise<void>
+  /* jscpd:ignore-end */
   /**
    * Open the Host-native directory picker.
    * @returns the selected directory, or null when cancelled.

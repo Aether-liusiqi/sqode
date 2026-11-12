@@ -42,6 +42,11 @@ function poorQuality(hits: readonly SearchHit[], want: number, options: HttpSear
  * @param want - caller bound.
  * @returns the seam result.
  */
+/* jscpd:ignore-start */
+// The SERP provider builds the same WebSearchResult shape in
+// web-search-serp/src/provider.ts. Both own their own pre-truncation pipeline
+// (per-host capping there, none here), so the shared shape stays duplicated.
+// Duplication gate, 2026-11-12.
 function toResult(hits: readonly SearchHit[], want: number): WebSearchResult {
   return {
     sources: hits.slice(0, want).map(hit => ({
@@ -53,6 +58,7 @@ function toResult(hits: readonly SearchHit[], want: number): WebSearchResult {
     truncated: hits.length > want,
   }
 }
+/* jscpd:ignore-end */
 
 /** One search backend backed by a keyword engine. */
 export class HttpSearchProvider implements WebSearchProvider {

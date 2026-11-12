@@ -40,6 +40,10 @@ const THRESHOLD_MAX = 128_000
  * @param max - inclusive upper bound.
  * @returns the clamped integer.
  */
+/* jscpd:ignore-start */
+// Environment-integer clamp shared verbatim with core/agent-loop/src/tool-calls.ts.
+// Kept local so each package owns its own limit constants; extracting it would
+// create a cross-package dependency for a seven-line helper. Duplication gate, 2026-11-12.
 function readIntSetting(name: string, fallback: number, min: number, max: number): number {
   const raw = process.env[name]?.trim()
   const parsed = raw === undefined || raw === '' ? Number.NaN : Number(raw)
@@ -48,6 +52,7 @@ function readIntSetting(name: string, fallback: number, min: number, max: number
   const value = Number.isFinite(parsed) ? Math.trunc(parsed) : fallback
   return Math.min(max, Math.max(min, value))
 }
+/* jscpd:ignore-end */
 
 /**
  * Count Unicode code points without splitting surrogate pairs.

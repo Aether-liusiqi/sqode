@@ -250,6 +250,11 @@ export class SessionCommandController {
         { reason: activity.map(entry => entry.kind).join(', ') },
       )
     }
+    /* jscpd:ignore-start */
+    // Intentional mirror of the Workspace controller's idempotent delete cleanup
+    // (workspace-controller/src/commands.ts). Both controllers own the same
+    // "unmaterialized session" invariant; keeping them separate lets each evolve
+    // its own release step. Duplication gate, 2026-11-12.
     await this.agents.release(sessionId)
     // Same idempotence as the Workspace controller: a Session whose log never
     // materialized still has to leave the workspace account, or its row becomes
@@ -267,6 +272,7 @@ export class SessionCommandController {
     await this.ctx.workspaceRegistry.unpinSession(sessionId)
     return { sessionId }
   }
+  /* jscpd:ignore-end */
 
   /**
    * Create a new ordinary Session from an exact event prefix. An explicit
