@@ -93,7 +93,7 @@ export interface HeroShellProps {
  */
 function HeroFish({ hovering }: { hovering: boolean }) {
   return (
-    <BingMark size={34} className={`${css.fish ?? ''}`}>
+    <BingMark size={48} className={`${css.fish ?? ''}`}>
       {hovering && (
         <animate
           attributeName="opacity"
@@ -128,7 +128,7 @@ export function HeroShell({ t, renderSlot, children }: HeroShellProps) {
             }}
             onMouseLeave={() => { setHovering(false) }}
           >
-            {renderSlot('conversation.hero.brand.mark', { size: 34, className: css.fish }, {
+            {renderSlot('conversation.hero.brand.mark', { size: 48, className: css.fish }, {
               fallback: <HeroFish hovering={hovering} />,
             })}
           </span>

@@ -18,7 +18,7 @@ function div(className: string | undefined, text?: string): HTMLDivElement {
 export class BootPage {
   private readonly root: HTMLDivElement
   private readonly card: HTMLDivElement
-  private readonly wordmark: HTMLDivElement
+  private readonly mark: HTMLImageElement
   private readonly spinner: HTMLDivElement
   private readonly hint: HTMLDivElement
   private readonly states = new Map<string, LoaderEntryState>()
@@ -34,11 +34,16 @@ export class BootPage {
     this.root = div(css.boot)
     this.root.dataset.sqhBoot = ''
     this.card = div(css.card)
-    this.wordmark = div(css.wordmark, 'SIQI HARNESS')
+    this.mark = document.createElement('img')
+    this.mark.src = './favicon.svg'
+    this.mark.width = 48
+    this.mark.height = 48
+    this.mark.alt = ''
+    this.mark.setAttribute('aria-hidden', 'true')
     this.spinner = div(css.spinner)
     this.spinner.dataset.sqhBootSpinner = ''
-    this.hint = div(css.hint, 'Loading plugins…')
-    this.card.append(this.wordmark, this.spinner, this.hint)
+    this.hint = div(css.hint, '')
+    this.card.append(this.mark, this.spinner, this.hint)
     this.root.append(this.card)
     container.append(this.root)
     this.updateProgress()
@@ -84,7 +89,7 @@ export class BootPage {
     const failed = [...this.states].filter(([, state]) => state === 'failed').map(([id]) => id)
     if (this.failure === undefined && failed.length === 0) {
       if (this.spinner.parentElement !== this.card) {
-        this.card.replaceChildren(this.wordmark, this.spinner, this.hint)
+        this.card.replaceChildren(this.mark, this.spinner, this.hint)
       }
       return
     }
@@ -92,7 +97,7 @@ export class BootPage {
     report.append(div(css.failedTitle, 'Failed to load plugins'))
     for (const id of failed) report.append(div(css.failedItem, id))
     if (this.failure !== undefined) report.append(div(css.failedItem, this.failure))
-    this.card.replaceChildren(this.wordmark, report)
+    this.card.replaceChildren(this.mark, report)
   }
 
   /** Grow the rotating arc monotonically as loader entries activate. */

@@ -124,9 +124,9 @@ exports[`sidebar shell snapshots > renders Windows caption controls in expanded 
                 aria-hidden="true"
                 data-content="9d755189"
                 fill="none"
-                height="24"
+                height="32"
                 viewBox="0 0 1024 1024"
-                width="24"
+                width="32"
               />
             </div>
           </span>
@@ -264,9 +264,9 @@ exports[`sidebar shell snapshots > renders the collapsed rail after the crossfad
               aria-hidden="true"
               data-content="9d755189"
               fill="none"
-              height="24"
+              height="32"
               viewBox="0 0 1024 1024"
-              width="24"
+              width="32"
             />
           </div>
         </span>
@@ -376,9 +376,9 @@ exports[`sidebar shell snapshots > renders the expanded column (wordmark, capsul
                 aria-hidden="true"
                 data-content="9d755189"
                 fill="none"
-                height="24"
+                height="32"
                 viewBox="0 0 1024 1024"
-                width="24"
+                width="32"
               />
             </div>
           </span>
@@ -519,9 +519,9 @@ exports[`sidebar shell snapshots > renders the expanded column in the default lo
                 aria-hidden="true"
                 data-content="9d755189"
                 fill="none"
-                height="24"
+                height="32"
                 viewBox="0 0 1024 1024"
-                width="24"
+                width="32"
               />
             </div>
           </span>
