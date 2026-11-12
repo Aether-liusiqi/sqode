@@ -7,8 +7,70 @@
     <link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" media="(prefers-color-scheme: light)" />
     <title>Sqode Local Build</title>
+    <style>
+      /* Sqode splash: pure CSS, auto-hides after React mounts. */
+      #sqh-splash {
+        position: fixed; inset: 0; z-index: 9999;
+        display: flex; align-items: center; justify-content: center;
+        background: radial-gradient(ellipse at center, #2B2F36 0%, #0E1013 70%);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif;
+        transition: opacity 500ms ease-out;
+      }
+      #sqh-splash.sqh-done { opacity: 0; pointer-events: none; }
+      .sqh-splash-lockup { display: flex; flex-direction: column; align-items: center; }
+      .sqh-splash-mark {
+        width: 180px; height: 180px;
+        opacity: 0; transform: scale(0.85); transform-origin: center;
+        animation: sqhMarkIn 800ms cubic-bezier(0.16,1,0.3,1) 400ms forwards;
+      }
+      @keyframes sqhMarkIn { to { opacity: 1; transform: scale(1); } }
+      .sqh-splash-wordmark {
+        margin-top: 24px; display: flex;
+        font-size: 56px; font-weight: 300; letter-spacing: 2px;
+        background: linear-gradient(90deg, #ED6A39 0%, #FFB08A 25%, #FFFFFF 50%, #FFB08A 75%, #ED6A39 100%);
+        background-size: 300% 100%;
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: sqhWordmarkFlow 3s linear 2s infinite;
+      }
+      @keyframes sqhWordmarkFlow { 0% { background-position: 300% 50%; } 100% { background-position: 0% 50%; } }
+      .sqh-splash-wordmark span {
+        display: inline-block; opacity: 0; transform: translateY(16px);
+        animation: sqhCharIn 400ms cubic-bezier(0.16,1,0.3,1) forwards;
+      }
+      @keyframes sqhCharIn { to { opacity: 1; transform: translateY(0); } }
+      .sqh-splash-beam {
+        margin-top: 20px; height: 2px; border-radius: 2px;
+        width: 220px; position: relative; overflow: hidden;
+        background: linear-gradient(90deg, transparent 0%, #ED6A39 20%, #FFB08A 50%, #ED6A39 80%, transparent 100%);
+        opacity: 0; animation: sqhBeamFade 600ms ease-out 600ms forwards;
+      }
+      .sqh-splash-beam::after {
+        content: ''; position: absolute; inset: 0;
+        background: linear-gradient(90deg, transparent, #FFB08A, transparent);
+        animation: sqhBeamSlide 3s linear 0s infinite;
+      }
+      @keyframes sqhBeamFade { to { opacity: 0.6; } }
+      @keyframes sqhBeamSlide { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+      @media (prefers-reduced-motion: reduce) {
+        #sqh-splash *, #sqh-splash *::after { animation-duration: 0.01ms !important; animation-delay: 0ms !important; }
+      }
+    </style>
   </head>
   <body>
+    <div id="sqh-splash" aria-label="Sqode loading">
+      <div class="sqh-splash-lockup">
+        <img class="sqh-splash-mark" src="/favicon.svg" alt="" aria-hidden="true" />
+        <div class="sqh-splash-wordmark">
+          <span style="animation-delay:1450ms">S</span>
+          <span style="animation-delay:1520ms">q</span>
+          <span style="animation-delay:1590ms">o</span>
+          <span style="animation-delay:1660ms">d</span>
+          <span style="animation-delay:1730ms">e</span>
+        </div>
+        <div class="sqh-splash-beam"></div>
+      </div>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
