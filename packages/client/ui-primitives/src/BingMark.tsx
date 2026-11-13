@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { BRAND_MASTER_PATH } from './brandMarkPath.ts'
+import { BRAND_BG_PATH, BRAND_CARETS_PATH } from './brandMarkPath.ts'
 
 /** Presentation of the master mark at any requested pixel size. */
 export interface BingMarkProps {
@@ -12,9 +12,15 @@ export interface BingMarkProps {
 }
 
 /**
- * Render the brand mark at `size`. Uses the orange master fill by default;
- * the CSS variable `--sq-brand-mark-fill` overrides it for dark themes so
- * the mark switches to white without re-rendering (per brand spec §2).
+ * Render the brand mark at `size`.
+ *
+ * The icon has two layers (from 07_交付给集成方/icon.svg):
+ *   1. Orange rounded-square S-frame (evenodd cutouts)
+ *   2. White carets `<` `>` on top
+ *
+ * Light mode: orange bg + white carets.
+ * Dark mode: both layers turn white (via CSS variables), making one solid white mark.
+ * Theme switching uses CSS custom properties, no re-render needed.
  * @param props - size, optional class and optional in-group children.
  * @returns the scalable SVG mark.
  */
@@ -28,10 +34,9 @@ export function BingMark({ size, className, children }: BingMarkProps) {
       fill="none"
       aria-hidden="true"
     >
-      <g fill="var(--sq-brand-mark-fill, #ED6A39)" fillRule="evenodd">
-        <path d={BRAND_MASTER_PATH} />
-        {children}
-      </g>
+      <path d={BRAND_BG_PATH} fill="var(--sq-brand-mark-fill, #ED6A39)" fillRule="evenodd" />
+      <path d={BRAND_CARETS_PATH} fill="var(--sq-brand-carets-fill, #FFFFFF)" />
+      {children}
     </svg>
   )
 }

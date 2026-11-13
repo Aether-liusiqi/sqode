@@ -1,5 +1,5 @@
 import type { IconProps } from './icons/props.ts'
-import { BRAND_MASTER_PATH } from './brandMarkPath.ts'
+import { BRAND_BG_PATH, BRAND_CARETS_PATH } from './brandMarkPath.ts'
 
 /** Display options for the product wordmark. */
 export interface BrandWordmarkProps extends IconProps {
@@ -38,8 +38,9 @@ export function BrandWordmark({ size = 24, className, includeMark = true }: Bran
       aria-hidden="true"
     >
       {includeMark && (
-        <g transform={`scale(${MARK_SCALE})`} fill="var(--sq-brand-mark-fill, #ED6A39)" fillRule="evenodd">
-          <path d={BRAND_MASTER_PATH} />
+        <g transform={`scale(${MARK_SCALE})`}>
+          <path d={BRAND_BG_PATH} fill="var(--sq-brand-mark-fill, #ED6A39)" fillRule="evenodd" />
+          <path d={BRAND_CARETS_PATH} fill="var(--sq-brand-carets-fill, #FFFFFF)" />
         </g>
       )}
       <text

@@ -43,7 +43,6 @@ export { ConnectionIndicator } from './ConnectionIndicator.tsx'
 export type { ConnectionIndicatorState } from './ConnectionIndicator.tsx'
 export { BingMark } from './BingMark.tsx'
 export type { BingMarkProps } from './BingMark.tsx'
-export { BRAND_MASTER_PATH } from './brandMarkPath.ts'
 export { BrandWordmark } from './BrandWordmark.tsx'
 export type { BrandWordmarkProps } from './BrandWordmark.tsx'
 export {
