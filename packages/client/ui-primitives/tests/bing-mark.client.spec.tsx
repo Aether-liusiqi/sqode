@@ -26,10 +26,10 @@ describe('BingMark', () => {
 
   it('uses themeable CSS variables for both fill layers', () => {
     const view = render(<BingMark size={34} />)
-    const paths = view.container.querySelectorAll('path')!
-    expect(paths[0].getAttribute('fill')).toContain('--sq-brand-mark-fill')
-    expect(paths[0].getAttribute('fill-rule')).toBe('evenodd')
-    expect(paths[1].getAttribute('fill')).toContain('--sq-brand-carets-fill')
+    const [background, carets] = [...view.container.querySelectorAll('path')]
+    expect(background?.getAttribute('fill')).toContain('--sq-brand-mark-fill')
+    expect(background?.getAttribute('fill-rule')).toBe('evenodd')
+    expect(carets?.getAttribute('fill')).toContain('--sq-brand-carets-fill')
   })
 
   it('appends host-owned animation children inside the svg', () => {

@@ -1,6 +1,8 @@
 ; Figma logical pixels, independent of the Windows display scale.
 !define INSTALLER_WINDOW_SIZE 600
-!define INSTALLER_BRAND_Y 174
+; Centred vertically: (600 - 196) / 2. The first page's only other content is the
+; status line at 512, so the strip still clears it by 114 logical pixels.
+!define INSTALLER_BRAND_Y 202
 !define INSTALLER_BRAND_HEIGHT 196
 !define INSTALLER_BUTTON_X 240
 !define INSTALLER_BUTTON_Y 490
