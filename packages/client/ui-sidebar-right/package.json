@@ -70,7 +70,7 @@
     "picomatch": "^4.0.4",
     "clsx": "^2.0.0",
     "@liusiqi-dev/sqh-util-crypto": "workspace:*",
-    "zod": "^4.4.3",
+    "zod": "^4.6.5",
     "@liusiqi-dev/sqh-client-shortcuts": "workspace:*",
     "@liusiqi-dev/sqh-brand": "workspace:*"
   },
