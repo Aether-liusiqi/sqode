@@ -10,7 +10,7 @@ import type {
   BootManifest, ClientModuleCreateOptions, ClientModuleSystem, SqhWindow,
 } from '@liusiqi-dev/sqh-client-modules/client'
 import { bootClient } from './boot-client.ts'
-import { BootPage } from './boot-page.ts'
+import { BootPage, dismissSplash } from './boot-page.ts'
 import { mountClient } from './mount.ts'
 import { getStaticModules } from './seed.ts'
 import { installWindowDragRecall } from './window-drag/recall.ts'
@@ -47,6 +47,9 @@ export class AppWebEntry {
    * @returns Resolves after application mount or failure reporting.
    */
   async run(onFailure?: (reason: unknown) => void): Promise<void> {
+    // Last resort: a boot that never settles must not trap the user on the CSS
+    // splash, so the splash yields to the boot page after a bounded wait.
+    const watchdog = setTimeout(() => { dismissSplash(this.container.ownerDocument) }, 15_000)
     try {
       // Boot-readiness gate: whichever bootstrap applies the injection table
       // settles this deferred once every row has taken effect — the served
@@ -95,10 +98,16 @@ export class AppWebEntry {
       // renderer draws is the one the first frame measures.
       this.stopDragRecall = installWindowDragRecall({ document: this.container.ownerDocument })
       await mountClient(ctx, this.container)
+      // The UI renderer owns the mount point now, so the CSS splash can go.
+      dismissSplash(this.container.ownerDocument)
     } catch (reason) {
       console.error(reason)
+      // Fail loud: drop the splash so the boot page's report is what the user sees.
+      dismissSplash(this.container.ownerDocument)
       if (onFailure !== undefined) onFailure(reason)
       else this.page.fail(reason instanceof Error ? reason.message : String(reason))
+    } finally {
+      clearTimeout(watchdog)
     }
   }
 

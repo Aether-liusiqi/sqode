@@ -10,7 +10,7 @@
   height: 100%;
   display: grid;
   place-items: center;
-  background: var(--sqw-alias-bg-base, var(--sqh-boot-bg, Canvas));
+  background: transparent;
 }
 
 :global(body[data-ds-dark-theme]) .boot {
@@ -26,14 +26,6 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
-}
-
-.wordmark {
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--sqw-alias-label-primary, var(--sqh-boot-label-primary));
 }
 
 .hint {

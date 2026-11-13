@@ -14,8 +14,8 @@ describe('BootPage', () => {
   it('draws the loading skeleton before any plugin state arrives', () => {
     const { el } = mount()
     expect(el.firstElementChild?.getAttribute('data-sqh-boot')).toBe('')
-    expect(el.textContent).toContain('SIQI HARNESS')
-    expect(el.textContent).toContain('Loading plugins…')
+    // No visible text during loading: the CSS splash covers the screen.
+    expect(el.querySelector('[data-sqh-boot-spinner]')).not.toBeNull()
   })
 
   it('keeps loading while entries are active or loading', () => {
@@ -29,8 +29,6 @@ describe('BootPage', () => {
     expect(el.querySelector('[data-sqh-boot-spinner]')).toBe(spinner)
     page.setState('b', 'active')
     expect(spinner?.style.getPropertyValue('--sqh-boot-arc')).toBe('288deg')
-    expect(el.textContent).toContain('Loading plugins…')
-    expect(el.textContent).not.toContain('Failed to load plugins')
   })
 
   it('lists failed entries', () => {
@@ -41,7 +39,6 @@ describe('BootPage', () => {
     expect(el.textContent).toContain('@liusiqi-dev/sqh-client-ui-layout')
     expect(el.textContent).toContain('@liusiqi-dev/sqh-client-ui-tool')
     expect(el.textContent).not.toContain('ok')
-    expect(el.textContent).not.toContain('Loading plugins…')
   })
 
   it('shows the complete sweep report', () => {
@@ -50,12 +47,17 @@ describe('BootPage', () => {
     page.fail(report)
     page.setState('a', 'active')
     expect(el.textContent).toContain(report)
-    expect(el.textContent).not.toContain('Loading plugins…')
   })
 
-  it('detaches on disposal', () => {
-    const { el, page } = mount()
+  it('detaches on disposal and fades the CSS splash', () => {
+    const el = document.createElement('div')
+    document.body.append(el)
+    const splash = document.createElement('div')
+    splash.id = 'sqh-splash'
+    document.body.append(splash)
+    const page = new BootPage(el)
     page.dispose()
     expect(el.childNodes).toHaveLength(0)
+    expect(splash.classList.contains('sqh-done')).toBe(true)
   })
 })

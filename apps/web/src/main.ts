@@ -18,14 +18,6 @@ try {
   const el = document.getElementById('root')
   if (el === null) throw new Error('web app: missing #root')
   const entry = new AppWebEntry(el)
-  // Fade out the CSS splash once React has mounted into #root.
-  const splash = document.getElementById('sqh-splash')
-  if (splash !== null) {
-    requestAnimationFrame(() => {
-      splash.classList.add('sqh-done')
-      splash.addEventListener('transitionend', () => { splash.remove() }, { once: true })
-    })
-  }
   if (desktop !== undefined) {
     const gate = (globalThis as { __SQH_BOOT_READY__?: PromiseWithResolvers<void> }).__SQH_BOOT_READY__
     if (gate === undefined) throw new Error('desktop web: boot readiness is missing')

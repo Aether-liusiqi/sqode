@@ -14,11 +14,27 @@ function div(className: string | undefined, text?: string): HTMLDivElement {
   return el
 }
 
+/**
+ * Fade the CSS splash out and remove it. Called once the UI renderer has taken
+ * the mount point, and again on a boot failure so the failure report is visible
+ * instead of an endless splash. A missing node is a no-op: the shell may render
+ * outside a document that carries one.
+ * @param doc - document that owns the splash; defaults to the global document.
+ */
+export function dismissSplash(doc: Document = document): void {
+  const splash = doc.getElementById('sqh-splash')
+  if (splash === null) return
+  splash.classList.add('sqh-done')
+  const drop = (): void => { splash.remove() }
+  splash.addEventListener('transitionend', drop, { once: true })
+  // Fail loud: a stalled transition must not trap the user on the splash.
+  setTimeout(drop, 1000)
+}
+
 /** Kernel-owned page mounted below the application's root element. */
 export class BootPage {
   private readonly root: HTMLDivElement
   private readonly card: HTMLDivElement
-  private readonly mark: HTMLImageElement
   private readonly spinner: HTMLDivElement
   private readonly hint: HTMLDivElement
   private readonly states = new Map<string, LoaderEntryState>()
@@ -34,16 +50,10 @@ export class BootPage {
     this.root = div(css.boot)
     this.root.dataset.sqhBoot = ''
     this.card = div(css.card)
-    this.mark = document.createElement('img')
-    this.mark.src = './favicon.svg'
-    this.mark.width = 48
-    this.mark.height = 48
-    this.mark.alt = ''
-    this.mark.setAttribute('aria-hidden', 'true')
     this.spinner = div(css.spinner)
     this.spinner.dataset.sqhBootSpinner = ''
-    this.hint = div(css.hint, '')
-    this.card.append(this.mark, this.spinner, this.hint)
+    this.hint = div(css.hint, 'Loading plugins…')
+    this.card.append(this.spinner, this.hint)
     this.root.append(this.card)
     container.append(this.root)
     this.updateProgress()
@@ -82,14 +92,15 @@ export class BootPage {
   /** Detach the page before or after the UI renderer takes the mount point. */
   dispose(): void {
     this.root.remove()
+    dismissSplash()
   }
 
-  /** Redraw the state-dependent content below the wordmark. */
+  /** Redraw the state-dependent content below the spinner. */
   private render(): void {
     const failed = [...this.states].filter(([, state]) => state === 'failed').map(([id]) => id)
     if (this.failure === undefined && failed.length === 0) {
       if (this.spinner.parentElement !== this.card) {
-        this.card.replaceChildren(this.mark, this.spinner, this.hint)
+        this.card.replaceChildren(this.spinner, this.hint)
       }
       return
     }
@@ -97,7 +108,7 @@ export class BootPage {
     report.append(div(css.failedTitle, 'Failed to load plugins'))
     for (const id of failed) report.append(div(css.failedItem, id))
     if (this.failure !== undefined) report.append(div(css.failedItem, this.failure))
-    this.card.replaceChildren(this.mark, report)
+    this.card.replaceChildren(this.spinner, report)
   }
 
   /** Grow the rotating arc monotonically as loader entries activate. */
