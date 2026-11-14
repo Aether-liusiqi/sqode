@@ -34,6 +34,15 @@
   color: var(--sqw-alias-label-tertiary, var(--sqh-boot-label-tertiary));
 }
 
+.title {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-align: center;
+  color: var(--sqw-alias-label-primary, var(--sqh-boot-label-primary));
+}
+
 .spinner {
   position: relative;
   width: 20px;
