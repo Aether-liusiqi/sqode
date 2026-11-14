@@ -500,7 +500,7 @@ describe('desktop main startup', () => {
     await vi.advanceTimersByTimeAsync(0)
     const zh = locale === 'zh-CN'
     expect(harness.dialog.showMessageBox).toHaveBeenLastCalledWith(expect.objectContaining({
-      type: 'info', title: zh ? '关于 Sqode' : 'About Sqode', message: 'Sqode',
+      type: 'info', title: zh ? '关于 Sqode' : 'About Sqode', message: `${zh ? zh.aboutProduct : en.aboutProduct}\n\n${zh ? zh.aboutDescription : en.aboutDescription}`,
       detail: zh ? '版本 V1.0.0' : 'Version V1.0.0', buttons: [zh ? '确定' : 'OK'], cancelId: 0,
     }))
     // A dialog that cannot open is logged, not surfaced as an unhandled rejection.

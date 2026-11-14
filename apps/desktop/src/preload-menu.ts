@@ -98,7 +98,7 @@ export function installWindowsMenu(): { update(): void; dispose(): void } {
   const update = (): void => {
     const { messages } = resolveDesktopLocale(document.documentElement.lang)
     bar.setAttribute('aria-label', messages.menuBar)
-    buttons[0].textContent = messages.application
+    buttons[0].textContent = 'Sqode'
     buttons[1].textContent = messages.edit
   }
   update()
