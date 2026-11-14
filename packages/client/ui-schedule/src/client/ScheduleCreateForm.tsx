@@ -159,7 +159,7 @@ export function ScheduleCreateForm({ ctx, t, open, onClose }: ScheduleCreateForm
     setError('')
     try {
       const id = await ctx.sessions.create({
-        workspaceId: workspaceId === '' ? undefined : (workspaceId as Parameters<typeof ctx.sessions.create>[0]['workspaceId']),
+        ...(workspaceId === '' ? {} : { workspaceId: workspaceId as Required<NonNullable<Parameters<typeof ctx.sessions.create>[0]>>['workspaceId'] }),
       })
       await ctx.sessions.using(id, { source: 'scheduleCreate' }, async () => {
         if (presetId !== 'auto') {
