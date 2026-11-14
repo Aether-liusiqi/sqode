@@ -20,8 +20,8 @@ type ManagerTranslate = TranslateNS<'schedule.manager'>
 type Frequency = 'daily' | 'every' | 'once'
 
 type Remote = ClientContext['remote']
-type PresetRow = Awaited<ReturnType<Remote['agentPresets']['list']>>['value']['presets'][number]
-type SkillEntry = Awaited<ReturnType<Remote['skills']['list']>>['value']['skills'][number]
+type PresetRow = Extract<Awaited<ReturnType<Remote['agentPresets']['list']>>, { ok: true }>['value']['presets'][number]
+type SkillEntry = Extract<Awaited<ReturnType<Remote['skills']['list']>>, { ok: true }>['value']['skills'][number]
 
 const WEEKDAYS = [1, 2, 3, 4, 5, 6, 7] as const
 
@@ -65,7 +65,7 @@ export function ScheduleCreateForm({ ctx, t, open, onClose }: ScheduleCreateForm
   const [skillsCatalog, setSkillsCatalog] = useState<SkillEntry[]>([])
   const [skillsListable, setSkillsListable] = useState(false)
   const [skillsOpen, setSkillsOpen] = useState(false)
-  const [error, setError] = useState('')
+  const [error, setError] = useState<'' | Parameters<ManagerTranslate>[0]>('')
   const [submitting, setSubmitting] = useState(false)
 
   useEffect(() => {
@@ -90,8 +90,8 @@ export function ScheduleCreateForm({ ctx, t, open, onClose }: ScheduleCreateForm
 
   const loadOptions = async (): Promise<void> => {
     const presetsResult = await ctx.remote.agentPresets.list()
-    if (presetsResult.ok) setPresets(presetsResult.value.presets)
-    const proxy = ctx.sessions.list.getSnapshot().items[0]?.sessionId
+    if (presetsResult.ok) setPresets([...presetsResult.value.presets])
+    const proxy = ctx.sessions.list.getSnapshot().ids[0]
     if (proxy === undefined) {
       setSkillsListable(false)
       return
@@ -158,7 +158,9 @@ export function ScheduleCreateForm({ ctx, t, open, onClose }: ScheduleCreateForm
     setSubmitting(true)
     setError('')
     try {
-      const id = await ctx.sessions.create({ workspaceId: workspaceId === '' ? undefined : workspaceId })
+      const id = await ctx.sessions.create({
+        workspaceId: workspaceId === '' ? undefined : (workspaceId as Parameters<typeof ctx.sessions.create>[0]['workspaceId']),
+      })
       await ctx.sessions.using(id, { source: 'scheduleCreate' }, async () => {
         if (presetId !== 'auto') {
           const selected = await ctx.remote.agentPresets.select(id, presetId)
@@ -166,7 +168,9 @@ export function ScheduleCreateForm({ ctx, t, open, onClose }: ScheduleCreateForm
         }
         const scoped = ctx.sessions.scope(id)
         if (scoped === undefined) throw new Error('session scope unavailable')
-        await scoped.get('conversation').send(buildPrompt())
+        const conversation = scoped.get('conversation')
+        if (conversation === undefined) throw new Error('conversation channel unavailable')
+        await conversation.send(buildPrompt())
       })
       onClose()
       ctx.uiWorkspace.openSession(id)
@@ -191,7 +195,7 @@ export function ScheduleCreateForm({ ctx, t, open, onClose }: ScheduleCreateForm
       title={t('form.title')}
       closeLabel={t('form.close')}
       description={t('form.description')}
-      contentClassName={css.scroll}
+      contentClassName={css.scroll ?? ''}
       footer={<div className={css.footerActions}>
         <Button variant="ghost" size="sm" onClick={onClose} disabled={submitting}>{t('form.cancel')}</Button>
         <Button variant="primary" size="sm" onClick={() => void handleSubmit()} disabled={submitting}>

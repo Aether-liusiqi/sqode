@@ -22,7 +22,7 @@ export interface TaskManagerInjected extends TaskDetailInjected {
   /** Host task catalog with its query and deletion state. */
   readonly hooks: { readonly catalog: HostObservable<CatalogSnapshot<ScheduleCatalogEntry>> }
   /** Browser services (sessions, remotes, workspace navigation) for the create form. */
-  readonly ctx: ClientContext
+  readonly ctx?: ClientContext
   /**
    * Start a new Session directly. The page also opens a creation form from its
    * empty state; the two entry points coexist.
@@ -214,7 +214,9 @@ export function TaskManagerPage(props: TaskManagerPageProps) {
         onDeleted={closeDetails}
         onClose={closeDetails}
       />}
-      <ScheduleCreateForm open={formOpen} onClose={() => { setFormOpen(false) }} ctx={ctx} t={t} />
+      {ctx !== undefined && (
+        <ScheduleCreateForm open={formOpen} onClose={() => { setFormOpen(false) }} ctx={ctx} t={t} />
+      )}
     </section>
   )
 }
