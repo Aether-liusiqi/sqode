@@ -498,10 +498,10 @@ describe('desktop main startup', () => {
     harness.dialog.showMessageBox.mockResolvedValueOnce({ response: 0 })
     ;(about!.click as () => void)()
     await vi.advanceTimersByTimeAsync(0)
-    const zh = locale === 'zh-CN'
+    const isZh = locale === 'zh-CN'
     expect(harness.dialog.showMessageBox).toHaveBeenLastCalledWith(expect.objectContaining({
-      type: 'info', title: zh ? '关于 Sqode' : 'About Sqode', message: `${zh ? zh.aboutProduct : en.aboutProduct}\n\n${zh ? zh.aboutDescription : en.aboutDescription}`,
-      detail: zh ? '版本 V1.0.0' : 'Version V1.0.0', buttons: [zh ? '确定' : 'OK'], cancelId: 0,
+      type: 'info', title: isZh ? '关于 Sqode' : 'About Sqode', message: `${isZh ? zh.aboutProduct : en.aboutProduct}\n\n${isZh ? zh.aboutDescription : en.aboutDescription}`,
+      detail: isZh ? '版本 V1.0.0' : 'Version V1.0.0', buttons: [isZh ? '确定' : 'OK'], cancelId: 0,
     }))
     // A dialog that cannot open is logged, not surfaced as an unhandled rejection.
     harness.dialog.showMessageBox.mockRejectedValueOnce(new Error('overlay unavailable'))
