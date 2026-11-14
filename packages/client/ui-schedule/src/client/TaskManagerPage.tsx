@@ -1,5 +1,6 @@
 /** Cross-session retained reminders with local search and selection. */
 import { useEffect, useMemo, useRef, useState } from 'react'
+import type { Context as ClientContext } from '@liusiqi-dev/cordis'
 import clsx from 'clsx'
 import {
   Button, IconClockOutlineRegular, IconCloseOutlineRegular, IconPlusOutlineRegular, IconSearchOutlineRegular, Input,
@@ -11,6 +12,7 @@ import type { CatalogSnapshot } from './catalog-source.ts'
 import { CatalogFeedback } from './CatalogFeedback.tsx'
 import { TaskDetail, useTaskDetail, type TaskDetailInjected } from './TaskDetail.tsx'
 import { useRelativeClock } from './relative-clock.ts'
+import { ScheduleCreateForm } from './ScheduleCreateForm.tsx'
 import { formatScheduleFrequency, nextRunParts, taskName, zoneLabel } from './schedule-format.ts'
 import type { FrequencyZone } from './schedule-format.ts'
 import css from './TaskManagerPage.module.css'
@@ -19,9 +21,11 @@ import css from './TaskManagerPage.module.css'
 export interface TaskManagerInjected extends TaskDetailInjected {
   /** Host task catalog with its query and deletion state. */
   readonly hooks: { readonly catalog: HostObservable<CatalogSnapshot<ScheduleCatalogEntry>> }
+  /** Browser services (sessions, remotes, workspace navigation) for the create form. */
+  readonly ctx: ClientContext
   /**
-   * Start a new Session, where a reminder is created by asking the model to
-   * schedule it. The page deliberately has no creation form of its own.
+   * Start a new Session directly. The page also opens a creation form from its
+   * empty state; the two entry points coexist.
    */
   readonly onNewTask: () => void
 }
@@ -39,12 +43,13 @@ type StatusFilter = 'all' | ScheduleCatalogEntry['status']
  * @returns the searchable task list beside the selected task's detail.
  */
 export function TaskManagerPage(props: TaskManagerPageProps) {
-  const { useCatalog, onNewTask, onRetry, t } = props
+  const { useCatalog, ctx, onNewTask, onRetry, t } = props
   const catalog = useCatalog(snapshot => snapshot)
   const { records, status } = catalog
   const [search, setSearch] = useState('')
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all')
   const [selectedId, setSelectedId] = useState<ScheduleId | null>(null)
+  const [formOpen, setFormOpen] = useState(false)
   // The rows state how long remains, so they read the shared ticking clock
   // rather than a value sampled at mount: a catalog refresh can move the target
   // this text describes.
@@ -118,6 +123,7 @@ export function TaskManagerPage(props: TaskManagerPageProps) {
               <h1 ref={headingRef} tabIndex={-1}>{t('title')}</h1>
               <div className={css.creationActions}>
                 <Button variant="primary" size="sm" className={css.newButton} icon={<IconPlusOutlineRegular size={13} />} onClick={onNewTask}>{t('new.action')}</Button>
+                <Button variant="outline" size="sm" onClick={() => { setFormOpen(true) }}>{t('empty.action')}</Button>
               </div>
             </div>
             <div className={css.filters}>
@@ -153,7 +159,7 @@ export function TaskManagerPage(props: TaskManagerPageProps) {
               {status === 'ready' && rows.length === 0 && <div className={css.empty} role="status">
                 <IconClockOutlineRegular size={24} className={css.emptyGlyph} />
                 <h2>{t(emptyTitle)}</h2>
-                <Button variant="outline" className={css.emptyAction} onClick={onNewTask}>
+                <Button variant="outline" className={css.emptyAction} onClick={() => { setFormOpen(true) }}>
                   {t('empty.action')}
                 </Button>
               </div>}
@@ -208,6 +214,7 @@ export function TaskManagerPage(props: TaskManagerPageProps) {
         onDeleted={closeDetails}
         onClose={closeDetails}
       />}
+      <ScheduleCreateForm open={formOpen} onClose={() => { setFormOpen(false) }} ctx={ctx} t={t} />
     </section>
   )
 }

@@ -73,9 +73,17 @@ declare module '@liusiqi-dev/sqh-client-ui-slots' {
   }
 }
 
+declare module '@liusiqi-dev/sqh-api-session-controller/client' {
+  interface SessionReferenceSourceMap {
+    /** The creation form opens a session while composing the schedule_create call. */
+    scheduleCreate: unknown
+  }
+}
+
 /** Required services for catalogs, ambient Session marks, the right Sidebar, Remote queries, and original-Session navigation. */
 export const inject = [
-  'slots', 'locale', 'remote', 'remote.schedule', 'conversation', 'uiConversation', 'uiWorkspace', 'sessions',
+  'slots', 'locale', 'remote', 'remote.schedule', 'remote.agentPresets', 'remote.skills',
+  'conversation', 'uiConversation', 'uiWorkspace', 'sessions',
   'workspaces', 'sidebarRightTabs', 'sidebarRight',
 ]
 
@@ -171,7 +179,8 @@ export function apply(ctx: ClientContext): void {
     locale: MANAGER_NS,
     inject: (): TaskManagerInjected => ({
       ...detail,
-      // The page has no creation form: a new reminder starts in a Session.
+      ctx,
+      // A new Session directly; the page's empty state instead opens the form.
       onNewTask: () => { ctx.uiWorkspace.startSession() },
     }),
   }, TaskManagerPage))
