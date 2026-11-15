@@ -612,13 +612,17 @@ it('updates original Session navigation as metadata arrives and archive state ch
 })
 
 describe('Task manager catalog', () => {
-  it('starts a new Session instead of offering a page creation form', () => {
+  it('offers both creation modes side by side in the heading', () => {
     const h = mount({ records: [at] })
-    // The heading's compact action and the empty state's named action are the
-    // mock's two creation entries; only the heading's shows while a row exists.
-    fireEvent.click(screen.getByRole('button', { name: en['new.action'] }))
+    // The two heading actions coexist: one starts a new Session, the other
+    // opens the creation form. Neither replaces the other.
+    const sessionButton = screen.getByRole('button', { name: en['new.action'] })
+    const formButton = screen.getByRole('button', { name: en['empty.action'] })
+    fireEvent.click(sessionButton)
     expect(h.props.onNewTask).toHaveBeenCalledOnce()
-    expect(screen.queryByRole('button', { name: en['empty.action'] })).toBeNull()
+    fireEvent.click(formButton)
+    // Opening the form must not also start a new Session.
+    expect(h.props.onNewTask).toHaveBeenCalledOnce()
   })
 
   it('lays the page out on the mock content column, heading, search field, and rows', () => {
@@ -632,7 +636,10 @@ describe('Task manager catalog', () => {
     const heading = page.querySelector<HTMLElement>(`.${css.pageHeading!}`)!
     expect(heading.querySelector('h1')?.textContent).toBe(en['title'])
     expect(heading.querySelector('p')).toBeNull()
-    expect(heading.querySelector(`.${css.creationActions!}`)?.textContent).toBe(en['new.action'])
+    const actions = heading.querySelector<HTMLElement>(`.${css.creationActions!}`)!
+    expect(within(actions).getAllByRole('button').map(button => button.textContent)).toEqual([
+      en['new.action'], en['empty.action'],
+    ])
     // The filter row carries the status group alone: the type chips are gone.
     const filters = page.querySelector<HTMLElement>(`.${css.filters!}`)!
     expect(within(filters).getAllByRole('group')).toHaveLength(1)
@@ -821,10 +828,10 @@ describe('Task manager catalog', () => {
     expect(taskNames()).toEqual([])
     expect(screen.getByRole('status').textContent).toContain(en['list.noMatches'])
     expect(screen.queryByText(en['list.empty'])).toBeNull()
-    // The empty state's action keeps the mock's single creation entry: it starts a
-    // new Session instead of resetting the filters the reader chose.
+    // The empty state's action opens the creation form without touching the
+    // filters the reader chose; it does not start a new Session.
     fireEvent.click(emptyNewTaskButton())
-    expect(h.props.onNewTask).toHaveBeenCalledOnce()
+    expect(h.props.onNewTask).not.toHaveBeenCalled()
     expect(taskNames()).toEqual([])
     expect(screen.getByRole<HTMLInputElement>('searchbox').value).toBe('release')
     expect(within(statuses).getByRole('button', { name: en['status.inactive'] }).getAttribute('aria-pressed')).toBe('true')

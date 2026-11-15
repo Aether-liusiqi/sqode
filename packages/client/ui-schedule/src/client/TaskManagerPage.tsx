@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
 import clsx from 'clsx'
 import {
-  Button, IconClockOutlineRegular, IconCloseOutlineRegular, IconPlusOutlineRegular, IconSearchOutlineRegular, Input,
+  Button, IconClockOutlineRegular, IconCloseOutlineRegular, IconSearchOutlineRegular, Input,
 } from '@liusiqi-dev/sqh-client-ui-primitives'
 import type { HostObservable, InjectFace, PropsLocale, PropsRuntime } from '@liusiqi-dev/sqh-client-ui-slots'
 import type {} from '@liusiqi-dev/sqh-client-ui-layout/client'
@@ -122,8 +122,8 @@ export function TaskManagerPage(props: TaskManagerPageProps) {
             <div className={css.pageHeading}>
               <h1 ref={headingRef} tabIndex={-1}>{t('title')}</h1>
               <div className={css.creationActions}>
-                <Button variant="primary" size="sm" className={css.newButton} icon={<IconPlusOutlineRegular size={13} />} onClick={onNewTask}>{t('new.action')}</Button>
-                <Button variant="outline" size="sm" onClick={() => { setFormOpen(true) }}>{t('empty.action')}</Button>
+                <Button variant="primary" size="sm" className={css.newButton} onClick={onNewTask}>{t('new.action')}</Button>
+                <Button variant="primary" size="sm" className={css.newButton} onClick={() => { setFormOpen(true) }}>{t('empty.action')}</Button>
               </div>
             </div>
             <div className={css.filters}>
