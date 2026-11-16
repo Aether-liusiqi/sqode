@@ -385,7 +385,7 @@ function PackageCard({ pkg, t, resolveText, busy, highlighted, update, onOpen, o
   readonly resolveText: ResolveText
   readonly busy: boolean
   readonly highlighted: boolean
-  readonly update?: PluginUpdateInfo
+  readonly update: PluginUpdateInfo | undefined
   readonly onOpen: () => void
   readonly onSetEnabled: (enabled: boolean) => void
   readonly onUpdate: () => void
@@ -1298,6 +1298,7 @@ export function PluginManagerPage(props: PluginManagerPageProps): ReactNode {
   const official = listed.filter(pkg => pkg.optional && !pkg.installed)
   const loaded = state.status === 'ready' || state.status === 'error'
   const refreshing = state.refreshStatus === 'refreshing'
+  const confirm = state.confirm
   // Periodic notice: ask the Host on load when enabled, then once per hour while the page stays open.
   useEffect(() => {
     if (!state.autoUpdate || !loaded) return
@@ -1503,14 +1504,14 @@ export function PluginManagerPage(props: PluginManagerPageProps): ReactNode {
         onChangeRegistry={props.changeRegistry}
         onUseGithubMirror={props.useGithubMirror}
       />
-      {state.confirm === null
+      {confirm === null
         ? null
         : (
           <ConfirmDialog
-            confirm={state.confirm}
-            title={state.confirm.action === 'uninstall'
+            confirm={confirm}
+            title={confirm.action === 'uninstall'
               ? packageText(
-                state.packages.find(pkg => pkg.name === state.confirm.packageName) ?? { name: state.confirm.packageName },
+                state.packages.find(pkg => pkg.name === confirm.packageName) ?? { name: confirm.packageName },
                 resolveText,
               ).title
               : ''}
