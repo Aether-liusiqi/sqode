@@ -112,6 +112,8 @@ export interface ChangeResult {
   changed: boolean
   /** `cancelled` is an installation the caller stopped, its files restored. */
   application: 'applied' | 'restart-required' | 'overridden' | 'failed' | 'cancelled'
+  /** `owner/repo@sha` when a GitHub spec was resolved through the REST API rather than Git transport. */
+  githubSource?: string
   /** Last attempted step; successful installation can proceed to enablement. */
   stage: 'install' | 'enable' | 'remove'
   target: string

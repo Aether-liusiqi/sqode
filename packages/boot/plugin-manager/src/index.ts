@@ -28,6 +28,7 @@ import { writePluginEnabled } from './patch.ts'
 import { incompatiblePlugin, ManagementFailure } from './failure.ts'
 import { approveBuilds, readPendingBuilds } from './build-approval.ts'
 import { checkGithubConnection } from './github-connection.ts'
+import { parseGithubRepository, resolveGithubTarball } from './github-api.ts'
 import type {
   BundleInfo, BundleRowInfo, ChangeResult, InspectOptions, InstallBundleOptions, ManagementError, PackageResult, PluginChange,
   PluginEntryId, PluginInfo, PluginInspectProblem, PluginInstallCancellation, PluginInstallProgress, PluginInstallRequestId,
@@ -492,10 +493,27 @@ export class PluginManager extends TypertRemoteService {
         try { connectionFailure = await connection }
         finally { this.packageOperations.delete(connection) }
         if (stopped()) throw new InstallCancelledError()
+        // A GitHub connection check that cannot reach the Git transport is not fatal:
+        // resolve the repository through its REST API, which shares the Host's proxy,
+        // and install the resulting tarball through the same pnpm path. Only give up
+        // when that route fails too, so the original diagnostic stays meaningful.
+        let installSpec = spec
         if (connectionFailure?.kind === 'network' || connectionFailure?.kind === 'timeout') {
-          result.packageResult = connectionFailure
-          result.failedAt = 'spec-host'
-          throw new Error(connectionFailure.output)
+          const repository = parseGithubRepository(installSpec)
+          const apiResult = repository === undefined ? undefined
+            : await resolveGithubTarball(repository, {
+              timeoutMs: this.inspectTimeoutMs,
+              signal: AbortSignal.any([this.abort.signal, control.abort.signal]),
+            })
+          if (apiResult?.ok === true) {
+            installSpec = apiResult.value.spec
+            result.githubSource = apiResult.value.source
+          } else {
+            result.packageResult = apiResult?.ok === false ? apiResult.error : connectionFailure
+            result.failedAt = 'spec-host'
+            throw new Error(result.packageResult.output)
+          }
+          if (stopped()) throw new InstallCancelledError()
         }
         // The last run is the result's; the registries asked stay listed whatever the outcome.
         const plan = registryPlan(options?.registry, await this.registries())
@@ -506,7 +524,7 @@ export class PluginManager extends TypertRemoteService {
           if (stopped()) throw new InstallCancelledError()
           result.registries.push(registry)
           announce('installing', { registry, index: index + 1, total: plan.length })
-          run = await this.runPnpm(['add', spec, ...registryArguments(registry)], control.abort.signal, requestId)
+          run = await this.runPnpm(['add', installSpec, ...registryArguments(registry)], control.abort.signal, requestId)
           result.packageResult = run
           if (stopped()) throw new InstallCancelledError()
           // A compatibility refusal is the package's own answer, so no other registry is asked.
@@ -539,7 +557,8 @@ export class PluginManager extends TypertRemoteService {
         const after = readProfileManifest('dsh', this.profile.dir).dependencies ?? {}
         const installed = Object.keys(after).filter(name => before[name] !== after[name])
         // Registry retries can retain the saved range after a partial installation.
-        if (installed.length === 0) installed.push(...Object.keys(after).filter(name => spec === name || spec.startsWith(`${name}@`)))
+        if (installed.length === 0) installed.push(...Object.keys(after).filter(name =>
+          spec === name || spec.startsWith(`${name}@`) || installSpec === name || installSpec.startsWith(`${name}@`)))
         const target = installed[0]
         if (installed.length !== 1 || target === undefined) throw new ManagementFailure('ambiguous-install')
         name = target

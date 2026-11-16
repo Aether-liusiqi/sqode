@@ -83,19 +83,34 @@ async function fixture(reload: 'live' | 'startup' = 'live', overlay = false, pre
   return { ctx, dir, manager: ctx.pluginManager, bundle, profile, stopHmr, overlays, connection }
 }
 
-it.each(['network', 'timeout'] as const)('stops a GitHub %s before pnpm and attributes it to the repository', async (kind) => {
+it.each(['network', 'timeout'] as const)('falls back to the GitHub API when Git %s, and fails only if the API fails too', async (kind) => {
   const { manager, dir, connection } = await fixture()
   const before = readFileSync(join(dir, 'package.json'), 'utf8')
   const failure = { exitCode: 1, output: 'GitHub check failed', truncated: false, logPath: join(dir, 'git.log'), kind }
   connection.mockResolvedValue(failure)
+  vi.stubGlobal('fetch', vi.fn(async () => new Response('API unreachable', { status: 503 })))
+  onTestFinished(() => vi.unstubAllGlobals())
   const pnpm = vi.spyOn(operations, 'runProfilePnpm')
   onTestFinished(() => { pnpm.mockRestore() })
   expect(await manager.installBundle('https://github.com/acme/sqh-plugin.git')).toMatchObject({
-    application: 'failed', changed: false, stage: 'install', failedAt: 'spec-host', packageResult: failure,
+    application: 'failed', changed: false, stage: 'install', failedAt: 'spec-host',
   })
   expect(pnpm).not.toHaveBeenCalled()
   expect(connection).toHaveBeenCalledWith(expect.objectContaining({ host: 'github.com' }), dir, expect.objectContaining({ timeoutMs: 5000 }))
   expect(readFileSync(join(dir, 'package.json'), 'utf8')).toBe(before)
+})
+
+it('installs a codeload tarball when Git transport fails but the GitHub API resolves the repository', async () => {
+  const { manager, connection } = await fixture()
+  connection.mockResolvedValue({ exitCode: 1, output: 'git transport blocked', truncated: false, logPath: 'git.log', kind: 'timeout' })
+  vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify({ sha: 'deadbeef' }), { status: 200 })))
+  onTestFinished(() => vi.unstubAllGlobals())
+  const pnpm = vi.spyOn(operations, 'runProfilePnpm').mockResolvedValue({ exitCode: 1, output: 'tarball not bundled', truncated: false, logPath: 'pnpm.log', kind: 'unknown' })
+  onTestFinished(() => { pnpm.mockRestore() })
+  const result = await manager.installBundle('https://github.com/acme/sqh-plugin')
+  expect(pnpm).toHaveBeenCalledOnce()
+  expect(pnpm.mock.calls[0]?.[1]).toContain('https://codeload.github.com/acme/sqh-plugin/tar.gz/deadbeef')
+  expect(result.githubSource).toBe('acme/sqh-plugin@deadbeef')
 })
 
 it('leaves non-network GitHub errors to pnpm and forwards profile Git environment and deadline', async () => {
