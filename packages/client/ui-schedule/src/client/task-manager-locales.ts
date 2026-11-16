@@ -156,6 +156,7 @@ export const en = {
   'form.skillsNoSession': 'Open a session first to load the skill catalog.',
   'form.frequency': 'Frequency',
   'form.tabDaily': 'Daily',
+  'form.tabTimes': 'Multiple times',
   'form.tabEvery': 'Every interval',
   'form.tabOnce': 'Once',
   'form.weekdays': 'Repeat on',
@@ -167,6 +168,8 @@ export const en = {
   'form.weekday.6': 'Sat',
   'form.weekday.7': 'Sun',
   'form.intervalHours': 'hours',
+  'form.hours': 'Hours of day',
+  'form.minuteUnit': 'min',
   'form.intervalUp': 'Increase interval',
   'form.intervalDown': 'Decrease interval',
   'form.submit': 'Add',
@@ -174,6 +177,7 @@ export const en = {
   'form.cancel': 'Cancel',
   'form.error.name': 'Please enter a name',
   'form.error.prompt': 'Please enter a prompt',
+  'form.error.hours': 'Select at least one hour',
   'form.error.submit': 'Could not create the task. Please try again.',
 } as const
 
@@ -333,6 +337,7 @@ export const zh: Record<TaskManagerKey, string> = {
   'form.skillsNoSession': '请先打开一个会话以加载技能目录。',
   'form.frequency': '执行频率',
   'form.tabDaily': '每天',
+  'form.tabTimes': '每天多时段',
   'form.tabEvery': '按间隔',
   'form.tabOnce': '单次',
   'form.weekdays': '重复于',
@@ -344,6 +349,8 @@ export const zh: Record<TaskManagerKey, string> = {
   'form.weekday.6': '周六',
   'form.weekday.7': '周日',
   'form.intervalHours': '小时',
+  'form.hours': '每天时段（小时）',
+  'form.minuteUnit': '分',
   'form.intervalUp': '增加间隔',
   'form.intervalDown': '减小间隔',
   'form.submit': '添加',
@@ -351,5 +358,6 @@ export const zh: Record<TaskManagerKey, string> = {
   'form.cancel': '取消',
   'form.error.name': '请输入名称',
   'form.error.prompt': '请输入提示词',
+  'form.error.hours': '请至少选择一个小时',
   'form.error.submit': '无法创建任务，请重试。',
 }

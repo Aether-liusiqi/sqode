@@ -13,11 +13,14 @@ import {
 } from '@liusiqi-dev/sqh-client-ui-primitives'
 import clsx from 'clsx'
 import type { TranslateNS } from '@liusiqi-dev/sqh-client-ui-slots'
+import { buildMultiTimeCron } from './schedule-create-selector.ts'
 import css from './ScheduleCreateForm.module.css'
 
 type ManagerTranslate = TranslateNS<'schedule.manager'>
 
-type Frequency = 'daily' | 'every' | 'once'
+type Frequency = 'daily' | 'times' | 'every' | 'once'
+
+const HOURS = Array.from({ length: 24 }, (_, index) => index)
 
 type Remote = ClientContext['remote']
 type PresetRow = Extract<Awaited<ReturnType<Remote['agentPresets']['list']>>, { ok: true }>['value']['presets'][number]
@@ -61,6 +64,8 @@ export function ScheduleCreateForm({ ctx, t, open, onClose }: ScheduleCreateForm
   const [intervalHours, setIntervalHours] = useState(1)
   const [onceDate, setOnceDate] = useState(localDate)
   const [selectedWeekdays, setSelectedWeekdays] = useState<number[]>([])
+  const [selectedHours, setSelectedHours] = useState<number[]>([])
+  const [minute, setMinute] = useState(30)
   const [presets, setPresets] = useState<PresetRow[]>([])
   const [skillsCatalog, setSkillsCatalog] = useState<SkillEntry[]>([])
   const [skillsListable, setSkillsListable] = useState(false)
@@ -80,6 +85,8 @@ export function ScheduleCreateForm({ ctx, t, open, onClose }: ScheduleCreateForm
     setIntervalHours(1)
     setOnceDate(localDate())
     setSelectedWeekdays([])
+    setSelectedHours([])
+    setMinute(30)
     setPresets([])
     setSkillsCatalog([])
     setSkillsOpen(false)
@@ -115,6 +122,10 @@ export function ScheduleCreateForm({ ctx, t, open, onClose }: ScheduleCreateForm
     setSelectedWeekdays(prev => (prev.includes(target) ? prev.filter(item => item !== target) : [...prev, target]))
   }
 
+  const toggleHour = (target: number): void => {
+    setSelectedHours(prev => (prev.includes(target) ? prev.filter(item => item !== target) : [...prev, target]))
+  }
+
   const buildSelector = (): Record<string, unknown> => {
     const zone = Intl.DateTimeFormat().resolvedOptions().timeZone
     const seconds = `${time}:00`
@@ -127,6 +138,9 @@ export function ScheduleCreateForm({ ctx, t, open, onClose }: ScheduleCreateForm
       }
       const dow = [...selectedWeekdays].map(weekday => String(weekday % 7)).sort().join(',')
       return { cron: { expression: `0 */${intervalHours} * * ${dow}`, time_zone: zone } }
+    }
+    if (frequency === 'times') {
+      return { cron: { expression: buildMultiTimeCron(selectedHours, minute, selectedWeekdays), time_zone: zone } }
     }
     if (selectedWeekdays.length === 0) {
       return { daily: { time: seconds, time_zone: zone } }
@@ -153,6 +167,10 @@ export function ScheduleCreateForm({ ctx, t, open, onClose }: ScheduleCreateForm
     }
     if (prompt.trim() === '') {
       setError('form.error.prompt')
+      return
+    }
+    if (frequency === 'times' && selectedHours.length === 0) {
+      setError('form.error.hours')
       return
     }
     setSubmitting(true)
@@ -182,6 +200,7 @@ export function ScheduleCreateForm({ ctx, t, open, onClose }: ScheduleCreateForm
 
   const frequencyTabs: [SegmentedTab<Frequency>, ...SegmentedTab<Frequency>[]] = [
     { value: 'daily', label: t('form.tabDaily'), id: 'freq-daily', panelId: 'freq-daily-panel' },
+    { value: 'times', label: t('form.tabTimes'), id: 'freq-times', panelId: 'freq-times-panel' },
     { value: 'every', label: t('form.tabEvery'), id: 'freq-every', panelId: 'freq-every-panel' },
     { value: 'once', label: t('form.tabOnce'), id: 'freq-once', panelId: 'freq-once-panel' },
   ]
@@ -309,12 +328,32 @@ export function ScheduleCreateForm({ ctx, t, open, onClose }: ScheduleCreateForm
           <SegmentedTabs items={frequencyTabs} value={frequency} onChange={setFrequency} label={t('form.frequency')} />
           <div className={css.frequencyBody}>
             <div className={css.timeRow}>
-              <input
-                type="time"
-                className={css.timeInput}
-                value={time}
-                onChange={(event) => { setTime(event.target.value) }}
-              />
+              {frequency === 'times'
+                ? (
+                  <>
+                    <input
+                      type="number"
+                      className={css.timeInput}
+                      min={0}
+                      max={59}
+                      value={minute}
+                      aria-label={t('form.minuteUnit')}
+                      onChange={(event) => {
+                        const next = Number(event.target.value)
+                        setMinute(Number.isFinite(next) ? Math.min(59, Math.max(0, next)) : 0)
+                      }}
+                    />
+                    <span className={css.intervalUnit}>{t('form.minuteUnit')}</span>
+                  </>
+                )
+                : (
+                  <input
+                    type="time"
+                    className={css.timeInput}
+                    value={time}
+                    onChange={(event) => { setTime(event.target.value) }}
+                  />
+                )}
               {frequency === 'every' && (
                 <span className={css.intervalRow}>
                   <button
@@ -342,6 +381,21 @@ export function ScheduleCreateForm({ ctx, t, open, onClose }: ScheduleCreateForm
                 />
               )}
             </div>
+            {frequency === 'times' && (
+              <div className={css.weekdayRow}>
+                <span className={css.weekdayLabel}>{t('form.hours')}</span>
+                {HOURS.map(hour => (
+                  <button
+                    key={hour}
+                    type="button"
+                    className={clsx(css.weekdayChip, selectedHours.includes(hour) && css.weekdayChipActive)}
+                    onClick={() => { toggleHour(hour) }}
+                  >
+                    {hour}
+                  </button>
+                ))}
+              </div>
+            )}
             <div className={css.weekdayRow}>
               <span className={css.weekdayLabel}>{t('form.weekdays')}</span>
               {WEEKDAYS.map(weekday => (
