@@ -29,6 +29,7 @@ import { incompatiblePlugin, ManagementFailure } from './failure.ts'
 import { approveBuilds, readPendingBuilds } from './build-approval.ts'
 import { checkGithubConnection } from './github-connection.ts'
 import { parseGithubRepository, resolveGithubTarball } from './github-api.ts'
+import { createUpdateChecker, githubUpdateLookup, installedFromBundles } from './update-checker.ts'
 import type {
   BundleInfo, BundleRowInfo, ChangeResult, InspectOptions, InstallBundleOptions, ManagementError, PackageResult, PluginChange,
   PluginEntryId, PluginInfo, PluginInspectProblem, PluginInstallCancellation, PluginInstallProgress, PluginInstallRequestId,
@@ -203,6 +204,31 @@ export class PluginManager extends TypertRemoteService {
   private readonly abort = new AbortController()
   /** Installations by request id, from their call until it settles. */
   private readonly installs = new Map<PluginInstallRequestId, InstallControl>()
+  /** Cached update checks, bound to this manager's lookups and install path. */
+  private readonly updateChecker = createUpdateChecker({
+    viewLatest: async (name: string) => {
+      const registries = registryPlan(undefined, await this.registries())
+      for (const registry of registries) {
+        const view = await viewProfilePackage(this.profile.dir, name, {
+          ...this.profile.packageManager ?? { command: this.pnpmCommand },
+          timeoutMs: this.inspectTimeoutMs, registry,
+        })
+        if (view.exitCode !== 0 || view.cause !== undefined || view.timedOut) continue
+        const printed = view.stdout.replace(ANSI_SEQUENCE, '').trim()
+        try {
+          const answer: unknown = JSON.parse(printed || 'null')
+          const latest = Array.isArray(answer) ? answer.at(-1) : answer
+          if (typeof latest === 'object' && latest !== null) {
+            const version = (latest as { version?: unknown }).version
+            if (typeof version === 'string') return version
+          }
+        } catch { /* an unreadable answer is no answer; try the next registry */ }
+      }
+      return undefined
+    },
+    resolveGithub: githubUpdateLookup(),
+    install: async (spec: string) => this.installBundle(spec, { enabled: false }),
+  })
 
   constructor(ctx: Context, config: Config) {
     super(ctx, 'pluginManager')
@@ -318,6 +344,26 @@ export class PluginManager extends TypertRemoteService {
       }
     }
     return Promise.resolve(bundles)
+  }
+
+  /** Read installed bundles that have a newer registry or GitHub release available.
+   * @returns packages whose latest version is newer than the installed one; an unreachable source simply yields no entry for it.
+   */
+  @Remote
+  async checkUpdates(): Promise<import('./types.ts').PluginUpdateInfo[]> {
+    const bundles = await this.listBundles()
+    const manifest = readProfileManifest('dsh', this.profile.dir)
+    const installed = installedFromBundles(bundles, manifest.dependencies ?? {})
+    return [...await this.updateChecker.checkUpdates(installed)]
+  }
+
+  /** Apply one reported update through the normal install path, leaving the bundle disabled until the person enables it.
+   * @param update One entry from `checkUpdates`.
+   * @returns The install outcome, with the same rollback and diagnostics as a manual install.
+   */
+  @Remote
+  async applyUpdate(update: import('./types.ts').PluginUpdateInfo): Promise<import('./types.ts').ChangeResult> {
+    return await this.updateChecker.applyUpdate(update) as import('./types.ts').ChangeResult
   }
 
   /** Read the registries this manager asks: the configured first one, its fallbacks in order, and what pnpm's own configuration names.

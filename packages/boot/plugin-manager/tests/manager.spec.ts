@@ -304,6 +304,23 @@ it('recomposes the remaining layers while another bundle is broken and mounts it
   expect((await manager.listBundles()).find(row => row.name === 'extra')?.error).toBeUndefined()
 })
 
+it('reports a registry update for an installed bundle and applies an exact version', async () => {
+  const { manager } = await fixture()
+  const view = vi.spyOn(operations, 'viewProfilePackage').mockResolvedValue({
+    exitCode: 0, stdout: JSON.stringify({ name: 'extra', version: '1.1.0' }), stderr: '', timedOut: false,
+  })
+  const pnpm = vi.spyOn(operations, 'runProfilePnpm').mockResolvedValue({
+    exitCode: 1, output: 'no bundle', truncated: false, logPath: 'pnpm.log', kind: 'unknown',
+  })
+  onTestFinished(() => { view.mockRestore(); pnpm.mockRestore() })
+  const updates = await manager.checkUpdates()
+  expect(updates).toContainEqual({
+    name: 'extra', currentVersion: '1.0.0', latestVersion: '1.1.0', source: 'registry', spec: 'extra@1.1.0',
+  })
+  await manager.applyUpdate(updates.find(update => update.name === 'extra')!)
+  expect(pnpm.mock.calls[0]?.[1]).toContain('extra@1.1.0')
+})
+
 it('lists bundle versions and current-profile plugin targets', async () => {
   const { manager, dir } = await fixture()
   const plugins = await manager.listPlugins()

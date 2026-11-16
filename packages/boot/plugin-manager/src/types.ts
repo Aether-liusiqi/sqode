@@ -69,6 +69,17 @@ export interface BundleInfo {
   overrides: string[]
 }
 
+/** Where a plugin update was found and the spec that installs it. */
+export interface PluginUpdateInfo {
+  /** Installed bundle package name. */
+  readonly name: string
+  readonly currentVersion: string
+  readonly latestVersion: string
+  readonly source: 'registry' | 'github'
+  /** Exact spec for `installBundle`: `name@version` or a codeload tarball URL. */
+  readonly spec: string
+}
+
 /** A registry to install from: an http(s) URL, or null for the one pnpm's own configuration names. */
 export type Registry = string | null
 
