@@ -27,8 +27,8 @@ import { rowConfigKey, type OfficialItem } from './config-ledger.ts'
 import { INSTALL_GIT_EXAMPLE, INSTALL_PATH_EXAMPLE, type PluginManagerLocaleKey } from './locales.ts'
 import {
   asksMirror, githubRecoveryRegistry, isInstallPending, offeredRegistries, rowKey,
-  type InstallInputError, type InstallState, type InstallSubject, type PackageRow, type PackageView,
-  type PluginManagerFace, type RegistryChoice,
+  type ConfirmState, type InstallInputError, type InstallState, type InstallSubject, type PackageRow, type PackageView,
+  type PluginManagerFace, type PluginUpdateInfo, type RegistryChoice,
 } from './manager-store.ts'
 import { managementText, noticeText, packageText, registryText, rowText, type Translate } from './presentation.ts'
 import type { PluginPackageRef, PluginRowRef, PluginsSubject } from './slot-contract.ts'
@@ -379,14 +379,16 @@ function DetailTop({ crumbLabel, crumbText, onBack, icon, actions }: {
 }
 
 /** One package as a card that opens its page: its name, its one-liner, its tags, and its bundle switch. */
-function PackageCard({ pkg, t, resolveText, busy, highlighted, onOpen, onSetEnabled }: {
+function PackageCard({ pkg, t, resolveText, busy, highlighted, update, onOpen, onSetEnabled, onUpdate }: {
   readonly pkg: PackageView
   readonly t: Translate
   readonly resolveText: ResolveText
   readonly busy: boolean
   readonly highlighted: boolean
+  readonly update?: PluginUpdateInfo
   readonly onOpen: () => void
   readonly onSetEnabled: (enabled: boolean) => void
+  readonly onUpdate: () => void
 }): ReactNode {
   const { title, description, beta } = packageText(pkg, resolveText)
   const status = packageStatus(pkg)
@@ -395,6 +397,7 @@ function PackageCard({ pkg, t, resolveText, busy, highlighted, onOpen, onSetEnab
       className={`${css.card} ${css.cardLink}`}
       data-plugin-package={pkg.name}
       data-plugin-status={status}
+      {...update === undefined ? {} : { 'data-plugin-update': update.latestVersion }}
       {...highlighted ? { 'data-plugin-highlight': '' } : {}}
     >
       <CardHead
@@ -406,10 +409,18 @@ function PackageCard({ pkg, t, resolveText, busy, highlighted, onOpen, onSetEnab
           <>
             {beta ? <Tag className={css.statusTag} tone="info">{t('statusBeta')}</Tag> : null}
             {status === 'problem' ? <Tag className={css.statusTag} tone="danger">{t('statusProblem')}</Tag> : null}
+            {update === undefined ? null : <Tag className={css.statusTag} tone="info">{t('updateAvailable', { version: update.latestVersion })}</Tag>}
           </>
         )}
         description={description}
-        end={<EnableSwitch pkg={pkg} title={title} t={t} busy={busy} onSetEnabled={onSetEnabled} />}
+        end={(
+          <>
+            {update === undefined ? null : (
+              <Button variant="outline" size="sm" disabled={busy} onClick={onUpdate}>{t('updateNow')}</Button>
+            )}
+            <EnableSwitch pkg={pkg} title={title} t={t} busy={busy} onSetEnabled={onSetEnabled} />
+          </>
+        )}
       />
       <MetadataError error={pkg.meta?.error} t={t} />
     </li>
@@ -1222,25 +1233,29 @@ function InstallDialog({
   )
 }
 
-/** The confirmation an uninstall waits on. */
-function ConfirmDialog({ name, t, onConfirm, onCancel }: {
-  readonly name: string
+/** The confirmation an uninstall or a batch update waits on. */
+function ConfirmDialog({ confirm, title, t, onConfirm, onCancel }: {
+  readonly confirm: ConfirmState
+  readonly title: string
   readonly t: Translate
   readonly onConfirm: () => void
   readonly onCancel: () => void
 }): ReactNode {
+  const updating = confirm.action === 'update-all'
   return (
     <Modal
       open
       onClose={onCancel}
-      title={t('confirmUninstallTitle', { name })}
+      title={updating ? t('updateAllTitle') : t('confirmUninstallTitle', { name: title })}
       closeLabel={t('close')}
-      description={t('confirmUninstallDescription')}
+      description={updating
+        ? t('updateAllDescription', { count: confirm.count })
+        : t('confirmUninstallDescription')}
       footer={(
         <>
           <Button variant="outline" onClick={onCancel}>{t('cancel')}</Button>
-          <Button variant="primary" className={css.dangerButton} onClick={onConfirm}>
-            {t('confirmUninstall')}
+          <Button variant="primary" className={updating ? undefined : css.dangerButton} onClick={onConfirm}>
+            {updating ? t('updateAll', { count: confirm.count }) : t('confirmUninstall')}
           </Button>
         </>
       )}
@@ -1283,6 +1298,13 @@ export function PluginManagerPage(props: PluginManagerPageProps): ReactNode {
   const official = listed.filter(pkg => pkg.optional && !pkg.installed)
   const loaded = state.status === 'ready' || state.status === 'error'
   const refreshing = state.refreshStatus === 'refreshing'
+  // Periodic notice: ask the Host on load when enabled, then once per hour while the page stays open.
+  useEffect(() => {
+    if (!state.autoUpdate || !loaded) return
+    props.checkUpdates()
+    const timer = setInterval(props.checkUpdates, 60 * 60 * 1000)
+    return () => { clearInterval(timer) }
+  }, [state.autoUpdate, loaded, props.checkUpdates])
   const openPkg = view.kind === 'package' || view.kind === 'row' ? listed.find(pkg => pkg.name === view.name) : undefined
   const openItem = view.kind === 'item' ? ledger.items.find(item => item.id === view.id) : undefined
   const openRow = view.kind === 'row' && openPkg !== undefined ? openPkg.rows.find(row => row.rowId === view.rowId) : undefined
@@ -1304,8 +1326,10 @@ export function PluginManagerPage(props: PluginManagerPageProps): ReactNode {
       resolveText={resolveText}
       busy={state.busy.includes(pkg.name)}
       highlighted={state.highlight === pkg.name}
+      update={state.updates[pkg.name]}
       onOpen={() => { setActivation(null); setView({ kind: 'package', name: pkg.name }) }}
       onSetEnabled={(enabled) => { setActivation(enabled ? pkg.name : null); props.setEnabled(pkg.name, enabled) }}
+      onUpdate={() => props.updateOne(pkg.name)}
     />
   )
   // The Official group: the bundles the installation ships, then the plugins that registered their configuration.
@@ -1352,6 +1376,21 @@ export function PluginManagerPage(props: PluginManagerPageProps): ReactNode {
                   </span>
                 </button>
               </Tooltip>
+              <Tooltip label={t('autoUpdate')} side="bottom" delayMs={300} portal>
+                <Switch checked={state.autoUpdate} label={t('autoUpdate')} onChange={props.setAutoUpdate} />
+              </Tooltip>
+              <Tooltip label={t('checkUpdates')} delayMs={500} side="bottom" portal disabled={!loaded || state.checkingUpdates}>
+                <button type="button" className={css.iconButton} aria-label={t('checkUpdates')} aria-busy={state.checkingUpdates} disabled={!loaded || state.checkingUpdates} onClick={props.checkUpdates}>
+                  <span className={css.iconWrap} aria-hidden="true">
+                    {state.checkingUpdates ? <StateDot state="ongoing" size={18} /> : <IconRefreshOutlineRegular />}
+                  </span>
+                </button>
+              </Tooltip>
+              {Object.keys(state.updates).length === 0 ? null : (
+                <Button variant="primary" size="sm" onClick={props.updateAll}>
+                  {t('updateAll', { count: Object.keys(state.updates).length })}
+                </Button>
+              )}
               <Button variant="primary" size="sm" className={css.addButton} icon={<IconPlusOutlineRegular size={13} />} disabled={!loaded} onClick={props.openInstall}>
                 {t(state.install.requestId === undefined ? 'addPlugin' : 'installViewTask')}
               </Button>
@@ -1468,10 +1507,13 @@ export function PluginManagerPage(props: PluginManagerPageProps): ReactNode {
         ? null
         : (
           <ConfirmDialog
-            name={packageText(
-              state.packages.find(pkg => pkg.name === state.confirm?.packageName) ?? { name: state.confirm.packageName },
-              resolveText,
-            ).title}
+            confirm={state.confirm}
+            title={state.confirm.action === 'uninstall'
+              ? packageText(
+                state.packages.find(pkg => pkg.name === state.confirm.packageName) ?? { name: state.confirm.packageName },
+                resolveText,
+              ).title
+              : ''}
             t={t}
             onConfirm={props.confirm}
             onCancel={props.cancelConfirm}

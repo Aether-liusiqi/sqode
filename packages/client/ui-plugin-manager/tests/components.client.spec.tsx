@@ -74,6 +74,9 @@ const READY: PluginManagerState = {
   install: IDLE_INSTALL,
   confirm: null,
   highlight: null,
+  updates: {},
+  checkingUpdates: false,
+  autoUpdate: false,
 }
 
 /**
@@ -123,6 +126,10 @@ function renderTab(
     confirm: vi.fn(),
     cancelConfirm: vi.fn(),
     setRowEnabled: vi.fn(),
+    checkUpdates: vi.fn(),
+    updateOne: vi.fn(),
+    updateAll: vi.fn(),
+    setAutoUpdate: vi.fn(),
     dismissNotice: vi.fn(),
   }
   const unusedStandardHook = (): never => { throw new Error('Plugin manager fixture does not provide global state') }
@@ -1806,7 +1813,7 @@ it('offers bundle-owned guidance only after explicit enablement and navigates to
   set({ packages: [pkg()] })
   expect(screen.queryByText('Go to setup')).toBeNull()
   set({ packages: [pkg({ enabled: false })] })
-  fireEvent.click(screen.getByRole('switch'))
+  fireEvent.click(screen.getByRole('switch', { name: 'Enable sqh-better-sidebar' }))
   expect(actions.setEnabled).toHaveBeenCalledWith(name, true)
   expect(screen.queryByText('Go to setup')).toBeNull()
   set({ packages: [pkg()], busy: [name] })
@@ -1822,14 +1829,14 @@ it('dismisses activation guidance until the user enables the bundle again', () =
   const { set } = renderTab({ packages: [pkg({ enabled: false })] }, {}, {
     [`plugins.bundle.activation:${name}`]: (_view, owner) => <button onClick={(owner as PluginActivationOwnerProps).onDismiss}>Later</button>,
   })
-  fireEvent.click(screen.getByRole('switch'))
+  fireEvent.click(screen.getByRole('switch', { name: 'Enable sqh-better-sidebar' }))
   set({ packages: [pkg()] })
   fireEvent.click(screen.getByText('Later'))
   set({ packages: [pkg()] })
   expect(screen.queryByText('Later')).toBeNull()
-  fireEvent.click(screen.getByRole('switch'))
+  fireEvent.click(screen.getByRole('switch', { name: 'Enable sqh-better-sidebar' }))
   set({ packages: [pkg({ enabled: false })] })
-  fireEvent.click(screen.getByRole('switch'))
+  fireEvent.click(screen.getByRole('switch', { name: 'Enable sqh-better-sidebar' }))
   set({ packages: [pkg()] })
   expect(screen.getByText('Later')).toBeTruthy()
 })
