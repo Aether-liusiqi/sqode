@@ -42,8 +42,8 @@ describe('createUpdateChecker', () => {
 
   function ports(latest = '1.3.0') {
     return {
-      viewLatest: vi.fn(async () => latest),
-      resolveGithub: vi.fn(async () => undefined),
+      viewLatest: vi.fn(async (_name: string) => latest),
+      resolveGithub: vi.fn(async (_dependency: string) => undefined as { sha: string; spec: string } | undefined),
       install: vi.fn(async () => ({ changed: true })),
     }
   }

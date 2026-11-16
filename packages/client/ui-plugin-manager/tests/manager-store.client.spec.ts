@@ -86,6 +86,8 @@ function bench(overrides: Partial<Record<string, ReturnType<typeof vi.fn>>> = {}
     removeBundle: vi.fn(() => Promise.resolve(ok(APPLIED))),
     setBundleEnabled: vi.fn(() => Promise.resolve(ok(APPLIED))),
     setPluginEnabled: vi.fn(() => Promise.resolve(ok(APPLIED))),
+    checkUpdates: vi.fn(() => Promise.resolve(ok([]))),
+    applyUpdate: vi.fn(() => Promise.resolve(ok(APPLIED))),
     ...overrides,
   }
   const probe = { fastest: overrides.fastest ?? vi.fn(() => Promise.resolve(ok(null))) }
@@ -1797,4 +1799,54 @@ it('reports a successful install with only documented result fields', async () =
   expect(results).toEqual([['install_plugin_result', {
     input_value: 'sqh-new', is_success: true, duration: expect.any(Number) as number, plugin_name: 'sqh-new',
   }]])
+})
+
+
+const UPDATE = {
+  name: 'sqh-better-sidebar', currentVersion: '0.16.0', latestVersion: '0.17.0',
+  source: 'registry' as const, spec: 'sqh-better-sidebar@0.17.0',
+}
+
+it('publishes reported updates and clears them when none remain', async () => {
+  const b = bench({ checkUpdates: vi.fn(() => Promise.resolve(ok([UPDATE]))) })
+  b.face.checkUpdates()
+  await vi.waitFor(() => { expect(b.state().updates[UPDATE.name]).toEqual(UPDATE) })
+  expect(b.state().checkingUpdates).toBe(false)
+})
+
+it('reports up to date when the Host finds nothing', async () => {
+  const b = bench()
+  b.face.checkUpdates()
+  await vi.waitFor(() => { expect(b.state().notice?.kind).toBe('up-to-date') })
+  expect(b.state().updates).toEqual({})
+})
+
+it('keeps the update off by default and persists the switch', async () => {
+  const b = bench()
+  expect(b.state().autoUpdate).toBe(false)
+  b.face.setAutoUpdate(true)
+  expect(b.state().autoUpdate).toBe(true)
+})
+
+it('updates one plugin through the Host and drops it from the list', async () => {
+  const applyUpdate = vi.fn(() => Promise.resolve(ok(APPLIED)))
+  const b = bench({ checkUpdates: vi.fn(() => Promise.resolve(ok([UPDATE]))), applyUpdate })
+  b.face.checkUpdates()
+  await vi.waitFor(() => { expect(b.state().updates[UPDATE.name]).toBeDefined() })
+  b.face.updateOne(UPDATE.name)
+  await vi.waitFor(() => { expect(b.state().updates[UPDATE.name]).toBeUndefined() })
+  expect(applyUpdate).toHaveBeenCalledWith(UPDATE)
+  expect(b.state().notice?.kind).toBe('updated')
+})
+
+it('asks before updating all plugins', async () => {
+  const applyUpdate = vi.fn(() => Promise.resolve(ok(APPLIED)))
+  const b = bench({ checkUpdates: vi.fn(() => Promise.resolve(ok([UPDATE]))), applyUpdate })
+  b.face.checkUpdates()
+  await vi.waitFor(() => { expect(b.state().updates[UPDATE.name]).toBeDefined() })
+  b.face.updateAll()
+  expect(b.state().confirm).toEqual({ action: 'update-all', count: 1 })
+  expect(applyUpdate).not.toHaveBeenCalled()
+  b.face.confirm()
+  await vi.waitFor(() => { expect(applyUpdate).toHaveBeenCalledOnce() })
 })

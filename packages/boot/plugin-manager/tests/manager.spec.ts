@@ -89,7 +89,7 @@ it.each(['network', 'timeout'] as const)('falls back to the GitHub API when Git 
   const failure = { exitCode: 1, output: 'GitHub check failed', truncated: false, logPath: join(dir, 'git.log'), kind }
   connection.mockResolvedValue(failure)
   vi.stubGlobal('fetch', vi.fn(async () => new Response('API unreachable', { status: 503 })))
-  onTestFinished(() => vi.unstubAllGlobals())
+  onTestFinished(() => { vi.unstubAllGlobals() })
   const pnpm = vi.spyOn(operations, 'runProfilePnpm')
   onTestFinished(() => { pnpm.mockRestore() })
   expect(await manager.installBundle('https://github.com/acme/sqh-plugin.git')).toMatchObject({
@@ -104,7 +104,7 @@ it('installs a codeload tarball when Git transport fails but the GitHub API reso
   const { manager, connection } = await fixture()
   connection.mockResolvedValue({ exitCode: 1, output: 'git transport blocked', truncated: false, logPath: 'git.log', kind: 'timeout' })
   vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify({ sha: 'deadbeef' }), { status: 200 })))
-  onTestFinished(() => vi.unstubAllGlobals())
+  onTestFinished(() => { vi.unstubAllGlobals() })
   const pnpm = vi.spyOn(operations, 'runProfilePnpm').mockResolvedValue({ exitCode: 1, output: 'tarball not bundled', truncated: false, logPath: 'pnpm.log', kind: 'unknown' })
   onTestFinished(() => { pnpm.mockRestore() })
   const result = await manager.installBundle('https://github.com/acme/sqh-plugin')

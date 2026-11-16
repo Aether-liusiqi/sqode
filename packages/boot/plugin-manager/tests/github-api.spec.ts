@@ -50,7 +50,7 @@ describe('resolveGithubTarball', () => {
   })
 
   it('uses the ref and a Bearer token from the injected source', async () => {
-    const fetchMock = vi.fn(async () => new Response(JSON.stringify({ sha: 'def456' }), { status: 200 }))
+    const fetchMock = vi.fn(async (_url: string, _init?: RequestInit) => new Response(JSON.stringify({ sha: 'def456' }), { status: 200 }))
     vi.stubGlobal('fetch', fetchMock)
     const result = await resolveGithubTarball({ ...repo, ref: 'v1.0.0' }, {
       apiBase: 'https://api.example', token: () => 'secret',
@@ -62,7 +62,7 @@ describe('resolveGithubTarball', () => {
   })
 
   it('does not attach a header when no token is present', async () => {
-    const fetchMock = vi.fn(async () => new Response(JSON.stringify({ sha: 'abc123' }), { status: 200 }))
+    const fetchMock = vi.fn(async (_url: string, _init?: RequestInit) => new Response(JSON.stringify({ sha: 'abc123' }), { status: 200 }))
     vi.stubGlobal('fetch', fetchMock)
     await resolveGithubTarball(repo, { apiBase: 'https://api.example', token: () => undefined })
     const headers = fetchMock.mock.calls[0]?.[1]?.headers as Record<string, string>
@@ -81,7 +81,7 @@ describe('resolveGithubTarball', () => {
 
   it('classifies a timeout separately from a network error', async () => {
     vi.stubGlobal('fetch', vi.fn(async (_url: string, init?: RequestInit) => {
-      await new Promise((resolve, reject) => {
+      await new Promise((_resolve, reject) => {
         init?.signal?.addEventListener('abort', () => reject(new Error('aborted')), { once: true })
       })
       throw new Error('unreachable')

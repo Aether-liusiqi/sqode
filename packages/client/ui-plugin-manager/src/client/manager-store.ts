@@ -42,6 +42,9 @@ export type ManagerNotice =
   | { readonly kind: 'overridden'; readonly packageName: string; readonly seq: number }
   | { readonly kind: 'cancelled'; readonly seq: number }
   | { readonly kind: 'refresh-failed'; readonly seq: number }
+  | { readonly kind: 'up-to-date'; readonly seq: number }
+  | { readonly kind: 'updated'; readonly count: number; readonly seq: number }
+  | { readonly kind: 'update-failed'; readonly reason: string; readonly seq: number }
   | { readonly kind: 'install'; readonly outcome: 'done' | 'failed' | 'unconfirmed' | 'applying' | 'unknown'; readonly seq: number }
   | {
     readonly kind: 'failed'
@@ -264,11 +267,10 @@ export function asksMirror(install: InstallState): boolean {
   return registryKey(choice.kind === 'custom' ? choice.url.trim() : choice.registry, install.registries?.resolved ?? null) === NPMMIRROR_REGISTRY
 }
 
-/** A destructive action waiting for the user's confirmation: a package's uninstall. */
-export interface ConfirmState {
-  readonly action: 'uninstall'
-  readonly packageName: string
-}
+/** An action waiting for the user's confirmation: a package's uninstall or updating all plugins. */
+export type ConfirmState =
+  | { readonly action: 'uninstall'; readonly packageName: string }
+  | { readonly action: 'update-all'; readonly count: number }
 
 /** What the tab renders. */
 export interface PluginManagerState {
@@ -288,6 +290,21 @@ export interface PluginManagerState {
   readonly confirm: ConfirmState | null
   /** The package the list scrolls to and marks, once an install enabled it. */
   readonly highlight: string | null
+  /** Updates reported by the Host, keyed by package name. */
+  readonly updates: Readonly<Record<string, PluginUpdateInfo>>
+  /** Whether the periodic check is running. */
+  readonly checkingUpdates: boolean
+  /** Whether a periodic update notice is enabled. */
+  readonly autoUpdate: boolean
+}
+
+/** One update candidate reported by the Host. */
+export interface PluginUpdateInfo {
+  readonly name: string
+  readonly currentVersion: string
+  readonly latestVersion: string
+  readonly source: 'registry' | 'github'
+  readonly spec: string
 }
 
 /** The registration-side face the tab's slot entry injects. */
@@ -341,6 +358,14 @@ export interface PluginManagerFace {
   cancelConfirm: () => void
   /** Switch one of a bundle's rows on or off in the profile's user layer. */
   setRowEnabled: (entryId: PluginEntryId, enabled: boolean) => void
+  /** Check the Host for plugin updates and publish the result. */
+  checkUpdates: () => void
+  /** Update one reported plugin through the normal install flow. */
+  updateOne: (name: string) => void
+  /** Update every reported plugin after confirmation. */
+  updateAll: () => void
+  /** Turn periodic update notices on or off. */
+  setAutoUpdate: (enabled: boolean) => void
   dismissNotice: () => void
 }
 
@@ -516,6 +541,10 @@ export class PluginManagerController {
   private readonly registryMemory: SnapshotStore<RegistryChoice | null> = createSnapshotStore<RegistryChoice | null>(null, {
     persist: { name: 'dsh.plugin-manager.install-registry' },
   })
+  /** Whether update notices are on, kept across page loads; off by default. */
+  private readonly autoUpdateMemory: SnapshotStore<boolean> = createSnapshotStore<boolean>(false, {
+    persist: { name: 'dsh.plugin-manager.auto-update' },
+  })
 
   /**
    * @param ctx - the tab plugin's context, whose `remote.pluginManager` and `remote.pluginInventory` namespaces answer.
@@ -526,6 +555,7 @@ export class PluginManagerController {
     this.store = createSnapshotStore<PluginManagerState>({
       status: 'idle', refreshStatus: 'idle', packages: [], busy: [], notice: null,
       install: IDLE_INSTALL, confirm: null, highlight: null,
+      updates: {}, checkingUpdates: false, autoUpdate: this.autoUpdateMemory.getSnapshot(),
     })
   }
 
@@ -641,8 +671,56 @@ export class PluginManagerController {
           if (result.ok && (result.value.application === 'applied' || result.value.application === 'restart-required')) this.trackToggle(entryId, enabled, true)
         })
       },
+      checkUpdates: () => { void this.checkUpdates() },
+      updateOne: (name) => { void this.updateOne(name) },
+      updateAll: () => {
+        const updates = Object.values(this.getSnapshot().updates)
+        if (updates.length === 0) return
+        this.pendingConfirm = async () => {
+          const results = await Promise.allSettled(updates.map(update => this.ctx.remote.pluginManager.applyUpdate(update)))
+          const done = results.filter(result => result.status === 'fulfilled' && result.value.ok).length
+          this.patch({ updates: {}, notice: done === results.length
+            ? { seq: ++this.noticeSeq, kind: 'updated', count: done }
+            : { seq: ++this.noticeSeq, kind: 'update-failed', reason: `${done}/${results.length}` } })
+          await this.load()
+        }
+        this.patch({ confirm: { action: 'update-all', count: updates.length } })
+      },
+      setAutoUpdate: (enabled) => {
+        this.autoUpdateMemory.set(enabled)
+        this.patch({ autoUpdate: enabled })
+      },
       dismissNotice: () => { this.patch({ notice: null }) },
     }
+  }
+
+  /** Ask the Host which installed plugins have a newer release. */
+  private async checkUpdates(): Promise<void> {
+    if (this.getSnapshot().checkingUpdates) return
+    this.patch({ checkingUpdates: true })
+    try {
+      const answer = await this.ctx.remote.pluginManager.checkUpdates()
+      const updates: Record<string, PluginUpdateInfo> = {}
+      if (answer.ok) for (const update of answer.value) updates[update.name] = update
+      this.patch({ updates, notice: answer.ok && Object.keys(updates).length === 0
+        ? { seq: ++this.noticeSeq, kind: 'up-to-date' } : null })
+    } finally {
+      this.patch({ checkingUpdates: false })
+    }
+  }
+
+  /** Apply one reported update through the Host's install path, then re-read. */
+  private async updateOne(name: string): Promise<void> {
+    const update = this.getSnapshot().updates[name]
+    if (update === undefined) return
+    const answer = await this.ctx.remote.pluginManager.applyUpdate(update)
+    if (!answer.ok) {
+      this.patch({ notice: { seq: ++this.noticeSeq, kind: 'update-failed', reason: answer.error.message } })
+      return
+    }
+    const updates = Object.fromEntries(Object.entries(this.getSnapshot().updates).filter(([key]) => key !== name))
+    this.patch({ updates, notice: { seq: ++this.noticeSeq, kind: 'updated', count: 1 } })
+    await this.load()
   }
 
   /**
