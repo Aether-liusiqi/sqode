@@ -5,11 +5,11 @@
  * agent tool exactly once with the chosen timing selector. It opens a dedicated
  * session so the task keeps a continuous conversation history across runs.
  */
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { Context as ClientContext } from '@liusiqi-dev/cordis'
 import {
   Button, IconCloseOutlineRegular, IconFolderOpenOutlineRegular, IconSkillOutlineRegular, Input,
-  Modal, SegmentedTabs, type SegmentedTab,
+  Modal, SegmentedTabs, useDismissOnOutsidePointer, type SegmentedTab,
 } from '@liusiqi-dev/sqh-client-ui-primitives'
 import clsx from 'clsx'
 import type { TranslateNS } from '@liusiqi-dev/sqh-client-ui-slots'
@@ -70,6 +70,8 @@ export function ScheduleCreateForm({ ctx, t, open, onClose }: ScheduleCreateForm
   const [skillsCatalog, setSkillsCatalog] = useState<SkillEntry[]>([])
   const [skillsListable, setSkillsListable] = useState(false)
   const [skillsOpen, setSkillsOpen] = useState(false)
+  const skillsWrap = useRef<HTMLSpanElement>(null)
+  useDismissOnOutsidePointer(skillsWrap, skillsOpen, setSkillsOpen)
   const [error, setError] = useState<'' | Parameters<ManagerTranslate>[0]>('')
   const [submitting, setSubmitting] = useState(false)
 
@@ -215,6 +217,7 @@ export function ScheduleCreateForm({ ctx, t, open, onClose }: ScheduleCreateForm
       closeLabel={t('form.close')}
       description={t('form.description')}
       contentClassName={css.scroll ?? ''}
+      floating
       footer={<div className={css.footerActions}>
         <Button variant="ghost" size="sm" onClick={onClose} disabled={submitting}>{t('form.cancel')}</Button>
         <Button variant="primary" size="sm" onClick={() => void handleSubmit()} disabled={submitting}>
@@ -292,7 +295,7 @@ export function ScheduleCreateForm({ ctx, t, open, onClose }: ScheduleCreateForm
             </span>
             {skillsListable
               ? (
-                <span className={css.skillsWrap}>
+                <span className={css.skillsWrap} ref={skillsWrap}>
                   <button
                     type="button"
                     className={clsx(css.skillsTrigger, skillsOpen && css.skillsTriggerActive)}

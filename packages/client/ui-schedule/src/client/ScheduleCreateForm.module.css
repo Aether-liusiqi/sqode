@@ -2,7 +2,7 @@
    alias label/border tokens so it matches the rest of the schedule UI. */
 
 .scroll {
-  max-height: min(70vh, 540px);
+  min-height: 0;
   overflow-y: auto;
 }
 

@@ -652,6 +652,55 @@ describe('Modal', () => {
     expect(screen.getByText('Custom body')).toBeDefined()
     expect(screen.queryByRole('button')).toBeNull()
   })
+
+  it('floating mode adds drag and resize handles and moves without affecting non-floating dialogs', () => {
+    // jsdom does not implement pointer capture; stub it for the drag handlers.
+    Object.assign(Element.prototype, {
+      setPointerCapture: () => {},
+      releasePointerCapture: () => {},
+      hasPointerCapture: () => true,
+    })
+
+    const { rerender } = render(
+      <Modal open onClose={() => {}} title="Plain" closeLabel="Close">body</Modal>)
+    const plain = screen.getByRole('dialog', { name: 'Plain' })
+    expect(plain.style.transform).toBe('')
+    expect(plain.querySelector(':scope > [aria-hidden="true"]')).toBeNull()
+
+    rerender(
+      <Modal open onClose={() => {}} title="Floating" closeLabel="Close" floating>
+        <input aria-label="field" />
+      </Modal>)
+    const dialog = screen.getByRole('dialog', { name: 'Floating' })
+    expect(dialog.style.transform).toBe('translate(0px, 0px)')
+    const handle = dialog.querySelector(':scope > [aria-hidden="true"]') as HTMLElement
+    expect(handle).toBeDefined()
+
+    const header = dialog.querySelector('h2')?.parentElement as HTMLElement
+    fireEvent.pointerDown(header, { pointerId: 1, clientX: 100, clientY: 100 })
+    fireEvent.pointerMove(header, { pointerId: 1, clientX: 150, clientY: 130 })
+    expect(dialog.style.transform).toBe('translate(50px, 30px)')
+    fireEvent.pointerUp(header, { pointerId: 1 })
+
+    // Resizing sets an inline width/height from the current rect plus the drag delta.
+    dialog.getBoundingClientRect = () => ({ width: 460, height: 600 }) as DOMRect
+    fireEvent.pointerDown(handle, { pointerId: 2, clientX: 0, clientY: 0 })
+    fireEvent.pointerMove(handle, { pointerId: 2, clientX: 40, clientY: 60 })
+    expect(dialog.style.width).toBe('500px')
+    expect(dialog.style.height).toBe('660px')
+    fireEvent.pointerUp(handle, { pointerId: 2 })
+
+    // Closing and reopening resets the offset and size.
+    rerender(<Modal open={false} onClose={() => {}} title="Floating" closeLabel="Close" floating />)
+    rerender(
+      <Modal open onClose={() => {}} title="Floating" closeLabel="Close" floating>
+        <input aria-label="field" />
+      </Modal>)
+    const reopened = screen.getByRole('dialog', { name: 'Floating' })
+    expect(reopened.style.transform).toBe('translate(0px, 0px)')
+    expect(reopened.style.width).toBe('')
+    expect(reopened.style.height).toBe('')
+  })
 })
 
 describe('ConnectionIndicator', () => {
