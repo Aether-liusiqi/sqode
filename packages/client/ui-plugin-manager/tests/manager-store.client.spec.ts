@@ -1845,7 +1845,7 @@ it('asks before updating all plugins', async () => {
   b.face.checkUpdates()
   await vi.waitFor(() => { expect(b.state().updates[UPDATE.name]).toBeDefined() })
   b.face.updateAll()
-  expect(b.state().confirm).toEqual({ action: 'update-all', count: 1 })
+  expect(b.state().confirm).toEqual({ action: 'update-all', count: 1, names: [UPDATE.name] })
   expect(applyUpdate).not.toHaveBeenCalled()
   b.face.confirm()
   await vi.waitFor(() => { expect(applyUpdate).toHaveBeenCalledOnce() })

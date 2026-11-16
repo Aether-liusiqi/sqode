@@ -1367,3 +1367,28 @@ label.registryOption {
   color: var(--sqw-alias-state-error-primary);
   overflow-wrap: anywhere;
 }
+
+/* Update-all confirmation: names and version pairs, following the active theme. */
+.confirmList {
+  width: 100%;
+  margin: 0 0 12px;
+  padding: 8px 12px;
+  list-style: none;
+  border-radius: var(--sqw-radius-sm);
+  background: var(--sqw-alias-bg-layer-2);
+  border: 0.5px solid var(--sqw-alias-border-l3);
+}
+.confirmList li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 0;
+  font-size: 13px;
+  color: var(--sqw-alias-label-primary);
+  overflow-wrap: anywhere;
+}
+.confirmVersion {
+  flex: none;
+  font-variant-numeric: tabular-nums;
+  color: var(--sqw-alias-label-tertiary);
+}

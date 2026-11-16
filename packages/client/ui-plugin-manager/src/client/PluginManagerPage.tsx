@@ -1234,9 +1234,10 @@ function InstallDialog({
 }
 
 /** The confirmation an uninstall or a batch update waits on. */
-function ConfirmDialog({ confirm, title, t, onConfirm, onCancel }: {
+function ConfirmDialog({ confirm, title, updates, t, onConfirm, onCancel }: {
   readonly confirm: ConfirmState
   readonly title: string
+  readonly updates: Readonly<Record<string, PluginUpdateInfo>>
   readonly t: Translate
   readonly onConfirm: () => void
   readonly onCancel: () => void
@@ -1253,6 +1254,21 @@ function ConfirmDialog({ confirm, title, t, onConfirm, onCancel }: {
         : t('confirmUninstallDescription')}
       footer={(
         <>
+          {updating
+            ? (
+              <ul className={css.confirmList}>
+                {confirm.names.map((name) => {
+                  const update = updates[name]
+                  return (
+                    <li key={name} data-plugin-update-name={name}>
+                      {name}
+                      {update === undefined ? null : <span className={css.confirmVersion}>{`${update.currentVersion} → ${update.latestVersion}`}</span>}
+                    </li>
+                  )
+                })}
+              </ul>
+            )
+            : null}
           <Button variant="outline" onClick={onCancel}>{t('cancel')}</Button>
           <Button variant="primary" className={updating ? undefined : css.dangerButton} onClick={onConfirm}>
             {updating ? t('updateAll', { count: confirm.count }) : t('confirmUninstall')}
@@ -1509,6 +1525,7 @@ export function PluginManagerPage(props: PluginManagerPageProps): ReactNode {
         : (
           <ConfirmDialog
             confirm={confirm}
+            updates={state.updates}
             title={confirm.action === 'uninstall'
               ? packageText(
                 state.packages.find(pkg => pkg.name === confirm.packageName) ?? { name: confirm.packageName },

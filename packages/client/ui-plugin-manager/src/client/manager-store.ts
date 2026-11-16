@@ -270,7 +270,7 @@ export function asksMirror(install: InstallState): boolean {
 /** An action waiting for the user's confirmation: a package's uninstall or updating all plugins. */
 export type ConfirmState =
   | { readonly action: 'uninstall'; readonly packageName: string }
-  | { readonly action: 'update-all'; readonly count: number }
+  | { readonly action: 'update-all'; readonly count: number; readonly names: readonly string[] }
 
 /** What the tab renders. */
 export interface PluginManagerState {
@@ -684,7 +684,7 @@ export class PluginManagerController {
             : { seq: ++this.noticeSeq, kind: 'update-failed', reason: `${done}/${results.length}` } })
           await this.load()
         }
-        this.patch({ confirm: { action: 'update-all', count: updates.length } })
+        this.patch({ confirm: { action: 'update-all', count: updates.length, names: updates.map(update => update.name) } })
       },
       setAutoUpdate: (enabled) => {
         this.autoUpdateMemory.set(enabled)
