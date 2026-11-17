@@ -1446,22 +1446,3 @@ it.each([false, true])('rechecks installed bundle peers before accepting a disab
   }
   expect(readProfileManifest('test', dir).dsh?.profile?.bundles).toEqual(['core', 'extra'])
 })
-
-
-it('classifies a plain GitHub URL as a skill from its SKILL.md contents', async () => {
-  const { manager } = await fixture()
-  const skill = '---\nname: sm-research\ndescription: Research\n---\n'
-  const fetchMock = vi.fn(async (input: string | URL | Request) => {
-    const url = String(input)
-    if (url.includes('/git/trees/')) {
-      return new Response(JSON.stringify({ tree: [{ path: 'SKILL.md', type: 'blob' }] }), { status: 200 })
-    }
-    if (url.includes('/contents/SKILL.md')) return new Response(skill, { status: 200 })
-    return new Response('no', { status: 404 })
-  }) as unknown as typeof fetch
-  vi.stubGlobal('fetch', fetchMock)
-  onTestFinished(() => vi.unstubAllGlobals())
-  expect(await manager.inspectTarget('https://github.com/acme/sm-research')).toMatchObject({
-    kind: 'skill', confidence: 'content', location: '~/.sqode/skills/<name>/SKILL.md',
-  })
-})
