@@ -6,6 +6,7 @@ import { bindSnapshotSelector, makeTranslate, RemoteError } from '@liusiqi-dev/s
 import { createSnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import { zh as commonZh } from '@liusiqi-dev/sqh-client-locale/src/locales/zh.ts'
 import type { SessionId } from '@liusiqi-dev/sqh-session/types'
+import type { InputState } from '@liusiqi-dev/sqh-client-ui-conversation/client'
 import type { SpeechPreparationState, SpeechProviderId, Transcript } from '@liusiqi-dev/sqh-experimental-speech-to-text/types'
 import type { RemoteResult } from '@liusiqi-dev/sqh-typert-protocol'
 import { VoiceInput, type VoiceInputProps } from '../src/client/VoiceInput.tsx'
@@ -18,23 +19,24 @@ beforeEach(() => { vi.stubGlobal('requestAnimationFrame', vi.fn(() => 1)); vi.st
 afterEach(() => { cleanup(); vi.useRealTimers(); vi.unstubAllGlobals() })
 const id = 'sensevoice-local' as SpeechProviderId
 const transcript: Transcript = { text: '检查 TypeScript 类型', audioSeconds: 2, inferenceSeconds: 0.4 }
-function fixture(recording?: Recording) {
+function fixture(recording?: Recording, draft = '你好世界') {
   const capture = Object.assign(new Recording(() => {}), { start: vi.fn<Recording['start']>(async () => {}), stop: vi.fn(async () => new Uint8Array(48)),
-    amplitude: () => 0, dispose: vi.fn(async () => {}) })
+    flush: vi.fn(async () => new Uint8Array(48)), amplitude: () => 0, dispose: vi.fn(async () => {}) })
   const inputActions = { notify: vi.fn(), captureInsertion: vi.fn(() => ({ start: 3, end: 3, draftRev: 1 })), insertText: vi.fn(() => true),
     setDraft: vi.fn(), addAttachments: vi.fn(() => true), removeAttachment: vi.fn(), pruneAttachments: vi.fn(), submit: vi.fn() }
+  const input = createSnapshotStore<InputState>({ draft, attachmentIds: [], draftRev: 1, phase: 'plain', occurrences: [], queue: [] })
   const readiness = createSnapshotStore<SpeechReadiness>({ connected: true, error: null, catalog: {
     providers: [{ id, name: 'SenseVoiceSmall', location: 'host-local', languages: ['auto', 'zh', 'en', 'ja'], preparation: { phase: 'ready' } }],
     selection: { providerId: id, language: 'auto' }, maxAudioBytes: 100, maxDurationSeconds: 120,
   } })
   const transcribe = vi.fn<(request: unknown, signal: AbortSignal) => Promise<RemoteResult<Transcript>>>(
     async () => ({ ok: true, value: transcript }))
-  const props: VoiceInputProps = { sessionId: 'one' as SessionId, inputActions, transcribe, locked: false, onActiveChange: vi.fn(),
+  const props: VoiceInputProps = { sessionId: 'one' as SessionId, inputActions, useInput: bindSnapshotSelector(input), transcribe, locked: false, onActiveChange: vi.fn(),
     openSettings: vi.fn(), prepare: vi.fn(async () => {}), cancelPreparation: vi.fn(async () => {}), configure: vi.fn(async () => {}),
     useSpeechReadiness: bindSnapshotSelector(readiness), createRecording: () => recording ?? capture,
     t: makeTranslate(zh, commonZh) }
   const view = render(<VoiceInput {...props} />)
-  return { props, capture, inputActions, readiness, transcribe, view }
+  return { props, capture, inputActions, input, readiness, transcribe, view }
 }
 async function start(): Promise<void> {
   fireEvent.click(screen.getByRole('button', { name: zh.start }))
@@ -379,4 +381,66 @@ it.each(['later', 'escape', 'ready', 'session'])('dismisses unavailable recognit
     open()
     expect(screen.getByRole('dialog')).toBeTruthy()
   }
+})
+
+it('flushes and inserts a partial transcript after three seconds of silence without ending', async () => {
+  let loud = true
+  const b = fixture()
+  Object.assign(b.capture, { amplitude: () => (loud ? 0.25 : 0) })
+  vi.useFakeTimers()
+  fireEvent.click(screen.getByRole('button', { name: zh.start }))
+  await act(async () => {})
+  expect(screen.getByRole('button', { name: zh.stop })).toBeTruthy()
+
+  await act(async () => { await vi.advanceTimersByTimeAsync(100) })
+  loud = false
+  await act(async () => { await vi.advanceTimersByTimeAsync(3100) })
+
+  expect(b.capture.flush).toHaveBeenCalledWith(4)
+  expect(b.transcribe).toHaveBeenCalled()
+  expect(b.inputActions.insertText).toHaveBeenCalledWith(transcript.text, { start: 3, end: 3, draftRev: 1 })
+  expect(b.capture.stop).not.toHaveBeenCalled()
+  expect(screen.getByRole('button', { name: zh.stop })).toBeTruthy()
+})
+
+it('ends the recording after six seconds without speech', async () => {
+  let loud = true
+  const b = fixture()
+  Object.assign(b.capture, { amplitude: () => (loud ? 0.25 : 0) })
+  vi.useFakeTimers()
+  fireEvent.click(screen.getByRole('button', { name: zh.start }))
+  await act(async () => {})
+  await act(async () => { await vi.advanceTimersByTimeAsync(100) })
+  loud = false
+  await act(async () => { await vi.advanceTimersByTimeAsync(6100) })
+
+  expect(b.capture.stop).toHaveBeenCalled()
+  expect(b.transcribe).toHaveBeenCalled()
+  expect(b.inputActions.insertText).toHaveBeenCalled()
+})
+
+it('never flushes before any speech is detected', async () => {
+  const b = fixture()
+  vi.useFakeTimers()
+  fireEvent.click(screen.getByRole('button', { name: zh.start }))
+  await act(async () => {})
+  await act(async () => { await vi.advanceTimersByTimeAsync(5000) })
+  expect(b.capture.flush).not.toHaveBeenCalled()
+  expect(b.transcribe).not.toHaveBeenCalled()
+  expect(b.capture.stop).not.toHaveBeenCalled()
+})
+
+it('maps spoken punctuation to insertText and delete commands to setDraft', async () => {
+  const b = fixture()
+  b.transcribe.mockResolvedValueOnce({ ok: true, value: { ...transcript, text: '空格' } })
+  await start(); stop()
+  await waitFor(() => { expect(b.inputActions.insertText).toHaveBeenCalledWith(' ', { start: 3, end: 3, draftRev: 1 }) })
+  expect(b.inputActions.setDraft).not.toHaveBeenCalled()
+
+  cleanup()
+  const c = fixture()
+  c.transcribe.mockResolvedValueOnce({ ok: true, value: { ...transcript, text: '退格' } })
+  await start(); stop()
+  await waitFor(() => { expect(c.inputActions.setDraft).toHaveBeenCalledWith('你好世') })
+  expect(c.inputActions.insertText).not.toHaveBeenCalled()
 })

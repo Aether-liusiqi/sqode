@@ -81,7 +81,8 @@ export class Recording {
           console.error('Speech recording error handler failed', error)
         }
       }
-      this.recorder.start()
+      // Emit periodic chunks so a silence-triggered flush has accumulated audio to transcribe.
+      this.recorder.start(250)
     } catch (error) { await this.dispose(); throw error }
   }
 
@@ -95,6 +96,42 @@ export class Recording {
     let sum = 0
     for (const sample of this.samples) sum += sample * sample
     return Math.sqrt(sum / this.samples.length)
+  }
+
+  /**
+   * Resample a decoded fragment to the canonical 16 kHz mono WAV.
+   * @param decoded - decoded audio fragment.
+   * @param maxDurationSeconds - truncate timer overshoot to the Host limit.
+   * @returns encoded WAV bytes.
+   */
+  private async resample(decoded: AudioBuffer, maxDurationSeconds: number): Promise<Uint8Array<ArrayBuffer>> {
+    const offline = new OfflineAudioContext(1, Math.max(1, Math.floor(Math.min(decoded.duration, maxDurationSeconds) * 16000)), 16000)
+    const source = offline.createBufferSource()
+    source.buffer = decoded
+    source.connect(offline.destination)
+    source.start()
+    const resampled = await offline.startRendering()
+    this.lifetime.signal.throwIfAborted()
+    return encodeWave(resampled.getChannelData(0))
+  }
+
+  /**
+   * Transcode the audio accumulated so far without ending the recording.
+   * The first chunk (container header) is retained so later fragments stay decodable.
+   * @param maxDurationSeconds - truncate overshoot to the Host limit.
+   * @returns encoded WAV bytes for this fragment.
+   */
+  async flush(maxDurationSeconds: number): Promise<Uint8Array<ArrayBuffer>> {
+    const recorder = this.recorder
+    const context = this.context
+    if (!recorder || !context || recorder.state !== 'recording') throw new RecordingError('empty')
+    const snapshot = this.chunks.slice()
+    this.chunks = snapshot.slice(0, 1)
+    const blob = new Blob(snapshot, { type: recorder.mimeType })
+    if (blob.size === 0) throw new RecordingError('empty')
+    const decoded = await context.decodeAudioData(await blob.arrayBuffer())
+    this.lifetime.signal.throwIfAborted()
+    return this.resample(decoded, maxDurationSeconds)
   }
 
   /**
@@ -118,14 +155,7 @@ export class Recording {
       if (blob.size === 0) throw new RecordingError('empty')
       const decoded = await context.decodeAudioData(await blob.arrayBuffer())
       this.lifetime.signal.throwIfAborted()
-      const offline = new OfflineAudioContext(1, Math.max(1, Math.floor(Math.min(decoded.duration, maxDurationSeconds) * 16000)), 16000)
-      const source = offline.createBufferSource()
-      source.buffer = decoded
-      source.connect(offline.destination)
-      source.start()
-      const resampled = await offline.startRendering()
-      this.lifetime.signal.throwIfAborted()
-      return encodeWave(resampled.getChannelData(0))
+      return await this.resample(decoded, maxDurationSeconds)
     } finally { await this.dispose() }
   }
 

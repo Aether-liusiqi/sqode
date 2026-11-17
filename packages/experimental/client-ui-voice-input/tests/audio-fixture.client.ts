@@ -12,6 +12,7 @@ export function captureFixture(options: { empty?: boolean; recorderError?: boole
   const decoding = vi.fn(async (_data: ArrayBuffer) => ({ duration: 2 }))
   const rendering = vi.fn(async () => ({ getChannelData: () => new Float32Array([0.5, -0.5]) }))
   let failRecorder: () => void
+  let emitChunk: (text: string) => void = () => {}
   class Recorder {
     state = 'inactive'
     mimeType = 'audio/webm'
@@ -22,7 +23,7 @@ export function captureFixture(options: { empty?: boolean; recorderError?: boole
       if (options.constructError) throw new Error('recorder unavailable')
       failRecorder = () => { this.onerror!() }
     }
-    start() { this.state = 'recording' }
+    start() { this.state = 'recording'; emitChunk = (text) => { this.ondataavailable?.({ data: new Blob([text]) }) } }
     stop() {
       this.state = 'inactive'
       queueMicrotask(() => {
@@ -44,5 +45,5 @@ export function captureFixture(options: { empty?: boolean; recorderError?: boole
   } })
   vi.stubGlobal('OfflineAudioContext', offline)
   return { recording: new Recording(disposed), trackStop, close, disposed, decoding, rendering, offline,
-    failRecorder: () => { failRecorder() } }
+    failRecorder: () => { failRecorder() }, emit: (text: string) => { emitChunk(text) } }
 }

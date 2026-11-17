@@ -58,6 +58,22 @@ it('flushes final recording bytes, bounds timer overshoot and closes audio resou
   expect(b.close).toHaveBeenCalledOnce()
 })
 
+it('flushes accumulated chunks while keeping the recording alive', async () => {
+  const b = captureFixture()
+  await b.recording.start()
+  b.emit('header')
+  b.emit('first utterance')
+  const first = await b.recording.flush(4)
+  expect(new TextDecoder().decode(b.decoding.mock.calls[0]![0])).toBe('headerfirst utterance')
+  expect(first).toEqual(encodeWave(new Float32Array([0.5, -0.5])))
+  expect(b.close).not.toHaveBeenCalled()
+  b.emit('second utterance')
+  const second = await b.recording.stop(4)
+  expect(new TextDecoder().decode(b.decoding.mock.calls[1]![0])).toBe('headersecond utterancefinal audio')
+  expect(second).toEqual(first)
+  await b.recording.dispose()
+})
+
 it.each([{ empty: true }, { recorderError: true }, { constructError: true }])('releases failed capture resources: %j', async (options) => {
   const b = captureFixture(options)
   if (options.constructError) await expect(b.recording.start()).rejects.toThrow('recorder unavailable')
