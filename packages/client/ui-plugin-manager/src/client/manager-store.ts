@@ -966,7 +966,7 @@ export class PluginManagerController {
     // A GitHub URL can be a plugin, Skill or MCP repository even when its shape
     // says otherwise. Ask the unified service to read the source before deciding.
     try {
-      const detected = await this.ctx.remote.extensionService.detect(spec)
+      const detected = await this.ctx.remote.extensionService.detectSource(spec)
       if (detected.ok && detected.value.ok) {
         const source = detected.value.value
         this.patch({ targetLocation: source.location, targetEvidence: source.evidence })
@@ -981,7 +981,7 @@ export class PluginManagerController {
 
   /** Install a Skill or MCP extension through the unified service, reporting the outcome as a notice. */
   private async startExtensionInstall(spec: string, kind: 'skill' | 'mcp'): Promise<void> {
-    const answer = await this.ctx.remote.extensionService.install({ spec, hint: kind })
+    const answer = await this.ctx.remote.extensionService.installExtension({ spec, hint: kind })
     if (this.disposed) return
     if (!answer.ok) {
       this.patch({ notice: { seq: ++this.noticeSeq, kind: 'update-failed', reason: answer.error.message }, updates: {} })

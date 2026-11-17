@@ -114,15 +114,21 @@ export class ExtensionService extends TypertRemoteService {
     this.manager = new ExtensionManager(seams)
   }
 
+  // Method names must not collide with RemoteNamespaceService.prototype
+  // (install/remove/list/has/...): the client $mount rejects a namespace whose
+  // method shadows its own service, and api-remotes then rolls back every
+  // mounted namespace, leaving the whole web boot pending.
   @Remote
-  list(kind?: ExtensionKind): Promise<readonly ExtensionRecord[]> { return this.manager.list(kind) }
+  listExtensions(kind?: ExtensionKind): Promise<readonly ExtensionRecord[]> { return this.manager.list(kind) }
 
   @Remote
-  detect(spec: string, hint?: SourceHint): Promise<ExtensionAnswer<DetectedSource>> { return this.manager.detect(spec, hint) }
+  detectSource(spec: string, hint?: SourceHint): Promise<ExtensionAnswer<DetectedSource>> { return this.manager.detect(spec, hint) }
 
   @Remote
-  install(request: ExtensionInstallRequest): Promise<ExtensionAnswer<ExtensionInstallResult>> { return this.manager.install(request) }
+  installExtension(request: ExtensionInstallRequest): Promise<ExtensionAnswer<ExtensionInstallResult>> {
+    return this.manager.install(request)
+  }
 
   @Remote
-  remove(kind: ExtensionKind, name: string): Promise<boolean> { return this.manager.remove(kind, name) }
+  removeExtension(kind: ExtensionKind, name: string): Promise<boolean> { return this.manager.remove(kind, name) }
 }
