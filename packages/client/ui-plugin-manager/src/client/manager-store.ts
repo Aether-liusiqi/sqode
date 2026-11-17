@@ -225,6 +225,8 @@ export interface InstallState {
     /** What the last failed run could not reach, as the Host attributed it: the registry, or the spec's own host. */
     readonly failedAt?: 'registry' | 'spec-host'
     readonly pendingBuilds?: readonly string[]
+    /** How many temporary unpack/log directories the Host removed after this failure. */
+    readonly cleanedTemp?: number
     readonly uncertainty?: 'result' | 'cancellation' | 'acceptance'
   } | null
   /** The packages whose install scripts the finished run was allowed to execute, saved for this profile. */
@@ -387,7 +389,7 @@ class RemoteAnswerError extends Error {
 /** The dialog's reading of a failed change: the Host's code and diagnostic, and the run's classified failure. */
 function failureOf(
   error: ManagementError | undefined, kind: PluginInstallFailureKind | undefined, pendingBuilds?: readonly string[],
-  failedAt?: ChangeResult['failedAt'],
+  failedAt?: ChangeResult['failedAt'], cleanedTemp?: number,
 ): NonNullable<InstallState['failure']> {
   return {
     reason: error?.diagnostic ?? '',
@@ -395,6 +397,7 @@ function failureOf(
     ...error?.incompatible === undefined ? {} : { incompatible: error.incompatible },
     ...kind === undefined ? {} : { kind },
     ...failedAt === undefined ? {} : { failedAt },
+    ...cleanedTemp === undefined ? {} : { cleanedTemp },
     ...pendingBuilds === undefined || pendingBuilds.length === 0 ? {} : { pendingBuilds },
   }
 }
@@ -1026,7 +1029,7 @@ export class PluginManagerController {
       const packages = result.packageResult
       this.patchInstall({
         phase: 'failed', runs: settledRuns(runs, packages?.exitCode ?? null),
-        failure: failureOf(result.error, packages?.kind, result.pendingBuilds, result.failedAt),
+        failure: failureOf(result.error, packages?.kind, result.pendingBuilds, result.failedAt, result.cleanedTempDirs?.length),
         ...asked,
       })
     } else {

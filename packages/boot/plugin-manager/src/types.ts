@@ -125,6 +125,8 @@ export interface ChangeResult {
   application: 'applied' | 'restart-required' | 'overridden' | 'failed' | 'cancelled'
   /** `owner/repo@sha` when a GitHub spec was resolved through the REST API rather than Git transport. */
   githubSource?: string
+  /** Temporary directories this failed or cancelled install removed; empty when there was nothing new. */
+  cleanedTempDirs?: readonly string[]
   /** Last attempted step; successful installation can proceed to enablement. */
   stage: 'install' | 'enable' | 'remove'
   target: string
