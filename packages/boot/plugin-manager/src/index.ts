@@ -32,7 +32,8 @@ import { checkGithubConnection } from './github-connection.ts'
 import { parseGithubRepository, resolveGithubTarball } from './github-api.ts'
 import { createUpdateChecker, githubUpdateLookup, installedFromBundles } from './update-checker.ts'
 import { cleanupNewTempDirs, pnpmTmpCandidates, profileLogRoot, resolvePnpmTmp, snapshotCleanupRoots } from './install-cleanup.ts'
-import { classifyInstallTarget, type InstallTarget, type InstallTargetHint } from './install-target.ts'
+import { classifyInstallTarget, hasExplicitTargetHint, INSTALL_LOCATIONS, type InstallTarget, type InstallTargetHint } from './install-target.ts'
+import { probeInstallSource, type ProbeResult } from './install-probe.ts'
 import type {
   BundleInfo, BundleRowInfo, ChangeResult, InspectOptions, InstallBundleOptions, ManagementError, PackageResult, PluginChange,
   PluginEntryId, PluginInfo, PluginInspectProblem, PluginInstallCancellation, PluginInstallProgress, PluginInstallRequestId,
@@ -352,12 +353,26 @@ export class PluginManager extends TypertRemoteService {
   }
 
   /** Classify an install input before anything is downloaded, so the dialog can say where it will land.
+   * An explicit choice wins; otherwise a GitHub repository is read through the API and classified by its
+   * manifests (SKILL.md / MCP config / dsh.bundle), falling back to URL shape when the source cannot be read.
    * @param spec - the typed package name, URL, or path.
-   * @param hint - an explicit plugin/skill/MCP choice, or `auto` to infer from the URL.
+   * @param hint - an explicit plugin/skill/MCP choice, or `auto` to infer from the source.
    */
   @Remote
-  inspectTarget(spec: string, hint?: InstallTargetHint): InstallTarget {
-    return classifyInstallTarget(spec, hint)
+  async inspectTarget(spec: string, hint?: InstallTargetHint): Promise<InstallTarget> {
+    const target = classifyInstallTarget(spec, hint)
+    const explicit = hasExplicitTargetHint(spec) || hint !== undefined && hint !== 'auto'
+    if (explicit) return { ...target, confidence: 'explicit', evidence: ['Explicit choice'] }
+    const probe: ProbeResult | undefined = await probeInstallSource(spec, {
+      signal: AbortSignal.any([this.abort.signal]),
+    })
+    if (probe === undefined || probe.kind === target.kind) return {
+      ...target,
+      confidence: probe?.confidence ?? 'shape',
+      ...probe === undefined ? {} : { evidence: probe.evidence.signals },
+    }
+    return { ...target, kind: probe.kind, location: INSTALL_LOCATIONS[probe.kind],
+      confidence: probe.confidence, evidence: probe.evidence.signals }
   }
 
   /** Read installed bundles that have a newer registry or GitHub release available.

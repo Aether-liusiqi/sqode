@@ -27,6 +27,10 @@ export interface InstallTarget {
   readonly spec: string
   /** Human-readable destination, used in the dialog before the install runs. */
   readonly location: string
+  /** How the kind was decided: an explicit choice, source contents, or URL shape. */
+  readonly confidence?: 'explicit' | 'content' | 'shape'
+  /** Why that kind was chosen, for the dialog's early feedback. */
+  readonly evidence?: readonly string[]
 }
 
 /** A hint the person can pick explicitly in the install dialog. */
