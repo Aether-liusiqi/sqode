@@ -11,13 +11,14 @@
 import { TypertRemoteService, Remote } from '@liusiqi-dev/sqh-typert-protocol'
 import { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import {
-  installExtension, uninstallExtension, type ExtensionInstallResult, type McpServerConfig, type PluginInstaller,
-} from './extension-installer.ts'
-import { listExtensions, type ExtensionKind, type ExtensionRecord } from './extension-registry.ts'
-import { detectSource, type DetectedSource, type SourceHint, type SourceSnapshot } from './source-detector.ts'
+import { installExtension, uninstallExtension, type PluginInstaller } from './extension-installer.ts'
+import { listExtensions } from './extension-registry.ts'
+import { detectSource, type SourceSnapshot } from './source-detector.ts'
 import { readSourceSnapshot } from './source-snapshot.ts'
-import type { ChangeResult } from './types.ts'
+import type {
+  ChangeResult, ExtensionKind, ExtensionRecord, DetectedSource, SourceHint,
+  McpServerConfig, ExtensionInstallResult, ExtensionInstallRequest, ExtensionFailure, ExtensionAnswer,
+} from './types.ts'
 
 /** Read a repository snapshot through this service's injected network seams. */
 async function snapshotFor(
@@ -29,29 +30,6 @@ async function snapshotFor(
     ...seams.apiBase === undefined ? {} : { apiBase: seams.apiBase },
   })
 }
-
-/** What the client sends when installing one extension. */
-export interface ExtensionInstallRequest {
-  readonly spec: string
-  readonly hint?: SourceHint
-  /** Override the detected target; requires the source content to match the kind. */
-  readonly kind?: ExtensionKind
-  /** Update an already-recorded extension instead of refusing. */
-  readonly update?: boolean
-  /** Skill contents, when the client already read them from a local file. */
-  readonly contents?: string
-  /** MCP configuration, when the client already parsed it. */
-  readonly config?: McpServerConfig
-}
-
-/** A failed remote answer, shaped like the manager's other failures. */
-export interface ExtensionFailure {
-  readonly code: 'already-installed' | 'invalid-name' | 'invalid-content' | 'not-registered' | 'detection-failed' | 'operation-error'
-  readonly message: string
-}
-
-/** One remote answer; the client already knows how to read `ok`. */
-export type ExtensionAnswer<T> = { readonly ok: true; readonly value: T } | { readonly ok: false; readonly error: ExtensionFailure }
 
 /** The injected seams one service instance owns. */
 export interface ExtensionServiceSeams {

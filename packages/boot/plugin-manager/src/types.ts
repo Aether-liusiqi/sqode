@@ -3,6 +3,33 @@ import type { Branded } from '@liusiqi-dev/sqh-brand'
 import type { PluginLocalizedMeta } from '@liusiqi-dev/sqh-package-manifest'
 import type { PluginInventoryEntry } from '@liusiqi-dev/sqh-host-plugin-inventory/types'
 export type { PluginEntryId } from '@liusiqi-dev/sqh-host-plugin-inventory/types'
+// Remote boundary types of the unified extension service. They live here so
+// the public `./types` subpath satisfies Typert's non-root export rule.
+import type { ExtensionKind } from './extension-registry.ts'
+import type { SourceHint } from './source-detector.ts'
+import type { McpServerConfig } from './extension-installer.ts'
+export type { ExtensionKind, ExtensionRecord } from './extension-registry.ts'
+export type { SourceHint, DetectedSource, DetectionConfidence } from './source-detector.ts'
+export type { McpServerConfig, ExtensionInstallResult } from './extension-installer.ts'
+
+/** What the client sends when installing one extension. */
+export interface ExtensionInstallRequest {
+  readonly spec: string
+  readonly hint?: SourceHint
+  readonly kind?: ExtensionKind
+  readonly update?: boolean
+  readonly contents?: string
+  readonly config?: McpServerConfig
+}
+
+/** A failed remote answer, shaped like the manager's other failures. */
+export interface ExtensionFailure {
+  readonly code: 'already-installed' | 'invalid-name' | 'invalid-content' | 'not-registered' | 'detection-failed' | 'operation-error'
+  readonly message: string
+}
+
+/** One remote answer; the client already knows how to read `ok`. */
+export type ExtensionAnswer<T> = { readonly ok: true; readonly value: T } | { readonly ok: false; readonly error: ExtensionFailure }
 import type { PluginEntryId } from '@liusiqi-dev/sqh-host-plugin-inventory/types'
 
 /** Reasons a profile control cannot modify its target. */
