@@ -82,9 +82,9 @@ describe('readSourceSnapshot', () => {
   })
 
   it('returns undefined for non-GitHub inputs and unreadable sources', async () => {
-    const fetch = vi.fn() as unknown as typeof fetch
-    expect(await readSourceSnapshot('@acme/plugin', { fetch })).toBeUndefined()
-    expect(fetch).not.toHaveBeenCalled()
+    const noopFetch = vi.fn() as unknown as typeof fetch
+    expect(await readSourceSnapshot('@acme/plugin', { fetch: noopFetch })).toBeUndefined()
+    expect(noopFetch).not.toHaveBeenCalled()
     const failing = vi.fn(async () => new Response('rate limited', { status: 403 })) as unknown as typeof fetch
     expect(await readSourceSnapshot('https://github.com/acme/private', { fetch: failing })).toBeUndefined()
   })
