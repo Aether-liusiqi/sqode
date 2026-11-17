@@ -97,7 +97,7 @@
     "lexical": "^0.49.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "zod": "^4.4.3"
+    "zod": "^4.6.5"
   },
   "files": [
     "lib/index.js",

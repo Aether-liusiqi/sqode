@@ -66,7 +66,7 @@
   "dependencies": {
     "@liusiqi-dev/sqh-util-crypto": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
-    "zod": "^4.4.3",
+    "zod": "^4.6.5",
     "@liusiqi-dev/sqh-timeout": "workspace:*",
     "@liusiqi-dev/sqh-brand": "workspace:*",
     "@liusiqi-dev/sqh-util-values": "workspace:*",

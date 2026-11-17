@@ -47,7 +47,7 @@
     "@liusiqi-dev/sqh-brand": "workspace:*",
     "@liusiqi-dev/sqh-util-values": "workspace:*",
     "@liusiqi-dev/schemastery": "workspace:~",
-    "zod": "^4.4.3"
+    "zod": "^4.6.5"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",
