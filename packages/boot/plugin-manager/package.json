@@ -43,6 +43,10 @@
     "./tools": {
       "types": "./lib/types/tools.d.ts",
       "default": "./lib/types/tools.js"
+    },
+    "./extension-service-plugin": {
+      "types": "./lib/types/extension-service-plugin.d.ts",
+      "default": "./lib/types/extension-service-plugin.js"
     }
   },
   "files": [

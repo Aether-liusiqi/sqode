@@ -21,6 +21,10 @@
       name: '@liusiqi-dev/sqh-plugin-manager'
       disabled: !!js "!ctx.get('profileContext')"
 
+    - id: extension-service
+      name: '@liusiqi-dev/sqh-plugin-manager/extension-service-plugin'
+      disabled: !!js "!ctx.get('profileContext')"
+
     - id: timer
       name: '@liusiqi-dev/cordis-plugin-timer'
       disabled: false

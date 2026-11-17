@@ -1,0 +1,164 @@
+/**
+ * Remote façade for the unified extension manager.
+ *
+ * The detector, installer and inventory are deliberately independent modules;
+ * this service wires them once and exposes them to the client. It injects the
+ * plugin installer rather than owning pnpm, so the long-standing install path
+ * (progress, cancellation, build approvals, restoration) stays in one place.
+ * @module @liusiqi-dev/sqh-plugin-manager/extension-service
+ */
+
+import { TypertRemoteService, Remote } from '@liusiqi-dev/sqh-typert-protocol'
+import { Context } from '@liusiqi-dev/cordis'
+import z from '@liusiqi-dev/schemastery'
+import {
+  installExtension, uninstallExtension, type ExtensionInstallResult, type McpServerConfig, type PluginInstaller,
+} from './extension-installer.ts'
+import { listExtensions, type ExtensionKind, type ExtensionRecord } from './extension-registry.ts'
+import { detectSource, type DetectedSource, type SourceHint, type SourceSnapshot } from './source-detector.ts'
+import { readSourceSnapshot } from './source-snapshot.ts'
+import type { ChangeResult } from './types.ts'
+
+/** Read a repository snapshot through this service's injected network seams. */
+async function snapshotFor(
+  spec: string, seams: { fetch?: typeof fetch; token?: () => string | undefined; apiBase?: string },
+): Promise<SourceSnapshot | undefined> {
+  return readSourceSnapshot(spec, {
+    ...seams.fetch === undefined ? {} : { fetch: seams.fetch },
+    ...seams.token === undefined ? {} : { token: seams.token },
+    ...seams.apiBase === undefined ? {} : { apiBase: seams.apiBase },
+  })
+}
+
+/** What the client sends when installing one extension. */
+export interface ExtensionInstallRequest {
+  readonly spec: string
+  readonly hint?: SourceHint
+  /** Override the detected target; requires the source content to match the kind. */
+  readonly kind?: ExtensionKind
+  /** Update an already-recorded extension instead of refusing. */
+  readonly update?: boolean
+  /** Skill contents, when the client already read them from a local file. */
+  readonly contents?: string
+  /** MCP configuration, when the client already parsed it. */
+  readonly config?: McpServerConfig
+}
+
+/** A failed remote answer, shaped like the manager's other failures. */
+export interface ExtensionFailure {
+  readonly code: 'already-installed' | 'invalid-name' | 'invalid-content' | 'not-registered' | 'detection-failed' | 'operation-error'
+  readonly message: string
+}
+
+/** One remote answer; the client already knows how to read `ok`. */
+export type ExtensionAnswer<T> = { readonly ok: true; readonly value: T } | { readonly ok: false; readonly error: ExtensionFailure }
+
+/** The injected seams one service instance owns. */
+export interface ExtensionServiceSeams {
+  readonly home?: string
+  readonly installPlugin: PluginInstaller
+  readonly fetch?: typeof fetch
+  readonly token?: () => string | undefined
+  readonly apiBase?: string
+}
+
+/** Framework-free implementation, so the behavior can be tested without a Cordis context. */
+export class ExtensionManager {
+  constructor(private readonly seams: ExtensionServiceSeams) {}
+
+  /** List everything Sqode installed, optionally filtered by kind. */
+  async list(kind?: ExtensionKind): Promise<readonly ExtensionRecord[]> {
+    return listExtensions(this.seams.home, kind)
+  }
+
+  /** Classify a source before installing, including repository content when reachable. */
+  async detect(spec: string, hint?: SourceHint): Promise<ExtensionAnswer<DetectedSource>> {
+    try {
+      const snapshot = await snapshotFor(spec, this.seams)
+      return { ok: true, value: detectSource(spec, hint, snapshot) }
+    } catch (error) {
+      return { ok: false, error: { code: 'detection-failed', message: error instanceof Error ? error.message : String(error) } }
+    }
+  }
+
+  /** Install one extension at its kind's location and record it in the inventory. */
+  async install(request: ExtensionInstallRequest): Promise<ExtensionAnswer<ExtensionInstallResult>> {
+    try {
+      const snapshot = await snapshotFor(request.spec, this.seams)
+      const detected = detectSource(request.spec, request.hint, snapshot)
+      const kind = request.kind ?? detected.kind
+      const contents = request.contents ?? snapshot?.files[
+        Object.keys(snapshot?.files ?? {}).find(path => /(?:^|\/)SKILL\.md$/i.test(path)) ?? ''
+      ]
+      const configText = request.config === undefined
+        ? snapshot?.files[Object.keys(snapshot?.files ?? {}).find(path => /(?:^|\/)(?:\.mcp\.json|mcp\.json)$/i.test(path)) ?? '']
+        : undefined
+      // The inventory key is the loader's name, not the typed URL: a Skill is
+      // named by its SKILL.md frontmatter, an MCP server by its config's serverName.
+      const name = kind === 'plugin'
+        ? detected.spec
+        : kind === 'skill'
+          ? /^---[\s\S]*?^name\s*:\s*(.+?)\s*$/m.exec(contents ?? '')?.[1]?.replace(/^['"]|['"]$/g, '') ?? detected.spec
+          : (JSON.parse(configText ?? '{}') as { serverName?: string }).serverName
+            ?? (request.config as { serverName?: string } | undefined)?.serverName
+            ?? detected.spec.split('/').filter(Boolean).at(-1) ?? detected.spec
+      const parsedConfig = request.config ?? (configText === undefined ? undefined : JSON.parse(configText) as McpServerConfig)
+      const result = await installExtension(kind, name, {
+        ...this.seams.home === undefined ? {} : { home: this.seams.home },
+        source: request.spec,
+        installPlugin: this.seams.installPlugin,
+        update: request.update === true,
+        ...contents === undefined ? {} : { contents },
+        ...parsedConfig === undefined ? {} : { config: parsedConfig },
+      })
+      return { ok: true, value: result }
+    } catch (error) {
+      const code = (error as { code?: ExtensionFailure['code'] }).code ?? 'operation-error'
+      return { ok: false, error: { code, message: error instanceof Error ? error.message : String(error) } }
+    }
+  }
+
+  /** Unregister and remove one extension's exact recorded path. */
+  async remove(kind: ExtensionKind, name: string): Promise<boolean> {
+    return uninstallExtension(this.seams.home, kind, name)
+  }
+}
+
+/** Remote façade: one method per manager method, no behavior of its own. */
+export class ExtensionService extends TypertRemoteService {
+  static inject = ['extensionServiceSeams']
+  static Config = z.object({})
+
+  private readonly manager: ExtensionManager
+
+  constructor(ctx: Context, seams: ExtensionServiceSeams) {
+    super(ctx, 'extensionService')
+    this.manager = new ExtensionManager(seams)
+  }
+
+  /** Cordis constructs plugin rows with (ctx, config); resolve seams from the provided service. */
+  static fromContext(ctx: Context): ExtensionService {
+    const seams = ctx.get('extensionServiceSeams') as ExtensionServiceSeams | undefined
+    if (seams === undefined) throw new Error('extensionServiceSeams was not provided by the profile boot')
+    return new ExtensionService(ctx, seams)
+  }
+
+  @Remote
+  list(kind?: ExtensionKind): Promise<readonly ExtensionRecord[]> { return this.manager.list(kind) }
+
+  @Remote
+  detect(spec: string, hint?: SourceHint): Promise<ExtensionAnswer<DetectedSource>> { return this.manager.detect(spec, hint) }
+
+  @Remote
+  install(request: ExtensionInstallRequest): Promise<ExtensionAnswer<ExtensionInstallResult>> { return this.manager.install(request) }
+
+  @Remote
+  remove(kind: ExtensionKind, name: string): Promise<boolean> { return this.manager.remove(kind, name) }
+}
+
+/** Adapt a plugin install result into the shape the ChangeResult-based UI expects. */
+export function asChangeResult(answer: ExtensionAnswer<ExtensionInstallResult>): Partial<ChangeResult> {
+  if (!answer.ok) return { changed: false, application: 'failed', stage: 'install', target: '',
+    error: { code: 'operation-error', diagnostic: answer.error.message } }
+  return { changed: true, application: 'applied', stage: 'install', target: answer.value.name }
+}

@@ -296,6 +296,20 @@ export async function runProfile(options: RunProfileOptions): Promise<{ ctx: Con
     const ctx = await boot(NAME, rootConfig, readProfilePatches(NAME, profileContext, composed.profile), async (hostCtx) => {
       app.current = hostCtx
       hostCtx.provide('profileContext', profileContext)
+      // The unified extension service resolves seams here, before the base patch mounts
+      // it. The plugin installer is a late closure: pluginManager is only available
+      // after the config tree loads, by which time an install request can reach it.
+      hostCtx.provide('extensionServiceSeams', {
+        home: profileContext.home,
+        installPlugin: async (name: string, source: string) => {
+          const manager = hostCtx.get('pluginManager') as {
+            installBundle: (spec: string) => Promise<{ changed: boolean; application: string; target?: string }>
+          } | undefined
+          if (manager === undefined) throw new Error('plugin-manager is not ready for extension installs')
+          const result = await manager.installBundle(source === '' ? name : source)
+          return { location: result.target ?? profileContext.dir }
+        },
+      })
       // Before any config-tree entry mounts, so plugins resolve all launch-time
       // environment values from the same immutable launch snapshot.
       hostCtx.provide(SQODE_LAUNCH_ENVIRONMENT_KEY, options.environment)
