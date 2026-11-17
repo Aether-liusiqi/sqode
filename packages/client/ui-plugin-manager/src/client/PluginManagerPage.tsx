@@ -15,7 +15,7 @@ import type { PluginInstallFailureKind, Registry } from '@liusiqi-dev/sqh-api-re
 import {
   Button, IconCheckCircleFillRegular, IconChevronDownOutlineRegular, IconChevronLeftOutlineMedium,
   IconChevronRightOutlineRegular, IconCloseOutlineMedium,
-  IconInfoOutlineRegular, IconPlusOutlineRegular, IconRefreshOutlineRegular, IconTrashOutlineRegular,
+  IconDownloadOutlineRegular, IconInfoOutlineRegular, IconPlusOutlineRegular, IconRefreshOutlineRegular, IconTrashOutlineRegular,
   IconWarningOutlineRegular, Input, Modal, pointerModality,
   PluginArtworkDefault, PluginArtworkLoop, PluginArtworkSearch, PluginArtworkSubagent, PluginArtworkTerminal,
   StateDot, Switch, Tag, TerminalBlock, Toast, Tooltip, useAnchoredPosition, useDismissOnOutsidePointer,
@@ -789,10 +789,11 @@ function useInstallComposition(active: boolean) {
  * install scripts undecided shows them for approval in place of plain retry.
  */
 function InstallDialog({
-  install, t, onClose, onEditSpec, onRun, onCancel, onReconcile, onToggleDetails, onEnableNow, onApproveBuilds,
+  install, target, t, onClose, onEditSpec, onRun, onCancel, onReconcile, onToggleDetails, onEnableNow, onApproveBuilds,
   onToggleRegistry, onChooseRegistry, onChangeRegistry, onUseGithubMirror,
 }: {
   readonly install: InstallState
+  readonly target: { readonly location: string | undefined; readonly evidence: readonly string[] | undefined }
   readonly t: Translate
   readonly onClose: () => void
   readonly onEditSpec: (text: string) => void
@@ -1149,6 +1150,14 @@ function InstallDialog({
             {phase === 'unknown' ? <p className={css.wizardSub}>{t('installUnknownDescription')}</p> : null}
           </div>
           {install.subject === null ? null : <SubjectCard subject={install.subject} t={t} />}
+          {target.location === undefined ? null : (
+            <p className={css.wizardSub} data-install-target>
+              {t('installTarget', { location: target.location })}
+              {target.evidence === undefined || target.evidence.length === 0
+                ? null
+                : <span className={css.targetEvidence}>{target.evidence.join(' · ')}</span>}
+            </p>
+          )}
           {approvable
             ? (
               <section className={css.approval} role="group" aria-labelledby={approvalId} data-install-approval>
@@ -1393,13 +1402,13 @@ export function PluginManagerPage(props: PluginManagerPageProps): ReactNode {
                   </span>
                 </button>
               </Tooltip>
-              <Tooltip label={t('autoUpdate')} side="bottom" delayMs={300} portal>
-                <Switch checked={state.autoUpdate} label={t('autoUpdate')} onChange={props.setAutoUpdate} />
+              <Tooltip label={t('autoUpdateHint')} side="bottom" delayMs={300} portal>
+                <Switch checked={state.autoUpdate} label={t('autoUpdate')} title={t('autoUpdateHint')} onChange={props.setAutoUpdate} />
               </Tooltip>
               <Tooltip label={t('checkUpdates')} delayMs={500} side="bottom" portal disabled={!loaded || state.checkingUpdates}>
                 <button type="button" className={css.iconButton} aria-label={t('checkUpdates')} aria-busy={state.checkingUpdates} disabled={!loaded || state.checkingUpdates} onClick={props.checkUpdates}>
                   <span className={css.iconWrap} aria-hidden="true">
-                    {state.checkingUpdates ? <StateDot state="ongoing" size={18} /> : <IconRefreshOutlineRegular />}
+                    {state.checkingUpdates ? <StateDot state="ongoing" size={18} /> : <IconDownloadOutlineRegular />}
                   </span>
                 </button>
               </Tooltip>
@@ -1506,6 +1515,7 @@ export function PluginManagerPage(props: PluginManagerPageProps): ReactNode {
         }, { entryKey: activated.name }) : null}
       <InstallDialog
         install={state.install}
+        target={{ location: state.targetLocation, evidence: state.targetEvidence }}
         t={t}
         onClose={props.closeInstall}
         onEditSpec={props.editInstallSpec}

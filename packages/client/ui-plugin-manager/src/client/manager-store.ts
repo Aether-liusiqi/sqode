@@ -296,6 +296,10 @@ export interface PluginManagerState {
   readonly checkingUpdates: boolean
   /** Whether a periodic update notice is enabled. */
   readonly autoUpdate: boolean
+  /** Destination reported by source detection, shown while the install dialog is open. */
+  readonly targetLocation?: string
+  /** Why the source was classified that way. */
+  readonly targetEvidence?: readonly string[]
 }
 
 /** One update candidate reported by the Host. */
@@ -959,7 +963,38 @@ export class PluginManagerController {
       this.patchInstall({ phase: 'idle', inputError: { problem, reason, ...registries === undefined ? {} : { registries } } })
       return
     }
+    // A GitHub URL can be a plugin, Skill or MCP repository even when its shape
+    // says otherwise. Ask the unified service to read the source before deciding.
+    try {
+      const detected = await this.ctx.remote.extensionService.detect(spec)
+      if (detected.ok && detected.value.ok) {
+        const source = detected.value.value
+        this.patch({ targetLocation: source.location, targetEvidence: source.evidence })
+        if (source.kind !== 'plugin') {
+          await this.startExtensionInstall(spec, source.kind)
+          return
+        }
+      }
+    } catch { /* an unreachable detector leaves the existing plugin path in place */ }
     await this.startInstall({ spec, ...inspected.value })
+  }
+
+  /** Install a Skill or MCP extension through the unified service, reporting the outcome as a notice. */
+  private async startExtensionInstall(spec: string, kind: 'skill' | 'mcp'): Promise<void> {
+    const answer = await this.ctx.remote.extensionService.install({ spec, hint: kind })
+    if (this.disposed) return
+    if (!answer.ok) {
+      this.patch({ notice: { seq: ++this.noticeSeq, kind: 'update-failed', reason: answer.error.message }, updates: {} })
+      return
+    }
+    if (answer.value.ok) {
+      const installed = answer.value.value
+      this.ctx.get('productAnalytics')?.track('extension_installed', { kind: installed.kind, name: installed.name })
+      this.patch({ notice: { seq: ++this.noticeSeq, kind: 'updated', count: 1 }, updates: {} })
+    } else {
+      this.patch({ notice: { seq: ++this.noticeSeq, kind: 'update-failed', reason: answer.value.error.message }, updates: {} })
+    }
+    await this.load()
   }
 
   /**

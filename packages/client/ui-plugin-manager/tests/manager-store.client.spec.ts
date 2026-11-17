@@ -88,6 +88,10 @@ function bench(overrides: Partial<Record<string, ReturnType<typeof vi.fn>>> = {}
     setPluginEnabled: vi.fn(() => Promise.resolve(ok(APPLIED))),
     checkUpdates: vi.fn(() => Promise.resolve(ok([]))),
     applyUpdate: vi.fn(() => Promise.resolve(ok(APPLIED))),
+    extensionService: {
+      detect: vi.fn(() => Promise.resolve(ok(ok({ kind: 'plugin', location: 'x', evidence: ['shape'], spec: 'x', confidence: 'shape' })))),
+      install: vi.fn(() => Promise.resolve(ok(ok({ kind: 'plugin', name: 'x', location: 'x', action: 'installed', record: {} })))),
+    },
     ...overrides,
   }
   const probe = { fastest: overrides.fastest ?? vi.fn(() => Promise.resolve(ok(null))) }
