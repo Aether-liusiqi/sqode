@@ -39,7 +39,6 @@ const SPEECH_LEVEL = 0.02
 const SILENCE_FLUSH_MS = 3000
 const SILENCE_END_MS = 6000
 const POLL_MS = 100
-const SPEECH_CHUNK_SECONDS = 4
 
 type Phase = 'idle' | 'requesting' | 'recording' | 'transcribing' | 'feedback'
 interface ActiveRecording {
@@ -126,7 +125,7 @@ export function VoiceInput({ sessionId, inputActions, useInput, locked, onActive
     if (active.flushInFlight) return
     active.flushInFlight = (async () => {
       try {
-        const audio = await active.capture.flush(SPEECH_CHUNK_SECONDS)
+        const audio = await active.capture.flush(active.maxDurationSeconds)
         if (run !== generation.current || current.current !== active) return
         if (audio.byteLength > active.maxAudioBytes) return
         const result = await transcribe({ audioBase64: audioBase64(audio), ...active.selection }, active.abort.signal)
@@ -163,7 +162,10 @@ export function VoiceInput({ sessionId, inputActions, useInput, locked, onActive
       setPhase('idle')
     } catch (failure) {
       await disposeRecording(active.capture)
-      if (run === generation.current) feedback(failureText(failure))
+      if (run !== generation.current) return
+      // A silence-only tail after an interim segment carries no text; end quietly instead of erroring.
+      if (active.insertedInterim && failure instanceof RecordingError && failure.kind === 'empty') { setPhase('idle'); return }
+      feedback(failureText(failure))
     } finally { if (run === generation.current) current.current = undefined }
   }
   const poll = (active: ActiveRecording, run: number): void => {

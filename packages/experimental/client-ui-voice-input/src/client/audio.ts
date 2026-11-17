@@ -45,6 +45,7 @@ export class Recording {
   private analyser: AnalyserNode | undefined
   private samples = new Float32Array(256)
   private chunks: Blob[] = []
+  private onFailure: ((error: RecordingError) => void) | undefined
   private readonly lifetime = new AbortController()
   private disposal: Promise<void> | undefined
 
@@ -67,23 +68,29 @@ export class Recording {
     }
     if (this.lifetime.signal.aborted) { stream.getTracks().forEach((track) => { track.stop() }); throw new RecordingError('cancelled') }
     this.stream = stream
+    this.onFailure = onError
     try {
       this.context = new AudioContext()
       this.analyser = this.context.createAnalyser()
       this.analyser.fftSize = this.samples.length
       this.context.createMediaStreamSource(stream).connect(this.analyser)
-      this.recorder = new MediaRecorder(stream)
-      this.recorder.ondataavailable = (event) => { if (!this.lifetime.signal.aborted && event.data.size > 0) this.chunks.push(event.data) }
-      this.recorder.onerror = () => {
-        if (this.lifetime.signal.aborted) return
-        void this.dispose().catch(() => undefined)
-        try { onError?.(new RecordingError('interrupted')) } catch (error) {
-          console.error('Speech recording error handler failed', error)
-        }
-      }
-      // Emit periodic chunks so a silence-triggered flush has accumulated audio to transcribe.
-      this.recorder.start(250)
+      this.recorder = this.createRecorder(stream)
+      this.recorder.start()
     } catch (error) { await this.dispose(); throw error }
+  }
+
+  /** Build one recorder that owns the current chunk list. */
+  private createRecorder(stream: MediaStream): MediaRecorder {
+    const recorder = new MediaRecorder(stream)
+    recorder.ondataavailable = (event) => { if (!this.lifetime.signal.aborted && event.data.size > 0) this.chunks.push(event.data) }
+    recorder.onerror = () => {
+      if (this.lifetime.signal.aborted) return
+      void this.dispose().catch(() => undefined)
+      try { this.onFailure?.(new RecordingError('interrupted')) } catch (error) {
+        console.error('Speech recording error handler failed', error)
+      }
+    }
+    return recorder
   }
 
   /**
@@ -99,8 +106,8 @@ export class Recording {
   }
 
   /**
-   * Resample a decoded fragment to the canonical 16 kHz mono WAV.
-   * @param decoded - decoded audio fragment.
+   * Resample a decoded segment to the canonical 16 kHz mono WAV.
+   * @param decoded - decoded audio segment.
    * @param maxDurationSeconds - truncate timer overshoot to the Host limit.
    * @returns encoded WAV bytes.
    */
@@ -115,27 +122,48 @@ export class Recording {
     return encodeWave(resampled.getChannelData(0))
   }
 
-  /**
-   * Transcode the audio accumulated so far without ending the recording.
-   * The first chunk (container header) is retained so later fragments stay decodable.
-   * @param maxDurationSeconds - truncate overshoot to the Host limit.
-   * @returns encoded WAV bytes for this fragment.
-   */
-  async flush(maxDurationSeconds: number): Promise<Uint8Array<ArrayBuffer>> {
-    const recorder = this.recorder
-    const context = this.context
-    if (!recorder || !context || recorder.state !== 'recording') throw new RecordingError('empty')
-    const snapshot = this.chunks.slice()
-    this.chunks = snapshot.slice(0, 1)
-    const blob = new Blob(snapshot, { type: recorder.mimeType })
-    if (blob.size === 0) throw new RecordingError('empty')
-    const decoded = await context.decodeAudioData(await blob.arrayBuffer())
-    this.lifetime.signal.throwIfAborted()
-    return this.resample(decoded, maxDurationSeconds)
+  /** Wait for a recorder stop event, rejecting once the capture lifetime is aborted. */
+  private awaitStop(recorder: MediaRecorder): Promise<void> {
+    const stopped = Promise.withResolvers<void>()
+    const onAbort = (): void => stopped.reject(new RecordingError('cancelled'))
+    this.lifetime.signal.addEventListener('abort', onAbort, { once: true })
+    recorder.onstop = () => { stopped.resolve() }
+    return stopped.promise.finally(() => { this.lifetime.signal.removeEventListener('abort', onAbort) })
   }
 
   /**
-   * Finish capture and resample the recording.
+   * Transcode the segment recorded so far and immediately keep capturing.
+   * The current recorder is stopped for a complete media container, then a fresh
+   * recorder takes over the same microphone stream, so silence-driven interim
+   * transcription never ends the session and each segment stays independently decodable.
+   * @param maxDurationSeconds - truncate overshoot to the Host limit.
+   * @returns encoded WAV bytes for the finished segment.
+   */
+  async flush(maxDurationSeconds: number): Promise<Uint8Array<ArrayBuffer>> {
+    const stream = this.stream, context = this.context, finished = this.recorder
+    if (!stream || !context || !finished || finished.state !== 'recording') throw new RecordingError('empty')
+    const type = finished.mimeType
+    try {
+      const stopping = this.awaitStop(finished)
+      finished.stop()
+      await stopping
+      const blob = new Blob(this.chunks, { type })
+      this.chunks = []
+      this.recorder = this.createRecorder(stream)
+      this.recorder.start()
+      if (blob.size === 0) throw new RecordingError('empty')
+      const decoded = await context.decodeAudioData(await blob.arrayBuffer())
+      this.lifetime.signal.throwIfAborted()
+      return await this.resample(decoded, maxDurationSeconds)
+    } catch (error) {
+      if (this.lifetime.signal.aborted) throw error
+      await this.dispose()
+      throw error
+    }
+  }
+
+  /**
+   * Finish capture and resample the final segment.
    * @param maxDurationSeconds - truncate timer overshoot to the Host limit.
    * @returns one recording after the final MediaRecorder chunk arrives.
    */

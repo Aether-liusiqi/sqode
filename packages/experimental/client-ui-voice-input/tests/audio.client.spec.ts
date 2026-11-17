@@ -58,19 +58,21 @@ it('flushes final recording bytes, bounds timer overshoot and closes audio resou
   expect(b.close).toHaveBeenCalledOnce()
 })
 
-it('flushes accumulated chunks while keeping the recording alive', async () => {
+it('rotates the recorder on flush so each segment is a clean container and the mic stays live', async () => {
   const b = captureFixture()
   await b.recording.start()
-  b.emit('header')
   b.emit('first utterance')
   const first = await b.recording.flush(4)
-  expect(new TextDecoder().decode(b.decoding.mock.calls[0]![0])).toBe('headerfirst utterance')
+  expect(new TextDecoder().decode(b.decoding.mock.calls[0]![0])).toBe('first utterancefinal audio')
   expect(first).toEqual(encodeWave(new Float32Array([0.5, -0.5])))
   expect(b.close).not.toHaveBeenCalled()
+  expect(b.trackStop).not.toHaveBeenCalled()
+  expect(b.getUserMedia).toHaveBeenCalledOnce()
   b.emit('second utterance')
   const second = await b.recording.stop(4)
-  expect(new TextDecoder().decode(b.decoding.mock.calls[1]![0])).toBe('headersecond utterancefinal audio')
+  expect(new TextDecoder().decode(b.decoding.mock.calls[1]![0])).toBe('second utterancefinal audio')
   expect(second).toEqual(first)
+  expect(b.getUserMedia).toHaveBeenCalledOnce()
   await b.recording.dispose()
 })
 

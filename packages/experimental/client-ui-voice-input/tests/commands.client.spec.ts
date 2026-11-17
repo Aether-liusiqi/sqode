@@ -19,7 +19,7 @@ describe('matchVoiceCommand', () => {
   })
 
   it.each([
-    ['退格', '你好世', '你好。世'], ['删除最后一个字', '你好世', '你好。世'], ['Backspace', '你好世', '你好。世'],
+    ['退格', '你好世', '你好。世'], ['删除', '你好世', '你好。世'], ['删除最后一个字', '你好世', '你好。世'], ['Backspace', '你好世', '你好。世'],
     ['删除整句', '', '你好。'], ['delete sentence', '', '你好。'],
     ['删除全部', '', ''], ['清空', '', ''], ['delete all', '', ''], ['clear all', '', ''],
   ])('deletes for %s', (spoken, expected, expectedWithPunctuation) => {
@@ -47,5 +47,18 @@ describe('matchVoiceCommand', () => {
     expect(command?.kind === 'delete' && command.apply('你好世界')).toBe('')
     expect(command?.kind === 'delete' && command.apply('你好。世界')).toBe('你好。')
     expect(command?.kind === 'delete' && command.apply('第一行\n第二行')).toBe('第一行\n')
+  })
+
+  it.each([
+    ['请退格', 'delete'], ['帮我删除', 'delete'], ['麻烦删除全部吧', 'delete'],
+    ['请换行一下', 'insert'], ['please delete', 'delete'], ['删除整句吧', 'delete'],
+  ])('recognizes the polite lead-in form %s', (spoken, kind) => {
+    expect(matchVoiceCommand(spoken)?.kind).toBe(kind)
+  })
+
+  it('does not swallow command words used mid-sentence', () => {
+    expect(matchVoiceCommand('文档里怎么换行')).toBeNull()
+    expect(matchVoiceCommand('帮我删除这句话')).toBeNull()
+    expect(matchVoiceCommand('请问要退格吗')).toBeNull()
   })
 })

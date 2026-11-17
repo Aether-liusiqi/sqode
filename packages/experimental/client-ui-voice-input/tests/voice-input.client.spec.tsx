@@ -396,7 +396,7 @@ it('flushes and inserts a partial transcript after three seconds of silence with
   loud = false
   await act(async () => { await vi.advanceTimersByTimeAsync(3100) })
 
-  expect(b.capture.flush).toHaveBeenCalledWith(4)
+  expect(b.capture.flush).toHaveBeenCalledWith(120)
   expect(b.transcribe).toHaveBeenCalled()
   expect(b.inputActions.insertText).toHaveBeenCalledWith(transcript.text, { start: 3, end: 3, draftRev: 1 })
   expect(b.capture.stop).not.toHaveBeenCalled()
@@ -443,4 +443,60 @@ it('maps spoken punctuation to insertText and delete commands to setDraft', asyn
   await start(); stop()
   await waitFor(() => { expect(c.inputActions.setDraft).toHaveBeenCalledWith('你好世') })
   expect(c.inputActions.insertText).not.toHaveBeenCalled()
+})
+
+it('keeps recording after an interim flush and measures the six-second end from the last speech', async () => {
+  let level = 0.25
+  const b = fixture()
+  Object.assign(b.capture, { amplitude: () => level })
+  vi.useFakeTimers()
+  fireEvent.click(screen.getByRole('button', { name: zh.start }))
+  await act(async () => {})
+  await act(async () => { await vi.advanceTimersByTimeAsync(100) })
+  level = 0
+  await act(async () => { await vi.advanceTimersByTimeAsync(3100) })
+  expect(b.capture.flush).toHaveBeenCalledOnce()
+  level = 0.25
+  await act(async () => { await vi.advanceTimersByTimeAsync(2000) })
+  level = 0
+  expect(b.capture.stop).not.toHaveBeenCalled()
+  expect(screen.getByRole('button', { name: zh.stop })).toBeTruthy()
+  await act(async () => { await vi.advanceTimersByTimeAsync(6100) })
+  expect(b.capture.stop).toHaveBeenCalledOnce()
+})
+
+it('applies commands recognized from an interim flush without ending the recording', async () => {
+  let level = 0.25
+  const b = fixture()
+  Object.assign(b.capture, { amplitude: () => level })
+  b.transcribe.mockResolvedValue({ ok: true, value: { ...transcript, text: '请退格' } })
+  vi.useFakeTimers()
+  fireEvent.click(screen.getByRole('button', { name: zh.start }))
+  await act(async () => {})
+  await act(async () => { await vi.advanceTimersByTimeAsync(100) })
+  level = 0
+  await act(async () => { await vi.advanceTimersByTimeAsync(3100) })
+  expect(b.inputActions.setDraft).toHaveBeenCalledWith('你好世')
+  expect(b.inputActions.insertText).not.toHaveBeenCalled()
+  expect(b.capture.stop).not.toHaveBeenCalled()
+  expect(screen.getByRole('button', { name: zh.stop })).toBeTruthy()
+})
+
+it('ends quietly when the final segment after an interim flush transcribes empty', async () => {
+  let level = 0.25
+  const b = fixture()
+  Object.assign(b.capture, { amplitude: () => level })
+  b.transcribe.mockResolvedValueOnce({ ok: true, value: { ...transcript, text: '你好' } })
+  b.transcribe.mockResolvedValueOnce({ ok: true, value: { ...transcript, text: '' } })
+  vi.useFakeTimers()
+  fireEvent.click(screen.getByRole('button', { name: zh.start }))
+  await act(async () => {})
+  await act(async () => { await vi.advanceTimersByTimeAsync(100) })
+  level = 0
+  await act(async () => { await vi.advanceTimersByTimeAsync(3100) })
+  expect(b.inputActions.insertText).toHaveBeenCalledWith('你好', { start: 3, end: 3, draftRev: 1 })
+  await act(async () => { await vi.advanceTimersByTimeAsync(3100) })
+  expect(b.capture.stop).toHaveBeenCalledOnce()
+  expect(screen.queryByText(zh.empty)).toBeNull()
+  expect(screen.getByRole('button', { name: zh.start })).toBeTruthy()
 })
