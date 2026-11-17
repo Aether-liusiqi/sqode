@@ -32,15 +32,12 @@ import { checkGithubConnection } from './github-connection.ts'
 import { parseGithubRepository, resolveGithubTarball } from './github-api.ts'
 import { createUpdateChecker, githubUpdateLookup, installedFromBundles } from './update-checker.ts'
 import { cleanupNewTempDirs, pnpmTmpCandidates, profileLogRoot, resolvePnpmTmp, snapshotCleanupRoots } from './install-cleanup.ts'
-import { classifyInstallTarget, type InstallTarget, type InstallTargetHint } from './install-target.ts'
 import type {
   BundleInfo, BundleRowInfo, ChangeResult, InspectOptions, InstallBundleOptions, ManagementError, PackageResult, PluginChange,
   PluginEntryId, PluginInfo, PluginInspectProblem, PluginInstallCancellation, PluginInstallProgress, PluginInstallRequestId,
   PluginRegistries, PluginSpecInspection, Registry,
 } from './types.ts'
 export type * from './types.ts'
-export type { InstallTarget, InstallTargetHint, InstallTargetKind } from './install-target.ts'
-export type { McpServerConfig, InstallPlacement } from './install-executors.ts'
 export { classifyInstallFailure, type InstallFailureFacts } from './install-failure.ts'
 export { InvalidInstallSpecError, parseInstallSpec, type ParsedInstallSpec } from './install-spec.ts'
 
@@ -349,15 +346,6 @@ export class PluginManager extends TypertRemoteService {
       }
     }
     return Promise.resolve(bundles)
-  }
-
-  /** Classify an install input before anything is downloaded, so the dialog can say where it will land.
-   * @param spec - the typed package name, URL, or path.
-   * @param hint - an explicit plugin/skill/MCP choice, or `auto` to infer from the URL.
-   */
-  @Remote
-  inspectTarget(spec: string, hint?: InstallTargetHint): InstallTarget {
-    return classifyInstallTarget(spec, hint)
   }
 
   /** Read installed bundles that have a newer registry or GitHub release available.
