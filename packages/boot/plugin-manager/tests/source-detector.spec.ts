@@ -1,8 +1,6 @@
 /** Source classification: explicit choice, repository contents, then URL shape. */
 import { describe, expect, it, vi } from 'vitest'
-import {
-  detectSource, detectFromContents, detectFromShape, hasExplicitSourceHint, splitExplicitPrefix,
-} from '../src/source-detector.ts'
+import { detectSource, detectFromContents, detectFromShape, splitExplicitPrefix } from '../src/source-detector.ts'
 import { readSourceSnapshot } from '../src/source-snapshot.ts'
 
 const SKILL = `---
@@ -29,8 +27,6 @@ describe('explicit prefixes and dialog hints', () => {
   it('splits kind prefixes and keeps the spec intact', () => {
     expect(splitExplicitPrefix('skill:https://github.com/acme/x')).toEqual({ kind: 'skill', spec: 'https://github.com/acme/x' })
     expect(splitExplicitPrefix('https://github.com/acme/x')).toEqual({ spec: 'https://github.com/acme/x' })
-    expect(hasExplicitSourceHint('mcp:acme/server')).toBe(true)
-    expect(hasExplicitSourceHint('github:acme/plugin')).toBe(false)
   })
 
   it('lets a prefix or hint outrank the URL shape', () => {

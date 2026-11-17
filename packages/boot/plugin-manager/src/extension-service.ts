@@ -16,7 +16,7 @@ import { listExtensions } from './extension-registry.ts'
 import { detectSource, type SourceSnapshot } from './source-detector.ts'
 import { readSourceSnapshot } from './source-snapshot.ts'
 import type {
-  ChangeResult, ExtensionKind, ExtensionRecord, DetectedSource, SourceHint,
+  ExtensionKind, ExtensionRecord, DetectedSource, SourceHint,
   McpServerConfig, ExtensionInstallResult, ExtensionInstallRequest, ExtensionFailure, ExtensionAnswer,
 } from './types.ts'
 
@@ -114,13 +114,6 @@ export class ExtensionService extends TypertRemoteService {
     this.manager = new ExtensionManager(seams)
   }
 
-  /** Cordis constructs plugin rows with (ctx, config); resolve seams from the provided service. */
-  static fromContext(ctx: Context): ExtensionService {
-    const seams = ctx.get('extensionServiceSeams') as ExtensionServiceSeams | undefined
-    if (seams === undefined) throw new Error('extensionServiceSeams was not provided by the profile boot')
-    return new ExtensionService(ctx, seams)
-  }
-
   @Remote
   list(kind?: ExtensionKind): Promise<readonly ExtensionRecord[]> { return this.manager.list(kind) }
 
@@ -132,11 +125,4 @@ export class ExtensionService extends TypertRemoteService {
 
   @Remote
   remove(kind: ExtensionKind, name: string): Promise<boolean> { return this.manager.remove(kind, name) }
-}
-
-/** Adapt a plugin install result into the shape the ChangeResult-based UI expects. */
-export function asChangeResult(answer: ExtensionAnswer<ExtensionInstallResult>): Partial<ChangeResult> {
-  if (!answer.ok) return { changed: false, application: 'failed', stage: 'install', target: '',
-    error: { code: 'operation-error', diagnostic: answer.error.message } }
-  return { changed: true, application: 'applied', stage: 'install', target: answer.value.name }
 }

@@ -14,7 +14,6 @@
  * @module @liusiqi-dev/sqh-plugin-manager/source-detector
  */
 
-import { isAbsolute } from 'node:path'
 import { parseGithubRepository } from './github-api.ts'
 import type { ExtensionKind } from './extension-registry.ts'
 
@@ -123,17 +122,7 @@ export function detectSource(
   }
 }
 
-/** Whether an input carries an explicit kind prefix, for dialogs that echo it back. */
-export function hasExplicitSourceHint(raw: string): boolean {
-  return splitExplicitPrefix(raw).kind !== undefined
-}
-
 /** GitHub repository parts when the spec names one, for the API content reader. */
 export function githubParts(raw: string) {
   return parseGithubRepository(splitExplicitPrefix(raw).spec)
-}
-
-/** A local absolute path stays a plugin, which keeps the old spec semantics. */
-export function isLocalPath(spec: string): boolean {
-  return isAbsolute(spec)
 }
