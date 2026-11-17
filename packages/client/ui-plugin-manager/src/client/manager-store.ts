@@ -25,7 +25,7 @@ import type {
   ReadOnlyReason,
   Registry,
 } from '@liusiqi-dev/sqh-api-remotes/client'
-import { normalizeRegistry, NPMMIRROR_REGISTRY, OFFICIAL_NPM_REGISTRY, REGISTRY_URL } from '@liusiqi-dev/sqh-plugin-manager/registry'
+import { isRegistryAddress, normalizeRegistry, NPMMIRROR_REGISTRY, OFFICIAL_NPM_REGISTRY } from '@liusiqi-dev/sqh-plugin-manager/registry'
 import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import type { HostObservable } from '@liusiqi-dev/sqh-client-ui-slots'
 import type { LocalizedText, PluginLocalizedMeta } from '@liusiqi-dev/sqh-package-manifest'
@@ -150,8 +150,8 @@ export function offeredRegistries(registries: PluginRegistries | null): Registry
 
 /** Why the typed spec was refused before anything installed. */
 export interface InstallInputError {
-  /** The Host's refusal, or `shipped` for a listed bundle the installation supplies. */
-  readonly problem: PluginInspectProblem | 'shipped'
+  /** The Host's refusal, `shipped` for a listed bundle, or a source the classifier could not read. */
+  readonly problem: PluginInspectProblem | 'shipped' | 'detection-failed'
   readonly reason: string
   /** The registries the check asked, in order, when the refusal came from asking them. */
   readonly registries?: readonly Registry[]
@@ -339,6 +339,8 @@ export interface PluginManagerFace {
   toggleRegistryOptions: () => void
   /** Pick the registry the install asks first, or type one. */
   chooseRegistry: (choice: RegistryChoice) => void
+  /** Forget the remembered registry and ask pnpm's own configuration again. */
+  resetRegistry: () => void
   /** From the failed screen: back to the spec with the registry options unfolded. */
   changeRegistry: () => void
   /** Return from a GitHub connection failure to an empty spec asking the offered mainland mirror, keeping a choice that asks it. */
@@ -597,7 +599,7 @@ export class PluginManagerController {
         const install = this.getSnapshot().install
         if (install.requestId === undefined) {
           // A new dialog starts from the registry last used here and reads what the Host offers; a hidden install reopens as it is.
-          this.patch({ install: { ...IDLE_INSTALL, open: true, registry: this.registryMemory.getSnapshot() ?? OFFICIAL_REGISTRY } })
+          this.patch({ install: { ...IDLE_INSTALL, open: true, registry: this.rememberedRegistry() ?? OFFICIAL_REGISTRY } })
           const read: RegistryRead = { choice: this.getSnapshot().install.registry }
           this.registryRead = read
           read.done = this.readRegistries(read).finally(() => { delete read.done })
@@ -627,6 +629,12 @@ export class PluginManagerController {
       toggleRegistryOptions: () => { this.patchInstall({ registryOpen: !this.getSnapshot().install.registryOpen }) },
       chooseRegistry: (choice) => {
         if (this.getSnapshot().install.phase === 'idle') this.patchInstall({ registry: choice, registryError: false })
+      },
+      resetRegistry: () => {
+        // The remembered choice outlives the dialog, so forgetting it has to be an
+        // explicit action; the offered default is what a first-ever dialog shows.
+        this.registryMemory.set(null)
+        this.patchInstall({ registry: OFFICIAL_REGISTRY, registryError: false })
       },
       changeRegistry: () => {
         const install = this.getSnapshot().install
@@ -756,12 +764,30 @@ export class PluginManagerController {
     return !this.disposed && this.registryRead === read
   }
 
+  /**
+   * Read the remembered registry choice, forgetting one that cannot serve packages.
+   *
+   * A custom address persisted from an earlier dialog survives reloads and every
+   * later install asks it first, so a repository URL typed by mistake makes pnpm
+   * request package metadata from a code host and fail every dependency. Drop
+   * such a value once, here, instead of letting it poison later runs; only the
+   * registry memory is cleared, so the rest of the dialog state is untouched.
+   * @returns the remembered choice, or null when there is none or it was dropped.
+   */
+  private rememberedRegistry(): RegistryChoice | null {
+    const remembered = this.registryMemory.getSnapshot()
+    if (remembered === null || remembered.kind === 'offered') return remembered
+    if (isRegistryAddress(remembered.url)) return remembered
+    this.registryMemory.set(null)
+    return null
+  }
+
   /** Read the registries the Host offers, for the dialog just opened; a refused read leaves pnpm's own and a typed one. */
   private async readRegistries(read: RegistryRead): Promise<void> {
     const answer = await this.ctx.remote.pluginManager.registries()
     const install = this.getSnapshot().install
     if (!this.currentRegistryRead(read) || !install.open || !answer.ok) return
-    const remembered = this.registryMemory.getSnapshot()
+    const remembered = this.rememberedRegistry()
     const untouched = install.registry === read.choice && (install.phase === 'idle' || install.phase === 'checking')
     if (untouched) read.choice = reconciled(remembered, answer.value)
     this.patchInstall({ registries: answer.value, ...untouched ? { registry: read.choice } : {} })
@@ -928,7 +954,7 @@ export class PluginManagerController {
     }
     const choice = install.registry
     const typed = choice.kind === 'custom' ? choice.url.trim() : undefined
-    if (typed !== undefined && !REGISTRY_URL.test(typed)) {
+    if (typed !== undefined && !isRegistryAddress(typed)) {
       this.finishAnalytics('failed', 'invalid-registry')
       this.patchInstall({ phase: 'idle', registryError: true, registryOpen: true })
       return
@@ -965,17 +991,27 @@ export class PluginManagerController {
     }
     // A GitHub URL can be a plugin, Skill or MCP repository even when its shape
     // says otherwise. Ask the unified service to read the source before deciding.
+    let detectedKind: 'plugin' | 'skill' | 'mcp' | undefined
     try {
       const detected = await this.ctx.remote.extensionService.detectSource(spec)
       if (detected.ok && detected.value.ok) {
         const source = detected.value.value
+        detectedKind = source.kind
         this.patch({ targetLocation: source.location, targetEvidence: source.evidence })
         if (source.kind !== 'plugin') {
           await this.startExtensionInstall(spec, source.kind)
           return
         }
       }
-    } catch { /* an unreachable detector leaves the existing plugin path in place */ }
+    } catch { /* the answer below reports an unreachable detector like a refused one */ }
+    // Falling through would install the source as a plugin, which is the mistake
+    // the classification exists to prevent: a Skill repository then reaches pnpm
+    // and fails every dependency. Stop and name the kinds instead.
+    if (detectedKind === undefined) {
+      this.finishAnalytics('failed', 'detection-failed')
+      this.patchInstall({ phase: 'idle', inputError: { problem: 'detection-failed', reason: spec } })
+      return
+    }
     await this.startInstall({ spec, ...inspected.value })
   }
 

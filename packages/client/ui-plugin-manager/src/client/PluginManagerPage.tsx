@@ -670,6 +670,7 @@ const INPUT_PROBLEM_KEYS = {
   'not-a-bundle': 'installProblemNotBundle',
   'network': 'installProblemNetwork',
   'unknown': 'installProblemUnknown',
+  'detection-failed': 'installProblemDetection',
 } satisfies Record<InstallInputError['problem'], PluginManagerLocaleKey>
 
 /** One row of the install guide: a spec form's title, its example, and where the person finds it. */
@@ -790,7 +791,7 @@ function useInstallComposition(active: boolean) {
  */
 function InstallDialog({
   install, target, t, onClose, onEditSpec, onRun, onCancel, onReconcile, onToggleDetails, onEnableNow, onApproveBuilds,
-  onToggleRegistry, onChooseRegistry, onChangeRegistry, onUseGithubMirror,
+  onToggleRegistry, onChooseRegistry, onResetRegistry, onChangeRegistry, onUseGithubMirror,
 }: {
   readonly install: InstallState
   readonly target: { readonly location: string | undefined; readonly evidence: readonly string[] | undefined }
@@ -805,6 +806,7 @@ function InstallDialog({
   readonly onApproveBuilds: () => void
   readonly onToggleRegistry: () => void
   readonly onChooseRegistry: (choice: RegistryChoice) => void
+  readonly onResetRegistry: () => void
   /** From the failed screen: back to the spec with the registry options unfolded. */
   readonly onChangeRegistry: () => void
   readonly onUseGithubMirror: () => void
@@ -1077,6 +1079,7 @@ function InstallDialog({
                     ? <p id={registryErrorId} className={css.inputError} role="alert">{t('registryCustomInvalid')}</p>
                     : null}
                   <span className={css.registryHint}>{t('registryCustomHint')}</span>
+                  <Button variant="ghost" size="sm" onClick={onResetRegistry}>{t('registryReset')}</Button>
                 </div>
               </fieldset>,
               document.body,
@@ -1527,6 +1530,7 @@ export function PluginManagerPage(props: PluginManagerPageProps): ReactNode {
         onApproveBuilds={props.approveBuildsAndRetry}
         onToggleRegistry={props.toggleRegistryOptions}
         onChooseRegistry={props.chooseRegistry}
+        onResetRegistry={props.resetRegistry}
         onChangeRegistry={props.changeRegistry}
         onUseGithubMirror={props.useGithubMirror}
       />

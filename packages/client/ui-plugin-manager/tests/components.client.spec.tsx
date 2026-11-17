@@ -116,6 +116,7 @@ function renderTab(
     toggleInstallDetails: vi.fn(),
     toggleRegistryOptions: vi.fn(),
     chooseRegistry: vi.fn(),
+    resetRegistry: vi.fn(),
     changeRegistry: vi.fn(),
     useGithubMirror: vi.fn(),
     approveBuildsAndRetry: vi.fn(),

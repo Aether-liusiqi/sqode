@@ -88,18 +88,26 @@ function bench(overrides: Partial<Record<string, ReturnType<typeof vi.fn>>> = {}
     setPluginEnabled: vi.fn(() => Promise.resolve(ok(APPLIED))),
     checkUpdates: vi.fn(() => Promise.resolve(ok([]))),
     applyUpdate: vi.fn(() => Promise.resolve(ok(APPLIED))),
-    extensionService: {
-      detect: vi.fn(() => Promise.resolve(ok(ok({ kind: 'plugin', location: 'x', evidence: ['shape'], spec: 'x', confidence: 'shape' })))),
-      install: vi.fn(() => Promise.resolve(ok(ok({ kind: 'plugin', name: 'x', location: 'x', action: 'installed', record: {} })))),
-    },
     ...overrides,
   }
   const probe = { fastest: overrides.fastest ?? vi.fn(() => Promise.resolve(ok(null))) }
+  // The classifier is a peer namespace, not a pluginManager method: a plugin
+  // answer keeps every existing install test on its original path.
+  const extensions = {
+    // Typed as unknown results so one test can answer a refusal without widening
+    // the default answer every other install test relies on.
+    detectSource: vi.fn<() => Promise<unknown>>(() => Promise.resolve(ok(ok({
+      kind: 'plugin', location: '~/.sqode/profiles/desktop/package.json', evidence: ['URL shape'], spec: '', confidence: 'shape',
+    })))),
+    installExtension: vi.fn<() => Promise<unknown>>(() => Promise.resolve(ok(ok({
+      kind: 'plugin', name: 'x', location: 'x', action: 'installed', record: {},
+    })))),
+  }
   const track = vi.fn()
   const ctx = {
     get: () => ({ enabled, track }),
     configForms: { describe: () => ({ getSnapshot: () => ({ view: { namespaces: [] } }), subscribe: () => () => {} }), get: vi.fn((id: string) => `form:${id}`) },
-    remote: { pluginManager: plugins, pluginInventory: inventory, pluginRegistryProbe: probe },
+    remote: { pluginManager: plugins, pluginInventory: inventory, pluginRegistryProbe: probe, extensionService: extensions },
   } as never
   const controller = new PluginManagerController(ctx)
   onTestFinished(() => { controller.dispose() })
@@ -110,7 +118,7 @@ function bench(overrides: Partial<Record<string, ReturnType<typeof vi.fn>>> = {}
     await vi.waitFor(() => { expect(state().install.phase).toBe('starting') })
     return state().install.requestId as PluginInstallRequestId
   }
-  return { plugins, inventory, probe, controller, face, state, started, track }
+  return { plugins, inventory, probe, extensions, controller, face, state, started, track }
 }
 
 it('hands a custom page the shared configuration form of its entry', () => {
@@ -1396,6 +1404,76 @@ describe('PluginManagerController', () => {
     } finally {
       vi.unstubAllGlobals()
     }
+  })
+
+  it('refuses a remembered repository page as a registry and forgets it', async () => {
+    // A code-host address typed into the custom field once survives reloads and
+    // makes pnpm ask that host for every dependency; reading it must not revive it.
+    const page = 'https://github.com/Aether-liusiqi/sm-research'
+    const storage = new Map([['dsh.plugin-manager.install-registry', JSON.stringify({ kind: 'custom', url: page })]])
+    vi.stubGlobal('localStorage', {
+      getItem: (key: string) => storage.get(key) ?? null,
+      setItem: (key: string, value: string) => { storage.set(key, value) },
+      removeItem: (key: string) => { storage.delete(key) },
+    })
+    try {
+      const { face, state } = bench()
+      face.openInstall()
+      expect(state().install.registry).toEqual({ kind: 'offered', registry: null })
+      await vi.waitFor(() => { expect(state().install.registries).toEqual(REGISTRIES) })
+      expect(state().install.registry).toEqual({ kind: 'offered', registry: null })
+      expect(JSON.parse(storage.get('dsh.plugin-manager.install-registry') ?? 'null')).toBeNull()
+    } finally {
+      vi.unstubAllGlobals()
+    }
+  })
+
+  it('refuses a typed repository page as the custom registry before asking the Host', async () => {
+    const { plugins, face, state } = bench()
+    face.openInstall()
+    await vi.waitFor(() => { expect(state().install.registries).toEqual(REGISTRIES) })
+    face.toggleRegistryOptions()
+    face.chooseRegistry({ kind: 'custom', url: 'https://github.com/Aether-liusiqi/sm-research' })
+    face.editInstallSpec('sqh-new')
+    face.runInstall()
+    expect(state().install).toMatchObject({ phase: 'idle', registryError: true })
+    expect(plugins.inspect).not.toHaveBeenCalled()
+    expect(plugins.installBundle).not.toHaveBeenCalled()
+  })
+
+  it('resets the remembered registry to the offered default', async () => {
+    const storage = new Map([['dsh.plugin-manager.install-registry', JSON.stringify({ kind: 'custom', url: 'https://npm.corp.example/' })]])
+    vi.stubGlobal('localStorage', {
+      getItem: (key: string) => storage.get(key) ?? null,
+      setItem: (key: string, value: string) => { storage.set(key, value) },
+      removeItem: (key: string) => { storage.delete(key) },
+    })
+    try {
+      const { face, state } = bench()
+      face.openInstall()
+      expect(state().install.registry).toEqual({ kind: 'custom', url: 'https://npm.corp.example/' })
+      face.resetRegistry()
+      expect(state().install.registry).toEqual({ kind: 'offered', registry: null })
+      expect(JSON.parse(storage.get('dsh.plugin-manager.install-registry') ?? 'null')).toBeNull()
+    } finally {
+      vi.unstubAllGlobals()
+    }
+  })
+
+  it('stops instead of installing as a plugin when the source cannot be classified', async () => {
+    // Silence here is what sends a Skill repository to pnpm; the dialog must say
+    // so and ask for the kind instead of guessing.
+    const { plugins, extensions, face, state } = bench()
+    extensions.detectSource.mockResolvedValueOnce(ok({
+      ok: false, error: { code: 'detection-failed', message: 'github api unreachable' },
+    }))
+    face.openInstall()
+    await vi.waitFor(() => { expect(state().install.registries).toEqual(REGISTRIES) })
+    face.editInstallSpec('https://github.com/acme/skills-demo')
+    face.runInstall()
+    await vi.waitFor(() => { expect(state().install.inputError?.problem).toBe('detection-failed') })
+    expect(state().install.phase).toBe('idle')
+    expect(plugins.installBundle).not.toHaveBeenCalled()
   })
 
   it('keeps a remembered pnpm configuration that names its own registry', async () => {

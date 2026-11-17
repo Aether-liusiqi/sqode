@@ -2,7 +2,7 @@
 
 import { describe, expect, it } from 'vitest'
 import { parseInstallSpec } from '../src/install-spec.ts'
-import { attributeFailure, normalizeRegistry, OFFICIAL_NPM_REGISTRY, registryPlan, REGISTRY_URL } from '../src/registry.ts'
+import { attributeFailure, isRegistryAddress, normalizeRegistry, OFFICIAL_NPM_REGISTRY, registryPlan, REGISTRY_URL } from '../src/registry.ts'
 
 const MIRROR = 'https://registry.npmmirror.com/'
 const CORP = 'https://npm.corp.example/'
@@ -113,5 +113,40 @@ describe('attributeFailure', () => {
   it('reads a failure that names no host as the registry\'s', () => {
     expect(attributeFailure('network', 'ECONNRESET', git)).toBe('registry')
     expect(attributeFailure('network', 'socket hang up', name)).toBe('registry')
+  })
+})
+
+describe('isRegistryAddress', () => {
+  it('accepts registries, including dedicated subdomains of a code host', () => {
+    for (const url of [
+      OFFICIAL_NPM_REGISTRY, MIRROR, CORP,
+      'http://npm.corp.example:4873/prefix/',
+      'https://npm.pkg.github.com/',
+      'https://registry.gitlab.com/',
+    ]) {
+      expect(isRegistryAddress(url), url).toBe(true)
+    }
+  })
+
+  it('refuses a repository page, which REGISTRY_URL alone lets through', () => {
+    // The repository shape that made a whole install fail: pnpm asked the code
+    // host for /<owner>/<repo>/-/npm/v1/... and retried every dependency.
+    for (const url of [
+      'https://github.com/Aether-liusiqi/sm-research',
+      'https://github.com/Aether-liusiqi/sm-research/',
+      'https://gitlab.com/acme/skills',
+      'https://bitbucket.org/acme/repo',
+      'https://gitee.com/acme/repo',
+      'https://github.com/acme/repo.git',
+    ]) {
+      expect(REGISTRY_URL.test(url), `REGISTRY_URL lets ${url} through`).toBe(true)
+      expect(isRegistryAddress(url), url).toBe(false)
+    }
+  })
+
+  it('refuses anything that is not an http(s) address', () => {
+    for (const url of ['registry.npmjs.org', 'ftp://x/', '', 'https://', 'file:///tmp']) {
+      expect(isRegistryAddress(url), url).toBe(false)
+    }
   })
 })

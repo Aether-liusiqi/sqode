@@ -19,6 +19,32 @@ export const NPMMIRROR_REGISTRY = 'https://registry.npmmirror.com/'
 /** An http(s) URL, as pnpm's `--registry` takes it. */
 export const REGISTRY_URL = /^https?:\/\/\S+$/
 
+/** Hosts whose two-segment URLs name a repository page, never package metadata. */
+const REPOSITORY_HOSTS: ReadonlySet<string> = new Set(['github.com', 'gitlab.com', 'bitbucket.org', 'gitee.com'])
+
+/**
+ * Whether a typed address is an npm registry rather than a repository page.
+ *
+ * `REGISTRY_URL` only checks the protocol, so a repository address such as
+ * `https://github.com/owner/repo` passes it — and then pnpm asks that host for
+ * `/<owner>/<repo>/-/npm/v1/...`, which fails every dependency and retries until
+ * the run dies. A repository page is at least two path segments on a known code
+ * host; a registry there lives on a dedicated subdomain and is still accepted.
+ * @param url - the address someone typed into the custom registry field.
+ * @returns whether the address can serve package metadata.
+ */
+export function isRegistryAddress(url: string): boolean {
+  if (!REGISTRY_URL.test(url)) return false
+  let parsed: URL
+  try {
+    parsed = new URL(url)
+  } catch {
+    return false
+  }
+  if (!REPOSITORY_HOSTS.has(parsed.hostname.toLowerCase())) return true
+  return parsed.pathname.split('/').filter(segment => segment !== '').length < 2
+}
+
 /**
  * Parse a registry URL into the form pnpm compares registries in: lower-case host, trailing slash.
  * @param url - the registry as configured or requested.
