@@ -113,20 +113,6 @@ it('installs a codeload tarball when Git transport fails but the GitHub API reso
   expect(result.githubSource).toBe('acme/sqh-plugin@deadbeef')
 })
 
-it('cleans newly created temp directories when an install fails', async () => {
-  const { manager, dir } = await fixture()
-  const before = readFileSync(join(dir, 'package.json'), 'utf8')
-  const pnpm = vi.spyOn(operations, 'runProfilePnpm').mockResolvedValue({
-    exitCode: 1, output: 'install failed', truncated: false, logPath: 'pnpm.log', kind: 'unknown',
-  })
-  onTestFinished(() => { pnpm.mockRestore() })
-  const result = await manager.installBundle('plain-package')
-  expect(result.application).toBe('failed')
-  expect(result.cleanedTempDirs).toBeDefined()
-  expect(Array.isArray(result.cleanedTempDirs)).toBe(true)
-  expect(readFileSync(join(dir, 'package.json'), 'utf8')).toBe(before)
-})
-
 it('leaves non-network GitHub errors to pnpm and forwards profile Git environment and deadline', async () => {
   const env = { GIT_CONFIG_GLOBAL: '/application/git.config' }
   const { manager, connection } = await fixture('live', false, undefined, { githubConnectionTimeoutMs: 8000 }, { command: 'pnpm', args: [], env })

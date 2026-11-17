@@ -5,7 +5,6 @@ import { readFile, rm } from 'node:fs/promises'
 import { join } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { withFileLock, writeFileAtomic } from '@liusiqi-dev/sqh-atomic-write'
-import { scrubbedParentEnv } from '@liusiqi-dev/sqh-subprocess'
 import { Context } from '@liusiqi-dev/cordis'
 import type { EntryOptions } from '@liusiqi-dev/cordis-plugin-loader'
 import type { PatchOptions } from '@liusiqi-dev/cordis-plugin-include'
@@ -31,7 +30,6 @@ import { approveBuilds, readPendingBuilds } from './build-approval.ts'
 import { checkGithubConnection } from './github-connection.ts'
 import { parseGithubRepository, resolveGithubTarball } from './github-api.ts'
 import { createUpdateChecker, githubUpdateLookup, installedFromBundles } from './update-checker.ts'
-import { cleanupNewTempDirs, pnpmTmpCandidates, profileLogRoot, resolvePnpmTmp, snapshotCleanupRoots } from './install-cleanup.ts'
 import type {
   BundleInfo, BundleRowInfo, ChangeResult, InspectOptions, InstallBundleOptions, ManagementError, PackageResult, PluginChange,
   PluginEntryId, PluginInfo, PluginInspectProblem, PluginInstallCancellation, PluginInstallProgress, PluginInstallRequestId,
@@ -527,12 +525,6 @@ export class PluginManager extends TypertRemoteService {
         result.approvedBuilds = options.approvedBuilds
       }
       const files = await this.readRestoredFiles()
-      const pnpmTmp = await resolvePnpmTmp(pnpmTmpCandidates(this.profile.dir, {
-        ...scrubbedParentEnv(), ...this.profile.packageManager?.env,
-      }))
-      const cleanupSnapshot = await snapshotCleanupRoots({
-        logs: profileLogRoot(this.profile.dir), ...pnpmTmp === undefined ? {} : { pnpmTmp },
-      })
       const before = readProfileManifest('dsh', this.profile.dir).dependencies ?? {}
       let name: string
       try {
@@ -627,9 +619,6 @@ export class PluginManager extends TypertRemoteService {
       } catch (error) {
         // pnpm has exited by now, so the files it rewrote go back as they were.
         await this.restoreFiles(files)
-        // A failed or cancelled install must not leave its own temporary unpack or diagnostic dirs
-        // behind; the shared store `files/` cache is intentionally kept for the next attempt.
-        result.cleanedTempDirs = await cleanupNewTempDirs(cleanupSnapshot)
         throw error
       }
       control.phase = 'applying'

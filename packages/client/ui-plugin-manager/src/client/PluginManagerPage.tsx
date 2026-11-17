@@ -1144,9 +1144,6 @@ function InstallDialog({
             </span>
             <h2 className={css.wizardTitle} role={phase === 'failed' ? 'alert' : 'status'}>{heading}</h2>
             {phase === 'failed' ? <p className={css.wizardSub}>{failureText(install.failure, t, install)}</p> : null}
-            {phase === 'failed' && (install.failure?.cleanedTemp ?? 0) > 0
-              ? <p className={css.wizardSub}>{t('installCleanedTemp', { count: install.failure?.cleanedTemp ?? 0 })}</p>
-              : null}
             {attemptLine === null ? null : <p className={css.wizardSub}>{attemptLine}</p>}
             {uncertaintyText === null ? null : <p className={css.wizardSub} role="alert">{uncertaintyText}</p>}
             {phase === 'unknown' ? <p className={css.wizardSub}>{t('installUnknownDescription')}</p> : null}
