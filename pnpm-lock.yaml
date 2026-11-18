@@ -1809,6 +1809,9 @@ importers:
       '@liusiqi-dev/sqh-atomic-write':
         specifier: workspace:*
         version: link:../../util/atomic-write
+      '@liusiqi-dev/sqh-http-proxy':
+        specifier: workspace:*
+        version: link:../../util/http-proxy
       '@liusiqi-dev/sqh-util-values':
         specifier: workspace:*
         version: link:../../util/values
