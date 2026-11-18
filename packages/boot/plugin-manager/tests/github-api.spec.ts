@@ -2,6 +2,15 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { parseGithubRepository, resolveGithubTarball } from '../src/github-api.ts'
 
+// The resolver now calls the proxy-aware fetch instead of the global one, so the
+// transport is routed back to the global stubs these cases install. Keeping the
+// indirection here means a case still reads as "stub fetch, assert the request".
+vi.mock('@liusiqi-dev/sqh-http-proxy', async importOriginal => ({
+  ...(await importOriginal<typeof import('@liusiqi-dev/sqh-http-proxy')>()),
+  proxyFetch: (input: RequestInfo | URL, init?: RequestInit) =>
+    (globalThis.fetch as typeof fetch)(input, init),
+}))
+
 afterEach(() => {
   vi.unstubAllGlobals()
   vi.unstubAllEnvs()

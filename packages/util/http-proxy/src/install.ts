@@ -157,6 +157,33 @@ async function createPolicyDispatcher(policy: ProxyPolicy): Promise<Dispatcher> 
 }
 
 /**
+ * Cached npm-undici `fetch`, so repeated requests do not re-import the package.
+ */
+let undiciFetch: typeof fetch | undefined
+
+/**
+ * Issue an outbound request through the dispatcher this package installed.
+ *
+ * `globalThis.fetch` cannot be used for this. Electron's main process provides
+ * its own `fetch` backed by an older Electron-bundled undici, and that older
+ * handler API rejects a dispatcher created by the npm `undici` this package
+ * installs — the request fails even though the same code works under plain Node
+ * (the incompatibility is documented in Electron apps that hit it, e.g.
+ * Insomnia's MCP transport). The npm package's own `fetch` reads the dispatcher
+ * set here, keeping transport and dispatcher in one version.
+ * @param input - URL or request, as `fetch` takes it.
+ * @param init - request options, as `fetch` takes them.
+ * @returns the response.
+ */
+export async function proxyFetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response> {
+  if (undiciFetch === undefined) {
+    const undici = await import('undici')
+    undiciFetch = undici.fetch as unknown as typeof fetch
+  }
+  return undiciFetch(input as never, init as never)
+}
+
+/**
  * Route this process's outbound HTTP through `policy`.
  *
  * Installing replaces undici's global dispatcher, which is what Node's built-in `fetch` resolves, so

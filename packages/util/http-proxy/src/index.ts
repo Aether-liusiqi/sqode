@@ -18,6 +18,7 @@ export {
   clearedProxyEnv,
   installProxyFromEnvironment,
   proxyEnvironmentForChild,
+  proxyFetch,
   proxyRouteFor,
   type ProxyRoute,
 } from './install.ts'

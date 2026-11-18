@@ -7,6 +7,7 @@
  * @module @liusiqi-dev/sqh-plugin-manager/source-snapshot
  */
 
+import { proxyFetch } from '@liusiqi-dev/sqh-http-proxy'
 import { githubParts, type SourceSnapshot } from './source-detector.ts'
 
 /** Injectable network seams for tests. */
@@ -48,7 +49,10 @@ async function readFileAt(
 export async function readSourceSnapshot(raw: string, options: SnapshotOptions = {}): Promise<SourceSnapshot | undefined> {
   const parts = githubParts(raw)
   if (parts === undefined) return undefined
-  const get = options.fetch ?? globalThis.fetch
+  // proxyFetch, not globalThis.fetch: Electron's main process ships an older
+  // undici that rejects the dispatcher installed from the npm package, so the
+  // global function fails once a proxy is active even though plain Node works.
+  const get = options.fetch ?? proxyFetch
   const base = (options.apiBase ?? API_BASE).replace(/\/+$/, '')
   const ref = parts.ref ?? 'HEAD'
   const headers: Record<string, string> = { accept: 'application/vnd.github+json' }

@@ -60,14 +60,15 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "@liusiqi-dev/schemastery": "workspace:~",
     "@liusiqi-dev/sqh-app-boot": "workspace:*",
     "@liusiqi-dev/sqh-atomic-write": "workspace:*",
-    "@liusiqi-dev/schemastery": "workspace:~",
+    "@liusiqi-dev/sqh-http-proxy": "workspace:*",
+    "@liusiqi-dev/sqh-util-values": "workspace:*",
     "execa": "^10.0.0",
     "semver": "^7.8.5",
     "yaml": "^2.9.0",
-    "zod": "^4.4.3",
-    "@liusiqi-dev/sqh-util-values": "workspace:*"
+    "zod": "^4.4.3"
   },
   "peerDependencies": {
     "@liusiqi-dev/cordis": "workspace:~",

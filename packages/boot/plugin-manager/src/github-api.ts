@@ -2,12 +2,12 @@
  * Resolve a GitHub repository through its REST API so installation does not
  * depend on the Git transport being reachable from the desktop process.
  *
- * The desktop Host installs the global proxy dispatcher from `sqh-http-proxy`,
- * so the built-in `fetch` used here reaches api.github.com through the same
- * proxy as every other outbound request. A token, when the person supplied one
- * in GITHUB_TOKEN, is attached to these API calls only: the package-manager
- * child never inherits it (`scrubbedParentEnv`), which keeps it out of install
- * logs and snapshots.
+ * Requests go through `proxyFetch` from `sqh-http-proxy` rather than the global
+ * `fetch`: Electron's main process ships its own older undici, which rejects the
+ * dispatcher that package installs from npm undici, so a global `fetch` fails
+ * once a proxy is active. A token, when the person supplied one in GITHUB_TOKEN,
+ * is attached to these API calls only: the package-manager child never inherits
+ * it (`scrubbedParentEnv`), which keeps it out of install logs and snapshots.
  *
  * What this module produces is an ordinary tarball spec. The caller hands that
  * to the existing `runPnpm` path, so retries, file restoration, progress
@@ -15,6 +15,7 @@
  * @module @liusiqi-dev/sqh-plugin-manager/github-api
  */
 
+import { proxyFetch } from '@liusiqi-dev/sqh-http-proxy'
 import { classifyInstallFailure } from './install-failure.ts'
 import type { PackageResult } from './types.ts'
 
@@ -52,6 +53,8 @@ export interface GithubApiOptions {
   readonly token?: () => string | undefined
   /** Endpoint, injectable in tests; defaults to api.github.com. */
   readonly apiBase?: string
+  /** Request function, injectable in tests; defaults to the proxy-aware fetch. */
+  readonly fetch?: typeof fetch
 }
 
 /**
@@ -121,7 +124,8 @@ export async function resolveGithubTarball(
     const headers: Record<string, string> = { accept: 'application/vnd.github+json' }
     const token = (options.token ?? (() => process.env.GITHUB_TOKEN))()?.trim()
     if (token !== undefined && token !== '') headers.authorization = `Bearer ${token}`
-    const response = await fetch(endpoint, { headers, redirect: 'error', signal: controller.signal })
+    const request = options.fetch ?? proxyFetch
+    const response = await request(endpoint, { headers, redirect: 'error', signal: controller.signal })
     if (!response.ok) {
       const output = `GitHub API answered ${String(response.status)} for ${repository.owner}/${repository.repo}@${ref}`
       return { ok: false, error: refusal(output, false, endpoint) }

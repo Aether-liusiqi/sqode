@@ -10,6 +10,15 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 import { execa } from 'execa'
 import type { Context } from '@liusiqi-dev/cordis'
 import { afterAll, beforeAll, expect, it, onTestFinished, vi } from 'vitest'
+
+// GitHub resolution now requests through the proxy-aware fetch rather than the
+// global one, so route it back to the global stubs these cases install; the
+// install path itself is unchanged.
+vi.mock('@liusiqi-dev/sqh-http-proxy', async importOriginal => ({
+  ...(await importOriginal<typeof import('@liusiqi-dev/sqh-http-proxy')>()),
+  proxyFetch: (input: RequestInfo | URL, init?: RequestInit) =>
+    (globalThis.fetch as typeof fetch)(input, init),
+}))
 import {
   boot, composeEntries, initProfile, loadProfileDirectory, readProfilePatches, readProfileManifest,
   reconcileProfilePatches, OPTIONAL_BUNDLES, PluginPackages, readPluginMeta, getSqhRuntimeVersion,
