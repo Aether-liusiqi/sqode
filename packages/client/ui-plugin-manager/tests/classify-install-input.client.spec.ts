@@ -14,6 +14,15 @@ describe('classifyInstallInput', () => {
       .toEqual({ kind: 'plugin', spec: 'some-package@1.0.0', reason: 'explicit' })
   })
 
+  it('accepts a full-width colon as an explicit prefix, as IMEs emit it', () => {
+    expect(classifyInstallInput('skill： https://github.com/acme/repo'))
+      .toEqual({ kind: 'skill', spec: 'https://github.com/acme/repo', reason: 'explicit' })
+    expect(classifyInstallInput('MCP：acme/server'))
+      .toEqual({ kind: 'mcp', spec: 'acme/server', reason: 'explicit' })
+    expect(classifyInstallInput('skill ：  C:\\a b\\SKILL.md  ').spec).toBe('C:\\a b\\SKILL.md')
+    expect(isExplicitKind('skill：x')).toBe(true)
+  })
+
   it('reads a local SKILL.md path as a Skill', () => {
     expect(classifyInstallInput('C:\\Users\\me\\.claude\\skills\\SM-research\\SKILL.md'))
       .toEqual({ kind: 'skill', spec: 'C:\\Users\\me\\.claude\\skills\\SM-research\\SKILL.md', reason: 'path' })

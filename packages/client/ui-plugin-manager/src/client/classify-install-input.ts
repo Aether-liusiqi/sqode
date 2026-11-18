@@ -25,8 +25,8 @@ export interface ClassifiedInput {
   readonly reason: 'explicit' | 'path' | 'plugin-syntax'
 }
 
-/** Prefixes that name the kind outright. */
-const PREFIX = /^(skill|mcp|plugin)\s*:\s*(.+)$/i
+/** Prefixes that name the kind outright. Both ASCII and full-width colons are accepted, since IMEs emit the latter. */
+const PREFIX = /^(skill|mcp|plugin)\s*[:：]\s*(.+)$/i
 
 /** A local absolute or explicitly relative path, as Windows or POSIX text. */
 const LOCAL_PATH = /^(?:[a-zA-Z]:[\\/]|\\\\|\.{1,2}[\\/]|\/)/
