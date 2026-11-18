@@ -11,7 +11,7 @@
  * @module @liusiqi-dev/sqh-plugin-manager/extension-installer
  */
 
-import { mkdir, readFile, rm } from 'node:fs/promises'
+import { mkdir, readFile, rm, stat } from 'node:fs/promises'
 import { join } from 'node:path'
 import { writeFileAtomic } from '@liusiqi-dev/sqh-atomic-write'
 import { resolveSqhHome } from '@liusiqi-dev/sqh-home-paths'
@@ -20,8 +20,13 @@ import {
   findExtension, registerExtension, unregisterExtension, type ExtensionKind, type ExtensionRecord,
 } from './extension-registry.ts'
 
-/** A Skill directory name, as `skill-filesystem` reads it. */
-const SKILL_NAME = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+/** A Skill directory name.
+ * `skill-filesystem` scans directories and takes the skill's name from the
+ * SKILL.md frontmatter, so the directory may keep any case or punctuation a
+ * repository already uses (`SM-research` is a real one). Only path separators,
+ * leading dots and spaces are refused, because those change where the file lands.
+ */
+const SKILL_NAME = /^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$/
 /** An MCP server id, as `mcp-client` reads `serverName`. */
 const SERVER_NAME = /^[A-Za-z0-9_-]{1,32}$/
 
@@ -64,6 +69,28 @@ export class ExtensionInstallError extends Error {
     super(message)
     this.name = 'ExtensionInstallError'
   }
+}
+
+/**
+ * Read a Skill's SKILL.md from a local file or directory.
+ *
+ * A Skill is a file, so the reliable way to install one is from bytes already on
+ * this machine: no registry, no GitHub API, no classifier service. Accepting both
+ * the file itself and its directory covers what a person naturally copies out of
+ * a repository.
+ * @param spec - the install input after any prefix was removed.
+ * @returns the file's text, or undefined when the path is not a local SKILL.md.
+ */
+export async function readLocalSkill(spec: string): Promise<string | undefined> {
+  const candidates = /SKILL\.md$/i.test(spec) ? [spec] : [join(spec, 'SKILL.md')]
+  for (const candidate of candidates) {
+    try {
+      const info = await stat(candidate)
+      if (!info.isFile()) continue
+      return await readFile(candidate, 'utf8')
+    } catch { /* the next candidate decides */ }
+  }
+  return undefined
 }
 
 /** Write one Skill directory under SQODE_HOME/skills/<name>. */
@@ -148,8 +175,14 @@ export async function installExtension(
     const result = await options.installPlugin(name, options.source)
     location = result.location
   } else if (kind === 'skill') {
-    if (typeof options.contents !== 'string') throw new ExtensionInstallError('invalid-content', 'SKILL.md contents are required')
-    location = await writeSkill(options.home, name, options.contents)
+    // Contents may arrive from the caller (already read) or from this machine;
+    // a local path keeps the install working with no network at all.
+    const contents = typeof options.contents === 'string' ? options.contents : await readLocalSkill(options.source)
+    if (contents === undefined) {
+      throw new ExtensionInstallError('invalid-content',
+        `no SKILL.md at ${options.source} and no contents were supplied`)
+    }
+    location = await writeSkill(options.home, name, contents)
   } else {
     if (options.config === undefined) throw new ExtensionInstallError('invalid-content', 'MCP server config is required')
     location = await writeMcpServer(join(resolveSqhHome(options.home), 'profiles', 'desktop', 'cordis.patch.yml'), name, options.config)

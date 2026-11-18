@@ -27,6 +27,7 @@ import type {
 } from '@liusiqi-dev/sqh-api-remotes/client'
 import { isRegistryAddress, normalizeRegistry, NPMMIRROR_REGISTRY, OFFICIAL_NPM_REGISTRY } from '@liusiqi-dev/sqh-plugin-manager/registry'
 import { createSnapshotStore, type SnapshotStore } from '@liusiqi-dev/sqh-client-store'
+import { classifyInstallInput } from './classify-install-input.ts'
 import type { HostObservable } from '@liusiqi-dev/sqh-client-ui-slots'
 import type { LocalizedText, PluginLocalizedMeta } from '@liusiqi-dev/sqh-package-manifest'
 import type { SettingsDescribeFace, ConfigForms } from '@liusiqi-dev/sqh-client-ui-settings/client'
@@ -108,6 +109,16 @@ export type RegistryChoice =
 
 /** The choice shown until the Host has said which registry it asks first: the one pnpm's own configuration names. */
 const OFFICIAL_REGISTRY: RegistryChoice = { kind: 'offered', registry: null }
+
+/**
+ * Where each kind lands, shown before the run starts.
+ * Kept in step with the Host's extension executors; it is a label for the dialog,
+ * never the value an install uses.
+ */
+const EXTENSION_LOCATIONS: Readonly<Record<'skill' | 'mcp', string>> = {
+  skill: '~/.sqode/skills/<name>/SKILL.md',
+  mcp: '~/.sqode/profiles/desktop/cordis.patch.yml',
+}
 
 /** Hold the manual-refresh spinner at least this long so a fast read does not flash it. */
 const REFRESH_SPINNER_MIN_MS = 400
@@ -939,11 +950,22 @@ export class PluginManagerController {
   private async runInstall(): Promise<void> {
     const state = this.getSnapshot()
     const install = state.install
-    const spec = install.spec.trim()
-    if (install.phase === 'checking' || isInstallPending(install.phase) || spec === '') return
+    const inputSpec = install.spec.trim()
+    if (install.phase === 'checking' || isInstallPending(install.phase) || inputSpec === '') return
+    // Decide the kind from the text alone, before the plugin inspector can veto
+    // it: npm spec parsing has no `skill:` syntax, so an inspector-first order
+    // makes an explicit kind unreachable and ties the whole path to a Remote
+    // service that may be unmounted.
+    const classified = classifyInstallInput(inputSpec)
+    const spec = classified.spec
     if (this.ctx.get('productAnalytics')?.enabled) {
-      this.analyticsAttempt = { input: sanitizeInstallInput(spec), started: Date.now() }
-      this.ctx.get('productAnalytics')?.track('plugin_install_click', { input_value: sanitizeInstallInput(spec) })
+      this.analyticsAttempt = { input: sanitizeInstallInput(inputSpec), started: Date.now() }
+      this.ctx.get('productAnalytics')?.track('plugin_install_click', { input_value: sanitizeInstallInput(inputSpec) })
+    }
+    if (classified.kind !== 'plugin') {
+      this.patch({ targetLocation: EXTENSION_LOCATIONS[classified.kind], targetEvidence: [classified.reason === 'explicit' ? 'Explicit prefix' : 'SKILL.md path'] })
+      await this.startExtensionInstall(spec, classified.kind)
+      return
     }
     // A name the list already shows is refused at once, before the Host is asked.
     const listed = state.packages.find(pkg => pkg.name === spec)

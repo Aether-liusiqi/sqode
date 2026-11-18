@@ -95,6 +95,39 @@ describe('installExtension', () => {
     }
   })
 
+  it('installs a Skill from a local SKILL.md path with no network', async () => {
+    const h = await home()
+    const source = await mkdtemp(join(tmpdir(), 'sqh-skill-src-'))
+    try {
+      // The real shape that reached this bug: a capitalised directory holding
+      // a SKILL.md whose frontmatter names the skill.
+      const dir = join(source, 'SM-research')
+      await mkdir(dir, { recursive: true })
+      await writeFile(join(dir, 'SKILL.md'), SKILL.replace('sm-research', 'SM-research'))
+      const result = await installExtension('skill', 'SM-research', { home: h.dir, source: dir })
+      expect(result).toMatchObject({ kind: 'skill', name: 'SM-research', action: 'installed' })
+      expect(await readFile(result.location, 'utf8')).toContain('SM-research')
+      expect(result.location).toContain(join(h.dir, 'skills', 'SM-research'))
+    } finally {
+      await h.cleanup()
+      await rm(source, { recursive: true, force: true })
+    }
+  })
+
+  it('installs a Skill when the path names the file itself', async () => {
+    const h = await home()
+    const source = await mkdtemp(join(tmpdir(), 'sqh-skill-file-'))
+    try {
+      const file = join(source, 'SKILL.md')
+      await writeFile(file, SKILL)
+      const result = await installExtension('skill', 'sm-research', { home: h.dir, source: file })
+      expect(await readFile(result.location, 'utf8')).toBe(SKILL)
+    } finally {
+      await h.cleanup()
+      await rm(source, { recursive: true, force: true })
+    }
+  })
+
   it('uninstalls only the exact recorded path and row', async () => {
     const h = await home()
     try {

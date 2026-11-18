@@ -11,7 +11,7 @@
 import { TypertRemoteService, Remote } from '@liusiqi-dev/sqh-typert-protocol'
 import { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
-import { installExtension, uninstallExtension, type PluginInstaller } from './extension-installer.ts'
+import { installExtension, readLocalSkill, uninstallExtension, type PluginInstaller } from './extension-installer.ts'
 import { listExtensions } from './extension-registry.ts'
 import { detectSource, type SourceSnapshot } from './source-detector.ts'
 import { readSourceSnapshot } from './source-snapshot.ts'
@@ -65,9 +65,12 @@ export class ExtensionManager {
       const snapshot = await snapshotFor(request.spec, this.seams)
       const detected = detectSource(request.spec, request.hint, snapshot)
       const kind = request.kind ?? detected.kind
-      const contents = request.contents ?? snapshot?.files[
-        Object.keys(snapshot?.files ?? {}).find(path => /(?:^|\/)SKILL\.md$/i.test(path)) ?? ''
-      ]
+      // A Skill's bytes may come from the caller, the repository, or this
+      // machine — the last one is what makes `skill:<local path>` work with no
+      // network at all, and it also supplies the frontmatter this name needs.
+      const contents = request.contents
+        ?? snapshot?.files[Object.keys(snapshot?.files ?? {}).find(path => /(?:^|\/)SKILL\.md$/i.test(path)) ?? '']
+        ?? (kind === 'skill' ? await readLocalSkill(detected.spec) : undefined)
       const configText = request.config === undefined
         ? snapshot?.files[Object.keys(snapshot?.files ?? {}).find(path => /(?:^|\/)(?:\.mcp\.json|mcp\.json)$/i.test(path)) ?? '']
         : undefined
