@@ -671,6 +671,7 @@ const INPUT_PROBLEM_KEYS = {
   'network': 'installProblemNetwork',
   'unknown': 'installProblemUnknown',
   'detection-failed': 'installProblemDetection',
+  'extension-install': 'installProblemExtension',
 } satisfies Record<InstallInputError['problem'], PluginManagerLocaleKey>
 
 /** One row of the install guide: a spec form's title, its example, and where the person finds it. */
@@ -684,6 +685,8 @@ interface GuideExample {
 /** The spec form the install guide shows, with an example the person can drop into the field. */
 const GUIDE_EXAMPLES = [
   { key: 'id', titleKey: 'installGuideIdTitle', exampleKey: 'installGuideIdExample', hintKey: 'installGuideIdHint' },
+  { key: 'skill', titleKey: 'installGuideSkillTitle', exampleKey: 'installGuideSkillExample', hintKey: 'installGuideSkillHint' },
+  { key: 'mcp', titleKey: 'installGuideMcpTitle', exampleKey: 'installGuideMcpExample', hintKey: 'installGuideMcpHint' },
 ] as const satisfies readonly GuideExample[]
 
 /** The one-line reading of a classified pnpm failure. */
@@ -878,6 +881,10 @@ function InstallDialog({
   }
   if (phase === 'idle' || phase === 'checking') {
     const checking = phase === 'checking'
+    const busy = install.extensionInstalling !== undefined
+    const busyLabel = install.extensionInstalling === 'mcp'
+      ? t('installExtensionBusyMcp')
+      : t('installExtensionBusySkill')
     const empty = install.spec.trim() === ''
     const choice = install.registry
     const resolved = install.registries?.resolved ?? null
@@ -911,9 +918,9 @@ function InstallDialog({
                 <span>{t('installUpgradeNotice')}</span>
               </span>
             </p>
-            <Button variant="primary" className={css.wide} disabled={checking || empty} aria-busy={checking} onClick={onRun}>
-              {checking ? <StateDot state="ongoing" /> : null}
-              {t(checking ? 'installChecking' : 'installRun')}
+            <Button variant="primary" className={css.wide} disabled={checking || busy || empty} aria-busy={checking || busy} onClick={onRun}>
+              {checking || busy ? <StateDot state="ongoing" /> : null}
+              {busy ? busyLabel : t(checking ? 'installChecking' : 'installRun')}
             </Button>
           </div>
         )}
@@ -925,7 +932,7 @@ function InstallDialog({
               autoFocus={install.mirrorRecovery === true}
               value={install.spec}
               placeholder={t('installSpecPlaceholder')}
-              disabled={checking}
+              disabled={checking || busy}
               aria-label={t(install.mirrorRecovery ? 'installPackageLabel' : 'installSpecLabel')}
               aria-invalid={install.inputError !== null}
               aria-describedby={inputSentence !== null ? errorId : templateHint !== null ? templateHintId : undefined}
@@ -935,7 +942,7 @@ function InstallDialog({
               onBlur={specComposition.onBlur}
               onKeyDown={(event) => {
                 if (specComposition.isComposing(event.nativeEvent)) return
-                if (event.key === 'Enter' && !empty && !checking) onRun()
+                if (event.key === 'Enter' && !empty && !checking && !busy) onRun()
               }}
             />
           </div>
@@ -944,6 +951,9 @@ function InstallDialog({
             : <p id={errorId} className={css.inputError} role="alert">{inputSentence}</p>}
           {inputSentence === null && templateHint !== null
             ? <p id={templateHintId} className={css.templateHint} role="status">{templateHint}</p>
+            : null}
+          {busy
+            ? <p className={css.guideHint} role="status"><StateDot state="ongoing" /> {busyLabel}</p>
             : null}
           <div className={css.optionsRow}>
             <button
@@ -963,7 +973,7 @@ function InstallDialog({
               aria-expanded={install.registryOpen}
               aria-controls={registryId}
               aria-haspopup="dialog"
-              disabled={checking}
+              disabled={checking || busy}
               onClick={onToggleRegistry}
             >
               <span>{t('registryToggle')}</span>
@@ -990,7 +1000,7 @@ function InstallDialog({
                         variant="outline"
                         size="sm"
                         aria-label={t('installGuideFillAria', { example: t(exampleKey) })}
-                        disabled={checking}
+                        disabled={checking || busy}
                         onClick={() => { onEditSpec(t(exampleKey)) }}
                       >
                         {t('installGuideFill')}

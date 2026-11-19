@@ -3,7 +3,7 @@ import { mkdtemp, readFile, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { describe, expect, it, vi } from 'vitest'
-import { ExtensionManager, type ExtensionServiceSeams } from '../src/extension-service.ts'
+import { ExtensionManager, normalizeMcpConfig, type ExtensionServiceSeams } from '../src/extension-service.ts'
 
 const SKILL = `---
 name: sm-research
@@ -80,5 +80,63 @@ describe('ExtensionService', () => {
     } finally {
       await rm(home, { recursive: true, force: true })
     }
+  })
+})
+
+describe('normalizeMcpConfig', () => {
+  it('converts the ecosystem standard mcpServers object into a flat stdio config', () => {
+    expect(normalizeMcpConfig(
+      { mcpServers: { playwright: { command: 'npx', args: ['-y', '@playwright/mcp@latest'] } } },
+      'playwright-mcp',
+    )).toEqual({
+      name: 'playwright',
+      config: { transport: 'stdio', command: 'npx', args: ['-y', '@playwright/mcp@latest'] },
+    })
+  })
+
+  it('maps an http server to streamable-http and keeps headers', () => {
+    expect(normalizeMcpConfig(
+      { mcpServers: { remote: { url: 'https://mcp.example.com/sse', headers: { Authorization: 'Bearer x' } } } },
+      'remote',
+    )).toEqual({
+      name: 'remote',
+      config: {
+        transport: 'streamable-http',
+        url: 'https://mcp.example.com/sse',
+        headers: { Authorization: 'Bearer x' },
+      },
+    })
+  })
+
+  it('honors an explicit sse type', () => {
+    expect(normalizeMcpConfig(
+      { mcpServers: { s: { type: 'sse', url: 'https://mcp.example.com/sse' } } },
+      's',
+    ).config.transport).toBe('streamable-http')
+  })
+
+  it('accepts an already-flat Sqode config unchanged', () => {
+    expect(normalizeMcpConfig(
+      { serverName: 'docs', transport: 'stdio', command: 'docs-mcp', env: { KEY: 'v' } },
+      'ignored',
+    )).toEqual({
+      name: 'docs',
+      config: { transport: 'stdio', command: 'docs-mcp', env: { KEY: 'v' } },
+    })
+  })
+
+  it('picks the server whose key matches the repository name', () => {
+    const result = normalizeMcpConfig(
+      { mcpServers: { alpha: { command: 'a' }, target: { command: 't' } } },
+      'target',
+    )
+    expect(result.name).toBe('target')
+    expect(result.config).toMatchObject({ command: 't' })
+  })
+
+  it('rejects a config with neither command nor url instead of writing a broken row', () => {
+    expect(() => normalizeMcpConfig({ mcpServers: { broken: { args: ['x'] } } }, 'broken'))
+      .toThrow(/needs a command or url/)
+    expect(() => normalizeMcpConfig(undefined, 'x')).toThrow(/config is required/)
   })
 })

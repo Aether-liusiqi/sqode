@@ -1,9 +1,22 @@
 /** Reading install specs and classifying pnpm failures: pure, table-driven. */
 
 import { describe, expect, it } from 'vitest'
-import { classifyInstallFailure, InvalidInstallSpecError, parseInstallSpec } from '@liusiqi-dev/sqh-plugin-manager'
+import { classifyInstallFailure, InvalidInstallSpecError, normalizeInstallSpec, parseInstallSpec } from '@liusiqi-dev/sqh-plugin-manager'
 
 describe('parseInstallSpec', () => {
+  it('reads copy-pasted npm package page URLs as registry specs', () => {
+    expect(parseInstallSpec('https://www.npmjs.com/package/@liustack/modlens')).toEqual({
+      kind: 'registry', spec: '@liustack/modlens', name: '@liustack/modlens',
+    })
+    expect(parseInstallSpec('https://npmjs.com/package/lodash/')).toEqual({ kind: 'registry', spec: 'lodash', name: 'lodash' })
+    expect(parseInstallSpec('http://www.npmjs.com/package/pkg/v/1.2.3')).toEqual({
+      kind: 'registry', spec: 'pkg@1.2.3', name: 'pkg', range: '1.2.3',
+    })
+    expect(parseInstallSpec('https://www.npmjs.com/package/@acme/tool?activeTab=readme')).toEqual({
+      kind: 'registry', spec: '@acme/tool', name: '@acme/tool',
+    })
+  })
+
   it('reads registry names with an optional range, scoped or not', () => {
     expect(parseInstallSpec(' sqh-better-sidebar ')).toEqual({ kind: 'registry', spec: 'sqh-better-sidebar', name: 'sqh-better-sidebar' })
     expect(parseInstallSpec('@acme/sqh-tool@^1.2')).toEqual({ kind: 'registry', spec: '@acme/sqh-tool@^1.2', name: '@acme/sqh-tool', range: '^1.2' })
@@ -52,6 +65,22 @@ describe('parseInstallSpec', () => {
     expect(refusal('has space')).toBe('not a package name the registry accepts')
     expect(refusal('a'.repeat(215))).toBe('not a package name the registry accepts')
     expect(refusal('pkg@')).toBe('a version after @ must not be empty')
+  })
+})
+
+describe('normalizeInstallSpec', () => {
+  it.each([
+    ['https://www.npmjs.com/package/@liustack/modlens', '@liustack/modlens'],
+    ['  https://www.npmjs.com/package/@liustack/modlens  ', '@liustack/modlens'],
+    ['https://npmjs.com/package/lodash', 'lodash'],
+    ['http://www.npmjs.com/package/pkg/v/1.2.3', 'pkg@1.2.3'],
+    ['https://www.npmjs.com/package/@acme/tool/v/2.0.0/', '@acme/tool@2.0.0'],
+    ['https://www.npmjs.com/package/pkg?tab=readme', 'pkg'],
+    ['https://www.npmjs.com/package/pkg#readme', 'pkg'],
+    ['  plain-name  ', 'plain-name'],
+    ['https://github.com/a/b', 'https://github.com/a/b'],
+  ])('normalizes %s to %s', (raw, expected) => {
+    expect(normalizeInstallSpec(raw)).toBe(expected)
   })
 })
 

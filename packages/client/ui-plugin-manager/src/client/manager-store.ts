@@ -162,7 +162,7 @@ export function offeredRegistries(registries: PluginRegistries | null): Registry
 /** Why the typed spec was refused before anything installed. */
 export interface InstallInputError {
   /** The Host's refusal, `shipped` for a listed bundle, or a source the classifier could not read. */
-  readonly problem: PluginInspectProblem | 'shipped' | 'detection-failed'
+  readonly problem: PluginInspectProblem | 'shipped' | 'detection-failed' | 'extension-install'
   readonly reason: string
   /** The registries the check asked, in order, when the refusal came from asking them. */
   readonly registries?: readonly Registry[]
@@ -205,6 +205,8 @@ export interface InstallState {
   /** The registries the Host asked for this install, in order, and how many it may ask; null before the run. */
   readonly attempts: { readonly registries: readonly Registry[]; readonly total: number } | null
   readonly phase: 'idle' | 'checking' | 'starting' | 'running' | 'cancelling' | 'applying' | 'unconfirmed' | 'unknown' | 'done' | 'failed'
+  /** The kind of extension install in flight: the spec screen stays open and visibly busy until the Host answers. */
+  readonly extensionInstalling?: 'skill' | 'mcp' | undefined
   /** Identifies this dialog's installation, including log and cancellation messages. */
   readonly requestId?: PluginInstallRequestId
   /** Why the spec was refused before installing; shown under the field. */
@@ -951,7 +953,7 @@ export class PluginManagerController {
     const state = this.getSnapshot()
     const install = state.install
     const inputSpec = install.spec.trim()
-    if (install.phase === 'checking' || isInstallPending(install.phase) || inputSpec === '') return
+    if (install.phase === 'checking' || isInstallPending(install.phase) || install.extensionInstalling !== undefined || inputSpec === '') return
     // Decide the kind from the text alone, before the plugin inspector can veto
     // it: npm spec parsing has no `skill:` syntax, so an inspector-first order
     // makes an explicit kind unreachable and ties the whole path to a Remote
@@ -1037,20 +1039,32 @@ export class PluginManagerController {
     await this.startInstall({ spec, ...inspected.value })
   }
 
-  /** Install a Skill or MCP extension through the unified service, reporting the outcome as a notice. */
+  /** Install a Skill or MCP extension through the unified service, reporting the outcome on the spec screen. */
   private async startExtensionInstall(spec: string, kind: 'skill' | 'mcp'): Promise<void> {
+    // Keep the spec screen open but visibly busy until the Host answers. The
+    // wizard is plugin-only and has no abort RPC for extensions, so reusing its
+    // phase would leave a cancel button that cannot cancel.
+    this.patchInstall({ phase: 'idle', extensionInstalling: kind, inputError: null })
     const answer = await this.ctx.remote.extensionService.installExtension({ spec, hint: kind })
     if (this.disposed) return
     if (!answer.ok) {
-      this.patch({ notice: { seq: ++this.noticeSeq, kind: 'update-failed', reason: answer.error.message }, updates: {} })
+      const reason = answer.error.message
+      this.patchInstall({ extensionInstalling: undefined, inputError: { problem: 'extension-install', reason } })
+      this.finishAnalytics('failed', 'extension-install')
+      this.patch({ notice: { seq: ++this.noticeSeq, kind: 'update-failed', reason }, updates: {} })
       return
     }
     if (answer.value.ok) {
       const installed = answer.value.value
       this.ctx.get('productAnalytics')?.track('extension_installed', { kind: installed.kind, name: installed.name })
+      this.patchInstall({ extensionInstalling: undefined })
+      this.finishAnalytics('success')
       this.patch({ notice: { seq: ++this.noticeSeq, kind: 'updated', count: 1 }, updates: {} })
     } else {
-      this.patch({ notice: { seq: ++this.noticeSeq, kind: 'update-failed', reason: answer.value.error.message }, updates: {} })
+      const reason = answer.value.error.message
+      this.patchInstall({ extensionInstalling: undefined, inputError: { problem: 'extension-install', reason } })
+      this.finishAnalytics('failed', 'extension-install')
+      this.patch({ notice: { seq: ++this.noticeSeq, kind: 'update-failed', reason }, updates: {} })
     }
     await this.load()
   }

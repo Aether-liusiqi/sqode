@@ -30,6 +30,13 @@ const TARBALL_SPEC = /\.(?:tgz|tar\.gz)(?:#.*)?$/i
 /** An npm package name: lowercase URL-safe segments, an optional scope, no leading dot or underscore. */
 const PACKAGE_NAME = /^(?:@[a-z0-9][a-z0-9._~-]*\/)?[a-z0-9][a-z0-9._~-]*$/
 const PACKAGE_NAME_MAX_LENGTH = 214
+/** An npm package page URL; the path after `/package/` names a registry package, not a git repository. */
+const NPM_PACKAGE_PAGE = new RegExp(
+  '^https?:\\/\\/(?:www\\.)?npmjs\\.com\\/package\\/' +
+  '((?:@[a-z0-9][a-z0-9._~-]*\\/)?[a-z0-9][a-z0-9._~-]*)' +
+  '(?:\\/v\\/([^/?#]+))?\\/?(?:[?#].*)?$',
+  'i',
+)
 
 /** A spec neither pnpm nor the registry would take; `reason` is what the person reads. */
 export class InvalidInstallSpecError extends Error {
@@ -57,6 +64,26 @@ function gitHost(spec: string): string {
 }
 
 /**
+ * Read the registry spec an npm package page URL names, so a copy-pasted page
+ * address installs as a package instead of being parsed as a git repository.
+ * Every other input is returned trimmed.
+ * @param raw - the spec as typed.
+ * @returns the package name, with `@version` when the page names one, otherwise the trimmed input.
+ */
+export function normalizeInstallSpec(raw: string): string {
+  const spec = raw.trim()
+  const page = NPM_PACKAGE_PAGE.exec(spec)
+  if (page === null) return spec
+  const name = page[1] as string
+  const version = page[2]
+  if (version === undefined) return name
+  let decoded: string
+  try { decoded = decodeURIComponent(version) }
+  catch { decoded = version }
+  return `${name}@${decoded}`
+}
+
+/**
  * Read a spec into its form. A path must be absolute: the Host's working
  * directory means nothing to the person typing into a browser, and a
  * relative path resolved against the profile would point inside it.
@@ -66,7 +93,7 @@ function gitHost(spec: string): string {
  * registry would refuse, or a URL that is neither a git host nor a tarball.
  */
 export function parseInstallSpec(raw: string): ParsedInstallSpec {
-  const spec = raw.trim()
+  const spec = normalizeInstallSpec(raw)
   if (spec === '') throw invalid(spec, 'the package spec must not be empty')
   const path = spec.replace(/^(?:file|link):/, '')
   if (path !== spec || isAbsolute(path)) {

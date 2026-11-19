@@ -95,6 +95,23 @@ describe('installExtension', () => {
     }
   })
 
+  it('rejects an unknown MCP transport before mutating the patch', async () => {
+    const h = await home()
+    try {
+      const patch = join(h.dir, 'profiles', 'desktop', 'cordis.patch.yml')
+      await mkdir(join(h.dir, 'profiles', 'desktop'), { recursive: true })
+      await writeFile(patch, '# keep me\n')
+      await expect(installExtension('mcp', 'broken', {
+        home: h.dir, source: 'github:acme/broken',
+        config: { transport: 'websocket', url: 'wss://x' } as never,
+      })).rejects.toThrow(/invalid MCP transport/)
+      expect(await readFile(patch, 'utf8')).toBe('# keep me\n')
+      expect(await listExtensions(h.dir)).toEqual([])
+    } finally {
+      await h.cleanup()
+    }
+  })
+
   it('installs a Skill from a local SKILL.md path with no network', async () => {
     const h = await home()
     const source = await mkdtemp(join(tmpdir(), 'sqh-skill-src-'))

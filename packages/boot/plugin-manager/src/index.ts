@@ -22,7 +22,7 @@ import { readSqhField, withSqhField } from '@liusiqi-dev/sqh-app-boot'
 import type { ProfileContext, ProfileManifest } from '@liusiqi-dev/sqh-app-boot'
 import { bundleManifest, readProfileRegistry, registryArguments, runProfilePnpm, saveManifest, viewProfilePackage } from './operations.ts'
 import { classifyInstallFailure } from './install-failure.ts'
-import { InvalidInstallSpecError, parseInstallSpec, type ParsedInstallSpec } from './install-spec.ts'
+import { InvalidInstallSpecError, normalizeInstallSpec, parseInstallSpec, type ParsedInstallSpec } from './install-spec.ts'
 import { attributeFailure, normalizeRegistry, NPMMIRROR_REGISTRY, registryPlan } from './registry.ts'
 import { writePluginEnabled } from './patch.ts'
 import { incompatiblePlugin, ManagementFailure } from './failure.ts'
@@ -37,7 +37,7 @@ import type {
 } from './types.ts'
 export type * from './types.ts'
 export { classifyInstallFailure, type InstallFailureFacts } from './install-failure.ts'
-export { InvalidInstallSpecError, parseInstallSpec, type ParsedInstallSpec } from './install-spec.ts'
+export { InvalidInstallSpecError, normalizeInstallSpec, parseInstallSpec, type ParsedInstallSpec } from './install-spec.ts'
 
 /** The pnpm executable, registries, and limits for diagnostics, lookups and connection checks. */
 export interface Config {
@@ -430,7 +430,7 @@ export class PluginManager extends TypertRemoteService {
           ({ status: 'refused', problem, reason, registries })
         for (const current of plan) {
           registries.push(current)
-          const view = await viewProfilePackage(this.profile.dir, spec.trim(), {
+          const view = await viewProfilePackage(this.profile.dir, parsed.spec, {
             ...this.profile.packageManager ?? { command: this.pnpmCommand },
             timeoutMs: this.inspectTimeoutMs, ...signal === undefined ? {} : { signal }, registry: current,
           })
@@ -543,7 +543,7 @@ export class PluginManager extends TypertRemoteService {
         // resolve the repository through its REST API, which shares the Host's proxy,
         // and install the resulting tarball through the same pnpm path. Only give up
         // when that route fails too, so the original diagnostic stays meaningful.
-        let installSpec = spec
+        let installSpec = normalizeInstallSpec(spec)
         if (connectionFailure?.kind === 'network' || connectionFailure?.kind === 'timeout') {
           const repository = parseGithubRepository(installSpec)
           const apiResult = repository === undefined ? undefined

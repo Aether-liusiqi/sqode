@@ -1476,6 +1476,51 @@ describe('PluginManagerController', () => {
     expect(plugins.installBundle).not.toHaveBeenCalled()
   })
 
+  it('shows a busy state while a skill extension installs and settles from the answer', async () => {
+    // The "no reaction" bug: startExtensionInstall never patched state, so the
+    // button click gave no feedback until the Host answered (or forever).
+    const { extensions, face, state, track } = bench()
+    const pending = deferred<unknown>()
+    extensions.installExtension.mockReturnValueOnce(pending.promise)
+    face.openInstall()
+    await vi.waitFor(() => { expect(state().install.registries).toEqual(REGISTRIES) })
+    face.editInstallSpec('skill:https://github.com/acme/skills-demo')
+    face.runInstall()
+    await vi.waitFor(() => { expect(state().install.extensionInstalling).toBe('skill') })
+    expect(state().install.phase).toBe('idle')
+    expect(extensions.installExtension).toHaveBeenCalledWith({ spec: 'https://github.com/acme/skills-demo', hint: 'skill' })
+    pending.resolve(ok(ok({ kind: 'skill', name: 'skills-demo' })))
+    await vi.waitFor(() => { expect(state().install.extensionInstalling).toBeUndefined() })
+    expect(state().install.inputError).toBeNull()
+    expect(state().notice?.kind).toBe('updated')
+    expect(track).toHaveBeenCalledWith('install_plugin_result', expect.objectContaining({ is_success: true }))
+  })
+
+  it('reports a failed extension install in the field instead of failing silently', async () => {
+    const { extensions, face, state, track } = bench()
+    extensions.installExtension.mockResolvedValueOnce(ok({ ok: false, error: { code: 'install-failed', message: 'clone failed' } }))
+    face.openInstall()
+    await vi.waitFor(() => { expect(state().install.registries).toEqual(REGISTRIES) })
+    face.editInstallSpec('mcp:https://github.com/acme/mcp-demo')
+    face.runInstall()
+    await vi.waitFor(() => { expect(state().install.inputError).toEqual({ problem: 'extension-install', reason: 'clone failed' }) })
+    expect(state().install.extensionInstalling).toBeUndefined()
+    expect(state().notice).toMatchObject({ kind: 'update-failed', reason: 'clone failed' })
+    expect(track).toHaveBeenCalledWith('install_plugin_result', expect.objectContaining({ is_success: false, error_reason: 'extension-install' }))
+  })
+
+  it('reports a transport refusal while installing an extension', async () => {
+    const { extensions, face, state } = bench()
+    extensions.installExtension.mockResolvedValueOnce(refused('gateway/offline', 'offline'))
+    face.openInstall()
+    await vi.waitFor(() => { expect(state().install.registries).toEqual(REGISTRIES) })
+    face.editInstallSpec('skill:https://github.com/acme/skills-demo')
+    face.runInstall()
+    await vi.waitFor(() => { expect(state().install.inputError).toEqual({ problem: 'extension-install', reason: 'offline' }) })
+    expect(state().install.extensionInstalling).toBeUndefined()
+    expect(state().notice).toMatchObject({ kind: 'update-failed', reason: 'offline' })
+  })
+
   it('keeps a remembered pnpm configuration that names its own registry', async () => {
     const storage = new Map([['dsh.plugin-manager.install-registry', JSON.stringify({ kind: 'offered', registry: null })]])
     vi.stubGlobal('localStorage', {

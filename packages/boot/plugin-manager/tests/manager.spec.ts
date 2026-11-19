@@ -1028,6 +1028,23 @@ it('reads what a spec names before installing it', async () => {
   expect(view).toHaveBeenCalledTimes(13)
 })
 
+it('looks up a copy-pasted npm package page by its registry name, not by the page URL', async () => {
+  const { manager, dir } = await fixture(undefined, false, undefined, { inspectTimeoutMs: 1000, pnpmCommand: 'pnpm-test', fallbackRegistries: [] })
+  const view = vi.spyOn(operations, 'viewProfilePackage')
+  onTestFinished(() => { view.mockRestore() })
+  view.mockResolvedValue({ exitCode: 0, stdout: JSON.stringify({ name: '@liustack/modlens', version: '3.27.5', dsh: { bundle: { patch: './cordis.patch.yml' } } }), stderr: '', timedOut: false })
+  expect(await manager.inspect('https://www.npmjs.com/package/@liustack/modlens')).toMatchObject({
+    status: 'accepted', kind: 'registry', name: '@liustack/modlens', version: '3.27.5', bundle: true,
+  })
+  expect(view).toHaveBeenCalledWith(dir, '@liustack/modlens', { command: 'pnpm-test', timeoutMs: 1000, registry: null })
+  // A page pinned to a version carries that version into the lookup spec.
+  view.mockClear()
+  expect(await manager.inspect('https://www.npmjs.com/package/@liustack/modlens/v/3.27.5')).toMatchObject({
+    status: 'accepted', kind: 'registry', name: '@liustack/modlens', version: '3.27.5', bundle: true,
+  })
+  expect(view).toHaveBeenCalledWith(dir, '@liustack/modlens@3.27.5', { command: 'pnpm-test', timeoutMs: 1000, registry: null })
+})
+
 it('announces each manager operation as a change, and a patch generation applied outside it not at all', async () => {
   const { ctx, manager, profile } = await fixture('startup')
   const changes: PluginChange[] = []

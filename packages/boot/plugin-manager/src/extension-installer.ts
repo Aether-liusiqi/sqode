@@ -42,6 +42,8 @@ export interface ExtensionInstallResult {
   readonly location: string
   readonly action: 'installed' | 'updated' | 'already-installed'
   readonly record: ExtensionRecord
+  /** Every server written by one multi-server config install, in config order. */
+  readonly installed?: readonly ExtensionInstallResult[]
 }
 
 /** A plugin installer injected by the manager, which owns the pnpm/patch machinery. */
@@ -107,8 +109,18 @@ async function writeSkill(home: string | undefined, name: string, contents: stri
 /** Append or replace one MCP server row inside the profile patch's insert sequence. */
 async function writeMcpServer(patchPath: string, serverName: string, config: McpServerConfig): Promise<string> {
   if (!SERVER_NAME.test(serverName)) throw new ExtensionInstallError('invalid-name', `invalid MCP server name: ${serverName}`)
-  if (config.transport === 'stdio' && config.command.trim() === '') throw new ExtensionInstallError('invalid-content', 'MCP stdio command must not be empty')
-  if (config.transport === 'streamable-http' && config.url.trim() === '') throw new ExtensionInstallError('invalid-content', 'MCP url must not be empty')
+  // Runtime guard: a caller can bypass normalizeMcpConfig through a remote
+  // request, so reject a malformed transport or endpoint before writing a row
+  // that mcp-client could never load.
+  if (config.transport !== 'stdio' && config.transport !== 'streamable-http') {
+    throw new ExtensionInstallError('invalid-content', `invalid MCP transport: ${String((config as { transport?: unknown }).transport)}`)
+  }
+  if (config.transport === 'stdio' && (typeof config.command !== 'string' || config.command.trim() === '')) {
+    throw new ExtensionInstallError('invalid-content', 'MCP stdio command must not be empty')
+  }
+  if (config.transport === 'streamable-http' && (typeof config.url !== 'string' || config.url.trim() === '')) {
+    throw new ExtensionInstallError('invalid-content', 'MCP url must not be empty')
+  }
   let text = '[]\n'
   try { text = await readFile(patchPath, 'utf8') }
   catch (error) {

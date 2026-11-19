@@ -23,20 +23,24 @@ const API_BASE = 'https://api.github.com'
 const TIMEOUT_MS = 20_000
 const MAX_PATHS = 500
 const MAX_FILE_BYTES = 64 * 1024
+// External MCP repos usually document their config in a README near the top.
+// Playwright-mcp's README is about 70 KB, above the manifest limit, so let the
+// single root README be larger while keeping every other file small.
+const MAX_README_BYTES = 128 * 1024
 
 /**
  * Read one small text file, or undefined when absent, too large or unreadable.
  */
 async function readFileAt(
   get: typeof fetch, base: string, headers: Record<string, string>,
-  owner: string, repo: string, ref: string, path: string,
+  owner: string, repo: string, ref: string, path: string, maxBytes = MAX_FILE_BYTES,
 ): Promise<string | undefined> {
   const url = `${base}/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${path.split('/').map(encodeURIComponent).join('/')}?ref=${encodeURIComponent(ref)}`
   try {
     const response = await get(url, { headers: { ...headers, accept: 'application/vnd.github.raw+json' }, redirect: 'error' })
     if (!response.ok) return undefined
     const length = Number(response.headers.get('content-length') ?? '0')
-    if (length > MAX_FILE_BYTES) return undefined
+    if (length > maxBytes) return undefined
     return await response.text()
   } catch { return undefined }
 }
@@ -78,11 +82,13 @@ export async function readSourceSnapshot(raw: string, options: SnapshotOptions =
       ...paths.filter(path => /(?:^|\/)SKILL\.md$/i.test(path)).slice(0, 3),
       ...paths.filter(path => /(?:^|\/)(?:\.mcp\.json|mcp\.json|mcp-servers\.json|cordis\.patch\.ya?ml)$/i.test(path)).slice(0, 8),
       ...paths.filter(path => path === 'package.json').slice(0, 1),
+      ...paths.filter(path => /^README\.md$/i.test(path)).slice(0, 1),
     ]
     const unique = [...new Set(wanted)]
     const files: Record<string, string | undefined> = {}
     await Promise.all(unique.map(async (path) => {
-      files[path] = await readFileAt(get, base, headers, parts.owner, parts.repo, ref, path)
+      files[path] = await readFileAt(get, base, headers, parts.owner, parts.repo, ref, path,
+        /^README\.md$/i.test(path) ? MAX_README_BYTES : MAX_FILE_BYTES)
     }))
     return { paths, files }
   } catch { return undefined }
