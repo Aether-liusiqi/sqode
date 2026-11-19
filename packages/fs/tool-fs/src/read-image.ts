@@ -182,32 +182,9 @@ export function imageMediaTypeForPath(filePath: string): ImageMediaType | undefi
 }
 
 /**
- * Enforce the strict image-capability gate for the calling route. Resolves the
- * session's latest routed provider/model (request header config, then agent
- * options) and requires the exact resolved route to declare `image` input explicitly.
- * @param ctx - the plugin context used to resolve the optional `llm` service.
- * @param exec - the tool-execution context supplying the calling agent.
- * @param requestedPath - the raw, not-yet-resolved path rendered in refusal messages.
- */
-export async function assertImageCapableRoute(ctx: Context, exec: ToolExecution, requestedPath: string): Promise<void> {
-  const routed = exec.agent?.session.requestHeader()?.config
-  const provider = routed?.provider ?? exec.agent?.options.provider
-  const model = routed?.model ?? exec.agent?.options.model
-  const llm = ctx.get('llm')
-  if (provider === undefined || model === undefined || llm === undefined) {
-    throw new Error(`cannot read "${requestedPath}" as an image: the current model route could not be resolved`)
-  }
-  const active = await llm.resolveModelInfo(provider, model, exec.signal)
-  if (active.inputModalities === undefined || !active.inputModalities.includes('image')) {
-    throw new Error(`cannot read "${requestedPath}" as an image: model "${model}" does not declare image input; switch to an image-capable model to read images`)
-  }
-}
-
-/**
- * Whether the exact calling route declares image input. Mirrors the strict
- * gate but returns a boolean, so a text-only route enters the integrated
- * reader instead of being refused. Any unresolved route or catalog failure is
- * treated as "no vision" and degrades to the text path.
+ * Whether the exact calling route declares image input. A text-only route
+ * enters the integrated reader instead of being refused. Any unresolved route
+ * or catalog failure is treated as "no vision" and degrades to the text path.
  * @param ctx - the plugin context used to resolve the optional `llm` service.
  * @param exec - the tool-execution context supplying the calling agent.
  */
@@ -370,11 +347,6 @@ export function applyReadImageTool(ctx: Context): void {
       // Two-way exclusive route: a vision-capable model keeps the original
       // image-block path; a text-only model enters the integrated reader.
       const supportsVision = await modelSupportsVision(ctx, exec)
-      if (supportsVision) {
-        // Defensive: a route that just tested vision-capable must still pass
-        // the strict gate before an image block is attached to the result.
-        await assertImageCapableRoute(ctx, exec, args.file_path)
-      }
 
       const { target, info } = await resolveRegularReadTarget(ctx, exec, args.file_path)
 

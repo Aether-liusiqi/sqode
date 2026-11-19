@@ -29,7 +29,6 @@ export interface VisionConfig {
   model: string
   ocrFallback: 'prefer' | 'fallback'
   pythonPath: string
-  cacheTtl: number
 }
 
 /** Defaults used whenever the config file is absent or incomplete. */
@@ -40,15 +39,10 @@ export const DEFAULT_CONFIG: VisionConfig = {
   model: 'hy-vision-2.0-instruct',
   ocrFallback: 'prefer',
   pythonPath: 'D:\\PythonEnv\\myenv\\Scripts\\python.exe',
-  cacheTtl: 0,
 }
 
 function asString(value: unknown): string | undefined {
   return typeof value === 'string' ? value : undefined
-}
-
-function asFiniteNumber(value: unknown): number | undefined {
-  return typeof value === 'number' && Number.isFinite(value) ? value : undefined
 }
 
 /**
@@ -75,6 +69,5 @@ export async function loadConfig(configDir: string = getConfigDir()): Promise<Vi
     model: asString(record.model) ?? DEFAULT_CONFIG.model,
     ocrFallback: ocrFallback === 'prefer' || ocrFallback === 'fallback' ? ocrFallback : DEFAULT_CONFIG.ocrFallback,
     pythonPath: asString(record.pythonPath) ?? DEFAULT_CONFIG.pythonPath,
-    cacheTtl: asFiniteNumber(record.cacheTtl) ?? DEFAULT_CONFIG.cacheTtl,
   }
 }
