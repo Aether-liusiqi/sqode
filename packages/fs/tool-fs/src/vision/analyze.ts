@@ -1,20 +1,26 @@
 /**
  * Branch B of read_image: produce a structured text result for a text-only
- * calling model. Phase 2 uses local OCR for every call; a vision provider is
- * added in Phase 3.
+ * calling model. Vision analysis is attempted when configured and degrades to
+ * local OCR on failure; a text-only result is always produced.
  * @module @liusiqi-dev/sqh-tool-fs/src/vision/analyze
  */
 
 import type { ImageMediaType } from '@liusiqi-dev/sqh-attachment'
 import { getConfigDir, loadConfig } from './config.ts'
-import { runOcr } from './ocr.ts'
+import { analyzeWithFailover } from './failover.ts'
+import type { VisionParsed } from './prompt.ts'
 
 const OCR_SUMMARY = '[本地 OCR 降级结果] 仅含识别文字，无视觉语义分析'
 const OCR_UNCERTAINTY = '未使用视觉模型，版面/语义/配色均未分析'
 const OCR_WARNING = 'DEGRADED: no vision model, used local RapidOCR'
 
+/** Wrap a successful vision analysis into the `analysis` arm of read_image's output schema. */
+export function wrapVisionResult(provider: string, parsed: VisionParsed) {
+  return { provider, result: parsed, meta: { warnings: [] as string[] } }
+}
+
 /** Wrap extracted OCR text into the `analysis` arm of read_image's output schema. */
-export function wrapOcrText(fullText: string, lines: string[]) {
+export function wrapOcrText(fullText: string, lines: string[], warnings: string[] = [OCR_WARNING]) {
   return {
     provider: 'local-ocr',
     result: {
@@ -25,7 +31,7 @@ export function wrapOcrText(fullText: string, lines: string[]) {
       visual: { dominant_colors: [], style: null, notes: [] },
       uncertainty: [OCR_UNCERTAINTY],
     },
-    meta: { warnings: [OCR_WARNING] },
+    meta: { warnings },
   }
 }
 
@@ -46,8 +52,9 @@ export function wrapOcrError(message: string) {
 }
 
 /**
- * Analyze an image for a text-only calling model. Phase 2 always uses OCR,
- * regardless of whether an API key is configured (that branch comes in Phase 3).
+ * Analyze an image for a text-only calling model. Vision is used when a key is
+ * configured and `ocrFallback` is not 'fallback'; otherwise local OCR is used.
+ * Any vision failure degrades to OCR with an explicit warning.
  * @param data - raw image bytes.
  * @param mediaType - declared or sniffed image type.
  * @returns a result matching the `analysis` arm of read_image's output schema.
@@ -55,10 +62,13 @@ export function wrapOcrError(message: string) {
 export async function analyzeImage(data: Uint8Array, mediaType: ImageMediaType) {
   const configDir = getConfigDir()
   const config = await loadConfig(configDir)
-  try {
-    const text = await runOcr(data, mediaType, config, configDir)
-    return wrapOcrText(text.full_text, text.lines)
-  } catch (error: unknown) {
-    return wrapOcrError(error instanceof Error ? error.message : String(error))
+  const outcome = await analyzeWithFailover(data, mediaType, config, configDir)
+  if (outcome.kind === 'vision') return wrapVisionResult(config.provider, outcome.parsed)
+  if (outcome.kind === 'ocr') {
+    const { full_text, lines } = outcome.text
+    return outcome.warnings.length > 0
+      ? wrapOcrText(full_text, lines, outcome.warnings)
+      : wrapOcrText(full_text, lines)
   }
+  return wrapOcrError(outcome.message)
 }
