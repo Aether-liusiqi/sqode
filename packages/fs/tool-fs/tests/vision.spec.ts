@@ -21,7 +21,15 @@ import { callVisionProvider } from '../src/vision/providers.ts'
 
 vi.mock('../src/vision/ocr.ts', () => ({ runOcr: vi.fn() }))
 
-const OCR = { full_text: 'HELLO OCR 12345', lines: ['HELLO OCR 12345'] }
+const OCR = {
+  full_text: 'HELLO OCR 12345',
+  lines: ['HELLO OCR 12345'],
+  regions: [],
+  dominant_colors: [],
+  objects: [],
+  notes: [],
+  warnings: [],
+}
 const VALID_CONTENT = JSON.stringify({
   summary: 'A red square with text',
   ocr: { full_text: 'HELLO', lines: ['HELLO'] },
@@ -183,9 +191,9 @@ describe('wrappers and analyzeImage', () => {
       result: { summary: 'A red square with text' },
       meta: { warnings: [] },
     })
-    expect(wrapOcrText('T', ['T'])).toMatchObject({
+    expect(wrapOcrText({ full_text: 'T', lines: ['T'], regions: [], dominant_colors: [], objects: [], notes: [], warnings: [] })).toMatchObject({
       provider: 'local-ocr',
-      meta: { warnings: ['DEGRADED: no vision model, used local RapidOCR'] },
+      meta: { warnings: ['DEGRADED: no vision model, used local algorithms (OCR + cv2 + YOLO)'] },
     })
   })
 
@@ -196,7 +204,7 @@ describe('wrappers and analyzeImage', () => {
       const result = await analyzeImage(Buffer.from('img'), 'image/png')
       expect(result.provider).toBe('local-ocr')
       expect(result.result.ocr.full_text).toBe('HELLO OCR 12345')
-      expect(result.meta.warnings).toEqual(['DEGRADED: no vision model, used local RapidOCR'])
+      expect(result.meta.warnings).toEqual(['DEGRADED: no vision model, used local algorithms (OCR + cv2 + YOLO)'])
       expect(fetchMock).not.toHaveBeenCalled()
     } finally {
       await rm(dir, { recursive: true, force: true })

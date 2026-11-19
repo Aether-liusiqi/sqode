@@ -484,7 +484,7 @@ describe('image route branch (vision image / text analysis)', () => {
     expect(result.content.find(block => block.type === 'image')).toBeUndefined()
     expect(text(result)).toContain('<type>analysis</type>')
     expect(text(result)).toContain('"provider":"local-ocr"')
-    expect(text(result)).toContain('DEGRADED: no vision model, used local RapidOCR')
+    expect(text(result)).toContain('DEGRADED: no vision model, used local algorithms (OCR + cv2 + YOLO)')
   })
 
   it('extracts text from a text-bearing image on a text-only route', async () => {
@@ -497,7 +497,7 @@ describe('image route branch (vision image / text analysis)', () => {
     expect(payload).toContain('<type>analysis</type>')
     expect(payload).toContain('HELLO OCR 12345')
     expect(payload).toContain('"provider":"local-ocr"')
-    expect(payload).toContain('DEGRADED: no vision model, used local RapidOCR')
+    expect(payload).toContain('DEGRADED: no vision model, used local algorithms (OCR + cv2 + YOLO)')
   })
 
   it('removes the OCR temp file after a text-only read', async () => {
