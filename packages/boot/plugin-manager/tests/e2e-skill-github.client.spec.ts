@@ -58,6 +58,7 @@ function gui(manager: ExtensionManager) {
   })
   const ctx = {
     get: () => ({ enabled: false, track: vi.fn() }),
+    logger: { info: vi.fn(), warn: vi.fn(), error: vi.fn(), debug: vi.fn() },
     configForms: {
       describe: () => ({ getSnapshot: () => ({ view: { namespaces: [] } }), subscribe: () => () => {} }),
       get: vi.fn(),
