@@ -4,10 +4,11 @@
  * attachment service's full decode stays authoritative. The mounted `ctx.fs`
  * backend owns path resolution and read access; names only declare media type.
  *
- * The route gate is deliberately stricter than the host upload preflight. An
- * image-reading tool is useful only when the exact calling route can inspect
- * its result, so unknown capability refuses instead of relying on an adapter
- * failure after filesystem and attachment work.
+ * The route gate is deliberately stricter than the host upload preflight: an
+ * image block is attached only when the exact calling route declares image
+ * input. A text-only route instead enters an integrated reader that returns
+ * structured text, so it never relies on a downstream adapter failure after
+ * filesystem and attachment work.
  * @module @liusiqi-dev/sqh-tool-fs/src/read-image
  */
 
@@ -17,7 +18,7 @@ import { AttachmentError, AttachmentId } from '@liusiqi-dev/sqh-attachment'
 import type { AttachmentStore, ImageAttachmentRef, ImageMediaType } from '@liusiqi-dev/sqh-attachment'
 import type { ContentBlock } from '@liusiqi-dev/sqh-llm'
 import { defineTool } from '@liusiqi-dev/sqh-tools'
-import type { GenericCallView, ToolExecution } from '@liusiqi-dev/sqh-tools'
+import type { GenericCallView, InferValue, ToolExecution } from '@liusiqi-dev/sqh-tools'
 import type {} from '@liusiqi-dev/sqh-fs'
 import { resolveRegularReadTarget } from './read-target.ts'
 
@@ -62,7 +63,6 @@ export function sniffImageMediaType(data: Uint8Array): ImageMediaType | undefine
 const IMAGE_VALUE_SCHEMA = {
   type: 'object',
   additionalProperties: false,
-  required: true,
   properties: {
     attachmentId: { type: 'string', required: true },
     mediaType: { type: 'string', enum: ['image/png', 'image/jpeg', 'image/webp', 'image/gif'], required: true },
@@ -76,6 +76,75 @@ const IMAGE_VALUE_SCHEMA = {
       properties: {
         width: { type: 'integer', required: true },
         height: { type: 'integer', required: true },
+      },
+    },
+  },
+} as const
+
+/**
+ * Structured result for the integrated (text-only) route. Its fields mirror
+ * the analysis contract so later phases can fill real OCR / vision content
+ * into the same shape. Neither this nor `image` is required at the output
+ * root, which keeps `output.schema` polymorphic; `render` decides which
+ * content blocks to emit based on which branch populated the value.
+ */
+const ANALYSIS_VALUE_SCHEMA = {
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    provider: { type: 'string', required: true },
+    result: {
+      type: 'object',
+      additionalProperties: false,
+      required: true,
+      properties: {
+        summary: { type: 'string', required: true },
+        ocr: {
+          type: 'object',
+          additionalProperties: false,
+          required: true,
+          properties: {
+            full_text: { type: 'string', required: true },
+            lines: { type: 'array', items: { type: 'string' }, required: true },
+          },
+        },
+        layout: {
+          type: 'object',
+          additionalProperties: false,
+          required: true,
+          properties: {
+            regions: { type: 'array', items: { type: 'json' }, required: true },
+          },
+        },
+        semantics: {
+          type: 'object',
+          additionalProperties: false,
+          required: true,
+          properties: {
+            scene: { oneOf: [{ type: 'null' }, { type: 'string' }], required: true },
+            entities: { type: 'array', items: { type: 'json' }, required: true },
+            relations: { type: 'array', items: { type: 'json' }, required: true },
+          },
+        },
+        visual: {
+          type: 'object',
+          additionalProperties: false,
+          required: true,
+          properties: {
+            dominant_colors: { type: 'array', items: { type: 'string' }, required: true },
+            style: { oneOf: [{ type: 'null' }, { type: 'string' }], required: true },
+            notes: { type: 'array', items: { type: 'string' }, required: true },
+          },
+        },
+        uncertainty: { type: 'array', items: { type: 'string' }, required: true },
+      },
+    },
+    meta: {
+      type: 'object',
+      additionalProperties: false,
+      required: true,
+      properties: {
+        warnings: { type: 'array', items: { type: 'string' }, required: true },
       },
     },
   },
@@ -98,6 +167,9 @@ export interface ImageReadValue {
     }
   }
 }
+
+/** The analysis half of the polymorphic `read_image` output value. */
+type ImageAnalysisValue = InferValue<typeof ANALYSIS_VALUE_SCHEMA>
 
 /**
  * Map a model-supplied path to its declared image media type by extension.
@@ -127,6 +199,28 @@ export async function assertImageCapableRoute(ctx: Context, exec: ToolExecution,
   const active = await llm.resolveModelInfo(provider, model, exec.signal)
   if (active.inputModalities === undefined || !active.inputModalities.includes('image')) {
     throw new Error(`cannot read "${requestedPath}" as an image: model "${model}" does not declare image input; switch to an image-capable model to read images`)
+  }
+}
+
+/**
+ * Whether the exact calling route declares image input. Mirrors the strict
+ * gate but returns a boolean, so a text-only route enters the integrated
+ * reader instead of being refused. Any unresolved route or catalog failure is
+ * treated as "no vision" and degrades to the text path.
+ * @param ctx - the plugin context used to resolve the optional `llm` service.
+ * @param exec - the tool-execution context supplying the calling agent.
+ */
+async function modelSupportsVision(ctx: Context, exec: ToolExecution): Promise<boolean> {
+  const routed = exec.agent?.session.requestHeader()?.config
+  const provider = routed?.provider ?? exec.agent?.options.provider
+  const model = routed?.model ?? exec.agent?.options.model
+  const llm = ctx.get('llm')
+  if (provider === undefined || model === undefined || llm === undefined) return false
+  try {
+    const active = await llm.resolveModelInfo(provider, model, exec.signal)
+    return active.inputModalities?.includes('image') ?? false
+  } catch {
+    return false
   }
 }
 
@@ -197,6 +291,45 @@ function imageReadContent(value: ImageReadValue): ContentBlock[] {
 }
 
 /**
+ * Phase 1 placeholder for the integrated reader. Real OCR and vision providers
+ * land in later phases; until then a text-only route gets an explicit degraded
+ * analysis instead of a capability-gate error. Kept without a type annotation
+ * so the empty arrays and `null` stay assignable to the inferred schema value.
+ * @param path - the backend-resolved path rendered in the result envelope.
+ * @returns a polymorphic `read_image` value carrying only the analysis half.
+ */
+function degradedAnalysisValue(path: string) {
+  return {
+    path,
+    analysis: {
+      provider: 'unavailable',
+      result: {
+        summary: 'Integrated image analysis is not configured on this route; the image bytes were read but could not be described.',
+        ocr: { full_text: '', lines: [] },
+        layout: { regions: [] },
+        semantics: { scene: null, entities: [], relations: [] },
+        visual: { dominant_colors: [], style: null, notes: [] },
+        uncertainty: ['No vision provider or OCR backend is configured for the current route.'],
+      },
+      meta: { warnings: ['DEGRADED: integrated reader not configured'] },
+    },
+  }
+}
+
+/**
+ * Render an analysis outcome as one text block carrying the structured JSON,
+ * mirroring the image envelope's `<path>`/`<type>`/`<content>` shape.
+ * @param path - the backend-resolved path rendered in the envelope.
+ * @param analysis - the analysis value from the integrated reader.
+ * @returns the single text block emitted for a text-only route.
+ */
+function analysisReadContent(path: string, analysis: ImageAnalysisValue): ContentBlock[] {
+  return [
+    { type: 'text', text: `<path>${path}</path>\n<type>analysis</type>\n<content>\n${JSON.stringify(analysis)}\n</content>` },
+  ]
+}
+
+/**
  * Register the `read_image` tool into the given context. The composing plugin
  * owns the attachments gate: `src/index.ts` calls this inside
  * `ctx.inject(['attachments'], …)` so the tool exists only while a durable
@@ -208,8 +341,8 @@ function imageReadContent(value: ImageReadValue): ContentBlock[] {
 export function applyReadImageTool(ctx: Context): void {
   ctx.tools.register(defineTool({
     name: 'read_image',
-    description: 'Read a PNG/JPEG/WebP/GIF file and return the image itself. '
-      + 'Large images are downscaled automatically; do not install image libraries or create thumbnails to inspect an image.',
+    description: 'Read a PNG/JPEG/WebP/GIF file. Vision-capable models receive the image itself; text-only models receive a text analysis. '
+      + 'Large images are downscaled automatically.',
     parameters: {
       file_path: { type: 'string', required: true, description: 'Path to the image file, resolved by the filesystem backend.' },
     },
@@ -220,9 +353,14 @@ export function applyReadImageTool(ctx: Context): void {
         properties: {
           path: { type: 'string', required: true },
           image: IMAGE_VALUE_SCHEMA,
+          analysis: ANALYSIS_VALUE_SCHEMA,
         },
       },
-      render: (_args, value) => imageReadContent(value),
+      render: (_args, value) => {
+        if (value.analysis !== undefined) return analysisReadContent(value.path, value.analysis)
+        if (value.image !== undefined) return imageReadContent({ path: value.path, image: value.image })
+        return []
+      },
       // Persist the resolved path only. The attachment reference is NOT copied
       // here: the settled `content` already carries the image block with the
       // complete reference, so a second copy would keep two records of one fact —
@@ -253,7 +391,15 @@ export function applyReadImageTool(ctx: Context): void {
         throw new Error(`cannot read "${args.file_path}" as an image: no attachment service is mounted`)
       }
       if (declared !== undefined) assertDeploymentAccepts(attachments, declared, args.file_path)
-      await assertImageCapableRoute(ctx, exec, args.file_path)
+
+      // Two-way exclusive route: a vision-capable model keeps the original
+      // image-block path; a text-only model enters the integrated reader.
+      const supportsVision = await modelSupportsVision(ctx, exec)
+      if (supportsVision) {
+        // Defensive: a route that just tested vision-capable must still pass
+        // the strict gate before an image block is attached to the result.
+        await assertImageCapableRoute(ctx, exec, args.file_path)
+      }
 
       const { target, info } = await resolveRegularReadTarget(ctx, exec, args.file_path)
 
@@ -266,6 +412,14 @@ export function applyReadImageTool(ctx: Context): void {
         throw new Error(`cannot read "${target.displayPath}": the file content is not a supported image format; read_image accepts PNG/JPEG/WebP/GIF`)
       }
       if (declared === undefined) assertDeploymentAccepts(attachments, mediaType, target.displayPath)
+
+      if (!supportsVision) {
+        // Integrated (text-only) path. Real OCR / vision providers land in later
+        // phases; for now return an explicit degraded analysis so a text-only
+        // route no longer fails at the capability gate.
+        return degradedAnalysisValue(target.displayPath)
+      }
+
       // Persist before returning: the image block must reference a durably
       // committed object by the time the tool/result event is appended.
       let ref: ImageAttachmentRef

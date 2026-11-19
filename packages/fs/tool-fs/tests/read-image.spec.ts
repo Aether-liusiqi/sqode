@@ -452,8 +452,8 @@ describe('extension-less paths', () => {
   })
 })
 
-describe('strict image-modality gate', () => {
-  it('accepts an exact visual route even when the advisory model catalog omits it', async () => {
+describe('image route branch (vision image / text analysis)', () => {
+  it('keeps the original image block for an exact visual route even when the advisory catalog omits it', async () => {
     await writeFile(join(dir, 'red.png'), PNG_1X1)
     const ctx = await setup({
       models: [],
@@ -463,38 +463,44 @@ describe('strict image-modality gate', () => {
     })
     const result = await readImage(ctx, { file_path: 'red.png' }, agentOn('hidden-vision'))
     expect(result.isError).toBe(false)
+    expect(result.content.find(block => block.type === 'image')).toBeDefined()
+    expect(result.content.find(block => block.type === 'text')?.text).toContain('<type>image</type>')
   })
 
   it.each([
     ['a text-only model', 'text-model'],
     ['a model without declared modalities', 'legacy-model'],
     ['a model absent from the catalog', 'unknown-model'],
-  ])('refuses on %s', async (_label, model) => {
+  ])('returns degraded analysis on %s instead of refusing', async (_label, model) => {
     await writeFile(join(dir, 'red.png'), PNG_1X1)
     const ctx = await setup()
     const result = await readImage(ctx, { file_path: 'red.png' }, agentOn(model))
-    expect(result.isError).toBe(true)
-    expect(text(result)).toContain('does not declare image input')
+    expect(result.isError).toBe(false)
+    expect(result.content.find(block => block.type === 'image')).toBeUndefined()
+    expect(text(result)).toContain('<type>analysis</type>')
+    expect(text(result)).toContain('DEGRADED: integrated reader not configured')
+    expect(text(result)).toContain('"provider":"unavailable"')
   })
 
-  it('refuses when the route cannot be resolved (no agent, or no header and no options)', async () => {
+  it('returns degraded analysis when the route cannot be resolved (no agent, or no header and no options)', async () => {
     await writeFile(join(dir, 'red.png'), PNG_1X1)
     const ctx = await setup()
     const noAgent = await readImage(ctx, { file_path: 'red.png' })
-    expect(noAgent.isError).toBe(true)
-    expect(text(noAgent)).toContain('route could not be resolved')
+    expect(noAgent.isError).toBe(false)
+    expect(text(noAgent)).toContain('DEGRADED: integrated reader not configured')
+    expect(noAgent.content.find(block => block.type === 'image')).toBeUndefined()
 
     const noRoute = await readImage(ctx, { file_path: 'red.png' }, agentOn(undefined))
-    expect(noRoute.isError).toBe(true)
-    expect(text(noRoute)).toContain('route could not be resolved')
+    expect(noRoute.isError).toBe(false)
+    expect(text(noRoute)).toContain('DEGRADED: integrated reader not configured')
   })
 
-  it('refuses when no llm service is mounted', async () => {
+  it('returns degraded analysis when no llm service is mounted', async () => {
     await writeFile(join(dir, 'red.png'), PNG_1X1)
     const ctx = await setup({ llm: false })
     const result = await readImage(ctx, { file_path: 'red.png' }, agentOn('vision-model'))
-    expect(result.isError).toBe(true)
-    expect(text(result)).toContain('route could not be resolved')
+    expect(result.isError).toBe(false)
+    expect(text(result)).toContain('DEGRADED: integrated reader not configured')
   })
 })
 
