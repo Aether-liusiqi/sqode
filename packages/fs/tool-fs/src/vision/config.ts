@@ -1,7 +1,8 @@
 /**
  * Configuration for the integrated reader. Reads `~/.sqh-vision-reader/config.json`.
- * A missing file, a malformed file, or missing fields all fall back to defaults;
- * an empty `apiKey` means the local OCR path is used.
+ * The API key comes from the user-level TOKENHUB_API_KEY environment variable,
+ * never from a literal in source. A missing file, a malformed file, or missing
+ * fields all fall back to defaults; an empty `apiKey` uses local OCR.
  * @module @liusiqi-dev/sqh-tool-fs/src/vision/config
  */
 
@@ -11,6 +12,9 @@ import { join } from 'node:path'
 
 /** Home override for tests; production always uses the OS home directory. */
 export const VISION_HOME_ENV = 'SQH_VISION_READER_HOME'
+
+/** User-level environment variable supplying the TokenHub API key. */
+export const TOKENHUB_KEY_ENV = 'TOKENHUB_API_KEY'
 
 /** Directory holding `config.json` and the generated `ocr.py`. */
 export function getConfigDir(): string {
@@ -30,10 +34,10 @@ export interface VisionConfig {
 
 /** Defaults used whenever the config file is absent or incomplete. */
 export const DEFAULT_CONFIG: VisionConfig = {
-  provider: 'doubao-vision',
+  provider: 'tencent-tokenhub-vision',
   apiKey: '',
-  baseUrl: 'https://ark.cn-beijing.volces.com/api/v3',
-  model: 'doubao-1.5-vision-pro',
+  baseUrl: 'https://tokenhub.tencentmaas.com/v1',
+  model: 'hunyuan-turbos-vision-video-20250728',
   ocrFallback: 'prefer',
   pythonPath: 'D:\\PythonEnv\\myenv\\Scripts\\python.exe',
   cacheTtl: 0,
@@ -54,18 +58,19 @@ function asFiniteNumber(value: unknown): number | undefined {
  * @returns the resolved configuration.
  */
 export async function loadConfig(configDir: string = getConfigDir()): Promise<VisionConfig> {
-  let raw: unknown
+  let record: Record<string, unknown> = {}
   try {
-    raw = JSON.parse(await readFile(join(configDir, 'config.json'), 'utf8')) as unknown
+    const raw: unknown = JSON.parse(await readFile(join(configDir, 'config.json'), 'utf8')) as unknown
+    if (raw !== null && typeof raw === 'object' && !Array.isArray(raw)) {
+      record = raw as Record<string, unknown>
+    }
   } catch {
-    return { ...DEFAULT_CONFIG }
+    // A missing or malformed file leaves `record` empty, so defaults apply.
   }
-  if (raw === null || typeof raw !== 'object' || Array.isArray(raw)) return { ...DEFAULT_CONFIG }
-  const record = raw as Record<string, unknown>
   const ocrFallback = asString(record.ocrFallback)
   return {
     provider: asString(record.provider) ?? DEFAULT_CONFIG.provider,
-    apiKey: asString(record.apiKey) ?? DEFAULT_CONFIG.apiKey,
+    apiKey: process.env[TOKENHUB_KEY_ENV]?.trim() || (asString(record.apiKey) ?? DEFAULT_CONFIG.apiKey),
     baseUrl: asString(record.baseUrl) ?? DEFAULT_CONFIG.baseUrl,
     model: asString(record.model) ?? DEFAULT_CONFIG.model,
     ocrFallback: ocrFallback === 'prefer' || ocrFallback === 'fallback' ? ocrFallback : DEFAULT_CONFIG.ocrFallback,

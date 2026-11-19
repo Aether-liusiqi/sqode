@@ -8,11 +8,11 @@
  */
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { mkdtemp, rm } from 'node:fs/promises'
+import { mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import type { VisionConfig } from '../src/vision/config.ts'
-import { DEFAULT_CONFIG, VISION_HOME_ENV } from '../src/vision/config.ts'
+import { DEFAULT_CONFIG, TOKENHUB_KEY_ENV, VISION_HOME_ENV, loadConfig } from '../src/vision/config.ts'
 import { analyzeImage, wrapOcrText, wrapVisionResult } from '../src/vision/analyze.ts'
 import { analyzeWithFailover } from '../src/vision/failover.ts'
 import { runOcr } from '../src/vision/ocr.ts'
@@ -41,6 +41,7 @@ function reply(body: unknown, ok = true, status = 200): Response {
 
 let fetchMock: ReturnType<typeof vi.fn>
 let savedHome: string | undefined
+let savedKey: string | undefined
 
 beforeEach(() => {
   fetchMock = vi.fn()
@@ -48,12 +49,16 @@ beforeEach(() => {
   vi.mocked(runOcr).mockReset()
   vi.mocked(runOcr).mockResolvedValue(OCR)
   savedHome = process.env[VISION_HOME_ENV]
+  savedKey = process.env[TOKENHUB_KEY_ENV]
+  Reflect.deleteProperty(process.env, TOKENHUB_KEY_ENV)
 })
 
 afterEach(() => {
   vi.unstubAllGlobals()
   if (savedHome === undefined) Reflect.deleteProperty(process.env, VISION_HOME_ENV)
   else process.env[VISION_HOME_ENV] = savedHome
+  if (savedKey === undefined) Reflect.deleteProperty(process.env, TOKENHUB_KEY_ENV)
+  else process.env[TOKENHUB_KEY_ENV] = savedKey
 })
 
 describe('prompt', () => {
@@ -101,12 +106,12 @@ describe('provider call', () => {
     const args: unknown = fetchMock.mock.calls[0]
     expect(Array.isArray(args)).toBe(true)
     if (!Array.isArray(args)) return
-    expect(args[0]).toBe('https://ark.cn-beijing.volces.com/api/v3/chat/completions')
+    expect(args[0]).toBe('https://tokenhub.tencentmaas.com/v1/chat/completions')
     const options = args[1] as RequestInit
     expect(options.method).toBe('POST')
     expect((options.headers as Record<string, string>).authorization).toBe('Bearer secret')
     const body = JSON.parse(options.body as string) as { model: string; messages: unknown[] }
-    expect(body.model).toBe('doubao-1.5-vision-pro')
+    expect(body.model).toBe('hunyuan-turbos-vision-video-20250728')
     expect(body.messages).toHaveLength(2)
   })
 
@@ -173,8 +178,8 @@ describe('wrappers and analyzeImage', () => {
   it('wraps vision and OCR results into the analysis schema', () => {
     const parsed = parseVisionContent(VALID_CONTENT)
     if (parsed === null) throw new Error('expected a parsed result')
-    expect(wrapVisionResult('doubao-vision', parsed)).toMatchObject({
-      provider: 'doubao-vision',
+    expect(wrapVisionResult('tencent-tokenhub-vision', parsed)).toMatchObject({
+      provider: 'tencent-tokenhub-vision',
       result: { summary: 'A red square with text' },
       meta: { warnings: [] },
     })
@@ -193,6 +198,48 @@ describe('wrappers and analyzeImage', () => {
       expect(result.result.ocr.full_text).toBe('HELLO OCR 12345')
       expect(result.meta.warnings).toEqual(['DEGRADED: no vision model, used local RapidOCR'])
       expect(fetchMock).not.toHaveBeenCalled()
+    } finally {
+      await rm(dir, { recursive: true, force: true })
+    }
+  })
+})
+
+describe('config key source', () => {
+  it('reads the key from the user-level environment variable with defaults applied', async () => {
+    const dir = await mkdtemp(join(tmpdir(), 'sqh-vision-key-'))
+    try {
+      process.env[VISION_HOME_ENV] = dir
+      process.env[TOKENHUB_KEY_ENV] = '  env-key-xyz  '
+      const config = await loadConfig(dir)
+      expect(config.apiKey).toBe('env-key-xyz')
+      expect(config.provider).toBe('tencent-tokenhub-vision')
+      expect(config.baseUrl).toBe('https://tokenhub.tencentmaas.com/v1')
+      expect(config.model).toBe('hunyuan-turbos-vision-video-20250728')
+    } finally {
+      await rm(dir, { recursive: true, force: true })
+    }
+  })
+
+  it('lets the environment variable override a key stored in the config file', async () => {
+    const dir = await mkdtemp(join(tmpdir(), 'sqh-vision-key-'))
+    try {
+      await writeFile(join(dir, 'config.json'), JSON.stringify({ apiKey: 'file-key' }))
+      process.env[VISION_HOME_ENV] = dir
+      process.env[TOKENHUB_KEY_ENV] = 'env-key'
+      const config = await loadConfig(dir)
+      expect(config.apiKey).toBe('env-key')
+    } finally {
+      await rm(dir, { recursive: true, force: true })
+    }
+  })
+
+  it('falls back to the config file key only when the environment variable is absent', async () => {
+    const dir = await mkdtemp(join(tmpdir(), 'sqh-vision-key-'))
+    try {
+      await writeFile(join(dir, 'config.json'), JSON.stringify({ apiKey: 'file-key' }))
+      process.env[VISION_HOME_ENV] = dir
+      const config = await loadConfig(dir)
+      expect(config.apiKey).toBe('file-key')
     } finally {
       await rm(dir, { recursive: true, force: true })
     }
