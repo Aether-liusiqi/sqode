@@ -301,6 +301,7 @@ export async function runProfile(options: RunProfileOptions): Promise<{ ctx: Con
       // after the config tree loads, by which time an install request can reach it.
       hostCtx.provide('extensionServiceSeams', {
         home: profileContext.home,
+        traceLog: join(profileContext.dir, '.plugin-manager', 'logs', 'remote-trace.log'),
         installPlugin: async (name: string, source: string) => {
           const manager = hostCtx.get('pluginManager') as {
             installBundle: (spec: string) => Promise<{ changed: boolean; application: string; target?: string }>

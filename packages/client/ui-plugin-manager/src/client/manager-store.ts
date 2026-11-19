@@ -34,6 +34,21 @@ import type { SettingsDescribeFace, ConfigForms } from '@liusiqi-dev/sqh-client-
 import type { ConfigLedger } from './config-ledger.ts'
 import { shortName } from './presentation.ts'
 
+/** A single hung Remote call must not freeze the extension panel forever. */
+const REMOTE_TIMEOUT_MS = 30_000
+
+function withRemoteTimeout<T>(label: string, work: Promise<T>): Promise<T> {
+  let timer: ReturnType<typeof setTimeout> | undefined
+  return Promise.race([
+    work,
+    new Promise<never>((_resolve, reject) => {
+      timer = setTimeout(() => { reject(new Error(`Remote ${label} 在 ${String(REMOTE_TIMEOUT_MS / 1000)} 秒内未响应,请重试`)) }, REMOTE_TIMEOUT_MS)
+    }),
+  ]).finally(() => {
+    if (timer !== undefined) clearTimeout(timer)
+  })
+}
+
 /** The action a failed notice names. */
 export type FailedAction = 'enable' | 'disable' | 'uninstall' | 'rowEnable' | 'rowDisable'
 
@@ -1016,8 +1031,9 @@ export class PluginManagerController {
     // A GitHub URL can be a plugin, Skill or MCP repository even when its shape
     // says otherwise. Ask the unified service to read the source before deciding.
     let detectedKind: 'plugin' | 'skill' | 'mcp' | undefined
+    let detectionError: string | undefined
     try {
-      const detected = await this.ctx.remote.extensionService.detectSource(spec)
+      const detected = await withRemoteTimeout('detectSource', this.ctx.remote.extensionService.detectSource(spec))
       if (detected.ok && detected.value.ok) {
         const source = detected.value.value
         detectedKind = source.kind
@@ -1027,13 +1043,17 @@ export class PluginManagerController {
           return
         }
       }
-    } catch { /* the answer below reports an unreachable detector like a refused one */ }
+    } catch (error) {
+      // An unreachable or timed-out detector reports the same detection-failed answer.
+      detectionError = error instanceof Error ? error.message : String(error)
+      this.ctx.logger.warn('extension detectSource failed: %s', detectionError)
+    }
     // Falling through would install the source as a plugin, which is the mistake
     // the classification exists to prevent: a Skill repository then reaches pnpm
     // and fails every dependency. Stop and name the kinds instead.
     if (detectedKind === undefined) {
       this.finishAnalytics('failed', 'detection-failed')
-      this.patchInstall({ phase: 'idle', inputError: { problem: 'detection-failed', reason: spec } })
+      this.patchInstall({ phase: 'idle', inputError: { problem: 'detection-failed', reason: detectionError ?? spec } })
       return
     }
     await this.startInstall({ spec, ...inspected.value })
@@ -1045,7 +1065,19 @@ export class PluginManagerController {
     // wizard is plugin-only and has no abort RPC for extensions, so reusing its
     // phase would leave a cancel button that cannot cancel.
     this.patchInstall({ phase: 'idle', extensionInstalling: kind, inputError: null })
-    const answer = await this.ctx.remote.extensionService.installExtension({ spec, hint: kind })
+    this.ctx.logger.info('extension installExtension: calling Remote for %s', spec)
+    let answer: Awaited<ReturnType<typeof this.ctx.remote.extensionService.installExtension>>
+    try {
+      answer = await withRemoteTimeout('installExtension', this.ctx.remote.extensionService.installExtension({ spec, hint: kind }))
+    } catch (error) {
+      if (this.disposed) return
+      const reason = error instanceof Error ? error.message : String(error)
+      this.ctx.logger.warn('extension installExtension failed: %s', reason)
+      this.patchInstall({ extensionInstalling: undefined, inputError: { problem: 'extension-install', reason } })
+      this.finishAnalytics('failed', 'extension-install')
+      this.patch({ notice: { seq: ++this.noticeSeq, kind: 'update-failed', reason }, updates: {} })
+      return
+    }
     if (this.disposed) return
     if (!answer.ok) {
       const reason = answer.error.message

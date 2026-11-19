@@ -8,6 +8,8 @@
  * @module @liusiqi-dev/sqh-plugin-manager/extension-service
  */
 
+import { appendFile, mkdir } from 'node:fs/promises'
+import { dirname } from 'node:path'
 import { TypertRemoteService, Remote } from '@liusiqi-dev/sqh-typert-protocol'
 import { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
@@ -145,6 +147,20 @@ export interface ExtensionServiceSeams {
   readonly fetch?: typeof fetch
   readonly token?: () => string | undefined
   readonly apiBase?: string
+  /** Optional trace file for diagnosing a Remote install that never settles. */
+  readonly traceLog?: string
+}
+
+/**
+ * Append one diagnostic line to the profile's remote trace file. Tracing is
+ * best effort: a failure to write must never change the install path it watches.
+ */
+async function trace(traceLog: string | undefined, event: string, detail: string): Promise<void> {
+  if (traceLog === undefined) return
+  try {
+    await mkdir(dirname(traceLog), { recursive: true })
+    await appendFile(traceLog, `${new Date().toISOString()} ${event} ${detail}\n`, 'utf8')
+  } catch { /* diagnostics must never break the path they observe */ }
 }
 
 /** Framework-free implementation, so the behavior can be tested without a Cordis context. */
@@ -168,6 +184,7 @@ export class ExtensionManager {
 
   /** Install one extension at its kind's location and record it in the inventory. */
   async install(request: ExtensionInstallRequest): Promise<ExtensionAnswer<ExtensionInstallResult>> {
+    await trace(this.seams.traceLog, 'manager.install', `spec=${request.spec} hint=${request.hint ?? ''}`)
     try {
       const snapshot = await snapshotFor(request.spec, this.seams)
       const detected = detectSource(request.spec, request.hint, snapshot)
@@ -258,10 +275,12 @@ export class ExtensionService extends TypertRemoteService {
   static Config = z.object({})
 
   private readonly manager: ExtensionManager
+  private readonly traceLog: string | undefined
 
   constructor(ctx: Context, seams: ExtensionServiceSeams) {
     super(ctx, 'extensionService')
     this.manager = new ExtensionManager(seams)
+    this.traceLog = seams.traceLog
   }
 
   // Method names must not collide with RemoteNamespaceService.prototype
@@ -276,6 +295,7 @@ export class ExtensionService extends TypertRemoteService {
 
   @Remote
   installExtension(request: ExtensionInstallRequest): Promise<ExtensionAnswer<ExtensionInstallResult>> {
+    void trace(this.traceLog, 'remote.install', `spec=${request.spec} hint=${request.hint ?? ''}`)
     return this.manager.install(request)
   }
 

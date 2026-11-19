@@ -106,6 +106,7 @@ function bench(overrides: Partial<Record<string, ReturnType<typeof vi.fn>>> = {}
   const track = vi.fn()
   const ctx = {
     get: () => ({ enabled, track }),
+    logger: { info: vi.fn(), warn: vi.fn(), error: vi.fn(), debug: vi.fn() },
     configForms: { describe: () => ({ getSnapshot: () => ({ view: { namespaces: [] } }), subscribe: () => () => {} }), get: vi.fn((id: string) => `form:${id}`) },
     remote: { pluginManager: plugins, pluginInventory: inventory, pluginRegistryProbe: probe, extensionService: extensions },
   } as never
