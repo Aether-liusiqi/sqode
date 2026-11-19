@@ -312,6 +312,14 @@ describe('projectImagesForTextModel', () => {
       { type: 'text', text: 'after' },
     ])
   })
+
+  it('emits a read_image handle when a read path resolver is supplied', () => {
+    const visual = createUserMessage({ content: [image(3)], source })
+    const projected = projectImagesForTextModel([visual], _ref => ({ readonlyPath: '/tmp/normalized.png' }))
+    expect(projected[0]?.content).toEqual([
+      { type: 'text', text: '[image omitted for this text-only model; use read_image on "/tmp/normalized.png" to analyze it (image/png, 1x1px)]' },
+    ])
+  })
 })
 
 describe('file projection', () => {

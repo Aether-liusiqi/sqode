@@ -42,7 +42,8 @@ import { normalizeApiKey } from './api-key.ts'
 import {
   contentHasFile, contentHasImage, fileHandleText, projectFilesToText, projectImagesForTextModel, projectToolUpdates,
 } from './content.ts'
-import type { FileAttachmentRef } from '@liusiqi-dev/sqh-attachment'
+import type { ImageAttachmentAccess } from './content.ts'
+import type { FileAttachmentRef, ImageAttachmentRef } from '@liusiqi-dev/sqh-attachment'
 
 export * from './attribution.ts'
 export * from './brand.ts'
@@ -1029,6 +1030,25 @@ export class LlmRuntime extends TypertRemoteService {
   }
 
   /**
+   * Resolve the current execution-world read path of one durable image
+   * reference through the mounted attachment and filesystem providers.
+   */
+  private imageAccess(ref: ImageAttachmentRef): ImageAttachmentAccess | undefined {
+    let hostPath: string | undefined
+    try {
+      hostPath = (this.ctx.get('attachments') as { imageHostPath?(ref: ImageAttachmentRef): string | undefined } | undefined)?.imageHostPath?.(ref)
+    } catch {
+      // Mirrors fileReadPath: a malformed durable reference degrades this
+      // occurrence to the no-path placeholder instead of failing the request.
+      return undefined
+    }
+    if (hostPath === undefined) return undefined
+    const fs = this.ctx.get('fs') as { processPathFromHostPath?(hostPath: string): string | undefined } | undefined
+    const readonlyPath = fs?.processPathFromHostPath?.(hostPath)
+    return readonlyPath === undefined ? undefined : { readonlyPath }
+  }
+
+  /**
    * Final adapter boundary. Adapter selection, dispatch, iterator construction,
    * and iteration failures become one terminal failure chunk. Middleware and
    * downstream consumer failures remain thrown plugin or consumer errors.
@@ -1078,7 +1098,7 @@ export class LlmRuntime extends TypertRemoteService {
       if (modelInfo.inputModalities !== undefined
         && !modelInfo.inputModalities.includes('image')
         && projectedMessages.some(message => contentHasImage(message.content))) {
-        projectedMessages = projectImagesForTextModel(projectedMessages)
+        projectedMessages = projectImagesForTextModel(projectedMessages, ref => this.imageAccess(ref))
       }
       // Tool changes are logged on every route; the route's declared mode selects what it receives.
       const projectedTools = projectToolUpdates(projectedMessages, resolvedOptions.tools, modelInfo.toolUpdate, resolvedOptions.toolHistory)

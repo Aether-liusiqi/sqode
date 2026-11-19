@@ -785,7 +785,7 @@ describe('Web session model selection', () => {
     await ctx.fiber.dispose()
   })
 
-  it('maps image admission failures and accepts image-capable selections', async () => {
+  it('accepts images for both text-only and image-capable selections', async () => {
     const { ctx, agent, sessionId } = await harness()
     registerTextOnly(ctx)
     ctx.llm.registerAdapter(['image-capable'], new class extends CatalogAdapter {
@@ -825,12 +825,9 @@ describe('Web session model selection', () => {
     expectValue(await remote.selectModel(request({
       sessionId, provider: 'text-only', model: 'plain',
     })))
-    expect(await remote.prompt(promptRequest({
+    expectValue(await remote.prompt(promptRequest({
       sessionId, mode: 'queue', content: [image],
-    }))).toMatchObject({
-      ok: false,
-      error: { code: 'session/attachment-invalid', details: { reason: 'MODEL_DOES_NOT_SUPPORT_IMAGES' } },
-    })
+    })))
 
     expectValue(await remote.selectModel(request({
       sessionId, provider: 'image-capable', model: 'vision',
@@ -852,7 +849,7 @@ describe('Web session model selection', () => {
     }))).toMatchObject({ ok: false, error: { code: 'gateway/internal', message: 'fixture rejected' } })
     saveMode = 'success'
     expectValue(await remote.prompt(promptRequest({ sessionId, mode: 'queue', content: [image] })))
-    expect(followup).toHaveBeenCalledOnce()
+    expect(followup).toHaveBeenCalledTimes(2)
 
     ;(agent.inbox.nextTurn as UserMessage[]).push({
       id: 'pending-image', role: 'user', source: { kind: 'user' },

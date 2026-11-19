@@ -71,9 +71,13 @@ function normalizedAccessText(ref: ImageAttachmentRef, access: ImageAttachmentAc
 /**
  * Stable text shown to a model that cannot accept one durable image reference.
  * @param ref - durable normalized attachment omitted from the request.
- * @returns deterministic text-only placeholder.
+ * @param access - optional current execution-world path for the image bytes.
+ * @returns deterministic read_image handle when a path is available, otherwise the no-path placeholder.
  */
-export function textOnlyImageText(ref: ImageAttachmentRef): string {
+export function textOnlyImageText(ref: ImageAttachmentRef, access?: ImageAttachmentAccess): string {
+  if (access !== undefined) {
+    return `[image omitted for this text-only model; use read_image on ${quoted(access.readonlyPath)} to analyze it (${ref.mediaType}, ${ref.width}x${ref.height}px)]`
+  }
   const digest = String(ref.attachmentId).slice('sha256:'.length, 'sha256:'.length + 8)
   return `[image omitted because this model accepts text only; attachment sha256:${digest}]`
 }
@@ -332,12 +336,15 @@ export function requiredImageOffload(
 }
 
 /** Replace every image occurrence for a text-only model. */
-function replaceImagesForTextModel(blocks: readonly ContentBlock[]): ContentBlock[] {
+function replaceImagesForTextModel(
+  blocks: readonly ContentBlock[],
+  resolveAccess?: ImageAttachmentAccessResolver,
+): ContentBlock[] {
   let next: ContentBlock[] | undefined
   for (const [index, block] of blocks.entries()) {
     if (block.type === 'image') {
       next ??= blocks.slice(0, index)
-      next.push({ type: 'text', text: textOnlyImageText(block.attachment) })
+      next.push({ type: 'text', text: textOnlyImageText(block.attachment, resolveAccess?.(block.attachment)) })
       continue
     }
     next?.push(block)
@@ -348,19 +355,30 @@ function replaceImagesForTextModel(blocks: readonly ContentBlock[]): ContentBloc
 /**
  * Project request image content into deterministic text for an exact text-only model.
  * @param messages - complete request history.
+ * @param resolveAccess - optional resolver that supplies a read_image path for each image.
  * @returns the original list without images, otherwise shallow message copies with stable placeholders.
  */
-export function projectImagesForTextModel(messages: readonly Message[]): readonly Message[]
+export function projectImagesForTextModel(
+  messages: readonly Message[],
+  resolveAccess?: ImageAttachmentAccessResolver,
+): readonly Message[]
 /**
  * Project image content in mixed durable and request-only inputs for a text-only model.
  * @param messages - complete request inputs.
+ * @param resolveAccess - optional resolver that supplies a read_image path for each image.
  * @returns original inputs without images, otherwise copies with stable placeholders.
  */
-export function projectImagesForTextModel(messages: readonly RequestMessage[]): readonly RequestMessage[]
-export function projectImagesForTextModel(messages: readonly RequestMessage[]): readonly RequestMessage[] {
+export function projectImagesForTextModel(
+  messages: readonly RequestMessage[],
+  resolveAccess?: ImageAttachmentAccessResolver,
+): readonly RequestMessage[]
+export function projectImagesForTextModel(
+  messages: readonly RequestMessage[],
+  resolveAccess?: ImageAttachmentAccessResolver,
+): readonly RequestMessage[] {
   if (!messages.some(message => contentHasImage(message.content))) return messages
   return messages.map((message) => {
-    const content = replaceImagesForTextModel(message.content)
+    const content = replaceImagesForTextModel(message.content, resolveAccess)
     return content === message.content ? message : { ...message, content }
   })
 }
