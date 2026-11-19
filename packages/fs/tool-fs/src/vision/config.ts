@@ -37,7 +37,7 @@ export const DEFAULT_CONFIG: VisionConfig = {
   provider: 'tencent-tokenhub-vision',
   apiKey: '',
   baseUrl: 'https://tokenhub.tencentmaas.com/v1',
-  model: 'hunyuan-turbos-vision-video-20250728',
+  model: 'hy-vision-2.0-instruct',
   ocrFallback: 'prefer',
   pythonPath: 'D:\\PythonEnv\\myenv\\Scripts\\python.exe',
   cacheTtl: 0,

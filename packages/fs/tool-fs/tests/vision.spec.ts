@@ -111,7 +111,7 @@ describe('provider call', () => {
     expect(options.method).toBe('POST')
     expect((options.headers as Record<string, string>).authorization).toBe('Bearer secret')
     const body = JSON.parse(options.body as string) as { model: string; messages: unknown[] }
-    expect(body.model).toBe('hunyuan-turbos-vision-video-20250728')
+    expect(body.model).toBe('hy-vision-2.0-instruct')
     expect(body.messages).toHaveLength(2)
   })
 
@@ -214,7 +214,7 @@ describe('config key source', () => {
       expect(config.apiKey).toBe('env-key-xyz')
       expect(config.provider).toBe('tencent-tokenhub-vision')
       expect(config.baseUrl).toBe('https://tokenhub.tencentmaas.com/v1')
-      expect(config.model).toBe('hunyuan-turbos-vision-video-20250728')
+      expect(config.model).toBe('hy-vision-2.0-instruct')
     } finally {
       await rm(dir, { recursive: true, force: true })
     }
