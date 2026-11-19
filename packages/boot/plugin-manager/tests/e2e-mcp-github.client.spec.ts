@@ -83,7 +83,7 @@ const NO_CONFIG: HostObservable<ConfigLedger> = {
   subscribe: () => () => {},
 }
 
-interface InstallRequest { spec: string; hint: string }
+type InstallRequest = import('../src/types.ts').ExtensionInstallRequest
 
 /** A GitHub API fetch answering with a repo carrying one standard-format .mcp.json. */
 const fixtureFetch = ((input: RequestInfo | URL) => {

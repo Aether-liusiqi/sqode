@@ -42,7 +42,7 @@ const NO_CONFIG: HostObservable<ConfigLedger> = {
   subscribe: () => () => {},
 }
 
-interface InstallRequest { spec: string; hint: string }
+type InstallRequest = import('../src/types.ts').ExtensionInstallRequest
 
 /**
  * Build the controller the same way the tab does, with a real ExtensionManager
