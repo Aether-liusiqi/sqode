@@ -7,7 +7,7 @@
  */
 
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
-import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises'
+import { mkdir, mkdtemp, readdir, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { Context } from '@liusiqi-dev/cordis'
@@ -24,6 +24,7 @@ import LocalAttachmentStore from '@liusiqi-dev/sqh-attachment-local'
 import { AttachmentError, AttachmentId, AttachmentStore } from '@liusiqi-dev/sqh-attachment'
 import type { ImageAttachmentLimits, ImageAttachmentRef, SaveImageAttachment, StoredImageAttachment } from '@liusiqi-dev/sqh-attachment'
 import * as ToolFs from '@liusiqi-dev/sqh-tool-fs'
+import { VISION_HOME_ENV } from '../src/vision/index.ts'
 import {
   applyReadImageTool,
   formatImageReadOutput,
@@ -38,6 +39,8 @@ const PNG_1X1 = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADEl
 const PNG_3X3 = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAIAAADZSiLoAAAAEElEQVR4nGP4z8AAQQxYWACPjgj4kWPEuQAAAABJRU5ErkJggg==', 'base64')
 /** 1x1 red GIF (GIF89a). */
 const GIF_1X1 = Buffer.from('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7', 'base64')
+/** 420x90 PNG containing the text "HELLO OCR 12345", for real OCR extraction checks. */
+const TEXT_PNG = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAaQAAABaCAIAAAB4wbW/AAAFHklEQVR4nO3bT0hUWxzA8Zl8WA6JEdlCF4EEhiCJd3W55sw4w2xEKBFmk5rBbEShRUt3BcMgFCghKvgXxRSkRYk6kfhnylULQRRUXCQKQikWmqPOifeGdxGbphweOa/f97M758z9u/gyxz9WpZQFAP505876BgDgdyB2AEQgdgBEIHYARCB2AEQgdgBEIHYARCB2AEQgdgBEIHYARCB2AEQgdgBEIHYARCB2AEQgdgBEIHYARCB2AEQgdgBEIHYARCB2AEQgdgBEIHYARCB2AEQgdgBEIHYARCB2AEQgdgBEIHYARCB2AEQgdgBEIHYARCB2AEQgdgBESDx2ly5dijm02WyOfz158uT7T8ac6ezs1DRN13VN07q7u3+61N7eXlhYaLfbS0tLP3z4cPzSdru9sLBwcnLSPMP29va9e/cyMjLMmY6Ojlu3bhUUFIyPj1sslt3dXa/X63A4NE179erV8auPjIykpaVZLJZgMJiTkxN9roaGhoTfG4CzoRKVkZERc3hi/ldmRkdHDcPY2tpSSm1tbRmGEQwG4yyNj487nc7d3V2l1MjISElJyYnTzs3N5efnm+cvKipqamoyVzc3N4uLi4+OjhYWFm7cuKGUCgQCjY2NSqn19fVr166ZB+7s7Oi6np6erpTq6elpaWlJ+HUBOFtJETuXy/X27VtzGAqF3G53nCWPx/Pu3Ttz0ufzhcPh46eNRCKXL182P7CxsXF8dWFhYXBwUCn15cuXzMxMpdSnT5/29/eVUsFg8Pr16+aBtbW1z58/jx4YCARevHhxypcEIFkkReyysrL29vbM4d7eXlZWVpyl7Ozsr1+/xrml0dHRioqKn95GV1fX/fv3zeHdu3dtNtvr16+jw+np6du3b5sHPnjwwOfzGYZRVla2vLwc65UASF5/Jbz/DYfDDofj+PD7eb/fr+t6Ajtrq9UaZ+no6CjOLR0cHCwuLs7Pz8e/ysrKSmNj48TEhDnT29tbUVHR3d3tcrn29/cfPnw4PDxsrlqt1ps3b7a1tQ0PD/t8vjdv3pz2uQCcpWT4Zud2u0OhkDmcmZnxeDxxloqLi2dnZ6MzkUikqqrqxGkDgYDf749z0c+fP2uaZp6krq7u4OBAKXV4eBjd//b19eXl5dn/kZKSUllZubq6enh4GP3MlStXfvk9AUgKSRG7sbExwzC2t7fN30KYe8mYSwMDA263O7qT7e/v93q9J077/v37O3fu/OiikUikvLy8v7/fXKqsrBwaGlJKTU1N6boe80Cv1xv9mV0oFHI6nad5VQD+z9vYHzm+jdV13e/3h8PhoqKi6IxhGIFA4PuZtbU1p9N5/vz5cDhcX1/vcrmiqx6PJ+bS0tKSpmmZmZlXr1599uzZiXvIzc2dm5uLRCLnzsX425qurq6xsbGPHz+2trZevHjx5cuXjx8/rq6ubm5uTk1N7ejoiPlcjx49qqmpefr06YULF9rb2/+7Fwbgd7D+/e0OAP50/AcFABGIHQARiB0AEYgdABGIHQARiB0AEYgdABGIHQARiB0AEYgdABGIHQARiB0AEYgdABGIHQARiB0AEYgdABGIHQARiB0AEYgdABGIHQARiB0AEYgdABGIHQARiB0AEYgdABGIHQARiB0AEYgdABGIHQARiB0AEYgdABGIHQARiB0AEYgdABGIHQARiB0AEYgdABGIHQARiB0AEYgdABGIHQARiB0AEYgdABGIHQARiB0AEYgdABGIHQCLBN8AtjAU8+lqUnwAAAAASUVORK5CYII=', 'base64')
 
 const testToolSignal = new AbortController().signal
 
@@ -88,8 +91,10 @@ let home: string
 beforeEach(async () => {
   dir = await mkdtemp(join(tmpdir(), 'sqh-read-image-'))
   home = await mkdtemp(join(tmpdir(), 'sqh-read-image-home-'))
+  process.env[VISION_HOME_ENV] = home
 })
 afterEach(async () => {
+  Reflect.deleteProperty(process.env, VISION_HOME_ENV)
   await rm(dir, { recursive: true, force: true })
   await rm(home, { recursive: true, force: true })
 })
@@ -471,36 +476,59 @@ describe('image route branch (vision image / text analysis)', () => {
     ['a text-only model', 'text-model'],
     ['a model without declared modalities', 'legacy-model'],
     ['a model absent from the catalog', 'unknown-model'],
-  ])('returns degraded analysis on %s instead of refusing', async (_label, model) => {
+  ])('returns OCR analysis on %s instead of refusing', async (_label, model) => {
     await writeFile(join(dir, 'red.png'), PNG_1X1)
     const ctx = await setup()
     const result = await readImage(ctx, { file_path: 'red.png' }, agentOn(model))
     expect(result.isError).toBe(false)
     expect(result.content.find(block => block.type === 'image')).toBeUndefined()
     expect(text(result)).toContain('<type>analysis</type>')
-    expect(text(result)).toContain('DEGRADED: integrated reader not configured')
-    expect(text(result)).toContain('"provider":"unavailable"')
+    expect(text(result)).toContain('"provider":"local-ocr"')
+    expect(text(result)).toContain('DEGRADED: no vision model, used local RapidOCR')
   })
 
-  it('returns degraded analysis when the route cannot be resolved (no agent, or no header and no options)', async () => {
+  it('extracts text from a text-bearing image on a text-only route', async () => {
+    await writeFile(join(dir, 'text.png'), TEXT_PNG)
+    const ctx = await setup()
+    const result = await readImage(ctx, { file_path: 'text.png' }, agentOn('text-model'))
+    expect(result.isError).toBe(false)
+    expect(result.content.find(block => block.type === 'image')).toBeUndefined()
+    const payload = text(result)
+    expect(payload).toContain('<type>analysis</type>')
+    expect(payload).toContain('HELLO OCR 12345')
+    expect(payload).toContain('"provider":"local-ocr"')
+    expect(payload).toContain('DEGRADED: no vision model, used local RapidOCR')
+  })
+
+  it('removes the OCR temp file after a text-only read', async () => {
+    await writeFile(join(dir, 'red.png'), PNG_1X1)
+    const ctx = await setup()
+    const prefix = 'read_image-ocr-'
+    const before = new Set((await readdir(tmpdir())).filter(name => name.startsWith(prefix)))
+    await readImage(ctx, { file_path: 'red.png' }, agentOn('text-model'))
+    const after = new Set((await readdir(tmpdir())).filter(name => name.startsWith(prefix)))
+    expect([...after].filter(name => !before.has(name))).toEqual([])
+  })
+
+  it('returns OCR analysis when the route cannot be resolved (no agent, or no header and no options)', async () => {
     await writeFile(join(dir, 'red.png'), PNG_1X1)
     const ctx = await setup()
     const noAgent = await readImage(ctx, { file_path: 'red.png' })
     expect(noAgent.isError).toBe(false)
-    expect(text(noAgent)).toContain('DEGRADED: integrated reader not configured')
+    expect(text(noAgent)).toContain('"provider":"local-ocr"')
     expect(noAgent.content.find(block => block.type === 'image')).toBeUndefined()
 
     const noRoute = await readImage(ctx, { file_path: 'red.png' }, agentOn(undefined))
     expect(noRoute.isError).toBe(false)
-    expect(text(noRoute)).toContain('DEGRADED: integrated reader not configured')
+    expect(text(noRoute)).toContain('"provider":"local-ocr"')
   })
 
-  it('returns degraded analysis when no llm service is mounted', async () => {
+  it('returns OCR analysis when no llm service is mounted', async () => {
     await writeFile(join(dir, 'red.png'), PNG_1X1)
     const ctx = await setup({ llm: false })
     const result = await readImage(ctx, { file_path: 'red.png' }, agentOn('vision-model'))
     expect(result.isError).toBe(false)
-    expect(text(result)).toContain('DEGRADED: integrated reader not configured')
+    expect(text(result)).toContain('"provider":"local-ocr"')
   })
 })
 

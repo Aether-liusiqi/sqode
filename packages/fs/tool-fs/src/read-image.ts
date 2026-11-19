@@ -21,6 +21,7 @@ import { defineTool } from '@liusiqi-dev/sqh-tools'
 import type { GenericCallView, InferValue, ToolExecution } from '@liusiqi-dev/sqh-tools'
 import type {} from '@liusiqi-dev/sqh-fs'
 import { resolveRegularReadTarget } from './read-target.ts'
+import { analyzeImage } from './vision/index.ts'
 
 /** Extensions `read_image` accepts; magic-byte validation at the attachment service stays authoritative. */
 const IMAGE_EXTENSIONS: Readonly<Record<string, ImageMediaType>> = {
@@ -291,32 +292,6 @@ function imageReadContent(value: ImageReadValue): ContentBlock[] {
 }
 
 /**
- * Phase 1 placeholder for the integrated reader. Real OCR and vision providers
- * land in later phases; until then a text-only route gets an explicit degraded
- * analysis instead of a capability-gate error. Kept without a type annotation
- * so the empty arrays and `null` stay assignable to the inferred schema value.
- * @param path - the backend-resolved path rendered in the result envelope.
- * @returns a polymorphic `read_image` value carrying only the analysis half.
- */
-function degradedAnalysisValue(path: string) {
-  return {
-    path,
-    analysis: {
-      provider: 'unavailable',
-      result: {
-        summary: 'Integrated image analysis is not configured on this route; the image bytes were read but could not be described.',
-        ocr: { full_text: '', lines: [] },
-        layout: { regions: [] },
-        semantics: { scene: null, entities: [], relations: [] },
-        visual: { dominant_colors: [], style: null, notes: [] },
-        uncertainty: ['No vision provider or OCR backend is configured for the current route.'],
-      },
-      meta: { warnings: ['DEGRADED: integrated reader not configured'] },
-    },
-  }
-}
-
-/**
  * Render an analysis outcome as one text block carrying the structured JSON,
  * mirroring the image envelope's `<path>`/`<type>`/`<content>` shape.
  * @param path - the backend-resolved path rendered in the envelope.
@@ -414,10 +389,10 @@ export function applyReadImageTool(ctx: Context): void {
       if (declared === undefined) assertDeploymentAccepts(attachments, mediaType, target.displayPath)
 
       if (!supportsVision) {
-        // Integrated (text-only) path. Real OCR / vision providers land in later
-        // phases; for now return an explicit degraded analysis so a text-only
-        // route no longer fails at the capability gate.
-        return degradedAnalysisValue(target.displayPath)
+        // Text-only route: return the local OCR result as structured analysis.
+        // No image block is attached, so the calling model receives text only.
+        const analysis = await analyzeImage(data, mediaType)
+        return { path: target.displayPath, analysis }
       }
 
       // Persist before returning: the image block must reference a durably
