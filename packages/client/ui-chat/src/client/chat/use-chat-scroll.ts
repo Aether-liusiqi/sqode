@@ -92,6 +92,10 @@ export function useChatScroll(input: ChatScrollInput): ChatScrollState {
         navigation.readerSettled()
       },
       interact: () => { navigation.cancel() },
+      loadEarlier: () => {
+        const current = content.current.input
+        if (current.hasMore && !current.loadingOlder) navigation.loadEarlier()
+      },
       resize: () => {
         if (!navigation.contentCommitted()) reading.onResize()
         navigation.reconcile()

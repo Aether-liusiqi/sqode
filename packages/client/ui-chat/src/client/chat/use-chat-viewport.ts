@@ -23,6 +23,8 @@ interface ViewportEvents {
   scrollEnd: () => void
   resize: () => void
   interact: () => void
+  /** Reader keeps pushing toward older history at the top edge. */
+  loadEarlier?: () => void
 }
 
 interface ViewportElements {
@@ -441,10 +443,28 @@ export class ChatViewport {
       || (event.target instanceof HTMLElement && event.target.hasAttribute('data-step-process-body'))) this.events?.scrollEnd()
   }
 
+  /** Whether the shared scrollport is pinned at its top edge. */
+  private atTop(): boolean {
+    const scroller = this.elements?.scroller
+    return scroller !== undefined && scroller.scrollTop <= 2
+  }
+
+  /** Whether an intent event keeps pushing the reader toward older history. */
+  private isUpwardIntent(event: Event): boolean {
+    if (event.type === 'wheel') return event instanceof WheelEvent && event.deltaY < 0
+    if (event.type === 'keydown') return event instanceof KeyboardEvent && event.key === 'ArrowUp'
+    return false
+  }
+
   private readonly onIntent = (event: Event): void => {
     if (event.type === 'keydown' || event.type === 'pointerdown') {
       if (event.target instanceof Element && event.target.closest('[data-composer-seat]') !== null) return
       if (event.type === 'keydown' && (!(event instanceof KeyboardEvent) || !SCROLL_KEYS.has(event.key))) return
+    }
+    // A sustained upward push at the top edge loads older history without the button.
+    if (this.atTop() && this.isUpwardIntent(event)) {
+      this.events?.loadEarlier?.()
+      return
     }
     if (this.paging === null) return
     this.stopPreserving()

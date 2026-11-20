@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { expect, it, onTestFinished, vi } from 'vitest'
+import { describe, expect, it, onTestFinished, vi } from 'vitest'
 import { ChatViewport } from '../src/client/chat/use-chat-viewport.ts'
 import { ScrollFollow, scrollMetrics } from '../src/client/chat/use-scroll-follow.ts'
 
@@ -512,6 +512,60 @@ it.each(['a', 'Tab', 'Escape', 'Enter'])(
     expect(h.row.getBoundingClientRect().top).toBe(top)
   },
 )
+
+describe('automatic older-history loading at the top edge', () => {
+  it('requests older history on an upward wheel without any button click', () => {
+    const h = nestedFixture(200, 400)
+    const loadEarlier = vi.fn()
+    h.viewport.connect({ scroll: () => {}, scrollEnd: () => {}, resize: () => {}, interact: () => {}, loadEarlier })
+    h.body.dispatchEvent(new WheelEvent('wheel', { deltaY: -120, bubbles: true }))
+    expect(loadEarlier).toHaveBeenCalledOnce()
+  })
+
+  it('requests older history on ArrowUp at the top edge', () => {
+    const h = nestedFixture(200, 400)
+    const loadEarlier = vi.fn()
+    h.viewport.connect({ scroll: () => {}, scrollEnd: () => {}, resize: () => {}, interact: () => {}, loadEarlier })
+    h.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp', bubbles: true }))
+    expect(loadEarlier).toHaveBeenCalledOnce()
+  })
+
+  it('does not request older history when the reader is not at the top', () => {
+    const h = nestedFixture(200, 400)
+    h.scroller.scrollTop = 80
+    const loadEarlier = vi.fn()
+    h.viewport.connect({ scroll: () => {}, scrollEnd: () => {}, resize: () => {}, interact: () => {}, loadEarlier })
+    h.body.dispatchEvent(new WheelEvent('wheel', { deltaY: -120, bubbles: true }))
+    h.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp', bubbles: true }))
+    expect(loadEarlier).not.toHaveBeenCalled()
+  })
+
+  it('ignores downward wheel and non-upward scroll keys at the top', () => {
+    const h = nestedFixture(200, 400)
+    const loadEarlier = vi.fn()
+    h.viewport.connect({ scroll: () => {}, scrollEnd: () => {}, resize: () => {}, interact: () => {}, loadEarlier })
+    h.body.dispatchEvent(new WheelEvent('wheel', { deltaY: 120, bubbles: true }))
+    h.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
+    h.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'PageUp', bubbles: true }))
+    expect(loadEarlier).not.toHaveBeenCalled()
+  })
+
+  it('keeps the paging anchor intact after a request so the prepend stays put', () => {
+    const h = nestedFixture(200, 400)
+    const interact = vi.fn()
+    h.viewport.connect({
+      scroll: () => {}, scrollEnd: () => {}, resize: () => { h.viewport.preserve() }, interact,
+      loadEarlier: () => { h.viewport.beginPaging() },
+    })
+    const top = h.begin()
+    h.body.dispatchEvent(new WheelEvent('wheel', { deltaY: -120, bubbles: true }))
+    expect(interact).not.toHaveBeenCalled()
+    expect(h.viewport.preserving).toBe(true)
+    h.prepend(100)
+    h.resize()
+    expect(h.row.getBoundingClientRect().top).toBe(top)
+  })
+})
 
 it('does not compensate twice when native inner anchoring already held the old row', () => {
   const h = nestedFixture(600, 400)
