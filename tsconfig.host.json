@@ -396,7 +396,6 @@
     { "path": "./packages/web/web" },
     { "path": "./packages/web/web-search-exa" },
     { "path": "./packages/web/web-search-perplexity" },
-    { "path": "./packages/web/web-search-deepseek" },
     { "path": "./packages/web/web-search-http" },
     { "path": "./packages/web/web-search-serp" },
     { "path": "./packages/web/web-fetch-http" },

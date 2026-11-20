@@ -2198,7 +2198,7 @@ export interface PlanModeConfig {
 ## `@liusiqi-dev/sqh-plugin-manager`
 
 - `inject`: `loader` · `profileContext`
-- `source`: [`packages/boot/plugin-manager/src/index.ts:41`](../packages/boot/plugin-manager/src/index.ts)
+- `source`: [`packages/boot/plugin-manager/src/index.ts:43`](../packages/boot/plugin-manager/src/index.ts)
 
 ```ts config-catalog
 /** The pnpm executable, registries, and limits for diagnostics, lookups and connection checks. */
@@ -4059,6 +4059,8 @@ export interface WebRuntimeConfig {
   readonly searchProvider?: string
   /** Explicit fetch provider id. Omitted = auto-select when exactly one usable. */
   readonly fetchProvider?: string
+  /** Ordered search provider ids tried in sequence when the primary cannot run. */
+  readonly searchFallbackProviders?: string[]
 }
 ```
 <!-- END GENERATED config-catalog:@liusiqi-dev/sqh-web -->
@@ -4115,36 +4117,6 @@ export interface Config {
 }
 ```
 <!-- END GENERATED config-catalog:@liusiqi-dev/sqh-web-fetch-http -->
-
-<!-- BEGIN GENERATED config-catalog:@liusiqi-dev/sqh-web-search-deepseek -->
-<a id="liusiqi-devsqh-web-search-deepseek"></a>
-
-## `@liusiqi-dev/sqh-web-search-deepseek`
-
-- `inject`: `web`
-- `refs`: `Volatile` (`@liusiqi-dev/cordis`)
-- `source`: [`packages/web/web-search-deepseek/src/index.ts:49`](../packages/web/web-search-deepseek/src/index.ts)
-
-```ts config-catalog
-/** Plugin config (all optional — `apply` fills env-var and constant defaults). */
-export interface Config {
-  /** Literal DeepSeek API key; prefer {@link apiKeyEnv} so no secret enters configuration files. */
-  apiKey: Volatile<string | undefined>
-  /** Credential reference resolved for each search; defaults to `DEEPSEEK_API_KEY`. */
-  apiKeyEnv: Volatile<string>
-  /** Anthropic-compatible endpoint base; `/messages` is appended. */
-  baseURL: Volatile<string | undefined>
-  /** Anthropic-format model name. Defaults to `deepseek-v4-flash`. */
-  model: Volatile<string>
-  /** `anthropic-version` header value. Defaults to `2023-06-01`. */
-  apiVersion: Volatile<string>
-  /** Upper bound on generated tokens for the Messages request. Defaults to 4096. */
-  maxTokens: Volatile<number>
-  /** Maximum `web_search` server-tool uses per request. Defaults to 5. */
-  maxUses: Volatile<number>
-}
-```
-<!-- END GENERATED config-catalog:@liusiqi-dev/sqh-web-search-deepseek -->
 
 <!-- BEGIN GENERATED config-catalog:@liusiqi-dev/sqh-web-search-exa -->
 <a id="liusiqi-devsqh-web-search-exa"></a>
@@ -4204,6 +4176,31 @@ export interface Config {
 }
 ```
 <!-- END GENERATED config-catalog:@liusiqi-dev/sqh-web-search-http -->
+
+<!-- BEGIN GENERATED config-catalog:@liusiqi-dev/sqh-web-search-metaso -->
+<a id="liusiqi-devsqh-web-search-metaso"></a>
+
+## `@liusiqi-dev/sqh-web-search-metaso`
+
+- `inject`: `web`
+- `source`: [`packages/web/web-search-metaso/src/index.ts:31`](../packages/web/web-search-metaso/src/index.ts)
+
+```ts config-catalog
+/** Plugin config (all optional; `apply` fills env-var and constant defaults). */
+export interface Config {
+  /** Metaso API key. Falls back to `$METASO_API_KEY`. Empty -> unavailable. */
+  apiKey?: string
+  /** Endpoint base; `/api/v1/search` is appended. Defaults to the public API. */
+  baseURL?: string
+  /** Retrieval scope sent as `scope`. Omitted = Metaso default. */
+  scope?: string
+  /** Ask Metaso for a model summary instead of a raw snippet. Defaults to true. */
+  includeSummary?: boolean
+  /** Ask Metaso for a concise snippet. Defaults to false. */
+  conciseSnippet?: boolean
+}
+```
+<!-- END GENERATED config-catalog:@liusiqi-dev/sqh-web-search-metaso -->
 
 <!-- BEGIN GENERATED config-catalog:@liusiqi-dev/sqh-web-search-perplexity -->
 <a id="liusiqi-devsqh-web-search-perplexity"></a>

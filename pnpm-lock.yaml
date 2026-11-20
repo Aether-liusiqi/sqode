@@ -13593,40 +13593,6 @@ importers:
         specifier: workspace:*
         version: link:../web
 
-  packages/web/web-search-deepseek:
-    dependencies:
-      '@liusiqi-dev/schemastery':
-        specifier: link:../../../vendor/schemastery
-        version: link:../../../vendor/schemastery
-    devDependencies:
-      '@liusiqi-dev/cordis':
-        specifier: workspace:~
-        version: link:../../../vendor/cordis
-      '@liusiqi-dev/sqh-agent':
-        specifier: workspace:*
-        version: link:../../core/agent
-      '@liusiqi-dev/sqh-credentials':
-        specifier: workspace:*
-        version: link:../../credentials/credentials
-      '@liusiqi-dev/sqh-credentials-local':
-        specifier: workspace:*
-        version: link:../../credentials/credentials-local
-      '@liusiqi-dev/sqh-deepseek-account':
-        specifier: workspace:*
-        version: link:../../credentials/deepseek-account
-      '@liusiqi-dev/sqh-http-proxy':
-        specifier: workspace:*
-        version: link:../../util/http-proxy
-      '@liusiqi-dev/sqh-launch-environment':
-        specifier: workspace:*
-        version: link:../../util/launch-environment
-      '@liusiqi-dev/sqh-session':
-        specifier: workspace:*
-        version: link:../../core/session
-      '@liusiqi-dev/sqh-web':
-        specifier: workspace:*
-        version: link:../web
-
   packages/web/web-search-exa:
     dependencies:
       '@liusiqi-dev/schemastery':

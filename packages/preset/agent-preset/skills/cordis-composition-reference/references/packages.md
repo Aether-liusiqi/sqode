@@ -36,7 +36,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 |---|---|---|
 | `@liusiqi-dev/sqh-config-editor` | no | Persist plugin configuration through profile patches and Loader reconciliation |
 | `@liusiqi-dev/sqh-hmr` | yes | Coordinated module and profile configuration hot reload |
-| `@liusiqi-dev/sqh-plugin-manager` | yes | Current-profile plugin and bundle management shared by sqh CLI, Web and agent tools |
+| `@liusiqi-dev/sqh-plugin-manager` | yes | Current-profile plugin and bundle management shared by dsh CLI, Web and agent tools |
 
 ## browser-use
 
@@ -48,10 +48,10 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 
 | Package | Config | Description |
 |---|---|---|
-| `@liusiqi-dev/sqh-acp-app` | no | The sqh ACP profile bundle: automation-only JSON-RPC stdio and process lifecycle over sqh-base |
-| `@liusiqi-dev/sqh-headless` | yes | The sqh one-shot bundle: a direct core Agent/Session runner over sqh-base with no Host, HTTP, or browser layer |
-| `@liusiqi-dev/sqh-sdk-app` | yes | The sqh SDK profile bundle: stdio JSON-RPC serving and process lifecycle over sqh-base |
-| `@liusiqi-dev/sqh-web-app` | yes | The sqh browser-surface bundle: the web patch layer over sqh-base plus the runtime glue plugin (frontend dist serving, web-surface prompt, bash runtime variables, URL line) |
+| `@liusiqi-dev/sqh-acp-app` | no | The dsh ACP profile bundle: automation-only JSON-RPC stdio and process lifecycle over sqh-base |
+| `@liusiqi-dev/sqh-headless` | yes | The dsh one-shot bundle: a direct core Agent/Session runner over sqh-base with no Host, HTTP, or browser layer |
+| `@liusiqi-dev/sqh-sdk-app` | yes | The dsh SDK profile bundle: stdio JSON-RPC serving and process lifecycle over sqh-base |
+| `@liusiqi-dev/sqh-web-app` | yes | The dsh browser-surface bundle: the web patch layer over sqh-base plus the runtime glue plugin (frontend dist serving, web-surface prompt, bash runtime variables, URL line) |
 
 ## client
 
@@ -61,7 +61,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 | `@liusiqi-dev/sqh-client-file-upload` | no | Agent-scoped browser file upload, streaming intake, and staged receipt service |
 | `@liusiqi-dev/sqh-client-hmr` | yes | Web client graph synchronization and rebuilt-bundle reload transport |
 | `@liusiqi-dev/sqh-client-locale` | no | Locale plugin: Host-backed preference, extensible language catalog, browser fallback, and typed built-in dictionaries |
-| `@liusiqi-dev/sqh-client-modules` | no | Client module system, dual-face: node half composes the __SQH_BOOT__ entry graph (incremental sqh.client scan, bundle route, index tap, webPlugins service); browser half is the lazy-CJS module table the vendored cordis Loader consumes as its internal seam |
+| `@liusiqi-dev/sqh-client-modules` | no | Client module system, dual-face: node half composes the __SQH_BOOT__ entry graph (incremental dsh.client scan, bundle route, index tap, webPlugins service); browser half is the lazy-CJS module table the vendored cordis Loader consumes as its internal seam |
 | `@liusiqi-dev/sqh-client-resources` | no | Unified client resource model: protocol-registered providers turn URL addresses into live values, consumed through the useResource global standard hook |
 | `@liusiqi-dev/sqh-client-shortcuts` | yes | Application keyboard command registry and physical-key routing |
 | `@liusiqi-dev/sqh-client-ui-agent-preset` | no | Agent-preset surfaces: the default for later sessions, this session's seat, and the composition editor |
@@ -83,21 +83,21 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 | `@liusiqi-dev/sqh-client-ui-open-in-app` | no | Web "Open In..." controls: the Session-header split button opening the workspace directory in an installed application, and the document preview's default-application controls for one file |
 | `@liusiqi-dev/sqh-client-ui-permission-presets` | no | Permission surfaces: a new-session default in General settings and a current-session /permission popup over the permissions projection |
 | `@liusiqi-dev/sqh-client-ui-plan` | no | Plan mode controls, persistent transcript plan cards, and sidebar Markdown previews |
-| `@liusiqi-dev/sqh-client-ui-plugin-manager` | yes | Plugin management for the sqh web client: the sidebar Plugins panel installs, enables, disables, retries, and composes installed plugin packages |
+| `@liusiqi-dev/sqh-client-ui-plugin-manager` | yes | Plugin management for the dsh web client: the sidebar Plugins panel installs, enables, disables, retries, and composes installed plugin packages |
 | `@liusiqi-dev/sqh-client-ui-reference` | no | Unified Web @file and @session reference source |
 | `@liusiqi-dev/sqh-client-ui-renderer` | no | Browser UI renderer: React slot bindings, ctx.uiRenderer, and the assembled application root |
 | `@liusiqi-dev/sqh-client-ui-schedule` | no | Host task management page and Session reminder catalog |
 | `@liusiqi-dev/sqh-client-ui-session` | no | Session Controller adapter for React and session-scoped slots |
 | `@liusiqi-dev/sqh-client-ui-settings` | no | Settings domain base plugin: shared configuration forms and the canonical settings slot-type contract |
 | `@liusiqi-dev/sqh-client-ui-settings-account` | yes | Manage DeepSeek login and open Platform billing pages |
-| `@liusiqi-dev/sqh-client-ui-settings-agent-loop` | no | Settings page of the agent loop on the sqh web client's Plugins page: the parallel tool-call cap of the agent-loop namespace |
+| `@liusiqi-dev/sqh-client-ui-settings-agent-loop` | no | Settings page of the agent loop on the dsh web client's Plugins page: the parallel tool-call cap of the agent-loop namespace |
 | `@liusiqi-dev/sqh-client-ui-settings-general` | no | Settings ownerless-copy and product onboarding plugin: the General section, shell trigger/header chrome content, settings dictionaries, and the versioned welcome notice |
 | `@liusiqi-dev/sqh-client-ui-settings-models` | yes | Models settings and shared product-onboarding dialogs over existing settings and credential joins |
 | `@liusiqi-dev/sqh-client-ui-settings-plugin-inventory` | no | Read-only Cordis Loader inventory tab in Web Plugins settings |
-| `@liusiqi-dev/sqh-client-ui-settings-plugins` | no | Built-in plugins settings section for the sqh web client: the Settings navigation entry and the tab chrome feature-owned tabs register into |
+| `@liusiqi-dev/sqh-client-ui-settings-plugins` | no | Built-in plugins settings section for the dsh web client: the Settings navigation entry and the tab chrome feature-owned tabs register into |
 | `@liusiqi-dev/sqh-client-ui-settings-session-log` | no | General settings control for Session-log upload with DeepSeek API requests |
-| `@liusiqi-dev/sqh-client-ui-settings-shell` | no | Settings page of the shell executor on the sqh web client's Plugins page: the command timeout and the per-stream output cap of the shell namespace |
-| `@liusiqi-dev/sqh-client-ui-settings-subagent` | no | Settings page of Subagent delegation on the sqh web client's Plugins page: recursion depth, parallel capacity, and the models agents may choose for subagents |
+| `@liusiqi-dev/sqh-client-ui-settings-shell` | no | Settings page of the shell executor on the dsh web client's Plugins page: the command timeout and the per-stream output cap of the shell namespace |
+| `@liusiqi-dev/sqh-client-ui-settings-subagent` | no | Settings page of Subagent delegation on the dsh web client's Plugins page: recursion depth, parallel capacity, and the models agents may choose for subagents |
 | `@liusiqi-dev/sqh-client-ui-settings-web-search` | no | Settings page of the built-in web-search provider on the web client's Plugins page: its endpoint, pacing, and per-request result budget |
 | `@liusiqi-dev/sqh-client-ui-shortcuts` | no | Keyboard shortcut reference, recording, and local preference editing |
 | `@liusiqi-dev/sqh-client-ui-sidebar` | no | Sidebar plugin: session multi-level tree, search, grouping, state dots |
@@ -112,7 +112,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 | `@liusiqi-dev/sqh-client-ui-tool` | no | Client Tool call-tree renderer and keyed per-tool presentation slot |
 | `@liusiqi-dev/sqh-client-ui-trajectory` | no | Trajectory event ledger with an interactive timing overview: pure-consumer plugin registering into the conversation ViewMap (no service) |
 | `@liusiqi-dev/sqh-client-ui-user-questions` | no | Web ask_user_question composer takeover and plan-review presentation UI |
-| `@liusiqi-dev/sqh-client-ui-workflow-run` | no | Durable workflow-run Conversation Node and nested member disclosure for sqh web |
+| `@liusiqi-dev/sqh-client-ui-workflow-run` | no | Durable workflow-run Conversation Node and nested member disclosure for dsh web |
 | `@liusiqi-dev/sqh-client-ui-workspace` | no | Workspace picker plugin: one WorkspacePicker registered into the sidebar and empty-state workspace slots |
 
 ## compaction
@@ -394,7 +394,7 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 | Package | Config | Description |
 |---|---|---|
 | `@liusiqi-dev/sqh-skill` | yes | Agent skill provider registry for the Sqode |
-| `@liusiqi-dev/sqh-skill-badge` | no | Bundled sqh badge skill provider for Sqode |
+| `@liusiqi-dev/sqh-skill-badge` | no | Bundled dsh badge skill provider for Sqode |
 | `@liusiqi-dev/sqh-skill-filesystem` | yes | Local filesystem skill provider for the Sqode |
 | `@liusiqi-dev/sqh-skill-office` | yes | Bundled Word, PowerPoint, and Excel workflows and structural checks |
 | `@liusiqi-dev/sqh-tool-skill` | yes | Model-facing skill loading tool for the Sqode |
@@ -484,9 +484,9 @@ Every package below exports a Cordis plugin that a bundle patch can name in a Lo
 | `@liusiqi-dev/sqh-tool-web` | yes | Model-facing web tools (web_search, web_fetch) over the Sqode web capability seam (ctx.web) |
 | `@liusiqi-dev/sqh-web` | yes | Abstract web access capability seam (ctx.web) for the Sqode — search/fetch provider registry, registration-order-independent selection, request/result vocabulary, and the WebError taxonomy |
 | `@liusiqi-dev/sqh-web-fetch-http` | yes | Anonymous public HTTP(S) fetch provider for the Sqode web capability seam (ctx.web) |
-| `@liusiqi-dev/sqh-web-search-deepseek` | yes | Search provider backed by an Anthropic-compatible Messages API with native web_search, for the Sqode web capability seam (ctx.web) |
 | `@liusiqi-dev/sqh-web-search-exa` | yes | Exa-backed search provider for the Sqode web capability seam (ctx.web) |
 | `@liusiqi-dev/sqh-web-search-http` | yes | Search-engine provider (Google Custom Search, falling back to Bing) for the web capability seam (ctx.web) |
+| `@liusiqi-dev/sqh-web-search-metaso` | yes | Metaso-backed search provider for the Sqode web capability seam (ctx.web) |
 | `@liusiqi-dev/sqh-web-search-perplexity` | yes | Perplexity-backed search provider for the Sqode web capability seam (ctx.web) |
 | `@liusiqi-dev/sqh-web-search-serp` | yes | Keyless search provider that reads a public search result page (Bing) for the web capability seam (ctx.web) |
 

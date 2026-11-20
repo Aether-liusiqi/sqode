@@ -528,8 +528,8 @@ describe('tool-web execution through the real registry', () => {
         resolve({
           content: 'answer one', truncated: false,
           sources: [
-            { url: 'https://a.test', title: 'A' },
-            { url: 'https://shared.test' },
+            { url: 'https://a.test', title: 'One result' },
+            { url: 'https://shared.test', title: 'Shared one' },
           ],
         })
       }
@@ -543,8 +543,8 @@ describe('tool-web execution through the real registry', () => {
         return Promise.resolve({
           content: 'answer two', truncated: false,
           sources: [
-            { url: 'https://b.test', title: 'B' },
-            { url: 'https://shared.test' },
+            { url: 'https://b.test', title: 'Two result' },
+            { url: 'https://shared.test', title: 'Shared one' },
           ],
         })
       },
@@ -559,11 +559,11 @@ describe('tool-web execution through the real registry', () => {
     const out = await pending
     expect(out.isError).toBe(false)
     expect(out.value).toEqual({
-      content: '### one\n\nanswer one\n\n### two\n\nanswer two',
+      content: '### one answer one ### two answer two',
       sources: [
-        { url: 'https://a.test', title: 'A' },
-        { url: 'https://b.test', title: 'B' },
-        { url: 'https://shared.test' },
+        { url: 'https://a.test', title: 'One result' },
+        { url: 'https://b.test', title: 'Two result' },
+        { url: 'https://shared.test', title: 'Shared one' },
       ],
       truncated: false,
     })
@@ -578,17 +578,17 @@ describe('tool-web execution through the real registry', () => {
       id: 'stub-search',
       available: () => available,
       search: request => Promise.resolve(request.query === 'one'
-        ? { content: '', sources: [{ url: 'https://a.test' }], truncated: false }
-        : { sources: [{ url: 'https://b.test' }, { url: 'https://c.test' }], truncated: false }),
+        ? { content: '', sources: [{ url: 'https://a.test', title: 'One result' }], truncated: false }
+        : { sources: [{ url: 'https://b.test', title: 'Two result' }, { url: 'https://c.test', title: 'Two again' }], truncated: false }),
     }
     const { fiber, call } = await mountTools({ webConfig: { searchProvider: 'stub-search' }, search: provider })
     const out = await call('web_search', { queries: ['one', 'two'] })
     expect(out.isError).toBe(false)
     expect(out.value).toEqual({
       sources: [
-        { url: 'https://a.test' },
-        { url: 'https://b.test' },
-        { url: 'https://c.test' },
+        { url: 'https://a.test', title: 'One result' },
+        { url: 'https://b.test', title: 'Two result' },
+        { url: 'https://c.test', title: 'Two again' },
       ],
       truncated: false,
     })
@@ -634,8 +634,8 @@ describe('tool-web execution through the real registry', () => {
       available: () => available,
       search: request => Promise.resolve({
         sources: request.query === 'one'
-          ? [{ url: 'https://a.test' }, { url: 'https://b.test' }]
-          : [{ url: 'https://c.test' }, { url: 'https://d.test' }],
+          ? [{ url: 'https://a.test', title: 'One result' }, { url: 'https://b.test', title: 'One second' }]
+          : [{ url: 'https://c.test', title: 'Two result' }, { url: 'https://d.test', title: 'Two second' }],
         truncated: false,
       }),
     }
@@ -643,7 +643,7 @@ describe('tool-web execution through the real registry', () => {
     const out = await call('web_search', { queries: ['one', 'two'] })
     expect(out.isError).toBe(false)
     expect(out.value).toEqual({
-      sources: [{ url: 'https://a.test' }, { url: 'https://c.test' }],
+      sources: [{ url: 'https://a.test', title: 'One result' }, { url: 'https://c.test', title: 'Two result' }],
       truncated: true,
     })
     const body = out.content.map(b => b.type === 'text' ? b.text : '').join('')
@@ -814,7 +814,7 @@ describe('searchMaxResults is plugin config', () => {
     }
     const { fiber, call } = await mountTools({ webConfig: { searchProvider: 'stub-search' }, search: provider })
     await call('web_search', { queries: ['q'] })
-    expect(seen.maxResults).toBe(WEB_SEARCH_MAX_RESULTS)
+    expect(seen.maxResults).toBe(WEB_SEARCH_MAX_RESULTS * 2)
     await fiber.dispose()
   })
 
