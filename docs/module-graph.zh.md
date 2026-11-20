@@ -472,6 +472,7 @@ flowchart TD
   pkg_web_search_exa --> pkg_web
   pkg_web_search_http --> pkg_launch_environment
   pkg_web_search_http --> pkg_web
+  pkg_web_search_metaso --> pkg_credentials
   pkg_web_search_metaso --> pkg_launch_environment
   pkg_web_search_metaso --> pkg_web
   pkg_web_search_perplexity --> pkg_launch_environment
@@ -1512,7 +1513,7 @@ flowchart TD
 | [`web-fetch-http`](../packages/web/web-fetch-http) | `web` | [`http-proxy`](../packages/util/http-proxy), [`timeout`](../packages/util/timeout), [`web`](../packages/web/web) |
 | [`web-search-exa`](../packages/web/web-search-exa) | `web` | [`launch-environment`](../packages/util/launch-environment), [`web`](../packages/web/web) |
 | [`web-search-http`](../packages/web/web-search-http) | `web` | [`launch-environment`](../packages/util/launch-environment), [`web`](../packages/web/web) |
-| [`web-search-metaso`](../packages/web/web-search-metaso) | `web` | [`launch-environment`](../packages/util/launch-environment), [`web`](../packages/web/web) |
+| [`web-search-metaso`](../packages/web/web-search-metaso) | `web` | [`credentials`](../packages/credentials/credentials), [`launch-environment`](../packages/util/launch-environment), [`web`](../packages/web/web) |
 | [`web-search-perplexity`](../packages/web/web-search-perplexity) | `web` | [`launch-environment`](../packages/util/launch-environment), [`web`](../packages/web/web) |
 | [`web-search-serp`](../packages/web/web-search-serp) | `web` | [`launch-environment`](../packages/util/launch-environment), [`web`](../packages/web/web) |
 | [`api-remotes`](../packages/api/remotes) | `api` | [`scope`](../packages/core/scope) |

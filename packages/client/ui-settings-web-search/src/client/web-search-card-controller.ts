@@ -1,5 +1,5 @@
 /**
- * The web-search page's staged form over the `web-search-deepseek` settings
+ * The web-search page's staged form over the `web-search-metaso` settings
  * namespace.
  *
  * The key is the one control that does not live in the section: its literal
@@ -14,18 +14,18 @@ import type { Context as ClientContext } from '@liusiqi-dev/cordis'
 import type {} from '@liusiqi-dev/sqh-api-remotes/client'
 import type { SnapshotStore } from '@liusiqi-dev/sqh-client-store'
 import {
-  SettingsFormModel, settingsNumberField, settingsTextField,
+  SettingsFormModel, settingsTextField,
   type SettingsFieldState, type SettingsFormActions, type SettingsFormShell, type SettingsFormScope, type SettingsFormScopeSnapshot,
 } from '@liusiqi-dev/sqh-client-ui-primitives'
 
 /**
- * Namespace of the DeepSeek search provider. Spelled here rather than
+ * Namespace of the Metaso search provider. Spelled here rather than
  * imported: a client package must not depend on a Host package.
  */
-export const WEB_SEARCH_NS = 'web-search-deepseek'
+export const WEB_SEARCH_NS = 'web-search-metaso'
 
 /** Credential reference the provider resolves when the section names none. */
-const DEFAULT_API_KEY_REF = 'DEEPSEEK_API_KEY'
+export const DEFAULT_API_KEY_REF = 'METASO_API_KEY'
 
 /** Form field the credential control stages under. */
 const API_KEY_FIELD = 'apiKey'
@@ -36,8 +36,8 @@ export interface WebSearchSettings {
   apiKeyEnv?: string
   /** Provider endpoint; blank inherits the provider default. */
   baseURL?: string
-  /** Maximum searches served within one request. */
-  maxUses?: number
+  /** Metaso retrieval scope. Blank inherits the provider default. */
+  scope?: string
 }
 
 /** What the credentials domain last reported, and for which reference. */
@@ -54,8 +54,8 @@ interface CredentialState {
 export interface WebSearchCardState extends SettingsFormShell {
   /** Provider endpoint. */
   baseURL: SettingsFieldState
-  /** Searches allowed per request. */
-  maxUses: SettingsFieldState
+  /** Metaso retrieval scope. */
+  scope: SettingsFieldState
   /** The staged credential, which starts blank on every load. */
   apiKey: SettingsFieldState
   /** Whether the Host reports a credential configured for the referenced key. */
@@ -72,7 +72,7 @@ export interface WebSearchCardFace extends SettingsFormActions {
   }
 }
 
-/** Bridges the `web-search-deepseek` scope and the credentials domain onto the page. */
+/** Bridges the `web-search-metaso` scope and the credentials domain onto the page. */
 export class WebSearchCardController {
   private readonly form: SettingsFormModel<WebSearchSettings>
   private readonly store: SnapshotStore<WebSearchCardState>
@@ -80,7 +80,7 @@ export class WebSearchCardController {
   private credential: CredentialState = { ref: '', configured: false, writable: true }
 
   /**
-   * @param scope - the bound settings scope for the `web-search-deepseek` namespace.
+   * @param scope - the bound settings scope for the `web-search-metaso` namespace.
    * @param ctx - the page plugin's context, whose `remote.credentials` namespace
    * answers for the credential the section references.
    */
@@ -90,7 +90,7 @@ export class WebSearchCardController {
   ) {
     this.form = new SettingsFormModel(
       scope,
-      [settingsTextField('baseURL'), settingsNumberField('maxUses')],
+      [settingsTextField('baseURL'), settingsTextField('scope')],
       [{ field: API_KEY_FIELD, write: text => this.writeKey(text) }],
     )
     this.store = this.form.bind(() => this.projection())
@@ -102,7 +102,7 @@ export class WebSearchCardController {
     return {
       ...this.form.shell(),
       baseURL: this.form.field('baseURL'),
-      maxUses: this.form.field('maxUses'),
+      scope: this.form.field('scope'),
       apiKey: this.form.field(API_KEY_FIELD),
       apiKeyConfigured: this.credential.configured,
       apiKeyWritable: this.credential.writable,

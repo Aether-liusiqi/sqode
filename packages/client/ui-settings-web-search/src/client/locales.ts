@@ -6,22 +6,22 @@ import type { SettingsFormLabels } from '@liusiqi-dev/sqh-client-ui-primitives'
 export type WebSearchSettingsLocaleKey =
   | 'title' | 'description'
   | 'apiKey' | 'apiKeyHint' | 'apiKeySet' | 'apiKeyUnset'
-  | 'baseUrl' | 'baseUrlHint' | 'maxUses' | 'maxUsesHint'
+  | 'baseUrl' | 'baseUrlHint' | 'scope' | 'scopeHint'
   | 'overridden' | 'reset' | 'readOnly' | 'unavailable'
-  | 'save' | 'saving' | 'saveFailed' | 'invalidNumber'
+  | 'save' | 'saving' | 'saveFailed' | 'invalidText'
 
 /** English copy. */
 export const en: Record<WebSearchSettingsLocaleKey, string> = {
   title: 'Web search',
-  description: 'Search uses a keyless engine route by default; the fields below apply only to an API-backed route.',
+  description: 'Web search uses Metaso, which needs an API key. The fields below configure that provider.',
   apiKey: 'API key',
-  apiKeyHint: 'Only the API-backed route needs it. Stored outside the settings file; leave blank to keep the current key.',
+  apiKeyHint: 'Stored outside the settings file under METASO_API_KEY. Leave blank to keep the current key.',
   apiKeySet: 'A key is configured.',
-  apiKeyUnset: 'No key is configured. The default route needs none, so search already works.',
+  apiKeyUnset: 'No key is configured. Set one here or export METASO_API_KEY before searching.',
   baseUrl: 'Endpoint',
-  baseUrlHint: 'Only the API-backed route uses it. Leave blank to use that route\'s default address.',
-  maxUses: 'Max searches per request',
-  maxUsesHint: 'Cap on searches per request when the API-backed route is used. The default route applies its own pacing.',
+  baseUrlHint: 'Leave blank to use the Metaso default address.',
+  scope: 'Retrieval scope',
+  scopeHint: 'Metaso retrieval scope. Leave blank to use the provider default.',
   overridden: 'Overridden',
   reset: 'Reset to default',
   readOnly: 'This deployment stores settings read-only.',
@@ -29,21 +29,21 @@ export const en: Record<WebSearchSettingsLocaleKey, string> = {
   save: 'Save',
   saving: 'Saving…',
   saveFailed: 'The deployment did not accept these values; they were left for you to correct.',
-  invalidNumber: 'Enter a number, or leave blank to use the default.',
+  invalidText: 'Enter text, or leave blank to use the default.',
 }
 
 /** Simplified Chinese copy. */
 export const zh: Record<WebSearchSettingsLocaleKey, string> = {
   title: '网页搜索',
-  description: '默认使用无需密钥的搜索引擎检索；下方字段仅在切换到 API 通道时生效。',
+  description: '网页搜索使用 Metaso，需要 API Key。下方字段用于配置该服务。',
   apiKey: 'API Key',
-  apiKeyHint: '仅 API 通道需要。不写入设置文件；留空表示保持当前密钥。',
+  apiKeyHint: '以 METASO_API_KEY 为引用存入凭证域，不写入设置文件；留空表示保持当前密钥。',
   apiKeySet: '已配置密钥。',
-  apiKeyUnset: '未配置密钥。默认检索不需要密钥，可以直接使用。',
+  apiKeyUnset: '未配置密钥。请先在此设置或导出 METASO_API_KEY，再使用搜索。',
   baseUrl: '接口地址',
-  baseUrlHint: '仅 API 通道使用；留空则使用该通道的默认地址。',
-  maxUses: '单次请求最多搜索次数',
-  maxUsesHint: '使用 API 通道时，一次请求在必须作答前最多可搜索的次数。默认检索按自身的频率节流。',
+  baseUrlHint: '留空则使用 Metaso 默认地址。',
+  scope: '检索范围',
+  scopeHint: 'Metaso 检索范围；留空则使用服务默认值。',
   overridden: '已覆盖',
   reset: '恢复默认',
   readOnly: '本部署的设置为只读。',
@@ -51,7 +51,7 @@ export const zh: Record<WebSearchSettingsLocaleKey, string> = {
   save: '保存',
   saving: '保存中…',
   saveFailed: '本部署没有接受这些值，已保留供你修改。',
-  invalidNumber: '请填数字；留空表示使用默认值。',
+  invalidText: '请填写文本；留空表示使用默认值。',
 }
 
 /**

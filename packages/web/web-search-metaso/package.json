@@ -27,6 +27,7 @@
   ],
   "license": "MIT",
   "peerDependencies": {
+    "@liusiqi-dev/sqh-credentials": "workspace:*",
     "@liusiqi-dev/sqh-launch-environment": "workspace:*",
     "@liusiqi-dev/sqh-web": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"
@@ -35,6 +36,7 @@
     "@liusiqi-dev/schemastery": "workspace:~"
   },
   "devDependencies": {
+    "@liusiqi-dev/sqh-credentials": "workspace:*",
     "@liusiqi-dev/sqh-launch-environment": "workspace:*",
     "@liusiqi-dev/sqh-web": "workspace:*",
     "@liusiqi-dev/cordis": "workspace:~"

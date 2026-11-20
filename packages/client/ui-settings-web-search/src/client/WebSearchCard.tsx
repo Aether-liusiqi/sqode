@@ -1,7 +1,7 @@
 /**
- * The web-search provider's settings page: its endpoint, its per-request
- * search budget, and the key — which is written through the credentials
- * domain, never into the settings section, so the literal never rides a response.
+ * The web-search provider's settings page: its endpoint, its retrieval scope,
+ * and the key, which is written through the credentials domain, never into the
+ * settings section, so the literal never rides a response.
  */
 
 import type {} from '@liusiqi-dev/sqh-client-ui-plugin-manager/client'
@@ -48,24 +48,23 @@ export function WebSearchCard(props: WebSearchCardProps) {
         hint={t('baseUrlHint')}
         overriddenLabel={t('overridden')}
         resetLabel={t('reset')}
-        invalidLabel={t('invalidNumber')}
+        invalidLabel={t('invalidText')}
         disabled={disabled}
         {...state.baseURL}
         onEdit={(text) => { props.edit('baseURL', text) }}
         onReset={() => { props.resetField('baseURL') }}
       />
       <SettingsValueField
-        id="plugin-config-web-search-max-uses"
-        label={t('maxUses')}
-        hint={t('maxUsesHint')}
+        id="plugin-config-web-search-scope"
+        label={t('scope')}
+        hint={t('scopeHint')}
         overriddenLabel={t('overridden')}
         resetLabel={t('reset')}
-        invalidLabel={t('invalidNumber')}
-        numeric
+        invalidLabel={t('invalidText')}
         disabled={disabled}
-        {...state.maxUses}
-        onEdit={(text) => { props.edit('maxUses', text) }}
-        onReset={() => { props.resetField('maxUses') }}
+        {...state.scope}
+        onEdit={(text) => { props.edit('scope', text) }}
+        onReset={() => { props.resetField('scope') }}
       />
     </SettingsForm>
   )

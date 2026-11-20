@@ -4181,21 +4181,24 @@ export interface Config {
 ## `@liusiqi-dev/sqh-web-search-metaso`
 
 - `inject`: `web`
-- `source`: [`packages/web/web-search-metaso/src/index.ts:31`](../packages/web/web-search-metaso/src/index.ts)
+- `refs`: `Volatile` (`@liusiqi-dev/cordis`)
+- `source`: [`packages/web/web-search-metaso/src/index.ts:36`](../packages/web/web-search-metaso/src/index.ts)
 
 ```ts config-catalog
-/** Plugin config (all optional; `apply` fills env-var and constant defaults). */
+/** Plugin config. Secrets are volatile so no literal is ever persisted. */
 export interface Config {
-  /** Metaso API key. Falls back to `$METASO_API_KEY`. Empty -> unavailable. */
-  apiKey?: string
+  /** Literal Metaso API key; prefer {@link apiKeyEnv} so no secret enters a config file. */
+  apiKey: Volatile<string | undefined>
+  /** Credential reference resolved for each search; defaults to `METASO_API_KEY`. */
+  apiKeyEnv: Volatile<string>
   /** Endpoint base; `/api/v1/search` is appended. Defaults to the public API. */
-  baseURL?: string
+  baseURL: Volatile<string | undefined>
   /** Retrieval scope sent as `scope`. Omitted = Metaso default. */
-  scope?: string
+  scope: Volatile<string | undefined>
   /** Ask Metaso for a model summary instead of a raw snippet. Defaults to true. */
-  includeSummary?: boolean
+  includeSummary: Volatile<boolean>
   /** Ask Metaso for a concise snippet. Defaults to false. */
-  conciseSnippet?: boolean
+  conciseSnippet: Volatile<boolean>
 }
 ```
 <!-- END GENERATED config-catalog:@liusiqi-dev/sqh-web-search-metaso -->

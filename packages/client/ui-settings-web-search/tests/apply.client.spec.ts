@@ -9,6 +9,7 @@ import { LocaleRuntime } from '@liusiqi-dev/sqh-client-locale/client'
 import { apply as settingsApply, inject as settingsInject } from '@liusiqi-dev/sqh-client-ui-settings/client'
 import { apply, inject, NS } from '../src/client/index.ts'
 import type { WebSearchCardFace } from '../src/client/index.ts'
+import { DEFAULT_API_KEY_REF, WEB_SEARCH_NS } from '../src/client/web-search-card-controller.ts'
 import { apply as hostApply } from '../src/index.ts'
 
 /** One Host view of a served namespace. */
@@ -55,7 +56,7 @@ describe('ui-settings-web-search apply', () => {
   })
 
   it('registers the page while the Host serves the namespace, titled in the active locale', async () => {
-    const { ctx, slots } = await bench(['web-search-deepseek'])
+    const { ctx, slots } = await bench([WEB_SEARCH_NS])
     declareRoot(slots)
 
     await ctx.plugin({ inject: [...inject], apply }).await()
@@ -91,12 +92,12 @@ describe('ui-settings-web-search apply', () => {
 
     // A key written on another surface changes no settings section, so this
     // event is the only thing that reaches the page.
-    remote.emit('credentials/reference-updated', ['DEEPSEEK_API_KEY'])
+    remote.emit('credentials/reference-updated', [DEFAULT_API_KEY_REF])
     await vi.waitFor(() => { expect(describeCredentials).toHaveBeenCalledTimes(1) })
   })
 
   it('collapses the page on teardown', async () => {
-    const { ctx, slots } = await bench(['web-search-deepseek'])
+    const { ctx, slots } = await bench([WEB_SEARCH_NS])
     declareRoot(slots)
     const fiber = ctx.plugin({ inject: [...inject], apply })
     await fiber.await()
