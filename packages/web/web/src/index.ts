@@ -57,6 +57,8 @@ export interface WebRuntimeConfig {
   readonly searchProvider?: string
   /** Explicit fetch provider id. Omitted = auto-select when exactly one usable. */
   readonly fetchProvider?: string
+  /** Ordered search provider ids tried in sequence when the primary cannot run. */
+  readonly searchFallbackProviders?: string[]
 }
 
 /**
@@ -70,6 +72,10 @@ export interface WebRuntimeConfig {
  * - No id configured, exactly one registered usable provider → that provider.
  * - No id configured, multiple usable providers → `WEB_PROVIDER_AMBIGUOUS`.
  * - No id configured, no usable provider → `WEB_PROVIDER_UNAVAILABLE`.
+ *
+ * When `searchFallbackProviders` is set, search tries the selected provider
+ * first, then each listed id in order, skipping any that cannot be selected,
+ * is unavailable, or throws. Fetch keeps single-provider selection.
  */
 export class WebRuntime extends Service {
   /**
@@ -80,17 +86,20 @@ export class WebRuntime extends Service {
   static Config: z<WebRuntimeConfig> = z.object({
     searchProvider: z.string(),
     fetchProvider: z.string(),
+    searchFallbackProviders: z.array(z.string()).default([]),
   })
 
   private searchProviders = new Map<string, WebSearchProvider>()
   private fetchProviders = new Map<string, WebFetchProvider>()
   private readonly searchProviderId: string | undefined
   private readonly fetchProviderId: string | undefined
+  private readonly searchFallbackIds: readonly string[]
 
   constructor(ctx: Context, config: WebRuntimeConfig = {}) {
     super(ctx, 'web')
     this.searchProviderId = config.searchProvider ?? process.env.SQODE_WEB_SEARCH_PROVIDER
     this.fetchProviderId = config.fetchProvider ?? process.env.SQODE_WEB_FETCH_PROVIDER
+    this.searchFallbackIds = config.searchFallbackProviders ?? []
   }
 
   /**
@@ -138,12 +147,46 @@ export class WebRuntime extends Service {
    * @returns the provider's results, capped to `request.maxResults`.
    */
   async search(request: WebSearchRequest, signal?: AbortSignal): Promise<WebSearchResult> {
-    const provider = resolveProvider({
-      providers: this.searchProviders,
-      ...this.searchProviderId !== undefined ? { configuredId: this.searchProviderId } : {},
-    })
-    const result = await provider.search(request, signal)
-    return capSources(result, request.maxResults)
+    const configured: Pick<Selection<WebSearchProvider>, 'configuredId'> = this.searchProviderId !== undefined
+      ? { configuredId: this.searchProviderId }
+      : {}
+
+    // Without a fallback chain, keep the original single-provider semantics.
+    if (this.searchFallbackIds.length === 0) {
+      const provider = resolveProvider({ providers: this.searchProviders, ...configured })
+      return capSources(await provider.search(request, signal), request.maxResults)
+    }
+
+    // With a chain, try the primary then each fallback in configured order.
+    // A provider that cannot be selected, is unavailable, or throws is skipped;
+    // cancellation is never swallowed. Every successful result is capped the
+    // same way regardless of which provider answered.
+    const resolvers: Array<() => WebSearchProvider> = [
+      () => resolveProvider({ providers: this.searchProviders, ...configured }),
+      ...this.searchFallbackIds.map(id => () => resolveProvider({
+        providers: this.searchProviders,
+        configuredId: id,
+      })),
+    ]
+    let lastError: unknown
+    for (const resolve of resolvers) {
+      if (signal?.aborted) throw signal.reason
+      let provider: WebSearchProvider
+      try {
+        provider = resolve()
+      } catch (error) {
+        lastError = error
+        continue
+      }
+      try {
+        const result = await provider.search(request, signal)
+        return capSources(result, request.maxResults)
+      } catch (error) {
+        if (signal?.aborted) throw error
+        lastError = error
+      }
+    }
+    throw lastError ?? new WebError('no usable web search provider in fallback chain', 'WEB_PROVIDER_UNAVAILABLE')
   }
 
   /**

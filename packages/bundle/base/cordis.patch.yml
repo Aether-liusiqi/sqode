@@ -663,20 +663,20 @@
 
     # The shared base enables the stable model-facing web_search and web_fetch
     # tools. The Web app disables this host row and composes both tools per agent
-    # preset; products with a stricter network policy override tool-web. DeepSeek
-    # search resolves the same DEEPSEEK_API_KEY
-    # credential the Models page manages for chat, at each search; its Messages
-    # endpoint is configured independently from the model route, so it takes its own
-    # base-URL override. Anonymous fetch accepts only public HTTP(S) destinations,
-    # resolves and validates every destination, and pins every actual connection.
-    # Search is a full auxiliary model request with server-side retrieval, so this
-    # shipped DeepSeek route gets 60s while the provider-neutral tool default
-    # remains 30s.
+    # preset; products with a stricter network policy override tool-web. Metaso
+    # search resolves $METASO_API_KEY from the launch environment at each search;
+    # it is billed in Metaso credits, not model token quota. When Metaso cannot
+    # run, search falls back to the configured serp-bing provider. Anonymous fetch
+    # accepts only public HTTP(S) destinations, resolves and validates every
+    # destination, and pins every actual connection. Search is a full auxiliary
+    # request, so this shipped route gets 60s while the provider-neutral tool
+    # default remains 30s.
     - id: web
       name: '@liusiqi-dev/sqh-web'
       disabled: false
       config:
-        searchProvider: serp-bing
+        searchProvider: metaso
+        searchFallbackProviders: [serp-bing]
         fetchProvider: http
 
     # Keyless search: one GET against a public result page, no credential and no
@@ -697,11 +697,12 @@
       name: '@liusiqi-dev/sqh-web-search-http'
       disabled: false
 
-    - id: web-search-deepseek
-      name: '@liusiqi-dev/sqh-web-search-deepseek'
+    # Metaso semantic search: POST /api/v1/search with Bearer $METASO_API_KEY.
+    # Server-side retrieval returns graded webpages with summaries, which the
+    # tool layer filters, ranks and cleans before injection into context.
+    - id: web-search-metaso
+      name: '@liusiqi-dev/sqh-web-search-metaso'
       disabled: false
-      config:
-        apiKeyEnv: DEEPSEEK_API_KEY
 
     - id: web-fetch-http
       name: '@liusiqi-dev/sqh-web-fetch-http'

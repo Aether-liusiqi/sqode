@@ -11,6 +11,7 @@ import type { GenericCallView, ToolResult, WebSearchResultView, WebSource } from
 import type { JsonValue } from '@liusiqi-dev/sqh-util-values'
 import type { WebSearchResult, WebSearchSource } from '@liusiqi-dev/sqh-web'
 import { EXTERNAL_WEB_CONTENT_NOTICE } from './trust.ts'
+import { cleanSearchResult } from './hygiene.ts'
 
 /**
  * Default upper bound on returned sources (the `searchMaxResults` config).
@@ -364,7 +365,10 @@ export function applyWebSearchTool(
     isConcurrencySafe: () => true,
     async execute(args, exec) {
       const queries = parseSearchArgs(args, maxQueries)
-      const result = await runSearchQueries(ctx, queries, maxResults, exec.signal)
+      // Oversample so filtering still leaves enough sources; the hygiene layer
+      // ranks, cleans and caps the result back to maxResults.
+      const raw = await runSearchQueries(ctx, queries, maxResults * 2, exec.signal)
+      const result = cleanSearchResult(raw, queries, { maxResults })
       return {
         ...result.content !== undefined ? { content: result.content } : {},
         sources: result.sources.map(projectSource),

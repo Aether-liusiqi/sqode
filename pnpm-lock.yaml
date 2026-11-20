@@ -2186,12 +2186,12 @@ importers:
       '@liusiqi-dev/sqh-web-fetch-http':
         specifier: workspace:*
         version: link:../../web/web-fetch-http
-      '@liusiqi-dev/sqh-web-search-deepseek':
-        specifier: workspace:*
-        version: link:../../web/web-search-deepseek
       '@liusiqi-dev/sqh-web-search-http':
         specifier: workspace:*
         version: link:../../web/web-search-http
+      '@liusiqi-dev/sqh-web-search-metaso':
+        specifier: workspace:*
+        version: link:../../web/web-search-metaso
       '@liusiqi-dev/sqh-web-search-serp':
         specifier: workspace:*
         version: link:../../web/web-search-serp
@@ -13662,6 +13662,22 @@ importers:
         specifier: workspace:*
         version: link:../web
 
+  packages/web/web-search-metaso:
+    dependencies:
+      '@liusiqi-dev/schemastery':
+        specifier: link:../../../vendor/schemastery
+        version: link:../../../vendor/schemastery
+    devDependencies:
+      '@liusiqi-dev/cordis':
+        specifier: workspace:~
+        version: link:../../../vendor/cordis
+      '@liusiqi-dev/sqh-launch-environment':
+        specifier: workspace:*
+        version: link:../../util/launch-environment
+      '@liusiqi-dev/sqh-web':
+        specifier: workspace:*
+        version: link:../web
+
   packages/web/web-search-perplexity:
     dependencies:
       '@liusiqi-dev/schemastery':
@@ -14446,12 +14462,12 @@ importers:
       '@liusiqi-dev/sqh-web-fetch-http':
         specifier: workspace:*
         version: link:../../packages/web/web-fetch-http
-      '@liusiqi-dev/sqh-web-search-deepseek':
-        specifier: workspace:*
-        version: link:../../packages/web/web-search-deepseek
       '@liusiqi-dev/sqh-web-search-exa':
         specifier: workspace:*
         version: link:../../packages/web/web-search-exa
+      '@liusiqi-dev/sqh-web-search-metaso':
+        specifier: workspace:*
+        version: link:../../packages/web/web-search-metaso
       '@liusiqi-dev/sqh-web-search-perplexity':
         specifier: workspace:*
         version: link:../../packages/web/web-search-perplexity
