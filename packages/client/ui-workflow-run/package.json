@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-client-ui-workflow-run",
-  "description": "Durable workflow-run Conversation Node and nested member disclosure for dsh web",
+  "description": "Durable workflow-run Conversation Node and nested member disclosure for sqh web",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

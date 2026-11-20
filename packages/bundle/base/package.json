@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-base",
-  "description": "The shared dsh core as a profile bundle: the first patch layer of base-backed profiles, inserting core rows over the empty profile root",
+  "description": "The shared sqh core as a profile bundle: the first patch layer of base-backed profiles, inserting core rows over the empty profile root",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

@@ -90,11 +90,11 @@ function rejectElectronProfile(program: Command, profile: string): void {
 const HELP_EXAMPLES = `
 Examples:
   sqh web                                   boot the web profile (same as: sqh --profile web)
-  dsh rescue --from-default-profile web
+  sqh rescue --from-default-profile web
                                             create rescue from the shipped web template, then boot it
-  dsh headless "run the tests"              answer one task, print the result, and exit
-  dsh tui --patch ./extra.yml               boot a custom profile with one extra overlay
-  dsh tui --resume <session>                arguments after the launcher flags reach the app
+  sqh headless "run the tests"              answer one task, print the result, and exit
+  sqh tui --patch ./extra.yml               boot a custom profile with one extra overlay
+  sqh tui --resume <session>                arguments after the launcher flags reach the app
   sqh web --help                            the web app's own flags and help
   sqh plugin --profile tui add <package>    install a plugin into the tui profile
 `

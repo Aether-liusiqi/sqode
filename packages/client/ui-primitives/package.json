@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-client-ui-primitives",
-  "description": "Pure React atoms for the dsh web UI: controls, icons, markdown, and JSON inspectors (zero cordis)",
+  "description": "Pure React atoms for the sqh web UI: controls, icons, markdown, and JSON inspectors (zero cordis)",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"

@@ -1,6 +1,6 @@
 {
   "name": "@liusiqi-dev/sqh-plugin-manager",
-  "description": "Current-profile plugin and bundle management shared by dsh CLI, Web and agent tools",
+  "description": "Current-profile plugin and bundle management shared by sqh CLI, Web and agent tools",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"
