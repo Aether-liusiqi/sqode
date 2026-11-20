@@ -144,6 +144,19 @@ describe('isRegistryAddress', () => {
     }
   })
 
+  it('refuses a package website browse path even on an unknown host', () => {
+    // www.npmjs.com is not a code host, so the host check alone used to let it
+    // through and pnpm asked it for /<pkg>/-/... , which returned 403.
+    for (const url of [
+      'https://www.npmjs.com/package/@liustack/modlens',
+      'https://www.npmjs.com/package/some-plugin',
+      'https://npmjs.com/package/some-plugin',
+    ]) {
+      expect(REGISTRY_URL.test(url), `REGISTRY_URL lets ${url} through`).toBe(true)
+      expect(isRegistryAddress(url), url).toBe(false)
+    }
+  })
+
   it('refuses anything that is not an http(s) address', () => {
     for (const url of ['registry.npmjs.org', 'ftp://x/', '', 'https://', 'file:///tmp']) {
       expect(isRegistryAddress(url), url).toBe(false)

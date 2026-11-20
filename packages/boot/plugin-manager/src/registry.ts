@@ -41,8 +41,12 @@ export function isRegistryAddress(url: string): boolean {
   } catch {
     return false
   }
+  const segments = parsed.pathname.split('/').filter(segment => segment !== '')
+  // A package website's browse path (/package/<name>, /-/...) is not a registry
+  // endpoint, even when its host is not a known code host.
+  if (segments.includes('package') || segments.includes('-')) return false
   if (!REPOSITORY_HOSTS.has(parsed.hostname.toLowerCase())) return true
-  return parsed.pathname.split('/').filter(segment => segment !== '').length < 2
+  return segments.length < 2
 }
 
 /**
