@@ -149,11 +149,6 @@ export class WorkspaceController extends TypertRemoteService {
   }
 
   /**
-   * Hide one known Session from Workspace grouping surfaces.
-   * @param request - Session identity to archive.
-   * @returns the complete resulting archive set.
-   */
-  /**
    * Permanently delete one Session and everything stored for it.
    * @param request - the Session to delete.
    * @returns the deleted Session identity.
@@ -163,6 +158,11 @@ export class WorkspaceController extends TypertRemoteService {
     return this.commands.deleteSession(request)
   }
 
+  /**
+   * Hide one known Session from Workspace grouping surfaces.
+   * @param request - Session identity to archive.
+   * @returns the complete resulting archive set.
+   */
   @Remote('archiveSession')
   archiveSession(request: WorkspaceArchiveSessionRequest): Promise<WorkspaceArchiveValue> {
     return this.commands.archiveSession(request)

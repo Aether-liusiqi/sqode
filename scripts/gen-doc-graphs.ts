@@ -137,7 +137,7 @@ const SERVICE_ROLES: ServiceRole[] = [
     title: 'Launcher-owned profile data',
     mode: 'core',
     consumers: ['plugin-manager'],
-    note: 'The dsh launcher supplies data-only profile locations and composition inputs; reload scheduling belongs to sqh-hmr.',
+    note: 'The sqh launcher supplies data-only profile locations and composition inputs; reload scheduling belongs to sqh-hmr.',
   },
   {
     key: 'connection',
@@ -404,13 +404,6 @@ const SERVICE_ROLES: ServiceRole[] = [
     implementations: [],
     consumers: ['llm-pi-ai'],
     note: 'Flows are registered by the plugin that knows how to obtain one credential and keyed by the record they write; the seam owns the conversation and the one-attempt-per-key lifecycle, never the protocol.',
-  },
-  {
-    key: 'productAnalytics',
-    pkg: 'client-product-analytics',
-    title: 'Desktop interaction collection',
-    mode: 'service',
-    note: 'Accepts selected Desktop events, enriches available login identity, and observes live compaction under the live Host collection policy.',
   },
   {
     key: 'otel',
@@ -799,7 +792,7 @@ const SERVICE_ROLES: ServiceRole[] = [
     title: 'Client plugin graph host',
     mode: 'core',
     consumers: ['client-hmr'],
-    note: 'Composes the __SQH_BOOT__ entry graph from an incremental dsh.client scan, serves plugin bundles, and notifies rebuilt/graph-changed subscribers.',
+    note: 'Composes the __SQH_BOOT__ entry graph from an incremental sqh.client scan, serves plugin bundles, and notifies rebuilt/graph-changed subscribers.',
   },
   {
     key: 'workflowEngine',
@@ -979,7 +972,7 @@ function stripYamlScalar(value: string): string {
 
 const APP_EXAMPLES = [
   {
-    id: 'dsh_base',
+    id: 'sqh_base',
     rel: 'apps/cli/composition.md',
     title: 'SQH Base Composition',
     label: 'packages/bundle/base/cordis.patch.yml',
@@ -1674,7 +1667,7 @@ function spliceChineseRegions(doc: GraphDoc): GraphDoc {
 function renderIndex(docs: GraphDoc[]): string {
   const labels: Record<string, string> = {
     'docs/capability-seams.md': 'capability seams and core services',
-    'apps/cli/composition.md': 'dsh shared base composition',
+    'apps/cli/composition.md': 'sqh shared base composition',
     'docs/event-producer-consumer.md': 'event producer/consumer matrix',
     'docs/agent-lifecycle.md': 'agent turn and step lifecycle',
     'docs/tool-execution-pipeline.md': 'tool execution pipeline',

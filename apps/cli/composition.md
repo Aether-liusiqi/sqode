@@ -12,6 +12,8 @@ flowchart LR
   cfg --> plugin_sqh_base_tool_plugin_manager
   plugin_sqh_base_plugin_manager["plugin-manager<br/>@liusiqi-dev/sqh-plugin-manager"]
   cfg --> plugin_sqh_base_plugin_manager
+  plugin_sqh_base_extension_service["extension-service<br/>@liusiqi-dev/sqh-plugin-manager/extension-service-plugin"]
+  cfg --> plugin_sqh_base_extension_service
   plugin_sqh_base_timer["timer<br/>@liusiqi-dev/cordis-plugin-timer"]
   cfg --> plugin_sqh_base_timer
   plugin_sqh_base_hmr["hmr<br/>@liusiqi-dev/sqh-hmr"]
@@ -58,6 +60,42 @@ flowchart LR
   cfg --> plugin_sqh_base_credentials
   plugin_sqh_base_llm_pi_ai["llm-pi-ai<br/>@liusiqi-dev/sqh-llm-pi-ai"]
   cfg --> plugin_sqh_base_llm_pi_ai
+  plugin_sqh_base_hy4_preview["hy4-preview<br/>Hy4 preview"]
+  cfg --> plugin_sqh_base_hy4_preview
+  plugin_sqh_base_hy3["hy3<br/>Hy3"]
+  cfg --> plugin_sqh_base_hy3
+  plugin_sqh_base_deepseek_v4_pro["deepseek-v4-pro<br/>DeepSeek-V4-Pro"]
+  cfg --> plugin_sqh_base_deepseek_v4_pro
+  plugin_sqh_base_deepseek_deepseek_flash["deepseek/deepseek-flash<br/>DeepSeek-V4.1-Flash"]
+  cfg --> plugin_sqh_base_deepseek_deepseek_flash
+  plugin_sqh_base_glm_5_3["glm-5.3<br/>GLM-5.3"]
+  cfg --> plugin_sqh_base_glm_5_3
+  plugin_sqh_base_glm_5_3_flash["glm-5.3-flash<br/>GLM-5.3-Flash"]
+  cfg --> plugin_sqh_base_glm_5_3_flash
+  plugin_sqh_base_kimi_k3["kimi-k3<br/>Kimi K3"]
+  cfg --> plugin_sqh_base_kimi_k3
+  plugin_sqh_base_minimax_m3["minimax-m3<br/>MiniMax-M3"]
+  cfg --> plugin_sqh_base_minimax_m3
+  plugin_sqh_base_glm_5_3["glm-5.3<br/>GLM-5.3"]
+  cfg --> plugin_sqh_base_glm_5_3
+  plugin_sqh_base_glm_5_3_flash["glm-5.3-flash<br/>GLM-5.3-Flash"]
+  cfg --> plugin_sqh_base_glm_5_3_flash
+  plugin_sqh_base_glm_5["glm-5<br/>GLM-5"]
+  cfg --> plugin_sqh_base_glm_5
+  plugin_sqh_base_glm_4_7["glm-4.7<br/>GLM-4.7"]
+  cfg --> plugin_sqh_base_glm_4_7
+  plugin_sqh_base_hy4_preview["hy4-preview<br/>Hy4 preview"]
+  cfg --> plugin_sqh_base_hy4_preview
+  plugin_sqh_base_hy3["hy3<br/>Hy3"]
+  cfg --> plugin_sqh_base_hy3
+  plugin_sqh_base_doubao_seed_evolving["doubao-seed-evolving<br/>Doubao Seed Evolving"]
+  cfg --> plugin_sqh_base_doubao_seed_evolving
+  plugin_sqh_base_doubao_seed_2_1_pro_260915["doubao-seed-2-1-pro-260915<br/>Doubao Seed 2.1 Pro"]
+  cfg --> plugin_sqh_base_doubao_seed_2_1_pro_260915
+  plugin_sqh_base_doubao_seed_2_1_lite_260915["doubao-seed-2-1-lite-260915<br/>Doubao Seed 2.1 Lite"]
+  cfg --> plugin_sqh_base_doubao_seed_2_1_lite_260915
+  plugin_sqh_base_doubao_seed_2_1_turbo_260628["doubao-seed-2-1-turbo-260628<br/>Doubao Seed 2.1 Turbo"]
+  cfg --> plugin_sqh_base_doubao_seed_2_1_turbo_260628
   plugin_sqh_base_session_persistence_jsonl["session-persistence-jsonl<br/>@liusiqi-dev/sqh-session-persistence-jsonl"]
   cfg --> plugin_sqh_base_session_persistence_jsonl
   plugin_sqh_base_attachment_local["attachment-local<br/>@liusiqi-dev/sqh-attachment-local"]
@@ -176,8 +214,12 @@ flowchart LR
   cfg --> plugin_sqh_base_repeat_tool_reminder
   plugin_sqh_base_web["web<br/>@liusiqi-dev/sqh-web"]
   cfg --> plugin_sqh_base_web
-  plugin_sqh_base_web_search_deepseek["web-search-deepseek<br/>@liusiqi-dev/sqh-web-search-deepseek"]
-  cfg --> plugin_sqh_base_web_search_deepseek
+  plugin_sqh_base_web_search_serp["web-search-serp<br/>@liusiqi-dev/sqh-web-search-serp"]
+  cfg --> plugin_sqh_base_web_search_serp
+  plugin_sqh_base_web_search_http["web-search-http<br/>@liusiqi-dev/sqh-web-search-http"]
+  cfg --> plugin_sqh_base_web_search_http
+  plugin_sqh_base_web_search_metaso["web-search-metaso<br/>@liusiqi-dev/sqh-web-search-metaso"]
+  cfg --> plugin_sqh_base_web_search_metaso
   plugin_sqh_base_web_fetch_http["web-fetch-http<br/>@liusiqi-dev/sqh-web-fetch-http"]
   cfg --> plugin_sqh_base_web_fetch_http
   plugin_sqh_base_tool_web["tool-web<br/>@liusiqi-dev/sqh-tool-web"]
@@ -202,6 +244,7 @@ flowchart LR
 | --- | --- |
 | `tool-plugin-manager` | `@liusiqi-dev/sqh-plugin-manager/tools` |
 | `plugin-manager` | `@liusiqi-dev/sqh-plugin-manager` |
+| `extension-service` | `@liusiqi-dev/sqh-plugin-manager/extension-service-plugin` |
 | `timer` | `@liusiqi-dev/cordis-plugin-timer` |
 | `hmr` | `@liusiqi-dev/sqh-hmr` |
 | `llm` | `@liusiqi-dev/sqh-llm` |
@@ -225,6 +268,24 @@ flowchart LR
 | `deepseek-account` | `@liusiqi-dev/sqh-deepseek-account-platform` |
 | `credentials` | `@liusiqi-dev/sqh-credentials-local` |
 | `llm-pi-ai` | `@liusiqi-dev/sqh-llm-pi-ai` |
+| `hy4-preview` | `Hy4 preview` |
+| `hy3` | `Hy3` |
+| `deepseek-v4-pro` | `DeepSeek-V4-Pro` |
+| `deepseek/deepseek-flash` | `DeepSeek-V4.1-Flash` |
+| `glm-5.3` | `GLM-5.3` |
+| `glm-5.3-flash` | `GLM-5.3-Flash` |
+| `kimi-k3` | `Kimi K3` |
+| `minimax-m3` | `MiniMax-M3` |
+| `glm-5.3` | `GLM-5.3` |
+| `glm-5.3-flash` | `GLM-5.3-Flash` |
+| `glm-5` | `GLM-5` |
+| `glm-4.7` | `GLM-4.7` |
+| `hy4-preview` | `Hy4 preview` |
+| `hy3` | `Hy3` |
+| `doubao-seed-evolving` | `Doubao Seed Evolving` |
+| `doubao-seed-2-1-pro-260915` | `Doubao Seed 2.1 Pro` |
+| `doubao-seed-2-1-lite-260915` | `Doubao Seed 2.1 Lite` |
+| `doubao-seed-2-1-turbo-260628` | `Doubao Seed 2.1 Turbo` |
 | `session-persistence-jsonl` | `@liusiqi-dev/sqh-session-persistence-jsonl` |
 | `attachment-local` | `@liusiqi-dev/sqh-attachment-local` |
 | `session-query-sqlite` | `@liusiqi-dev/sqh-session-query-sqlite` |
@@ -284,7 +345,9 @@ flowchart LR
 | `tool-ralph` | `@liusiqi-dev/sqh-tool-ralph` |
 | `repeat-tool-reminder` | `@liusiqi-dev/sqh-repeat-tool-reminder` |
 | `web` | `@liusiqi-dev/sqh-web` |
-| `web-search-deepseek` | `@liusiqi-dev/sqh-web-search-deepseek` |
+| `web-search-serp` | `@liusiqi-dev/sqh-web-search-serp` |
+| `web-search-http` | `@liusiqi-dev/sqh-web-search-http` |
+| `web-search-metaso` | `@liusiqi-dev/sqh-web-search-metaso` |
 | `web-fetch-http` | `@liusiqi-dev/sqh-web-fetch-http` |
 | `tool-web` | `@liusiqi-dev/sqh-tool-web` |
 | `mcp-resources` | `@liusiqi-dev/sqh-mcp-resources` |

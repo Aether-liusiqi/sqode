@@ -413,13 +413,6 @@ export class SessionController extends TypertRemoteService {
   }
 
   /**
-   * Fork one cold-readable exact event prefix into a new Session. An omitted
-   * boundary selects the latest completed-turn prefix; an open cut receives
-   * synthetic fork closers.
-   * @param request - source Session and optional exact inclusive event boundary.
-   * @returns the new Session identity.
-   */
-  /**
    * Permanently delete one Session and everything stored for it.
    * @param request - the Session to delete.
    * @returns the deleted Session identity.
@@ -429,6 +422,13 @@ export class SessionController extends TypertRemoteService {
     return this.commands.delete(request)
   }
 
+  /**
+   * Fork one cold-readable exact event prefix into a new Session. An omitted
+   * boundary selects the latest completed-turn prefix; an open cut receives
+   * synthetic fork closers.
+   * @param request - source Session and optional exact inclusive event boundary.
+   * @returns the new Session identity.
+   */
   @Remote('fork')
   fork(request: SessionForkRequest): Promise<SessionForkValue> {
     return this.commands.fork(request)
