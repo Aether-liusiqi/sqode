@@ -1,0 +1,40 @@
+/* Centre the native player in the pane and keep video within the pane's width. */
+.frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100%;
+  padding: 12px;
+  font-family: var(--sqw-font, sans-serif);
+  white-space: normal;
+}
+
+.player {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - 160px);
+  border-radius: var(--sqw-radius-md);
+}
+
+.audio {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 10px;
+  color: var(--sqw-alias-label-secondary);
+  font-size: 13px;
+  line-height: 1.5;
+  white-space: normal;
+}
