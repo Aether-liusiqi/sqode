@@ -1137,17 +1137,17 @@ async function main(): Promise<void> {
           pendingWelcomeNotice = undefined
           return Promise.resolve(notice)
         },
-        startSignIn: async () => {
+        startSignIn: () => {
           // Sqode does not sign users in through the original service.
-          throw new Error('desktop welcome: official sign-in is unavailable')
+          return Promise.reject(new Error('desktop welcome: official sign-in is unavailable'))
         },
         cancelSignIn: async (id) => {
           if (welcomeBackend === undefined) throw new Error('desktop welcome: backend unavailable')
           return welcomeBackend.account.cancel(id)
         },
-        copySignInLink: async () => {
+        copySignInLink: () => {
           // There is no sign-in link to copy once the official flow is off.
-          throw new Error('desktop welcome: official sign-in is unavailable')
+          return Promise.reject(new Error('desktop welcome: official sign-in is unavailable'))
         },
         saveApiKey: async (apiKey) => {
           if (backend.host === undefined || welcomeBackend === undefined) return { ok: false }

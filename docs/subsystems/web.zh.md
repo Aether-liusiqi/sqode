@@ -161,6 +161,8 @@ Selection semantics (resolved at execution time, never order-dependent):
 - No id configured, multiple usable providers → `WEB_PROVIDER_AMBIGUOUS`.
 - No id configured, no usable provider → `WEB_PROVIDER_UNAVAILABLE`.
 
+When `searchFallbackProviders` is set, search tries the selected provider first, then each listed id in order, skipping any that cannot be selected, is unavailable, or throws. Fetch keeps single-provider selection.
+
 ```ts cordis-catalog
 /**
  * Register a search provider. Throws {@link WebError} `WEB_DUPLICATE_PROVIDER`

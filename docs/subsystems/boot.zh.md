@@ -97,7 +97,7 @@ Manage profile files and apply their declared reload lifecycle.
 
 /** Grant or revoke one exact plugin/runtime exemption and reevaluate live plugins.
  * @param packageVersion Exact manifest package name followed by @ and its version; never an installation spec or alias.
- * @param runtimeVersion Exact current Sqode version for grants; revocation may name a previous runtime.
+ * @param runtimeVersion Exact current SQH version for grants; revocation may name a previous runtime.
  * @param enabled Whether to grant rather than revoke the exemption.
  * @param acceptRisk Required true for grants after the user accepts possible crashes and data loss.
  * @returns Saved and runtime outcomes. Startup-only profiles require restart.
@@ -115,6 +115,17 @@ Manage profile files and apply their declared reload lifecycle.
  * whether the installation offers the bundle, and removal availability.
  */
 @Remote listBundles(): Promise<BundleInfo[]>
+
+/** Read installed bundles that have a newer registry or GitHub release available.
+ * @returns packages whose latest version is newer than the installed one; an unreachable source simply yields no entry for it.
+ */
+@Remote async checkUpdates(): Promise<import('./types.ts').PluginUpdateInfo[]>
+
+/** Apply one reported update through the normal install path, leaving the bundle disabled until the person enables it.
+ * @param update One entry from `checkUpdates`.
+ * @returns The install outcome, with the same rollback and diagnostics as a manual install.
+ */
+@Remote async applyUpdate(update: import('./types.ts').PluginUpdateInfo): Promise<import('./types.ts').ChangeResult>
 
 /** Read the registries this manager asks: the configured first one, its fallbacks in order, and what pnpm's own configuration names.
  * @returns The registries in pnpm's comparison form; null is the one pnpm's own configuration names, `resolved` as pnpm reads it now.

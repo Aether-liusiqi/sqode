@@ -377,6 +377,13 @@ Host service backing the generated `ctx.remote.workspace` namespace.
 @Remote('insertSessionBefore') insertSessionBefore(request: WorkspaceInsertSessionBeforeRequest): Promise<WorkspaceValue>
 
 /**
+ * Permanently delete one Session and everything stored for it.
+ * @param request - the Session to delete.
+ * @returns the deleted Session identity.
+ */
+@Remote('deleteSession') deleteSession(request: WorkspaceDeleteSessionRequest): Promise<WorkspaceDeleteSessionValue>
+
+/**
  * Hide one known Session from Workspace grouping surfaces.
  * @param request - Session identity to archive.
  * @returns the complete resulting archive set.
@@ -515,6 +522,19 @@ initializeDefault(resolveDirectory: () => Promise<string>): Promise<Workspace | 
 get(id: WorkspaceId): Workspace | undefined
 
 /**
+ * The canonical cwd the membership index holds for a session, or `undefined`
+ * when the id has no live or stored header whose cwd resolves.
+ *
+ * A workspace mutation event carries the raw record, whose candidate account
+ * may still name sessions this index cannot resolve. Broadcasting that
+ * unfiltered re-introduces them into every surface, so a consumer applies the
+ * same predicate `Workspace.sessionIds` does.
+ * @param id - the session asked about.
+ * @returns the canonical cwd, when the id has a usable header.
+ */
+sessionPath(id: SessionId): string | undefined
+
+/**
  * Synchronous workspace projection in durable registry order. Every
  * entity's `sessionIds` getter is already filtered by the startup/live
  * canonical-cwd header index; this method performs no persistence reads.
@@ -627,6 +647,26 @@ Ask the composed providers what still runs for a session before it is archived. 
  * @mode waterfall
  */
 'workspace/session-activity'( request: SessionActivityRequest, next: () => Promise<readonly SessionActivity[]>, ): Promise<readonly SessionActivity[]>
+```
+
+Source: [`packages/workspace/workspace/src/index.ts`](../../packages/workspace/workspace/src/index.ts)
+
+<a id="workspacesession-release--serial"></a>
+
+#### `workspace/session-release` — serial
+
+Release a session's live runtime because the caller is about to delete it. The provider that owns the runtime stops it here, so the stored log is no longer open when the deletion removes the directory. A session that is not loaded answers without doing anything: having nothing to release is the normal case.
+
+```ts cordis-catalog
+/**
+ * Release a session's live runtime because the caller is about to delete it. The
+ * provider that owns the runtime stops it here, so the stored log is no longer open
+ * when the deletion removes the directory. A session that is not loaded answers
+ * without doing anything: having nothing to release is the normal case.
+ * @param request - the session about to be deleted.
+ * @mode serial
+ */
+'workspace/session-release'(request: SessionActivityRequest): Promise<void> | void
 ```
 
 Source: [`packages/workspace/workspace/src/index.ts`](../../packages/workspace/workspace/src/index.ts)

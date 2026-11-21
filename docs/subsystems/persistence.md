@@ -408,6 +408,20 @@ abstract stat(id: SessionId, options?: SessionPersistenceStatOptions): Promise<S
  * @returns one snapshot per stored session.
  */
 abstract list(options?: SessionPersistenceListOptions): Promise<readonly SessionPersistenceSnapshot[]>
+
+/**
+ * Permanently remove one stored session and every artifact it owns.
+ *
+ * Removal is all-or-nothing at the directory level: a backend must not stage,
+ * rename, or keep a backup, because a startup scan treats every entry under the
+ * storage root as a session and a leftover would fail the scan. A removal that
+ * does not complete leaves the session exactly as it was. Nothing outside that
+ * session's own directory is touched.
+ * @param id - the stored session to remove.
+ * @param options - optional cancellation.
+ * @returns `true` when a session existed and was removed, `false` when none existed.
+ */
+async destroy(id: SessionId, options?: SessionPersistenceDestroyOptions): Promise<boolean>
 ```
 
 Types: [SessionId](core.md)
