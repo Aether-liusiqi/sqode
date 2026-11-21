@@ -66,6 +66,7 @@ export class ChatViewport {
     scroller.addEventListener('scroll', this.onScroll, { passive: true })
     scroller.addEventListener('scrollend', this.onScrollEnd, { passive: true, capture: true })
     for (const type of READING_INTENTS) scroller.addEventListener(type, this.onIntent, { passive: true, capture: true })
+    scroller.ownerDocument.addEventListener('keydown', this.onDocumentKeyDown, { passive: true, capture: true })
     if (typeof ResizeObserver !== 'undefined') {
       this.observer = new ResizeObserver(() => {
         if (this.elements !== elements) return
@@ -84,6 +85,7 @@ export class ChatViewport {
     this.elements?.scroller.removeEventListener('scroll', this.onScroll)
     this.elements?.scroller.removeEventListener('scrollend', this.onScrollEnd, true)
     for (const type of READING_INTENTS) this.elements?.scroller.removeEventListener(type, this.onIntent, true)
+    this.elements?.scroller.ownerDocument.removeEventListener('keydown', this.onDocumentKeyDown, true)
     this.observer?.disconnect()
     this.observer = null
     this.elements = null
@@ -469,6 +471,20 @@ export class ChatViewport {
     if (this.paging === null) return
     this.stopPreserving()
     this.events?.interact()
+  }
+
+  /**
+   * Catch upward keys when focus has fallen back to the document body. Clicking
+   * non-focusable message text returns focus to body, so the keydown target is
+   * an ancestor of the scrollport and never reaches its capture listener. Keys
+   * targeted inside the scrollport or an input stay with their own handlers.
+   */
+  private readonly onDocumentKeyDown = (event: KeyboardEvent): void => {
+    const scroller = this.elements?.scroller
+    if (scroller === undefined) return
+    const doc = scroller.ownerDocument
+    if (event.target !== doc.body && event.target !== doc.documentElement) return
+    if (this.atTop() && this.isUpwardIntent(event)) this.events?.loadEarlier?.()
   }
 }
 

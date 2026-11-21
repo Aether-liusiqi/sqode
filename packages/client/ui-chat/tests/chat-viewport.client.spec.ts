@@ -530,6 +530,16 @@ describe('automatic older-history loading at the top edge', () => {
     expect(loadEarlier).toHaveBeenCalledOnce()
   })
 
+  it('requests older history on ArrowUp when keyboard focus is on the document body', () => {
+    const h = nestedFixture(200, 400)
+    const loadEarlier = vi.fn()
+    h.viewport.connect({ scroll: () => {}, scrollEnd: () => {}, resize: () => {}, interact: () => {}, loadEarlier })
+    // Clicking a non-focusable message moves focus to document.body in real browsers.
+    // A keydown targeted at body never reaches the scrollport's capture listener.
+    document.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp', bubbles: true }))
+    expect(loadEarlier).toHaveBeenCalledOnce()
+  })
+
   it('does not request older history when the reader is not at the top', () => {
     const h = nestedFixture(200, 400)
     h.scroller.scrollTop = 80
