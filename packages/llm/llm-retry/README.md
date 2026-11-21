@@ -47,7 +47,17 @@ Choose it when a composition runs the agent loop and wants durable request recov
 - name: '@liusiqi-dev/sqh-llm-retry'
 ```
 
-Omission of `retryPolicy` uses normal mode: five retries for `EMPTY_RESPONSE`, `RATE_LIMIT`, `SERVER`, `TIMEOUT`, and `TRANSPORT`, with bounded exponential backoff from 500 ms to 10 seconds and 10 percent jitter. Normal mode can change its finite budget, eligible codes, and backoff; always mode asks downstream recovery first, then retries every model-request failure without an attempt limit, stopping only on success, cancellation, or plugin disposal.
+Omission of `retryPolicy` uses normal mode: five retries for `EMPTY_RESPONSE`, `RATE_LIMIT`, `SERVER`, `TIMEOUT`, and `TRANSPORT`, with bounded exponential backoff from 500 ms to 10 seconds and 10 percent jitter. Normal mode can change its finite budget, eligible codes, and backoff; always mode asks downstream recovery first, then retries every model-request failure until success, cancellation, plugin disposal, or an optional `budget` is exhausted. To cap an always-mode route, add `budget` with `maxRetries` (retries after the first request), `maxElapsedMs` (cumulative scheduled retry delay in milliseconds), or both:
+
+```yaml
+    retryPolicy:
+      mode: always
+      budget:
+        maxRetries: 5
+        maxElapsedMs: 60000
+```
+
+Omitting `budget` keeps retries unbounded, which is the default.
 
 ### What you can observe
 
@@ -116,7 +126,7 @@ No retry event, delay, provider error, or failed partial output is model-visible
 
 #### Token effect
 
-Each retry is a new provider request and may repeat input-token billing. Normal mode has a finite budget; always mode can consume unbounded requests until success or cancellation. `llm/retry` itself contributes no tokens.
+Each retry is a new provider request and may repeat input-token billing. Normal mode has a finite budget; always mode can consume unbounded requests unless a `budget` caps it, then stops on budget exhaustion. `llm/retry` itself contributes no tokens.
 
 #### KV Cache effect
 
@@ -130,7 +140,7 @@ The reconstructed request preserves the prior prefix and is eligible for provide
 These limits define where the executor stops and future work begins. They are current package constraints, not a general retry comparison or a task backlog.
 
 - **Agent turns are the only retry boundary** — direct `ctx.llm.stream()` consumers remain single-attempt because a raw stream cannot separate already-emitted chunks durably.
-- **Always mode retries permanent failures** — authentication, quota, invalid-request, protocol, and unrecoverable context errors continue until success, cancellation, or disposal; deployments own provider-specific cost and latency controls.
+- **Always mode retries permanent failures** — authentication, quota, invalid-request, protocol, and unrecoverable context errors continue until success, cancellation, disposal, or budget exhaustion; deployments own provider-specific cost and latency controls.
 - **Finite plugin budgets add** — normal mode counts only its configured codes and exact provider policy, while context-overflow compaction owns a separate budget. Any overlapping policy must define registration-order behavior.
 - **Recovery policies compose by waterfall order** — always mode accepts a downstream retry before applying its fallback. A later policy that ignores cancellation and never settles also prevents fallback, turn quiescence, and plugin disposal from completing.
 - **`llm/retry` records scheduling, not completion** — later step and turn events establish success, exhaustion, or cancellation.

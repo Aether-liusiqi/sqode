@@ -692,6 +692,61 @@ describe('provider-routed retry policy', () => {
     ])
   })
 
+  it('stops always mode retries when the maxRetries budget is exhausted', async () => {
+    vi.useFakeTimers()
+    const adapter = new ScriptedAdapter([
+      new LlmError('auth one', 'AUTH'),
+      new LlmError('auth two', 'AUTH'),
+      new LlmError('auth three', 'AUTH'),
+    ])
+    ;({ ctx: context } = await harness(adapter, { mock: {
+      ...alwaysConfig(),
+      budget: { maxRetries: 2 },
+    } }))
+    const agent = await context.agentLoop.create(SessionId('retry-always-budget'), {
+      provider: 'mock',
+      model: 'mock',
+    })
+    const idle = waitForIdle(context, agent)
+
+    agent.followup(createUserMessage({ content: [{ type: 'text', text: 'go' }], source: { kind: 'user' } }))
+    await vi.runAllTimersAsync()
+    await idle
+
+    expect(adapter.requests).toHaveLength(3)
+    expect(agent.session.snapshotEvents().filter(event => event.type === 'llm/retry')).toHaveLength(2)
+    expect(agent.session.snapshotEvents().at(-1)).toMatchObject({
+      type: 'turn/end',
+      data: { reason: { kind: 'error', error: { message: 'auth three', code: 'AUTH' } } },
+    })
+  })
+
+  it('stops always mode retries when the cumulative maxElapsedMs budget is exhausted', async () => {
+    vi.useFakeTimers()
+    const adapter = new ScriptedAdapter([
+      new LlmError('one', 'AUTH'),
+      new LlmError('two', 'AUTH'),
+      new LlmError('three', 'AUTH'),
+      new LlmError('four', 'AUTH'),
+    ])
+    ;({ ctx: context } = await harness(adapter, { mock: {
+      ...alwaysConfig({ initialDelayMs: 50, maxDelayMs: 50, jitterRatio: 0 }),
+      budget: { maxElapsedMs: 150 },
+    } }))
+    const agent = await context.agentLoop.create(SessionId('retry-always-elapsed-budget'), {
+      provider: 'mock',
+      model: 'mock',
+    })
+    const idle = waitForIdle(context, agent)
+
+    agent.followup(createUserMessage({ content: [{ type: 'text', text: 'go' }], source: { kind: 'user' } }))
+    await vi.runAllTimersAsync()
+    await idle
+
+    expect(adapter.requests).toHaveLength(4)
+    expect(agent.session.snapshotEvents().filter(event => event.type === 'llm/retry')).toHaveLength(3)
+  })
+
   it('keeps failed error text and partial output out of every retried model context', async () => {
     vi.useFakeTimers()
     const diagnostic = 'private provider diagnostic must not enter context'

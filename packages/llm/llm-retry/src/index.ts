@@ -65,7 +65,14 @@ function localDelay(config: ResolvedRetryPolicy, retry: number, random: () => nu
 
 function retryPolicyKey(policy: ResolvedRetryPolicy): string {
   return policy.mode === 'always'
-    ? JSON.stringify([policy.mode, policy.initialDelayMs, policy.maxDelayMs, policy.jitterRatio])
+    ? JSON.stringify([
+      policy.mode,
+      policy.maxRetries,
+      policy.maxElapsedMs,
+      policy.initialDelayMs,
+      policy.maxDelayMs,
+      policy.jitterRatio,
+    ])
     : JSON.stringify([
       policy.mode,
       policy.maxRetries,
@@ -104,6 +111,8 @@ function cancellableDelay(delayMs: number, signal: AbortSignal): Promise<boolean
 interface RetryStateEntry {
   retry: number
   retryId: RetryId
+  /** Cumulative scheduled retry delay, rebuilt from llm/retry events. */
+  elapsedMs: number
 }
 
 type LlmRetryState = Record<string, RetryStateEntry>
@@ -112,6 +121,7 @@ type LlmRetryState = Record<string, RetryStateEntry>
 const llmRetryStateSchema: zod.ZodType<LlmRetryState> = zod.record(zod.string(), zod.object({
   retry: zod.number().int().nonnegative(),
   retryId: zod.string(),
+  elapsedMs: zod.number().int().nonnegative(),
 })) as unknown as zod.ZodType<LlmRetryState>
 declare module '@liusiqi-dev/sqh-session-projection/types' {
   interface SessionProjectionStateMap {
@@ -124,7 +134,8 @@ export function apply(ctx: Context, config: Config = {}, internals: RetryInterna
   validateConfig(config)
   ctx.sessionProjections.register({
     key: 'llmRetry',
-    stateVersion: 1,
+    // v2 adds cumulative elapsedMs to each entry; old cache rows rebuild from events.
+    stateVersion: 2,
     stateSchema: llmRetryStateSchema,
     init: () => ({}),
     apply: (state, event) => {
@@ -133,7 +144,14 @@ export function apply(ctx: Context, config: Config = {}, internals: RetryInterna
       const key = retryStateKey(event.data.provider, event.data.policyKey)
       const entry = state[key]
       if (entry?.retry === event.data.retry && entry.retryId === event.data.retryId) return state
-      return { ...state, [key]: { retry: event.data.retry, retryId: event.data.retryId } }
+      return {
+        ...state,
+        [key]: {
+          retry: event.data.retry,
+          retryId: event.data.retryId,
+          elapsedMs: (entry?.elapsedMs ?? 0) + event.data.delayMs,
+        },
+      }
     },
   })
   const random = internals.random ?? Math.random
@@ -220,7 +238,9 @@ export function apply(ctx: Context, config: Config = {}, internals: RetryInterna
     const retryState = ctx.sessionProjections.stateOf(agent.session, 'llmRetry') as LlmRetryState
     const previous = retryState[retryStateKey(provider, policyKey)]
     const previousRetry = previous?.retry ?? 0
-    if (policy.mode === 'normal' && previousRetry >= policy.maxRetries) return next()
+    if (policy.maxRetries !== undefined && previousRetry >= policy.maxRetries) return next()
+    if (policy.mode === 'always' && policy.maxElapsedMs !== undefined
+      && (previous?.elapsedMs ?? 0) >= policy.maxElapsedMs) return next()
     const retry = previousRetry + 1
     const retryId = previous?.retryId ?? RetryId(randomUUID())
     let delayMs: number

@@ -9,7 +9,7 @@ kind: "package-reference"
 
 ## 概述
 
-挂载 `@liusiqi-dev/sqh-llm-retry`，可在持久 agent 步骤边界重试失败的模型请求。提供方的 `retryPolicy` 设置可选择有界的 normal mode 重试或无上限的 always mode 重试；计划的尝试会在退避前写入会话日志，取消后历史仍保持一致。重试会在同一个打开的轮次内重跑失败步骤，而直接 `ctx.llm.stream()` 调用仍只尝试一次。每次重试都会产生另一次提供方请求计费，always mode 会持续到成功、取消或释放。
+挂载 `@liusiqi-dev/sqh-llm-retry`，可在持久 agent 步骤边界重试失败的模型请求。提供方的 `retryPolicy` 设置可选择有界的 normal mode 重试或默认无上限、但可配置可选 `budget` 的 always mode 重试；计划的尝试会在退避前写入会话日志，取消后历史仍保持一致。重试会在同一个打开的轮次内重跑失败步骤，而直接 `ctx.llm.stream()` 调用仍只尝试一次。每次重试都会产生另一次提供方请求计费，always mode 会持续到成功、取消、释放或预算耗尽。
 
 ## 目录
 
@@ -47,7 +47,17 @@ kind: "package-reference"
 - name: '@liusiqi-dev/sqh-llm-retry'
 ```
 
-省略 `retryPolicy` 时使用 normal mode：对 `EMPTY_RESPONSE`、`RATE_LIMIT`、`SERVER`、`TIMEOUT` 与 `TRANSPORT` 最多重试五次，退避从 500 毫秒到 10 秒、带 10% 抖动。normal mode 可以更改其有界预算、合格 code 与退避；always mode 先询问下游恢复，然后无尝试上限地重试每个模型请求失败，只在成功、取消或插件释放时停止。
+省略 `retryPolicy` 时使用 normal mode：对 `EMPTY_RESPONSE`、`RATE_LIMIT`、`SERVER`、`TIMEOUT` 与 `TRANSPORT` 最多重试五次，退避从 500 毫秒到 10 秒、带 10% 抖动。normal mode 可以更改其有界预算、合格 code 与退避；always mode 先询问下游恢复，然后重试每个模型请求失败，直到成功、取消、插件释放或可选的 `budget` 耗尽。要给 always mode 路由设置上限，可添加 `budget`，其中 `maxRetries` 表示首次请求之后的重试次数，`maxElapsedMs` 表示累计计划重试延迟的毫秒数，可只设其中之一：
+
+```yaml
+    retryPolicy:
+      mode: always
+      budget:
+        maxRetries: 5
+        maxElapsedMs: 60000
+```
+
+省略 `budget` 时重试保持无上限，这是默认行为。
 
 ### 你可以观察到什么
 
@@ -116,7 +126,7 @@ kind: "package-reference"
 
 #### Token 影响
 
-每次重试都是一次新的提供方请求，可能重复输入 token 计费。normal mode 有有界预算；always mode 在成功或取消前可能消耗无上限请求。`llm/retry` 本身不贡献任何 token。
+每次重试都是一次新的提供方请求，可能重复输入 token 计费。normal mode 有有界预算；always mode 在未配置 `budget` 时可能消耗无上限请求，配置后则在预算耗尽时停止。`llm/retry` 本身不贡献任何 token。
 
 #### KV Cache 影响
 
@@ -130,7 +140,7 @@ kind: "package-reference"
 这些限制说明执行器在哪里停止、由未来工作接续。它们是当前包约束，不是通用重试对比或任务积压。
 
 - **agent 轮次是唯一重试边界**——直接 `ctx.llm.stream()` 消费方仍是单次尝试，因为原始流无法持久地区分已发出的分片。
-- **always mode 会重试永久性失败**——认证、配额、无效请求、协议与不可恢复的上下文错误会持续到成功、取消或释放；部署方负责提供方专属的成本与延迟控制。
+- **always mode 会重试永久性失败**——认证、配额、无效请求、协议与不可恢复的上下文错误会持续到成功、取消、释放或预算耗尽；部署方负责提供方专属的成本与延迟控制。
 - **有界插件预算相加**——normal mode 只统计其配置的 code 与精确提供方策略，而上下文溢出压缩（compaction）拥有独立预算。任何重叠策略都必须定义注册顺序行为。
 - **恢复策略按 waterfall 顺序组合**——always mode 先接受下游重试，再应用其回退。之后忽略取消且永不结算的策略也会阻止回退、轮次完全停稳与插件释放完成。
 - **`llm/retry` 记录调度，而非完成**——后续步骤与轮次事件才确立成功、耗尽或取消。

@@ -59,6 +59,34 @@ describe('provider retry policy', () => {
     expect(RetryPolicySchema).toBeDefined()
   })
 
+  it('resolves always mode with an optional retry budget', () => {
+    const policy = resolveRetryPolicy({
+      mode: 'always',
+      budget: { maxRetries: 3, maxElapsedMs: 5000 },
+    }, 'provider.retryPolicy')
+
+    expect(policy).toEqual({
+      mode: 'always',
+      maxRetries: 3,
+      maxElapsedMs: 5000,
+      initialDelayMs: 500,
+      maxDelayMs: 10_000,
+      jitterRatio: 0.1,
+    })
+  })
+
+  it('resolves a partial always budget without adding absent fields', () => {
+    const policy = resolveRetryPolicy({
+      mode: 'always',
+      budget: { maxRetries: 2 },
+    }, 'provider.retryPolicy')
+
+    if (policy.mode !== 'always') throw new Error('expected always policy')
+    expect(policy.maxRetries).toBe(2)
+    expect(policy.maxElapsedMs).toBeUndefined()
+    expect(Object.isFrozen(policy)).toBe(true)
+  })
+
   it('ignores normal-only fields retained after switching to always mode', () => {
     const layered = {
       mode: 'always',
@@ -84,6 +112,12 @@ describe('provider retry policy', () => {
     [{ mode: 'always', backoff: { maxDelayMs: MAX_TIMER_DELAY_MS + 1 } }, /maxDelayMs/],
     [{ mode: 'normal', backoff: { initialDelayMs: 20, maxDelayMs: 10 } }, /less than or equal/],
     [{ mode: 'always', backoff: { jitterRatio: 1.1 } }, /jitterRatio/],
+    [{ mode: 'always', budget: { maxRetries: -1 } }, /budget.maxRetries/],
+    [{ mode: 'always', budget: { maxRetries: 1.5 } }, /budget.maxRetries/],
+    [{ mode: 'always', budget: { maxRetries: Number.MAX_SAFE_INTEGER + 1 } }, /budget.maxRetries/],
+    [{ mode: 'always', budget: { maxElapsedMs: -1 } }, /budget.maxElapsedMs/],
+    [{ mode: 'always', budget: { maxElapsedMs: 1.5 } }, /budget.maxElapsedMs/],
+    [{ mode: 'always', budget: { unknown: 1 } }, /unknown key "unknown"/],
     [{ mode: 'normal', retryableCodes: [] }, /must not be empty/],
     [{ mode: 'normal', retryableCodes: ['SERVER', 'SERVER'] }, /duplicates/],
     [{ mode: 'normal', retryableCodes: [''] }, /non-empty strings/],

@@ -45,10 +45,20 @@ export interface NormalRetryPolicyConfig {
   backoff?: BackoffConfig
 }
 
-/** Unbounded retry behavior for every model-request failure on one provider route. */
+/** Optional budget that bounds an otherwise unbounded always retry policy. */
+export interface RetryBudgetConfig {
+  /** Maximum retries after the first request; omit for no count limit. */
+  maxRetries?: number
+  /** Maximum cumulative scheduled retry delay in milliseconds; omit for no time limit. */
+  maxElapsedMs?: number
+}
+
+/** Retry behavior for every model-request failure on one provider route, with an optional budget. */
 export interface AlwaysRetryPolicyConfig {
-  /** Retry every model-request failure until success, cancellation, or disposal. */
+  /** Retry every model-request failure until success, cancellation, disposal, or budget exhaustion. */
   mode: 'always'
+  /** Optional retry budget; omitting it preserves unbounded retry behavior. */
+  budget?: RetryBudgetConfig
   /** Local exponential-backoff and jitter configuration. */
   backoff?: BackoffConfig
 }
@@ -70,9 +80,13 @@ export interface ResolvedNormalRetryPolicy extends ResolvedRetryBackoff {
   readonly retryableCodes: readonly string[]
 }
 
-/** Fully resolved unbounded retry policy. */
+/** Fully resolved always retry policy with an optional budget. */
 export interface ResolvedAlwaysRetryPolicy extends ResolvedRetryBackoff {
   readonly mode: 'always'
+  /** Resolved retry count ceiling, or undefined for no count limit. */
+  readonly maxRetries?: number
+  /** Resolved cumulative-delay ceiling, or undefined for no time limit. */
+  readonly maxElapsedMs?: number
 }
 
 /** Immutable provider policy captured when its adapter route is registered. */
@@ -91,8 +105,14 @@ const normalPolicySchema: z<NormalRetryPolicyConfig> = z.object({
   backoff: backoffSchema,
 })
 
+const retryBudgetSchema: z<RetryBudgetConfig> = z.object({
+  maxRetries: z.number().step(1).min(0).max(Number.MAX_SAFE_INTEGER),
+  maxElapsedMs: z.number().step(1).min(0).max(Number.MAX_SAFE_INTEGER),
+})
+
 const alwaysPolicySchema: z<AlwaysRetryPolicyConfig> = z.object({
   mode: z.const('always').required(),
+  budget: retryBudgetSchema,
   backoff: backoffSchema,
 })
 
@@ -108,9 +128,10 @@ const NORMAL_POLICY_KEYS: ReadonlySet<string> = new Set([
 // Layered configuration can retain normal-only fields after switching modes;
 // always mode ignores those inactive values while still rejecting unknown keys.
 const ALWAYS_POLICY_KEYS: ReadonlySet<string> = new Set([
-  'mode', 'maxRetries', 'retryableCodes', 'backoff',
+  'mode', 'maxRetries', 'retryableCodes', 'backoff', 'budget',
 ])
 const BACKOFF_KEYS: ReadonlySet<string> = new Set(['initialDelayMs', 'maxDelayMs', 'jitterRatio'])
+const BUDGET_KEYS: ReadonlySet<string> = new Set(['maxRetries', 'maxElapsedMs'])
 
 function validateKeys(value: object, allowed: ReadonlySet<string>, path: string): void {
   for (const key of Object.keys(value)) {
@@ -183,12 +204,25 @@ export function resolveRetryPolicy(
         ...resolveBackoff(config.backoff, `${path}.backoff`),
       })
     }
-    case 'always':
+    case 'always': {
       validateKeys(config, ALWAYS_POLICY_KEYS, path)
+      const budget = config.budget
+      if (budget !== undefined) validateKeys(budget, BUDGET_KEYS, `${path}.budget`)
+      const maxRetries = budget?.maxRetries
+      const maxElapsedMs = budget?.maxElapsedMs
+      if (maxRetries !== undefined && (!Number.isSafeInteger(maxRetries) || maxRetries < 0)) {
+        throw new Error(`${path}.budget.maxRetries must be a non-negative safe integer`)
+      }
+      if (maxElapsedMs !== undefined && (!Number.isSafeInteger(maxElapsedMs) || maxElapsedMs < 0)) {
+        throw new Error(`${path}.budget.maxElapsedMs must be a non-negative safe integer`)
+      }
       return Object.freeze({
         mode: 'always',
+        ...(maxRetries === undefined ? {} : { maxRetries }),
+        ...(maxElapsedMs === undefined ? {} : { maxElapsedMs }),
         ...resolveBackoff(config.backoff, `${path}.backoff`),
       })
+    }
     default:
       throw new Error(`${path}.mode must be "normal" or "always"`)
   }

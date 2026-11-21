@@ -6231,7 +6231,7 @@ export const TYPE_API: readonly TypeApiEntry[] = [
   },
   {
     name: 'ResolvedAlwaysRetryPolicy',
-    declaration: 'export interface ResolvedAlwaysRetryPolicy extends ResolvedRetryBackoff {\n    readonly mode: \'always\';\n}',
+    declaration: 'export interface ResolvedAlwaysRetryPolicy extends ResolvedRetryBackoff {\n    readonly mode: \'always\';\n    readonly maxRetries?: number;\n    readonly maxElapsedMs?: number;\n}',
   },
   {
     name: 'ResolvedCredential',

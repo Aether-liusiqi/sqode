@@ -159,6 +159,10 @@ function reportFatal(error: unknown, source: CrashReportSource): void {
   void recovery.report(error, source).catch((failure: unknown) => { console.error(failure); app.exit(1) })
 }
 
+// Route process-level failures through the same crash report and recovery dialog as startup failures.
+process.on('uncaughtException', (error: unknown) => { reportFatal(error, 'main') })
+process.on('unhandledRejection', (error: unknown) => { reportFatal(error, 'main') })
+
 protocol.registerSchemesAsPrivileged([{
   scheme: SCHEME,
   privileges: {

@@ -78,6 +78,7 @@ describe('llm-retry projection fold', () => {
       '["mock","normal-policy"]': {
         retry: 1,
         retryId: 'normal-retry-chain',
+        elapsedMs: 1,
       },
     })
   })
