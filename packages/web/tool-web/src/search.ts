@@ -14,10 +14,15 @@ import { EXTERNAL_WEB_CONTENT_NOTICE } from './trust.ts'
 import { cleanSearchResult } from './hygiene.ts'
 
 /**
- * Default upper bound on returned sources (the `searchMaxResults` config).
+ * Lower bound for the configurable per-search result cap (`searchMaxResults`).
+ * Config values outside [MIN, MAX] are rejected at plugin load.
+ */
+export const WEB_SEARCH_MIN_RESULTS = 8
+/**
+ * Default and upper bound on returned sources (the `searchMaxResults` config).
  * The consumer owns the returned-context limit; providers and models do not.
  */
-export const WEB_SEARCH_MAX_RESULTS = 8
+export const WEB_SEARCH_MAX_RESULTS = 16
 
 /** Default upper bound on concurrent searches in one tool call. */
 export const WEB_SEARCH_MAX_QUERIES = 4

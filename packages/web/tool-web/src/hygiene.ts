@@ -8,8 +8,8 @@
 
 import type { WebSearchResult, WebSearchSource } from '@liusiqi-dev/sqh-web'
 
-/** Default cap after filtering and ranking. */
-export const DEFAULT_MAX_RESULTS = 8
+/** Default cap after filtering and ranking, used when the caller supplies none. */
+export const DEFAULT_MAX_RESULTS = 16
 
 /**
  * Domains whose pages are dictionary/translation lookups, navigation portals,
@@ -120,7 +120,7 @@ export function relevance(queryTokens: ReadonlySet<string>, title: string, snipp
 
 /** Options for {@link cleanSearchResult}. */
 export interface HygieneOptions {
-  /** Final source cap after filtering and ranking. Defaults to 8. */
+  /** Final source cap after filtering and ranking. Defaults to 16. */
   readonly maxResults?: number
 }
 

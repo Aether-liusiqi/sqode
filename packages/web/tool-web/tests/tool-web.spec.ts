@@ -629,25 +629,23 @@ describe('tool-web execution through the real registry', () => {
   })
 
   it('caps combined multi-query results to searchMaxResults', async () => {
+    const makeSources = (query: string) => Array.from({ length: 6 }, (_, i) => ({ url: `https://${query}${i}.test`, title: `${query} result ${i}` }))
     const provider: WebSearchProvider = {
       id: 'stub-search',
       available: () => available,
       search: request => Promise.resolve({
-        sources: request.query === 'one'
-          ? [{ url: 'https://a.test', title: 'One result' }, { url: 'https://b.test', title: 'One second' }]
-          : [{ url: 'https://c.test', title: 'Two result' }, { url: 'https://d.test', title: 'Two second' }],
+        sources: makeSources(request.query),
         truncated: false,
       }),
     }
-    const { fiber, call } = await mountTools({ config: { searchMaxResults: 2 }, webConfig: { searchProvider: 'stub-search' }, search: provider })
+    const { fiber, call } = await mountTools({ config: { searchMaxResults: 8 }, webConfig: { searchProvider: 'stub-search' }, search: provider })
     const out = await call('web_search', { queries: ['one', 'two'] })
     expect(out.isError).toBe(false)
-    expect(out.value).toEqual({
-      sources: [{ url: 'https://a.test', title: 'One result' }, { url: 'https://c.test', title: 'Two result' }],
-      truncated: true,
-    })
+    const value = out.value as { sources: unknown[]; truncated: boolean }
+    expect(value.sources).toHaveLength(8)
+    expect(value.truncated).toBe(true)
     const body = out.content.map(b => b.type === 'text' ? b.text : '').join('')
-    expect(body).toContain('Showing the first 2 sources.')
+    expect(body).toContain('Showing the first 8 sources.')
     await fiber.dispose()
   })
 
@@ -819,19 +817,19 @@ describe('searchMaxResults is plugin config', () => {
   })
 
   it('forwards a configured cap to the seam, which enforces it', async () => {
-    const sources = Array.from({ length: 5 }, (_, i) => ({ url: `https://s${i}.test` }))
+    const sources = Array.from({ length: 12 }, (_, i) => ({ url: `https://s${i}.test` }))
     const provider: WebSearchProvider = {
       id: 'stub-search',
       available: () => available,
       search: () => Promise.resolve({ sources, truncated: false }),
     }
-    const { fiber, call } = await mountTools({ config: { searchMaxResults: 2 }, webConfig: { searchProvider: 'stub-search' }, search: provider })
+    const { fiber, call } = await mountTools({ config: { searchMaxResults: 10 }, webConfig: { searchProvider: 'stub-search' }, search: provider })
     const out = await call('web_search', { queries: ['q'] })
     expect(out.isError).toBe(false)
     const body = out.content.map(b => b.type === 'text' ? b.text : '').join('')
-    expect(body).toContain('https://s1.test')
-    expect(body).not.toContain('https://s2.test')
-    expect(body).toContain('Showing the first 2 sources.')
+    expect(body).toContain('https://s9.test')
+    expect(body).not.toContain('https://s10.test')
+    expect(body).toContain('Showing the first 10 sources.')
     await fiber.dispose()
   })
 
@@ -839,13 +837,15 @@ describe('searchMaxResults is plugin config', () => {
     ['zero', 0],
     ['negative', -3],
     ['fractional', 1.5],
+    ['below the minimum', 7],
+    ['above the maximum', 17],
   ])('rejects a %s searchMaxResults at load', async (_label, value) => {
     const ctx = new Context()
     await ctx.plugin(SystemPrompt)
     await ctx.plugin(ToolRuntime)
     await ctx.plugin(WebRuntime, {})
     await expect(ctx.plugin(ToolWeb, { searchMaxResults: value }))
-      .rejects.toThrow(/tool-web: searchMaxResults must be a positive integer/)
+      .rejects.toThrow(/tool-web: searchMaxResults must be an integer between 8 and 16/)
   })
 })
 

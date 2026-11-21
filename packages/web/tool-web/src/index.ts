@@ -9,10 +9,10 @@
 import type { Context } from '@liusiqi-dev/cordis'
 import z from '@liusiqi-dev/schemastery'
 import type {} from '@liusiqi-dev/sqh-web'
-import { applyWebSearchTool, WEB_SEARCH_MAX_QUERIES, WEB_SEARCH_MAX_RESULTS } from './search.ts'
+import { applyWebSearchTool, WEB_SEARCH_MAX_QUERIES, WEB_SEARCH_MAX_RESULTS, WEB_SEARCH_MIN_RESULTS } from './search.ts'
 import { applyWebFetchTool } from './fetch.ts'
 
-export { WEB_SEARCH_MAX_QUERIES, WEB_SEARCH_MAX_RESULTS, applyWebSearchTool, formatSearchOutput, presentSearchCall, presentSearchResult, searchMetaFromValue, searchMetaFromResult } from './search.ts'
+export { WEB_SEARCH_MAX_QUERIES, WEB_SEARCH_MAX_RESULTS, WEB_SEARCH_MIN_RESULTS, applyWebSearchTool, formatSearchOutput, presentSearchCall, presentSearchResult, searchMetaFromValue, searchMetaFromResult } from './search.ts'
 export type { WebSearchMeta } from './search.ts'
 export { applyWebFetchTool, formatFetchOutput, parseFetchArgs, presentFetchCall, presentFetchResult, fetchMetaFromValue, fetchMetaFromResult } from './fetch.ts'
 export type { WebFetchMeta } from './fetch.ts'
@@ -39,7 +39,7 @@ export interface Config {
   search?: boolean
   /** Register `web_fetch`. Defaults to true. */
   fetch?: boolean
-  /** Upper bound on sources returned by one `web_search` call. */
+  /** Upper bound on sources returned by one `web_search` call. Must be 8-16. Defaults to 16. */
   searchMaxResults?: number
   /** Upper bound on queries accepted by one `web_search` call. */
   searchMaxQueries?: number
@@ -71,6 +71,13 @@ function assertPositiveInteger(name: string, value: number): void {
   }
 }
 
+/** The search result cap is bounded to keep returned context within a known range. */
+function assertResultCap(value: number): void {
+  if (!Number.isInteger(value) || value < WEB_SEARCH_MIN_RESULTS || value > WEB_SEARCH_MAX_RESULTS) {
+    throw new Error(`tool-web: searchMaxResults must be an integer between ${WEB_SEARCH_MIN_RESULTS} and ${WEB_SEARCH_MAX_RESULTS}`)
+  }
+}
+
 /**
  * Register the enabled web tools. `search`/`fetch` default to true; a product
  * that wants only one disables the other in config. Each tool's cooperative
@@ -83,7 +90,7 @@ function assertPositiveInteger(name: string, value: number): void {
 export function apply(ctx: Context, config: Config): void {
   // schemastery (Config) has already filled every defaulted field.
   const resolved = config as ResolvedConfig
-  assertPositiveInteger('searchMaxResults', resolved.searchMaxResults)
+  assertResultCap(resolved.searchMaxResults)
   assertPositiveInteger('searchMaxQueries', resolved.searchMaxQueries)
   assertPositiveInteger('fetchTimeoutMs', resolved.fetchTimeoutMs)
   assertPositiveInteger('searchTimeoutMs', resolved.searchTimeoutMs)
